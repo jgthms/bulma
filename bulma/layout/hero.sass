@@ -1,0 +1,143 @@
+.hero
+  background: white
+  text-align: center
+  & > .container
+    padding: 40px 20px
+  a
+    color: inherit
+  .header
+    background: none
+    box-shadow: none
+  .tabs
+    ul
+      border-bottom: none
+    a
+      border: none
+      margin-bottom: 0
+      padding: 0 0 10px
+    &.is-boxed
+      a
+        border: none
+        padding: 6px 12px
+  +desktop
+    & > .container
+      padding: 40px 0
+  &.is-alt
+    background: $background
+    color: $text-light
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background: $color
+      color: $color-invert
+      .title
+        color: $color-invert
+        strong
+          color: inherit
+      .subtitle
+        color: rgba($color-invert, 0.7)
+        strong
+          color: $color-invert
+      .header .container
+        box-shadow: 0 1px 0 rgba($color-invert, 0.2)
+      .header-icon,
+      .header-item > a:not(.button)
+        color: $color-invert
+        opacity: 0.5
+        &:hover,
+        &.is-active
+          opacity: 1
+      .tabs
+        a
+          color: $color-invert
+          opacity: 0.5
+          &:hover
+            opacity: 1
+        li.is-active a
+          opacity: 1
+        &.is-boxed
+          a
+            color: $color-invert
+            &:hover
+              background: rgba(black, 0.1)
+          li.is-active a
+            &,
+            &:hover
+              background: $color-invert
+              color: $color
+      &.is-bold
+        $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
+        $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
+        background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+      +mobile
+        .header-toggle
+          span
+            background: $color-invert
+          &:hover
+            background: rgba(black, 0.1)
+          &.is-active
+            span
+              background: $color-invert
+        .header-menu
+          background: $color
+          .header-item
+            border-top-color: rgba($color-invert, 0.2)
+  &.is-fullheight,
+  &.is-medium,
+  &.is-large
+    +tablet
+      .title
+        font-size: $size-huge
+      .subtitle
+        font-size: $size-large
+      .tabs
+        font-size: $size-medium
+        a
+          padding-bottom: 15px
+        &.is-boxed
+          a
+            padding: 12px 16px
+  &.is-fullheight
+    align-items: center
+    display: flex
+    height: 100vh
+    .tabs
+      white-space: normal
+  &.is-medium
+    +tablet
+      & > .container
+        padding: 120px 20px
+      .title
+        font-size: 40px
+      .subtitle
+        font-size: 24px
+      .tabs
+        font-size: 16px
+    +desktop
+      & > .container
+        padding: 120px 0
+  &.is-large
+    +tablet
+      & > .container
+        padding: 240px 20px
+    +desktop
+      & > .container
+        padding: 240px 0
+  &.is-left
+    text-align: left
+  &.is-right
+    text-align: right
+
+.hero-buttons
+  margin-top: 20px
+  +mobile
+    .button
+      display: block
+      &:not(:last-child)
+        margin-bottom: 10px
+  +tablet
+    display: flex
+    justify-content: center
+    .button:not(:last-child)
+      margin-right: 20px

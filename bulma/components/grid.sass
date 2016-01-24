@@ -1,0 +1,48 @@
+.column
+  +mobile
+    & + .column
+      margin-top: 20px
+  +tablet
+    flex: 1
+    & + .column
+      margin-left: 20px
+    &.is-double
+      flex: 2
+    &.is-triple
+      flex: 3
+    &.is-quadruple
+      flex: 4
+    &.is-half
+      flex: none
+      width: 50%
+    &.is-third
+      flex: none
+      width: 33.3333%
+    &.is-quarter
+      flex: none
+      width: 25%
+    @for $i from 1 through 11
+      &.is-#{$i}
+        flex: none
+        width: ($i / 12) * 100%
+
+.columns
+  &:not(:last-child)
+    margin-bottom: 20px
+  +tablet
+    display: flex
+  &.is-gapless
+    & > .column + .column
+      margin-left: 0
+  &.is-vcentered
+    align-items: center
+  &.is-grid
+    +tablet
+      flex-wrap: wrap
+      & > .column
+        flex-basis: 33.3333%
+        max-width: 33.3333%
+        padding: 10px
+        width: 33.3333%
+        & + .column
+          margin-left: 0

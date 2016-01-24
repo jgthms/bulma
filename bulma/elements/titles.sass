@@ -1,0 +1,57 @@
+.title,
+.subtitle
+  font-weight: 300
+  &:not(:last-child)
+    margin-bottom: 20px
+
+.title
+  color: $text-strong
+  font-size: $size-large
+  line-height: 1
+  strong
+    color: inherit
+  code
+    display: inline-block
+    font-size: $size-large
+  & + .subtitle
+    margin-top: -10px
+  & + .highlight
+    margin-top: -10px
+  &.is-normal
+    font-weight: 400
+    strong
+      font-weight: 700
+  @each $size in $sizes
+    $i: index($sizes, $size)
+    &.is-#{$i}
+      font-size: $size
+      code
+        font-size: nth($sizes, min($i + 1, 6))
+  +tablet
+    & + .subtitle
+      margin-top: -15px
+
+.subtitle
+  font-size: $size-medium
+  line-height: 1.125
+  strong
+    color: $text-strong
+    font-weight: 400
+  code
+    border-radius: $radius
+    display: inline-block
+    font-size: $size-normal
+    padding: 2px 3px
+    vertical-align: top
+  & + .text
+    margin-top: 20px
+  &.is-normal
+    font-weight: 400
+    strong
+      font-weight: 700
+  @each $size in $sizes
+    $i: index($sizes, $size)
+    &.is-#{$i}
+      font-size: $size
+      code
+        font-size: nth($sizes, min($i + 1, 6))

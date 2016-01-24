@@ -1,0 +1,83 @@
+=arrow($color)
+  border: 1px solid $color
+  border-right: 0
+  border-top: 0
+  content: " "
+  display: block
+  height: 7px
+  pointer-events: none
+  position: absolute
+  transform: rotate(-45deg)
+  width: 7px
+
+=clearfix
+  &:after
+    clear: both
+    content: " "
+    display: table
+
+=center($size)
+  left: 50%
+  margin-left: -($size / 2)
+  margin-top: -($size / 2)
+  position: absolute
+  top: 50%
+
+=fa($size, $dimensions)
+  display: inline-block
+  font-size: $size
+  height: $dimensions
+  line-height: $dimensions
+  text-align: center
+  vertical-align: top
+  width: $dimensions
+
+=overlay($offset: 0)
+  bottom: $offset
+  left: $offset
+  position: absolute
+  right: $offset
+  top: $offset
+
+=placeholder
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
+  @each $placeholder in $placeholders
+    &:#{$placeholder}-placeholder
+      @content
+
+=replace($background, $width, $height)
+  background: $background center center no-repeat
+  background-size: $width $height
+  display: block
+  height: $height
+  outline: none
+  overflow: hidden
+  text-indent: -290486px
+  width: $width
+
+$tablet: 769px
+$desktop: 980px
+
+=from($device)
+  @media screen and (min-width: $device)
+    @content
+
+=until($device)
+  @media screen and (max-width: $device - 1px)
+    @content
+
+=mobile
+  @media screen and (max-width: $tablet - 1px)
+    @content
+
+=tablet
+  @media screen and (min-width: $tablet)
+    @content
+
+=touch
+  @media screen and (max-width: $desktop - 1px)
+    @content
+
+=desktop
+  @media screen and (min-width: $desktop)
+    @content

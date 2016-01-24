@@ -1,0 +1,45 @@
+.navbar-item
+  .title,
+  .subtitle
+    margin-bottom: 0
+  +mobile
+    &:not(:last-child)
+      margin-bottom: 10px
+
+.navbar
+  &:not(:last-child)
+    margin-bottom: 20px
+  code
+    border-radius: $radius
+  img
+    display: inline-block
+    vertical-align: top
+  +tablet
+    align-items: center
+    display: flex
+    justify-content: space-between
+    & > .navbar-item
+      &:not(.is-narrow)
+        flex: 1
+
+.navbar-left,
+.navbar-right
+  .navbar-item
+    &.is-flexible
+      flex: 1
+    &:not(:last-child)
+      margin-right: 10px
+
+.navbar-left
+  +mobile
+    & + .navbar-right
+      margin-top: 20px
+  +tablet
+    align-items: center
+    display: flex
+
+.navbar-right
+  +tablet
+    align-items: center
+    display: flex
+    justify-content: flex-end

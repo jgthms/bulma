@@ -1,0 +1,41 @@
+.message-body
+  border: 1px solid $border
+  border-radius: $radius
+  padding: 12px 15px
+  strong
+    color: inherit
+
+.message-header
+  background: $text
+  border-radius: $radius $radius 0 0
+  color: $text-invert
+  font-size: 10px
+  font-weight: bold
+  letter-spacing: 1px
+  padding: 3px 8px
+  text-transform: uppercase
+  & + .message-body
+    border-radius: 0 0 $radius $radius
+    border-top: none
+
+.message
+  background: $background
+  border-radius: $radius
+  &:not(:last-child)
+    margin-bottom: 20px
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    $lightning: (100% - lightness($color)) - 4%
+    $darkness: max(lightness($color) - 10%, lightness($color))
+    &.is-#{$name}
+      background: lighten($color, $lightning)
+      .message-header
+        background: $color
+        color: $color-invert
+      .message-body
+        border-color: $color
+        @if (colorLuminance($color) > 0.8)
+          color: desaturate(lighten(darken($color, 100%), 40%), 40%)
+        @else
+          color: desaturate(lighten(darken($color, 100%), 50%), 30%)

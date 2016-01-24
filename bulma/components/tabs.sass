@@ -1,0 +1,84 @@
+.tabs
+  line-height: 24px
+  overflow: hidden
+  overflow-x: auto
+  white-space: nowrap
+  &:not(:last-child)
+    margin-bottom: 20px
+  .fa
+    line-height: 24px
+    margin: 0 -2px
+    width: 24px
+  a
+    border-bottom: 1px solid $border
+    color: $text
+    display: block
+    margin-bottom: -1px
+    padding: 5px 0
+    vertical-align: top
+    &:hover
+      border-bottom-color: $text-strong
+      color: $text-strong
+  li
+    display: inline-block
+    vertical-align: top
+    & + li
+      margin-left: 20px
+    &.is-active
+      a
+        border-bottom-color: $link
+        color: $link
+  ul
+    border-bottom: 1px solid $border
+  &.is-boxed
+    a
+      border: 1px solid transparent
+      border-radius: $radius $radius 0 0
+      padding: 5px 15px
+      &:hover
+        background: $background
+        border-bottom-color: $border
+    li
+      & + li
+        margin-left: 5px
+      &.is-active
+        a
+          background: white
+          border-color: $border
+          border-bottom-color: transparent
+  &.is-toggle
+    ul
+      border-bottom: none
+      display: flex
+    a
+      border: 1px solid $border
+      margin-bottom: 0
+      padding: 5px 10px
+      position: relative
+      &:hover
+        background: $background
+        border-color: $border-hover
+        z-index: 2
+    li
+      & + li
+        margin-left: -1px
+      &:first-child a
+        border-radius: $radius 0 0 $radius
+      &:last-child a
+        border-radius: 0 $radius $radius 0
+      &.is-active
+        a
+          background: $primary
+          border-color: $primary
+          color: $primary-invert
+          z-index: 1
+  &.is-fullwidth
+    +tablet
+      ul
+        display: flex
+        justify-content: center
+        text-align: center
+      li
+        flex: 1
+        & + li
+          margin-left: 0
