@@ -6,9 +6,10 @@
   &:not(:last-child)
     margin-bottom: 20px
   .fa
-    line-height: 24px
-    margin: 0 -2px
-    width: 24px
+    font-size: 14px
+    line-height: 20px
+    margin: 2px -2px
+    width: 20px
   a
     border-bottom: 1px solid $border
     color: $text
@@ -20,7 +21,7 @@
       border-bottom-color: $text-strong
       color: $text-strong
   li
-    display: inline-block
+    display: block
     vertical-align: top
     & + li
       margin-left: 20px
@@ -30,6 +31,19 @@
         color: $link
   ul
     border-bottom: 1px solid $border
+    display: flex
+  &.is-centered
+    a
+      padding: 5px 10px
+    li
+      & + li
+        margin-left: 0
+    ul
+      justify-content: center
+      text-align: center
+  &.is-right
+    ul
+      justify-content: flex-end
   &.is-boxed
     a
       border: 1px solid transparent
@@ -46,10 +60,12 @@
           background: white
           border-color: $border
           border-bottom-color: transparent
+    &.is-centered
+      li
+        &,
+        & + li
+          margin: 0 2px
   &.is-toggle
-    ul
-      border-bottom: none
-      display: flex
     a
       border: 1px solid $border
       margin-bottom: 0
@@ -72,13 +88,14 @@
           border-color: $primary
           color: $primary-invert
           z-index: 1
+    ul
+      border-bottom: none
   &.is-fullwidth
     +tablet
-      ul
-        display: flex
-        justify-content: center
-        text-align: center
       li
         flex: 1
         & + li
           margin-left: 0
+      ul
+        justify-content: center
+        text-align: center
