@@ -2,16 +2,17 @@
   +clearfix
   background: white
   box-shadow: 0 1px 2px rgba(black, 0.1)
+  display: flex
   height: $header-height
   line-height: 24px
   position: relative
   text-align: center
   z-index: 2
   .container
-    align-items: center
+    align-items: stretch
     box-shadow: 0 1px 0 rgba($border, 0.3)
     display: flex
-    height: $header-height
+    width: 100%
 
 .header-toggle
   @extend .hamburger
@@ -21,8 +22,11 @@
 // Elements
 
 .header-item
-  display: block
-  padding: 0 10px
+  align-items: center
+  display: flex
+  padding: 10px
+  img
+    max-height: 24px
   a
     color: $text
     &:hover
@@ -41,6 +45,7 @@
     color: $link-hover
 
 .header-tab
+  align-items: center
   border-bottom: 1px solid transparent
   color: $text
   display: block
@@ -53,36 +58,28 @@
     border-bottom: 3px solid $link
     color: $link
 
-.header-logo
-  align-items: center
-  display: flex
-  img
-    max-height: 24px
-  +touch
-    padding: 0 10px
-  +tablet
-    padding-right: 10px
-
 // Containers
 
 .header-left
-  align-items: center
+  align-items: stretch
   display: flex
   flex: 1
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
+  +desktop
+    .header-item:first-child
+      padding-left: 0
 
 .header-center
-  align-items: center
+  align-items: stretch
   display: flex
-  height: $header-height
   left: 50%
   position: absolute
   transform: translateX(-50%)
 
 .header-right
-  align-items: center
+  align-items: stretch
   +tablet
     display: flex
   +desktop
@@ -92,7 +89,6 @@
 .header-full
   align-items: stretch
   display: flex
-  height: $header-height
   justify-content: center
   text-align: center
   width: 100%
