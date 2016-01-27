@@ -8,7 +8,7 @@ Bulma is a modern CSS framework based on [Flexbox](https://developer.mozilla.org
 
 Bulma is in early but active development! Try it out now:
 
-```bower install bulma```
+```npm install bulma```
 
 Feel free to raise an issue or submit a pull request. In the meantime, check the [documentation](http://bulma.io/documentation/overview/).
 
