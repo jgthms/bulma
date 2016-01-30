@@ -6,18 +6,6 @@
 @import messages
 @import notifications
 
-.highlight
-  font-size: 12px
-  font-weight: normal
-  max-width: 100%
-  overflow: hidden
-  padding: 0
-  &:not(:last-child)
-    margin-bottom: 20px
-  pre
-    overflow: auto
-    max-width: 100%
-
 .delete
   background: rgba(black, 0.2)
   border-radius: 290486px
@@ -68,37 +56,38 @@
   cursor: pointer
   display: block
   height: $header-height
-  padding: 19px 17px
   position: relative
   width: $header-height
   span
     background: $text
     display: block
     height: 1px
-    left: 17px
+    left: 50%
+    margin-left: -7px
     position: absolute
+    top: 50%
     transition: none $speed $easing
     transition-property: background, left, opacity, transform
     width: 15px
     &:nth-child(1)
-      top: 19px
+      margin-top: -6px
     &:nth-child(2)
-      top: 24px
+      margin-top: -1px
     &:nth-child(3)
-      bottom: 20px
+      margin-top: 4px
   &:hover
     background: $background
   &.is-active
     span
       background: $link
       &:nth-child(1)
-        left: 20px
+        margin-left: -5px
         transform: rotate(45deg)
         transform-origin: left top
       &:nth-child(2)
         opacity: 0
       &:nth-child(3)
-        left: 20px
+        margin-left: -5px
         transform: rotate(-45deg)
         transform-origin: left bottom
 
@@ -108,6 +97,29 @@
   letter-spacing: 1px
   margin-bottom: 5px
   text-transform: uppercase
+
+.highlight
+  font-size: 12px
+  font-weight: normal
+  max-width: 100%
+  overflow: hidden
+  padding: 0
+  &:not(:last-child)
+    margin-bottom: 20px
+  pre
+    overflow: auto
+    max-width: 100%
+
+.image
+  display: block
+  position: relative
+  vertical-align: top
+  img
+    +overlay
+    display: block
+    width: 100%
+  &.is-3x2
+    padding-top: 66.6666%
 
 .loader
   animation: spin-around 500ms infinite linear

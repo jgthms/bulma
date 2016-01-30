@@ -9,8 +9,8 @@
   @return $value
 
 @function colorLuminance($color)
-  $colors: ('red': red($color),'green': green($color),'blue': blue($color))
-  @each $name, $value in $colors
+  $color-rgb: ('red': red($color),'green': green($color),'blue': blue($color))
+  @each $name, $value in $color-rgb
     $adjusted: 0
     $value: $value / 255
     @if $value < 0.03928
@@ -18,8 +18,8 @@
     @else
       $value: ($value + .055) / 1.055
       $value: powerNumber($value, 2)
-    $colors: map-merge($colors, ($name: $value))
-  @return (map-get($colors, 'red') * .2126) + (map-get($colors, 'green') * .7152) + (map-get($colors, 'blue') * .0722)
+    $color-rgb: map-merge($color-rgb, ($name: $value))
+  @return (map-get($color-rgb, 'red') * .2126) + (map-get($color-rgb, 'green') * .7152) + (map-get($color-rgb, 'blue') * .0722)
 
 @function closestEvenNumber($number)
   @if ($number % 2 == 0px)
