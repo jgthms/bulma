@@ -19,5 +19,17 @@
   ],
   "bugs": {
     "url": "https://github.com/jgthms/bulma/issues"
+  },
+  "devDependencies": {
+    "node-sass": "~3.4.2",
+    "captain-git-hook": "~1.0.5"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run build-sass && npm run build-sass-min",
+    "build-sass": "node-sass --output-style expanded --source-map true --output css/ bulma.sass --outFile css/bulma.css",
+    "build-sass-min": "node-sass --output-style compressed --source-map true --output css/ bulma.sass css/bulma.min.css",
+    "clean": "rm -rf css",
+    "pre-push": "npm run build",
+    "start": "npm run build-sass -- --watch"
   }
 }
