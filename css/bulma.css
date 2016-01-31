@@ -758,7 +758,7 @@ table th {
   resize: vertical;
 }
 
-.checkbox, .radio {
+.checkbox, .menu-checkbox, .radio {
   cursor: pointer;
   display: inline-block;
   line-height: 16px;
@@ -767,7 +767,7 @@ table th {
   vertical-align: top;
 }
 
-.checkbox input, .radio input {
+.checkbox input, .menu-checkbox input, .radio input {
   -moz-appearance: none;
   -webkit-appearance: none;
   background: white;
@@ -794,37 +794,37 @@ table th {
   width: 14px;
 }
 
-.checkbox input:hover, .radio input:hover {
+.checkbox input:hover, .menu-checkbox input:hover, .radio input:hover {
   border-color: #aeb1b5;
 }
 
-.checkbox input:active, .radio input:active, .checkbox input:focus, .radio input:focus {
+.checkbox input:active, .menu-checkbox input:active, .radio input:active, .checkbox input:focus, .menu-checkbox input:focus, .radio input:focus {
   border-color: #1fc8db;
   outline: none;
 }
 
-.checkbox input[disabled], .radio input[disabled], .checkbox input[disabled]:hover, .radio input[disabled]:hover {
+.checkbox input[disabled], .menu-checkbox input[disabled], .radio input[disabled], .checkbox input[disabled]:hover, .menu-checkbox input[disabled]:hover, .radio input[disabled]:hover {
   background: #f5f7fa;
   border-color: #d3d6db;
 }
 
-.checkbox input[disabled]::-moz-placeholder, .radio input[disabled]::-moz-placeholder, .checkbox input[disabled]:hover::-moz-placeholder, .radio input[disabled]:hover::-moz-placeholder {
+.checkbox input[disabled]::-moz-placeholder, .menu-checkbox input[disabled]::-moz-placeholder, .radio input[disabled]::-moz-placeholder, .checkbox input[disabled]:hover::-moz-placeholder, .menu-checkbox input[disabled]:hover::-moz-placeholder, .radio input[disabled]:hover::-moz-placeholder {
   color: rgba(34, 35, 36, 0.3);
 }
 
-.checkbox input[disabled]::-webkit-input-placeholder, .radio input[disabled]::-webkit-input-placeholder, .checkbox input[disabled]:hover::-webkit-input-placeholder, .radio input[disabled]:hover::-webkit-input-placeholder {
+.checkbox input[disabled]::-webkit-input-placeholder, .menu-checkbox input[disabled]::-webkit-input-placeholder, .radio input[disabled]::-webkit-input-placeholder, .checkbox input[disabled]:hover::-webkit-input-placeholder, .menu-checkbox input[disabled]:hover::-webkit-input-placeholder, .radio input[disabled]:hover::-webkit-input-placeholder {
   color: rgba(34, 35, 36, 0.3);
 }
 
-.checkbox input[disabled]:-moz-placeholder, .radio input[disabled]:-moz-placeholder, .checkbox input[disabled]:hover:-moz-placeholder, .radio input[disabled]:hover:-moz-placeholder {
+.checkbox input[disabled]:-moz-placeholder, .menu-checkbox input[disabled]:-moz-placeholder, .radio input[disabled]:-moz-placeholder, .checkbox input[disabled]:hover:-moz-placeholder, .menu-checkbox input[disabled]:hover:-moz-placeholder, .radio input[disabled]:hover:-moz-placeholder {
   color: rgba(34, 35, 36, 0.3);
 }
 
-.checkbox input[disabled]:-ms-input-placeholder, .radio input[disabled]:-ms-input-placeholder, .checkbox input[disabled]:hover:-ms-input-placeholder, .radio input[disabled]:hover:-ms-input-placeholder {
+.checkbox input[disabled]:-ms-input-placeholder, .menu-checkbox input[disabled]:-ms-input-placeholder, .radio input[disabled]:-ms-input-placeholder, .checkbox input[disabled]:hover:-ms-input-placeholder, .menu-checkbox input[disabled]:hover:-ms-input-placeholder, .radio input[disabled]:hover:-ms-input-placeholder {
   color: rgba(34, 35, 36, 0.3);
 }
 
-.checkbox input:after, .radio input:after {
+.checkbox input:after, .menu-checkbox input:after, .radio input:after {
   border: 1px solid white;
   border-right: 0;
   border-top: 0;
@@ -843,29 +843,29 @@ table th {
   transform: rotate(-45deg) scale(1);
 }
 
-.checkbox input:checked, .radio input:checked {
+.checkbox input:checked, .menu-checkbox input:checked, .radio input:checked {
   background: #1fc8db;
   border-color: #1fc8db;
   box-shadow: none;
 }
 
-.checkbox input:checked:after, .radio input:checked:after {
+.checkbox input:checked:after, .menu-checkbox input:checked:after, .radio input:checked:after {
   opacity: 1;
 }
 
-.checkbox:hover, .radio:hover {
+.checkbox:hover, .menu-checkbox:hover, .radio:hover {
   color: #222324;
 }
 
-.checkbox:hover input, .radio:hover input {
+.checkbox:hover input, .menu-checkbox:hover input, .radio:hover input {
   border-color: #aeb1b5;
 }
 
-.checkbox:hover input:checked, .radio:hover input:checked {
+.checkbox:hover input:checked, .menu-checkbox:hover input:checked, .radio:hover input:checked {
   border-color: #1fc8db;
 }
 
-.is-disabled.checkbox, .is-disabled.radio, .is-disabled.checkbox:hover, .is-disabled.radio:hover {
+.is-disabled.checkbox, .is-disabled.menu-checkbox, .is-disabled.radio, .is-disabled.checkbox:hover, .is-disabled.menu-checkbox:hover, .is-disabled.radio:hover {
   color: #aeb1b5;
 }
 
@@ -1855,23 +1855,6 @@ table th {
   margin: -16px -20px 0 20px;
 }
 
-.highlight {
-  font-size: 12px;
-  font-weight: normal;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0;
-}
-
-.highlight:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.highlight pre {
-  overflow: auto;
-  max-width: 100%;
-}
-
 .delete {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 290486px;
@@ -1966,7 +1949,6 @@ table th {
   cursor: pointer;
   display: block;
   height: 50px;
-  padding: 19px 17px;
   position: relative;
   width: 50px;
 }
@@ -1975,23 +1957,25 @@ table th {
   background: #69707a;
   display: block;
   height: 1px;
-  left: 17px;
+  left: 50%;
+  margin-left: -7px;
   position: absolute;
+  top: 50%;
   transition: none 86ms ease-out;
   transition-property: background, left, opacity, transform;
   width: 15px;
 }
 
 .hamburger span:nth-child(1), .header-toggle span:nth-child(1) {
-  top: 19px;
+  margin-top: -6px;
 }
 
 .hamburger span:nth-child(2), .header-toggle span:nth-child(2) {
-  top: 24px;
+  margin-top: -1px;
 }
 
 .hamburger span:nth-child(3), .header-toggle span:nth-child(3) {
-  bottom: 20px;
+  margin-top: 4px;
 }
 
 .hamburger:hover, .header-toggle:hover {
@@ -2003,7 +1987,7 @@ table th {
 }
 
 .hamburger.is-active span:nth-child(1), .is-active.header-toggle span:nth-child(1) {
-  left: 20px;
+  margin-left: -5px;
   transform: rotate(45deg);
   transform-origin: left top;
 }
@@ -2013,9 +1997,16 @@ table th {
 }
 
 .hamburger.is-active span:nth-child(3), .is-active.header-toggle span:nth-child(3) {
-  left: 20px;
+  margin-left: -5px;
   transform: rotate(-45deg);
   transform-origin: left bottom;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger, .header-toggle {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 .heading {
@@ -2024,6 +2015,43 @@ table th {
   letter-spacing: 1px;
   margin-bottom: 5px;
   text-transform: uppercase;
+}
+
+.highlight {
+  font-size: 12px;
+  font-weight: normal;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+
+.highlight:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.highlight pre {
+  overflow: auto;
+  max-width: 100%;
+}
+
+.image {
+  display: block;
+  position: relative;
+  vertical-align: top;
+}
+
+.image img {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+}
+
+.image.is-3x2 {
+  padding-top: 66.6666%;
 }
 
 .loader, .control.is-loading:after, .button.is-loading:after {
@@ -2125,6 +2153,10 @@ table th {
   color: white;
 }
 
+.column {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 768px) {
   .column + .column {
     margin-top: 20px;
@@ -2216,7 +2248,7 @@ table th {
 }
 
 .columns.is-gapless > .column + .column {
-  margin-left: 0;
+  margin: 0;
 }
 
 .columns.is-vcentered {
@@ -2685,8 +2717,33 @@ table th {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .media-left {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .media-left {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .media-right {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .media-right {
+    margin-left: 20px;
+  }
+}
+
 .media-content {
   flex: 1;
+  text-align: left;
 }
 
 .media-content .textarea {
@@ -2695,6 +2752,7 @@ table th {
 
 .media {
   align-items: flex-start;
+  text-align: left;
 }
 
 .media .content:not(:last-child) {
@@ -2763,6 +2821,119 @@ table th {
   }
 }
 
+.menu-icon {
+  display: inline-block;
+  font-size: 14px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  vertical-align: top;
+  width: 16px;
+  color: #aeb1b5;
+  float: left;
+  margin: 0 4px 0 -2px;
+}
+
+.menu-icon .fa {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.menu-heading {
+  background: #f5f7fa;
+  border-bottom: 1px solid #d3d6db;
+  border-radius: 4px 4px 0 0;
+  color: #222324;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 10px;
+}
+
+.menu-list a {
+  color: #69707a;
+}
+
+.menu-list a:hover {
+  color: #1fc8db;
+}
+
+.menu-tabs {
+  display: flex;
+  font-size: 11px;
+  padding: 5px 10px 0;
+  justify-content: center;
+}
+
+.menu-tabs:not(:last-child) {
+  border-bottom: 1px solid #d3d6db;
+}
+
+.menu-tabs a {
+  border-bottom: 1px solid #d3d6db;
+  margin-bottom: -1px;
+  padding: 5px;
+}
+
+.menu-tabs a.is-active {
+  border-bottom-color: #222324;
+  color: #222324;
+}
+
+.menu-block {
+  color: #222324;
+  display: block;
+  line-height: 16px;
+  padding: 10px;
+}
+
+.menu-block:not(:last-child) {
+  border-bottom: 1px solid #d3d6db;
+}
+
+.menu-block .checkbox, .menu-block .menu-checkbox {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  display: block;
+  padding: 8px;
+  padding-left: 32px;
+}
+
+.menu-block .checkbox input, .menu-block .menu-checkbox input {
+  left: 9px;
+  top: 9px;
+}
+
+.menu-block .checkbox:hover, .menu-block .menu-checkbox:hover {
+  border-color: #1fc8db;
+}
+
+a.menu-block:hover {
+  background: #f5f7fa;
+}
+
+.menu-checkbox {
+  display: block;
+  padding: 9px 10px 9px 30px;
+}
+
+.menu-checkbox:not(:last-child) {
+  border-bottom: 1px solid #d3d6db;
+}
+
+.menu-checkbox input {
+  left: 8px;
+  top: 10px;
+}
+
+.menu {
+  border: 1px solid #d3d6db;
+  border-radius: 5px;
+}
+
+.menu:not(:last-child) {
+  margin-bottom: 20px;
+}
+
 .block:not(:last-child) {
   margin-bottom: 20px;
 }
@@ -2789,6 +2960,12 @@ table th {
   box-shadow: 0 1px 0 rgba(211, 214, 219, 0.3);
   display: flex;
   width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .header {
+    height: 50px;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -2926,6 +3103,7 @@ table th {
     background: white;
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
     display: none;
+    min-width: 120px;
     position: absolute;
     right: 0;
     top: 50px;
@@ -3609,8 +3787,8 @@ table th {
   align-items: stretch;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: space-between;
+  min-height: 100vh;
 }
 
 .hero.is-fullheight .tabs a {
