@@ -1,39 +1,90 @@
 .column
+  flex: 1
+  padding: 10px
+  .columns.is-mobile > &.is-half
+    flex: none
+    width: 50%
+  .columns.is-mobile > &.is-third
+    flex: none
+    width: 33.3333%
+  .columns.is-mobile > &.is-quarter
+    flex: none
+    width: 25%
+  @for $i from 1 through 11
+    .columns.is-mobile > &.is-#{$i}-mobile
+      flex: none
+      width: ($i / 12) * 100%
   +mobile
-    & + .column
-      margin-top: $column-gap
-  +tablet
-    flex: 1
-    & + .column
-      margin-left: $column-gap
-    &.is-double
-      flex: 2
-    &.is-triple
-      flex: 3
-    &.is-quadruple
-      flex: 4
-    &.is-half
+    &.is-half-mobile
       flex: none
       width: 50%
-    &.is-third
+    &.is-third-mobile
       flex: none
       width: 33.3333%
-    &.is-quarter
+    &.is-quarter-mobile
       flex: none
       width: 25%
     @for $i from 1 through 11
-      &.is-#{$i}
+      &.is-#{$i}-mobile
+        flex: none
+        width: ($i / 12) * 100%
+  +tablet
+    &.is-half,
+    &.is-half-tablet
+      flex: none
+      width: 50%
+    &.is-third,
+    &.is-third-tablet
+      flex: none
+      width: 33.3333%
+    &.is-quarter,
+    &.is-quarter-tablet
+      flex: none
+      width: 25%
+    @for $i from 1 through 11
+      &.is-#{$i},
+      &.is-#{$i}-tablet
+        flex: none
+        width: ($i / 12) * 100%
+  +desktop
+    &.is-half-desktop
+      flex: none
+      width: 50%
+    &.is-third-desktop
+      flex: none
+      width: 33.3333%
+    &.is-quarter-desktop
+      flex: none
+      width: 25%
+    @for $i from 1 through 11
+      &.is-#{$i}-desktop
         flex: none
         width: ($i / 12) * 100%
 
 .columns
+  margin-left: -10px
+  margin-right: -10px
+  margin-top: -10px
+  &:last-child
+    margin-bottom: -10px
   &:not(:last-child)
-    margin-bottom: $column-gap
-  +tablet
+    margin-bottom: 10px
+  &.is-mobile
     display: flex
+  +tablet
+    &:not(.is-desktop)
+      display: flex
+  +desktop
+    &.is-desktop
+      display: flex
   &.is-gapless
-    & > .column + .column
+    &:not(:last-child)
+      margin: 0 0 20px
+    & > .column
       margin: 0
+      padding: 0
+  &.is-multiline
+    flex-wrap: wrap
   &.is-vcentered
     align-items: center
   &.is-grid
