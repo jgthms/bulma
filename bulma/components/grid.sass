@@ -10,10 +10,18 @@
   .columns.is-mobile > &.is-quarter
     flex: none
     width: 25%
+  .columns.is-mobile > &.is-offset-half
+    margin-left: 50%
+  .columns.is-mobile > &.is-offset-third
+    margin-left: 33.3333%
+  .columns.is-mobile > &.is-offset-quarter
+    margin-left: 25%
   @for $i from 1 through 11
-    .columns.is-mobile > &.is-#{$i}-mobile
+    .columns.is-mobile > &.is-#{$i}
       flex: none
       width: ($i / 12) * 100%
+    .columns.is-mobile > &.is-offset-#{$i}
+      margin-left: ($i / 12) * 100%
   +mobile
     &.is-half-mobile
       flex: none
@@ -24,10 +32,18 @@
     &.is-quarter-mobile
       flex: none
       width: 25%
+    &.is-offset-half-mobile
+      margin-left: 50%
+    &.is-offset-third-mobile
+      margin-left: 33.3333%
+    &.is-offset-quarter-mobile
+      margin-left: 25%
     @for $i from 1 through 11
       &.is-#{$i}-mobile
         flex: none
         width: ($i / 12) * 100%
+      &.is-offset-#{$i}-mobile
+        margin-left: ($i / 12) * 100%
   +tablet
     &.is-half,
     &.is-half-tablet
@@ -41,11 +57,23 @@
     &.is-quarter-tablet
       flex: none
       width: 25%
+    &.is-offset-half,
+    &.is-offset-half-tablet
+      margin-left: 50%
+    &.is-offset-third,
+    &.is-offset-third-tablet
+      margin-left: 33.3333%
+    &.is-offset-quarter,
+    &.is-offset-quarter-tablet
+      margin-left: 25%
     @for $i from 1 through 11
       &.is-#{$i},
       &.is-#{$i}-tablet
         flex: none
         width: ($i / 12) * 100%
+      &.is-offset-#{$i},
+      &.is-offset-#{$i}-tablet
+        margin-left: ($i / 12) * 100%
   +desktop
     &.is-half-desktop
       flex: none
@@ -56,10 +84,18 @@
     &.is-quarter-desktop
       flex: none
       width: 25%
+    &.is-offset-half-desktop
+      margin-left: 50%
+    &.is-offset-third-desktop
+      margin-left: 33.3333%
+    &.is-offset-quarter-desktop
+      margin-left: 25%
     @for $i from 1 through 11
       &.is-#{$i}-desktop
         flex: none
         width: ($i / 12) * 100%
+      &.is-offset-#{$i}-desktop
+        margin-left: ($i / 12) * 100%
 
 .columns
   margin-left: -10px
@@ -71,15 +107,11 @@
     margin-bottom: 10px
   &.is-mobile
     display: flex
-  +tablet
-    &:not(.is-desktop)
-      display: flex
-  +desktop
-    &.is-desktop
-      display: flex
   &.is-gapless
+    margin-left: 0
+    margin-right: 0
     &:not(:last-child)
-      margin: 0 0 20px
+      margin-bottom: 20px
     & > .column
       margin: 0
       padding: 0
@@ -97,3 +129,9 @@
         width: 33.3333%
         & + .column
           margin-left: 0
+  +tablet
+    &:not(.is-desktop)
+      display: flex
+  +desktop
+    &.is-desktop
+      display: flex
