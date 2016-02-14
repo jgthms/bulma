@@ -7,6 +7,12 @@
 @import "messages"
 @import "notifications"
 
+.box
+  background: white
+  border-radius: 5px
+  box-shadow: 0 2px 3px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.1)
+  padding: 20px
+
 .delete
   +unselectable
   -moz-appearance: none
@@ -26,24 +32,27 @@
     content: ""
     display: block
     height: 2px
-    left: 6px
+    left: 50%
+    margin-left: -25%
+    margin-top: -1px
     position: absolute
-    top: 11px
-    width: 12px
+    top: 50%
+    width: 50%
   &:before
     transform: rotate(45deg)
   &:after
     transform: rotate(-45deg)
   &:hover
-    background: rgba(black, 0.5)
+    background: $red
   &.is-small
     height: 16px
     width: 16px
-    &:before,
-    &:after
-      left: 4px
-      top: 7px
-      width: 8px
+  &.is-medium
+    height: 32px
+    width: 32px
+  &.is-large
+    height: 40px
+    width: 40px
 
 .icon
   +fa(21px, 24px)
@@ -107,13 +116,12 @@
   text-transform: uppercase
 
 .highlight
+  @extend .block
   font-size: 12px
   font-weight: normal
   max-width: 100%
   overflow: hidden
   padding: 0
-  &:not(:last-child)
-    margin-bottom: 20px
   pre
     overflow: auto
     max-width: 100%

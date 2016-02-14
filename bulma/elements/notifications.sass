@@ -1,11 +1,10 @@
 .notification
+  @extend .block
   +clearfix
   background: $background
   border-radius: $radius
   padding: 16px 20px
   position: relative
-  &:not(:last-child)
-    margin-bottom: 20px
   .title
     color: inherit
   @each $name, $pair in $colors
@@ -15,6 +14,10 @@
       background: $color
       color: $color-invert
   .delete
+    background: rgba(black, 0.2)
     border-radius: 0 $radius
     float: right
     margin: -16px -20px 0 20px
+    &:hover
+      background: rgba(black, 0.5)
+
