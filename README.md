@@ -12,7 +12,7 @@ Bulma is in early but active development! Try it out now:
 npm install bulma
 ```
 
-Feel free to raise an issue or submit a pull request. In the meantime, check the [documentation](http://bulma.io/documentation/overview/).
+Feel free to raise an issue or submit a pull request. In the meantime, check the [documentation](http://bulma.io/documentation/overview/start).
 
 ## Copyright and license
 
