@@ -239,3 +239,15 @@
         border-radius: 0 $radius $radius 0
     &.is-centered
       justify-content: center
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      .input
+        border-color: $color
+        color: $color
+      .control-help
+        color: $color
+
+.control-help
+  margin: 3px 0
