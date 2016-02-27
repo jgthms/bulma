@@ -36,7 +36,8 @@
   text-align: center
   .header
     background: none
-    box-shadow: none
+    .container
+      box-shadow: 0 1px 0 rgba($border, 0.3)
   .tabs
     a
       border: none
@@ -45,9 +46,6 @@
     &.is-boxed
       a
         padding: 8px 15px
-  &.is-alt
-    background: $background
-    color: $text-light
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
@@ -105,7 +103,6 @@
             span
               background: $color-invert
         .header-menu
-          background: $color
           .header-item
             border-top-color: rgba($color-invert, 0.2)
   &.is-fullheight,
