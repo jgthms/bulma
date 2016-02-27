@@ -1,23 +1,28 @@
 .header
   +clearfix
   background: white
-  box-shadow: 0 1px 2px rgba(black, 0.1)
   display: flex
-  height: 50px
   line-height: 24px
   position: relative
   text-align: center
   z-index: 2
   .container
     align-items: stretch
-    box-shadow: 0 1px 0 rgba($border, 0.3)
     display: flex
     width: 100%
+  &.has-shadow
+    box-shadow: 0 1px 2px rgba(black, 0.1)
+  +mobile
+    .container
+      flex-direction: column
   +tablet
     height: $header-height
 
 .header-toggle
   @extend .hamburger
+  position: absolute
+  right: 0
+  top: 0
   +tablet
     display: none
 
@@ -31,6 +36,7 @@
     max-height: 24px
   a
     color: $text
+    flex: 1
     &:hover
       color: $link-hover
     &.is-active
@@ -38,6 +44,10 @@
   .fa
     font-size: 21px
     line-height: 24px
+  .button + .button
+    margin-left: 10px
+  +mobile
+    text-align: left
 
 .header-icon
   +fa(14px, 24px)
@@ -69,6 +79,8 @@
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
+  +mobile
+    height: $header-height
   +desktop
     .header-item:first-child
       padding-left: 0
@@ -101,14 +113,8 @@
 
 .header-menu
   +mobile
-    background: white
     box-shadow: 0 4px 7px rgba(black, 0.1)
     display: none
-    min-width: 120px
-    position: absolute
-    right: 0
-    top: 50px
-    z-index: 100
     .header-item
       border-top: 1px solid rgba($border, 0.5)
       padding: 10px
