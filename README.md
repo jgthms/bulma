@@ -1,5 +1,8 @@
 # [Bulma](http://bulma.io)
 
+[![npm](https://img.shields.io/npm/v/bulma.svg)](https://www.npmjs.com/package/bulma)
+[![npm](https://img.shields.io/npm/dm/bulma.svg)](https://www.npmjs.com/package/bulma)
+
 Bulma is a modern CSS framework based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
 
 [![Bulma: a Flexbox CSS framework](https://raw.githubusercontent.com/jgthms/bulma/master/images/bulma-banner.png)](http://bulma.io)
@@ -8,11 +11,42 @@ Bulma is a modern CSS framework based on [Flexbox](https://developer.mozilla.org
 
 Bulma is in early but active development! Try it out now:
 
+### NPM
+
 ```
 npm install bulma
 ```
 
-Feel free to raise an issue or submit a pull request. In the meantime, check the [documentation](http://bulma.io/documentation/overview/start).
+### CDN
+
+[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.16/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.16/css/bulma.min.css)
+
+Feel free to raise an issue or submit a pull request.
+
+## CSS only
+
+Bulma is a **CSS** framework. As such, the sole output is a single CSS file: [bulma.css](https://github.com/jgthms/bulma/blob/master/css/bulma.css)
+
+You can either use that file, "out of the box", or download the Sass source files to customize the [variables](http://bulma.io/documentation/overview/variables/).
+
+There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have one). Bulma can be considered "environment agnostic": it's just the style layer on top of the logic.
+
+## Documentation website
+
+This repository is **only** for the Bulma source files.  
+The [website](http://bulma.io) (which includes the [documentation](http://bulma.io/documentation/overview/start/)) is in another repo: [https://github.com/jgthms/bulma-website](https://github.com/jgthms/bulma-website)
+
+If you encounter a typo or a lack of documentation, submit an issue [there](https://github.com/jgthms/bulma-website/issues).
+
+## Browser Support
+
+Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with:
+
+* Chrome 45+
+* Edge 13+
+* Firefox 43+
+* Internet Explorer 10+ 
+* Safari 9+
 
 ## Copyright and license
 
