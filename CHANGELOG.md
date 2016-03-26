@@ -1,10 +1,13 @@
+# Bulma Changelog
+
 ## 0.0.17
 
 ### Added
 
-* `.pagination`
-* `.control.is-horizontal` for horizontal forms
-* `.help` for controls
+* **pagination**: `.pagination`
+* **horizontal forms**: `.control.is-horizontal`
+* **help** text for form controls: `.help`
+* **progress bars**: `.progress`
 
 ### Updated
 
