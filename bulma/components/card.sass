@@ -2,19 +2,22 @@
   align-items: stretch
   box-shadow: 0 1px 2px rgba(black, 0.1)
   display: flex
-  min-height: 36px
+  min-height: 40px
 
 .card-header-title
-  align-items: center
+  align-items: flex-start
   color: $text-strong
   display: flex
   flex: 1
   font-weight: bold
-  padding: 0 10px
+  padding: 10px
 
 .card-header-icon
-  +fa(14px, 36px)
+  align-items: center
   cursor: pointer
+  display: flex
+  justify-content: center
+  width: 40px
 
 .card-image
   display: block
@@ -27,11 +30,18 @@
 
 .card-footer
   background: $background
+  border-top: 1px solid $border
+  align-items: stretch
+  display: flex
+
+.card-footer-item
   align-items: center
   display: flex
-  font-size: $size-small
+  flex: 1
   justify-content: center
   padding: 10px
+  &:not(:last-child)
+    border-right: 1px solid $border
 
 .card
   background: white
@@ -43,3 +53,5 @@
     margin-bottom: 10px
   &.is-rounded
     border-radius: 5px
+  &.is-fullwidth
+    width: 100%

@@ -172,6 +172,10 @@
       border-color: $control-hover-border
     &::ms-expand
       display: none
+  &.is-fullwidth
+    width: 100%
+    select
+      width: 100%
   &:after
     +arrow($link)
     margin-top: -6px
@@ -192,12 +196,6 @@
   margin-right: 20px
   padding-top: 7px
   text-align: right
-
-.control-element
-  display: flex
-  flex: 5
-  .input:not(:last-child)
-    margin-right: 10px
 
 .control
   position: relative
@@ -223,7 +221,7 @@
       padding-left: 32px
       &:focus + .fa
         color: $control-active
-  &.is-grouped
+  &.has-addons
     display: flex
     .input,
     .button,
@@ -243,7 +241,7 @@
         border-radius: 0 $radius $radius 0
     &.is-centered
       justify-content: center
-  &.is-horizontal
+  &.is-grouped
     display: flex
     & > .button,
     & > .input,
@@ -252,5 +250,8 @@
         margin-right: 10px
     & > .input
       flex: 1
-  &.is-inline
+  &.is-horizontal
     display: flex
+    & > .control
+      display: flex
+      flex: 5
