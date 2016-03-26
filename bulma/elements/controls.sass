@@ -31,10 +31,8 @@
   +control
   @each $name, $pair in $colors
     $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
     &.is-#{$name}
       border-color: $color
-      color: $color
 
 =control-small
   border-radius: 2px
@@ -188,14 +186,29 @@
 .label
   color: $text-strong
   display: block
+  font-weight: bold
   &:not(:last-child)
     margin-bottom: 5px
 
+.help
+  display: block
+  font-size: $size-small
+  margin-top: 5px
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name}
+      color: $color
+
+// Containers
+
 .control-label
-  flex: 1
-  margin-right: 20px
-  padding-top: 7px
-  text-align: right
+  +mobile
+    margin-bottom: 5px
+  +tablet
+    flex: 1
+    margin-right: 20px
+    padding-top: 7px
+    text-align: right
 
 .control
   position: relative
@@ -210,17 +223,25 @@
     margin-bottom: 10px
   &.has-icon
     & > .fa
-      +fa(14px, 20px)
+      +fa(14px, 16px)
       color: $text-light
-      left: 6px
       pointer-events: none
       position: absolute
-      top: 6px
+      top: 8px
       z-index: 4
     .input
-      padding-left: 32px
       &:focus + .fa
-        color: $control-active
+        color: $text-strong
+    &:not(.has-icon-right)
+      & > .fa
+        left: 8px
+      .input
+        padding-left: 32px
+  &.has-icon-right
+    & > .fa
+      right: 8px
+    .input
+      padding-right: 32px
   &.has-addons
     display: flex
     .input,
@@ -251,7 +272,8 @@
     & > .input
       flex: 1
   &.is-horizontal
-    display: flex
-    & > .control
+    +tablet
       display: flex
-      flex: 5
+      & > .control
+        display: flex
+        flex: 5
