@@ -24,7 +24,8 @@
     "autoprefixer": "^6.3.3",
     "captain-git-hook": "~1.0.5",
     "node-sass": "^3.4.2",
-    "postcss-cli": "^2.5.1"
+    "postcss-cli": "^2.5.1",
+    "rimraf": "^2.5.2"
   },
   "scripts": {
     "autoprefix": "postcss --use autoprefixer --output css/bulma.css css/bulma.css",
@@ -32,7 +33,7 @@
     "build": "npm run clean && npm run build-sass && npm run build-sass-min && npm run autoprefix && npm run autoprefix-min",
     "build-sass": "node-sass --output-style expanded --source-map true --output css/ bulma.sass --outFile css/bulma.css",
     "build-sass-min": "node-sass --output-style compressed --source-map true --output css/ bulma.sass css/bulma.min.css",
-    "clean": "rm -rf css",
+    "clean": "rimraf css",
     "pre-push": "npm run build && git add css && git commit --amend --no-edit",
     "start": "npm run build-sass -- --watch"
   }
