@@ -157,3 +157,43 @@
     // Modifiers
     &.is-desktop
       display: flex
+
+.tile-content
+  align-items: stretch
+  flex: 1
+  margin: 0 !important
+  // Responsiveness
+  +tablet
+    display: flex
+
+.tile
+  flex: 1
+  // Modifiers
+  &.is-parent
+    padding: 10px
+  // Responsiveness
+  +tablet
+    // Sizes
+    @for $i from 1 through 12
+      &.is-#{$i}
+        flex: none
+        width: ($i / 12) * 100%
+
+.tiles
+  align-items: stretch
+  // Modifiers
+  &.is-ancestor
+    margin-left: -10px
+    margin-right: -10px
+    margin-top: -10px
+    &:last-child
+      margin-bottom: -10px
+    &:not(:last-child)
+      margin-bottom: 10px
+  &.is-vertical
+    flex-direction: column
+    & > .tile-content:not(:last-child)
+      margin-bottom: 20px !important
+  // Responsiveness
+  +tablet
+    display: flex
