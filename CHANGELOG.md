@@ -10,10 +10,16 @@
 ### Added
 
 * **small tag**: `.tag.is-small`
+* 12th column classes
+* `*-full` column classes
+* `$family-code`
 
 ### Fixed
 
 * disabled input with element
+* `.table` last row with `th`
+* `.card` color in `.hero`
+* `.columns.is-gapless`
 
 ### Removed
 

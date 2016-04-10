@@ -1,6 +1,9 @@
 .column
   flex: 1
   padding: 10px
+  .columns.is-mobile > &.is-full
+    flex: none
+    width: 100%
   .columns.is-mobile > &.is-half
     flex: none
     width: 50%
@@ -16,13 +19,16 @@
     margin-left: 33.3333%
   .columns.is-mobile > &.is-offset-quarter
     margin-left: 25%
-  @for $i from 1 through 11
+  @for $i from 1 through 12
     .columns.is-mobile > &.is-#{$i}
       flex: none
       width: ($i / 12) * 100%
     .columns.is-mobile > &.is-offset-#{$i}
       margin-left: ($i / 12) * 100%
   +mobile
+    &.is-full-mobile
+      flex: none
+      width: 100%
     &.is-half-mobile
       flex: none
       width: 50%
@@ -38,13 +44,17 @@
       margin-left: 33.3333%
     &.is-offset-quarter-mobile
       margin-left: 25%
-    @for $i from 1 through 11
+    @for $i from 1 through 12
       &.is-#{$i}-mobile
         flex: none
         width: ($i / 12) * 100%
       &.is-offset-#{$i}-mobile
         margin-left: ($i / 12) * 100%
   +tablet
+    &.is-full,
+    &.is-full-tablet
+      flex: none
+      width: 100%
     &.is-half,
     &.is-half-tablet
       flex: none
@@ -66,7 +76,7 @@
     &.is-offset-quarter,
     &.is-offset-quarter-tablet
       margin-left: 25%
-    @for $i from 1 through 11
+    @for $i from 1 through 12
       &.is-#{$i},
       &.is-#{$i}-tablet
         flex: none
@@ -75,6 +85,9 @@
       &.is-offset-#{$i}-tablet
         margin-left: ($i / 12) * 100%
   +desktop
+    &.is-full-desktop
+      flex: none
+      width: 100%
     &.is-half-desktop
       flex: none
       width: 50%
@@ -90,7 +103,7 @@
       margin-left: 33.3333%
     &.is-offset-quarter-desktop
       margin-left: 25%
-    @for $i from 1 through 11
+    @for $i from 1 through 12
       &.is-#{$i}-desktop
         flex: none
         width: ($i / 12) * 100%
@@ -105,23 +118,22 @@
     margin-bottom: -10px
   &:not(:last-child)
     margin-bottom: 10px
+  // Modifiers
   &.is-centered
     justify-content: center
-  &.is-mobile
-    display: flex
   &.is-gapless
     margin-left: 0
     margin-right: 0
+    margin-top: 0
+    &:last-child
+      margin-bottom: 0
     &:not(:last-child)
       margin-bottom: 20px
     & > .column
       margin: 0
       padding: 0
-  &.is-multiline
-    flex-wrap: wrap
-  &.is-vcentered
-    align-items: center
   &.is-grid
+    // Responsiveness
     +tablet
       flex-wrap: wrap
       & > .column
@@ -131,9 +143,17 @@
         width: 33.3333%
         & + .column
           margin-left: 0
+  &.is-mobile
+    display: flex
+  &.is-multiline
+    flex-wrap: wrap
+  &.is-vcentered
+    align-items: center
+  // Responsiveness
   +tablet
     &:not(.is-desktop)
       display: flex
   +desktop
+    // Modifiers
     &.is-desktop
       display: flex
