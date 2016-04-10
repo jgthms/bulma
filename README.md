@@ -19,7 +19,7 @@ npm install bulma
 
 ### CDN
 
-[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.16/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.16/css/bulma.min.css)
+[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.18/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.18/css/bulma.min.css)
 
 Feel free to raise an issue or submit a pull request.
 
@@ -42,11 +42,12 @@ If you encounter a typo or a lack of documentation, submit an issue [there](http
 
 Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with:
 
-* Chrome 45+
-* Edge 13+
-* Firefox 43+
-* Internet Explorer 10+ 
-* Safari 9+
+* Chrome
+* Edge
+* Firefox
+* Internet Explorer (10+)
+* Opera
+* Safari
 
 ## Copyright and license
 
