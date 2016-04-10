@@ -31,6 +31,12 @@ You can either use that file, "out of the box", or download the Sass source file
 
 There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have one). Bulma can be considered "environment agnostic": it's just the style layer on top of the logic.
 
+## Roadmap
+
+Bulma keeps track of the upcoming fixes and features on Trello: [Bulma roadmap](https://trello.com/b/5Lzqejo3/bulma-roadmap)
+
+It's more a tasklist than a roadmap, but it will give you an overview of where things are going!
+
 ## Documentation website
 
 This repository is **only** for the Bulma source files.  
