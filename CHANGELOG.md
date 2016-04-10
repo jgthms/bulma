@@ -5,7 +5,6 @@
 ### BREAKING
 
 * `.is-text-*` renamed to `.has-text-*`
-* `.is-gapless` renamed to `.has-no-gap`
 * removed `.is-fullwidth` helper
 
 ### Added

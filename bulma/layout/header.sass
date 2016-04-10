@@ -10,8 +10,10 @@
     align-items: stretch
     display: flex
     width: 100%
+  // Modifiers
   &.has-shadow
     box-shadow: 0 1px 2px rgba(black, 0.1)
+  // Responsiveness
   +mobile
     .container
       flex-direction: column
@@ -23,6 +25,7 @@
   position: absolute
   right: 0
   top: 0
+  // Responsiveness
   +tablet
     display: none
 
@@ -32,20 +35,21 @@
   align-items: center
   display: flex
   padding: 10px
-  img
-    max-height: 24px
   a
     flex-grow: 1
+  img
+    max-height: 24px
+  .button + .button
+    margin-left: 10px
   .fa
     font-size: 21px
     line-height: 24px
-  .button + .button
-    margin-left: 10px
   .tag
     &:first-child
       margin-right: 5px
     &:last-child
       margin-left: 5px
+  // Responsiveness
   +mobile
     text-align: left
 
@@ -54,6 +58,7 @@ a.header-item
   color: $text
   &:hover
     color: $link-hover
+  // Modifiers
   &.is-active
     color: $link-active
 
@@ -74,6 +79,7 @@ a.header-item
   padding: 13px 15px
   &:hover
     border-bottom: 1px solid $link
+  // Modifiers
   &.is-active
     border-bottom: 3px solid $link
     color: $link
@@ -87,19 +93,19 @@ a.header-item
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
+  // Responsiveness
   +mobile
     height: $header-height
   +desktop
-    .header-item:first-child
-      padding-left: 0
+    margin-left: -10px
 
 .header-right
   align-items: stretch
+  // Responsiveness
   +tablet
     display: flex
   +desktop
-    .header-item:last-child
-      padding-right: 0
+    margin-right: -10px
 
 .header-full
   align-items: stretch
@@ -120,12 +126,14 @@ a.header-item
       width: 100%
 
 .header-menu
+  // Responsiveness
   +mobile
     box-shadow: 0 4px 7px rgba(black, 0.1)
     display: none
     .header-item
       border-top: 1px solid rgba($border, 0.5)
       padding: 10px
+    // Modifiers
     &.is-active
       display: block
 

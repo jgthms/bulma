@@ -1,8 +1,6 @@
 .hero-video
   +overlay
   overflow: hidden
-  &.is-transparent
-    opacity: 0.3
   video
     left: 50%
     min-height: 100%
@@ -10,16 +8,22 @@
     position: absolute
     top: 50%
     transform: translate3d(-50%, -50%, 0)
+  // Modifiers
+  &.is-transparent
+    opacity: 0.3
+  // Responsiveness
   +mobile
     display: none
 
 .hero-content
   padding: 40px 20px
+  // Responsiveness
   +desktop
     padding: 40px 0
 
 .hero-buttons
   margin-top: 20px
+  // Responsiveness
   +mobile
     .button
       display: block
@@ -42,9 +46,11 @@
       border: none
     ul
       border-bottom: none
+    // Modifiers
     &.is-boxed
       a
         padding: 8px 15px
+  // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
@@ -88,10 +94,12 @@
             &:hover
               background: $color-invert
               color: $color
+      // Modifiers
       &.is-bold
         $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
         $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
         background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+      // Responsiveness
       +mobile
         .header-toggle
           span
@@ -104,28 +112,21 @@
         .header-menu
           .header-item
             border-top-color: rgba($color-invert, 0.2)
+  // Sizes
   &.is-fullheight,
   &.is-large
+    // Responsiveness
     +tablet
       .tabs
         font-size: $size-medium
   &.is-medium
+    // Responsiveness
     +tablet
       .hero-content
         padding: 120px 20px
     +desktop
       .hero-content
         padding: 120px 0
-  &.is-large
-    .tabs
-      a
-        padding: 10px 15px
-    +tablet
-      .hero-content
-        padding: 240px 20px
-    +desktop
-      .hero-content
-        padding: 240px 0
   &.is-fullheight
     align-items: stretch
     display: flex
@@ -140,3 +141,14 @@
       flex: 1
       flex-direction: column
       justify-content: center
+  &.is-large
+    .tabs
+      a
+        padding: 10px 15px
+    // Responsiveness
+    +tablet
+      .hero-content
+        padding: 240px 20px
+    +desktop
+      .hero-content
+        padding: 240px 0
