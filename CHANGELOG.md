@@ -6,7 +6,7 @@
 
 * `.is-text-*` renamed to `.has-text-*`
 * `.is-gapless` renamed to `.has-no-gap`
-* `.is-marginless` renamed to `.has-no-margin`
+* removed `.is-fullwidth` helper
 
 ### Added
 

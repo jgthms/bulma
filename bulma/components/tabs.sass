@@ -4,11 +4,6 @@
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
-  .fa
-    font-size: 14px
-    line-height: 20px
-    margin: 2px -2px
-    width: 20px
   a
     border-bottom: 1px solid $border
     color: $text
@@ -24,6 +19,7 @@
     vertical-align: top
     & + li
       margin-left: 20px
+    // Modifiers
     &.is-active
       a
         border-bottom-color: $link
@@ -31,18 +27,12 @@
   ul
     border-bottom: 1px solid $border
     display: flex
-  &.is-centered
-    a
-      padding: 5px 10px
-    li
-      & + li
-        margin-left: 0
-    ul
-      justify-content: center
-      text-align: center
-  &.is-right
-    ul
-      justify-content: flex-end
+  .fa
+    font-size: 14px
+    line-height: 20px
+    margin: 2px -2px
+    width: 20px
+  // Modifiers
   &.is-boxed
     a
       border: 1px solid transparent
@@ -54,16 +44,38 @@
     li
       & + li
         margin-left: 5px
+      // Modifiers
       &.is-active
         a
           background: white
           border-color: $border
           border-bottom-color: transparent
+    // Modifiers
     &.is-centered
       li
         &,
         & + li
           margin: 0 2px
+  &.is-centered
+    a
+      padding: 5px 10px
+    li
+      & + li
+        margin-left: 0
+    ul
+      justify-content: center
+      text-align: center
+  &.is-fullwidth
+    li
+      flex: 1
+      & + li
+        margin-left: 0
+    ul
+      justify-content: center
+      text-align: center
+  &.is-right
+    ul
+      justify-content: flex-end
   &.is-toggle
     a
       border: 1px solid $border
@@ -81,6 +93,7 @@
         border-radius: $radius 0 0 $radius
       &:last-child a
         border-radius: 0 $radius $radius 0
+      // Modifiers
       &.is-active
         a
           background: $primary
@@ -89,11 +102,3 @@
           z-index: 1
     ul
       border-bottom: none
-  &.is-fullwidth
-    li
-      flex: 1
-      & + li
-        margin-left: 0
-    ul
-      justify-content: center
-      text-align: center

@@ -3,23 +3,13 @@
   color: $text-strong
   margin-bottom: 20px
   width: 100%
-  th,
-  td
+  td,
+  th
     border: 1px solid $border
     border-width: 0 0 1px
     padding: 8px 10px
     vertical-align: top
-    &.table-narrow
-      white-space: nowrap
-      width: 1%
-    &.table-link
-      padding: 0
-      & > a
-        display: block
-        padding: 8px 10px
-        &:hover
-          background: $link
-          color: $link-invert
+    // Modifiers
     &.table-icon
       padding: 5px
       text-align: center
@@ -31,49 +21,69 @@
         padding: 0
         & > a
           padding: 5px
+    &.table-link
+      padding: 0
+      & > a
+        display: block
+        padding: 8px 10px
+        &:hover
+          background: $link
+          color: $link-invert
+    &.table-narrow
+      white-space: nowrap
+      width: 1%
   th
     color: $text-strong
     text-align: left
   tr
     &:hover
-      background: rgba($background, 0.5)
+      background: $background
       color: $text-strong
-    &:last-child td
-      border-bottom-width: 0
   thead
-    th,
-    td
+    td,
+    th
       border-width: 0 0 2px
       color: $text-light
+  tbody
+    tr
+      &:last-child
+        td,
+        th
+          border-bottom-width: 0
   tfoot
-    th,
-    td
+    td,
+    th
       border-width: 2px 0 0
       color: $text-light
+  // Modifiers
   &.is-bordered
-    th,
-    td
+    td,
+    th
       border-width: 1px
     tr
-      &:last-child td
-        border-bottom-width: 1px
+      &:last-child
+        td,
+        th
+          border-bottom-width: 1px
   &.is-narrow
-    th,
-    td
+    td,
+    th
       padding: 5px 10px
-      &.table-link
-        padding: 0
-        & > a
-          padding: 5px 10px
+      // Modifiers
       &.table-icon
         padding: 2px
         &.table-link
           padding: 0
           & > a
             padding: 2px
+      &.table-link
+        padding: 0
+        & > a
+          padding: 5px 10px
   &.is-striped
     tbody
-      tr:nth-child(2n)
-        background: rgba($background, 0.5)
-        &:hover
+      tr
+        &:nth-child(2n)
           background: $background
+          &:hover
+            background: $border
