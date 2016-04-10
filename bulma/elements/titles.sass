@@ -5,11 +5,11 @@
   em,
   span
     font-weight: $weight-title-normal
-  strong
-    font-weight: $weight-title-bold
   a
     &:hover
       border-bottom: 1px solid
+  strong
+    font-weight: $weight-title-bold
   .tag
     vertical-align: bottom
 
@@ -17,51 +17,55 @@
   color: $text-strong
   font-size: $size-large
   line-height: 1
-  strong
-    color: inherit
   code
     display: inline-block
     font-size: $size-large
-  & + .subtitle
-    margin-top: -10px
+  strong
+    color: inherit
   & + .highlight
     margin-top: -10px
-  &.is-normal
-    font-weight: 400
-    strong
-      font-weight: 700
+  & + .subtitle
+    margin-top: -10px
+  // Colors
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
       code
         font-size: nth($sizes, min($i + 1, 6))
+  // Modifiers
+  &.is-normal
+    font-weight: 400
+    strong
+      font-weight: 700
+  // Responsiveness
   +tablet
     & + .subtitle
       margin-top: -15px
 
 .subtitle
+  color: $text
   font-size: $size-medium
   line-height: 1.125
-  & + .title
-    margin-top: -20px
-  strong
-    color: $text-strong
   code
     border-radius: $radius
     display: inline-block
     font-size: $size-normal
     padding: 2px 3px
     vertical-align: top
-  & + .text
-    margin-top: 20px
-  &.is-normal
-    font-weight: 400
-    strong
-      font-weight: 700
+  strong
+    color: $text-strong
+  & + .title
+    margin-top: -20px
+  // Colors
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
       code
         font-size: nth($sizes, min($i + 1, 6))
+  // Modifiers
+  &.is-normal
+    font-weight: 400
+    strong
+      font-weight: 700

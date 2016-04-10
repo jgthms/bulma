@@ -5,14 +5,6 @@
   border-radius: $radius
   padding: 16px 20px
   position: relative
-  .title
-    color: inherit
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
-    &.is-#{$name}
-      background: $color
-      color: $color-invert
   .delete
     background: rgba(black, 0.2)
     border-radius: 0 $radius
@@ -20,4 +12,12 @@
     margin: -16px -20px 0 20px
     &:hover
       background: rgba(black, 0.5)
-
+  .title
+    color: inherit
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background: $color
+      color: $color-invert

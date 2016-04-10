@@ -1,5 +1,30 @@
 # Bulma Changelog
 
+## 0.0.18
+
+### BREAKING
+
+* `.is-text-*` renamed to `.has-text-*`
+* `.is-gapless` renamed to `.has-no-gap`
+* `.is-marginless` renamed to `.has-no-margin`
+
+### Added
+
+* **small tag**: `.tag.is-small`
+
+### Fixed
+
+* disabled input with element
+
+### Removed
+
+* removed `box-shadow` from `.tag`
+* custom checkboxes and radio buttons
+
+### Updated
+
+* `.tag` uses `display: inline-flex` now
+
 ## 0.0.17
 
 ### Added

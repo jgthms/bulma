@@ -27,15 +27,19 @@
     font-size: $size-small
     line-height: 1
     margin-top: 5px
-  .icon
+  .icon,
+  .tag
     &:first-child
+      margin-left: -2px
       margin-right: 4px
     &:last-child
       margin-left: 4px
+      margin-right: -2px
   &:hover
     color: $control-hover
   &:active
     box-shadow: inset 0 1px 2px rgba(black, 0.2)
+  // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
@@ -50,14 +54,6 @@
         color: $color-invert
       &:active
         border-color: transparent
-      &.is-outlined
-        background: transparent
-        border-color: $color
-        color: $color
-        &:hover,
-        &:focus
-          border-color: darken($color, 10%)
-          color: darken($color, 10%)
       &.is-inverted
         background: $color-invert
         color: $color
@@ -69,8 +65,17 @@
           color: $color-invert
           &:hover
             background: rgba(black, 0.05)
-      &.is-loading:after
-        border-color: transparent transparent $color-invert $color-invert !important
+      &.is-loading
+        &:after
+          border-color: transparent transparent $color-invert $color-invert !important
+      &.is-outlined
+        background: transparent
+        border-color: $color
+        color: $color
+        &:hover,
+        &:focus
+          border-color: darken($color, 10%)
+          color: darken($color, 10%)
   &.is-link
     border-color: transparent
     color: $text
@@ -79,17 +84,22 @@
     &:focus
       background: $border
       color: $text-strong
+  // Sizes
   &.is-small
     +button-small
   &.is-medium
     +button-medium
   &.is-large
     +button-large
+  // Modifiers
+  &[disabled],
+  &.is-disabled
+    opacity: 0.5
+  &.is-flexible
+    height: auto
   &.is-fullwidth
     display: block
     width: 100%
-  &.is-flexible
-    height: auto
   &.is-loading
     color: transparent
     pointer-events: none
@@ -97,7 +107,3 @@
       @extend .loader
       +center(16px)
       position: absolute !important
-  &.is-disabled,
-  &[disabled]
-    opacity: 0.5
-    pointer-events: none

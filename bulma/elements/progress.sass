@@ -1,7 +1,7 @@
 .progress
+  @extend .block
   -moz-appearance: none
   -webkit-appearance: none
-  @extend .block
   border: none
   border-radius: 290486px
   display: block
@@ -15,12 +15,7 @@
     background: $text
   &::-moz-progress-bar
     background: $text
-  &.is-small
-    height: 8px
-  &.is-medium
-    height: 16px
-  &.is-large
-    height: 20px
+  // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
@@ -28,3 +23,10 @@
         background: $color
       &::-moz-progress-bar
         background: $color
+  // Sizes
+  &.is-small
+    height: 8px
+  &.is-medium
+    height: 16px
+  &.is-large
+    height: 20px

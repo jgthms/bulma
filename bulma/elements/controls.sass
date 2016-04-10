@@ -19,14 +19,14 @@
   &:focus
     border-color: $control-active-border
     outline: none
-  &[disabled]
-    &,
-    &:hover
-      background: $background
-      border-color: $control-border
-      cursor: not-allowed
-      +placeholder
-        color: rgba($control, 0.3)
+  &[disabled],
+  &.is-disabled
+    background: $background
+    border-color: $control-border
+    cursor: not-allowed
+    pointer-events: none
+    +placeholder
+      color: rgba($control, 0.3)
 
 =form-control
   +control
@@ -60,10 +60,7 @@
   width: 100%
   &[type="search"]
     border-radius: 290486px
-  &.is-flat
-    border: none
-    box-shadow: none
-    padding: 4px 8px
+  // Sizes
   &.is-small
     +control-small
     &.is-flat
@@ -76,6 +73,11 @@
     +control-large
     &.is-flat
       padding: 4px 12px
+  // Modifiers
+  &.is-flat
+    border: none
+    box-shadow: none
+    padding: 4px 8px
   &.is-fullwidth
     display: block
     width: 100%
@@ -97,46 +99,17 @@
   cursor: pointer
   display: inline-block
   line-height: 16px
-  padding-left: 18px
   position: relative
   vertical-align: top
   input
-    +form-control
-    border-radius: 1px
-    box-shadow: inset 0 1px 1px rgba(black, 0.1)
     cursor: pointer
-    float: left
-    height: 14px
-    left: 0
-    outline: none
-    padding: 0
-    position: absolute
-    top: 1px
-    width: 14px
-    &:after
-      +arrow($control-active-background-invert)
-      height: 4px
-      left: 3px
-      opacity: 0
-      position: absolute
-      top: 3px
-      transform: rotate(-45deg) scale(1)
-    &:checked
-      background: $control-active-background
-      border-color: $control-active-background
-      box-shadow: none
-      &:after
-        opacity: 1
   &:hover
     color: $control-hover
-    input
-      border-color: $control-hover-border
-      &:checked
-        border-color: $control-active-border
   &.is-disabled
-    &,
-    &:hover
-      color: $text-light
+    color: $text-light
+    pointer-events: none
+    input
+      pointer-events: none
 
 .checkbox
   @extend %control-with-element
@@ -145,16 +118,6 @@
   @extend %control-with-element
   & + .radio
     margin-left: 10px
-  input
-    border-radius: 8px
-    &:after
-      background: $link-invert
-      border: 0
-      border-radius: 2px
-      left: 4px
-      top: 4px
-      transform: none
-      width: 4px
 
 .select
   display: inline-block
@@ -214,14 +177,34 @@
 .control
   position: relative
   text-align: left
-  &.is-loading
-    &:after
-      @extend .loader
-      position: absolute !important
-      right: 8px
-      top: 8px
   &:not(:last-child)
     margin-bottom: 10px
+  // Modifiers
+  &.has-addons
+    display: flex
+    justify-content: flex-start
+    .button,
+    .input,
+    .select
+      border-radius: 0
+      margin-right: -1px
+      &:hover
+        z-index: 2
+      &:active,
+      &:focus
+        z-index: 3
+      &:first-child
+        border-radius: $radius 0 0 $radius
+        select
+          border-radius: $radius 0 0 $radius
+      &:last-child
+        border-radius: 0 $radius $radius 0
+        select
+          border-radius: 0 $radius $radius 0
+    &.has-addons-centered
+      justify-content: center
+    &.has-addons-right
+      justify-content: flex-end
   &.has-icon
     & > .fa
       +fa(14px, 16px)
@@ -238,33 +221,14 @@
         left: 8px
       .input
         padding-left: 32px
-  &.has-icon-right
-    & > .fa
-      right: 8px
-    .input
-      padding-right: 32px
-  &.has-addons
-    display: flex
-    .input,
-    .button,
-    .select
-      border-radius: 0
-      margin-right: -1px
-      &:hover
-        z-index: 2
-      &:active,
-      &:focus
-        z-index: 3
-      &:first-child
-        border-radius: $radius 0 0 $radius
-        select
-          border-radius: $radius 0 0 $radius
-      &:last-child
-        border-radius: 0 $radius $radius 0
-    &.is-centered
-      justify-content: center
+    &.has-icon-right
+      & > .fa
+        right: 8px
+      .input
+        padding-right: 32px
   &.is-grouped
     display: flex
+    justify-content: flex-start
     & > .button,
     & > .input,
     & > .select
@@ -272,9 +236,19 @@
         margin-right: 10px
     & > .input
       flex: 1
+    &.is-grouped-centered
+      justify-content: center
+    &.is-grouped-right
+      justify-content: flex-end
   &.is-horizontal
     +tablet
       display: flex
       & > .control
         display: flex
         flex: 5
+  &.is-loading
+    &:after
+      @extend .loader
+      position: absolute !important
+      right: 8px
+      top: 8px
