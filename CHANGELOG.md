@@ -2,6 +2,10 @@
 
 ## 0.0.19
 
+### NEW!!!
+
+* `.tile`
+
 ### BREAKING
 
 * `.is-third` renamed to `.is-one-third`
