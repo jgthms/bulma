@@ -1,5 +1,21 @@
 # Bulma Changelog
 
+## 0.0.19
+
+### BREAKING
+
+* `.is-third` renamed to `.is-one-third`
+* `.is-quarter` renamed to `.is-one-quarter`
+
+### Added
+
+* `.is-two-thirds`
+* `.is-three-quarters`
+
+### Changed
+
+* `.delete` in `.tag` has no red
+
 ## 0.0.18
 
 ### BREAKING

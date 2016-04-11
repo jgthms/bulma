@@ -4,20 +4,30 @@
   .columns.is-mobile > &.is-full
     flex: none
     width: 100%
+  .columns.is-mobile > &.is-three-quarters
+    flex: none
+    width: 75%
+  .columns.is-mobile > &.is-two-thirds
+    flex: none
+    width: 66.6666%
   .columns.is-mobile > &.is-half
     flex: none
     width: 50%
-  .columns.is-mobile > &.is-third
+  .columns.is-mobile > &.is-one-third
     flex: none
     width: 33.3333%
-  .columns.is-mobile > &.is-quarter
+  .columns.is-mobile > &.is-one-quarter
     flex: none
     width: 25%
+  .columns.is-mobile > &.is-offset-three-quarters
+    margin-left: 75%
+  .columns.is-mobile > &.is-offset-two-thirds
+    margin-left: 66.6666%
   .columns.is-mobile > &.is-offset-half
     margin-left: 50%
-  .columns.is-mobile > &.is-offset-third
+  .columns.is-mobile > &.is-offset-one-third
     margin-left: 33.3333%
-  .columns.is-mobile > &.is-offset-quarter
+  .columns.is-mobile > &.is-offset-one-quarter
     margin-left: 25%
   @for $i from 1 through 12
     .columns.is-mobile > &.is-#{$i}
@@ -29,20 +39,30 @@
     &.is-full-mobile
       flex: none
       width: 100%
+    &.is-three-quarters-mobile
+      flex: none
+      width: 75%
+    &.is-two-thirds-mobile
+      flex: none
+      width: 66.6666%
     &.is-half-mobile
       flex: none
       width: 50%
-    &.is-third-mobile
+    &.is-one-third-mobile
       flex: none
       width: 33.3333%
-    &.is-quarter-mobile
+    &.is-one-quarter-mobile
       flex: none
       width: 25%
+    &.is-offset-three-quarters-mobile
+      margin-left: 75%
+    &.is-offset-two-thirds-mobile
+      margin-left: 66.6666%
     &.is-offset-half-mobile
       margin-left: 50%
-    &.is-offset-third-mobile
+    &.is-offset-one-third-mobile
       margin-left: 33.3333%
-    &.is-offset-quarter-mobile
+    &.is-offset-one-quarter-mobile
       margin-left: 25%
     @for $i from 1 through 12
       &.is-#{$i}-mobile
@@ -55,26 +75,40 @@
     &.is-full-tablet
       flex: none
       width: 100%
+    &.is-three-quarters,
+    &.is-three-quarters-tablet
+      flex: none
+      width: 75%
+    &.is-two-thirds,
+    &.is-two-thirds-tablet
+      flex: none
+      width: 66.6666%
     &.is-half,
     &.is-half-tablet
       flex: none
       width: 50%
-    &.is-third,
-    &.is-third-tablet
+    &.is-one-third,
+    &.is-one-third-tablet
       flex: none
       width: 33.3333%
-    &.is-quarter,
-    &.is-quarter-tablet
+    &.is-one-quarter,
+    &.is-one-quarter-tablet
       flex: none
       width: 25%
+    &.is-offset-three-quarters,
+    &.is-offset-three-quarters-tablet
+      margin-left: 75%
+    &.is-offset-two-thirds,
+    &.is-offset-two-thirds-tablet
+      margin-left: 66.6666%
     &.is-offset-half,
     &.is-offset-half-tablet
       margin-left: 50%
-    &.is-offset-third,
-    &.is-offset-third-tablet
+    &.is-offset-one-third,
+    &.is-offset-one-third-tablet
       margin-left: 33.3333%
-    &.is-offset-quarter,
-    &.is-offset-quarter-tablet
+    &.is-offset-one-quarter,
+    &.is-offset-one-quarter-tablet
       margin-left: 25%
     @for $i from 1 through 12
       &.is-#{$i},
@@ -88,20 +122,30 @@
     &.is-full-desktop
       flex: none
       width: 100%
+    &.is-three-quarters-desktop
+      flex: none
+      width: 75%
+    &.is-two-thirds-desktop
+      flex: none
+      width: 66.6666%
     &.is-half-desktop
       flex: none
       width: 50%
-    &.is-third-desktop
+    &.is-one-third-desktop
       flex: none
       width: 33.3333%
-    &.is-quarter-desktop
+    &.is-one-quarter-desktop
       flex: none
       width: 25%
+    &.is-offset-three-quarters-desktop
+      margin-left: 75%
+    &.is-offset-two-thirds-desktop
+      margin-left: 66.6666%
     &.is-offset-half-desktop
       margin-left: 50%
-    &.is-offset-third-desktop
+    &.is-offset-one-third-desktop
       margin-left: 33.3333%
-    &.is-offset-quarter-desktop
+    &.is-offset-one-quarter-desktop
       margin-left: 25%
     @for $i from 1 through 12
       &.is-#{$i}-desktop
@@ -158,7 +202,7 @@
     &.is-desktop
       display: flex
 
-.tile
+.tilefiejsoif
   flex: 1
   // Modifiers
   &.is-parent
@@ -171,8 +215,9 @@
         flex: none
         width: ($i / 12) * 100%
 
-.tiles
+.tile
   align-items: stretch
+  flex: 1
   // Modifiers
   &.is-ancestor
     margin-left: -10px
@@ -183,12 +228,17 @@
     &:not(:last-child)
       margin-bottom: 10px
   &.is-child
-    flex: 1
     margin: 0 !important
+  &.is-parent
+    padding: 10px
   &.is-vertical
     flex-direction: column
-    & > .tiles.is-child:not(:last-child)
+    & > .tile.is-child:not(:last-child)
       margin-bottom: 20px !important
   // Responsiveness
   +tablet
     display: flex
+    @for $i from 1 through 12
+      &.is-#{$i}
+        flex: none
+        width: ($i / 12) * 100%
