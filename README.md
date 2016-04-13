@@ -19,7 +19,7 @@ npm install bulma
 
 ### CDN
 
-[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.19/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.19/css/bulma.min.css)
+[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.20/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.20/css/bulma.min.css)
 
 Feel free to raise an issue or submit a pull request.
 
