@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.0.20
+
+### Added
+
+* `.has-icon` support for different `.input` sizes
+
 ## 0.0.19
 
 ### NEW!!!
