@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.0.21
+
+### Added
+
+* `.column.is-narrow` to make a column `flex: none`
+
 ## 0.0.20
 
 ### Added
