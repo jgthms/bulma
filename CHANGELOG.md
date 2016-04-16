@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.0.22
+
+### Fixed
+
+* links in hero subtitle
+
 ## 0.0.21
 
 ### Added
