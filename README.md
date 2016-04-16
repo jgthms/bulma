@@ -17,6 +17,12 @@ Bulma is in early but active development! Try it out now:
 npm install bulma
 ```
 
+### Bower
+
+```sh
+bower install bulma
+```
+
 ### CDN
 
 [https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.21/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.21/css/bulma.min.css)
