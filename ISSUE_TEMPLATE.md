@@ -1,18 +1,24 @@
-Thanks for helping out! 😇
+### Instructions
 
-### Prerequisites
+**THIS IS AN EXAMPLE TEMPLATE.**  
+**If it's a bug on the website, submit an issue on the appropriate repository: [https://github.com/jgthms/bulma-website](https://github.com/jgthms/bulma-website)**  
+**Screenshots are more than welcome!**  
+**Please remove any unused content (including these instructions) before submitting your issue.**  
+**Thanks for helping out!** 😇
 
-If it's a bug on the **website**, submit an issue on the appropriate repository: [https://github.com/jgthms/bulma-website](https://github.com/jgthms/bulma-website)
+_[Remove this line and all of the above before submitting your issue]_
 
-* [ ] Is this about Bulma the **CSS framework** and **not** about the Bulma website?
-* [ ] Which **version** of Bulma are you using?
-* [ ] Which **browser** are you using?
-* [ ] If it's a **Sass** issue, which version of Sass are you using?
-* [ ] Are you sure this issue is not a **duplicate**?
+### Checklist
+
+* [ ] This is about Bulma the **CSS framework** and **not** about the Bulma website
+* [ ] I'm using Bulma **version** [x.x.x]
+* [ ] My **browser** is:
+* [ ] This is a **Sass** issue: I'm using version [x.x.x]
+* [ ] I am sure this issue is **not a duplicate**?
 
 ### Description
 
-[Description of the bug, enhancement, or question]
+[Description of the bug, enhancement, or question]  
 [Please tag accordingly]
 
 ### Steps to Reproduce
@@ -24,5 +30,3 @@ If it's a bug on the **website**, submit an issue on the appropriate repository:
 _Expected behavior:_ [What you expected to happen]
 
 _Actual behavior:_ [What actually happened]
-
-**Screenshots** are more than welcome!
