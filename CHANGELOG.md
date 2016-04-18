@@ -5,6 +5,18 @@
 ### BREAKING
 
 * `bulma` folder renamed to `sass` to avoid the redundant `bulma/bulma` path
+* `variables.sass` moved to `/utilities`
+* almost everything is singular now
+* **elements** only have one class
+* **components** have at least one sub-class
+* `.content` moved to elements
+* `.table` moved to elements
+* `.message` moved to components
+* `.table-icon`, `.table-link`, `.table-narrow` are now called `.is-icon`, `.is-link`, `.is-narrow`
+
+### Added
+
+* all variables are now `!default` so you can set your custom variables before importing Bulma
 
 ## 0.0.22
 
