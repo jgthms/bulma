@@ -26,7 +26,7 @@ bower install bulma
 
 ### CDN
 
-[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.22/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.22/css/bulma.min.css)
+[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.23/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.23/css/bulma.min.css)
 
 Feel free to raise an issue or submit a pull request.
 
