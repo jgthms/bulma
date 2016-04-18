@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.0.23
+
+### BREAKING
+
+* `bulma` folder renamed to `sass` to avoid the redundant `bulma/bulma` path
+
 ## 0.0.22
 
 ### Fixed
