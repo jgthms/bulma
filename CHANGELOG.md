@@ -1,5 +1,12 @@
 # Bulma Changelog
 
+## 0.0.24
+
+### Updated
+
+* restructured file structure
+* added back `inline-flex` for controls and tags
+
 ## 0.0.23
 
 ### BREAKING
