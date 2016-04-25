@@ -2,10 +2,22 @@
 
 ## 0.0.24
 
+### Added
+
+* `is-mobile` for the navbar
+
+### Removed
+
+* removed border between sections. Use `<hr class="is-marginless">` now
+
 ### Updated
 
-* restructured file structure
+* restructured files
 * added back `inline-flex` for controls and tags
+
+### Removed
+
+* test tiles
 
 ## 0.0.23
 

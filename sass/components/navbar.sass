@@ -34,16 +34,24 @@
 
 .navbar
   @extend .block
+  align-items: center
+  justify-content: space-between
   code
     border-radius: $radius
   img
     display: inline-block
     vertical-align: top
+  // Modifiers
+  &.is-mobile
+    display: flex
+    & > .navbar-item
+      &:not(:last-child)
+        margin-bottom: 0
+      &:not(.is-narrow)
+        flex: 1
   // Responsiveness
   +tablet
-    align-items: center
     display: flex
-    justify-content: space-between
     & > .navbar-item
       &:not(.is-narrow)
         flex: 1
