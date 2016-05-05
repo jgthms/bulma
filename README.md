@@ -26,7 +26,7 @@ bower install bulma
 
 ### CDN
 
-[https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.24/css/bulma.min.css](https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.24/css/bulma.min.css)
+[https://cdnjs.cloudflare.com/ajax/libs/bulma](https://cdnjs.cloudflare.com/ajax/libs/bulma)
 
 Feel free to raise an issue or submit a pull request.
 
@@ -46,7 +46,7 @@ It's more a tasklist than a roadmap, but it will give you an overview of where t
 
 ## Documentation website
 
-This repository is **only** for the Bulma source files.  
+This repository is **only** for the Bulma source files.
 The [website](http://bulma.io) (which includes the [documentation](http://bulma.io/documentation/overview/start/)) is in another repo: [https://github.com/jgthms/bulma-website](https://github.com/jgthms/bulma-website)
 
 If you encounter a typo or a lack of documentation, submit an issue [there](https://github.com/jgthms/bulma-website/issues).
