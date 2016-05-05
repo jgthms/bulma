@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.0.25
+
+* Added: `utilities/controls.sass` and `elements/form.sass`
+* Changed: `.tabs` need `.icon` now
+* Changed: cdnjs link doesn't include version
+
 ## 0.0.24
 
 ### Added
