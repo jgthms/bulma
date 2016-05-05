@@ -3,6 +3,8 @@
 ## 0.0.25
 
 * Added: `utilities/controls.sass` and `elements/form.sass`
+* Added: new responsive classes
+* Added: white/black and light/dark colors
 * Changed: `.tabs` need `.icon` now
 * Changed: cdnjs link doesn't include version
 

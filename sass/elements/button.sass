@@ -42,7 +42,7 @@
   &:hover
     color: $control-hover
   &:active
-    box-shadow: inset 0 1px 2px rgba(black, 0.2)
+    box-shadow: inset 0 1px 2px rgba($black, 0.2)
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -63,14 +63,6 @@
         color: $color
         &:hover
           background: darken($color-invert, 5%)
-        &.is-outlined
-          background-color: transparent
-          border-color: $color-invert
-          color: $color-invert
-          &:hover
-            background: rgba(black, 0.05)
-            border-color: $color-invert
-            color: $color-invert
       &.is-loading
         &:after
           border-color: transparent transparent $color-invert $color-invert !important
@@ -80,8 +72,9 @@
         color: $color
         &:hover,
         &:focus
-          border-color: darken($color, 10%)
-          color: darken($color, 10%)
+          background: $color
+          border-color: $color
+          color: $color-invert
   &.is-link
     background: transparent
     border-color: transparent
