@@ -1,5 +1,9 @@
 .tabs
   @extend .block
+  @extend .unselectable
+  align-items: stretch
+  display: flex
+  justify-content: space-between
   line-height: 24px
   overflow: hidden
   overflow-x: auto
@@ -11,78 +15,70 @@
     display: flex
     justify-content: center
     margin-bottom: -1px
-    padding: 5px 0
+    padding: 6px 12px
     vertical-align: top
     &:hover
       border-bottom-color: $text-strong
       color: $text-strong
   li
     display: block
-    vertical-align: top
-    & + li
-      margin-left: 20px
-    // Modifiers
     &.is-active
       a
         border-bottom-color: $link
         color: $link
   ul
+    align-items: center
     border-bottom: 1px solid $border
     display: flex
+    flex: 1
+    justify-content: flex-start
+    &.is-left
+      padding-right: 10px
+    &.is-center
+      flex: none
+      justify-content: center
+      padding-left: 10px
+      padding-right: 10px
+    &.is-right
+      justify-content: flex-end
+      padding-left: 10px
   .icon
     &:first-child
-      margin-right: 5px
+      margin-right: 8px
     &:last-child
-      margin-left: 5px
-  // Modifiers
+      margin-left: 8px
+  // Alignment
+  &.is-centered
+    ul
+      justify-content: center
+  &.is-right
+    ul
+      justify-content: flex-end
+  // Styles
   &.is-boxed
     a
       border: 1px solid transparent
       border-radius: $radius $radius 0 0
-      padding: 5px 15px
+      padding-bottom: 5px
+      padding-top: 5px
       &:hover
         background: $background
         border-bottom-color: $border
     li
-      & + li
-        margin-left: 5px
-      // Modifiers
       &.is-active
         a
           background: $white
           border-color: $border
           border-bottom-color: transparent
-    // Modifiers
-    &.is-centered
-      li
-        &,
-        & + li
-          margin: 0 2px
-  &.is-centered
-    a
-      padding: 5px 10px
-    li
-      & + li
-        margin-left: 0
-    ul
-      justify-content: center
-      text-align: center
   &.is-fullwidth
     li
       flex: 1
-      & + li
-        margin-left: 0
-    ul
-      justify-content: center
-      text-align: center
-  &.is-right
-    ul
-      justify-content: flex-end
   &.is-toggle
     a
       border: 1px solid $border
       margin-bottom: 0
-      padding: 5px 10px
+      padding-bottom: 5px
+      padding-top: 5px
       position: relative
       &:hover
         background: $background
@@ -95,7 +91,6 @@
         border-radius: $radius 0 0 $radius
       &:last-child a
         border-radius: 0 $radius $radius 0
-      // Modifiers
       &.is-active
         a
           background: $primary
@@ -104,3 +99,31 @@
           z-index: 1
     ul
       border-bottom: none
+  // Sizes
+  &.is-small
+    font-size: $size-small
+    a
+      padding: 2px 8px
+    &.is-boxed,
+    &.is-toggle
+      a
+        padding-bottom: 1px
+        padding-top: 1px
+  &.is-medium
+    font-size: $size-medium
+    a
+      padding: 10px 16px
+    &.is-boxed,
+    &.is-toggle
+      a
+        padding-bottom: 9px
+        padding-top: 9px
+  &.is-large
+    font-size: $size-large
+    a
+      padding: 14px 20px
+    &.is-boxed,
+    &.is-toggle
+      a
+        padding-bottom: 13px
+        padding-top: 13px

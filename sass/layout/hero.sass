@@ -1,3 +1,5 @@
+// Components
+
 .hero-video
   +overlay
   overflow: hidden
@@ -15,18 +17,12 @@
   +mobile
     display: none
 
-.hero-content
-  padding: 40px 20px
-  // Responsiveness
-  +desktop
-    padding: 40px 0
-
 .hero-buttons
   margin-top: 20px
   // Responsiveness
   +mobile
     .button
-      display: block
+      display: flex
       &:not(:last-child)
         margin-bottom: 10px
   +tablet
@@ -35,21 +31,37 @@
     .button:not(:last-child)
       margin-right: 20px
 
+// Containers
+
+.hero-head,
+.hero-foot
+  flex-shrink: 0
+
+.hero-body
+  flex: 1
+  padding: 40px 20px
+  // Responsiveness
+  +desktop
+    padding-left: 0
+    padding-right: 0
+
+// Main container
+
 .hero
+  align-items: stretch
   background: $white
-  .header
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  .nav
     background: none
-    .container
+    & > .container
       box-shadow: 0 1px 0 rgba($border, 0.3)
   .tabs
     a
       border: none
     ul
       border-bottom: none
-    // Modifiers
-    &.is-boxed
-      a
-        padding: 8px 15px
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -67,11 +79,11 @@
         a,
         strong
           color: $color-invert
-      .header .container
-        box-shadow: 0 1px 0 rgba($color-invert, 0.2)
-      .header-icon,
-      a.header-item,
-      .header-item > a:not(.button)
+      .nav
+        & > .container
+          box-shadow: 0 1px 0 rgba($color-invert, 0.2)
+      a.nav-item,
+      .nav-item a:not(.button)
         color: rgba($color-invert, 0.5)
         &:hover,
         &.is-active
@@ -82,8 +94,9 @@
           opacity: 0.5
           &:hover
             opacity: 1
-        li.is-active a
-          opacity: 1
+        li
+          &.is-active a
+            opacity: 1
         &.is-boxed,
         &.is-toggle
           a
@@ -102,7 +115,7 @@
         background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
       // Responsiveness
       +mobile
-        .header-toggle
+        .nav-toggle
           span
             background: $color-invert
           &:hover
@@ -110,46 +123,26 @@
           &.is-active
             span
               background: $color-invert
-        .header-menu
-          .header-item
+        .nav-menu
+          .nav-item
             border-top-color: rgba($color-invert, 0.2)
   // Sizes
-  &.is-fullheight,
-  &.is-large
-    // Responsiveness
-    +tablet
-      .tabs
-        font-size: $size-medium
   &.is-medium
-    // Responsiveness
     +tablet
-      .hero-content
-        padding: 120px 20px
-    +desktop
-      .hero-content
-        padding: 120px 0
+      .hero-body
+        padding-bottom: 120px
+        padding-top: 120px
+  &.is-large
+    +tablet
+      .hero-body
+        padding-bottom: 240px
+        padding-top: 240px
   &.is-fullheight
-    align-items: stretch
-    display: flex
-    flex-direction: column
-    justify-content: space-between
     min-height: 100vh
-    .tabs
-      a
-        padding: 15px 20px
-    .hero-content
+    .hero-body
+      align-items: stretch
       display: flex
-      flex: 1
       flex-direction: column
       justify-content: center
-  &.is-large
-    .tabs
-      a
-        padding: 10px 15px
-    // Responsiveness
-    +tablet
-      .hero-content
-        padding: 240px 20px
-    +desktop
-      .hero-content
-        padding: 240px 0
+      padding-bottom: 240px
+      padding-top: 240px

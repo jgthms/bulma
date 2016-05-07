@@ -1,0 +1,104 @@
+.nav
+  align-items: stretch
+  background: $white
+  display: flex
+  min-height: $nav-height
+  position: relative
+  text-align: center
+  z-index: 2
+  & > .container
+    align-items: stretch
+    display: flex
+    min-height: $nav-height
+    width: 100%
+  +tablet
+    & > .container
+      & > .nav-left
+        margin-left: -10px
+      & > .nav-right
+        margin-left: -10px
+
+.nav-toggle
+  @extend .hamburger
+  // Responsiveness
+  +tablet
+    display: none
+
+// Elements
+
+.nav-item
+  align-items: center
+  display: flex
+  justify-content: center
+  padding: 10px
+  a
+    flex-grow: 1
+  img
+    max-height: 24px
+  .button + .button
+    margin-left: 10px
+  .tag
+    &:first-child
+      margin-right: 5px
+    &:last-child
+      margin-left: 5px
+  // Responsiveness
+  +mobile
+    justify-content: flex-start
+
+.nav-item a,
+a.nav-item
+  color: $text
+  &:hover
+    color: $link-hover
+  // Modifiers
+  &.is-active
+    color: $link-active
+
+.nav-tab
+  align-items: center
+  border-bottom: 1px solid transparent
+  color: $text
+  display: block
+  height: $nav-height
+  line-height: 24px
+  padding: 13px 15px
+  &:hover
+    border-bottom: 1px solid $link
+  // Modifiers
+  &.is-active
+    border-bottom: 3px solid $link
+    color: $link
+
+// Containers
+
+.nav-menu
+  // Responsiveness
+  +mobile
+    background: $white
+    box-shadow: 0 4px 7px rgba($black, 0.1)
+    left: 0
+    display: none
+    right: 0
+    top: 100%
+    position: absolute
+    .nav-item
+      border-top: 1px solid rgba($border, 0.5)
+      padding: 10px
+    // Modifiers
+    &.is-active
+      display: block
+
+.nav-left
+  align-items: stretch
+  display: flex
+  flex: 1
+  overflow: hidden
+  overflow-x: auto
+  white-space: nowrap
+
+.nav-right
+  align-items: stretch
+  // Responsiveness
+  +tablet
+    display: flex
