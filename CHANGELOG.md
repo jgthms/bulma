@@ -1,5 +1,10 @@
 # Bulma Changelog
 
+## 0.0.26
+
+* Added: `.modal-card`
+* Added: display responsive utilites
+
 ## 0.0.25
 
 * Added: `utilities/controls.sass` and `elements/form.sass`
