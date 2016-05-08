@@ -1,27 +1,10 @@
-.nav
-  align-items: stretch
-  background: $white
-  display: flex
-  min-height: $nav-height
-  position: relative
-  text-align: center
-  z-index: 2
-  & > .container
-    align-items: stretch
-    display: flex
-    min-height: $nav-height
-    width: 100%
-  // Modifiers
-  &.has-shadow
-    box-shadow: 0 2px 3px rgba($black, 0.1)
+// Components
 
 .nav-toggle
   @extend .hamburger
   // Responsiveness
   +tablet
     display: none
-
-// Elements
 
 .nav-item
   align-items: center
@@ -64,21 +47,6 @@ a.nav-item
       border-top: 3px solid transparent
       color: $link
 
-.nav-tab
-  align-items: center
-  border: 1px solid transparent
-  color: $text
-  display: block
-  height: $nav-height
-  line-height: 24px
-  padding: 13px 15px
-  &:hover
-    border-bottom: 1px solid $link
-  // Modifiers
-  &.is-active
-    border-bottom: 3px solid $link
-    color: $link
-
 // Containers
 
 .nav-menu
@@ -118,3 +86,35 @@ a.nav-item
     display: flex
     flex: 1
     justify-content: flex-end
+
+// Main container
+
+.nav
+  align-items: stretch
+  background: $white
+  display: flex
+  min-height: $nav-height
+  position: relative
+  text-align: center
+  z-index: 2
+  & > .container
+    align-items: stretch
+    display: flex
+    min-height: $nav-height
+    width: 100%
+    & > .nav-left
+      & > .nav-item:first-child:not(.is-tab)
+        padding-left: 0
+    & > .nav-right
+      & > .nav-item:last-child:not(.is-tab)
+        padding-right: 0
+  .container > &
+    & > .nav-left
+      & > .nav-item:first-child:not(.is-tab)
+        padding-left: 0
+    & > .nav-right
+      & > .nav-item:last-child:not(.is-tab)
+        padding-right: 0
+  // Modifiers
+  &.has-shadow
+    box-shadow: 0 2px 3px rgba($black, 0.1)

@@ -8,6 +8,8 @@
 * Added: `.tabs ul` left center right
 * Changed: `.navbar` renamed to `.level`
 * Changed: `.header` renamed to `.nav`
+* Deprecated: `.header`
+* Deprecated: `.navbar`
 * Fixed: `.hero` layout
 
 ## 0.0.25
