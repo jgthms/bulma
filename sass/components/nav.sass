@@ -11,12 +11,9 @@
     display: flex
     min-height: $nav-height
     width: 100%
-  +tablet
-    & > .container
-      & > .nav-left
-        margin-left: -10px
-      & > .nav-right
-        margin-left: -10px
+  // Modifiers
+  &.has-shadow
+    box-shadow: 0 2px 3px rgba($black, 0.1)
 
 .nav-toggle
   @extend .hamburger
@@ -54,10 +51,22 @@ a.nav-item
   // Modifiers
   &.is-active
     color: $link-active
+  &.is-tab
+    border-bottom: 1px solid transparent
+    border-top: 1px solid transparent
+    padding-left: 12px
+    padding-right: 12px
+    &:hover
+      border-bottom: 1px solid $link
+      border-top: 1px solid transparent
+    &.is-active
+      border-bottom: 3px solid $link
+      border-top: 3px solid transparent
+      color: $link
 
 .nav-tab
   align-items: center
-  border-bottom: 1px solid transparent
+  border: 1px solid transparent
   color: $text
   display: block
   height: $nav-height
@@ -85,7 +94,6 @@ a.nav-item
     .nav-item
       border-top: 1px solid rgba($border, 0.5)
       padding: 10px
-    // Modifiers
     &.is-active
       display: block
 
@@ -93,12 +101,20 @@ a.nav-item
   align-items: stretch
   display: flex
   flex: 1
+  justify-content: flex-start
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
 
-.nav-right
+.nav-center
   align-items: stretch
+  display: flex
+  justify-content: center
+
+.nav-right
   // Responsiveness
   +tablet
+    align-items: stretch
     display: flex
+    flex: 1
+    justify-content: flex-end

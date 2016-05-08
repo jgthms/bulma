@@ -4,6 +4,11 @@
 
 * Added: `.modal-card`
 * Added: display responsive utilites
+* Added: `.nav-center`
+* Added: `.tabs ul` left center right
+* Changed: `.navbar` renamed to `.level`
+* Changed: `.header` renamed to `.nav`
+* Fixed: `.hero` layout
 
 ## 0.0.25
 

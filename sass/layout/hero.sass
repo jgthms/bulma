@@ -55,11 +55,8 @@
   justify-content: space-between
   .nav
     background: none
-    & > .container
-      box-shadow: 0 1px 0 rgba($border, 0.3)
+    box-shadow: 0 1px 0 rgba($border, 0.3)
   .tabs
-    a
-      border: none
     ul
       border-bottom: none
   // Colors
@@ -80,8 +77,10 @@
         strong
           color: $color-invert
       .nav
-        & > .container
-          box-shadow: 0 1px 0 rgba($color-invert, 0.2)
+        box-shadow: 0 1px 0 rgba($color-invert, 0.2)
+      .nav-menu
+        +mobile
+          background: $color
       a.nav-item,
       .nav-item a:not(.button)
         color: rgba($color-invert, 0.5)
@@ -107,6 +106,7 @@
             &,
             &:hover
               background: $color-invert
+              border-color: $color-invert
               color: $color
       // Modifiers
       &.is-bold
@@ -140,9 +140,11 @@
   &.is-fullheight
     min-height: 100vh
     .hero-body
-      align-items: stretch
+      align-items: center
       display: flex
-      flex-direction: column
-      justify-content: center
-      padding-bottom: 240px
-      padding-top: 240px
+      & > .container
+        align-items: stretch
+        display: flex
+        flex: 1
+        flex-direction: column
+        justify-content: center
