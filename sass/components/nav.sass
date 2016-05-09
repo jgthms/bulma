@@ -1,0 +1,120 @@
+// Components
+
+.nav-toggle
+  @extend .hamburger
+  // Responsiveness
+  +tablet
+    display: none
+
+.nav-item
+  align-items: center
+  display: flex
+  justify-content: center
+  padding: 10px
+  a
+    flex-grow: 1
+  img
+    max-height: 24px
+  .button + .button
+    margin-left: 10px
+  .tag
+    &:first-child
+      margin-right: 5px
+    &:last-child
+      margin-left: 5px
+  // Responsiveness
+  +mobile
+    justify-content: flex-start
+
+.nav-item a,
+a.nav-item
+  color: $text
+  &:hover
+    color: $link-hover
+  // Modifiers
+  &.is-active
+    color: $link-active
+  &.is-tab
+    border-bottom: 1px solid transparent
+    border-top: 1px solid transparent
+    padding-left: 12px
+    padding-right: 12px
+    &:hover
+      border-bottom: 1px solid $link
+      border-top: 1px solid transparent
+    &.is-active
+      border-bottom: 3px solid $link
+      border-top: 3px solid transparent
+      color: $link
+
+// Containers
+
+.nav-menu
+  // Responsiveness
+  +mobile
+    background: $white
+    box-shadow: 0 4px 7px rgba($black, 0.1)
+    left: 0
+    display: none
+    right: 0
+    top: 100%
+    position: absolute
+    .nav-item
+      border-top: 1px solid rgba($border, 0.5)
+      padding: 10px
+    &.is-active
+      display: block
+
+.nav-left
+  align-items: stretch
+  display: flex
+  flex: 1
+  justify-content: flex-start
+  overflow: hidden
+  overflow-x: auto
+  white-space: nowrap
+
+.nav-center
+  align-items: stretch
+  display: flex
+  justify-content: center
+
+.nav-right
+  // Responsiveness
+  +tablet
+    align-items: stretch
+    display: flex
+    flex: 1
+    justify-content: flex-end
+
+// Main container
+
+.nav
+  align-items: stretch
+  background: $white
+  display: flex
+  min-height: $nav-height
+  position: relative
+  text-align: center
+  z-index: 2
+  & > .container
+    align-items: stretch
+    display: flex
+    min-height: $nav-height
+    width: 100%
+    & > .nav-left
+      & > .nav-item:first-child:not(.is-tab)
+        padding-left: 0
+    & > .nav-right
+      & > .nav-item:last-child:not(.is-tab)
+        padding-right: 0
+  .container > &
+    & > .nav-left
+      & > .nav-item:first-child:not(.is-tab)
+        padding-left: 0
+    & > .nav-right
+      & > .nav-item:last-child:not(.is-tab)
+        padding-right: 0
+  // Modifiers
+  &.has-shadow
+    box-shadow: 0 2px 3px rgba($black, 0.1)

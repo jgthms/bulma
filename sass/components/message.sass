@@ -24,7 +24,7 @@
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
-    $lightning: (100% - lightness($color)) - 4%
+    $lightning: max((100% - lightness($color)) - 4%, 0%)
     $darkness: max(lightness($color) - 10%, lightness($color))
     &.is-#{$name}
       background: lighten($color, $lightning)

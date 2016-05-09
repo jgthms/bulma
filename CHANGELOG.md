@@ -1,11 +1,43 @@
 # Bulma Changelog
 
+## 0.0.26
+
+* Added: `.modal-card`
+* Added: display responsive utilites
+* Added: `.nav-center`
+* Added: `.tabs ul` left center right
+* Changed: `.navbar` renamed to `.level`
+* Changed: `.header` renamed to `.nav`
+* Deprecated: `.header`
+* Deprecated: `.navbar`
+* Fixed: `.hero` layout
+
+## 0.0.25
+
+* Added: `utilities/controls.sass` and `elements/form.sass`
+* Added: new responsive classes
+* Added: white/black and light/dark colors
+* Changed: `.tabs` need `.icon` now
+* Changed: cdnjs link doesn't include version
+
 ## 0.0.24
+
+### Added
+
+* `is-mobile` for the navbar
+
+### Removed
+
+* removed border between sections. Use `<hr class="is-marginless">` now
 
 ### Updated
 
-* restructured file structure
+* restructured files
 * added back `inline-flex` for controls and tags
+
+### Removed
+
+* test tiles
 
 ## 0.0.23
 
