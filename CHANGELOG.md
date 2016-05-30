@@ -4,6 +4,7 @@
 
 * BREAKING: `.control.is-grouped` now uses `.control` elements as direct children
 * Fix #220
+* Fix #214
 * Fix #210
 * Fix #206
 * Fix #122
