@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.0.28
+
+* BREAKING: `.control.is-grouped` now uses `.control` elements as direct children
+* Fix #220
+* Fix #206
+
 ## 0.0.27
 
 * Fix: #217
