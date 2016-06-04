@@ -1,0 +1,146 @@
+// Components
+
+.hero-video
+  +overlay
+  overflow: hidden
+  video
+    left: 50%
+    min-height: 100%
+    min-width: 100%
+    position: absolute
+    top: 50%
+    transform: translate3d(-50%, -50%, 0)
+  // Modifiers
+  &.is-transparent
+    opacity: 0.3
+  // Responsiveness
+  +mobile
+    display: none
+
+.hero-buttons
+  margin-top: 20px
+  // Responsiveness
+  +mobile
+    .button
+      display: flex
+      &:not(:last-child)
+        margin-bottom: 10px
+  +tablet
+    display: flex
+    justify-content: center
+    .button:not(:last-child)
+      margin-right: 20px
+
+// Containers
+
+.hero-head,
+.hero-foot
+  flex-shrink: 0
+
+.hero-body
+  flex: 1
+  padding: 40px 20px
+  // Responsiveness
+  +desktop
+    padding-left: 0
+    padding-right: 0
+
+// Main container
+
+.hero
+  align-items: stretch
+  background: $white
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  .nav
+    background: none
+    box-shadow: 0 1px 0 rgba($border, 0.3)
+  .tabs
+    ul
+      border-bottom: none
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background: $color
+      color: $color-invert
+      .title
+        color: $color-invert
+        a,
+        strong
+          color: inherit
+      .subtitle
+        color: rgba($color-invert, 0.7)
+        a,
+        strong
+          color: $color-invert
+      .nav
+        box-shadow: 0 1px 0 rgba($color-invert, 0.2)
+      .nav-menu
+        +mobile
+          background: $color
+      a.nav-item,
+      .nav-item a:not(.button)
+        color: rgba($color-invert, 0.5)
+        &:hover,
+        &.is-active
+          color: $color-invert
+      .tabs
+        a
+          color: $color-invert
+          opacity: 0.5
+          &:hover
+            opacity: 1
+        li
+          &.is-active a
+            opacity: 1
+        &.is-boxed,
+        &.is-toggle
+          a
+            color: $color-invert
+            &:hover
+              background: rgba($black, 0.1)
+          li.is-active a
+            &,
+            &:hover
+              background: $color-invert
+              border-color: $color-invert
+              color: $color
+      // Modifiers
+      &.is-bold
+        $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
+        $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
+        background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+      // Responsiveness
+      +mobile
+        .nav-toggle
+          span
+            background: $color-invert
+          &:hover
+            background: rgba($black, 0.1)
+          &.is-active
+            span
+              background: $color-invert
+        .nav-menu
+          .nav-item
+            border-top-color: rgba($color-invert, 0.2)
+  // Sizes
+  &.is-medium
+    +tablet
+      .hero-body
+        padding-bottom: 120px
+        padding-top: 120px
+  &.is-large
+    +tablet
+      .hero-body
+        padding-bottom: 240px
+        padding-top: 240px
+  &.is-fullheight
+    min-height: 100vh
+    .hero-body
+      align-items: center
+      display: flex
+      & > .container
+        flex: 1

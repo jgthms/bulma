@@ -1,0 +1,57 @@
+.level-item
+  .title,
+  .subtitle
+    margin-bottom: 0
+  // Responsiveness
+  +mobile
+    &:not(:last-child)
+      margin-bottom: 10px
+
+.level-left,
+.level-right
+  .level-item
+    &:not(:last-child)
+      margin-right: 10px
+    // Modifiers
+    &.is-flexible
+      flex: 1
+
+.level-left
+  // Responsiveness
+  +mobile
+    & + .level-right
+      margin-top: 20px
+  +tablet
+    align-items: center
+    display: flex
+
+.level-right
+  // Responsiveness
+  +tablet
+    align-items: center
+    display: flex
+    justify-content: flex-end
+
+.level
+  @extend .block
+  align-items: center
+  justify-content: space-between
+  code
+    border-radius: $radius
+  img
+    display: inline-block
+    vertical-align: top
+  // Modifiers
+  &.is-mobile
+    display: flex
+    & > .level-item
+      &:not(:last-child)
+        margin-bottom: 0
+      &:not(.is-narrow)
+        flex: 1
+  // Responsiveness
+  +tablet
+    display: flex
+    & > .level-item
+      &:not(.is-narrow)
+        flex: 1

@@ -1,0 +1,32 @@
+.progress
+  @extend .block
+  -moz-appearance: none
+  -webkit-appearance: none
+  border: none
+  border-radius: 290486px
+  display: block
+  height: 12px
+  overflow: hidden
+  padding: 0
+  width: 100%
+  &::-webkit-progress-bar
+    background: $border
+  &::-webkit-progress-value
+    background: $text
+  &::-moz-progress-bar
+    background: $text
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name}
+      &::-webkit-progress-value
+        background: $color
+      &::-moz-progress-bar
+        background: $color
+  // Sizes
+  &.is-small
+    height: 8px
+  &.is-medium
+    height: 16px
+  &.is-large
+    height: 20px

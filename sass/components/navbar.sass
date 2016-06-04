@@ -1,0 +1,57 @@
+.navbar-item
+  .title,
+  .subtitle
+    margin-bottom: 0
+  // Responsiveness
+  +mobile
+    &:not(:last-child)
+      margin-bottom: 10px
+
+.navbar-left,
+.navbar-right
+  .navbar-item
+    &:not(:last-child)
+      margin-right: 10px
+    // Modifiers
+    &.is-flexible
+      flex: 1
+
+.navbar-left
+  // Responsiveness
+  +mobile
+    & + .navbar-right
+      margin-top: 20px
+  +tablet
+    align-items: center
+    display: flex
+
+.navbar-right
+  // Responsiveness
+  +tablet
+    align-items: center
+    display: flex
+    justify-content: flex-end
+
+.navbar
+  @extend .block
+  align-items: center
+  justify-content: space-between
+  code
+    border-radius: $radius
+  img
+    display: inline-block
+    vertical-align: top
+  // Modifiers
+  &.is-mobile
+    display: flex
+    & > .navbar-item
+      &:not(:last-child)
+        margin-bottom: 0
+      &:not(.is-narrow)
+        flex: 1
+  // Responsiveness
+  +tablet
+    display: flex
+    & > .navbar-item
+      &:not(.is-narrow)
+        flex: 1

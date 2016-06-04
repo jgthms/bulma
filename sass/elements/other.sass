@@ -1,0 +1,187 @@
+.delete
+  @extend .unselectable
+  -moz-appearance: none
+  -webkit-appearance: none
+  background: rgba($black, 0.2)
+  border: none
+  border-radius: 290486px
+  cursor: pointer
+  display: inline-block
+  height: 24px
+  position: relative
+  vertical-align: top
+  width: 24px
+  &:before,
+  &:after
+    background: $white
+    content: ""
+    display: block
+    height: 2px
+    left: 50%
+    margin-left: -25%
+    margin-top: -1px
+    position: absolute
+    top: 50%
+    width: 50%
+  &:before
+    transform: rotate(45deg)
+  &:after
+    transform: rotate(-45deg)
+  &:hover
+    background: rgba($black, 0.5)
+  // Sizes
+  &.is-small
+    height: 16px
+    width: 16px
+  &.is-medium
+    height: 32px
+    width: 32px
+  &.is-large
+    height: 40px
+    width: 40px
+
+.icon
+  +fa(21px, 24px)
+  .fa
+    font-size: inherit
+    line-height: inherit
+  // Sizes
+  &.is-small
+    +fa(14px, 16px)
+  &.is-medium
+    +fa(28px, 32px)
+  &.is-large
+    +fa(42px, 48px)
+
+.hamburger
+  cursor: pointer
+  display: block
+  height: $nav-height
+  position: relative
+  width: $nav-height
+  span
+    background: $text
+    display: block
+    height: 1px
+    left: 50%
+    margin-left: -7px
+    position: absolute
+    top: 50%
+    transition: none $speed $easing
+    transition-property: background, left, opacity, transform
+    width: 15px
+    &:nth-child(1)
+      margin-top: -6px
+    &:nth-child(2)
+      margin-top: -1px
+    &:nth-child(3)
+      margin-top: 4px
+  &:hover
+    background: $background
+  // Modifers
+  &.is-active
+    span
+      background: $link
+      &:nth-child(1)
+        margin-left: -5px
+        transform: rotate(45deg)
+        transform-origin: left top
+      &:nth-child(2)
+        opacity: 0
+      &:nth-child(3)
+        margin-left: -5px
+        transform: rotate(-45deg)
+        transform-origin: left bottom
+
+.heading
+  display: block
+  font-size: 11px
+  letter-spacing: 1px
+  margin-bottom: 5px
+  text-transform: uppercase
+
+.highlight
+  @extend .block
+  font-size: 12px
+  font-weight: normal
+  max-width: 100%
+  overflow: hidden
+  padding: 0
+  pre
+    overflow: auto
+    max-width: 100%
+
+.loader
+  animation: spin-around 500ms infinite linear
+  border: 2px solid $border
+  border-radius: 290486px
+  border-right-color: transparent
+  border-top-color: transparent
+  content: ""
+  display: block
+  height: 16px
+  position: relative
+  width: 16px
+
+.number
+  background: $background
+  border-radius: 290486px
+  display: inline-block
+  font-size: $size-medium
+  vertical-align: top
+
+.tag
+  align-items: center
+  background: $background
+  border-radius: 290486px
+  color: $text
+  display: inline-flex
+  font-size: 12px
+  height: 24px
+  justify-content: center
+  line-height: 16px
+  padding-left: 10px
+  padding-right: 10px
+  vertical-align: top
+  white-space: nowrap
+  .delete
+    margin-left: 4px
+    margin-right: -6px
+  &:not(.is-large)
+    .delete
+      @extend .delete.is-small
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background: $color
+      color: $color-invert
+  // Sizes
+  &.is-small
+    font-size: $size-small
+    height: 20px
+    padding-left: 8px
+    padding-right: 8px
+  &.is-medium
+    font-size: $size-normal
+    height: 32px
+    padding-left: 14px
+    padding-right: 14px
+  &.is-large
+    font-size: $size-5
+    height: 40px
+    line-height: 24px
+    padding-left: 18px
+    padding-right: 18px
+    .delete
+      margin-left: 4px
+      margin-right: -8px
+
+.unselectable
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+

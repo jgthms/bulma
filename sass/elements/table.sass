@@ -1,0 +1,91 @@
+.table
+  background: $white
+  color: $text-strong
+  margin-bottom: 20px
+  width: 100%
+  td,
+  th
+    border: 1px solid $border
+    border-width: 0 0 1px
+    padding: 8px 10px
+    vertical-align: top
+    // Modifiers
+    &.is-icon
+      padding: 5px
+      text-align: center
+      white-space: nowrap
+      width: 1%
+      .fa
+        +fa(21px, 24px)
+      &.is-link
+        padding: 0
+        & > a
+          padding: 5px
+    &.is-link
+      padding: 0
+      & > a
+        display: block
+        padding: 8px 10px
+        &:hover
+          background: $link
+          color: $link-invert
+    &.is-narrow
+      white-space: nowrap
+      width: 1%
+  th
+    color: $text-strong
+    text-align: left
+  tr
+    &:hover
+      background: $background
+      color: $text-strong
+  thead
+    td,
+    th
+      border-width: 0 0 2px
+      color: $text-light
+  tbody
+    tr
+      &:last-child
+        td,
+        th
+          border-bottom-width: 0
+  tfoot
+    td,
+    th
+      border-width: 2px 0 0
+      color: $text-light
+  // Modifiers
+  &.is-bordered
+    td,
+    th
+      border-width: 1px
+    tr
+      &:last-child
+        td,
+        th
+          border-bottom-width: 1px
+  &.is-narrow
+    td,
+    th
+      padding: 5px 10px
+      // Modifiers
+      &.is-icon
+        padding: 2px
+        &.is-link
+          padding: 0
+          & > a
+            padding: 2px
+      &.is-link
+        padding: 0
+        & > a
+          padding: 5px 10px
+  &.is-striped
+    tbody
+      tr
+        &:hover
+          background: darken($background, 2%)
+        &:nth-child(2n)
+          background: $background
+          &:hover
+            background: darken($background, 2%)
