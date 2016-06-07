@@ -15,20 +15,11 @@
   // Sizes
   &.is-small
     +control-small
-    &.is-flat
-      padding: 4px 6px
   &.is-medium
     +control-medium
-    &.is-flat
-      padding: 4px 10px
   &.is-large
     +control-large
-    &.is-flat
-      padding: 4px 12px
   // Modifiers
-  &.is-flat
-    border: none
-    box-shadow: none
   &.is-fullwidth
     display: block
     width: 100%
@@ -98,6 +89,21 @@
   &:hover
     &:after
       border-color: $link-hover
+  &.is-small
+    height: 24px
+    select
+      +control-small
+      padding-right: 28px
+  &.is-medium
+    height: 40px
+    select
+      +control-medium
+      padding-right: 44px
+  &.is-large
+    height: 48px
+    select
+      +control-large
+      padding-right: 52px
 
 .label
   color: $text-strong
@@ -140,6 +146,7 @@
     .select
       border-radius: 0
       margin-right: -1px
+      width: auto
       &:hover
         z-index: 2
       &:active,
@@ -153,10 +160,17 @@
         border-radius: 0 $radius $radius 0
         select
           border-radius: 0 $radius $radius 0
+      &.is-expanded
+        flex: 1
     &.has-addons-centered
       justify-content: center
     &.has-addons-right
       justify-content: flex-end
+    &.has-addons-fullwidth
+      .button,
+      .input,
+      .select
+        flex: 1
   &.has-icon
     & > .fa
       +fa(14px, 24px)
@@ -214,13 +228,12 @@
   &.is-grouped
     display: flex
     justify-content: flex-start
-    & > .button,
-    & > .input,
-    & > .select
+    & > .control
       &:not(:last-child)
+        margin-bottom: 0
         margin-right: 10px
-    & > .input
-      flex: 1
+      &.is-expanded
+        flex: 1
     &.is-grouped-centered
       justify-content: center
     &.is-grouped-right

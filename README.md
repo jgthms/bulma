@@ -62,6 +62,11 @@ Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most
 * Opera
 * Safari
 
+## Related projects
+
+* Bulma with Attribute Modules: https://github.com/j5bot/bulma-attribute-selectors
+* Bulma with Rails: https://github.com/joshuajansen/bulma-rails
+
 ## Copyright and license
 
 Code copyright 2016 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
