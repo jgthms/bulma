@@ -1,5 +1,33 @@
 # Bulma Changelog
 
+## 0.1.0
+
+* Fix #227
+* Fix #232
+* Fix #242
+* Fix #243
+* Fix #228
+* Fix #245
+* Fix #246
+
+## 0.0.28
+
+* BREAKING: `.control.is-grouped` now uses `.control` elements as direct children
+* Fix #220
+* Fix #214
+* Fix #210
+* Fix #206
+* Fix #122
+
+## 0.0.27
+
+* Fix: #217
+* Fix: #213
+* Fix: #209
+* Fix: #205
+* Fix: #204
+* Fix: #81
+
 ## 0.0.26
 
 * Added: `.modal-card`

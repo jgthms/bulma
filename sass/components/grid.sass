@@ -1,5 +1,5 @@
 .column
-  flex: 1
+  flex: 1 1 auto
   padding: 10px
   .columns.is-mobile > &.is-narrow
     flex: none
@@ -162,6 +162,43 @@
         width: ($i / 12) * 100%
       &.is-offset-#{$i}-desktop
         margin-left: ($i / 12) * 100%
+  +widescreen
+    &.is-narrow-widescreen
+      flex: none
+    &.is-full-widescreen
+      flex: none
+      width: 100%
+    &.is-three-quarters-widescreen
+      flex: none
+      width: 75%
+    &.is-two-thirds-widescreen
+      flex: none
+      width: 66.6666%
+    &.is-half-widescreen
+      flex: none
+      width: 50%
+    &.is-one-third-widescreen
+      flex: none
+      width: 33.3333%
+    &.is-one-quarter-widescreen
+      flex: none
+      width: 25%
+    &.is-offset-three-quarters-widescreen
+      margin-left: 75%
+    &.is-offset-two-thirds-widescreen
+      margin-left: 66.6666%
+    &.is-offset-half-widescreen
+      margin-left: 50%
+    &.is-offset-one-third-widescreen
+      margin-left: 33.3333%
+    &.is-offset-one-quarter-widescreen
+      margin-left: 25%
+    @for $i from 1 through 12
+      &.is-#{$i}-widescreen
+        flex: none
+        width: ($i / 12) * 100%
+      &.is-offset-#{$i}-widescreen
+        margin-left: ($i / 12) * 100%
 
 .columns
   margin-left: -10px
@@ -213,7 +250,8 @@
 
 .tile
   align-items: stretch
-  flex: 1
+  flex: 1 1 auto
+  min-height: min-content
   // Modifiers
   &.is-ancestor
     margin-left: -10px

@@ -1,6 +1,6 @@
 {
   "name": "bulma",
-  "version": "0.0.26",
+  "version": "0.1.0",
   "homepage": "http://bulma.io",
   "author": "jgthms <bbxdesign@gmail.com>",
   "description": "Modern CSS framework based on Flexbox",
@@ -28,10 +28,8 @@
   },
   "scripts": {
     "autoprefix": "postcss --use autoprefixer --output css/bulma.css css/bulma.css",
-    "autoprefix-min": "postcss --use autoprefixer --output css/bulma.min.css css/bulma.min.css",
-    "build": "npm run clean && npm run build-sass && npm run build-sass-min && npm run autoprefix && npm run autoprefix-min",
+    "build": "npm run clean && npm run build-sass && npm run autoprefix",
     "build-sass": "node-sass --output-style expanded --source-map true --output css/ bulma.sass --outFile css/bulma.css",
-    "build-sass-min": "node-sass --output-style compressed --source-map true --output css/ bulma.sass css/bulma.min.css",
     "clean": "rm -rf css",
     "pre-push": "npm run build && git add css && git commit --amend --no-edit",
     "start": "npm run build-sass -- --watch"

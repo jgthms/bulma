@@ -1,5 +1,5 @@
 =button-small
-  border-radius: 2px
+  border-radius: $radius-small
   font-size: 11px
   height: 24px
   line-height: 16px
@@ -39,7 +39,9 @@
     &:last-child
       margin-left: 4px
       margin-right: -2px
-  &:hover
+  &:hover,
+  &:focus,
+  &.is-active
     color: $control-hover
   &:active
     box-shadow: inset 0 1px 2px rgba($black, 0.2)
@@ -48,41 +50,42 @@
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
-      background: $color
+      background-color: $color
       border-color: transparent
       color: $color-invert
       &:hover,
-      &:focus
-        background: darken($color, 10%)
+      &:focus,
+      &.is-active
+        background-color: darken($color, 10%)
         border-color: transparent
         color: $color-invert
       &:active
         border-color: transparent
       &.is-inverted
-        background: $color-invert
+        background-color: $color-invert
         color: $color
         &:hover
-          background: darken($color-invert, 5%)
+          background-color: darken($color-invert, 5%)
       &.is-loading
         &:after
           border-color: transparent transparent $color-invert $color-invert !important
       &.is-outlined
-        background: transparent
+        background-color: transparent
         border-color: $color
         color: $color
         &:hover,
         &:focus
-          background: $color
+          background-color: $color
           border-color: $color
           color: $color-invert
   &.is-link
-    background: transparent
+    background-color: transparent
     border-color: transparent
     color: $text
     text-decoration: underline
     &:hover,
     &:focus
-      background: $border
+      background-color: $border
       color: $text-strong
   // Sizes
   &.is-small
@@ -96,7 +99,7 @@
   &.is-disabled
     opacity: 0.5
   &.is-fullwidth
-    display: block
+    display: flex
     width: 100%
   &.is-loading
     color: transparent !important
