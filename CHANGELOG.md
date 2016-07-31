@@ -1,5 +1,9 @@
 # Bulma Changelog
 
+## 0.1.1
+
+* Remove `flex: 1` shorthand
+
 ## 0.1.0
 
 * Fix #227
