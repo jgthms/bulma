@@ -64,11 +64,14 @@ a.nav-item
       padding: 10px
     &.is-active
       display: block
+  +tablet-only
+    padding-right: 20px
 
 .nav-left
   align-items: stretch
   display: flex
-  flex: 1
+  flex-basis: 0
+  flex-grow: 1
   justify-content: flex-start
   overflow: hidden
   overflow-x: auto
@@ -78,13 +81,16 @@ a.nav-item
   align-items: stretch
   display: flex
   justify-content: center
+  margin-left: auto
+  margin-right: auto
 
 .nav-right
   // Responsiveness
   +tablet
     align-items: stretch
     display: flex
-    flex: 1
+    flex-basis: 0
+    flex-grow: 1
     justify-content: flex-end
 
 // Main container
@@ -118,3 +124,10 @@ a.nav-item
   // Modifiers
   &.has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
+  // Responsiveness
+  +touch
+    & > .container,
+    .container > &
+      & > .nav-left
+        & > .nav-item.is-brand:first-child
+          padding-left: 20px
