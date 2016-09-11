@@ -694,6 +694,10 @@ table th {
   margin: 0 !important;
 }
 
+.is-paddingless {
+  padding: 0 !important;
+}
+
 .box {
   background-color: #fff;
   border-radius: 5px;
@@ -1760,6 +1764,8 @@ a.box:active {
 
 @media screen and (min-width: 769px) {
   .control-label {
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
@@ -2019,11 +2025,13 @@ a.box:active {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
     -webkit-box-flex: 5;
         -ms-flex-positive: 5;
             flex-grow: 5;
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
+    -ms-flex-negative: 1;
+        flex-shrink: 1;
   }
 }
 
@@ -4504,8 +4512,8 @@ a.box:active {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
   text-align: left;
 }
 
@@ -4793,8 +4801,6 @@ a.box:active {
 }
 
 .modal-card {
-  background-color: #fff;
-  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4826,6 +4832,8 @@ a.box:active {
 
 .modal-card-head {
   border-bottom: 1px solid #d3d6db;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .modal-card-title {
@@ -4840,6 +4848,8 @@ a.box:active {
 }
 
 .modal-card-foot {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   border-top: 1px solid #d3d6db;
 }
 
@@ -4848,11 +4858,12 @@ a.box:active {
 }
 
 .modal-card-body {
+  background-color: #fff;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
   overflow: auto;
   padding: 20px;
 }
@@ -5548,7 +5559,7 @@ a.panel-block:hover {
   padding: 40px 20px;
 }
 
-@media screen and (min-width: 1180px) {
+@media screen and (min-width: 1240px) {
   .hero-body {
     padding-left: 0;
     padding-right: 0;
