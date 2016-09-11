@@ -1,16 +1,19 @@
-### Instructions
+### PLEASE READ THE FOLLOWING INSTRUCTIONS
 
-**THIS IS AN EXAMPLE TEMPLATE.**  
-**If it's a bug on the website, submit an issue on the appropriate repository: [https://github.com/jgthms/bulma-website](https://github.com/jgthms/bulma-website)**  
-**Screenshots are more than welcome!**  
-**Please remove any unused content (including these instructions) before submitting your issue.**  
-**Thanks for helping out!** 😇
+Tag your issue accordingly:
 
-_[Remove this line and all of the above before submitting your issue]_
+* is it about Bulma or about the Docs?
+* is it a bug/feature/question or do you need help?
+* if it's a bug, is it a browser bug?
+
+Thanks for helping out! 😇
+
+Please remove any unused content (including these instructions) before submitting your issue.
 
 ### Checklist
 
-* [ ] This is about Bulma the **CSS framework** and **not** about the Bulma website
+* [ ] This is about the Bulma **CSS framework**
+* [ ] This is about the Bulma **Docs**
 * [ ] I'm using Bulma **version** [x.x.x]
 * [ ] My **browser** is:
 * [ ] This is a **Sass** issue: I'm using version [x.x.x]
@@ -18,15 +21,18 @@ _[Remove this line and all of the above before submitting your issue]_
 
 ### Description
 
-[Description of the bug, enhancement, or question]  
-[Please tag accordingly]
+_[Description of the bug, enhancement, or question]_
 
 ### Steps to Reproduce
 
-1. [First Step]
-2. [Second Step]
-3. [and so on...]
+1. _[First Step]_
+2. _[Second Step]_
+3. _[and so on...]_
 
-_Expected behavior:_ [What you expected to happen]
+### Expected behavior
 
-_Actual behavior:_ [What actually happened]
+_[What you expected to happen]_
+
+### Actual behavior
+
+_[What actually happened]_
