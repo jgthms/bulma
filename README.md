@@ -66,6 +66,7 @@ Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most
 
 * Bulma with Attribute Modules: https://github.com/j5bot/bulma-attribute-selectors
 * Bulma with Rails: https://github.com/joshuajansen/bulma-rails
+* iTemplate: [http://itemplate.ga/](http://itemplate.ga/dashboard.html)
 * Vue Admin powered by Bulma: https://github.com/fundon/vue-admin
 
 ## Copyright and license
