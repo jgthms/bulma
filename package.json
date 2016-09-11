@@ -27,12 +27,16 @@
     "postcss-cli": "^2.5.1"
   },
   "scripts": {
-    "autoprefix": "postcss --use autoprefixer --output css/bulma.css css/bulma.css",
-    "build": "npm run clean && npm run build-sass && npm run autoprefix",
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix",
+    "build-autoprefix": "postcss --use autoprefixer --output css/bulma.css css/bulma.css",
+    "build-clean": "rm -rf css",
     "build-sass": "node-sass --output-style expanded --source-map true --output css/ bulma.sass --outFile css/bulma.css",
-    "clean": "rm -rf css",
+    "docs": "npm run docs-sass && npm run docs-autoprefix",
+    "docs-autoprefix": "postcss --use autoprefixer --output docs/css/bulma-docs.css docs/css/bulma-docs.css",
+    "docs-sass": "node-sass --output-style expanded --output docs/css/ docs/bulma-docs.sass --outFile docs/css/bulma-docs.css",
     "pre-push": "npm run build && git add css && git commit --amend --no-edit",
-    "start": "npm run build-sass -- --watch"
+    "start": "npm run build-sass -- --watch",
+    "start-docs": "npm run docs-sass -- --watch"
   },
   "files": [
     "css",
