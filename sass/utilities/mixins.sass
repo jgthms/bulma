@@ -1,3 +1,6 @@
+@import "./animations.sass"
+@import "./variables.sass"
+
 =arrow($color)
   border: 1px solid $color
   border-right: 0
@@ -9,6 +12,10 @@
   position: absolute
   transform: rotate(-45deg)
   width: 7px
+
+=block
+  &:not(:last-child)
+    margin-bottom: 20px
 
 =clearfix
   &:after
@@ -23,6 +30,48 @@
   position: absolute
   top: 50%
 
+=delete
+  +unselectable
+  -moz-appearance: none
+  -webkit-appearance: none
+  background-color: rgba($black, 0.2)
+  border: none
+  border-radius: 290486px
+  cursor: pointer
+  display: inline-block
+  height: 24px
+  position: relative
+  vertical-align: top
+  width: 24px
+  &:before,
+  &:after
+    background-color: $white
+    content: ""
+    display: block
+    height: 2px
+    left: 50%
+    margin-left: -25%
+    margin-top: -1px
+    position: absolute
+    top: 50%
+    width: 50%
+  &:before
+    transform: rotate(45deg)
+  &:after
+    transform: rotate(-45deg)
+  &:hover
+    background-color: rgba($black, 0.5)
+  // Sizes
+  &.is-small
+    height: 16px
+    width: 16px
+  &.is-medium
+    height: 32px
+    width: 32px
+  &.is-large
+    height: 40px
+    width: 40px
+
 =fa($size, $dimensions)
   display: inline-block
   font-size: $size
@@ -31,6 +80,58 @@
   text-align: center
   vertical-align: top
   width: $dimensions
+
+=hamburger
+  cursor: pointer
+  display: block
+  height: $nav-height
+  position: relative
+  width: $nav-height
+  span
+    background-color: $text
+    display: block
+    height: 1px
+    left: 50%
+    margin-left: -7px
+    position: absolute
+    top: 50%
+    transition: none $speed $easing
+    transition-property: background, left, opacity, transform
+    width: 15px
+    &:nth-child(1)
+      margin-top: -6px
+    &:nth-child(2)
+      margin-top: -1px
+    &:nth-child(3)
+      margin-top: 4px
+  &:hover
+    background-color: $background
+  // Modifers
+  &.is-active
+    span
+      background-color: $link
+      &:nth-child(1)
+        margin-left: -5px
+        transform: rotate(45deg)
+        transform-origin: left top
+      &:nth-child(2)
+        opacity: 0
+      &:nth-child(3)
+        margin-left: -5px
+        transform: rotate(-45deg)
+        transform-origin: left bottom
+
+=loader
+  animation: spin-around 500ms infinite linear
+  border: 2px solid $border
+  border-radius: 290486px
+  border-right-color: transparent
+  border-top-color: transparent
+  content: ""
+  display: block
+  height: 16px
+  position: relative
+  width: 16px
 
 =overlay($offset: 0)
   bottom: $offset
@@ -56,6 +157,13 @@
   overflow: hidden
   text-indent: -290486px
   width: $width
+
+=unselectable
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
 
 // Responsiveness
 

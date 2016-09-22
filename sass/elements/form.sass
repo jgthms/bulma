@@ -1,4 +1,3 @@
-@import "../base/placeholders.sass"
 @import "../utilities/controls.sass"
 @import "../utilities/mixins.sass"
 
@@ -42,7 +41,8 @@
   padding: 10px
   resize: vertical
 
-%control-with-element
+.checkbox,
+.radio
   cursor: pointer
   display: inline-block
   line-height: 16px
@@ -58,11 +58,7 @@
     input
       pointer-events: none
 
-.checkbox
-  @extend %control-with-element
-
 .radio
-  @extend %control-with-element
   & + .radio
     margin-left: 10px
 
@@ -257,7 +253,7 @@
         flex-shrink: 1
   &.is-loading
     &:after
-      @extend %loader
+      +loader
       position: absolute !important
       right: 8px
       top: 8px
