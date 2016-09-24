@@ -13,21 +13,22 @@ route: index
   <div class="hero-body">
     <div class="container">
       <p id="b">
-        <img src="{{ site.baseurl }}/images/b.png" alt="{{ site.title }}">
+        {% include svg/bulma-icon.svg %}
+        {% include svg/bulma-icon.svg %}
       </p>
-      <h1 class="title">
+      <h1 id="bulma" class="title">
         Bulma
       </h1>
-      <h2 class="subtitle">
+      <h2 id="modern-framework" class="subtitle">
         A <strong>modern</strong> CSS framework based on <strong>Flexbox</strong>
       </h2>
       <pre id="npm"><code>npm install bulma</code></pre>
-      <div class="block">
+      <div id="ghbtns" class="block">
         <iframe src="https://ghbtns.com/github-btn.html?user=jgthms&repo=bulma&type=star&count=true&size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
         <iframe src="https://ghbtns.com/github-btn.html?user=jgthms&repo=bulma&type=fork&count=false&size=large" frameborder="0" scrolling="0" width="80px" height="30px"></iframe>
       </div>
       {% include carbon.html %}
-      <p class="hero-buttons">
+      <p id="download" class="hero-buttons">
         <a class="button is-primary is-large" href="{{ site.download }}">
           <span class="icon">
             <i class="fa fa-download"></i>
@@ -47,7 +48,7 @@ route: index
   <div class="hero-body">
     <div class="container">
       <nav class="columns">
-        <div class="column has-text-centered">
+        <a class="column has-text-centered" href="{{ site.baseurl }}/documentation/overview/responsiveness/">
           <span class="icon is-large" style="margin-right: -15px;">
             <i class="fa fa-mobile"></i>
           </span>
@@ -57,20 +58,30 @@ route: index
           <span class="icon is-large" style="margin-right: 10px;">
             <i class="fa fa-desktop"></i>
           </span>
-          <p class="title is-4"><strong>Responsive</strong> design</p>
-        </div>
-        <div class="column has-text-centered">
+          <p class="title is-4"><strong>Responsive</strong></p>
+          <p class="subtitle">Designed for <strong>mobile</strong>-first</p>
+        </a>
+        <a class="column has-text-centered" href="{{ site.baseurl }}/documentation/overview/modular/">
+          <span class="icon is-large">
+            <i class="fa fa-cubes"></i>
+          </span>
+          <p class="title is-4"><strong>Modular</strong></p>
+          <p class="subtitle">Just import what you <strong>need</strong></p>
+        </a>
+        <a class="column has-text-centered" href="{{ site.baseurl }}/documentation/grid/columns/">
           <span class="icon is-large">
             <i class="fa fa-css3"></i>
           </span>
-          <p class="title is-4">Built with <strong>Flexbox</strong></p>
-        </div>
-        <div class="column has-text-centered">
+          <p class="title is-4"><strong>Modern</strong></p>
+          <p class="subtitle">Built with <strong>Flexbox</strong></p>
+        </a>
+        <a class="column has-text-centered" href="{{ site.github }}">
           <span class="icon is-large">
             <i class="fa fa-github"></i>
           </span>
-          <p class="title is-4">Open source on <strong><a href="{{ site.github }}">GitHub</a></strong></p>
-        </div>
+          <p class="title is-4"><strong>Free</strong></p>
+          <p class="subtitle">Open source on <strong>GitHub</strong></p>
+        </a>
       </nav>
     </div>
   </div>
@@ -220,14 +231,12 @@ route: index
       </div>
       <div class="tile is-parent">
         <article class="tile is-child notification is-success">
+          <p class="title">Tall tile</p>
+          <p class="subtitle">With even more content</p>
           <div class="content">
-            <p class="title">Tall tile</p>
-            <p class="subtitle">With even more content</p>
-            <div class="content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
-              <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
-              <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
-            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+            <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
+            <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
           </div>
         </article>
       </div>
@@ -287,7 +296,7 @@ route: index
           </p>
         </div>
         <p class="level-item">
-          <a class="button is-success">
+          <a class="button is-primary">
             New
           </a>
         </p>
@@ -337,7 +346,7 @@ route: index
         <h3 class="title is-2">
           <a href="{{ site.baseurl }}/documentation/components/media-object/">
             <span class="icon is-large">
-              <i class="fa fa-cubes"></i>
+              <i class="fa fa-magic"></i>
             </span>
             Versatile <strong>media object</strong>
           </a>
@@ -568,9 +577,9 @@ route: index
           </ul>
         </div>
         <p class="block">
-          <span class="tag is-dark">Tag<button class="delete"></button></span>
-          <span class="tag is-info">Two<button class="delete"></button></span>
-          <span class="tag is-danger">Three<button class="delete"></button></span>
+          <span class="tag is-dark">Tag<button class="delete is-small"></button></span>
+          <span class="tag is-info">Two<button class="delete is-small"></button></span>
+          <span class="tag is-danger">Three<button class="delete is-small"></button></span>
         </p>
         <div class="message is-warning">
           <div class="message-header">

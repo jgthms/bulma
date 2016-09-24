@@ -1,3 +1,6 @@
+@import "../utilities/controls.sass"
+@import "../utilities/variables.sass"
+
 =button-small
   border-radius: $radius-small
   font-size: 11px
@@ -18,7 +21,8 @@
 
 .button
   +control
-  @extend .unselectable
+  +unselectable
+  cursor: pointer
   justify-content: center
   padding-left: 10px
   padding-right: 10px
@@ -51,16 +55,14 @@
     $color-invert: nth($pair, 2)
     &.is-#{$name}
       background-color: $color
-      border-color: transparent
+      border-width: 0
       color: $color-invert
       &:hover,
       &:focus,
       &.is-active
-        background-color: darken($color, 10%)
+        background-color: darken($color, 5%)
         border-color: transparent
         color: $color-invert
-      &:active
-        border-color: transparent
       &.is-inverted
         background-color: $color-invert
         color: $color
@@ -72,6 +74,7 @@
       &.is-outlined
         background-color: transparent
         border-color: $color
+        border-width: 1px
         color: $color
         &:hover,
         &:focus
@@ -80,12 +83,12 @@
           color: $color-invert
   &.is-link
     background-color: transparent
-    border-color: transparent
+    border-width: 0
     color: $text
     text-decoration: underline
     &:hover,
     &:focus
-      background-color: $border
+      background-color: $background
       color: $text-strong
   // Sizes
   &.is-small
@@ -105,6 +108,6 @@
     color: transparent !important
     pointer-events: none
     &:after
-      @extend .loader
+      +loader
       +center(16px)
       position: absolute !important
