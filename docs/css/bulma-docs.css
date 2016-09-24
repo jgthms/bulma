@@ -3415,6 +3415,16 @@ a.box:active {
   }
 }
 
+.media-number,
+.media-left,
+.media-right {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
 .media-number {
   background-color: whitesmoke;
   border-radius: 290486px;
@@ -3422,22 +3432,11 @@ a.box:active {
   font-size: 18px;
   height: 32px;
   line-height: 24px;
+  margin-right: 10px;
   min-width: 32px;
   padding: 4px 8px;
   text-align: center;
   vertical-align: top;
-}
-
-@media screen and (max-width: 768px) {
-  .media-number {
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .media-number {
-    margin-right: 10px;
-  }
 }
 
 .media-left {
@@ -3998,6 +3997,11 @@ a.box:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -6708,8 +6712,8 @@ a.panel-block:hover {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 
 @keyframes spin-around {
@@ -6792,10 +6796,14 @@ body.page-grid .column > .notification {
   }
 }
 
+svg {
+  max-height: 100%;
+  max-width: 100%;
+}
+
 #carbon {
   max-width: 340px;
   min-height: 130px;
-  min-width: 300px;
   padding: 15px;
 }
 
@@ -7041,7 +7049,7 @@ body.page-grid .column > .notification {
           animation-name: floatUp;
   -webkit-animation-timing-function: cubic-bezier(0, 0.71, 0.29, 1);
           animation-timing-function: cubic-bezier(0, 0.71, 0.29, 1);
-  border-radius: 20px;
+  border-radius: 24px;
   display: inline-block;
   height: 240px;
   margin-bottom: 40px;
@@ -7106,9 +7114,9 @@ body.page-grid .column > .notification {
 
 @media screen and (max-width: 768px) {
   #b {
-    border-radius: 10px;
-    height: 120px;
-    width: 120px;
+    border-radius: 16px;
+    height: 160px;
+    width: 160px;
   }
 }
 
@@ -7195,7 +7203,8 @@ html.route-index #carbon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-bottom: 1em;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -7207,10 +7216,11 @@ html.route-index #carbon {
   font-size: 11px;
   height: 20px;
   line-height: 20px;
+  margin: 5px;
 }
 
-#social iframe:last-child {
-  margin-left: 10px;
+#social iframe {
+  margin: 5px;
 }
 
 #images tr td:nth-child(2) {
