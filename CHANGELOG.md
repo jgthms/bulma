@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.2.1
+
+* Fix: container flex
+* Fix: nav-item flex
+* Fix: media-number flex
+
 ## 0.2.0
 
 * Added: new branding
