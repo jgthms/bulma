@@ -6310,20 +6310,106 @@ body.page-grid .column > .notification {
   color: white;
 }
 
+@keyframes floatUp {
+  from {
+    box-shadow: 0 0 0 rgba(18, 18, 18, 0), 0 0 0 rgba(18, 18, 18, 0), 0 0 0 rgba(18, 18, 18, 0);
+    transform: scale(0.86);
+  }
+  to {
+    box-shadow: 0 20px 60px rgba(18, 18, 18, 0.05), 0 5px 10px rgba(18, 18, 18, 0.1), 0 1px 1px rgba(18, 18, 18, 0.2);
+    transform: scale(1);
+  }
+}
+
+@keyframes strokePath {
+  from {
+    stroke-dashoffset: 880;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(0.86);
+  }
+  67% {
+    opacity: 1;
+    transform: scale(0.86);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
 #b {
+  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: floatUp;
+  animation-timing-function: cubic-bezier(0, 0.71, 0.29, 1);
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(18, 18, 18, 0.05), 0 5px 10px rgba(18, 18, 18, 0.1), 0 1px 1px rgba(18, 18, 18, 0.2);
   display: inline-block;
   height: 240px;
   margin-bottom: 40px;
+  position: relative;
   vertical-align: top;
   width: 240px;
 }
 
 #b svg {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   display: block;
   height: 240px;
   width: 240px;
+}
+
+#b svg:first-child {
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-name: fadeOut;
+  animation-timing-function: cubic-bezier(0, 0.71, 0.29, 1);
+}
+
+#b svg:first-child g {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: strokePath;
+  animation-timing-function: cubic-bezier(0, 0.71, 0.29, 1);
+  fill: none;
+  stroke: #11e4c4;
+  stroke-dasharray: 880;
+  stroke-width: 2px;
+}
+
+#b svg:last-child {
+  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+  animation-timing-function: cubic-bezier(0, 0.71, 0.29, 1);
+}
+
+#b svg:last-child g {
+  fill: #11e4c4;
 }
 
 @media screen and (max-width: 768px) {
