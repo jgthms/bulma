@@ -1,27 +1,33 @@
 @import "./functions.sass"
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 // 1. Initial variables
 
 // Colors
+$black:        hsl(0, 0%, 4%) !default
+$black-bis:    hsl(0, 0%, 7%) !default
+$black-ter:    hsl(0, 0%, 14%) !default
 
-$black:        hsl(0, 0%, 7%) !default
-$grey-darker:  hsl(0, 0%, 14%) !default
-$grey-dark:    hsl(0, 0%, 48%) !default
-$grey:         hsl(0, 0%, 71%) !default
-$grey-light:   hsl(0, 0%, 86%) !default
-$grey-lighter: hsl(0, 0%, 96%) !default
+$grey-darker:  hsl(0, 0%, 21%) !default
+$grey-dark:    hsl(0, 0%, 29%) !default
+$grey:         hsl(0, 0%, 48%) !default
+$grey-light:   hsl(0, 0%, 71%) !default
+$grey-lighter: hsl(0, 0%, 86%) !default
+
+$white-ter:    hsl(0, 0%, 96%) !default
+$white-bis:    hsl(0, 0%, 98%) !default
 $white:        hsl(0, 0%, 100%) !default
 
-$orange:    hsl(14,  100%, 53%) !default
-$yellow:    hsl(48,  100%, 53%) !default
-$green:     hsl(141, 86%,  53%) !default
-$turquoise: hsl(171, 86%,  48%) !default
-$blue:      hsl(217, 100%, 53%) !default
-$purple:    hsl(271, 100%, 71%) !default
-$red:       hsl(348, 100%, 53%) !default
+$orange:       hsl(14,  100%, 53%) !default
+$yellow:       hsl(48,  100%, 53%) !default
+$green:        hsl(141, 86%,  53%) !default
+$turquoise:    hsl(171, 86%,  48%) !default
+$blue:         hsl(217, 100%, 53%) !default
+$purple:       hsl(271, 100%, 71%) !default
+$red:          hsl(348, 100%, 53%) !default
 
 // Typography
-
 $family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
 $family-monospace: "Inconsolata", "Consolas", "Monaco", monospace !default
 
@@ -39,20 +45,15 @@ $weight-bold: 700 !default
 $weight-title-normal: 300 !default
 $weight-title-bold: 500 !default
 
-// Dimensions
-
-$column-gap: 20px !default
-
-$nav-height: 50px !default
-
 // Miscellaneous
-
 $easing: ease-out !default
 $radius-small: 2px !default
 $radius: 3px !default
 $radius-large: 5px !default
 $speed: 86ms !default
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 // 2. Primary colors
 
 $primary: $turquoise !default
@@ -62,15 +63,14 @@ $success: $green !default
 $warning: $yellow !default
 $danger: $red !default
 
-$light: $grey-lighter !default
-$dark: $grey-dark !default
+$light: $white-ter !default
+$dark: $grey-darker !default
 
-$text: $grey-dark !default
-
-// 3. Generated variables
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// 3. Applied variables
 
 // Invert colors
-
 $primary-invert: findColorInvert($primary) !default
 
 $info-invert: findColorInvert($info) !default
@@ -82,22 +82,20 @@ $light-invert: $dark !default
 $dark-invert: $light !default
 
 // General colors
+$body-background: $white-ter !default
 
-$body-background: $grey-lighter !default
+$background: $white-ter !default
 
-$background: $grey-lighter !default
-
-$border: $grey-light !default
-$border-hover: $grey !default
+$border: $grey-lighter !default
+$border-hover: $grey-light !default
 
 // Text colors
-
+$text: $grey-dark !default
 $text-invert: findColorInvert($text) !default
 $text-light: $grey !default
 $text-strong: $grey-darker !default
 
 // Code colors
-
 $code: $red !default
 $code-background: $background !default
 
@@ -105,34 +103,18 @@ $pre: $text !default
 $pre-background: $background !default
 
 // Link colors
-
 $link: $primary !default
 $link-invert: $primary-invert !default
 $link-visited: $purple !default
 
 $link-hover: $grey-darker !default
-$link-hover-background: $grey-lighter !default
+$link-hover-background: $white-ter !default
 $link-hover-border: $grey-darker !default
 
 $link-active: $grey-darker !default
 $link-active-border: $grey-darker !default
 
-// Control colors
-
-$control: $text-strong !default
-$control-background: $text-invert !default
-$control-border: $border !default
-
-$control-hover: $link-hover !default
-$control-hover-border: $border-hover !default
-
-$control-active: $link !default
-$control-active-background: $link !default
-$control-active-background-invert: $link-invert !default
-$control-active-border: $link !default
-
 // Typography
-
 $family-primary: $family-sans-serif !default
 $family-code: $family-monospace !default
 
@@ -142,6 +124,8 @@ $size-medium: $size-5 !default
 $size-large: $size-3 !default
 $size-huge: $size-1 !default
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 // 4. Lists and maps
 
 $colors: (white: ($white, $black), black: ($black, $white), light: ($light, $light-invert), dark: ($dark, $dark-invert), primary: ($primary, $primary-invert), info: ($info, $info-invert), success: ($success, $success-invert), warning: ($warning, $warning-invert), danger: ($danger, $danger-invert)) !default

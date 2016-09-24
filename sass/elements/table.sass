@@ -1,14 +1,23 @@
 @import "../utilities/mixins.sass"
 @import "../utilities/variables.sass"
 
+$table: $text-strong !default
+$table-background: $white !default
+$table-border: $border !default
+
+$table-head: $text-light !default
+
+$table-row-hover-background: $white-ter !default
+$table-row-even-background: $white-bis !default
+
 .table
-  background-color: $white
-  color: $text-strong
+  background-color: $table-background
+  color: $table
   margin-bottom: 20px
   width: 100%
   td,
   th
-    border: 1px solid $border
+    border: 1px solid $table-border
     border-width: 0 0 1px
     padding: 8px 10px
     vertical-align: top
@@ -40,13 +49,12 @@
     text-align: left
   tr
     &:hover
-      background-color: $background
-      color: $text-strong
+      background-color: $table-row-hover-background
   thead
     td,
     th
       border-width: 0 0 2px
-      color: $text-light
+      color: $table-head
   tbody
     tr
       &:last-child
@@ -57,7 +65,7 @@
     td,
     th
       border-width: 2px 0 0
-      color: $text-light
+      color: $table-head
   // Modifiers
   &.is-bordered
     td,
@@ -86,9 +94,7 @@
   &.is-striped
     tbody
       tr
-        &:hover
-          background-color: darken($background, 2%)
-        &:nth-child(2n)
-          background-color: $background
+        &:nth-child(even)
+          background-color: $table-row-even-background
           &:hover
-            background-color: darken($background, 2%)
+            background-color: $table-row-hover-background

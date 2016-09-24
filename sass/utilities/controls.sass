@@ -1,16 +1,39 @@
 @import "./mixins.sass"
 @import "./variables.sass"
 
+$control: $text-strong !default
+$control-background: $text-invert !default
+$control-border: $border !default
+
+$control-hover: $link-hover !default
+$control-hover-border: $border-hover !default
+
+$control-active: $link !default
+$control-active-background: $link !default
+$control-active-background-invert: $link-invert !default
+$control-active-border: $link !default
+
+$control-disabled: $border !default
+$control-disabled-background: $background !default
+
+$control-radius: $radius !default
+$control-radius-small: $radius-small !default
+$control-size: $size-normal !default
+$control-size-small: $size-small !default
+
+$control-icon: $grey-lighter !default
+$control-icon-active: $grey-light !default
+
 =control
   -moz-appearance: none
   -webkit-appearance: none
   align-items: center
   background-color: $control-background
   border: 1px solid $control-border
-  border-radius: $radius
+  border-radius: $control-radius
   color: $control
   display: inline-flex
-  font-size: $size-normal
+  font-size: $control-size
   height: 32px
   justify-content: flex-start
   line-height: 24px
@@ -27,15 +50,15 @@
     outline: none
   &[disabled],
   &.is-disabled
-    background-color: $background
-    border-color: $control-border
+    background-color: $control-disabled-background
+    border-color: $control-disabled
     cursor: not-allowed
     pointer-events: none
     +placeholder
       color: rgba($control, 0.3)
 
 =control-small
-  border-radius: $radius-small
+  border-radius: $control-radius-small
   font-size: 11px
   height: 24px
   line-height: 16px
