@@ -1,5 +1,18 @@
 # Bulma Changelog
 
+## 0.2.1
+
+* Fix: container flex
+* Fix: nav-item flex
+* Fix: media-number flex
+
+## 0.2.0
+
+* Added: new branding
+* Added: modularity
+* Added: grid folder
+* Added: .github folder
+
 ## 0.1.1
 
 * Remove `flex: 1` shorthand

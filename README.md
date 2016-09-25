@@ -6,7 +6,7 @@
 
 Bulma is a modern CSS framework based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
 
-[![Bulma: a Flexbox CSS framework](https://raw.githubusercontent.com/jgthms/bulma/master/images/bulma-banner.png)](http://bulma.io)
+[![Bulma: a Flexbox CSS framework](https://raw.githubusercontent.com/jgthms/bulma/master/docs/images/bulma-banner.png)](http://bulma.io)
 
 ## Quick install
 

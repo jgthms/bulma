@@ -1,0 +1,35 @@
+@import "../utilities/mixins.sass"
+@import "../utilities/variables.sass"
+
+.tile
+  align-items: stretch
+  display: block
+  flex-basis: auto
+  flex-grow: 1
+  flex-shrink: 1
+  min-height: min-content
+  // Modifiers
+  &.is-ancestor
+    margin-left: -10px
+    margin-right: -10px
+    margin-top: -10px
+    &:last-child
+      margin-bottom: -10px
+    &:not(:last-child)
+      margin-bottom: 10px
+  &.is-child
+    margin: 0 !important
+  &.is-parent
+    padding: 10px
+  &.is-vertical
+    flex-direction: column
+    & > .tile.is-child:not(:last-child)
+      margin-bottom: 20px !important
+  // Responsiveness
+  +tablet
+    &:not(.is-child)
+      display: flex
+    @for $i from 1 through 12
+      &.is-#{$i}
+        flex: none
+        width: ($i / 12) * 100%
