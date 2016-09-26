@@ -5,6 +5,7 @@
 * Fix: container flex
 * Fix: nav-item flex
 * Fix: media-number flex
+* Fix: new brand colors
 
 ## 0.2.0
 
