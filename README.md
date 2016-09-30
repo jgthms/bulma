@@ -40,16 +40,13 @@ There is **no** JavaScript included. People generally want to use their own JS i
 
 ## Roadmap
 
-Bulma keeps track of the upcoming fixes and features on Trello: [Bulma roadmap](https://trello.com/b/5Lzqejo3/bulma-roadmap)
+Bulma keeps track of the upcoming fixes and features on [Trello](https://trello.com/b/5Lzqejo3/bulma-roadmap) and on [GitHub](https://github.com/jgthms/bulma/projects)
 
 It's more a tasklist than a roadmap, but it will give you an overview of where things are going!
 
-## Documentation website
+## Documentation
 
-This repository is **only** for the Bulma source files.
-The [website](http://bulma.io) (which includes the [documentation](http://bulma.io/documentation/overview/start/)) is in another repo: [https://github.com/jgthms/bulma-website](https://github.com/jgthms/bulma-website)
-
-If you encounter a typo or a lack of documentation, submit an issue [there](https://github.com/jgthms/bulma-website/issues).
+The Bulma docs have been moved to the main repository. When submitting an [issue](https://github.com/jgthms/bulma/issues) or [Pull Request](https://github.com/jgthms/bulma/pulls), please specify whether you are targeting the core Sass files or GitHub Pages documentation.
 
 ## Browser Support
 
