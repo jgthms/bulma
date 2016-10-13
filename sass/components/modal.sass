@@ -1,8 +1,12 @@
+@import "../utilities/mixins.sass"
+@import "../utilities/variables.sass"
+
 .modal-background
   +overlay
   background-color: rgba($black, 0.86)
 
-.modal-content
+.modal-content,
+.modal-card
   margin: 0 20px
   max-height: calc(100vh - 160px)
   overflow: auto
@@ -15,7 +19,7 @@
     width: 640px
 
 .modal-close
-  @extend .delete
+  +delete
   background: none
   height: 40px
   position: fixed
@@ -24,9 +28,6 @@
   width: 40px
 
 .modal-card
-  @extend .modal-content
-  background-color: $white
-  border-radius: $radius-large
   display: flex
   flex-direction: column
   max-height: calc(100vh - 40px)
@@ -44,21 +45,28 @@
 
 .modal-card-head
   border-bottom: 1px solid $border
+  border-top-left-radius: $radius-large
+  border-top-right-radius: $radius-large
 
 .modal-card-title
   color: $text-strong
-  flex: 1
+  flex-grow: 1
+  flex-shrink: 0
   font-size: $size-4
   line-height: 1
 
 .modal-card-foot
+  border-bottom-left-radius: $radius-large
+  border-bottom-right-radius: $radius-large
   border-top: 1px solid $border
   .button
     &:not(:last-child)
       margin-right: 10px
 
 .modal-card-body
-  flex: 1
+  background-color: $white
+  flex-grow: 1
+  flex-shrink: 1
   overflow: auto
   padding: 20px
 

@@ -1,0 +1,216 @@
+---
+layout: documentation
+doc-tab: components
+doc-subtab: modal
+---
+
+{% include subnav-components.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Modal</h1>
+    <h2 class="subtitle">A classic <strong>modal</strong> overlay, in which you can include <em>any</em> content you want</h2>
+
+    <hr>
+
+    <div class="content">
+      <p>The modal structure is very simple:</p>
+      <ul>
+        <li>
+          <code>modal</code>: the main container
+          <ul>
+            <li>
+              <code>modal-background</code>: a transparent overlay that can act as a click target to close the modal
+            </li>
+            <li>
+              <code>modal-content</code>: a horizontally and verticaly centered container, with a maximum width of 640px, in which you can include <em>any</em> content
+            </li>
+            <li>
+              <code>modal-close</code>: a simple cross located in the top right corner
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        <a class="button is-primary is-large modal-button" data-target="#modal">Launch example modal</a>
+      </p>
+    </div>
+
+{% highlight html %}
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <!-- Any other Bulma elements you want -->
+  </div>
+  <button class="modal-close"></button>
+</div>
+{% endhighlight %}
+
+    <div class="content">
+      <p>To <strong>activate</strong> the modal, just add the <code>is-active</code> modifier on the <code>.modal</code> container</p>
+    </div>
+
+    <div class="message is-danger">
+      <div class="message-header">
+        No JavaScript
+      </div>
+      <div class="message-body">
+        Bulma does <strong>not</strong> include any JavaScript interaction. You will have to implement the class toggle yourself
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">Image modal</h3>
+
+    <div class="content">
+      <p>Because a modal can contain <strong>anything you want</strong>, you can very simply use it to build an image gallery for example:</p>
+      <p>
+        <a class="button is-primary is-large modal-button" data-target="#modal-bis">Launch image modal</a>
+      </p>
+    </div>
+
+{% highlight html %}
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p class="image is-4by3">
+      <img src="http://placehold.it/1280x960">
+    </p>
+  </div>
+  <button class="modal-close"></button>
+</div>
+{% endhighlight %}
+
+    <hr>
+
+    <h3 class="title">Modal card</h3>
+
+    <div class="content">
+      <p>If you want a more classic modal, with a <strong>head</strong>, a <strong>body</strong> and a <strong>foot</strong>, use the <code>modal-card</code>.</p>
+      <p>
+        <a class="button is-primary is-large modal-button" data-target="#modal-ter">Launch modal card</a>
+      </p>
+    </div>
+
+{% highlight html %}
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <a class="button is-primary">Save changes</a>
+      <a class="button">Cancel</a>
+    </footer>
+  </div>
+</div>
+{% endhighlight %}
+
+  </div>
+</section>
+
+<div id="modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <img src="http://placehold.it/128x128" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-reply"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-heart"></i></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
+  </div>
+  <button class="modal-close"></button>
+</div>
+
+<div id="modal-bis" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p class="image is-4by3">
+      <img src="http://placehold.it/1280x960">
+    </p>
+  </div>
+  <button class="modal-close"></button>
+</div>
+
+<div id="modal-ter" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
+        <h2>Second level</h2>
+        <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+        <ul>
+          <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
+          <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
+          <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
+          <li>Ut non enim metus.</li>
+        </ul>
+        <h3>Third level</h3>
+        <p>Quisque ante lacus, malesuada ac auctor vitae, congue <a href="#">non ante</a>. Phasellus lacus ex, semper ac tortor nec, fringilla condimentum orci. Fusce eu rutrum tellus.</p>
+        <ol>
+          <li>Donec blandit a lorem id convallis.</li>
+          <li>Cras gravida arcu at diam gravida gravida.</li>
+          <li>Integer in volutpat libero.</li>
+          <li>Donec a diam tellus.</li>
+          <li>Aenean nec tortor orci.</li>
+          <li>Quisque aliquam cursus urna, non bibendum massa viverra eget.</li>
+          <li>Vivamus maximus ultricies pulvinar.</li>
+        </ol>
+        <blockquote>Ut venenatis, nisl scelerisque sollicitudin fermentum, quam libero hendrerit ipsum, ut blandit est tellus sit amet turpis.</blockquote>
+        <p>Quisque at semper enim, eu hendrerit odio. Etiam auctor nisl et <em>justo sodales</em> elementum. Maecenas ultrices lacus quis neque consectetur, et lobortis nisi molestie.</p>
+        <p>Sed sagittis enim ac tortor maximus rutrum. Nulla facilisi. Donec mattis vulputate risus in luctus. Maecenas vestibulum interdum commodo.</p>
+        <p>Suspendisse egestas sapien non felis placerat elementum. Morbi tortor nisl, suscipit sed mi sit amet, mollis malesuada nulla. Nulla facilisi. Nullam ac erat ante.</p>
+        <h4>Fourth level</h4>
+        <p>Nulla efficitur eleifend nisi, sit amet bibendum sapien fringilla ac. Mauris euismod metus a tellus laoreet, at elementum ex efficitur.</p>
+        <p>Maecenas eleifend sollicitudin dui, faucibus sollicitudin augue cursus non. Ut finibus eleifend arcu ut vehicula. Mauris eu est maximus est porta condimentum in eu justo. Nulla id iaculis sapien.</p>
+        <p>Phasellus porttitor enim id metus volutpat ultricies. Ut nisi nunc, blandit sed dapibus at, vestibulum in felis. Etiam iaculis lorem ac nibh bibendum rhoncus. Nam interdum efficitur ligula sit amet ullamcorper. Etiam tristique, leo vitae porta faucibus, mi lacus laoreet metus, at cursus leo est vel tellus. Sed ac posuere est. Nunc ultricies nunc neque, vitae ultricies ex sodales quis. Aliquam eu nibh in libero accumsan pulvinar. Nullam nec nisl placerat, pretium metus vel, euismod ipsum. Proin tempor cursus nisl vel condimentum. Nam pharetra varius metus non pellentesque.</p>
+        <h5>Fifth level</h5>
+        <p>Aliquam sagittis rhoncus vulputate. Cras non luctus sem, sed tincidunt ligula. Vestibulum at nunc elit. Praesent aliquet ligula mi, in luctus elit volutpat porta. Phasellus molestie diam vel nisi sodales, a eleifend augue laoreet. Sed nec eleifend justo. Nam et sollicitudin odio.</p>
+        <h6>Sixth level</h6>
+        <p>Cras in nibh lacinia, venenatis nisi et, auctor urna. Donec pulvinar lacus sed diam dignissim, ut eleifend eros accumsan. Phasellus non tortor eros. Ut sed rutrum lacus. Etiam purus nunc, scelerisque quis enim vitae, malesuada ultrices turpis. Nunc vitae maximus purus, nec consectetur dui. Suspendisse euismod, elit vel rutrum commodo, ipsum tortor maximus dui, sed varius sapien odio vitae est. Etiam at cursus metus.</p>
+        </ul>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <a class="button is-success">Save changes</a>
+      <a class="button">Cancel</a>
+    </footer>
+  </div>
+</div>

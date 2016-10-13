@@ -1,3 +1,6 @@
+@import "../utilities/mixins.sass"
+@import "../utilities/variables.sass"
+
 .level-item
   .title,
   .subtitle
@@ -14,7 +17,7 @@
       margin-right: 10px
     // Modifiers
     &.is-flexible
-      flex: 1
+      flex-grow: 1
 
 .level-left
   // Responsiveness
@@ -33,7 +36,7 @@
     justify-content: flex-end
 
 .level
-  @extend .block
+  +block
   align-items: center
   justify-content: space-between
   code
@@ -48,10 +51,10 @@
       &:not(:last-child)
         margin-bottom: 0
       &:not(.is-narrow)
-        flex: 1
+        flex-grow: 1
   // Responsiveness
   +tablet
     display: flex
     & > .level-item
       &:not(.is-narrow)
-        flex: 1
+        flex-grow: 1

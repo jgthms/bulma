@@ -1,7 +1,12 @@
+@import "../utilities/mixins.sass"
+@import "../utilities/variables.sass"
+
+$nav-height: 50px !default
+
 // Components
 
 .nav-toggle
-  @extend .hamburger
+  +hamburger($nav-height)
   // Responsiveness
   +tablet
     display: none
@@ -9,10 +14,13 @@
 .nav-item
   align-items: center
   display: flex
+  flex-grow: 0
+  flex-shrink: 0
   justify-content: center
   padding: 10px
   a
     flex-grow: 1
+    flex-shrink: 0
   img
     max-height: 24px
   .button + .button
@@ -28,7 +36,7 @@
 
 .nav-item a,
 a.nav-item
-  color: $text
+  color: $text-light
   &:hover
     color: $link-hover
   // Modifiers
@@ -64,11 +72,15 @@ a.nav-item
       padding: 10px
     &.is-active
       display: block
+  +tablet-only
+    padding-right: 20px
 
 .nav-left
   align-items: stretch
   display: flex
-  flex: 1
+  flex-basis: 0
+  flex-grow: 1
+  flex-shrink: 0
   justify-content: flex-start
   overflow: hidden
   overflow-x: auto
@@ -78,11 +90,15 @@ a.nav-item
   align-items: stretch
   display: flex
   justify-content: center
+  margin-left: auto
+  margin-right: auto
 
 .nav-right
   align-items: stretch
   display: flex
-  flex: 1
+  flex-basis: 0
+  flex-grow: 1
+  flex-shrink: 0
   justify-content: flex-end
 
 // Main container
@@ -116,3 +132,10 @@ a.nav-item
   // Modifiers
   &.has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
+  // Responsiveness
+  +touch
+    & > .container,
+    .container > &
+      & > .nav-left
+        & > .nav-item.is-brand:first-child
+          padding-left: 20px

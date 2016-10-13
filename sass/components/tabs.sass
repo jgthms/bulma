@@ -1,6 +1,9 @@
+@import "../utilities/mixins.sass"
+@import "../utilities/variables.sass"
+
 .tabs
-  @extend .block
-  @extend .unselectable
+  +block
+  +unselectable
   align-items: stretch
   display: flex
   justify-content: space-between
@@ -30,7 +33,8 @@
     align-items: center
     border-bottom: 1px solid $border
     display: flex
-    flex: 1
+    flex-grow: 1
+    flex-shrink: 0
     justify-content: flex-start
     &.is-left
       padding-right: 10px
@@ -72,7 +76,8 @@
           border-bottom-color: transparent !important
   &.is-fullwidth
     li
-      flex: 1
+      flex-grow: 1
+      flex-shrink: 0
   &.is-toggle
     a
       border: 1px solid $border

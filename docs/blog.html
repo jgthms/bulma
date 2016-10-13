@@ -1,0 +1,30 @@
+---
+layout: default
+route: blog
+---
+
+{% include blog-hero.html %}
+
+{% for post in site.posts %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-4">
+          <p class="subtitle4">
+            {{ post.date | date_to_string }}
+          </p>
+          <h2 class="title">
+            <a href="{{ post.url }}">
+              {{ post.title }}
+            </a>
+          </h2>
+        </div>
+        <div class="column is-8">
+          <div class="content">
+            {{ post.content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endfor %}

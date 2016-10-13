@@ -1,0 +1,393 @@
+@charset "utf-8"
+
+@import "../bulma.sass"
+@import "../sass/utilities/mixins.sass"
+
+// Override
+.button
+  +tablet
+    small
+      color: $text
+      left: 0
+      margin-top: 10px
+      position: absolute
+      top: 100%
+      width: 100%
+
+body.page-grid .column > .notification
+  padding-left: 0
+  padding-right: 0
+  text-align: center
+
++tablet
+  .header-item .button + .button
+    margin-left: 10px
+
+// Additional
+svg
+  max-height: 100%
+  max-width: 100%
+
+$carbon-space: 15px
+
+#carbon
+  max-width: 340px
+  min-height: 100px + ($carbon-space * 2)
+  padding: $carbon-space
+  +tablet
+    margin-left: auto
+    margin-right: auto
+    width: 340px
+
+#carbonads
+  text-align: left
+  a:hover
+    text-decoration: underline
+  span
+    display: block
+  .carbon-img
+    float: left
+    height: 100px
+    width: 130px
+    img
+      display: block
+  .carbon-text
+    display: block
+    color: $text-strong
+    margin-left: 130px + $carbon-space
+  .carbon-poweredby
+    font-size: $size-small
+    margin-left: $carbon-space
+
+$github: #333333
+$twitter: #55acee
+
+#github
+  color: $github
+  border-color: $github
+  &:hover
+    background: $github
+    border-color: $github
+    color: $white
+
+#twitter
+  color: $twitter
+  border-color: $twitter
+  &:hover
+    background: $twitter
+    border-color: $twitter
+    color: $white
+
+@keyframes floatUp
+  0%
+    box-shadow: 0 0 0 rgba($black, 0), 0 0 0 rgba($black, 0), 0 0 0 rgba($black, 0)
+    transform: scale(0.86)
+  67%
+    box-shadow: 0 0 0 rgba($black, 0), 0 5px 10px rgba($black, 0.1), 0 1px 1px rgba($black, 0.2)
+    transform: scale(1)
+  100%
+    box-shadow: 0 20px 60px rgba($black, 0.05), 0 5px 10px rgba($black, 0.1), 0 1px 1px rgba($black, 0.2)
+    transform: scale(1)
+
+@keyframes strokePath
+  from
+    stroke-dashoffset: 880
+  to
+    stroke-dashoffset: 0
+
+@keyframes fadeIn
+  from
+    opacity: 0
+    transform: scale(0.86)
+  to
+    opacity: 1
+    transform: scale(1)
+
+@keyframes fadeOut
+  0%
+    opacity: 1
+    transform: scale(0.86)
+  67%
+    opacity: 1
+    transform: scale(0.86)
+  100%
+    opacity: 0
+    transform: scale(1)
+
+@keyframes slideDown
+  0%
+    opacity: 0
+    transform: translateY(-10px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+@keyframes slideUp
+  0%
+    opacity: 0
+    transform: translateY(10px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+$curve: cubic-bezier(0, 0.71, 0.29, 1)
+
+#b
+  animation-delay: 1s
+  animation-duration: 1.5s
+  animation-fill-mode: both
+  animation-name: floatUp
+  animation-timing-function: $curve
+  border-radius: 24px
+  display: inline-block
+  height: 240px
+  margin-bottom: 40px
+  position: relative
+  vertical-align: top
+  width: 240px
+  svg
+    +overlay
+    display: block
+    height: 240px
+    width: 240px
+    &:first-child
+      animation-duration: 1.5s
+      animation-fill-mode: both
+      animation-name: fadeOut
+      animation-timing-function: $curve
+      g
+        animation-duration: 1s
+        animation-fill-mode: both
+        animation-name: strokePath
+        animation-timing-function: $curve
+        fill: none
+        stroke: $turquoise
+        stroke-dasharray: 880
+        stroke-width: 2px
+    &:last-child
+      animation-delay: 1s
+      animation-duration: 1s
+      animation-fill-mode: both
+      animation-name: fadeIn
+      animation-timing-function: $curve
+      g
+        fill: $turquoise
+
+  +mobile
+    border-radius: 16px
+    height: 160px
+    width: 160px
+
+#bulma
+  animation: slideDown 500ms both
+  animation-delay: 1s
+
+#modern-framework
+  animation: slideUp 500ms both
+  animation-delay: 1.2s
+
+#npm
+  animation: fadeIn 500ms both
+  animation-delay: 1.4s
+  background: none
+  margin: -10px 0 20px
+  code
+    border-radius: $radius
+    color: $link
+    display: inline-block
+    font-size: 16px
+    padding: 16px 32px
+
+#ghbtns
+  animation: slideDown 500ms both
+  animation-delay: 1.6s
+
+html.route-index #carbon
+  animation: slideUp 500ms both
+  animation-delay: 1.8s
+
+#download
+  animation: fadeIn 500ms both
+  animation-delay: 2s
+
+#grid
+  .notification
+    padding-left: 0
+    padding-right: 0
+
+#message
+  display: none
+
+#tweet
+  background: $white
+  border-radius: $radius-large
+  box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+  padding: 20px
+
+#mc_embed_signup
+  .control
+    margin-bottom: 0
+  .notification
+    margin-top: 10px
+
+#social
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: 1em
+  justify-content: center
+  a
+    display: inline-block
+    font-size: 11px
+    height: 20px
+    line-height: 20px
+    margin: 5px
+  iframe
+    margin: 5px
+
+#images
+  tr
+    td:nth-child(2)
+      width: 320px
+
+.color
+  display: inline-block
+  float: left
+  height: 18px
+  margin-right: 5px
+  width: 18px
+
+.example,
+.structure
+  border: 1px solid $warning
+  border-top-right-radius: $radius
+  color: $warning-invert
+  padding: 15px 20px
+  position: relative
+  &:not(:first-child)
+    margin-top: 30px
+  &:not(:last-child)
+    margin-bottom: 20px
+  &:before
+    background: $warning
+    border-radius: $radius $radius 0 0
+    bottom: 100%
+    content: "Example"
+    display: inline-block
+    font-size: 7px
+    font-weight: bold
+    left: -1px
+    letter-spacing: 1px
+    padding: 3px 5px
+    position: absolute
+    text-transform: uppercase
+    vertical-align: top
+  +tablet
+    &.is-fullwidth
+      border-left: none
+      border-right: none
+      padding: 0
+
+.example
+  & + .highlight
+    border: 1px solid $warning
+    border-radius: 0 0 $radius $radius
+    border-top: none
+    margin-top: -20px
+    pre
+      max-height: 600px
+    &:not(:last-child)
+      margin-bottom: 40px
+
+$structure: $danger
+$structure-invert: $danger-invert
+
+.structure
+  border-color: $structure
+  border-radius: $radius
+  padding: 20px
+  &:before
+    background: $structure
+    color: $structure-invert
+    content: "Structure"
+
+.structure-item
+  position: relative
+  &:before
+    +overlay
+    background: rgba($black, 0.7)
+    background: $background
+    border: 1px solid $border
+    content: ""
+    display: block
+    z-index: 1
+  &:after
+    +overlay
+    align-items: center
+    content: attr(title)
+    display: flex
+    font-family: $family-monospace
+    font-size: 11px
+    justify-content: center
+    padding: 3px 5px
+    z-index: 2
+  &.is-structure-container
+    padding: 20px 10px 10px
+    &:after
+      align-items: flex-start
+      justify-content: flex-start
+      padding: 5px 10px
+
+.highlight
+  position: relative
+  .copy,
+  .expand
+    +unselectable
+    background: $white
+    border: solid $border
+    border-width: 0 0 1px 1px
+    color: $text-light
+    cursor: pointer
+    outline: none
+    position: absolute
+    right: 0
+    top: 0
+    &:hover
+      border-color: $code
+      color: $code
+  .expand
+    border-right-width: 1px
+    right: 50px
+
++tablet
+  .section:not(.is-fullwidth) > .example:not(.is-fullwidth)
+    margin-left: 20px
+    margin-right: 20px
+    & + .highlight
+      margin-left: 20px
+      margin-right: 20px
+
+.section.is-fullwidth
+  padding: 0 !important
+  .example
+    border-left: none
+    border-radius: 0
+    border-right: none
+    padding: 0
+    & + .highlight
+      border-left: none
+      border-radius: 0
+      border-right: none
+
+#newsletter
+  .input
+    border-color: $white
+    box-shadow: none
+
+html
+  \::-moz-selection
+    background: $primary
+    color: $primary-invert
+  \::selection
+    background: $primary
+    color: $primary-invert

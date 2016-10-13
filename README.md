@@ -6,7 +6,7 @@
 
 Bulma is a modern CSS framework based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
 
-[![Bulma: a Flexbox CSS framework](https://raw.githubusercontent.com/jgthms/bulma/master/images/bulma-banner.png)](http://bulma.io)
+[![Bulma: a Flexbox CSS framework](https://raw.githubusercontent.com/jgthms/bulma/master/docs/images/bulma-banner.png)](http://bulma.io)
 
 ## Quick install
 
@@ -44,13 +44,6 @@ Bulma keeps track of the upcoming fixes and features on Trello: [Bulma roadmap](
 
 It's more a tasklist than a roadmap, but it will give you an overview of where things are going!
 
-## Documentation website
-
-This repository is **only** for the Bulma source files.
-The [website](http://bulma.io) (which includes the [documentation](http://bulma.io/documentation/overview/start/)) is in another repo: [https://github.com/jgthms/bulma-website](https://github.com/jgthms/bulma-website)
-
-If you encounter a typo or a lack of documentation, submit an issue [there](https://github.com/jgthms/bulma-website/issues).
-
 ## Browser Support
 
 Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with:
@@ -66,6 +59,7 @@ Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most
 
 * Bulma with Attribute Modules: https://github.com/j5bot/bulma-attribute-selectors
 * Bulma with Rails: https://github.com/joshuajansen/bulma-rails
+* iTemplate: [http://itemplate.ga/](http://itemplate.ga/dashboard.html)
 * Vue Admin powered by Bulma: https://github.com/fundon/vue-admin
 
 ## Copyright and license
