@@ -1,5 +1,9 @@
 # Bulma Changelog
 
+## 0.2.2
+
+* Fix: remove multiple imports
+
 ## 0.2.1
 
 * Fix: container flex
