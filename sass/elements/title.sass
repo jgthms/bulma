@@ -17,56 +17,39 @@
 .title
   color: $text-strong
   font-size: $size-large
-  line-height: 1
-  code
-    display: inline-block
-    font-size: $size-large
+  line-height: 1.125
   strong
     color: inherit
   & + .highlight
-    margin-top: -10px
+    margin-top: -0.75rem
   & + .subtitle
-    margin-top: -10px
+    margin-top: -1.25rem
   // Colors
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
-      code
-        font-size: nth($sizes, min($i + 1, 6))
   // Modifiers
   &.is-normal
-    font-weight: 400
+    font-weight: $weight-normal
     strong
-      font-weight: 700
-  // Responsiveness
-  +tablet
-    & + .subtitle
-      margin-top: -15px
+      font-weight: $weight-bold
 
 .subtitle
   color: $text
   font-size: $size-medium
-  line-height: 1.125
-  code
-    border-radius: $radius
-    display: inline-block
-    font-size: $size-normal
-    padding: 2px 3px
-    vertical-align: top
+  line-height: 1.25
   strong
     color: $text-strong
   & + .title
-    margin-top: -20px
+    margin-top: -1.4rem
   // Colors
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
-      code
-        font-size: nth($sizes, min($i + 1, 6))
   // Modifiers
   &.is-normal
-    font-weight: 400
+    font-weight: $weight-normal
     strong
-      font-weight: 700
+      font-weight: $weight-bold
