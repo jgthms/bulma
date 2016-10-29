@@ -575,13 +575,11 @@ a.box:active {
   -moz-appearance: none;
   -webkit-appearance: none;
   align-items: center;
-  background-color: white;
-  border: 1px solid #dbdbdb;
+  border: none;
   border-radius: 3px;
   box-shadow: none;
-  color: #363636;
   display: inline-flex;
-  font-size: 16px;
+  font-size: 1em;
   height: 2.5em;
   justify-content: flex-start;
   line-height: 1.5;
@@ -602,36 +600,12 @@ a.box:active {
   white-space: nowrap;
 }
 
-.button:hover {
-  border-color: #b5b5b5;
-}
-
-.button:active, .button:focus, .button.is-active {
-  border-color: #00d1b2;
+.button:focus, .button.is-focused, .button:active, .button.is-active {
   outline: none;
 }
 
 .button[disabled], .button.is-disabled {
-  background-color: whitesmoke;
-  border-color: #dbdbdb;
-  cursor: not-allowed;
   pointer-events: none;
-}
-
-.button[disabled]::-moz-placeholder, .button.is-disabled::-moz-placeholder {
-  color: rgba(54, 54, 54, 0.3);
-}
-
-.button[disabled]::-webkit-input-placeholder, .button.is-disabled::-webkit-input-placeholder {
-  color: rgba(54, 54, 54, 0.3);
-}
-
-.button[disabled]:-moz-placeholder, .button.is-disabled:-moz-placeholder {
-  color: rgba(54, 54, 54, 0.3);
-}
-
-.button[disabled]:-ms-input-placeholder, .button.is-disabled:-ms-input-placeholder {
-  color: rgba(54, 54, 54, 0.3);
 }
 
 .button strong {
@@ -650,12 +624,33 @@ a.box:active {
   margin-right: -2px;
 }
 
-.button:hover, .button:focus, .button.is-active {
+.button:hover, .button.is-hovered {
+  border-color: #b5b5b5;
   color: #363636;
 }
 
-.button:active {
+.button:focus, .button.is-focused {
+  border-color: #00d1b2;
+  box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.5);
+  color: #363636;
+}
+
+.button:active, .button.is-active {
+  border-color: #4a4a4a;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
+  color: #363636;
+}
+
+.button.is-link {
+  background-color: transparent;
+  border-width: 0;
+  color: #4a4a4a;
+  text-decoration: underline;
+}
+
+.button.is-link:hover, .button.is-link.is-hovered, .button.is-link:focus, .button.is-link.is-focused, .button.is-link:active, .button.is-link.is-active {
+  background-color: whitesmoke;
+  color: #363636;
 }
 
 .button.is-white {
@@ -664,9 +659,22 @@ a.box:active {
   color: #0a0a0a;
 }
 
-.button.is-white:hover, .button.is-white:focus, .button.is-white.is-active {
+.button.is-white:hover, .button.is-white.is-hovered {
+  background-color: #f9f9f9;
+  border-color: transparent;
+  color: #0a0a0a;
+}
+
+.button.is-white:focus, .button.is-white.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5);
+  color: #0a0a0a;
+}
+
+.button.is-white:active, .button.is-white.is-active {
   background-color: #f2f2f2;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: #0a0a0a;
 }
 
@@ -702,9 +710,22 @@ a.box:active {
   color: white;
 }
 
-.button.is-black:hover, .button.is-black:focus, .button.is-black.is-active {
+.button.is-black:hover, .button.is-black.is-hovered {
+  background-color: #040404;
+  border-color: transparent;
+  color: white;
+}
+
+.button.is-black:focus, .button.is-black.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(10, 10, 10, 0.5);
+  color: white;
+}
+
+.button.is-black:active, .button.is-black.is-active {
   background-color: black;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: white;
 }
 
@@ -740,9 +761,22 @@ a.box:active {
   color: #363636;
 }
 
-.button.is-light:hover, .button.is-light:focus, .button.is-light.is-active {
+.button.is-light:hover, .button.is-light.is-hovered {
+  background-color: #eeeeee;
+  border-color: transparent;
+  color: #363636;
+}
+
+.button.is-light:focus, .button.is-light.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(245, 245, 245, 0.5);
+  color: #363636;
+}
+
+.button.is-light:active, .button.is-light.is-active {
   background-color: #e8e8e8;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: #363636;
 }
 
@@ -778,9 +812,22 @@ a.box:active {
   color: whitesmoke;
 }
 
-.button.is-dark:hover, .button.is-dark:focus, .button.is-dark.is-active {
+.button.is-dark:hover, .button.is-dark.is-hovered {
+  background-color: #2f2f2f;
+  border-color: transparent;
+  color: whitesmoke;
+}
+
+.button.is-dark:focus, .button.is-dark.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(54, 54, 54, 0.5);
+  color: whitesmoke;
+}
+
+.button.is-dark:active, .button.is-dark.is-active {
   background-color: #292929;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: whitesmoke;
 }
 
@@ -816,9 +863,22 @@ a.box:active {
   color: white;
 }
 
-.button.is-primary:hover, .button.is-primary:focus, .button.is-primary.is-active {
+.button.is-primary:hover, .button.is-primary.is-hovered {
+  background-color: #00c4a7;
+  border-color: transparent;
+  color: white;
+}
+
+.button.is-primary:focus, .button.is-primary.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.5);
+  color: white;
+}
+
+.button.is-primary:active, .button.is-primary.is-active {
   background-color: #00b89c;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: white;
 }
 
@@ -854,9 +914,22 @@ a.box:active {
   color: white;
 }
 
-.button.is-info:hover, .button.is-info:focus, .button.is-info.is-active {
+.button.is-info:hover, .button.is-info.is-hovered {
+  background-color: #276cda;
+  border-color: transparent;
+  color: white;
+}
+
+.button.is-info:focus, .button.is-info.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(50, 115, 220, 0.5);
+  color: white;
+}
+
+.button.is-info:active, .button.is-info.is-active {
   background-color: #2366d1;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: white;
 }
 
@@ -892,9 +965,22 @@ a.box:active {
   color: white;
 }
 
-.button.is-success:hover, .button.is-success:focus, .button.is-success.is-active {
+.button.is-success:hover, .button.is-success.is-hovered {
+  background-color: #22c65b;
+  border-color: transparent;
+  color: white;
+}
+
+.button.is-success:focus, .button.is-success.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(35, 209, 96, 0.5);
+  color: white;
+}
+
+.button.is-success:active, .button.is-success.is-active {
   background-color: #20bc56;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: white;
 }
 
@@ -930,9 +1016,22 @@ a.box:active {
   color: rgba(0, 0, 0, 0.7);
 }
 
-.button.is-warning:hover, .button.is-warning:focus, .button.is-warning.is-active {
+.button.is-warning:hover, .button.is-warning.is-hovered {
+  background-color: #ffdb4a;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.button.is-warning:focus, .button.is-warning.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(255, 221, 87, 0.5);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.button.is-warning:active, .button.is-warning.is-active {
   background-color: #ffd83d;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: rgba(0, 0, 0, 0.7);
 }
 
@@ -968,9 +1067,22 @@ a.box:active {
   color: white;
 }
 
-.button.is-danger:hover, .button.is-danger:focus, .button.is-danger.is-active {
+.button.is-danger:hover, .button.is-danger.is-hovered {
+  background-color: #ff2b56;
+  border-color: transparent;
+  color: white;
+}
+
+.button.is-danger:focus, .button.is-danger.is-focused {
+  border-color: transparent;
+  box-shadow: 0 0 0.5em rgba(255, 56, 96, 0.5);
+  color: white;
+}
+
+.button.is-danger:active, .button.is-danger.is-active {
   background-color: #ff1f4b;
   border-color: transparent;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
   color: white;
 }
 
@@ -998,18 +1110,6 @@ a.box:active {
   background-color: #ff3860;
   border-color: #ff3860;
   color: white;
-}
-
-.button.is-link {
-  background-color: transparent;
-  border-width: 0;
-  color: #4a4a4a;
-  text-decoration: underline;
-}
-
-.button.is-link:hover, .button.is-link:focus {
-  background-color: whitesmoke;
-  color: #363636;
 }
 
 .button.is-small {
@@ -1047,9 +1147,9 @@ a.box:active {
   border-top-color: transparent;
   content: "";
   display: block;
-  height: 16px;
+  height: 1rem;
   position: relative;
-  width: 16px;
+  width: 1rem;
   left: 50%;
   margin-left: -8px;
   margin-top: -8px;
@@ -1188,13 +1288,11 @@ a.box:active {
   -moz-appearance: none;
   -webkit-appearance: none;
   align-items: center;
-  background-color: white;
-  border: 1px solid #dbdbdb;
+  border: none;
   border-radius: 3px;
   box-shadow: none;
-  color: #363636;
   display: inline-flex;
-  font-size: 16px;
+  font-size: 1em;
   height: 2.5em;
   justify-content: flex-start;
   line-height: 1.5;
@@ -1202,31 +1300,49 @@ a.box:active {
   padding-right: 0.75em;
   position: relative;
   vertical-align: top;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  color: #363636;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   max-width: 100%;
   width: 100%;
 }
 
-.input:hover,
-.textarea:hover {
-  border-color: #b5b5b5;
-}
-
-.input:active, .input:focus, .input.is-active,
-.textarea:active,
+.input:focus, .input.is-focused, .input:active, .input.is-active,
 .textarea:focus,
+.textarea.is-focused,
+.textarea:active,
 .textarea.is-active {
-  border-color: #00d1b2;
   outline: none;
 }
 
 .input[disabled], .input.is-disabled,
 .textarea[disabled],
 .textarea.is-disabled {
-  background-color: whitesmoke;
-  border-color: #dbdbdb;
-  cursor: not-allowed;
   pointer-events: none;
+}
+
+.input:hover, .input.is-hovered,
+.textarea:hover,
+.textarea.is-hovered {
+  border-color: #b5b5b5;
+}
+
+.input:focus, .input.is-focused, .input:active, .input.is-active,
+.textarea:focus,
+.textarea.is-focused,
+.textarea:active,
+.textarea.is-active {
+  border-color: #00d1b2;
+}
+
+.input[disabled], .input.is-disabled,
+.textarea[disabled],
+.textarea.is-disabled {
+  background-color: whitesmoke;
+  border-color: whitesmoke;
+  box-shadow: none;
+  color: #7a7a7a;
 }
 
 .input[disabled]::-moz-placeholder, .input.is-disabled::-moz-placeholder,
@@ -1251,6 +1367,11 @@ a.box:active {
 .textarea[disabled]:-ms-input-placeholder,
 .textarea.is-disabled:-ms-input-placeholder {
   color: rgba(54, 54, 54, 0.3);
+}
+
+.input[type="search"],
+.textarea[type="search"] {
+  border-radius: 290486px;
 }
 
 .input.is-white,
@@ -1298,11 +1419,6 @@ a.box:active {
   border-color: #ff3860;
 }
 
-.input[type="search"],
-.textarea[type="search"] {
-  border-radius: 290486px;
-}
-
 .input.is-small,
 .textarea.is-small {
   border-radius: 2px;
@@ -1333,7 +1449,7 @@ a.box:active {
 
 .textarea {
   display: block;
-  line-height: 1.2;
+  line-height: 1.25;
   max-height: 600px;
   max-width: 100%;
   min-height: 120px;
@@ -1344,9 +1460,11 @@ a.box:active {
 
 .checkbox,
 .radio {
+  align-items: center;
   cursor: pointer;
-  display: inline-block;
-  line-height: 1em;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   position: relative;
   vertical-align: top;
 }
@@ -1354,6 +1472,7 @@ a.box:active {
 .checkbox input,
 .radio input {
   cursor: pointer;
+  margin-right: 0.5em;
 }
 
 .checkbox:hover,
@@ -1363,7 +1482,7 @@ a.box:active {
 
 .checkbox.is-disabled,
 .radio.is-disabled {
-  color: #dbdbdb;
+  color: #7a7a7a;
   pointer-events: none;
 }
 
@@ -1383,17 +1502,32 @@ a.box:active {
   vertical-align: top;
 }
 
+.select:after {
+  border: 1px solid #00d1b2;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  display: block;
+  height: 0.5em;
+  pointer-events: none;
+  position: absolute;
+  transform: rotate(-45deg);
+  width: 0.5em;
+  margin-top: -0.375em;
+  right: 1.125em;
+  top: 50%;
+  z-index: 4;
+}
+
 .select select {
   -moz-appearance: none;
   -webkit-appearance: none;
   align-items: center;
-  background-color: white;
-  border: 1px solid #dbdbdb;
+  border: none;
   border-radius: 3px;
   box-shadow: none;
-  color: #363636;
   display: inline-flex;
-  font-size: 16px;
+  font-size: 1em;
   height: 2.5em;
   justify-content: flex-start;
   line-height: 1.5;
@@ -1401,26 +1535,37 @@ a.box:active {
   padding-right: 0.75em;
   position: relative;
   vertical-align: top;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  color: #363636;
   cursor: pointer;
   display: block;
+  font-size: 1em;
   outline: none;
   padding-right: 2.5em;
 }
 
-.select select:hover {
-  border-color: #b5b5b5;
-}
-
-.select select:active, .select select:focus, .select select.is-active {
-  border-color: #00d1b2;
+.select select:focus, .select select.is-focused, .select select:active, .select select.is-active {
   outline: none;
 }
 
 .select select[disabled], .select select.is-disabled {
-  background-color: whitesmoke;
-  border-color: #dbdbdb;
-  cursor: not-allowed;
   pointer-events: none;
+}
+
+.select select:hover, .select select.is-hovered {
+  border-color: #b5b5b5;
+}
+
+.select select:focus, .select select.is-focused, .select select:active, .select select.is-active {
+  border-color: #00d1b2;
+}
+
+.select select[disabled], .select select.is-disabled {
+  background-color: whitesmoke;
+  border-color: whitesmoke;
+  box-shadow: none;
+  color: #7a7a7a;
 }
 
 .select select[disabled]::-moz-placeholder, .select select.is-disabled::-moz-placeholder {
@@ -1439,42 +1584,6 @@ a.box:active {
   color: rgba(54, 54, 54, 0.3);
 }
 
-.select select.is-white {
-  border-color: white;
-}
-
-.select select.is-black {
-  border-color: #0a0a0a;
-}
-
-.select select.is-light {
-  border-color: whitesmoke;
-}
-
-.select select.is-dark {
-  border-color: #363636;
-}
-
-.select select.is-primary {
-  border-color: #00d1b2;
-}
-
-.select select.is-info {
-  border-color: #3273dc;
-}
-
-.select select.is-success {
-  border-color: #23d160;
-}
-
-.select select.is-warning {
-  border-color: #ffdd57;
-}
-
-.select select.is-danger {
-  border-color: #ff3860;
-}
-
 .select select:hover {
   border-color: #b5b5b5;
 }
@@ -1483,32 +1592,29 @@ a.box:active {
   display: none;
 }
 
+.select:hover:after {
+  border-color: #363636;
+}
+
+.select.is-small {
+  border-radius: 2px;
+  font-size: 0.875rem;
+}
+
+.select.is-medium {
+  font-size: 1.25rem;
+}
+
+.select.is-large {
+  font-size: 1.5rem;
+}
+
 .select.is-fullwidth {
   width: 100%;
 }
 
 .select.is-fullwidth select {
   width: 100%;
-}
-
-.select:after {
-  border: 1px solid #00d1b2;
-  border-right: 0;
-  border-top: 0;
-  content: " ";
-  display: block;
-  height: 7px;
-  pointer-events: none;
-  position: absolute;
-  transform: rotate(-45deg);
-  width: 7px;
-  margin-top: -4px;
-  right: 16px;
-  top: 50%;
-}
-
-.select:hover:after {
-  border-color: #363636;
 }
 
 .label {
@@ -1523,7 +1629,7 @@ a.box:active {
 
 .help {
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.875em;
   margin-top: 5px;
 }
 
@@ -1608,11 +1714,11 @@ a.box:active {
   z-index: 2;
 }
 
-.control.has-addons .button:active, .control.has-addons .button:focus,
-.control.has-addons .input:active,
+.control.has-addons .button:focus, .control.has-addons .button:active,
 .control.has-addons .input:focus,
-.control.has-addons .select:active,
-.control.has-addons .select:focus {
+.control.has-addons .input:active,
+.control.has-addons .select:focus,
+.control.has-addons .select:active {
   z-index: 3;
 }
 
@@ -1645,6 +1751,14 @@ a.box:active {
 .control.has-addons .select.is-expanded {
   flex-grow: 1;
   flex-shrink: 0;
+}
+
+.control.has-addons .select select:hover {
+  z-index: 2;
+}
+
+.control.has-addons .select select:focus, .control.has-addons .select select:active {
+  z-index: 3;
 }
 
 .control.has-addons.has-addons-centered {
@@ -1803,12 +1917,12 @@ a.box:active {
   border-top-color: transparent;
   content: "";
   display: block;
-  height: 16px;
+  height: 1rem;
   position: relative;
-  width: 16px;
+  width: 1rem;
   position: absolute !important;
-  right: 8px;
-  top: 8px;
+  right: 0.75em;
+  top: 0.75em;
 }
 
 .image {
@@ -2511,9 +2625,9 @@ a.box:active {
   border-top-color: transparent;
   content: "";
   display: block;
-  height: 16px;
+  height: 1rem;
   position: relative;
-  width: 16px;
+  width: 1rem;
 }
 
 .number {
@@ -3783,7 +3897,7 @@ a.nav-item.is-tab.is-active {
 }
 
 .panel-tabs a.is-active {
-  border-bottom-color: #363636;
+  border-bottom-color: #4a4a4a;
   color: #363636;
 }
 

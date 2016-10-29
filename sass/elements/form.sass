@@ -1,18 +1,59 @@
-=form-control
+$input:                     $grey-darker !default
+$input-background:          $white !default
+$input-border:              $grey-lighter !default
+
+$input-hover:               $grey-darker !default
+$input-hover-border:        $grey-light !default
+
+$input-focus:               $grey-darker !default
+$input-focus-border:        $link !default
+
+$input-disabled:            $text-light !default
+$input-disabled-background: $background !default
+$input-disabled-border:     $background !default
+
+$input-arrow:               $link !default
+
+$input-icon:                $grey-lighter !default
+$input-icon-active:         $grey-light !default
+
+$input-radius:              $radius !default
+
+=input
   +control
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    &.is-#{$name}
-      border-color: $color
+  background-color: $input-background
+  border: 1px solid $input-border
+  color: $input
+  &:hover,
+  &.is-hovered
+    border-color: $input-hover-border
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    border-color: $input-focus-border
+  &[disabled],
+  &.is-disabled
+    background-color: $input-disabled-background
+    border-color: $input-disabled-border
+    box-shadow: none
+    color: $input-disabled
+    +placeholder
+      color: rgba($input, 0.3)
 
 .input,
 .textarea
-  +form-control
+  +input
   box-shadow: inset 0 1px 2px rgba($black, 0.1)
   max-width: 100%
   width: 100%
   &[type="search"]
     border-radius: 290486px
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name}
+      border-color: $color
   // Sizes
   &.is-small
     +control-small
@@ -30,7 +71,7 @@
 
 .textarea
   display: block
-  line-height: 1.2
+  line-height: 1.25
   max-height: 600px
   max-width: 100%
   min-height: 120px
@@ -40,17 +81,20 @@
 
 .checkbox,
 .radio
+  align-items: center
   cursor: pointer
-  display: inline-block
-  line-height: 1em
+  display: inline-flex
+  flex-wrap: wrap
+  justify-content: flex-start
   position: relative
   vertical-align: top
   input
     cursor: pointer
+    margin-right: 0.5em
   &:hover
-    color: $control-hover
+    color: $input-hover
   &.is-disabled
-    color: $control-disabled
+    color: $input-disabled
     pointer-events: none
     input
       pointer-events: none
@@ -64,31 +108,42 @@
   height: 2.5em
   position: relative
   vertical-align: top
+  &:after
+    +arrow($input-arrow)
+    margin-top: -0.375em
+    right: 1.125em
+    top: 50%
+    z-index: 4
   select
-    +form-control
+    +input
     cursor: pointer
     display: block
+    font-size: 1em
     outline: none
     padding-right: 2.5em
     &:hover
-      border-color: $control-hover-border
+      border-color: $input-hover-border
     &::ms-expand
       display: none
+  // States
+  &:hover
+    &:after
+      border-color: $input-hover
+  // Sizes
+  &.is-small
+    +control-small
+  &.is-medium
+    +control-medium
+  &.is-large
+    +control-large
+  // Modifiers
   &.is-fullwidth
     width: 100%
     select
       width: 100%
-  &:after
-    +arrow($control-active)
-    margin-top: -4px
-    right: 16px
-    top: 50%
-  &:hover
-    &:after
-      border-color: $control-hover
 
 .label
-  color: $control
+  color: $input
   display: block
   font-weight: bold
   &:not(:last-child)
@@ -96,7 +151,7 @@
 
 .help
   display: block
-  font-size: $control-size-small
+  font-size: 0.875em
   margin-top: 5px
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -133,20 +188,26 @@
       width: auto
       &:hover
         z-index: 2
-      &:active,
-      &:focus
+      &:focus,
+      &:active
         z-index: 3
       &:first-child
-        border-radius: $control-radius 0 0 $control-radius
+        border-radius: $input-radius 0 0 $input-radius
         select
-          border-radius: $control-radius 0 0 $control-radius
+          border-radius: $input-radius 0 0 $input-radius
       &:last-child
-        border-radius: 0 $control-radius $control-radius 0
+        border-radius: 0 $input-radius $input-radius 0
         select
-          border-radius: 0 $control-radius $control-radius 0
+          border-radius: 0 $input-radius $input-radius 0
       &.is-expanded
         flex-grow: 1
         flex-shrink: 0
+    .select select
+      &:hover
+        z-index: 2
+      &:focus,
+      &:active
+        z-index: 3
     &.has-addons-centered
       justify-content: center
     &.has-addons-right
@@ -160,14 +221,14 @@
   &.has-icon
     & > .fa
       +fa(14px, 24px)
-      color: $control-icon
+      color: $input-icon
       pointer-events: none
       position: absolute
       top: 4px
       z-index: 4
     .input
       &:focus + .fa
-        color: $control-icon-active
+        color: $input-icon-active
       &.is-small + .fa
         font-size: 10.5px
         top: 0
@@ -237,5 +298,5 @@
     &:after
       +loader
       position: absolute !important
-      right: 8px
-      top: 8px
+      right: 0.75em
+      top: 0.75em

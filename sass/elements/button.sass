@@ -1,3 +1,14 @@
+$button-hover: $link-hover !default
+$button-hover-border: $link-hover-border !default
+
+$button-focus: $link-focus !default
+$button-focus-border: $link-focus-border !default
+
+$button-active: $link-active !default
+$button-active-border: $link-active-border !default
+
+$button-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
+
 =button-small
   border-radius: $radius-small
   font-size: $size-small
@@ -25,13 +36,35 @@
     &:last-child
       margin-left: 4px
       margin-right: -2px
+  // States
   &:hover,
+  &.is-hovered
+    border-color: $button-hover-border
+    color: $button-hover
   &:focus,
+  &.is-focused
+    border-color: $button-focus-border
+    box-shadow: 0 0 0.5em rgba($button-focus-border, 0.5)
+    color: $button-focus
+  &:active,
   &.is-active
-    color: $control-hover
-  &:active
-    box-shadow: inset 0 1px 2px rgba($black, 0.2)
+    border-color: $button-active-border
+    box-shadow: $button-shadow-inset
+    color: $button-active
   // Colors
+  &.is-link
+    background-color: transparent
+    border-width: 0
+    color: $text
+    text-decoration: underline
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active
+      background-color: $background
+      color: $text-strong
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
@@ -40,10 +73,20 @@
       border-width: 0
       color: $color-invert
       &:hover,
+      &.is-hovered
+        background-color: darken($color, 2.5%)
+        border-color: transparent
+        color: $color-invert
       &:focus,
+      &.is-focused
+        border-color: transparent
+        box-shadow: 0 0 0.5em rgba($color, 0.5)
+        color: $color-invert
+      &:active,
       &.is-active
         background-color: darken($color, 5%)
         border-color: transparent
+        box-shadow: $button-shadow-inset
         color: $color-invert
       &.is-inverted
         background-color: $color-invert
@@ -63,15 +106,6 @@
           background-color: $color
           border-color: $color
           color: $color-invert
-  &.is-link
-    background-color: transparent
-    border-width: 0
-    color: $text
-    text-decoration: underline
-    &:hover,
-    &:focus
-      background-color: $background
-      color: $text-strong
   // Sizes
   &.is-small
     +button-small
