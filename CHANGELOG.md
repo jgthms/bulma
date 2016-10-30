@@ -21,6 +21,8 @@
 * Deprecate `.menu-nav`
 * Add invert outlined buttons
 * Fix `.nav`
+* Fix `.pagination`
+* Fix `.tabs`
 
 ## 0.2.2
 
