@@ -5,7 +5,10 @@
 # Use `rem` and `em`
 # Move variables to their own file
 # Remove small tag
+# Add :focus state
 # Fix Font Awesome icons in buttons
+# Fix table
+# Remove table .is-icon and .is-link
 
 ## 0.2.2
 
