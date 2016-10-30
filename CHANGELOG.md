@@ -23,6 +23,7 @@
 * Fix `.nav`
 * Fix `.pagination`
 * Fix `.tabs`
+* Fix `.panel`
 
 ## 0.2.2
 
