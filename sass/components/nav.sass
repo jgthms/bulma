@@ -13,6 +13,7 @@ $nav-height: 3rem !default
   display: flex
   flex-grow: 0
   flex-shrink: 0
+  font-size: $size-normal
   justify-content: center
   padding: 0.5rem 0.75rem
   a
@@ -23,10 +24,10 @@ $nav-height: 3rem !default
   .button + .button
     margin-left: 0.75rem
   .tag
-    &:first-child
-      margin-right: 0.25rem
-    &:last-child
-      margin-left: 0.25rem
+    &:first-child:not(:last-child)
+      margin-right: 0.5rem
+    &:last-child:not(:first-child)
+      margin-left: 0.5rem
   // Responsiveness
   +mobile
     justify-content: flex-start
@@ -42,15 +43,17 @@ a.nav-item
   &.is-tab
     border-bottom: 1px solid transparent
     border-top: 1px solid transparent
-    padding-left: 12px
-    padding-right: 12px
+    padding-bottom: calc(0.5rem - 1px)
+    padding-left: 1rem
+    padding-right: 1rem
+    padding-top: calc(0.5rem - 1px)
     &:hover
-      border-bottom: 1px solid $link
-      border-top: 1px solid transparent
+      border-bottom-color: $link
+      border-top-color: transparent
     &.is-active
       border-bottom: 3px solid $link
-      border-top: 3px solid transparent
       color: $link
+      padding-bottom: calc(0.5rem - 3px)
 
 // Containers
 
@@ -72,12 +75,16 @@ a.nav-item
   +tablet-only
     padding-right: 1.5rem
 
-.nav-left
+
+.nav-left,
+.nav-right
   align-items: stretch
-  display: flex
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 0
+
+.nav-left
+  display: flex
   justify-content: flex-start
   overflow: hidden
   overflow-x: auto
@@ -86,19 +93,17 @@ a.nav-item
 .nav-center
   align-items: stretch
   display: flex
+  flex-grow: 0
+  flex-shrink: 0
   justify-content: center
   margin-left: auto
   margin-right: auto
 
 .nav-right
+  justify-content: flex-end
   // Responsiveness
   +tablet
-    align-items: stretch
     display: flex
-    flex-basis: 0
-    flex-grow: 1
-    flex-shrink: 0
-    justify-content: flex-end
 
 // Main container
 

@@ -19,6 +19,8 @@
 * Fix `.level-item` height
 * Fix `.menu` spacing
 * Deprecate `.menu-nav`
+* Add invert outlined buttons
+* Fix `.nav`
 
 ## 0.2.2
 
