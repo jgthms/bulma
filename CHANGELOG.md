@@ -12,6 +12,8 @@
 * Add `.content` table
 * Fix inputs with icons
 * Input icons require the `.icon` container
+* Deprecate `.media-number`
+* Fix `.level-item` height
 
 ## 0.2.2
 
