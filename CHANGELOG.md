@@ -11,6 +11,7 @@
 * Remove table `.is-icon` and `.is-link`
 * Add `.content` table
 * Fix inputs with icons
+* Input icons require the `.icon` container
 
 ## 0.2.2
 
