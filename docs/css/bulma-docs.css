@@ -95,7 +95,7 @@ th {
 
 html {
   background-color: whitesmoke;
-  font-size: 1rem;
+  font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   min-width: 300px;
@@ -3215,16 +3215,19 @@ a.box:active {
   padding-top: 1.5rem;
 }
 
-.menu-nav a {
-  display: block;
-  padding: 5px 10px;
+.menu {
+  font-size: 1rem;
+}
+
+.menu-list {
+  line-height: 1.25;
 }
 
 .menu-list a {
   border-radius: 2px;
   color: #4a4a4a;
   display: block;
-  padding: 5px 10px;
+  padding: 0.5em 0.75em;
 }
 
 .menu-list a:hover {
@@ -3239,51 +3242,29 @@ a.box:active {
 
 .menu-list li ul {
   border-left: 1px solid #dbdbdb;
-  margin: 10px;
-  padding-left: 10px;
+  margin: 0.75em;
+  padding-left: 0.75em;
 }
 
 .menu-label {
   color: #7a7a7a;
-  font-size: 0.75rem;
+  font-size: 0.75em;
   letter-spacing: 1px;
-  margin-bottom: 5px;
   text-transform: uppercase;
 }
 
 .menu-label:not(:first-child) {
-  margin-top: 20px;
+  margin-top: 1em;
 }
 
-.message-body {
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  padding: 0.8rem 1rem;
-}
-
-.message-body strong {
-  color: inherit;
-}
-
-.message-header {
-  background-color: #4a4a4a;
-  border-radius: 3px 3px 0 0;
-  color: #fff;
-  padding: 0.4rem 0.8rem;
-}
-
-.message-header strong {
-  color: inherit;
-}
-
-.message-header + .message-body {
-  border-radius: 0 0 3px 3px;
-  border-top: none;
+.menu-label:not(:last-child) {
+  margin-bottom: 1em;
 }
 
 .message {
   background-color: whitesmoke;
   border-radius: 3px;
+  font-size: 1rem;
 }
 
 .message:not(:last-child) {
@@ -3301,11 +3282,11 @@ a.box:active {
 
 .message.is-white .message-body {
   border-color: white;
-  color: #666666;
+  color: #4d4d4d;
 }
 
 .message.is-black {
-  background-color: whitesmoke;
+  background-color: #fafafa;
 }
 
 .message.is-black .message-header {
@@ -3315,11 +3296,11 @@ a.box:active {
 
 .message.is-black .message-body {
   border-color: #0a0a0a;
-  color: gray;
+  color: #090909;
 }
 
 .message.is-light {
-  background-color: whitesmoke;
+  background-color: #fafafa;
 }
 
 .message.is-light .message-header {
@@ -3329,11 +3310,11 @@ a.box:active {
 
 .message.is-light .message-body {
   border-color: whitesmoke;
-  color: #666666;
+  color: #505050;
 }
 
 .message.is-dark {
-  background-color: whitesmoke;
+  background-color: #fafafa;
 }
 
 .message.is-dark .message-header {
@@ -3343,11 +3324,11 @@ a.box:active {
 
 .message.is-dark .message-body {
   border-color: #363636;
-  color: gray;
+  color: #2a2a2a;
 }
 
 .message.is-primary {
-  background-color: #ebfffc;
+  background-color: #f5fffd;
 }
 
 .message.is-primary .message-header {
@@ -3357,11 +3338,11 @@ a.box:active {
 
 .message.is-primary .message-body {
   border-color: #00d1b2;
-  color: gray;
+  color: #021310;
 }
 
 .message.is-info {
-  background-color: #eef3fc;
+  background-color: #f6f9fe;
 }
 
 .message.is-info .message-header {
@@ -3371,11 +3352,11 @@ a.box:active {
 
 .message.is-info .message-body {
   border-color: #3273dc;
-  color: gray;
+  color: #22509a;
 }
 
 .message.is-success {
-  background-color: #eefcf3;
+  background-color: #f6fef9;
 }
 
 .message.is-success .message-header {
@@ -3385,11 +3366,11 @@ a.box:active {
 
 .message.is-success .message-body {
   border-color: #23d160;
-  color: gray;
+  color: #0e301a;
 }
 
 .message.is-warning {
-  background-color: #fffbeb;
+  background-color: #fffdf5;
 }
 
 .message.is-warning .message-header {
@@ -3399,11 +3380,11 @@ a.box:active {
 
 .message.is-warning .message-body {
   border-color: #ffdd57;
-  color: gray;
+  color: #3b3108;
 }
 
 .message.is-danger {
-  background-color: #ffebef;
+  background-color: #fff5f7;
 }
 
 .message.is-danger .message-header {
@@ -3413,7 +3394,45 @@ a.box:active {
 
 .message.is-danger .message-body {
   border-color: #ff3860;
-  color: gray;
+  color: #cd0930;
+}
+
+.message-header {
+  align-items: center;
+  background-color: #4a4a4a;
+  border-radius: 3px 3px 0 0;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.25;
+  padding: 0.5em 0.75em;
+  position: relative;
+}
+
+.message-header strong {
+  color: inherit;
+}
+
+.message-header .delete {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 0.75em;
+}
+
+.message-header + .message-body {
+  border-radius: 0 0 3px 3px;
+  border-top: none;
+}
+
+.message-body {
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  color: #4a4a4a;
+  padding: 1em 1.25em;
+}
+
+.message-body strong {
+  color: inherit;
 }
 
 .modal-background {

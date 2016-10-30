@@ -14,6 +14,9 @@
 * Input icons require the `.icon` container
 * Deprecate `.media-number`
 * Fix `.level-item` height
+* Fix `.menu` spacing
+* Deprecate `.menu-nav`
+* Fix message colors (!)
 
 ## 0.2.2
 
