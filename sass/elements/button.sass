@@ -23,31 +23,53 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
   // $button-height = $horizontal-padding + $icon-width + $x
   $x: $button-height - $horizontal-padding - $icon-width
   // We divide by 2 to apply this margin on both the left and right sides
-  $negative-margin: abs($x) / 2
-  // We need to remove 1px for the border as well
-  @return calc(-1px - #{$negative-margin})
+  @return abs($x) / 2
 
 =button-icon($button-size)
+  $small-spacing: buttonIconSpacing($button-size, 1rem)
+  $normal-spacing: buttonIconSpacing($button-size, 1.5rem)
+  $medium-spacing: buttonIconSpacing($button-size, 2rem)
+  $large-spacing: buttonIconSpacing($button-size, 3rem)
   .icon
-    &:first-child
-      margin-left: buttonIconSpacing($button-size, 1.5rem)
-    &:last-child
-        margin-right: buttonIconSpacing($button-size, 1.5rem)
+    &:first-child:not(:last-child)
+      margin-left: -$normal-spacing / 2
+      margin-right: $normal-spacing
+    &:last-child:not(:first-child)
+      margin-left: $normal-spacing
+      margin-right: -$normal-spacing / 2
+    &:first-child:last-child
+      margin-left: calc(-1px - #{$normal-spacing})
+      margin-right: calc(-1px - #{$normal-spacing})
     &.is-small
-      &:first-child
-        margin-left: buttonIconSpacing($button-size, 1rem)
-      &:last-child
-        margin-right: buttonIconSpacing($button-size, 1rem)
+      &:first-child:not(:last-child)
+        margin-left: -$small-spacing / 2
+        margin-right: $small-spacing
+      &:last-child:not(:first-child)
+        margin-left: $small-spacing
+        margin-right: -$small-spacing / 2
+      &:first-child:last-child
+        margin-left: calc(-1px - #{$small-spacing})
+        margin-right: calc(-1px - #{$small-spacing})
     &.is-medium
-      &:first-child
-        margin-left: buttonIconSpacing($button-size, 2rem)
-      &:last-child
-        margin-right: buttonIconSpacing($button-size, 2rem)
+      &:first-child:not(:last-child)
+        margin-left: -$medium-spacing / 2
+        margin-right: $medium-spacing
+      &:last-child:not(:first-child)
+        margin-left: $medium-spacing
+        margin-right: -$medium-spacing / 2
+      &:first-child:last-child
+        margin-left: calc(-1px - #{$medium-spacing})
+        margin-right: calc(-1px - #{$medium-spacing})
     &.is-large
-      &:first-child
-        margin-left: buttonIconSpacing($button-size, 3rem)
-      &:last-child
-        margin-right: buttonIconSpacing($button-size, 3rem)
+      &:first-child:not(:last-child)
+        margin-left: -$large-spacing / 2
+        margin-right: $large-spacing
+      &:last-child:not(:first-child)
+        margin-left: $large-spacing
+        margin-right: -$large-spacing / 2
+      &:first-child:last-child
+        margin-left: calc(-1px - #{$large-spacing})
+        margin-right: calc(-1px - #{$large-spacing})
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
@@ -76,11 +98,6 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
   strong
     color: inherit
   +button-icon($size-normal)
-  .icon
-    &:first-child:not(:last-child)
-      margin-right: 0.25rem !important
-    &:last-child:not(:first-child)
-      margin-left: 0.25rem !important
   // States
   &:hover,
   &.is-hovered

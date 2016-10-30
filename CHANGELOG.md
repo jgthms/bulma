@@ -2,11 +2,14 @@
 
 ## 0.3.0
 
-* Use `rem` and `em`
+* Use `rem` and `em` (!)
+* Fix Font Awesome icons in buttons (!)
+* Fix message colors (!)
+* Use `{% capture %}` to ensure same display as code snippet (!)
+
 * Move variables to their own file
 * Remove small tag
 * Add `:focus` state
-* Fix Font Awesome icons in buttons
 * Fix table
 * Remove table `.is-icon` and `.is-link`
 * Add `.content` table
@@ -16,7 +19,6 @@
 * Fix `.level-item` height
 * Fix `.menu` spacing
 * Deprecate `.menu-nav`
-* Fix message colors (!)
 
 ## 0.2.2
 
