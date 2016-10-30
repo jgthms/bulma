@@ -11,10 +11,11 @@
   li + li
     margin-top: 0.25em
   // Block
-  blockquote,
   p,
   ol,
-  ul
+  ul,
+  blockquote,
+  table
     &:not(:last-child)
       margin-bottom: 1em
   h1,
@@ -69,6 +70,36 @@
       margin-top: 0.5em
       ul
         list-style-type: square
+  table
+    width: 100%
+    td,
+    th
+      border: 1px solid $border
+      border-width: 0 0 1px
+      padding: 0.5em 0.75em
+      vertical-align: top
+    th
+      color: $text-strong
+      text-align: left
+    tr
+      &:hover
+        background-color: $background
+    thead
+      td,
+      th
+        border-width: 0 0 2px
+        color: $text-strong
+    tfoot
+      td,
+      th
+        border-width: 2px 0 0
+        color: $text-strong
+    tbody
+      tr
+        &:last-child
+          td,
+          th
+            border-bottom-width: 0
   // Sizes
   &.is-small
     font-size: $size-small

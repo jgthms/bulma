@@ -2,13 +2,15 @@
 
 ## 0.3.0
 
-# Use `rem` and `em`
-# Move variables to their own file
-# Remove small tag
-# Add :focus state
-# Fix Font Awesome icons in buttons
-# Fix table
-# Remove table .is-icon and .is-link
+* Use `rem` and `em`
+* Move variables to their own file
+* Remove small tag
+* Add `:focus` state
+* Fix Font Awesome icons in buttons
+* Fix table
+* Remove table `.is-icon` and `.is-link`
+* Add `.content` table
+* Fix inputs with icons
 
 ## 0.2.2
 

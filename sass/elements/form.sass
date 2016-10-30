@@ -15,7 +15,7 @@ $input-disabled-border:     $background !default
 $input-arrow:               $link !default
 
 $input-icon:                $grey-lighter !default
-$input-icon-active:         $grey-light !default
+$input-icon-active:         $grey !default
 
 $input-radius:              $radius !default
 
@@ -219,59 +219,55 @@ $input-radius:              $radius !default
         flex-grow: 1
         flex-shrink: 0
   &.has-icon
-    & > .fa
-      +fa(14px, 24px)
+    .icon
       color: $input-icon
       pointer-events: none
       position: absolute
-      top: 4px
+      top: ($size-normal * 2.5) / 2
       z-index: 4
     .input
-      &:focus + .fa
-        color: $input-icon-active
-      &.is-small + .fa
-        font-size: 10.5px
-        top: 0
-      &.is-medium + .fa
-        font-size: 21px
-        top: 8px
-      &.is-large + .fa
-        font-size: 21px
-        top: 12px
+      &:focus
+        & + .icon
+          color: $input-icon-active
+      &.is-small
+        & + .icon
+          top: ($size-small * 2.5) / 2
+      &.is-medium
+        & + .icon
+          top: ($size-medium * 2.5) / 2
+      &.is-large
+        & + .icon
+          top: ($size-large * 2.5) / 2
     &:not(.has-icon-right)
-      & > .fa
-        left: 4px
+      .icon
+        left: ($size-normal * 2.5) / 2
+        transform: translateX(-50%) translateY(-50%)
       .input
-        padding-left: 32px
+        padding-left: 2.5em
         &.is-small
-          padding-left: 24px
-          & + .fa
-            left: 0
+          & + .icon
+            left: ($size-small * 2.5) / 2
         &.is-medium
-          padding-left: 40px
-          & + .fa
-            left: 8px
+          & + .icon
+            left: ($size-medium * 2.5) / 2
         &.is-large
-          padding-left: 48px
-          & + .fa
-            left: 12px
+          & + .icon
+            left: ($size-large * 2.5) / 2
     &.has-icon-right
-      & > .fa
-        right: 4px
+      .icon
+        right: ($size-normal * 2.5) / 2
+        transform: translateX(50%) translateY(-50%)
       .input
-        padding-right: 32px
+        padding-right: 2.5em
         &.is-small
-          padding-right: 24px
-          & + .fa
-            right: 0
+          & + .icon
+            right: ($size-small * 2.5) / 2
         &.is-medium
-          padding-right: 40px
-          & + .fa
-            right: 8px
+          & + .icon
+            right: ($size-medium * 2.5) / 2
         &.is-large
-          padding-right: 48px
-          & + .fa
-            right: 12px
+          & + .icon
+            right: ($size-large * 2.5) / 2
   &.is-grouped
     display: flex
     justify-content: flex-start
