@@ -95,7 +95,7 @@ th {
 
 html {
   background-color: whitesmoke;
-  font-size: 16px;
+  font-size: 1rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   min-width: 300px;
@@ -173,7 +173,7 @@ input[type="radio"] {
 }
 
 small {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 span {
@@ -189,14 +189,14 @@ strong {
 pre {
   background-color: whitesmoke;
   color: #4a4a4a;
-  font-size: 0.8em;
+  font-size: 0.75em;
   white-space: pre;
   word-wrap: normal;
 }
 
 pre code {
-  background-color: whitesmoke;
-  color: #4a4a4a;
+  background: none;
+  color: inherit;
   display: block;
   font-size: 1em;
   overflow-x: auto;
@@ -579,7 +579,7 @@ a.box:active {
   border-radius: 3px;
   box-shadow: none;
   display: inline-flex;
-  font-size: 1em;
+  font-size: 1rem;
   height: 2.5em;
   justify-content: flex-start;
   line-height: 1.5;
@@ -592,6 +592,9 @@ a.box:active {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  color: #363636;
   cursor: pointer;
   justify-content: center;
   padding-left: 1em;
@@ -612,16 +615,44 @@ a.box:active {
   color: inherit;
 }
 
-.button .icon:first-child,
-.button .tag:first-child {
-  margin-left: -2px;
-  margin-right: 4px;
+.button .icon:first-child {
+  margin-left: calc(-1px - 0.5rem);
 }
 
-.button .icon:last-child,
-.button .tag:last-child {
-  margin-left: 4px;
-  margin-right: -2px;
+.button .icon:last-child {
+  margin-right: calc(-1px - 0.5rem);
+}
+
+.button .icon.is-small:first-child {
+  margin-left: calc(-1px - 0.25rem);
+}
+
+.button .icon.is-small:last-child {
+  margin-right: calc(-1px - 0.25rem);
+}
+
+.button .icon.is-medium:first-child {
+  margin-left: calc(-1px - 0.75rem);
+}
+
+.button .icon.is-medium:last-child {
+  margin-right: calc(-1px - 0.75rem);
+}
+
+.button .icon.is-large:first-child {
+  margin-left: calc(-1px - 1.25rem);
+}
+
+.button .icon.is-large:last-child {
+  margin-right: calc(-1px - 1.25rem);
+}
+
+.button .icon:first-child:not(:last-child) {
+  margin-right: 0.25rem !important;
+}
+
+.button .icon:last-child:not(:first-child) {
+  margin-left: 0.25rem !important;
 }
 
 .button:hover, .button.is-hovered {
@@ -643,7 +674,7 @@ a.box:active {
 
 .button.is-link {
   background-color: transparent;
-  border-width: 0;
+  border-color: transparent;
   color: #4a4a4a;
   text-decoration: underline;
 }
@@ -655,7 +686,7 @@ a.box:active {
 
 .button.is-white {
   background-color: white;
-  border-width: 0;
+  border-color: transparent;
   color: #0a0a0a;
 }
 
@@ -706,7 +737,7 @@ a.box:active {
 
 .button.is-black {
   background-color: #0a0a0a;
-  border-width: 0;
+  border-color: transparent;
   color: white;
 }
 
@@ -757,7 +788,7 @@ a.box:active {
 
 .button.is-light {
   background-color: whitesmoke;
-  border-width: 0;
+  border-color: transparent;
   color: #363636;
 }
 
@@ -808,7 +839,7 @@ a.box:active {
 
 .button.is-dark {
   background-color: #363636;
-  border-width: 0;
+  border-color: transparent;
   color: whitesmoke;
 }
 
@@ -859,31 +890,31 @@ a.box:active {
 
 .button.is-primary {
   background-color: #00d1b2;
-  border-width: 0;
-  color: white;
+  border-color: transparent;
+  color: #fff;
 }
 
 .button.is-primary:hover, .button.is-primary.is-hovered {
   background-color: #00c4a7;
   border-color: transparent;
-  color: white;
+  color: #fff;
 }
 
 .button.is-primary:focus, .button.is-primary.is-focused {
   border-color: transparent;
   box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.5);
-  color: white;
+  color: #fff;
 }
 
 .button.is-primary:active, .button.is-primary.is-active {
   background-color: #00b89c;
   border-color: transparent;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
-  color: white;
+  color: #fff;
 }
 
 .button.is-primary.is-inverted {
-  background-color: white;
+  background-color: #fff;
   color: #00d1b2;
 }
 
@@ -892,7 +923,7 @@ a.box:active {
 }
 
 .button.is-primary.is-loading:after {
-  border-color: transparent transparent white white !important;
+  border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-primary.is-outlined {
@@ -905,36 +936,36 @@ a.box:active {
 .button.is-primary.is-outlined:hover, .button.is-primary.is-outlined:focus {
   background-color: #00d1b2;
   border-color: #00d1b2;
-  color: white;
+  color: #fff;
 }
 
 .button.is-info {
   background-color: #3273dc;
-  border-width: 0;
-  color: white;
+  border-color: transparent;
+  color: #fff;
 }
 
 .button.is-info:hover, .button.is-info.is-hovered {
   background-color: #276cda;
   border-color: transparent;
-  color: white;
+  color: #fff;
 }
 
 .button.is-info:focus, .button.is-info.is-focused {
   border-color: transparent;
   box-shadow: 0 0 0.5em rgba(50, 115, 220, 0.5);
-  color: white;
+  color: #fff;
 }
 
 .button.is-info:active, .button.is-info.is-active {
   background-color: #2366d1;
   border-color: transparent;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
-  color: white;
+  color: #fff;
 }
 
 .button.is-info.is-inverted {
-  background-color: white;
+  background-color: #fff;
   color: #3273dc;
 }
 
@@ -943,7 +974,7 @@ a.box:active {
 }
 
 .button.is-info.is-loading:after {
-  border-color: transparent transparent white white !important;
+  border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-info.is-outlined {
@@ -956,36 +987,36 @@ a.box:active {
 .button.is-info.is-outlined:hover, .button.is-info.is-outlined:focus {
   background-color: #3273dc;
   border-color: #3273dc;
-  color: white;
+  color: #fff;
 }
 
 .button.is-success {
   background-color: #23d160;
-  border-width: 0;
-  color: white;
+  border-color: transparent;
+  color: #fff;
 }
 
 .button.is-success:hover, .button.is-success.is-hovered {
   background-color: #22c65b;
   border-color: transparent;
-  color: white;
+  color: #fff;
 }
 
 .button.is-success:focus, .button.is-success.is-focused {
   border-color: transparent;
   box-shadow: 0 0 0.5em rgba(35, 209, 96, 0.5);
-  color: white;
+  color: #fff;
 }
 
 .button.is-success:active, .button.is-success.is-active {
   background-color: #20bc56;
   border-color: transparent;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
-  color: white;
+  color: #fff;
 }
 
 .button.is-success.is-inverted {
-  background-color: white;
+  background-color: #fff;
   color: #23d160;
 }
 
@@ -994,7 +1025,7 @@ a.box:active {
 }
 
 .button.is-success.is-loading:after {
-  border-color: transparent transparent white white !important;
+  border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-success.is-outlined {
@@ -1007,12 +1038,12 @@ a.box:active {
 .button.is-success.is-outlined:hover, .button.is-success.is-outlined:focus {
   background-color: #23d160;
   border-color: #23d160;
-  color: white;
+  color: #fff;
 }
 
 .button.is-warning {
   background-color: #ffdd57;
-  border-width: 0;
+  border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 
@@ -1063,31 +1094,31 @@ a.box:active {
 
 .button.is-danger {
   background-color: #ff3860;
-  border-width: 0;
-  color: white;
+  border-color: transparent;
+  color: #fff;
 }
 
 .button.is-danger:hover, .button.is-danger.is-hovered {
   background-color: #ff2b56;
   border-color: transparent;
-  color: white;
+  color: #fff;
 }
 
 .button.is-danger:focus, .button.is-danger.is-focused {
   border-color: transparent;
   box-shadow: 0 0 0.5em rgba(255, 56, 96, 0.5);
-  color: white;
+  color: #fff;
 }
 
 .button.is-danger:active, .button.is-danger.is-active {
   background-color: #ff1f4b;
   border-color: transparent;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
-  color: white;
+  color: #fff;
 }
 
 .button.is-danger.is-inverted {
-  background-color: white;
+  background-color: #fff;
   color: #ff3860;
 }
 
@@ -1096,7 +1127,7 @@ a.box:active {
 }
 
 .button.is-danger.is-loading:after {
-  border-color: transparent transparent white white !important;
+  border-color: transparent transparent #fff #fff !important;
 }
 
 .button.is-danger.is-outlined {
@@ -1109,20 +1140,116 @@ a.box:active {
 .button.is-danger.is-outlined:hover, .button.is-danger.is-outlined:focus {
   background-color: #ff3860;
   border-color: #ff3860;
-  color: white;
+  color: #fff;
 }
 
 .button.is-small {
   border-radius: 2px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+}
+
+.button.is-small .icon:first-child {
+  margin-left: calc(-1px - 0.5625rem);
+}
+
+.button.is-small .icon:last-child {
+  margin-right: calc(-1px - 0.5625rem);
+}
+
+.button.is-small .icon.is-small:first-child {
+  margin-left: calc(-1px - 0.3125rem);
+}
+
+.button.is-small .icon.is-small:last-child {
+  margin-right: calc(-1px - 0.3125rem);
+}
+
+.button.is-small .icon.is-medium:first-child {
+  margin-left: calc(-1px - 0.8125rem);
+}
+
+.button.is-small .icon.is-medium:last-child {
+  margin-right: calc(-1px - 0.8125rem);
+}
+
+.button.is-small .icon.is-large:first-child {
+  margin-left: calc(-1px - 1.3125rem);
+}
+
+.button.is-small .icon.is-large:last-child {
+  margin-right: calc(-1px - 1.3125rem);
 }
 
 .button.is-medium {
   font-size: 1.25rem;
 }
 
+.button.is-medium .icon:first-child {
+  margin-left: calc(-1px - 0.4375rem);
+}
+
+.button.is-medium .icon:last-child {
+  margin-right: calc(-1px - 0.4375rem);
+}
+
+.button.is-medium .icon.is-small:first-child {
+  margin-left: calc(-1px - 0.1875rem);
+}
+
+.button.is-medium .icon.is-small:last-child {
+  margin-right: calc(-1px - 0.1875rem);
+}
+
+.button.is-medium .icon.is-medium:first-child {
+  margin-left: calc(-1px - 0.6875rem);
+}
+
+.button.is-medium .icon.is-medium:last-child {
+  margin-right: calc(-1px - 0.6875rem);
+}
+
+.button.is-medium .icon.is-large:first-child {
+  margin-left: calc(-1px - 1.1875rem);
+}
+
+.button.is-medium .icon.is-large:last-child {
+  margin-right: calc(-1px - 1.1875rem);
+}
+
 .button.is-large {
   font-size: 1.5rem;
+}
+
+.button.is-large .icon:first-child {
+  margin-left: calc(-1px - 0.375rem);
+}
+
+.button.is-large .icon:last-child {
+  margin-right: calc(-1px - 0.375rem);
+}
+
+.button.is-large .icon.is-small:first-child {
+  margin-left: calc(-1px - 0.125rem);
+}
+
+.button.is-large .icon.is-small:last-child {
+  margin-right: calc(-1px - 0.125rem);
+}
+
+.button.is-large .icon.is-medium:first-child {
+  margin-left: calc(-1px - 0.625rem);
+}
+
+.button.is-large .icon.is-medium:last-child {
+  margin-right: calc(-1px - 0.625rem);
+}
+
+.button.is-large .icon.is-large:first-child {
+  margin-left: calc(-1px - 1.125rem);
+}
+
+.button.is-large .icon.is-large:last-child {
+  margin-right: calc(-1px - 1.125rem);
 }
 
 .button[disabled], .button.is-disabled {
@@ -1196,7 +1323,7 @@ a.box:active {
 .content h5,
 .content h6 {
   color: #363636;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.125;
 }
 
@@ -1272,7 +1399,7 @@ a.box:active {
 }
 
 .content.is-small {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .content.is-medium {
@@ -1292,7 +1419,7 @@ a.box:active {
   border-radius: 3px;
   box-shadow: none;
   display: inline-flex;
-  font-size: 1em;
+  font-size: 1rem;
   height: 2.5em;
   justify-content: flex-start;
   line-height: 1.5;
@@ -1422,7 +1549,7 @@ a.box:active {
 .input.is-small,
 .textarea.is-small {
   border-radius: 2px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .input.is-medium,
@@ -1527,7 +1654,7 @@ a.box:active {
   border-radius: 3px;
   box-shadow: none;
   display: inline-flex;
-  font-size: 1em;
+  font-size: 1rem;
   height: 2.5em;
   justify-content: flex-start;
   line-height: 1.5;
@@ -1598,7 +1725,7 @@ a.box:active {
 
 .select.is-small {
   border-radius: 2px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .select.is-medium {
@@ -1629,7 +1756,7 @@ a.box:active {
 
 .help {
   display: block;
-  font-size: 0.875em;
+  font-size: 0.75rem;
   margin-top: 5px;
 }
 
@@ -1692,7 +1819,7 @@ a.box:active {
 }
 
 .control:not(:last-child) {
-  margin-bottom: 10px;
+  margin-bottom: 0.75rem;
 }
 
 .control.has-addons {
@@ -1881,7 +2008,7 @@ a.box:active {
 
 .control.is-grouped > .control:not(:last-child) {
   margin-bottom: 0;
-  margin-right: 10px;
+  margin-right: 0.75rem;
 }
 
 .control.is-grouped > .control.is-expanded {
@@ -2004,7 +2131,7 @@ a.box:active {
 .notification {
   background-color: whitesmoke;
   border-radius: 3px;
-  padding: 16px 20px;
+  padding: 1.25rem 1.5rem;
   position: relative;
 }
 
@@ -2020,8 +2147,9 @@ a.box:active {
 
 .notification .delete {
   border-radius: 0 3px;
-  float: right;
-  margin: -16px -20px 0 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .notification .title,
@@ -2052,17 +2180,17 @@ a.box:active {
 
 .notification.is-primary {
   background-color: #00d1b2;
-  color: white;
+  color: #fff;
 }
 
 .notification.is-info {
   background-color: #3273dc;
-  color: white;
+  color: #fff;
 }
 
 .notification.is-success {
   background-color: #23d160;
-  color: white;
+  color: #fff;
 }
 
 .notification.is-warning {
@@ -2072,7 +2200,7 @@ a.box:active {
 
 .notification.is-danger {
   background-color: #ff3860;
-  color: white;
+  color: #fff;
 }
 
 .progress {
@@ -2081,7 +2209,7 @@ a.box:active {
   border: none;
   border-radius: 290486px;
   display: block;
-  height: 12px;
+  height: 1rem;
   overflow: hidden;
   padding: 0;
   width: 100%;
@@ -2176,15 +2304,15 @@ a.box:active {
 }
 
 .progress.is-small {
-  height: 8px;
+  height: 0.75rem;
 }
 
 .progress.is-medium {
-  height: 16px;
+  height: 1.25rem;
 }
 
 .progress.is-large {
-  height: 20px;
+  height: 1.5rem;
 }
 
 .table {
@@ -2245,7 +2373,7 @@ a.box:active {
 .table td.is-link > a:hover,
 .table th.is-link > a:hover {
   background-color: #00d1b2;
-  color: white;
+  color: #fff;
 }
 
 .table td.is-narrow,
@@ -2328,9 +2456,82 @@ a.box:active {
   background-color: whitesmoke;
 }
 
+.tag {
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 290486px;
+  color: #4a4a4a;
+  display: inline-flex;
+  font-size: 0.75rem;
+  height: 2em;
+  justify-content: center;
+  line-height: 1.5;
+  padding-left: 0.875em;
+  padding-right: 0.875em;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.tag .delete {
+  margin-left: 0.25em;
+  margin-right: -0.5em;
+}
+
+.tag.is-white {
+  background-color: white;
+  color: #0a0a0a;
+}
+
+.tag.is-black {
+  background-color: #0a0a0a;
+  color: white;
+}
+
+.tag.is-light {
+  background-color: whitesmoke;
+  color: #363636;
+}
+
+.tag.is-dark {
+  background-color: #363636;
+  color: whitesmoke;
+}
+
+.tag.is-primary {
+  background-color: #00d1b2;
+  color: #fff;
+}
+
+.tag.is-info {
+  background-color: #3273dc;
+  color: #fff;
+}
+
+.tag.is-success {
+  background-color: #23d160;
+  color: #fff;
+}
+
+.tag.is-warning {
+  background-color: #ffdd57;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tag.is-danger {
+  background-color: #ff3860;
+  color: #fff;
+}
+
+.tag.is-medium {
+  font-size: 1rem;
+}
+
+.tag.is-large {
+  font-size: 1.25rem;
+}
+
 .title,
 .subtitle {
-  font-weight: 300;
   word-break: break-word;
 }
 
@@ -2363,7 +2564,8 @@ a.box:active {
 
 .title {
   color: #363636;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 300;
   line-height: 1.125;
 }
 
@@ -2384,11 +2586,11 @@ a.box:active {
 }
 
 .title.is-2 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
 }
 
 .title.is-3 {
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 .title.is-4 {
@@ -2403,17 +2605,10 @@ a.box:active {
   font-size: 16px;
 }
 
-.title.is-normal {
-  font-weight: 400;
-}
-
-.title.is-normal strong {
-  font-weight: 700;
-}
-
 .subtitle {
   color: #4a4a4a;
   font-size: 1.25rem;
+  font-weight: 300;
   line-height: 1.25;
 }
 
@@ -2430,11 +2625,11 @@ a.box:active {
 }
 
 .subtitle.is-2 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
 }
 
 .subtitle.is-3 {
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 .subtitle.is-4 {
@@ -2447,14 +2642,6 @@ a.box:active {
 
 .subtitle.is-6 {
   font-size: 16px;
-}
-
-.subtitle.is-normal {
-  font-weight: 400;
-}
-
-.subtitle.is-normal strong {
-  font-weight: 700;
 }
 
 .block:not(:last-child) {
@@ -2478,7 +2665,7 @@ a.box:active {
 
 @media screen and (min-width: 1180px) {
   .container {
-    max-width: 1200px;
+    max-width: 1080px;
   }
 }
 
@@ -2495,32 +2682,34 @@ a.box:active {
   border-radius: 290486px;
   cursor: pointer;
   display: inline-block;
-  height: 24px;
+  font-size: 1rem;
+  height: 1.5em;
   outline: none;
   position: relative;
+  transform: rotate(45deg);
+  transform-origin: center center;
   vertical-align: top;
-  width: 24px;
+  width: 1.5em;
 }
 
 .delete:before, .delete:after {
   background-color: white;
   content: "";
   display: block;
-  height: 2px;
   left: 50%;
-  margin-left: -25%;
-  margin-top: -1px;
   position: absolute;
   top: 50%;
-  width: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .delete:before {
-  transform: rotate(45deg);
+  height: 2px;
+  width: 50%;
 }
 
 .delete:after {
-  transform: rotate(-45deg);
+  height: 50%;
+  width: 2px;
 }
 
 .delete:hover {
@@ -2528,18 +2717,15 @@ a.box:active {
 }
 
 .delete.is-small {
-  height: 16px;
-  width: 16px;
+  font-size: 0.75rem;
 }
 
 .delete.is-medium {
-  height: 32px;
-  width: 32px;
+  font-size: 1.25rem;
 }
 
 .delete.is-large {
-  height: 40px;
-  width: 40px;
+  font-size: 1.5rem;
 }
 
 .fa {
@@ -2551,11 +2737,11 @@ a.box:active {
 .icon {
   display: inline-block;
   font-size: 21px;
-  height: 24px;
-  line-height: 24px;
+  height: 1.5rem;
+  line-height: 1.5rem;
   text-align: center;
   vertical-align: top;
-  width: 24px;
+  width: 1.5rem;
 }
 
 .icon .fa {
@@ -2566,31 +2752,31 @@ a.box:active {
 .icon.is-small {
   display: inline-block;
   font-size: 14px;
-  height: 16px;
-  line-height: 16px;
+  height: 1rem;
+  line-height: 1rem;
   text-align: center;
   vertical-align: top;
-  width: 16px;
+  width: 1rem;
 }
 
 .icon.is-medium {
   display: inline-block;
   font-size: 28px;
-  height: 32px;
-  line-height: 32px;
+  height: 2rem;
+  line-height: 2rem;
   text-align: center;
   vertical-align: top;
-  width: 32px;
+  width: 2rem;
 }
 
 .icon.is-large {
   display: inline-block;
   font-size: 42px;
-  height: 48px;
-  line-height: 48px;
+  height: 3rem;
+  line-height: 3rem;
   text-align: center;
   vertical-align: top;
-  width: 48px;
+  width: 3rem;
 }
 
 .heading {
@@ -2636,99 +2822,6 @@ a.box:active {
   display: inline-block;
   font-size: 1.25rem;
   vertical-align: top;
-}
-
-.tag {
-  align-items: center;
-  background-color: whitesmoke;
-  border-radius: 290486px;
-  color: #4a4a4a;
-  display: inline-flex;
-  font-size: 12px;
-  height: 24px;
-  justify-content: center;
-  line-height: 16px;
-  padding-left: 10px;
-  padding-right: 10px;
-  vertical-align: top;
-  white-space: nowrap;
-}
-
-.tag .delete {
-  margin-left: 4px;
-  margin-right: -6px;
-}
-
-.tag.is-white {
-  background-color: white;
-  color: #0a0a0a;
-}
-
-.tag.is-black {
-  background-color: #0a0a0a;
-  color: white;
-}
-
-.tag.is-light {
-  background-color: whitesmoke;
-  color: #363636;
-}
-
-.tag.is-dark {
-  background-color: #363636;
-  color: whitesmoke;
-}
-
-.tag.is-primary {
-  background-color: #00d1b2;
-  color: white;
-}
-
-.tag.is-info {
-  background-color: #3273dc;
-  color: white;
-}
-
-.tag.is-success {
-  background-color: #23d160;
-  color: white;
-}
-
-.tag.is-warning {
-  background-color: #ffdd57;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.tag.is-danger {
-  background-color: #ff3860;
-  color: white;
-}
-
-.tag.is-small {
-  font-size: 0.875rem;
-  height: 20px;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.tag.is-medium {
-  font-size: 16px;
-  height: 32px;
-  padding-left: 14px;
-  padding-right: 14px;
-}
-
-.tag.is-large {
-  font-size: 1.25rem;
-  height: 40px;
-  line-height: 24px;
-  padding-left: 18px;
-  padding-right: 18px;
-}
-
-.tag.is-large .delete {
-  margin-left: 4px;
-  margin-right: -8px;
 }
 
 .card-header {
@@ -3213,7 +3306,7 @@ a.box:active {
 
 .menu-list a.is-active {
   background-color: #00d1b2;
-  color: white;
+  color: #fff;
 }
 
 .menu-list li ul {
@@ -3224,7 +3317,7 @@ a.box:active {
 
 .menu-label {
   color: #7a7a7a;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -3247,7 +3340,7 @@ a.box:active {
 .message-header {
   background-color: #4a4a4a;
   border-radius: 3px 3px 0 0;
-  color: white;
+  color: #fff;
   padding: 0.4rem 0.8rem;
 }
 
@@ -3331,7 +3424,7 @@ a.box:active {
 
 .message.is-primary .message-header {
   background-color: #00d1b2;
-  color: white;
+  color: #fff;
 }
 
 .message.is-primary .message-body {
@@ -3345,7 +3438,7 @@ a.box:active {
 
 .message.is-info .message-header {
   background-color: #3273dc;
-  color: white;
+  color: #fff;
 }
 
 .message.is-info .message-body {
@@ -3359,7 +3452,7 @@ a.box:active {
 
 .message.is-success .message-header {
   background-color: #23d160;
-  color: white;
+  color: #fff;
 }
 
 .message.is-success .message-body {
@@ -3387,7 +3480,7 @@ a.box:active {
 
 .message.is-danger .message-header {
   background-color: #ff3860;
-  color: white;
+  color: #fff;
 }
 
 .message.is-danger .message-body {
@@ -3435,11 +3528,14 @@ a.box:active {
   border-radius: 290486px;
   cursor: pointer;
   display: inline-block;
-  height: 24px;
+  font-size: 1rem;
+  height: 1.5em;
   outline: none;
   position: relative;
+  transform: rotate(45deg);
+  transform-origin: center center;
   vertical-align: top;
-  width: 24px;
+  width: 1.5em;
   background: none;
   height: 40px;
   position: fixed;
@@ -3452,21 +3548,20 @@ a.box:active {
   background-color: white;
   content: "";
   display: block;
-  height: 2px;
   left: 50%;
-  margin-left: -25%;
-  margin-top: -1px;
   position: absolute;
   top: 50%;
-  width: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .modal-close:before {
-  transform: rotate(45deg);
+  height: 2px;
+  width: 50%;
 }
 
 .modal-close:after {
-  transform: rotate(-45deg);
+  height: 50%;
+  width: 2px;
 }
 
 .modal-close:hover {
@@ -3474,18 +3569,15 @@ a.box:active {
 }
 
 .modal-close.is-small {
-  height: 16px;
-  width: 16px;
+  font-size: 0.75rem;
 }
 
 .modal-close.is-medium {
-  height: 32px;
-  width: 32px;
+  font-size: 1.25rem;
 }
 
 .modal-close.is-large {
-  height: 40px;
-  width: 40px;
+  font-size: 1.5rem;
 }
 
 .modal-card {
@@ -3885,7 +3977,7 @@ a.nav-item.is-tab.is-active {
 
 .panel-tabs {
   display: flex;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   padding: 5px 10px 0;
   justify-content: center;
 }
@@ -4066,7 +4158,7 @@ a.panel-block:hover {
 .tabs.is-toggle li.is-active a {
   background-color: #00d1b2;
   border-color: #00d1b2;
-  color: white;
+  color: #fff;
   z-index: 1;
 }
 
@@ -4075,7 +4167,7 @@ a.panel-block:hover {
 }
 
 .tabs.is-small {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .tabs.is-small a {
@@ -5415,11 +5507,11 @@ a.panel-block:hover {
 
 .hero.is-primary {
   background-color: #00d1b2;
-  color: white;
+  color: #fff;
 }
 
 .hero.is-primary .title {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-primary .title a,
@@ -5433,7 +5525,7 @@ a.panel-block:hover {
 
 .hero.is-primary .subtitle a,
 .hero.is-primary .subtitle strong {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-primary .nav {
@@ -5454,11 +5546,11 @@ a.panel-block:hover {
 .hero.is-primary a.nav-item:hover, .hero.is-primary a.nav-item.is-active,
 .hero.is-primary .nav-item a:not(.button):hover,
 .hero.is-primary .nav-item a:not(.button).is-active {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-primary .tabs a {
-  color: white;
+  color: #fff;
   opacity: 0.9;
 }
 
@@ -5471,7 +5563,7 @@ a.panel-block:hover {
 }
 
 .hero.is-primary .tabs.is-boxed a, .hero.is-primary .tabs.is-toggle a {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-primary .tabs.is-boxed a:hover, .hero.is-primary .tabs.is-toggle a:hover {
@@ -5479,8 +5571,8 @@ a.panel-block:hover {
 }
 
 .hero.is-primary .tabs.is-boxed li.is-active a, .hero.is-primary .tabs.is-boxed li.is-active a:hover, .hero.is-primary .tabs.is-toggle li.is-active a, .hero.is-primary .tabs.is-toggle li.is-active a:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #fff;
+  border-color: #fff;
   color: #00d1b2;
 }
 
@@ -5490,13 +5582,13 @@ a.panel-block:hover {
 
 @media screen and (max-width: 768px) {
   .hero.is-primary .nav-toggle span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-primary .nav-toggle:hover {
     background-color: rgba(10, 10, 10, 0.1);
   }
   .hero.is-primary .nav-toggle.is-active span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-primary .nav-menu .nav-item {
     border-top-color: rgba(255, 255, 255, 0.2);
@@ -5505,11 +5597,11 @@ a.panel-block:hover {
 
 .hero.is-info {
   background-color: #3273dc;
-  color: white;
+  color: #fff;
 }
 
 .hero.is-info .title {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-info .title a,
@@ -5523,7 +5615,7 @@ a.panel-block:hover {
 
 .hero.is-info .subtitle a,
 .hero.is-info .subtitle strong {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-info .nav {
@@ -5544,11 +5636,11 @@ a.panel-block:hover {
 .hero.is-info a.nav-item:hover, .hero.is-info a.nav-item.is-active,
 .hero.is-info .nav-item a:not(.button):hover,
 .hero.is-info .nav-item a:not(.button).is-active {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-info .tabs a {
-  color: white;
+  color: #fff;
   opacity: 0.9;
 }
 
@@ -5561,7 +5653,7 @@ a.panel-block:hover {
 }
 
 .hero.is-info .tabs.is-boxed a, .hero.is-info .tabs.is-toggle a {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-info .tabs.is-boxed a:hover, .hero.is-info .tabs.is-toggle a:hover {
@@ -5569,8 +5661,8 @@ a.panel-block:hover {
 }
 
 .hero.is-info .tabs.is-boxed li.is-active a, .hero.is-info .tabs.is-boxed li.is-active a:hover, .hero.is-info .tabs.is-toggle li.is-active a, .hero.is-info .tabs.is-toggle li.is-active a:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #fff;
+  border-color: #fff;
   color: #3273dc;
 }
 
@@ -5580,13 +5672,13 @@ a.panel-block:hover {
 
 @media screen and (max-width: 768px) {
   .hero.is-info .nav-toggle span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-info .nav-toggle:hover {
     background-color: rgba(10, 10, 10, 0.1);
   }
   .hero.is-info .nav-toggle.is-active span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-info .nav-menu .nav-item {
     border-top-color: rgba(255, 255, 255, 0.2);
@@ -5595,11 +5687,11 @@ a.panel-block:hover {
 
 .hero.is-success {
   background-color: #23d160;
-  color: white;
+  color: #fff;
 }
 
 .hero.is-success .title {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-success .title a,
@@ -5613,7 +5705,7 @@ a.panel-block:hover {
 
 .hero.is-success .subtitle a,
 .hero.is-success .subtitle strong {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-success .nav {
@@ -5634,11 +5726,11 @@ a.panel-block:hover {
 .hero.is-success a.nav-item:hover, .hero.is-success a.nav-item.is-active,
 .hero.is-success .nav-item a:not(.button):hover,
 .hero.is-success .nav-item a:not(.button).is-active {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-success .tabs a {
-  color: white;
+  color: #fff;
   opacity: 0.9;
 }
 
@@ -5651,7 +5743,7 @@ a.panel-block:hover {
 }
 
 .hero.is-success .tabs.is-boxed a, .hero.is-success .tabs.is-toggle a {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-success .tabs.is-boxed a:hover, .hero.is-success .tabs.is-toggle a:hover {
@@ -5659,8 +5751,8 @@ a.panel-block:hover {
 }
 
 .hero.is-success .tabs.is-boxed li.is-active a, .hero.is-success .tabs.is-boxed li.is-active a:hover, .hero.is-success .tabs.is-toggle li.is-active a, .hero.is-success .tabs.is-toggle li.is-active a:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #fff;
+  border-color: #fff;
   color: #23d160;
 }
 
@@ -5670,13 +5762,13 @@ a.panel-block:hover {
 
 @media screen and (max-width: 768px) {
   .hero.is-success .nav-toggle span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-success .nav-toggle:hover {
     background-color: rgba(10, 10, 10, 0.1);
   }
   .hero.is-success .nav-toggle.is-active span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-success .nav-menu .nav-item {
     border-top-color: rgba(255, 255, 255, 0.2);
@@ -5775,11 +5867,11 @@ a.panel-block:hover {
 
 .hero.is-danger {
   background-color: #ff3860;
-  color: white;
+  color: #fff;
 }
 
 .hero.is-danger .title {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-danger .title a,
@@ -5793,7 +5885,7 @@ a.panel-block:hover {
 
 .hero.is-danger .subtitle a,
 .hero.is-danger .subtitle strong {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-danger .nav {
@@ -5814,11 +5906,11 @@ a.panel-block:hover {
 .hero.is-danger a.nav-item:hover, .hero.is-danger a.nav-item.is-active,
 .hero.is-danger .nav-item a:not(.button):hover,
 .hero.is-danger .nav-item a:not(.button).is-active {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-danger .tabs a {
-  color: white;
+  color: #fff;
   opacity: 0.9;
 }
 
@@ -5831,7 +5923,7 @@ a.panel-block:hover {
 }
 
 .hero.is-danger .tabs.is-boxed a, .hero.is-danger .tabs.is-toggle a {
-  color: white;
+  color: #fff;
 }
 
 .hero.is-danger .tabs.is-boxed a:hover, .hero.is-danger .tabs.is-toggle a:hover {
@@ -5839,8 +5931,8 @@ a.panel-block:hover {
 }
 
 .hero.is-danger .tabs.is-boxed li.is-active a, .hero.is-danger .tabs.is-boxed li.is-active a:hover, .hero.is-danger .tabs.is-toggle li.is-active a, .hero.is-danger .tabs.is-toggle li.is-active a:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #fff;
+  border-color: #fff;
   color: #ff3860;
 }
 
@@ -5850,13 +5942,13 @@ a.panel-block:hover {
 
 @media screen and (max-width: 768px) {
   .hero.is-danger .nav-toggle span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-danger .nav-toggle:hover {
     background-color: rgba(10, 10, 10, 0.1);
   }
   .hero.is-danger .nav-toggle.is-active span {
-    background-color: white;
+    background-color: #fff;
   }
   .hero.is-danger .nav-menu .nav-item {
     border-top-color: rgba(255, 255, 255, 0.2);
@@ -5945,7 +6037,7 @@ body.page-grid .column > .notification {
 
 @media screen and (min-width: 769px) {
   .header-item .button + .button {
-    margin-left: 10px;
+    margin-left: 0.75rem;
   }
 }
 
@@ -5997,7 +6089,7 @@ svg {
 }
 
 #carbonads .carbon-poweredby {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   margin-left: 15px;
 }
 
@@ -6212,7 +6304,7 @@ html.route-index #carbon {
   background: white;
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  padding: 20px;
+  padding: 1.5rem;
 }
 
 #mc_embed_signup .control {
@@ -6220,7 +6312,7 @@ html.route-index #carbon {
 }
 
 #mc_embed_signup .notification {
-  margin-top: 10px;
+  margin-top: 0.75rem;
 }
 
 #social {
@@ -6260,18 +6352,18 @@ html.route-index #carbon {
   border: 1px solid #ffdd57;
   border-top-right-radius: 3px;
   color: rgba(0, 0, 0, 0.7);
-  padding: 15px 20px;
+  padding: 1.25rem 1.5rem;
   position: relative;
 }
 
 .example:not(:first-child),
 .structure:not(:first-child) {
-  margin-top: 30px;
+  margin-top: 2rem;
 }
 
 .example:not(:last-child),
 .structure:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .example:before,
@@ -6304,7 +6396,7 @@ html.route-index #carbon {
   border: 1px solid #ffdd57;
   border-radius: 0 0 3px 3px;
   border-top: none;
-  margin-top: -20px;
+  margin-top: -1.5rem;
 }
 
 .example + .highlight pre {
@@ -6312,18 +6404,18 @@ html.route-index #carbon {
 }
 
 .example + .highlight:not(:last-child) {
-  margin-bottom: 40px;
+  margin-bottom: 3rem;
 }
 
 .structure {
   border-color: #ff3860;
   border-radius: 3px;
-  padding: 20px;
+  padding: 1.5rem;
 }
 
 .structure:before {
   background: #ff3860;
-  color: white;
+  color: #fff;
   content: "Structure";
 }
 
@@ -6362,13 +6454,13 @@ html.route-index #carbon {
 }
 
 .structure-item.is-structure-container {
-  padding: 20px 10px 10px;
+  padding: 1.5rem 0.75rem 0.75rem;
 }
 
 .structure-item.is-structure-container:after {
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 5px 10px;
+  padding: 0.5rem 0.75rem;
 }
 
 .highlight {
@@ -6406,12 +6498,12 @@ html.route-index #carbon {
 
 @media screen and (min-width: 769px) {
   .section:not(.is-fullwidth) > .example:not(.is-fullwidth) {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
   .section:not(.is-fullwidth) > .example:not(.is-fullwidth) + .highlight {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
 }
 
@@ -6439,10 +6531,10 @@ html.route-index #carbon {
 
 html ::-moz-selection {
   background: #00d1b2;
-  color: white;
+  color: #fff;
 }
 
 html ::selection {
   background: #00d1b2;
-  color: white;
+  color: #fff;
 }

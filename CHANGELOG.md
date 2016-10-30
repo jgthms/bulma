@@ -1,5 +1,12 @@
 # Bulma Changelog
 
+## 0.3.0
+
+# Use `rem` and `em`
+# Move variables to their own file
+# Remove small tag
+# Fix Font Awesome icons in buttons
+
 ## 0.2.2
 
 * Fix: remove multiple imports

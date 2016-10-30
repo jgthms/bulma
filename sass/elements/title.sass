@@ -1,22 +1,32 @@
+$title:             $grey-darker !default
+$title-size:        $size-3 !default
+$title-weight:      $weight-light !default
+$title-weight-bold: $weight-semibold !default
+
+$subtitle:          $grey-dark !default
+$subtitle-size:     $size-5 !default
+$subtitle-strong:   $grey-darker !default
+$subtitle-weight:   $weight-light !default
+
 .title,
 .subtitle
   +block
-  font-weight: $weight-title-normal
   word-break: break-word
   em,
   span
-    font-weight: $weight-title-normal
+    font-weight: $title-weight
   a
     &:hover
       border-bottom: 1px solid
   strong
-    font-weight: $weight-title-bold
+    font-weight: $title-weight-bold
   .tag
     vertical-align: bottom
 
 .title
-  color: $text-strong
-  font-size: $size-large
+  color: $title
+  font-size: $title-size
+  font-weight: $title-weight
   line-height: 1.125
   strong
     color: inherit
@@ -29,18 +39,14 @@
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
-  // Modifiers
-  &.is-normal
-    font-weight: $weight-normal
-    strong
-      font-weight: $weight-bold
 
 .subtitle
-  color: $text
-  font-size: $size-medium
+  color: $subtitle
+  font-size: $subtitle-size
+  font-weight: $subtitle-weight
   line-height: 1.25
   strong
-    color: $text-strong
+    color: $subtitle-strong
   & + .title
     margin-top: -1.4rem
   // Colors
@@ -48,8 +54,3 @@
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
-  // Modifiers
-  &.is-normal
-    font-weight: $weight-normal
-    strong
-      font-weight: $weight-bold
