@@ -28,6 +28,11 @@
   top: 50%
 
 =delete
+  // We need even pixel dimensions to ensure the delete cross can be perfectly centered
+  $dimension-small: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-small)) * 1px
+  $dimension-normal: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-normal)) * 1px
+  $dimension-medium: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-medium)) * 1px
+  $dimension-large: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-large)) * 1px
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
@@ -37,13 +42,13 @@
   cursor: pointer
   display: inline-block
   font-size: $size-normal
-  height: 1.5em
+  height: $dimension-normal
   outline: none
   position: relative
   transform: rotate(45deg)
   transform-origin: center center
   vertical-align: top
-  width: 1.5em
+  width: $dimension-normal
   &:before,
   &:after
     background-color: $white
@@ -66,11 +71,14 @@
     background-color: rgba($black, 0.4)
   // Sizes
   &.is-small
-    font-size: $size-small
+    height: $dimension-small
+    width: $dimension-small
   &.is-medium
-    font-size: $size-medium
+    height: $dimension-medium
+    width: $dimension-medium
   &.is-large
-    font-size: $size-large
+    height: $dimension-large
+    width: $dimension-large
 
 =fa($size, $dimensions)
   display: inline-block
