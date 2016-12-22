@@ -1,4 +1,27 @@
-// $size: 0.875rem
+$pagination: $grey-darker !default
+$pagination-background: $white !default
+$pagination-border: $grey-lighter !default
+
+$pagination-hover: $link-hover !default
+$pagination-hover-border: $link-hover-border !default
+
+$pagination-focus: $link-focus !default
+$pagination-focus-border: $link-focus-border !default
+
+$pagination-active: $link-active !default
+$pagination-active-border: $link-active-border !default
+
+$pagination-disabled: $grey !default
+$pagination-disabled-background: $grey-lighter !default
+$pagination-disabled-border: $grey-lighter !default
+
+$pagination-current: $link-invert !default
+$pagination-current-background: $link !default
+$pagination-current-border: $link !default
+
+$pagination-ellipsis: $grey-light !default
+
+$pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
 
 .pagination,
 .pagination-list
@@ -22,20 +45,19 @@
 .pagination-previous,
 .pagination-next,
 .pagination-link
-  border: 1px solid $border
+  border: 1px solid $pagination-border
   min-width: 2.5em
   &:hover
-    border-color: $link
-    color: $text-strong
+    border-color: $pagination-hover-border
+    color: $pagination-hover
   &:focus
-    border-color: $link
+    border-color: $pagination-focus-border
   &:active
-    background-color: $background
-    box-shadow: inset 0 1px 2px rgba($black, 0.2)
+    box-shadow: $pagination-shadow-inset
   &[disabled],
   &.is-disabled
-    background: $border
-    color: $text-light
+    background: $pagination-disabled-background
+    color: $pagination-disabled
     opacity: 0.5
     pointer-events: none
 
@@ -46,12 +68,12 @@
 
 .pagination-link
   &.is-current
-    background-color: $link
-    border-color: $link
-    color: $link-invert
+    background-color: $pagination-current-background
+    border-color: $pagination-current-border
+    color: $pagination-current
 
 .pagination-ellipsis
-  color: $text-light
+  color: $pagination-ellipsis
   pointer-events: none
 
 .pagination-list
@@ -109,42 +131,3 @@
       .pagination-list
         justify-content: flex-end
         order: 3
-
-
-// .pagination
-//   align-items: center
-//   display: flex
-//   justify-content: center
-//   text-align: center
-//   a
-//     display: block
-//     min-width: 32px
-//     padding: 3px 8px
-//   span
-//     color: $text-light
-//     display: block
-//     margin: 0 4px
-//   li
-//     margin: 0 2px
-//   ul
-//     align-items: center
-//     display: flex
-//     flex-grow: 1
-//     flex-shrink: 0
-//     justify-content: center
-//   // Responsiveness
-//   +mobile
-//     flex-wrap: wrap
-//     & > a
-//       width: calc(50% - 5px)
-//       &:not(:first-child)
-//         margin-left: 10px
-//     li
-//       flex-grow: 1
-//       flex-shrink: 0
-//     ul
-//       margin-top: 10px
-//   +tablet
-//     & > a
-//       &:not(:first-child)
-//         order: 1
