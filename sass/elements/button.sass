@@ -1,6 +1,6 @@
-$button:                     $grey-darker !default
-$button-background:          $white !default
-$button-border:              $grey-lighter !default
+$button: $grey-darker !default
+$button-background: $white !default
+$button-border: $grey-lighter !default
 
 $button-hover: $link-hover !default
 $button-hover-border: $link-hover-border !default
@@ -13,63 +13,58 @@ $button-active-border: $link-active-border !default
 
 $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
 
-@function buttonIconSpacing($button-size, $icon-width)
+@function buttonIconSpacing($button-font-size, $icon-width)
   // The rem height of the button
-  $button-height: 2.5 * $button-size
-  // For the button to be square, the horizontal padding + the icon width must equal the button height.
-  // We know that $horizontal-padding = 2em
-  $horizontal-padding: 2 * $button-size
-  // We want to solve:
-  // $button-height = $horizontal-padding + $icon-width + $x
-  $x: $button-height - $horizontal-padding - $icon-width
-  // We divide by 2 to apply this margin on both the left and right sides
-  @return abs($x) / 2
+  // based on a height of 2.5em
+  $button-height: 2.5 * $button-font-size // rem
+  // The rem total horizontal padding of the button
+  $button-horizontal-padding: 2 * 0.75 * $button-font-size // rem
+  // For the icon center to align with the button center
+  // the horizontal padding + the icon width must equal the button height
+  // $button-height = $button-horizontal-padding + $icon-width + $difference
+  $difference: $button-height - $button-horizontal-padding - $icon-width
+  @return $difference / 2
 
-=button-icon($button-size)
-  $small-spacing: buttonIconSpacing($button-size, 1rem)
-  $normal-spacing: buttonIconSpacing($button-size, 1.5rem)
-  $medium-spacing: buttonIconSpacing($button-size, 2rem)
-  $large-spacing: buttonIconSpacing($button-size, 3rem)
+=button-icon($button-font-size)
+  $small-offset: buttonIconSpacing($button-font-size, 1rem)
+  $normal-offset: buttonIconSpacing($button-font-size, 1.5rem)
+  $medium-offset: buttonIconSpacing($button-font-size, 2rem)
+  $large-offset: buttonIconSpacing($button-font-size, 3rem)
   .icon
     &:first-child:not(:last-child)
-      margin-left: -$normal-spacing / 2
-      margin-right: $normal-spacing
+      margin-left: $normal-offset
+      margin-right: $button-font-size / 2
     &:last-child:not(:first-child)
-      margin-left: $normal-spacing
-      margin-right: -$normal-spacing / 2
+      margin-left: $button-font-size / 2
+      margin-right: $normal-offset
     &:first-child:last-child
-      margin-left: calc(-1px - #{$normal-spacing})
-      margin-right: calc(-1px - #{$normal-spacing})
+      // The -1px is to account for the button 1px border
+      margin-left: calc(-1px + #{$normal-offset})
+      margin-right: calc(-1px + #{$normal-offset})
     &.is-small
       &:first-child:not(:last-child)
-        margin-left: -$small-spacing / 2
-        margin-right: $small-spacing
+        margin-left: $small-offset
       &:last-child:not(:first-child)
-        margin-left: $small-spacing
-        margin-right: -$small-spacing / 2
+        margin-right: $small-offset
       &:first-child:last-child
-        margin-left: calc(-1px - #{$small-spacing})
-        margin-right: calc(-1px - #{$small-spacing})
+        margin-left: calc(-1px + #{$small-offset})
+        margin-right: calc(-1px + #{$small-offset})
     &.is-medium
       &:first-child:not(:last-child)
-        margin-left: -$medium-spacing / 2
-        margin-right: $medium-spacing
+        margin-left: $medium-offset
       &:last-child:not(:first-child)
-        margin-left: $medium-spacing
-        margin-right: -$medium-spacing / 2
+        margin-right: $medium-offset
       &:first-child:last-child
-        margin-left: calc(-1px - #{$medium-spacing})
-        margin-right: calc(-1px - #{$medium-spacing})
+        margin-left: calc(-1px + #{$medium-offset})
+        margin-right: calc(-1px + #{$medium-offset})
     &.is-large
       &:first-child:not(:last-child)
-        margin-left: -$large-spacing / 2
-        margin-right: $large-spacing
+        margin-left: $large-offset
       &:last-child:not(:first-child)
-        margin-left: $large-spacing
-        margin-right: -$large-spacing / 2
+        margin-right: $large-offset
       &:first-child:last-child
-        margin-left: calc(-1px - #{$large-spacing})
-        margin-right: calc(-1px - #{$large-spacing})
+        margin-left: calc(-1px + #{$large-offset})
+        margin-right: calc(-1px + #{$large-offset})
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
@@ -91,8 +86,8 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
   color: $button
   cursor: pointer
   justify-content: center
-  padding-left: 1em
-  padding-right: 1em
+  padding-left: 0.75em
+  padding-right: 0.75em
   text-align: center
   white-space: nowrap
   strong
