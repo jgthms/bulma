@@ -40,7 +40,7 @@ doc-subtab: nav
 <nav class="nav">
   <div class="nav-left">
     <a class="nav-item">
-      <img src="{{ site.url }}/images/bulma-type.png" alt="Bulma logo">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="Bulma logo">
     </a>
   </div>
 
@@ -96,7 +96,7 @@ doc-subtab: nav
 </nav>
 {% endcapture %}
 
-<div class="example">
+<div class="example is-paddingless">
 {{nav_example}}
 </div>
 
@@ -114,45 +114,52 @@ doc-subtab: nav
         <li>the <code>nav-item</code> can become <strong>active</strong> by adding the <code>is-active</code> modifier</li>
         <li>the <code>nav-item</code> can become a <strong>tab</strong> by adding the <code>is-tab</code> modifier</li>
       </ul>
+      <p>
+        To optimise the space on desktop, but also allow the mobile view to be usable, you can <strong>duplicate</strong> nav items in both <code>nav-left</code> and <code>nav-right</code>, and show/hide them with <a href="{{site.url}}/documentation/modifiers/responsive-helpers/">responsive helpers</a>.
+      </p>
     </div>
   </div>
 
-<div class="example">
+{% capture nav_tabs_example %}
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <a class="nav-item is-tab is-active">Card</a>
-      <a class="nav-item is-tab">Level</a>
-      <a class="nav-item is-tab">Media object</a>
-      <a class="nav-item is-tab">Menu</a>
-      <a class="nav-item is-tab">Message</a>
-      <a class="nav-item is-tab">Modal</a>
-      <a class="nav-item is-tab">Nav</a>
-      <a class="nav-item is-tab">Pagination</a>
-      <a class="nav-item is-tab">Panel</a>
-      <a class="nav-item is-tab">Tabs</a>
+      <a class="nav-item">
+        <img src="{{ site.url }}/images/bulma-logo.png" alt="Bulma logo">
+      </a>
+      <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile">Features</a>
+      <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
+      <a class="nav-item is-tab is-hidden-mobile">About</a>
+    </div>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu">
+      <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+      <a class="nav-item is-tab is-hidden-tablet">Features</a>
+      <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
+      <a class="nav-item is-tab is-hidden-tablet">About</a>
+      <a class="nav-item is-tab">
+        <figure class="image is-16x16" style="margin-right: 8px;">
+          <img src="{{site.url}}/images/jgthms.png">
+        </figure>
+        Profile
+      </a>
+      <a class="nav-item is-tab">Log out</a>
     </div>
   </div>
 </nav>
+{% endcapture %}
+
+<div class="example is-paddingless">
+{{nav_tabs_example}}
 </div>
 
 {% highlight html %}
-<nav class="nav has-shadow">
-  <div class="container">
-    <div class="nav-left">
-      <a class="nav-item is-tab is-active">Card</a>
-      <a class="nav-item is-tab">Level</a>
-      <a class="nav-item is-tab">Media object</a>
-      <a class="nav-item is-tab">Menu</a>
-      <a class="nav-item is-tab">Message</a>
-      <a class="nav-item is-tab">Modal</a>
-      <a class="nav-item is-tab">Nav</a>
-      <a class="nav-item is-tab">Pagination</a>
-      <a class="nav-item is-tab">Panel</a>
-      <a class="nav-item is-tab">Tabs</a>
-    </div>
-  </div>
-</nav>
+{{nav_tabs_example}}
 {% endhighlight %}
 
 </section>
