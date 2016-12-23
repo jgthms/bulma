@@ -25,6 +25,9 @@ doc-subtab: nav
         <li><code>nav-right</code></li>
       </ul>
       <p>
+        Each nav item needs to be wrapped in a <code>nav-item</code> element.
+      </p>
+      <p>
         For responsiveness, <strong>2 additional</strong> classes are available:
       </p>
       <ul>
@@ -33,41 +36,45 @@ doc-subtab: nav
       </ul>
     </div>
 
-<div class="example">
+{% capture nav_example %}
 <nav class="nav">
   <div class="nav-left">
-    <a class="nav-item is-brand" href="#">
+    <a class="nav-item">
       <img src="{{ site.url }}/images/bulma-type.png" alt="Bulma logo">
     </a>
   </div>
 
   <div class="nav-center">
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       <span class="icon">
         <i class="fa fa-github"></i>
       </span>
     </a>
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       <span class="icon">
         <i class="fa fa-twitter"></i>
       </span>
     </a>
   </div>
 
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
   <span class="nav-toggle">
     <span></span>
     <span></span>
     <span></span>
   </span>
 
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
   <div class="nav-right nav-menu">
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       Home
     </a>
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       Documentation
     </a>
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       Blog
     </a>
 
@@ -78,7 +85,7 @@ doc-subtab: nav
         </span>
         <span>Tweet</span>
       </a>
-      <a class="button is-primary" href="#">
+      <a class="button is-primary">
         <span class="icon">
           <i class="fa fa-download"></i>
         </span>
@@ -87,63 +94,14 @@ doc-subtab: nav
     </span>
   </div>
 </nav>
+{% endcapture %}
+
+<div class="example">
+{{nav_example}}
 </div>
 
 {% highlight html %}
-<nav class="nav">
-  <div class="nav-left">
-    <a class="nav-item is-brand" href="#">
-      <img src="{{ site.url }}/images/bulma-type.png" alt="Bulma logo">
-    </a>
-  </div>
-
-  <div class="nav-center">
-    <a class="nav-item" href="#">
-      <span class="icon">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>
-    <a class="nav-item" href="#">
-      <span class="icon">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>
-  </div>
-
-  <span class="nav-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-
-  <div class="nav-right nav-menu">
-    <a class="nav-item" href="#">
-      Home
-    </a>
-    <a class="nav-item" href="#">
-      Documentation
-    </a>
-    <a class="nav-item" href="#">
-      Blog
-    </a>
-
-    <span class="nav-item">
-      <a class="button" >
-        <span class="icon">
-          <i class="fa fa-twitter"></i>
-        </span>
-        <span>Tweet</span>
-      </a>
-      <a class="button is-primary" href="#">
-        <span class="icon">
-          <i class="fa fa-download"></i>
-        </span>
-        <span>Download</span>
-      </a>
-    </span>
-  </div>
-</nav>
-
+{{nav_example}}
 {% endhighlight %}
 
     <hr>
