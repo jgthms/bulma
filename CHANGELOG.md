@@ -24,6 +24,9 @@
 * Fix `.pagination`
 * Fix `.tabs`
 * Fix `.panel`
+* Fix `.delete`
+* Add mixins documentation
+* Add functions documentation
 
 ## 0.2.2
 
