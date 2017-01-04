@@ -20,9 +20,9 @@ doc-subtab: variables
           <strong>Initial variables</strong>: where you define variables by <strong>direct value</strong>, like:
           <ul>
             <li><strong>colors</strong>: <code>$blue: #42afe3</code></li>
-            <li><strong>font families</strong>: <code>$family-sans-serif: "Helvetica Neue", "Helvetica", "Arial", sans-serif</code></li>
-            <li><strong>font sizes</strong>: <code>$size-1: 48px</code></li>
-            <li><strong>other values</strong>: <code>$nav-height: 50px</code> or <code>$easing: ease-out</code></li>
+            <li><strong>font families</strong>: <code>$family-monospace: "Inconsolata", "Consolas", "Monaco", monospace</code></li>
+            <li><strong>font sizes</strong>: <code>$size-1: 3.5rem</code></li>
+            <li><strong>other values</strong>: <code>$easing: ease-out</code> or <code>$radius-large: 5px</code></li>
           </ul>
         </li>
         <li>
@@ -40,7 +40,7 @@ doc-subtab: variables
         <li>
           <strong>Generated variables</strong> where variables are <strong>calculated</strong> from the values set in the previous file. For example, you can have:
           <ul>
-            <li><code>$body-background: $white</code>: the page's main background</li>
+            <li><code>$background: $white-ter</code>: the main background color</li>
             <li><code>$link: $primary</code>: the links use the primary color</li>
             <li><code>$family-primary: $family-sans-serif</code>: the primary font family is the sans-serif one</li>
           </ul>
@@ -174,23 +174,23 @@ doc-subtab: variables
       </tr>
       <tr>
         <td><code>$size-1</code></td>
-        <td>48px</td>
+        <td>3.5rem</td>
       </tr>
       <tr>
         <td><code>$size-2</code></td>
-        <td>40px</td>
+        <td>2.75rem</td>
       </tr>
       <tr>
         <td><code>$size-3</code></td>
-        <td>28px</td>
+        <td>2rem</td>
       </tr>
       <tr>
         <td><code>$size-4</code></td>
-        <td>24px</td>
+        <td>1.5rem</td>
       </tr>
       <tr>
         <td><code>$size-5</code></td>
-        <td>18px</td>
+        <td>1.25rem</td>
       </tr>
       <tr>
         <td><code>$size-6</code></td>
@@ -198,23 +198,23 @@ doc-subtab: variables
       </tr>
       <tr>
         <td><code>$size-7</code></td>
-        <td>11px</td>
+        <td>0.75rem</td>
+      </tr>
+      <tr>
+        <td><code>$weight-light</code></td>
+        <td>300</td>
       </tr>
       <tr>
         <td><code>$weight-normal</code></td>
         <td>400</td>
       </tr>
       <tr>
+        <td><code>$weight-semibold</code></td>
+        <td>500</td>
+      </tr>
+      <tr>
         <td><code>$weight-bold</code></td>
         <td>700</td>
-      </tr>
-      <tr>
-        <td><code>$weight-title-normal</code></td>
-        <td>300</td>
-      </tr>
-      <tr>
-        <td><code>$weight-title-bold</code></td>
-        <td>500</td>
       </tr>
 
       <tr><th colspan="2">Breakpoints</th></tr>
@@ -224,11 +224,11 @@ doc-subtab: variables
       </tr>
       <tr>
         <td><code>$desktop</code></td>
-        <td>980px</td>
+        <td>1000px (960px + 40px container)</td>
       </tr>
       <tr>
         <td><code>$widescreen</code></td>
-        <td>1180px</td>
+        <td>1192px (1152px+ 40px container)</td>
       </tr>
 
       <tr><th colspan="2">Miscellaneous</th></tr>
@@ -268,15 +268,11 @@ doc-subtab: variables
       </tr>
       <tr>
         <td><code>$light</code></td>
-        <td>$grey-lighter</td>
+        <td>$white-ter</td>
       </tr>
       <tr>
         <td><code>$dark</code></td>
-        <td>$grey-dark</td>
-      </tr>
-      <tr>
-        <td><code>$text</code></td>
-        <td>$grey-dark</td>
+        <td>$grey-darker</td>
       </tr>
 
       <tr><th colspan="2">3. Generated variables</th></tr>
@@ -331,6 +327,10 @@ doc-subtab: variables
 
       <tr><th colspan="2">Text colors</th></tr>
       <tr>
+        <td><code>$text</code></td>
+        <td>$grey-dark</td>
+      </tr>
+      <tr>
         <td><code>$text-invert</code></td>
         <td>findColorInvert($text)</td>
       </tr>
@@ -379,12 +379,16 @@ doc-subtab: variables
         <td>$grey-darker</td>
       </tr>
       <tr>
-        <td><code>$link-hover-background</code></td>
-        <td>$grey-lighter</td>
-      </tr>
-      <tr>
         <td><code>$link-hover-border</code></td>
         <td>$grey-darker</td>
+      </tr>
+      <tr>
+        <td><code>$link-focus</code></td>
+        <td>$grey-darker</td>
+      </tr>
+      <tr>
+        <td><code>$link-focus-border</code></td>
+        <td>$primary</td>
       </tr>
       <tr>
         <td><code>$link-active</code></td>
@@ -392,45 +396,7 @@ doc-subtab: variables
       </tr>
       <tr>
         <td><code>$link-active-border</code></td>
-        <td>$grey-darker</td>
-      </tr>
-
-      <tr><th colspan="2">Control colors</th></tr>
-      <tr>
-        <td><code>$control</code></td>
-        <td>$text-strong</td>
-      </tr>
-      <tr>
-        <td><code>$control-background</code></td>
-        <td>$text-invert</td>
-      </tr>
-      <tr>
-        <td><code>$control-border</code></td>
-        <td>$border</td>
-      </tr>
-      <tr>
-        <td><code>$control-hover</code></td>
-        <td>$link-hover</td>
-      </tr>
-      <tr>
-        <td><code>$control-hover-border</code></td>
-        <td>$border-hover</td>
-      </tr>
-      <tr>
-        <td><code>$control-active</code></td>
-        <td>$link</td>
-      </tr>
-      <tr>
-        <td><code>$control-active-background</code></td>
-        <td>$link</td>
-      </tr>
-      <tr>
-        <td><code>$control-active-background-invert</code></td>
-        <td>$link-invert</td>
-      </tr>
-      <tr>
-        <td><code>$control-active-border</code></td>
-        <td>$link</td>
+        <td>$grey-dark</td>
       </tr>
 
       <tr><th colspan="2">Typography</th></tr>
@@ -448,7 +414,7 @@ doc-subtab: variables
       </tr>
       <tr>
         <td><code>$size-normal</code></td>
-        <td>$size-6</td>
+        <td>1rem</td>
       </tr>
       <tr>
         <td><code>$size-medium</code></td>
@@ -456,7 +422,7 @@ doc-subtab: variables
       </tr>
       <tr>
         <td><code>$size-large</code></td>
-        <td>$size-3</td>
+        <td>$size-4</td>
       </tr>
 
       <tr><th colspan="2">4. Lists and maps</th></tr>
