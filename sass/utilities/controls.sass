@@ -1,75 +1,37 @@
-$control: $text-strong !default
-$control-background: $text-invert !default
-$control-border: $border !default
-
-$control-hover: $link-hover !default
-$control-hover-border: $border-hover !default
-
-$control-active: $link !default
-$control-active-background: $link !default
-$control-active-background-invert: $link-invert !default
-$control-active-border: $link !default
-
-$control-disabled: $border !default
-$control-disabled-background: $background !default
-
 $control-radius: $radius !default
 $control-radius-small: $radius-small !default
-$control-size: $size-normal !default
-$control-size-small: $size-small !default
-
-$control-icon: $grey-lighter !default
-$control-icon-active: $grey-light !default
 
 =control
   -moz-appearance: none
   -webkit-appearance: none
   align-items: center
-  background-color: $control-background
-  border: 1px solid $control-border
+  border: none
   border-radius: $control-radius
-  color: $control
+  box-shadow: none
   display: inline-flex
-  font-size: $control-size
-  height: 32px
+  font-size: $size-normal
+  height: 2.5em
   justify-content: flex-start
-  line-height: 24px
-  padding-left: 8px
-  padding-right: 8px
+  line-height: 1.5
+  padding-left: 0.75em
+  padding-right: 0.75em
   position: relative
   vertical-align: top
-  &:hover
-    border-color: $control-hover-border
-  &:active,
+  // States
   &:focus,
+  &.is-focused,
+  &:active,
   &.is-active
-    border-color: $control-active-border
     outline: none
   &[disabled],
   &.is-disabled
-    background-color: $control-disabled-background
-    border-color: $control-disabled
-    cursor: not-allowed
     pointer-events: none
-    +placeholder
-      color: rgba($control, 0.3)
 
+// The controls sizes use mixins so they can be used at different breakpoints
 =control-small
   border-radius: $control-radius-small
-  font-size: 11px
-  height: 24px
-  line-height: 16px
-  padding-left: 6px
-  padding-right: 6px
+  font-size: $size-small
 =control-medium
-  font-size: 18px
-  height: 40px
-  line-height: 32px
-  padding-left: 10px
-  padding-right: 10px
+  font-size: $size-medium
 =control-large
-  font-size: 24px
-  height: 48px
-  line-height: 40px
-  padding-left: 12px
-  padding-right: 12px
+  font-size: $size-large

@@ -1,6 +1,7 @@
 @charset "utf-8"
 
 @import "../bulma"
+@import "./sass/highlight"
 
 // Override
 .button
@@ -20,7 +21,7 @@ body.page-grid .column > .notification
 
 +tablet
   .header-item .button + .button
-    margin-left: 10px
+    margin-left: 0.75rem
 
 // Additional
 svg
@@ -32,7 +33,10 @@ $carbon-space: 15px
 #carbon
   max-width: 340px
   min-height: 100px + ($carbon-space * 2)
-  padding: $carbon-space
+  padding: 0
+  position: relative
+  &:hover
+    box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px $primary
   +tablet
     margin-left: auto
     margin-right: auto
@@ -40,23 +44,34 @@ $carbon-space: 15px
 
 #carbonads
   text-align: left
-  a:hover
-    text-decoration: underline
+  a,
   span
     display: block
+  .carbon-wrap
+    position: relative
   .carbon-img
     float: left
-    height: 100px
-    width: 130px
+    height: 130px
+    padding: 15px 0 15px 15px
+    width: 145px
     img
       display: block
+      height: 100px
+      width: 130px
   .carbon-text
     display: block
     color: $text-strong
-    margin-left: 130px + $carbon-space
+    line-height: 20px
+    padding: 15px 15px 35px 160px
   .carbon-poweredby
+    bottom: 0
+    color: $text-light
     font-size: $size-small
-    margin-left: $carbon-space
+    left: 160px
+    line-height: 20px
+    padding: 0 15px 10px 0
+    position: absolute
+    right: 0
 
 $github: #333333
 $twitter: #55acee
@@ -186,13 +201,17 @@ $curve: cubic-bezier(0, 0.71, 0.29, 1)
   animation-delay: 1.2s
 
 #npm
+  align-items: center
   animation: fadeIn 500ms both
   animation-delay: 1.4s
   background: none
+  display: flex
+  justify-content: center
   margin: -10px 0 20px
   code
+    background: $background
     border-radius: $radius
-    color: $link
+    color: $primary
     display: inline-block
     font-size: 16px
     padding: 16px 32px
@@ -221,13 +240,13 @@ html.route-index #carbon
   background: $white
   border-radius: $radius-large
   box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
-  padding: 20px
+  padding: 1.5rem
 
 #mc_embed_signup
   .control
     margin-bottom: 0
   .notification
-    margin-top: 10px
+    margin-top: 0.75rem
 
 #social
   align-items: center
@@ -261,12 +280,12 @@ html.route-index #carbon
   border: 1px solid $warning
   border-top-right-radius: $radius
   color: $warning-invert
-  padding: 15px 20px
+  padding: 1.25rem 1.5rem
   position: relative
   &:not(:first-child)
-    margin-top: 30px
+    margin-top: 2rem
   &:not(:last-child)
-    margin-bottom: 20px
+    margin-bottom: 1.5rem
   &:before
     background: $warning
     border-radius: $radius $radius 0 0
@@ -292,11 +311,11 @@ html.route-index #carbon
     border: 1px solid $warning
     border-radius: 0 0 $radius $radius
     border-top: none
-    margin-top: -20px
+    margin-top: -1.5rem
     pre
-      max-height: 600px
+      max-height: 50vh
     &:not(:last-child)
-      margin-bottom: 40px
+      margin-bottom: 1.5rem
 
 $structure: $danger
 $structure-invert: $danger-invert
@@ -304,7 +323,7 @@ $structure-invert: $danger-invert
 .structure
   border-color: $structure
   border-radius: $radius
-  padding: 20px
+  padding: 1.5rem
   &:before
     background: $structure
     color: $structure-invert
@@ -331,11 +350,11 @@ $structure-invert: $danger-invert
     padding: 3px 5px
     z-index: 2
   &.is-structure-container
-    padding: 20px 10px 10px
+    padding: 1.5rem 0.75rem 0.75rem
     &:after
       align-items: flex-start
       justify-content: flex-start
-      padding: 5px 10px
+      padding: 0.5rem 0.75rem
 
 .highlight
   position: relative
@@ -357,14 +376,17 @@ $structure-invert: $danger-invert
   .expand
     border-right-width: 1px
     right: 50px
+  +tablet
+    pre
+      white-space: pre-wrap
 
 +tablet
   .section:not(.is-fullwidth) > .example:not(.is-fullwidth)
-    margin-left: 20px
-    margin-right: 20px
+    margin-left: 1.5rem
+    margin-right: 1.5rem
     & + .highlight
-      margin-left: 20px
-      margin-right: 20px
+      margin-left: 1.5rem
+      margin-right: 1.5rem
 
 .section.is-fullwidth
   padding: 0 !important

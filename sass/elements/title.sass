@@ -1,72 +1,53 @@
+$title:             $grey-darker !default
+$title-size:        $size-3 !default
+$title-weight:      $weight-light !default
+$title-weight-bold: $weight-semibold !default
+
+$subtitle:          $grey-dark !default
+$subtitle-size:     $size-5 !default
+$subtitle-strong:   $grey-darker !default
+$subtitle-weight:   $weight-light !default
+
 .title,
 .subtitle
   +block
-  font-weight: $weight-title-normal
   word-break: break-word
   em,
   span
-    font-weight: $weight-title-normal
-  a
-    &:hover
-      border-bottom: 1px solid
+    font-weight: $title-weight
   strong
-    font-weight: $weight-title-bold
+    font-weight: $title-weight-bold
   .tag
-    vertical-align: bottom
+    vertical-align: middle
 
 .title
-  color: $text-strong
-  font-size: $size-large
-  line-height: 1
-  code
-    display: inline-block
-    font-size: $size-large
+  color: $title
+  font-size: $title-size
+  font-weight: $title-weight
+  line-height: 1.125
   strong
     color: inherit
   & + .highlight
-    margin-top: -10px
+    margin-top: -0.75rem
   & + .subtitle
-    margin-top: -10px
+    margin-top: -1.25rem
   // Colors
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
-      code
-        font-size: nth($sizes, min($i + 1, 6))
-  // Modifiers
-  &.is-normal
-    font-weight: 400
-    strong
-      font-weight: 700
-  // Responsiveness
-  +tablet
-    & + .subtitle
-      margin-top: -15px
 
 .subtitle
-  color: $text
-  font-size: $size-medium
-  line-height: 1.125
-  code
-    border-radius: $radius
-    display: inline-block
-    font-size: $size-normal
-    padding: 2px 3px
-    vertical-align: top
+  color: $subtitle
+  font-size: $subtitle-size
+  font-weight: $subtitle-weight
+  line-height: 1.25
   strong
-    color: $text-strong
+    color: $subtitle-strong
   & + .title
-    margin-top: -20px
+    margin-top: -1.5rem
   // Colors
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
       font-size: $size
-      code
-        font-size: nth($sizes, min($i + 1, 6))
-  // Modifiers
-  &.is-normal
-    font-weight: 400
-    strong
-      font-weight: 700
