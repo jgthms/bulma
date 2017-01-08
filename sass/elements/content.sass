@@ -2,19 +2,14 @@
   +block
   color: $text
   // Inline
-  a:not(.button)
-    border-bottom: 1px solid $border
-    &:visited
-      color: $link-visited
-    &:hover
-      border-bottom-color: $link
   li + li
     margin-top: 0.25em
   // Block
-  blockquote,
   p,
   ol,
-  ul
+  ul,
+  blockquote,
+  table
     &:not(:last-child)
       margin-bottom: 1em
   h1,
@@ -24,30 +19,36 @@
   h5,
   h6
     color: $text-strong
-    font-weight: 300
+    font-weight: $weight-normal
     line-height: 1.125
-    margin-bottom: 20px
-  h1,
-  h2,
-  h3
+  h1
+    font-size: 2em
+    margin-bottom: 0.5em
     &:not(:first-child)
-      margin-top: 40px
+      margin-top: 1em
+  h2
+    font-size: 1.75em
+    margin-bottom: 0.5714em
+    &:not(:first-child)
+      margin-top: 1.1428em
+  h3
+    font-size: 1.5em
+    margin-bottom: 0.6666em
+    &:not(:first-child)
+      margin-top: 1.3333em
+  h4
+    font-size: 1.25em
+    margin-bottom: 0.8em
+  h5
+    font-size: 1.125em
+    margin-bottom: 0.8888em
+  h6
+    font-size: 1em
+    margin-bottom: 1em
   blockquote
     background-color: $background
     border-left: 5px solid $border
-    padding: 1.5em
-  h1
-    font-size: 2em
-  h2
-    font-size: 1.75em
-  h3
-    font-size: 1.5em
-  h4
-    font-size: 1.25em
-  h5
-    font-size: 1.125em
-  h6
-    font-size: 1em
+    padding: 1.25em 1.5em
   ol
     list-style: decimal outside
     margin-left: 2em
@@ -63,12 +64,40 @@
       margin-top: 0.5em
       ul
         list-style-type: square
+  table
+    width: 100%
+    td,
+    th
+      border: 1px solid $border
+      border-width: 0 0 1px
+      padding: 0.5em 0.75em
+      vertical-align: top
+    th
+      color: $text-strong
+      text-align: left
+    tr
+      &:hover
+        background-color: $background
+    thead
+      td,
+      th
+        border-width: 0 0 2px
+        color: $text-strong
+    tfoot
+      td,
+      th
+        border-width: 2px 0 0
+        color: $text-strong
+    tbody
+      tr
+        &:last-child
+          td,
+          th
+            border-bottom-width: 0
   // Sizes
+  &.is-small
+    font-size: $size-small
   &.is-medium
-    font-size: $size-5
-    code
-      font-size: $size-6
+    font-size: $size-medium
   &.is-large
-    font-size: $size-4
-    code
-      font-size: $size-5
+    font-size: $size-large

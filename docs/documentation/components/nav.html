@@ -25,6 +25,9 @@ doc-subtab: nav
         <li><code>nav-right</code></li>
       </ul>
       <p>
+        Each nav item needs to be wrapped in a <code>nav-item</code> element.
+      </p>
+      <p>
         For responsiveness, <strong>2 additional</strong> classes are available:
       </p>
       <ul>
@@ -33,41 +36,45 @@ doc-subtab: nav
       </ul>
     </div>
 
-<div class="example">
+{% capture nav_example %}
 <nav class="nav">
   <div class="nav-left">
-    <a class="nav-item is-brand" href="#">
-      <img src="{{ site.url }}/images/bulma-type.png" alt="Bulma logo">
+    <a class="nav-item">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="Bulma logo">
     </a>
   </div>
 
   <div class="nav-center">
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       <span class="icon">
         <i class="fa fa-github"></i>
       </span>
     </a>
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       <span class="icon">
         <i class="fa fa-twitter"></i>
       </span>
     </a>
   </div>
 
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
   <span class="nav-toggle">
     <span></span>
     <span></span>
     <span></span>
   </span>
 
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
   <div class="nav-right nav-menu">
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       Home
     </a>
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       Documentation
     </a>
-    <a class="nav-item" href="#">
+    <a class="nav-item">
       Blog
     </a>
 
@@ -78,7 +85,7 @@ doc-subtab: nav
         </span>
         <span>Tweet</span>
       </a>
-      <a class="button is-primary" href="#">
+      <a class="button is-primary">
         <span class="icon">
           <i class="fa fa-download"></i>
         </span>
@@ -87,63 +94,14 @@ doc-subtab: nav
     </span>
   </div>
 </nav>
+{% endcapture %}
+
+<div class="example is-paddingless">
+{{nav_example}}
 </div>
 
 {% highlight html %}
-<nav class="nav">
-  <div class="nav-left">
-    <a class="nav-item is-brand" href="#">
-      <img src="{{ site.url }}/images/bulma-type.png" alt="Bulma logo">
-    </a>
-  </div>
-
-  <div class="nav-center">
-    <a class="nav-item" href="#">
-      <span class="icon">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>
-    <a class="nav-item" href="#">
-      <span class="icon">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>
-  </div>
-
-  <span class="nav-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-
-  <div class="nav-right nav-menu">
-    <a class="nav-item" href="#">
-      Home
-    </a>
-    <a class="nav-item" href="#">
-      Documentation
-    </a>
-    <a class="nav-item" href="#">
-      Blog
-    </a>
-
-    <span class="nav-item">
-      <a class="button" >
-        <span class="icon">
-          <i class="fa fa-twitter"></i>
-        </span>
-        <span>Tweet</span>
-      </a>
-      <a class="button is-primary" href="#">
-        <span class="icon">
-          <i class="fa fa-download"></i>
-        </span>
-        <span>Download</span>
-      </a>
-    </span>
-  </div>
-</nav>
-
+{{nav_example}}
 {% endhighlight %}
 
     <hr>
@@ -156,45 +114,52 @@ doc-subtab: nav
         <li>the <code>nav-item</code> can become <strong>active</strong> by adding the <code>is-active</code> modifier</li>
         <li>the <code>nav-item</code> can become a <strong>tab</strong> by adding the <code>is-tab</code> modifier</li>
       </ul>
+      <p>
+        To optimise the space on desktop, but also allow the mobile view to be usable, you can <strong>duplicate</strong> nav items in both <code>nav-left</code> and <code>nav-right</code>, and show/hide them with <a href="{{site.url}}/documentation/modifiers/responsive-helpers/">responsive helpers</a>.
+      </p>
     </div>
   </div>
 
-<div class="example">
+{% capture nav_tabs_example %}
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <a class="nav-item is-tab is-active">Card</a>
-      <a class="nav-item is-tab">Level</a>
-      <a class="nav-item is-tab">Media object</a>
-      <a class="nav-item is-tab">Menu</a>
-      <a class="nav-item is-tab">Message</a>
-      <a class="nav-item is-tab">Modal</a>
-      <a class="nav-item is-tab">Nav</a>
-      <a class="nav-item is-tab">Pagination</a>
-      <a class="nav-item is-tab">Panel</a>
-      <a class="nav-item is-tab">Tabs</a>
+      <a class="nav-item">
+        <img src="{{ site.url }}/images/bulma-logo.png" alt="Bulma logo">
+      </a>
+      <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile">Features</a>
+      <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
+      <a class="nav-item is-tab is-hidden-mobile">About</a>
+    </div>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu">
+      <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+      <a class="nav-item is-tab is-hidden-tablet">Features</a>
+      <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
+      <a class="nav-item is-tab is-hidden-tablet">About</a>
+      <a class="nav-item is-tab">
+        <figure class="image is-16x16" style="margin-right: 8px;">
+          <img src="{{site.url}}/images/jgthms.png">
+        </figure>
+        Profile
+      </a>
+      <a class="nav-item is-tab">Log out</a>
     </div>
   </div>
 </nav>
+{% endcapture %}
+
+<div class="example is-paddingless">
+{{nav_tabs_example}}
 </div>
 
 {% highlight html %}
-<nav class="nav has-shadow">
-  <div class="container">
-    <div class="nav-left">
-      <a class="nav-item is-tab is-active">Card</a>
-      <a class="nav-item is-tab">Level</a>
-      <a class="nav-item is-tab">Media object</a>
-      <a class="nav-item is-tab">Menu</a>
-      <a class="nav-item is-tab">Message</a>
-      <a class="nav-item is-tab">Modal</a>
-      <a class="nav-item is-tab">Nav</a>
-      <a class="nav-item is-tab">Pagination</a>
-      <a class="nav-item is-tab">Panel</a>
-      <a class="nav-item is-tab">Tabs</a>
-    </div>
-  </div>
-</nav>
+{{nav_tabs_example}}
 {% endhighlight %}
 
 </section>

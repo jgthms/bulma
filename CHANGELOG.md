@@ -1,5 +1,33 @@
 # Bulma Changelog
 
+## 0.3.0
+
+* Use `rem` and `em` (!)
+* Fix Font Awesome icons in buttons (!)
+* Fix message colors (!)
+* Use `{% capture %}` to ensure same display as code snippet (!)
+
+* Move variables to their own file
+* Remove small tag
+* Add `:focus` state
+* Fix table
+* Remove table `.is-icon` and `.is-link`
+* Add `.content` table
+* Fix inputs with icons
+* Input icons require the `.icon` container
+* Deprecate `.media-number`
+* Fix `.level-item` height
+* Fix `.menu` spacing
+* Deprecate `.menu-nav`
+* Add invert outlined buttons
+* Fix `.nav`
+* Fix `.pagination`
+* Fix `.tabs`
+* Fix `.panel`
+* Fix `.delete`
+* Add mixins documentation
+* Add functions documentation
+
 ## 0.2.2
 
 * Fix: remove multiple imports

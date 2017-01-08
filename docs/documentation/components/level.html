@@ -71,46 +71,7 @@ doc-subtab: level
       </nav>
     </div>
 
-    <div class="example">
-      <nav class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <p class="subtitle is-5">
-              <strong>123</strong> posts
-            </p>
-          </div>
-          <div class="level-item">
-            <p class="control has-addons">
-              <input class="input" type="text" placeholder="Find a post">
-              <button class="button">
-                Search
-              </button>
-            </p>
-          </div>
-        </div>
-        <div class="level-right">
-          <p class="level-item">
-            <strong>All</strong>
-          </p>
-          <p class="level-item">
-            <a>Published</a>
-          </p>
-          <p class="level-item">
-            <a>Drafts</a>
-          </p>
-          <p class="level-item">
-            <a>Deleted</a>
-          </p>
-          <p class="level-item">
-            <a class="button is-success">
-              New
-            </a>
-          </p>
-        </div>
-      </nav>
-    </div>
-
-{% highlight html %}
+{% capture nav_example %}
 <!-- Main container -->
 <nav class="level">
   <!-- Left side -->
@@ -139,78 +100,49 @@ doc-subtab: level
     <p class="level-item"><a class="button is-success">New</a></p>
   </div>
 </nav>
+{% endcapture %}
+<div class="example">
+{{nav_example}}
+</div>
+{% highlight html %}
+{{nav_example}}
 {% endhighlight %}
 
     <hr>
-    <h3 class="title">Centered level</h3>
 
-    <div class="content">
-      If you want a <strong>centered level</strong>, you can use as many <code>level-item</code> as you want, as long as they are <strong>direct</strong> children of the <code>level</code> container.
-    </div>
-
-    <div class="example">
-      <nav class="level">
-        <div class="level-item has-text-centered">
-          <p class="heading">Tweets</p>
-          <p class="title">3,456</p>
-        </div>
-        <div class="level-item has-text-centered">
-          <p class="heading">Following</p>
-          <p class="title">123</p>
-        </div>
-        <div class="level-item has-text-centered">
-          <p class="heading">Followers</p>
-          <p class="title">456K</p>
-        </div>
-        <div class="level-item has-text-centered">
-          <p class="heading">Likes</p>
-          <p class="title">789</p>
-        </div>
-      </nav>
-    </div>
-
-{% highlight html %}
+<h3 class="title">Centered level</h3>
+<div class="content">
+  If you want a <strong>centered level</strong>, you can use as many <code>level-item</code> as you want, as long as they are <strong>direct</strong> children of the <code>level</code> container.
+</div>
+{% capture nav_centered_example %}
 <nav class="level">
   <div class="level-item has-text-centered">
-    <p class="heading">Tweets</p>
-    <p class="title">3,456</p>
+    <div>
+      <p class="heading">Tweets</p>
+      <p class="title">3,456</p>
+    </div>
   </div>
   <div class="level-item has-text-centered">
-    <p class="heading">Following</p>
-    <p class="title">123</p>
+    <div>
+      <p class="heading">Following</p>
+      <p class="title">123</p>
+    </div>
   </div>
   <div class="level-item has-text-centered">
-    <p class="heading">Followers</p>
-    <p class="title">456K</p>
+    <div>
+      <p class="heading">Followers</p>
+      <p class="title">456K</p>
+    </div>
   </div>
   <div class="level-item has-text-centered">
-    <p class="heading">Likes</p>
-    <p class="title">789</p>
+    <div>
+      <p class="heading">Likes</p>
+      <p class="title">789</p>
+    </div>
   </div>
 </nav>
-{% endhighlight %}
-
-    <div class="example">
-      <nav class="level">
-        <p class="level-item has-text-centered">
-          <a class="link is-info">Home</a>
-        </p>
-        <p class="level-item has-text-centered">
-          <a class="link is-info">Menu</a>
-        </p>
-        <p class="level-item has-text-centered">
-          <img src="{{ site.url }}/images/bulma-type.png" alt="" style="height: 33px;">
-        </p>
-        <p class="level-item has-text-centered">
-          <a class="link is-info">Reservations</a>
-        </p>
-        <p class="level-item has-text-centered">
-          <a class="link is-info">Contact</a>
-        </p>
-      </nav>
-    </div>
-
-{% highlight html %}
+{% endcapture %}
+{% capture nav_centered_bis_example %}
 <nav class="level">
   <p class="level-item has-text-centered">
     <a class="link is-info">Home</a>
@@ -219,7 +151,7 @@ doc-subtab: level
     <a class="link is-info">Menu</a>
   </p>
   <p class="level-item has-text-centered">
-    <img src="{{ site.url }}/images/bulma-type.png" alt="" style="height: 33px;">
+    <img src="{{ site.url }}/images/bulma-type.png" alt="" style="height: 30px;">
   </p>
   <p class="level-item has-text-centered">
     <a class="link is-info">Reservations</a>
@@ -228,33 +160,60 @@ doc-subtab: level
     <a class="link is-info">Contact</a>
   </p>
 </nav>
+{% endcapture %}
+<div class="example">
+{{nav_centered_example}}
+</div>
+{% highlight html %}
+{{nav_centered_example}}
+{% endhighlight %}
+<div class="example">
+{{nav_centered_bis_example}}
+</div>
+{% highlight html %}
+{{nav_centered_bis_example}}
 {% endhighlight %}
 
     <hr>
-    <h3 class="title">Mobile level</h3>
-    <div class="content">
-      By default, for space concerns, the level is vertical on mobile. If you want the level to be horizontal on mobile as well, add the <code>is-mobile</code> modifier on the <code>level</code> container.
-    </div>
 
-    <div class="example">
-      <nav class="level is-mobile">
-        <div class="level-item has-text-centered">
-          <p class="heading">Tweets</p>
-          <p class="title">3,456</p>
-        </div>
-        <div class="level-item has-text-centered">
-          <p class="heading">Following</p>
-          <p class="title">123</p>
-        </div>
-        <div class="level-item has-text-centered">
-          <p class="heading">Followers</p>
-          <p class="title">456K</p>
-        </div>
-        <div class="level-item has-text-centered">
-          <p class="heading">Likes</p>
-          <p class="title">789</p>
-        </div>
-      </nav>
+<h3 class="title">Mobile level</h3>
+<div class="content">
+  By default, for space concerns, the level is vertical on mobile. If you want the level to be horizontal on mobile as well, add the <code>is-mobile</code> modifier on the <code>level</code> container.
+</div>
+{% capture nav_mobile_example %}
+<nav class="level is-mobile">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Tweets</p>
+      <p class="title">3,456</p>
     </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Following</p>
+      <p class="title">123</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Followers</p>
+      <p class="title">456K</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Likes</p>
+      <p class="title">789</p>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+<div class="example">
+{{nav_mobile_example}}
+</div>
+{% highlight html %}
+{{nav_mobile_example}}
+{% endhighlight %}
+
   </div>
 </section>

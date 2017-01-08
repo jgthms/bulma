@@ -1,39 +1,61 @@
-.message-body
-  border: 1px solid $border
-  border-radius: $radius
-  padding: 12px 15px
-  strong
-    color: inherit
-
-.message-header
-  background-color: $text
-  border-radius: $radius $radius 0 0
-  color: $text-invert
-  padding: 7px 10px
-  strong
-    color: inherit
-  & + .message-body
-    border-radius: 0 0 $radius $radius
-    border-top: none
-
 .message
   +block
   background-color: $background
   border-radius: $radius
+  font-size: $size-normal
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
-    $lightning: max((100% - lightness($color)) - 4%, 0%)
-    $darkness: max(lightness($color) - 10%, lightness($color))
+    $color-lightning: max((100% - lightness($color)) - 2%, 0%)
+    $color-luminance: colorLuminance($color)
+    $darken-percentage: $color-luminance * 70%
+    $desaturate-percentage: $color-luminance * 30%
     &.is-#{$name}
-      background-color: lighten($color, $lightning)
+      background-color: lighten($color, $color-lightning)
       .message-header
         background-color: $color
         color: $color-invert
       .message-body
         border-color: $color
-        @if (colorLuminance($color) > 0.8)
-          color: desaturate(lighten(darken($color, 100%), 40%), 40%)
-        @else
-          color: desaturate(lighten(darken($color, 100%), 50%), 30%)
+        color: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+
+.message-header
+  align-items: center
+  background-color: $text
+  border-radius: $radius $radius 0 0
+  color: $text-invert
+  display: flex
+  justify-content: space-between
+  line-height: 1.25
+  padding: 0.5em 0.75em
+  position: relative
+  a,
+  strong
+    color: inherit
+  a
+    text-decoration: underline
+  .delete
+    flex-grow: 0
+    flex-shrink: 0
+    margin-left: 0.75em
+  & + .message-body
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+    border-top: none
+
+.message-body
+  border: 1px solid $border
+  border-radius: $radius
+  color: $text
+  padding: 1em 1.25em
+  a,
+  strong
+    color: inherit
+  a
+    text-decoration: underline
+  code,
+  pre
+    background: $white
+  pre code
+    background: transparent

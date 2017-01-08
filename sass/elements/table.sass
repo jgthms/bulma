@@ -1,43 +1,25 @@
-$table: $text-strong !default
-$table-background: $white !default
-$table-border: $border !default
+$table:                           $grey-darker !default
+$table-background:                $white !default
+$table-border:                    $grey-lighter !default
 
-$table-head: $text-light !default
+$table-head:                      $grey !default
 
-$table-row-hover-background: $white-ter !default
-$table-row-even-background: $white-bis !default
+$table-row-hover-background:      $white-bis !default
+$table-row-even-background:       $white-bis !default
+$table-row-even-hover-background: $white-ter !default
 
 .table
   background-color: $table-background
   color: $table
-  margin-bottom: 20px
+  margin-bottom: 1.5rem
   width: 100%
   td,
   th
     border: 1px solid $table-border
     border-width: 0 0 1px
-    padding: 8px 10px
+    padding: 0.5em 0.75em
     vertical-align: top
     // Modifiers
-    &.is-icon
-      padding: 5px
-      text-align: center
-      white-space: nowrap
-      width: 1%
-      .fa
-        +fa(21px, 24px)
-      &.is-link
-        padding: 0
-        & > a
-          padding: 5px
-    &.is-link
-      padding: 0
-      & > a
-        display: block
-        padding: 8px 10px
-        &:hover
-          background-color: $link
-          color: $link-invert
     &.is-narrow
       white-space: nowrap
       width: 1%
@@ -52,17 +34,17 @@ $table-row-even-background: $white-bis !default
     th
       border-width: 0 0 2px
       color: $table-head
+  tfoot
+    td,
+    th
+      border-width: 2px 0 0
+      color: $table-head
   tbody
     tr
       &:last-child
         td,
         th
           border-bottom-width: 0
-  tfoot
-    td,
-    th
-      border-width: 2px 0 0
-      color: $table-head
   // Modifiers
   &.is-bordered
     td,
@@ -76,22 +58,11 @@ $table-row-even-background: $white-bis !default
   &.is-narrow
     td,
     th
-      padding: 5px 10px
-      // Modifiers
-      &.is-icon
-        padding: 2px
-        &.is-link
-          padding: 0
-          & > a
-            padding: 2px
-      &.is-link
-        padding: 0
-        & > a
-          padding: 5px 10px
+      padding: 0.25em 0.5em
   &.is-striped
     tbody
       tr
         &:nth-child(even)
           background-color: $table-row-even-background
           &:hover
-            background-color: $table-row-hover-background
+            background-color: $table-row-even-hover-background

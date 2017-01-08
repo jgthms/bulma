@@ -1,0 +1,29 @@
+.tag
+  align-items: center
+  background-color: $background
+  border-radius: 290486px
+  color: $text
+  display: inline-flex
+  font-size: $size-small
+  height: 2em
+  justify-content: center
+  line-height: 1.5
+  padding-left: 0.875em
+  padding-right: 0.875em
+  vertical-align: top
+  white-space: nowrap
+  .delete
+    margin-left: 0.25em
+    margin-right: -0.5em
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+  // Sizes
+  &.is-medium
+    font-size: $size-normal
+  &.is-large
+    font-size: $size-medium

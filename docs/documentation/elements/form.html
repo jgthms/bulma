@@ -30,60 +30,7 @@ doc-subtab: form
       <p>When combining several controls in a <strong>form</strong>, use the <code>.control</code> class as a <strong>container</strong>, to keep the spacing consistent.</p>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        <label class="label">Name</label>
-        <p class="control">
-          <input class="input" type="text" placeholder="Text input">
-        </p>
-        <label class="label">Username</label>
-        <p class="control has-icon has-icon-right">
-          <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-          <i class="fa fa-check"></i>
-          <span class="help is-success">This username is available</span>
-        </p>
-        <label class="label">Email</label>
-        <p class="control has-icon has-icon-right">
-          <input class="input is-danger" type="text" placeholder="Email input" value="hello@">
-          <i class="fa fa-warning"></i>
-          <span class="help is-danger">This email is invalid</span>
-        </p>
-        <label class="label">Subject</label>
-        <p class="control">
-          <span class="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </span>
-        </p>
-        <label class="label">Message</label>
-        <p class="control">
-          <textarea class="textarea" placeholder="Textarea"></textarea>
-        </p>
-        <p class="control">
-          <label class="checkbox">
-            <input type="checkbox">
-            Remember me
-          </label>
-        </p>
-        <p class="control">
-          <label class="radio">
-            <input type="radio" name="question">
-            Yes
-          </label>
-          <label class="radio">
-            <input type="radio" name="question">
-            No
-          </label>
-        </p>
-        <p class="control">
-          <button class="button is-primary">Submit</button>
-          <button class="button is-link">Cancel</button>
-        </p>
-      </div>
-      <div class="column is-half">
-{% highlight html %}
+{% capture form_example %}
 <label class="label">Name</label>
 <p class="control">
   <input class="input" type="text" placeholder="Text input">
@@ -91,13 +38,17 @@ doc-subtab: form
 <label class="label">Username</label>
 <p class="control has-icon has-icon-right">
   <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-  <i class="fa fa-check"></i>
+  <span class="icon is-small">
+    <i class="fa fa-check"></i>
+  </span>
   <span class="help is-success">This username is available</span>
 </p>
 <label class="label">Email</label>
 <p class="control has-icon has-icon-right">
   <input class="input is-danger" type="text" placeholder="Email input" value="hello@">
-  <i class="fa fa-warning"></i>
+  <span class="icon is-small">
+    <i class="fa fa-warning"></i>
+  </span>
   <span class="help is-danger">This email is invalid</span>
 </p>
 <label class="label">Subject</label>
@@ -129,10 +80,23 @@ doc-subtab: form
     No
   </label>
 </p>
-<p class="control">
-  <button class="button is-primary">Submit</button>
-  <button class="button is-link">Cancel</button>
-</p>
+<div class="control is-grouped">
+  <p class="control">
+    <button class="button is-primary">Submit</button>
+  </p>
+  <p class="control">
+    <button class="button is-link">Cancel</button>
+  </p>
+</div>
+{% endcapture %}
+
+    <div class="columns">
+      <div class="column is-half">
+        {{form_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{form_example}}
 {% endhighlight %}
       </div>
     </div>
@@ -140,26 +104,7 @@ doc-subtab: form
     <hr>
 
     <h3 class="title">Colors</h3>
-    <div class="columns">
-      <div class="column is-half">
-        <p class="control">
-          <input class="input is-primary" type="text" placeholder="Primary input">
-        </p>
-        <p class="control">
-          <input class="input is-info" type="text" placeholder="Info input">
-        </p>
-        <p class="control">
-          <input class="input is-success" type="text" placeholder="Success input">
-        </p>
-        <p class="control">
-          <input class="input is-warning" type="text" placeholder="Warning input">
-        </p>
-        <p class="control">
-          <input class="input is-danger" type="text" placeholder="Danger input">
-        </p>
-      </div>
-      <div class="column is-half">
-{% highlight html %}
+{% capture colors_example %}
 <p class="control">
   <input class="input is-primary" type="text" placeholder="Primary input">
 </p>
@@ -175,62 +120,21 @@ doc-subtab: form
 <p class="control">
   <input class="input is-danger" type="text" placeholder="Danger input">
 </p>
+{% endcapture %}
+    <div class="columns">
+      <div class="column is-half">
+        {{colors_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{colors_example}}
 {% endhighlight %}
       </div>
     </div>
 
     <hr>
 
-    <h3 class="title">Sizes</h3>
-    <div class="columns">
-      <div class="column is-half">
-        <p class="control">
-          <input class="input is-small" type="text" placeholder="Small input">
-        </p>
-        <p class="control">
-          <input class="input" type="text" placeholder="Normal input">
-        </p>
-        <p class="control">
-          <input class="input is-medium" type="text" placeholder="Medium input">
-        </p>
-        <p class="control">
-          <input class="input is-large" type="text" placeholder="Large input">
-        </p>
-        <p class="control">
-          <span class="select is-small">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </span>
-        </p>
-        <p class="control">
-          <span class="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </span>
-        </p>
-        <p class="control">
-          <span class="select is-medium">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </span>
-        </p>
-        <p class="control">
-          <span class="select is-large">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </span>
-        </p>
-      </div>
-      <div class="column is-half">
-{% highlight html %}
+{% capture sizes_example %}
 <p class="control">
   <input class="input is-small" type="text" placeholder="Small input">
 </p>
@@ -243,6 +147,47 @@ doc-subtab: form
 <p class="control">
   <input class="input is-large" type="text" placeholder="Large input">
 </p>
+<p class="control">
+  <span class="select is-small">
+    <select>
+      <option>Select dropdown</option>
+      <option>With options</option>
+    </select>
+  </span>
+</p>
+<p class="control">
+  <span class="select">
+    <select>
+      <option>Select dropdown</option>
+      <option>With options</option>
+    </select>
+  </span>
+</p>
+<p class="control">
+  <span class="select is-medium">
+    <select>
+      <option>Select dropdown</option>
+      <option>With options</option>
+    </select>
+  </span>
+</p>
+<p class="control">
+  <span class="select is-large">
+    <select>
+      <option>Select dropdown</option>
+      <option>With options</option>
+    </select>
+  </span>
+</p>
+{% endcapture %}
+    <h3 class="title">Sizes</h3>
+    <div class="columns">
+      <div class="column is-half">
+        {{sizes_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{sizes_example}}
 {% endhighlight %}
       </div>
     </div>
@@ -250,60 +195,88 @@ doc-subtab: form
     <hr>
 
     <h3 class="title">States</h3>
-    <h4 class="subtitle">Loading</h4>
+    <h4 class="subtitle">Normal</h4>
+{% capture normal_example %}
+<p class="control">
+  <input class="input" type="text" placeholder="Normal input">
+</p>
+<p class="control">
+  <textarea class="textarea" placeholder="Normal textarea"></textarea>
+</p>
+{% endcapture %}
     <div class="columns">
       <div class="column is-half">
-        <p class="control is-loading">
-          <input class="input" type="text" placeholder="Loading input">
-        </p>
-        <p class="control is-loading">
-          <textarea class="textarea" placeholder="Loading textarea"></textarea>
-        </p>
+{{normal_example}}
       </div>
       <div class="column is-half">
 {% highlight html %}
+{{normal_example}}
+{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Hover</h4>
+{% capture hover_example %}
+<p class="control">
+  <input class="input is-hovered" type="text" placeholder="Hovered input">
+</p>
+<p class="control">
+  <textarea class="textarea is-hovered" placeholder="Hovered textarea"></textarea>
+</p>
+{% endcapture %}
+    <div class="columns">
+      <div class="column is-half">
+        {{hover_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{hover_example}}
+{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Focus</h4>
+{% capture focus_example %}
+<p class="control">
+  <input class="input is-focused" type="text" placeholder="Focused input">
+</p>
+<p class="control">
+  <textarea class="textarea is-focused" placeholder="Focused textarea"></textarea>
+</p>
+{% endcapture %}
+    <div class="columns">
+      <div class="column is-half">
+{{focus_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{focus_example}}
+{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Loading</h4>
+{% capture loading_example %}
 <p class="control is-loading">
   <input class="input" type="text" placeholder="Loading input">
 </p>
 <p class="control is-loading">
   <textarea class="textarea" placeholder="Loading textarea"></textarea>
 </p>
+{% endcapture %}
+    <div class="columns">
+      <div class="column is-half">
+{{loading_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{loading_example}}
 {% endhighlight %}
       </div>
     </div>
 
     <h4 class="subtitle">Disabled</h4>
-    <div class="columns">
-      <div class="column is-half">
-        <p class="control">
-          <input class="input" type="text" placeholder="Disabled input" disabled>
-        </p>
-        <p class="control">
-          <textarea class="textarea" placeholder="Disabled textarea" disabled></textarea>
-        </p>
-        <p class="control">
-          <label class="checkbox is-disabled">
-            <input type="checkbox" disabled>
-            Remember me
-          </label>
-        </p>
-        <p class="control">
-          <label class="radio is-disabled">
-            <input type="radio" name="question" disabled>
-            Yes
-          </label>
-          <label class="radio is-disabled">
-            <input type="radio" name="question" disabled>
-            No
-          </label>
-        </p>
-        <p class="control">
-          <button class="button is-primary" disabled>Submit</button>
-          <button class="button" disabled>Cancel</button>
-        </p>
-      </div>
-      <div class="column is-half">
-{% highlight html %}
+{% capture disabled_example %}
 <p class="control">
   <input class="input" type="text" placeholder="Disabled input" disabled>
 </p>
@@ -326,122 +299,179 @@ doc-subtab: form
     No
   </label>
 </p>
-<p class="control">
-  <button class="button is-primary" disabled>Submit</button>
-  <button class="button" disabled>Cancel</button>
-</p>
+<div class="control is-grouped">
+  <p class="control">
+    <button class="button is-primary" disabled>Submit</button>
+  </p>
+  <p class="control">
+    <button class="button" disabled>Cancel</button>
+  </p>
+</div>
+{% endcapture %}
+    <div class="columns">
+      <div class="column is-half">
+{{disabled_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{disabled_example}}
 {% endhighlight %}
       </div>
     </div>
 
     <h4 class="subtitle">With Font Awesome icons</h4>
-    <div class="columns">
-      <div class="column is-half">
-        <p class="control has-icon">
-          <input class="input" type="email" placeholder="Email">
-          <i class="fa fa-envelope"></i>
-        </p>
-        <p class="control has-icon">
-          <input class="input" type="password" placeholder="Password">
-          <i class="fa fa-lock"></i>
-        </p>
-        <p class="control">
-          <button class="button is-success">
-            Login
-          </button>
-        </p>
-      </div>
-      <div class="column is-half">
-{% highlight html %}
+{% capture icons_example %}
 <p class="control has-icon">
   <input class="input" type="email" placeholder="Email">
-  <i class="fa fa-envelope"></i>
+  <span class="icon is-small">
+    <i class="fa fa-envelope"></i>
+  </span>
 </p>
 <p class="control has-icon">
   <input class="input" type="password" placeholder="Password">
-  <i class="fa fa-lock"></i>
+  <span class="icon is-small">
+    <i class="fa fa-lock"></i>
+  </span>
 </p>
 <p class="control">
   <button class="button is-success">
     Login
   </button>
 </p>
-{% endhighlight %}
-      </div>
-    </div>
+{% endcapture %}
     <div class="columns">
       <div class="column is-half">
-        <p class="control has-icon">
-          <input class="input is-small" type="email" placeholder="Email">
-          <i class="fa fa-envelope"></i>
-        </p>
-        <p class="control has-icon">
-          <input class="input" type="email" placeholder="Email">
-          <i class="fa fa-envelope"></i>
-        </p>
-        <p class="control has-icon">
-          <input class="input is-medium" type="email" placeholder="Email">
-          <i class="fa fa-envelope"></i>
-        </p>
-        <p class="control has-icon">
-          <input class="input is-large" type="email" placeholder="Email">
-          <i class="fa fa-envelope"></i>
-        </p>
-        <p class="control has-icon has-icon-right">
-          <input class="input is-small" type="email" placeholder="Email">
-          <i class="fa fa-check"></i>
-        </p>
-        <p class="control has-icon has-icon-right">
-          <input class="input" type="email" placeholder="Email">
-          <i class="fa fa-check"></i>
-        </p>
-        <p class="control has-icon has-icon-right">
-          <input class="input is-medium" type="email" placeholder="Email">
-          <i class="fa fa-check"></i>
-        </p>
-        <p class="control has-icon has-icon-right">
-          <input class="input is-large" type="email" placeholder="Email">
-          <i class="fa fa-check"></i>
-        </p>
+{{icons_example}}
       </div>
       <div class="column is-half">
 {% highlight html %}
-<p class="control has-icon">
-  <input class="input is-small" type="email" placeholder="Email">
-  <i class="fa fa-envelope"></i>
-</p>
-<p class="control has-icon">
-  <input class="input" type="email" placeholder="Email">
-  <i class="fa fa-envelope"></i>
-</p>
-<p class="control has-icon">
-  <input class="input is-medium" type="email" placeholder="Email">
-  <i class="fa fa-envelope"></i>
-</p>
-<p class="control has-icon">
-  <input class="input is-large" type="email" placeholder="Email">
-  <i class="fa fa-envelope"></i>
-</p>
-<p class="control has-icon has-icon-right">
-  <input class="input is-small" type="email" placeholder="Email">
-  <i class="fa fa-check"></i>
-</p>
-<p class="control has-icon has-icon-right">
-  <input class="input" type="email" placeholder="Email">
-  <i class="fa fa-check"></i>
-</p>
-<p class="control has-icon has-icon-right">
-  <input class="input is-medium" type="email" placeholder="Email">
-  <i class="fa fa-check"></i>
-</p>
-<p class="control has-icon has-icon-right">
-  <input class="input is-large" type="email" placeholder="Email">
-  <i class="fa fa-check"></i>
-</p>
-
+{{icons_example}}
 {% endhighlight %}
       </div>
     </div>
+
+{% capture icons_sizes_example %}
+<p class="control has-icon">
+  <input class="input is-small" type="email" placeholder="Email">
+  <span class="icon is-small">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input" type="email" placeholder="Email">
+  <span class="icon is-small">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input" type="email" placeholder="Email">
+  <span class="icon">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input is-medium" type="email" placeholder="Email">
+  <span class="icon is-small">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input is-medium" type="email" placeholder="Email">
+  <span class="icon">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input is-medium" type="email" placeholder="Email">
+  <span class="icon is-medium">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input is-large" type="email" placeholder="Email">
+  <span class="icon is-small">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input is-large" type="email" placeholder="Email">
+  <span class="icon">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input is-large" type="email" placeholder="Email">
+  <span class="icon is-medium">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+<p class="control has-icon">
+  <input class="input is-large" type="email" placeholder="Email">
+  <span class="icon is-large">
+    <i class="fa fa-envelope"></i>
+  </span>
+</p>
+{% endcapture %}
+<div class="columns">
+  <div class="column is-half">
+    <div class="content">
+      <p>
+        <span class="tag is-success">New!</span>
+      </p>
+      <p>
+        If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
+      </p>
+    </div>
+    {{icons_sizes_example}}
+  </div>
+  <div class="column is-half">
+{% highlight html %}
+{{icons_sizes_example}}
+{% endhighlight %}
+  </div>
+</div>
+
+{% capture icons_sizes_right_example %}
+<p class="control has-icon has-icon-right">
+  <input class="input is-small" type="email" placeholder="Email">
+  <span class="icon is-small">
+    <i class="fa fa-check"></i>
+  </span>
+</p>
+<p class="control has-icon has-icon-right">
+  <input class="input" type="email" placeholder="Email">
+  <span class="icon">
+    <i class="fa fa-check"></i>
+  </span>
+</p>
+<p class="control has-icon has-icon-right">
+  <input class="input is-medium" type="email" placeholder="Email">
+  <span class="icon is-medium">
+    <i class="fa fa-check"></i>
+  </span>
+</p>
+<p class="control has-icon has-icon-right">
+  <input class="input is-large" type="email" placeholder="Email">
+  <span class="icon is-large">
+    <i class="fa fa-check"></i>
+  </span>
+</p>
+{% endcapture %}
+<div class="columns">
+  <div class="column is-half">
+    <div class="content">
+      <p>
+        By appending the <code>has-icon-right</code>, the icon will be placed on the right side instead.
+      </p>
+    </div>
+    {{icons_sizes_right_example}}
+  </div>
+  <div class="column is-half">
+{% highlight html %}
+{{icons_sizes_right_example}}
+{% endhighlight %}
+  </div>
+</div>
 
     <hr>
 
@@ -449,27 +479,25 @@ doc-subtab: form
     <div class="content">
       <p>If you want to <strong>attach</strong> controls together, use the <code>has-addons</code> modifier on the <code>control</code> container:</p>
     </div>
-    <div class="example">
-      <p class="control has-addons">
-        <input class="input" type="text" placeholder="Find a repository">
-        <a class="button is-info">
-          Search
-        </a>
-      </p>
-    </div>
-{% highlight html %}
+{% capture addons_example %}
 <p class="control has-addons">
   <input class="input" type="text" placeholder="Find a repository">
   <a class="button is-info">
     Search
   </a>
 </p>
+{% endcapture %}
+    <div class="example">
+{{addons_example}}
+    </div>
+{% highlight html %}
+{{addons_example}}
 {% endhighlight %}
     <div class="content">
       <p>You can attach inputs, buttons, and dropdowns <strong>only</strong>.</p>
       <p>Use the <code>is-expanded</code> modifier on the element you want to fill up the remaing space (in this case, the input):</p>
     </div>
-    <div class="example">
+{% capture addons_expanded_example %}
 <p class="control has-addons">
   <span class="select">
     <select>
@@ -483,26 +511,30 @@ doc-subtab: form
     Transfer
   </a>
 </p>
+<p class="control has-addons">
+  <span class="select">
+    <select>
+      <option>$</option>
+      <option>£</option>
+      <option>€</option>
+    </select>
+  </span>
+  <input class="input is-expanded" type="text" placeholder="Amount of money">
+  <a class="button">
+    Transfer
+  </a>
+</p>
+{% endcapture %}
+    <div class="example">
+{{addons_expanded_example}}
     </div>
 {% highlight html %}
-<p class="control has-addons">
-  <span class="select">
-    <select>
-      <option>$</option>
-      <option>£</option>
-      <option>€</option>
-    </select>
-  </span>
-  <input class="input is-expanded" type="text" placeholder="Amount of money">
-  <a class="button">
-    Transfer
-  </a>
-</p>
+{{addons_expanded_example}}
 {% endhighlight %}
     <div class="content">
       <p>Use the <code>has-addons-centered</code> or the <code>has-addons-right</code> modifers to alter the <strong>alignment</strong>.</p>
     </div>
-<div class="example">
+{% capture addons_center_example %}
 <p class="control has-addons has-addons-centered">
   <span class="select">
     <select>
@@ -516,23 +548,14 @@ doc-subtab: form
     Transfer
   </a>
 </p>
+{% endcapture %}
+<div class="example">
+{{addons_center_example}}
 </div>
 {% highlight html %}
-<p class="control has-addons has-addons-centered">
-  <span class="select">
-    <select>
-      <option>$</option>
-      <option>£</option>
-      <option>€</option>
-    </select>
-  </span>
-  <input class="input" type="text" placeholder="Amount of money">
-  <a class="button is-primary">
-    Transfer
-  </a>
-</p>
+{{addons_center_example}}
 {% endhighlight %}
-<div class="example">
+{% capture addons_right_example %}
 <p class="control has-addons has-addons-right">
   <span class="select">
     <select>
@@ -546,30 +569,25 @@ doc-subtab: form
     Transfer
   </a>
 </p>
+{% endcapture %}
+<div class="example">
+{{addons_right_example}}
 </div>
 {% highlight html %}
-<p class="control has-addons has-addons-right">
-  <span class="select">
-    <select>
-      <option>$</option>
-      <option>£</option>
-      <option>€</option>
-    </select>
-  </span>
-  <input class="input" type="text" placeholder="Amount of money">
-  <a class="button is-primary">
-    Transfer
-  </a>
-</p>
+{{addons_right_example}}
 {% endhighlight %}
 
     <hr>
 
     <h3 class="title">Form group</h3>
     <div class="content">
-      <p>If you want to <strong>group</strong> controls together, use the <code>is-grouped</code> modifier on the <code>control</code> container:</p>
+      <p>
+        If you want to <strong>group</strong> controls together, use the <code>is-grouped</code> modifier on the <code>control</code> container.
+        <br>
+        Add the <code>is-expanded</code> modifier on the control element you want to <strong>fill up the remaining space</strong>.
+      </p>
     </div>
-    <div class="example">
+{% capture group_example %}
 <div class="control is-grouped">
   <p class="control is-expanded">
     <input class="input" type="text" placeholder="Find a repository">
@@ -580,22 +598,13 @@ doc-subtab: form
     </a>
   </p>
 </div>
+{% endcapture %}
+    <div class="example">
+{{group_example}}
     </div>
 {% highlight html %}
-<div class="control is-grouped">
-  <p class="control is-expanded">
-    <input class="input" type="text" placeholder="Find a repository">
-  </p>
-  <p class="control">
-    <a class="button is-info">
-      Search
-    </a>
-  </p>
-</div>
+{{group_example}}
 {% endhighlight %}
-    <div class="content">
-      <p>Add the <code>is-expanded</code> modifier on the control element you want to <strong>fill up the remaining space</strong>.</p>
-    </div>
 
     <hr>
 
@@ -612,40 +621,7 @@ doc-subtab: form
       </ul>
       <p>You can of course use <code>is-grouped</code> or <code>has-addons</code> for the child elements.</p>
     </div>
-    <div class="control is-horizontal">
-      <div class="control-label">
-        <label class="label">From</label>
-      </div>
-      <div class="control is-grouped">
-        <p class="control is-expanded">
-          <input class="input" type="text" placeholder="Name">
-        </p>
-        <p class="control is-expanded">
-          <input class="input" type="email" placeholder="Email">
-        </p>
-      </div>
-    </div>
-    <div class="control is-horizontal">
-      <div class="control-label">
-        <label class="label">Subject</label>
-      </div>
-      <div class="control">
-        <div class="select is-fullwidth">
-          <select>
-            <option>General enquiry</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="control is-horizontal">
-      <div class="control-label">
-        <label class="label">Question</label>
-      </div>
-      <div class="control">
-        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
-      </div>
-    </div>
-{% highlight html %}
+{% capture horizontal_form_example %}
 <div class="control is-horizontal">
   <div class="control-label">
     <label class="label">From</label>
@@ -679,6 +655,10 @@ doc-subtab: form
     <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
   </div>
 </div>
+{% endcapture %}
+{{horizontal_form_example}}
+{% highlight html %}
+{{horizontal_form_example}}
 {% endhighlight %}
   </div>
 </section>

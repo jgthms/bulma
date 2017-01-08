@@ -4,15 +4,15 @@
   border-top: 0
   content: " "
   display: block
-  height: 7px
+  height: 0.5em
   pointer-events: none
   position: absolute
   transform: rotate(-45deg)
-  width: 7px
+  width: 0.5em
 
 =block
   &:not(:last-child)
-    margin-bottom: 20px
+    margin-bottom: 1.5rem
 
 =clearfix
   &:after
@@ -28,47 +28,57 @@
   top: 50%
 
 =delete
+  // We need even pixel dimensions to ensure the delete cross can be perfectly centered
+  $dimension-small: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-small)) * 1px
+  $dimension-normal: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-normal)) * 1px
+  $dimension-medium: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-medium)) * 1px
+  $dimension-large: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-large)) * 1px
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
-  background-color: rgba($black, 0.1)
+  background-color: rgba($black, 0.2)
   border: none
   border-radius: 290486px
   cursor: pointer
   display: inline-block
-  height: 24px
+  font-size: $size-normal
+  height: $dimension-normal
   outline: none
   position: relative
+  transform: rotate(45deg)
+  transform-origin: center center
   vertical-align: top
-  width: 24px
+  width: $dimension-normal
   &:before,
   &:after
     background-color: $white
     content: ""
     display: block
-    height: 2px
     left: 50%
-    margin-left: -25%
-    margin-top: -1px
     position: absolute
     top: 50%
-    width: 50%
+    transform: translateX(-50%) translateY(-50%)
   &:before
-    transform: rotate(45deg)
+    height: 2px
+    width: 50%
   &:after
-    transform: rotate(-45deg)
-  &:hover
-    background-color: rgba($black, 0.2)
+    height: 50%
+    width: 2px
+  &:hover,
+  &:focus
+    background-color: rgba($black, 0.3)
+  &:active
+    background-color: rgba($black, 0.4)
   // Sizes
   &.is-small
-    height: 16px
-    width: 16px
+    height: $dimension-small
+    width: $dimension-small
   &.is-medium
-    height: 32px
-    width: 32px
+    height: $dimension-medium
+    width: $dimension-medium
   &.is-large
-    height: 40px
-    width: 40px
+    height: $dimension-large
+    width: $dimension-large
 
 =fa($size, $dimensions)
   display: inline-block
@@ -133,9 +143,12 @@
   border-top-color: transparent
   content: ""
   display: block
-  height: 16px
+  height: 1rem
   position: relative
-  width: 16px
+  width: 1rem
+
+=overflow-touch
+  -webkit-overflow-scrolling: touch
 
 =overlay($offset: 0)
   bottom: $offset
@@ -150,18 +163,6 @@
     &:#{$placeholder}-placeholder
       @content
 
-=replace($background, $width, $height)
-  background-color: $background
-  background-position: center center
-  background-repeat: no-repeat
-  background-size: $width $height
-  display: block
-  height: $height
-  outline: none
-  overflow: hidden
-  text-indent: -290486px
-  width: $width
-
 =unselectable
   -webkit-touch-callout: none
   -webkit-user-select: none
@@ -172,8 +173,10 @@
 // Responsiveness
 
 $tablet: 769px !default
-$desktop: 980px !default
-$widescreen: 1180px !default
+$desktop: 1000px !default // 960px container + 40px
+$widescreen: 1192px !default // 1152px container + 40
+// 960 and 1152 have been chosen because
+// they are divisible by both 12 and 16
 
 =from($device)
   @media screen and (min-width: $device)
