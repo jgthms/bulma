@@ -1,6 +1,6 @@
 // Components
 
-.hero-video
+.#{$prefix}hero-video
   +overlay
   overflow: hidden
   video
@@ -11,34 +11,34 @@
     top: 50%
     transform: translate3d(-50%, -50%, 0)
   // Modifiers
-  &.is-transparent
+  &.#{$prefix}is-transparent
     opacity: 0.3
   // Responsiveness
   +mobile
     display: none
 
-.hero-buttons
+.#{$prefix}hero-buttons
   margin-top: 1.5rem
   // Responsiveness
   +mobile
-    .button
+    .#{$prefix}button
       display: flex
       &:not(:last-child)
         margin-bottom: 0.75rem
   +tablet
     display: flex
     justify-content: center
-    .button:not(:last-child)
+    .#{$prefix}button:not(:last-child)
       margin-right: 1.5rem
 
 // Containers
 
-.hero-head,
-.hero-foot
+.#{$prefix}hero-head,
+.#{$prefix}hero-foot
   flex-grow: 0
   flex-shrink: 0
 
-.hero-body
+.#{$prefix}hero-body
   flex-grow: 1
   flex-shrink: 0
   padding: 3rem 1.5rem
@@ -49,101 +49,101 @@
 
 // Main container
 
-.hero
+.#{$prefix}hero
   align-items: stretch
   background-color: $white
   display: flex
   flex-direction: column
   justify-content: space-between
-  .nav
+  .#{$prefix}nav
     background: none
     box-shadow: 0 1px 0 rgba($border, 0.3)
-  .tabs
+  .#{$prefix}tabs
     ul
       border-bottom: none
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
-    &.is-#{$name}
+    &.#{$prefix}is-#{$name}
       background-color: $color
       color: $color-invert
       a,
       strong
         color: inherit
-      .title
+      .#{$prefix}title
         color: $color-invert
-      .subtitle
+      .#{$prefix}subtitle
         color: rgba($color-invert, 0.9)
         a,
         strong
           color: $color-invert
-      .nav
+      .#{$prefix}nav
         box-shadow: 0 1px 0 rgba($color-invert, 0.2)
-      .nav-menu
+      .#{$prefix}nav-menu
         +mobile
           background-color: $color
-      a.nav-item,
-      .nav-item a:not(.button)
+      a.#{$prefix}nav-item,
+      .#{$prefix}nav-item a:not(.#{$prefix}button)
         color: rgba($color-invert, 0.7)
         &:hover,
-        &.is-active
+        &.#{$prefix}is-active
           color: $color-invert
-      .tabs
+      .#{$prefix}tabs
         a
           color: $color-invert
           opacity: 0.9
           &:hover
             opacity: 1
         li
-          &.is-active a
+          &.#{$prefix}is-active a
             opacity: 1
-        &.is-boxed,
-        &.is-toggle
+        &.#{$prefix}is-boxed,
+        &.#{$prefix}is-toggle
           a
             color: $color-invert
             &:hover
               background-color: rgba($black, 0.1)
-          li.is-active a
+          li.#{$prefix}is-active a
             &,
             &:hover
               background-color: $color-invert
               border-color: $color-invert
               color: $color
       // Modifiers
-      &.is-bold
+      &.#{$prefix}is-bold
         $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
         $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
         background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
       // Responsiveness
       +mobile
-        .nav-toggle
+        .#{$prefix}nav-toggle
           span
             background-color: $color-invert
           &:hover
             background-color: rgba($black, 0.1)
-          &.is-active
+          &.#{$prefix}is-active
             span
               background-color: $color-invert
-        .nav-menu
-          .nav-item
+        .#{$prefix}nav-menu
+          .#{$prefix}nav-item
             border-top-color: rgba($color-invert, 0.2)
   // Sizes
-  &.is-medium
+  &.#{$prefix}is-medium
     +tablet
-      .hero-body
+      .#{$prefix}hero-body
         padding-bottom: 9rem
         padding-top: 9rem
-  &.is-large
+  &.#{$prefix}is-large
     +tablet
-      .hero-body
+      .#{$prefix}hero-body
         padding-bottom: 18rem
         padding-top: 18rem
-  &.is-fullheight
+  &.#{$prefix}is-fullheight
     min-height: 100vh
-    .hero-body
+    .#{$prefix}hero-body
       align-items: center
       display: flex
-      & > .container
+      & > .#{$prefix}container
         flex-grow: 1
         flex-shrink: 1
