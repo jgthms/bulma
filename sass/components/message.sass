@@ -1,4 +1,4 @@
-.message
+.#{$prefix}message
   +block
   background-color: $background
   border-radius: $radius
@@ -11,16 +11,16 @@
     $color-luminance: colorLuminance($color)
     $darken-percentage: $color-luminance * 70%
     $desaturate-percentage: $color-luminance * 30%
-    &.is-#{$name}
+    &.#{$prefix}is-#{$name}
       background-color: lighten($color, $color-lightning)
-      .message-header
+      .#{$prefix}message-header
         background-color: $color
         color: $color-invert
-      .message-body
+      .#{$prefix}message-body
         border-color: $color
         color: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
 
-.message-header
+.#{$prefix}message-header
   align-items: center
   background-color: $text
   border-radius: $radius $radius 0 0
@@ -35,16 +35,16 @@
     color: inherit
   a
     text-decoration: underline
-  .delete
+  .#{$prefix}delete
     flex-grow: 0
     flex-shrink: 0
     margin-left: 0.75em
-  & + .message-body
+  & + .#{$prefix}message-body
     border-top-left-radius: 0
     border-top-right-radius: 0
     border-top: none
 
-.message-body
+.#{$prefix}message-body
   border: 1px solid $border
   border-radius: $radius
   color: $text
