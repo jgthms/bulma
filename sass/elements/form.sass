@@ -71,10 +71,9 @@ $input-radius:              $radius !default
 
 .textarea
   display: block
+  height: auto
   line-height: 1.25
-  max-height: 600px
   max-width: 100%
-  min-height: 120px
   min-width: 100%
   padding: 10px
   resize: vertical
@@ -98,6 +97,10 @@ $input-radius:              $radius !default
     pointer-events: none
     input
       pointer-events: none
+  &.is-block
+    display: block
+    line-height: inherit
+    margin-left: 0
 
 .radio
   & + .radio
@@ -141,6 +144,58 @@ $input-radius:              $radius !default
     width: 100%
     select
       width: 100%
+  &.is-expanded
+    display: block
+    select
+      width: 100%    
+
+.input,
+.select
+  &.is-narrowwidth
+    max-width: 110px
+    select
+      max-width: 100%    
+
+// Togglable Multiselect
+.selectmultiple
+  height: auto
+  select
+    height: auto
+    padding-left: inherit
+    padding-right: inherit
+    option
+      padding-left: 8px
+      padding-right: 8px
+    .optgroup
+      background-color: $dark
+      color: $white
+      font-weight: bold
+      text-transform: uppercase
+  &:after
+    display: none
+
+.selectholder
+  display: block
+  a
+    width: 12.5%
+
++desktop-all
+  .selectholder a
+    width: 20%
+
++mobile
+  .selectholder a
+    width: 25%
+
++touch
+  .has-addons
+    .input,
+    .select
+      display: block
+      flex: 1
+    .select
+      select
+        width: 100%
 
 .label
   color: $input
@@ -157,6 +212,12 @@ $input-radius:              $radius !default
     $color: nth($pair, 1)
     &.is-#{$name}
       color: $color
+
+ul
+  &.help
+    list-style: inherit
+    margin-bottom: 5px
+    margin-left: 2em
 
 // Containers
 
@@ -182,6 +243,8 @@ $input-radius:              $radius !default
   &.has-addons
     display: flex
     justify-content: flex-start
+    .checkbox
+      line-height: $button-height
     .button,
     .input,
     .select
@@ -204,7 +267,13 @@ $input-radius:              $radius !default
       &.is-expanded
         flex-grow: 1
         flex-shrink: 0
+    .input
+      &.is-expanded
+        display: block
+        flex: 1
+        width: 100%
     .select select
+      border-radius: 0
       &:hover
         z-index: 2
       &:focus,
@@ -275,6 +344,8 @@ $input-radius:              $radius !default
   &.is-grouped
     display: flex
     justify-content: flex-start
+    .checkbox
+      line-height: $button-height
     & > .control
       flex-basis: 0
       flex-shrink: 0
@@ -302,3 +373,8 @@ $input-radius:              $radius !default
       position: absolute !important
       right: 0.75em
       top: 0.75em
+
+.has-text-right
+  .control
+    &.has-addons
+      justify-content: flex-end

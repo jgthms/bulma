@@ -249,3 +249,66 @@
     // Modifiers
     &.is-desktop
       display: flex
+
+// Dynamic Column Sizes
+.column
+  &.is-dynamic
+    flex: none
+    width: 33.3333%
+    .card
+      height: 100%
+
+.columnmain
+  min-width: 0
+
+.columnmenu
+  .normalbox,
+  .nextmediabox
+    max-width: 300px
+    min-width: 300px
+    width: 300px
+  .column
+    &.is-dynamic
+      flex: none
+      width: 100%
+
++tablet
+  .columnfull
+    .column
+      &.is-dynamic
+        flex: none
+        width: 33.3333%
+
++desktop
+  .columnfull
+    .column
+      &.is-dynamic
+        flex: none
+        width: 25%
+
++touch
+  .columnmain
+    .column
+      &.is-dynamic
+        flex: none
+        width: 50%
+
++mobile
+  .columnmenu
+    .normalbox,
+    .nextmediabox
+      max-width: none
+      min-width: inherit
+      width: 100%
+  .column
+    .column
+      &.is-dynamic
+        flex: none
+        width: 50%
+
++tiny
+  .column
+    .column
+      &.is-dynamic
+        flex: none
+        width: 100%

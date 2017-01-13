@@ -15,13 +15,29 @@
   flex-grow: 1
   flex-shrink: 1
   text-align: left
+  &.has-text-right
+    text-align: right
+  &.has-text-centered
+    text-align: center
 
 .media
   align-items: flex-start
   display: flex
   text-align: left
-  .content:not(:last-child)
-    margin-bottom: 0.75rem
+  .content
+    &:not(:last-child)
+      margin-bottom: 0.75rem
+    .title
+      max-height: 38px
+      overflow: hidden
+    .subtitle
+      max-height: 34px
+      margin-bottom: 0.5rem
+      overflow: hidden
+      a
+        color: inherit
+      +tiny
+        margin-bottom: 0
   .media
     border-top: 1px solid rgba($border, 0.5)
     display: flex
@@ -37,6 +53,11 @@
     border-top: 1px solid rgba($border, 0.5)
     margin-top: 1rem
     padding-top: 1rem
+  &.rowcontentnext,
+  &.rowfiltered
+    border-top: none
+    display: block
+    padding-top: 0
   // Sizes
   &.is-large
     & + .media

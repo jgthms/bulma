@@ -280,6 +280,7 @@
 
 // Responsiveness
 
+$tiny: 480px !default
 $tablet: 769px !default
 $desktop: 1000px !default
 $widescreen: 1192px !default
@@ -292,6 +293,10 @@ $widescreen: 1192px !default
 
 =until($device)
   @media screen and (max-width: $device - 1px)
+    @content
+
+=tiny
+  @media screen and (max-width: $tiny)
     @content
 
 =mobile
@@ -316,6 +321,10 @@ $widescreen: 1192px !default
 
 =desktop-only
   @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+    @content
+
+=desktop-all
+  @media screen and (max-width: $widescreen - 1px)
     @content
 
 =widescreen
