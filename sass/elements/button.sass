@@ -14,11 +14,13 @@ $button-active-border: $link-active-border !default
 $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2)
 
 @function buttonIconSpacing($button-font-size, $icon-width)
+  // The button font-size value with no unit
+  $button-value: removeUnit($button-font-size)
   // The rem height of the button
   // based on a height of 2.5em
-  $button-height: 2.5 * $button-font-size // rem
+  $button-height: 2.5rem * $button-value // rem
   // The rem total horizontal padding of the button
-  $button-horizontal-padding: 2 * 0.75 * $button-font-size // rem
+  $button-horizontal-padding: 2 * 0.75rem * $button-value // rem
   // For the icon center to align with the button center
   // the horizontal padding + the icon width must equal the button height
   // $button-height = $button-horizontal-padding + $icon-width + $difference
