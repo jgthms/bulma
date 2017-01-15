@@ -2,13 +2,13 @@ $nav-height: 3.5rem !default
 
 // Components
 
-.nav-toggle
+.#{$prefix}nav-toggle
   +hamburger($nav-height)
   // Responsiveness
   +tablet
     display: none
 
-.nav-item
+.#{$prefix}nav-item
   align-items: center
   display: flex
   flex-grow: 0
@@ -21,9 +21,9 @@ $nav-height: 3.5rem !default
     flex-shrink: 0
   img
     max-height: 1.75rem
-  .button + .button
+  .#{$prefix}button + .#{$prefix}button
     margin-left: 0.75rem
-  .tag
+  .#{$prefix}tag
     &:first-child:not(:last-child)
       margin-right: 0.5rem
     &:last-child:not(:first-child)
@@ -32,15 +32,15 @@ $nav-height: 3.5rem !default
   +mobile
     justify-content: flex-start
 
-.nav-item a,
-a.nav-item
+.#{$prefix}nav-item a,
+a.#{$prefix}nav-item
   color: $text-light
   &:hover
     color: $link-hover
   // Modifiers
-  &.is-active
+  &.#{$prefix}is-active
     color: $link-active
-  &.is-tab
+  &.#{$prefix}is-tab
     border-bottom: 1px solid transparent
     border-top: 1px solid transparent
     padding-bottom: calc(0.5rem - 1px)
@@ -50,18 +50,18 @@ a.nav-item
     &:hover
       border-bottom-color: $primary
       border-top-color: transparent
-    &.is-active
+    &.#{$prefix}is-active
       border-bottom: 3px solid $primary
       color: $primary
       padding-bottom: calc(0.5rem - 3px)
   // Responsiveness
   +desktop
-    &.is-brand
+    &.#{$prefix}is-brand
       padding-left: 0
 
 // Containers
 
-.nav-menu
+.#{$prefix}nav-menu
   // Responsiveness
   +mobile
     background-color: $white
@@ -71,30 +71,30 @@ a.nav-item
     right: 0
     top: 100%
     position: absolute
-    .nav-item
+    .#{$prefix}nav-item
       border-top: 1px solid rgba($border, 0.5)
       padding: 0.75rem
-    &.is-active
+    &.#{$prefix}is-active
       display: block
   +tablet-only
     padding-right: 1.5rem
 
 
-.nav-left,
-.nav-right
+.#{$prefix}nav-left,
+.#{$prefix}nav-right
   align-items: stretch
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 0
 
-.nav-left
+.#{$prefix}nav-left
   display: flex
   justify-content: flex-start
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
 
-.nav-center
+.#{$prefix}nav-center
   align-items: stretch
   display: flex
   flex-grow: 0
@@ -103,7 +103,7 @@ a.nav-item
   margin-left: auto
   margin-right: auto
 
-.nav-right
+.#{$prefix}nav-right
   justify-content: flex-end
   // Responsiveness
   +tablet
@@ -111,7 +111,7 @@ a.nav-item
 
 // Main container
 
-.nav
+.#{$prefix}nav
   align-items: stretch
   background-color: $white
   display: flex
@@ -119,11 +119,11 @@ a.nav-item
   position: relative
   text-align: center
   z-index: 2
-  & > .container
+  & > .#{$prefix}container
     align-items: stretch
     display: flex
     min-height: $nav-height
     width: 100%
   // Modifiers
-  &.has-shadow
+  &.#{$prefix}has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
