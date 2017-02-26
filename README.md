@@ -55,7 +55,8 @@ Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most
 * Bulma with Rails: https://github.com/joshuajansen/bulma-rails
 * iTemplate: [http://itemplate.ga/](http://itemplate.ga/dashboard.html)
 * Vue Admin powered by Bulma: https://github.com/fundon/vue-admin
-
+* Bulma with React: https://github.com/bokuweb/re-bulma
+ 
 ## Copyright and license
 
 Code copyright 2017 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
