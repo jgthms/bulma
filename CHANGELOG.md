@@ -1,5 +1,9 @@
 # Bulma Changelog
 
+## 0.3.3
+
+* Remove monospace named fonts
+
 ## 0.3.2
 
 * Fix #478
