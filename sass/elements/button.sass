@@ -110,7 +110,6 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
     border-color: $button-active-border
     box-shadow: $button-shadow-inset
     color: $button-active
-  // Colors
   &.is-link
     background-color: transparent
     border-color: transparent
@@ -124,6 +123,33 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
     &.is-active
       background-color: $background
       color: $text-strong
+  &.is-outlined
+    background-color: transparent
+    border-color: $button
+    &:hover
+      background-color: $button-background
+      border-color: $button-hover-border
+    &:focus
+      background-color: $button-background
+      border-color: $button-focus-border
+    &.is-loading
+      &:after
+        border-color: transparent transparent $button-border $button-border !important
+  &.is-inverted
+    background-color: $button
+    border-color: transparent
+    color: $button-background
+    &:hover
+      background-color: darken($button, 5%)
+  &.is-inverted.is-outlined
+    background-color: transparent
+    border-color: $button-background
+    color: $button-background
+    &:hover,
+    &:focus
+      background-color: $button-background
+      color: $button
+  // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
