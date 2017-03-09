@@ -1,3 +1,5 @@
+$convertUnit-conversion-map: ( "px": 0px, "cm": 0cm, "mm": 0mm, "%": 0%, "ch": 0ch, "in": 0in, "em": 0em, "rem": 0rem, "pt": 0pt, "pc": 0pc, "ex": 0ex, "vw": 0vw, "vh": 0vh, "vmin": 0vmin, "vmax": 0vmax, "deg": 0deg, "turn": 0turn, "rad": 0rad, "grad": 0grad, "s": 0s, "ms": 0ms, "Hz": 0Hz, "kHz": 0kHz, "dppx": 0dppx, "dpcm": 0dpcm, "dpi": 0dpi)
+
 @function powerNumber($number, $exp)
   $value: 1
   @if $exp > 0
@@ -27,10 +29,21 @@
   @else
     @return #fff
 
-@function removeUnit($number)
-  @if type-of($number) == 'number' and not unitless($number)
-    @return $number / ($number * 0 + 1)
-  @return $number
-
 @function roundToEvenNumber($number)
   @return floor($number / 2) * 2
+
+@function convertUnit($value, $unit)
+  @if type-of($value) != 'number' or unitless($value)
+    @error "Value must be number and have unit: `#{$value}`."
+
+  // if rem is source or target unit, and px is the other unit,
+  // we must use $rem-baseline to calculate.
+  $source-unit: unit($value)
+  @if ($source_unit == "rem" and $unit == "px")
+    $value: ($value / ($value * 0 + 1) * $rem-baseline)
+  @else if ($source_unit == "px" and $unit == "rem")
+    $value: ($value / ($value * 0 + 1) / $rem-baseline)
+  @if map-has-key($convertUnit-conversion-map, $unit)
+    @return map-get($convertUnit-conversion-map, $unit) + $value
+  @else
+    @error "Unknown unit `#{$unit}`."
