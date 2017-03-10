@@ -1,5 +1,14 @@
 # Bulma Changelog
 
+## 0.3.2
+
+* Fix #478
+
+## 0.3.1
+
+* Fix #441
+* Fix #443
+
 ## 0.3.0
 
 * Use `rem` and `em` (!)
