@@ -80,5 +80,26 @@ doc-subtab: icon
         </tr>
       </tbody>
     </table>
+    <h3 class="title">Other Modifiers</h3>
+    <div class="content">
+      <p>Icons support the standard Bulma color modifiers:</p>
+    </div>
+
+{% assign mods_array = "primary|success|info|warning|danger" | split: "|" %}
+
+{% capture icon_mods_example %}
+{% for mod in mods_array %}
+<span class="icon is-{{mod}}">
+  <i class="fa fa-home"></i>
+</span>
+{% endfor %}
+{% endcapture %}
+    <div class="example">
+      {{icon_mods_example}}
+    </div>
+{% highlight html %}
+{{icon_mods_example}}
+{% endhighlight %}
+
   </div>
 </section>
