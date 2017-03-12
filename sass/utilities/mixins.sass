@@ -28,11 +28,6 @@
   top: 50%
 
 =delete
-  // We need even pixel dimensions to ensure the delete cross can be perfectly centered
-  $dimension-small: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-small)) * 1px
-  $dimension-normal: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-normal)) * 1px
-  $dimension-medium: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-medium)) * 1px
-  $dimension-large: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-large)) * 1px
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
@@ -42,13 +37,11 @@
   cursor: pointer
   display: inline-block
   font-size: $size-normal
-  height: $dimension-normal
+  height: 20px
   outline: none
   position: relative
-  transform: rotate(45deg)
-  transform-origin: center center
   vertical-align: top
-  width: $dimension-normal
+  width: 20px
   &:before,
   &:after
     background-color: $white
@@ -57,7 +50,8 @@
     left: 50%
     position: absolute
     top: 50%
-    transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%) rotate(45deg)
+    transform-origin: center center
   &:before
     height: 2px
     width: 50%
@@ -71,14 +65,14 @@
     background-color: rgba($black, 0.4)
   // Sizes
   &.is-small
-    height: $dimension-small
-    width: $dimension-small
+    height: 16px
+    width: 16px
   &.is-medium
-    height: $dimension-medium
-    width: $dimension-medium
+    height: 24px
+    width: 24px
   &.is-large
-    height: $dimension-large
-    width: $dimension-large
+    height: 32px
+    width: 32px
 
 =fa($size, $dimensions)
   display: inline-block
