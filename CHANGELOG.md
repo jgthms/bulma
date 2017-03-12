@@ -3,6 +3,9 @@
 ## 0.3.3
 
 * Remove monospace named fonts
+* Remove icon spacing logic
+* Split icon container dimensions and icon size
+* Fix delete button by using pixels instead of (r)em
 
 ## 0.3.2
 
