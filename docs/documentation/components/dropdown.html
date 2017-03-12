@@ -1,0 +1,208 @@
+---
+layout: documentation
+doc-tab: components
+doc-subtab: card
+---
+
+{% include subnav-components.html %}
+
+<section class="section">
+  <div class="container">
+    {% capture dropdown-content %}
+    <div class="dropdown-list">
+      <a href="#" class="dropdown-item">1st link</a>
+      <a href="#" class="dropdown-item">2nd link</a>
+      <a href="#" class="dropdown-item">3rd link</a>
+      <div class="divider"></div>
+      <a href="#" class="dropdown-item">Separated 4th link</a>
+    </div>
+    {% endcapture %}
+
+    <h1 class="title">Dropdown</h1>
+    <h2 class="subtitle">A classic toggleable dropdown containing a list of links</h2>
+
+    <hr>
+
+    <div class="content">
+      <p>The <strong>structure</strong> of a dropdown is the following</p>
+      <ul>
+        <li>
+          <code>dropdown</code>: main container
+          <ul>
+            <li><code>is-dropdown</code>: the <strong>button</strong> under which the dropdown-content will appear</li>
+            <li>
+              <code>dropdown-list</code>: the list of links of your dropdown
+              <ul>
+                <li><code>dropdown-heading</code>: a header to label sections of actions</li>
+                <li><code>dropdown-item</code>: a dropdown item</li>
+                <li><code>divider</code>: a divider to separate items</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div class="dropdown">
+          <button class="button is-dropdown">Dropdown</button>
+          {{dropdown-content}}
+        </div>
+        <div class="dropdown">
+          <button class="button is-primary is-dropdown">Primary</button>
+          {{dropdown-content}}
+        </div>
+        <div class="dropdown">
+          <button class="button is-info is-dropdown">Info</button>
+          {{dropdown-content}}
+        </div>
+        <div class="dropdown">
+          <button class="button is-success is-dropdown">Success</button>
+          {{dropdown-content}}
+        </div>
+        <div class="dropdown">
+          <button class="button is-warning is-dropdown">Warning</button>
+          {{dropdown-content}}
+        </div>
+        <div class="dropdown">
+          <button class="button is-danger is-dropdown">Danger</button>
+          {{dropdown-content}}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}
+        <div class="dropdown">
+          <button class="button is-$color is-dropdown">Dropdown button</button>
+          {{dropdown-content}}
+        </div>
+        {% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    {% capture small-dropdown %}
+    <!-- Small button dropdown -->
+    <div class="dropdown">
+      <button class="button is-small is-dropdown">Small button dropdown</button>
+      {{dropdown-content}}
+    </div>
+    {% endcapture %}
+
+    {% capture medium-dropdown %}
+    <div class="dropdown">
+      <!-- Medium button dropdown -->
+      <button class="button is-medium is-dropdown">Medium button dropdown</button>
+      {{dropdown-content}}
+    </div>
+
+    {% capture large-dropdown %}
+    <!-- Large button dropdown -->
+    <div class="dropdown">
+      <button class="button is-large is-dropdown">Large button dropdown</button>
+      {{dropdown-content}}
+    </div>
+    {% endcapture %}
+
+    <h1 class="title">Dropdown size</h1>
+    <h2 class="subtitle">You can use any size you want</h2>
+    <div class="columns">
+      <div class="column">
+        {{small-dropdown}}
+        {{medium-dropdown}}
+        {{large-dropdown}}
+      </div>
+      <div class="column">
+        {% highlight html %}
+        {{small-dropdown}}
+
+        {{medium-dropdown}}
+
+        {{large-dropdown}}
+
+        {% endhighlight %}
+      </div>
+    </div>
+
+    {% capture dropup %}
+    <div class="dropup">
+      <!-- Dropup button -->
+      <button class="button is-dropdown">Dropup</button>
+      {{dropdown-content}}
+    </div>
+    {% endcapture %}
+
+    <h1 class="title">Inverse dropdown (dropup)</h1>
+    <h2 class="subtitle">You can also make the list appear above the dropdown by using the <code>dropup</code> class</h2>
+
+    <div class="columns">
+      <div class="column">
+        {{dropup}}
+      </div>
+      <div class="column">
+        {% highlight html %}
+        {{dropup}}
+        {% endhighlight %}
+      </div>
+    </div>
+
+    {% capture dropdown-right %}
+    <!-- Dropdown with a right-aligned list -->
+    <div class="dropdown">
+      <button class="button is-dropdown">Dropdown with a right-aligned link list</button>
+      <div class="dropdown-list dropdown-list-right">
+        <a href="#" class="dropdown-item">1st link</a>
+        <a href="#" class="dropdown-item">2nd link</a>
+        <a href="#" class="dropdown-item">3rd link</a>
+        <div class="divider"></div>
+        <a href="#" class="dropdown-item">Separated 4th link</a>
+      </div>
+    </div>
+    {% endcapture %}
+
+    <h1 class="title">List alignment</h1>
+    <h2 class="subtitle">Using <code>dropdown-list-right</code> along with the <code>dropdown-list</code> will right-aligned the dropdown list</h2>
+
+    <div class="columns">
+      <div class="column">
+        {{dropdown-right}}
+      </div>
+      <div class="column">
+        {% highlight html %}
+        {{dropdown-right}}
+        {% endhighlight %}
+      </div>
+    </div>
+
+    {% capture dropdown-with-heading %}
+    <!-- Dropdown with two heading -->
+    <div class="dropdown">
+      <button class="button is-dropdown">Dropdown with headings</button>
+      <div class="dropdown-list">
+        <h6 class="dropdown-heading">Dropdown header</h6>
+        <a href="#" class="dropdown-item">1st link</a>
+        <a href="#" class="dropdown-item">2nd link</a>
+        <div class="divider"></div>
+        <h6 class="dropdown-heading">Another header</h6>
+        <a href="#" class="dropdown-item">3rd link</a>
+        <a href="#" class="dropdown-item">4th link</a>
+      </div>
+    </div>
+    {% endcapture %}
+
+    <h1 class="title">Heading title</h1>
+    <h2 class="subtitle">You can add heading title to label each of your link sections</h2>
+
+    <div class="columns">
+      <div class="column">
+        {{dropdown-with-heading}}
+      </div>
+      <div class="column">
+        {% highlight html %}
+        {{dropdown-with-heading}}
+        {% endhighlight %}
+      </div>
+    </div>
+  </div>
+</section>
