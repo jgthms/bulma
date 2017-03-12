@@ -6,6 +6,7 @@
 * Remove icon spacing logic
 * Split icon container dimensions and icon size
 * Fix delete button by using pixels instead of (r)em
+* Fix level on mobile
 
 ## 0.3.2
 
