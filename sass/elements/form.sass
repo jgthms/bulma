@@ -158,6 +158,10 @@ $input-radius:              $radius !default
     &.is-#{$name}
       color: $color
 
+input[type="submit"].input,
+.select select
+  line-height: 1
+
 // Containers
 
 .field
@@ -254,13 +258,15 @@ $input-radius:              $radius !default
     flex-grow: 5
     flex-shrink: 1
     .field
-      flex-grow: 1
       flex-shrink: 1
+      &:not(.is-narrow)
+        flex-grow: 1
       &:not(:last-child)
         margin-bottom: 0
         margin-right: 0.75rem
 
 .control
+  font-size: $size-normal
   position: relative
   text-align: left
   // Modifiers
