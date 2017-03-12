@@ -1800,7 +1800,7 @@ a.box:active {
 .help {
   display: block;
   font-size: 0.85rem;
-  margin-top: 5px;
+  margin-top: 0.25rem;
 }
 
 .help.is-white {
@@ -1839,111 +1839,136 @@ a.box:active {
   color: #ff3860;
 }
 
+.field:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.field.has-addons {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.field.has-addons .control {
+  margin-right: -1px;
+}
+
+.field.has-addons .control:hover {
+  z-index: 2;
+}
+
+.field.has-addons .control:focus, .field.has-addons .control:active {
+  z-index: 3;
+}
+
+.field.has-addons .control:first-child .button,
+.field.has-addons .control:first-child .input,
+.field.has-addons .control:first-child .select select {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.field.has-addons .control:last-child .button,
+.field.has-addons .control:last-child .input,
+.field.has-addons .control:last-child .select select {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.field.has-addons .control .button,
+.field.has-addons .control .input,
+.field.has-addons .control .select select {
+  border-radius: 0;
+}
+
+.field.has-addons .control.is-expanded {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.field.has-addons.has-addons-centered {
+  justify-content: center;
+}
+
+.field.has-addons.has-addons-right {
+  justify-content: flex-end;
+}
+
+.field.has-addons.has-addons-fullwidth .control {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.field.is-grouped {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.field.is-grouped > .control {
+  flex-basis: 0;
+  flex-shrink: 0;
+}
+
+.field.is-grouped > .control:not(:last-child) {
+  margin-bottom: 0;
+  margin-right: 0.75rem;
+}
+
+.field.is-grouped > .control.is-expanded {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.field.is-grouped.is-grouped-centered {
+  justify-content: center;
+}
+
+.field.is-grouped.is-grouped-right {
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 769px) {
+  .field.is-horizontal {
+    display: flex;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .control-label {
-    margin-bottom: 0.5em;
+  .field-label {
+    margin-bottom: 0.5rem;
   }
 }
 
 @media screen and (min-width: 769px) {
-  .control-label {
+  .field-label {
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 0;
-    margin-right: 1.5em;
-    padding-top: 0.5em;
+    margin-right: 1.5rem;
+    padding-top: 0.375em;
     text-align: right;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .field-body {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 5;
+    flex-shrink: 1;
+  }
+  .field-body .field {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  .field-body .field:not(:last-child) {
+    margin-bottom: 0;
+    margin-right: 0.75rem;
   }
 }
 
 .control {
   position: relative;
   text-align: left;
-}
-
-.control:not(:last-child) {
-  margin-bottom: 0.75rem;
-}
-
-.control.has-addons {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.control.has-addons .button,
-.control.has-addons .input,
-.control.has-addons .select {
-  border-radius: 0;
-  margin-right: -1px;
-  width: auto;
-}
-
-.control.has-addons .button:hover,
-.control.has-addons .input:hover,
-.control.has-addons .select:hover {
-  z-index: 2;
-}
-
-.control.has-addons .button:focus, .control.has-addons .button:active,
-.control.has-addons .input:focus,
-.control.has-addons .input:active,
-.control.has-addons .select:focus,
-.control.has-addons .select:active {
-  z-index: 3;
-}
-
-.control.has-addons .button:first-child,
-.control.has-addons .input:first-child,
-.control.has-addons .select:first-child {
-  border-radius: 3px 0 0 3px;
-}
-
-.control.has-addons .button:first-child select,
-.control.has-addons .input:first-child select,
-.control.has-addons .select:first-child select {
-  border-radius: 3px 0 0 3px;
-}
-
-.control.has-addons .button:last-child,
-.control.has-addons .input:last-child,
-.control.has-addons .select:last-child {
-  border-radius: 0 3px 3px 0;
-}
-
-.control.has-addons .button:last-child select,
-.control.has-addons .input:last-child select,
-.control.has-addons .select:last-child select {
-  border-radius: 0 3px 3px 0;
-}
-
-.control.has-addons .button.is-expanded,
-.control.has-addons .input.is-expanded,
-.control.has-addons .select.is-expanded {
-  flex-grow: 1;
-  flex-shrink: 0;
-}
-
-.control.has-addons .select select:hover {
-  z-index: 2;
-}
-
-.control.has-addons .select select:focus, .control.has-addons .select select:active {
-  z-index: 3;
-}
-
-.control.has-addons.has-addons-centered {
-  justify-content: center;
-}
-
-.control.has-addons.has-addons-right {
-  justify-content: flex-end;
-}
-
-.control.has-addons.has-addons-fullwidth .button,
-.control.has-addons.has-addons-fullwidth .input,
-.control.has-addons.has-addons-fullwidth .select {
-  flex-grow: 1;
-  flex-shrink: 0;
 }
 
 .control.has-icon .icon {
@@ -1988,46 +2013,6 @@ a.box:active {
   padding-right: 2.25em;
 }
 
-.control.is-grouped {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.control.is-grouped > .control {
-  flex-basis: 0;
-  flex-shrink: 0;
-}
-
-.control.is-grouped > .control:not(:last-child) {
-  margin-bottom: 0;
-  margin-right: 0.75rem;
-}
-
-.control.is-grouped > .control.is-expanded {
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-
-.control.is-grouped.is-grouped-centered {
-  justify-content: center;
-}
-
-.control.is-grouped.is-grouped-right {
-  justify-content: flex-end;
-}
-
-@media screen and (min-width: 769px) {
-  .control.is-horizontal {
-    display: flex;
-  }
-  .control.is-horizontal > .control {
-    display: flex;
-    flex-basis: 0;
-    flex-grow: 5;
-    flex-shrink: 1;
-  }
-}
-
 .control.is-loading:after {
   animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
@@ -2040,8 +2025,8 @@ a.box:active {
   position: relative;
   width: 1rem;
   position: absolute !important;
-  right: 0.75em;
-  top: 0.75em;
+  right: 0.625em;
+  top: 0.625em;
 }
 
 .icon {
