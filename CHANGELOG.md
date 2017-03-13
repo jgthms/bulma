@@ -4,6 +4,7 @@
 
 * **Default font-size is 16px**
 * **New `.field` element ; `.control` repurposed**
+* **New `.pagination` sizes**
 
 * Remove monospace named fonts
 * Remove icon spacing logic
