@@ -1,7 +1,7 @@
 ---
 layout: documentation
 doc-tab: components
-doc-subtab: card
+doc-subtab: dropdown
 ---
 
 {% include subnav-components.html %}
@@ -9,13 +9,13 @@ doc-subtab: card
 <section class="section">
   <div class="container">
     {% capture dropdown-content %}
-    <div class="dropdown-list">
-      <a href="#" class="dropdown-item">1st link</a>
-      <a href="#" class="dropdown-item">2nd link</a>
-      <a href="#" class="dropdown-item">3rd link</a>
-      <div class="divider"></div>
-      <a href="#" class="dropdown-item">Separated 4th link</a>
-    </div>
+      <div class="dropdown-list">
+        <a href="#" class="dropdown-item">1st link</a>
+        <a href="#" class="dropdown-item">2nd link</a>
+        <a href="#" class="dropdown-item">3rd link</a>
+        <div class="divider"></div>
+        <a href="#" class="dropdown-item">Separated 4th link</a>
+      </div>
     {% endcapture %}
 
     <h1 class="title">Dropdown</h1>
@@ -29,12 +29,12 @@ doc-subtab: card
         <li>
           <code>dropdown</code>: main container
           <ul>
-            <li><code>is-dropdown</code>: the <strong>button</strong> under which the dropdown-content will appear</li>
+            <li><code>is-dropdown</code>: the <strong>button</strong> under which the dropdown-content will appear (automatically adds a caret after button label)</li>
             <li>
-              <code>dropdown-list</code>: the list of links of your dropdown
+              <code>dropdown-list</code>: the list of links in your dropdown
               <ul>
+                <li><code>dropdown-item</code>: a dropdown link</li>
                 <li><code>dropdown-heading</code>: a header to label sections of actions</li>
-                <li><code>dropdown-item</code>: a dropdown item</li>
                 <li><code>divider</code>: a divider to separate items</li>
               </ul>
             </li>
@@ -72,11 +72,24 @@ doc-subtab: card
 
       <div class="column">
         {% highlight html %}
-        <div class="dropdown">
-          <button class="button is-$color is-dropdown">Dropdown button</button>
-          {{dropdown-content}}
-        </div>
+    <div class="dropdown">
+      <button class="button is-$color is-dropdown">Dropdown button</button>
+      {{dropdown-content}}
+    </div>
         {% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <p>To <strong>activate</strong> the modal, just add the <code>is-active</code> modifier on the <code>.dropdown</code> container</p>
+    </div>
+
+    <div class="message is-danger">
+      <div class="message-header">
+        No JavaScript
+      </div>
+      <div class="message-body">
+        Bulma does <strong>not</strong> include any JavaScript interaction. You will have to implement the class toggle yourself
       </div>
     </div>
 
@@ -99,6 +112,7 @@ doc-subtab: card
       <button class="button is-medium is-dropdown">Medium button dropdown</button>
       {{dropdown-content}}
     </div>
+    {% endcapture %}
 
     {% capture large-dropdown %}
     <!-- Large button dropdown -->
@@ -110,21 +124,29 @@ doc-subtab: card
 
     <div class="columns">
       <div class="column">
-        {{small-dropdown}}
-        {{medium-dropdown}}
-        {{large-dropdown}}
+        <div class="block">
+          {{small-dropdown}}
+        </div>
+        <div class="block">
+          {{medium-dropdown}}
+        </div>
+        <div class="block">
+          {{large-dropdown}}
+        </div>
       </div>
       <div class="column">
         {% highlight html %}
-        {{small-dropdown}}
+          {{small-dropdown}}
 
-        {{medium-dropdown}}
+          {{medium-dropdown}}
 
-        {{large-dropdown}}
-
+          {{large-dropdown}}
         {% endhighlight %}
       </div>
     </div>
+
+    <hr>
+
 
     <h1 class="title">Inverse dropdown (dropup)</h1>
     <h2 class="subtitle">You can also make the list appear above the dropdown by using the <code>dropup</code> class</h2>
@@ -147,6 +169,8 @@ doc-subtab: card
         {% endhighlight %}
       </div>
     </div>
+
+    <hr>
 
     <h1 class="title">List alignment</h1>
     <h2 class="subtitle">Using <code>dropdown-list-right</code> along with the <code>dropdown-list</code> will right-aligned the dropdown list</h2>
@@ -175,6 +199,8 @@ doc-subtab: card
         {% endhighlight %}
       </div>
     </div>
+
+    <hr>
 
     <h1 class="title">Heading title</h1>
     <h2 class="subtitle">You can add heading title to label each of your link sections</h2>
@@ -206,6 +232,9 @@ doc-subtab: card
       </div>
     </div>
 
+    <hr>
+
+
     <h1 class="title">Divider</h1>
     <h2 class="subtitle">Use dividers to separate groups of links</h2>
 
@@ -227,6 +256,9 @@ doc-subtab: card
         {% endhighlight %}
       </div>
     </div>
+
+    <hr>
+
 
     <h1 class="title">Disabled link</h1>
     <h2 class="subtitle">You can mark link as disabled by using <code>disabled</code> along with <code>dropdown-item</code></h2>
