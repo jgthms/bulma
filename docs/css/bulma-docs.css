@@ -2618,23 +2618,24 @@ input[type="submit"].button {
 @media screen and (min-width: 1000px) {
   .container {
     margin: 0 auto;
-    max-width: 960px;
+    width: 960px;
   }
   .container.is-fluid {
     margin: 0 20px;
     max-width: none;
+    width: auto;
   }
 }
 
 @media screen and (min-width: 1192px) {
   .container {
-    max-width: 1152px;
+    width: 1152px;
   }
 }
 
 @media screen and (min-width: 1384px) {
   .container {
-    max-width: 1344px;
+    width: 1344px;
   }
 }
 
@@ -3628,11 +3629,16 @@ a.nav-item.is-tab.is-active {
   align-items: stretch;
   display: flex;
   min-height: 3.25rem;
-  width: 100%;
 }
 
 .nav.has-shadow {
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .nav > .container {
+    width: 100%;
+  }
 }
 
 .pagination {
@@ -6709,12 +6715,17 @@ html.route-index #carbon {
   padding: 2rem;
 }
 
+.bsa-cpc {
+  min-height: 1px;
+}
+
 #_default_ .default-ad {
-  background-color: #00d1b2;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 2px;
-  color: #fff;
+  color: white;
   display: inline-block;
-  font-size: 12px;
+  font-size: 10px;
+  font-weight: bold;
   padding: 0 4px;
   text-transform: uppercase;
   vertical-align: top;
@@ -6724,8 +6735,9 @@ html.route-index #carbon {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  color: #4a4a4a;
   display: block;
-  line-height: 1.25;
+  line-height: 1.375;
   margin-top: 15px;
   padding: 15px;
   padding-left: 70px;
@@ -6765,6 +6777,9 @@ html.route-index #carbon {
 }
 
 @media screen and (min-width: 769px) {
+  .bsa .columns {
+    min-height: 120px;
+  }
   #_default_ {
     display: flex;
     justify-content: center;
@@ -6781,6 +6796,52 @@ html.route-index #carbon {
   }
   #_default_ > a:not(:nth-child(2)) {
     margin-left: 2rem;
+  }
+}
+
+html.route-index .title.is-2 {
+  position: relative;
+}
+
+html.route-index .title.is-2 a {
+  color: #242424;
+  padding-left: 48px;
+  position: relative;
+}
+
+html.route-index .title.is-2 a:hover {
+  color: #00d1b2;
+}
+
+html.route-index .title.is-2 .icon.is-medium {
+  left: 8px;
+  position: absolute;
+  top: 10px;
+}
+
+html.route-index .hero .title.is-2 a {
+  color: white;
+}
+
+html.route-index .hero .title.is-2 a:hover {
+  color: white;
+}
+
+html.route-index .hero.is-primary a.column,
+html.route-index .hero.is-primary a.column:hover {
+  color: white;
+}
+
+html.route-index .hero.is-primary a.column:hover .title strong {
+  border-bottom: 1px solid;
+}
+
+@media screen and (max-width: 979px) {
+  html.route-index .title.is-2 a {
+    padding-left: 0;
+  }
+  html.route-index .title.is-2 .icon.is-medium {
+    display: none;
   }
 }
 
