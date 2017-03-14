@@ -12,6 +12,7 @@
 * Split icon container dimensions and icon size
 * Fix delete button by using pixels instead of (r)em
 * Fix level on mobile
+* Add new `.is-spaced` modifer for titles and subtitles
 
 ## 0.3.2
 
