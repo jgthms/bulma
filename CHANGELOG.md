@@ -1,6 +1,6 @@
 # Bulma Changelog
 
-## 0.4
+## 0.4.0
 
 * **Default font-size is 16px**
 * **New `.field` element ; `.control` repurposed**
