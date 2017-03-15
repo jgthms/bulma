@@ -14,6 +14,13 @@
 * Fix level on mobile
 * Add new `.is-spaced` modifer for titles and subtitles
 
+* Fix #487
+* Fix #489
+* Fix #502
+* Fix #514
+* Fix #524
+* Fix #536
+
 ## 0.3.2
 
 * Fix #478
