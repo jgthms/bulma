@@ -587,7 +587,7 @@ doc-subtab: form
       Search
     </a>
   </p>
-</div
+</div>
 {% endcapture %}
     <div class="example">
 {{addons_example}}
@@ -750,7 +750,7 @@ doc-subtab: form
     </div>
 {% capture horizontal_form_example %}
 <div class="field is-horizontal">
-  <div class="field-label">
+  <div class="field-label is-normal">
     <label class="label">From</label>
   </div>
   <div class="field-body">
@@ -772,7 +772,7 @@ doc-subtab: form
 </div>
 
 <div class="field is-horizontal">
-  <div class="field-label">
+  <div class="field-label is-normal">
     <label class="label">Department</label>
   </div>
   <div class="field-body">
@@ -792,6 +792,26 @@ doc-subtab: form
 
 <div class="field is-horizontal">
   <div class="field-label">
+    <label class="label">Already a member?</label>
+  </div>
+  <div class="field-body">
+    <div class="field is-narrow">
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="member">
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="member">
+          No
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
     <label class="label">Subject</label>
   </div>
   <div class="field-body">
@@ -807,7 +827,7 @@ doc-subtab: form
 </div>
 
 <div class="field is-horizontal">
-  <div class="field-label">
+  <div class="field-label is-normal">
     <label class="label">Question</label>
   </div>
   <div class="field-body">
@@ -834,9 +854,109 @@ doc-subtab: form
   </div>
 </div>
 {% endcapture %}
+<div class="example">
 {{horizontal_form_example}}
+</div>
 {% highlight html %}
 {{horizontal_form_example}}
+{% endhighlight %}
+
+<div class="content">
+  <p>
+    <span class="tag is-success">New!</span>
+    <br>
+    To preserve the <strong>vertical alignment</strong> of labels with each type and size of control, the <code>.field-label</code> comes with <strong>4 size modifiers</strong>:
+  </p>
+  <ul>
+    <li>
+      <code>.is-small</code>
+    </li>
+    <li>
+      <code>.is-normal</code> for any <code>.input</code> or <code>.button</code>
+    </li>
+    <li>
+      <code>.is-medium</code>
+    </li>
+    <li>
+      <code>.is-large</code>
+    </li>
+  </ul>
+</div>
+
+{% capture field_label_example %}
+<div class="field is-horizontal">
+  <div class="field-label">
+    <label class="label">No padding</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox">
+          Checkbox
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-small">
+    <label class="label">Small padding</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input is-small" type="text" placeholder="Small sized input">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Normal label</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input" type="text" placeholder="Normal sized input">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-medium">
+    <label class="label">Medium label</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input is-medium" type="text" placeholder="Medium sized input">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-large">
+    <label class="label">Large label</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <input class="input is-large" type="text" placeholder="Large sized input">
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+<div class="example">
+{{field_label_example}}
+</div>
+{% highlight html %}
+{{field_label_example}}
 {% endhighlight %}
   </div>
 </section>
