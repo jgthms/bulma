@@ -71,12 +71,11 @@ $input-radius:              $radius !default
 
 .textarea
   display: block
-  line-height: 1.25
   max-height: 600px
   max-width: 100%
   min-height: 120px
   min-width: 100%
-  padding: 10px
+  padding: 0.625em
   resize: vertical
 
 .checkbox,
@@ -86,6 +85,7 @@ $input-radius:              $radius !default
   display: inline-flex
   flex-wrap: wrap
   justify-content: flex-start
+  line-height: 1.5
   position: relative
   vertical-align: top
   input
@@ -105,7 +105,7 @@ $input-radius:              $radius !default
 
 .select
   display: inline-block
-  height: 2.5em
+  height: 2.25em
   position: relative
   vertical-align: top
   &:after
@@ -145,129 +145,66 @@ $input-radius:              $radius !default
 .label
   color: $input
   display: block
-  font-weight: bold
+  font-size: $size-normal
+  font-weight: $weight-bold
   &:not(:last-child)
     margin-bottom: 0.5em
 
 .help
   display: block
   font-size: $size-small
-  margin-top: 5px
+  margin-top: 0.25rem
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
       color: $color
 
+.select select
+  line-height: 1
+
 // Containers
 
-.control-label
-  +mobile
-    margin-bottom: 0.5em
-  +tablet
-    flex-basis: 0
-    flex-grow: 1
-    flex-shrink: 0
-    margin-right: 1.5em
-    padding-top: 0.5em
-    text-align: right
-
-.control
-  position: relative
-  text-align: left
+.field
   &:not(:last-child)
     margin-bottom: 0.75rem
   // Modifiers
   &.has-addons
     display: flex
     justify-content: flex-start
-    .button,
-    .input,
-    .select
-      border-radius: 0
+    .control
       margin-right: -1px
-      width: auto
-      &:hover
-        z-index: 2
-      &:focus,
-      &:active
-        z-index: 3
       &:first-child
-        border-radius: $input-radius 0 0 $input-radius
-        select
-          border-radius: $input-radius 0 0 $input-radius
+        .button,
+        .input,
+        .select select
+          border-bottom-left-radius: $input-radius
+          border-top-left-radius: $input-radius
       &:last-child
-        border-radius: 0 $input-radius $input-radius 0
-        select
-          border-radius: 0 $input-radius $input-radius 0
+        .button,
+        .input,
+        .select select
+          border-bottom-right-radius: $input-radius
+          border-top-right-radius: $input-radius
+      .button,
+      .input,
+      .select select
+        border-radius: 0
+        &:hover
+          z-index: 2
+        &:focus,
+        &:active
+          z-index: 3
       &.is-expanded
         flex-grow: 1
         flex-shrink: 0
-    .select select
-      &:hover
-        z-index: 2
-      &:focus,
-      &:active
-        z-index: 3
     &.has-addons-centered
       justify-content: center
     &.has-addons-right
       justify-content: flex-end
     &.has-addons-fullwidth
-      .button,
-      .input,
-      .select
+      .control
         flex-grow: 1
         flex-shrink: 0
-  &.has-icon
-    .icon
-      color: $input-icon
-      pointer-events: none
-      position: absolute
-      top: ($size-normal * 2.5) / 2
-      z-index: 4
-    .input
-      &:focus
-        & + .icon
-          color: $input-icon-active
-      &.is-small
-        & + .icon
-          top: ($size-small * 2.5) / 2
-      &.is-medium
-        & + .icon
-          top: ($size-medium * 2.5) / 2
-      &.is-large
-        & + .icon
-          top: ($size-large * 2.5) / 2
-    &:not(.has-icon-right)
-      .icon
-        left: ($size-normal * 2.5) / 2
-        transform: translateX(-50%) translateY(-50%)
-      .input
-        padding-left: 2.5em
-        &.is-small
-          & + .icon
-            left: ($size-small * 2.5) / 2
-        &.is-medium
-          & + .icon
-            left: ($size-medium * 2.5) / 2
-        &.is-large
-          & + .icon
-            left: ($size-large * 2.5) / 2
-    &.has-icon-right
-      .icon
-        right: ($size-normal * 2.5) / 2
-        transform: translateX(50%) translateY(-50%)
-      .input
-        padding-right: 2.5em
-        &.is-small
-          & + .icon
-            right: ($size-small * 2.5) / 2
-        &.is-medium
-          & + .icon
-            right: ($size-medium * 2.5) / 2
-        &.is-large
-          & + .icon
-            right: ($size-large * 2.5) / 2
   &.is-grouped
     display: flex
     justify-content: flex-start
@@ -287,15 +224,106 @@ $input-radius:              $radius !default
   &.is-horizontal
     +tablet
       display: flex
-      & > .control
-        display: flex
-        flex-basis: 0
-        flex-grow: 5
-        flex-shrink: 1
+
+.field-label
+  .label
+    font-size: inherit
+  +mobile
+    margin-bottom: 0.5rem
+  +tablet
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 0
+    margin-right: 1.5rem
+    text-align: right
+    &.is-small
+      font-size: $size-small
+      padding-top: 0.375em
+    &.is-normal
+      padding-top: 0.375em
+    &.is-medium
+      font-size: $size-medium
+      padding-top: 0.375em
+    &.is-large
+      font-size: $size-large
+      padding-top: 0.375em
+
+.field-body
+  +tablet
+    display: flex
+    flex-basis: 0
+    flex-grow: 5
+    flex-shrink: 1
+    .field
+      flex-shrink: 1
+      &:not(.is-narrow)
+        flex-grow: 1
+      &:not(:last-child)
+        margin-bottom: 0
+        margin-right: 0.75rem
+
+.control
+  font-size: $size-normal
+  position: relative
+  text-align: left
+  // Modifiers
+  &.has-icon
+    .icon
+      color: $input-icon
+      height: 2.25em
+      pointer-events: none
+      position: absolute
+      top: 0
+      width: 2.25em
+      z-index: 4
+    .input
+      &:focus
+        & + .icon
+          color: $input-icon-active
+      &.is-small
+        & + .icon
+          font-size: $size-small
+      &.is-medium
+        & + .icon
+          font-size: $size-medium
+      &.is-large
+        & + .icon
+          font-size: $size-large
+    &:not(.has-icon-right)
+      .icon
+        left: 0
+        // transform: translateX(-50%) translateY(-50%)
+      .input
+        padding-left: 2.25em
+        // &.is-small
+        //   & + .icon
+        //     left: ($size-small * 2.5) / 2
+        // &.is-medium
+        //   & + .icon
+        //     left: ($size-medium * 2.5) / 2
+        // &.is-large
+        //   & + .icon
+        //     left: ($size-large * 2.5) / 2
+    &.has-icon-right
+      .icon
+        right: 0
+        // transform: translateX(50%) translateY(-50%)
+      .input
+        padding-right: 2.25em
+        // &.is-small
+        //   & + .icon
+        //     right: ($size-small * 2.5) / 2
+        // &.is-medium
+        //   & + .icon
+        //     right: ($size-medium * 2.5) / 2
+        // &.is-large
+        //   & + .icon
+        //     right: ($size-large * 2.5) / 2
   &.is-loading
     &:after
       +loader
       position: absolute !important
+<<<<<<< HEAD
       right: 0.75em
       top: 0.75em
 
@@ -347,3 +375,7 @@ $input-radius:              $radius !default
             &:after
               background-color: $color
               transform: translate( 80%, -50% )
+=======
+      right: 0.625em
+      top: 0.625em
+>>>>>>> jgthms/master

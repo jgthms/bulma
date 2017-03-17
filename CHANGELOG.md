@@ -1,5 +1,26 @@
 # Bulma Changelog
 
+## 0.4.0
+
+* **Default font-size is 16px**
+* **New `.field` element ; `.control` repurposed**
+* **New `.pagination` sizes**
+* **New `$fullhd` breakpoint (1344px)**
+
+* Remove monospace named fonts
+* Remove icon spacing logic
+* Split icon container dimensions and icon size
+* Fix delete button by using pixels instead of (r)em
+* Fix level on mobile
+* Add new `.is-spaced` modifer for titles and subtitles
+
+* Fix #487
+* Fix #489
+* Fix #502
+* Fix #514
+* Fix #524
+* Fix #536
+
 ## 0.3.2
 
 * Fix #478
