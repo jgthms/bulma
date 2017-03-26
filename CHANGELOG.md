@@ -1,5 +1,9 @@
 # Bulma Changelog
 
+## 0.4.1
+
+# Fix #568 max-width container
+
 ## 0.4.0
 
 * **Default font-size is 16px**

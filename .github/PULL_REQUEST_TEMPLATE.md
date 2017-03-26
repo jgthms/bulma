@@ -1,4 +1,5 @@
 <!-- PLEASE READ THE FOLLOWING INSTRUCTIONS -->
+<!-- DO NOT REBUILD THE CSS OUTPUT IN YOUR PR -->
 
 ### Proposed solution
 <!-- Which specific problem does this PR solve and how?  -->
@@ -18,4 +19,4 @@
 <!-- 3. Make sure your Sass code is compliant with the [Bulma Sass styleguide](https://github.com/jgthms/bulma/blob/master/.github/CONTRIBUTING.md#bulma-sass-styleguide) -->
 <!-- 4. If your PR fixes an issue, reference that issue -->
 <!-- 5. If your PR has lots of commits, **rebase** first -->
-<!-- 6. Run `npm run deploy` before submitting your PR -->
+<!-- 6. Your PR should only affect `.sass` and documentation files -->
