@@ -3,6 +3,7 @@
 ## 0.4.1
 
 # Fix #568 max-width container
+# Fix #589 notification delete
 
 ## 0.4.0
 
