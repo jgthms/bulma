@@ -81,6 +81,10 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
     &.is-active
       background-color: $background
       color: $text-strong
+    &[disabled]
+      background-color: transparent
+      border-color: transparent
+      box-shadow: none
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
@@ -104,11 +108,20 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
         border-color: transparent
         box-shadow: $button-shadow-inset
         color: $color-invert
+      &[disabled]
+        background-color: $color
+        border-color: transparent
+        box-shadow: none
       &.is-inverted
         background-color: $color-invert
         color: $color
         &:hover
           background-color: darken($color-invert, 5%)
+        &[disabled]
+          background-color: $color-invert
+          border-color: transparent
+          box-shadow: none
+          color: $color
       &.is-loading
         &:after
           border-color: transparent transparent $color-invert $color-invert !important
@@ -124,6 +137,11 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
         &.is-loading
           &:after
             border-color: transparent transparent $color $color !important
+        &[disabled]
+          background-color: transparent
+          border-color: $color
+          box-shadow: none
+          color: $color
       &.is-inverted.is-outlined
         background-color: transparent
         border-color: $color-invert
@@ -132,6 +150,11 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
         &:focus
           background-color: $color-invert
           color: $color
+        &[disabled]
+          background-color: transparent
+          border-color: $color-invert
+          box-shadow: none
+          color: $color-invert
   // Sizes
   &.is-small
     +button-small
@@ -140,8 +163,10 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
   &.is-large
     +button-large
   // Modifiers
-  &[disabled],
-  &.is-disabled
+  &[disabled]
+    background-color: $button-background
+    border-color: $button-border
+    box-shadow: none
     opacity: 0.5
   &.is-fullwidth
     display: flex
