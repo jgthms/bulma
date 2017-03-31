@@ -62,38 +62,22 @@ a.nav-item
 
 // Containers
 
-.nav-menu
-  // Responsiveness
-  +mobile
-    background-color: $white
-    box-shadow: 0 4px 7px rgba($black, 0.1)
-    left: 0
-    display: none
-    right: 0
-    top: 100%
-    position: absolute
-    .nav-item
-      border-top: 1px solid rgba($border, 0.5)
-      padding: 0.75rem
-    &.is-active
-      display: block
-  +tablet-only
-    padding-right: 1.5rem
-
-
 .nav-left,
 .nav-right
   align-items: stretch
+  display: flex
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 0
 
 .nav-left
-  display: flex
   justify-content: flex-start
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
+
+.nav-right
+  justify-content: flex-end
 
 .nav-center
   align-items: stretch
@@ -104,11 +88,24 @@ a.nav-item
   margin-left: auto
   margin-right: auto
 
-.nav-right
-  justify-content: flex-end
+.nav-menu
   // Responsiveness
-  +tablet
-    display: flex
+  +mobile
+    &.nav-right
+      background-color: $white
+      box-shadow: 0 4px 7px rgba($black, 0.1)
+      left: 0
+      display: none
+      right: 0
+      top: 100%
+      position: absolute
+      .nav-item
+        border-top: 1px solid rgba($border, 0.5)
+        padding: 0.75rem
+      &.is-active
+        display: block
+  +tablet-only
+    padding-right: 1.5rem
 
 // Main container
 
