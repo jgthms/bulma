@@ -40,14 +40,15 @@ There is **no** JavaScript included. People generally want to use their own JS i
 
 ## Browser Support
 
-Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with:
+Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with **recent** versions of:
 
 * Chrome
 * Edge
 * Firefox
-* Internet Explorer (10+)
 * Opera
 * Safari
+
+Internet Explorer (10+) is only partially supported.
 
 ## Documentation
 
