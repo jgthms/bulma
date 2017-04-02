@@ -2,14 +2,14 @@
 
 ## 0.4.1
 
-# Fix #568 max-width container
-# Fix #589 notification delete
-# Fix #272 nav-right without nav-menu
-# Fix #616 hero and notification buttons
-# Fix #607 has-addons z-index
-# Feature #586 select color modifiers
-# Fix #537 -ms-expand
-# Fix #578 better `+center` mixin
+* Fix #568 max-width container
+* Fix #589 notification delete
+* Fix #272 nav-right without nav-menu
+* Fix #616 hero and notification buttons
+* Fix #607 has-addons z-index
+* Feature #586 select color modifiers
+* Fix #537 -ms-expand
+* Fix #578 better `+center` mixin
 * Fix #565 `dl` styles
 * Fix #389 `pre` `margin-bottom`
 
