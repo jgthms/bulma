@@ -5,6 +5,7 @@
 # Fix #568 max-width container
 # Fix #589 notification delete
 # Fix #272 nav-right without nav-menu
+# Fix #616 hero and notification buttons
 
 ## 0.4.0
 
