@@ -17,6 +17,7 @@
 * Fix #581 nav container
 * Fix #512 nav grouped buttons
 * Fix #605 container example
+* Fix #458 select expanded
 
 ## 0.4.0
 
