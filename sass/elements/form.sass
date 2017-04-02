@@ -120,12 +120,17 @@ $input-radius:              $radius !default
     padding-right: 2.5em
     &:hover
       border-color: $input-hover-border
-    &::ms-expand
+    &::-ms-expand
       display: none
   // States
   &:hover
     &:after
       border-color: $input-hover
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name} select
+      border-color: $color
   // Sizes
   &.is-small
     +control-small
