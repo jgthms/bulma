@@ -7,6 +7,8 @@
 # Fix #272 nav-right without nav-menu
 # Fix #616 hero and notification buttons
 # Fix #607 has-addons z-index
+# Feature #586 select color modifiers
+# Fix #537 -ms-expand
 
 ## 0.4.0
 
