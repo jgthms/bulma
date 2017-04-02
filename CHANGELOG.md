@@ -9,6 +9,7 @@
 # Fix #607 has-addons z-index
 # Feature #586 select color modifiers
 # Fix #537 -ms-expand
+# Fix #578 better `+center` mixin
 
 ## 0.4.0
 

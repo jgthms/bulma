@@ -20,12 +20,14 @@
     content: " "
     display: table
 
-=center($size)
-  left: 50%
-  margin-left: -($size / 2)
-  margin-top: -($size / 2)
+=center($width, $height: 0)
   position: absolute
-  top: 50%
+  @if $height != 0
+    left: calc(50% - (#{$width} / 2))
+    top: calc(50% - (#{$height} / 2))
+  @else
+    left: calc(50% - (#{$width} / 2))
+    top: calc(50% - (#{$width} / 2))
 
 =delete
   +unselectable
