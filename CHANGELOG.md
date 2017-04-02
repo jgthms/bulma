@@ -16,6 +16,7 @@
 * Fix #506 bold nav menu
 * Fix #581 nav container
 * Fix #512 nav grouped buttons
+* Fix #605 container example
 
 ## 0.4.0
 
