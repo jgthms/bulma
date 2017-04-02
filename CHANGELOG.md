@@ -15,6 +15,7 @@
 * Fix #484 icon alignment
 * Fix #506 bold nav menu
 * Fix #581 nav container
+* Fix #512 nav grouped buttons
 
 ## 0.4.0
 
