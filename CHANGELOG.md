@@ -6,6 +6,7 @@
 # Fix #589 notification delete
 # Fix #272 nav-right without nav-menu
 # Fix #616 hero and notification buttons
+# Fix #607 has-addons z-index
 
 ## 0.4.0
 
