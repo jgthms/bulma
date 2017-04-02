@@ -18,6 +18,7 @@
 * Fix #512 nav grouped buttons
 * Fix #605 container example
 * Fix #458 select expanded
+* Fix #403 separate animations
 
 ## 0.4.0
 
