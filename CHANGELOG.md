@@ -14,6 +14,7 @@
 * Fix #389 `pre` `margin-bottom`
 * Fix #484 icon alignment
 * Fix #506 bold nav menu
+* Fix #581 nav container
 
 ## 0.4.0
 
