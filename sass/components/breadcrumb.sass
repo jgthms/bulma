@@ -1,0 +1,68 @@
+.breadcrumb-item
+  align-items: center
+  display: flex
+  flex-grow: 0
+  flex-shrink: 0
+  line-height: 1.5
+  padding: 0.5em (0.75em/2)
+  white-space: nowrap
+  color: $text-light
+
+  a
+    color: $text-light
+    &:hover
+      color: $link-hover
+
+  .icon
+    &:first-child
+      margin-right: 0.5em
+    &:last-child
+      margin-left: 0.5em
+
+  // Pseudo-classes
+  &:hover
+    color: $link-hover
+  & + .breadcrumb-item:before
+    color: $text
+    content: '\0002f'
+    padding-right: 0.75em
+
+  // Modifiers
+  &.is-active, .is-active
+    color: $text-strong
+    cursor: default
+    pointer-events: none
+
+
+.breadcrumb
+  align-items: center
+  display: flex
+  flex-grow: 0
+  flex-shrink: 1
+  flex-wrap: wrap
+  font-size: $size-normal
+  list-style: none
+
+  // Sizes
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+  &.is-large
+    font-size: $size-large
+
+  // Modifiers
+  &.has-arrow-separator
+    .breadcrumb-item + .breadcrumb-item:before
+      content: '\02192'
+  &.has-bullet-separator
+    .breadcrumb-item + .breadcrumb-item:before
+      content: '\02022'
+  &.has-dot-separator
+    .breadcrumb-item + .breadcrumb-item:before
+      content: '\000b7'
+  &.has-succeeds-separator
+    .breadcrumb-item + .breadcrumb-item:before
+      content: '\0227B'
+  &.is-right
+    justify-content: flex-end
