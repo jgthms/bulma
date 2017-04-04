@@ -1,48 +1,50 @@
-.breadcrumb-item
-  align-items: center
+.breadcrumb
+  +block
+  +unselectable
+  align-items: stretch
   display: flex
-  flex-grow: 0
-  flex-shrink: 0
-  line-height: 1.5
-  padding: 0.5em (0.75em/2)
+  flex-wrap: wrap
+  font-size: $size-normal
+  overflow: hidden
+  overflow-x: auto
   white-space: nowrap
-  color: $text-light
-
   a
+    align-items: center
     color: $text-light
+    display: flex
+    justify-content: center
+    padding: 0.5em 0.75em
     &:hover
       color: $link-hover
-
+  li
+    align-items: center
+    display: flex
+    &.is-active
+      a
+        color: $text-strong
+        cursor: default
+        pointer-events: none
+    & + li:before
+      color: $text
+      content: '\0002f'
+  ul, ol
+    align-items: center
+    display: flex
+    flex-grow: 1
+    flex-shrink: 0
+    justify-content: flex-start
   .icon
     &:first-child
       margin-right: 0.5em
     &:last-child
       margin-left: 0.5em
-
-  // Pseudo-classes
-  &:hover
-    color: $link-hover
-  & + .breadcrumb-item:before
-    color: $text
-    content: '\0002f'
-    padding-right: 0.75em
-
-  // Modifiers
-  &.is-active, .is-active
-    color: $text-strong
-    cursor: default
-    pointer-events: none
-
-
-.breadcrumb
-  align-items: center
-  display: flex
-  flex-grow: 0
-  flex-shrink: 1
-  flex-wrap: wrap
-  font-size: $size-normal
-  list-style: none
-
+  // Alignment
+  &.is-centered
+    ol, ul
+      justify-content: center
+  &.is-right
+    ol, ul
+      justify-content: flex-end
   // Sizes
   &.is-small
     font-size: $size-small
@@ -50,19 +52,16 @@
     font-size: $size-medium
   &.is-large
     font-size: $size-large
-
-  // Modifiers
+  // Styles
   &.has-arrow-separator
-    .breadcrumb-item + .breadcrumb-item:before
+    li + li:before
       content: '\02192'
   &.has-bullet-separator
-    .breadcrumb-item + .breadcrumb-item:before
+    li + li:before
       content: '\02022'
   &.has-dot-separator
-    .breadcrumb-item + .breadcrumb-item:before
+    li + li:before
       content: '\000b7'
   &.has-succeeds-separator
-    .breadcrumb-item + .breadcrumb-item:before
+    li + li:before
       content: '\0227B'
-  &.is-right
-    justify-content: flex-end
