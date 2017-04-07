@@ -33,26 +33,26 @@
     flex-grow: 1
     flex-shrink: 0
     justify-content: flex-start
-    &.is-left
+    &.is-#{$left}
       padding-right: 0.75em
     &.is-center
       flex: none
       justify-content: center
       padding-left: 0.75em
       padding-right: 0.75em
-    &.is-right
+    &.is-#{$right}
       justify-content: flex-end
       padding-left: 0.75em
   .icon
     &:first-child
-      margin-right: 0.5em
+      margin-#{$right}: 0.5em
     &:last-child
-      margin-left: 0.5em
+      margin-#{$left}: 0.5em
   // Alignment
   &.is-centered
     ul
       justify-content: center
-  &.is-right
+  &.is-#{$right}
     ul
       justify-content: flex-end
   // Styles
@@ -84,11 +84,17 @@
         z-index: 2
     li
       & + li
-        margin-left: -1px
+        margin-#{$left}: -1px
       &:first-child a
-        border-radius: $radius 0 0 $radius
+        border-top-#{$left}-radius: $radius
+        border-top-#{$right}-radius: 0
+        border-bottom-#{$left}-radius: $radius
+        border-bottom-#{$right}-radius: 0
       &:last-child a
-        border-radius: 0 $radius $radius 0
+        border-top-#{$left}-radius: 0
+        border-top-#{$right}-radius: $radius
+        border-bottom-#{$left}-radius: 0
+        border-bottom-#{$right}-radius: $radius
       &.is-active
         a
           background-color: $primary

@@ -89,7 +89,7 @@ $input-radius:              $radius !default
   vertical-align: top
   input
     cursor: pointer
-    margin-right: 0.5em
+    margin-#{$right}: 0.5em
   &:hover
     color: $input-hover
   &[disabled]
@@ -98,7 +98,7 @@ $input-radius:              $radius !default
 
 .radio
   & + .radio
-    margin-left: 0.5em
+    margin-#{$left}: 0.5em
 
 .select
   display: inline-block
@@ -108,7 +108,7 @@ $input-radius:              $radius !default
   &:after
     +arrow($input-arrow)
     margin-top: -0.375em
-    right: 1.125em
+    #{$right}: 1.125em
     top: 50%
     z-index: 4
   select
@@ -117,7 +117,7 @@ $input-radius:              $radius !default
     display: block
     font-size: 1em
     outline: none
-    padding-right: 2.5em
+    padding-#{$right}: 2.5em
     &:hover
       border-color: $input-hover-border
     &::-ms-expand
@@ -174,19 +174,19 @@ $input-radius:              $radius !default
     display: flex
     justify-content: flex-start
     .control
-      margin-right: -1px
+      margin-#{$right}: -1px
       &:first-child
         .button,
         .input,
         .select select
-          border-bottom-left-radius: $input-radius
-          border-top-left-radius: $input-radius
+          border-bottom-#{$left}-radius: $input-radius
+          border-top-#{$left}-radius: $input-radius
       &:last-child
         .button,
         .input,
         .select select
-          border-bottom-right-radius: $input-radius
-          border-top-right-radius: $input-radius
+          border-bottom-#{$right}-radius: $input-radius
+          border-top-#{$right}-radius: $input-radius
       .button,
       .input,
       .select select
@@ -206,7 +206,8 @@ $input-radius:              $radius !default
         flex-shrink: 0
     &.has-addons-centered
       justify-content: center
-    &.has-addons-right
+    // define has-addons-right for ltr and has-addons-left for rtl
+    &.has-addons-#{$right}
       justify-content: flex-end
     &.has-addons-fullwidth
       .control
@@ -220,7 +221,7 @@ $input-radius:              $radius !default
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
-        margin-right: 0.75rem
+        margin-#{$right}: 0.75rem
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
@@ -241,8 +242,8 @@ $input-radius:              $radius !default
     flex-basis: 0
     flex-grow: 1
     flex-shrink: 0
-    margin-right: 1.5rem
-    text-align: right
+    margin-#{$right}: 1.5rem
+    text-align: $right
     &.is-small
       font-size: $size-small
       padding-top: 0.375em
@@ -267,12 +268,12 @@ $input-radius:              $radius !default
         flex-grow: 1
       &:not(:last-child)
         margin-bottom: 0
-        margin-right: 0.75rem
+        margin-#{$right}: 0.75rem
 
 .control
   font-size: $size-normal
   position: relative
-  text-align: left
+  text-align: $left
   // Modifiers
   &.has-icon
     .icon
@@ -310,5 +311,5 @@ $input-radius:              $radius !default
     &:after
       +loader
       position: absolute !important
-      right: 0.625em
+      #{$right}: 0.625em
       top: 0.625em

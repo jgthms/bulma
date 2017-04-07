@@ -20,7 +20,7 @@
   flex-shrink: 0
   .level-item
     &:not(:last-child)
-      margin-right: 0.75rem
+      margin-#{$right}: 0.75rem
     // Modifiers
     &.is-flexible
       flex-grow: 1
@@ -46,6 +46,8 @@
   +block
   align-items: center
   justify-content: space-between
+  @if ($right == 'left')
+    flex-direction: row-reverse
   code
     border-radius: $radius
   img

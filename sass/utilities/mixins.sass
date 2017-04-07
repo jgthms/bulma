@@ -23,10 +23,10 @@
 =center($width, $height: 0)
   position: absolute
   @if $height != 0
-    left: calc(50% - (#{$width} / 2))
+    #{$left}: calc(50% - (#{$width} / 2))
     top: calc(50% - (#{$height} / 2))
   @else
-    left: calc(50% - (#{$width} / 2))
+    #{$left}: calc(50% - (#{$width} / 2))
     top: calc(50% - (#{$width} / 2))
 
 =delete
@@ -95,8 +95,8 @@
     background-color: $text
     display: block
     height: 1px
-    left: 50%
-    margin-left: -7px
+    #{$left}: 50%
+    margin-#{$left}: -7px
     position: absolute
     top: 50%
     transition: none $speed $easing
@@ -115,15 +115,15 @@
     span
       background-color: $link
       &:nth-child(1)
-        margin-left: -5px
+        margin-#{$left}: -5px
         transform: rotate(45deg)
-        transform-origin: left top
+        transform-origin: $left top
       &:nth-child(2)
         opacity: 0
       &:nth-child(3)
-        margin-left: -5px
+        margin-#{$left}: -5px
         transform: rotate(-45deg)
-        transform-origin: left bottom
+        transform-origin: $left bottom
 
 =loader
   animation: spinAround 500ms infinite linear
@@ -142,9 +142,9 @@
 
 =overlay($offset: 0)
   bottom: $offset
-  left: $offset
+  #{$left}: $offset
   position: absolute
-  right: $offset
+  #{$right}: $offset
   top: $offset
 
 =placeholder
