@@ -156,6 +156,7 @@ $input-radius:              $radius !default
   display: block
   font-size: $size-small
   margin-top: 0.25rem
+  order: 1
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
@@ -172,6 +173,7 @@ $input-radius:              $radius !default
   // Modifiers
   &.has-addons
     display: flex
+    flex-wrap: wrap
     justify-content: flex-start
     .control
       margin-right: -1px
@@ -204,6 +206,9 @@ $input-radius:              $radius !default
       &.is-expanded
         flex-grow: 1
         flex-shrink: 0
+    &::after
+      width: 100%
+      content: ''
     &.has-addons-centered
       justify-content: center
     &.has-addons-right
