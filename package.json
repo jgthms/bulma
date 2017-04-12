@@ -1,10 +1,11 @@
 {
   "name": "bulma",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "homepage": "http://bulma.io",
   "author": "Jeremy Thomas <bbxdesign@gmail.com> (http://jgthms.com)",
   "description": "Modern CSS framework based on Flexbox",
   "main": "bulma.sass",
+  "style": "bulma/css/bulma.css",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jgthms/bulma.git"
@@ -24,12 +25,13 @@
     "autoprefixer": "^6.3.3",
     "captain-git-hook": "~1.0.5",
     "node-sass": "^3.4.2",
-    "postcss-cli": "^2.5.1"
+    "postcss-cli": "^2.5.1",
+    "rimraf": "^2.6.1"
   },
   "scripts": {
     "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix",
     "build-autoprefix": "postcss --use autoprefixer --output css/bulma.css css/bulma.css",
-    "build-clean": "rm -rf css",
+    "build-clean": "rimraf css",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
     "deploy": "npm run build && npm run docs",
     "docs": "npm run docs-sass && npm run docs-autoprefix",

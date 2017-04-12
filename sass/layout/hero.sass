@@ -37,11 +37,14 @@
       box-shadow: 0 0 5px rgba($black, 0.3)
       color: $color-invert
       position: relative
+      a:not(.button),
+      strong
+        color: inherit
       .title
         color: $color-invert
       .subtitle
         color: rgba($color-invert, 0.9)
-        a,
+        a:not(.button),
         strong
           color: $color-invert
       .nav
@@ -81,6 +84,9 @@
         $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
         $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
         background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+        +mobile
+          .nav-menu
+            background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
       // Responsiveness
       +mobile
         .nav-toggle
@@ -120,6 +126,7 @@
       background: rgba($black, 0.3)
     .nav
       box-shadow: none
+      height: $header-logo + 20px
     .nav-right
       flex: inherit
     a.nav-item
@@ -145,14 +152,15 @@
           max-width: none
           width: 100%
     .nav-menu-signin
-      .nav-social,
-      .nav-signin
+      .nav-social
         display: flex
+        .field
+          width: 100%
+      .nav-signin
+        display: block
+        width: 100%
       .nav-search
         display: none
-    .control,
-    form
-      width: 100%
     .tabs
       &.is-boxed
         overflow: inherit
@@ -274,12 +282,14 @@
 +tablet
   .hero
     &.is-dark
-      .controlactions
+      .fieldactions
         margin-top: 12px
 
 +touch
   .hero
     &.is-primary
+      .nav
+        height: auto
       .nav-search
         .input
           min-width: 140px

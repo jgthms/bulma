@@ -40,14 +40,21 @@ There is **no** JavaScript included. People generally want to use their own JS i
 
 ## Browser Support
 
-Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with:
+Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with **recent** versions of:
 
 * Chrome
 * Edge
 * Firefox
-* Internet Explorer (10+)
 * Opera
 * Safari
+
+Internet Explorer (10+) is only partially supported.
+
+## Documentation
+
+The documentation resides in the [docs](docs) directory, and is built with the Ruby-based [Jekyll](https://jekyllrb.com/) tool.
+
+Browse the [online documentation here.](http://bulma.io/documentation/overview/start/)
 
 ## Related projects
 
@@ -55,6 +62,7 @@ Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most
 * Bulma with Rails: https://github.com/joshuajansen/bulma-rails
 * iTemplate: [http://itemplate.ga/](http://itemplate.ga/dashboard.html)
 * Vue Admin powered by Bulma: https://github.com/vue-bulma/vue-admin
+* Bulmaswatch — Free themes for Bulma: https://github.com/jenil/bulmaswatch
 
 ## Copyright and license
 

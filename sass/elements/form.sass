@@ -32,8 +32,7 @@ $input-radius:              $radius !default
   &:active,
   &.is-active
     border-color: $input-focus-border
-  &[disabled],
-  &.is-disabled
+  &[disabled]
     background-color: $input-disabled-background
     border-color: $input-disabled-border
     box-shadow: none
@@ -75,12 +74,8 @@ $input-radius:              $radius !default
   line-height: 1.25
   max-width: 100%
   min-width: 100%
-  padding: 10px
+  padding: 0.625em
   resize: vertical
-
-.radio
-  & + .radio
-    margin-left: 0.5em
 
 .checkbox,
 .radio
@@ -89,6 +84,7 @@ $input-radius:              $radius !default
   display: inline-flex
   flex-wrap: wrap
   justify-content: flex-start
+  line-height: 1.5
   position: relative
   vertical-align: top
   input
@@ -96,8 +92,9 @@ $input-radius:              $radius !default
     margin-right: 0.5em
   &:hover
     color: $input-hover
-  &.is-disabled
+  &[disabled]
     color: $input-disabled
+    cursor: not-allowed
     pointer-events: none
     input
       pointer-events: none
@@ -106,9 +103,13 @@ $input-radius:              $radius !default
     line-height: inherit
     margin-left: 0
 
+.radio
+  & + .radio:not(.is-block)
+    margin-left: 0.5em
+
 .select
   display: inline-block
-  height: 2.5em
+  height: 2.25em
   position: relative
   vertical-align: top
   &:after
@@ -124,6 +125,7 @@ $input-radius:              $radius !default
     font-size: 1em
     outline: none
     padding-right: 2.5em
+    width: 100%
     // Colors
     @each $name, $pair in $colors
       $color: nth($pair, 1)
@@ -137,6 +139,11 @@ $input-radius:              $radius !default
   &:hover
     &:after
       border-color: $input-hover
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name} select
+      border-color: $color
   // Sizes
   &.is-small
     +control-small
@@ -147,19 +154,6 @@ $input-radius:              $radius !default
   // Modifiers
   &.is-fullwidth
     width: 100%
-    select
-      width: 100%
-  &.is-expanded
-    display: block
-    select
-      width: 100%    
-
-.input,
-.select
-  &.is-narrowwidth
-    max-width: 110px
-    select
-      max-width: 100%    
 
 .range
   max-width: 100%
@@ -171,11 +165,9 @@ $input-radius:              $radius !default
   height: auto
   select
     height: auto
-    padding-left: inherit
-    padding-right: inherit
+    padding: 0
     option
-      padding-left: 8px
-      padding-right: 8px
+      padding: 4px 8px
     .optgroup
       background-color: $dark
       color: $white
@@ -187,37 +179,28 @@ $input-radius:              $radius !default
 .selectholder
   display: block
   a
-    width: 12.5%
+    width: 12.5% !important
 
 +desktop-all
   .selectholder a
-    width: 20%
+    width: 20% !important
 
 +mobile
   .selectholder a
-    width: 25%
-
-+touch
-  .has-addons
-    .input,
-    .select
-      display: block
-      flex: 1
-    .select
-      select
-        width: 100%
+    width: 25% !important
 
 .label
   color: $input
   display: block
-  font-weight: bold
+  font-size: $size-normal
+  font-weight: $weight-bold
   &:not(:last-child)
     margin-bottom: 0.5em
 
 .help
   display: block
   font-size: $size-small
-  margin-top: 5px
+  margin-top: 0.25rem
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
@@ -229,22 +212,12 @@ ul
     margin-bottom: 5px
     margin-left: 2em
 
+.select select
+  line-height: 1
+
 // Containers
 
-.control-label
-  +mobile
-    margin-bottom: 0.5em
-  +tablet
-    flex-basis: 0
-    flex-grow: 1
-    flex-shrink: 0
-    margin-right: 1.5em
-    padding-top: 0.5em
-    text-align: right
-
-.control
-  position: relative
-  text-align: left
+.field
   &:not(:last-child)
     margin-bottom: 0.75rem
   // Modifiers
@@ -253,10 +226,9 @@ ul
   &.has-addons
     display: flex
     justify-content: flex-start
-    .button,
-    .input,
-    .select
-      border-radius: 0
+    .control
+      flex-basis: auto
+      flex-shrink: 0
       margin-right: -1px
       min-width: 0
       width: auto
@@ -266,21 +238,42 @@ ul
       &:active
         z-index: 3
       &:first-child
-        border-radius: $input-radius 0 0 $input-radius
-        select
-          border-radius: $input-radius 0 0 $input-radius
+        .button,
+        .input,
+        .select select
+          border-bottom-left-radius: $input-radius
+          border-top-left-radius: $input-radius
       &:last-child
-        border-radius: 0 $input-radius $input-radius 0
-        select
-          border-radius: 0 $input-radius $input-radius 0
+        margin-right: 0
+        .button,
+        .input,
+        .select select
+          border-bottom-right-radius: $input-radius
+          border-top-right-radius: $input-radius
+      .button,
+      .input,
+      .select select
+        border-radius: 0
+        &:hover,
+        &.is-hovered
+          z-index: 2
+        &:focus,
+        &.is-focused,
+        &:active,
+        &.is-active
+          z-index: 3
+          &:hover
+            z-index: 4
       &.is-expanded
         flex-grow: 1
-        flex-shrink: 0
-    .input
-      &.is-expanded
-        display: block
-        flex: 1
-        width: 100%
+        flex-shrink: 1
+      &.is-narrowwidth
+        max-width: 110px
+      +touch
+        &:not(.is-expanded)
+          .input,
+          .select
+            max-width: 110px
     .select select
       border-radius: 0
       &:hover
@@ -293,9 +286,7 @@ ul
     &.has-addons-right
       justify-content: flex-end
     &.has-addons-fullwidth
-      .button,
-      .input,
-      .select
+      .control
         flex-grow: 1
         flex-shrink: 0
     &.is-inline-flex
@@ -369,19 +360,92 @@ ul
   &.is-horizontal
     +tablet
       display: flex
-      & > .control
-        display: flex
-        flex-basis: 0
-        flex-grow: 5
-        flex-shrink: 1
+  .control
+    &.is-expanded
+      .button
+        width: 100%
+      .select
+        width: 100%
+        select
+          width: 100%
+
+.field-label
+  .label
+    font-size: inherit
+  +mobile
+    margin-bottom: 0.5rem
+  +tablet
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 0
+    margin-right: 1.5rem
+    text-align: right
+    &.is-small
+      font-size: $size-small
+      padding-top: 0.375em
+    &.is-normal
+      padding-top: 0.375em
+    &.is-medium
+      font-size: $size-medium
+      padding-top: 0.375em
+    &.is-large
+      font-size: $size-large
+      padding-top: 0.375em
+
+.field-body
+  +tablet
+    display: flex
+    flex-basis: 0
+    flex-grow: 5
+    flex-shrink: 1
+    .field
+      flex-shrink: 1
+      &:not(.is-narrow)
+        flex-grow: 1
+      &:not(:last-child)
+        margin-bottom: 0
+        margin-right: 0.75rem
+
+.control
+  font-size: $size-normal
+  position: relative
+  text-align: left
+  // Modifiers
+  &.has-icon
+    .icon
+      color: $input-icon
+      height: 2.25em
+      pointer-events: none
+      position: absolute
+      top: 0
+      width: 2.25em
+      z-index: 4
+    .input
+      &:focus
+        & + .icon
+          color: $input-icon-active
+      &.is-small
+        & + .icon
+          font-size: $size-small
+      &.is-medium
+        & + .icon
+          font-size: $size-medium
+      &.is-large
+        & + .icon
+          font-size: $size-large
+    &:not(.has-icon-right)
+      .icon
+        left: 0
+      .input
+        padding-left: 2.25em
+    &.has-icon-right
+      .icon
+        right: 0
+      .input
+        padding-right: 2.25em
   &.is-loading
     &:after
       +loader
       position: absolute !important
-      right: 0.75em
-      top: 0.75em
-
-.has-text-right
-  .control
-    &.has-addons
-      justify-content: flex-end
+      right: 0.625em
+      top: 0.625em

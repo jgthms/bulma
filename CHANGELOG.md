@@ -1,5 +1,46 @@
 # Bulma Changelog
 
+## 0.4.1
+
+* Fix #568 max-width container
+* Fix #589 notification delete
+* Fix #272 nav-right without nav-menu
+* Fix #616 hero and notification buttons
+* Fix #607 has-addons z-index
+* Feature #586 select color modifiers
+* Fix #537 -ms-expand
+* Fix #578 better `+center` mixin
+* Fix #565 `dl` styles
+* Fix #389 `pre` `margin-bottom`
+* Fix #484 icon alignment
+* Fix #506 bold nav menu
+* Fix #581 nav container
+* Fix #512 nav grouped buttons
+* Fix #605 container example
+* Fix #458 select expanded
+* Fix #403 separate animations
+
+## 0.4.0
+
+* **Default font-size is 16px**
+* **New `.field` element ; `.control` repurposed**
+* **New `.pagination` sizes**
+* **New `$fullhd` breakpoint (1344px)**
+
+* Remove monospace named fonts
+* Remove icon spacing logic
+* Split icon container dimensions and icon size
+* Fix delete button by using pixels instead of (r)em
+* Fix level on mobile
+* Add new `.is-spaced` modifer for titles and subtitles
+
+* Fix #487
+* Fix #489
+* Fix #502
+* Fix #514
+* Fix #524
+* Fix #536
+
 ## 0.3.2
 
 * Fix #478

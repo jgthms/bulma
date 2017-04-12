@@ -24,6 +24,13 @@ jQuery(document).ready(function ($) {
     $('#modal-ter').removeClass('is-active');
   });
 
+  $(document).on('keyup',function(e) {
+    if (e.keyCode == 27) {
+      $('html').removeClass('is-clipped');
+      $('.modal').removeClass('is-active');
+    }
+  });
+
   var $highlights = $('.highlight');
 
   $highlights.each(function() {

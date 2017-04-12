@@ -20,19 +20,16 @@
     content: " "
     display: table
 
-=center($size)
-  left: 50%
-  margin-left: -($size / 2)
-  margin-top: -($size / 2)
+=center($width, $height: 0)
   position: absolute
-  top: 50%
+  @if $height != 0
+    left: calc(50% - (#{$width} / 2))
+    top: calc(50% - (#{$height} / 2))
+  @else
+    left: calc(50% - (#{$width} / 2))
+    top: calc(50% - (#{$width} / 2))
 
 =delete
-  // We need even pixel dimensions to ensure the delete cross can be perfectly centered
-  $dimension-small: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-small)) * 1px
-  $dimension-normal: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-normal)) * 1px
-  $dimension-medium: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-medium)) * 1px
-  $dimension-large: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-large)) * 1px
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
@@ -42,13 +39,11 @@
   cursor: pointer
   display: inline-block
   font-size: $size-normal
-  height: $dimension-normal
+  height: 20px
   outline: none
   position: relative
-  transform: rotate(45deg)
-  transform-origin: center center
   vertical-align: top
-  width: $dimension-normal
+  width: 20px
   &:before,
   &:after
     background-color: $white
@@ -57,7 +52,8 @@
     left: 50%
     position: absolute
     top: 50%
-    transform: translateX(-50%) translateY(-50%)
+    transform: translateX(-50%) translateY(-50%) rotate(45deg)
+    transform-origin: center center
   &:before
     height: 2px
     width: 50%
@@ -71,21 +67,16 @@
     background-color: rgba($black, 0.4)
   // Sizes
   &.is-small
-    height: $dimension-small
-    width: $dimension-small
+    height: 16px
+    width: 16px
   &.is-medium
-    height: $dimension-medium
-    width: $dimension-medium
+    height: 24px
+    width: 24px
   &.is-large
-    height: $dimension-large
-    width: $dimension-large
+    height: 32px
+    width: 32px
 
 =plus
-  // We need even pixel dimensions to ensure the delete cross can be perfectly centered
-  $dimension-small: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-small)) * 1px
-  $dimension-normal: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-normal)) * 1px
-  $dimension-medium: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-medium)) * 1px
-  $dimension-large: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-large)) * 1px
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
@@ -95,12 +86,12 @@
   cursor: pointer
   display: inline-block
   font-size: $size-normal
-  height: $dimension-normal
+  height: 20px
   outline: none
   position: relative
   transform-origin: center center
   vertical-align: top
-  width: $dimension-normal
+  width: 20px
   &:before,
   &:after
     background-color: $white
@@ -122,21 +113,16 @@
     background-color: rgba($black, 0.4)
   // Sizes
   &.is-small
-    height: $dimension-small
-    width: $dimension-small
+    height: 16px
+    width: 16px
   &.is-medium
-    height: $dimension-medium
-    width: $dimension-medium
+    height: 24px
+    width: 24px
   &.is-large
-    height: $dimension-large
-    width: $dimension-large
+    height: 32px
+    width: 32px
 
 =checkmark
-  // We need even pixel dimensions to ensure the delete cross can be perfectly centered
-  $dimension-small: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-small)) * 1px
-  $dimension-normal: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-normal)) * 1px
-  $dimension-medium: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-medium)) * 1px
-  $dimension-large: roundToEvenNumber(1.5 * removeUnit($size-6) * removeUnit($size-large)) * 1px
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
@@ -146,12 +132,12 @@
   cursor: pointer
   display: inline-block
   font-size: $size-normal
-  height: $dimension-normal
+  height: 20px
   outline: none
   position: relative
   transform-origin: center center
   vertical-align: top
-  width: $dimension-normal
+  width: 20px
   &:before,
   &:after
     background-color: $white
@@ -179,14 +165,14 @@
     background-color: rgba($black, 0.4)
   // Sizes
   &.is-small
-    height: $dimension-small
-    width: $dimension-small
+    height: 16px
+    width: 16px
   &.is-medium
-    height: $dimension-medium
-    width: $dimension-medium
+    height: 24px
+    width: 24px
   &.is-large
-    height: $dimension-large
-    width: $dimension-large
+    height: 32px
+    width: 32px
 
 =fa($size, $dimensions)
   display: inline-block
@@ -237,12 +223,6 @@
         transform: rotate(-45deg)
         transform-origin: left bottom
 
-@keyframes spinAround
-  from
-    transform: rotate(0deg)
-  to
-    transform: rotate(359deg)
-
 =loader
   animation: spinAround 500ms infinite linear
   border: 2px solid $border
@@ -251,9 +231,9 @@
   border-top-color: transparent
   content: ""
   display: block
-  height: 1rem
+  height: 1em
   position: relative
-  width: 1rem
+  width: 1em
 
 =overflow-touch
   -webkit-overflow-scrolling: touch
@@ -280,15 +260,6 @@
 
 // Responsiveness
 
-$tiny: 480px !default
-$tablet: 769px !default
-// 960px container + 40px
-$desktop: 1000px !default
-// 1152px container + 40
-$widescreen: 1192px !default
-// 960 and 1152 have been chosen because
-// they are divisible by both 12 and 16
-
 =from($device)
   @media screen and (min-width: $device)
     @content
@@ -306,7 +277,7 @@ $widescreen: 1192px !default
     @content
 
 =tablet
-  @media screen and (min-width: $tablet)
+  @media screen and (min-width: $tablet), print
     @content
 
 =tablet-only
@@ -331,4 +302,12 @@ $widescreen: 1192px !default
 
 =widescreen
   @media screen and (min-width: $widescreen)
+    @content
+
+=widescreen-only
+  @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+    @content
+
+=fullhd
+  @media screen and (min-width: $fullhd)
     @content
