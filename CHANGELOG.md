@@ -19,6 +19,9 @@
 * Fix #605 container example
 * Fix #458 select expanded
 * Fix #403 separate animations
+* Fix #637 customize Bulma
+* Fix #584 loading select
+* Fix #571 control height
 
 ## 0.4.0
 

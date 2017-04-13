@@ -96,24 +96,33 @@ npm install bulma
       </div>
       <div class="media-content">
         <p class="title is-5">
-          <strong>Set</strong> your variables:<br>
+          <strong>Set</strong> your variables
+        </p>
+        <p class="subtitle is-6">
+          Add your own colors, set new fonts, override Bulma styles...
+        </p>
 {% highlight sass %}
-// Import Bulma's initial variables
-@import "bulma/sass/utilities/variables.sass"
+// 1. Import the initial variables
+@import "../sass/utilities/initial-variables"
 
-// Override initial variables here
-// You can add new ones or update existing ones:
+// 2. Set your own initial variables
+// Update blue
+$blue: #72d0eb
+// Add pink
+$pink: #ffb3b3
+// Add a serif family
+$family-serif: "Merriweather", "Georgia", serif
 
-$blue: #72d0eb // Update blue
-$pink: #ffb3b3 // Add pink
-$family-serif: "Georgia", serif // Add a serif family
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink
+// Use the existing orange as the danger color
+$danger: $orange
+// Use the new serif family
+$family-primary: $family-serif
 
-// Override generated variables here
-// For example, by default, the $danger color is $red and the font is sans-serif
-// You can change these values:
-
-$danger: $orange // Use the existing orange
-$family-primary: $family-serif // Use the new serif family
+// 4. Import the rest of Bulma
+@import "../bulma"
 {% endhighlight %}
         </p>
       </div>
@@ -125,28 +134,15 @@ $family-primary: $family-serif // Use the new serif family
       </div>
       <div class="media-content">
         <p class="title is-5">
-          <strong>Import</strong> Bulma <em>after</em> having set your variables:<br>
-{% highlight sass %}
-// Import Bulma's initial variables
-@import "bulma/sass/utilities/variables.sass"
-
-// Override initial variables here
-// You can add new ones or update existing ones:
-
-$blue: #72d0eb // Update blue
-$pink: #ffb3b3 // Add pink
-$family-serif: "Georgia", serif // Add a serif family
-
-// Override generated variables here
-// For example, by default, the $danger color is $red and the font is sans-serif
-// You can change these values:
-
-$danger: $orange // Use the existing orange
-$family-primary: $family-serif // Use the new serif family
-
-@import "bulma"
-{% endhighlight %}
+          See the <strong>result</strong>: before and after
         </p>
+        <p class="subtitle is-6">
+          Notice how the <code>$blue-invert</code> is now black instead of white, based on <code>findColorInvert(#72d0eb)</code></p>
+        </p>
+        <figure>
+          <img width="640" height="640" src="{{site.url}}/images/customize-before.png" alt="Customizing Bulma with Sass">
+          <img width="640" height="640" src="{{site.url}}/images/customize-after.png" alt="Customizing Bulma with Sass">
+        </figure>
       </div>
     </article>
   </div>
