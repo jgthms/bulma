@@ -22,7 +22,7 @@ $input-radius:              $radius !default
 =input
   +control
   background-color: $input-background
-  border: 1px solid $input-border
+  border-color: $input-border
   color: $input
   &:hover,
   &.is-hovered
@@ -135,6 +135,8 @@ $input-radius:              $radius !default
       border-color: $input-hover-border
     &::-ms-expand
       display: none
+    &[disabled]:hover
+      border-color: $input-disabled-border
   // States
   &:hover
     &:after
@@ -152,8 +154,21 @@ $input-radius:              $radius !default
   &.is-large
     +control-large
   // Modifiers
+  &.is-disabled
+    &:after
+      border-color: $input-disabled
   &.is-fullwidth
     width: 100%
+    select
+      width: 100%
+  &.is-loading
+    &:after
+      +loader
+      margin-top: 0
+      position: absolute
+      right: 0.625em
+      top: 0.625em
+      transform: none
 
 .range
   max-width: 100%
@@ -211,9 +226,6 @@ ul
     list-style: inherit
     margin-bottom: 5px
     margin-left: 2em
-
-.select select
-  line-height: 1
 
 // Containers
 
