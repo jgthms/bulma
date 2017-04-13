@@ -691,7 +691,7 @@ a.box:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: none;
   display: -webkit-inline-box;
@@ -703,10 +703,10 @@ a.box:active {
       -ms-flex-pack: start;
           justify-content: flex-start;
   line-height: 1.5;
-  padding-bottom: 0.375em;
-  padding-left: 0.625em;
-  padding-right: 0.625em;
-  padding-top: 0.375em;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
   position: relative;
   vertical-align: top;
   -webkit-touch-callout: none;
@@ -715,7 +715,7 @@ a.box:active {
   -ms-user-select: none;
   user-select: none;
   background-color: white;
-  border: 1px solid #dbdbdb;
+  border-color: #dbdbdb;
   color: #363636;
   cursor: pointer;
   -webkit-box-pack: center;
@@ -1852,7 +1852,7 @@ input[type="submit"].button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: none;
   display: -webkit-inline-box;
@@ -1864,14 +1864,14 @@ input[type="submit"].button {
       -ms-flex-pack: start;
           justify-content: flex-start;
   line-height: 1.5;
-  padding-bottom: 0.375em;
-  padding-left: 0.625em;
-  padding-right: 0.625em;
-  padding-top: 0.375em;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
   position: relative;
   vertical-align: top;
   background-color: white;
-  border: 1px solid #dbdbdb;
+  border-color: #dbdbdb;
   color: #363636;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   max-width: 100%;
@@ -2092,7 +2092,7 @@ input[type="submit"].button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: none;
   display: -webkit-inline-box;
@@ -2104,14 +2104,14 @@ input[type="submit"].button {
       -ms-flex-pack: start;
           justify-content: flex-start;
   line-height: 1.5;
-  padding-bottom: 0.375em;
-  padding-left: 0.625em;
-  padding-right: 0.625em;
-  padding-top: 0.375em;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
   position: relative;
   vertical-align: top;
   background-color: white;
-  border: 1px solid #dbdbdb;
+  border-color: #dbdbdb;
   color: #363636;
   cursor: pointer;
   display: block;
@@ -2167,6 +2167,10 @@ input[type="submit"].button {
   display: none;
 }
 
+.select select[disabled]:hover {
+  border-color: whitesmoke;
+}
+
 .select:hover:after {
   border-color: #363636;
 }
@@ -2220,12 +2224,36 @@ input[type="submit"].button {
   font-size: 1.5rem;
 }
 
+.select.is-disabled:after {
+  border-color: #7a7a7a;
+}
+
 .select.is-fullwidth {
   width: 100%;
 }
 
 .select.is-fullwidth select {
   width: 100%;
+}
+
+.select.is-loading:after {
+  -webkit-animation: spinAround 500ms infinite linear;
+          animation: spinAround 500ms infinite linear;
+  border: 2px solid #dbdbdb;
+  border-radius: 290486px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+  margin-top: 0;
+  position: absolute;
+  right: 0.625em;
+  top: 0.625em;
+  -webkit-transform: none;
+          transform: none;
 }
 
 .label {
@@ -2279,10 +2307,6 @@ input[type="submit"].button {
 
 .help.is-danger {
   color: #ff3860;
-}
-
-.select select {
-  line-height: 1;
 }
 
 .field:not(:last-child) {
@@ -4371,7 +4395,7 @@ a.nav-item.is-tab.is-active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: none;
   display: -webkit-inline-box;
@@ -4383,10 +4407,10 @@ a.nav-item.is-tab.is-active {
       -ms-flex-pack: start;
           justify-content: flex-start;
   line-height: 1.5;
-  padding-bottom: 0.375em;
-  padding-left: 0.625em;
-  padding-right: 0.625em;
-  padding-top: 0.375em;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
   position: relative;
   vertical-align: top;
   -webkit-touch-callout: none;
@@ -4429,7 +4453,7 @@ a.nav-item.is-tab.is-active {
 .pagination-previous,
 .pagination-next,
 .pagination-link {
-  border: 1px solid #dbdbdb;
+  border-color: #dbdbdb;
   min-width: 2.25em;
 }
 
