@@ -409,20 +409,44 @@ doc-subtab: form
       </div>
     </div>
 
-    <h4 class="subtitle">With Font Awesome icons</h4>
+    <!-- Font Awesome Icons -->
+    <hr>
+
+    <h3 class="title">With icons</h3>
+    <div class="content">
+      <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
+      <ul>
+        <li>
+          <code>has-icons-left</code>
+        </li>
+        <li>
+          and/or <code>has-icons-right</code>
+        </li>
+      </ul>
+      <p>You also need to add a modifier on the <strong>icon</strong>:</p>
+      <ul>
+        <li>
+          <code>icon is-left</code> if <code>has-icons-left</code> is used
+        </li>
+        <li>
+          <code>icon is-right</code> if <code>has-icons-right</code> is used
+        </li>
+      </ul>
+      <p>The size of the <strong>input</strong> will define the size of the icon container.</p>
+    </div>
 {% capture icons_example %}
 <div class="field">
-  <p class="control has-icon">
+  <p class="control has-icons-left">
     <input class="input" type="email" placeholder="Email">
-    <span class="icon is-small">
+    <span class="icon is-small is-left">
       <i class="fa fa-envelope"></i>
     </span>
   </p>
 </div>
 <div class="field">
-  <p class="control has-icon">
+  <p class="control has-icons-left">
     <input class="input" type="password" placeholder="Password">
-    <span class="icon is-small">
+    <span class="icon is-small is-left">
       <i class="fa fa-lock"></i>
     </span>
   </p>
@@ -446,148 +470,190 @@ doc-subtab: form
       </div>
     </div>
 
-{% capture icons_sizes_example %}
-<div class="field">
-  <p class="control has-icon">
-    <input class="input is-small" type="email" placeholder="Email">
-    <span class="icon is-small">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input" type="email" placeholder="Email">
-    <span class="icon is-small">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input" type="email" placeholder="Email">
-    <span class="icon">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input is-medium" type="email" placeholder="Email">
-    <span class="icon is-small">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input is-medium" type="email" placeholder="Email">
-    <span class="icon">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input is-medium" type="email" placeholder="Email">
-    <span class="icon is-medium">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input is-large" type="email" placeholder="Email">
-    <span class="icon is-small">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input is-large" type="email" placeholder="Email">
-    <span class="icon">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon">
-    <input class="input is-large" type="email" placeholder="Email">
-    <span class="icon is-medium">
-      <i class="fa fa-envelope"></i>
-    </span>
-  </p>
-</div>
-{% endcapture %}
-<div class="columns">
-  <div class="column is-half">
     <div class="content">
       <p>
         <span class="tag is-success">New!</span>
+        <span class="tag is-info">0.4.2</span>
       </p>
       <p>
         If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
       </p>
     </div>
-    {{icons_sizes_example}}
-  </div>
-  <div class="column is-half">
-{% highlight html %}
-{{icons_sizes_example}}
-{% endhighlight %}
-  </div>
-</div>
 
-{% capture icons_sizes_right_example %}
+{% capture has_icons_small_example %}
 <div class="field">
-  <p class="control has-icon has-icon-right">
+  <label class="label is-small">Small input</label>
+  <p class="control has-icons-left has-icons-right">
     <input class="input is-small" type="email" placeholder="Email">
-    <span class="icon is-small">
-      <i class="fa fa-check"></i>
+    <span class="icon is-small is-left">
+      <i class="fa fa-envelope"></i>
     </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon has-icon-right">
-    <input class="input" type="email" placeholder="Email">
-    <span class="icon">
-      <i class="fa fa-check"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon has-icon-right">
-    <input class="input is-medium" type="email" placeholder="Email">
-    <span class="icon is-medium">
-      <i class="fa fa-check"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-  <p class="control has-icon has-icon-right">
-    <input class="input is-large" type="email" placeholder="Email">
-    <span class="icon is-large">
+    <span class="icon is-small is-right">
       <i class="fa fa-check"></i>
     </span>
   </p>
 </div>
 {% endcapture %}
-<div class="columns">
-  <div class="column is-half">
-    <div class="content">
-      <p>
-        By appending the <code>has-icon-right</code>, the icon will be placed on the right side instead.
-      </p>
-    </div>
-    {{icons_sizes_right_example}}
-  </div>
-  <div class="column is-half">
-{% highlight html %}
-{{icons_sizes_right_example}}
-{% endhighlight %}
-  </div>
+
+{% capture has_icons_normal_example %}
+<div class="field">
+  <label class="label">Normal input</label>
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" type="email" placeholder="Email">
+    <span class="icon is-small is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
 </div>
+
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" type="email" placeholder="Email">
+    <span class="icon is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+{% endcapture %}
+
+{% capture has_icons_medium_example %}
+<div class="field">
+  <label class="label is-medium">Medium input</label>
+  <p class="control has-icons-left has-icons-right">
+    <input class="input is-medium" type="email" placeholder="Email">
+    <span class="icon is-small is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input is-medium" type="email" placeholder="Email">
+    <span class="icon is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input is-medium" type="email" placeholder="Email">
+    <span class="icon is-medium is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-medium is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+{% endcapture %}
+
+{% capture has_icons_large_example %}
+<div class="field">
+  <label class="label is-large">Large input</label>
+  <p class="control has-icons-left has-icons-right">
+    <input class="input is-large" type="email" placeholder="Email">
+    <span class="icon is-small is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input is-large" type="email" placeholder="Email">
+    <span class="icon is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input is-large" type="email" placeholder="Email">
+    <span class="icon is-medium is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-medium is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input is-large" type="email" placeholder="Email">
+    <span class="icon is-large is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-large is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+{% endcapture %}
+    <div class="columns">
+      <div class="column is-half">
+{{has_icons_small_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{has_icons_small_example}}
+{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+{{has_icons_normal_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{has_icons_normal_example}}
+{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+{{has_icons_medium_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{has_icons_medium_example}}
+{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+{{has_icons_large_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{has_icons_large_example}}
+{% endhighlight %}
+      </div>
+    </div>
 
     <hr>
 
