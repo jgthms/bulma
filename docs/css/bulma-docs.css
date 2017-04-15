@@ -4142,7 +4142,7 @@ input[type="submit"].button {
           justify-content: center;
   overflow: hidden;
   position: fixed;
-  z-index: 1986;
+  z-index: 20;
 }
 
 .modal.is-active {
@@ -4317,19 +4317,28 @@ a.nav-item.is-tab.is-active {
 
 .nav-left,
 .nav-right {
+  -webkit-overflow-scrolling: touch;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  max-width: 100%;
+  overflow: auto;
+}
+
+@media screen and (min-width: 1192px) {
+  .nav-left,
+  .nav-right {
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+  }
 }
 
 .nav-left {
@@ -4391,10 +4400,10 @@ a.nav-item.is-tab.is-active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 3.25rem;
+  height: 3.25rem;
   position: relative;
   text-align: center;
-  z-index: 2;
+  z-index: 10;
 }
 
 .nav > .container {
@@ -4799,6 +4808,7 @@ label.panel-block:hover {
 }
 
 .tabs {
+  -webkit-overflow-scrolling: touch;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
