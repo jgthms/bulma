@@ -23,6 +23,7 @@
 * Fix #584 loading select
 * Fix #571 control height
 * Fix #634 is-grouped control
+* Fix #676 checkbox/radio wrapping
 
 ## 0.4.0
 
