@@ -597,7 +597,97 @@ doc-subtab: columns
 
     <hr>
 
-    <h3 class="title">Multiline</h3>
+    <h3 id="nesting" class="title">Nesting</h3>
+    <div class="content">
+      <p>
+        You can <strong>nest</strong> columns to have more flexibility in your design. You only need to follow this structure:
+      </p>
+      <ul>
+        <li>
+          <code>columns</code>: top-level columns container
+          <ul>
+            <li>
+              <code>column</code>
+              <ul>
+                <li>
+                  <code>columns</code>: nested columns
+                  <ul>
+                    <li>
+                      <code>column</code> and so on…
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        The difference with <a href="#multiline">multiline columns</a> is the <strong>order</strong> in the HTML code: all the <strong class="has-text-info">blue</strong> columns appear <em>before</em> the <strong class="has-text-danger">red</strong> ones. Resize to a narrower viewport to see the result.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <p class="notification is-info">First column</p>
+        <div class="columns is-mobile">
+          <div class="column">
+            <p class="notification is-info">First nested column</p>
+          </div>
+          <div class="column">
+            <p class="notification is-info">Second nested column</p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <p class="notification is-danger">Second column</p>
+        <div class="columns is-mobile">
+          <div class="column is-half">
+            <p class="notification is-danger">50%</p>
+          </div>
+          <div class="column">
+            <p class="notification is-danger">Auto</p>
+          </div>
+          <div class="column">
+            <p class="notification is-danger">Auto</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% highlight html %}
+<div class="columns">
+  <div class="column">
+    First column
+    <div class="columns is-mobile">
+      <div class="column">
+        First nested column
+      </div>
+      <div class="column">
+        Second nested column
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    Second column
+    <div class="columns is-mobile">
+      <div class="column is-half">
+        50%
+      </div>
+      <div class="column">
+        Auto
+      </div>
+      <div class="column">
+        Auto
+      </div>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+    <hr>
+
+    <h3 id="multiline" class="title">Multiline</h3>
     <div class="content">
       <p>Whenever you want to start a new line, you can close a <code>columns</code> container and start a new one. But you can also add the <code>is-multiline</code> modifier and add <strong>more</strong> column elements that would fit in a single row.</p>
     </div>
