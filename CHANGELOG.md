@@ -22,6 +22,7 @@
 * Fix #637 customize Bulma
 * Fix #584 loading select
 * Fix #571 control height
+* Fix #634 is-grouped control
 
 ## 0.4.0
 
