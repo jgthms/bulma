@@ -24,6 +24,7 @@
 * Fix #571 control height
 * Fix #634 is-grouped control
 * Fix #676 checkbox/radio wrapping
+* Feature #479 has-icons placement
 
 ## 0.4.0
 
