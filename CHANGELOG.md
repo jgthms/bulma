@@ -27,6 +27,7 @@
 * Feature #479 has-icons placement
 * Fix #442 selected table row
 * Fix #187 add customize page
+* Fix #449 columns negative horizontal margin
 
 ## 0.4.0
 
