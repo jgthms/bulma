@@ -22,6 +22,14 @@
 * Fix #637 customize Bulma
 * Fix #584 loading select
 * Fix #571 control height
+* Fix #634 is-grouped control
+* Fix #676 checkbox/radio wrapping
+* Feature #479 has-icons placement
+* Fix #442 selected table row
+* Fix #187 add customize page
+* Fix #449 columns negative horizontal margin
+* Fix #399 pagination wrapping
+* Fix #227 color keys as strings
 
 ## 0.4.0
 

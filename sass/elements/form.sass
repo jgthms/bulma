@@ -79,17 +79,12 @@ $input-radius:              $radius !default
 
 .checkbox,
 .radio
-  align-items: center
   cursor: pointer
-  display: inline-flex
-  flex-wrap: wrap
-  justify-content: flex-start
-  line-height: 1.5
+  display: inline-block
+  line-height: 1.25
   position: relative
-  vertical-align: top
   input
     cursor: pointer
-    margin-#{$right}: 0.5em
   &:hover
     color: $input-hover
   &[disabled]
@@ -164,6 +159,13 @@ $input-radius:              $radius !default
   font-weight: $weight-bold
   &:not(:last-child)
     margin-bottom: 0.5em
+  // Sizes
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+  &.is-large
+    font-size: $size-large
 
 .help
   display: block
@@ -227,7 +229,6 @@ $input-radius:              $radius !default
     display: flex
     justify-content: flex-start
     & > .control
-      flex-basis: 0
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
@@ -285,6 +286,7 @@ $input-radius:              $radius !default
   position: relative
   text-align: $left
   // Modifiers
+  // DEPRECATED
   &.has-icon
     .icon
       color: $input-icon
@@ -317,6 +319,36 @@ $input-radius:              $radius !default
         right: 0
       .input
         padding-right: 2.25em
+  &.has-icons-left,
+  &.has-icons-right
+    .input
+      &:focus
+        & ~ .icon
+          color: $input-icon-active
+      &.is-small ~ .icon
+        font-size: $size-small
+      &.is-medium ~ .icon
+        font-size: $size-medium
+      &.is-large ~ .icon
+        font-size: $size-large
+    .icon
+      color: $input-icon
+      height: 2.25em
+      pointer-events: none
+      position: absolute
+      top: 0
+      width: 2.25em
+      z-index: 4
+  &.has-icons-left
+    .input
+      padding-left: 2.25em
+    .icon.is-left
+      left: 0
+  &.has-icons-right
+    .input
+        padding-right: 2.25em
+    .icon.is-right
+      right: 0
   &.is-loading
     &:after
       +loader
