@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! bulma.io v0.4.0 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -2023,27 +2024,15 @@ input[type="submit"].button {
 
 .checkbox,
 .radio {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  line-height: 1.5;
+  display: inline-block;
+  line-height: 1.25;
   position: relative;
-  vertical-align: top;
 }
 
 .checkbox input,
 .radio input {
   cursor: pointer;
-  margin-right: 0.5em;
 }
 
 .checkbox:hover,
@@ -2267,6 +2256,18 @@ input[type="submit"].button {
   margin-bottom: 0.5em;
 }
 
+.label.is-small {
+  font-size: 0.75rem;
+}
+
+.label.is-medium {
+  font-size: 1.25rem;
+}
+
+.label.is-large {
+  font-size: 1.5rem;
+}
+
 .help {
   display: block;
   font-size: 0.75rem;
@@ -2416,8 +2417,6 @@ input[type="submit"].button {
 }
 
 .field.is-grouped > .control {
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
@@ -2568,6 +2567,48 @@ input[type="submit"].button {
 
 .control.has-icon.has-icon-right .input {
   padding-right: 2.25em;
+}
+
+.control.has-icons-left .input:focus ~ .icon, .control.has-icons-right .input:focus ~ .icon {
+  color: #7a7a7a;
+}
+
+.control.has-icons-left .input.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon {
+  font-size: 0.75rem;
+}
+
+.control.has-icons-left .input.is-medium ~ .icon, .control.has-icons-right .input.is-medium ~ .icon {
+  font-size: 1.25rem;
+}
+
+.control.has-icons-left .input.is-large ~ .icon, .control.has-icons-right .input.is-large ~ .icon {
+  font-size: 1.5rem;
+}
+
+.control.has-icons-left .icon, .control.has-icons-right .icon {
+  color: #dbdbdb;
+  height: 2.25em;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 2.25em;
+  z-index: 4;
+}
+
+.control.has-icons-left .input {
+  padding-left: 2.25em;
+}
+
+.control.has-icons-left .icon.is-left {
+  left: 0;
+}
+
+.control.has-icons-right .input {
+  padding-right: 2.25em;
+}
+
+.control.has-icons-right .icon.is-right {
+  right: 0;
 }
 
 .control.is-loading:after {
@@ -2932,6 +2973,22 @@ input[type="submit"].button {
   background-color: #fafafa;
 }
 
+.table tr.is-selected {
+  background-color: #00d1b2;
+  color: #fff;
+}
+
+.table tr.is-selected a,
+.table tr.is-selected strong {
+  color: currentColor;
+}
+
+.table tr.is-selected td,
+.table tr.is-selected th {
+  border-color: #fff;
+  color: currentColor;
+}
+
 .table thead td,
 .table thead th {
   border-width: 0 0 2px;
@@ -2990,7 +3047,6 @@ input[type="submit"].button {
   line-height: 1.5;
   padding-left: 0.875em;
   padding-right: 0.875em;
-  vertical-align: top;
   white-space: nowrap;
 }
 
@@ -4086,7 +4142,7 @@ input[type="submit"].button {
           justify-content: center;
   overflow: hidden;
   position: fixed;
-  z-index: 1986;
+  z-index: 20;
 }
 
 .modal.is-active {
@@ -4261,19 +4317,28 @@ a.nav-item.is-tab.is-active {
 
 .nav-left,
 .nav-right {
+  -webkit-overflow-scrolling: touch;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  max-width: 100%;
+  overflow: auto;
+}
+
+@media screen and (min-width: 1192px) {
+  .nav-left,
+  .nav-right {
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+  }
 }
 
 .nav-left {
@@ -4335,10 +4400,10 @@ a.nav-item.is-tab.is-active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 3.25rem;
+  height: 3.25rem;
   position: relative;
   text-align: center;
-  z-index: 2;
+  z-index: 10;
 }
 
 .nav > .container {
@@ -4358,6 +4423,7 @@ a.nav-item.is-tab.is-active {
 
 .pagination {
   font-size: 1rem;
+  margin: -0.25rem;
 }
 
 .pagination.is-small {
@@ -4424,6 +4490,7 @@ a.nav-item.is-tab.is-active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 0.25rem;
   text-align: center;
 }
 
@@ -4490,6 +4557,7 @@ a.nav-item.is-tab.is-active {
 .pagination-next {
   padding-left: 0.75em;
   padding-right: 0.75em;
+  white-space: nowrap;
 }
 
 .pagination-link.is-current {
@@ -4503,8 +4571,9 @@ a.nav-item.is-tab.is-active {
   pointer-events: none;
 }
 
-.pagination-list li:not(:first-child) {
-  margin-left: 0.375rem;
+.pagination-list {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {
@@ -4519,13 +4588,6 @@ a.nav-item.is-tab.is-active {
             flex-grow: 1;
     -ms-flex-negative: 1;
         flex-shrink: 1;
-    width: calc(50% - 0.375rem);
-  }
-  .pagination-next {
-    margin-left: 0.75rem;
-  }
-  .pagination-list {
-    margin-top: 0.75rem;
   }
   .pagination-list li {
     -webkit-box-flex: 1;
@@ -4550,10 +4612,6 @@ a.nav-item.is-tab.is-active {
         -ms-flex-order: 1;
             order: 1;
   }
-  .pagination-previous,
-  .pagination-next {
-    margin-left: 0.75rem;
-  }
   .pagination-previous {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
@@ -4570,7 +4628,6 @@ a.nav-item.is-tab.is-active {
             justify-content: space-between;
   }
   .pagination.is-centered .pagination-previous {
-    margin-left: 0;
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
@@ -4589,7 +4646,6 @@ a.nav-item.is-tab.is-active {
             order: 3;
   }
   .pagination.is-right .pagination-previous {
-    margin-left: 0;
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
@@ -4598,7 +4654,6 @@ a.nav-item.is-tab.is-active {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
-    margin-right: 0.75rem;
   }
   .pagination.is-right .pagination-list {
     -webkit-box-pack: end;
@@ -4743,6 +4798,7 @@ label.panel-block:hover {
 }
 
 .tabs {
+  -webkit-overflow-scrolling: touch;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8126,6 +8182,7 @@ html.route-index #carbon {
   display: block;
   line-height: 1.375;
   margin-top: 15px;
+  min-height: 70px;
   padding: 15px;
   padding-left: 70px;
   position: relative;
@@ -8160,7 +8217,16 @@ html.route-index #carbon {
 
 #_default_ > a .default-title {
   color: #363636;
+  display: inline;
   font-weight: 700;
+}
+
+#_default_ > a .default-title:after {
+  content: " — ";
+}
+
+#_default_ > a .default-description {
+  display: inline;
 }
 
 @media screen and (min-width: 769px), print {

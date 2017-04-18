@@ -1,3 +1,36 @@
+// Components
+
+.hero-video
+  +overlay
+  overflow: hidden
+  video
+    left: 50%
+    min-height: 100%
+    min-width: 100%
+    position: absolute
+    top: 50%
+    transform: translate3d(-50%, -50%, 0)
+  // Modifiers
+  &.is-transparent
+    opacity: 0.3
+  // Responsiveness
+  +mobile
+    display: none
+
+.hero-buttons
+  margin-top: 1.5rem
+  // Responsiveness
+  +mobile
+    .button
+      display: flex
+      &:not(:last-child)
+        margin-bottom: 0.75rem
+  +tablet
+    display: flex
+    justify-content: center
+    .button:not(:last-child)
+      margin-right: 1.5rem
+
 // Containers
 
 .hero-head,
@@ -8,7 +41,7 @@
 .hero-body
   flex-grow: 1
   flex-shrink: 0
-  padding: 1.5rem
+  padding: 3rem 1.5rem
   // Responsiveness
   +from($widescreen)
     padding-left: 0
@@ -29,14 +62,12 @@
     ul
       border-bottom: none
   // Colors
-  @each $name, $pair in $colorshero
+  @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
       background-color: $color
-      box-shadow: 0 0 5px rgba($black, 0.3)
       color: $color-invert
-      position: relative
       a:not(.button),
       strong
         color: inherit
@@ -119,191 +150,3 @@
       & > .container
         flex-grow: 1
         flex-shrink: 1
-
-.hero
-  &.is-primary
-    .hero-foot
-      background: rgba($black, 0.3)
-    .nav
-      box-shadow: none
-      height: $header-logo + 20px
-    .nav-right
-      flex: inherit
-    a.nav-item
-      font-weight: $weight-bold
-    .nav-logo
-      img
-        max-height: $header-logo
-        max-width: 200px
-    .nav-search
-      position: relative
-      width: 100%
-      .input
-        min-width: 265px
-    .nav-signin,
-    .nav-social
-      display: none
-    .nav-signin
-      .input
-        max-width: 130px
-    .nav-menu
-      &.is-active
-        .input
-          max-width: none
-          width: 100%
-    .nav-menu-signin
-      .nav-social
-        display: flex
-        .field
-          width: 100%
-      .nav-signin
-        display: block
-        width: 100%
-      .nav-search
-        display: none
-    .tabs
-      &.is-boxed
-        overflow: inherit
-        li
-          position: relative
-          a
-            border: none
-            border-radius: 0
-            cursor: pointer
-            margin: 0
-            opacity: 1
-            padding-left: 0
-            padding-right: 0
-            text-align: center
-          &:hover
-            a
-              background: $white
-              color: $primary
-          a:hover,
-          &.is-active a
-            background: $primary
-            color: $white
-          .box
-            border-radius: 0 0 $radius $radius
-            display: none
-            position: absolute
-            width: 100%
-            z-index: 10000
-          &:hover
-            .box
-              display: block
-              a
-                background: inherit
-                color: $grey-dark
-                &:hover
-                  background: $primary
-                  color: $white
-                &:last-child
-                  border-radius: 0 0 $radius $radius
-    .search-suggest
-      .box
-        a
-          color: $grey-dark
-          &.suggest-over
-            color: $white
-            cursor: pointer
-  &.is-dark
-    .title,
-    .subtitle,
-    .tabs li a
-      text-shadow: 1px 1px 0 rgba($black, 0.3)
-    .title,
-    .subtitle
-      a
-        color: inherit
-    .columnsnomargin
-      margin-bottom: 0
-    .hero-foot
-      border-bottom: 6px solid $primary
-    .tag
-      text-shadow: none
-    .tabs
-      overflow: visible
-      li
-        &.is-inactive
-          opacity: 0.5
-      &.is-boxed
-        li
-          &.is-active a,
-          a:hover
-            background: $primary
-            border-color: $primary
-            color: $white
-            text-shadow: none
-      a
-        .count
-          margin-left: 4px
-          opacity: 0.5
-      .more
-        display: none
-        position: relative
-      li
-        .box
-          border-radius: 0 0 $radius $radius
-          display: none
-          position: absolute
-          right: 0
-          width: 100%
-          z-index: 10000
-          li
-            &.is-active
-              background: $primary
-              a
-                background: inherit
-                border-color: transparent
-            &:first-child
-              border-radius: 0
-        &:hover
-          .box
-            background: $dark
-            display: block
-            a
-              background: inherit
-              border-color: transparent
-              border-radius: 0
-              cursor: pointer
-            .count
-              display: none
-
-+mobile
-  .hero
-    &.is-primary
-      .nav-logo
-        padding-right: 0
-        img
-          max-height: 34px
-          max-width: 120px
-
-+tablet
-  .hero
-    &.is-dark
-      .fieldactions
-        margin-top: 12px
-
-+touch
-  .hero
-    &.is-primary
-      .nav
-        height: auto
-      .nav-search
-        .input
-          min-width: 140px
-    &.is-dark
-      .tabs
-        a
-          .count
-            display: none
-
-+desktop
-  .hero
-    &.is-primary
-      .nav-logo
-        padding-left: 0
-      .nav-searchlogin,
-      .nav-social
-        padding-right: 0

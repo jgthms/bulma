@@ -4,11 +4,9 @@
   border-radius: $radius
   padding: 1.25rem 2.5rem 1.25rem 1.5rem
   position: relative
-  a
-    color: inherit
+  a:not(.button)
+    color: currentColor
     text-decoration: underline
-    &:hover
-      text-decoration: none
   code,
   pre
     background: $white
@@ -22,8 +20,6 @@
   .subtitle,
   .content
     color: inherit
-  .field-body
-    flex-grow: 2
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -31,12 +27,3 @@
     &.is-#{$name}
       background-color: $color
       color: $color-invert
-  &.has-icon
-    padding-left: 90px
-    position: relative
-    .icon
-      left: 0
-      position: absolute
-      top: 50%
-      transform: translate(0, -50%)
-      width: 90px

@@ -27,8 +27,6 @@ $nav-height: 3.25rem !default
       margin-right: 0.5rem
     &:last-child:not(:first-child)
       margin-left: 0.5rem
-  .nav-item
-    padding: 0
   // Responsiveness
   +mobile
     justify-content: flex-start
@@ -62,29 +60,17 @@ a.nav-item
 
 // Containers
 
-.nav-menu
-  // Responsiveness
-  +mobile
-    background-color: $white
-    box-shadow: 0 4px 7px rgba($black, 0.1)
-    left: 0
-    display: none
-    right: 0
-    top: 100%
-    position: absolute
-    .nav-item
-      border-top: 1px solid rgba($border, 0.5)
-      padding: 0.75rem
-    &.is-active
-      display: block
-
 .nav-left,
 .nav-right
+  +overflow-touch
   align-items: stretch
   display: flex
-  flex-basis: 0
   flex-grow: 1
   flex-shrink: 0
+  max-width: 100%
+  overflow: auto
+  +widescreen
+    flex-basis: 0
 
 .nav-left
   justify-content: flex-start
@@ -125,10 +111,10 @@ a.nav-item
   align-items: stretch
   background-color: $white
   display: flex
-  min-height: $nav-height
+  height: $nav-height
   position: relative
   text-align: center
-  z-index: 2
+  z-index: 10
   & > .container
     align-items: stretch
     display: flex

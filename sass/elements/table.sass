@@ -5,6 +5,10 @@ $table-border:                    $grey-lighter !default
 $table-head:                      $grey !default
 
 $table-row-hover-background:      $white-bis !default
+
+$table-row-active-background:     $primary !default
+$table-row-active:                $primary-invert !default
+
 $table-row-even-background:       $white-bis !default
 $table-row-even-hover-background: $white-ter !default
 
@@ -13,12 +17,6 @@ $table-row-even-hover-background: $white-ter !default
   color: $table
   margin-bottom: 1.5rem
   width: 100%
-  td
-    &.has-text-right
-      .control
-        float: right
-    &.titletable
-      font-weight: $weight-bold
   td,
   th
     border: 1px solid $table-border
@@ -29,26 +27,22 @@ $table-row-even-hover-background: $white-ter !default
     &.is-narrow
       white-space: nowrap
       width: 1%
-    .toggleheight
-      cursor: zoom-in
-      max-height: 3em
-      overflow: hidden
   th
     color: $text-strong
     text-align: left
-    &.has-text-centered
-      text-align: center
-    &.has-text-right
-      text-align: right
   tr
     &:hover
       background-color: $table-row-hover-background
-    &.rowcontentbefore
-      td
-        border: none
-    &.rowcontentnext
-      td
-        opacity: 0.5
+    &.is-selected
+      background-color: $table-row-active-background
+      color: $table-row-active
+      a,
+      strong
+        color: currentColor
+      td,
+      th
+        border-color: $table-row-active
+        color: currentColor
   thead
     td,
     th
@@ -86,5 +80,3 @@ $table-row-even-hover-background: $white-ter !default
           background-color: $table-row-even-background
           &:hover
             background-color: $table-row-even-hover-background
-  &:last-child
-    margin-bottom: 0
