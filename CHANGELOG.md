@@ -1,5 +1,9 @@
 # Bulma Changelog
 
+## 0.4.2
+
+* Fix #728 selected row on striped table
+
 ## 0.4.1
 
 * Fix #568 max-width container
