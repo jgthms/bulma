@@ -41,7 +41,6 @@ But it allows more elaborate designs.
   .is-grouped
   .is-horizontal
   .is-loading
-.control-label
 
 // After
 .control
