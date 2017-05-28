@@ -6,6 +6,7 @@
 * Fix #747 remove flex-shrink for is-expanded
 * Fix #702 add icons support for select dropdown
 * Fix #712 delete button as flexbox item
+* Fix #759 static button
 
 ## 0.4.1
 
