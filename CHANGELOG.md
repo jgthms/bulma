@@ -1,5 +1,13 @@
 # Bulma Changelog
 
+## 0.4.2
+
+* Fix #728 selected row on striped table
+* Fix #747 remove flex-shrink for is-expanded
+* Fix #702 add icons support for select dropdown
+* Fix #712 delete button as flexbox item
+* Fix #759 static button
+
 ## 0.4.1
 
 * Fix #568 max-width container
