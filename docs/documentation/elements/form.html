@@ -476,11 +476,44 @@ doc-subtab: form
       </div>
     </div>
 
+{% capture select_icons_example %}
+<div class="field">
+  <p class="control has-icons-left">
+    <span class="select">
+      <select>
+        <option selected>Country</option>
+        <option>Select dropdown</option>
+        <option>With options</option>
+      </select>
+    </span>
+    <span class="icon is-small is-left">
+      <i class="fa fa-globe"></i>
+    </span>
+  </p>
+</div>
+{% endcapture %}
+    <div class="columns">
+      <div class="column is-half">
+
     <div class="content">
       <p>
         <span class="tag is-success">New!</span>
         <span class="tag is-info">0.4.2</span>
       </p>
+      <p>
+        You can now append icons to <strong>select dropdowns</strong> as well.
+      </p>
+    </div>
+{{select_icons_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{select_icons_example}}
+{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
       <p>
         If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
       </p>
@@ -663,7 +696,7 @@ doc-subtab: form
 
     <hr>
 
-    <h3 class="title">Form addons</h3>
+    <h3 id="form-addons" class="title">Form addons</h3>
     <div class="content">
       <p>If you want to <strong>attach</strong> controls together, use the <code>has-addons</code> modifier on the <code>control</code> container:</p>
     </div>
@@ -687,6 +720,37 @@ doc-subtab: form
 {% endhighlight %}
     <div class="content">
       <p>You can attach inputs, buttons, and dropdowns <strong>only</strong>.</p>
+    </div>
+
+    <p style="margin-bottom: 0.5rem;">
+      <span class="tag is-success">New!</span>
+      <span class="tag is-info">0.4.2</span>
+    </p>
+
+    <div class="content">
+      <p>It can be useful to append a <a href="{{site.url}}/documentation/elements/button#static-button">static button</a>.</p>
+    </div>
+
+{% capture addons_static_example %}
+<div class="field has-addons">
+  <p class="control">
+    <input class="input" type="text" placeholder="Your email">
+  </p>
+  <p class="control">
+    <a class="button is-static">
+      @gmail.com
+    </a>
+  </p>
+</div>
+{% endcapture %}
+    <div class="example">
+{{addons_static_example}}
+    </div>
+{% highlight html %}
+{{addons_static_example}}
+{% endhighlight %}
+
+    <div class="content">
       <p>Use the <code>is-expanded</code> modifier on the element you want to fill up the remaining space (in this case, the input):</p>
     </div>
 {% capture addons_expanded_example %}
@@ -837,6 +901,9 @@ doc-subtab: form
       <p>
         If you want to <strong>group</strong> controls together, use the <code>is-grouped</code> modifier on the <code>control</code> container.
         <br>
+        Use the <code>is-grouped-centered</code> or the <code>is-grouped-right</code> modifers to alter the <strong>alignment</strong>.
+      </p>
+      <p>
         Add the <code>is-expanded</code> modifier on the control element you want to <strong>fill up the remaining space</strong>.
       </p>
     </div>
@@ -866,10 +933,10 @@ doc-subtab: form
       <p>If you want a <strong>horizontal</strong> form control, use the <code>is-horizontal</code> modifier on the <code>control</code> container, in which you include:</p>
       <ul>
         <li>
-          <code>control-label</code> for the side label
+          <code>field-label</code> for the side label
         </li>
         <li>
-          <code>control</code> for the input/select/textarea container
+          <code>field-body</code> for the input/select/textarea container
         </li>
       </ul>
       <p>You can of course use <code>is-grouped</code> or <code>has-addons</code> for the child elements.</p>
