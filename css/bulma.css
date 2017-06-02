@@ -1,4 +1,4 @@
-/*! bulma.io v0.4.1 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.4.2 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
     -webkit-transform: rotate(0deg);
@@ -1672,6 +1672,14 @@ a.box:active {
   position: absolute !important;
 }
 
+.button.is-static {
+  background-color: whitesmoke;
+  border-color: #dbdbdb;
+  color: #7a7a7a;
+  box-shadow: none;
+  pointer-events: none;
+}
+
 button.button,
 input[type="submit"].button {
   line-height: 1;
@@ -2052,6 +2060,7 @@ input[type="submit"].button {
 .select {
   display: inline-block;
   height: 2.25em;
+  max-width: 100%;
   position: relative;
   vertical-align: top;
 }
@@ -2104,6 +2113,7 @@ input[type="submit"].button {
   cursor: pointer;
   display: block;
   font-size: 1em;
+  max-width: 100%;
   outline: none;
   padding-right: 2.5em;
 }
@@ -2382,8 +2392,6 @@ input[type="submit"].button {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
 }
 
 .field.has-addons.has-addons-centered {
@@ -2568,19 +2576,27 @@ input[type="submit"].button {
   padding-right: 2.25em;
 }
 
-.control.has-icons-left .input:focus ~ .icon, .control.has-icons-right .input:focus ~ .icon {
+.control.has-icons-left .input:focus ~ .icon,
+.control.has-icons-left .select select:focus ~ .icon, .control.has-icons-right .input:focus ~ .icon,
+.control.has-icons-right .select select:focus ~ .icon {
   color: #7a7a7a;
 }
 
-.control.has-icons-left .input.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon {
+.control.has-icons-left .input.is-small ~ .icon,
+.control.has-icons-left .select select.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon,
+.control.has-icons-right .select select.is-small ~ .icon {
   font-size: 0.75rem;
 }
 
-.control.has-icons-left .input.is-medium ~ .icon, .control.has-icons-right .input.is-medium ~ .icon {
+.control.has-icons-left .input.is-medium ~ .icon,
+.control.has-icons-left .select select.is-medium ~ .icon, .control.has-icons-right .input.is-medium ~ .icon,
+.control.has-icons-right .select select.is-medium ~ .icon {
   font-size: 1.25rem;
 }
 
-.control.has-icons-left .input.is-large ~ .icon, .control.has-icons-right .input.is-large ~ .icon {
+.control.has-icons-left .input.is-large ~ .icon,
+.control.has-icons-left .select select.is-large ~ .icon, .control.has-icons-right .input.is-large ~ .icon,
+.control.has-icons-right .select select.is-large ~ .icon {
   font-size: 1.5rem;
 }
 
@@ -2594,7 +2610,8 @@ input[type="submit"].button {
   z-index: 4;
 }
 
-.control.has-icons-left .input {
+.control.has-icons-left .input,
+.control.has-icons-left .select select {
   padding-left: 2.25em;
 }
 
@@ -2602,7 +2619,8 @@ input[type="submit"].button {
   left: 0;
 }
 
-.control.has-icons-right .input {
+.control.has-icons-right .input,
+.control.has-icons-right .select select {
   padding-right: 2.25em;
 }
 
@@ -3020,11 +3038,11 @@ input[type="submit"].button {
   padding: 0.25em 0.5em;
 }
 
-.table.is-striped tbody tr:nth-child(even) {
+.table.is-striped tbody tr:not(.is-selected):nth-child(even) {
   background-color: #fafafa;
 }
 
-.table.is-striped tbody tr:nth-child(even):hover {
+.table.is-striped tbody tr:not(.is-selected):nth-child(even):hover {
   background-color: whitesmoke;
 }
 
@@ -3264,8 +3282,17 @@ input[type="submit"].button {
   border-radius: 290486px;
   cursor: pointer;
   display: inline-block;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   font-size: 1rem;
   height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  min-width: 20px;
   outline: none;
   position: relative;
   vertical-align: top;
@@ -3997,8 +4024,17 @@ input[type="submit"].button {
   border-radius: 290486px;
   cursor: pointer;
   display: inline-block;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   font-size: 1rem;
   height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  min-width: 20px;
   outline: none;
   position: relative;
   vertical-align: top;
