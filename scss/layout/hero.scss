@@ -1,0 +1,250 @@
+// Components
+
+.heroVideo {
+  @include overlay;
+
+  overflow: hidden;
+
+  video {
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  // Modifiers
+  &.isTransparent {
+    opacity: 0.3;
+  }
+
+  // Responsiveness
+  @include mobile {
+    display: none;
+  }
+}
+
+.heroButtons {
+  margin-top: 1.5rem;
+
+  // Responsiveness
+  @include mobile {
+    .button {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
+
+  @include tablet {
+    display: flex;
+    justify-content: center;
+
+    .button:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+// Containers
+
+.heroHead,
+.heroFoot {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.heroBody {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 3rem 1.5rem;
+
+  // Responsiveness
+  @include from($widescreen) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// Main container
+
+.hero {
+  align-items: stretch;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .nav {
+    background: none;
+    box-shadow: 0 1px 0 rgba($border, 0.3);
+  }
+
+  .tabs {
+    ul {
+      border-bottom: none;
+    }
+  }
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+
+      a:not(.button),
+      strong {
+        color: inherit;
+      }
+
+      .title {
+        color: $color-invert;
+      }
+
+      .subtitle {
+        color: rgba($color-invert, 0.9);
+
+        a:not(.button),
+        strong {
+          color: $color-invert;
+        }
+      }
+
+      .nav {
+        box-shadow: 0 1px 0 rgba($color-invert, 0.2);
+      }
+
+      .navMenu {
+        @include mobile {
+          background-color: $color;
+        }
+      }
+
+      a.navItem,
+      .navItem a:not(.button) {
+        color: rgba($color-invert, 0.7);
+
+        &:hover,
+        &.isActive {
+          color: $color-invert;
+        }
+      }
+
+      .tabs {
+        a {
+          color: $color-invert;
+          opacity: 0.9;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+
+        li {
+          &.isActive a {
+            opacity: 1;
+          }
+        }
+
+        &.isBoxed,
+        &.isToggle {
+          a {
+            color: $color-invert;
+
+            &:hover {
+              background-color: rgba($black, 0.1);
+            }
+          }
+
+          li.isActive a {
+            &,
+            &:hover {
+              background-color: $color-invert;
+              border-color: $color-invert;
+              color: $color;
+            }
+          }
+        }
+      }
+
+      // Modifiers
+      &.isBold {
+        $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%);
+        $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%);
+
+        background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%);
+
+        @include mobile {
+          .navMenu {
+            background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%);
+          }
+        }
+      }
+
+      // Responsiveness
+      @include mobile {
+        .navToggle {
+          span {
+            background-color: $color-invert;
+          }
+
+          &:hover {
+            background-color: rgba($black, 0.1);
+          }
+
+          &.isActive {
+            span {
+              background-color: $color-invert;
+            }
+          }
+        }
+
+        .navMenu {
+          .navItem {
+            border-top-color: rgba($color-invert, 0.2);
+          }
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &.isMedium {
+    @include tablet {
+      .heroBody {
+        padding-bottom: 9rem;
+        padding-top: 9rem;
+      }
+    }
+  }
+
+  &.isLarge {
+    @include tablet {
+      .heroBody {
+        padding-bottom: 18rem;
+        padding-top: 18rem;
+      }
+    }
+  }
+
+  &.isFullheight {
+    min-height: 100vh;
+
+    .heroBody {
+      align-items: center;
+      display: flex;
+
+      & > .container {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  }
+}

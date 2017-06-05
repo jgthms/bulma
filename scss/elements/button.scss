@@ -1,0 +1,281 @@
+$button: $grey-darker !default;
+$button-background: $white !default;
+$button-border: $grey-lighter !default;
+
+$button-hover: $link-hover !default;
+$button-hover-border: $link-hover-border !default;
+
+$button-focus: $link-focus !default;
+$button-focus-border: $link-focus-border !default;
+
+$button-active: $link-active !default;
+$button-active-border: $link-active-border !default;
+
+$button-static: $grey !default;
+$button-static-background: $white-ter !default;
+$button-static-border: $grey-lighter !default;
+
+$button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default;
+
+// The button sizes use mixins so they can be used at different breakpoints
+@mixin buttonSmall {
+  border-radius: $radius-small;
+  font-size: $size-small;
+}
+
+@mixin buttonMedium {
+  font-size: $size-medium;
+}
+
+@mixin buttonLarge {
+  font-size: $size-large;
+}
+
+.button {
+  @include control;
+  @include unselectable;
+
+  background-color: $button-background;
+  border-color: $button-border;
+  color: $button;
+  cursor: pointer;
+  justify-content: center;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  text-align: center;
+  white-space: nowrap;
+
+  strong {
+    color: inherit;
+  }
+
+  .icon {
+    &,
+    &.isSmall,
+    &.isMedium,
+    &.isLarge {
+      height: 1.5em;
+      width: 1.5em;
+    }
+
+    &:first-child:not(:last-child) {
+      margin-left: calc(-0.375em - 1px);
+      margin-right: 0.1875em;
+    }
+
+    &:last-child:not(:first-child) {
+      margin-left: 0.1875em;
+      margin-right: calc(-0.375em - 1px);
+    }
+
+    &:first-child:last-child {
+      margin-left: calc(-0.375em - 1px);
+      margin-right: calc(-0.375em - 1px);
+    }
+  }
+
+  // States
+  &:hover,
+  &.isHovered {
+    border-color: $button-hover-border;
+    color: $button-hover;
+  }
+
+  &:focus,
+  &.isFocused {
+    border-color: $button-focus-border;
+    box-shadow: 0 0 0.5em rgba($button-focus-border, 0.25);
+    color: $button-focus;
+  }
+
+  &:active,
+  &.isActive {
+    border-color: $button-active-border;
+    box-shadow: $button-shadow-inset;
+    color: $button-active;
+  }
+
+  // Colors
+  &.isLink {
+    background-color: transparent;
+    border-color: transparent;
+    color: $text;
+    text-decoration: underline;
+
+    &:hover,
+    &.isHovered,
+    &:focus,
+    &.isFocused,
+    &:active,
+    &.isActive {
+      background-color: $background;
+      color: $text-strong;
+    }
+
+    &[disabled] {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is#{pascalize($name)} {
+      background-color: $color;
+      border-color: transparent;
+      color: $color-invert;
+
+      &:hover,
+      &.isHovered {
+        background-color: darken($color, 2.5%);
+        border-color: transparent;
+        color: $color-invert;
+      }
+
+      &:focus,
+      &.isFocused {
+        border-color: transparent;
+        box-shadow: 0 0 0.5em rgba($color, 0.25);
+        color: $color-invert;
+      }
+
+      &:active,
+      &.isActive {
+        background-color: darken($color, 5%);
+        border-color: transparent;
+        box-shadow: $button-shadow-inset;
+        color: $color-invert;
+      }
+
+      &[disabled] {
+        background-color: $color;
+        border-color: transparent;
+        box-shadow: none;
+      }
+
+      &.isInverted {
+        background-color: $color-invert;
+        color: $color;
+
+        &:hover {
+          background-color: darken($color-invert, 5%);
+        }
+
+        &[disabled] {
+          background-color: $color-invert;
+          border-color: transparent;
+          box-shadow: none;
+          color: $color;
+        }
+      }
+
+      &.isLoading {
+        &:after {
+          border-color: transparent transparent $color-invert $color-invert !important;
+        }
+      }
+
+      &.isOutlined {
+        background-color: transparent;
+        border-color: $color;
+        color: $color;
+
+        &:hover,
+        &:focus {
+          background-color: $color;
+          border-color: $color;
+          color: $color-invert;
+        }
+
+        &.isLoading {
+          &:after {
+            border-color: transparent transparent $color $color !important;
+          }
+        }
+
+        &[disabled] {
+          background-color: transparent;
+          border-color: $color;
+          box-shadow: none;
+          color: $color;
+        }
+      }
+
+      &.isInverted.isOutlined {
+        background-color: transparent;
+        border-color: $color-invert;
+        color: $color-invert;
+
+        &:hover,
+        &:focus {
+          background-color: $color-invert;
+          color: $color;
+        }
+
+        &[disabled] {
+          background-color: transparent;
+          border-color: $color-invert;
+          box-shadow: none;
+          color: $color-invert;
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &.isSmall {
+    @include buttonSmall;
+  }
+
+  &.isMedium {
+    @include buttonMedium;
+  }
+
+  &.isLarge {
+    @include buttonLarge;
+  }
+
+  // Modifiers
+  &[disabled] {
+    background-color: $button-background;
+    border-color: $button-border;
+    box-shadow: none;
+    opacity: 0.5;
+  }
+
+  &.isFullwidth {
+    display: flex;
+    width: 100%;
+  }
+
+  &.isLoading {
+    color: transparent !important;
+    pointer-events: none;
+
+    &:after {
+      @include loader;
+      @include center(1em);
+
+      position: absolute !important;
+    }
+  }
+
+  &.isStatic {
+    background-color: $button-static-background;
+    border-color: $button-static-border;
+    color: $button-static;
+    box-shadow: none;
+    pointer-events: none;
+  }
+}
+
+// Adjustment for vertical spacing
+button.button,
+input[type="submit"].button {
+  line-height: 1;
+  padding-bottom: 0.4em;
+  padding-top: 0.35em;
+}

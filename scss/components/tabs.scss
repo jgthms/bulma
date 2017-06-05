@@ -1,0 +1,172 @@
+.tabs {
+  @include block;
+  @include overflowTouch;
+  @include unselectable;
+
+  align-items: stretch;
+  display: flex;
+  font-size: $size-normal;
+  justify-content: space-between;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  a {
+    align-items: center;
+    border-bottom: 1px solid $border;
+    color: $text;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1px;
+    padding: 0.5em 1em;
+    vertical-align: top;
+
+    &:hover {
+      border-bottom-color: $text-strong;
+      color: $text-strong;
+    }
+  }
+
+  li {
+    display: block;
+
+    &.isActive {
+      a {
+        border-bottom-color: $primary;
+        color: $primary;
+      }
+    }
+  }
+
+  ul {
+    align-items: center;
+    border-bottom: 1px solid $border;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: flex-start;
+
+    &.isLeft {
+      padding-right: 0.75em;
+    }
+
+    &.isCenter {
+      flex: none;
+      justify-content: center;
+      padding-left: 0.75em;
+      padding-right: 0.75em;
+    }
+
+    &.isRight {
+      justify-content: flex-end;
+      padding-left: 0.75em;
+    }
+  }
+
+  .icon {
+    &:first-child {
+      margin-right: 0.5em;
+    }
+
+    &:last-child {
+      margin-left: 0.5em;
+    }
+  }
+
+  // Alignment
+  &.isCentered {
+    ul {
+      justify-content: center;
+    }
+  }
+
+  &.isRight {
+    ul {
+      justify-content: flex-end;
+    }
+  }
+
+  // Styles
+  &.isBoxed {
+    a {
+      border: 1px solid transparent;
+      border-radius: $radius $radius 0 0;
+
+      &:hover {
+        background-color: $background;
+        border-bottom-color: $border;
+      }
+    }
+
+    li {
+      &.isActive {
+        a {
+          background-color: $white;
+          border-color: $border;
+          border-bottom-color: transparent !important;
+        }
+      }
+    }
+  }
+
+  &.isFullwidth {
+    li {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+  }
+
+  &.isToggle {
+    a {
+      border: 1px solid $border;
+      margin-bottom: 0;
+      position: relative;
+
+      &:hover {
+        background-color: $background;
+        border-color: $border-hover;
+        z-index: 2;
+      }
+    }
+
+    li {
+      & + li {
+        margin-left: -1px;
+      }
+
+      &:first-child a {
+        border-radius: $radius 0 0 $radius;
+      }
+
+      &:last-child a {
+        border-radius: 0 $radius $radius 0;
+      }
+
+      &.isActive {
+        a {
+          background-color: $primary;
+          border-color: $primary;
+          color: $primary-invert;
+          z-index: 1;
+        }
+      }
+    }
+
+    ul {
+      border-bottom: none;
+    }
+  }
+
+  // Sizes
+  &.isSmall {
+    font-size: $size-small;
+  }
+
+  &.isMedium {
+    font-size: $size-medium;
+  }
+
+  &.isLarge {
+    font-size: $size-large;
+  }
+}

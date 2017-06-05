@@ -1,0 +1,131 @@
+@mixin applyGenericRules() {
+  html {
+    background-color: $body-background;
+    font-size: $body-size;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-rendering: $render-mode;
+  }
+
+  article,
+  aside,
+  figure,
+  footer,
+  header,
+  hgroup,
+  section {
+    display: block;
+  }
+
+  body,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: $family-primary;
+  }
+
+  code,
+  pre {
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+    font-family: $family-code;
+  }
+
+  body {
+    color: $text;
+    font-size: 1rem;
+    font-weight: $weight-normal;
+    line-height: 1.5;
+  }
+
+  // Inline
+
+  a {
+    color: $link;
+    cursor: pointer;
+    text-decoration: none;
+    transition: none $speed $easing;
+
+    &:hover {
+      color: $link-hover;
+    }
+  }
+
+  code {
+    background-color: $code-background;
+    color: $code;
+    font-size: 0.8em;
+    font-weight: normal;
+    padding: 0.25em 0.5em 0.25em;
+  }
+
+  hr {
+    background-color: $border;
+    border: none;
+    display: block;
+    height: 1px;
+    margin: 1.5rem 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    vertical-align: baseline;
+  }
+
+  small {
+    font-size: 0.8em;
+  }
+
+  span {
+    font-style: inherit;
+    font-weight: inherit;
+  }
+
+  strong {
+    color: $text-strong;
+    font-weight: $weight-bold;
+  }
+
+  // Block
+
+  pre {
+    background-color: $pre-background;
+    color: $pre;
+    font-size: 0.8em;
+    white-space: pre;
+    word-wrap: normal;
+
+    code {
+      @include overflowTouch;
+
+      background: none;
+      color: inherit;
+      display: block;
+      font-size: 1em;
+      overflow-x: auto;
+      padding: 1.25rem 1.5rem;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    td,
+    th {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: $text-strong;
+    }
+  }
+}

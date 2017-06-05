@@ -1,0 +1,110 @@
+.panel {
+  font-size: $size-normal;
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.panelHeading,
+.panelTabs,
+.panelBlock {
+  border-bottom: 1px solid $border;
+  border-left: 1px solid $border;
+  border-right: 1px solid $border;
+
+  &:first-child {
+    border-top: 1px solid $border;
+  }
+}
+
+.panelHeading {
+  background-color: $background;
+  border-radius: $radius $radius 0 0;
+  color: $text-strong;
+  font-size: 1.25em;
+  font-weight: $weight-light;
+  line-height: 1.25;
+  padding: 0.5em 0.75em;
+}
+
+.panelTabs {
+  align-items: flex-end;
+  display: flex;
+  font-size: 0.875em;
+  justify-content: center;
+
+  a {
+    border-bottom: 1px solid $border;
+    margin-bottom: -1px;
+    padding: 0.5em;
+
+    // Modifiers
+    &.isActive {
+      border-bottom-color: $link-active-border;
+      color: $link-active;
+    }
+  }
+}
+
+.panelList {
+  a {
+    color: $text;
+
+    &:hover {
+      color: $link;
+    }
+  }
+}
+
+.panelBlock {
+  align-items: center;
+  color: $text-strong;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5em 0.75em;
+
+  input[type="checkbox"] {
+    margin-right: 0.75em;
+  }
+
+  & > .control {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+  }
+
+  &.isWrapped {
+    flex-wrap: wrap;
+  }
+
+  &.isActive {
+    border-left-color: $link;
+    color: $link-active;
+
+    .panelIcon {
+      color: $link;
+    }
+  }
+}
+
+a.panelBlock,
+label.panelBlock {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $background;
+  }
+}
+
+.panelIcon {
+  @include fa(14px, 1em);
+
+  color: $text-light;
+  margin-right: 0.75em;
+
+  .fa {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}

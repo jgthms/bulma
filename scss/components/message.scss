@@ -1,0 +1,89 @@
+.message {
+  @include block;
+
+  background-color: $background;
+  border-radius: $radius;
+  font-size: $size-normal;
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+    $color-lightning: max(100% - lightness($color) - 2%, 0%);
+    $color-luminance: colorLuminance($color);
+    $darken-percentage: $color-luminance * 70%;
+    $desaturate-percentage: $color-luminance * 30%;
+
+    &.is-#{$name} {
+      background-color: lighten($color, $color-lightning);
+
+      .messageHeader {
+        background-color: $color;
+        color: $color-invert;
+      }
+
+      .messageBody {
+        border-color: $color;
+        color: desaturate(darken($color, $darken-percentage), $desaturate-percentage);
+      }
+    }
+  }
+}
+
+.messageHeader {
+  align-items: center;
+  background-color: $text;
+  border-radius: $radius $radius 0 0;
+  color: $text-invert;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.25;
+  padding: 0.5em 0.75em;
+  position: relative;
+
+  a,
+  strong {
+    color: inherit;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .delete {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-left: 0.75em;
+  }
+
+  & + .messageBody {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+  }
+}
+
+.messageBody {
+  border: 1px solid $border;
+  border-radius: $radius;
+  color: $text;
+  padding: 1em 1.25em;
+
+  a,
+  strong {
+    color: inherit;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  code,
+  pre {
+    background: $white;
+  }
+
+  pre code {
+    background: transparent;
+  }
+}

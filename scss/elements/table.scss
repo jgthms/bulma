@@ -1,0 +1,126 @@
+$table: $grey-darker !default;
+$table-background: $white !default;
+$table-border: $grey-lighter !default;
+
+$table-head: $grey !default;
+
+$table-row-hover-background: $white-bis !default;
+
+$table-row-active-background: $primary !default;
+$table-row-active: $primary-invert !default;
+
+$table-row-even-background: $white-bis !default;
+$table-row-even-hover-background: $white-ter !default;
+
+.table {
+  background-color: $table-background;
+  color: $table;
+  margin-bottom: 1.5rem;
+  width: 100%;
+
+  td,
+  th {
+    border: 1px solid $table-border;
+    border-width: 0 0 1px;
+    padding: 0.5em 0.75em;
+    vertical-align: top;
+
+    // Modifiers
+    &.isNarrow {
+      white-space: nowrap;
+      width: 1%;
+    }
+  }
+
+  th {
+    color: $text-strong;
+    text-align: left;
+  }
+
+  tr {
+    &:hover {
+      background-color: $table-row-hover-background;
+    }
+
+    &.isSelected {
+      background-color: $table-row-active-background;
+      color: $table-row-active;
+
+      a,
+      strong {
+        color: currentColor;
+      }
+
+      td,
+      th {
+        border-color: $table-row-active;
+        color: currentColor;
+      }
+    }
+  }
+
+  thead {
+    td,
+    th {
+      border-width: 0 0 2px;
+      color: $table-head;
+    }
+  }
+
+  tfoot {
+    td,
+    th {
+      border-width: 2px 0 0;
+      color: $table-head;
+    }
+  }
+
+  tbody {
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 0;
+        }
+      }
+    }
+  }
+
+  // Modifiers
+  &.isBordered {
+    td,
+    th {
+      border-width: 1px;
+    }
+
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 1px;
+        }
+      }
+    }
+  }
+
+  &.isNarrow {
+    td,
+    th {
+      padding: 0.25em 0.5em;
+    }
+  }
+
+  &.isStriped {
+    tbody {
+      tr:not(.is-selected) {
+        &:nth-child(even) {
+          background-color: $table-row-even-background;
+
+          &:hover {
+            background-color: $table-row-even-hover-background;
+          }
+        }
+      }
+    }
+  }
+}
