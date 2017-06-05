@@ -1,0 +1,102 @@
+.modalBackground {
+  @include overlay;
+
+  background-color: rgba($black, 0.86);
+}
+
+.modalContent,
+.modalCard {
+  margin: 0 20px;
+  max-height: calc(100vh - 160px);
+  overflow: auto;
+  position: relative;
+  width: 100%;
+
+  // Responsiveness
+  @include tablet {
+    margin: 0 auto;
+    max-height: calc(100vh - 40px);
+    width: 640px;
+  }
+}
+
+.modalClose {
+  @include delete;
+
+  background: none;
+  height: 40px;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 40px;
+}
+
+.modalCard {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 40px);
+  overflow: hidden;
+}
+
+.modalCardHead,
+.modalCardFoot {
+  align-items: center;
+  background-color: $background;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative;
+}
+
+.modalCardHead {
+  border-bottom: 1px solid $border;
+  border-top-left-radius: $radius-large;
+  border-top-right-radius: $radius-large;
+}
+
+.modalCardTitle {
+  color: $text-strong;
+  flex-grow: 1;
+  flex-shrink: 0;
+  font-size: $size-4;
+  line-height: 1;
+}
+
+.modalCardFoot {
+  border-bottom-left-radius: $radius-large;
+  border-bottom-right-radius: $radius-large;
+  border-top: 1px solid $border;
+
+  .button {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.modalCardBody {
+  @include overflowTouch;
+
+  background-color: $white;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
+.modal {
+  @include overlay;
+
+  align-items: center;
+  display: none;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  z-index: 20;
+
+  // Modifiers
+  &.isActive {
+    display: flex;
+  }
+}

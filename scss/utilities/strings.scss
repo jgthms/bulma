@@ -1,0 +1,32 @@
+
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+@function contain($list, $value) {
+  @return not not index($list, $value);
+}
+
+@function camelize($string) {
+  $progress: $string;
+  $result: "";
+  $exclude: " ", "-", "–", "—", "_", ",", ";", ":", ".";
+
+  @while str-length($progress) > 0  {
+    $char: str-slice($progress, 1, 1);
+
+    @if contain($exclude, $char) {
+      $progress: capitalize(str-slice($progress, 2, 2)) + str-slice($progress, 3);
+    }
+    @else {
+      $result: $result + $char;
+      $progress: str-slice($progress, 2);
+    }
+ }
+
+  @return $result;
+}
+
+@function pascalize($string) {
+  @return capitalize(camelize($string));
+}

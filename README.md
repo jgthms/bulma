@@ -1,69 +1,28 @@
-# [Bulma](http://bulma.io)
+# Bulma-SCSS-Components - fork of [Bulma](http://bulma.io)
 
-[![npm](https://img.shields.io/npm/v/bulma.svg)](https://www.npmjs.com/package/bulma)
-[![npm](https://img.shields.io/npm/dm/bulma.svg)](https://www.npmjs.com/package/bulma)
-[![Join the chat at https://gitter.im/jgthms/bulma](https://badges.gitter.im/jgthms/bulma.svg)](https://gitter.im/jgthms/bulma)
+This fork of Bulma aims to deliver component-oriented scss styling. This means no rules get applied on import of this package, which is ideal for component-oriented frameworks such as React and Angular.
 
-Bulma is a modern CSS framework based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
+Checkout the original project at [their github repo](https://github.com/jgthms/bulma).
 
-[![Bulma: a Flexbox CSS framework](https://raw.githubusercontent.com/jgthms/bulma/master/docs/images/bulma-banner.png)](http://bulma.io)
-
-## Quick install
-
-Bulma is in early but active development! Try it out now:
-
-### NPM
+## Installation
 
 ```sh
-npm install bulma
+npm install bulma-scss-components
 ```
 
-### Bower
+## Usage
 
-```sh
-bower install bulma
+Usage of this package is the exact same as the usage of Bulma. Differences are:
+
+- classes are all `camelCase`
+- added camelization and pascalization functions (`scss/utilities/strings.scss`)
+- no applied style on import - i.e. you need to run the following lines on **one** of your style files (typically the `index.scss` file):
 ```
-
-### CDN
-
-[https://cdnjs.com/libraries/bulma](https://cdnjs.com/libraries/bulma)
-
-Feel free to raise an issue or submit a pull request.
-
-## CSS only
-
-Bulma is a **CSS** framework. As such, the sole output is a single CSS file: [bulma.css](https://github.com/jgthms/bulma/blob/master/css/bulma.css)
-
-You can either use that file, "out of the box", or download the Sass source files to customize the [variables](http://bulma.io/documentation/overview/variables/).
-
-There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have one). Bulma can be considered "environment agnostic": it's just the style layer on top of the logic.
-
-## Browser Support
-
-Bulma uses [autoprefixer](https://github.com/postcss/autoprefixer) to make (most) Flexbox features compatible with earlier browser versions. According to [Can I use](http://caniuse.com/#feat=flexbox), Bulma is compatible with **recent** versions of:
-
-* Chrome
-* Edge
-* Firefox
-* Opera
-* Safari
-
-Internet Explorer (10+) is only partially supported.
-
-## Documentation
-
-The documentation resides in the [docs](docs) directory, and is built with the Ruby-based [Jekyll](https://jekyllrb.com/) tool.
-
-Browse the [online documentation here.](http://bulma.io/documentation/overview/start/)
-
-## Related projects
-
-* Bulma with Attribute Modules: https://github.com/j5bot/bulma-attribute-selectors
-* Bulma with Rails: https://github.com/joshuajansen/bulma-rails
-* iTemplate: [http://itemplate.ga/](http://itemplate.ga/dashboard.html)
-* Vue Admin powered by Bulma: https://github.com/vue-bulma/vue-admin
-* Bulmaswatch — Free themes for Bulma: https://github.com/jenil/bulmaswatch
+@import '~bulma-scss-components';
+@include applyMiniReset();    // applies style from "scss/base/minireset.scss"
+@include applyGenericRules(); // applies style from "scss/base/generic.scss"
+```
 
 ## Copyright and license
 
-Code copyright 2017 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+[MIT](https://github.com/jgthms/bulma/blob/master/LICENSE).
