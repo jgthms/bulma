@@ -159,6 +159,11 @@
     &:#{$placeholder}-placeholder
       @content
 
+=custom-table($table-size, $td-widths)
+  @for $i from 1 through $table-size
+    tr td:nth-child(#{$i})
+      width: nth($td-widths, $i)
+
 =unselectable
   -webkit-touch-callout: none
   -webkit-user-select: none
