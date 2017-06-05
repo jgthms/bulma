@@ -1,0 +1,81 @@
+$title: $grey-darker !default;
+$title-size: $size-3 !default;
+$title-weight: $weight-light !default;
+$title-weight-bold: $weight-semibold !default;
+
+$subtitle: $grey-dark !default;
+$subtitle-size: $size-5 !default;
+$subtitle-strong: $grey-darker !default;
+$subtitle-weight: $weight-light !default;
+
+.title,
+.subtitle {
+  @include block;
+
+  word-break: break-word;
+
+  em,
+  span {
+    font-weight: $title-weight;
+  }
+
+  strong {
+    font-weight: $title-weight-bold;
+  }
+
+  .tag {
+    vertical-align: middle;
+  }
+}
+
+.title {
+  color: $title;
+  font-size: $title-size;
+  font-weight: $title-weight;
+  line-height: 1.125;
+
+  strong {
+    color: inherit;
+  }
+
+  & + .highlight {
+    margin-top: -0.75rem;
+  }
+
+  &:not(.is-spaced) + .subtitle {
+    margin-top: -1.5rem;
+  }
+
+  // Sizes
+  @each $size in $sizes {
+    $i: index($sizes, $size);
+
+    &.is-#{$i} {
+      font-size: $size;
+    }
+  }
+}
+
+.subtitle {
+  color: $subtitle;
+  font-size: $subtitle-size;
+  font-weight: $subtitle-weight;
+  line-height: 1.25;
+
+  strong {
+    color: $subtitle-strong;
+  }
+
+  &:not(.is-spaced) + .title {
+    margin-top: -1.5rem;
+  }
+
+  // Sizes
+  @each $size in $sizes {
+    $i: index($sizes, $size);
+
+    &.is#{$i} {
+      font-size: $size;
+    }
+  }
+}

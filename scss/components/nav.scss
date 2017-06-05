@@ -1,0 +1,173 @@
+$nav-height: 3.25rem !default;
+
+// Components
+
+.navToggle {
+  @include hamburger($nav-height);
+
+  // Responsiveness
+  @include tablet {
+    display: none;
+  }
+}
+
+.navItem {
+  align-items: center;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: $size-normal;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+
+  a {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  img {
+    max-height: 1.75rem;
+  }
+
+  .tag {
+    &:first-child:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+
+    &:last-child:not(:first-child) {
+      margin-left: 0.5rem;
+    }
+  }
+
+  // Responsiveness
+  @include mobile {
+    justify-content: flex-start;
+  }
+}
+
+.navItem a,
+a.navItem {
+  color: $text-light;
+
+  &:hover {
+    color: $link-hover;
+  }
+
+  // Modifiers
+  &.isActive {
+    color: $link-active;
+  }
+
+  &.isTab {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    padding-bottom: calc(0.75rem - 1px);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: calc(0.75rem - 1px);
+
+    &:hover {
+      border-bottom-color: $primary;
+      border-top-color: transparent;
+    }
+
+    &.isActive {
+      border-bottom: 3px solid $primary;
+      color: $primary;
+      padding-bottom: calc(0.75rem - 3px);
+    }
+  }
+
+  // Responsiveness
+  @include desktop {
+    &.isBrand {
+      padding-left: 0;
+    }
+  }
+}
+
+// Containers
+
+.navLeft,
+.navRight {
+  @include overflowTouch;
+
+  align-items: stretch;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  max-width: 100%;
+  overflow: auto;
+
+  @include widescreen {
+    flex-basis: 0;
+  }
+}
+
+.navLeft {
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+.navRight {
+  justify-content: flex-end;
+}
+
+.navCenter {
+  align-items: stretch;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navMenu {
+  // Responsiveness
+  @include mobile {
+    &.navRight {
+      background-color: $white;
+      box-shadow: 0 4px 7px rgba($black, 0.1);
+      left: 0;
+      display: none;
+      right: 0;
+      top: 100%;
+      position: absolute;
+
+      .navItem {
+        border-top: 1px solid rgba($border, 0.5);
+        padding: 0.75rem;
+      }
+
+      &.isActive {
+        display: block;
+      }
+    }
+  }
+}
+
+// Main container
+
+.nav {
+  align-items: stretch;
+  background-color: $white;
+  display: flex;
+  height: $nav-height;
+  position: relative;
+  text-align: center;
+  z-index: 10;
+
+  & > .container {
+    align-items: stretch;
+    display: flex;
+    min-height: $nav-height;
+    width: 100%;
+  }
+
+  // Modifiers
+  &.hasShadow {
+    box-shadow: 0 2px 3px rgba($black, 0.1);
+  }
+}

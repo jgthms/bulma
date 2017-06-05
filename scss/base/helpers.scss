@@ -1,0 +1,168 @@
+// Display
+
+$displays: "block" "flex" "inline" "inline-block" "inline-flex";
+
+@each $display in $displays {
+  .is#{pascalize($display)} {
+    display: #{$display};
+  }
+
+  .is#{pascalize($display)}Mobile {
+    @include mobile {
+      display: #{$display} !important;
+    }
+  }
+
+  .is#{pascalize($display)}Tablet {
+    @include tablet {
+      display: #{$display} !important;
+    }
+  }
+
+  .is#{pascalize($display)}TabletOnly {
+    @include tabletOnly {
+      display: #{$display} !important;
+    }
+  }
+
+  .is#{pascalize($display)}Touch {
+    @include touch {
+      display: #{$display} !important;
+    }
+  }
+
+  .is#{pascalize($display)}Desktop {
+    @include desktop {
+      display: #{$display} !important;
+    }
+  }
+
+  .is#{pascalize($display)}DesktopOnly {
+    @include desktopOnly {
+      display: #{$display} !important;
+    }
+  }
+
+  .is#{pascalize($display)}Widescreen {
+    @include widescreen {
+      display: #{$display} !important;
+    }
+  }
+}
+
+// Float
+
+.isClearfix {
+  @include clearfix;
+}
+
+.isPulledLeft {
+  float: left;
+}
+
+.isPulledRight {
+  float: right;
+}
+
+// Overflow
+
+.isClipped {
+  overflow: hidden !important;
+}
+
+// Overlay
+
+.isOverlay {
+  @include overlay;
+}
+
+// Text
+
+.hasTextCentered {
+  text-align: center;
+}
+
+.hasTextLeft {
+  text-align: left;
+}
+
+.hasTextRight {
+  text-align: right;
+}
+
+@each $name, $pair in $colors {
+  $color: nth($pair, 1);
+
+  .hasText#{pascalize($name)} {
+    color: $color;
+  }
+
+  a.hasText#{pascalize($name)} {
+    &:hover,
+    &:focus {
+      color: darken($color, 10%);
+    }
+  }
+}
+
+// Visibility
+
+.isHidden {
+  display: none !important;
+}
+
+.isHiddenMobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.isHiddenTablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.isHiddenTabletOnly {
+  @include tabletOnly {
+    display: none !important;
+  }
+}
+
+.isHiddenTouch {
+  @include touch {
+    display: none !important;
+  }
+}
+
+.isHiddenDesktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+.isHiddenDesktopOnly {
+  @include desktopOnly {
+    display: none !important;
+  }
+}
+
+.isHiddenWidescreen {
+  @include widescreen {
+    display: none !important;
+  }
+}
+
+// Other
+
+.isMarginless {
+  margin: 0 !important;
+}
+
+.isPaddingless {
+  padding: 0 !important;
+}
+
+.isUnselectable {
+  @include unselectable;
+}

@@ -1,0 +1,570 @@
+$input: $grey-darker !default;
+$input-background: $white !default;
+$input-border: $grey-lighter !default;
+
+$input-hover: $grey-darker !default;
+$input-hover-border: $grey-light !default;
+
+$input-focus: $grey-darker !default;
+$input-focus-border: $link !default;
+
+$input-disabled: $text-light !default;
+$input-disabled-background: $background !default;
+$input-disabled-border: $background !default;
+
+$input-arrow: $link !default;
+
+$input-icon: $grey-lighter !default;
+$input-icon-active: $grey !default;
+
+$input-radius: $radius !default;
+
+@mixin input {
+  @include control;
+
+  background-color: $input-background;
+  border-color: $input-border;
+  color: $input;
+
+  &:hover,
+  &.isHovered {
+    border-color: $input-hover-border;
+  }
+
+  &:focus,
+  &.isFocused,
+  &:active,
+  &.isActive {
+    border-color: $input-focus-border;
+  }
+
+  &[disabled] {
+    background-color: $input-disabled-background;
+    border-color: $input-disabled-border;
+    box-shadow: none;
+    color: $input-disabled;
+
+    @include placeholder {
+      color: rgba($input, 0.3);
+    }
+  }
+}
+
+.input,
+.textarea {
+  @include input;
+
+  box-shadow: inset 0 1px 2px rgba($black, 0.1);
+  max-width: 100%;
+  width: 100%;
+
+  &[type="search"] {
+    border-radius: 290486px;
+  }
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+
+    &.is-#{$name} {
+      border-color: $color;
+    }
+  }
+
+  // Sizes
+  &.isSmall {
+    @include controlSmall;
+  }
+
+  &.isMedium {
+    @include controlMedium;
+  }
+
+  &.isLarge {
+    @include controlLarge;
+  }
+
+  // Modifiers
+  &.isFullwidth {
+    display: block;
+    width: 100%;
+  }
+
+  &.isInline {
+    display: inline;
+    width: auto;
+  }
+}
+
+.textarea {
+  display: block;
+  max-height: 600px;
+  max-width: 100%;
+  min-height: 120px;
+  min-width: 100%;
+  padding: 0.625em;
+  resize: vertical;
+}
+
+.checkbox,
+.radio {
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.25;
+  position: relative;
+
+  input {
+    cursor: pointer;
+  }
+
+  &:hover {
+    color: $input-hover;
+  }
+
+  &[disabled] {
+    color: $input-disabled;
+    cursor: not-allowed;
+  }
+}
+
+.radio {
+  & + .radio {
+    margin-left: 0.5em;
+  }
+}
+
+.select {
+  display: inline-block;
+  height: 2.25em;
+  max-width: 100%;
+  position: relative;
+  vertical-align: top;
+
+  &:after {
+    @include arrow($input-arrow);
+
+    margin-top: -0.375em;
+    right: 1.125em;
+    top: 50%;
+    z-index: 4;
+  }
+
+  select {
+    @include input;
+
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    max-width: 100%;
+    outline: none;
+    padding-right: 2.5em;
+
+    &:hover {
+      border-color: $input-hover-border;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &[disabled]:hover {
+      border-color: $input-disabled-border;
+    }
+  }
+
+  // States
+  &:hover {
+    &:after {
+      border-color: $input-hover;
+    }
+  }
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+
+    &.is#{pascalize($name)} select {
+      border-color: $color;
+    }
+  }
+
+  // Sizes
+  &.isSmall {
+    @include controlSmall;
+  }
+
+  &.isMedium {
+    @include controlMedium;
+  }
+
+  &.isLarge {
+    @include controlLarge;
+  }
+
+  // Modifiers
+  &.isDisabled {
+    &:after {
+      border-color: $input-disabled;
+    }
+  }
+
+  &.isFullwidth {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  &.isLoading {
+    &:after {
+      @include loader;
+
+      margin-top: 0;
+      position: absolute;
+      right: 0.625em;
+      top: 0.625em;
+      transform: none;
+    }
+  }
+}
+
+.label {
+  color: $input;
+  display: block;
+  font-size: $size-normal;
+  font-weight: $weight-bold;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
+  // Sizes
+  &.isSmall {
+    font-size: $size-small;
+  }
+
+  &.isMedium {
+    font-size: $size-medium;
+  }
+
+  &.isLarge {
+    font-size: $size-large;
+  }
+}
+
+.help {
+  display: block;
+  font-size: $size-small;
+  margin-top: 0.25rem;
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+
+    &.is#{pascalize($name)} {
+      color: $color;
+    }
+  }
+}
+
+// Containers
+
+.field {
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  // Modifiers
+  &.hasAddons {
+    display: flex;
+    justify-content: flex-start;
+
+    .control {
+      margin-right: -1px;
+
+      &:first-child {
+        .button,
+        .input,
+        .select select {
+          border-bottom-left-radius: $input-radius;
+          border-top-left-radius: $input-radius;
+        }
+      }
+
+      &:last-child {
+        .button,
+        .input,
+        .select select {
+          border-bottom-right-radius: $input-radius;
+          border-top-right-radius: $input-radius;
+        }
+      }
+
+      .button,
+      .input,
+      .select select {
+        border-radius: 0;
+
+        &:hover,
+        &.isHovered {
+          z-index: 2;
+        }
+
+        &:focus,
+        &.isFocused,
+        &:active,
+        &.isActive {
+          z-index: 3;
+
+          &:hover {
+            z-index: 4;
+          }
+        }
+      }
+
+      &.isExpanded {
+        flex-grow: 1;
+      }
+    }
+
+    &.hasAddonsCentered {
+      justify-content: center;
+    }
+
+    &.hasAddonsRight {
+      justify-content: flex-end;
+    }
+
+    &.hasAddonsFullwidth {
+      .control {
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &.isGrouped {
+    display: flex;
+    justify-content: flex-start;
+
+    & > .control {
+      flex-shrink: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+        margin-right: 0.75rem;
+      }
+
+      &.isExpanded {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+
+    &.isGroupedCentered {
+      justify-content: center;
+    }
+
+    &.isGroupedRight {
+      justify-content: flex-end;
+    }
+  }
+
+  &.isHorizontal {
+    @include tablet {
+      display: flex;
+    }
+  }
+}
+
+.fieldLabel {
+  .label {
+    font-size: inherit;
+  }
+
+  @include mobile {
+    margin-bottom: 0.5rem;
+  }
+
+
+  @include tablet {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+    text-align: right;
+
+    &.isSmall {
+      font-size: $size-small;
+      padding-top: 0.375em;
+    }
+
+    &.isNormal {
+      padding-top: 0.375em;
+    }
+
+    &.isMedium {
+      font-size: $size-medium;
+      padding-top: 0.375em;
+    }
+
+    &.isLarge {
+      font-size: $size-large;
+      padding-top: 0.375em;
+    }
+  }
+}
+
+.fieldBody {
+  @include tablet {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 5;
+    flex-shrink: 1;
+
+    .field {
+      flex-shrink: 1;
+
+      &:not(.is-narrow) {
+        flex-grow: 1;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+        margin-right: 0.75rem;
+      }
+    }
+  }
+}
+
+.control {
+  font-size: $size-normal;
+  position: relative;
+  text-align: left;
+
+  // Modifiers
+  // DEPRECATED
+  &.hasIcon {
+    .icon {
+      color: $input-icon;
+      height: 2.25em;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 2.25em;
+      z-index: 4;
+    }
+
+    .input {
+      &:focus {
+        & + .icon {
+          color: $input-icon-active;
+        }
+      }
+
+      &.isSmall {
+        & + .icon {
+          font-size: $size-small;
+        }
+      }
+
+      &.isMedium {
+        & + .icon {
+          font-size: $size-medium;
+        }
+      }
+
+      &.isLarge {
+        & + .icon {
+          font-size: $size-large;
+        }
+      }
+    }
+
+    &:not(.has-icon-right) {
+      .icon {
+        left: 0;
+      }
+
+      .input {
+        padding-left: 2.25em;
+      }
+    }
+
+    &.hasIconRight {
+      .icon {
+        right: 0;
+      }
+
+      .input {
+        padding-right: 2.25em;
+      }
+    }
+  }
+
+  &.hasIconsLeft,
+  &.hasIconsRight {
+    .input,
+    .select select {
+      &:focus {
+        & ~ .icon {
+          color: $input-icon-active;
+        }
+      }
+
+      &.isSmall ~ .icon {
+        font-size: $size-small;
+      }
+
+      &.isMedium ~ .icon {
+        font-size: $size-medium;
+      }
+
+      &.isLarge ~ .icon {
+        font-size: $size-large;
+      }
+    }
+
+    .icon {
+      color: $input-icon;
+      height: 2.25em;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 2.25em;
+      z-index: 4;
+    }
+  }
+
+  &.hasIconsLeft {
+    .input,
+    .select select {
+      padding-left: 2.25em;
+    }
+
+    .icon.isLeft {
+      left: 0;
+    }
+  }
+
+  &.hasIconsRight {
+    .input,
+    .select select {
+      padding-right: 2.25em;
+    }
+
+    .icon.isRight {
+      right: 0;
+    }
+  }
+
+  &.isLoading {
+    &:after {
+      @include loader;
+
+      position: absolute !important;
+      right: 0.625em;
+      top: 0.625em;
+    }
+  }
+}
