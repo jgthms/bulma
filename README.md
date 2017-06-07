@@ -63,6 +63,7 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 * iTemplate: [http://itemplate.ga/](http://itemplate.ga/dashboard.html)
 * Vue Admin powered by Bulma: https://github.com/vue-bulma/vue-admin
 * Bulmaswatch — Free themes for Bulma: https://github.com/jenil/bulmaswatch
+* Goldfish — Vault UI with Bulma, Golang, and Vue Admin: https://github.com/Caiyeon/goldfish
 * Bloomer — A set of React components for Bulma: https://bloomer.js.org
 
 ## Copyright and license
