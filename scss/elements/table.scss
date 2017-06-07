@@ -12,7 +12,7 @@ $table-row-active: $primary-invert !default;
 $table-row-even-background: $white-bis !default;
 $table-row-even-hover-background: $white-ter !default;
 
-.table {
+%table {
   background-color: $table-background;
   color: $table;
   margin-bottom: 1.5rem;
@@ -26,7 +26,7 @@ $table-row-even-hover-background: $white-ter !default;
     vertical-align: top;
 
     // Modifiers
-    &.isNarrow {
+    &%isNarrow {
       white-space: nowrap;
       width: 1%;
     }
@@ -42,7 +42,7 @@ $table-row-even-hover-background: $white-ter !default;
       background-color: $table-row-hover-background;
     }
 
-    &.isSelected {
+    &%isSelected {
       background-color: $table-row-active-background;
       color: $table-row-active;
 
@@ -87,7 +87,7 @@ $table-row-even-hover-background: $white-ter !default;
   }
 
   // Modifiers
-  &.isBordered {
+  &%isBordered {
     td,
     th {
       border-width: 1px;
@@ -103,16 +103,16 @@ $table-row-even-hover-background: $white-ter !default;
     }
   }
 
-  &.isNarrow {
+  &%isNarrow {
     td,
     th {
       padding: 0.25em 0.5em;
     }
   }
 
-  &.isStriped {
+  &%isStriped {
     tbody {
-      tr:not(.is-selected) {
+      tr:not(%isSelected) {
         &:nth-child(even) {
           background-color: $table-row-even-background;
 

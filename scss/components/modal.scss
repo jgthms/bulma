@@ -1,11 +1,11 @@
-.modalBackground {
+%modalBackground {
   @include overlay;
 
   background-color: rgba($black, 0.86);
 }
 
-.modalContent,
-.modalCard {
+%modalContent,
+%modalCard {
   margin: 0 20px;
   max-height: calc(100vh - 160px);
   overflow: auto;
@@ -20,7 +20,7 @@
   }
 }
 
-.modalClose {
+%modalClose {
   @include delete;
 
   background: none;
@@ -31,15 +31,15 @@
   width: 40px;
 }
 
-.modalCard {
+%modalCard {
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 40px);
   overflow: hidden;
 }
 
-.modalCardHead,
-.modalCardFoot {
+%modalCardHead,
+%modalCardFoot {
   align-items: center;
   background-color: $background;
   display: flex;
@@ -49,13 +49,13 @@
   position: relative;
 }
 
-.modalCardHead {
+%modalCardHead {
   border-bottom: 1px solid $border;
   border-top-left-radius: $radius-large;
   border-top-right-radius: $radius-large;
 }
 
-.modalCardTitle {
+%modalCardTitle {
   color: $text-strong;
   flex-grow: 1;
   flex-shrink: 0;
@@ -63,19 +63,19 @@
   line-height: 1;
 }
 
-.modalCardFoot {
+%modalCardFoot {
   border-bottom-left-radius: $radius-large;
   border-bottom-right-radius: $radius-large;
   border-top: 1px solid $border;
 
-  .button {
+  %button {
     &:not(:last-child) {
       margin-right: 10px;
     }
   }
 }
 
-.modalCardBody {
+%modalCardBody {
   @include overflowTouch;
 
   background-color: $white;
@@ -85,7 +85,7 @@
   padding: 20px;
 }
 
-.modal {
+%modal {
   @include overlay;
 
   align-items: center;
@@ -96,7 +96,7 @@
   z-index: 20;
 
   // Modifiers
-  &.isActive {
+  &%isActive {
     display: flex;
   }
 }

@@ -1,4 +1,4 @@
-.message {
+%message {
   @include block;
 
   background-color: $background;
@@ -14,15 +14,15 @@
     $darken-percentage: $color-luminance * 70%;
     $desaturate-percentage: $color-luminance * 30%;
 
-    &.is#{pascalize($name)} {
+    &%is#{pascalize($name)} {
       background-color: lighten($color, $color-lightning);
 
-      .messageHeader {
+      %messageHeader {
         background-color: $color;
         color: $color-invert;
       }
 
-      .messageBody {
+      %messageBody {
         border-color: $color;
         color: desaturate(darken($color, $darken-percentage), $desaturate-percentage);
       }
@@ -30,7 +30,7 @@
   }
 }
 
-.messageHeader {
+%messageHeader {
   align-items: center;
   background-color: $text;
   border-radius: $radius $radius 0 0;
@@ -50,20 +50,20 @@
     text-decoration: underline;
   }
 
-  .delete {
+  %delete {
     flex-grow: 0;
     flex-shrink: 0;
     margin-left: 0.75em;
   }
 
-  & + .messageBody {
+  & + %messageBody {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: none;
   }
 }
 
-.messageBody {
+%messageBody {
   border: 1px solid $border;
   border-radius: $radius;
   color: $text;

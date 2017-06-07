@@ -8,8 +8,8 @@ $subtitle-size: $size-5 !default;
 $subtitle-strong: $grey-darker !default;
 $subtitle-weight: $weight-light !default;
 
-.title,
-.subtitle {
+%title,
+%subtitle {
   @include block;
 
   word-break: break-word;
@@ -23,12 +23,12 @@ $subtitle-weight: $weight-light !default;
     font-weight: $title-weight-bold;
   }
 
-  .tag {
+  %tag {
     vertical-align: middle;
   }
 }
 
-.title {
+%title {
   color: $title;
   font-size: $title-size;
   font-weight: $title-weight;
@@ -38,11 +38,11 @@ $subtitle-weight: $weight-light !default;
     color: inherit;
   }
 
-  & + .highlight {
+  & + %highlight {
     margin-top: -0.75rem;
   }
 
-  &:not(.is-spaced) + .subtitle {
+  &:not(%isSpaced) + %subtitle {
     margin-top: -1.5rem;
   }
 
@@ -50,13 +50,13 @@ $subtitle-weight: $weight-light !default;
   @each $size in $sizes {
     $i: index($sizes, $size);
 
-    &.is#{$i} {
+    &%is#{$i} {
       font-size: $size;
     }
   }
 }
 
-.subtitle {
+%subtitle {
   color: $subtitle;
   font-size: $subtitle-size;
   font-weight: $subtitle-weight;
@@ -66,7 +66,7 @@ $subtitle-weight: $weight-light !default;
     color: $subtitle-strong;
   }
 
-  &:not(.is-spaced) + .title {
+  &:not(%isSpaced) + %title {
     margin-top: -1.5rem;
   }
 
@@ -74,7 +74,7 @@ $subtitle-weight: $weight-light !default;
   @each $size in $sizes {
     $i: index($sizes, $size);
 
-    &.is#{$i} {
+    &%is#{$i} {
       font-size: $size;
     }
   }

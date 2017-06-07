@@ -1,6 +1,6 @@
 $dimensions: 16 24 32 48 64 96 128;
 
-.image {
+%image {
   display: block;
   position: relative;
 
@@ -11,12 +11,12 @@ $dimensions: 16 24 32 48 64 96 128;
   }
 
   // Ratio
-  &.isSquare,
-  &.is1by1,
-  &.is4by3,
-  &.is3by2,
-  &.is16by9,
-  &.is2by1 {
+  &%isSquare,
+  &%is1by1,
+  &%is4by3,
+  &%is3by2,
+  &%is16by9,
+  &%is2by1 {
     img {
       @include overlay;
 
@@ -25,30 +25,30 @@ $dimensions: 16 24 32 48 64 96 128;
     }
   }
 
-  &.isSquare,
-  &.is1by1 {
+  &%isSquare,
+  &%is1by1 {
     padding-top: 100%;
   }
 
-  &.is4by3 {
+  &%is4by3 {
     padding-top: 75%;
   }
 
-  &.is3by2 {
+  &%is3by2 {
     padding-top: 66.6666%;
   }
 
-  &.is16by9 {
+  &%is16by9 {
     padding-top: 56.25%;
   }
 
-  &.is2by1 {
+  &%is2by1 {
     padding-top: 50%;
   }
 
   // Sizes
   @each $dimension in $dimensions {
-    &.is#{$dimension}x#{$dimension} {
+    &%is#{$dimension}x#{$dimension} {
       height: $dimension * 1px;
       width: $dimension * 1px;
     }

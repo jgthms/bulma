@@ -1,4 +1,4 @@
-.tile {
+%tile {
   align-items: stretch;
   display: block;
   flex-basis: 0;
@@ -7,7 +7,7 @@
   min-height: min-content;
 
   // Modifiers
-  &.isAncestor {
+  &%isAncestor {
     margin-left: -0.75rem;
     margin-right: -0.75rem;
     margin-top: -0.75rem;
@@ -21,30 +21,30 @@
     }
   }
 
-  &.isChild {
+  &%isChild {
     margin: 0 !important;
   }
 
-  &.isParent {
+  &%isParent {
     padding: 0.75rem;
   }
 
-  &.isVertical {
+  &%isVertical {
     flex-direction: column;
 
-    & > .tile.isChild:not(:last-child) {
+    & > %tile%isChild:not(:last-child) {
       margin-bottom: 1.5rem !important;
     }
   }
 
   // Responsiveness
   @include tablet {
-    &:not(.is-child) {
+    &:not(%isChild) {
       display: flex;
     }
 
     @for $i from 1 through 12 {
-      &.is#{$i} {
+      &%is#{$i} {
         flex: none;
         width: $i / 12 * 100%;
       }

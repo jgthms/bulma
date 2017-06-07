@@ -3,47 +3,47 @@
 $displays: "block" "flex" "inline" "inline-block" "inline-flex";
 
 @each $display in $displays {
-  .is#{pascalize($display)} {
+  %is#{pascalize($display)} {
     display: #{$display};
   }
 
-  .is#{pascalize($display)}Mobile {
+  %is#{pascalize($display)}Mobile {
     @include mobile {
       display: #{$display} !important;
     }
   }
 
-  .is#{pascalize($display)}Tablet {
+  %is#{pascalize($display)}Tablet {
     @include tablet {
       display: #{$display} !important;
     }
   }
 
-  .is#{pascalize($display)}TabletOnly {
+  %is#{pascalize($display)}TabletOnly {
     @include tabletOnly {
       display: #{$display} !important;
     }
   }
 
-  .is#{pascalize($display)}Touch {
+  %is#{pascalize($display)}Touch {
     @include touch {
       display: #{$display} !important;
     }
   }
 
-  .is#{pascalize($display)}Desktop {
+  %is#{pascalize($display)}Desktop {
     @include desktop {
       display: #{$display} !important;
     }
   }
 
-  .is#{pascalize($display)}DesktopOnly {
+  %is#{pascalize($display)}DesktopOnly {
     @include desktopOnly {
       display: #{$display} !important;
     }
   }
 
-  .is#{pascalize($display)}Widescreen {
+  %is#{pascalize($display)}Widescreen {
     @include widescreen {
       display: #{$display} !important;
     }
@@ -52,52 +52,52 @@ $displays: "block" "flex" "inline" "inline-block" "inline-flex";
 
 // Float
 
-.isClearfix {
+%isClearfix {
   @include clearfix;
 }
 
-.isPulledLeft {
+%isPulledLeft {
   float: left;
 }
 
-.isPulledRight {
+%isPulledRight {
   float: right;
 }
 
 // Overflow
 
-.isClipped {
+%isClipped {
   overflow: hidden !important;
 }
 
 // Overlay
 
-.isOverlay {
+%isOverlay {
   @include overlay;
 }
 
 // Text
 
-.hasTextCentered {
+%hasTextCentered {
   text-align: center;
 }
 
-.hasTextLeft {
+%hasTextLeft {
   text-align: left;
 }
 
-.hasTextRight {
+%hasTextRight {
   text-align: right;
 }
 
 @each $name, $pair in $colors {
   $color: nth($pair, 1);
 
-  .hasText#{pascalize($name)} {
+  %hasText#{pascalize($name)} {
     color: $color;
   }
 
-  a.hasText#{pascalize($name)} {
+  a%hasText#{pascalize($name)} {
     &:hover,
     &:focus {
       color: darken($color, 10%);
@@ -107,47 +107,47 @@ $displays: "block" "flex" "inline" "inline-block" "inline-flex";
 
 // Visibility
 
-.isHidden {
+%isHidden {
   display: none !important;
 }
 
-.isHiddenMobile {
+%isHiddenMobile {
   @include mobile {
     display: none !important;
   }
 }
 
-.isHiddenTablet {
+%isHiddenTablet {
   @include tablet {
     display: none !important;
   }
 }
 
-.isHiddenTabletOnly {
+%isHiddenTabletOnly {
   @include tabletOnly {
     display: none !important;
   }
 }
 
-.isHiddenTouch {
+%isHiddenTouch {
   @include touch {
     display: none !important;
   }
 }
 
-.isHiddenDesktop {
+%isHiddenDesktop {
   @include desktop {
     display: none !important;
   }
 }
 
-.isHiddenDesktopOnly {
+%isHiddenDesktopOnly {
   @include desktopOnly {
     display: none !important;
   }
 }
 
-.isHiddenWidescreen {
+%isHiddenWidescreen {
   @include widescreen {
     display: none !important;
   }
@@ -155,14 +155,14 @@ $displays: "block" "flex" "inline" "inline-block" "inline-flex";
 
 // Other
 
-.isMarginless {
+%isMarginless {
   margin: 0 !important;
 }
 
-.isPaddingless {
+%isPaddingless {
   padding: 0 !important;
 }
 
-.isUnselectable {
+%isUnselectable {
   @include unselectable;
 }

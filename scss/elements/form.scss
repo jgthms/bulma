@@ -27,14 +27,14 @@ $input-radius: $radius !default;
   color: $input;
 
   &:hover,
-  &.isHovered {
+  &%isHovered {
     border-color: $input-hover-border;
   }
 
   &:focus,
-  &.isFocused,
+  &%isFocused,
   &:active,
-  &.isActive {
+  &%isActive {
     border-color: $input-focus-border;
   }
 
@@ -50,8 +50,8 @@ $input-radius: $radius !default;
   }
 }
 
-.input,
-.textarea {
+%input,
+%textarea {
   @include input;
 
   box-shadow: inset 0 1px 2px rgba($black, 0.1);
@@ -66,37 +66,37 @@ $input-radius: $radius !default;
   @each $name, $pair in $colors {
     $color: nth($pair, 1);
 
-    &.is#{pascalize($name)} {
+    &%is#{pascalize($name)} {
       border-color: $color;
     }
   }
 
   // Sizes
-  &.isSmall {
+  &%isSmall {
     @include controlSmall;
   }
 
-  &.isMedium {
+  &%isMedium {
     @include controlMedium;
   }
 
-  &.isLarge {
+  &%isLarge {
     @include controlLarge;
   }
 
   // Modifiers
-  &.isFullwidth {
+  &%isFullwidth {
     display: block;
     width: 100%;
   }
 
-  &.isInline {
+  &%isInline {
     display: inline;
     width: auto;
   }
 }
 
-.textarea {
+%textarea {
   display: block;
   max-height: 600px;
   max-width: 100%;
@@ -106,8 +106,8 @@ $input-radius: $radius !default;
   resize: vertical;
 }
 
-.checkbox,
-.radio {
+%checkbox,
+%radio {
   cursor: pointer;
   display: inline-block;
   line-height: 1.25;
@@ -127,13 +127,13 @@ $input-radius: $radius !default;
   }
 }
 
-.radio {
-  & + .radio {
+%radio {
+  & + %radio {
     margin-left: 0.5em;
   }
 }
 
-.select {
+%select {
   display: inline-block;
   height: 2.25em;
   max-width: 100%;
@@ -183,32 +183,32 @@ $input-radius: $radius !default;
   @each $name, $pair in $colors {
     $color: nth($pair, 1);
 
-    &.is#{pascalize($name)} select {
+    &%is#{pascalize($name)} select {
       border-color: $color;
     }
   }
 
   // Sizes
-  &.isSmall {
+  &%isSmall {
     @include controlSmall;
   }
 
-  &.isMedium {
+  &%isMedium {
     @include controlMedium;
   }
 
-  &.isLarge {
+  &%isLarge {
     @include controlLarge;
   }
 
   // Modifiers
-  &.isDisabled {
+  &%isDisabled {
     &:after {
       border-color: $input-disabled;
     }
   }
 
-  &.isFullwidth {
+  &%isFullwidth {
     width: 100%;
 
     select {
@@ -216,7 +216,7 @@ $input-radius: $radius !default;
     }
   }
 
-  &.isLoading {
+  &%isLoading {
     &:after {
       @include loader;
 
@@ -229,7 +229,7 @@ $input-radius: $radius !default;
   }
 }
 
-.label {
+%label {
   color: $input;
   display: block;
   font-size: $size-normal;
@@ -240,20 +240,20 @@ $input-radius: $radius !default;
   }
 
   // Sizes
-  &.isSmall {
+  &%isSmall {
     font-size: $size-small;
   }
 
-  &.isMedium {
+  &%isMedium {
     font-size: $size-medium;
   }
 
-  &.isLarge {
+  &%isLarge {
     font-size: $size-large;
   }
 }
 
-.help {
+%help {
   display: block;
   font-size: $size-small;
   margin-top: 0.25rem;
@@ -261,7 +261,7 @@ $input-radius: $radius !default;
   @each $name, $pair in $colors {
     $color: nth($pair, 1);
 
-    &.is#{pascalize($name)} {
+    &%is#{pascalize($name)} {
       color: $color;
     }
   }
@@ -269,51 +269,51 @@ $input-radius: $radius !default;
 
 // Containers
 
-.field {
+%field {
   &:not(:last-child) {
     margin-bottom: 0.75rem;
   }
 
   // Modifiers
-  &.hasAddons {
+  &%hasAddons {
     display: flex;
     justify-content: flex-start;
 
-    .control {
+    %control {
       margin-right: -1px;
 
       &:first-child {
-        .button,
-        .input,
-        .select select {
+        %button,
+        %input,
+        %select select {
           border-bottom-left-radius: $input-radius;
           border-top-left-radius: $input-radius;
         }
       }
 
       &:last-child {
-        .button,
-        .input,
-        .select select {
+        %button,
+        %input,
+        %select select {
           border-bottom-right-radius: $input-radius;
           border-top-right-radius: $input-radius;
         }
       }
 
-      .button,
-      .input,
-      .select select {
+      %button,
+      %input,
+      %select select {
         border-radius: 0;
 
         &:hover,
-        &.isHovered {
+        &%isHovered {
           z-index: 2;
         }
 
         &:focus,
-        &.isFocused,
+        &%isFocused,
         &:active,
-        &.isActive {
+        &%isActive {
           z-index: 3;
 
           &:hover {
@@ -322,32 +322,32 @@ $input-radius: $radius !default;
         }
       }
 
-      &.isExpanded {
+      &%isExpanded {
         flex-grow: 1;
       }
     }
 
-    &.hasAddonsCentered {
+    &%hasAddonsCentered {
       justify-content: center;
     }
 
-    &.hasAddonsRight {
+    &%hasAddonsRight {
       justify-content: flex-end;
     }
 
-    &.hasAddonsFullwidth {
-      .control {
+    &%hasAddonsFullwidth {
+      %control {
         flex-grow: 1;
         flex-shrink: 0;
       }
     }
   }
 
-  &.isGrouped {
+  &%isGrouped {
     display: flex;
     justify-content: flex-start;
 
-    & > .control {
+    & > %control {
       flex-shrink: 0;
 
       &:not(:last-child) {
@@ -355,30 +355,30 @@ $input-radius: $radius !default;
         margin-right: 0.75rem;
       }
 
-      &.isExpanded {
+      &%isExpanded {
         flex-grow: 1;
         flex-shrink: 1;
       }
     }
 
-    &.isGroupedCentered {
+    &%isGroupedCentered {
       justify-content: center;
     }
 
-    &.isGroupedRight {
+    &%isGroupedRight {
       justify-content: flex-end;
     }
   }
 
-  &.isHorizontal {
+  &%isHorizontal {
     @include tablet {
       display: flex;
     }
   }
 }
 
-.fieldLabel {
-  .label {
+%fieldLabel {
+  %label {
     font-size: inherit;
   }
 
@@ -394,38 +394,38 @@ $input-radius: $radius !default;
     margin-right: 1.5rem;
     text-align: right;
 
-    &.isSmall {
+    &%isSmall {
       font-size: $size-small;
       padding-top: 0.375em;
     }
 
-    &.isNormal {
+    &%isNormal {
       padding-top: 0.375em;
     }
 
-    &.isMedium {
+    &%isMedium {
       font-size: $size-medium;
       padding-top: 0.375em;
     }
 
-    &.isLarge {
+    &%isLarge {
       font-size: $size-large;
       padding-top: 0.375em;
     }
   }
 }
 
-.fieldBody {
+%fieldBody {
   @include tablet {
     display: flex;
     flex-basis: 0;
     flex-grow: 5;
     flex-shrink: 1;
 
-    .field {
+    %field {
       flex-shrink: 1;
 
-      &:not(.is-narrow) {
+      &:not(%isNarrow) {
         flex-grow: 1;
       }
 
@@ -437,15 +437,15 @@ $input-radius: $radius !default;
   }
 }
 
-.control {
+%control {
   font-size: $size-normal;
   position: relative;
   text-align: left;
 
   // Modifiers
   // DEPRECATED
-  &.hasIcon {
-    .icon {
+  &%hasIcon {
+    %icon {
       color: $input-icon;
       height: 2.25em;
       pointer-events: none;
@@ -455,77 +455,77 @@ $input-radius: $radius !default;
       z-index: 4;
     }
 
-    .input {
+    %input {
       &:focus {
-        & + .icon {
+        & + %icon {
           color: $input-icon-active;
         }
       }
 
-      &.isSmall {
-        & + .icon {
+      &%isSmall {
+        & + %icon {
           font-size: $size-small;
         }
       }
 
-      &.isMedium {
-        & + .icon {
+      &%isMedium {
+        & + %icon {
           font-size: $size-medium;
         }
       }
 
-      &.isLarge {
-        & + .icon {
+      &%isLarge {
+        & + %icon {
           font-size: $size-large;
         }
       }
     }
 
-    &:not(.has-icon-right) {
-      .icon {
+    &:not(%hasIconRight) {
+      %icon {
         left: 0;
       }
 
-      .input {
+      %input {
         padding-left: 2.25em;
       }
     }
 
-    &.hasIconRight {
-      .icon {
+    &%hasIconRight {
+      %icon {
         right: 0;
       }
 
-      .input {
+      %input {
         padding-right: 2.25em;
       }
     }
   }
 
-  &.hasIconsLeft,
-  &.hasIconsRight {
-    .input,
-    .select select {
+  &%hasIconsLeft,
+  &%hasIconsRight {
+    %input,
+    %select select {
       &:focus {
-        & ~ .icon {
+        & ~ %icon {
           color: $input-icon-active;
         }
       }
 
-      &.isSmall ~ .icon {
+      &%isSmall ~ %icon {
         font-size: $size-small;
       }
 
-      &.isMedium ~ .icon {
+      &%isMedium ~ %icon {
         font-size: $size-medium;
       }
 
-      &.isLarge ~ .icon {
+      &%isLarge ~ %icon {
         font-size: $size-large;
       }
     }
 
-    .icon {
+    %icon {
       color: $input-icon;
       height: 2.25em;
       pointer-events: none;
@@ -536,29 +536,29 @@ $input-radius: $radius !default;
     }
   }
 
-  &.hasIconsLeft {
-    .input,
-    .select select {
+  &%hasIconsLeft {
+    %input,
+    %select select {
       padding-left: 2.25em;
     }
 
-    .icon.isLeft {
+    %icon%isLeft {
       left: 0;
     }
   }
 
-  &.hasIconsRight {
-    .input,
-    .select select {
+  &%hasIconsRight {
+    %input,
+    %select select {
       padding-right: 2.25em;
     }
 
-    .icon.isRight {
+    %icon%isRight {
       right: 0;
     }
   }
 
-  &.isLoading {
+  &%isLoading {
     &:after {
       @include loader;
 

@@ -23,36 +23,36 @@ $pagination-ellipsis: $grey-light !default;
 
 $pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2);
 
-.pagination {
+%pagination {
   font-size: $size-normal;
   margin: -0.25rem;
 
   // Sizes
-  &.isSmall {
+  &%isSmall {
     font-size: $size-small;
   }
 
-  &.isMedium {
+  &%isMedium {
     font-size: $size-medium;
   }
 
-  &.isLarge {
+  &%isLarge {
     font-size: $size-large;
   }
 }
 
-.pagination,
-.paginationList {
+%pagination,
+%paginationList {
   align-items: center;
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-.paginationPrevious,
-.paginationNext,
-.paginationLink,
-.paginationEllipsis {
+%paginationPrevious,
+%paginationNext,
+%paginationLink,
+%paginationEllipsis {
   @include control;
   @include unselectable;
 
@@ -64,9 +64,9 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2);
   text-align: center;
 }
 
-.paginationPrevious,
-.paginationNext,
-.paginationLink {
+%paginationPrevious,
+%paginationNext,
+%paginationLink {
   border-color: $pagination-border;
   min-width: 2.25em;
 
@@ -92,42 +92,42 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2);
   }
 }
 
-.paginationPrevious,
-.paginationNext {
+%paginationPrevious,
+%paginationNext {
   padding-left: 0.75em;
   padding-right: 0.75em;
   white-space: nowrap;
 }
 
-.paginationLink {
-  &.isCurrent {
+%paginationLink {
+  &%isCurrent {
     background-color: $pagination-current-background;
     border-color: $pagination-current-border;
     color: $pagination-current;
   }
 }
 
-.paginationEllipsis {
+%paginationEllipsis {
   color: $pagination-ellipsis;
   pointer-events: none;
 }
 
-.paginationList {
+%paginationList {
   flex-wrap: wrap;
 }
 
 @include mobile {
-  .pagination {
+  %pagination {
     flex-wrap: wrap;
   }
 
-  .paginationPrevious,
-  .paginationNext {
+  %paginationPrevious,
+  %paginationNext {
     flex-grow: 1;
     flex-shrink: 1;
   }
 
-  .paginationList {
+  %paginationList {
     li {
       flex-grow: 1;
       flex-shrink: 1;
@@ -137,49 +137,49 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($black, 0.2);
 
 
 @include tablet {
-  .paginationList {
+  %paginationList {
     flex-grow: 1;
     flex-shrink: 1;
     justify-content: flex-start;
     order: 1;
   }
 
-  .paginationPrevious {
+  %paginationPrevious {
     order: 2;
   }
 
-  .paginationNext {
+  %paginationNext {
     order: 3;
   }
 
-  .pagination {
+  %pagination {
     justify-content: space-between;
 
-    &.isCentered {
-      .paginationPrevious {
+    &%isCentered {
+      %paginationPrevious {
         order: 1;
       }
 
-      .paginationList {
+      %paginationList {
         justify-content: center;
         order: 2;
       }
 
-      .paginationNext {
+      %paginationNext {
         order: 3;
       }
     }
 
-    &.isRight {
-      .paginationPrevious {
+    &%isRight {
+      %paginationPrevious {
         order: 1;
       }
 
-      .paginationNext {
+      %paginationNext {
         order: 2;
       }
 
-      .paginationList {
+      %paginationList {
         justify-content: flex-end;
         order: 3;
       }

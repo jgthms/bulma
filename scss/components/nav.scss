@@ -2,7 +2,7 @@ $nav-height: 3.25rem !default;
 
 // Components
 
-.navToggle {
+%navToggle {
   @include hamburger($nav-height);
 
   // Responsiveness
@@ -11,7 +11,7 @@ $nav-height: 3.25rem !default;
   }
 }
 
-.navItem {
+%navItem {
   align-items: center;
   display: flex;
   flex-grow: 0;
@@ -30,7 +30,7 @@ $nav-height: 3.25rem !default;
     max-height: 1.75rem;
   }
 
-  .tag {
+  %tag {
     &:first-child:not(:last-child) {
       margin-right: 0.5rem;
     }
@@ -46,8 +46,8 @@ $nav-height: 3.25rem !default;
   }
 }
 
-.navItem a,
-a.navItem {
+%navItem a,
+a%navItem {
   color: $text-light;
 
   &:hover {
@@ -55,11 +55,11 @@ a.navItem {
   }
 
   // Modifiers
-  &.isActive {
+  &%isActive {
     color: $link-active;
   }
 
-  &.isTab {
+  &%isTab {
     border-bottom: 1px solid transparent;
     border-top: 1px solid transparent;
     padding-bottom: calc(0.75rem - 1px);
@@ -72,7 +72,7 @@ a.navItem {
       border-top-color: transparent;
     }
 
-    &.isActive {
+    &%isActive {
       border-bottom: 3px solid $primary;
       color: $primary;
       padding-bottom: calc(0.75rem - 3px);
@@ -81,7 +81,7 @@ a.navItem {
 
   // Responsiveness
   @include desktop {
-    &.isBrand {
+    &%isBrand {
       padding-left: 0;
     }
   }
@@ -89,8 +89,8 @@ a.navItem {
 
 // Containers
 
-.navLeft,
-.navRight {
+%navLeft,
+%navRight {
   @include overflowTouch;
 
   align-items: stretch;
@@ -105,16 +105,16 @@ a.navItem {
   }
 }
 
-.navLeft {
+%navLeft {
   justify-content: flex-start;
   white-space: nowrap;
 }
 
-.navRight {
+%navRight {
   justify-content: flex-end;
 }
 
-.navCenter {
+%navCenter {
   align-items: stretch;
   display: flex;
   flex-grow: 0;
@@ -124,10 +124,10 @@ a.navItem {
   margin-right: auto;
 }
 
-.navMenu {
+%navMenu {
   // Responsiveness
   @include mobile {
-    &.navRight {
+    &%navRight {
       background-color: $white;
       box-shadow: 0 4px 7px rgba($black, 0.1);
       left: 0;
@@ -136,12 +136,12 @@ a.navItem {
       top: 100%;
       position: absolute;
 
-      .navItem {
+      %navItem {
         border-top: 1px solid rgba($border, 0.5);
         padding: 0.75rem;
       }
 
-      &.isActive {
+      &%isActive {
         display: block;
       }
     }
@@ -150,7 +150,7 @@ a.navItem {
 
 // Main container
 
-.nav {
+%nav {
   align-items: stretch;
   background-color: $white;
   display: flex;
@@ -159,7 +159,7 @@ a.navItem {
   text-align: center;
   z-index: 10;
 
-  & > .container {
+  & > %container {
     align-items: stretch;
     display: flex;
     min-height: $nav-height;
@@ -167,7 +167,7 @@ a.navItem {
   }
 
   // Modifiers
-  &.hasShadow {
+  &%hasShadow {
     box-shadow: 0 2px 3px rgba($black, 0.1);
   }
 }

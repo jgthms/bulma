@@ -1,4 +1,4 @@
-.levelItem {
+%levelItem {
   align-items: center;
   display: flex;
   flex-basis: auto;
@@ -6,8 +6,8 @@
   flex-shrink: 0;
   justify-content: center;
 
-  .title,
-  .subtitle {
+  %title,
+  %subtitle {
     margin-bottom: 0;
   }
 
@@ -19,31 +19,31 @@
   }
 }
 
-.levelLeft,
-.levelRight {
+%levelLeft,
+%levelRight {
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
 
-  .levelItem {
+  %levelItem {
     &:not(:last-child) {
       margin-right: 0.75rem;
     }
 
     // Modifiers
-    &.isFlexible {
+    &%isFlexible {
       flex-grow: 1;
     }
   }
 }
 
-.levelLeft {
+%levelLeft {
   align-items: center;
   justify-content: flex-start;
 
   // Responsiveness
   @include mobile {
-    & + .levelRight {
+    & + %levelRight {
       margin-top: 1.5rem;
     }
   }
@@ -54,7 +54,7 @@
   }
 }
 
-.levelRight {
+%levelRight {
   align-items: center;
   justify-content: flex-end;
 
@@ -64,7 +64,7 @@
   }
 }
 
-.level {
+%level {
   @include block;
 
   align-items: center;
@@ -80,24 +80,24 @@
   }
 
   // Modifiers
-  &.isMobile {
+  &%isMobile {
     display: flex;
 
-    .levelLeft,
-    .levelRight {
+    %levelLeft,
+    %levelRight {
       display: flex;
     }
 
-    .levelLeft + .levelRight {
+    %levelLeft + %levelRight {
       margin-top: 0;
     }
 
-    .levelItem {
+    %levelItem {
       &:not(:last-child) {
         margin-bottom: 0;
       }
 
-      &:not(.is-narrow) {
+      &:not(%isNarrow) {
         flex-grow: 1;
       }
     }
@@ -107,8 +107,8 @@
   @include tablet {
     display: flex;
 
-    & > .levelItem {
-      &:not(.is-narrow) {
+    & > %levelItem {
+      &:not(%isNarrow) {
         flex-grow: 1;
       }
     }
