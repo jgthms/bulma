@@ -8,6 +8,12 @@ jQuery(document).ready(function ($) {
     $menu.toggleClass('is-active');
   });
 
+  var $dropdown = $('.is-dropdown');
+
+  $dropdown.click(function() {
+    $(this).parent('.dropdown, .dropup').toggleClass('is-active');
+  });
+
   $('.modal-button').click(function() {
     var target = $(this).data('target');
     $('html').addClass('is-clipped');
