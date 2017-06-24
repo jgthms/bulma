@@ -1,0 +1,126 @@
+$dropdown-caret-width: 0.3rem !default
+$dropdown-min-width: 10rem !default
+$dropdown-zindex: 1000
+
+$dropdown-margin-top: 0.125rem !default
+$dropdown-padding-y: 0.4rem !default
+
+$dropdown-border-width: 1px !default
+$dropdown-border-radius: $radius
+
+$dropdown-item-padding-x: 1.5rem
+
+$dropdown-color: $grey-dark
+$dropdown-item-color: $grey-dark
+$dropdown-link-disabled-color: $grey
+$dropdown-bg: $body-background
+$dropdown-border-color: $grey-lighter
+
+.dropdown, .dropup
+  display: inline-block
+  position: relative
+
+  &.is-active
+    > .dropdown-list
+      display: block
+
+    > a
+      outline: 0
+
+.is-dropdown
+  &::after
+    border-left: $dropdown-caret-width solid transparent
+    border-right: $dropdown-caret-width solid transparent
+    border-top: $dropdown-caret-width solid
+    content: ""
+    display: inline-block
+    height: 0
+    margin-left: $dropdown-caret-width
+    vertical-align: middle
+    width: 0
+
+  &:focus
+    outline: 0
+
+.dropup
+  .is-dropdown
+    &::after
+      border-bottom: $dropdown-caret-width solid
+      border-top: 0
+
+.dropdown-list
+  background-clip: padding-box
+  background-color: $dropdown-bg
+  border: $dropdown-border-width solid $dropdown-border-color
+  border-radius: $dropdown-border-radius
+  color: $dropdown-color
+  display: none
+  float: left
+  font-size: $size-normal
+  left: 0
+  list-style: none
+  margin: $dropdown-margin-top 0 0
+  min-width: $dropdown-min-width
+  padding: $dropdown-padding-y 0
+  position: absolute
+  text-align: left
+  top: 100%
+  z-index: $dropdown-zindex
+  white-space: nowrap
+
+.divider
+  background: $grey-lighter
+  height: 1px
+  margin: 0.5rem 0
+  overflow: hidden
+
+.dropdown-item
+  background: none
+  border: 0
+  clear: both
+  color: $dropdown-item-color
+  display: block
+  font-weight: $weight-normal
+  padding: $dropdown-padding-y $dropdown-item-padding-x
+  text-align: inherit
+  white-space:
+  width: 100%
+
+  &:hover,
+  &.is-active,
+  &:active
+    background-color: darken($dropdown-bg, 2.5%)
+    text-decoration: none
+
+  &.is-disabled,
+  &:disabled
+    background-color: transparent
+    color: $dropdown-link-disabled-color
+    cursor: not-allowed
+
+.dropdown-list-right
+  left: auto
+  right: 0
+
+.dropdown-list-left
+  left: 0
+  right: auto
+
+.dropdown-heading
+  color: $grey-light
+  display: block
+  font-size: $size-normal
+  font-weight: 500
+  margin-bottom: 0
+  padding: $dropdown-padding-y $dropdown-item-padding-x
+  white-space: nowrap
+
+.dropup
+  .dropdown-list
+    bottom: 100%
+    margin-bottom: $dropdown-margin-top
+    top: auto
+
+.nav-item.dropdown
+  > .dropdown-list
+    margin: 0 0.75rem
