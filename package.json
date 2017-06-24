@@ -5,7 +5,7 @@
   "author": "Jeremy Thomas <bbxdesign@gmail.com> (http://jgthms.com)",
   "description": "Modern CSS framework based on Flexbox",
   "main": "bulma.sass",
-  "style": "bulma/css/bulma.css",
+  "style": "bulma/css/bulma.min.css",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jgthms/bulma.git"
@@ -24,18 +24,21 @@
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "captain-git-hook": "~1.0.5",
+    "clean-css-cli": "^4.0.10",
     "node-sass": "^3.4.2",
     "postcss-cli": "^2.5.1",
     "rimraf": "^2.6.1"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix",
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
     "build-autoprefix": "postcss --use autoprefixer --output css/bulma.css css/bulma.css",
+    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
     "build-clean": "rimraf css",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
     "deploy": "npm run build && npm run docs",
-    "docs": "npm run docs-sass && npm run docs-autoprefix",
+    "docs": "npm run docs-sass && npm run docs-autoprefix && npm run docs-cleancss",
     "docs-autoprefix": "postcss --use autoprefixer --output docs/css/bulma-docs.css docs/css/bulma-docs.css",
+    "docs-cleancss": "cleancss -o docs/css/bulma-docs.min.css docs/css/bulma-docs.css",
     "docs-sass": "node-sass --output-style expanded docs/bulma-docs.sass docs/css/bulma-docs.css",
     "start": "npm run build-sass -- --watch",
     "start-docs": "npm run docs-sass -- --watch",
