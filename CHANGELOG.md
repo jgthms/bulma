@@ -1,5 +1,27 @@
 # Bulma Changelog
 
+## 0.4.3
+
+### New features
+
+* Add new feature: Breadcrumb component (#632) @vinialbano
+* Add Bloomer to README.md (#787) @AlgusDark
+* Add responsive is-*-touch tags for .column sizes (#780) @tom-rb
+* Adding 'is-hidden' to helpers in docs (#798) @aheuermann
+* Add figure/figcaption as content element (#807) @werthen
+* Add <sup> and <sub> support to content (#808) @werthen
+* Add re-bulma and react-bulma (#809) @kulakowka
+* Add is-halfheight to hero (#783) @felipeas
+* Added a related project with Golang backend (#784) @Caiyeon
+
+### Issues closed
+
+* Fix #819 Remove `height: auto` from media elements
+* Fix #790 Documentation typo
+* Fix #814 Make use of +fullhd mixin for columns @Saboteur777
+* Fix #781 Add min/max height/width to delete class size modifiers @ZackWard
+* Fix #391 Section docs update
+
 ## 0.4.2
 
 * Fix #728 selected row on striped table
