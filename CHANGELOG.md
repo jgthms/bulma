@@ -16,6 +16,7 @@
 
 ### Issues closed
 
+* Fix #820 Loading spinner resizes with controls
 * Fix #819 Remove `height: auto` from media elements
 * Fix #790 Documentation typo
 * Fix #814 Make use of +fullhd mixin for columns @Saboteur777
