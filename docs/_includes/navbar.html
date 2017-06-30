@@ -1,0 +1,147 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+    </a>
+
+    <a class="navbar-item">
+      <span class="icon">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+
+    <a class="navbar-item">
+      <span class="icon">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+
+    <div class="navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+      <div class="navbar-item has-dropdown">
+        <a class="navbar-link">
+          Docs
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Modifiers
+          </a>
+          <a class="navbar-item">
+            Grid
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <a class="navbar-item">
+            Layout
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <div>version <p class="has-text-info">{{ site.version }}</p></div>
+          </div>
+          <!-- <div class="navbar-item">
+            <a class="button is-primary" href="{{ site.download }}">
+              <span class="icon">
+                <i class="fa fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+          </div> -->
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown">
+        <a class="navbar-link">
+          Blog
+        </a>
+        <div class="navbar-dropdown" style="width: 18rem;">
+          {% for post in site.posts %}
+            <a class="navbar-item" href="{{ post.url }}">
+              <div class="navbar-content">
+                <p>
+                  <small>{{ post.date | date_to_string }}</small>
+                </p>
+                <p>{{ post.title }}</p>
+              </div>
+            </a>
+          {% endfor %}
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <div class="navbar-content">
+              <div class="level">
+                <div class="level-left">
+                  <div class="level-item">
+                    <strong>Stay up to date!</strong>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <a class="button is-warning is-small" href="{{ site.download }}">
+                      <span class="icon is-small">
+                        <i class="fa fa-rss"></i>
+                      </span>
+                      <span>Subscribe</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="navbar-item">
+        More
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item">
+        Github
+      </a>
+      <a class="navbar-item">
+        Twitter
+      </a>
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+            <a id="twitter"
+              class="button"
+              data-social-network="Twitter"
+              data-social-action="tweet"
+              data-social-target="{{ site.url }}"
+              target="_blank"
+              href="https://twitter.com/intent/tweet?text={{ site.title | urlencode }}&url={{ site.url }}&via=jgthms">
+              <span class="icon">
+                <i class="fa fa-twitter"></i>
+              </span>
+              <span>Tweet</span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-primary" href="{{ site.download }}">
+              <span class="icon">
+                <i class="fa fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
