@@ -4395,7 +4395,12 @@ a.nav-item.is-tab.is-active {
 a.navbar-item:hover,
 .navbar-link:hover {
   background-color: whitesmoke;
-  color: #363636;
+  color: #0a0a0a;
+}
+
+a.navbar-item.is-active,
+.navbar-link.is-active {
+  color: #0a0a0a;
 }
 
 .navbar-item {
@@ -4435,6 +4440,10 @@ a.navbar-item:hover,
   background-color: whitesmoke;
 }
 
+.navbar-dropdown a.navbar-item.is-active {
+  color: #00d1b2;
+}
+
 .navbar-divider {
   background-color: #dbdbdb;
   border: none;
@@ -4467,6 +4476,14 @@ a.navbar-item:hover,
   .navbar {
     height: 3.25rem;
   }
+  .navbar.is-transparent .navbar-brand .navbar-link:hover,
+  .navbar.is-transparent .navbar-brand > a.navbar-item:hover,
+  .navbar.is-transparent .navbar-start .navbar-link:hover,
+  .navbar.is-transparent .navbar-start > a.navbar-item:hover,
+  .navbar.is-transparent .navbar-end .navbar-link:hover,
+  .navbar.is-transparent .navbar-end > a.navbar-item:hover {
+    background-color: transparent;
+  }
   .navbar-burger {
     display: none;
   }
@@ -4496,9 +4513,10 @@ a.navbar-item:hover,
   .navbar-item.is-active .navbar-dropdown, .navbar-item.is-hoverable:hover .navbar-dropdown {
     display: block;
   }
-  a.navbar-item:hover,
-  .navbar-link:hover {
-    background-color: transparent;
+  .navbar-item.is-active .navbar-dropdown.is-boxed, .navbar-item.is-hoverable:hover .navbar-dropdown.is-boxed {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
   .navbar-menu {
     flex-grow: 1;
@@ -4514,19 +4532,33 @@ a.navbar-item:hover,
   }
   .navbar-dropdown {
     background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #dbdbdb;
+    box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
     display: none;
     font-size: 0.875rem;
     left: 0;
     min-width: 100%;
     position: absolute;
-    top: calc(100% + (-4px));
+    top: 100%;
     z-index: 20;
   }
   .navbar-dropdown .navbar-item {
     padding: 0.375rem 1rem;
     white-space: nowrap;
+  }
+  .navbar-dropdown.is-boxed {
+    border-radius: 5px;
+    border-top: none;
+    box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    top: calc(100% + (-4px));
+    transform: translateY(-5px);
+    transition-duration: 86ms;
+    transition-property: opacity, transform;
   }
   .navbar-divider {
     display: block;
@@ -7750,6 +7782,20 @@ html.route-index #carbon {
   height: 24px;
   margin-right: 8px;
   width: 24px;
+}
+
+.button.is-rss {
+  background-color: #f26522;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-rss:hover {
+  background-color: #ed560e;
+}
+
+.button.is-rss:active {
+  background-color: #d54d0d;
 }
 
 .example,

@@ -2,16 +2,18 @@ $navbar-background: $white !default
 $navbar-height: 3.25rem !default
 
 $navbar-item: $grey-dark !default
-$navbar-item-hover: $grey-darker !default
+$navbar-item-hover: $black !default
 $navbar-item-hover-background: $background !default
-$navbar-item-desktop-hover-background: transparent !default
+$navbar-item-active: $black !default
 
 $navbar-dropdown-background: $white !default
+$navbar-dropdown-border: $border !default
 $navbar-dropdown-offset: -4px !default
 $navbar-dropdown-arrow: $link !default
 $navbar-dropdown-radius: $radius-large !default
 
 $navbar-dropdown-item-hover-background: $background !default
+$navbar-dropdown-item-active: $primary !default
 
 $navbar-divider-background: $border !default
 
@@ -45,6 +47,8 @@ a.navbar-item,
   &:hover
     background-color: $navbar-item-hover-background
     color: $navbar-item-hover
+  &.is-active
+    color: $navbar-item-active
 
 .navbar-item
   flex-grow: 0
@@ -68,8 +72,11 @@ a.navbar-item,
   .navbar-item
     padding-left: 1.5rem
     padding-right: 1.5rem
-  a.navbar-item:hover
-    background-color: $navbar-dropdown-item-hover-background
+  a.navbar-item
+    &:hover
+      background-color: $navbar-dropdown-item-hover-background
+    &.is-active
+      color: $navbar-dropdown-item-active
 
 .navbar-divider
   background-color: $navbar-divider-background
@@ -97,6 +104,14 @@ a.navbar-item,
     display: flex
   .navbar
     height: $navbar-height
+    &.is-transparent
+      .navbar-brand,
+      .navbar-start,
+      .navbar-end
+        .navbar-link,
+        & > a.navbar-item
+          &:hover
+            background-color: transparent
   .navbar-burger
     display: none
   .navbar-item,
@@ -115,10 +130,10 @@ a.navbar-item,
     &.is-hoverable:hover
         .navbar-dropdown
           display: block
-  a.navbar-item,
-  .navbar-link
-    &:hover
-     background-color: $navbar-item-desktop-hover-background
+          &.is-boxed
+            opacity: 1
+            pointer-events: auto
+            transform: translateY(0)
   .navbar-menu
     flex-grow: 1
     flex-shrink: 0
@@ -130,18 +145,31 @@ a.navbar-item,
     margin-left: auto
   .navbar-dropdown
     background-color: $navbar-dropdown-background
-    border-radius: $navbar-dropdown-radius
-    box-shadow: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+    border-bottom-left-radius: $navbar-dropdown-radius
+    border-bottom-right-radius: $navbar-dropdown-radius
+    border-top: 1px solid $navbar-dropdown-border
+    box-shadow: 0 8px 8px rgba($black, 0.1)
     display: none
     font-size: 0.875rem
     left: 0
     min-width: 100%
     position: absolute
-    top: calc(100% + (#{$navbar-dropdown-offset}))
+    top: 100%
     z-index: 20
     .navbar-item
       padding: 0.375rem 1rem
       white-space: nowrap
+    &.is-boxed
+      border-radius: $navbar-dropdown-radius
+      border-top: none
+      box-shadow: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+      display: block
+      opacity: 0
+      pointer-events: none
+      top: calc(100% + (#{$navbar-dropdown-offset}))
+      transform: translateY(-5px)
+      transition-duration: $speed
+      transition-property: opacity, transform
   .navbar-divider
     display: block
   .container > .navbar
