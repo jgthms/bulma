@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const $grid = document.getElementById('grid');
   const $columns = Array.prototype.slice.call(document.querySelectorAll('#grid > .column'), 0);
-  console.log('$columns', $columns);
   const $markup = document.querySelector('#markup code');
   const $message = document.getElementById('message');
   const $add = document.getElementById('add');
