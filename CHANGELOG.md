@@ -16,6 +16,7 @@
 
 ### Issues closed
 
+* Fix #827 Breadcrumb and Navbar in docs
 * Fix #824 Code examples broken because of `text-align: center`
 * Fix #820 Loading spinner resizes with controls
 * Fix #819 Remove `height: auto` from media elements
