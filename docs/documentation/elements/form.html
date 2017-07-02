@@ -354,6 +354,87 @@ doc-subtab: form
       </div>
     </div>
 
+{% capture loading_sizes_example %}
+<div class="field">
+  <p class="control is-small is-loading">
+    <input class="input is-small" type="text" placeholder="Small loading input">
+  </p>
+</div>
+<div class="field">
+  <p class="control is-loading">
+    <input class="input" type="text" placeholder="Normal loading input">
+  </p>
+</div>
+<div class="field">
+  <p class="control is-medium is-loading">
+    <input class="input is-medium" type="text" placeholder="Medium loading input">
+  </p>
+</div>
+<div class="field">
+  <p class="control is-large is-loading">
+    <input class="input is-large" type="text" placeholder="Large loading input">
+  </p>
+</div>
+<div class="field">
+  <div class="control">
+    <div class="select is-small is-loading">
+      <select>
+        <option>Small loading dropdown</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <div class="select is-loading">
+      <select>
+        <option>Normal loading dropdown</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <div class="select is-medium is-loading">
+      <select>
+        <option>Medium loading dropdown</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <div class="select is-large is-loading">
+      <select>
+        <option>Large loading dropdown</option>
+      </select>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% if site.vernum >= 43 %}
+    <div class="columns">
+      <div class="column is-half">
+        <p style="margin-bottom: 0.5rem;">
+          <span class="tag is-success">New!</span>
+          <span class="tag is-info">0.4.3</span>
+        </p>
+        <div class="content">
+          <p>
+            You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
+          </p>
+        </div>
+{{loading_sizes_example}}
+      </div>
+      <div class="column is-half">
+{% highlight html %}
+{{loading_sizes_example}}
+{% endhighlight %}
+      </div>
+    </div>
+{% endif %}
+
     <h4 class="subtitle">Disabled</h4>
 {% capture disabled_example %}
 <div class="field">
@@ -930,7 +1011,7 @@ doc-subtab: form
 
     <h3 class="title">Horizontal form</h3>
     <div class="content">
-      <p>If you want a <strong>horizontal</strong> form control, use the <code>is-horizontal</code> modifier on the <code>control</code> container, in which you include:</p>
+      <p>If you want a <strong>horizontal</strong> form control, use the <code>is-horizontal</code> modifier on the <code>field</code> container, in which you include:</p>
       <ul>
         <li>
           <code>field-label</code> for the side label
