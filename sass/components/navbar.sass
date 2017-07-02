@@ -5,6 +5,7 @@ $navbar-item: $grey-dark !default
 $navbar-item-hover: $black !default
 $navbar-item-hover-background: $background !default
 $navbar-item-active: $black !default
+$navbar-item-active-background: $background !default
 
 $navbar-dropdown-background: $white !default
 $navbar-dropdown-border: $border !default
@@ -13,8 +14,10 @@ $navbar-dropdown-arrow: $link !default
 $navbar-dropdown-radius: $radius-large !default
 $navbar-dropdown-z: 20 !default
 
+$navbar-dropdown-item-hover: $black !default
 $navbar-dropdown-item-hover-background: $background !default
 $navbar-dropdown-item-active: $primary !default
+$navbar-dropdown-item-active-background: $background !default
 
 $navbar-divider-background: $border !default
 
@@ -49,6 +52,7 @@ a.navbar-item,
     background-color: $navbar-item-hover-background
     color: $navbar-item-hover
   &.is-active
+    background-color: $navbar-item-active-background
     color: $navbar-item-active
 
 .navbar-item
@@ -76,7 +80,9 @@ a.navbar-item,
   a.navbar-item
     &:hover
       background-color: $navbar-dropdown-item-hover-background
+      color: $navbar-dropdown-item-hover
     &.is-active
+      background-color: $navbar-dropdown-item-active-background
       color: $navbar-dropdown-item-active
 
 .navbar-divider
@@ -107,12 +113,15 @@ a.navbar-item,
   .navbar
     height: $navbar-height
     &.is-transparent
-      .navbar-brand,
-      .navbar-start,
-      .navbar-end
-        .navbar-link,
-        & > a.navbar-item
-          &:hover
+      a.navbar-item,
+      .navbar-link
+        &:hover,
+        &.is-active
+          background-color: transparent
+      .navbar-item
+        &.is-active,
+        &.is-hoverable:hover
+          .navbar-link
             background-color: transparent
   .navbar-burger
     display: none
@@ -123,19 +132,23 @@ a.navbar-item,
   .navbar-item
     &.has-dropdown
       align-items: stretch
-      &::after
-        +arrow($navbar-dropdown-arrow)
-        margin-top: -0.375em
-        right: 1.125em
-        top: 50%
     &.is-active,
     &.is-hoverable:hover
-        .navbar-dropdown
-          display: block
-          &.is-boxed
-            opacity: 1
-            pointer-events: auto
-            transform: translateY(0)
+      .navbar-link
+        background-color: $navbar-item-active-background
+        color: $navbar-item-active
+      .navbar-dropdown
+        display: block
+        &.is-boxed
+          opacity: 1
+          pointer-events: auto
+          transform: translateY(0)
+  .navbar-link
+    &::after
+      +arrow($navbar-dropdown-arrow)
+      margin-top: -0.375em
+      right: 1.125em
+      top: 50%
   .navbar-menu
     flex-grow: 1
     flex-shrink: 0
