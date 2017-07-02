@@ -1,0 +1,208 @@
+$navbar-background: $white !default
+$navbar-height: 3.25rem !default
+
+$navbar-item: $grey-dark !default
+$navbar-item-hover: $black !default
+$navbar-item-hover-background: $background !default
+$navbar-item-active: $black !default
+$navbar-item-active-background: transparent !default
+
+$navbar-dropdown-background: $white !default
+$navbar-dropdown-border: $border !default
+$navbar-dropdown-offset: -4px !default
+$navbar-dropdown-arrow: $link !default
+$navbar-dropdown-radius: $radius-large !default
+$navbar-dropdown-z: 20 !default
+
+$navbar-dropdown-item-hover: $black !default
+$navbar-dropdown-item-hover-background: $background !default
+$navbar-dropdown-item-active: $primary !default
+$navbar-dropdown-item-active-background: $background !default
+
+$navbar-divider-background: $border !default
+
+.navbar
+  background-color: $navbar-background
+  min-height: $navbar-height
+  position: relative
+
+.navbar-brand
+  align-items: stretch
+  height: $navbar-height
+  display: flex
+
+.navbar-burger
+  +hamburger($navbar-height)
+  margin-left: auto
+
+.navbar-menu
+  display: none
+
+.navbar-item,
+.navbar-link
+  color: $navbar-item
+  display: block
+  line-height: 1.5
+  padding: 0.5rem 1rem
+  position: relative
+
+a.navbar-item,
+.navbar-link
+  &:hover,
+  &.is-active
+    background-color: $navbar-item-hover-background
+    color: $navbar-item-hover
+
+.navbar-item
+  flex-grow: 0
+  flex-shrink: 0
+  img
+    max-height: 1.75rem
+  &.has-dropdown
+    padding: 0
+
+.navbar-content
+  flex-grow: 1
+  flex-shrink: 1
+
+.navbar-link
+  padding-right: 2.5em
+
+.navbar-dropdown
+  font-size: 0.875rem
+  padding-bottom: 0.5rem
+  padding-top: 0.5rem
+  .navbar-item
+    padding-left: 1.5rem
+    padding-right: 1.5rem
+
+.navbar-divider
+  background-color: $navbar-divider-background
+  border: none
+  display: none
+  height: 1px
+  margin: 0.5rem 0
+
++touch
+  .navbar-brand
+    .navbar-item
+      align-items: center
+      display: flex
+  .navbar-menu
+    box-shadow: 0 8px 16px rgba($black, 0.1)
+    padding: 0.5rem 0
+    &.is-active
+      display: block
+
++desktop
+  .navbar,
+  .navbar-menu,
+  .navbar-start,
+  .navbar-end
+    align-items: stretch
+    display: flex
+  .navbar
+    height: $navbar-height
+    &.is-transparent
+      a.navbar-item,
+      .navbar-link
+        &:hover,
+        &.is-active
+          background-color: transparent
+      .navbar-item.has-dropdown
+        &.is-active,
+        &.is-hoverable:hover
+          .navbar-link
+            background-color: transparent
+      .navbar-dropdown
+        a.navbar-item
+          &:hover
+            background-color: $navbar-dropdown-item-hover-background
+            color: $navbar-dropdown-item-hover
+          &.is-active
+            background-color: $navbar-dropdown-item-active-background
+            color: $navbar-dropdown-item-active
+  .navbar-burger
+    display: none
+  .navbar-item,
+  .navbar-link
+    align-items: center
+    display: flex
+  .navbar-item
+    &.has-dropdown
+      align-items: stretch
+    &.is-active,
+    &.is-hoverable:hover
+      .navbar-dropdown
+        display: block
+        &.is-boxed
+          opacity: 1
+          pointer-events: auto
+          transform: translateY(0)
+  .navbar-link
+    &::after
+      +arrow($navbar-dropdown-arrow)
+      margin-top: -0.375em
+      right: 1.125em
+      top: 50%
+  .navbar-menu
+    flex-grow: 1
+    flex-shrink: 0
+  .navbar-start
+    justify-content: flex-start
+    margin-right: auto
+  .navbar-end
+    justify-content: flex-end
+    margin-left: auto
+  .navbar-dropdown
+    background-color: $navbar-dropdown-background
+    border-bottom-left-radius: $navbar-dropdown-radius
+    border-bottom-right-radius: $navbar-dropdown-radius
+    border-top: 1px solid $navbar-dropdown-border
+    box-shadow: 0 8px 8px rgba($black, 0.1)
+    display: none
+    font-size: 0.875rem
+    left: 0
+    min-width: 100%
+    position: absolute
+    top: 100%
+    z-index: $navbar-dropdown-z
+    .navbar-item
+      padding: 0.375rem 1rem
+      white-space: nowrap
+    a.navbar-item
+      padding-right: 3rem
+      &:hover
+        background-color: $navbar-dropdown-item-hover-background
+        color: $navbar-dropdown-item-hover
+      &.is-active
+        background-color: $navbar-dropdown-item-active-background
+        color: $navbar-dropdown-item-active
+    &.is-boxed
+      border-radius: $navbar-dropdown-radius
+      border-top: none
+      box-shadow: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+      display: block
+      opacity: 0
+      pointer-events: none
+      top: calc(100% + (#{$navbar-dropdown-offset}))
+      transform: translateY(-5px)
+      transition-duration: $speed
+      transition-property: opacity, transform
+  .navbar-divider
+    display: block
+  .container > .navbar
+    margin-left: -1rem
+    margin-right: -1rem
+  // Hover/Active states
+  a.navbar-item,
+  .navbar-link
+    &.is-active
+      color: $navbar-item-active
+    &.is-active:not(:hover)
+      background-color: $navbar-item-active-background
+  .navbar-item.has-dropdown
+    &:hover,
+    &.is-active
+      .navbar-link
+        background-color: $navbar-item-hover-background
