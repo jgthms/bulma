@@ -17,15 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Modals
 
   var $html = document.documentElement;
-  var $modals = Array.prototype.slice.call(document.querySelectorAll('.modal'), 0);
-  var $modalButtons = Array.prototype.slice.call(document.querySelectorAll('.modal-button'), 0);
-  var $modalCloses = Array.prototype.slice.call(document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button'), 0);
+  var $modals = getAll('.modal');
+  var $modalButtons = getAll('.modal-button');
+  var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
 
   if ($modalButtons.length > 0) {
     $modalButtons.forEach(function ($el) {
       $el.addEventListener('click', function () {
         var target = $el.dataset.target;
-        console.log('target', target);
         var $target = document.getElementById(target);
         $html.classList.add('is-clipped');
         $target.classList.add('is-active');
@@ -53,5 +52,61 @@ document.addEventListener('DOMContentLoaded', function () {
     $modals.forEach(function ($el) {
       $el.classList.remove('is-active');
     });
+  }
+
+  // Clipboard
+
+  var $highlights = getAll('.highlight');
+  var itemsProcessed = 0;
+
+  if ($highlights.length > 0) {
+    $highlights.forEach(function ($el) {
+      var copy = '<button class="copy">Copy</button>';
+      var expand = '<button class="expand">Expand</button>';
+      $el.insertAdjacentHTML('beforeend', copy);
+
+      if ($el.firstElementChild.scrollHeight > 600) {
+        $el.insertAdjacentHTML('beforeend', expand);
+      }
+
+      itemsProcessed++;
+      if (itemsProcessed === $highlights.length) {
+        addHighlightControls();
+      }
+    });
+  }
+
+  function addHighlightControls() {
+    var $highlightButtons = getAll('.highlight .copy, .highlight .expand');
+
+    $highlightButtons.forEach(function ($el) {
+      $el.addEventListener('mouseenter', function () {
+        $el.parentNode.style.boxShadow = '0 0 0 1px #ed6c63';
+      });
+
+      $el.addEventListener('mouseleave', function () {
+        $el.parentNode.style.boxShadow = 'none';
+      });
+    });
+
+    var $highlightExpands = getAll('.highlight .expand');
+
+    $highlightExpands.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+        $el.parentNode.firstElementChild.style.maxHeight = 'none';
+      });
+    });
+  }
+
+  new Clipboard('.copy', {
+    target: function target(trigger) {
+      return trigger.previousSibling;
+    }
+  });
+
+  // Functions
+
+  function getAll(selector) {
+    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
   }
 });

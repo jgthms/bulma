@@ -6,12 +6,19 @@ doc-subtab: navbar
 
 {% include subnav-components.html %}
 
+{% capture navbar_example %}
+{% include navbar.html %}
+{% endcapture %}
+
 <section class="section">
   <div class="container">
+
     <h1 class="title">Navbar</h1>
     <h2 class="subtitle">
       A responsive horizontal <strong>navbar</strong> that can supports images, links, buttons, and dropdowns
     </h2>
+
+    <hr>
 
     <div class="message is-success">
       <div class="message-body">
@@ -19,6 +26,61 @@ doc-subtab: navbar
       </div>
     </div>
 
-    <hr>
+    <div class="content">
+      <p>
+        The <code>.navbar</code> component is a responsive and versatile horizontal navigation bar with the following structure:
+      </p>
+      <ul>
+        <li>
+          <code>.navbar</code> the <strong>main</strong> container
+          <ul>
+            <li>
+              <code>.navbar-brand</code> the <strong>left side</strong>, which usually contains the <strong>logo</strong> and optionally some links or icons
+              <ul>
+                <li>
+                  <code>.navbar-burger</code> the <strong>hamburger</strong> icon, which toggles the navbar menu on touch devices
+                </li>
+              </ul>
+            </li>
+            <li>
+              <code>.navbar-menu</code> the <strong>right side</strong>, hidden on touch devices, visible on desktop
+              <ul>
+                <li>
+                  <code>.navbar-start</code> the <strong>left part</strong> of the menu, which appears next to the navbar brand on desktop
+                </li>
+                <li>
+                  <code>.navbar-end</code> the <strong>right part</strong> of the menu, which appears at the end of the navbar
+                  <ul>
+                    <li>
+                      <code>.navbar-item</code> each <strong>single item</strong> of the navbar, which can either be a <code>a</code> or a <code>div</code>
+                      <ul>
+                        <li>
+                          <code>.navbar-link</code> a <strong>link</strong> as the sibling of a dropdown, with an arrow
+                        </li>
+                        <li>
+                          <code>.navbar-dropdown</code> the <strong>dropdown menu</strong>, which can include navbar items and dividers
+                          <ul>
+                            <li>
+                              <code>.navbar-divider</code> a <strong>horizontal line</strong> to separate navbar items
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="example is-paddingless">
+      {{navbar_example}}
+    </div>
+
+    {% highlight html %}{{navbar_example}}{% endhighlight %}
+
   </div>
 </section>
