@@ -4391,13 +4391,9 @@ a.nav-item.is-tab.is-active {
 }
 
 a.navbar-item:hover,
-.navbar-link:hover {
-  background-color: whitesmoke;
-  color: #0a0a0a;
-}
-
 a.navbar-item.is-active,
-.navbar-link.is-active {
+.navbar-item.has-dropdown:hover .navbar-link,
+.navbar-item.has-dropdown.is-active .navbar-link {
   background-color: whitesmoke;
   color: #0a0a0a;
 }
@@ -4433,16 +4429,6 @@ a.navbar-item.is-active,
 .navbar-dropdown .navbar-item {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.navbar-dropdown a.navbar-item:hover {
-  background-color: whitesmoke;
-  color: #0a0a0a;
-}
-
-.navbar-dropdown a.navbar-item.is-active {
-  background-color: whitesmoke;
-  color: #00d1b2;
 }
 
 .navbar-divider {
@@ -4483,8 +4469,16 @@ a.navbar-item.is-active,
   .navbar.is-transparent .navbar-link.is-active {
     background-color: transparent;
   }
-  .navbar.is-transparent .navbar-item.is-active .navbar-link, .navbar.is-transparent .navbar-item.is-hoverable:hover .navbar-link {
+  .navbar.is-transparent .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:hover .navbar-link {
     background-color: transparent;
+  }
+  .navbar.is-transparent .navbar-dropdown a.navbar-item:hover {
+    background-color: whitesmoke;
+    color: #0a0a0a;
+  }
+  .navbar.is-transparent .navbar-dropdown a.navbar-item.is-active {
+    background-color: whitesmoke;
+    color: #00d1b2;
   }
   .navbar-burger {
     display: none;
@@ -4497,10 +4491,6 @@ a.navbar-item.is-active,
   .navbar-item.has-dropdown {
     align-items: stretch;
   }
-  .navbar-item.is-active .navbar-link, .navbar-item.is-hoverable:hover .navbar-link {
-    background-color: whitesmoke;
-    color: #0a0a0a;
-  }
   .navbar-item.is-active .navbar-dropdown, .navbar-item.is-hoverable:hover .navbar-dropdown {
     display: block;
   }
@@ -4508,6 +4498,10 @@ a.navbar-item.is-active,
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+  }
+  a.navbar-item.is-active {
+    background-color: transparent;
+    color: #0a0a0a;
   }
   .navbar-link::after {
     border: 1px solid #00d1b2;
@@ -4556,6 +4550,14 @@ a.navbar-item.is-active,
   }
   .navbar-dropdown a.navbar-item {
     padding-right: 3rem;
+  }
+  .navbar-dropdown a.navbar-item:hover {
+    background-color: whitesmoke;
+    color: #0a0a0a;
+  }
+  .navbar-dropdown a.navbar-item.is-active {
+    background-color: whitesmoke;
+    color: #00d1b2;
   }
   .navbar-dropdown.is-boxed {
     border-radius: 5px;
