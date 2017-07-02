@@ -4390,10 +4390,9 @@ a.nav-item.is-tab.is-active {
   position: relative;
 }
 
-a.navbar-item:hover,
-a.navbar-item.is-active,
-.navbar-item.has-dropdown:hover .navbar-link,
-.navbar-item.has-dropdown.is-active .navbar-link {
+a.navbar-item:hover, a.navbar-item.is-active,
+.navbar-link:hover,
+.navbar-link.is-active {
   background-color: whitesmoke;
   color: #0a0a0a;
 }
@@ -4499,10 +4498,6 @@ a.navbar-item.is-active,
     pointer-events: auto;
     transform: translateY(0);
   }
-  a.navbar-item.is-active {
-    background-color: transparent;
-    color: #0a0a0a;
-  }
   .navbar-link::after {
     border: 1px solid #00d1b2;
     border-right: 0;
@@ -4577,6 +4572,17 @@ a.navbar-item.is-active,
   .container > .navbar {
     margin-left: -1rem;
     margin-right: -1rem;
+  }
+  a.navbar-item.is-active,
+  .navbar-link.is-active {
+    color: #ff3860;
+  }
+  a.navbar-item.is-active:not(:hover),
+  .navbar-link.is-active:not(:hover) {
+    background-color: transparent;
+  }
+  .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
+    background-color: whitesmoke;
   }
 }
 

@@ -4,7 +4,7 @@ $navbar-height: 3.25rem !default
 $navbar-item: $grey-dark !default
 $navbar-item-hover: $black !default
 $navbar-item-hover-background: $background !default
-$navbar-item-active: $black !default
+$navbar-item-active: $red !default
 $navbar-item-active-background: transparent !default
 
 $navbar-dropdown-background: $white !default
@@ -46,12 +46,12 @@ $navbar-divider-background: $border !default
   padding: 0.5rem 1rem
   position: relative
 
-a.navbar-item:hover,
-a.navbar-item.is-active,
-.navbar-item.has-dropdown:hover .navbar-link,
-.navbar-item.has-dropdown.is-active .navbar-link
-  background-color: $navbar-item-hover-background
-  color: $navbar-item-hover
+a.navbar-item,
+.navbar-link
+  &:hover,
+  &.is-active
+    background-color: $navbar-item-hover-background
+    color: $navbar-item-hover
 
 .navbar-item
   flex-grow: 0
@@ -139,9 +139,6 @@ a.navbar-item.is-active,
           opacity: 1
           pointer-events: auto
           transform: translateY(0)
-  a.navbar-item.is-active
-    background-color: $navbar-item-active-background
-    color: $navbar-item-active
   .navbar-link
     &::after
       +arrow($navbar-dropdown-arrow)
@@ -197,3 +194,15 @@ a.navbar-item.is-active,
   .container > .navbar
     margin-left: -1rem
     margin-right: -1rem
+  // Hover/Active states
+  a.navbar-item,
+  .navbar-link
+    &.is-active
+      color: $navbar-item-active
+    &.is-active:not(:hover)
+      background-color: $navbar-item-active-background
+  .navbar-item.has-dropdown
+    &:hover,
+    &.is-active
+      .navbar-link
+        background-color: $navbar-item-hover-background
