@@ -64,6 +64,7 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 * Vue Admin powered by Bulma: https://github.com/vue-bulma/vue-admin
 * Bulmaswatch — Free themes for Bulma: https://github.com/jenil/bulmaswatch
 * Goldfish — Vault UI with Bulma, Golang, and Vue Admin: https://github.com/Caiyeon/goldfish
+* ember-bulma - Ember addon providing a collection of UI components for Bulma https://github.com/open-tux/ember-bulma
 * Bloomer — A set of React components for Bulma: https://bloomer.js.org
 * Re-bulma – Bulma components build with React: https://github.com/bokuweb/re-bulma
 * React-bulma – React.js components for bulma: https://github.com/kulakowka/react-bulma
