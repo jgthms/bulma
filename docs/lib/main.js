@@ -2,15 +2,19 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Navbar burger menu
+  // Toggles
 
-  var $navBurger = document.getElementById('navBurger');
-  var $navMenu = document.getElementById('navMenu');
+  var $burgers = getAll('.burger');
+  var $fries = getAll('.fries');
 
-  if ($navBurger) {
-    $navBurger.addEventListener('click', function () {
-      $navBurger.classList.toggle('is-active');
-      $navMenu.classList.toggle('is-active');
+  if ($burgers.length > 0) {
+    $burgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
     });
   }
 

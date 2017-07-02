@@ -1,14 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Navbar burger menu
+  // Toggles
 
-  const $navBurger = document.getElementById('navBurger');
-  const $navMenu = document.getElementById('navMenu');
+  const $burgers = getAll('.burger');
+  const $fries = getAll('.fries');
 
-  if ($navBurger) {
-    $navBurger.addEventListener('click', () => {
-      $navBurger.classList.toggle('is-active');
-      $navMenu.classList.toggle('is-active');
+  if ($burgers.length > 0) {
+    $burgers.forEach($el => {
+      $el.addEventListener('click', () => {
+        const target = $el.dataset.target;
+        const $target = document.getElementById(target);
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
     });
   }
 
