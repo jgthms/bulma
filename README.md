@@ -16,6 +16,10 @@ Bulma is in early but active development! Try it out now:
 
 ```sh
 npm install bulma
+
+or
+
+yarn add bulma
 ```
 
 ### Bower
