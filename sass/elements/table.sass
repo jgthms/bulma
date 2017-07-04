@@ -80,3 +80,27 @@ $table-row-even-hover-background: $white-ter !default
           background-color: $table-row-even-background
           &:hover
             background-color: $table-row-even-hover-background
+// colors
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  $color-invert: nth($pair, 2)
+  $color-invert-darken: darken($color-invert, 14%)
+  $color-invert-lighten: lighten($color, 14%)
+  &.is-#{$name}    
+    .table
+      background-color: $color
+      td, th
+        border-color: $color-invert-darken
+      th
+        color: $color-invert-darken
+      td
+          color: $color-invert
+      tr
+        &:hover
+          background-color: $color-invert-lighten
+        &.is-selected
+          background-color: $color-invert-lighten
+      &.is-striped
+        tbody
+          tr:not(.is-selected):nth-child(even)
+            background-color: $color-invert-lighten

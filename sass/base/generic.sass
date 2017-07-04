@@ -104,3 +104,24 @@ table
     vertical-align: top
   th
     color: $text-strong
+
+// Colors
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  $color-invert: nth($pair, 2)
+  $color-invert-darken: darken($color-invert, 14%)
+  $color-invert-lighten: lighten($color, 14%)
+  .is-#{$name}
+    background-color: $color
+    color: $color-invert 
+
+    strong, pre, code
+      color: $color-invert
+
+    h1,h2,h3,h4
+      color: $color-invert
+    .subtitle
+      color: $color-invert
+
+    pre,code
+      background-color: $color

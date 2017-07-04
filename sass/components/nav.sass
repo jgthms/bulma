@@ -123,3 +123,16 @@ a.nav-item:not(.button)
   // Modifiers
   &.has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
+// colors
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  $color-invert: nth($pair, 2)
+  .is-#{$name}
+    .nav
+      background-color: $color
+      color: $color-invert
+      strong
+        color: $color-invert
+      .nav-item a:not(.button),
+      a.nav-item:not(.button)
+        color: $white-ter
