@@ -4,6 +4,7 @@
 
 ### New features
 
+* New navbar with dropdown support
 * Add new feature: Breadcrumb component (#632) @vinialbano
 * Add Bloomer to README.md (#787) @AlgusDark
 * Add responsive is-*-touch tags for .column sizes (#780) @tom-rb
