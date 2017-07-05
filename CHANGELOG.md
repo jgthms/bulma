@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.4.4
+
+### Issues closed
+
+* Fix #821 Notification strong color
+
 ## 0.4.3
 
 ### New features
