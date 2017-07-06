@@ -1,0 +1,801 @@
+---
+layout: documentation
+doc-tab: components
+doc-subtab: navbar
+---
+
+{% include subnav-components.html %}
+
+{% capture navbar_example %}
+{% include navbar.html id="Example" %}
+{% endcapture %}
+
+{% capture navbar_brand_example %}
+<nav class="navbar">
+  <div class="navbar-brand">
+    <!-- navbar items, navbar burger ... -->
+  </div>
+</nav>
+{% endcapture %}
+
+{% capture navbar_burger_example %}
+<div class="navbar-burger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+{% endcapture %}
+
+{% capture navbar_brand_items_example %}
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+    </a>
+
+    <div class="navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
+{% capture navbar_menu_example %}
+<nav class="navbar">
+  <div class="navbar-brand">
+    <!-- navbar items, nav burger ... -->
+  </div>
+  <div class="navbar-menu">
+    <!-- navbar start, navbar end -->
+  </div>
+</nav>
+{% endcapture %}
+
+{% capture navbar_menu_active_example %}
+<div class="navbar-menu">
+  <!-- hidden on mobile -->
+</div>
+
+<div class="navbar-menu is-active">
+  <!-- shown on mobile -->
+</div>
+{% endcapture %}
+
+{% capture navbar_start_end_example %}
+<div class="navbar-menu">
+  <div class="navbar-start">
+    <!-- navbar items -->
+  </div>
+
+  <div class="navbar-end">
+    <!-- navbar items -->
+  </div>
+</div>
+{% endcapture %}
+
+{% capture navbar_item_link_example %}
+<a class="navbar-item">
+  Home
+</a>
+{% endcapture %}
+
+{% capture navbar_item_brand_example %}
+<a class="navbar-item">
+  <img src="{{ site.url }}/images/bulma-logo.png" width="112" height="28">
+</a>
+{% endcapture %}
+
+{% capture navbar_item_dropdown_example %}
+<div class="navbar-item has-dropdown">
+  <a class="navbar-link">
+    Docs
+  </a>
+
+  <div class="navbar-dropdown">
+    <!-- Other navbar items -->
+  </div>
+</div>
+{% endcapture %}
+
+{% capture navbar_item_dropdown_bis_example %}
+<div class="navbar-dropdown">
+  <a class="navbar-item">
+    Overview
+  </a>
+</div>
+{% endcapture %}
+
+{% capture navbar_item_other_example %}
+<div class="navbar-item">
+  <div class="field is-grouped">
+    <p class="control">
+      <a id="class="button">
+        <span class="icon">
+          <i class="fa fa-twitter"></i>
+        </span>
+        <span>Tweet</span>
+      </a>
+    </p>
+    <p class="control">
+      <a class="button is-primary">
+        <span class="icon">
+          <i class="fa fa-download"></i>
+        </span>
+        <span>Download</span>
+      </a>
+    </p>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture navbar_transparent_example %}
+{% include navbar.html transparent=true boxed=true id="TransparentExample" %}
+{% endcapture %}
+
+{% capture navbar_dropdown_example %}
+<nav class="navbar">
+  <div class="navbar-item has-dropdown">
+    <a class="navbar-link">
+      Docs
+    </a>
+
+    <div class="navbar-dropdown">
+      <a class="navbar-item">
+        Overview
+      </a>
+      <a class="navbar-item">
+        Elements
+      </a>
+      <a class="navbar-item">
+        Components
+      </a>
+      <hr class="navbar-divider">
+      <div class="navbar-item">
+        Version {{ site.version }}
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
+{% capture navbar_dropdown_hover_example %}
+<nav class="navbar">
+  <div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link">
+      Docs
+    </a>
+
+    <div class="navbar-dropdown">
+      <a class="navbar-item">
+        Overview
+      </a>
+      <a class="navbar-item">
+        Elements
+      </a>
+      <a class="navbar-item">
+        Components
+      </a>
+      <hr class="navbar-divider">
+      <div class="navbar-item">
+        Version {{ site.version }}
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
+{% capture navbar_dropdown_active_example %}
+<nav class="navbar">
+  <div class="navbar-item has-dropdown is-active">
+    <a class="navbar-link">
+      Docs
+    </a>
+
+    <div class="navbar-dropdown">
+      <a class="navbar-item">
+        Overview
+      </a>
+      <a class="navbar-item">
+        Elements
+      </a>
+      <a class="navbar-item">
+        Components
+      </a>
+      <hr class="navbar-divider">
+      <div class="navbar-item">
+        Version {{ site.version }}
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
+{% capture navbar_dropdown_default_example %}
+<nav class="navbar">
+  <a class="navbar-item">
+    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+  </a>
+
+  <div class="navbar-item has-dropdown is-active">
+    <a class="navbar-link">
+      Docs
+    </a>
+
+    <div class="navbar-dropdown">
+      <a class="navbar-item">
+        Overview
+      </a>
+      <a class="navbar-item">
+        Elements
+      </a>
+      <a class="navbar-item">
+        Components
+      </a>
+      <hr class="navbar-divider">
+      <div class="navbar-item">
+        Version {{ site.version }}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
+{% endcapture %}
+
+{% capture navbar_dropdown_boxed_example %}
+<nav class="navbar is-transparent">
+  <a class="navbar-item">
+    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+  </a>
+
+  <div class="navbar-item has-dropdown is-active">
+    <a class="navbar-link">
+      Docs
+    </a>
+
+    <div class="navbar-dropdown is-boxed">
+      <a class="navbar-item">
+        Overview
+      </a>
+      <a class="navbar-item">
+        Elements
+      </a>
+      <a class="navbar-item">
+        Components
+      </a>
+      <hr class="navbar-divider">
+      <div class="navbar-item">
+        Version {{ site.version }}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
+{% endcapture %}
+
+{% capture navbar_dropdown_item_active_example %}
+<nav class="navbar">
+  <a class="navbar-item">
+    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+  </a>
+
+  <div class="navbar-item has-dropdown is-active">
+    <a class="navbar-link">
+      Docs
+    </a>
+
+    <div class="navbar-dropdown">
+      <a class="navbar-item">
+        Overview
+      </a>
+      <a class="navbar-item is-active">
+        Elements
+      </a>
+      <a class="navbar-item">
+        Components
+      </a>
+      <hr class="navbar-divider">
+      <div class="navbar-item">
+        Version {{ site.version }}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
+{% endcapture %}
+
+{% capture navbar_divider_example %}
+<hr class="navbar-divider">
+{% endcapture %}
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns" style="margin-bottom: -0.75rem !important;">
+      <div class="column">
+        <h1 class="title">Navbar</h1>
+        <h2 class="subtitle">
+          A responsive horizontal <strong>navbar</strong> that can supports images, links, buttons, and dropdowns
+        </h2>
+      </div>
+
+      <div class="column is-narrow">
+        <p class="content">
+          <span class="tag is-success">New!</span>
+          <span class="tag is-info">0.4.3</span>
+        </p>
+
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="message is-success">
+      <div class="message-body">
+        <p>The new <code>navbar</code> replaces the deprecated <code>nav</code> component, whose documentation you can still access temporarily <a href="{{ site.url }}/documentation/components/nav/">here</a>.</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        The <code>navbar</code> component is a responsive and versatile horizontal navigation bar with the following structure:
+      </p>
+      <ul>
+        <li>
+          <code>navbar</code> the <strong>main</strong> container
+          <ul>
+            <li>
+              <code>navbar-brand</code> the <strong>left side</strong>, <strong class="has-text-success">always visible</strong>, which usually contains the <strong>logo</strong> and optionally some links or icons
+              <ul>
+                <li>
+                  <code>navbar-burger</code> the <strong>hamburger</strong> icon, which toggles the navbar menu on touch devices
+                </li>
+              </ul>
+            </li>
+            <li>
+              <code>navbar-menu</code> the <strong>right side</strong>, hidden on touch devices, visible on desktop
+              <ul>
+                <li>
+                  <code>navbar-start</code> the <strong>left part</strong> of the menu, which appears next to the navbar brand on desktop
+                </li>
+                <li>
+                  <code>navbar-end</code> the <strong>right part</strong> of the menu, which appears at the end of the navbar
+                  <ul>
+                    <li>
+                      <code>navbar-item</code> each <strong>single item</strong> of the navbar, which can either be a <code>a</code> or a <code>div</code>
+                      <ul>
+                        <li>
+                          <code>navbar-link</code> a <strong>link</strong> as the sibling of a dropdown, with an arrow
+                        </li>
+                        <li>
+                          <code>navbar-dropdown</code> the <strong>dropdown menu</strong>, which can include navbar items and dividers
+                          <ul>
+                            <li>
+                              <code>navbar-divider</code> a <strong>horizontal line</strong> to separate navbar items
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="example is-paddingless">
+      {{navbar_example}}
+    </div>
+
+    {% highlight html %}{{navbar_example}}{% endhighlight %}
+
+    <hr>
+
+    <h3 class="title">Navbar brand</h3>
+
+    <div class="content">
+      <p>
+        The <code>navbar-brand</code> is the left side of the navbar. It can contain:
+      </p>
+      <ul>
+        <li>
+          a number of <code>navbar-item</code>
+        </li>
+        <li>
+          the <code>navbar-burger</code> as last child
+        </li>
+      </ul>
+    </div>
+
+    {% highlight html %}{{navbar_brand_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>
+        The navbar brand is <strong>always visible</strong>: on both touch devices {% include bp/touch.html %} and desktop {% include bp/desktop.html %}. As a result, it is recommended to only use a few navbar items to avoid <strong>overflowing</strong> horizontally on small devices.
+      </p>
+    </div>
+
+    <div class="example is-paddingless">
+      {{navbar_brand_items_example}}
+    </div>
+
+    {% highlight html %}{{navbar_brand_items_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>
+        On desktop {% include bp/desktop.html %}, the navbar brand will only take up the space it needs.
+      </p>
+    </div>
+
+    <hr>
+
+    <h3 class="title">Navbar burger</h3>
+
+    <div class="content">
+      <p>
+        The <code>navbar-burger</code> is a hamburger menu that only appears on <strong>mobile</strong>. It has to appear as the last child of <code>navbar-brand</code>.
+      </p>
+    </div>
+
+    <div class="example is-paddingless">
+      <div class="navbar-burger" style="display: flex;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    {% highlight html %}{{ navbar_burger_example }}{% endhighlight %}
+
+    <div class="content">
+      <p>
+        You can add the modifier class <code>is-active</code> to turn it into a cross.
+      </p>
+    </div>
+
+    <div class="example is-paddingless">
+      <div class="navbar-burger is-active" style="display: flex;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">Navbar menu</h3>
+
+    <div class="content">
+      <p>
+        The <code>navbar-menu</code> is the <strong>counterpart</strong> of the navbar brand. As such, it must appear as a direct child of <code>navbar-brand</code>, as a sibling of <code>navbar-brand</code>.
+      </p>
+    </div>
+
+    {% highlight html %}{{navbar_menu_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>
+        The <code>navbar-menu</code> is <strong>hidden on touch devices</strong> {% include bp/touch.html %}. You need to add the modifier class <code>is-active</code> to display it.
+      </p>
+    </div>
+
+    {% highlight html %}{{navbar_menu_active_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>
+        On desktop {% include bp/desktop.html %}, the <code>navbar-menu</code> will <strong>fill up the space</strong> available in the navbar, leaving the navbar brand just the space it needs. It needs, however, two elements as direct children:
+      </p>
+      <ul>
+        <li>
+          <code>navbar-start</code>
+        </li>
+        <li>
+          <code>navbar-end</code>
+        </li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <h3 class="title">Navbar start and navbar end</h3>
+
+    <div class="content">
+      <p>
+        The <code>navbar-start</code> and <code>navbar-end</code> are the two direct and only children of the <code>navbar-menu</code>.
+      </p>
+      <p>
+        On desktop {% include bp/desktop.html %}:
+      </p>
+      <ul>
+        <li>
+          <code>navbar-start</code> will appear on the <strong>left</strong>
+        </li>
+        <li>
+          <code>navbar-end</code> will appear on the <strong>right</strong>
+        </li>
+      </ul>
+      <p>
+        Each of them can contain any number of <code>navbar-item</code>.
+      </p>
+    </div>
+
+    {% highlight html %}{{navbar_start_end_example}}{% endhighlight %}
+
+    <hr>
+
+    <h3 class="title">Navbar item</h3>
+
+    <div class="content">
+      <p>
+        A <code>navbar-item</code> is a repeatable element that can be:
+      </p>
+      <ul>
+        <li>
+          a navigation <strong>link</strong>
+          {% highlight html %}{{ navbar_item_link_example }}{% endhighlight %}
+        </li>
+        <li>
+          a container for the <strong>brand logo</strong>
+          {% highlight html %}{{ navbar_item_brand_example }}{% endhighlight %}
+        </li>
+        <li>
+          the <strong>parent</strong> of a dropdown menu
+          {% highlight html %}{{ navbar_item_dropdown_example }}{% endhighlight %}
+        </li>
+        <li>
+          a child of a <strong>navbar dropdown</strong>
+          {% highlight html %}{{ navbar_item_dropdown_bis_example }}{% endhighlight %}
+        </li>
+        <li>
+          a container for almost <strong>anything</strong> you want, like a <code>field</code>
+          {% highlight html %}{{ navbar_item_other_example }}{% endhighlight %}
+        </li>
+      </ul>
+      <p>
+        It can either be an anchor tag <code>&lt;a&gt;</code> or a <code>&lt;div&gt;</code>, as a <strong>direct child</strong> of either:
+      </p>
+      <ul>
+        <li>
+          <code>navbar</code>
+        </li>
+        <li>
+          <code>navbar-brand</code>
+        </li>
+        <li>
+          <code>navbar-start</code>
+        </li>
+        <li>
+          <code>navbar-end</code>
+        </li>
+        <li>
+          <code>navbar-dropdown</code>
+        </li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <h3 id="transparent-navbar" class="title">Transparent navbar</h3>
+
+    <div class="content">
+      <p>
+        To seamlessly integrate the navbar in any visual context, you can add the <code>is-transparent</code> modifer on the <code>navbar</code> component. This will remove any hover or active background from the navbar items.
+      </p>
+    </div>
+
+    <div class="example is-paddingless">
+      {{navbar_transparent_example}}
+    </div>
+
+    {% highlight html %}{{navbar_transparent_example}}{% endhighlight %}
+
+    <hr>
+
+    <h3 id="dropdown-menu" class="title">Dropdown menu</h3>
+
+    <div class="content">
+      <p>
+        To create a <strong>dropdown menu</strong>, you will need <strong>4</strong> elements:
+      </p>
+      <ul>
+        <li>
+          <code>navbar-item</code> with the <code>has-dropdown</code> modifier
+        </li>
+        <li>
+          <code>navbar-link</code> which contains the dropdown arrow
+        </li>
+        <li>
+          <code>navbar-dropdown</code> which can contain instances of <code>navbar-item</code> and <code>navbar-divider</code>
+        </li>
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="example is-paddingless">
+          {{ navbar_dropdown_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropdown_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Show/hide the dropdown with either <strong>CSS</strong> or <strong>JavaScript</strong>
+    </h4>
+
+    <div class="content">
+      <p>
+        The <code>navbar-dropdown</code> is visible on touch devices {% include bp/touch.html %} but hidden on desktop {% include bp/desktop.html %}. <em>How</em> the dropdown is displayed on desktop depends on the parent's class.
+      </p>
+      <p>
+        The <code>navbar-item</code> with the <code>has-dropdown</code> modifier, has <strong>2 additional modifiers</strong>
+      </p>
+      <ul>
+        <li>
+          <code>is-hoverable</code>: the dropdown will show up when <strong>hovering</strong> the parent <code>navbar-item</code>
+        </li>
+        <li>
+          <code>is-active</code>: the dropdown will show up <strong>all the time</strong>
+        </li>
+      </ul>
+    </div>
+
+    <div class="message is-success">
+      <p class="message-body">
+        While the CSS <code>:hover</code> implementation works perfectly, the <code>is-active</code> class is available for users who want to control the display of the dropdown with <strong>JavaScript</strong>.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="example is-paddingless">
+          {{ navbar_dropdown_hover_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropdown_hover_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="example is-paddingless">
+          {{ navbar_dropdown_active_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropdown_active_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Styles for the dropdown menu
+    </h4>
+
+    <div class="content">
+      <p>
+        By default, the <code>navbar-dropdown</code> has:
+      </p>
+      <ul>
+        <li>
+          a grey <code>border-top</code>
+        </li>
+        <li>
+          a <code>border-radius</code> at both bottom corners
+        </li>
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="example is-paddingless">
+          {{ navbar_dropdown_default_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropdown_default_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        When having a <a href="#transparent-navbar">transparent navbar</a>, it is preferable to use the boxed version of the dropdown, by using the <code>is-boxed</code> modifier.
+      </p>
+      <ul>
+        <li>
+          the grey border is <strong>removed</strong>
+        </li>
+        <li>
+          a slight <strong>inner shadow</strong> is added
+        </li>
+        <li>
+          all corners are <strong>rounded</strong>
+        </li>
+        <li>
+          the hover/active state is <strong>animated</strong>
+        </li>
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="example is-paddingless">
+          {{ navbar_dropdown_boxed_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropdown_boxed_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Active dropdown navbar item
+    </h4>
+
+    <div class="columns">
+      <div class="column">
+        <div class="example is-paddingless">
+          {{ navbar_dropdown_item_active_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropdown_item_active_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Dropdown divider
+    </h4>
+
+    <div class="content">
+      <p>
+        You can add a <code>navbar-divider</code> to display a <strong>horizontal rule</strong> in a <code>navbar-dropdown</code>.
+      </p>
+    </div>
+
+    {% highlight html %}{{ navbar_divider_example }}{% endhighlight %}
+
+  </div>
+</section>

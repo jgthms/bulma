@@ -1,0 +1,145 @@
+<nav class="navbar {% if include.transparent %}is-transparent{% endif %}">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="{{ site.github }}" target="_blank">
+      <span class="icon" style="color: #333;">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="{{ site.twitter }}" target="_blank">
+      <span class="icon" style="color: #55acee;">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+
+    <div class="navbar-burger burger" data-target="navMenu{{ include.id }}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenu{{ include.id }}" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item {% if page.route == 'index' %}is-active{% endif %}" href="{{ site.url }}/">
+        Home
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.documentation }}">
+          Docs
+        </a>
+        <div class="navbar-dropdown {% if include.boxed %}is-boxed{% endif %}">
+          <a class="navbar-item {% if page.doc-tab == 'overview' %}is-active{% endif %}" href="{{ site.documentation }}">
+            Overview
+          </a>
+          <a class="navbar-item {% if page.doc-tab == 'modifiers' %}is-active{% endif %}" href="{{ site.url }}/documentation/modifiers/syntax/">
+            Modifiers
+          </a>
+          <a class="navbar-item {% if page.doc-tab == 'grid' %}is-active{% endif %}" href="{{ site.url }}/documentation/grid/columns/">
+            Grid
+          </a>
+          <a class="navbar-item {% if page.doc-tab == 'elements' %}is-active{% endif %}" href="{{ site.url }}/documentation/elements/box/">
+            Elements
+          </a>
+          {% if site.vernum >= 43 %}
+            <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/breadcrumb/">
+              Components
+            </a>
+          {% else %}
+            <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/card/">
+              Components
+            </a>
+          {% endif %}
+          <a class="navbar-item {% if page.doc-tab == 'layout' %}is-active{% endif %}" href="{{ site.url }}/documentation/layout/container/">
+            Layout
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <div>version <p class="has-text-info">{{ site.version }}</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link {% if page.route == 'blog' %}is-active{% endif %}" href="{{ site.url }}/blog/">
+          Blog
+        </a>
+        <div id="blogDropdown" class="navbar-dropdown {% if include.boxed %}is-boxed{% endif %}" data-style="width: 18rem;">
+          {% for post in site.posts limit:3 %}
+            <a class="navbar-item" href="{{ post.url }}">
+              <div class="navbar-content">
+                <p>
+                  <small class="has-text-info">{{ post.date | date_to_string }}</small>
+                </p>
+                <p>{{ post.title }}</p>
+              </div>
+            </a>
+          {% endfor %}
+          <a class="navbar-item" href="{{ site.url }}/blog/">
+            More posts
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <div class="navbar-content">
+              <div class="level is-mobile">
+                <div class="level-left">
+                  <div class="level-item">
+                    <strong>Stay up to date!</strong>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <a class="button is-rss is-small" href="{{ site.url }}/atom.xml">
+                      <span class="icon is-small">
+                        <i class="fa fa-rss"></i>
+                      </span>
+                      <span>Subscribe</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item" href="{{ site.github }}" target="_blank">
+        Github
+      </a>
+      <a class="navbar-item" href="{{ site.twitter }}" target="_blank">
+        Twitter
+      </a>
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+            <a id="twitter"
+              class="button"
+              data-social-network="Twitter"
+              data-social-action="tweet"
+              data-social-target="{{ site.url }}"
+              target="_blank"
+              href="https://twitter.com/intent/tweet?text={{ site.title | urlencode }}&url={{ site.url }}&via=jgthms">
+              <span class="icon">
+                <i class="fa fa-twitter"></i>
+              </span>
+              <span>Tweet</span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-primary" href="{{ site.download }}">
+              <span class="icon">
+                <i class="fa fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
