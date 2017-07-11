@@ -339,6 +339,46 @@ doc-subtab: navbar
 <hr class="navbar-divider">
 {% endcapture %}
 
+{% capture navbar_js_html %}
+<div class="navbar-burger" data-target="navMenu">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="navbar-menu" id="navMenu">
+  <!-- navbar-start, navbar-end... -->
+</div>
+{% endcapture %}
+
+{% capture navbar_js_code %}
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Get all "nav-burger" elements
+  var $navBurgers = Array.prototype.slice.call(document.querySelectorAll('.nav-burger'), 0);
+
+  // Check if there are any nav burgers
+  if ($navBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navBurgers.forEach(function ($el) {
+      $el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "nav-burger" and the "nav-menu"
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
+{% endcapture %}
+
 <section class="section">
   <div class="container">
 
@@ -527,6 +567,25 @@ doc-subtab: navbar
           <code>navbar-end</code>
         </li>
       </ul>
+    </div>
+
+    <hr>
+
+    <div id="navbarJsExample" class="message is-info">
+      <h4 class="message-header">Javascript toggle</h4>
+      <div class="message-body">
+        <div class="content">
+          <p>
+            The Bulma package <strong>does not come with any JavaScript</strong>.
+            <br>
+            Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>nav-burger</code> and the targeted <code>nav-menu</code>.
+          </p>
+
+          {% highlight html %}{{ navbar_js_html }}{% endhighlight %}
+
+          {% highlight javascript %}{{ navbar_js_code }}{% endhighlight %}
+        </div>
+      </div>
     </div>
 
     <hr>

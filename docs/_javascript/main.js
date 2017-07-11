@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const expand = '<button class="expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copy);
 
-      if ($el.firstElementChild.scrollHeight > 320) {
+      if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
         $el.insertAdjacentHTML('beforeend', expand);
       }
 

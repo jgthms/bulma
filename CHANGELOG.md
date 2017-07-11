@@ -4,6 +4,7 @@
 
 ### Issues closed
 
+* Fix #856 JavaScript `nav-burger` example
 * Fix #821 Notification strong color
 
 ## 0.4.3
