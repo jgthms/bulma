@@ -4,6 +4,7 @@
 
 ### Issues closed
 
+* Fix #861 Box in hero as text and background white
 * Fix #852 charset and version number
 * Fix #856 JavaScript `nav-burger` example
 * Fix #821 Notification strong color
