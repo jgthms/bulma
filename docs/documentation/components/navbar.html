@@ -354,21 +354,21 @@ doc-subtab: navbar
 {% capture navbar_js_code %}
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Get all "nav-burger" elements
-  var $navBurgers = Array.prototype.slice.call(document.querySelectorAll('.nav-burger'), 0);
+  // Get all "navbar-burger" elements
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
   // Check if there are any nav burgers
-  if ($navBurgers.length > 0) {
+  if ($navbarBurgers.length > 0) {
 
     // Add a click event on each of them
-    $navBurgers.forEach(function ($el) {
+    $navbarBurgers.forEach(function ($el) {
       $el.addEventListener('click', () => {
 
         // Get the target from the "data-target" attribute
         var target = $el.dataset.target;
         var $target = document.getElementById(target);
 
-        // Toggle the class on both the "nav-burger" and the "nav-menu"
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
         $el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
 
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <p>
             The Bulma package <strong>does not come with any JavaScript</strong>.
             <br>
-            Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>nav-burger</code> and the targeted <code>nav-menu</code>.
+            Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>.
           </p>
 
           {% highlight html %}{{ navbar_js_html }}{% endhighlight %}
