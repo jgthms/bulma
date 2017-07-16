@@ -4,33 +4,6 @@ doc-tab: elements
 doc-subtab: form
 ---
 
-{% include subnav-elements.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Form controls</h1>
-    <h2 class="subtitle">
-      All generic <strong>form controls</strong>, designed for consistency
-    </h2>
-
-    <hr>
-
-    <div class="content">
-      <p>The following form controls <strong>classes</strong> are supported:</p>
-      <ul>
-        <li><code>.label</code></li>
-        <li><code>.input</code></li>
-        <li><code>.textarea</code></li>
-        <li><code>.select</code></li>
-        <li><code>.checkbox</code></li>
-        <li><code>.radio</code></li>
-        <li><code>.button</code></li>
-        <li><code>.help</code></li>
-      </ul>
-      <p>Each of them should be wrapped in a <code>.control</code> container.<br>
-      When combining several controls in a <strong>form</strong>, use the <code>.field</code> class as a <strong>container</strong>, to keep the spacing consistent.</p>
-    </div>
-
 {% capture form_example %}
 <div class="field">
   <label class="label">Name</label>
@@ -118,20 +91,6 @@ doc-subtab: form
 </div>
 {% endcapture %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{form_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{form_example}}
-{% endhighlight %}
-      </div>
-    </div>
-
-    <hr>
-
-    <h3 class="title">Colors</h3>
 {% capture colors_example %}
 <div class="field">
   <p class="control">
@@ -159,18 +118,6 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-        {{colors_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{colors_example}}
-{% endhighlight %}
-      </div>
-    </div>
-
-    <hr>
 
 {% capture sizes_example %}
 <div class="field">
@@ -234,22 +181,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <h3 class="title">Sizes</h3>
-    <div class="columns">
-      <div class="column is-half">
-        {{sizes_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{sizes_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
-    <hr>
-
-    <h3 class="title">States</h3>
-    <h4 class="subtitle">Normal</h4>
 {% capture normal_example %}
 <div class="field">
   <p class="control">
@@ -262,18 +194,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-{{normal_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{normal_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
-    <h4 class="subtitle">Hover</h4>
 {% capture hover_example %}
 <div class="field">
   <p class="control">
@@ -286,18 +207,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-        {{hover_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{hover_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
-    <h4 class="subtitle">Focus</h4>
 {% capture focus_example %}
 <div class="field">
   <p class="control">
@@ -310,18 +220,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-{{focus_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{focus_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
-    <h4 class="subtitle">Loading</h4>
 {% capture loading_example %}
 <div class="field">
   <p class="control is-loading">
@@ -343,16 +242,6 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-{{loading_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{loading_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
 {% capture loading_sizes_example %}
 <div class="field">
@@ -413,29 +302,6 @@ doc-subtab: form
 </div>
 {% endcapture %}
 
-{% if site.vernum >= 43 %}
-    <div class="columns">
-      <div class="column is-half">
-        <p style="margin-bottom: 0.5rem;">
-          <span class="tag is-success">New!</span>
-          <span class="tag is-info">0.4.3</span>
-        </p>
-        <div class="content">
-          <p>
-            You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
-          </p>
-        </div>
-{{loading_sizes_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{loading_sizes_example}}
-{% endhighlight %}
-      </div>
-    </div>
-{% endif %}
-
-    <h4 class="subtitle">Disabled</h4>
 {% capture disabled_example %}
 <div class="field">
   <p class="control">
@@ -485,42 +351,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-{{disabled_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{disabled_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
-    <!-- Font Awesome Icons -->
-    <hr>
-
-    <h3 class="title">With icons</h3>
-    <div class="content">
-      <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
-      <ul>
-        <li>
-          <code>has-icons-left</code>
-        </li>
-        <li>
-          and/or <code>has-icons-right</code>
-        </li>
-      </ul>
-      <p>You also need to add a modifier on the <strong>icon</strong>:</p>
-      <ul>
-        <li>
-          <code>icon is-left</code> if <code>has-icons-left</code> is used
-        </li>
-        <li>
-          <code>icon is-right</code> if <code>has-icons-right</code> is used
-        </li>
-      </ul>
-      <p>The size of the <strong>input</strong> will define the size of the icon container.</p>
-    </div>
 {% capture icons_example %}
 <div class="field">
   <p class="control has-icons-left">
@@ -546,16 +377,6 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-{{icons_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{icons_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
 {% capture select_icons_example %}
 <div class="field">
@@ -573,32 +394,6 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-
-    <div class="content">
-      <p>
-        <span class="tag is-success">New!</span>
-        <span class="tag is-info">0.4.2</span>
-      </p>
-      <p>
-        You can now append icons to <strong>select dropdowns</strong> as well.
-      </p>
-    </div>
-{{select_icons_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{select_icons_example}}
-{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="content">
-      <p>
-        If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
-      </p>
-    </div>
 
 {% capture has_icons_small_example %}
 <div class="field">
@@ -731,56 +526,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="columns">
-      <div class="column is-half">
-{{has_icons_small_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{has_icons_small_example}}
-{% endhighlight %}
-      </div>
-    </div>
 
-    <div class="columns">
-      <div class="column is-half">
-{{has_icons_normal_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{has_icons_normal_example}}
-{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-{{has_icons_medium_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{has_icons_medium_example}}
-{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-{{has_icons_large_example}}
-      </div>
-      <div class="column is-half">
-{% highlight html %}
-{{has_icons_large_example}}
-{% endhighlight %}
-      </div>
-    </div>
-
-    <hr>
-
-    <h3 id="form-addons" class="title">Form addons</h3>
-    <div class="content">
-      <p>If you want to <strong>attach</strong> controls together, use the <code>has-addons</code> modifier on the <code>control</code> container:</p>
-    </div>
 {% capture addons_example %}
 <div class="field has-addons">
   <p class="control">
@@ -793,23 +539,6 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="example">
-{{addons_example}}
-    </div>
-{% highlight html %}
-{{addons_example}}
-{% endhighlight %}
-    <div class="content">
-      <p>You can attach inputs, buttons, and dropdowns <strong>only</strong>.</p>
-    </div>
-
-    <div class="content">
-      <p>
-        <span class="tag is-success">New!</span>
-        <span class="tag is-info">0.4.2</span>
-      </p>
-      <p>It can be useful to append a <a href="{{site.url}}/documentation/elements/button#static-button">static button</a>.</p>
-    </div>
 
 {% capture addons_static_example %}
 <div class="field has-addons">
@@ -823,16 +552,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="example">
-{{addons_static_example}}
-    </div>
-{% highlight html %}
-{{addons_static_example}}
-{% endhighlight %}
 
-    <div class="content">
-      <p>Use the <code>is-expanded</code> modifier on the element you want to fill up the remaining space (in this case, the input):</p>
-    </div>
 {% capture addons_expanded_example %}
 <div class="field has-addons">
   <p class="control">
@@ -874,16 +594,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="example">
-{{addons_expanded_example}}
-    </div>
-{% highlight html %}
-{{addons_expanded_example}}
-{% endhighlight %}
 
-    <div class="content">
-      <p>If you want a full width select dropdown, pair <code>control is-expanded</code> with <code>select is-fullwidth</code>.</p>
-    </div>
 {% capture addons_expanded_fullwidth_example %}
 <div class="field has-addons">
   <p class="control is-expanded">
@@ -909,16 +620,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-<div class="example">
-{{addons_expanded_fullwidth_example}}
-</div>
-{% highlight html %}
-{{addons_expanded_fullwidth_example}}
-{% endhighlight %}
 
-    <div class="content">
-      <p>Use the <code>has-addons-centered</code> or the <code>has-addons-right</code> modifers to alter the <strong>alignment</strong>.</p>
-    </div>
 {% capture addons_center_example %}
 <div class="field has-addons has-addons-centered">
   <p class="control">
@@ -940,12 +642,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-<div class="example">
-{{addons_center_example}}
-</div>
-{% highlight html %}
-{{addons_center_example}}
-{% endhighlight %}
+
 {% capture addons_right_example %}
 <div class="field has-addons has-addons-right">
   <p class="control">
@@ -967,26 +664,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-<div class="example">
-{{addons_right_example}}
-</div>
-{% highlight html %}
-{{addons_right_example}}
-{% endhighlight %}
 
-    <hr>
-
-    <h3 class="title">Form group</h3>
-    <div class="content">
-      <p>
-        If you want to <strong>group</strong> controls together, use the <code>is-grouped</code> modifier on the <code>control</code> container.
-        <br>
-        Use the <code>is-grouped-centered</code> or the <code>is-grouped-right</code> modifers to alter the <strong>alignment</strong>.
-      </p>
-      <p>
-        Add the <code>is-expanded</code> modifier on the control element you want to <strong>fill up the remaining space</strong>.
-      </p>
-    </div>
 {% capture group_example %}
 <div class="field is-grouped">
   <p class="control is-expanded">
@@ -999,28 +677,7 @@ doc-subtab: form
   </p>
 </div>
 {% endcapture %}
-    <div class="example">
-{{group_example}}
-    </div>
-{% highlight html %}
-{{group_example}}
-{% endhighlight %}
 
-    <hr>
-
-    <h3 class="title">Horizontal form</h3>
-    <div class="content">
-      <p>If you want a <strong>horizontal</strong> form control, use the <code>is-horizontal</code> modifier on the <code>field</code> container, in which you include:</p>
-      <ul>
-        <li>
-          <code>field-label</code> for the side label
-        </li>
-        <li>
-          <code>field-body</code> for the input/select/textarea container
-        </li>
-      </ul>
-      <p>You can of course use <code>is-grouped</code> or <code>has-addons</code> for the child elements.</p>
-    </div>
 {% capture horizontal_form_example %}
 <div class="field is-horizontal">
   <div class="field-label is-normal">
@@ -1133,35 +790,6 @@ doc-subtab: form
   </div>
 </div>
 {% endcapture %}
-<div class="example">
-{{horizontal_form_example}}
-</div>
-{% highlight html %}
-{{horizontal_form_example}}
-{% endhighlight %}
-
-<div class="content">
-  <p>
-    <span class="tag is-success">New!</span>
-  </p>
-  <p>
-    To preserve the <strong>vertical alignment</strong> of labels with each type and size of control, the <code>.field-label</code> comes with <strong>4 size modifiers</strong>:
-  </p>
-  <ul>
-    <li>
-      <code>.is-small</code>
-    </li>
-    <li>
-      <code>.is-normal</code> for any <code>.input</code> or <code>.button</code>
-    </li>
-    <li>
-      <code>.is-medium</code>
-    </li>
-    <li>
-      <code>.is-large</code>
-    </li>
-  </ul>
-</div>
 
 {% capture field_label_example %}
 <div class="field is-horizontal">
@@ -1232,11 +860,352 @@ doc-subtab: form
   </div>
 </div>
 {% endcapture %}
-<div class="example">
-{{field_label_example}}
-</div>
-{% highlight html %}
-{{field_label_example}}
-{% endhighlight %}
+
+{% include subnav-elements.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Form controls</h1>
+    <h2 class="subtitle">
+      All generic <strong>form controls</strong>, designed for consistency
+    </h2>
+
+    <hr>
+
+    <div class="content">
+      <p>The following form controls <strong>classes</strong> are supported:</p>
+      <ul>
+        <li><code>.label</code></li>
+        <li><code>.input</code></li>
+        <li><code>.textarea</code></li>
+        <li><code>.select</code></li>
+        <li><code>.checkbox</code></li>
+        <li><code>.radio</code></li>
+        <li><code>.button</code></li>
+        <li><code>.help</code></li>
+      </ul>
+      <p>Each of them should be wrapped in a <code>.control</code> container.<br>
+      When combining several controls in a <strong>form</strong>, use the <code>.field</code> class as a <strong>container</strong>, to keep the spacing consistent.</p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{form_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{form_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">Colors</h3>
+    <div class="columns">
+      <div class="column is-half">
+        {{colors_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{colors_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+    <h3 class="title">Sizes</h3>
+    <div class="columns">
+      <div class="column is-half">
+        {{sizes_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{sizes_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">States</h3>
+    <h4 class="subtitle">Normal</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{normal_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{normal_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Hover</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{hover_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{hover_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Focus</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{focus_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{focus_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Loading</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{loading_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{loading_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% if site.vernum >= 43 %}
+      <div class="columns">
+        <div class="column is-half">
+          <p style="margin-bottom: 0.5rem;">
+            <span class="tag is-success">New!</span>
+            <span class="tag is-info">0.4.3</span>
+          </p>
+          <div class="content">
+            <p>
+              You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
+            </p>
+          </div>
+          {{loading_sizes_example}}
+        </div>
+        <div class="column is-half">
+          {% highlight html %}{{loading_sizes_example}}{% endhighlight %}
+        </div>
+      </div>
+    {% endif %}
+
+    <h4 class="subtitle">Disabled</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{disabled_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{disabled_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <!-- Font Awesome Icons -->
+    <hr>
+
+    <h3 class="title">With icons</h3>
+    <div class="content">
+      <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
+      <ul>
+        <li>
+          <code>has-icons-left</code>
+        </li>
+        <li>
+          and/or <code>has-icons-right</code>
+        </li>
+      </ul>
+      <p>You also need to add a modifier on the <strong>icon</strong>:</p>
+      <ul>
+        <li>
+          <code>icon is-left</code> if <code>has-icons-left</code> is used
+        </li>
+        <li>
+          <code>icon is-right</code> if <code>has-icons-right</code> is used
+        </li>
+      </ul>
+      <p>The size of the <strong>input</strong> will define the size of the icon container.</p>
+    </div>
+    <div class="columns">
+      <div class="column is-half">
+        {{icons_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{icons_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+
+    <div class="content">
+      <p>
+        <span class="tag is-success">New!</span>
+        <span class="tag is-info">0.4.2</span>
+      </p>
+      <p>
+        You can now append icons to <strong>select dropdowns</strong> as well.
+      </p>
+    </div>
+        {{select_icons_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{select_icons_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{has_icons_small_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_small_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{has_icons_normal_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_normal_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{has_icons_medium_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_medium_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{has_icons_large_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_large_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 id="form-addons" class="title">Form addons</h3>
+    <div class="content">
+      <p>If you want to <strong>attach</strong> controls together, use the <code>has-addons</code> modifier on the <code>control</code> container:</p>
+    </div>
+    <div class="example">
+        {{addons_example}}
+    </div>
+        {% highlight html %}{{addons_example}}{% endhighlight %}
+    <div class="content">
+      <p>You can attach inputs, buttons, and dropdowns <strong>only</strong>.</p>
+    </div>
+
+    <div class="content">
+      <p>
+        <span class="tag is-success">New!</span>
+        <span class="tag is-info">0.4.2</span>
+      </p>
+      <p>It can be useful to append a <a href="{{site.url}}/documentation/elements/button#static-button">static button</a>.</p>
+    </div>
+
+    <div class="example">
+        {{addons_static_example}}
+    </div>
+        {% highlight html %}{{addons_static_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>Use the <code>is-expanded</code> modifier on the element you want to fill up the remaining space (in this case, the input):</p>
+    </div>
+    <div class="example">
+        {{addons_expanded_example}}
+    </div>
+        {% highlight html %}{{addons_expanded_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>If you want a full width select dropdown, pair <code>control is-expanded</code> with <code>select is-fullwidth</code>.</p>
+    </div>
+    <div class="example">
+      {{addons_expanded_fullwidth_example}}
+    </div>
+    {% highlight html %}{{addons_expanded_fullwidth_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>Use the <code>has-addons-centered</code> or the <code>has-addons-right</code> modifers to alter the <strong>alignment</strong>.</p>
+    </div>
+    <div class="example">
+      {{addons_center_example}}
+    </div>
+    {% highlight html %}{{addons_center_example}}{% endhighlight %}
+    <div class="example">
+      {{addons_right_example}}
+    </div>
+    {% highlight html %}{{addons_right_example}}{% endhighlight %}
+
+    <hr>
+
+    <h3 class="title">Form group</h3>
+    <div class="content">
+      <p>
+        If you want to <strong>group</strong> controls together, use the <code>is-grouped</code> modifier on the <code>control</code> container.
+        <br>
+        Use the <code>is-grouped-centered</code> or the <code>is-grouped-right</code> modifers to alter the <strong>alignment</strong>.
+      </p>
+      <p>
+        Add the <code>is-expanded</code> modifier on the control element you want to <strong>fill up the remaining space</strong>.
+      </p>
+    </div>
+    <div class="example">
+      {{group_example}}
+    </div>
+    {% highlight html %}{{group_example}}{% endhighlight %}
+
+    <hr>
+
+    <h3 class="title">Horizontal form</h3>
+    <div class="content">
+      <p>If you want a <strong>horizontal</strong> form control, use the <code>is-horizontal</code> modifier on the <code>field</code> container, in which you include:</p>
+      <ul>
+        <li>
+          <code>field-label</code> for the side label
+        </li>
+        <li>
+          <code>field-body</code> for the input/select/textarea container
+        </li>
+      </ul>
+      <p>You can of course use <code>is-grouped</code> or <code>has-addons</code> for the child elements.</p>
+    </div>
+    <div class="example">
+      {{horizontal_form_example}}
+    </div>
+    {% highlight html %}{{horizontal_form_example}}{% endhighlight %}
+
+    <div class="content">
+      <p>
+        <span class="tag is-success">New!</span>
+      </p>
+      <p>
+        To preserve the <strong>vertical alignment</strong> of labels with each type and size of control, the <code>.field-label</code> comes with <strong>4 size modifiers</strong>:
+      </p>
+      <ul>
+        <li>
+          <code>.is-small</code>
+        </li>
+        <li>
+          <code>.is-normal</code> for any <code>.input</code> or <code>.button</code>
+        </li>
+        <li>
+          <code>.is-medium</code>
+        </li>
+        <li>
+          <code>.is-large</code>
+        </li>
+      </ul>
+    </div>
+    <div class="example">
+      {{field_label_example}}
+    </div>
+    {% highlight html %}{{field_label_example}}{% endhighlight %}
   </div>
 </section>
