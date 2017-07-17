@@ -194,7 +194,8 @@ $input-radius:              $radius !default
     display: flex
     justify-content: flex-start
     .control
-      margin-right: -1px
+      &:not(:last-child)
+        margin-right: -1px
       &:first-child
         .button,
         .input,
@@ -274,17 +275,20 @@ $input-radius:              $radius !default
       padding-top: 0.375em
 
 .field-body
+  .field .field
+    margin-bottom: 0
   +tablet
     display: flex
     flex-basis: 0
     flex-grow: 5
     flex-shrink: 1
     .field
+      margin-bottom: 0
+    & > .field
       flex-shrink: 1
       &:not(.is-narrow)
         flex-grow: 1
       &:not(:last-child)
-        margin-bottom: 0
         margin-right: 0.75rem
 
 .control

@@ -4,6 +4,7 @@
 
 ### Issues closed
 
+* Fix #715 `help` class behaviour in horizontal form `is-grouped` field
 * Fix #842 Adding modifiers in `navbar`
 * Fix #841 `container` as direct child of `navbar` moves `navbar-menu` below `navbar-brand`
 * Fix #861 Box in hero as text and background white
