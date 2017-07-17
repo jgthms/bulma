@@ -2010,13 +2010,16 @@ input[type="submit"].button {
 
 .select {
   display: inline-block;
-  height: 2.25em;
   max-width: 100%;
   position: relative;
   vertical-align: top;
 }
 
-.select:after {
+.select:not(.is-multiple) {
+  height: 2.25em;
+}
+
+.select:not(.is-multiple)::after {
   border: 1px solid #00d1b2;
   border-right: 0;
   border-top: 0;
@@ -2059,7 +2062,6 @@ input[type="submit"].button {
   font-size: 1em;
   max-width: 100%;
   outline: none;
-  padding-right: 2.5em;
 }
 
 .select select:focus, .select select.is-focused, .select select:active, .select select.is-active {
@@ -2105,6 +2107,10 @@ input[type="submit"].button {
   border-color: #b5b5b5;
 }
 
+.select select:focus, .select select.is-focused, .select select:active, .select select.is-active {
+  border-color: #00d1b2;
+}
+
 .select select::-ms-expand {
   display: none;
 }
@@ -2113,7 +2119,20 @@ input[type="submit"].button {
   border-color: whitesmoke;
 }
 
-.select:hover:after {
+.select select:not([multiple]) {
+  padding-right: 2.5em;
+}
+
+.select select[multiple] {
+  height: unset;
+  padding: 0;
+}
+
+.select select[multiple] option {
+  padding: 0.5em 1em;
+}
+
+.select:hover::after {
   border-color: #363636;
 }
 
@@ -2166,7 +2185,7 @@ input[type="submit"].button {
   font-size: 1.5rem;
 }
 
-.select.is-disabled:after {
+.select.is-disabled::after {
   border-color: #7a7a7a;
 }
 
@@ -2178,7 +2197,7 @@ input[type="submit"].button {
   width: 100%;
 }
 
-.select.is-loading:after {
+.select.is-loading::after {
   animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
   border-radius: 290486px;
@@ -2497,26 +2516,26 @@ input[type="submit"].button {
 }
 
 .control.has-icons-left .input:focus ~ .icon,
-.control.has-icons-left .select select:focus ~ .icon, .control.has-icons-right .input:focus ~ .icon,
-.control.has-icons-right .select select:focus ~ .icon {
+.control.has-icons-left .select:focus ~ .icon, .control.has-icons-right .input:focus ~ .icon,
+.control.has-icons-right .select:focus ~ .icon {
   color: #7a7a7a;
 }
 
 .control.has-icons-left .input.is-small ~ .icon,
-.control.has-icons-left .select select.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon,
-.control.has-icons-right .select select.is-small ~ .icon {
+.control.has-icons-left .select.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon,
+.control.has-icons-right .select.is-small ~ .icon {
   font-size: 0.75rem;
 }
 
 .control.has-icons-left .input.is-medium ~ .icon,
-.control.has-icons-left .select select.is-medium ~ .icon, .control.has-icons-right .input.is-medium ~ .icon,
-.control.has-icons-right .select select.is-medium ~ .icon {
+.control.has-icons-left .select.is-medium ~ .icon, .control.has-icons-right .input.is-medium ~ .icon,
+.control.has-icons-right .select.is-medium ~ .icon {
   font-size: 1.25rem;
 }
 
 .control.has-icons-left .input.is-large ~ .icon,
-.control.has-icons-left .select select.is-large ~ .icon, .control.has-icons-right .input.is-large ~ .icon,
-.control.has-icons-right .select select.is-large ~ .icon {
+.control.has-icons-left .select.is-large ~ .icon, .control.has-icons-right .input.is-large ~ .icon,
+.control.has-icons-right .select.is-large ~ .icon {
   font-size: 1.5rem;
 }
 
@@ -2548,7 +2567,7 @@ input[type="submit"].button {
   right: 0;
 }
 
-.control.is-loading:after {
+.control.is-loading::after {
   animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
   border-radius: 290486px;
