@@ -36,6 +36,9 @@
     justify-content: flex-start
     &.is-left
       padding-right: 0.75em
+      +rtl
+        padding-right: unset
+        padding-left: 0.75em
     &.is-center
       flex: none
       justify-content: center
@@ -44,11 +47,20 @@
     &.is-right
       justify-content: flex-end
       padding-left: 0.75em
+      +rtl
+        padding-left: unset
+        padding-right: 0.75em
   .icon
     &:first-child
       margin-right: 0.5em
+      +rtl
+        margin-right: unset
+        margin-left: 0.5em
     &:last-child
       margin-left: 0.5em
+      +rtl
+        margin-left: unset
+        margin-right: 0.5em
   // Alignment
   &.is-centered
     ul
@@ -56,6 +68,8 @@
   &.is-right
     ul
       justify-content: flex-end
+      +rtl
+        justify-content: flex-start
   // Styles
   &.is-boxed
     a
@@ -86,10 +100,17 @@
     li
       & + li
         margin-left: -1px
+        +rtl
+          margin-left: unset
+          margin-right: -1px
       &:first-child a
         border-radius: $radius 0 0 $radius
+        +rtl
+          border-radus: $radius $radius 0 0
       &:last-child a
         border-radius: 0 $radius $radius 0
+        +rtl
+          border-radius: 0 0 $radius 0
       &.is-active
         a
           background-color: $primary

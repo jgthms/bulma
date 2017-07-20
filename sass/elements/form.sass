@@ -97,6 +97,9 @@ $input-radius:              $radius !default
 .radio
   & + .radio
     margin-left: 0.5em
+    +rtl
+      margin-left: unset
+      margin-right: 0.5em
 
 .select
   display: inline-block
@@ -111,6 +114,9 @@ $input-radius:              $radius !default
       right: 1.125em
       top: 50%
       z-index: 4
+      +rtl
+        right: unset
+        left: 1.125em
   select
     +input
     cursor: pointer
@@ -131,6 +137,9 @@ $input-radius:              $radius !default
       border-color: $input-disabled-border
     &:not([multiple])
       padding-right: 2.5em
+      +rtl
+        padding-right: unset
+        padding-left: 2.5em
     &[multiple]
       height: unset
       padding: 0
@@ -211,18 +220,31 @@ $input-radius:              $radius !default
     .control
       &:not(:last-child)
         margin-right: -1px
+        +rtl
+          margin-right: unset
+          margin-left: -1px
       &:first-child
         .button,
         .input,
         .select select
           border-bottom-left-radius: $input-radius
           border-top-left-radius: $input-radius
+          +rtl
+            border-bottom-left-radius: unset
+            border-top-left-radius: unset
+            border-bottom-right-radius: $input-radius
+            border-top-right-radius: $input-radius
       &:last-child
         .button,
         .input,
         .select select
           border-bottom-right-radius: $input-radius
           border-top-right-radius: $input-radius
+          +rtl
+            border-bottom-right-radius: unset
+            border-top-right-radius: unset
+            border-bottom-left-radius: $input-radius
+            border-top-left-radius: $input-radius
       .button,
       .input,
       .select select
@@ -243,6 +265,8 @@ $input-radius:              $radius !default
       justify-content: center
     &.has-addons-right
       justify-content: flex-end
+      +rtl
+        justify-content: flex-start
     &.has-addons-fullwidth
       .control
         flex-grow: 1
@@ -250,11 +274,16 @@ $input-radius:              $radius !default
   &.is-grouped
     display: flex
     justify-content: flex-start
+    +rtl
+      justify-content: flex-end
     & > .control
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
         margin-right: 0.75rem
+        +rtl
+          margin-right: unset
+          margin-left: 0.75rem
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
@@ -262,6 +291,8 @@ $input-radius:              $radius !default
       justify-content: center
     &.is-grouped-right
       justify-content: flex-end
+      +rtl
+        justify-content: flex-start
   &.is-horizontal
     +tablet
       display: flex
@@ -277,6 +308,10 @@ $input-radius:              $radius !default
     flex-shrink: 0
     margin-right: 1.5rem
     text-align: right
+    +rtl
+      text-align: left
+      margin-right: unset
+      margin-left: 1.5rem
     &.is-small
       font-size: $size-small
       padding-top: 0.375em
@@ -310,6 +345,8 @@ $input-radius:              $radius !default
   font-size: $size-normal
   position: relative
   text-align: left
+  +rtl
+    text-align: right
   // Modifiers
   // DEPRECATED
   &.has-icon

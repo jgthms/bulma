@@ -25,9 +25,15 @@
   @if $height != 0
     left: calc(50% - (#{$width} / 2))
     top: calc(50% - (#{$height} / 2))
+    +rtl
+      left: unset
+      right: calc(50% - (#{$width} / 2))
   @else
     left: calc(50% - (#{$width} / 2))
     top: calc(50% - (#{$width} / 2))
+    +rtl
+      left: unset
+      right: calc(50% - (#{$width} / 2))
 
 =delete
   +unselectable
@@ -60,6 +66,10 @@
     top: 50%
     transform: translateX(-50%) translateY(-50%) rotate(45deg)
     transform-origin: center center
+    +rtl
+      left: unset
+      right: 50%
+      transform: translateX(50%) translateY(-50%) rotate(45deg)
   &:before
     height: 2px
     width: 50%
@@ -120,6 +130,9 @@
     transition: none $speed $easing
     transition-property: background, left, opacity, transform
     width: 15px
+    +rtl
+      margin-left: unset
+      margin-right: -7px
     &:nth-child(1)
       margin-top: -6px
     &:nth-child(2)
@@ -136,12 +149,18 @@
         margin-left: -5px
         transform: rotate(45deg)
         transform-origin: left top
+        +rtl
+          margin-left: unset
+          margin-right: 5px
       &:nth-child(2)
         opacity: 0
       &:nth-child(3)
         margin-left: -5px
         transform: rotate(-45deg)
         transform-origin: left bottom
+        +rtl
+          margin-left: unset
+          margin-right: -5px
 
 =loader
   animation: spinAround 500ms infinite linear
@@ -154,6 +173,9 @@
   height: 1em
   position: relative
   width: 1em
+  +rtl
+    border-right-color: unset
+    border-left-color: transparent
 
 =overflow-touch
   -webkit-overflow-scrolling: touch
@@ -177,6 +199,11 @@
   -moz-user-select: none
   -ms-user-select: none
   user-select: none
+
+=rtl
+  @if $body-rtl
+    @at-root  [dir="rtl"] #{&}
+      @content
 
 // Responsiveness
 
