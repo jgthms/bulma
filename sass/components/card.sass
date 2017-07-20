@@ -1,14 +1,31 @@
+$card: $text !default
+$card-background: $white !default
+$card-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default
+
+$card-header: $text-strong !default
+$card-header-shadow: 0 1px 2px rgba($black, 0.1) !default
+$card-header-weight: $weight-bold !default
+
+$card-footer-border: $border !default
+
+.card
+  background-color: $card-background
+  box-shadow: $card-shadow
+  color: $card
+  max-width: 100%
+  position: relative
+
 .card-header
   align-items: stretch
-  box-shadow: 0 1px 2px rgba($black, 0.1)
+  box-shadow: $card-header-shadow
   display: flex
 
 .card-header-title
   align-items: center
-  color: $text-strong
+  color: $card-header
   display: flex
   flex-grow: 1
-  font-weight: $weight-bold
+  font-weight: $card-header-weight
   padding: 0.75rem
 
 .card-header-icon
@@ -26,7 +43,7 @@
   padding: 1.5rem
 
 .card-footer
-  border-top: 1px solid $border
+  border-top: 1px solid $card-footer-border
   align-items: stretch
   display: flex
 
@@ -39,13 +56,10 @@
   justify-content: center
   padding: 0.75rem
   &:not(:last-child)
-    border-right: 1px solid $border
+    border-right: 1px solid $card-footer-border
+
+// Combinations
 
 .card
-  background-color: $white
-  box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
-  color: $text
-  max-width: 100%
-  position: relative
   .media:not(:last-child)
     margin-bottom: 0.75rem

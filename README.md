@@ -76,6 +76,7 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 * Re-bulma – Bulma components build with React: https://github.com/bokuweb/re-bulma
 * React-bulma – React.js components for bulma: https://github.com/kulakowka/react-bulma
 * Buefy — Lightweight UI components for Vue.js based on Bulma: https://buefy.github.io
+* vue-bulma-components — Bulma components for Vue.js with straightforward syntax: https://github.com/vouill/vue-bulma-components
 
 ## Copyright and license
 

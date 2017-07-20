@@ -4,6 +4,13 @@
 
 ### Issues closed
 
+* Fix #887 `body` scrollbar
+* Fix #715 `help` class behaviour in horizontal form `is-grouped` field
+* Fix #842 Adding modifiers in `navbar`
+* Fix #841 `container` as direct child of `navbar` moves `navbar-menu` below `navbar-brand`
+* Fix #861 Box in hero as text and background white
+* Fix #852 charset and version number
+* Fix #856 JavaScript `nav-burger` example
 * Fix #821 Notification strong color
 
 ## 0.4.3
