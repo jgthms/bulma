@@ -2,10 +2,30 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  // Dropdowns
+
+  var $dropdowns = getAll('.dropdown');
+
+  if ($dropdowns.length > 0) {
+    $dropdowns.forEach(function ($el) {
+      $el.addEventListener('click', function (event) {
+        console.log('dropdown', event);
+        event.stopPropagation();
+        $el.classList.toggle('is-active');
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      console.log('document', event);
+      $dropdowns.forEach(function ($el) {
+        $el.classList.remove('is-active');
+      });
+    });
+  }
+
   // Toggles
 
   var $burgers = getAll('.burger');
-  var $fries = getAll('.fries');
 
   if ($burgers.length > 0) {
     $burgers.forEach(function ($el) {
