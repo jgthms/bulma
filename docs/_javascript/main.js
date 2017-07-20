@@ -1,9 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Dropdowns
+
+  const $dropdowns = getAll('.dropdown');
+
+  if ($dropdowns.length > 0) {
+    $dropdowns.forEach($el => {
+      $el.addEventListener('click', event => {
+        console.log('dropdown', event);
+        event.stopPropagation();
+        $el.classList.toggle('is-active');
+      });
+    });
+
+    document.addEventListener('click', event => {
+      console.log('document', event);
+      $dropdowns.forEach($el => {
+        $el.classList.remove('is-active');
+      });
+    });
+  }
+
   // Toggles
 
   const $burgers = getAll('.burger');
-  const $fries = getAll('.fries');
 
   if ($burgers.length > 0) {
     $burgers.forEach($el => {
