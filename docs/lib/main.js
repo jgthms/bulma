@@ -9,17 +9,19 @@ document.addEventListener('DOMContentLoaded', function () {
   if ($dropdowns.length > 0) {
     $dropdowns.forEach(function ($el) {
       $el.addEventListener('click', function (event) {
-        console.log('dropdown', event);
         event.stopPropagation();
         $el.classList.toggle('is-active');
       });
     });
 
     document.addEventListener('click', function (event) {
-      console.log('document', event);
-      $dropdowns.forEach(function ($el) {
-        $el.classList.remove('is-active');
-      });
+      closeDropdowns();
+    });
+  }
+
+  function closeDropdowns() {
+    $dropdowns.forEach(function ($el) {
+      $el.classList.remove('is-active');
     });
   }
 
@@ -59,20 +61,21 @@ document.addEventListener('DOMContentLoaded', function () {
   if ($modalCloses.length > 0) {
     $modalCloses.forEach(function ($el) {
       $el.addEventListener('click', function () {
-        $html.classList.remove('is-clipped');
         closeModals();
       });
     });
   }
 
-  document.addEventListener('keydown', function (e) {
+  document.addEventListener('keydown', function (event) {
+    var e = event || window.event;
     if (e.keyCode === 27) {
-      $html.classList.remove('is-clipped');
       closeModals();
+      closeDropdowns();
     }
   });
 
   function closeModals() {
+    $html.classList.remove('is-clipped');
     $modals.forEach(function ($el) {
       $el.classList.remove('is-active');
     });
