@@ -7,6 +7,33 @@ doc-subtab: dropdown
 {% capture dropdown_example %}
 <div class="dropdown">
   <div class="dropdown-trigger">
+    <a class="button">
+      <span>Dropdown button</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down"></i>
+      </span>
+    </a>
+  </div>
+  <div class="dropdown-menu">
+    <div class="dropdown-content">
+      <a class="dropdown-item">
+        Dropdown item
+      </a>
+      <a class="dropdown-item">
+        Other dropdown item
+      </a>
+      <hr class="dropdown-divider">
+      <a class="dropdown-item">
+        With a divider
+      </a>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture dropdown_click_example %}
+<div class="dropdown">
+  <div class="dropdown-trigger">
     <a class="button is-primary">
       <span>Click me</span>
       <span class="icon is-small">
@@ -14,7 +41,7 @@ doc-subtab: dropdown
       </span>
     </a>
   </div>
-  <div class="dropdown-container">
+  <div class="dropdown-menu">
     <div class="dropdown-content">
       <a class="dropdown-item">
         Overview
@@ -56,7 +83,7 @@ doc-subtab: dropdown
       </span>
     </a>
   </div>
-  <div class="dropdown-container">
+  <div class="dropdown-menu">
     <div class="dropdown-content">
       <div class="dropdown-item">
         <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
@@ -89,7 +116,48 @@ doc-subtab: dropdown
 
     <hr>
 
-    {{dropdown_example}}
+    <div class="content">
+      <p>
+        The <code>dropdown</code> component is a container for a dropdown button and a dropdown menu.
+      </p>
+      <ul>
+        <li>
+          <code>dropdown</code> the <strong>main</strong> container
+          <ul>
+            <li>
+              <code>dropdown-trigger</code> the container for a <code>button</code>
+            </li>
+            <li>
+              <code>dropdown-menu</code> the toggable menu, <strong>hidden</strong> by default
+              <ul>
+                <li>
+                  <code>dropdown-content</code> the dropdown <strong>box</strong>, with a white background and a shadow
+                  <ul>
+                    <li>
+                      <code>dropdown-item</code> each <strong>single item</strong> of the dropdown, which can either be a <code>a</code> or a <code>div</code>
+                    </li>
+                    <li>
+                      <code>dropdown-divider</code> a <strong>horizontal line</strong> to separate dropdown items
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{dropdown_example}}
+      </div>
+      <div class="column is-half highlight-full">
+        {% highlight html %}{{dropdown_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {{dropdown_click_example}}
     {{dropdown_info_example}}
   </div>
 </section>
