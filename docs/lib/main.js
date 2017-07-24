@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Dropdowns
 
-  var $dropdowns = getAll('.dropdown');
+  var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
   if ($dropdowns.length > 0) {
     $dropdowns.forEach(function ($el) {
