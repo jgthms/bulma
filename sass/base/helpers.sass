@@ -53,25 +53,25 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 @each $size in $sizes
   $i: index($sizes, $size)
   .is-size-#{$i}
-    font-size: $size
+    font-size: $size !important
   +mobile
     .is-size-#{$i}-mobile
-      font-size: $size
+      font-size: $size !important
   +tablet
     .is-size-#{$i}-tablet
-      font-size: $size
+      font-size: $size !important
   +touch
     .is-size-#{$i}-touch
-      font-size: $size
+      font-size: $size !important
   +desktop
     .is-size-#{$i}-desktop
-      font-size: $size
+      font-size: $size !important
   +widescreen
     .is-size-#{$i}-widescreen
-      font-size: $size
+      font-size: $size !important
   +fullhd
     .is-size-#{$i}-fullhd
-      font-size: $size
+      font-size: $size !important
 
 .has-text-centered
   text-align: center !important
@@ -85,11 +85,15 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 @each $name, $pair in $colors
   $color: nth($pair, 1)
   .has-text-#{$name}
-    color: $color
+    color: $color !important
   a.has-text-#{$name}
     &:hover,
     &:focus
       color: darken($color, 10%)
+
+@each $name, $shade in $shades
+  .has-text-#{$name}
+    color: $shade !important
 
 // Visibility
 
