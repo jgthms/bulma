@@ -1,0 +1,269 @@
+---
+layout: documentation
+doc-tab: modifiers
+doc-subtab: typography-helpers
+---
+
+{% capture thead %}
+<thead>
+  <tr>
+    <th>
+      Class
+    </th>
+    <th>
+      Mobile<br>
+      Up to <code>768px</code>
+    </th>
+    <th>
+      Tablet<br>
+      Between <code>769px</code> and <code>1007px</code>
+    </th>
+    <th>
+      Desktop<br>
+      Between <code>1008px</code> and <code>1199px</code>
+    </th>
+    <th>
+      Widescreen<br>
+      Between <code>1200px</code> and <code>1391px</code>
+    </th>
+    <th>
+      FullHD<br>
+      Above <code>1392px</code>
+    </th>
+  </tr>
+</thead>
+{% endcapture %}
+
+{% capture size1 %}
+<td class="is-narrow">
+  <p class="notification is-success"><code>3rem</code></p>
+</td>
+{% endcapture %}
+
+{% capture unchanged %}
+<td class="is-narrow">
+  <p class="notification">unchanged</p>
+</td>
+{% endcapture %}
+
+{% include subnav-modifiers.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Typography helpers</h1>
+    <h2 class="subtitle">
+      Change the <strong>size</strong> and <strong>color</strong> of the text for one or multiple viewport width
+    </h2>
+
+    <hr>
+
+    <h3 class="title">Size</h3>
+
+    <div class="content">
+      <p>
+        There are <strong>7 sizes</strong> to choose from:
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>
+            Class
+          </th>
+          <th>
+            Font-size
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>is-size-1</code></td>
+          <td><code>3rem</code></td>
+        </tr>
+        <tr>
+          <td><code>is-size-2</code></td>
+          <td><code>2.5rem</code></td>
+        </tr>
+        <tr>
+          <td><code>is-size-3</code></td>
+          <td><code>2rem</code></td>
+        </tr>
+        <tr>
+          <td><code>is-size-4</code></td>
+          <td><code>1.5rem</code></td>
+        </tr>
+        <tr>
+          <td><code>is-size-5</code></td>
+          <td><code>1.25rem</code></td>
+        </tr>
+        <tr>
+          <td><code>is-size-6</code></td>
+          <td><code>1rem</code></td>
+        </tr>
+        <tr>
+          <td><code>is-size-7</code></td>
+          <td><code>0.75rem</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h3 class="title">
+      Responsive size
+    </h3>
+
+    <div class="content">
+      <p>
+        You can choose a <strong>specific</strong> size for <em>each</em> viewport width. You simply needed to append the <strong>viewport width</strong> to the size modifier.
+      </p>
+      <p>
+        For example, here are the modifiers for <code>$size-1</code>:
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      {{ thead }}
+      <tbody>
+        <tr>
+          <td><code>is-size-1-mobile</code></td>
+          {{ size1 }}
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ unchanged }}
+        </tr>
+        <tr>
+          <td><code>is-size-1-tablet</code></td>
+          {{ unchanged }}
+          {{ size1 }}
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ unchanged }}
+        </tr>
+        <tr>
+          <td><code>is-size-1-touch</code></td>
+          {{ size1 }}
+          {{ size1 }}
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ unchanged }}
+        </tr>
+        <tr>
+          <td><code>is-size-1-desktop</code></td>
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ size1 }}
+          {{ size1 }}
+          {{ size1 }}
+        </tr>
+        <tr>
+          <td><code>is-size-1-widescreen</code></td>
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ size1 }}
+          {{ size1 }}
+        </tr>
+        <tr>
+          <td><code>is-size-1-fullhd</code></td>
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ unchanged }}
+          {{ size1 }}
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="content">
+      <p>
+        You can use the same logic for each of the <strong>7 sizes</strong>.
+      </p>
+    </div>
+
+    <hr>
+
+    <h3 class="title">
+      Colors
+    </h3>
+
+    <div class="content">
+      <p>
+        You can set any element to one of the <strong>9 colors</strong> or <strong>9 shades of grey</strong>:
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>
+            Class
+          </th>
+          <th>
+            Color
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>.has-text-white</code></td><td>{% include color/white.html %}</td></tr>
+        <tr><td><code>.has-text-black</code></td><td>{% include color/black.html %}</td></tr>
+        <tr><td><code>.has-text-light</code></td><td>{% include color/white-ter.html %}</td></tr>
+        <tr><td><code>.has-text-dark</code></td><td>{% include color/grey-darker.html %}</td></tr>
+        <tr><td><code>.has-text-primary</code></td><td>{% include color/turquoise.html %}</td></tr>
+        <tr><td><code>.has-text-info</code></td><td>{% include color/blue.html %}</td></tr>
+        <tr><td><code>.has-text-success</code></td><td>{% include color/green.html %}</td></tr>
+        <tr><td><code>.has-text-warning</code></td><td>{% include color/yellow.html %}</td></tr>
+        <tr><td><code>.has-text-danger</code></td><td>{% include color/red.html %}</td></tr>
+        <tr><td><code>.has-text-black-bis</code></td><td>{% include color/black-bis.html %}</td></tr>
+        <tr><td><code>.has-text-black-ter</code></td><td>{% include color/black-ter.html %}</td></tr>
+        <tr><td><code>.has-text-grey-darker</code></td><td>{% include color/grey-darker.html %}</td></tr>
+        <tr><td><code>.has-text-grey-dark</code></td><td>{% include color/grey-dark.html %}</td></tr>
+        <tr><td><code>.has-text-grey</code></td><td>{% include color/grey.html %}</td></tr>
+        <tr><td><code>.has-text-grey-light</code></td><td>{% include color/grey-light.html %}</td></tr>
+        <tr><td><code>.has-text-grey-lighter</code></td><td>{% include color/grey-lighter.html %}</td></tr>
+        <tr><td><code>.has-text-white-ter</code></td><td>{% include color/white-ter.html %}</td></tr>
+        <tr><td><code>.has-text-white-bis</code></td><td>{% include color/white-bis.html %}</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h3 class="title">Alignment</h3>
+
+    <div class="content">
+      <p>
+        You can align the text with the use of one of <strong>3 alignment helpers</strong>:
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>
+            Class
+          </th>
+          <th>
+            Color
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td><code>.has-text-centered</code></td>
+        <td>Makes the text <strong>centered</strong></td>
+        </tr>
+        <tr>
+        <td><code>.has-text-left</code></td>
+        <td>Makes the text aligned to the <strong>left</strong></td>
+        </tr>
+        <tr>
+        <td><code>.has-text-right</code></td>
+        <td>Makes the text aligned to the <strong>right</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
