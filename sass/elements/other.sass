@@ -2,22 +2,30 @@
   +block
 
 .container
+  margin: 0 auto
   position: relative
   +desktop
-    margin: 0 auto
-    max-width: $desktop - 40px
-    width: $desktop - 40px
-    // Modifiers
+    max-width: $desktop - (2 * $gap)
+    width: $desktop - (2 * $gap)
     &.is-fluid
-      margin: 0 20px
+      margin-left: $gap
+      margin-right: $gap
       max-width: none
       width: auto
+  +until($widescreen)
+    &.is-widescreen
+      max-width: $widescreen - (2 * $gap)
+      width: auto
+  +until($fullhd)
+    &.is-fullhd
+      max-width: $fullhd - (2 * $gap)
+      width: auto
   +widescreen
-    max-width: $widescreen - 40px
-    width: $widescreen - 40px
+    max-width: $widescreen - (2 * $gap)
+    width: $widescreen - (2 * $gap)
   +fullhd
-    max-width: $fullhd - 40px
-    width: $fullhd - 40px
+    max-width: $fullhd - (2 * $gap)
+    width: $fullhd - (2 * $gap)
 
 .delete
   +delete

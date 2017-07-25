@@ -2,6 +2,12 @@
 
 ## 0.4.4
 
+### New features
+
+* New [dropdown button](http://bulma.io/documentation/components/dropdown/)!
+* The breakpoints and `.container` **gap** can be customized with the new `$gap` variable
+* The `.container` has 2 new modifiers: `.is-widescreen` and `.is-fullhd`
+
 ### Issues closed
 
 * Fix #26 `.textarea` element will honors `[rows]` attribute
