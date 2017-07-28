@@ -1,19 +1,28 @@
-$button: $grey-darker !default
-$button-background: $white !default
-$button-border: $grey-lighter !default
+$button-color: $grey-darker !default
+$button-background-color: $white !default
+$button-border-color: $grey-lighter !default
 
-$button-hover: $link-hover !default
-$button-hover-border: $link-hover-border !default
+$button-hover-color: $link-hover !default
+$button-hover-border-color: $link-hover-border !default
 
-$button-focus: $link-focus !default
-$button-focus-border: $link-focus-border !default
+$button-focus-color: $link-focus !default
+$button-focus-border-color: $link-focus-border !default
 
-$button-active: $link-active !default
-$button-active-border: $link-active-border !default
+$button-active-color: $link-active !default
+$button-active-border-color: $link-active-border !default
 
-$button-static: $grey !default
-$button-static-background: $white-ter !default
-$button-static-border: $grey-lighter !default
+$button-link-color: $text !default
+$button-link-hover-background-color: $background !default
+$button-link-hover-color: $text-strong !default
+
+$button-disabled-background-color: $white !default
+$button-disabled-border-color: $grey-lighter !default
+$button-disabled-shadow: none !default
+$button-disabled-opacity: 0.5 !default
+
+$button-static-color: $grey !default
+$button-static-background-color: $white-ter !default
+$button-static-border-color: $grey-lighter !default
 
 $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
 
@@ -29,9 +38,9 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
 .button
   +control
   +unselectable
-  background-color: $button-background
-  border-color: $button-border
-  color: $button
+  background-color: $button-background-color
+  border-color: $button-border-color
+  color: $button-color
   cursor: pointer
   justify-content: center
   padding-left: 0.75em
@@ -59,23 +68,23 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
   // States
   &:hover,
   &.is-hovered
-    border-color: $button-hover-border
-    color: $button-hover
+    border-color: $button-hover-border-color
+    color: $button-hover-color
   &:focus,
   &.is-focused
-    border-color: $button-focus-border
-    box-shadow: 0 0 0.5em rgba($button-focus-border, 0.25)
-    color: $button-focus
+    border-color: $button-focus-border-color
+    box-shadow: 0 0 0.5em rgba($button-focus-border-color, 0.25)
+    color: $button-focus-color
   &:active,
   &.is-active
-    border-color: $button-active-border
+    border-color: $button-active-border-color
     box-shadow: $button-shadow-inset
-    color: $button-active
+    color: $button-active-color
   // Colors
   &.is-link
     background-color: transparent
     border-color: transparent
-    color: $text
+    color: $button-link-color
     text-decoration: underline
     &:hover,
     &.is-hovered,
@@ -83,8 +92,8 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
     &.is-focused,
     &:active,
     &.is-active
-      background-color: $background
-      color: $text-strong
+      background-color: $button-link-hover-background-color
+      color: $button-link-hover-color
     &[disabled]
       background-color: transparent
       border-color: transparent
@@ -168,10 +177,10 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
     +button-large
   // Modifiers
   &[disabled]
-    background-color: $button-background
-    border-color: $button-border
-    box-shadow: none
-    opacity: 0.5
+    background-color: $button-disabled-background-color
+    border-color: $button-disabled-border-color
+    box-shadow: $button-disabled-shadow
+    opacity: $button-disabled-opacity
   &.is-fullwidth
     display: flex
     width: 100%
@@ -183,9 +192,9 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
       +center(1em)
       position: absolute !important
   &.is-static
-    background-color: $button-static-background
-    border-color: $button-static-border
-    color: $button-static
+    background-color: $button-static-background-color
+    border-color: $button-static-border-color
+    color: $button-static-color
     box-shadow: none
     pointer-events: none
 

@@ -1,3 +1,32 @@
+.level
+  +block
+  align-items: center
+  justify-content: space-between
+  code
+    border-radius: $radius
+  img
+    display: inline-block
+    vertical-align: top
+  // Modifiers
+  &.is-mobile
+    display: flex
+    .level-left,
+    .level-right
+      display: flex
+    .level-left + .level-right
+      margin-top: 0
+    .level-item
+      &:not(:last-child)
+        margin-bottom: 0
+      &:not(.is-narrow)
+        flex-grow: 1
+  // Responsiveness
+  +tablet
+    display: flex
+    & > .level-item
+      &:not(.is-narrow)
+        flex-grow: 1
+
 .level-item
   align-items: center
   display: flex
@@ -41,32 +70,3 @@
   // Responsiveness
   +tablet
     display: flex
-
-.level
-  +block
-  align-items: center
-  justify-content: space-between
-  code
-    border-radius: $radius
-  img
-    display: inline-block
-    vertical-align: top
-  // Modifiers
-  &.is-mobile
-    display: flex
-    .level-left,
-    .level-right
-      display: flex
-    .level-left + .level-right
-      margin-top: 0
-    .level-item
-      &:not(:last-child)
-        margin-bottom: 0
-      &:not(.is-narrow)
-        flex-grow: 1
-  // Responsiveness
-  +tablet
-    display: flex
-    & > .level-item
-      &:not(.is-narrow)
-        flex-grow: 1

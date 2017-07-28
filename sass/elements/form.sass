@@ -1,45 +1,50 @@
-$input:                     $grey-darker !default
-$input-background:          $white !default
-$input-border:              $grey-lighter !default
-$input-shadow:              inset 0 1px 2px rgba($black, 0.1) !default
+$input-color: $grey-darker !default
+$input-background-color: $white !default
+$input-border-color: $grey-lighter !default
+$input-shadow: inset 0 1px 2px rgba($black, 0.1) !default
 
-$input-hover:               $grey-darker !default
-$input-hover-border:        $grey-light !default
+$input-hover-color: $grey-darker !default
+$input-hover-border-color: $grey-light !default
 
-$input-focus:               $grey-darker !default
-$input-focus-border:        $link !default
+$input-focus-color: $grey-darker !default
+$input-focus-border-color: $link !default
 
-$input-disabled:            $text-light !default
-$input-disabled-background: $background !default
-$input-disabled-border:     $background !default
+$input-disabled-color: $text-light !default
+$input-disabled-background-color: $background !default
+$input-disabled-border-color: $background !default
 
-$input-arrow:               $link !default
+$input-arrow: $link !default
 
-$input-icon:                $grey-lighter !default
-$input-icon-active:         $grey !default
+$input-icon-color: $grey-lighter !default
+$input-icon-active-color: $grey !default
 
-$input-radius:              $radius !default
+$input-radius: $radius !default
+
+$label-color: $grey-darker !default
+$label-weight: $weight-bold !default
+
+$help-size: $size-small !default
 
 =input
   +control
-  background-color: $input-background
-  border-color: $input-border
-  color: $input
+  background-color: $input-background-color
+  border-color: $input-border-color
+  color: $input-color
   &:hover,
   &.is-hovered
-    border-color: $input-hover-border
+    border-color: $input-hover-border-color
   &:focus,
   &.is-focused,
   &:active,
   &.is-active
-    border-color: $input-focus-border
+    border-color: $input-focus-border-color
   &[disabled]
-    background-color: $input-disabled-background
-    border-color: $input-disabled-border
+    background-color: $input-disabled-background-color
+    border-color: $input-disabled-border-color
     box-shadow: none
-    color: $input-disabled
+    color: $input-disabled-color
     +placeholder
-      color: rgba($input, 0.3)
+      color: rgba($input-disabled-color, 0.3)
 
 .input,
 .textarea
@@ -90,9 +95,9 @@ $input-radius:              $radius !default
   input
     cursor: pointer
   &:hover
-    color: $input-hover
+    color: $input-hover-color
   &[disabled]
-    color: $input-disabled
+    color: $input-disabled-color
     cursor: not-allowed
 
 .radio
@@ -120,16 +125,16 @@ $input-radius:              $radius !default
     max-width: 100%
     outline: none
     &:hover
-      border-color: $input-hover-border
+      border-color: $input-hover-border-color
     &:focus,
     &.is-focused,
     &:active,
     &.is-active
-      border-color: $input-focus-border
+      border-color: $input-focus-border-color
     &::-ms-expand
       display: none
     &[disabled]:hover
-      border-color: $input-disabled-border
+      border-color: $input-disabled-border-color
     &:not([multiple])
       padding-right: 2.5em
     &[multiple]
@@ -140,7 +145,7 @@ $input-radius:              $radius !default
   // States
   &:hover
     &::after
-      border-color: $input-hover
+      border-color: $input-hover-color
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -156,7 +161,7 @@ $input-radius:              $radius !default
   // Modifiers
   &.is-disabled
     &::after
-      border-color: $input-disabled
+      border-color: $input-disabled-color
   &.is-fullwidth
     width: 100%
     select
@@ -177,10 +182,10 @@ $input-radius:              $radius !default
       font-size: $size-large
 
 .label
-  color: $input
+  color: $label-color
   display: block
   font-size: $size-normal
-  font-weight: $weight-bold
+  font-weight: $label-weight
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
@@ -193,7 +198,7 @@ $input-radius:              $radius !default
 
 .help
   display: block
-  font-size: $size-small
+  font-size: $help-size
   margin-top: 0.25rem
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -326,7 +331,7 @@ $input-radius:              $radius !default
   // DEPRECATED
   &.has-icon
     .icon
-      color: $input-icon
+      color: $input-icon-color
       height: 2.25em
       pointer-events: none
       position: absolute
@@ -336,7 +341,7 @@ $input-radius:              $radius !default
     .input
       &:focus
         & + .icon
-          color: $input-icon-active
+          color: $input-icon-active-color
       &.is-small
         & + .icon
           font-size: $size-small
@@ -362,7 +367,7 @@ $input-radius:              $radius !default
     .select
       &:focus
         & ~ .icon
-          color: $input-icon-active
+          color: $input-icon-active-color
       &.is-small ~ .icon
         font-size: $size-small
       &.is-medium ~ .icon
@@ -370,7 +375,7 @@ $input-radius:              $radius !default
       &.is-large ~ .icon
         font-size: $size-large
     .icon
-      color: $input-icon
+      color: $input-icon-color
       height: 2.25em
       pointer-events: none
       position: absolute
