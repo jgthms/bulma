@@ -2,6 +2,21 @@
 layout: documentation
 doc-tab: components
 doc-subtab: card
+variables:
+- name: $card-color
+  value: $text
+- name: $card-background-color
+  value: $white
+- name: $card-shadow
+  value: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+- name: $card-header-color
+  value: $text-strong
+- name: $card-header-shadow
+  value: 0 1px 2px rgba($black, 0.1)
+- name: $card-header-weight
+  value: $weight-bold
+- name: $card-footer-border-top
+  value: 1px solid $border
 ---
 
 {% capture card_example %}
@@ -94,6 +109,12 @@ doc-subtab: card
   <div class="container">
     <h1 class="title">Card</h1>
     <h2 class="subtitle">An all-around flexible and composable component</h2>
+    {%
+      include meta.html
+      variables=true
+      colors=false
+      sizes=false
+    %}
 
     <hr>
 
@@ -165,6 +186,8 @@ doc-subtab: card
         {% highlight html %}{{card_title_example}}{% endhighlight %}
       </div>
     </div>
+
+    {% include variables.html %}
 
   </div>
 </section>

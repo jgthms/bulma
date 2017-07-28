@@ -2,6 +2,15 @@
 layout: documentation
 doc-tab: components
 doc-subtab: breadcrumb
+variables:
+- name: $breadcrumb-item-color
+  value: $text-light
+- name: $breadcrumb-item-hover-color
+  value: $link-hover
+- name: $breadcrumb-item-active-color
+  value: $text-strong
+- name: $breadcrumb-item-separator-color
+  value: $text
 ---
 
 {% include subnav-components.html %}
@@ -136,10 +145,17 @@ doc-subtab: breadcrumb
         <h2 class="subtitle">
           A simple <strong>breadcrumb</strong> component to improve your navigation experience
         </h2>
+        {%
+          include meta.html
+          since="0.4.3"
+          variables=true
+          colors=false
+          sizes=true
+        %}
       </div>
 
       <div class="column is-narrow">
-        <p class="content">
+        <p class="tags has-addons">
           <span class="tag is-success">New!</span>
           <span class="tag is-info">0.4.3</span>
         </p>
@@ -198,32 +214,6 @@ doc-subtab: breadcrumb
 
     <hr>
 
-    <h3 class="title">Sizes</h3>
-
-    <div class="content">
-      <p>You can choose between <strong>3 additional sizes</strong>: <code>is-small</code> <code>is-medium</code> and <code>is-large</code>.</p>
-    </div>
-
-    <div class="example">
-      {{breadcrumb_small_example}}
-    </div>
-
-    {% highlight html %}{{breadcrumb_small_example}}{% endhighlight %}
-
-    <div class="example">
-      {{breadcrumb_medium_example}}
-    </div>
-
-    {% highlight html %}{{breadcrumb_medium_example}}{% endhighlight %}
-
-    <div class="example">
-      {{breadcrumb_large_example}}
-    </div>
-
-    {% highlight html %}{{breadcrumb_large_example}}{% endhighlight %}
-
-    <hr>
-
     <h3 class="title">Alternative separators</h3>
     <div class="content">
       <p>You can choose between <strong>4 additional separators</strong>: <code>has-arrow-separator</code> <code>has-bullet-separator</code> <code>has-dot-separator</code> and <code>has-succeeds-separator</code>.</p>
@@ -252,6 +242,36 @@ doc-subtab: breadcrumb
     </div>
 
     {% highlight html %}{{breadcrumb_succeeds_example}}{% endhighlight %}
+
+    <hr style="margin-bottom: 0;">
+
+    <h3 id="sizes" class="title">
+      Sizes
+    </h3>
+
+    <div class="content">
+      <p>You can choose between <strong>3 additional sizes</strong>: <code>is-small</code> <code>is-medium</code> and <code>is-large</code>.</p>
+    </div>
+
+    <div class="example">
+      {{breadcrumb_small_example}}
+    </div>
+
+    {% highlight html %}{{breadcrumb_small_example}}{% endhighlight %}
+
+    <div class="example">
+      {{breadcrumb_medium_example}}
+    </div>
+
+    {% highlight html %}{{breadcrumb_medium_example}}{% endhighlight %}
+
+    <div class="example">
+      {{breadcrumb_large_example}}
+    </div>
+
+    {% highlight html %}{{breadcrumb_large_example}}{% endhighlight %}
+
+    {% include variables.html %}
 
   </div>
 </section>

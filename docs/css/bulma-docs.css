@@ -3282,7 +3282,6 @@ input[type="submit"].button {
   background-color: white;
   color: #363636;
   margin-bottom: 1.5rem;
-  width: 100%;
 }
 
 .table td,
@@ -3351,6 +3350,10 @@ input[type="submit"].button {
   border-bottom-width: 1px;
 }
 
+.table.is-fullwidth {
+  width: 100%;
+}
+
 .table.is-narrow td,
 .table.is-narrow th {
   padding: 0.25em 0.5em;
@@ -3364,18 +3367,55 @@ input[type="submit"].button {
   background-color: whitesmoke;
 }
 
+.tags {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tags .tag {
+  margin-bottom: 0.5rem;
+}
+
+.tags .tag:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.tags:last-child {
+  margin-bottom: -0.5rem;
+}
+
+.tags:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.tags.has-addons .tag {
+  margin-right: 0;
+}
+
+.tags.has-addons .tag:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.tags.has-addons .tag:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .tag {
   align-items: center;
   background-color: whitesmoke;
-  border-radius: 290486px;
+  border-radius: 3px;
   color: #4a4a4a;
   display: inline-flex;
   font-size: 0.75rem;
   height: 2em;
   justify-content: center;
   line-height: 1.5;
-  padding-left: 0.875em;
-  padding-right: 0.875em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
   white-space: nowrap;
 }
 
@@ -3437,6 +3477,14 @@ input[type="submit"].button {
   font-size: 1.25rem;
 }
 
+.tag.is-rounded {
+  border-radius: 290486px;
+}
+
+a.tag:hover {
+  text-decoration: underline;
+}
+
 .title,
 .subtitle {
   word-break: break-word;
@@ -3451,12 +3499,7 @@ input[type="submit"].button {
 .title span,
 .subtitle em,
 .subtitle span {
-  font-weight: 300;
-}
-
-.title strong,
-.subtitle strong {
-  font-weight: 500;
+  font-weight: inherit;
 }
 
 .title .tag,
@@ -3467,12 +3510,13 @@ input[type="submit"].button {
 .title {
   color: #363636;
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.125;
 }
 
 .title strong {
   color: inherit;
+  font-weight: inherit;
 }
 
 .title + .highlight {
@@ -3510,12 +3554,13 @@ input[type="submit"].button {
 .subtitle {
   color: #4a4a4a;
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.25;
 }
 
 .subtitle strong {
   color: #363636;
+  font-weight: 600;
 }
 
 .subtitle:not(.is-spaced) + .title {
