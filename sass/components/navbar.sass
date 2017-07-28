@@ -7,6 +7,12 @@ $navbar-item-hover-background: $background !default
 $navbar-item-active: $black !default
 $navbar-item-active-background: transparent !default
 
+$navbar-tab-hover-background: transparent !default
+$navbar-tab-hover-border: $primary !default
+$navbar-tab-active: $primary !default
+$navbar-tab-active-background: transparent !default
+$navbar-tab-active-border: $primary !default
+
 $navbar-dropdown-background: $white !default
 $navbar-dropdown-border: $border !default
 $navbar-dropdown-offset: -4px !default
@@ -25,11 +31,21 @@ $navbar-divider-background: $border !default
   background-color: $navbar-background
   min-height: $navbar-height
   position: relative
+  & > .container
+    align-items: stretch
+    display: flex
+    min-height: $navbar-height
+    width: 100%
+  &.has-shadow
+    box-shadow: 0 2px 3px rgba($black, 0.1)
 
 .navbar-brand
+  +overflow-touch
   align-items: stretch
-  height: $navbar-height
   display: flex
+  min-height: $navbar-height
+  overflow-x: auto
+  overflow-y: hidden
 
 .navbar-burger
   +hamburger($navbar-height)
@@ -60,6 +76,18 @@ a.navbar-item,
     max-height: 1.75rem
   &.has-dropdown
     padding: 0
+  &.is-tab
+    border-bottom: 1px solid transparent
+    min-height: $navbar-height
+    padding-bottom: calc(0.5rem - 1px)
+    &:hover
+      background-color: $navbar-tab-hover-background
+      border-bottom-color: $navbar-tab-hover-border
+    &.is-active
+      background-color: $navbar-tab-active-background
+      border-bottom: 3px solid $navbar-tab-active-border
+      color: $navbar-tab-active
+      padding-bottom: calc(0.5rem - 3px)
 
 .navbar-content
   flex-grow: 1
@@ -102,7 +130,7 @@ a.navbar-item,
     align-items: stretch
     display: flex
   .navbar
-    height: $navbar-height
+    min-height: $navbar-height
     &.is-transparent
       a.navbar-item,
       .navbar-link

@@ -1,0 +1,394 @@
+---
+layout: documentation
+doc-tab: form
+doc-subtab: input
+---
+
+{% capture input_example %}
+<input class="input" type="text" placeholder="Text input">
+{% endcapture %}
+
+{% capture colors_example %}
+<div class="field">
+  <div class="control">
+    <input class="input is-primary" type="text" placeholder="Primary input">
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <input class="input is-info" type="text" placeholder="Info input">
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <input class="input is-success" type="text" placeholder="Success input">
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <input class="input is-warning" type="text" placeholder="Warning input">
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <input class="input is-danger" type="text" placeholder="Danger input">
+  </div>
+</div>
+{% endcapture %}
+
+{% capture sizes_example %}
+<div class="field">
+  <div class="control">
+    <input class="input is-small" type="text" placeholder="Small input">
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <input class="input" type="text" placeholder="Normal input">
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <input class="input is-medium" type="text" placeholder="Medium input">
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <input class="input is-large" type="text" placeholder="Large input">
+  </div>
+</div>
+{% endcapture %}
+
+{% capture normal_example %}
+<div class="control">
+  <input class="input" type="text" placeholder="Normal input">
+</div>
+{% endcapture %}
+
+{% capture hover_example %}
+<div class="control">
+  <input class="input is-hovered" type="text" placeholder="Hovered input">
+</div>
+{% endcapture %}
+
+{% capture focus_example %}
+<div class="control">
+  <input class="input is-focused" type="text" placeholder="Focused input">
+</div>
+{% endcapture %}
+
+{% capture loading_example %}
+<div class="control is-loading">
+  <input class="input" type="text" placeholder="Loading input">
+</div>
+{% endcapture %}
+
+{% capture loading_sizes_example %}
+<div class="field">
+  <div class="control is-small is-loading">
+    <input class="input is-small" type="text" placeholder="Small loading input">
+  </div>
+</div>
+<div class="field">
+  <div class="control is-loading">
+    <input class="input" type="text" placeholder="Normal loading input">
+  </div>
+</div>
+<div class="field">
+  <div class="control is-medium is-loading">
+    <input class="input is-medium" type="text" placeholder="Medium loading input">
+  </div>
+</div>
+<div class="field">
+  <div class="control is-large is-loading">
+    <input class="input is-large" type="text" placeholder="Large loading input">
+  </div>
+</div>
+{% endcapture %}
+
+{% capture disabled_example %}
+<div class="control">
+  <input class="input" type="text" placeholder="Disabled input" disabled>
+</div>
+{% endcapture %}
+
+{% capture icons_example %}
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" type="email" placeholder="Email">
+    <span class="icon is-small is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+<div class="field">
+  <p class="control has-icons-left">
+    <input class="input" type="password" placeholder="Password">
+    <span class="icon is-small is-left">
+      <i class="fa fa-lock"></i>
+    </span>
+  </p>
+</div>
+{% endcapture %}
+
+{% capture has_icons_small_example %}
+<div class="control has-icons-left has-icons-right">
+  <input class="input is-small" type="email" placeholder="Email">
+  <span class="icon is-small is-left">
+    <i class="fa fa-envelope"></i>
+  </span>
+  <span class="icon is-small is-right">
+    <i class="fa fa-check"></i>
+  </span>
+</div>
+{% endcapture %}
+
+{% capture has_icons_normal_example %}
+<div class="control has-icons-left has-icons-right">
+  <input class="input" type="email" placeholder="Email">
+  <span class="icon is-small is-left">
+    <i class="fa fa-envelope"></i>
+  </span>
+  <span class="icon is-small is-right">
+    <i class="fa fa-check"></i>
+  </span>
+</div>
+{% endcapture %}
+
+{% capture has_icons_medium_example %}
+<div class="control has-icons-left has-icons-right">
+  <input class="input is-medium" type="email" placeholder="Email">
+  <span class="icon is-left">
+    <i class="fa fa-envelope"></i>
+  </span>
+  <span class="icon is-right">
+    <i class="fa fa-check"></i>
+  </span>
+</div>
+{% endcapture %}
+
+{% capture has_icons_large_example %}
+<div class="control has-icons-left has-icons-right">
+  <input class="input is-large" type="email" placeholder="Email">
+  <span class="icon is-medium is-left">
+    <i class="fa fa-envelope"></i>
+  </span>
+  <span class="icon is-medium is-right">
+    <i class="fa fa-check"></i>
+  </span>
+</div>
+{% endcapture %}
+
+{% include subnav-form.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Input</h1>
+    <h2 class="subtitle">
+      The <strong>text input</strong> and its variations
+    </h2>
+
+    <hr>
+
+    <div class="content">
+      <p>The following <strong>modifiers</strong> are supported:</p>
+      <ul>
+        <li>the <strong><a href="#input-color">color</a></strong></li>
+        <li>the <strong><a href="#input-size">size</a></strong></li>
+        <li>the <strong><a href="#input-state">state</a></strong></li>
+      </ul>
+      <p>The following <a href="http://htmlreference.io/element/input/" target="_blank">type attributes</a> are supported:</p>
+      <ul>
+        <li><code>type="text"</code></li>
+        <li><code>type="password"</code></li>
+        <li><code>type="email"</code></li>
+        <li><code>type="tel"</code></li>
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{input_example}}
+      </div>
+      <div class="column is-half highlight-full">
+        {% highlight html %}{{input_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 id="input-color" class="title">Colors</h3>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{colors_example}}
+      </div>
+      <div class="column is-half highlight-full">
+        {% highlight html %}{{colors_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+    <h3 id="input-size" class="title">Sizes</h3>
+    <div class="columns">
+      <div class="column is-half">
+        {{sizes_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{sizes_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 id="input-state" class="title">States</h3>
+    <h4 class="subtitle">Normal</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{normal_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{normal_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Hover</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{hover_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{hover_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Focus</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{focus_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{focus_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="subtitle">Loading</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{loading_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{loading_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% if site.vernum >= 43 %}
+      <div class="columns">
+        <div class="column is-half">
+          <p style="margin-bottom: 0.5rem;">
+            <span class="tag is-success">New!</span>
+            <span class="tag is-info">0.4.3</span>
+          </p>
+          <div class="content">
+            <p>
+              You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
+            </p>
+          </div>
+          {{loading_sizes_example}}
+        </div>
+        <div class="column is-half">
+          {% highlight html %}{{loading_sizes_example}}{% endhighlight %}
+        </div>
+      </div>
+    {% endif %}
+
+    <h4 class="subtitle">Disabled</h4>
+    <div class="columns">
+      <div class="column is-half">
+        {{disabled_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{disabled_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <!-- Font Awesome Icons -->
+    <hr>
+
+    <h3 id="input-with-icons" class="title">With icons</h3>
+    <div class="content">
+      <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
+      <ul>
+        <li>
+          <code>has-icons-left</code>
+        </li>
+        <li>
+          and/or <code>has-icons-right</code>
+        </li>
+      </ul>
+      <p>You also need to add a modifier on the <strong>icon</strong>:</p>
+      <ul>
+        <li>
+          <code>icon is-left</code> if <code>has-icons-left</code> is used
+        </li>
+        <li>
+          <code>icon is-right</code> if <code>has-icons-right</code> is used
+        </li>
+      </ul>
+      <p>The size of the <strong>input</strong> will define the size of the icon container.</p>
+    </div>
+    <div class="columns">
+      <div class="column is-half">
+        {{icons_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{icons_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        <div class="content">
+          <p>
+            If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
+          </p>
+        </div>
+        {{has_icons_small_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_small_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{has_icons_normal_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_normal_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{has_icons_medium_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_medium_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{has_icons_large_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{has_icons_large_example}}{% endhighlight %}
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,6 +1,7 @@
 $input:                     $grey-darker !default
 $input-background:          $white !default
 $input-border:              $grey-lighter !default
+$input-shadow:              inset 0 1px 2px rgba($black, 0.1) !default
 
 $input-hover:               $grey-darker !default
 $input-hover-border:        $grey-light !default
@@ -43,7 +44,7 @@ $input-radius:              $radius !default
 .input,
 .textarea
   +input
-  box-shadow: inset 0 1px 2px rgba($black, 0.1)
+  box-shadow: $input-shadow
   max-width: 100%
   width: 100%
   &[type="search"]
@@ -70,13 +71,15 @@ $input-radius:              $radius !default
 
 .textarea
   display: block
-  height: auto
-  // max-height: 600px
   max-width: 100%
-  // min-height: 120px
   min-width: 100%
   padding: 0.625em
   resize: vertical
+  &:not([rows])
+    max-height: 600px
+    min-height: 120px
+  &[rows]
+    height: unset
 
 .checkbox,
 .radio
@@ -98,16 +101,17 @@ $input-radius:              $radius !default
 
 .select
   display: inline-block
-  height: 2.25em
   max-width: 100%
   position: relative
   vertical-align: top
-  &:after
-    +arrow($input-arrow)
-    margin-top: -0.375em
-    right: 1.125em
-    top: 50%
-    z-index: 4
+  &:not(.is-multiple)
+    height: 2.25em
+    &::after
+      +arrow($input-arrow)
+      margin-top: -0.375em
+      right: 1.125em
+      top: 50%
+      z-index: 4
   select
     +input
     cursor: pointer
@@ -115,16 +119,27 @@ $input-radius:              $radius !default
     font-size: 1em
     max-width: 100%
     outline: none
-    padding-right: 2.5em
     &:hover
       border-color: $input-hover-border
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active
+      border-color: $input-focus-border
     &::-ms-expand
       display: none
     &[disabled]:hover
       border-color: $input-disabled-border
+    &:not([multiple])
+      padding-right: 2.5em
+    &[multiple]
+      height: unset
+      padding: 0
+      option
+        padding: 0.5em 1em
   // States
   &:hover
-    &:after
+    &::after
       border-color: $input-hover
   // Colors
   @each $name, $pair in $colors
@@ -140,14 +155,14 @@ $input-radius:              $radius !default
     +control-large
   // Modifiers
   &.is-disabled
-    &:after
+    &::after
       border-color: $input-disabled
   &.is-fullwidth
     width: 100%
     select
       width: 100%
   &.is-loading
-    &:after
+    &::after
       +loader
       margin-top: 0
       position: absolute
@@ -195,7 +210,8 @@ $input-radius:              $radius !default
     display: flex
     justify-content: flex-start
     .control
-      margin-right: -1px
+      &:not(:last-child)
+        margin-right: -1px
       &:first-child
         .button,
         .input,
@@ -247,6 +263,17 @@ $input-radius:              $radius !default
       justify-content: center
     &.is-grouped-right
       justify-content: flex-end
+    &.is-grouped-multiline
+      flex-wrap: wrap
+      & > .control
+        &:last-child,
+        &:not(:last-child)
+          margin-bottom: 0.75rem
+      &:last-child
+        margin-bottom: -0.75rem
+      &:not(:last-child)
+        margin-bottom: 0
+
   &.is-horizontal
     +tablet
       display: flex
@@ -275,17 +302,20 @@ $input-radius:              $radius !default
       padding-top: 0.375em
 
 .field-body
+  .field .field
+    margin-bottom: 0
   +tablet
     display: flex
     flex-basis: 0
     flex-grow: 5
     flex-shrink: 1
     .field
+      margin-bottom: 0
+    & > .field
       flex-shrink: 1
       &:not(.is-narrow)
         flex-grow: 1
       &:not(:last-child)
-        margin-bottom: 0
         margin-right: 0.75rem
 
 .control
@@ -329,7 +359,7 @@ $input-radius:              $radius !default
   &.has-icons-left,
   &.has-icons-right
     .input,
-    .select select
+    .select
       &:focus
         & ~ .icon
           color: $input-icon-active
@@ -360,7 +390,7 @@ $input-radius:              $radius !default
     .icon.is-right
       right: 0
   &.is-loading
-    &:after
+    &::after
       +loader
       position: absolute !important
       right: 0.625em

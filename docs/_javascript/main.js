@@ -1,9 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Dropdowns
+
+  const $dropdowns = getAll('.dropdown:not(.is-hoverable)');
+
+  if ($dropdowns.length > 0) {
+    $dropdowns.forEach($el => {
+      $el.addEventListener('click', event => {
+        event.stopPropagation();
+        $el.classList.toggle('is-active');
+      });
+    });
+
+    document.addEventListener('click', event => {
+      closeDropdowns();
+    });
+  }
+
+  function closeDropdowns() {
+    $dropdowns.forEach($el => {
+      $el.classList.remove('is-active');
+    });
+  }
+
   // Toggles
 
   const $burgers = getAll('.burger');
-  const $fries = getAll('.fries');
 
   if ($burgers.length > 0) {
     $burgers.forEach($el => {
@@ -37,20 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if ($modalCloses.length > 0) {
     $modalCloses.forEach($el => {
       $el.addEventListener('click', () => {
-        $html.classList.remove('is-clipped');
         closeModals();
       });
     });
   }
 
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', event => {
+    const e = event || window.event;
     if (e.keyCode === 27) {
-      $html.classList.remove('is-clipped');
       closeModals();
+      closeDropdowns();
     }
   });
 
   function closeModals() {
+    $html.classList.remove('is-clipped');
     $modals.forEach($el => {
       $el.classList.remove('is-active');
     });
@@ -67,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const expand = '<button class="expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copy);
 
-      if ($el.firstElementChild.scrollHeight > 320) {
+      if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
         $el.insertAdjacentHTML('beforeend', expand);
       }
 
