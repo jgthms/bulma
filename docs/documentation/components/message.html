@@ -2,18 +2,32 @@
 layout: documentation
 doc-tab: components
 doc-subtab: message
+variables:
+- name: $message-background-color
+  value: $background
+- name: $message-radius
+  value: $radius
+- name: $message-header-background-color
+  value: $text
+- name: $message-header-color
+  value: $text-invert
+- name: $message-header-padding
+  value: 0.5em 0.75em
+- name: $message-header-radius
+  value: $radius
+- name: $message-body-border
+  value: 1px solid $border
+- name: $message-body-color
+  value: $text
+- name: $message-body-padding
+  value: 1em 1.25em
+- name: $message-body-radius
+  value: $radius
+- name: $message-body-pre-background-color
+  value: $white
+- name: $message-body-pre-code-background-color
+  value: transparent
 ---
-
-{% include subnav-components.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Messages</h1>
-    <h2 class="subtitle">
-      Colored <strong>message</strong> blocks, to emphasize part of your page
-    </h2>
-
-    <hr>
 
 {% capture message_example %}
 <article class="message">
@@ -80,23 +94,7 @@ doc-subtab: message
   </div>
 </article>
 {% endcapture %}
-<div class="columns">
-  <div class="column is-half">
-{{message_example}}
-  </div>
-  <div class="column is-half">
-{% highlight html %}
-{{message_example}}
-{% endhighlight %}
-  </div>
-</div>
 
-    <hr>
-
-<h3 class="subtitle">Message body only</h3>
-<div class="content">
-  <p>You can <strong>omit</strong> the message header:</p>
-</div>
 {% capture message_body_example %}
 <article class="message">
   <div class="message-body">
@@ -134,16 +132,49 @@ doc-subtab: message
   </div>
 </article>
 {% endcapture %}
-<div class="columns">
-  <div class="column is-half">
-{{message_body_example}}
-  </div>
-  <div class="column is-half">
-{% highlight html %}
-{{message_body_example}}
-{% endhighlight %}
-  </div>
-</div>
+
+{% include subnav-components.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Messages</h1>
+    <h2 class="subtitle">
+      Colored <strong>message</strong> blocks, to emphasize part of your page
+    </h2>
+    {%
+      include meta.html
+      colors=true
+      sizes=true
+      variables=true
+    %}
+
+    <hr>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{message_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="subtitle">Message body only</h3>
+    <div class="content">
+      <p>You can <strong>omit</strong> the message header:</p>
+    </div>
+    <div class="columns">
+      <div class="column is-half">
+        {{message_body_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_body_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include variables.html %}
 
   </div>
 </section>
