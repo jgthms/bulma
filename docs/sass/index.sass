@@ -1,0 +1,148 @@
+@keyframes floatUp
+  0%
+    box-shadow: 0 0 0 rgba($black, 0), 0 0 0 rgba($black, 0), 0 0 0 rgba($black, 0)
+    transform: scale(0.86)
+  67%
+    box-shadow: 0 0 0 rgba($black, 0), 0 5px 10px rgba($black, 0.1), 0 1px 1px rgba($black, 0.2)
+    transform: scale(1)
+  100%
+    box-shadow: 0 20px 60px rgba($black, 0.05), 0 5px 10px rgba($black, 0.1), 0 1px 1px rgba($black, 0.2)
+    transform: scale(1)
+
+@keyframes strokePath
+  from
+    stroke-dashoffset: 880
+  to
+    stroke-dashoffset: 0
+
+@keyframes fadeIn
+  from
+    opacity: 0
+    transform: scale(0.86)
+  to
+    opacity: 1
+    transform: scale(1)
+
+@keyframes fadeOut
+  0%
+    opacity: 1
+    transform: scale(0.86)
+  67%
+    opacity: 1
+    transform: scale(0.86)
+  100%
+    opacity: 0
+    transform: scale(1)
+
+@keyframes slideDown
+  0%
+    opacity: 0
+    transform: translateY(-10px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+@keyframes slideUp
+  0%
+    opacity: 0
+    transform: translateY(10px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+$curve: cubic-bezier(0, 0.71, 0.29, 1)
+
+#b
+  // animation-delay: 1s
+  animation-duration: 1.5s
+  animation-fill-mode: both
+  animation-name: floatUp
+  animation-timing-function: $curve
+  border-radius: 24px
+  display: inline-block
+  height: 240px
+  margin-bottom: 40px
+  position: relative
+  vertical-align: top
+  width: 240px
+  svg
+    +overlay
+    display: block
+    height: 240px
+    width: 240px
+    &:first-child
+      animation-duration: 1.5s
+      animation-fill-mode: both
+      animation-name: fadeOut
+      animation-timing-function: $curve
+      g
+        animation-duration: 1s
+        animation-fill-mode: both
+        animation-name: strokePath
+        animation-timing-function: $curve
+        fill: none
+        stroke: $turquoise
+        stroke-dasharray: 880
+        stroke-width: 2px
+    &:last-child
+      animation-delay: 1s
+      animation-duration: 1s
+      animation-fill-mode: both
+      animation-name: fadeIn
+      animation-timing-function: $curve
+      g
+        fill: $turquoise
+  +mobile
+    border-radius: 16px
+    height: 160px
+    width: 160px
+
+#bulma
+  animation: slideDown 500ms both
+  // animation-delay: 1s
+
+#modern-framework
+  animation: slideUp 500ms both
+  animation-delay: 0.2s
+
+#npm
+  align-items: center
+  animation: fadeIn 500ms both
+  animation-delay: 0.4s
+  background: none
+  display: flex
+  justify-content: center
+  margin: -10px 0 20px
+  code
+    background: $background
+    border-radius: $radius
+    color: $primary
+    display: inline-block
+    font-size: 16px
+    padding: 16px 32px
+
+#ghbtns
+  animation: slideDown 500ms both
+  animation-delay: 0.6s
+
+html.route-index #carbon
+  animation: slideUp 500ms both
+  animation-delay: 0.8s
+
+#download
+  animation: fadeIn 500ms both
+  animation-delay: 1s
+
+#grid
+  .notification
+    padding-left: 0
+    padding-right: 0
+
+#message
+  display: none
+
+#tweet
+  background: $white
+  border-radius: $radius-large
+  box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+  padding: 1.5rem
