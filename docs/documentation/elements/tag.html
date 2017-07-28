@@ -2,7 +2,50 @@
 layout: documentation
 doc-tab: elements
 doc-subtab: tag
+variables:
+- name: $tag-background-color
+  value: background
+- name: $tag-color
+  value: text
 ---
+
+{% capture tag %}
+<span class="tag">
+  Tag label
+</span>
+{% endcapture %}
+
+{% capture tags %}
+<span class="tag is-black">Black</span>
+<span class="tag is-dark">Dark</span>
+<span class="tag is-light">Light</span>
+<span class="tag is-white">White</span>
+<span class="tag is-primary">Primary</span>
+<span class="tag is-info">Info</span>
+<span class="tag is-success">Success</span>
+<span class="tag is-warning">Warning</span>
+<span class="tag is-danger">Danger</span>
+{% endcapture %}
+
+{% capture sizes %}
+<span class="tag is-primary is-medium">Medium</span>
+<span class="tag is-info is-large">Large</span>
+{% endcapture %}
+
+{% capture delete %}
+<span class="tag is-success">
+  Bar
+  <button class="delete is-small"></button>
+</span>
+<span class="tag is-warning is-medium">
+  Hello
+  <button class="delete is-small"></button>
+</span>
+<span class="tag is-danger is-large">
+  World
+  <button class="delete"></button>
+</span>
+{% endcapture %}
 
 {% include subnav-elements.html %}
 
@@ -25,11 +68,7 @@ doc-subtab: tag
         </span>
       </div>
       <div class="column is-6">
-{% highlight html %}
-<span class="tag">
-  Tag label
-</span>
-{% endhighlight %}
+        {% highlight html %}{{ tag }}{% endhighlight %}
       </div>
     </div>
 
@@ -83,17 +122,7 @@ doc-subtab: tag
         </span>
       </div>
       <div class="column is-6">
-{% highlight html %}
-<span class="tag is-black">Black</span>
-<span class="tag is-dark">Dark</span>
-<span class="tag is-light">Light</span>
-<span class="tag is-white">White</span>
-<span class="tag is-primary">Primary</span>
-<span class="tag is-info">Info</span>
-<span class="tag is-success">Success</span>
-<span class="tag is-warning">Warning</span>
-<span class="tag is-danger">Danger</span>
-{% endhighlight %}
+        {% highlight html %}{{ tags }}{% endhighlight %}
       </div>
     </div>
 
@@ -114,10 +143,7 @@ doc-subtab: tag
         </p>
       </div>
       <div class="column is-6">
-{% highlight html %}
-<span class="tag is-primary is-medium">Medium</span>
-<span class="tag is-info is-large">Large</span>
-{% endhighlight %}
+        {% highlight html %}{{ sizes }}{% endhighlight %}
       </div>
     </div>
 
@@ -146,21 +172,10 @@ doc-subtab: tag
         </p>
       </div>
       <div class="column is-6">
-{% highlight html %}
-<span class="tag is-success">
-  Bar
-  <button class="delete is-small"></button>
-</span>
-<span class="tag is-warning is-medium">
-  Hello
-  <button class="delete is-small"></button>
-</span>
-<span class="tag is-danger is-large">
-  World
-  <button class="delete"></button>
-</span>
-{% endhighlight %}
+        {% highlight html %}{{ delete }}{% endhighlight %}
       </div>
     </div>
+
+    {% include variables.html element=true %}
   </div>
 </section>

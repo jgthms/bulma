@@ -2,31 +2,40 @@
 layout: documentation
 doc-tab: elements
 doc-subtab: content
+variables:
+- name: $content-heading-color
+  value: $text-strong
+- name: $content-heading-weight
+  value: $weight-normal
+- name: $content-heading-line-height
+  value: 1.125
+- name: $content-blockquote-background-color
+  value: $background
+- name: $content-blockquote-border-left
+  value: 5px solid $border
+- name: $content-blockquote-padding
+  value: 1.25em 1.5em
+- name: $content-pre-padding
+  value: 1.25em 1.5em
+- name: $content-table-cell-border
+  value: 1px solid $border
+- name: $content-table-cell-border-width
+  value: 0 0 1px
+- name: $content-table-cell-padding
+  value: 0.5em 0.75em
+- name: $content-table-cell-heading-color
+  value: $text-strong
+- name: $content-table-row-hover-background-color
+  value: $background
+- name: $content-table-head-cell-border-width
+  value: 0 0 2px
+- name: $content-table-head-cell-color
+  value: $text-strong
+- name: $content-table-foot-cell-border-width
+  value: 2px 0 0
+- name: $content-table-foot-cell-color
+  value: $text-strong
 ---
-
-{% include subnav-elements.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Content</h1>
-    <h2 class="subtitle">
-      A single class to handle WYSIWYG generated content, where only <strong>HTML tags</strong> are available
-    </h2>
-
-    <hr>
-
-    <div class="content">
-      <p>When you can't use the CSS classes you want, or when you just want to directly use HTML tags, use <code>content</code> as container. It can handle almost any HTML tag:</p>
-      <ul>
-        <li><code>&lt;p&gt;</code> paragraphs</li>
-        <li><code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;dl&gt;</code> lists</li>
-        <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> headings</li>
-        <li><code>&lt;blockquote&gt;</code> quotes</li>
-        <li><code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code></li>
-        <li><code>&lt;table&gt;</code> <code>&lt;tr&gt;</code> <code>&lt;th&gt;</code> <code>&lt;td&gt;</code> tables</li>
-      </ul>
-      <p>This <code>content</code> class can be used in <em>any</em> context where you just want to (or can only) write some <strong>text</strong>. For example, it's used for the paragraph you're currently reading.</p>
-    </div>
 
 {% capture content_example %}
 <div class="content">
@@ -120,13 +129,35 @@ doc-subtab: content
 </div>
 {% endcapture %}
 
-<div class="example">
-  {{content_example}}
-</div>
+{% include subnav-elements.html %}
 
-{% highlight html %}
-{{content_example}}
-{% endhighlight %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">Content</h1>
+    <h2 class="subtitle">
+      A single class to handle WYSIWYG generated content, where only <strong>HTML tags</strong> are available
+    </h2>
+
+    <hr>
+
+    <div class="content">
+      <p>When you can't use the CSS classes you want, or when you just want to directly use HTML tags, use <code>content</code> as container. It can handle almost any HTML tag:</p>
+      <ul>
+        <li><code>&lt;p&gt;</code> paragraphs</li>
+        <li><code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;dl&gt;</code> lists</li>
+        <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> headings</li>
+        <li><code>&lt;blockquote&gt;</code> quotes</li>
+        <li><code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code></li>
+        <li><code>&lt;table&gt;</code> <code>&lt;tr&gt;</code> <code>&lt;th&gt;</code> <code>&lt;td&gt;</code> tables</li>
+      </ul>
+      <p>This <code>content</code> class can be used in <em>any</em> context where you just want to (or can only) write some <strong>text</strong>. For example, it's used for the paragraph you're currently reading.</p>
+    </div>
+
+    <div class="example">
+      {{content_example}}
+    </div>
+
+    {% highlight html %}{{content_example}}{% endhighlight %}
 
     <hr>
 
@@ -176,5 +207,8 @@ doc-subtab: content
         </ul>
       </div>
     </div>
+
+    {% include variables.html %}
+
   </div>
 </section>
