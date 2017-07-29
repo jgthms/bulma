@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = $el.getAttribute('href');
         const $target = document.getElementById(target.substring(1));
         $target.scrollIntoView(true);
-        window.history.replaceState(null, document.title, `${window.location.origin}${window.location.pathname}${target}`);
+        // window.history.replaceState(null, document.title, `${window.location.origin}${window.location.pathname}${target}`);
         return false;
       });
     });
@@ -151,5 +151,28 @@ document.addEventListener('DOMContentLoaded', () => {
   function getAll(selector) {
     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
   }
+
+  let latestKnownScrollY = 0;
+  let ticking = false;
+
+  function scrollUpdate() {
+    ticking = false;
+    // do stuff
+  }
+
+
+  function onScroll() {
+    latestKnownScrollY = window.scrollY;
+    scrollRequestTick();
+  }
+
+  function scrollRequestTick() {
+    if(!ticking) {
+      requestAnimationFrame(scrollUpdate);
+    }
+    ticking = true;
+  }
+
+   window.addEventListener('scroll', onScroll, false);
 
 });
