@@ -97,6 +97,78 @@ variables:
 </div>
 {% endcapture %}
 
+{% capture file_colors %}
+<div class="field">
+  <div class="file is-primary">
+    <label class="file-label">
+      <input class="file-input" type="file" name="resume">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Primary file…
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+
+<div class="field">
+  <div class="file is-info has-name">
+    <label class="file-label">
+      <input class="file-input" type="file" name="resume">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Info file…
+        </span>
+      </span>
+      <span class="file-name">
+        {{ page.file_name }}
+      </span>
+    </label>
+  </div>
+</div>
+
+<div class="field">
+  <div class="file is-warning is-centered">
+    <label class="file-label">
+      <input class="file-input" type="file" name="resume">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-cloud-upload"></i>
+        </span>
+        <span class="file-label">
+          Warning file…
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+
+<div class="field">
+  <div class="file is-danger has-name is-centered">
+    <label class="file-label">
+      <input class="file-input" type="file" name="resume">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-cloud-upload"></i>
+        </span>
+        <span class="file-label">
+          Danger file…
+        </span>
+      </span>
+      <span class="file-name">
+        {{ page.file_name }}
+      </span>
+    </label>
+  </div>
+</div>
+{% endcapture %}
+
 {% capture file_sizes %}
 <div class="field">
   <div class="file is-small">
@@ -397,7 +469,7 @@ variables:
       include meta.html
       experimental=true
       since="0.5.1"
-      colors=false
+      colors=true
       sizes=true
       variables=true
     %}
@@ -497,6 +569,31 @@ variables:
       </div>
       <div class="column highlight-full">
         {% highlight html %}{{ file_centered_name }}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include heading.html name="Colors" %}
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            You can style the file element by appending one of the <strong>9 color modifiers</strong>:
+          </p>
+          <ul>
+            {% for color in site.colors %}
+              <li>
+                <code>is-{{ color }}</code>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="example">
+          {{ file_colors }}
+        </div>
+      </div>
+      <div class="column">
+        {% highlight html %}{{ file_colors }}{% endhighlight %}
       </div>
     </div>
 
