@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.5.0
+
+### Issues closed
+
+* #909 `.dropdown` wrapping
+
 ## 0.4.4
 
 ### New features
