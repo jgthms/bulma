@@ -2,6 +2,9 @@
 title: Versions
 layout: default
 route: versions
+versions:
+- 0.4.4
+- 0.5.0
 ---
 
 <div class="container">
@@ -20,11 +23,13 @@ route: versions
             Access previous versions of Bulma
           </p>
           <div class="field is-grouped is-grouped-multiline">
-            <div class="control">
-              <a class="button" href="{{site.url}}/versions/0.4.4">
-                0.4.4
-              </a>
-            </div>
+            {% for version in page.versions %}
+              <div class="control">
+                <a class="button" href="{{site.url}}/versions/{{ version }}">
+                  {{ version }}
+                </a>
+              </div>
+            {% endfor %}
           </div>
         </div>
         <div class="column is-narrow">
