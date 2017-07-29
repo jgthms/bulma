@@ -109,6 +109,7 @@ Variable name changes (mostly appending `-color`):
 * #909 `.dropdown` wrapping
 * #938 `.is-fullwidth` removed from docs
 * #900 Variable `.navbar-item` for hover+active background/color
+* #902 `.navbar-item` color overrides
 
 ## 0.4.4
 
