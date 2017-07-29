@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.5.1
+
+### New features
+
+* #280 [File upload element](http://bulma.io/documentation/form/file/)
+
 ## 0.5.0
 
 ### New features
