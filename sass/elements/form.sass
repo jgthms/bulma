@@ -181,6 +181,137 @@ $help-size: $size-small !default
     &.is-large:after
       font-size: $size-large
 
+$file-border-color: transparent !default
+$file-radius: $radius !default
+
+// $file-cta-background-color: $white-ter !default
+$file-cta-background-color: $red !default
+$file-cta-color: $grey-dark !default
+$file-cta-hover-color: $grey-darker !default
+$file-cta-active-color: $grey-darker !default
+
+$file-path-border-color: $file-cta-background-color !default
+$file-path-border-style: solid !default
+$file-path-border-width: 1px 1px 1px 0 !default
+$file-path-max-width: 16em !default
+
+.file
+  align-items: stretch
+  display: flex
+  justify-content: flex-start
+  position: relative
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+    .file-icon
+      .fa
+        font-size: 21px
+  &.is-large
+    font-size: $size-large
+    .file-icon
+      .fa
+        font-size: 28px
+  &.has-path
+    .file-cta
+      border-bottom-right-radius: 0
+      border-top-right-radius: 0
+    .file-path
+      border-bottom-left-radius: 0
+      border-top-left-radius: 0
+  &.is-centered
+    justify-content: center
+    .file-label
+      flex-direction: column
+    .file-cta
+      flex-direction: column
+      height: auto
+      padding: 1em 3em
+    .file-path
+      border-width: 0 1px 1px
+    .file-icon
+      height: 1.5em
+      width: 1.5em
+      .fa
+        font-size: 21px
+    &.is-small
+      .file-icon .fa
+        font-size: 14px
+    &.is-medium
+      .file-icon .fa
+        font-size: 28px
+    &.is-large
+      .file-icon .fa
+        font-size: 35px
+    &.has-path
+      .file-cta
+        border-radius: $file-radius $file-radius 0 0
+      .file-path
+        border-radius: 0 0 $file-radius $file-radius
+        border-width: 0 1px 1px
+
+.file-label
+  align-items: stretch
+  display: flex
+  cursor: pointer
+  justify-content: flex-start
+  overflow: hidden
+  position: relative
+  &:hover
+    .file-cta
+      background-color: darken($file-cta-background-color, 2.5%)
+      color: $file-cta-hover-color
+    .file-path
+      border-color: darken($file-path-border-color, 2.5%)
+  &:active
+    .file-cta
+      background-color: darken($file-cta-background-color, 5%)
+      color: $file-cta-active-color
+    .file-path
+      border-color: darken($file-path-border-color, 5%)
+
+.file-input
+  height: 0.01em
+  left: 0
+  outline: none
+  position: absolute
+  top: 0
+  width: 0.01em
+
+.file-cta,
+.file-path
+  +control
+  border-color: $file-border-color
+  border-radius: $file-radius
+  font-size: 1em
+  padding-left: 1em
+  padding-right: 1em
+  white-space: nowrap
+
+.file-cta
+  background-color: $file-cta-background-color
+  color: $file-cta-color
+
+.file-path
+  border-color: $file-path-border-color
+  border-style: $file-path-border-style
+  border-width: $file-path-border-width
+  display: block
+  max-width: $file-path-max-width
+  overflow: hidden
+  text-align: left
+  text-overflow: ellipsis
+
+.file-icon
+  align-items: center
+  display: flex
+  height: 1em
+  justify-content: center
+  margin-right: 0.5em
+  width: 1em
+  .fa
+    font-size: 14px
+
 .label
   color: $label-color
   display: block
