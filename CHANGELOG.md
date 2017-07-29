@@ -7,6 +7,7 @@
 * [List of tags](http://bulma.io/documentation/elements/tag/#list-of-tags)
 * New **variable naming system**: `component`-`subcomponent`-`state`-`property`
 * Improved **customization** thanks to new set of variables
+* #934 New `.is-shadowless` helper
 
 Variable name changes (mostly appending `-color`):
 
@@ -106,6 +107,8 @@ Variable name changes (mostly appending `-color`):
 ### Issues closed
 
 * #909 `.dropdown` wrapping
+* #938 `.is-fullwidth` removed from docs
+* #900 Variable `.navbar-item` for hover+active background/color
 
 ## 0.4.4
 
