@@ -54,6 +54,32 @@ $tag-radius: $radius !default
   &.is-large
     font-size: $size-medium
   // Modifiers
+  &.is-delete
+    margin-left: 1px
+    padding: 0
+    position: relative
+    width: 2em
+    &:before,
+    &:after
+      background-color: currentColor
+      content: ""
+      display: block
+      left: 50%
+      position: absolute
+      top: 50%
+      transform: translateX(-50%) translateY(-50%) rotate(45deg)
+      transform-origin: center center
+    &:before
+      height: 1px
+      width: 50%
+    &:after
+      height: 50%
+      width: 1px
+    &:hover,
+    &:focus
+      background-color: darken($tag-background-color, 5%)
+    &:active
+      background-color: darken($tag-background-color, 10%)
   &.is-rounded
     border-radius: 290486px
 
