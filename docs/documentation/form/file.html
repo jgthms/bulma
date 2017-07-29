@@ -62,6 +62,44 @@ variables:
 </div>
 {% endcapture %}
 
+{% capture file_name_right %}
+<div class="file has-name is-right">
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fa fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+    <span class="file-name">
+      {{ page.file_name }}
+    </span>
+  </label>
+</div>
+{% endcapture %}
+
+{% capture file_name_fullwidth %}
+<div class="file has-name is-fullwidth">
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fa fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+    <span class="file-name">
+      {{ page.file_name }}
+    </span>
+  </label>
+</div>
+{% endcapture %}
+
 {% capture file_centered %}
 <div class="file is-centered">
   <label class="file-label">
@@ -537,6 +575,38 @@ variables:
       </div>
       <div class="column highlight-full">
         {% highlight html %}{{ file_name }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            You can move the CTA to the <strong>right side</strong> with the <code>.is-right</code> modifier.
+          </p>
+        </div>
+        <div class="example">
+          {{ file_name_right }}
+        </div>
+      </div>
+      <div class="column highlight-full">
+        {% highlight html %}{{ file_name_right }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            You can also <strong>expand</strong> the name to fill up the space with the <code>.is-fullwidth</code> modifier.
+          </p>
+        </div>
+        <div class="example">
+          {{ file_name_fullwidth }}
+        </div>
+      </div>
+      <div class="column highlight-full">
+        {% highlight html %}{{ file_name_fullwidth }}{% endhighlight %}
       </div>
     </div>
 
