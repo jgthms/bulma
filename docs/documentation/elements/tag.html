@@ -1,4 +1,5 @@
 ---
+title: Tags
 layout: documentation
 doc-tab: elements
 doc-subtab: tag
@@ -32,6 +33,10 @@ variables:
 <span class="tag is-info is-large">Large</span>
 {% endcapture %}
 
+{% capture rounded %}
+<span class="tag is-rounded">Rounded</span>
+{% endcapture %}
+
 {% capture delete %}
 <span class="tag is-success">
   Bar
@@ -55,6 +60,12 @@ variables:
     <h2 class="subtitle">
       Small <strong>tag labels</strong> to insert anywhere
     </h2>
+    {%
+      include meta.html
+      colors=true
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
@@ -71,6 +82,8 @@ variables:
         {% highlight html %}{{ tag }}{% endhighlight %}
       </div>
     </div>
+
+    {% include heading.html name="Colors" %}
 
     <div class="columns">
       <div class="column is-4">
@@ -126,6 +139,8 @@ variables:
       </div>
     </div>
 
+    {% include heading.html name="Sizes" %}
+
     <div class="columns">
       <div class="column is-4">
         And <strong>2 additional</strong> sizes.
@@ -146,6 +161,22 @@ variables:
         {% highlight html %}{{ sizes }}{% endhighlight %}
       </div>
     </div>
+
+    {% include heading.html name="Modifiers" %}
+
+    <div class="columns">
+      <div class="column is-4">
+        You can add the <code>is-rounded</code> modifier to make a <strong>rounded</strong> tag.
+      </div>
+      <div class="column is-2">
+        {{ rounded }}
+      </div>
+      <div class="column is-6">
+        {% highlight html %}{{ rounded }}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include heading.html name="Combinations" %}
 
     <div class="columns">
       <div class="column is-4">

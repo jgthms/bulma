@@ -2,6 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dropdowns
 
+  const $metalinks = getAll('#meta a');
+
+  if ($metalinks.length > 0) {
+    $metalinks.forEach($el => {
+      $el.addEventListener('click', event => {
+        event.preventDefault();
+        const target = $el.getAttribute('href');
+        const $target = document.getElementById(target.substring(1));
+        $target.scrollIntoView(true);
+        window.history.replaceState(null, document.title, `${window.location.origin}${window.location.pathname}${target}`);
+        return false;
+      });
+    });
+  }
+
+  // Dropdowns
+
   const $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
   if ($dropdowns.length > 0) {

@@ -1,4 +1,5 @@
 ---
+title: Progess Bar
 layout: documentation
 doc-tab: elements
 doc-subtab: progress
@@ -9,6 +10,25 @@ variables:
   value: $text
 ---
 
+{% capture progress %}
+<progress class="progress" value="15" max="100">15%</progress>
+{% endcapture %}
+
+{% capture progress_colors %}
+<progress class="progress is-primary" value="30" max="100">30%</progress>
+<progress class="progress is-info" value="45" max="100">45%</progress>
+<progress class="progress is-success" value="60" max="100">60%</progress>
+<progress class="progress is-warning" value="75" max="100">75%</progress>
+<progress class="progress is-danger" value="90" max="100">90%</progress>
+{% endcapture %}
+
+{% capture progress_sizes %}
+<progress class="progress is-small" value="15" max="100">15%</progress>
+<progress class="progress" value="30" max="100">30%</progress>
+<progress class="progress is-medium" value="45" max="100">45%</progress>
+<progress class="progress is-large" value="60" max="100">60%</progress>
+{% endcapture %}
+
 {% include subnav-elements.html %}
 
 <section class="section">
@@ -17,41 +37,33 @@ variables:
     <h2 class="subtitle">
       Native HTML <strong>progress</strong> bars
     </h2>
+    {%
+      include meta.html
+      colors=true
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
     <div class="example">
-      <progress class="progress" value="15" max="100">15%</progress>
-      <progress class="progress is-primary" value="30" max="100">30%</progress>
-      <progress class="progress is-info" value="45" max="100">45%</progress>
-      <progress class="progress is-success" value="60" max="100">60%</progress>
-      <progress class="progress is-warning" value="75" max="100">75%</progress>
-      <progress class="progress is-danger" value="90" max="100">90%</progress>
+      {{ progress }}
     </div>
-{% highlight html %}
-<progress class="progress" value="15" max="100">15%</progress>
-<progress class="progress is-primary" value="30" max="100">30%</progress>
-<progress class="progress is-info" value="45" max="100">45%</progress>
-<progress class="progress is-success" value="60" max="100">60%</progress>
-<progress class="progress is-warning" value="75" max="100">75%</progress>
-<progress class="progress is-danger" value="90" max="100">90%</progress>
-{% endhighlight %}
+    {% highlight html %}{{ progress }}{% endhighlight %}
 
-    <hr>
+    {% include heading.html name="Colors" %}
 
-    <h3 class="title">Sizes</h3>
     <div class="example">
-      <progress class="progress is-small" value="15" max="100">15%</progress>
-      <progress class="progress" value="30" max="100">30%</progress>
-      <progress class="progress is-medium" value="45" max="100">45%</progress>
-      <progress class="progress is-large" value="60" max="100">60%</progress>
+      {{ progress_colors }}
     </div>
-{% highlight html %}
-<progress class="progress is-small" value="15" max="100">15%</progress>
-<progress class="progress" value="30" max="100">30%</progress>
-<progress class="progress is-medium" value="45" max="100">45%</progress>
-<progress class="progress is-large" value="60" max="100">60%</progress>
-{% endhighlight %}
+    {% highlight html %}{{ progress_colors }}{% endhighlight %}
+
+    {% include heading.html name="Sizes" %}
+
+    <div class="example">
+      {{ progress_sizes }}
+    </div>
+    {% highlight html %}{{ progress_sizes }}{% endhighlight %}
 
     {% include variables.html element=true %}
 
