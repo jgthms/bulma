@@ -3,6 +3,37 @@ title: Input
 layout: documentation
 doc-tab: form
 doc-subtab: input
+variables:
+- name: $input-color
+  value: $grey-darker
+- name: $input-background-color
+  value: $white
+- name: $input-border-color
+  value: $grey-lighter
+- name: $input-shadow
+  value: inset 0 1px 2px rgba($black, 0.1)
+- name: $input-hover-color
+  value: $grey-darker
+- name: $input-hover-border-color
+  value: $grey-light
+- name: $input-focus-color
+  value: $grey-darker
+- name: $input-focus-border-color
+  value: $link
+- name: $input-disabled-color
+  value: $text-light
+- name: $input-disabled-background-color
+  value: $background
+- name: $input-disabled-border-color
+  value: $background
+- name: $input-arrow
+  value: $link
+- name: $input-icon-color
+  value: $grey-lighter
+- name: $input-icon-active-color
+  value: $grey
+- name: $input-radius
+  value: $radius
 ---
 
 {% capture input_example %}
@@ -191,6 +222,12 @@ doc-subtab: input
     <h2 class="subtitle">
       The <strong>text input</strong> and its variations
     </h2>
+    {%
+      include meta.html
+      colors=true
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
@@ -219,9 +256,7 @@ doc-subtab: input
       </div>
     </div>
 
-    <hr>
-
-    <h3 id="input-color" class="title">Colors</h3>
+    {% include heading.html name="Colors" %}
 
     <div class="columns">
       <div class="column is-half">
@@ -232,8 +267,8 @@ doc-subtab: input
       </div>
     </div>
 
-    <hr>
-    <h3 id="input-size" class="title">Sizes</h3>
+    {% include heading.html name="Sizes" %}
+
     <div class="columns">
       <div class="column is-half">
         {{sizes_example}}
@@ -390,6 +425,8 @@ doc-subtab: input
         {% highlight html %}{{has_icons_large_example}}{% endhighlight %}
       </div>
     </div>
+
+    {% include variables.html element=true %}
 
   </div>
 </section>
