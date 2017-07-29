@@ -1,4 +1,5 @@
 ---
+title: Content
 layout: documentation
 doc-tab: elements
 doc-subtab: content
@@ -37,6 +38,18 @@ variables:
   value: $text-strong
 ---
 
+{% capture content_pre %}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+{% endcapture %}
+
 {% capture content_example %}
 <div class="content">
   <h1>Hello World</h1>
@@ -74,15 +87,7 @@ variables:
   <p>Suspendisse egestas sapien non felis placerat elementum. Morbi tortor nisl, suscipit sed mi sit amet, mollis malesuada nulla. Nulla facilisi. Nullam ac erat ante.</p>
   <h4>Fourth level</h4>
   <p>Nulla efficitur eleifend nisi, sit amet bibendum sapien fringilla ac. Mauris euismod metus a tellus laoreet, at elementum ex efficitur.</p>
-  <pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</pre>
+  <pre>{{ content_pre }}</pre>
   <p>Maecenas eleifend sollicitudin dui, faucibus sollicitudin augue cursus non. Ut finibus eleifend arcu ut vehicula. Mauris eu est maximus est porta condimentum in eu justo. Nulla id iaculis sapien.</p>
   <table>
     <thead>
@@ -137,6 +142,12 @@ variables:
     <h2 class="subtitle">
       A single class to handle WYSIWYG generated content, where only <strong>HTML tags</strong> are available
     </h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
@@ -159,9 +170,8 @@ variables:
 
     {% highlight html %}{{content_example}}{% endhighlight %}
 
-    <hr>
+    {% include heading.html name="Sizes" %}
 
-    <h3 class="title">Sizes</h3>
     <div class="content">
       <p>You can use the <code>is-small</code>, <code>is-medium</code> and <code>is-large</code> modifiers to change the font size.</p>
     </div>
@@ -208,7 +218,7 @@ variables:
       </div>
     </div>
 
-    {% include variables.html %}
+    {% include variables.html element=true %}
 
   </div>
 </section>

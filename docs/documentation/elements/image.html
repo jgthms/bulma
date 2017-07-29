@@ -1,11 +1,32 @@
 ---
+title: Image
 layout: documentation
 doc-tab: elements
 doc-subtab: image
+dimensions:
+- 16
+- 24
+- 32
+- 48
+- 64
+- 96
+- 128
 variables:
 - name: $dimensions
   value: 16 24 32 48 64 96 128
 ---
+
+{% capture image %}
+<figure class="image is-128x128">
+  <img src="{{site.url}}/images/placeholders/128x128.png">
+</figure>
+{% endcapture %}
+
+{% capture retina_image %}
+<figure class="image is-128x128">
+  <img src="{{site.url}}/images/placeholders/256x256.png">
+</figure>
+{% endcapture %}
 
 {% include subnav-elements.html %}
 
@@ -15,6 +36,12 @@ variables:
     <h2 class="subtitle">
       A container for <strong>responsive images</strong>
     </h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=false
+      variables=true
+    %}
 
     <hr>
 
@@ -28,11 +55,7 @@ variables:
       </figure>
     </div>
 
-{% highlight html %}
-<figure class="image is-128x128">
-  <img src="{{site.url}}/images/placeholders/128x128.png">
-</figure>
-{% endhighlight %}
+    {% highlight html %}{{ image }}{% endhighlight %}
 
     <hr>
 
@@ -43,41 +66,13 @@ variables:
 
     <table class="table is-bordered">
       <tbody>
-        <tr>
-          <td><code>image is-16x16</code></td>
-          <td><figure class="image is-16x16"><img src="{{site.url}}/images/placeholders/16x16.png"></figure></td>
-          <td>16x16px</td>
-        </tr>
-        <tr>
-          <td><code>image is-24x24</code></td>
-          <td><figure class="image is-24x24"><img src="{{site.url}}/images/placeholders/24x24.png"></figure></td>
-          <td>24x24px</td>
-        </tr>
-        <tr>
-          <td><code>image is-32x32</code></td>
-          <td><figure class="image is-32x32"><img src="{{site.url}}/images/placeholders/32x32.png"></figure></td>
-          <td>32x32px</td>
-        </tr>
-        <tr>
-          <td><code>image is-48x48</code></td>
-          <td><figure class="image is-48x48"><img src="{{site.url}}/images/placeholders/48x48.png"></figure></td>
-          <td>48x48px</td>
-        </tr>
-        <tr>
-          <td><code>image is-64x64</code></td>
-          <td><figure class="image is-64x64"><img src="{{site.url}}/images/placeholders/64x64.png"></figure></td>
-          <td>64x64px</td>
-        </tr>
-        <tr>
-          <td><code>image is-96x96</code></td>
-          <td><figure class="image is-96x96"><img src="{{site.url}}/images/placeholders/96x96.png"></figure></td>
-          <td>96x96px</td>
-        </tr>
-        <tr>
-          <td><code>image is-128x128</code></td>
-          <td><figure class="image is-128x128"><img src="{{site.url}}/images/placeholders/128x128.png"></figure></td>
-          <td>128x128px</td>
-        </tr>
+        {% for dimension in page.dimensions %}
+          <tr>
+            <td><code>image is-{{ dimension }}x{{ dimension }}</code></td>
+            <td><figure class="image is-{{ dimension }}x{{ dimension }}"><img src="{{site.url}}/images/placeholders/{{ dimension }}x{{ dimension }}.png"></figure></td>
+            <td>{{ dimension }}x{{ dimension }}px</td>
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
 
@@ -93,11 +88,7 @@ variables:
       </figure>
     </div>
 
-{% highlight html %}
-<figure class="image is-128x128">
-  <img src="{{site.url}}/images/placeholders/256x256.png">
-</figure>
-{% endhighlight %}
+    {% highlight html %}{{ retina_image }}{% endhighlight %}
 
     <hr>
 
