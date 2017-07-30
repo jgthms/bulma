@@ -6,6 +6,11 @@
 
 * #280 [File upload element](http://bulma.io/documentation/form/file/)
 
+### Issues closed
+
+* #964 Tabs sass file throwing error with `!important`
+* #949 `.is-size-7` helper is missing
+
 ## 0.5.0
 
 ### New features
