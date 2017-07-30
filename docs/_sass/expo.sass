@@ -1,0 +1,54 @@
+.expo
+  background-color: $background
+  background-color: $white
+  padding: 1.5rem
+
+.website
+  display: block
+  position: relative
+  text-align: center
+  &:last-child
+    margin-bottom: 0
+
+.website-image
+  align-items: center
+  display: flex
+  justify-content: center
+  margin-bottom: 1.5rem
+  position: relative
+  &:hover
+    .website-overlay
+      opacity: 0.25
+
+.website-overlay
+  background-color: $black
+  opacity: 0
+  transition: opacity 200ms $easing
+
++mobile
+  .website:not(:last-child)
+    margin-bottom: 1.5rem
+
++tablet
+  .expo
+    padding-bottom: 3rem
+    padding-top: 3rem
+  .website:not(:last-child)
+    margin-bottom: 3rem
+  .website-image
+    margin-bottom: 3rem
+
++desktop
+  .expo
+    padding-bottom: 6rem
+    padding-top: 6rem
+
++widescreen
+  .websites
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+  .website
+    width: calc(50% - 3rem)
+    &.is-highlighted
+      width: 100%
