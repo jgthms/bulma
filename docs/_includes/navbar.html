@@ -144,6 +144,10 @@
           </a>
         </div>
       </div>
+      <a class="navbar-item {% if page.route == 'love' %}is-active{% endif %}" href="{{ site.url }}/love/">
+        <span class="emoji">❤️</span>
+        Love
+      </a>
     </div>
 
     <div class="navbar-end">
@@ -156,18 +160,7 @@
       <div class="navbar-item">
         <div class="field is-grouped">
           <p class="control">
-            <a id="twitter"
-              class="button"
-              data-social-network="Twitter"
-              data-social-action="tweet"
-              data-social-target="{{ site.url }}"
-              target="_blank"
-              href="https://twitter.com/intent/tweet?text={{ site.title | urlencode }}&url={{ site.url }}&via=jgthms">
-              <span class="icon">
-                <i class="fa fa-twitter"></i>
-              </span>
-              <span>Tweet</span>
-            </a>
+            {% include elements/tw-button.html label="Tweet" %}
           </p>
           <p class="control">
             <a class="button is-primary" href="{{ site.download }}">
