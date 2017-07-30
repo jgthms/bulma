@@ -1,5 +1,5 @@
 ---
-fulltitle: "Expo: great uses of Bulma"
+fulltitle: "Expo: beautiful websites designed Bulma"
 layout: default
 route: expo
 other:
@@ -47,6 +47,29 @@ websites:
   date: "31 Mar 2016"
 ---
 
+{% capture embrace_expo %}
+<div class="embrace is-expo">
+  <p class="embrace-text">
+    Did you design a gorgeous website with Bulma too? <strong>Tell us about it!</strong> <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>
+  </p>
+  <p class="embrace-button">
+    <a class="tw-button button"
+      data-social-network="Twitter"
+      data-social-action="tweet"
+      data-social-target="{{ site.url }}"
+      target="_blank"
+      href="https://twitter.com/intent/tweet?text={{ 'Here is my lovely website!' | urlencode }}&hashtags=madewithbulma&url={{ site.url }}">
+      <span class="icon">
+        <i class="fa fa-twitter"></i>
+      </span>
+      <span>
+        #madewithbulma
+      </span>
+    </a>
+  </p>
+</div>
+{% endcapture %}
+
 <div class="container">
   {% include navbar.html id="ExpoHero" %}
 </div>
@@ -60,7 +83,7 @@ websites:
             Expo
           </h1>
           <p class="subtitle">
-            How people used Bulma to design beautiful websites
+            How people used Bulma to design beautiful websites <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">😍</span>
           </p>
         </div>
         <div class="column is-narrow">
@@ -73,6 +96,8 @@ websites:
 
 <main class="expo">
   <div class="container">
+    {{ embrace_expo }}
+
     <div class="websites">
       {% for website in page.websites %}
         <article class="website {% if website.highlighted %}is-highlighted{% endif %}">
@@ -94,25 +119,6 @@ websites:
       {% endfor %}
     </div>
 
-    <div class="embrace">
-      <p class="embrace-text">
-        Did you design a <strong>gorgeous website</strong> with Bulma too? <strong>Tell us</strong> about it! <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>
-      </p>
-      <p class="embrace-button">
-        <a class="tw-button button"
-          data-social-network="Twitter"
-          data-social-action="tweet"
-          data-social-target="{{ site.url }}"
-          target="_blank"
-          href="https://twitter.com/intent/tweet?text={{ 'Here is my lovely website!' | urlencode }}&hashtags=madewithbulma&url={{ site.url }}">
-          <span class="icon">
-            <i class="fa fa-twitter"></i>
-          </span>
-          <span>
-            #madewithbulma
-          </span>
-        </a>
-      </p>
-    </div>
+    {{ embrace_expo }}
   </div>
 </main>
