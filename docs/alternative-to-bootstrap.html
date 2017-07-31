@@ -1,4 +1,42 @@
 ---
+bulma:
+- type: "bulma"
+  icon: "css3"
+  title: "Modern features"
+  content: "By using the latest CSS3 features such as **Flexbox**, and planning on using **CSS Variables** and **CSS Grid**, Bulma aims to stay on the bleeding edge of browser technology."
+- type: "bulma"
+  icon: "pause"
+  title: "Simple grid system"
+  content: "To build a Bulma grid, you only need a single `.columns` container to wrap as many `.column` items as you want."
+- type: "bulma"
+  icon: "heart"
+  title: "Easy-to-learn syntax"
+  content: "With simple readable **class names** like `.button` or `.title`, and a straightforward **modifiers system** like `.is-primary` or `.is-large`, it's easy to pick up Bulma in **minutes**.<br>[More about modifiers](/documentation/modifiers/syntax/)"
+- type: "bulma"
+  icon: "fa"
+  title: "Font Awesome support"
+  content: "Bulma is compatible with [Font Awesome](http://fontawesome.io/) thanks to the `.icon` element."
+- type: "bulma"
+  icon: "plus"
+  title: "100+ useful CSS helpers"
+  content: 'Bulma ships with more than **100 helpers** to specify color, display, and spacing.<br>[Responsive helpers](/documentation/modifiers/responsive-helpers/) <span class="separator">–</span> [Typography helpers](/documentation/modifiers/typography-helpers/) <span class="separator">–</span> [Other helpers](/documentation/modifiers/helpers/)'
+- type: "bulma"
+  icon: "code"
+  title: "No JavaScript"
+  content: '<p>By focusing only on <strong>CSS</strong>, Bulma provides a lightweight solution that can easily be implemented in <strong>any development context</strong>.</p><blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr"><a href="https://t.co/vY1ZsRScYM">https://t.co/vY1ZsRScYM</a> -- a CSS framework by <a href="https://twitter.com/jgthms">@jgthms</a> -- is lovely! No JS included, which means no JS opinions included!</p>&mdash; Robert Stuttaford (@RobStuttaford) <a href="https://twitter.com/RobStuttaford/status/860885116909998080">May 6, 2017</a></blockquote>'
+bootstrap:
+- type: "bootstrap"
+  icon: "plug"
+  title: "jQuery plugins"
+  content: "Bootstrap includes useful jQuery plugins to add **interaction** to your website."
+- type: "bootstrap"
+  icon: "internet-explorer"
+  title: "Internet Explorer compatibility"
+  content: "While 90% of Bulma works in IE11, Bootstrap has a better **compatibility** with this browser."
+- type: "bootstrap"
+  icon: "list"
+  title: "Additional elements"
+  content: "Bootstrap has a few more **elements** like the [list group](http://getbootstrap.com/components/#list-group), [wells](http://getbootstrap.com/components/#wells), or the [page header](http://getbootstrap.com/components/#page-header)."
 ---
 
 <!DOCTYPE html>
@@ -68,6 +106,56 @@
         </div>
       </section>
     </main>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="subtitle">
+          Both Bulma and Bootstrap are <strong>CSS frameworks</strong> that allow developers to quickly <strong>build web interfaces</strong> with ease. While they have fairly similar features, they still differ in some ways, and you might wonder why you should choose one framework over the other. This page is here to help answer that.
+        </h2>
+
+        <div class="columns is-desktop">
+          <div class="column is-half-desktop">
+            <h3 class="subtitle is-3 has-text-centered pros-heading">
+              Why choose <strong>Bulma</strong>
+            </h3>
+            <figure class="pros-icon">
+              {% include svg/bulma-b.svg %}
+            </figure>
+            <div class="pros-list">
+              {% for pro in page.bulma %}
+                {%
+                  include pro.html
+                  type=pro.type
+                  icon=pro.icon
+                  title=pro.title
+                  content=pro.content
+                %}
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="column is-half-desktop">
+            <h3 class="subtitle is-3 has-text-centered pros-heading">
+              Why choose <strong>Bootstrap</strong>
+            </h3>
+            <figure class="pros-icon">
+              {% include svg/bootstrap-icon.svg %}
+            </figure>
+            <div class="pros-list">
+              {% for pro in page.bootstrap %}
+                {%
+                  include pro.html
+                  type=pro.type
+                  icon=pro.icon
+                  title=pro.title
+                  content=pro.content
+                %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     {% include footer.html %}
   </body>
