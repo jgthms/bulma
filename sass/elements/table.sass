@@ -30,6 +30,14 @@ $table-striped-row-even-hover-background-color: $white-ter !default
     border-width: $table-cell-border-width
     padding: $table-cell-padding
     vertical-align: top
+    // Colors
+    @each $name, $pair in $colors
+      $color: nth($pair, 1)
+      $color-invert: nth($pair, 2)
+      &.is-#{$name}
+        background-color: $color
+        border-color: $color
+        color: $color-invert
     // Modifiers
     &.is-narrow
       white-space: nowrap
