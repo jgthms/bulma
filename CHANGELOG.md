@@ -4,7 +4,8 @@
 
 ### New features
 
-* #280 [File upload element](http://bulma.io/documentation/form/file/)
+* 🎉 #280 [File upload element](http://bulma.io/documentation/form/file/)
+* `$container-offset` variable to determine the `.container` breakpoints
 
 ### Issues closed
 
@@ -16,7 +17,7 @@
 
 ### New features
 
-* [List of tags](http://bulma.io/documentation/elements/tag/#list-of-tags)
+* 🎉 [List of tags](http://bulma.io/documentation/elements/tag/#list-of-tags)
 * New **variable naming system**: `component`-`subcomponent`-`state`-`property`
 * Improved **customization** thanks to new set of variables
 * #934 New `.is-shadowless` helper
