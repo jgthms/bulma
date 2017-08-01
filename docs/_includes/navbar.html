@@ -25,9 +25,6 @@
 
   <div id="navMenu{{ include.id }}" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item {% if page.route == 'index' %}is-active{% endif %}" href="{{ site.url }}/">
-        Home
-      </a>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.documentation }}">
           Docs
@@ -63,7 +60,9 @@
           <hr class="navbar-divider">
           <div class="navbar-item">
             <div>
-              <p class="has-text-info is-size-6-desktop"><strong>{{ site.version }}</strong></p>
+              <p class="is-size-6-desktop">
+                <strong class="has-text-info">{{ site.version }}</strong>
+              </p>
               {{#unless site.deprecated}}
                 <small>
                   <a class="view-all-versions" href="/versions">View all versions</a>
@@ -142,30 +141,27 @@
           </a>
         </div>
       </div>
+      <a class="navbar-item {% if page.route == 'expo' %}is-active{% endif %}" href="{{ site.url }}/expo/">
+        <span class="emoji">🎨</span>
+        Expo
+      </a>
+      <a class="navbar-item {% if page.route == 'love' %}is-active{% endif %}" href="{{ site.url }}/love/">
+        <span class="emoji">❤️</span>
+        Love
+      </a>
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item" href="{{ site.github }}" target="_blank">
+      <a class="navbar-item is-hidden-desktop-only" href="{{ site.github }}" target="_blank">
         Github
       </a>
-      <a class="navbar-item" href="{{ site.twitter }}" target="_blank">
+      <a class="navbar-item is-hidden-desktop-only" href="{{ site.twitter }}" target="_blank">
         Twitter
       </a>
       <div class="navbar-item">
         <div class="field is-grouped">
           <p class="control">
-            <a id="twitter"
-              class="button"
-              data-social-network="Twitter"
-              data-social-action="tweet"
-              data-social-target="{{ site.url }}"
-              target="_blank"
-              href="https://twitter.com/intent/tweet?text={{ site.title | urlencode }}&url={{ site.url }}&via=jgthms">
-              <span class="icon">
-                <i class="fa fa-twitter"></i>
-              </span>
-              <span>Tweet</span>
-            </a>
+            {% include elements/tw-button.html label="Tweet" %}
           </p>
           <p class="control">
             <a class="button is-primary" href="{{ site.download }}">

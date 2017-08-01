@@ -2,6 +2,61 @@
 layout: documentation
 doc-tab: components
 doc-subtab: navbar
+variables:
+- name: $navbar-background-color
+  value: $white
+- name: $navbar-height
+  value: 3.25rem
+- name: $navbar-item-color
+  value: $grey-dark
+- name: $navbar-item-hover-color
+  value: $black
+- name: $navbar-item-hover-background-color
+  value: $background
+- name: $navbar-item-active-color
+  value: $black
+- name: $navbar-item-active-background-color
+  value: transparent
+- name: $navbar-tab-hover-background-color
+  value: transparent
+- name: $navbar-tab-hover-border-bottom-color
+  value: $primary
+- name: $navbar-tab-active-color
+  value: $primary
+- name: $navbar-tab-active-background-color
+  value: transparent
+- name: $navbar-tab-active-border-bottom-color
+  value: $primary
+- name: $navbar-tab-active-border-bottom-style
+  value: solid
+- name: $navbar-tab-active-border-bottom-width
+  value: 3px
+- name: $navbar-dropdown-background-color
+  value: $white
+- name: $navbar-dropdown-border-top
+  value: 1px solid $border
+- name: $navbar-dropdown-offset
+  value: -4px
+- name: $navbar-dropdown-arrow
+  value: $link
+- name: $navbar-dropdown-radius
+  value: $radius-large
+- name: $navbar-dropdown-z
+  value: 20
+- name: $navbar-dropdown-boxed-radius
+  value: $radius-large
+- name: $navbar-dropdown-boxed-shadow
+  value: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+- name: $navbar-dropdown-item-hover-color
+  value: $black
+- name: $navbar-dropdown-item-hover-background-color
+  value: $background
+- name: $navbar-dropdown-item-active-color
+  value: $primary
+- name: $navbar-dropdown-item-active-background-color
+  value: $background
+- name: $navbar-divider-background-color
+  value: $border
 ---
 
 {% include subnav-components.html %}
@@ -362,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add a click event on each of them
     $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', () => {
+      $el.addEventListener('click', function () {
 
         // Get the target from the "data-target" attribute
         var target = $el.dataset.target;
@@ -382,22 +437,18 @@ document.addEventListener('DOMContentLoaded', function () {
 <section class="section">
   <div class="container">
 
-    <div class="columns" style="margin-bottom: -0.75rem !important;">
-      <div class="column">
-        <h1 class="title">Navbar</h1>
-        <h2 class="subtitle">
-          A responsive horizontal <strong>navbar</strong> that can supports images, links, buttons, and dropdowns
-        </h2>
-      </div>
-
-      <div class="column is-narrow">
-        <p class="content">
-          <span class="tag is-success">New!</span>
-          <span class="tag is-info">0.4.3</span>
-        </p>
-
-      </div>
-    </div>
+    <h1 class="title">Navbar</h1>
+    <h2 class="subtitle">
+      A responsive horizontal <strong>navbar</strong> that can supports images, links, buttons, and dropdowns
+    </h2>
+    {%
+      include meta.html
+      new=true
+      since="0.4.3"
+      colors=false
+      sizes=false
+      variables=true
+    %}
 
     <hr>
 
@@ -855,6 +906,8 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     {% highlight html %}{{ navbar_divider_example }}{% endhighlight %}
+
+    {% include variables.html %}
 
   </div>
 </section>

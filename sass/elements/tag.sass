@@ -1,15 +1,42 @@
+$tag-background-color: $background !default
+$tag-color: $text !default
+$tag-radius: $radius !default
+
+.tags
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  .tag
+    margin-bottom: 0.5rem
+    &:not(:last-child)
+      margin-right: 0.5rem
+  &:last-child
+    margin-bottom: -0.5rem
+  &:not(:last-child)
+    margin-bottom: 1rem
+  &.has-addons
+    .tag
+      margin-right: 0
+      &:not(:first-child)
+        border-bottom-left-radius: 0
+        border-top-left-radius: 0
+      &:not(:last-child)
+        border-bottom-right-radius: 0
+        border-top-right-radius: 0
+
 .tag
   align-items: center
-  background-color: $background
-  border-radius: 290486px
-  color: $text
+  background-color: $tag-background-color
+  border-radius: $tag-radius
+  color: $tag-color
   display: inline-flex
   font-size: $size-small
   height: 2em
   justify-content: center
   line-height: 1.5
-  padding-left: 0.875em
-  padding-right: 0.875em
+  padding-left: 0.75em
+  padding-right: 0.75em
   white-space: nowrap
   .delete
     margin-left: 0.25em
@@ -26,3 +53,36 @@
     font-size: $size-normal
   &.is-large
     font-size: $size-medium
+  // Modifiers
+  &.is-delete
+    margin-left: 1px
+    padding: 0
+    position: relative
+    width: 2em
+    &:before,
+    &:after
+      background-color: currentColor
+      content: ""
+      display: block
+      left: 50%
+      position: absolute
+      top: 50%
+      transform: translateX(-50%) translateY(-50%) rotate(45deg)
+      transform-origin: center center
+    &:before
+      height: 1px
+      width: 50%
+    &:after
+      height: 50%
+      width: 1px
+    &:hover,
+    &:focus
+      background-color: darken($tag-background-color, 5%)
+    &:active
+      background-color: darken($tag-background-color, 10%)
+  &.is-rounded
+    border-radius: 290486px
+
+a.tag
+  &:hover
+    text-decoration: underline

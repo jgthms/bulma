@@ -2,18 +2,32 @@
 layout: documentation
 doc-tab: components
 doc-subtab: message
+variables:
+- name: $message-background-color
+  value: $background
+- name: $message-radius
+  value: $radius
+- name: $message-header-background-color
+  value: $text
+- name: $message-header-color
+  value: $text-invert
+- name: $message-header-padding
+  value: 0.5em 0.75em
+- name: $message-header-radius
+  value: $radius
+- name: $message-body-border
+  value: 1px solid $border
+- name: $message-body-color
+  value: $text
+- name: $message-body-padding
+  value: 1em 1.25em
+- name: $message-body-radius
+  value: $radius
+- name: $message-body-pre-background-color
+  value: $white
+- name: $message-body-pre-code-background-color
+  value: transparent
 ---
-
-{% include subnav-components.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Messages</h1>
-    <h2 class="subtitle">
-      Colored <strong>message</strong> blocks, to emphasize part of your page
-    </h2>
-
-    <hr>
 
 {% capture message_example %}
 <article class="message">
@@ -25,6 +39,9 @@ doc-subtab: message
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
+{% endcapture %}
+
+{% capture message_colors_example %}
 <article class="message is-dark">
   <div class="message-header">
     <p>Dark</p>
@@ -80,23 +97,55 @@ doc-subtab: message
   </div>
 </article>
 {% endcapture %}
-<div class="columns">
-  <div class="column is-half">
-{{message_example}}
-  </div>
-  <div class="column is-half">
-{% highlight html %}
-{{message_example}}
-{% endhighlight %}
-  </div>
-</div>
 
-    <hr>
+{% capture message_small %}
+<article class="message is-small">
+  <div class="message-header">
+    <p>Small message</p>
+    <button class="delete is-small"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus.
+  </div>
+</article>
+{% endcapture %}
 
-<h3 class="subtitle">Message body only</h3>
-<div class="content">
-  <p>You can <strong>omit</strong> the message header:</p>
-</div>
+{% capture message_normal %}
+<article class="message">
+  <div class="message-header">
+    <p>Normal message</p>
+    <button class="delete"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus.
+  </div>
+</article>
+{% endcapture %}
+
+{% capture message_medium %}
+<article class="message is-medium">
+  <div class="message-header">
+    <p>Medium message</p>
+    <button class="delete is-medium"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus.
+  </div>
+</article>
+{% endcapture %}
+
+{% capture message_large %}
+<article class="message is-large">
+  <div class="message-header">
+    <p>Large message</p>
+    <button class="delete is-large"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus.
+  </div>
+</article>
+{% endcapture %}
+
 {% capture message_body_example %}
 <article class="message">
   <div class="message-body">
@@ -134,16 +183,98 @@ doc-subtab: message
   </div>
 </article>
 {% endcapture %}
-<div class="columns">
-  <div class="column is-half">
-{{message_body_example}}
-  </div>
-  <div class="column is-half">
-{% highlight html %}
-{{message_body_example}}
-{% endhighlight %}
-  </div>
-</div>
+
+{% include subnav-components.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Messages</h1>
+    <h2 class="subtitle">
+      Colored <strong>message</strong> blocks, to emphasize part of your page
+    </h2>
+    {%
+      include meta.html
+      colors=true
+      sizes=true
+      variables=true
+    %}
+
+    <hr>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{message_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include heading.html name="Colors" %}
+
+    <div class="columns">
+      <div class="column is-half">
+        {{message_colors_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_colors_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">Message body only</h3>
+    <div class="content">
+      <p>You can <strong>omit</strong> the message header:</p>
+    </div>
+    <div class="columns">
+      <div class="column is-half">
+        {{message_body_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_body_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include heading.html name="Sizes" %}
+
+    <div class="columns">
+      <div class="column is-half">
+        {{message_small}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_small}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{message_normal}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_normal}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{message_medium}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_medium}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{message_large}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{message_large}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include variables.html %}
 
   </div>
 </section>

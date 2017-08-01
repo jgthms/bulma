@@ -1,0 +1,181 @@
+---
+title: Colors
+layout: documentation
+doc-tab: overview
+doc-subtab: colors
+initial_colors:
+- name: "$black"
+  value: hsl(0, 0%, 4%)
+- name: "$black-bis"
+  value: hsl(0, 0%, 7%)
+- name: "$black-ter"
+  value: hsl(0, 0%, 14%)
+- name: "$grey-darker"
+  value: hsl(0, 0%, 21%)
+- name: "$grey-dark"
+  value: hsl(0, 0%, 29%)
+- name: "$grey"
+  value: hsl(0, 0%, 48%)
+- name: "$grey-light"
+  value: hsl(0, 0%, 71%)
+- name: "$grey-lighter"
+  value: hsl(0, 0%, 86%)
+- name: "$white-ter"
+  value: hsl(0, 0%, 96%)
+- name: "$white-bis"
+  value: hsl(0, 0%, 98%)
+- name: "$white"
+  value: hsl(0, 0%, 100%)
+- name: "$orange"
+  value: hsl(14, 100%, 53%)
+- name: "$yellow"
+  value: hsl(48, 100%, 67%)
+- name: "$green"
+  value: hsl(141, 71%, 48%)
+- name: "$turquoise"
+  value: hsl(171, 100%, 41%)
+- name: "$blue"
+  value: hsl(217, 71%, 53%)
+- name: "$purple"
+  value: hsl(271, 100%, 71%)
+- name: "$red"
+  value: hsl(348, 100%, 61%)
+colors:
+- id: "white"
+  variable: "$white"
+  value: "$white"
+  value_hex: white
+  invert: "$black"
+  invert_hex: black
+- id: "black"
+  variable: "$black"
+  value: "$black"
+  value_hex: black
+  invert: "$white"
+  invert_hex: white
+- id: "light"
+  variable: "$light"
+  value: "$white-ter"
+  value_hex: white-ter
+  invert: "$light-invert"
+  invert_hex: black
+- id: "dark"
+  variable: "$dark"
+  value: "$grey-darker"
+  value_hex: grey-darker
+  invert: "$dark-invert"
+  invert_hex: white
+- id: "primary"
+  variable: "$primary"
+  value: "$turquoise"
+  value_hex: turquoise
+  invert: "$primary-invert"
+  invert_hex: white
+- id: "info"
+  variable: "$info"
+  value: "$blue"
+  value_hex: blue
+  invert: "$info-invert"
+  invert_hex: white
+- id: "success"
+  variable: "$success"
+  value: "$green"
+  value_hex: green
+  invert: "$success-invert"
+  invert_hex: white
+- id: "warning"
+  variable: "$warning"
+  value: "$yellow"
+  value_hex: yellow
+  invert: "$warning-invert"
+  invert_hex: black
+- id: "danger"
+  variable: "$danger"
+  value: "$red"
+  value_hex: red
+  invert: "$danger-invert"
+  invert_hex: white
+shades:
+- id: "black-bis"
+  value: "$black-bis"
+- id: "black-ter"
+  value: "$black-ter"
+- id: "grey-darker"
+  value: "$grey-darker"
+- id: "grey-dark"
+  value: "$grey-dark"
+- id: "grey"
+  value: "$grey"
+- id: "grey-light"
+  value: "$grey-light"
+- id: "grey-lighter"
+  value: "$grey-lighter"
+- id: "white-ter"
+  value: "$white-ter"
+- id: "white-bis"
+  value: "$white-bis"
+---
+
+{% include subnav-overview.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Colors</h1>
+    <h2 class="subtitle">The <strong>colors</strong> that <strong>style</strong> all Bulma elements and components</h2>
+
+    <hr>
+
+    <div class="content">
+      <p>
+        Most elements and components have color variations thanks to <strong>modifiers</strong> with syntax <code>.is-$color</code>, like <code>is-primary</code> or <code>is-dark</code>.
+      </p>
+      <p>
+        This is thanks to the <code>$colors</code> <strong>Sass map</strong>, through which Bulma cycles to grab all the colors and their inverts.
+      </p>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Color</th>
+          <th>Variable</th>
+          <th>Value</th>
+          <th>Actual value</th>
+          <th>Invert variable</th>
+          <th>Actual invert value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for color in page.colors %}
+          {% assign includePath = color.value_hex | prepend: "color/" | append: ".html" %}
+          <tr>
+            <td>
+              <strong>{{ color.id | capitalize }}</strong>
+            </td>
+            <td>
+              <code>{{ color.variable }}</code>
+            </td>
+            <td>
+              <code>{{ color.value }}</code>
+            </td>
+            <td>
+              {% include {{ includePath }} %}
+            </td>
+            <td>
+              <code>{{ color.invert }}</code>
+            </td>
+            <td>
+              {% if color.invert_hex == "black" %}
+                <span class="color" style="background: rgba(0, 0, 0, 0.7);"></span>
+                <code>rgba(0, 0, 0, 0.7)</code>
+              {% else %}
+                <span class="color" style="background: #fff;"></span>
+                <code>#fff</code>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

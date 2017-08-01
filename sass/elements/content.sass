@@ -1,3 +1,23 @@
+$content-heading-color: $text-strong !default
+$content-heading-weight: $weight-normal !default
+$content-heading-line-height: 1.125 !default
+
+$content-blockquote-background-color: $background !default
+$content-blockquote-border-left: 5px solid $border !default
+$content-blockquote-padding: 1.25em 1.5em !default
+
+$content-pre-padding: 1.25em 1.5em !default
+
+$content-table-cell-border: 1px solid $border !default
+$content-table-cell-border-width: 0 0 1px !default
+$content-table-cell-padding: 0.5em 0.75em !default
+$content-table-cell-heading-color: $text-strong !default
+$content-table-row-hover-background-color: $background !default
+$content-table-head-cell-border-width: 0 0 2px !default
+$content-table-head-cell-color: $text-strong !default
+$content-table-foot-cell-border-width: 2px 0 0 !default
+$content-table-foot-cell-color: $text-strong !default
+
 .content
   +block
   // Inline
@@ -19,9 +39,9 @@
   h4,
   h5,
   h6
-    color: $text-strong
-    font-weight: $weight-normal
-    line-height: 1.125
+    color: $content-heading-color
+    font-weight: $content-heading-weight
+    line-height: $content-heading-line-height
   h1
     font-size: 2em
     margin-bottom: 0.5em
@@ -47,9 +67,9 @@
     font-size: 1em
     margin-bottom: 1em
   blockquote
-    background-color: $background
-    border-left: 5px solid $border
-    padding: 1.25em 1.5em
+    background-color: $content-blockquote-background-color
+    border-left: $content-blockquote-border-left
+    padding: $content-blockquote-padding
   ol
     list-style: decimal outside
     margin-left: 2em
@@ -74,36 +94,36 @@
   pre
     +overflow-touch
     overflow-x: auto
-    padding: 1.25em 1.5em
+    padding: $content-pre-padding
     white-space: pre
     word-wrap: normal
   sup,
   sub
-    font-size: 70%
+    font-size: 75%
   table
     width: 100%
     td,
     th
-      border: 1px solid $border
-      border-width: 0 0 1px
-      padding: 0.5em 0.75em
+      border: $content-table-cell-border
+      border-width: $content-table-cell-border-width
+      padding: $content-table-cell-padding
       vertical-align: top
     th
-      color: $text-strong
+      color: $content-table-cell-heading-color
       text-align: left
     tr
       &:hover
-        background-color: $background
+        background-color: $content-table-row-hover-background-color
     thead
       td,
       th
-        border-width: 0 0 2px
-        color: $text-strong
+        border-width: $content-table-head-cell-border-width
+        color: $content-table-head-cell-color
     tfoot
       td,
       th
-        border-width: 2px 0 0
-        color: $text-strong
+        border-width: $content-table-foot-cell-border-width
+        color: $content-table-foot-cell-color
     tbody
       tr
         &:last-child

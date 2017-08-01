@@ -1,8 +1,71 @@
 ---
+title: Title and Subtitle
 layout: documentation
 doc-tab: elements
 doc-subtab: title
+variables:
+- name: $title-color
+  value: $grey-darker
+- name: $title-size
+  value: $size-3
+- name: $title-weight
+  value: $weight-semibold
+- name: $subtitle-color
+  value: $grey-dark
+- name: $subtitle-size
+  value: $size-5
+- name: $subtitle-weight
+  value: $weight-normal
+- name: $subtitle-strong-color
+  value: $grey-darker
+- name: $subtitle-strong-weight
+  value: $weight-semibold
 ---
+
+{% capture default %}
+<h1 class="title">Title</h1>
+<h2 class="subtitle">Subtitle</h2>
+{% endcapture %}
+
+{% capture title_sizes %}
+<h1 class="title is-1">Title 1</h1>
+<h2 class="title is-2">Title 2</h2>
+<h3 class="title is-3">Title 3</h3>
+<h4 class="title is-4">Title 4</h4>
+<h5 class="title is-5">Title 5</h5>
+<h6 class="title is-6">Title 6</h6>
+{% endcapture %}
+
+{% capture subtitle_sizes %}
+<h1 class="subtitle is-1">Subtitle 1</h1>
+<h2 class="subtitle is-2">Subtitle 2</h2>
+<h3 class="subtitle is-3">Subtitle 3</h3>
+<h4 class="subtitle is-4">Subtitle 4</h4>
+<h5 class="subtitle is-5">Subtitle 5</h5>
+<h6 class="subtitle is-6">Subtitle 6</h6>
+{% endcapture %}
+
+{% capture combine %}
+<p class="title is-1">Title 1</p>
+<p class="subtitle is-3">Subtitle 3</p>
+
+<p class="title is-2">Title 2</p>
+<p class="subtitle is-4">Subtitle 4</p>
+
+<p class="title is-3">Title 3</p>
+<p class="subtitle is-5">Subtitle 5</p>
+{% endcapture %}
+
+{% capture spaced %}
+<p class="title is-1 is-spaced">Title 1</p>
+<p class="subtitle is-3">Subtitle 3</p>
+
+<p class="title is-2 is-spaced">Title 2</p>
+<p class="subtitle is-4">Subtitle 4</p>
+
+<p class="title is-3 is-spaced">Title 3</p>
+<p class="subtitle is-5">Subtitle 5</p>
+{% endcapture %}
 
 {% include subnav-elements.html %}
 
@@ -12,26 +75,39 @@ doc-subtab: title
     <h2 class="subtitle">
       Simple <strong>headings</strong> to add depth to your page
     </h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
     <div class="columns">
       <div class="column">
-        <p>There are <strong>2 types</strong> of heading:</p>
+        <div class="content">
+          <p>There are <strong>2 types</strong> of heading:</p>
+          <ul>
+            <li>
+              <code>.title</code>
+            </li>
+            <li>
+              <code>.subtitle</code>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="column">
         <p class="title">Title</p>
         <p class="subtitle">Subtitle</p>
       </div>
       <div class="column">
-{% highlight html %}
-<h1 class="title">Title</h1>
-<h2 class="subtitle">Subtitle</h2>
-{% endhighlight %}
+        {% highlight html %}{{ default }}{% endhighlight %}
       </div>
     </div>
 
-    <hr>
+    {% include heading.html name="Sizes" %}
 
     <div class="columns">
       <div class="column">
@@ -46,14 +122,7 @@ doc-subtab: title
         <p class="title is-6">Title 6</p>
       </div>
       <div class="column">
-{% highlight html %}
-<h1 class="title is-1">Title 1</h1>
-<h2 class="title is-2">Title 2</h2>
-<h3 class="title is-3">Title 3</h3>
-<h4 class="title is-4">Title 4</h4>
-<h5 class="title is-5">Title 5</h5>
-<h6 class="title is-6">Title 6</h6>
-{% endhighlight %}
+        {% highlight html %}{{ title_sizes }}{% endhighlight %}
       </div>
     </div>
 
@@ -68,14 +137,7 @@ doc-subtab: title
         <p class="subtitle is-6">Subtitle 6</p>
       </div>
       <div class="column">
-{% highlight html %}
-<h1 class="subtitle is-1">Subtitle 1</h1>
-<h2 class="subtitle is-2">Subtitle 2</h2>
-<h3 class="subtitle is-3">Subtitle 3</h3>
-<h4 class="subtitle is-4">Subtitle 4</h4>
-<h5 class="subtitle is-5">Subtitle 5</h5>
-<h6 class="subtitle is-6">Subtitle 6</h6>
-{% endhighlight %}
+        {% highlight html %}{{ subtitle_sizes }}{% endhighlight %}
       </div>
     </div>
 
@@ -103,16 +165,7 @@ doc-subtab: title
         </div>
       </div>
       <div class="column">
-{% highlight html %}
-<p class="title is-1">Title 1</p>
-<p class="subtitle is-3">Subtitle 3</p>
-
-<p class="title is-2">Title 2</p>
-<p class="subtitle is-4">Subtitle 4</p>
-
-<p class="title is-3">Title 3</p>
-<p class="subtitle is-5">Subtitle 5</p>
-{% endhighlight %}
+        {% highlight html %}{{ combine }}{% endhighlight %}
       </div>
     </div>
 
@@ -142,17 +195,11 @@ doc-subtab: title
         </div>
       </div>
       <div class="column">
-{% highlight html %}
-<p class="title is-1 is-spaced">Title 1</p>
-<p class="subtitle is-3">Subtitle 3</p>
-
-<p class="title is-2 is-spaced">Title 2</p>
-<p class="subtitle is-4">Subtitle 4</p>
-
-<p class="title is-3 is-spaced">Title 3</p>
-<p class="subtitle is-5">Subtitle 5</p>
-{% endhighlight %}
+        {% highlight html %}{{ spaced }}{% endhighlight %}
       </div>
     </div>
+
+    {% include variables.html element=true %}
+
   </div>
 </section>

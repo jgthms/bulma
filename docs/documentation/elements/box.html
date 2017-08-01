@@ -1,7 +1,23 @@
 ---
+title: Box
 layout: documentation
 doc-tab: elements
 doc-subtab: box
+variables:
+- name: $box-color
+  value: $text
+- name: $box-background-color
+  value: $white
+- name: $box-radius
+  value: $radius-large
+- name: $box-shadow
+  value: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+- name: $box-padding
+  value: 1.25rem
+- name: $box-link-hover-shadow
+  value: 0 2px 3px rgba($black, 0.1), 0 0 0 1px $link
+- name: $box-link-active-shadow
+  value: inset 0 1px 2px rgba($black, 0.2), 0 0 0 1px $link
 ---
 
 {% include subnav-elements.html %}
@@ -46,6 +62,12 @@ doc-subtab: box
     <h2 class="subtitle">
       A white <strong>box</strong> to contain other elements
     </h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=false
+      variables=true
+    %}
 
     <hr>
 
@@ -66,6 +88,8 @@ doc-subtab: box
     </div>
 
     {% highlight html %}{{box_example}}{% endhighlight %}
+
+    {% include variables.html %}
 
   </div>
 </section>

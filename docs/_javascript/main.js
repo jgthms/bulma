@@ -2,6 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dropdowns
 
+  const $metalinks = getAll('#meta a');
+
+  if ($metalinks.length > 0) {
+    $metalinks.forEach($el => {
+      $el.addEventListener('click', event => {
+        event.preventDefault();
+        const target = $el.getAttribute('href');
+        const $target = document.getElementById(target.substring(1));
+        $target.scrollIntoView(true);
+        // window.history.replaceState(null, document.title, `${window.location.origin}${window.location.pathname}${target}`);
+        return false;
+      });
+    });
+  }
+
+  // Dropdowns
+
   const $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
   if ($dropdowns.length > 0) {
@@ -134,5 +151,28 @@ document.addEventListener('DOMContentLoaded', () => {
   function getAll(selector) {
     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
   }
+
+  let latestKnownScrollY = 0;
+  let ticking = false;
+
+  function scrollUpdate() {
+    ticking = false;
+    // do stuff
+  }
+
+
+  function onScroll() {
+    latestKnownScrollY = window.scrollY;
+    scrollRequestTick();
+  }
+
+  function scrollRequestTick() {
+    if(!ticking) {
+      requestAnimationFrame(scrollUpdate);
+    }
+    ticking = true;
+  }
+
+   window.addEventListener('scroll', onScroll, false);
 
 });

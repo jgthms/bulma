@@ -1,8 +1,25 @@
 ---
+title: Icon
 layout: documentation
 doc-tab: elements
 doc-subtab: icon
+variables:
+- name: $icon-dimensions
+  value: 1.5rem
+- name: $icon-dimensions-small
+  value: 1rem
+- name: $icon-dimensions-medium
+  value: 2rem
+- name: $icon-dimensions-large
+  value: 3rem
+
 ---
+
+{% capture icon_example %}
+<span class="icon">
+  <i class="fa fa-home"></i>
+</span>
+{% endcapture %}
 
 {% include subnav-elements.html %}
 
@@ -12,6 +29,12 @@ doc-subtab: icon
     <h2 class="subtitle">
       Bulma is compatible with <strong><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a></strong> icons.
     </h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
@@ -19,26 +42,17 @@ doc-subtab: icon
       <p>Because the icons can take a few seconds to load, and because you want control over the <strong>space</strong> the icons will take, you can use the <code>icon</code> class as a container:</p>
     </div>
 
-{% capture icon_example %}
-<span class="icon">
-  <i class="fa fa-home"></i>
-</span>
-{% endcapture %}
     <div class="example">
       {{icon_example}}
     </div>
 
-{% highlight html %}
-{{icon_example}}
-{% endhighlight %}
+    {% highlight html %}{{icon_example}}{% endhighlight %}
 
     <div class="content">
       <p>The <code>icon</code> container will take up <em>exactly</em> <strong>1.5rem x 1.5rem</strong>. The icon itself is sized at <strong>21px</strong>.</p>
     </div>
 
-    <hr>
-
-    <h3 class="title">Sizes</h3>
+    {% include heading.html name="Sizes" %}
 
     <div class="content">
       <p>Font Awesome icons use a font-size of <strong>28px</strong> by default, and are best rendered when using <strong>multiples of 7</strong>.</p>
@@ -80,5 +94,8 @@ doc-subtab: icon
         </tr>
       </tbody>
     </table>
+
+    {% include variables.html %}
+
   </div>
 </section>
