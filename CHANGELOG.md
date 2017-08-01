@@ -9,6 +9,7 @@
 
 ### Issues closed
 
+* #989 `navbar-brand` overflowing on mobile
 * #975 Variable `$table-head-color` isn't used
 * #964 Tabs sass file throwing error with `!important`
 * #949 `.is-size-7` helper is missing
