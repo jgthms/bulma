@@ -1,4 +1,5 @@
 $notification-background-color: $background !default
+$notification-background-opacity: 0.95 !default
 $notification-radius: $radius !default
 $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
 
@@ -33,3 +34,13 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+  // Modifiers
+  &.is-sticky-top,
+  &.is-sticky-bottom
+    border-radius: 0
+  &.is-sticky-top
+    +sticky(top, $notification-background-opacity)
+    border-bottom: 1px solid rgba($black, 0.2)
+  &.is-sticky-bottom
+    +sticky(bottom, $notification-background-opacity)
+    border-top: 1px solid rgba($black, 0.2)
