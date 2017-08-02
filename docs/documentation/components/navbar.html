@@ -215,6 +215,12 @@ variables:
 </nav>
 {% endcapture %}
 
+{% capture navbar_dropdown_hover_snippet %}
+<div class="navbar-item has-dropdown is-hoverable">
+  <!-- navbar-link, navbar-dropdown etc. -->
+</div>
+{% endcapture %}
+
 {% capture navbar_dropdown_hover_example %}
 <nav class="navbar">
   <div class="navbar-item has-dropdown is-hoverable">
@@ -241,6 +247,12 @@ variables:
 </nav>
 {% endcapture %}
 
+{% capture navbar_dropdown_active_snippet %}
+<div class="navbar-item has-dropdown is-active">
+  <!-- navbar-link, navbar-dropdown etc. -->
+</div>
+{% endcapture %}
+
 {% capture navbar_dropdown_active_example %}
 <nav class="navbar">
   <div class="navbar-item has-dropdown is-active">
@@ -265,6 +277,77 @@ variables:
     </div>
   </div>
 </nav>
+{% endcapture %}
+
+{% capture navbar_dropdown_right_snippet %}
+<div class="navbar-dropdown is-right">
+  <!-- navbar-item, navbar-divider etc. -->
+</div>
+{% endcapture %}
+
+{% capture navbar_dropdown_right_example %}
+<nav class="navbar">
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown is-active">
+        <a class="navbar-link">
+          Left
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            Version {{ site.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-active">
+        <a class="navbar-link">
+          Right
+        </a>
+
+        <div class="navbar-dropdown is-right">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            Version {{ site.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
 {% endcapture %}
 
 {% capture navbar_dropdown_default_example %}
@@ -514,9 +597,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     {% highlight html %}{{navbar_example}}{% endhighlight %}
 
-    <hr>
-
-    <h3 class="title">Navbar brand</h3>
+    {% include heading.html name="Navbar brand" %}
 
     <div class="content">
       <p>
@@ -552,9 +633,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </p>
     </div>
 
-    <hr>
-
-    <h3 class="title">Navbar burger</h3>
+    {% include heading.html name="Navbar burger" %}
 
     <div class="content">
       <p>
@@ -586,9 +665,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
-    <hr>
-
-    <h3 class="title">Navbar menu</h3>
+    {% include heading.html name="Navbar menu" %}
 
     <div class="content">
       <p>
@@ -639,9 +716,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
-    <hr>
-
-    <h3 class="title">Navbar start and navbar end</h3>
+    {% include heading.html name="Navbar start and navbar end" %}
 
     <div class="content">
       <p>
@@ -665,9 +740,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     {% highlight html %}{{navbar_start_end_example}}{% endhighlight %}
 
-    <hr>
-
-    <h3 class="title">Navbar item</h3>
+    {% include heading.html name="Navbar item" %}
 
     <div class="content">
       <p>
@@ -717,9 +790,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </ul>
     </div>
 
-    <hr>
-
-    <h3 id="transparent-navbar" class="title">Transparent navbar</h3>
+    {% include heading.html name="Transparent navbar" %}
 
     <div class="content">
       <p>
@@ -733,9 +804,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     {% highlight html %}{{navbar_transparent_example}}{% endhighlight %}
 
-    <hr>
-
-    <h3 id="dropdown-menu" class="title">Dropdown menu</h3>
+    {% include heading.html name="Dropdown menu" %}
 
     <div class="content">
       <p>
@@ -793,6 +862,8 @@ document.addEventListener('DOMContentLoaded', function () {
       </p>
     </div>
 
+    {% highlight html %}{{ navbar_dropdown_hover_snippet }}{% endhighlight %}
+
     <div class="columns">
       <div class="column">
         <div class="example is-paddingless">
@@ -805,6 +876,8 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
+    {% highlight html %}{{ navbar_dropdown_active_snippet }}{% endhighlight %}
+
     <div class="columns">
       <div class="column">
         <div class="example is-paddingless">
@@ -814,6 +887,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <div class="column">
         {% highlight html %}{{ navbar_dropdown_active_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Right dropdown
+      <span class="tag is-info">0.5.1</span>
+    </h4>
+
+    <div class="content">
+      <p>
+        If your parent <code>navbar-item</code> is on the right side, you can position the dropdown to start from the <strong>right</strong> with the <code>is-right</code> modifier.
+      </p>
+    </div>
+
+    {% highlight html %}{{ navbar_dropdown_right_snippet }}{% endhighlight %}
+
+    <div class="columns">
+      <div class="column">
+        <div class="example is-paddingless">
+          {{ navbar_dropdown_right_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropdown_right_example }}{% endhighlight %}
       </div>
     </div>
 
