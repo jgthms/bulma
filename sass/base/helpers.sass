@@ -44,68 +44,38 @@
     .is-size-#{$i}-fullhd
       font-size: $size !important
 
-.has-text-centered
-  text-align: center !important
-+mobile
-  .has-text-centered-mobile
-    text-align: center !important
-+tablet
-  .has-text-centered-tablet
-    text-align: center !important
-+touch
-  .has-text-centered-touch
-    text-align: center !important
-+desktop
-  .has-text-centered-desktop
-    text-align: center !important
-+widescreen
-  .has-text-centered-widescreen
-    text-align: center !important
-+fullhd
-  .has-text-centered-fullhd
-    text-align: center !important
+$alignments: ('centered': 'center', 'left': 'left', 'right': 'right')
 
-.has-text-left
-  text-align: left !important
-+mobile
-  .has-text-left-mobile
-    text-align: left !important
-+tablet
-  .has-text-left-tablet
-    text-align: left !important
-+touch
-  .has-text-left-touch
-    text-align: left !important
-+desktop
-  .has-text-left-desktop
-    text-align: left !important
-+widescreen
-  .has-text-left-widescreen
-    text-align: left !important
-+fullhd
-  .has-text-left-fullhd
-    text-align: left !important
-
-.has-text-right
-  text-align: right !important
-+mobile
-  .has-text-right-mobile
-    text-align: right !important
-+tablet
-  .has-text-right-tablet
-    text-align: right !important
-+touch
-  .has-text-right-touch
-    text-align: right !important
-+desktop
-  .has-text-right-desktop
-    text-align: right !important
-+widescreen
-  .has-text-right-widescreen
-    text-align: right !important
-+fullhd
-  .has-text-right-fullhd
-    text-align: right !important
+@each $position, $text-align in $alignments
+  .has-text-#{$position}
+    text-align: #{$text-align} !important
+  +mobile
+    .has-text-#{$position}-mobile
+      text-align: #{$text-align} !important
+  +tablet
+    .has-text-#{$position}-tablet
+      text-align: #{$text-align} !important
+  +tablet-only
+    .has-text-#{$position}-tablet-only
+      text-align: #{$text-align} !important
+  +touch
+    .has-text-#{$position}-touch
+      text-align: #{$text-align} !important
+  +desktop
+    .has-text-#{$position}-desktop
+      text-align: #{$text-align} !important
+  +desktop-only
+    .has-text-#{$position}-desktop-only
+      text-align: #{$text-align} !important
+  +widescreen
+    .has-text-#{$position}-widescreen
+      text-align: #{$text-align} !important
+  +widescreen-only
+    .has-text-#{$position}-widescreen-only
+      text-align: #{$text-align} !important
+  +fullhd
+    .has-text-#{$position}-fullhd
+      text-align: #{$text-align} !important
 
 @each $name, $pair in $colors
   $color: nth($pair, 1)
