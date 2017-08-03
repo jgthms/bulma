@@ -6,6 +6,7 @@
 
 * 🎉 #280 [File upload element](http://bulma.io/documentation/form/file/)
 * `$container-offset` variable to determine the `.container` breakpoints
+* #1001 Text case helpers
 
 ### Issues closed
 
