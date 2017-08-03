@@ -551,6 +551,18 @@ table th {
   text-align: right !important;
 }
 
+.is-capitalized {
+  text-transform: capitalize !important;
+}
+
+.is-lowercase {
+  text-transform: lowercase !important;
+}
+
+.is-uppercase {
+  text-transform: uppercase !important;
+}
+
 .has-text-white {
   color: white !important;
 }
@@ -10213,7 +10225,6 @@ html.route-index #carbon {
   height: 240px;
   margin-left: auto;
   margin-right: auto;
-  width: 320px;
   position: relative;
   text-align: center;
 }
@@ -10263,25 +10274,23 @@ html.route-index #carbon {
 }
 
 .article-image:hover .article-icon {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
+}
+
+.article-image:hover .article-date {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .article-image:hover .article-title {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .article-image.is-single {
   margin-bottom: 2rem;
   width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  .article-image {
-    height: 180px;
-    width: 240px;
-  }
 }
 
 .article-overlay {
@@ -10301,7 +10310,7 @@ html.route-index #carbon {
 }
 
 .article-icon,
-.article-title {
+.article-info {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -10316,6 +10325,11 @@ html.route-index #carbon {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.article-icon,
+.article-date,
+.article-title {
   -webkit-transition-duration: 86ms;
           transition-duration: 86ms;
   -webkit-transition-property: -webkit-transform;
@@ -10331,15 +10345,30 @@ html.route-index #carbon {
   opacity: 0.25;
 }
 
+.article-icon > span {
+  display: block;
+}
+
 .article-icon .fa {
   font-size: 56px;
 }
 
+.article-info {
+  padding: 20px;
+}
+
+.article-date {
+  color: rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
 .article-title {
   color: white;
+  display: block;
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.25;
+  padding: 0 20px;
 }
 
 .emoji {
