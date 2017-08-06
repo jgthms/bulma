@@ -3,3 +3,60 @@ $footer-background-color: $background !default
 .footer
   background-color: $footer-background-color
   padding: 3rem 1.5rem 6rem
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+      a:not(.button),
+      strong
+        color: inherit
+      .title
+        color: $color-invert
+      .subtitle
+        color: rgba($color-invert, 0.9)
+        a:not(.button),
+        strong
+          color: $color-invert
+      .nav
+        box-shadow: 0 1px 0 rgba($color-invert, 0.2)
+      .nav-menu
+        +mobile
+          background-color: $color
+      a.nav-item,
+      .nav-item a:not(.button)
+        color: rgba($color-invert, 0.7)
+        &:hover,
+        &.is-active
+          color: $color-invert
+      .tabs
+        a
+          color: $color-invert
+          opacity: 0.9
+          &:hover
+            opacity: 1
+        li
+          &.is-active a
+            opacity: 1
+        &.is-boxed,
+        &.is-toggle
+          a
+            color: $color-invert
+            &:hover
+              background-color: rgba($black, 0.1)
+          li.is-active a
+            &,
+            &:hover
+              background-color: $color-invert
+              border-color: $color-invert
+              color: $color
+      // Modifiers
+      &.is-bold
+        $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
+        $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
+        background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+        +mobile
+          .nav-menu
+            background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
