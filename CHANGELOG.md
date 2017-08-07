@@ -10,6 +10,8 @@
 
 ### Issues closed
 
+* #1030 Add `!importnant` to non responsive display helpers
+* #1020 Customizing `.navbar-item img` max height
 * #998 `.navbar-dropdown` with **right** alignment
 * #877 `.pagination` isn't using `$pagination-background`
 * #989 `navbar-brand` overflowing on mobile
