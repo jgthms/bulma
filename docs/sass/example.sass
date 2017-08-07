@@ -1,0 +1,126 @@
+.example,
+.structure
+  border: 1px solid $warning
+  border-top-right-radius: $radius
+  color: $warning-invert
+  padding: 1.5rem
+  position: relative
+  &:not(:first-child)
+    margin-top: 2rem
+  &:not(:last-child)
+    margin-bottom: 1.5rem
+  &:before
+    background: $warning
+    border-radius: $radius $radius 0 0
+    bottom: 100%
+    content: "Example"
+    display: inline-block
+    font-size: 7px
+    font-weight: bold
+    left: -1px
+    letter-spacing: 1px
+    padding: 3px 5px
+    position: absolute
+    text-transform: uppercase
+    vertical-align: top
+  +tablet
+    &.is-fullwidth
+      border-left: none
+      border-right: none
+      padding: 0
+
+.example
+  & + .highlight
+    border: 1px solid $warning
+    border-radius: 0 0 $radius $radius
+    border-top: none
+    margin-top: -1.5rem
+    &:not(:last-child)
+      margin-bottom: 1.5rem
+
+.highlight pre
+  max-height: 600px
+  margin-bottom: 0 !important
+
+$structure: $danger
+$structure-invert: $danger-invert
+
+.structure
+  border-color: $structure
+  border-radius: $radius
+  padding: 1.5rem
+  &:before
+    background: $structure
+    color: $structure-invert
+    content: "Structure"
+
+.structure-item
+  position: relative
+  &:before
+    +overlay
+    background: rgba($black, 0.7)
+    background: $background
+    border: 1px solid $border
+    content: ""
+    display: block
+    z-index: 1
+  &:after
+    +overlay
+    align-items: center
+    content: attr(title)
+    display: flex
+    font-family: $family-monospace
+    font-size: 11px
+    justify-content: center
+    padding: 3px 5px
+    z-index: 2
+  &.is-structure-container
+    padding: 1.5rem 0.75rem 0.75rem
+    &:after
+      align-items: flex-start
+      justify-content: flex-start
+      padding: 0.5rem 0.75rem
+
+.highlight
+  position: relative
+  .copy,
+  .expand
+    +unselectable
+    background: $white
+    border: solid $border
+    border-width: 0 0 1px 1px
+    color: $text-light
+    cursor: pointer
+    outline: none
+    position: absolute
+    right: 0
+    top: 0
+    &:hover
+      border-color: $code
+      color: $code
+  .expand
+    border-right-width: 1px
+    right: 50px
+  +tablet
+    pre
+      white-space: pre-wrap
+
++tablet
+  .section:not(.is-fullwidth) > .example:not(.is-fullwidth)
+    margin-left: 1.5rem
+    margin-right: 1.5rem
+    & + .highlight
+      margin-left: 1.5rem
+      margin-right: 1.5rem
+
+.section.is-fullwidth
+  padding: 0 !important
+  .example
+    border-left: none
+    border-radius: 0
+    border-right: none
+    padding: 0
+    & + .highlight
+      border-left: none
+      border-radius: 0
+      border-right: none
