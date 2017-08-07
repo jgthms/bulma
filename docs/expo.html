@@ -100,13 +100,33 @@ websites:
 
     <div class="websites">
       {% for website in page.websites %}
+        {% assign imageName = website.name | slugify %}
+        {% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
         <article class="website {% if website.highlighted %}is-highlighted{% endif %}">
           <a class="website-image" href="{{ website.url }}" target="_blank">
-            <img
-              src="{{ site.url }}/images/expo/{{ website.name | slugify }}.jpg"
-              srcset="{{ site.url }}/images/expo/{{ website.name | slugify }}@2x.jpg 2x"
-              width="1344"
-              height="840">
+            {% if website.highlighted %}
+              {% assign size1x = "1344x840" %}
+              {% assign size2x = "2688x1680" %}
+              <img
+                class="b-lazy"
+                src="{{ site.url }}/images/placeholders/empty.png"
+                data-src="{{ imagePath }}-{{ size1x }}.jpg"
+                data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+                             {{ imagePath }}-{{ size1x }}.jpg 1x"
+                width="1344"
+                height="840">
+            {% else %}
+              {% assign size1x = "672x420" %}
+              {% assign size2x = "1344x840" %}
+              <img
+                class="b-lazy"
+                src="{{ site.url }}/images/placeholders/empty.png"
+                data-src="{{ imagePath }}-{{ size1x }}.jpg"
+                data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+                             {{ imagePath }}-{{ size1x }}.jpg 1x"
+                width="672"
+                height="420">
+            {% endif %}
             <span class="website-overlay is-overlay"></span>
           </a>
           <h2 class="title is-5 website-name is-marginless">
@@ -122,3 +142,10 @@ websites:
     {{ embrace_expo }}
   </div>
 </main>
+
+<script src="{{ site.url }}/vendor/blazy-1.8.2.min.js"></script>
+<script type="text/javascript">
+  ;(function() {
+    var bLazy = new Blazy();
+  })();
+</script>

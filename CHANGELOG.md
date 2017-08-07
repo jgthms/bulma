@@ -6,9 +6,13 @@
 
 * 🎉 #280 [File upload element](http://bulma.io/documentation/form/file/)
 * `$container-offset` variable to determine the `.container` breakpoints
+* #1001 Text case helpers
 
 ### Issues closed
 
+* #998 `.navbar-dropdown` with **right** alignment
+* #877 `.pagination` isn't using `$pagination-background`
+* #989 `navbar-brand` overflowing on mobile
 * #975 Variable `$table-head-color` isn't used
 * #964 Tabs sass file throwing error with `!important`
 * #949 `.is-size-7` helper is missing

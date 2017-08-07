@@ -53,7 +53,6 @@
   height: 240px
   margin-left: auto
   margin-right: auto
-  width: 320px
   position: relative
   text-align: center
   @each $name, $pair in $colors
@@ -62,19 +61,20 @@
       background-color: $color
   &.is-bootstrap
     background-color: $bootstrap
+  &.is-orange
+    background-color: $orange
   &:hover
     .article-overlay
       opacity: 0.25
     .article-icon
-      transform: scale(1.1)
-    .article-title
+      transform: scale(1.4)
+    .article-date
       transform: scale(0.9)
+    .article-title
+      transform: scale(1.1)
   &.is-single
     margin-bottom: 2rem
     width: 100%
-  +mobile
-    height: 180px
-    width: 240px
 
 .article-overlay
   +overlay
@@ -85,11 +85,15 @@
   transition-timing-function: $easing
 
 .article-icon,
-.article-title
+.article-info
   +overlay
   align-items: center
   display: flex
   justify-content: center
+
+.article-icon,
+.article-date,
+.article-title
   transition-duration: $speed
   transition-property: transform
   transition-timing-function: $easing
@@ -97,14 +101,25 @@
 .article-icon
   color: $black
   opacity: 0.25
+  & > span
+    display: block
   .fa
     font-size: 56px
 
+.article-info
+  padding: 20px
+
+.article-date
+  color: rgba(#000, 0.5)
+  display: block
+
 .article-title
   color: $white
+  display: block
   font-size: 2.5rem
   font-weight: $weight-bold
   line-height: 1.25
+  padding: 0 20px
 
 .emoji
   margin-right: 0.5em
