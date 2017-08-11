@@ -1,0 +1,57 @@
+{% assign twUrl = "https://twitter.com/" | append: include.username | append: "/status/" | append: include.id %}
+
+<article class="tw">
+  <header class="tw-header">
+    <a class="tw-author" href="{{ twUrl }}" target="_blank">
+      <figure class="tw-avatar">
+        <img src="{{ include.avatar }}">
+      </figure>
+      <div class="tw-name">
+        <strong class="tw-fullname">
+          {{ include.fullname }}
+        </strong>
+        <span class="tw-username">
+          @{{ include.username }}
+        </span>
+      </div>
+    </a>
+  </header>
+
+  <div class="tw-content">
+    {{ include.content }}
+  </div>
+
+  <p class="tw-date">
+    <a href="{{ twUrl }}" target="_blank">
+      {{ include.date }}
+    </a>
+  </p>
+
+  <ul class="Tweet-actions">
+    <li class="Tweet-action">
+      <a class="TweetAction TweetAction--replyEdge web-intent" href="https://twitter.com/intent/tweet?in_reply_to={{ include.id }}">
+        <div class="Icon Icon--reply TweetAction-icon Icon--replyEdge"></div>
+      </a>
+    </li>
+    <li class="Tweet-action Tweet-action--retweet">
+      <a class="TweetAction TweetAction--retweetEdge web-intent" href="https://twitter.com/intent/retweet?tweet_id={{ include.id }}">
+        <div class="Icon Icon--retweet TweetAction-icon Icon--retweetEdge"></div>
+        {% if include.retweets %}
+          <span class="TweetAction-stat">
+            {{ include.retweets }}
+          </span>
+        {% endif %}
+      </a>
+    </li>
+    <li class="Tweet-action Tweet-action--heart">
+      <a class="TweetAction TweetAction--heartEdge web-intent" href="https://twitter.com/intent/like?tweet_id={{ include.id }}&amp;ref_src=twsrc%5Etfw&amp;ref_url=http%3A%2F%2Fbulma.io%2F&amp;original_referer=http%3A%2F%2Fbulma.io%2F&amp;tw_i={{ include.id }}&amp;tw_p=tweetembed" target="_blank">
+        <div class="Icon Icon--heartEdge TweetAction-icon Icon--heartEdge"></div>
+        {% if include.hearts %}
+          <span class="TweetAction-stat">
+            {{ include.hearts }}
+          </span>
+        {% endif %}
+      </a>
+    </li>
+  </ul>
+</article>
