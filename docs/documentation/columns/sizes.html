@@ -50,6 +50,23 @@ doc-subtab: sizes
 </div>
 {% endcapture %}
 
+{% capture columns_narrow %}
+<div class="columns">
+  <div class="column is-narrow">
+    <div class="box" style="width: 200px;">
+      <p class="title is-5">Narrow column</p>
+      <p class="subtitle">This column is only 200px wide.</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="box">
+      <p class="title is-5">Flexible column</p>
+      <p class="subtitle">This column will take up the remaining space available.</p>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
 {% include subnav-columns.html %}
 
 <section class="section">
@@ -429,5 +446,43 @@ doc-subtab: sizes
     </div>
 
     {% highlight html %}{{ columns_offset }}{% endhighlight %}
+
+    {% include anchor.html name="Narrow column" %}
+
+    <div class="content">
+      <p>If you want a column to only take the <strong>space it needs</strong>, use the <code>is-narrow</code> modifier. The other column(s) will fill up the remaining space.</p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-narrow">
+        <div class="box" style="width: 200px;">
+          <p class="title is-5">Narrow column</p>
+          <p class="subtitle">This column is only 200px wide.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box">
+          <p class="title is-5">Flexible column</p>
+          <p class="subtitle">This column will take up the remaining space available.</p>
+        </div>
+      </div>
+    </div>
+
+    {% highlight html %}{{ columns_narrow }}{% endhighlight %}
+
+    <div class="content">
+      <p>As for the size modifiers, you can have narrow columns for different <strong>breakpoints</strong>:</p>
+      <ul>
+        <li>
+          <code>is-narrow-mobile</code>
+        </li>
+        <li>
+          <code>is-narrow-tablet</code>
+        </li>
+        <li>
+          <code>is-narrow-desktop</code>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
