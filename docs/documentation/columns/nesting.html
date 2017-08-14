@@ -1,0 +1,79 @@
+---
+title: Nesting columns
+layout: documentation
+doc-tab: columns
+doc-subtab: nesting
+---
+
+{% include subnav-columns.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Nesting columns</h1>
+    <h2 class="subtitle">A simple way to build <strong>responsive columns</strong></h2>
+    <hr>
+
+    <div class="content">
+      <p>
+        You can <strong>nest</strong> columns to have more flexibility in your design. You only need to follow this structure:
+      </p>
+      <ul>
+        <li>
+          <code>columns</code>: top-level columns container
+          <ul>
+            <li>
+              <code>column</code>
+              <ul>
+                <li>
+                  <code>columns</code>: nested columns
+                  <ul>
+                    <li>
+                      <code>column</code> and so on…
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        The difference with <a href="{{ site.url }}/documentation/columns/options/#multiline">multiline columns</a> is the <strong>order</strong> in the HTML code: all the <strong class="has-text-info">blue</strong> columns appear <em>before</em> the <strong class="has-text-danger">red</strong> ones. Resize to a narrower viewport to see the result.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <p class="bd-notification is-info">First column</p>
+        <div class="columns is-mobile">
+          <div class="column">
+            <p class="bd-notification is-info">First nested column</p>
+          </div>
+          <div class="column">
+            <p class="bd-notification is-info">Second nested column</p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-danger">Second column</p>
+        <div class="columns is-mobile">
+          <div class="column is-half">
+            <p class="bd-notification is-danger">50%</p>
+          </div>
+          <div class="column">
+            <p class="bd-notification is-danger">Auto</p>
+          </div>
+          <div class="column">
+            <p class="bd-notification is-danger">Auto</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        Multiline columns will also have a <strong>gap</strong> between each <strong>line</strong>.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,238 @@
+---
+title: Column options
+layout: documentation
+doc-tab: columns
+doc-subtab: options
+---
+
+{% capture columns_multiline %}
+<div class="columns is-multiline is-mobile">
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-half">
+    <code>is-half</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column">
+    Auto
+  </div>
+</div>
+{% endcapture %}
+
+{% capture columns_gapless %}
+<div class="columns is-gapless">
+  <div class="column">First column</div>
+  <div class="column">Second column</div>
+  <div class="column">Third column</div>
+  <div class="column">Fourth column</div>
+</div>
+{% endcapture %}
+
+{% capture columns_gapless_multiline %}
+<div class="columns is-gapless is-multiline is-mobile">
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-half">
+    <code>is-half</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column is-one-quarter">
+    <code>is-one-quarter</code>
+  </div>
+  <div class="column">
+    Auto
+  </div>
+</div>
+{% endcapture %}
+
+{% capture columns_narrow %}
+<div class="columns">
+  <div class="column is-narrow">
+    <div class="box" style="width: 200px;">
+      <p class="title is-5">Narrow column</p>
+      <p class="subtitle">This column is only 200px wide.</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="box">
+      <p class="title is-5">Flexible column</p>
+      <p class="subtitle">This column will take up the remaining space available.</p>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% include subnav-columns.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Column options</h1>
+    <h2 class="subtitle">
+      Design different <strong>types</strong> of column layouts
+    </h2>
+
+    {% include anchor.html name="Multiline" %}
+
+    <div class="content">
+      <p>Whenever you want to start a new line, you can close a <code>columns</code> container and start a new one. But you can also add the <code>is-multiline</code> modifier and add <strong>more</strong> column elements that would fit in a single row.</p>
+    </div>
+
+    <div class="columns is-multiline is-mobile">
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-info"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-success"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-warning"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-danger"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-half">
+        <p class="bd-notification is-info"><code>is-half</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-success"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-warning"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-danger"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-info">Auto</p>
+      </div>
+    </div>
+
+    {% highlight html %}{{ columns_multiline }}{% endhighlight %}
+
+    {% include anchor.html name="Gapless" %}
+
+    <div class="content">
+      <p>
+        If you want to remove the <strong>space</strong> between the columns, add the <code>is-gapless</code> modifier on the <code>columns</code> container:
+      </p>
+    </div>
+
+    <div class="columns is-gapless">
+      <div class="column">
+        <p class="bd-notification is-info">First column</p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-success">Second column</p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-warning">Third column</p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-danger">Fourth column</p>
+      </div>
+    </div>
+
+    {% highlight html %}{{ columns_gapless }}{% endhighlight %}
+
+    <div class="content">
+      <p>You can combine it with the <code>is-multiline</code> modifier:</p>
+    </div>
+
+    <div class="columns is-multiline is-mobile is-gapless">
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-info"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-success"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-warning"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-danger"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-half">
+        <p class="bd-notification is-info"><code>is-half</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-success"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-warning"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-danger"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-info">Auto</p>
+      </div>
+    </div>
+
+    {% highlight html %}{{ columns_gapless_multiline }}{% endhighlight %}
+
+    {% include anchor.html name="Narrow column" %}
+
+    <div class="content">
+      <p>If you want a column to only take the <strong>space it needs</strong>, use the <code>is-narrow</code> modifier. The other column(s) will fill up the remaining space.</p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-narrow">
+        <div class="box" style="width: 200px;">
+          <p class="title is-5">Narrow column</p>
+          <p class="subtitle">This column is only 200px wide.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box">
+          <p class="title is-5">Flexible column</p>
+          <p class="subtitle">This column will take up the remaining space available.</p>
+        </div>
+      </div>
+    </div>
+
+    {% highlight html %}{{ columns_narrow }}{% endhighlight %}
+
+    <div class="content">
+      <p>As for the size modifiers, you can have narrow columns for different <strong>breakpoints</strong>:</p>
+      <ul>
+        <li>
+          <code>is-narrow-mobile</code>
+        </li>
+        <li>
+          <code>is-narrow-tablet</code>
+        </li>
+        <li>
+          <code>is-narrow-desktop</code>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

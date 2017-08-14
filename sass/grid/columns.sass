@@ -5,8 +5,7 @@ $column-gap: 0.75rem !default
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 1
-  padding-left: $column-gap
-  padding-right: $column-gap
+  padding: $column-gap
   .columns.is-mobile > &.is-narrow
     flex: none
   .columns.is-mobile > &.is-full
@@ -283,44 +282,31 @@ $column-gap: 0.75rem !default
 .columns
   margin-left: (-$column-gap)
   margin-right: (-$column-gap)
-  // margin-top: (-$column-gap)
+  margin-top: (-$column-gap)
+  &:last-child
+    margin-bottom: (-$column-gap)
   &:not(:last-child)
-    margin-bottom: 1.5rem
-  // &:last-child
-  //   margin-bottom: (-$column-gap * 2)
-  // &:not(:last-child)
-  //   margin-bottom: $column-gap * 2
+    margin-bottom: calc(1.5rem - #{$column-gap})
+  // .columns
+  //   margin-top: 1.5rem
   // Modifiers
   &.is-centered
     justify-content: center
   &.is-gapless
+    margin-bottom: 0
     margin-left: 0
     margin-right: 0
     & > .column
       margin: 0
       padding: 0 !important
-  // &.is-grid
-  //   +tablet
-  //     flex-wrap: wrap
-  //     & > .column
-  //       max-width: 33.3333%
-  //       padding: $column-gap
-  //       width: 33.3333%
-  //       & + .column
-  //         margin-left: 0
+    &:not(:last-child)
+      margin-bottom: 1.5rem
+    &:last-child
+      margin-bottom: 0
   &.is-mobile
     display: flex
   &.is-multiline
     flex-wrap: wrap
-    & > .column
-      padding-bottom: $column-gap
-      padding-top: $column-gap
-    &:not(.is-gapless)
-      margin-top: (-$column-gap)
-      &:last-child
-        margin-bottom: (-$column-gap)
-      &:not(:last-child)
-        margin-bottom: calc(1.5rem - #{$column-gap})
   &.is-vcentered
     align-items: center
   // Responsiveness
@@ -331,3 +317,14 @@ $column-gap: 0.75rem !default
     // Modifiers
     &.is-desktop
       display: flex
+
+.columns.is-variable
+  --columnGap: 0.75rem
+  margin-left: calc(-1 * var(--columnGap))
+  margin-right: calc(-1 * var(--columnGap))
+  .column
+    padding-left: var(--columnGap)
+    padding-right: var(--columnGap)
+  @for $i from 0 through 12
+    &.is-#{$i}
+      --columnGap: $i * 0.25rem

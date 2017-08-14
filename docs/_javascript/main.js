@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if ($highlights.length > 0) {
     $highlights.forEach($el => {
-      const copy = '<button class="bd-copy">Copy</button>';
-      const expand = '<button class="bd-expand">Expand</button>';
+      const copy = '<button class="button is-small bd-copy">Copy</button>';
+      const expand = '<button class="button is-small bd-expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copy);
 
       if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
@@ -123,11 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $highlightButtons.forEach($el => {
       $el.addEventListener('mouseenter', () => {
-        $el.parentNode.style.boxShadow = '0 0 0 1px #ed6c63';
+        $el.parentNode.classList.add('bd-is-hovering');
       });
 
       $el.addEventListener('mouseleave', () => {
-        $el.parentNode.style.boxShadow = 'none';
+        $el.parentNode.classList.remove('bd-is-hovering');
       });
     });
 
