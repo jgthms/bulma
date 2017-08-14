@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.5.2
+
+### Issues closed
+
+* #1063 `$family-primary` customisation
+
 ## 0.5.1
 
 ### New features
