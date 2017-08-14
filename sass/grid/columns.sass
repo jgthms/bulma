@@ -1,9 +1,12 @@
+$column-gap: 0.75rem !default
+
 .column
   display: block
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 1
-  padding: 0.75rem
+  padding-left: $column-gap
+  padding-right: $column-gap
   .columns.is-mobile > &.is-narrow
     flex: none
   .columns.is-mobile > &.is-full
@@ -278,41 +281,46 @@
         margin-left: ($i / 12) * 100%
 
 .columns
-  margin-left: -0.75rem
-  margin-right: -0.75rem
-  margin-top: -0.75rem
-  &:last-child
-    margin-bottom: -0.75rem
+  margin-left: (-$column-gap)
+  margin-right: (-$column-gap)
+  // margin-top: (-$column-gap)
   &:not(:last-child)
-    margin-bottom: 0.75rem
+    margin-bottom: 1.5rem
+  // &:last-child
+  //   margin-bottom: (-$column-gap * 2)
+  // &:not(:last-child)
+  //   margin-bottom: $column-gap * 2
   // Modifiers
   &.is-centered
     justify-content: center
   &.is-gapless
     margin-left: 0
     margin-right: 0
-    margin-top: 0
-    &:last-child
-      margin-bottom: 0
-    &:not(:last-child)
-      margin-bottom: 1.5rem
     & > .column
       margin: 0
-      padding: 0
-  &.is-grid
-    // Responsiveness
-    +tablet
-      flex-wrap: wrap
-      & > .column
-        max-width: 33.3333%
-        padding: 0.75rem
-        width: 33.3333%
-        & + .column
-          margin-left: 0
+      padding: 0 !important
+  // &.is-grid
+  //   +tablet
+  //     flex-wrap: wrap
+  //     & > .column
+  //       max-width: 33.3333%
+  //       padding: $column-gap
+  //       width: 33.3333%
+  //       & + .column
+  //         margin-left: 0
   &.is-mobile
     display: flex
   &.is-multiline
     flex-wrap: wrap
+    & > .column
+      padding-bottom: $column-gap
+      padding-top: $column-gap
+    &:not(.is-gapless)
+      margin-top: (-$column-gap)
+      &:last-child
+        margin-bottom: (-$column-gap)
+      &:not(:last-child)
+        margin-bottom: calc(1.5rem - #{$column-gap})
   &.is-vcentered
     align-items: center
   // Responsiveness
