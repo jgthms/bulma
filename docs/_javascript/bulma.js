@@ -35,8 +35,8 @@ jQuery(document).ready(function ($) {
 
   $highlights.each(function() {
     var $el = $(this);
-    var copy = '<button class="copy">Copy</button>';
-    var expand = '<button class="expand">Expand</button>';
+    var copy = '<button class="bd-copy">Copy</button>';
+    var expand = '<button class="bd-expand">Expand</button>';
     $el.append(copy);
 
     if ($el.find('pre code').innerHeight() > 600) {
@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  var $highlightButtons = $('.highlight .copy, .highlight .expand');
+  var $highlightButtons = $('.highlight .bd-copy, .highlight .bd-expand');
 
   $highlightButtons.hover(function() {
     $(this).parent().css('box-shadow', '0 0 0 1px #ed6c63');
@@ -52,11 +52,11 @@ jQuery(document).ready(function ($) {
     $(this).parent().css('box-shadow', 'none');
   });
 
-  $('.highlight .expand').click(function() {
+  $('.highlight .bd-expand').click(function() {
     $(this).parent().children('pre').css('max-height', 'none');
   });
 
-  new Clipboard('.copy', {
+  new Clipboard('.bd-copy', {
     target: function(trigger) {
       return trigger.previousSibling;
     }
