@@ -96,3 +96,82 @@ $table-striped-row-even-hover-background-color: $white-ter !default
           background-color: $table-striped-row-even-background-color
           &:hover
             background-color: $table-striped-row-even-hover-background-color
+
+  +until($desktop + $container-offset)
+    &.is-responsive
+      width: 100%
+      border-collapse: collapse
+      border-spacing: 0
+      display: block
+      position: relative
+
+      td:empty:before
+        content: '\00a0'
+
+      th,
+      td
+        margin: 0
+        vertical-align: top
+
+      th
+        text-align: left
+
+      thead
+        border-right: solid 2px $grey-lighter
+        display: block
+        float: left
+
+        tr
+          display: block
+          padding: 0 10px 0 0
+
+          th::before
+            content: "\00a0"
+        td,
+        th
+          border-width: 0 0 1px
+
+      tbody
+        display: block
+        width: auto
+        position: relative
+        overflow-x: auto
+        white-space: nowrap
+
+        tr
+          display: inline-block
+          vertical-align: top
+
+      th
+        display: block
+        text-align: right
+
+      td
+        display: block
+        min-height: 1.25em
+        text-align: left
+
+      th,
+      td
+        &:last-child
+          border-bottom-width: 0
+
+      tr
+        &:last-child
+          td:not(:last-child)
+            border: $table-cell-border
+            border-width: $table-cell-border-width
+
+      &.is-bordered
+        td,
+        th
+          border-width: 1px
+        tr
+          td,
+          th
+            &:last-child
+              border-bottom-width: 1px
+          &:last-child
+            td,
+            th
+              border-width: $table-cell-border-width
