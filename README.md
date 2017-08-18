@@ -81,6 +81,7 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 | [vue-bulma-components](https://github.com/vouill/vue-bulma-components)             | Bulma components for Vue.js with straightforward syntax            |
 | [BulmaJS](https://github.com/VizuaaLOG/BulmaJS)                                    | Javascript integration for Bulma. Written in ES6 with a data-* API |
 | [Bulma.styl](https://github.com/log1x/bulma.styl)                                  | 1:1 Stylus translation of Bulma                                    |
+| [elm-bulma-classes](https://github.com/danielnarey/elm-bulma-classes)              | Bulma prepared for usage with ELM                                  |
 
 ## Copyright and license
 
