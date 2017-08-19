@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  var $html = document.documentElement;
+
   // Dropdowns
 
   var $metalinks = getAll('#meta a');
@@ -50,16 +52,19 @@ document.addEventListener('DOMContentLoaded', function () {
     $burgers.forEach(function ($el) {
       $el.addEventListener('click', function () {
         var target = $el.dataset.target;
+        var clipped = $el.dataset.clipped || false;
         var $target = document.getElementById(target);
         $el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
+        if (clipped) {
+          $html.classList.toggle('is-clipped');
+        }
       });
     });
   }
 
   // Modals
 
-  var $html = document.documentElement;
   var $modals = getAll('.modal');
   var $modalButtons = getAll('.modal-button');
   var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');

@@ -21,7 +21,7 @@ $navbar-dropdown-border-top: 1px solid $border !default
 $navbar-dropdown-offset: -4px !default
 $navbar-dropdown-arrow: $link !default
 $navbar-dropdown-radius: $radius-large !default
-$navbar-dropdown-z: 20 !default
+$navbar-dropdown-z: 30 !default
 
 $navbar-dropdown-boxed-radius: $radius-large !default
 $navbar-dropdown-boxed-shadow: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default
@@ -32,6 +32,17 @@ $navbar-dropdown-item-active-color: $primary !default
 $navbar-dropdown-item-active-background-color: $background !default
 
 $navbar-divider-background-color: $border !default
+
+$navbar-fixed-shadow: 0 5px 15px rgba(#000, 0.05) !default
+$navbar-fixed-z: 40 !default
+
+=navbar-fixed
+  box-shadow: $navbar-fixed-shadow
+  left: 0
+  position: fixed
+  right: 0
+  top: 0
+  z-index: $navbar-fixed-z
 
 .navbar
   background-color: $navbar-background-color
@@ -44,6 +55,24 @@ $navbar-divider-background-color: $border !default
     width: 100%
   &.has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
+  &.is-fixed
+    +navbar-fixed
+    .navbar-menu
+      +overflow-touch
+      max-height: calc(100vh - #{$navbar-height})
+      overflow: auto
+      &::before
+        background-image: linear-gradient(to bottom, rgba(#000, 0.1), rgba(#000, 0))
+        content: ""
+        display: block
+        height: 10px
+        left: 0
+        position: fixed
+        right: 0
+        top: $navbar-height
+
+html.has-navbar-fixed
+  padding-top: $navbar-height
 
 .navbar-brand
   +overflow-touch
@@ -135,6 +164,8 @@ a.navbar-item,
       display: block
 
 +desktop
+  html.has-navbar-fixed-desktop
+    padding-top: $navbar-height
   .navbar,
   .navbar-menu,
   .navbar-start,
@@ -143,6 +174,8 @@ a.navbar-item,
     display: flex
   .navbar
     min-height: $navbar-height
+    &.is-fixed-desktop
+      +navbar-fixed
     &.is-transparent
       a.navbar-item,
       .navbar-link

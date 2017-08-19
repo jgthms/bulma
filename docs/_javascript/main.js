@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const $html = document.documentElement;
+
   // Dropdowns
 
   const $metalinks = getAll('#meta a');
@@ -48,16 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
     $burgers.forEach($el => {
       $el.addEventListener('click', () => {
         const target = $el.dataset.target;
+        const clipped = $el.dataset.clipped || false;
         const $target = document.getElementById(target);
         $el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
+        if (clipped) {
+          $html.classList.toggle('is-clipped');
+        }
       });
     });
   }
 
   // Modals
 
-  const $html = document.documentElement;
   const $modals = getAll('.modal');
   const $modalButtons = getAll('.modal-button');
   const $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
