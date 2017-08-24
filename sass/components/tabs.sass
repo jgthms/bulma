@@ -68,6 +68,9 @@ $tabs-toggle-link-active-color: $primary-invert !default
     justify-content: flex-start
     &.is-left
       padding-right: 0.75em
+      +rtl
+        padding-right: unset
+        padding-left: 0.75em
     &.is-center
       flex: none
       justify-content: center
@@ -76,11 +79,20 @@ $tabs-toggle-link-active-color: $primary-invert !default
     &.is-right
       justify-content: flex-end
       padding-left: 0.75em
+      +rtl
+        padding-left: unset
+        padding-right: 0.75em
   .icon
     &:first-child
       margin-right: 0.5em
+      +rtl
+        margin-right: unset
+        margin-left: 0.5em
     &:last-child
       margin-left: 0.5em
+      +rtl
+        margin-left: unset
+        margin-right: 0.5em
   // Alignment
   &.is-centered
     ul
@@ -88,6 +100,8 @@ $tabs-toggle-link-active-color: $primary-invert !default
   &.is-right
     ul
       justify-content: flex-end
+      +rtl
+        justify-content: flex-start
   // Styles
   &.is-boxed
     a
@@ -120,10 +134,17 @@ $tabs-toggle-link-active-color: $primary-invert !default
     li
       & + li
         margin-left: -#{$tabs-toggle-link-border-width}
+        +rtl
+          margin-left: unset
+          margin-right: -#{$tabs-toggle-link-border-width}
       &:first-child a
         border-radius: $tabs-toggle-link-radius 0 0 $tabs-toggle-link-radius
+        +rtl
+          border-radius: $tabs-toggle-link-radius $tabs-toggle-link-radius 0 0
       &:last-child a
         border-radius: 0 $tabs-toggle-link-radius $tabs-toggle-link-radius 0
+        +rtl
+          border-radius: $tabs-toggle-link-radius 0 0  $tabs-toggle-link-radius
       &.is-active
         a
           background-color: $tabs-toggle-link-active-background-color
