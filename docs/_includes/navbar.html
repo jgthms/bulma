@@ -25,9 +25,6 @@
 
   <div id="navMenu{{ include.id }}" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item {% if page.route == 'index' %}is-active{% endif %}" href="{{ site.url }}/">
-        Home
-      </a>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.documentation }}">
           Docs
@@ -39,8 +36,11 @@
           <a class="navbar-item {% if page.doc-tab == 'modifiers' %}is-active{% endif %}" href="{{ site.url }}/documentation/modifiers/syntax/">
             Modifiers
           </a>
-          <a class="navbar-item {% if page.doc-tab == 'grid' %}is-active{% endif %}" href="{{ site.url }}/documentation/grid/columns/">
-            Grid
+          <a class="navbar-item {% if page.doc-tab == 'columns' %}is-active{% endif %}" href="{{ site.url }}/documentation/columns/basics/">
+            Columns
+          </a>
+          <a class="navbar-item {% if page.doc-tab == 'layout' %}is-active{% endif %}" href="{{ site.url }}/documentation/layout/container/">
+            Layout
           </a>
           <a class="navbar-item {% if page.doc-tab == 'form' %}is-active{% endif %}" href="{{ site.url }}/documentation/form/general/">
             Form
@@ -57,16 +57,15 @@
               Components
             </a>
           {% endif %}
-          <a class="navbar-item {% if page.doc-tab == 'layout' %}is-active{% endif %}" href="{{ site.url }}/documentation/layout/container/">
-            Layout
-          </a>
           <hr class="navbar-divider">
           <div class="navbar-item">
             <div>
-              <p class="has-text-info is-size-6-desktop"><strong>{{ site.version }}</strong></p>
+              <p class="is-size-6-desktop">
+                <strong class="has-text-info">{{ site.version }}</strong>
+              </p>
               {{#unless site.deprecated}}
                 <small>
-                  <a class="view-all-versions" href="/versions">View all versions</a>
+                  <a class="bd-view-all-versions" href="/versions">View all versions</a>
                 </small>
               {{/unless}}
             </div>
@@ -102,7 +101,7 @@
                 </div>
                 <div class="level-right">
                   <div class="level-item">
-                    <a class="button is-rss is-small" href="{{ site.url }}/atom.xml">
+                    <a class="button bd-is-rss is-small" href="{{ site.url }}/atom.xml">
                       <span class="icon is-small">
                         <i class="fa fa-rss"></i>
                       </span>
@@ -142,30 +141,31 @@
           </a>
         </div>
       </div>
+      <a class="navbar-item {% if page.route == 'expo' %}is-active{% endif %}" href="{{ site.url }}/expo/">
+        <span class="bd-emoji">🎨</span>
+        Expo
+      </a>
+      <a class="navbar-item {% if page.route == 'love' %}is-active{% endif %}" href="{{ site.url }}/love/">
+        <span class="bd-emoji">❤️</span>
+        Love
+      </a>
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item" href="{{ site.github }}" target="_blank">
-        Github
+      <a class="navbar-item is-hidden-desktop-only" href="{{ site.github }}" target="_blank">
+        <span class="icon" style="color: #333;">
+          <i class="fa fa-github"></i>
+        </span>
       </a>
-      <a class="navbar-item" href="{{ site.twitter }}" target="_blank">
-        Twitter
+      <a class="navbar-item is-hidden-desktop-only" href="{{ site.twitter }}" target="_blank">
+        <span class="icon" style="color: #55acee;">
+          <i class="fa fa-twitter"></i>
+        </span>
       </a>
       <div class="navbar-item">
         <div class="field is-grouped">
           <p class="control">
-            <a id="twitter"
-              class="button"
-              data-social-network="Twitter"
-              data-social-action="tweet"
-              data-social-target="{{ site.url }}"
-              target="_blank"
-              href="https://twitter.com/intent/tweet?text={{ site.title | urlencode }}&url={{ site.url }}&via=jgthms">
-              <span class="icon">
-                <i class="fa fa-twitter"></i>
-              </span>
-              <span>Tweet</span>
-            </a>
+            {% include elements/tw-button.html label="Tweet" %}
           </p>
           <p class="control">
             <a class="button is-primary" href="{{ site.download }}">

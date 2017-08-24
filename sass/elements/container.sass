@@ -1,0 +1,27 @@
+$container-offset: 60px !default
+
+.container
+  margin: 0 auto
+  position: relative
+  +from($desktop + $container-offset)
+    max-width: $desktop - (2 * $gap)
+    width: $desktop - (2 * $gap)
+    &.is-fluid
+      margin-left: $gap
+      margin-right: $gap
+      max-width: none
+      width: auto
+  +until($widescreen + $container-offset)
+    &.is-widescreen
+      max-width: $widescreen - (2 * $gap)
+      width: auto
+  +until($fullhd + $container-offset)
+    &.is-fullhd
+      max-width: $fullhd - (2 * $gap)
+      width: auto
+  +from($widescreen + $container-offset)
+    max-width: $widescreen - (2 * $gap)
+    width: $widescreen - (2 * $gap)
+  +from($fullhd + $container-offset)
+    max-width: $fullhd - (2 * $gap)
+    width: $fullhd - (2 * $gap)

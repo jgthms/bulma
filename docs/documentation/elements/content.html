@@ -1,32 +1,54 @@
 ---
+title: Content
 layout: documentation
 doc-tab: elements
 doc-subtab: content
+variables:
+- name: $content-heading-color
+  value: $text-strong
+- name: $content-heading-weight
+  value: $weight-normal
+- name: $content-heading-line-height
+  value: 1.125
+- name: $content-blockquote-background-color
+  value: $background
+- name: $content-blockquote-border-left
+  value: 5px solid $border
+- name: $content-blockquote-padding
+  value: 1.25em 1.5em
+- name: $content-pre-padding
+  value: 1.25em 1.5em
+- name: $content-table-cell-border
+  value: 1px solid $border
+- name: $content-table-cell-border-width
+  value: 0 0 1px
+- name: $content-table-cell-padding
+  value: 0.5em 0.75em
+- name: $content-table-cell-heading-color
+  value: $text-strong
+- name: $content-table-row-hover-background-color
+  value: $background
+- name: $content-table-head-cell-border-width
+  value: 0 0 2px
+- name: $content-table-head-cell-color
+  value: $text-strong
+- name: $content-table-foot-cell-border-width
+  value: 2px 0 0
+- name: $content-table-foot-cell-color
+  value: $text-strong
 ---
 
-{% include subnav-elements.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Content</h1>
-    <h2 class="subtitle">
-      A single class to handle WYSIWYG generated content, where only <strong>HTML tags</strong> are available
-    </h2>
-
-    <hr>
-
-    <div class="content">
-      <p>When you can't use the CSS classes you want, or when you just want to directly use HTML tags, use <code>content</code> as container. It can handle almost any HTML tag:</p>
-      <ul>
-        <li><code>&lt;p&gt;</code> paragraphs</li>
-        <li><code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;dl&gt;</code> lists</li>
-        <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> headings</li>
-        <li><code>&lt;blockquote&gt;</code> quotes</li>
-        <li><code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code></li>
-        <li><code>&lt;table&gt;</code> <code>&lt;tr&gt;</code> <code>&lt;th&gt;</code> <code>&lt;td&gt;</code> tables</li>
-      </ul>
-      <p>This <code>content</code> class can be used in <em>any</em> context where you just want to (or can only) write some <strong>text</strong>. For example, it's used for the paragraph you're currently reading.</p>
-    </div>
+{% capture content_pre %}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+{% endcapture %}
 
 {% capture content_example %}
 <div class="content">
@@ -65,15 +87,7 @@ doc-subtab: content
   <p>Suspendisse egestas sapien non felis placerat elementum. Morbi tortor nisl, suscipit sed mi sit amet, mollis malesuada nulla. Nulla facilisi. Nullam ac erat ante.</p>
   <h4>Fourth level</h4>
   <p>Nulla efficitur eleifend nisi, sit amet bibendum sapien fringilla ac. Mauris euismod metus a tellus laoreet, at elementum ex efficitur.</p>
-  <pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</pre>
+  <pre>{{ content_pre }}</pre>
   <p>Maecenas eleifend sollicitudin dui, faucibus sollicitudin augue cursus non. Ut finibus eleifend arcu ut vehicula. Mauris eu est maximus est porta condimentum in eu justo. Nulla id iaculis sapien.</p>
   <table>
     <thead>
@@ -120,21 +134,48 @@ doc-subtab: content
 </div>
 {% endcapture %}
 
-<div class="example">
-  {{content_example}}
-</div>
+{% include subnav-elements.html %}
 
-{% highlight html %}
-{{content_example}}
-{% endhighlight %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">Content</h1>
+    <h2 class="subtitle">
+      A single class to handle WYSIWYG generated content, where only <strong>HTML tags</strong> are available
+    </h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
-    <h3 class="title">Sizes</h3>
+    <div class="content">
+      <p>When you can't use the CSS classes you want, or when you just want to directly use HTML tags, use <code>content</code> as container. It can handle almost any HTML tag:</p>
+      <ul>
+        <li><code>&lt;p&gt;</code> paragraphs</li>
+        <li><code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;dl&gt;</code> lists</li>
+        <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> headings</li>
+        <li><code>&lt;blockquote&gt;</code> quotes</li>
+        <li><code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code></li>
+        <li><code>&lt;table&gt;</code> <code>&lt;tr&gt;</code> <code>&lt;th&gt;</code> <code>&lt;td&gt;</code> tables</li>
+      </ul>
+      <p>This <code>content</code> class can be used in <em>any</em> context where you just want to (or can only) write some <strong>text</strong>. For example, it's used for the paragraph you're currently reading.</p>
+    </div>
+
+    <div class="bd-example">
+      {{content_example}}
+    </div>
+
+    {% highlight html %}{{content_example}}{% endhighlight %}
+
+    {% include anchor.html name="Sizes" %}
+
     <div class="content">
       <p>You can use the <code>is-small</code>, <code>is-medium</code> and <code>is-large</code> modifiers to change the font size.</p>
     </div>
-    <div class="example">
+    <div class="bd-example">
       <div class="content is-small">
         <h1>Hello World</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
@@ -148,7 +189,7 @@ doc-subtab: content
         </ul>
       </div>
     </div>
-    <div class="example">
+    <div class="bd-example">
       <div class="content is-medium">
         <h1>Hello World</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
@@ -162,7 +203,7 @@ doc-subtab: content
         </ul>
       </div>
     </div>
-    <div class="example">
+    <div class="bd-example">
       <div class="content is-large">
         <h1>Hello World</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
@@ -176,5 +217,8 @@ doc-subtab: content
         </ul>
       </div>
     </div>
+
+    {% include variables.html element=true %}
+
   </div>
 </section>

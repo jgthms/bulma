@@ -1,5 +1,141 @@
 # Bulma Changelog
 
+## 0.5.2
+
+### Issues closed
+
+* #1063 `$family-primary` customisation
+
+## 0.5.1
+
+### New features
+
+* 🎉 #280 [File upload element](http://bulma.io/documentation/form/file/)
+* `$container-offset` variable to determine the `.container` breakpoints
+* #1001 Text case helpers
+
+### Issues closed
+
+* #1030 Add `!important` to non responsive display helpers
+* #1020 Customizing `.navbar-item img` max height
+* #998 `.navbar-dropdown` with **right** alignment
+* #877 `.pagination` isn't using `$pagination-background`
+* #989 `navbar-brand` overflowing on mobile
+* #975 Variable `$table-head-color` isn't used
+* #964 Tabs sass file throwing error with `!important`
+* #949 `.is-size-7` helper is missing
+
+## 0.5.0
+
+### New features
+
+* 🎉 [List of tags](http://bulma.io/documentation/elements/tag/#list-of-tags)
+* New **variable naming system**: `component`-`subcomponent`-`state`-`property`
+* Improved **customization** thanks to new set of variables
+* #934 New `.is-shadowless` helper
+
+Variable name changes (mostly appending `-color`):
+
+<table>
+<tr><th>From</th><th>To</th></tr>
+<tr><td><code>$card</code></td><td><code>$card-color</code></td></tr>
+<tr><td><code>$card-background</code></td><td><code>$card-background-color</code></td></tr>
+<tr><td><code>$card-header</code></td><td><code>$card-header-color</code></td></tr>
+<tr><td><code>$dropdown-item</code></td><td><code>$dropdown-item-color</code></td></tr>
+<tr><td><code>$dropdown-content-background</code></td><td><code>$dropdown-content-background-color</code></td></tr>
+<tr><td><code>$dropdown-item-hover-background</code></td><td><code>$dropdown-item-hover-background-color</code></td></tr>
+<tr><td><code>$dropdown-item-hover</code></td><td><code>$dropdown-item-hover-color</code></td></tr>
+<tr><td><code>$dropdown-item-active-background</code></td><td><code>$dropdown-item-active-background-color</code></td></tr>
+<tr><td><code>$dropdown-item-active</code></td><td><code>$dropdown-item-active-color</code></td></tr>
+<tr><td><code>$dropdown-divider-background</code></td><td><code>$dropdown-divider-background-color</code></td></tr>
+<tr><td><code>$menu-item</code></td><td><code>$menu-item-color</code></td></tr>
+<tr><td><code>$menu-item-hover</code></td><td><code>$menu-item-hover-color</code></td></tr>
+<tr><td><code>$menu-item-hover-background</code></td><td><code>$menu-item-hover-background-color</code></td></tr>
+<tr><td><code>$menu-item-active</code></td><td><code>$menu-item-active-color</code></td></tr>
+<tr><td><code>$menu-item-active-background</code></td><td><code>$menu-item-active-background-color</code></td></tr>
+<tr><td><code>$menu-label</code></td><td><code>$menu-label-color</code></td></tr>
+<tr><td><code>$message-background</code></td><td><code>$message-background-color</code></td></tr>
+<tr><td><code>$message-header-background</code></td><td><code>$message-header-background-color</code></td></tr>
+<tr><td><code>$navbar-background</code></td><td><code>$navbar-background-color</code></td></tr>
+<tr><td><code>$navbar-item</code></td><td><code>$navbar-item-color</code></td></tr>
+<tr><td><code>$navbar-item-hover</code></td><td><code>$navbar-item-hover-color</code></td></tr>
+<tr><td><code>$navbar-item-hover-background</code></td><td><code>$navbar-item-hover-background-color</code></td></tr>
+<tr><td><code>$navbar-item-active</code></td><td><code>$navbar-item-active-color</code></td></tr>
+<tr><td><code>$navbar-item-active-background</code></td><td><code>$navbar-item-active-background-color</code></td></tr>
+<tr><td><code>$navbar-tab-hover-background</code></td><td><code>$navbar-tab-hover-background-color</code></td></tr>
+<tr><td><code>$navbar-tab-hover-border-bottom</code></td><td><code>$navbar-tab-hover-border-bottom-color</code></td></tr>
+<tr><td><code>$navbar-tab-active</code></td><td><code>$navbar-tab-active-color</code></td></tr>
+<tr><td><code>$navbar-tab-active-background</code></td><td><code>$navbar-tab-active-background-color</code></td></tr>
+<tr><td><code>$navbar-divider-background</code></td><td><code>$navbar-divider-background-color</code></td></tr>
+<tr><td><code>$navbar-dropdown-item-hover</code></td><td><code>$navbar-dropdown-item-hover-color</code></td></tr>
+<tr><td><code>$navbar-dropdown-item-hover-background</code></td><td><code>$navbar-dropdown-item-hover-background-color</code></td></tr>
+<tr><td><code>$navbar-dropdown-item-active</code></td><td><code>$navbar-dropdown-item-active-color</code></td></tr>
+<tr><td><code>$navbar-dropdown-item-active-background</code></td><td><code>$navbar-dropdown-item-active-background-color</code></td></tr>
+<tr><td><code>$pagination</code></td><td><code>$pagination-color</code></td></tr>
+<tr><td><code>$pagination-hover</code></td><td><code>$pagination-hover-color</code></td></tr>
+<tr><td><code>$pagination-hover-border</code></td><td><code>$pagination-hover-border-color</code></td></tr>
+<tr><td><code>$pagination-focus</code></td><td><code>$pagination-focus-color</code></td></tr>
+<tr><td><code>$pagination-focus-border</code></td><td><code>$pagination-focus-border-color</code></td></tr>
+<tr><td><code>$pagination-active</code></td><td><code>$pagination-active-color</code></td></tr>
+<tr><td><code>$pagination-active-border</code></td><td><code>$pagination-active-border-color</code></td></tr>
+<tr><td><code>$pagination-disabled</code></td><td><code>$pagination-disabled-color</code></td></tr>
+<tr><td><code>$pagination-disabled-background</code></td><td><code>$pagination-disabled-background-color</code></td></tr>
+<tr><td><code>$pagination-disabled-border</code></td><td><code>$pagination-disabled-border-color</code></td></tr>
+<tr><td><code>$pagination-current</code></td><td><code>$pagination-current-color</code></td></tr>
+<tr><td><code>$pagination-current-background</code></td><td><code>$pagination-current-background-color</code></td></tr>
+<tr><td><code>$pagination-current-border</code></td><td><code>$pagination-current-border-color</code></td></tr>
+<tr><td><code>$pagination-ellipsis</code></td><td><code>$pagination-ellipsis-color</code></td></tr>
+<tr><td><code>$box</code></td><td><code>$box-color</code></td></tr>
+<tr><td><code>$box-background</code></td><td><code>$box-background-color</code></td></tr>
+<tr><td><code>$button</code></td><td><code>$button-color</code></td></tr>
+<tr><td><code>$button-background</code></td><td><code>$button-background-color</code></td></tr>
+<tr><td><code>$button-border</code></td><td><code>$button-border-color</code></td></tr>
+<tr><td><code>$button-link</code></td><td><code>$button-link-color</code></td></tr>
+<tr><td><code>$button-link-hover-background</code></td><td><code>$button-link-hover-background-color</code></td></tr>
+<tr><td><code>$button-link-hover</code></td><td><code>$button-link-hover-color</code></td></tr>
+<tr><td><code>$button-disabled-background</code></td><td><code>$button-disabled-background-color</code></td></tr>
+<tr><td><code>$button-disabled-border</code></td><td><code>$button-disabled-border-color</code></td></tr>
+<tr><td><code>$button-static</code></td><td><code>$button-static-color</code></td></tr>
+<tr><td><code>$button-static-background</code></td><td><code>$button-static-background-color</code></td></tr>
+<tr><td><code>$button-static-border</code></td><td><code>$button-static-border-color</code></td></tr>
+<tr><td><code>$input</code></td><td><code>$input-color</code></td></tr>
+<tr><td><code>$input-background</code></td><td><code>$input-background-color</code></td></tr>
+<tr><td><code>$input-border</code></td><td><code>$input-border-color</code></td></tr>
+<tr><td><code>$input-hover</code></td><td><code>$input-hover-color</code></td></tr>
+<tr><td><code>$input-hover-border</code></td><td><code>$input-hover-border-color</code></td></tr>
+<tr><td><code>$input-focus</code></td><td><code>$input-focus-color</code></td></tr>
+<tr><td><code>$input-focus-border</code></td><td><code>$input-focus-border-color</code></td></tr>
+<tr><td><code>$input-disabled</code></td><td><code>$input-disabled-color</code></td></tr>
+<tr><td><code>$input-disabled-background</code></td><td><code>$input-disabled-background-color</code></td></tr>
+<tr><td><code>$input-disabled-border</code></td><td><code>$input-disabled-border-color</code></td></tr>
+<tr><td><code>$input-icon</code></td><td><code>$input-icon-color</code></td></tr>
+<tr><td><code>$input-icon-active</code></td><td><code>$input-icon-active-color</code></td></tr>
+<tr><td><code>$title</code></td><td><code>$title-color</code></td></tr>
+<tr><td><code>$subtitle</code></td><td><code>$subtitle-color</code></td></tr>
+<tr><td><code>$card-footer-border</code></td><td><code>$card-footer-border-top</code></td></tr>
+<tr><td><code>$menu-list-border</code></td><td><code>$menu-list-border-left</code></td></tr>
+<tr><td><code>$navbar-tab-hover-border</code></td><td><code>$navbar-tab-hover-border-bottom-color</code></td></tr>
+<tr><td><code>$navbar-tab-active-border</code></td><td><code>$navbar-tab-active-border-bottom</code></td></tr>
+<tr><td><code>$table-border</code></td><td><code>$table-cell-border</code></td></tr>
+<tr><td><code>$table-row-even-background</code></td><td><code>$table-striped-row-even-background-color</code></td></tr>
+<tr><td><code>$table-row-even-hover-background</code></td><td><code>$table-striped-row-even-hover-background-color</code></td></tr>
+</table>
+
+### Improved documentation
+
+* [Starter template](http://bulma.io/documentation/overview/start/#starter-template)
+* [Colors page](http://bulma.io/documentation/overview/colors/)
+* [Typography helpers](http://bulma.io/documentation/modifiers/typography-helpers/)
+* **Meta** information for all elements and components
+* **Variables** information for most elements and components
+
+### Issues closed
+
+* #909 `.dropdown` wrapping
+* #938 `.is-fullwidth` removed from docs
+* #900 Variable `.navbar-item` for hover+active background/color
+* #902 `.navbar-item` color overrides
+
 ## 0.4.4
 
 ### New features

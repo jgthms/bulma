@@ -2,7 +2,91 @@
 layout: documentation
 doc-tab: components
 doc-subtab: modal
+variables:
+- name: $modal-z
+  value: 20
+- name: $modal-background-background-color
+  value: rgba($black, 0.86)
+- name: $modal-content-width
+  value: 640px
+- name: $modal-content-margin-mobile
+  value: 20px
+- name: $modal-content-spacing-mobile
+  value: 160px
+- name: $modal-content-spacing-tablet
+  value: 40px
+- name: $modal-close-dimensions
+  value: 40px
+- name: $modal-close-right
+  value: 20px
+- name: $modal-close-top
+  value: 20px
+- name: $modal-card-spacing
+  value: 40px
+- name: $modal-card-head-background-color
+  value: $background
+- name: $modal-card-head-border-bottom
+  value: 1px solid $border
+- name: $modal-card-head-padding
+  value: 20px
+- name: $modal-card-head-radius
+  value: $radius-large
+- name: $modal-card-title-color
+  value: $text-strong
+- name: $modal-card-title-line-height
+  value: 1
+- name: $modal-card-title-size
+  value: $size-4
+- name: $modal-card-foot-radius
+  value: $radius-large
+- name: $modal-card-foot-border-top
+  value: 1px solid $border
+- name: $modal-card-body-background-color
+  value: $white
+- name: $modal-card-body-padding
+  value: 20px
 ---
+
+{% capture modal %}
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <!-- Any other Bulma elements you want -->
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+{% endcapture %}
+
+{% capture image_modal %}
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <p class="image is-4by3">
+      <img src="{{site.url}}/images/placeholders/1280x960.png" alt="">
+    </p>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+{% endcapture %}
+
+{% capture modal_card %}
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+{% endcapture %}
 
 {% include subnav-components.html %}
 
@@ -10,6 +94,12 @@ doc-subtab: modal
   <div class="container">
     <h1 class="title">Modal</h1>
     <h2 class="subtitle">A classic <strong>modal</strong> overlay, in which you can include <em>any</em> content you want</h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=false
+      variables=true
+    %}
 
     <hr>
 
@@ -36,15 +126,7 @@ doc-subtab: modal
       </p>
     </div>
 
-{% highlight html %}
-<div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <!-- Any other Bulma elements you want -->
-  </div>
-  <button class="modal-close is-large"></button>
-</div>
-{% endhighlight %}
+    {% highlight html %}{{ modal }}{% endhighlight %}
 
     <div class="content">
       <p>To <strong>activate</strong> the modal, just add the <code>is-active</code> modifier on the <code>.modal</code> container</p>
@@ -70,17 +152,7 @@ doc-subtab: modal
       </p>
     </div>
 
-{% highlight html %}
-<div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <p class="image is-4by3">
-      <img src="{{site.url}}/images/placeholders/1280x960.png">
-    </p>
-  </div>
-  <button class="modal-close is-large"></button>
-</div>
-{% endhighlight %}
+    {% highlight html %}{{ image_modal }}{% endhighlight %}
 
     <hr>
 
@@ -93,24 +165,9 @@ doc-subtab: modal
       </p>
     </div>
 
-{% highlight html %}
-<div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Modal title</p>
-      <button class="delete"></button>
-    </header>
-    <section class="modal-card-body">
-      <!-- Content ... -->
-    </section>
-    <footer class="modal-card-foot">
-      <a class="button is-success">Save changes</a>
-      <a class="button">Cancel</a>
-    </footer>
-  </div>
-</div>
-{% endhighlight %}
+    {% highlight html %}{{ modal_card }}{% endhighlight %}
+
+    {% include variables.html %}
 
   </div>
 </section>

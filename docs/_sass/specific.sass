@@ -3,7 +3,7 @@
     td:nth-child(2)
       width: 320px
 
-.color
+.bd-color
   border-radius: 2px
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1)
   display: inline-block
@@ -12,7 +12,7 @@
   margin-right: 8px
   width: 24px
 
-.button.is-rss
+.button.bd-is-rss
   background-color: #f26522
   border-color: transparent
   color: #fff
@@ -21,7 +21,134 @@
   &:active
     background-color: darken(#f26522, 10%)
 
-.view-all-versions
+.bd-view-all-versions
   color: $text-light
   &:hover
     text-decoration: underline
+
+.bd-feature-title
+  color: $text-light
+  a
+    border-bottom: 1px solid transparent
+    color: $text-strong
+    &:hover
+      border-bottom-color: $primary
+
+.bd-anchor-title
+  padding-top: 1.5rem
+  position: relative
+  +until($widescreen)
+    padding-left: 2rem
+
+.bd-anchor-link
+  position: absolute
+  right: calc(100% + 1rem)
+  +until($widescreen)
+    left: 0
+    right: auto
+
+.bd-article-image
+  background-color: $primary
+  display: block
+  height: 240px
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  text-align: center
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name}
+      background-color: $color
+  &.is-bootstrap
+    background-color: $bootstrap
+  &.is-orange
+    background-color: $orange
+  &:hover
+    .bd-article-overlay
+      opacity: 0.25
+    .bd-article-icon
+      transform: scale(1.4)
+    .bd-article-date
+      transform: scale(0.9)
+    .bd-article-title
+      transform: scale(1.1)
+  &.is-single
+    margin-bottom: 2rem
+    width: 100%
+
+.bd-article-overlay
+  +overlay
+  background-color: $black
+  opacity: 0
+  transition-duration: $speed
+  transition-property: opacity
+  transition-timing-function: $easing
+
+.bd-article-icon,
+.bd-article-info
+  +overlay
+  align-items: center
+  display: flex
+  justify-content: center
+
+.bd-article-icon,
+.bd-article-date,
+.bd-article-title
+  transition-duration: $speed
+  transition-property: transform
+  transition-timing-function: $easing
+
+.bd-article-icon
+  color: $black
+  opacity: 0.25
+  & > span
+    display: block
+  .fa
+    font-size: 56px
+
+.bd-article-info
+  padding: 20px
+
+.bd-article-date
+  color: rgba(#000, 0.5)
+  display: block
+
+.bd-article-title
+  color: $white
+  display: block
+  font-size: 2.5rem
+  font-weight: $weight-bold
+  line-height: 1.25
+  padding: 0 20px
+
+.bd-emoji
+  margin-right: 0.5em
+  margin-top: 2px
+
+$notification-background-color: $background !default
+$notification-radius: $radius !default
+$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
+
+.bd-notification
+  background-color: $background
+  border-radius: $radius
+  padding: 1.25rem 0
+  position: relative
+  text-align: center
+  .title,
+  .subtitle,
+  .content,
+  strong
+    color: currentColor
+  code,
+  pre
+    background: $white
+  pre code
+    background: transparent
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert

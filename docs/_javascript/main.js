@@ -2,6 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dropdowns
 
+  const $metalinks = getAll('#meta a');
+
+  if ($metalinks.length > 0) {
+    $metalinks.forEach($el => {
+      $el.addEventListener('click', event => {
+        event.preventDefault();
+        const target = $el.getAttribute('href');
+        const $target = document.getElementById(target.substring(1));
+        $target.scrollIntoView(true);
+        // window.history.replaceState(null, document.title, `${window.location.origin}${window.location.pathname}${target}`);
+        return false;
+      });
+    });
+  }
+
+  // Dropdowns
+
   const $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
   if ($dropdowns.length > 0) {
@@ -86,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if ($highlights.length > 0) {
     $highlights.forEach($el => {
-      const copy = '<button class="copy">Copy</button>';
-      const expand = '<button class="expand">Expand</button>';
+      const copy = '<button class="button is-small bd-copy">Copy</button>';
+      const expand = '<button class="button is-small bd-expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copy);
 
       if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
@@ -102,19 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addHighlightControls() {
-    const $highlightButtons = getAll('.highlight .copy, .highlight .expand');
+    const $highlightButtons = getAll('.highlight .bd-copy, .highlight .bd-expand');
 
     $highlightButtons.forEach($el => {
       $el.addEventListener('mouseenter', () => {
-        $el.parentNode.style.boxShadow = '0 0 0 1px #ed6c63';
+        $el.parentNode.classList.add('bd-is-hovering');
       });
 
       $el.addEventListener('mouseleave', () => {
-        $el.parentNode.style.boxShadow = 'none';
+        $el.parentNode.classList.remove('bd-is-hovering');
       });
     });
 
-    const $highlightExpands = getAll('.highlight .expand');
+    const $highlightExpands = getAll('.highlight .bd-expand');
 
     $highlightExpands.forEach($el => {
       $el.addEventListener('click', () => {
@@ -123,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  new Clipboard('.copy', {
+  new Clipboard('.bd-copy', {
     target: function(trigger) {
       return trigger.previousSibling;
     }
@@ -134,5 +151,28 @@ document.addEventListener('DOMContentLoaded', () => {
   function getAll(selector) {
     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
   }
+
+  let latestKnownScrollY = 0;
+  let ticking = false;
+
+  function scrollUpdate() {
+    ticking = false;
+    // do stuff
+  }
+
+
+  function onScroll() {
+    latestKnownScrollY = window.scrollY;
+    scrollRequestTick();
+  }
+
+  function scrollRequestTick() {
+    if(!ticking) {
+      requestAnimationFrame(scrollUpdate);
+    }
+    ticking = true;
+  }
+
+   window.addEventListener('scroll', onScroll, false);
 
 });

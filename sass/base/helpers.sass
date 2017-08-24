@@ -1,32 +1,3 @@
-// Display
-
-$displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
-
-@each $display in $displays
-  .is-#{$display}
-    display: #{$display}
-  +mobile
-    .is-#{$display}-mobile
-      display: #{$display} !important
-  +tablet
-    .is-#{$display}-tablet
-      display: #{$display} !important
-  +tablet-only
-    .is-#{$display}-tablet-only
-      display: #{$display} !important
-  +touch
-    .is-#{$display}-touch
-      display: #{$display} !important
-  +desktop
-    .is-#{$display}-desktop
-      display: #{$display} !important
-  +desktop-only
-    .is-#{$display}-desktop-only
-      display: #{$display} !important
-  +widescreen
-    .is-#{$display}-widescreen
-      display: #{$display} !important
-
 // Float
 
 .is-clearfix
@@ -52,7 +23,7 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 .is-overlay
   +overlay
 
-// Text
+// Typography
 
 @each $size in $sizes
   $i: index($sizes, $size)
@@ -77,18 +48,47 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
     .is-size-#{$i}-fullhd
       font-size: $size !important
 
-.has-text-centered
-  text-align: center !important
+$alignments: ('centered': 'center', 'left': 'left', 'right': 'right')
 
-.has-text-left
-  text-align: left !important
-  +rtl
-    text-align: right !important
+@each $alignment, $text-align in $alignments
+  .has-text-#{$alignment}
+    text-align: #{$text-align} !important
+  +mobile
+    .has-text-#{$alignment}-mobile
+      text-align: #{$text-align} !important
+  +tablet
+    .has-text-#{$alignment}-tablet
+      text-align: #{$text-align} !important
+  +tablet-only
+    .has-text-#{$alignment}-tablet-only
+      text-align: #{$text-align} !important
+  +touch
+    .has-text-#{$alignment}-touch
+      text-align: #{$text-align} !important
+  +desktop
+    .has-text-#{$alignment}-desktop
+      text-align: #{$text-align} !important
+  +desktop-only
+    .has-text-#{$alignment}-desktop-only
+      text-align: #{$text-align} !important
+  +widescreen
+    .has-text-#{$alignment}-widescreen
+      text-align: #{$text-align} !important
+  +widescreen-only
+    .has-text-#{$alignment}-widescreen-only
+      text-align: #{$text-align} !important
+  +fullhd
+    .has-text-#{$alignment}-fullhd
+      text-align: #{$text-align} !important
 
-.has-text-right
-  text-align: right !important
-  +rtl
-    text-align: left !important
+.is-capitalized
+  text-transform: capitalize !important
+
+.is-lowercase
+  text-transform: lowercase !important
+
+.is-uppercase
+  text-transform: uppercase !important
 
 @each $name, $pair in $colors
   $color: nth($pair, 1)
@@ -97,13 +97,46 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   a.has-text-#{$name}
     &:hover,
     &:focus
-      color: darken($color, 10%)
+      color: darken($color, 10%) !important
 
 @each $name, $shade in $shades
   .has-text-#{$name}
     color: $shade !important
 
 // Visibility
+
+$displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
+
+@each $display in $displays
+  .is-#{$display}
+    display: #{$display} !important
+  +mobile
+    .is-#{$display}-mobile
+      display: #{$display} !important
+  +tablet
+    .is-#{$display}-tablet
+      display: #{$display} !important
+  +tablet-only
+    .is-#{$display}-tablet-only
+      display: #{$display} !important
+  +touch
+    .is-#{$display}-touch
+      display: #{$display} !important
+  +desktop
+    .is-#{$display}-desktop
+      display: #{$display} !important
+  +desktop-only
+    .is-#{$display}-desktop-only
+      display: #{$display} !important
+  +widescreen
+    .is-#{$display}-widescreen
+      display: #{$display} !important
+  +widescreen-only
+    .is-#{$display}-widescreen-only
+      display: #{$display} !important
+  +fullhd
+    .is-#{$display}-fullhd
+      display: #{$display} !important
 
 .is-hidden
   display: none !important
@@ -136,6 +169,14 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   .is-hidden-widescreen
     display: none !important
 
++widescreen-only
+  .is-hidden-widescreen-only
+    display: none !important
+
++fullhd
+  .is-hidden-fullhd
+    display: none !important
+
 // Other
 
 .is-marginless
@@ -143,6 +184,12 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
 .is-paddingless
   padding: 0 !important
+
+.is-radiusless
+  border-radius: 0 !important
+
+.is-shadowless
+  box-shadow: none !important
 
 .is-unselectable
   +unselectable

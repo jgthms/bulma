@@ -2,34 +2,59 @@
 layout: documentation
 doc-tab: components
 doc-subtab: dropdown
+variables:
+- name: $dropdown-content-background-color
+  value: $white
+- name: $dropdown-content-arrow
+  value: $link
+- name: $dropdown-content-offset
+  value: 4px
+- name: $dropdown-content-radius
+  value: $radius
+- name: $dropdown-content-shadow
+  value: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+- name: $dropdown-content-z
+  value: 20
+- name: $dropdown-item-color
+  value: $grey-dark
+- name: $dropdown-item-hover-color
+  value: $black
+- name: $dropdown-item-hover-background-color
+  value: $background
+- name: $dropdown-item-active-color
+  value: $primary-invert
+- name: $dropdown-item-active-background-color
+  value: $primary
+- name: $dropdown-divider-background-color
+  value: $border
 ---
 
 {% capture dropdown_example %}
 <div class="dropdown is-active">
   <div class="dropdown-trigger">
-    <a class="button">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
       <span>Dropdown button</span>
       <span class="icon is-small">
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
       </span>
-    </a>
+    </button>
   </div>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
     <div class="dropdown-content">
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Dropdown item
       </a>
       <a class="dropdown-item">
         Other dropdown item
       </a>
-      <a class="dropdown-item is-active">
+      <a href="#" class="dropdown-item is-active">
         Active dropdown item
       </a>
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Other dropdown item
       </a>
       <hr class="dropdown-divider">
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         With a divider
       </a>
     </div>
@@ -40,14 +65,14 @@ doc-subtab: dropdown
 {% capture dropdown_content_example %}
 <div class="dropdown is-active">
   <div class="dropdown-trigger">
-    <a class="button is-info">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2">
       <span>Content</span>
       <span class="icon is-small">
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
       </span>
-    </a>
+    </button>
   </div>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" id="dropdown-menu2" role="menu">
     <div class="dropdown-content">
       <div class="dropdown-item">
         <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
@@ -57,7 +82,7 @@ doc-subtab: dropdown
         <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
       </div>
       <hr class="dropdown-divider">
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         This is a link
       </a>
     </div>
@@ -68,38 +93,38 @@ doc-subtab: dropdown
 {% capture dropdown_click_example %}
 <div class="dropdown">
   <div class="dropdown-trigger">
-    <a class="button is-primary">
+    <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu3">
       <span>Click me</span>
       <span class="icon is-small">
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
       </span>
-    </a>
+    </button>
   </div>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
     <div class="dropdown-content">
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Overview
       </a>
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Modifiers
       </a>
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Grid
       </a>
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Form
       </a>
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Elements
       </a>
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Components
       </a>
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         Layout
       </a>
       <hr class="dropdown-divider">
-      <a class="dropdown-item">
+      <a href="#" class="dropdown-item">
         More
       </a>
     </div>
@@ -110,14 +135,14 @@ doc-subtab: dropdown
 {% capture dropdown_info_example %}
 <div class="dropdown is-hoverable">
   <div class="dropdown-trigger">
-    <a class="button is-info">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu4">
       <span>Hover me</span>
       <span class="icon is-small">
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
       </span>
-    </a>
+    </button>
   </div>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
     <div class="dropdown-content">
       <div class="dropdown-item">
         <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
@@ -130,14 +155,14 @@ doc-subtab: dropdown
 {% capture dropdown_left_example %}
 <div class="dropdown is-active">
   <div class="dropdown-trigger">
-    <a class="button is-info">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu5">
       <span>Left aligned</span>
       <span class="icon is-small">
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
       </span>
-    </a>
+    </button>
   </div>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" id="dropdown-menu5" role="menu">
     <div class="dropdown-content">
       <div class="dropdown-item">
         <p>The dropdown is <strong>left-aligned</strong> by default.</p>
@@ -150,14 +175,14 @@ doc-subtab: dropdown
 {% capture dropdown_right_example %}
 <div class="dropdown is-right is-active">
   <div class="dropdown-trigger">
-    <a class="button is-info">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu6">
       <span>Right aligned</span>
       <span class="icon is-small">
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
       </span>
-    </a>
+    </button>
   </div>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" id="dropdown-menu6" role="menu">
     <div class="dropdown-content">
       <div class="dropdown-item">
         <p>Add the <code>is-right</code> modifier for a <strong>right-aligned</strong> dropdown.</p>
@@ -172,21 +197,18 @@ doc-subtab: dropdown
 <section class="section">
   <div class="container">
 
-    <div class="columns" style="margin-bottom: -0.75rem !important;">
-      <div class="column">
-        <h1 class="title">Dropdown</h1>
-        <h2 class="subtitle">
-          An interactive <strong>dropdown menu</strong> for discoverable content
-        </h2>
-      </div>
-
-      <div class="column is-narrow">
-        <p class="content">
-          <span class="tag is-success">New!</span>
-          <span class="tag is-info">0.4.4</span>
-        </p>
-      </div>
-    </div>
+    <h1 class="title">Dropdown</h1>
+    <h2 class="subtitle">
+      An interactive <strong>dropdown menu</strong> for discoverable content
+    </h2>
+    {%
+      include meta.html
+      new=true
+      since="0.4.4"
+      colors=false
+      sizes=false
+      variables=true
+    %}
 
     <hr>
 
@@ -318,5 +340,8 @@ doc-subtab: dropdown
         {% highlight html %}{{dropdown_right_example}}{% endhighlight %}
       </div>
     </div>
+
+    {% include variables.html %}
+
   </div>
 </section>

@@ -1,6 +1,10 @@
 ---
 layout: post
 title: "Access previous Bulma versions"
+introduction: "It is now possible to **access previous versions** of Bulma. Just head towards: [http://bulma.io/versions/](http://bulma.io/versions/)"
+color: "primary"
+name: "Versions"
+icon: "undo"
 ---
 
 It is now possible to **access previous versions** of Bulma. Just head towards: [http://bulma.io/versions/](http://bulma.io/versions/)

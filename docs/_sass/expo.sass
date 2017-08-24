@@ -1,0 +1,49 @@
+.bd-expo
+  background-color: $background
+  background-color: $white
+  padding: 1.5rem
+
+.bd-website
+  display: block
+  position: relative
+  text-align: center
+  &:last-child
+    margin-bottom: 0
+
+.bd-website-image
+  align-items: center
+  display: flex
+  justify-content: center
+  margin-bottom: 1.5rem
+  position: relative
+  &:hover
+    .bd-website-overlay
+      opacity: 0.25
+
+.bd-website-overlay
+  background-color: $black
+  opacity: 0
+  transition: opacity 200ms $easing
+
++mobile
+  .bd-website:not(:last-child)
+    margin-bottom: 1.5rem
+
++tablet
+  .bd-expo
+    padding-bottom: 3rem
+    padding-top: 3rem
+  .bd-websites
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+  .bd-website
+    margin-top: 3rem
+    width: calc(50% - 3rem)
+    &:nth-child(1),
+    &:nth-child(2)
+      margin-top: 0
+    &.bd-is-highlighted
+      width: 100%
+  .bd-website-image
+    margin-bottom: 3rem

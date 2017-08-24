@@ -1,49 +1,68 @@
-$input:                     $grey-darker !default
-$input-background:          $white !default
-$input-border:              $grey-lighter !default
+$input-color: $grey-darker !default
+$input-background-color: $white !default
+$input-border-color: $grey-lighter !default
+$input-shadow: inset 0 1px 2px rgba($black, 0.1) !default
 
-$input-hover:               $grey-darker !default
-$input-hover-border:        $grey-light !default
+$input-hover-color: $grey-darker !default
+$input-hover-border-color: $grey-light !default
 
-$input-focus:               $grey-darker !default
-$input-focus-border:        $link !default
+$input-focus-color: $grey-darker !default
+$input-focus-border-color: $link !default
 
-$input-disabled:            $text-light !default
-$input-disabled-background: $background !default
-$input-disabled-border:     $background !default
+$input-disabled-color: $text-light !default
+$input-disabled-background-color: $background !default
+$input-disabled-border-color: $background !default
 
-$input-arrow:               $link !default
+$input-arrow: $link !default
 
-$input-icon:                $grey-lighter !default
-$input-icon-active:         $grey !default
+$input-icon-color: $grey-lighter !default
+$input-icon-active-color: $grey !default
 
-$input-radius:              $radius !default
+$input-radius: $radius !default
+
+$file-border-color: $border !default
+$file-radius: $radius !default
+
+$file-cta-background-color: $white-ter !default
+$file-cta-color: $grey-dark !default
+$file-cta-hover-color: $grey-darker !default
+$file-cta-active-color: $grey-darker !default
+
+$file-name-border-color: $border !default
+$file-name-border-style: solid !default
+$file-name-border-width: 1px 1px 1px 0 !default
+$file-name-max-width: 16em !default
+
+$label-color: $grey-darker !default
+$label-weight: $weight-bold !default
+
+$help-size: $size-small !default
 
 =input
   +control
-  background-color: $input-background
-  border-color: $input-border
-  color: $input
+  background-color: $input-background-color
+  border-color: $input-border-color
+  color: $input-color
   &:hover,
   &.is-hovered
-    border-color: $input-hover-border
+    border-color: $input-hover-border-color
   &:focus,
   &.is-focused,
   &:active,
   &.is-active
-    border-color: $input-focus-border
+    border-color: $input-focus-border-color
   &[disabled]
-    background-color: $input-disabled-background
-    border-color: $input-disabled-border
+    background-color: $input-disabled-background-color
+    border-color: $input-disabled-border-color
     box-shadow: none
-    color: $input-disabled
+    color: $input-disabled-color
     +placeholder
-      color: rgba($input, 0.3)
+      color: rgba($input-disabled-color, 0.3)
 
 .input,
 .textarea
   +input
-  box-shadow: inset 0 1px 2px rgba($black, 0.1)
+  box-shadow: $input-shadow
   max-width: 100%
   width: 100%
   &[type="search"]
@@ -79,6 +98,9 @@ $input-radius:              $radius !default
     min-height: 120px
   &[rows]
     height: unset
+  // Modifiers
+  &.has-fixed-size
+    resize: none
 
 .checkbox,
 .radio
@@ -89,9 +111,9 @@ $input-radius:              $radius !default
   input
     cursor: pointer
   &:hover
-    color: $input-hover
+    color: $input-hover-color
   &[disabled]
-    color: $input-disabled
+    color: $input-disabled-color
     cursor: not-allowed
 
 .radio
@@ -125,16 +147,16 @@ $input-radius:              $radius !default
     max-width: 100%
     outline: none
     &:hover
-      border-color: $input-hover-border
+      border-color: $input-hover-border-color
     &:focus,
     &.is-focused,
     &:active,
     &.is-active
-      border-color: $input-focus-border
+      border-color: $input-focus-border-color
     &::-ms-expand
       display: none
     &[disabled]:hover
-      border-color: $input-disabled-border
+      border-color: $input-disabled-border-color
     &:not([multiple])
       padding-right: 2.5em
       +rtl
@@ -148,7 +170,7 @@ $input-radius:              $radius !default
   // States
   &:hover
     &::after
-      border-color: $input-hover
+      border-color: $input-hover-color
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -164,7 +186,7 @@ $input-radius:              $radius !default
   // Modifiers
   &.is-disabled
     &::after
-      border-color: $input-disabled
+      border-color: $input-disabled-color
   &.is-fullwidth
     width: 100%
     select
@@ -184,11 +206,174 @@ $input-radius:              $radius !default
     &.is-large:after
       font-size: $size-large
 
+.file
+  +unselectable
+  align-items: stretch
+  display: flex
+  justify-content: flex-start
+  position: relative
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      .file-cta
+        background-color: $color
+        border-color: transparent
+        color: $color-invert
+      &:hover,
+      &.is-hovered
+        .file-cta
+          background-color: darken($color, 2.5%)
+          border-color: transparent
+          color: $color-invert
+      &:focus,
+      &.is-focused
+        .file-cta
+          border-color: transparent
+          box-shadow: 0 0 0.5em rgba($color, 0.25)
+          color: $color-invert
+      &:active,
+      &.is-active
+        .file-cta
+          background-color: darken($color, 5%)
+          border-color: transparent
+          color: $color-invert
+  // Sizes
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+    .file-icon
+      .fa
+        font-size: 21px
+  &.is-large
+    font-size: $size-large
+    .file-icon
+      .fa
+        font-size: 28px
+  // Modifiers
+  &.has-name
+    .file-cta
+      border-bottom-right-radius: 0
+      border-top-right-radius: 0
+    .file-name
+      border-bottom-left-radius: 0
+      border-top-left-radius: 0
+  &.is-centered
+    justify-content: center
+  &.is-right
+    justify-content: flex-end
+  &.is-boxed
+    .file-label
+      flex-direction: column
+    .file-cta
+      flex-direction: column
+      height: auto
+      padding: 1em 3em
+    .file-name
+      border-width: 0 1px 1px
+    .file-icon
+      height: 1.5em
+      width: 1.5em
+      .fa
+        font-size: 21px
+    &.is-small
+      .file-icon .fa
+        font-size: 14px
+    &.is-medium
+      .file-icon .fa
+        font-size: 28px
+    &.is-large
+      .file-icon .fa
+        font-size: 35px
+    &.has-name
+      .file-cta
+        border-radius: $file-radius $file-radius 0 0
+      .file-name
+        border-radius: 0 0 $file-radius $file-radius
+        border-width: 0 1px 1px
+  &.is-right
+    .file-cta
+      border-radius: 0 $file-radius $file-radius 0
+    .file-name
+      border-radius: $file-radius 0 0 $file-radius
+      border-width: 1px 0 1px 1px
+      order: -1
+  &.is-fullwidth
+    .file-label
+      width: 100%
+    .file-name
+      flex-grow: 1
+      max-width: none
+
+.file-label
+  align-items: stretch
+  display: flex
+  cursor: pointer
+  justify-content: flex-start
+  overflow: hidden
+  position: relative
+  &:hover
+    .file-cta
+      background-color: darken($file-cta-background-color, 2.5%)
+      color: $file-cta-hover-color
+    .file-name
+      border-color: darken($file-name-border-color, 2.5%)
+  &:active
+    .file-cta
+      background-color: darken($file-cta-background-color, 5%)
+      color: $file-cta-active-color
+    .file-name
+      border-color: darken($file-name-border-color, 5%)
+
+.file-input
+  height: 0.01em
+  left: 0
+  outline: none
+  position: absolute
+  top: 0
+  width: 0.01em
+
+.file-cta,
+.file-name
+  +control
+  border-color: $file-border-color
+  border-radius: $file-radius
+  font-size: 1em
+  padding-left: 1em
+  padding-right: 1em
+  white-space: nowrap
+
+.file-cta
+  background-color: $file-cta-background-color
+  color: $file-cta-color
+
+.file-name
+  border-color: $file-name-border-color
+  border-style: $file-name-border-style
+  border-width: $file-name-border-width
+  display: block
+  max-width: $file-name-max-width
+  overflow: hidden
+  text-align: left
+  text-overflow: ellipsis
+
+.file-icon
+  align-items: center
+  display: flex
+  height: 1em
+  justify-content: center
+  margin-right: 0.5em
+  width: 1em
+  .fa
+    font-size: 14px
+
 .label
-  color: $input
+  color: $label-color
   display: block
   font-size: $size-normal
-  font-weight: $weight-bold
+  font-weight: $label-weight
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
@@ -201,7 +386,7 @@ $input-radius:              $radius !default
 
 .help
   display: block
-  font-size: $size-small
+  font-size: $help-size
   margin-top: 0.25rem
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -361,7 +546,7 @@ $input-radius:              $radius !default
   // DEPRECATED
   &.has-icon
     .icon
-      color: $input-icon
+      color: $input-icon-color
       height: 2.25em
       pointer-events: none
       position: absolute
@@ -371,7 +556,7 @@ $input-radius:              $radius !default
     .input
       &:focus
         & + .icon
-          color: $input-icon-active
+          color: $input-icon-active-color
       &.is-small
         & + .icon
           font-size: $size-small
@@ -397,7 +582,7 @@ $input-radius:              $radius !default
     .select
       &:focus
         & ~ .icon
-          color: $input-icon-active
+          color: $input-icon-active-color
       &.is-small ~ .icon
         font-size: $size-small
       &.is-medium ~ .icon
@@ -405,7 +590,7 @@ $input-radius:              $radius !default
       &.is-large ~ .icon
         font-size: $size-large
     .icon
-      color: $input-icon
+      color: $input-icon-color
       height: 2.25em
       pointer-events: none
       position: absolute

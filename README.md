@@ -65,18 +65,23 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 
 ## Related projects
 
-* Bulma with Attribute Modules: https://github.com/j5bot/bulma-attribute-selectors
-* Bulma with Rails: https://github.com/joshuajansen/bulma-rails
-* iTemplate: [http://itemplate.ga/](http://itemplate.ga/dashboard.html)
-* Vue Admin powered by Bulma: https://github.com/vue-bulma/vue-admin
-* Bulmaswatch — Free themes for Bulma: https://github.com/jenil/bulmaswatch
-* Goldfish — Vault UI with Bulma, Golang, and Vue Admin: https://github.com/Caiyeon/goldfish
-* ember-bulma - Ember addon providing a collection of UI components for Bulma https://github.com/open-tux/ember-bulma
-* Bloomer — A set of React components for Bulma: https://bloomer.js.org
-* Re-bulma – Bulma components build with React: https://github.com/bokuweb/re-bulma
-* React-bulma – React.js components for bulma: https://github.com/kulakowka/react-bulma
-* Buefy — Lightweight UI components for Vue.js based on Bulma: https://buefy.github.io
-* vue-bulma-components — Bulma components for Vue.js with straightforward syntax: https://github.com/vouill/vue-bulma-components
+| Project                                                                            | Description                                                        |
+|------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| [Bulma with Attribute Modules](https://github.com/j5bot/bulma-attribute-selectors) | Adds support for attribute-based selectors.                        |
+| [Bulma with Rails](https://github.com/joshuajansen/bulma-rails)                    | Integrates Bulma with the rails asset pipeline                     |
+| [iTemplate](http://itemplate.ga/)                                                  | Admin Dashboard based on Bulma                                     |
+| [Vue Admin](https://github.com/vue-bulma/vue-admin)                                | Vue Admin framework powered by Bulma                               |
+| [Bulmaswatch](https://github.com/jenil/bulmaswatch)                                | Free themes for Bulma                                              |
+| [Goldfish](https://github.com/Caiyeon/goldfish)                                    | Vault UI with Bulma, Golang, and Vue Admin                         |
+| [ember-bulma](https://github.com/open-tux/ember-bulma)                             | Ember addon providing a collection of UI components for Bulma      |
+| [Bloomer](https://bloomer.js.org)                                                  | A set of React components for Bulma                                |
+| [Re-bulma](https://github.com/bokuweb/re-bulma)                                    | Bulma components build with React                                  |
+| [React-bulma](https://github.com/kulakowka/react-bulma)                            | React.js components for Bulma                                      |
+| [Buefy](https://buefy.github.io)                                                   | Lightweight UI components for Vue.js based on Bulma                |
+| [vue-bulma-components](https://github.com/vouill/vue-bulma-components)             | Bulma components for Vue.js with straightforward syntax            |
+| [BulmaJS](https://github.com/VizuaaLOG/BulmaJS)                                    | Javascript integration for Bulma. Written in ES6 with a data-* API |
+| [Bulma.styl](https://github.com/log1x/bulma.styl)                                  | 1:1 Stylus translation of Bulma                                    |
+| [elm-bulma-classes](https://github.com/danielnarey/elm-bulma-classes)              | Bulma prepared for usage with ELM                                  |
 
 ## Copyright and license
 
