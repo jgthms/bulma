@@ -1,0 +1,213 @@
+---
+title: Columns gap
+layout: documentation
+doc-tab: columns
+doc-subtab: gap
+---
+
+{% capture columns_default_gap %}
+<div class="columns">
+  <div class="column">
+    <p class="bd-notification is-info">
+      Default gap
+    </p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-success">
+      Default gap
+    </p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-warning">
+      Default gap
+    </p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-danger">
+      Default gap
+    </p>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture columns_gapless %}
+<div class="columns is-gapless">
+  <div class="column">
+    No gap
+  </div>
+  <div class="column">
+    No gap
+  </div>
+  <div class="column">
+    No gap
+  </div>
+  <div class="column">
+    No gap
+  </div>
+</div>
+{% endcapture %}
+
+{% capture columns_gapless_multiline %}
+<div class="columns is-gapless is-multiline is-mobile">
+  <div class="column is-one-quarter">
+    is-one-quarter
+  </div>
+  <div class="column is-one-quarter">
+    is-one-quarter
+  </div>
+  <div class="column is-one-quarter">
+    is-one-quarter
+  </div>
+  <div class="column is-one-quarter">
+    is-one-quarter
+  </div>
+  <div class="column is-half">
+    is-half
+  </div>
+  <div class="column is-one-quarter">
+    is-one-quarter
+  </div>
+  <div class="column is-one-quarter">
+    is-one-quarter
+  </div>
+  <div class="column">
+    Auto
+  </div>
+</div>
+{% endcapture %}
+
+{% include subnav-columns.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Columns gap</h1>
+    <h2 class="subtitle">
+      Customize the <strong>gap</strong> between the columns
+    </h2>
+
+    {% include anchor.html name="Default gap" %}
+
+    <div class="content">
+      <p>
+        Each column has a <strong>gap</strong> equal to the <strong>variable</strong> <code>$column-gap</code>, which has a default value of <code>0.75rem</code>.
+        <br>
+        Since the gap is on <em>each side</em> of a column, the gap between two adjacent columns will be twice the value of <code>$column-gap</code>, or <code>1.5rem</code> by default.
+      </p>
+    </div>
+
+    {{ columns_default_gap }}
+
+    {% include anchor.html name="Gapless" %}
+
+    <div class="content">
+      <p>
+        If you want to remove the <strong>space</strong> between the columns, add the <code>is-gapless</code> modifier on the <code>columns</code> container:
+      </p>
+    </div>
+
+    <div class="columns is-gapless">
+      <div class="column">
+        <p class="bd-notification is-info">First column</p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-success">Second column</p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-warning">Third column</p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-danger">Fourth column</p>
+      </div>
+    </div>
+
+    <div class="highlight-full">
+      {% highlight html %}{{ columns_gapless }}{% endhighlight %}
+    </div>
+
+    <div class="content">
+      <p>You can combine it with the <code>is-multiline</code> modifier:</p>
+    </div>
+
+    <div class="columns is-multiline is-mobile is-gapless">
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-info"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-success"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-warning"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-danger"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-half">
+        <p class="bd-notification is-info"><code>is-half</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-success"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-warning"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column is-one-quarter">
+        <p class="bd-notification is-danger"><code>is-one-quarter</code></p>
+      </div>
+      <div class="column">
+        <p class="bd-notification is-info">Auto</p>
+      </div>
+    </div>
+
+    <div class="highlight-full">
+      {% highlight html %}{{ columns_gapless_multiline }}{% endhighlight %}
+    </div>
+
+    {% include anchor.html name="Variable gap" %}
+
+    <div class="field is-grouped is-grouped-multiline">
+      <div class="control">
+        <div class="tags">
+          <span class="tag is-warning">Experimental</span>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag">New</span>
+          <span class="tag is-info">0.5.2</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+         You can specify a <strong>custom column gap</strong> by appending one of <strong>9 modifiers</strong> on the <code>.columns</code> container.
+      </p>
+      <ul>
+        <li>
+          <code>is-0</code> will remove any gap (similar to <code>is-gapless</code>)
+        </li>
+        <li>
+          <code>is-3</code> is the <strong>default value</strong>, equivalent to the <code>0.75rem</code> value
+        </li>
+        <li>
+          <code>is-8</code> is the maximum gap of <code>2rem</code>
+        </li>
+      </ul>
+      <p>
+        Additionally, <code>.is-variable</code> should be added on the <code>.columns</code> container.
+      </p>
+    </div>
+
+    {% include klmn.html %}
+
+    <div class="message is-warning">
+      <div class="message-body">
+        <p>
+          This feature is only available in browsers that support <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">CSS Variables</a>:
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

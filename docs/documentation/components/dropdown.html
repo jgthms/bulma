@@ -1,0 +1,347 @@
+---
+layout: documentation
+doc-tab: components
+doc-subtab: dropdown
+variables:
+- name: $dropdown-content-background-color
+  value: $white
+- name: $dropdown-content-arrow
+  value: $link
+- name: $dropdown-content-offset
+  value: 4px
+- name: $dropdown-content-radius
+  value: $radius
+- name: $dropdown-content-shadow
+  value: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+- name: $dropdown-content-z
+  value: 20
+- name: $dropdown-item-color
+  value: $grey-dark
+- name: $dropdown-item-hover-color
+  value: $black
+- name: $dropdown-item-hover-background-color
+  value: $background
+- name: $dropdown-item-active-color
+  value: $primary-invert
+- name: $dropdown-item-active-background-color
+  value: $primary
+- name: $dropdown-divider-background-color
+  value: $border
+---
+
+{% capture dropdown_example %}
+<div class="dropdown is-active">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Dropdown button</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a class="dropdown-item">
+        Other dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+      <hr class="dropdown-divider">
+      <a href="#" class="dropdown-item">
+        With a divider
+      </a>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture dropdown_content_example %}
+<div class="dropdown is-active">
+  <div class="dropdown-trigger">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2">
+      <span>Content</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+      </div>
+      <hr class="dropdown-divider">
+      <div class="dropdown-item">
+        <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
+      </div>
+      <hr class="dropdown-divider">
+      <a href="#" class="dropdown-item">
+        This is a link
+      </a>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture dropdown_click_example %}
+<div class="dropdown">
+  <div class="dropdown-trigger">
+    <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu3">
+      <span>Click me</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Overview
+      </a>
+      <a href="#" class="dropdown-item">
+        Modifiers
+      </a>
+      <a href="#" class="dropdown-item">
+        Grid
+      </a>
+      <a href="#" class="dropdown-item">
+        Form
+      </a>
+      <a href="#" class="dropdown-item">
+        Elements
+      </a>
+      <a href="#" class="dropdown-item">
+        Components
+      </a>
+      <a href="#" class="dropdown-item">
+        Layout
+      </a>
+      <hr class="dropdown-divider">
+      <a href="#" class="dropdown-item">
+        More
+      </a>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture dropdown_info_example %}
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>Hover me</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture dropdown_left_example %}
+<div class="dropdown is-active">
+  <div class="dropdown-trigger">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu5">
+      <span>Left aligned</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu5" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <p>The dropdown is <strong>left-aligned</strong> by default.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture dropdown_right_example %}
+<div class="dropdown is-right is-active">
+  <div class="dropdown-trigger">
+    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu6">
+      <span>Right aligned</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu6" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <p>Add the <code>is-right</code> modifier for a <strong>right-aligned</strong> dropdown.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% include subnav-components.html %}
+
+<section class="section">
+  <div class="container">
+
+    <h1 class="title">Dropdown</h1>
+    <h2 class="subtitle">
+      An interactive <strong>dropdown menu</strong> for discoverable content
+    </h2>
+    {%
+      include meta.html
+      new=true
+      since="0.4.4"
+      colors=false
+      sizes=false
+      variables=true
+    %}
+
+    <hr>
+
+    <div class="content">
+      <p>
+        The <code>dropdown</code> component is a container for a dropdown button and a dropdown menu.
+      </p>
+      <ul>
+        <li>
+          <code>dropdown</code> the <strong>main</strong> container
+          <ul>
+            <li>
+              <code>dropdown-trigger</code> the container for a <code>button</code>
+            </li>
+            <li>
+              <code>dropdown-menu</code> the toggable menu, <strong>hidden</strong> by default
+              <ul>
+                <li>
+                  <code>dropdown-content</code> the dropdown <strong>box</strong>, with a white background and a shadow
+                  <ul>
+                    <li>
+                      <code>dropdown-item</code> each <strong>single item</strong> of the dropdown, which can either be a <code>a</code> or a <code>div</code>
+                    </li>
+                    <li>
+                      <code>dropdown-divider</code> a <strong>horizontal line</strong> to separate dropdown items
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{dropdown_example}}
+      </div>
+      <div class="column is-half highlight-full">
+        {% highlight html %}{{dropdown_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">
+      Dropdown content
+    </h3>
+
+    <div class="content">
+      <p>
+        While the <code>dropdown-item</code> can be used as an anchor link <code>&lt;a&gt;</code>, you can also use a <code>&lt;div&gt;</code> and insert almost <strong>any type of content</strong>.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{dropdown_content_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{dropdown_content_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">
+      Hoverable or Toggable
+    </h3>
+
+    <div class="content">
+      <p>
+        The <code>dropdown</code> component has <strong>2 additional modifiers</strong>
+      </p>
+      <ul>
+        <li>
+          <code>is-hoverable</code>: the dropdown will show up when <strong>hovering</strong> the <code>dropdown-trigger</code>
+        </li>
+        <li>
+          <code>is-active</code>: the dropdown will show up <strong>all the time</strong>
+        </li>
+      </ul>
+    </div>
+
+    <div class="message is-success">
+      <p class="message-body">
+        While the CSS <code>:hover</code> implementation works perfectly, the <code>is-active</code> class is available for users who want to control the display of the dropdown with <strong>JavaScript</strong>.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{dropdown_click_example}}{{dropdown_info_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{dropdown_click_example}}{{dropdown_info_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <hr>
+
+    <h3 class="title">
+      Right aligned
+    </h3>
+
+    <div class="content">
+      <p>
+        You can add the <code>is-right</code> modifier to have a <strong>right-aligned</strong> dropdown.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        <div class="level is-mobile">
+          <div class="level-left">
+            <div class="level-item">
+              {{dropdown_left_example}}
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              {{dropdown_right_example}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{dropdown_right_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include variables.html %}
+
+  </div>
+</section>

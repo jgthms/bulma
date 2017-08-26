@@ -1,29 +1,47 @@
+$menu-item-color: $text !default
+$menu-item-radius: $radius-small !default
+$menu-item-hover-color: $text-strong !default
+$menu-item-hover-background-color: $background !default
+$menu-item-active-color: $link-invert !default
+$menu-item-active-background-color: $link !default
+
+$menu-list-border-left: 1px solid $border !default
+
+$menu-label-color: $text-light !default
+
 .menu
   font-size: $size-normal
+  // Sizes
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+  &.is-large
+    font-size: $size-large
 
 .menu-list
   line-height: 1.25
   a
-    border-radius: $radius-small
-    color: $text
+    border-radius: $menu-item-radius
+    color: $menu-item-color
     display: block
     padding: 0.5em 0.75em
     &:hover
-      background-color: $background
-      color: $link
+      background-color: $menu-item-hover-background-color
+      color: $menu-item-hover-color
     // Modifiers
     &.is-active
-      background-color: $link
-      color: $link-invert
+      background-color: $menu-item-active-background-color
+      color: $menu-item-active-color
   li
     ul
-      border-left: 1px solid $border
+      border-left: $menu-list-border-left
       margin: 0.75em
       padding-left: 0.75em
 
 .menu-label
-  color: $text-light
-  font-size: 0.8em
+  color: $menu-label-color
+  font-size: 0.75em
   letter-spacing: 0.1em
   text-transform: uppercase
   &:not(:first-child)

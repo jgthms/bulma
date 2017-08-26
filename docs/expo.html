@@ -1,0 +1,151 @@
+---
+fulltitle: "Expo: beautiful websites designed Bulma"
+layout: default
+route: expo
+other:
+- name: Apache BookKeeper
+  url: https://lucperkins.github.io/bookkeeper/
+  date: "26 Jul 2017"
+websites:
+- name: Bashful Birdie
+  url: http://www.bashfulbirdie.com/
+  date: "24 Jul 2017"
+- name: Bugcraft Studio
+  url: https://noggaholic.github.io
+  date: "24 Jul 2017"
+- name: Booknshelf
+  url: https://booknshelf.com/
+  date: "20 Jul 2017"
+- name: MD5
+  url: https://desforets.github.io/md5/
+  date: "24 Jun 2017"
+- name: Driftrock
+  url: https://www.driftrock.com/
+  date: "13 Jul 2017"
+  highlighted: true
+- name: Jubiwee
+  url: https://www.jubiwee.com/fr/
+  date: "24 Jun 2017"
+- name: Pragonauts
+  url: http://pragonauts.com/
+  date: "23 Jun 2017"
+- name: Kappamon
+  url: https://kappamon.com/
+  date: "23 Jun 2017"
+- name: Elevo
+  url: http://www.elevo.fr/
+  date: "23 Jun 2017"
+- name: Oneday
+  url: https://www.oneday.design/
+  date: "8 Dec 2016"
+  highlighted: true
+- name: Buefy
+  url: https://buefy.github.io/
+  date: "10 Apr 2017"
+- name: Alt Three
+  url: https://alt-three.com/
+  date: "31 Mar 2016"
+---
+
+{% capture embrace_expo %}
+<div class="bd-embrace is-expo">
+  <p class="bd-embrace-text">
+    Did you design a gorgeous website with Bulma too? <strong>Tell us about it!</strong> <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>
+  </p>
+  <p class="bd-embrace-button">
+    <a class="bd-tw-button button"
+      data-social-network="Twitter"
+      data-social-action="tweet"
+      data-social-target="{{ site.url }}"
+      target="_blank"
+      href="https://twitter.com/intent/tweet?text={{ 'Here is my lovely website!' | urlencode }}&hashtags=madewithbulma&url={{ site.url }}">
+      <span class="icon">
+        <i class="fa fa-twitter"></i>
+      </span>
+      <span>
+        #madewithbulma
+      </span>
+    </a>
+  </p>
+</div>
+{% endcapture %}
+
+<div class="container">
+  {% include navbar.html id="ExpoHero" %}
+</div>
+
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1 class="title">
+            Expo
+          </h1>
+          <p class="subtitle">
+            How people used Bulma to design beautiful websites <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">😍</span>
+          </p>
+        </div>
+        <div class="column is-narrow">
+          {% include carbon.html %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="bd-expo">
+  <div class="container">
+    {{ embrace_expo }}
+
+    <div class="bd-websites">
+      {% for website in page.websites %}
+        {% assign imageName = website.name | slugify %}
+        {% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
+        <article class="bd-website {% if website.highlighted %}bd-is-highlighted{% endif %}">
+          <a class="bd-website-image" href="{{ website.url }}" target="_blank">
+            {% if website.highlighted %}
+              {% assign size1x = "1344x840" %}
+              {% assign size2x = "2688x1680" %}
+              <img
+                class="b-lazy"
+                src="{{ site.url }}/images/placeholders/empty.png"
+                data-src="{{ imagePath }}-{{ size1x }}.jpg"
+                data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+                             {{ imagePath }}-{{ size1x }}.jpg 1x"
+                width="1344"
+                height="840">
+            {% else %}
+              {% assign size1x = "672x420" %}
+              {% assign size2x = "1344x840" %}
+              <img
+                class="b-lazy"
+                src="{{ site.url }}/images/placeholders/empty.png"
+                data-src="{{ imagePath }}-{{ size1x }}.jpg"
+                data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+                             {{ imagePath }}-{{ size1x }}.jpg 1x"
+                width="672"
+                height="420">
+            {% endif %}
+            <span class="bd-website-overlay is-overlay"></span>
+          </a>
+          <h2 class="title is-5 bd-website-name is-marginless">
+            {{ website.name }}
+          </h2>
+          <p class="has-text-grey-light bd-website-date">
+            {{ website.date }}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+
+    {{ embrace_expo }}
+  </div>
+</main>
+
+<script src="{{ site.url }}/vendor/blazy-1.8.2.min.js"></script>
+<script type="text/javascript">
+  ;(function() {
+    var bLazy = new Blazy();
+  })();
+</script>
