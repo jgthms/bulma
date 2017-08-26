@@ -62,7 +62,10 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 @each $name, $pair in $colors
   $color: nth($pair, 1)
   .has-text-#{$name}
-    color: $color
+    @if $name == warning
+      color: darken($color, 35%)
+    @else
+      color: $color
   a.has-text-#{$name}
     &:hover,
     &:focus
