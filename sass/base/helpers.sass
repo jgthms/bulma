@@ -1,42 +1,13 @@
-// Display
-
-$displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
-
-@each $display in $displays
-  .is-#{$display}
-    display: #{$display}
-  .is-#{$display}-mobile
-    +mobile
-      display: #{$display} !important
-  .is-#{$display}-tablet
-    +tablet
-      display: #{$display} !important
-  .is-#{$display}-tablet-only
-    +tablet-only
-      display: #{$display} !important
-  .is-#{$display}-touch
-    +touch
-      display: #{$display} !important
-  .is-#{$display}-desktop
-    +desktop
-      display: #{$display} !important
-  .is-#{$display}-desktop-only
-    +desktop-only
-      display: #{$display} !important
-  .is-#{$display}-widescreen
-    +widescreen
-      display: #{$display} !important
-
 // Float
 
 .is-clearfix
   +clearfix
 
 .is-pulled-left
-  float: left
+  float: left !important
 
 .is-pulled-right
-  float: right
+  float: right !important
 
 // Overflow
 
@@ -48,57 +19,158 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 .is-overlay
   +overlay
 
-// Text
+// Typography
 
-.has-text-centered
-  text-align: center
+@each $size in $sizes
+  $i: index($sizes, $size)
+  .is-size-#{$i}
+    font-size: $size !important
+  +mobile
+    .is-size-#{$i}-mobile
+      font-size: $size !important
+  +tablet
+    .is-size-#{$i}-tablet
+      font-size: $size !important
+  +touch
+    .is-size-#{$i}-touch
+      font-size: $size !important
+  +desktop
+    .is-size-#{$i}-desktop
+      font-size: $size !important
+  +widescreen
+    .is-size-#{$i}-widescreen
+      font-size: $size !important
+  +fullhd
+    .is-size-#{$i}-fullhd
+      font-size: $size !important
 
-.has-text-left
-  text-align: left
+$alignments: ('centered': 'center', 'left': 'left', 'right': 'right')
 
-.has-text-right
-  text-align: right
+@each $alignment, $text-align in $alignments
+  .has-text-#{$alignment}
+    text-align: #{$text-align} !important
+  +mobile
+    .has-text-#{$alignment}-mobile
+      text-align: #{$text-align} !important
+  +tablet
+    .has-text-#{$alignment}-tablet
+      text-align: #{$text-align} !important
+  +tablet-only
+    .has-text-#{$alignment}-tablet-only
+      text-align: #{$text-align} !important
+  +touch
+    .has-text-#{$alignment}-touch
+      text-align: #{$text-align} !important
+  +desktop
+    .has-text-#{$alignment}-desktop
+      text-align: #{$text-align} !important
+  +desktop-only
+    .has-text-#{$alignment}-desktop-only
+      text-align: #{$text-align} !important
+  +widescreen
+    .has-text-#{$alignment}-widescreen
+      text-align: #{$text-align} !important
+  +widescreen-only
+    .has-text-#{$alignment}-widescreen-only
+      text-align: #{$text-align} !important
+  +fullhd
+    .has-text-#{$alignment}-fullhd
+      text-align: #{$text-align} !important
+
+.is-capitalized
+  text-transform: capitalize !important
+
+.is-lowercase
+  text-transform: lowercase !important
+
+.is-uppercase
+  text-transform: uppercase !important
 
 @each $name, $pair in $colors
   $color: nth($pair, 1)
   .has-text-#{$name}
-    color: $color
+    color: $color !important
   a.has-text-#{$name}
     &:hover,
     &:focus
-      color: darken($color, 10%)
+      color: darken($color, 10%) !important
+
+@each $name, $shade in $shades
+  .has-text-#{$name}
+    color: $shade !important
 
 // Visibility
+
+$displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
+
+@each $display in $displays
+  .is-#{$display}
+    display: #{$display} !important
+  +mobile
+    .is-#{$display}-mobile
+      display: #{$display} !important
+  +tablet
+    .is-#{$display}-tablet
+      display: #{$display} !important
+  +tablet-only
+    .is-#{$display}-tablet-only
+      display: #{$display} !important
+  +touch
+    .is-#{$display}-touch
+      display: #{$display} !important
+  +desktop
+    .is-#{$display}-desktop
+      display: #{$display} !important
+  +desktop-only
+    .is-#{$display}-desktop-only
+      display: #{$display} !important
+  +widescreen
+    .is-#{$display}-widescreen
+      display: #{$display} !important
+  +widescreen-only
+    .is-#{$display}-widescreen-only
+      display: #{$display} !important
+  +fullhd
+    .is-#{$display}-fullhd
+      display: #{$display} !important
 
 .is-hidden
   display: none !important
 
-.is-hidden-mobile
-  +mobile
++mobile
+  .is-hidden-mobile
     display: none !important
 
-.is-hidden-tablet
-  +tablet
++tablet
+  .is-hidden-tablet
     display: none !important
 
-.is-hidden-tablet-only
-  +tablet-only
++tablet-only
+  .is-hidden-tablet-only
     display: none !important
 
-.is-hidden-touch
-  +touch
++touch
+  .is-hidden-touch
     display: none !important
 
-.is-hidden-desktop
-  +desktop
++desktop
+  .is-hidden-desktop
     display: none !important
 
-.is-hidden-desktop-only
-  +desktop-only
++desktop-only
+  .is-hidden-desktop-only
     display: none !important
 
-.is-hidden-widescreen
-  +widescreen
++widescreen
+  .is-hidden-widescreen
+    display: none !important
+
++widescreen-only
+  .is-hidden-widescreen-only
+    display: none !important
+
++fullhd
+  .is-hidden-fullhd
     display: none !important
 
 // Other
@@ -108,6 +180,12 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
 .is-paddingless
   padding: 0 !important
+
+.is-radiusless
+  border-radius: 0 !important
+
+.is-shadowless
+  box-shadow: none !important
 
 .is-unselectable
   +unselectable

@@ -1,0 +1,16 @@
+.bd-callout
+  +block
+  background-color: $background
+  border-radius: $radius
+  padding-top: 1.25rem
+  padding-bottom: 1.25rem
+  padding-#{$left}: 1.5rem
+  padding-#{$right}: 2.5rem
+  position: relative
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert

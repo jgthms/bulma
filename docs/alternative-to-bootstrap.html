@@ -1,0 +1,206 @@
+---
+bulma:
+- type: "bulma"
+  icon: "css3"
+  title: "Modern features"
+  content: "By using the latest CSS3 features such as **Flexbox**, and planning on using **CSS Variables** and **CSS Grid**, Bulma aims to stay on the bleeding edge of browser technology."
+- type: "bulma"
+  icon: "pause"
+  title: "Simple grid system"
+  content: "To build a Bulma grid, you only need a single `.columns` container to wrap as many `.column` items as you want."
+- type: "bulma"
+  icon: "heart"
+  title: "Easy-to-learn syntax"
+  content: "With simple readable **class names** like `.button` or `.title`, and a straightforward **modifiers system** like `.is-primary` or `.is-large`, it's easy to pick up Bulma in **minutes**.<br>[More about modifiers](/documentation/modifiers/syntax/)"
+- type: "bulma"
+  icon: "fa"
+  title: "Font Awesome support"
+  content: "Bulma is compatible with [Font Awesome](http://fontawesome.io/) thanks to the `.icon` element."
+- type: "bulma"
+  icon: "plus"
+  title: "100+ useful CSS helpers"
+  content: 'Bulma ships with more than **100 helpers** to specify color, display, and spacing.<br>[Responsive helpers](/documentation/modifiers/responsive-helpers/) <span class="separator">–</span> [Typography helpers](/documentation/modifiers/typography-helpers/) <span class="separator">–</span> [Other helpers](/documentation/modifiers/helpers/)'
+- type: "bulma"
+  icon: "code"
+  title: "No JavaScript"
+  content: '<p>By focusing only on <strong>CSS</strong>, Bulma provides a lightweight solution that can easily be implemented in <strong>any development context</strong>.</p><blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr"><a href="https://t.co/vY1ZsRScYM">https://t.co/vY1ZsRScYM</a> -- a CSS framework by <a href="https://twitter.com/jgthms">@jgthms</a> -- is lovely! No JS included, which means no JS opinions included!</p>&mdash; Robert Stuttaford (@RobStuttaford) <a href="https://twitter.com/RobStuttaford/status/860885116909998080">May 6, 2017</a></blockquote>'
+bootstrap:
+- type: "bootstrap"
+  icon: "plug"
+  title: "jQuery plugins"
+  content: "Bootstrap includes useful jQuery plugins to add **interaction** to your website."
+- type: "bootstrap"
+  icon: "users"
+  title: "Big community"
+  content: "Considering how long it has been around, Bootstrap has a **larger community** than Bulma. As a result, more tools (like theming and plugins) are available, and more questions are answered around the internet."
+- type: "bootstrap"
+  icon: "internet-explorer"
+  title: "Internet Explorer compatibility"
+  content: "While 90% of Bulma works in IE11, Bootstrap has better **compatibility** with this browser."
+- type: "bootstrap"
+  icon: "list"
+  title: "Additional elements"
+  content: "Bootstrap has some **elements** like [list group](http://getbootstrap.com/components/#list-group), [wells](http://getbootstrap.com/components/#wells), or [page header](http://getbootstrap.com/components/#page-header) that Bulma doesn't have."
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+    <title>Bulma: an alternative to Bootstrap</title>
+
+    <link rel="stylesheet" href="{{ site.fontawesome }}">
+    <link rel="stylesheet" href="{{ site.url }}/css/bulma-docs.css">
+
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.url }}">
+
+    <meta property="og:url" content="{{site.url}}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{site.title}}">
+    <meta property="og:image" content="{{site.url}}/images/bulma-banner.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="{{site.description}}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@jgthms">
+    <meta name="twitter:creator" content="@jgthms">
+    <meta name="twitter:title" content="{{site.title}}">
+    <meta name="twitter:image" content="{{site.url}}/images/bulma-banner.png">
+    <meta name="twitter:description" content="{{site.description}}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{site.url}}/favicons/apple-touch-icon.png?v=201701041855">
+    <link rel="icon" type="image/png" href="{{site.url}}/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{site.url}}/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
+    <link rel="manifest" href="{{site.url}}/favicons/manifest.json?v=201701041855">
+    <link rel="mask-icon" href="{{site.url}}/favicons/safari-pinned-tab.svg?v=201701041855" color="#00d1b2">
+    <link rel="shortcut icon" href="{{site.url}}/favicons/favicon.ico?v=201701041855">
+    <meta name="msapplication-config" content="{{site.url}}/favicons/browserconfig.xml?v=201701041855">
+    <meta name="theme-color" content="#00d1b2">
+  </head>
+  <body>
+    <div class="container">
+      {% include navbar.html id="Documentation" %}
+    </div>
+
+    <main class="bd-bootstrap">
+      <section class="hero is-medium">
+        <div class="hero-body">
+          <div class="container">
+            <div class="columns is-vcentered">
+              <div class="column">
+                <h1 class="title">
+                  Bulma: an alternative to Bootstrap
+                </h1>
+                <p class="subtitle">
+                  Learn how Bulma can become a replacement for <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>
+                </p>
+              </div>
+              <div class="column is-narrow">
+                {% include carbon.html %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="section notification is-radiusless">
+      <h2 class="subtitle">
+        <div class="container">
+        Both Bulma and Bootstrap are <strong>CSS frameworks</strong> that allow developers to quickly <strong>build web interfaces</strong> with ease. While they have fairly similar features, they still differ in some ways, and you might wonder why you should choose one framework over the other. This page is here to help answer that.
+        </div>
+      </h2>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="columns is-desktop">
+          <div class="column is-half-desktop">
+            <h3 class="subtitle is-3 has-text-centered pros-heading">
+              Why choose <strong>Bulma</strong>
+            </h3>
+            <figure class="bd-pros-icon">
+              {% include svg/bulma-b.svg %}
+            </figure>
+            <div class="bd-pros-list">
+              {% for pro in page.bulma %}
+                {%
+                  include pro.html
+                  type=pro.type
+                  icon=pro.icon
+                  title=pro.title
+                  content=pro.content
+                %}
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="column is-half-desktop">
+            <h3 class="subtitle is-3 has-text-centered pros-heading">
+              Why choose <strong>Bootstrap</strong>
+            </h3>
+            <figure class="bd-pros-icon">
+              {% include svg/bootstrap-icon.svg %}
+            </figure>
+            <div class="bd-pros-list">
+              {% for pro in page.bootstrap %}
+                {%
+                  include pro.html
+                  type=pro.type
+                  icon=pro.icon
+                  title=pro.title
+                  content=pro.content
+                %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="section">
+      <div class="container">
+        <div class="bd-comparison">
+          <header class="bd-comparison-header has-text-centered">
+            <h2 class="title">
+              Comparison table
+            </h2>
+            <p class="subtitle">
+              See which elements of the framework exist (or not) in the other
+            </p>
+          </header>
+          <table class="table is-bordered is-fullwidth">
+            <thead>
+              <tr>
+                <th>{% include svg/bulma-b.svg %}Bulma</th>
+                <th>{% include svg/bootstrap-icon.svg %}Bootstrap</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>{% include svg/bulma-b.svg %}Bulma</th>
+                <th>{% include svg/bootstrap-icon.svg %}Bootstrap</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              {% include comparison.html %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    {% include footer.html %}
+  </body>
+</html>

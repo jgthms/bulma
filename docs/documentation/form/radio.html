@@ -1,0 +1,116 @@
+---
+title: Radio button
+layout: documentation
+doc-tab: form
+doc-subtab: radio
+---
+
+{% capture radio_example %}
+<div class="control">
+  <label class="radio">
+    <input type="radio" name="answer">
+    Yes
+  </label>
+  <label class="radio">
+    <input type="radio" name="answer">
+    No
+  </label>
+</div>
+{% endcapture %}
+
+{% capture radio_default_example %}
+<div class="control">
+  <label class="radio">
+    <input type="radio" name="foobar">
+    Foo
+  </label>
+  <label class="radio">
+    <input type="radio" name="foobar" checked>
+    Bar
+  </label>
+</div>
+{% endcapture %}
+
+{% capture radio_disabled_example %}
+<div class="control">
+  <label class="radio">
+    <input type="radio" name="rsvp">
+    Going
+  </label>
+  <label class="radio">
+    <input type="radio" name="rsvp">
+    Not going
+  </label>
+  <label class="radio" disabled>
+    <input type="radio" name="rsvp" disabled>
+    Maybe
+  </label>
+</div>
+{% endcapture %}
+
+{% include subnav-form.html %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Radio</h1>
+    <h2 class="subtitle">
+      The mutually exclusive <strong>radio buttons</strong> in their native format
+    </h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=false
+      variables=false
+    %}
+
+    <hr>
+
+    <div class="content">
+      <p>
+        The <code>radio</code> class is a simple wrapper around the <code>&lt;input type="radio"&gt;</code> HTML elements. It is intentionally not styled, to preserve cross-browser compatibility and the user experience.
+      </p>
+      <p>
+        Make sure the linked radio buttons have the <strong>same value</strong> for their <code>name</code> HTML attribute.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{radio_example}}
+      </div>
+      <div class="column is-half highlight-full">
+        {% highlight html %}{{radio_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        You can check a radio button by <strong>default</strong> by adding the <code>checked</code> HTML attribute to the <code>&lt;input&gt;</code> element.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{radio_default_example}}
+      </div>
+      <div class="column is-half highlight-full">
+        {% highlight html %}{{radio_default_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        You can add <strong>disable</strong> a radio button by adding the <code>disabled</code> HTML attribute to both the <code>&lt;label&gt;</code> and the <code>&lt;input&gt;</code>.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{radio_disabled_example}}
+      </div>
+      <div class="column is-half highlight-full">
+        {% highlight html %}{{radio_disabled_example}}{% endhighlight %}
+      </div>
+    </div>
+  </div>
+</section>

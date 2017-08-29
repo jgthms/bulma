@@ -2,7 +2,172 @@
 layout: documentation
 doc-tab: components
 doc-subtab: pagination
+variables:
+- name: $pagination-color
+  value: $grey-darker
+- name: $pagination-background
+  value: $white
+- name: $pagination-border-color
+  value: $grey-lighter
+- name: $pagination-margin
+  value: -0.25rem
+- name: $pagination-hover-color
+  value: $link-hover
+- name: $pagination-hover-border-color
+  value: $link-hover-border
+- name: $pagination-focus-color
+  value: $link-focus
+- name: $pagination-focus-border-color
+  value: $link-focus-border
+- name: $pagination-active-color
+  value: $link-active
+- name: $pagination-active-border-color
+  value: $link-active-border
+- name: $pagination-disabled-color
+  value: $grey
+- name: $pagination-disabled-background-color
+  value: $grey-lighter
+- name: $pagination-disabled-border-color
+  value: $grey-lighter
+- name: $pagination-current-color
+  value: $link-invert
+- name: $pagination-current-background-color
+  value: $link
+- name: $pagination-current-border-color
+  value: $link
+- name: $pagination-ellipsis-color
+  value: $grey-light
+- name: $pagination-shadow-inset
+  value: inset 0 1px 2px rgba($black, 0
 ---
+
+{% capture pagination_example %}
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li>
+      <a class="pagination-link" aria-label="Goto page 1">1</a>
+    </li>
+    <li>
+      <span class="pagination-ellipsis">&hellip;</span>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 45">45</a>
+    </li>
+    <li>
+      <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 47">47</a>
+    </li>
+    <li>
+      <span class="pagination-ellipsis">&hellip;</span>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 86">86</a>
+    </li>
+  </ul>
+</nav>
+{% endcapture %}
+
+{% capture pagination_options_example %}
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li>
+      <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 2">2</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 3">3</a>
+    </li>
+  </ul>
+</nav>
+{% endcapture %}
+
+{% capture pagination_centered_example %}
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  <a class="pagination-previous">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+  </ul>
+</nav>
+{% endcapture %}
+
+{% capture pagination_right_example %}
+<nav class="pagination is-right" role="navigation" aria-label="pagination">
+  <a class="pagination-previous">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+  </ul>
+</nav>
+{% endcapture %}
+
+{% capture pagination_small_example %}
+<nav class="pagination is-small" role="navigation" aria-label="pagination">
+  <a class="pagination-previous">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+  </ul>
+</nav>
+{% endcapture %}
+
+{% capture pagination_medium_example %}
+<nav class="pagination is-medium" role="navigation" aria-label="pagination">
+  <a class="pagination-previous">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+  </ul>
+</nav>
+{% endcapture %}
+
+{% capture pagination_large_example %}
+<nav class="pagination is-large" role="navigation" aria-label="pagination">
+  <a class="pagination-previous">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+  </ul>
+</nav>
+{% endcapture %}
 
 {% include subnav-components.html %}
 
@@ -10,6 +175,12 @@ doc-subtab: pagination
   <div class="container">
     <h1 class="title">Pagination</h1>
     <h2 class="subtitle">A responsive, usable, and flexible <strong>pagination</strong></h2>
+    {%
+      include meta.html
+      colors=false
+      sizes=true
+      variables=true
+    %}
 
     <hr>
 
@@ -38,41 +209,11 @@ doc-subtab: pagination
       </p>
     </div>
 
-{% capture pagination_example %}
-<nav class="pagination">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li>
-      <a class="pagination-link">1</a>
-    </li>
-    <li>
-      <span class="pagination-ellipsis">&hellip;</span>
-    </li>
-    <li>
-      <a class="pagination-link">45</a>
-    </li>
-    <li>
-      <a class="pagination-link is-current">46</a>
-    </li>
-    <li>
-      <a class="pagination-link">47</a>
-    </li>
-    <li>
-      <span class="pagination-ellipsis">&hellip;</span>
-    </li>
-    <li>
-      <a class="pagination-link">86</a>
-    </li>
-  </ul>
-</nav>
-{% endcapture %}
-<div class="example">
-{{pagination_example}}
-</div>
-{% highlight html %}
-{{pagination_example}}
-{% endhighlight %}
+    <div class="bd-example">
+      {{pagination_example}}
+    </div>
+
+    {% highlight html %}{{pagination_example}}{% endhighlight %}
 
     <div class="content">
       <p>
@@ -80,29 +221,11 @@ doc-subtab: pagination
       </p>
     </div>
 
-{% capture pagination_options_example %}
-<nav class="pagination">
-  <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li>
-      <a class="pagination-link is-current">1</a>
-    </li>
-    <li>
-      <a class="pagination-link">2</a>
-    </li>
-    <li>
-      <a class="pagination-link">3</a>
-    </li>
-  </ul>
-</nav>
-{% endcapture %}
-<div class="example">
-{{pagination_options_example}}
-</div>
-{% highlight html %}
-{{pagination_options_example}}
-{% endhighlight %}
+    <div class="bd-example">
+      {{pagination_options_example}}
+    </div>
+
+    {% highlight html %}{{pagination_options_example}}{% endhighlight %}
 
     <div class="content">
       <p>
@@ -110,117 +233,42 @@ doc-subtab: pagination
       </p>
     </div>
 
-{% capture pagination_centered_example %}
-<nav class="pagination is-centered">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link">1</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">45</a></li>
-    <li><a class="pagination-link is-current">46</a></li>
-    <li><a class="pagination-link">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">86</a></li>
-  </ul>
-</nav>
-{% endcapture %}
-<div class="example">
-{{pagination_centered_example}}
-</div>
-{% highlight html %}
-{{pagination_centered_example}}
-{% endhighlight %}
+    <div class="bd-example">
+      {{pagination_centered_example}}
+    </div>
 
-{% capture pagination_right_example %}
-<nav class="pagination is-right">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link">1</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">45</a></li>
-    <li><a class="pagination-link is-current">46</a></li>
-    <li><a class="pagination-link">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">86</a></li>
-  </ul>
-</nav>
-{% endcapture %}
-<div class="example">
-{{pagination_right_example}}
-</div>
-{% highlight html %}
-{{pagination_right_example}}
-{% endhighlight %}
+    {% highlight html %}{{pagination_centered_example}}{% endhighlight %}
 
-    <hr>
+    <div class="bd-example">
+      {{pagination_right_example}}
+    </div>
 
-    <h2 class="title">Sizes <span class="tag is-success">New!</span></h2>
+    {% highlight html %}{{pagination_right_example}}{% endhighlight %}
+
+    <hr style="margin-bottom: 0;">
+
+    <h2 id="sizes" class="title" style="padding-top: 1.5rem;">
+      Sizes
+    </h2>
+
     <p class="content">
       The pagination comes in <strong>3 additional sizes</strong>.<br>
       You only need to append the <strong>modifier</strong> <code>is-small</code>, <code>is-medium</code>, or <code>is-large</code> to the <code>pagination</code> component.
     </p>
 
-{% capture pagination_small_example %}
-<nav class="pagination is-small">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link">1</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">45</a></li>
-    <li><a class="pagination-link is-current">46</a></li>
-    <li><a class="pagination-link">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">86</a></li>
-  </ul>
-</nav>
-{% endcapture %}
-
-    <div class="example">
+    <div class="bd-example">
       {{pagination_small_example}}
     </div>
 
-{% capture pagination_medium_example %}
-<nav class="pagination is-medium">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link">1</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">45</a></li>
-    <li><a class="pagination-link is-current">46</a></li>
-    <li><a class="pagination-link">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">86</a></li>
-  </ul>
-</nav>
-{% endcapture %}
-
-    <div class="example">
+    <div class="bd-example">
       {{pagination_medium_example}}
     </div>
 
-{% capture pagination_large_example %}
-<nav class="pagination is-large">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link">1</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">45</a></li>
-    <li><a class="pagination-link is-current">46</a></li>
-    <li><a class="pagination-link">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link">86</a></li>
-  </ul>
-</nav>
-{% endcapture %}
-
-    <div class="example">
+    <div class="bd-example">
       {{pagination_large_example}}
     </div>
+
+    {% include variables.html %}
 
   </div>
 </section>
