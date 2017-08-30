@@ -9549,29 +9549,19 @@ html.route-index #carbon {
 }
 
 .bd-example,
-.bd-structure {
+.bd-structure,
+.bd-snippet {
   border: 1px solid #ffdd57;
-  border-top-right-radius: 3px;
-  color: rgba(0, 0, 0, 0.7);
-  padding: 1.5rem;
   position: relative;
 }
 
-.bd-example:not(:first-child),
-.bd-structure:not(:first-child) {
-  margin-top: 2rem;
-}
-
-.bd-example:not(:last-child),
-.bd-structure:not(:last-child) {
-  margin-bottom: 1.5rem;
-}
-
 .bd-example:before,
-.bd-structure:before {
+.bd-structure:before,
+.bd-snippet:before {
   background: #ffdd57;
   border-radius: 3px 3px 0 0;
   bottom: 100%;
+  color: rgba(0, 0, 0, 0.7);
   content: "Example";
   display: inline-block;
   font-size: 7px;
@@ -9586,11 +9576,27 @@ html.route-index #carbon {
 
 @media screen and (min-width: 769px), print {
   .bd-example.is-fullwidth,
-  .bd-structure.is-fullwidth {
+  .bd-structure.is-fullwidth,
+  .bd-snippet.is-fullwidth {
     border-left: none;
     border-right: none;
     padding: 0;
   }
+}
+
+.bd-example,
+.bd-structure {
+  padding: 1.5rem;
+}
+
+.bd-example:not(:first-child),
+.bd-structure:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.bd-example:not(:last-child),
+.bd-structure:not(:last-child) {
+  margin-bottom: 1.5rem;
 }
 
 .bd-example + .highlight {
@@ -9604,9 +9610,56 @@ html.route-index #carbon {
   margin-bottom: 1.5rem;
 }
 
+.bd-snippet {
+  border: 1px solid #ffdd57;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.bd-snippet:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.bd-snippet::before {
+  content: "Snippet";
+}
+
+@media screen and (min-width: 769px), print {
+  .bd-snippet {
+    align-items: stretch;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 769px), print {
+  .bd-snippet-preview,
+  .bd-snippet-code {
+    width: 50%;
+  }
+}
+
+.bd-snippet-preview {
+  padding: 1.5rem;
+}
+
+.bd-snippet-code {
+  background-color: whitesmoke;
+}
+
+@media screen and (min-width: 769px), print {
+  .bd-snippet-code {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+  .bd-snippet-code .highlight {
+    flex-grow: 1;
+  }
+}
+
 .highlight.bd-is-hovering {
   border-radius: 2px;
-  box-shadow: 0 0 0 3px #dbdbdb;
+  box-shadow: 0 0 0 2px #ffdd57;
 }
 
 .highlight pre {
@@ -9706,8 +9759,8 @@ html.route-index #carbon {
 
 .highlight .bd-copy:hover,
 .highlight .bd-expand:hover {
-  background-color: #4a4a4a;
-  color: white;
+  background-color: #ffdd57;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .highlight .bd-expand {
