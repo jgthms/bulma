@@ -1,18 +1,13 @@
 .bd-example,
-.bd-structure
-  border: 1px solid $warning
-  border-top-right-radius: $radius
-  color: $warning-invert
-  padding: 1.5rem
+.bd-structure,
+.bd-snippet
+  border: 1px solid $yellow
   position: relative
-  &:not(:first-child)
-    margin-top: 2rem
-  &:not(:last-child)
-    margin-bottom: 1.5rem
   &:before
-    background: $warning
+    background: $yellow
     border-radius: $radius $radius 0 0
     bottom: 100%
+    color: $yellow-invert
     content: "Example"
     display: inline-block
     font-size: 7px
@@ -29,18 +24,56 @@
       border-right: none
       padding: 0
 
+.bd-example,
+.bd-structure
+  padding: 1.5rem
+  &:not(:first-child)
+    margin-top: 2rem
+  &:not(:last-child)
+    margin-bottom: 1.5rem
+
 .bd-example
   & + .highlight
-    border: 1px solid $warning
+    border: 1px solid $yellow
     border-radius: 0 0 $radius $radius
     border-top: none
     margin-top: -1.5rem
     &:not(:last-child)
       margin-bottom: 1.5rem
 
+// Snippet
+.bd-snippet
+  +block
+  border: 1px solid $yellow
+  margin-top: 2rem
+  position: relative
+  &::before
+    content: "Snippet"
+  +tablet
+    align-items: stretch
+    display: flex
+
+.bd-snippet-preview,
+.bd-snippet-code
+  +tablet
+    width: 50%
+
+.bd-snippet-preview
+  padding: 1.5rem
+
+.bd-snippet-code
+  background-color: $pre-background
+  +tablet
+    align-items: stretch
+    display: flex
+    flex-direction: column
+    .highlight
+      flex-grow: 1
+
+// Highlight
 .highlight.bd-is-hovering
   border-radius: 2px
-  box-shadow: 0 0 0 3px $border
+  box-shadow: 0 0 0 2px $yellow
 
 .highlight pre
   max-height: 480px
@@ -111,8 +144,8 @@ $structure-invert: $danger-invert
     right: 0.25rem
     top: 0.25rem
     &:hover
-      background-color: $text
-      color: $white
+      background-color: $yellow
+      color: $yellow-invert
   .bd-expand
     right: 45px
   +tablet
