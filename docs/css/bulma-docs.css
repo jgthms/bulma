@@ -9622,20 +9622,8 @@ html.route-index #carbon {
 
 .bd-snippet::before {
   content: "Snippet";
-}
-
-@media screen and (min-width: 769px), print {
-  .bd-snippet {
-    align-items: stretch;
-    display: flex;
-  }
-}
-
-@media screen and (min-width: 769px), print {
-  .bd-snippet-preview,
-  .bd-snippet-code {
-    width: 50%;
-  }
+  align-items: stretch;
+  display: flex;
 }
 
 .bd-snippet-preview {
@@ -9646,21 +9634,36 @@ html.route-index #carbon {
   background-color: whitesmoke;
 }
 
-@media screen and (min-width: 769px), print {
-  .bd-snippet-code,
-  .bd-snippet-code .highlight,
-  .bd-snippet-code .highlight pre {
+@media screen and (min-width: 1008px) {
+  .bd-snippet.bd-is-vertical {
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+  }
+  .bd-snippet.bd-is-vertical .bd-snippet-preview,
+  .bd-snippet.bd-is-vertical .bd-snippet-code {
+    width: 50%;
+  }
+  .bd-snippet.bd-is-vertical .bd-snippet-code,
+  .bd-snippet.bd-is-vertical .bd-snippet-code .highlight,
+  .bd-snippet.bd-is-vertical .bd-snippet-code .highlight pre {
     align-items: stretch;
     display: flex;
     flex-direction: column;
   }
-  .bd-snippet-code .highlight,
-  .bd-snippet-code .highlight pre,
-  .bd-snippet-code .highlight .language-html {
+  .bd-snippet.bd-is-vertical .bd-snippet-code .highlight,
+  .bd-snippet.bd-is-vertical .bd-snippet-code .highlight pre,
+  .bd-snippet.bd-is-vertical .bd-snippet-code .highlight .language-html {
     flex-grow: 1;
   }
-  .bd-snippet-code .highlight pre {
+  .bd-snippet.bd-is-vertical .bd-snippet-code .highlight pre {
     white-space: pre;
+  }
+  .bd-snippet.bd-is-vertical.bd-is-one-third .bd-snippet-preview {
+    width: 33.3333%;
+  }
+  .bd-snippet.bd-is-vertical.bd-is-one-third .bd-snippet-code {
+    width: 66.6666%;
   }
 }
 
@@ -9670,7 +9673,7 @@ html.route-index #carbon {
 }
 
 .highlight pre {
-  max-height: 480px;
+  max-height: 320px;
   margin-bottom: 0 !important;
   padding: 0;
 }

@@ -1,8 +1,12 @@
-<div class="bd-snippet">
+<div class="
+  bd-snippet
+  {% if include.horizontal %}bd-is-horizontal{% else %}bd-is-vertical{% endif %}
+  {% if include.size %}bd-is-{{ include.size }}{% endif %}
+  ">
   <div class="bd-snippet-preview">
     {{ include.content }}
   </div>
-  <div class="bd-snippet-code {%unless include.clipped %}highlight-full{% endunless %}">
+  <div class="bd-snippet-code {% unless include.clipped %}highlight-full{% endunless %}">
     {% highlight html %}{{ include.content }}{% endhighlight %}
   </div>
 </div>

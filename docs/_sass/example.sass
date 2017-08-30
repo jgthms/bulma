@@ -49,33 +49,41 @@
   position: relative
   &::before
     content: "Snippet"
-  +tablet
     align-items: stretch
     display: flex
-
-.bd-snippet-preview,
-.bd-snippet-code
-  +tablet
-    width: 50%
 
 .bd-snippet-preview
   padding: 1.5rem
 
 .bd-snippet-code
   background-color: $pre-background
-  +tablet
-    &,
-    .highlight,
-    .highlight pre
-      align-items: stretch
-      display: flex
-      flex-direction: column
-    .highlight,
-    .highlight pre,
-    .highlight .language-html
-      flex-grow: 1
-    .highlight pre
-      white-space: pre
+
++desktop
+  .bd-snippet.bd-is-vertical
+    align-items: stretch
+    display: flex
+    justify-content: center
+    .bd-snippet-preview,
+    .bd-snippet-code
+      width: 50%
+    .bd-snippet-code
+      &,
+      .highlight,
+      .highlight pre
+        align-items: stretch
+        display: flex
+        flex-direction: column
+      .highlight,
+      .highlight pre,
+      .highlight .language-html
+        flex-grow: 1
+      .highlight pre
+        white-space: pre
+    &.bd-is-one-third
+      .bd-snippet-preview
+        width: 33.3333%
+      .bd-snippet-code
+        width: 66.6666%
 
 // Highlight
 .highlight.bd-is-hovering
@@ -83,7 +91,7 @@
   box-shadow: 0 0 0 2px $yellow
 
 .highlight pre
-  max-height: 480px
+  max-height: 320px
   margin-bottom: 0 !important
   padding: 0
   code
