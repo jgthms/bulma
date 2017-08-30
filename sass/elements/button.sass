@@ -7,6 +7,8 @@ $button-hover-border-color: $link-hover-border !default
 
 $button-focus-color: $link-focus !default
 $button-focus-border-color: $link-focus-border !default
+$button-focus-box-shadow-size: 0 0 0 0.125em !default
+$button-focus-box-shadow-color: rgba($link, 0.25) !default
 
 $button-active-color: $link-active !default
 $button-active-border-color: $link-active-border !default
@@ -23,8 +25,6 @@ $button-disabled-opacity: 0.5 !default
 $button-static-color: $grey !default
 $button-static-background-color: $white-ter !default
 $button-static-border-color: $grey-lighter !default
-
-$button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
@@ -73,12 +73,12 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
   &:focus,
   &.is-focused
     border-color: $button-focus-border-color
-    // box-shadow: 0 0 0.5em rgba($button-focus-border-color, 0.25)
     color: $button-focus-color
+    &:not(:active)
+      box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color
   &:active,
   &.is-active
     border-color: $button-active-border-color
-    box-shadow: $button-shadow-inset
     color: $button-active-color
   // Colors
   &.is-link
@@ -89,10 +89,12 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
     &:hover,
     &.is-hovered,
     &:focus,
-    &.is-focused,
+    &.is-focused
+      background-color: $button-link-hover-background-color
+      color: $button-link-hover-color
     &:active,
     &.is-active
-      background-color: $button-link-hover-background-color
+      background-color: darken($button-link-hover-background-color, 5%)
       color: $button-link-hover-color
     &[disabled]
       background-color: transparent
@@ -113,13 +115,13 @@ $button-shadow-inset: inset 0 1px 2px rgba($black, 0.2) !default
       &:focus,
       &.is-focused
         border-color: transparent
-        box-shadow: 0 0 0.5em rgba($color, 0.25)
         color: $color-invert
+        &:not(:active)
+          box-shadow: $button-focus-box-shadow-size rgba($color, 0.25)
       &:active,
       &.is-active
         background-color: darken($color, 5%)
         border-color: transparent
-        box-shadow: $button-shadow-inset
         color: $color-invert
       &[disabled]
         background-color: $color

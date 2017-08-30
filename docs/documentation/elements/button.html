@@ -18,6 +18,10 @@ variables:
   value: $link-focus
 - name: $button-focus-border-color
   value: $link-focus-border
+- name: $button-focus-box-shadow-size
+  value: 0 0 0 0.125em
+- name: $button-focus-box-shadow-color
+  value: rgba($link, 0.25)
 - name: $button-active-color
   value: $link-active
 - name: $button-active-border-color
@@ -48,6 +52,13 @@ variables:
 
 {% capture button_example %}
 <a class="button">Button</a>
+{% endcapture %}
+
+{% capture button_tags_example %}
+<a class="button">Anchor</a>
+<button class="button">Button</button>
+<input class="button" type="submit" value="Submit input">
+<input class="button" type="reset" value="Reset input">
 {% endcapture %}
 
 {% capture button_colors_a_example %}
@@ -408,12 +419,47 @@ variables:
 
     <hr>
 
+    <div class="content">
+      <p>
+        The <strong>button</strong> is an essential element of any design. It's meant to look an behave as an <strong>interactive</strong> element of your page.
+      </p>
+    </div>
+
     <div class="columns">
       <div class="column">
         {{button_example}}
       </div>
       <div class="column">
         {% highlight html %}{{button_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        The <code>.button</code> class can be used on:
+      </p>
+      <ul>
+        <li>
+          <code>&lt;a&gt;</code> anchor links
+        </li>
+        <li>
+          <code>&lt;button&gt;</code> form buttons
+        </li>
+        <li>
+          <code>&lt;input type="submit"&gt;</code> submit inputs
+        </li>
+        <li>
+          <code>&lt;input type="reset"&gt;</code> reset inputs
+        </li>
+      </ul>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        {{button_tags_example}}
+      </div>
+      <div class="column">
+        {% highlight html %}{{button_tags_example}}{% endhighlight %}
       </div>
     </div>
 
