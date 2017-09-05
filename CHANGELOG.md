@@ -9,6 +9,7 @@
 
 ### Issues closed
 
+* #1106 `pagination` docs
 * #1063 `$family-primary` customization
 
 ## 0.5.1
