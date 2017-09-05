@@ -45,13 +45,16 @@ $navbar-divider-background-color: $border !default
   &.has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
 
-.navbar-brand
-  +overflow-touch
+.navbar-brand,
+.navbar-tabs
   align-items: stretch
   display: flex
   flex-shrink: 0
-  max-width: 100vw
   min-height: $navbar-height
+
+.navbar-tabs
+  +overflow-touch
+  max-width: 100vw
   overflow-x: auto
   overflow-y: hidden
 
@@ -124,7 +127,8 @@ a.navbar-item,
 +touch
   .navbar > .container
     display: block
-  .navbar-brand
+  .navbar-brand,
+  .navbar-tabs
     .navbar-item
       align-items: center
       display: flex
@@ -235,8 +239,10 @@ a.navbar-item,
   .navbar-divider
     display: block
   .container > .navbar
-    margin-left: -1rem
-    margin-right: -1rem
+    .navbar-brand
+      margin-left: -1rem
+    .navbar-menu
+      margin-right: -1rem
   // Hover/Active states
   a.navbar-item,
   .navbar-link
