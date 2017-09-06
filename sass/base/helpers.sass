@@ -21,28 +21,31 @@
 
 // Typography
 
-@each $size in $sizes
-  $i: index($sizes, $size)
-  .is-size-#{$i}
-    font-size: $size !important
-  +mobile
-    .is-size-#{$i}-mobile
+=typography-size($target:'')
+  @each $size in $sizes
+    $i: index($sizes, $size)
+    .is-size-#{$i}#{if($target == '', '', '-' + $target)}
       font-size: $size !important
-  +tablet
-    .is-size-#{$i}-tablet
-      font-size: $size !important
-  +touch
-    .is-size-#{$i}-touch
-      font-size: $size !important
-  +desktop
-    .is-size-#{$i}-desktop
-      font-size: $size !important
-  +widescreen
-    .is-size-#{$i}-widescreen
-      font-size: $size !important
-  +fullhd
-    .is-size-#{$i}-fullhd
-      font-size: $size !important
+
++typography-size()
+
++mobile
+  +typography-size('mobile')
+
++tablet
+  +typography-size('tablet')
+
++touch
+  +typography-size('touch')
+
++desktop
+  +typography-size('desktop')
+
++widescreen
+  +typography-size('widescreen')
+
++fullhd
+  +typography-size('fullhd')
 
 $alignments: ('centered': 'center', 'left': 'left', 'right': 'right')
 

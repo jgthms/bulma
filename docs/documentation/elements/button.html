@@ -18,6 +18,10 @@ variables:
   value: $link-focus
 - name: $button-focus-border-color
   value: $link-focus-border
+- name: $button-focus-box-shadow-size
+  value: 0 0 0 0.125em
+- name: $button-focus-box-shadow-color
+  value: rgba($link, 0.25)
 - name: $button-active-color
   value: $link-active
 - name: $button-active-border-color
@@ -48,6 +52,13 @@ variables:
 
 {% capture button_example %}
 <a class="button">Button</a>
+{% endcapture %}
+
+{% capture button_tags_example %}
+<a class="button">Anchor</a>
+<button class="button">Button</button>
+<input class="button" type="submit" value="Submit input">
+<input class="button" type="reset" value="Reset input">
 {% endcapture %}
 
 {% capture button_colors_a_example %}
@@ -408,59 +419,51 @@ variables:
 
     <hr>
 
-    <div class="columns">
-      <div class="column">
-        {{button_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_example}}{% endhighlight %}
-      </div>
+    <div class="content">
+      <p>
+        The <strong>button</strong> is an essential element of any design. It's meant to look and behave as an <strong>interactive</strong> element of your page.
+      </p>
     </div>
+
+    {% include snippet.html content=button_example %}
+
+    <div class="content">
+      <p>
+        The <code>.button</code> class can be used on:
+      </p>
+      <ul>
+        <li>
+          <code>&lt;a&gt;</code> anchor links
+        </li>
+        <li>
+          <code>&lt;button&gt;</code> form buttons
+        </li>
+        <li>
+          <code>&lt;input type="submit"&gt;</code> submit inputs
+        </li>
+        <li>
+          <code>&lt;input type="reset"&gt;</code> reset inputs
+        </li>
+      </ul>
+    </div>
+
+    {% include snippet.html content=button_tags_example %}
 
     {% include anchor.html name="Colors" %}
 
-    <div class="columns">
-      <div class="column">
-        {{button_colors_a_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_colors_a_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_colors_a_example %}
 
-    <div class="columns">
-      <div class="column">
-        {{button_colors_b_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_colors_b_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_colors_b_example %}
 
     {% include anchor.html name="Sizes" %}
 
-    <div class="columns">
-      <div class="column">
-        {{button_sizes_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_sizes_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_sizes_example %}
 
-    <hr>
+    {% include anchor.html name="Styles" %}
 
-    <h3 class="title">Styles</h3>
     <h4 class="subtitle">Outlined</h4>
 
-    <div class="columns">
-      <div class="column">
-        {{button_outlined_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_outlined_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_outlined_example %}
 
     <h4 class="subtitle">Inverted (the text color becomes the background color, and vice-versa)</h4>
 
@@ -471,7 +474,7 @@ variables:
         </div>
       </div>
       <div class="column">
-    {% highlight html %}{{button_inverted_example}}{% endhighlight %}
+        {% highlight html %}{{button_inverted_example}}{% endhighlight %}
       </div>
     </div>
 
@@ -488,52 +491,23 @@ variables:
       </div>
     </div>
 
-    <hr>
+    {% include anchor.html name="States" %}
 
-    <h3 class="title">States</h3>
     <h4 class="subtitle">Normal</h4>
 
-    <div class="columns">
-      <div class="column">
-        {{button_normal_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_normal_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_normal_example %}
 
     <h4 class="subtitle">Hover</h4>
 
-    <div class="columns">
-      <div class="column">
-        {{button_hover_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_hover_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_hover_example %}
 
     <h4 class="subtitle">Focus</h4>
 
-    <div class="columns">
-      <div class="column">
-        {{button_focus_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_focus_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_focus_example %}
 
     <h4 class="subtitle">Active</h4>
 
-    <div class="columns">
-      <div class="column">
-        {{button_active_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_active_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_active_example %}
 
     <h4 class="subtitle">Loading</h4>
 
@@ -597,14 +571,7 @@ variables:
 
     <h4 class="subtitle">With Font Awesome icons</h4>
 
-    <div class="columns">
-      <div class="column">
-        {{button_fa_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_fa_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=button_fa_example %}
 
     <div class="columns">
       <div class="column">
@@ -623,40 +590,29 @@ variables:
       </div>
     </div>
 
-    <hr>
+    {% include anchor.html name="Button group" %}
 
-    <h3 class="title">Button group</h3>
     <div class="content">
-      <p>If you want to <strong>group</strong> buttons together, use the <code>is-grouped</code> modifier on the <code>field</code> container:</p>
+      <p>If you want to <strong>group</strong> buttons together on a <strong>single line</strong>, use the <code>is-grouped</code> modifier on the <code>field</code> container:</p>
     </div>
-    <div class="bd-example">
-      {{button_group_example}}
-    </div>
-    {% highlight html %}{{button_group_example}}{% endhighlight %}
 
-    <hr>
+    {% include snippet.html content=button_group_example %}
 
-    <h3 class="title">Button addons</h3>
+    {% include anchor.html name="Button addons" %}
+
     <div class="content">
       <p>If you want to use buttons as <strong>addons</strong>, use the <code>has-addons</code> modifier on the <code>field</code> container:</p>
     </div>
 
-    <div class="bd-example">
-      {{button_addons_example}}
-    </div>
-    {% highlight html %}{{button_addons_example}}{% endhighlight %}
+    {% include snippet.html content=button_addons_example %}
 
-    <hr>
+    {% include anchor.html name="Button group with addons" %}
 
-    <h3 class="title">Button group with addons</h3>
     <div class="content">
       <p>You can group together addons as well:</p>
     </div>
 
-    <div class="bd-example">
-      {{button_group_addons_example}}
-    </div>
-    {% highlight html %}{{button_group_addons_example}}{% endhighlight %}
+    {% include snippet.html content=button_group_addons_example %}
 
     {% include variables.html %}
 

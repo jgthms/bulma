@@ -4,11 +4,17 @@ svg
 
 $carbon-space: 15px
 
-#carbon
+#carboncontainer
+  align-items: center
+  display: flex
+  justify-content: center
   margin-left: auto
   margin-right: auto
   max-width: 340px
   min-height: 120px + ($carbon-space * 2)
+
+#carbon
+  flex-grow: 1
   padding: 0
   position: relative
   &:hover
@@ -23,28 +29,36 @@ $carbon-space: 15px
   span
     display: block
   .carbon-wrap
+    min-height: 130px
     position: relative
   .carbon-img
-    background: $background
+    bottom: 0
     float: left
-    height: 100px
-    margin: 15px 0 15px 15px
-    width: 130px
+    left: 0
+    min-height: 130px
+    padding: 15px 0 15px 15px
+    position: absolute
+    top: 0
+    width: 145px
     img
       display: block
       height: 100px
       width: 130px
+    &:hover
+      opacity: 0.9
+    &:active
+      opacity: 0.8
+  a:hover
+    text-decoration: underline
   .carbon-text
     display: block
     color: $text-strong
     line-height: 20px
     padding: 15px 15px 35px 160px
   .carbon-poweredby
-    bottom: 0
+    bottom: 10px
     color: $text-light
+    display: inline
     font-size: $size-small
-    left: 160px
-    line-height: 20px
-    padding: 0 15px 10px 0
     position: absolute
-    right: 0
+    right: 10px

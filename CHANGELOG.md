@@ -2,9 +2,15 @@
 
 ## 0.5.2
 
+### New features
+
+* Added `$button-focus-box-shadow-size` and `$button-focus-box-shadow-color` for customization
+* Added `$input-focus-box-shadow-size` and `$input-focus-box-shadow-color` for customization
+
 ### Issues closed
 
-* #1063 `$family-primary` customisation
+* #1106 `pagination` docs
+* #1063 `$family-primary` customization
 
 ## 0.5.1
 

@@ -591,16 +591,7 @@ variables:
       </ul>
     </div>
 
-    <div class="columns">
-      <div class="column">
-        <div class="bd-example">
-          {{ file }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ file }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=file %}
 
     {% include anchor.html name="Modifiers" %}
 
@@ -686,28 +677,20 @@ variables:
 
     {% include anchor.html name="Colors" %}
 
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can style the file element by appending one of the <strong>9 color modifiers</strong>:
-          </p>
-          <ul>
-            {% for color in site.colors %}
-              <li>
-                <code>is-{{ color }}</code>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="bd-example">
-          {{ file_colors }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ file_colors }}{% endhighlight %}
-      </div>
+    <div class="content">
+      <p>
+        You can style the file element by appending one of the <strong>9 color modifiers</strong>:
+      </p>
+      <ul>
+        {% for color in site.colors %}
+          <li>
+            <code>is-{{ color }}</code>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
+
+    {% include snippet.html content=file_colors clipped=true %}
 
     {% include anchor.html name="Sizes" %}
 
@@ -728,49 +711,13 @@ variables:
       </ul>
     </div>
 
-    <div class="columns">
-      <div class="column">
-        <div class="bd-example">
-          {{ file_sizes }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ file_sizes }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=file_sizes clipped=true %}
 
-    <div class="columns">
-      <div class="column">
-        <div class="bd-example">
-          {{ file_sizes_name }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ file_sizes_name }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=file_sizes_name clipped=true %}
 
-    <div class="columns">
-      <div class="column">
-        <div class="bd-example">
-          {{ file_sizes_boxed }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ file_sizes_boxed }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=file_sizes_boxed clipped=true %}
 
-    <div class="columns">
-      <div class="column">
-        <div class="bd-example">
-          {{ file_sizes_boxed_name }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ file_sizes_boxed_name }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=file_sizes_boxed_name clipped=true %}
 
     {% include anchor.html name="Alignment" %}
 
@@ -788,27 +735,9 @@ variables:
       </ul>
     </div>
 
-    <div class="columns">
-      <div class="column">
-        <div class="bd-example">
-          {{ file_centered }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ file_centered }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=file_centered %}
 
-    <div class="columns">
-      <div class="column">
-        <div class="bd-example">
-          {{ file_right }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ file_right }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=file_right %}
 
     {% include anchor.html name="JavaScript" %}
 
