@@ -11,6 +11,9 @@
 
 ### Issues closed
 
+* #930 Remove `vertical-align: top` for icons
+* #735 Font awesome custom `font-size`
+* #395 Font awesome stacked icons
 * #1152 Level-items not centered horizontally on mobile
 * #1147 Add `text-size-adjust: 100%` to `html`
 * #1106 `pagination` docs
