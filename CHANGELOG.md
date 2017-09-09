@@ -11,6 +11,7 @@
 
 ### Issues closed
 
+* #331 Support for third party icons
 * #930 Remove `vertical-align: top` for icons
 * #735 Font awesome custom `font-size`
 * #395 Font awesome stacked icons
