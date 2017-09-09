@@ -100,7 +100,7 @@ variables:
 {% capture navbar_menu_example %}
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <!-- navbar items, nav burger ... -->
+    <!-- navbar items, navbar burger ... -->
   </div>
   <div class="navbar-menu">
     <!-- navbar start, navbar end -->
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Get all "navbar-burger" elements
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Check if there are any nav burgers
+  // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
 
     // Add a click event on each of them
@@ -517,6 +517,132 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 {% endcapture %}
 
+{% capture navbar_color_default %}
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo-white.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    </a>
+    <div class="navbar-burger burger" data-target="navMenuColorDefault-example">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenuColorDefault-example" class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown is-active">
+        <a class="navbar-link" href="/documentation/overview/start/">
+          Docs
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="/documentation/overview/start/">
+            Overview
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/modifiers/syntax/">
+            Modifiers
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/columns/basics/">
+            Columns
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/layout/container/">
+            Layout
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/form/general/">
+            Form
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="{{ site.url }}/documentation/elements/box/">
+            Elements
+          </a>
+          <a class="navbar-item is-active" href="{{ site.url }}/documentation/components/breadcrumb/">
+            Components
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
+{% capture navbar_color_primary %}
+<nav class="navbar is-info">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo-white.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    </a>
+    <div class="navbar-burger burger" data-target="navMenuColor-example">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenuColor-example" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{{ site.url }}/">
+        Home
+      </a>
+      <div class="navbar-item has-dropdown is-active">
+        <a class="navbar-link" href="/documentation/overview/start/">
+          Docs
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="/documentation/overview/start/">
+            Overview
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/modifiers/syntax/">
+            Modifiers
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/columns/basics/">
+            Columns
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/layout/container/">
+            Layout
+          </a>
+          <a class="navbar-item" href="{{ site.url }}/documentation/form/general/">
+            Form
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="{{ site.url }}/documentation/elements/box/">
+            Elements
+          </a>
+          <a class="navbar-item is-active" href="{{ site.url }}/documentation/components/breadcrumb/">
+            Components
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="http://localhost:4000" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms">
+              <span class="icon">
+                <i class="fa fa-twitter"></i>
+              </span>
+              <span>
+                Tweet
+              </span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.1.zip">
+              <span class="icon">
+                <i class="fa fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
 <section class="section">
   <div class="container">
 
@@ -528,7 +654,7 @@ document.addEventListener('DOMContentLoaded', function () {
       include meta.html
       new=true
       since="0.4.3"
-      colors=false
+      colors=true
       sizes=false
       variables=true
     %}
@@ -592,10 +718,16 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <div class="bd-example is-paddingless">
-      {{navbar_example}}
+      {{ navbar_color_default }}
     </div>
 
-    {% highlight html %}{{navbar_example}}{% endhighlight %}
+    {% highlight html %}{{ navbar_color_default }}{% endhighlight %}
+
+    <div class="bd-example is-paddingless">
+      {{ navbar_color_primary }}
+    </div>
+
+    {% highlight html %}{{ navbar_color_primary }}{% endhighlight %}
 
     {% include anchor.html name="Navbar brand" %}
 
@@ -1004,6 +1136,19 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     {% highlight html %}{{ navbar_divider_example }}{% endhighlight %}
+
+    {% include anchor.html name="Colors" %}
+
+    <div class="tags has-addons">
+      <span class="tag">New!</span>
+      <span class="tag is-info">0.5.2</span>
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {{ navbar_color_primary }}
+    </div>
+
+    {% highlight html %}{{ navbar_color_primary }}{% endhighlight %}
 
     {% include variables.html %}
 

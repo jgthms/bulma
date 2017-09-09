@@ -43,26 +43,33 @@ $navbar-divider-background-color: $border !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
-      .navbar-item,
-      .navbar-link
-        color: $color-invert
-      a.navbar-item,
-      .navbar-link
-        &:hover,
-        &.is-active
-          background-color: darken($color, 2.5%)
-          color: $color-invert
       +desktop
-        .navbar-link
-          &::after
-            border-color: $color-invert
-        .navbar-dropdown a.navbar-item:not(.is-active):not(:hover),
-        .navbar-dropdown .navbar-item:not(a)
-          color: $color
+        .navbar-brand,
+        .navbar-start,
+        .navbar-end
+          & > .navbar-item,
+          & > .navbar-link
+            color: $color-invert
+          & > a.navbar-item,
+          & > .navbar-link
+            &:hover,
+            &.is-active
+              background-color: darken($color, 2.5%)
+              color: $color-invert
+          .navbar-link
+            &::after
+              border-color: $color-invert
+        // .navbar-dropdown a.navbar-item:not(.is-active):not(:hover),
+        // .navbar-dropdown .navbar-item:not(a)
+        //   color: $color
         .navbar-item.has-dropdown:hover .navbar-link,
         .navbar-item.has-dropdown.is-active .navbar-link
           background-color: darken($color, 2.5%)
           color: $color-invert
+        .navbar-dropdown
+          a.navbar-item
+            &.is-active
+              color: $color
   & > .container
     align-items: stretch
     display: flex
@@ -159,6 +166,7 @@ a.navbar-item,
       align-items: center
       display: flex
   .navbar-menu
+    background-color: $white
     box-shadow: 0 8px 16px rgba($black, 0.1)
     padding: 0.5rem 0
     &.is-active
