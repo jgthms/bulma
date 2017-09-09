@@ -4,11 +4,15 @@
 
 ### New features
 
+* #842 `navbar` color modifiers
+* `navbar-tabs`
 * Added `$button-focus-box-shadow-size` and `$button-focus-box-shadow-color` for customization
 * Added `$input-focus-box-shadow-size` and `$input-focus-box-shadow-color` for customization
 
 ### Issues closed
 
+* #1152 Level-items not centered horizontally on mobile
+* #1147 Add `text-size-adjust: 100%` to `html`
 * #1106 `pagination` docs
 * #1063 `$family-primary` customization
 
