@@ -37,6 +37,32 @@ $navbar-divider-background-color: $border !default
   background-color: $navbar-background-color
   min-height: $navbar-height
   position: relative
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+      .navbar-item,
+      .navbar-link
+        color: $color-invert
+      a.navbar-item,
+      .navbar-link
+        &:hover,
+        &.is-active
+          background-color: darken($color, 2.5%)
+          color: $color-invert
+      +desktop
+        .navbar-link
+          &::after
+            border-color: $color-invert
+        .navbar-dropdown a.navbar-item:not(.is-active):not(:hover),
+        .navbar-dropdown .navbar-item:not(a)
+          color: $navbar-item
+        .navbar-item.has-dropdown:hover .navbar-link,
+        .navbar-item.has-dropdown.is-active .navbar-link
+          background-color: darken($color, 2.5%)
+          color: $color-invert
   & > .container
     align-items: stretch
     display: flex
