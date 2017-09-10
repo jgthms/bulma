@@ -1,5 +1,7 @@
 ---
 title: Icon
+iconic: true
+ionicons: true
 mdi: true
 layout: documentation
 doc-tab: elements
@@ -19,6 +21,21 @@ variables:
 {% capture icon_example %}
 <span class="icon">
   <i class="fa fa-home"></i>
+</span>
+{% endcapture %}
+
+{% capture icon_color_example %}
+<span class="icon has-text-info">
+  <i class="fa fa-info-circle"></i>
+</span>
+<span class="icon has-text-success">
+  <i class="fa fa-check-square"></i>
+</span>
+<span class="icon has-text-warning">
+  <i class="fa fa-warning"></i>
+</span>
+<span class="icon has-text-danger">
+  <i class="fa fa-ban"></i>
 </span>
 {% endcapture %}
 
@@ -46,11 +63,11 @@ variables:
   <div class="container">
     <h1 class="title">Icons</h1>
     <h2 class="subtitle">
-      Bulma is compatible with <strong>most icon libraries</strong>: <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, <a href="https://materialdesignicons.com">Material Design Icons</a>, etc.
+      Bulma is compatible with <strong>all icon font libraries</strong>: <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, <a href="https://materialdesignicons.com">Material Design Icons</a>, <a href="https://useiconic.com/open">Open Iconic</a>, <a href="http://ionicons.com/">Ionicons</a> etc.
     </h2>
     {%
       include meta.html
-      colors=false
+      colors=true
       sizes=true
       variables=true
     %}
@@ -78,11 +95,21 @@ variables:
         By defualt, the <code>icon</code> container will take up <em>exactly</em> <code>1.5rem x 1.5rem</code>. The icon itself is sized accordingly to the icon library you're using. For example, Font Awesome icons will <strong>inherit</strong> the font size.</p>
     </div>
 
+    {% include anchor.html name="Colors" %}
+
+    <div class="content">
+      <p>
+        Since icon fonts are simply <strong>text</strong>, you can use the <a href="/documentation/modifiers/typography-helpers/#colors">text color modifiers</a> to change the icon's color.
+      </p>
+    </div>
+
+    {% include snippet.html content=icon_color_example %}
+
     {% include anchor.html name="Sizes" %}
 
     <div class="content">
       <p>
-        The Bulma <code>icon</code> container should always be slightly bigger than the icon it contains. For example, Font Awesome icons use a font-size of <code>1em</code> by default (since it inherits the font size), but provides <a href="http://fontawesome.io/examples/">additional sizes</a>.
+        The Bulma <code>icon</code> container comes in <strong>4 sizes</strong>. It should always be <em>slightly bigger</em> than the icon it contains. For example, Font Awesome icons use a font-size of <code>1em</code> by default (since it inherits the font size), but provides <a href="http://fontawesome.io/examples/">additional sizes</a>.
       </p>
     </div>
 
@@ -411,7 +438,7 @@ variables:
 
     <div class="content">
       <p>
-        For the sake of providing another example, here is how the <code>icon</code> container can be used with <a href="https://materialdesignicons.com">Material Design Icons</a>.
+        Here is how the <code>icon</code> container can be used with <a href="https://materialdesignicons.com">Material Design Icons</a>.
       </p>
     </div>
 
@@ -725,6 +752,202 @@ variables:
             <br>
             <span class="icon">
               <i class="mdi mdi-signal-4g mdi-rotate-180"></i>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% include anchor.html name="Open Iconic" %}
+
+    <div class="content">
+      <p>
+        Here is how the <code>icon</code> container can be used with <a href="https://useiconic.com/open">Open Iconic</a>.
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>Container class</th>
+          <th>Container size</th>
+          <th>Iconic class</th>
+          <th>Icon size</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>icon is-small</code>
+          </td>
+          <td>
+            <code>1rem x 1rem</code>
+          </td>
+          <td>
+            <code>oi [data-glyph=puzzle-piece]</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon is-small">
+              <span class="oi" data-glyph="puzzle-piece"></span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>icon</code>
+          </td>
+          <td>
+            <code>1.5rem x 1.5rem</code>
+          </td>
+          <td>
+            <code>oi [data-glyph=puzzle-piece]</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon">
+              <span class="oi" data-glyph="puzzle-piece"></span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>icon is-medium</code>
+          </td>
+          <td>
+            <code>2rem x 2rem</code>
+          </td>
+          <td>
+            <code>oi [data-glyph=puzzle-piece]</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon is-medium">
+              <span class="oi" data-glyph="puzzle-piece"></span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>icon is-large</code>
+          </td>
+          <td>
+            <code>3rem x 3rem</code>
+          </td>
+          <td>
+            <code>oi [data-glyph=puzzle-piece]</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon is-large">
+              <span class="oi" data-glyph="puzzle-piece"></span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% include anchor.html name="Ionicons" %}
+
+    <div class="content">
+      <p>
+        Here is how the <code>icon</code> container can be used with <a href="http://ionicons.com">Ionicons</a>.
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>Container class</th>
+          <th>Container size</th>
+          <th>Ionicon class</th>
+          <th>Icon size</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>icon is-small</code>
+          </td>
+          <td>
+            <code>1rem x 1rem</code>
+          </td>
+          <td>
+            <code>ion-ionic</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon is-small">
+              <span class="ion-ionic"></span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>icon</code>
+          </td>
+          <td>
+            <code>1.5rem x 1.5rem</code>
+          </td>
+          <td>
+            <code>ion-ionic</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon">
+              <span class="ion-ionic"></span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>icon is-medium</code>
+          </td>
+          <td>
+            <code>2rem x 2rem</code>
+          </td>
+          <td>
+            <code>ion-ionic</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon is-medium">
+              <span class="ion-ionic"></span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>icon is-large</code>
+          </td>
+          <td>
+            <code>3rem x 3rem</code>
+          </td>
+          <td>
+            <code>ion-ionic</code>
+          </td>
+          <td>
+            <code>1em</code>
+          </td>
+          <td class="bd-icon-size">
+            <span class="icon is-large">
+              <span class="ion-ionic"></span>
             </span>
           </td>
         </tr>
