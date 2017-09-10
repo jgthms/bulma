@@ -43,8 +43,20 @@ $navbar-divider-background-color: $border !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+      .navbar-brand
+        & > .navbar-item,
+        .navbar-link
+          color: $color-invert
+        & > a.navbar-item,
+        .navbar-link
+          &:hover,
+          &.is-active
+            background-color: darken($color, 5%)
+            color: $color-invert
+        .navbar-link
+          &::after
+            border-color: $color-invert
       +desktop
-        .navbar-brand,
         .navbar-start,
         .navbar-end
           & > .navbar-item,
@@ -66,7 +78,8 @@ $navbar-divider-background-color: $border !default
         .navbar-dropdown
           a.navbar-item
             &.is-active
-              color: $color
+              background-color: $color
+              color: $color-invert
   & > .container
     align-items: stretch
     display: flex
