@@ -5,14 +5,14 @@
 ### New features
 
 * #842 `navbar` color modifiers
-* `navbar-tabs`
+* #331 Support for third party icons
 * Added `$button-focus-box-shadow-size` and `$button-focus-box-shadow-color` for customization
 * Added `$input-focus-box-shadow-size` and `$input-focus-box-shadow-color` for customization
+* Navbar tabs
 
 ### Issues closed
 
 * #1168 Undefined variable: `$navbar-item`
-* #331 Support for third party icons
 * #930 Remove `vertical-align: top` for icons
 * #735 Font awesome custom `font-size`
 * #395 Font awesome stacked icons
