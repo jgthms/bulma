@@ -1,6 +1,9 @@
 $navbar-background-color: $white !default
 $navbar-height: 3.25rem !default
 
+// Breakpoint for minimum width when hamburger is hidden
+$navbar-breakpoint: $desktop !default
+
 $navbar-item-color: $grey-dark !default
 $navbar-item-hover-color: $black !default
 $navbar-item-hover-background-color: $background !default
@@ -182,6 +185,9 @@ a.navbar-item,
     &.is-active
       display: block
 
++from($navbar-breakpoint)
+  .navbar-burger
+    display: none
 +desktop
   .navbar,
   .navbar-menu,
@@ -210,8 +216,6 @@ a.navbar-item,
           &.is-active
             background-color: $navbar-dropdown-item-active-background-color
             color: $navbar-dropdown-item-active-color
-  .navbar-burger
-    display: none
   .navbar-item,
   .navbar-link
     align-items: center
