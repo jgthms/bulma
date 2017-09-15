@@ -87,3 +87,7 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 ## Copyright and license
 
 Code copyright 2017 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+
+## Sponsor
+
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma.svg' /></a>
