@@ -85,6 +85,7 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 | [Bulma.styl](https://github.com/log1x/bulma.styl)                                  | 1:1 Stylus translation of Bulma                                    |
 | [elm-bulma-classes](https://github.com/danielnarey/elm-bulma-classes)              | Bulma prepared for usage with ELM                                  |
 | [Bulma Customizer](https://bulma-customizer.bstash.io/)                            | Bulma Customizer &#8211; Create your own **bespoke** Bulma build   |
+| [Bulma RTL](https://github.com/patomoxart/bulma-rtl)                               | Bulma for RTL languages (Arabic, Persian, ...)                     |
 
 ## Copyright and license
 
