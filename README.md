@@ -1,19 +1,19 @@
 # [Bulma](http://bulma.io)
 
+Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
+
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma.svg' /></a>
+
 [![npm](https://img.shields.io/npm/v/bulma.svg)](https://www.npmjs.com/package/bulma)
 [![npm](https://img.shields.io/npm/dm/bulma.svg)](https://www.npmjs.com/package/bulma)
 [![Join the chat at https://gitter.im/jgthms/bulma](https://badges.gitter.im/jgthms/bulma.svg)](https://gitter.im/jgthms/bulma)
 [![Build Status](https://travis-ci.org/jgthms/bulma.svg?branch=master)](https://travis-ci.org/jgthms/bulma)
 
-Bulma is a modern CSS framework based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma.svg' /></a>
-
 <a href="http://bulma.io"><img src="https://raw.githubusercontent.com/jgthms/bulma/master/docs/images/bulma-banner.png" alt="Bulma: a Flexbox CSS framework" style="max-width:100%;" width="600" height="315"></a>
 
 ## Quick install
 
-Bulma is in early but active development! Try it out now:
+Bulma is constantly in development! Try it out now:
 
 ### NPM
 
@@ -22,7 +22,7 @@ npm install bulma
 ```
 **or**
 
-### YARN
+### Yarn
 
 ```sh
 yarn add bulma

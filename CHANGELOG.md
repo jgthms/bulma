@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.5.3
+
+### Issues closed
+
+* #1207 Fix `.breadcrumb` alignment
+
 ## 0.5.2
 
 ### New features
