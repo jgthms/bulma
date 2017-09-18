@@ -4,6 +4,7 @@
 
 ### Issues closed
 
+* #1167 Fix `pre code`
 * #1207 Fix `.breadcrumb` alignment
 
 ## 0.5.2
