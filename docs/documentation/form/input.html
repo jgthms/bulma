@@ -144,6 +144,40 @@ variables:
 </div>
 {% endcapture %}
 
+{% capture readonly_example %}
+<div class="control">
+  <input class="input" type="text" value="This text is readonly" readonly>
+</div>
+{% endcapture %}
+
+{% capture static_example %}
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">From</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="me@example.com" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">To</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input" type="email" placeholder="Recipient email">
+      </p>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
 {% capture icons_example %}
 <div class="field">
   <p class="control has-icons-left has-icons-right">
@@ -234,9 +268,9 @@ variables:
     <div class="content">
       <p>The following <strong>modifiers</strong> are supported:</p>
       <ul>
-        <li>the <strong><a href="#input-color">color</a></strong></li>
-        <li>the <strong><a href="#input-size">size</a></strong></li>
-        <li>the <strong><a href="#input-state">state</a></strong></li>
+        <li>the <strong><a href="#colors">color</a></strong></li>
+        <li>the <strong><a href="#sizes">size</a></strong></li>
+        <li>the <strong><a href="#states">state</a></strong></li>
       </ul>
       <p>The following <a href="http://htmlreference.io/element/input/" target="_blank">type attributes</a> are supported:</p>
       <ul>
@@ -278,9 +312,8 @@ variables:
       </div>
     </div>
 
-    <hr>
+    {% include anchor.html name="States" %}
 
-    <h3 id="input-state" class="title">States</h3>
     <h4 class="subtitle">Normal</h4>
     <div class="columns">
       <div class="column is-half">
@@ -351,10 +384,39 @@ variables:
       </div>
     </div>
 
-    <!-- Font Awesome Icons -->
-    <hr>
+    <h4 class="subtitle">Readonly and static inputs</h4>
+    <p style="margin-bottom: 0.5rem;">
+      <span class="tag is-success">New!</span>
+      <span class="tag is-info">0.5.3</span>
+    </p>
+    <div class="content">
+      <p>
+        If you use the <code>readonly</code> HTML attribute, the input will look similar to a normal one, but is not editable and has no shadow.
+      </p>
+    </div>
+    <div class="columns">
+      <div class="column is-half">
+        {{ readonly_example }}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{ readonly_example }}{% endhighlight %}
+      </div>
+    </div>
 
-    <h3 id="input-with-icons" class="title">With icons</h3>
+    <div class="content">
+      <p>
+        If you <em>also</em> append the <code>is-static</code> modifier, it removes the background, border, shadow, and horizontal padding, while maintaining the <strong>vertical spacing</strong> so you can easily align the input in any context, like a horizontal form.
+      </p>
+    </div>
+
+    <div class="bd-example">
+      {{ static_example }}
+    </div>
+    {% highlight html %}{{ static_example }}{% endhighlight %}
+
+    <!-- Font Awesome Icons -->
+    {% include anchor.html name="With Font Awesome icons" %}
+
     <div class="content">
       <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
       <ul>

@@ -2,6 +2,11 @@
 
 ## 0.5.3
 
+### New features
+
+* #1189 `.input` readonly and `.is-static`
+* #1189 `.textarea` readonly
+
 ### Issues closed
 
 * #1177 Fix `.message .tag` combination
