@@ -4,6 +4,7 @@
 
 ### Issues closed
 
+* #1177 Fix `.message .tag` combination
 * #1167 Fix `pre code`
 * #1207 Fix `.breadcrumb` alignment
 
