@@ -4,6 +4,7 @@
 
 ### New features
 
+* #1101 `.card-header-title` can be centered with `.is-centered`
 * #1189 `.input` readonly and `.is-static`
 * #1189 `.textarea` readonly
 
