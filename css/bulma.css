@@ -1,4 +1,4 @@
-/*! bulma.io v0.5.2 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.5.3 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
     -webkit-transform: rotate(0deg);
@@ -209,21 +209,21 @@ strong {
 }
 
 pre {
+  -webkit-overflow-scrolling: touch;
   background-color: whitesmoke;
   color: #4a4a4a;
   font-size: 0.875em;
+  overflow-x: auto;
+  padding: 1.25rem 1.5rem;
   white-space: pre;
   word-wrap: normal;
 }
 
 pre code {
-  -webkit-overflow-scrolling: touch;
-  background: none;
-  color: inherit;
-  display: block;
+  background-color: transparent;
+  color: currentColor;
   font-size: 1em;
-  overflow-x: auto;
-  padding: 1.25rem 1.5rem;
+  padding: 0;
 }
 
 table td,
@@ -489,6 +489,64 @@ table th {
 @media screen and (min-width: 1408px) {
   .has-text-centered-fullhd {
     text-align: center !important;
+  }
+}
+
+.has-text-justified {
+  text-align: justify !important;
+}
+
+@media screen and (max-width: 768px) {
+  .has-text-justified-mobile {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (min-width: 769px), print {
+  .has-text-justified-tablet {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .has-text-justified-tablet-only {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .has-text-justified-touch {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .has-text-justified-desktop {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .has-text-justified-desktop-only {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (min-width: 1216px) {
+  .has-text-justified-widescreen {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .has-text-justified-widescreen-only {
+    text-align: justify !important;
+  }
+}
+
+@media screen and (min-width: 1408px) {
+  .has-text-justified-fullhd {
+    text-align: justify !important;
   }
 }
 
@@ -2582,6 +2640,12 @@ a.box:active {
   border-radius: 290486px;
 }
 
+.input[readonly],
+.textarea[readonly] {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .input.is-white,
 .textarea.is-white {
   border-color: white;
@@ -2734,6 +2798,15 @@ a.box:active {
 .textarea.is-inline {
   display: inline;
   width: auto;
+}
+
+.input.is-static {
+  background-color: transparent;
+  border-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .textarea {
@@ -4900,6 +4973,10 @@ a.tag:hover {
   display: flex;
 }
 
+.breadcrumb li:first-child a {
+  padding-left: 0;
+}
+
 .breadcrumb li.is-active a {
   color: #363636;
   cursor: default;
@@ -5009,6 +5086,12 @@ a.tag:hover {
           flex-grow: 1;
   font-weight: 700;
   padding: 0.75rem;
+}
+
+.card-header-title.is-centered {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .card-header-icon {
@@ -5441,6 +5524,15 @@ a.dropdown-item.is-active {
   margin-bottom: 1.5rem;
 }
 
+.message strong {
+  color: currentColor;
+}
+
+.message a:not(.button):not(.tag) {
+  color: currentColor;
+  text-decoration: underline;
+}
+
 .message.is-small {
   font-size: 0.75rem;
 }
@@ -5597,15 +5689,6 @@ a.dropdown-item.is-active {
   position: relative;
 }
 
-.message-header a:not(.button),
-.message-header strong {
-  color: currentColor;
-}
-
-.message-header a:not(.button) {
-  text-decoration: underline;
-}
-
 .message-header .delete {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
@@ -5626,15 +5709,6 @@ a.dropdown-item.is-active {
   border-radius: 3px;
   color: #4a4a4a;
   padding: 1em 1.25em;
-}
-
-.message-body a:not(.button),
-.message-body strong {
-  color: currentColor;
-}
-
-.message-body a:not(.button) {
-  text-decoration: underline;
 }
 
 .message-body code,
