@@ -262,7 +262,7 @@ Variable name changes (mostly appending `-color`):
 * Split icon container dimensions and icon size
 * Fix delete button by using pixels instead of (r)em
 * Fix level on mobile
-* Add new `.is-spaced` modifer for titles and subtitles
+* Add new `.is-spaced` modifier for titles and subtitles
 
 * Fix #487
 * Fix #489
