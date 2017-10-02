@@ -72,7 +72,6 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 |------------------------------------------------------------------------------------|--------------------------------------------------------------------|
 | [Bulma with Attribute Modules](https://github.com/j5bot/bulma-attribute-selectors) | Adds support for attribute-based selectors.                        |
 | [Bulma with Rails](https://github.com/joshuajansen/bulma-rails)                    | Integrates Bulma with the rails asset pipeline                     |
-| [iTemplate](http://itemplate.ga/)                                                  | Admin Dashboard based on Bulma                                     |
 | [Vue Admin](https://github.com/vue-bulma/vue-admin)                                | Vue Admin framework powered by Bulma                               |
 | [Bulmaswatch](https://github.com/jenil/bulmaswatch)                                | Free themes for Bulma                                              |
 | [Goldfish](https://github.com/Caiyeon/goldfish)                                    | Vault UI with Bulma, Golang, and Vue Admin                         |
