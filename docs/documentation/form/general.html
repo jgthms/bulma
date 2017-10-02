@@ -3,6 +3,21 @@ title: Form controls
 layout: documentation
 doc-tab: form
 doc-subtab: general
+variables:
+- name: $control-radius
+  value: $radius
+- name: $control-radius-small
+  value: $radius-small
+- name: $control-padding-vertical
+  value: calc(0.375em - 1px)
+- name: $control-padding-horizontal
+  value: calc(0.625em - 1px)
+- name: $label-color
+  value: $grey-darker
+- name: $label-weight
+  value: $weight-bold
+- name: $help-size
+  value: $size-small
 ---
 
 {% capture example %}
@@ -1027,6 +1042,10 @@ doc-subtab: general
     </div>
 
     {% include snippet.html content=field_label_example horizontal=true clipped=true %}
+		
+		{% capture custom_message %}Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.{% endcapture %}
+			
+    {% include variables.html custom_message = custom_message %}
 
   </div>
 </section>
