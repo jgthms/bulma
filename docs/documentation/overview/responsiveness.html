@@ -42,11 +42,9 @@ breakpoints:
     <div class="content">
       <p>Bulma has 5 breakpoints:</p>
       <ul>
-        <li><code>mobile</code>: up to <code>768px</code></li>
-        <li><code>tablet</code>: from <code>769px</code></li>
-        <li><code>desktop</code>: from <code>1008px</code></li>
-        <li><code>widescreen</code>: from <code>1200px</code></li>
-        <li><span class="tag is-success">New!</span> <code>fullhd</code>: from <code>1392px</code></li>
+        {% for breakpoint in page.breakpoints %}
+          <li>{% if breakpoint.name == 'fullhd' %}<span class="tag is-success">New!</span> {% endif %}<code>{{ breakpoint.name }}</code>: {% if breakpoint.name == 'mobile' %}up to{% else %}from{% endif %} <code>{{ breakpoint.value }}px</code></li>
+        {% endfor %}
       </ul>
       <p>Bulma uses 9 responsive mixins:</p>
       <ul>
