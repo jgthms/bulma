@@ -71,15 +71,18 @@ variables:
     </div>
 
     {% include anchor.html name="Breakpoints" %}
+    
+    {% assign variables_file_url = "/blob/master/sass/utilities/initial-variables.sass#L45,L56" | prepend: site.github %}
+    {% assign mixins_file_url = "/blob/master/sass/utilities/mixins.sass#L180,L224" | prepend: site.github %}
 
     <div class="content">
-      <p>Bulma has <a href="{{ site.github }}/blob/master/sass/utilities/initial-variables.sass#L45,L56" target="_blank">5 breakpoints</a>:</p>
+      <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">5 breakpoints</a>:</p>
       <ul>
         {% for breakpoint in page.breakpoints %}
           <li>{% if breakpoint.name == 'fullhd' %}<span class="tag is-success">New!</span> {% endif %}<code>{{ breakpoint.name }}</code>: {% if breakpoint.name == 'mobile' %}up to{% else %}from{% endif %} <code>{{ breakpoint.value }}px</code></li>
         {% endfor %}
       </ul>
-      <p>Bulma uses <a href="{{ site.github }}/blob/master/sass/utilities/mixins.sass#L180,L224" target="_blank">9 responsive mixins</a>:</p>
+      <p>Bulma uses <a href="{{ mixins_file_url }}" target="_blank">9 responsive mixins</a>:</p>
       <ul>
 			  {% for mixin in page.mixins %}
           <li>
@@ -209,7 +212,7 @@ variables:
       </tbody>
     </table>
     
-    {% capture custom_message %}You can use <a href="{{ site.github }}/blob/master/sass/utilities/initial-variables.sass#L45,L56" target="_blank">these variables</a> to <strong>customize</strong> the responsive breakpoints. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.{% endcapture %}
+    {% capture custom_message %}You can use <a href="{{ variables_file_url }}" target="_blank">these variables</a> to <strong>customize</strong> the responsive breakpoints. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.{% endcapture %}
     
     {% include variables.html custom_message = custom_message %}
     
