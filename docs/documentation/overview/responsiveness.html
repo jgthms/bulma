@@ -70,43 +70,21 @@ mixins:
       </ul>
       <p>Bulma uses 9 responsive mixins:</p>
       <ul>
-        <li>
-          <code>=mobile</code><br>
-          until <code>768px</code>
-        </li>
-        <li>
-          <code>=tablet</code><br>
-          from <code>769px</code>
-        </li>
-        <li>
-          <code>=tablet-only</code><br>
-          from <code>769px</code> and until <code>1007px</code>
-        </li>
-        <li>
-          <code>=touch</code><br>
-          until <code>1007px</code>
-        </li>
-        <li>
-          <code>=desktop</code><br>
-          from <code>1008px</code>
-        </li>
-        <li>
-          <code>=desktop-only</code><br>
-          from <code>1008px</code> and until <code>1199px</code>
-        </li>
-        <li>
-          <code>=widescreen</code><br>
-          from <code>1200px</code>
-        </li>
-        <li>
-          <code>=widescreen-only</code><br>
-          from <code>1200px</code> and until <code>1391px</code>
-        </li>
-        <li>
-          <span class="tag is-success">New!</span>
-          <code>=fullhd</code><br>
-          from <code>1392px</code>
-        </li>
+			  {% for mixin in page.mixins %}
+          <li>
+						{% if mixin.name == 'fullhd' %}<span class="tag is-success">New!</span>{% endif %}
+            <code>={{ mixin.name }}</code><br>
+            {% if mixin.from %}
+              {% if mixin.to %}
+                from <code>{{ mixin.from }}px</code> and until <code>{{ mixin.to }}px</code>
+              {% else %}
+                from <code>{{ mixin.from }}px</code>
+              {% endif %}
+            {% elsif mixin.to %}
+              until <code>{{ mixin.to }}px</code>
+            {% endif %}
+          </li>
+			  {% endfor %}
       </ul>
     </div>
 
