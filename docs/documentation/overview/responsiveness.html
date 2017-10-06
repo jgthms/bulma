@@ -3,17 +3,6 @@ title: Responsiveness
 layout: documentation
 doc-tab: overview
 doc-subtab: responsiveness
-breakpoints:
-- name: mobile
-  value: 768
-- name: tablet
-  value: 769
-- name: desktop
-  value: 1024
-- name: widescreen
-  value: 1216
-- name: fullhd
-  value: 1408
 mixins:
 - name: mobile
   to: 768
@@ -78,7 +67,7 @@ variables:
     <div class="content">
       <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">5 breakpoints</a>:</p>
       <ul>
-        {% for breakpoint in page.breakpoints %}
+        {% for breakpoint in site.data.breakpoints %}
           <li>{% if breakpoint.name == 'fullhd' %}<span class="tag is-success">New!</span> {% endif %}<code>{{ breakpoint.name }}</code>: {% if breakpoint.name == 'mobile' %}up to{% else %}from{% endif %} <code>{{ breakpoint.value }}px</code></li>
         {% endfor %}
       </ul>
@@ -107,23 +96,23 @@ variables:
         <tr>
           <th style="width: 20%;">
             Mobile<br>
-            Up to <code>{{ page.breakpoints[0].value }}px</code>
+            Up to <code>{{ site.data.breakpoints[0].value }}px</code>
           </th>
           <th style="width: 20%;">
             Tablet<br>
-            Between <code>{{ page.breakpoints[1].value }}px</code> and <code>{{ page.breakpoints[2].value | minus: 1 }}px</code>
+            Between <code>{{ site.data.breakpoints[1].value }}px</code> and <code>{{ site.data.breakpoints[2].value | minus: 1 }}px</code>
           </th>
           <th style="width: 20%;">
             Desktop<br>
-            Between <code>{{ page.breakpoints[2].value }}px</code> and <code>{{ page.breakpoints[3].value | minus: 1 }}px</code>
+            Between <code>{{ site.data.breakpoints[2].value }}px</code> and <code>{{ site.data.breakpoints[3].value | minus: 1 }}px</code>
           </th>
           <th style="width: 20%;">
             Widescreen<br>
-            Between <code>{{ page.breakpoints[3].value }}px</code> and <code>{{ page.breakpoints[4].value | minus: 1 }}px</code>
+            Between <code>{{ site.data.breakpoints[3].value }}px</code> and <code>{{ site.data.breakpoints[4].value | minus: 1 }}px</code>
           </th>
           <th style="width: 20%;">
             FullHD<br>
-            <code>{{ page.breakpoints[4].value }}px</code> and above
+            <code>{{ site.data.breakpoints[4].value }}px</code> and above
           </th>
         </tr>
       </thead>
