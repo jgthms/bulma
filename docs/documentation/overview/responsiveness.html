@@ -36,6 +36,17 @@ mixins:
   to: 1407
 - name: fullhd
   to: 1408
+variables:
+- name: $gap
+  value: 32px
+- name: $tablet
+  value: 769px
+- name: $desktop
+  value: 960px + (2 * $gap)
+- name: $widescreen
+  value: 1152px + (2 * $gap)
+- name: $fullhd
+  value: 1344px + (2 * $gap)
 ---
 
 {% include subnav-overview.html %}
@@ -197,5 +208,10 @@ mixins:
         </tr>
       </tbody>
     </table>
+    
+    {% capture custom_message %}You can use <a href="{{ site.github }}/blob/master/sass/utilities/initial-variables.sass#L45,L56" target="_blank">these variables</a> to <strong>customize</strong> the responsive breakpoints. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.{% endcapture %}
+    
+    {% include variables.html custom_message = custom_message %}
+    
   </div>
 </section>
