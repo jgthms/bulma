@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.5.4
+
+### New features
+
+* #1236 `.table` hover effect is opt-in, by using the `.is-hoverable` modifier class
+
 ## 0.5.3
 
 ### New features

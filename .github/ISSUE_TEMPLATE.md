@@ -1,5 +1,8 @@
 <!-- PLEASE READ THE FOLLOWING INSTRUCTIONS -->
 
+<!-- Choose one of the following: -->
+This is about **Bulma | the Docs**.
+
 <!-- Is it about Bulma or about the Docs? -->
 <!-- Is it a bug/feature/question or do you need help? -->
 <!-- If it's a bug, is it a browser bug? -->
