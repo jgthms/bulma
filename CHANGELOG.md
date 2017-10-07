@@ -5,6 +5,7 @@
 ### New features
 
 * #1236 `.table` hover effect is opt-in, by using the `.is-hoverable` modifier class
+* #1254 `.dropdown` now supports `.is-up` modifier
 
 ## 0.5.3
 
