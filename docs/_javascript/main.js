@@ -103,12 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if ($highlights.length > 0) {
     $highlights.forEach($el => {
-      const copy = '<button class="button is-small bd-copy">Copy</button>';
-      const expand = '<button class="button is-small bd-expand">Expand</button>';
-      $el.insertAdjacentHTML('beforeend', copy);
+      const copyEl = '<button class="button is-small bd-copy">Copy</button>';
+      const expandEl = '<button class="button is-small bd-expand">Expand</button>';
+      $el.insertAdjacentHTML('beforeend', copyEl);
 
       if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
-        $el.insertAdjacentHTML('beforeend', expand);
+        $el.insertAdjacentHTML('beforeend', expandEl);
+      }
+
+      const $parent = $el.parentNode;
+      if ($parent && $parent.className == 'bd-highlight-clipped') {
+        const showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
+        $el.classList.add('bd-is-clipped');
+        $el.insertAdjacentHTML('beforeend', showEl);
       }
 
       itemsProcessed++;
@@ -136,6 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
     $highlightExpands.forEach($el => {
       $el.addEventListener('click', () => {
         $el.parentNode.firstElementChild.style.maxHeight = 'none';
+      });
+    });
+
+    const $highlightShows = getAll('.bd-highlight-clipped .bd-show');
+
+    $highlightShows.forEach($el => {
+      $el.addEventListener('click', () => {
+        $el.parentNode.classList.remove('bd-is-clipped');
       });
     });
   }
