@@ -113,10 +113,15 @@ document.addEventListener('DOMContentLoaded', function () {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add show code
 =======
 >>>>>>> Improve snippet
+=======
+=======
+>>>>>>> Add show code
+>>>>>>> Add show code
       var $parent = $el.parentNode;
       if ($parent && $parent.classList.contains('bd-is-more')) {
         var showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
@@ -130,6 +135,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add show code
 =======
 >>>>>>> Improve snippet
       var $parent = $el.parentNode;
@@ -143,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $el.insertAdjacentHTML('beforeend', expandEl);
 >>>>>>> Improve snippet
 =======
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Improve snippet
@@ -161,6 +170,15 @@ document.addEventListener('DOMContentLoaded', function () {
         $el.insertAdjacentHTML('beforeend', expandEl);
 >>>>>>> Improve snippet
 >>>>>>> Improve snippet
+=======
+      var $parent = $el.parentNode;
+      if ($parent && $parent.className == 'bd-highlight-clipped') {
+        var showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
+        $el.classList.add('bd-is-clipped');
+        $el.insertAdjacentHTML('beforeend', showEl);
+>>>>>>> Add show code
+>>>>>>> Add show code
+>>>>>>> Add show code
       }
 
       itemsProcessed++;
@@ -195,8 +213,11 @@ document.addEventListener('DOMContentLoaded', function () {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Improve snippet
+=======
+>>>>>>> Add show code
     var $highlightShows = getAll('.highlight .bd-show');
 
     $highlightShows.forEach(function ($el) {
@@ -211,15 +232,21 @@ document.addEventListener('DOMContentLoaded', function () {
 >>>>>>> Add show code
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add show code
 =======
 >>>>>>> Improve snippet
+=======
+=======
+>>>>>>> Add show code
+>>>>>>> Add show code
     var $highlightShows = getAll('.highlight .bd-show');
 
     $highlightShows.forEach(function ($el) {
       $el.addEventListener('click', function () {
         $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Improve snippet
@@ -234,7 +261,18 @@ document.addEventListener('DOMContentLoaded', function () {
 >>>>>>> Add show code
 =======
 >>>>>>> Improve snippet
+=======
+>>>>>>> Add show code
 >>>>>>> Improve snippet
+=======
+=======
+    var $highlightShows = getAll('.bd-highlight-clipped .bd-show');
+
+    $highlightShows.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+        $el.parentNode.classList.remove('bd-is-clipped');
+>>>>>>> Add show code
+>>>>>>> Add show code
       });
     });
   }

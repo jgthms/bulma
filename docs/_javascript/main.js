@@ -143,11 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+<<<<<<< HEAD
     const $highlightShows = getAll('.highlight .bd-show');
 
     $highlightShows.forEach($el => {
       $el.addEventListener('click', () => {
         $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
+=======
+    const $highlightShows = getAll('.bd-highlight-clipped .bd-show');
+
+    $highlightShows.forEach($el => {
+      $el.addEventListener('click', () => {
+        $el.parentNode.classList.remove('bd-is-clipped');
+>>>>>>> Add show code
       });
     });
   }
