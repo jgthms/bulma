@@ -107,24 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const expandEl = '<button class="button is-small bd-expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copyEl);
 
-<<<<<<< HEAD
       const $parent = $el.parentNode;
       if ($parent && $parent.classList.contains('bd-is-more')) {
         const showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
         $el.insertAdjacentHTML('beforeend', showEl);
       } else if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
         $el.insertAdjacentHTML('beforeend', expandEl);
-=======
-      if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
-        $el.insertAdjacentHTML('beforeend', expandEl);
-      }
-
-      const $parent = $el.parentNode;
-      if ($parent && $parent.className == 'bd-highlight-clipped') {
-        const showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
-        $el.classList.add('bd-is-clipped');
-        $el.insertAdjacentHTML('beforeend', showEl);
->>>>>>> Add show code
       }
 
       itemsProcessed++;
@@ -159,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $highlightShows.forEach($el => {
       $el.addEventListener('click', () => {
-        $el.parentNode.classList.remove('bd-is-clipped');
+        $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
       });
     });
   }
