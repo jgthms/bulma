@@ -109,15 +109,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var expandEl = '<button class="button is-small bd-expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copyEl);
 
-      if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
-        $el.insertAdjacentHTML('beforeend', expandEl);
-      }
-
       var $parent = $el.parentNode;
-      if ($parent && $parent.className == 'bd-highlight-clipped') {
+      if ($parent && $parent.classList.contains('bd-is-more')) {
         var showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
-        $el.classList.add('bd-is-clipped');
         $el.insertAdjacentHTML('beforeend', showEl);
+      } else if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
+        $el.insertAdjacentHTML('beforeend', expandEl);
       }
 
       itemsProcessed++;
@@ -148,11 +145,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    var $highlightShows = getAll('.bd-highlight-clipped .bd-show');
+    var $highlightShows = getAll('.highlight .bd-show');
 
     $highlightShows.forEach(function ($el) {
       $el.addEventListener('click', function () {
-        $el.parentNode.classList.remove('bd-is-clipped');
+        $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
       });
     });
   }

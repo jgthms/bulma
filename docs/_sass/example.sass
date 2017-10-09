@@ -33,14 +33,12 @@
     margin-bottom: 1.5rem
 
 .bd-example
+  &.bd-is-clipped
+    border-top-right-radius: $radius-large
   & + .highlight
     border: 1px solid $yellow
     border-radius: 0 0 $radius $radius
     border-top: none
-    margin-top: -1.5rem
-    &:not(:last-child)
-      margin-bottom: 1.5rem
-  & + .bd-highlight-clipped
     margin-top: -1.5rem
     &:not(:last-child)
       margin-bottom: 1.5rem
@@ -62,6 +60,23 @@
 .bd-snippet-code
   background-color: $pre-background
 
+.bd-snippet-code.bd-is-more.bd-is-more-clipped
+  .highlight
+    height: 2em
+    overflow: hidden
+    pre
+      overflow: hidden
+    .bd-show
+      display: flex
+
+.bd-snippet.bd-is-horizontal
+  border-radius: $radius-large
+  border-top-left-radius: 0
+  .bd-snippet-code.bd-is-more.bd-is-more-clipped
+    .highlight
+      pre
+        padding-top: 0.325rem
+
 .bd-snippet.bd-is-clipped
   .bd-snippet-code
     overflow: auto
@@ -69,6 +84,8 @@
 +desktop
   .bd-snippet.bd-is-vertical
     align-items: stretch
+    border-radius: $radius-large
+    border-top-left-radius: 0
     display: flex
     justify-content: center
     .bd-snippet-preview,
@@ -79,6 +96,7 @@
       .highlight,
       .highlight pre
         align-items: stretch
+        border-radius: 0 $radius-large $radius-large 0
         display: flex
         flex-direction: column
       .highlight,
@@ -171,36 +189,26 @@ $structure-invert: $danger-invert
       box-shadow: none
   .bd-expand
     right: 45px
-  +tablet
-    pre
-      white-space: pre-wrap
-
-.bd-highlight-clipped
   .bd-show
     +overlay
     align-items: center
-    background-color: rgba(#000, 0.9)
-    background-image: linear-gradient(rgba(#000, 0), rgba(#000, 0) 90%, rgba(#000, 1))
+    background-color: rgba($background, 0.7)
     border: none
-    color: $white
+    color: rgba(#000, 0.5)
     cursor: pointer
     display: none
-    font-size: $size-6
+    font-size: $size-small
     justify-content: center
-    opacity: 0.7
     width: 100%
     strong
       color: currentColor
       font-weight: $weight-semibold
     &:hover
-      opacity: 0.8
-  .highlight.bd-is-clipped
-    height: 4em
-    overflow: hidden
+      background-color: rgba($yellow, 0.8)
+      color: rgba(#000, 0.7)
+  +tablet
     pre
-        overflow: hidden
-    .bd-show
-      display: flex
+      white-space: pre-wrap
 
 +tablet
   .section:not(.is-fullwidth) > .bd-example:not(.is-fullwidth)
@@ -212,6 +220,10 @@ $structure-invert: $danger-invert
 
 .section.is-fullwidth
   padding: 0 !important
+  .bd-snippet
+    border-left: none
+    border-radius: 0
+    border-right: none
   .bd-example
     border-left: none
     border-radius: 0
