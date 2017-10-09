@@ -7,6 +7,14 @@
 * #1236 `.table` hover effect is opt-in, by using the `.is-hoverable` modifier class
 * #1254 `.dropdown` now supports `.is-up` modifier
 
+### Improvements
+
+* #1257 Include placeholder mixin in `=input`
+
+### Issues closed
+
+* #708 Import variables in mixins
+
 ## 0.5.3
 
 ### New features
