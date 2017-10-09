@@ -1,11 +1,5 @@
 # Bulma Changelog
 
-## 0.5.5
-
-### New features
-
-* #1235 grid classes: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
-
 ## 0.5.4
 
 ### New features

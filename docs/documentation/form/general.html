@@ -3,6 +3,21 @@ title: Form controls
 layout: documentation
 doc-tab: form
 doc-subtab: general
+variables:
+- name: $control-radius
+  value: $radius
+- name: $control-radius-small
+  value: $radius-small
+- name: $control-padding-vertical
+  value: calc(0.375em - 1px)
+- name: $control-padding-horizontal
+  value: calc(0.625em - 1px)
+- name: $label-color
+  value: $grey-darker
+- name: $label-weight
+  value: $weight-bold
+- name: $help-size
+  value: $size-small
 ---
 
 {% capture example %}
@@ -921,10 +936,6 @@ doc-subtab: general
     </div>
 
     <div class="content">
-      <p>
-        <span class="tag is-success">New!</span>
-        <span class="tag is-info">0.4.2</span>
-      </p>
       <p>It can be useful to append a <a href="{{site.url}}/documentation/elements/button#static-button">static button</a>.</p>
     </div>
 
@@ -934,7 +945,7 @@ doc-subtab: general
       <p>Use the <code>is-expanded</code> modifier on the element you want to fill up the remaining space (in this case, the input):</p>
     </div>
 
-    {% include snippet.html content=addons_expanded_example horizontal=true clipped=true %}
+    {% include snippet.html content=addons_expanded_example horizontal=true more=true %}
 
     <div class="content">
       <p>If you want a full width select dropdown, pair <code>control is-expanded</code> with <code>select is-fullwidth</code>.</p>
@@ -943,7 +954,7 @@ doc-subtab: general
     {% include snippet.html content=addons_expanded_fullwidth_example %}
 
     <div class="content">
-      <p>Use the <code>has-addons-centered</code> or the <code>has-addons-right</code> modifers to alter the <strong>alignment</strong>.</p>
+      <p>Use the <code>has-addons-centered</code> or the <code>has-addons-right</code> modifiers to alter the <strong>alignment</strong>.</p>
     </div>
 
     {% include snippet.html content=addons_center_example %}
@@ -961,7 +972,7 @@ doc-subtab: general
     {% include snippet.html content=group_example %}
 
     <div class="content">
-        Use the <code>is-grouped-centered</code> or the <code>is-grouped-right</code> modifers to alter the <strong>alignment</strong>.
+        Use the <code>is-grouped-centered</code> or the <code>is-grouped-right</code> modifiers to alter the <strong>alignment</strong>.
       </p>
     </div>
 
@@ -978,10 +989,6 @@ doc-subtab: general
     {% include snippet.html content=group_expanded_example %}
 
     <div id="form-group-multiline" class="content">
-      <p>
-        <span class="tag is-success">New!</span>
-        <span class="tag is-info">0.4.4</span>
-      </p>
       <p>
         Add the <code>is-grouped-multiline</code> modifier to allow controls to fill up <strong>multiple lines</strong>. This is ideal for a long list of controls.
       </p>
@@ -1004,7 +1011,7 @@ doc-subtab: general
       <p>You can use <code>is-grouped</code> or <code>has-addons</code> for the child elements.</p>
     </div>
 
-    {% include snippet.html content=horizontal_form_example horizontal=true clipped=true %}
+    {% include snippet.html content=horizontal_form_example horizontal=true more=true %}
 
     <div class="content">
       <p>
@@ -1026,7 +1033,11 @@ doc-subtab: general
       </ul>
     </div>
 
-    {% include snippet.html content=field_label_example horizontal=true clipped=true %}
+    {% include snippet.html content=field_label_example horizontal=true more=true %}
+
+		{% capture custom_message %}Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.{% endcapture %}
+
+    {% include variables.html custom_message = custom_message %}
 
   </div>
 </section>

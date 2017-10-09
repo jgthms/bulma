@@ -16,10 +16,10 @@
     {% if include.clipped %}bd-is-clipped{% endif %}
     {% if include.size %}bd-is-{{ include.size }}{% endif %}
     ">
-    <div class="bd-snippet-preview">
+    <div class="bd-snippet-preview {% if include.paddingless %}is-paddingless{% endif %}">
       {{ include.content }}
     </div>
-    <div class="bd-snippet-code {% unless include.clipped %}highlight-full{% endunless %}">
+    <div class="bd-snippet-code {% unless include.clipped %}highlight-full{% endunless %} {% if include.more %}bd-is-more bd-is-more-clipped{% endif %}">
       {% highlight html %}{{ include.content }}{% endhighlight %}
     </div>
   </div>

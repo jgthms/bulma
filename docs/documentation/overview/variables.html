@@ -72,7 +72,7 @@ initial_variables:
 - name: $weight-bold
   value: 700
 - name: $gap
-  value: 24px
+  value: 32px
 - name: $tablet
   value: 769px
 - name: $desktop
@@ -192,6 +192,39 @@ derived_variables:
   value: '("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis)'
 - name: $sizes
   value: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6
+generic_variables:
+- name: $body-background-color
+  value: '#fff'
+- name: $body-size
+  value: 16px
+- name: $body-rendering
+  value: optimizeLegibility
+- name: $body-family
+  value: $family-primary
+- name: $body-color
+  value: $text
+- name: $body-weight
+  value: $weight-normal
+- name: $body-line-height
+  value: 1.5
+- name: $code-family
+  value: $family-code
+- name: $code-padding
+  value: 0.25em 0.5em 0.25em
+- name: $code-weight
+  value: normal
+- name: $code-size
+  value: 0.875em
+- name: $hr-background-color
+  value: $border
+- name: $hr-height
+  value: 1px
+- name: $hr-margin
+  value: 1.5rem 0
+- name: $strong-color
+  value: $text-strong
+- name: $strong-weight
+  value: $weight-bold
 ---
 
 {% include subnav-overview.html %}
@@ -291,6 +324,27 @@ derived_variables:
 
     <table class="table is-bordered is-striped">
       {% for variable in page.derived_variables %}
+        <tr>
+          <td>
+            <code style="white-space: nowrap;">{{ variable.name }}</code>
+          </td>
+          <td>
+            <code>{{ variable.value }}</code>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    {% include anchor.html name="Generic variables" %}
+
+    <div class="content">
+      <p>
+        The following generic variables are provided in <code>./sass/base/generic.sass</code>.
+      </p>
+    </div>
+
+    <table class="table is-bordered is-striped">
+      {% for variable in page.generic_variables %}
         <tr>
           <td>
             <code style="white-space: nowrap;">{{ variable.name }}</code>

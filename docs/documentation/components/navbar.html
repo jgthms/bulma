@@ -17,6 +17,8 @@ variables:
   value: $black
 - name: $navbar-item-active-background-color
   value: transparent
+- name: $navbar-item-img-max-height
+  value: 1.75rem
 - name: $navbar-tab-hover-background-color
   value: transparent
 - name: $navbar-tab-hover-border-bottom-color
@@ -765,7 +767,9 @@ document.addEventListener('DOMContentLoaded', function () {
         </li>
         <li>
           a container for almost <strong>anything</strong> you want, like a <code>field</code>
-          {% highlight html %}{{ navbar_item_other_example }}{% endhighlight %}
+          <div class="highlight-full">
+            {% highlight html %}{{ navbar_item_other_example }}{% endhighlight %}
+          </div>
         </li>
       </ul>
       <p>
@@ -794,15 +798,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <div class="content">
       <p>
-        To seamlessly integrate the navbar in any visual context, you can add the <code>is-transparent</code> modifer on the <code>navbar</code> component. This will remove any hover or active background from the navbar items.
+        To seamlessly integrate the navbar in any visual context, you can add the <code>is-transparent</code> modifier on the <code>navbar</code> component. This will remove any hover or active background from the navbar items.
       </p>
     </div>
 
-    <div class="bd-example is-paddingless">
-      {{navbar_transparent_example}}
-    </div>
-
-    {% highlight html %}{{navbar_transparent_example}}{% endhighlight %}
+    {% include snippet.html content=navbar_transparent_example paddingless=true horizontal=true more=true %}
 
     {% include anchor.html name="Dropdown menu" %}
 
