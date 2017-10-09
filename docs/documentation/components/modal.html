@@ -88,6 +88,15 @@ variables:
 </div>
 {% endcapture %}
 
+{% capture modal_size %}
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content is-small">
+    <!-- Content ... -->
+  </div>
+</div>
+{% endcapture %}
+
 {% include subnav-components.html %}
 
 <section class="section">
@@ -97,7 +106,7 @@ variables:
     {%
       include meta.html
       colors=false
-      sizes=false
+      sizes=true
       variables=true
     %}
 
@@ -166,6 +175,25 @@ variables:
     </div>
 
     {% highlight html %}{{ modal_card }}{% endhighlight %}
+
+    {% include anchor.html name="Sizes" %}
+
+    <div class="content">
+      <p>Modal comes in three different sizes <code>is-small</code>, <code>is-large</code> and the <strong>default</strong> size.
+      </p>
+
+      <p>Override the default size by adding the class to <code>.modal-content</code> or <code>.modal-modal-card</code>
+      </p>
+
+      <p>
+        <a class="button is-primary is-large modal-button" data-target="modal-small">Launch small modal card</a>
+        <a class="button is-primary is-large modal-button" data-target="modal-large">Launch large modal card</a>
+      </p>
+    </div>
+
+    {% highlight html %}{{ modal_size }}{% endhighlight %}
+
+    <hr>
 
     {% include variables.html %}
 
@@ -270,4 +298,42 @@ variables:
       <a class="button">Cancel</a>
     </footer>
   </div>
+</div>
+
+<div id="modal-small" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card is-small">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Small Modal</p>
+      <button class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
+        <h2>Second level</h2>
+        <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+  <button class="modal-close is-large"></button>
+</div>
+
+<div id="modal-large" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content is-large">
+    <div class="box">
+      <div class="content">
+        <h1>Large Modal</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
+        <h2>Second level</h2>
+        <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large"></button>
 </div>
