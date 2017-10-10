@@ -4,6 +4,8 @@
 
 ### Breaking changes
 
+The new `$link` color is part of the `$colors` map. As a result, `.button.is-link` is a colored button now. Use `.button.is-text` if you want the underlined button.
+
 ### New features
 
 * #1236 `.table` hover effect is opt-in, by using the `.is-hoverable` modifier class
