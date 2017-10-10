@@ -58,14 +58,64 @@
     padding-right: 1.375em
 
 .intro-video
-  background-color: lavender
+  background-color: $white
   margin-left: auto
   margin-right: auto
   max-width: 640px
   position: relative
+  &.has-loaded
+    .intro-spinner
+      display: none
+    .intro-iframe
+      opacity: 1
+
+@keyframes introSpinner
+  from
+    opacity: 0
+    transform: scale(1.14)
+  to
+    opacity: 1
+    transform: scale(1)
+
+.intro-spinner,
+.intro-shadow
+  animation-duration: 1000ms
+  animation-easing-function: ease-out
+  animation-fill-mode: both
+  transform-origin: center
+
+.intro-spinner
+  +overlay
+  animation-name: introSpinner
+  &::before
+    +loader
+    border-bottom-color: $primary
+    border-left-color: $primary
+    height: 1.5em
+    left: calc(50% - 0.75em)
+    position: absolute
+    top: calc(50% - 0.75em)
+    width: 1.5em
+
+@keyframes introShadow
+  from
+    opacity: 0
+    transform: scale(0.86)
+  to
+    opacity: 1
+    transform: scale(1)
+
+.intro-shadow
+  +overlay
+  box-shadow: 0 1.5rem 3rem rgba(#000, 0.2)
+  animation-name: introShadow
 
 .intro-iframe
+  opacity: 0
   padding-top: 52.8125%
+  position: relative
+  transition-duration: 500ms
+  transition-property: opacity
   iframe
     height: 100%
     left: 0

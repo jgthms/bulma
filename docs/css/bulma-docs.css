@@ -9535,15 +9535,96 @@ svg {
 }
 
 .intro-video {
-  background-color: lavender;
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
   max-width: 640px;
   position: relative;
 }
 
+.intro-video.has-loaded .intro-spinner {
+  display: none;
+}
+
+.intro-video.has-loaded .intro-iframe {
+  opacity: 1;
+}
+
+@keyframes introSpinner {
+  from {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.intro-spinner,
+.intro-shadow {
+  animation-duration: 1000ms;
+  animation-easing-function: ease-out;
+  animation-fill-mode: both;
+  transform-origin: center;
+}
+
+.intro-spinner {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  animation-name: introSpinner;
+}
+
+.intro-spinner::before {
+  animation: spinAround 500ms infinite linear;
+  border: 2px solid #dbdbdb;
+  border-radius: 290486px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+  border-bottom-color: #00d1b2;
+  border-left-color: #00d1b2;
+  height: 1.5em;
+  left: calc(50% - 0.75em);
+  position: absolute;
+  top: calc(50% - 0.75em);
+  width: 1.5em;
+}
+
+@keyframes introShadow {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.intro-shadow {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+  animation-name: introShadow;
+}
+
 .intro-iframe {
+  opacity: 0;
   padding-top: 52.8125%;
+  position: relative;
+  transition-duration: 500ms;
+  transition-property: opacity;
 }
 
 .intro-iframe iframe {
