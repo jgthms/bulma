@@ -1,6 +1,6 @@
 # Bulma Changelog
 
-## 0.5.4
+## 0.6.0
 
 ### Breaking changes
 
@@ -18,71 +18,66 @@ The new `$link` color is part of the `$colors` map. As a result, `.button.is-lin
 The `$link` color is used instead of `$primary` in the following components:
 
 <table>
-  <thead>
-    <tr>
-      <th>Variable</th>
-      <th>Old value</th>
-      <th>New value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>$dropdown-item-active-color</code></td>
-      <td><code>$primary-invert</code></td>
-      <td><code>$link-invert</code></td>
-    </tr>
-    <tr>
-      <td><code>$dropdown-item-active-background-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$navbar-tab-hover-border-bottom-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$navbar-tab-active-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$navbar-tab-active-border-bottom-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$navbar-dropdown-item-active-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-
-    <tr>
-      <td><code>$tabs-link-active-border-bottom-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$tabs-link-active-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$tabs-toggle-link-active-background-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$tabs-toggle-link-active-border-color</code></td>
-      <td><code>$primary</code></td>
-      <td><code>$link</code></td>
-    </tr>
-    <tr>
-      <td><code>$tabs-toggle-link-active-color</code></td>
-      <td><code>$primary-invert</code></td>
-      <td><code>$link-invert</code></td>
-    </tr>
-  </tbody>
+  <tr>
+    <th>Variable</th>
+    <th>Old value</th>
+    <th>New value</th>
+  </tr>
+  <tr>
+    <td><code>$dropdown-item-active-color</code></td>
+    <td><code>$primary-invert</code></td>
+    <td><code>$link-invert</code></td>
+  </tr>
+  <tr>
+    <td><code>$dropdown-item-active-background-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-tab-hover-border-bottom-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-tab-active-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-tab-active-border-bottom-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-dropdown-item-active-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-link-active-border-bottom-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-link-active-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-toggle-link-active-background-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-toggle-link-active-border-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-toggle-link-active-color</code></td>
+    <td><code>$primary-invert</code></td>
+    <td><code>$link-invert</code></td>
+  </tr>
 </table>
 
 ### Issues closed
