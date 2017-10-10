@@ -39,6 +39,9 @@ $info: $cyan !default
 
 As such, the following components are now **blue**:
 
+* [breadcrumb](/documentation/components/breadcrumb/)
+* [dropdown](/documentation/components/dropdown/)
+* [navbar](/documentation/components/navbar/)
 * [pagination](/documentation/components/pagination/)
 * [tabs](/documentation/components/tabs/)
 * [menu](/documentation/components/menu/)
