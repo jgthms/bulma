@@ -143,11 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    const $highlightShows = getAll('.bd-highlight-clipped .bd-show');
+    const $highlightShows = getAll('.highlight .bd-show');
 
     $highlightShows.forEach($el => {
       $el.addEventListener('click', () => {
-        $el.parentNode.classList.remove('bd-is-clipped');
+        $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
       });
     });
   }
