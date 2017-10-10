@@ -2,6 +2,8 @@
 
 ## 0.5.4
 
+### Breaking changes
+
 ### New features
 
 * #1236 `.table` hover effect is opt-in, by using the `.is-hoverable` modifier class
@@ -10,6 +12,76 @@
 ### Improvements
 
 * #1257 Include placeholder mixin in `=input`
+
+The `$link` color is used instead of `$primary` in the following components:
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Old value</th>
+      <th>New value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>$dropdown-item-active-color</code></td>
+      <td><code>$primary-invert</code></td>
+      <td><code>$link-invert</code></td>
+    </tr>
+    <tr>
+      <td><code>$dropdown-item-active-background-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$navbar-tab-hover-border-bottom-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$navbar-tab-active-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$navbar-tab-active-border-bottom-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$navbar-dropdown-item-active-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+
+    <tr>
+      <td><code>$tabs-link-active-border-bottom-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$tabs-link-active-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$tabs-toggle-link-active-background-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$tabs-toggle-link-active-border-color</code></td>
+      <td><code>$primary</code></td>
+      <td><code>$link</code></td>
+    </tr>
+    <tr>
+      <td><code>$tabs-toggle-link-active-color</code></td>
+      <td><code>$primary-invert</code></td>
+      <td><code>$link-invert</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Issues closed
 
