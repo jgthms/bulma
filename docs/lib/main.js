@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Add show code
 =======
@@ -122,17 +123,22 @@ document.addEventListener('DOMContentLoaded', function () {
 =======
 >>>>>>> Improve snippet
 =======
+>>>>>>> Fix rebase
+=======
 =======
 >>>>>>> Add show code
 >>>>>>> Add show code
 =======
 >>>>>>> Improve snippet
+=======
+>>>>>>> Fix rebase
       var $parent = $el.parentNode;
       if ($parent && $parent.classList.contains('bd-is-more')) {
         var showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
         $el.insertAdjacentHTML('beforeend', showEl);
       } else if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
         $el.insertAdjacentHTML('beforeend', expandEl);
+<<<<<<< HEAD
 =======
       if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
         $el.insertAdjacentHTML('beforeend', expandEl);
@@ -179,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
 >>>>>>> Improve snippet
 >>>>>>> Improve snippet
 =======
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Improve snippet
@@ -201,6 +208,9 @@ document.addEventListener('DOMContentLoaded', function () {
 >>>>>>> Improve snippet
 >>>>>>> Improve snippet
 >>>>>>> Improve snippet
+=======
+>>>>>>> Fix rebase
+>>>>>>> Fix rebase
       }
 
       itemsProcessed++;
@@ -237,11 +247,14 @@ document.addEventListener('DOMContentLoaded', function () {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Improve snippet
 =======
 >>>>>>> Add show code
 =======
+=======
+>>>>>>> Fix rebase
 =======
 >>>>>>> Improve snippet
 >>>>>>> Improve snippet
@@ -274,7 +287,12 @@ document.addEventListener('DOMContentLoaded', function () {
 >>>>>>> Add show code
 =======
 >>>>>>> Improve snippet
+<<<<<<< HEAD
 >>>>>>> Improve snippet
+=======
+=======
+>>>>>>> Fix rebase
+>>>>>>> Fix rebase
     var $highlightShows = getAll('.highlight .bd-show');
 
     $highlightShows.forEach(function ($el) {
@@ -284,6 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Improve snippet
 =======
 =======
@@ -300,6 +319,8 @@ document.addEventListener('DOMContentLoaded', function () {
 >>>>>>> Add show code
 =======
 >>>>>>> Improve snippet
+=======
+>>>>>>> Fix rebase
 >>>>>>> Improve snippet
 =======
 =======
@@ -313,6 +334,8 @@ document.addEventListener('DOMContentLoaded', function () {
 =======
 >>>>>>> Improve snippet
 >>>>>>> Improve snippet
+=======
+>>>>>>> Fix rebase
       });
     });
   }
