@@ -160,6 +160,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  var npmClipboard = new Clipboard('#npmCopy');
+
+  npmClipboard.on('onclick', function (e) {
+    console.log('CLICK');
+  });
+
+  npmClipboard.on('success', function (e) {
+    e.trigger.innerText = 'copied!';
+    e.trigger.classList.add('is-success');
+    setTimeout(function () {
+      e.trigger.innerText = 'copy';
+      e.trigger.classList.remove('is-success');
+    }, 500);
+    e.clearSelection();
+  });
+
+  npmClipboard.on('error', function (e) {
+    e.trigger.innerText = 'error!';
+    e.trigger.classList.add('is-error');
+    setTimeout(function () {
+      e.trigger.innerText = 'copy';
+      e.trigger.classList.remove('is-error');
+    }, 500);
+  });
+
   // Functions
 
   function getAll(selector) {
