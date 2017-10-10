@@ -4,7 +4,9 @@
 
 ### Breaking changes
 
-The new `$link` color is part of the `$colors` map. As a result, `.button.is-link` is a colored button now. Use `.button.is-text` if you want the underlined button.
+* The new `$link` color is part of the `$colors` map. As a result, `.button.is-link` is a colored button now. Use `.button.is-text` if you want the underlined button.
+* The deprecated `variables.sass` file has been removed.
+* The deprecated `nav.sass` file has been removed.
 
 ### New features
 
