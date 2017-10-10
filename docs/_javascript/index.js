@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Intro
+
+  const introVimeo = document.getElementById('introVimeo');
+  const npmClipboard = new Clipboard('#npmCopy');
+
+  introVimeo.addEventListener('load', () => {
+    introVimeo.parentNode.parentNode.classList.add('has-loaded');
+  });
+
+  npmClipboard.on('success', function(e) {
+    e.trigger.innerText = 'copied!';
+    e.trigger.classList.add('is-success');
+    setTimeout(() => {
+      e.trigger.innerText = 'copy';
+      e.trigger.classList.remove('is-success');
+    }, 500);
+    e.clearSelection();
+  });
+
+  npmClipboard.on('error', function(e) {
+    e.trigger.innerText = 'error!';
+    e.trigger.classList.add('is-error');
+    setTimeout(() => {
+      e.trigger.innerText = 'copy';
+      e.trigger.classList.remove('is-error');
+    }, 500);
+  });
+
+  // Grid
+
   const $grid = document.getElementById('grid');
   const $columns = Array.prototype.slice.call(document.querySelectorAll('#grid > .column'), 0);
   const $markup = document.querySelector('#markup code');
