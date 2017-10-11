@@ -3,28 +3,6 @@ title: Responsiveness
 layout: documentation
 doc-tab: overview
 doc-subtab: responsiveness
-mixins:
-- name: mobile
-  to: 768
-- name: tablet
-  from: 769
-- name: tablet-only
-  from: 769
-  to: 1023
-- name: touch
-  to: 1023
-- name: desktop
-  to: 1024
-- name: desktop-only
-  from: 1024
-  to: 1215
-- name: widescreen
-  to: 1216
-- name: widescreen-only
-  from: 1216
-  to: 1407
-- name: fullhd
-  to: 1408
 variables:
 - name: $gap
   value: 32px
@@ -67,53 +45,64 @@ variables:
     <div class="content">
       <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">5 breakpoints</a>:</p>
       <ul>
-        {% for breakpoint in site.data.breakpoints %}
-          <li>{% if breakpoint.name == 'fullhd' %}<span class="tag is-success">New!</span> {% endif %}<code>{{ breakpoint.name }}</code>: {% if breakpoint.name == 'mobile' %}up to{% else %}from{% endif %} <code>{{ breakpoint.value }}px</code></li>
+        {% for breakpoint_hash in site.data.breakpoints %}
+          {% assign breakpoint = breakpoint_hash[1] %}
+          <li>{% if breakpoint.id == 'fullhd' %}<span class="tag is-success">New!</span> {% endif %}<code>{{ breakpoint.id }}</code>: {% if breakpoint.id == 'Mobile' %}up to <code>{{ breakpoint.to }}px</code>{% else %}from <code>{{ breakpoint.from }}px</code>{% endif %}</li>
         {% endfor %}
       </ul>
+      
       <p>Bulma uses <a href="{{ mixins_file_url }}" target="_blank">9 responsive mixins</a>:</p>
       <ul>
-			  {% for mixin in page.mixins %}
-          <li>
-						{% if mixin.name == 'fullhd' %}<span class="tag is-success">New!</span>{% endif %}
-            <code>={{ mixin.name }}</code><br>
-            {% if mixin.from %}
-              {% if mixin.to %}
-                from <code>{{ mixin.from }}px</code> and until <code>{{ mixin.to }}px</code>
-              {% else %}
-                from <code>{{ mixin.from }}px</code>
+        {% for breakpoint_hash in site.data.breakpoints %}
+          {% assign breakpoint = breakpoint_hash[1] %}
+          {% case breakpoint.id %}
+            {% when 'mobile' %}
+              <li>
+                <code>={{ breakpoint.id }}</code><br>
+                until <code>{{ breakpoint.to }}px</code>
+              </li>
+            {% when 'fullhd' %}
+              <li>
+                <span class="tag is-success">New!</span>
+                <code>={{ breakpoint.id }}</code><br>
+                from <code>{{ breakpoint.from }}px</code>
+              </li>
+            {% else %}
+              <li>
+                <code>={{ breakpoint.id }}</code><br>
+                from <code>{{ breakpoint.from }}px</code>
+              </li>
+              <li>
+                <code>={{ breakpoint.id }}-only</code><br>
+                from <code>{{ breakpoint.from }}px</code> and until <code>{{ breakpoint.to }}px</code>
+              </li>
+              {% if breakpoint.id == 'tablet' %}
+                <li>
+                  <code>=touch</code><br>
+                  until <code>{{ breakpoint.to }}px</code>
+                </li>
               {% endif %}
-            {% elsif mixin.to %}
-              until <code>{{ mixin.to }}px</code>
-            {% endif %}
-          </li>
-			  {% endfor %}
+          {% endcase %}
+        {% endfor %}
       </ul>
     </div>
 
     <table class="table is-bordered">
       <thead>
         <tr>
-          <th style="width: 20%;">
-            Mobile<br>
-            Up to <code>{{ site.data.breakpoints[0].value }}px</code>
-          </th>
-          <th style="width: 20%;">
-            Tablet<br>
-            Between <code>{{ site.data.breakpoints[1].value }}px</code> and <code>{{ site.data.breakpoints[2].value | minus: 1 }}px</code>
-          </th>
-          <th style="width: 20%;">
-            Desktop<br>
-            Between <code>{{ site.data.breakpoints[2].value }}px</code> and <code>{{ site.data.breakpoints[3].value | minus: 1 }}px</code>
-          </th>
-          <th style="width: 20%;">
-            Widescreen<br>
-            Between <code>{{ site.data.breakpoints[3].value }}px</code> and <code>{{ site.data.breakpoints[4].value | minus: 1 }}px</code>
-          </th>
-          <th style="width: 20%;">
-            FullHD<br>
-            <code>{{ site.data.breakpoints[4].value }}px</code> and above
-          </th>
+          {% for breakpoint_hash in site.data.breakpoints %}
+            {% assign breakpoint = breakpoint_hash[1] %}
+            <th style="width: 20%;">
+              {{ breakpoint.name }}<br>
+              {% if breakpoint.id == 'mobile' %}
+                Up to <code>{{ breakpoint.to }}px</code>
+              {% elsif breakpoint.id == 'fullhd' %}
+                <code>{{ breakpoint.from }}px</code> and above
+              {% else %}
+                Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
+              {% endif %}
+            </th>
+          {% endfor %}
         </tr>
       </thead>
       <tbody>
