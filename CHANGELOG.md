@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.6.1
+
+### New features
+
+* #1287 New `.is-invisible` helper
+
 ## 0.6.0
 
 ### Breaking changes
