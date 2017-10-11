@@ -2,11 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Intro
 
-  const introVimeo = document.getElementById('introVimeo');
+  const introVideo = document.getElementById('introVideo');
+  const introIframe = document.getElementById('introIframe');
+  const introPlayer = new Vimeo.Player(introIframe);
   const npmClipboard = new Clipboard('#npmCopy');
 
-  introVimeo.addEventListener('load', () => {
-    introVimeo.parentNode.parentNode.classList.add('has-loaded');
+  introPlayer.ready().then(function() {
+    introVideo.classList.add('has-loaded');
   });
 
   npmClipboard.on('success', function(e) {
