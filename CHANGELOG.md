@@ -5,6 +5,7 @@
 ### New features
 
 * #1287 New `.is-invisible` helper
+* #1255 New `.is-expanded` modifier for `navbar-item`
 
 ## 0.6.0
 
