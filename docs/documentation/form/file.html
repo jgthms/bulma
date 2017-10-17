@@ -4,27 +4,17 @@ layout: documentation
 doc-tab: form
 doc-subtab: file
 file_name: "Screen Shot 2017-07-29 at 15.54.25.png"
-variables:
-- name: $file-border-color
-  value: transparent
-- name: $file-radius
-  value: $radius
-- name: $file-cta-background-color
-  value: $white-ter
-- name: $file-cta-color
-  value: $grey-dark
-- name: $file-cta-hover-color
-  value: $grey-darker
-- name: $file-cta-active-color
-  value: $grey-darker
-- name: $file-name-border-color
-  value: $file-cta-background-color
-- name: $file-name-border-style
-  value: solid
-- name: $file-name-border-width
-  value: 1px 1px 1px 0
-- name: $file-name-max-width
-  value: 16em
+variables_keys:
+- file-border-color
+- file-radius
+- file-cta-background-color
+- file-cta-color
+- file-cta-hover-color
+- file-cta-active-color
+- file-name-border-color
+- file-name-border-style
+- file-name-border-width
+- file-name-max-width
 ---
 
 {% capture file %}
@@ -749,7 +739,41 @@ variables:
       </p>
     </div>
 
-    {% include variables.html element=true %}
+    {% include anchor.html name="Variables" %}
+
+    <div class="content">
+      <p>
+        You can use <a href="{{ site.github | append: '/blob/master/sass/elements/form.sass#L25,L36' }}" target="_blank">these variables</a> to <strong>customize</strong> this element. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Default value</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for key in page.variables_keys %}
+          {% assign variable = site.data.variables.elements.form.vars[key] %}
+          <tr>
+            <td>
+              <code>{{ variable.name }}</code>
+            </td>
+            <td>
+              <code>{{ variable.value }}</code>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
   </div>
 </section>
