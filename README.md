@@ -36,6 +36,8 @@ bower install bulma
 
 ### CDN
 
+[https://www.jsdelivr.com/package/npm/bulma](https://www.jsdelivr.com/package/npm/bulma)
+
 [https://cdnjs.com/libraries/bulma](https://cdnjs.com/libraries/bulma)
 
 Feel free to raise an issue or submit a pull request.
