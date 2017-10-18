@@ -3,13 +3,6 @@ title: Notification
 layout: documentation
 doc-tab: elements
 doc-subtab: notification
-variables:
-- name: $notification-background-color
-  value: $background
-- name: $notification-radius
-  value: $radius
-- name: $notification-padding
-  value: 1.25rem 2.5rem 1.25rem 1.5rem
 ---
 
 {% capture notification %}
@@ -22,7 +15,7 @@ variables:
 {% endcapture %}
 
 {% capture notification_colors %}
-{% for color in site.data.variables.justColors %}
+{% for color in site.data.colors.justColors %}
 <div class="notification is-{{ color }}">
   <button class="delete"></button>
   Primar lorem ipsum dolor sit amet, consectetur
@@ -55,7 +48,7 @@ variables:
 
     {% include snippet.html content=notification_colors %}
 
-    {% include variables.html %}
+    {% include variables.html type='element' %}
 
   </div>
 </section>

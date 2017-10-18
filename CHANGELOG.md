@@ -4,8 +4,19 @@
 
 ### New features
 
-* #1287 New `.is-invisible` helper
-* #1255 New `.is-expanded` modifier for `navbar-item`
+* 🎉 [List of buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
+* 🎉 #1235 Support for five column grid: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
+* 🎉 #1287 New `.is-invisible` helper
+* 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
+
+### Improvements
+
+* #987 Improve `tag > icon` spacing
+* Improve `hamburger` alignment
+
+### Issues closed
+
+* #1313 Fix Table `is-selected` and `is-hoverable` styling issue
 
 ## 0.6.0
 
@@ -132,7 +143,7 @@ The `$link` color is used instead of `$primary` in the following components:
 
 ### New features
 
-* 🎉 #280 [File upload element](http://bulma.io/documentation/form/file/)
+* 🎉 #280 [File upload element](https://bulma.io/documentation/form/file/)
 * `$container-offset` variable to determine the `.container` breakpoints
 * #1001 Text case helpers
 
@@ -151,7 +162,7 @@ The `$link` color is used instead of `$primary` in the following components:
 
 ### New features
 
-* 🎉 [List of tags](http://bulma.io/documentation/elements/tag/#list-of-tags)
+* 🎉 [List of tags](https://bulma.io/documentation/elements/tag/#list-of-tags)
 * New **variable naming system**: `component`-`subcomponent`-`state`-`property`
 * Improved **customization** thanks to new set of variables
 * #934 New `.is-shadowless` helper
@@ -245,9 +256,9 @@ Variable name changes (mostly appending `-color`):
 
 ### Improved documentation
 
-* [Starter template](http://bulma.io/documentation/overview/start/#starter-template)
-* [Colors page](http://bulma.io/documentation/overview/colors/)
-* [Typography helpers](http://bulma.io/documentation/modifiers/typography-helpers/)
+* [Starter template](https://bulma.io/documentation/overview/start/#starter-template)
+* [Colors page](https://bulma.io/documentation/overview/colors/)
+* [Typography helpers](https://bulma.io/documentation/modifiers/typography-helpers/)
 * **Meta** information for all elements and components
 * **Variables** information for most elements and components
 
@@ -262,7 +273,7 @@ Variable name changes (mostly appending `-color`):
 
 ### New features
 
-* New [dropdown button](http://bulma.io/documentation/components/dropdown/)!
+* New [dropdown button](https://bulma.io/documentation/components/dropdown/)!
 * The breakpoints and `.container` **gap** can be customized with the new `$gap` variable
 * The `.container` has 2 new modifiers: `.is-widescreen` and `.is-fullhd`
 
