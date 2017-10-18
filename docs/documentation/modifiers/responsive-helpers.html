@@ -11,26 +11,19 @@ doc-subtab: responsive-helpers
     <th>
       Class
     </th>
-    <th>
-      Mobile<br>
-      Up to <code>768px</code>
-    </th>
-    <th>
-      Tablet<br>
-      Between <code>769px</code> and <code>1007px</code>
-    </th>
-    <th>
-      Desktop<br>
-      Between <code>1008px</code> and <code>1199px</code>
-    </th>
-    <th>
-      Widescreen<br>
-      Between <code>1200px</code> and <code>1391px</code>
-    </th>
-    <th>
-      FullHD<br>
-      Above <code>1392px</code>
-    </th>
+    {% for breakpoint_hash in site.data.breakpoints %}
+      {% assign breakpoint = breakpoint_hash[1] %}
+      <th>
+        {{ breakpoint.name }}<br>
+        {% if breakpoint.id == 'mobile' %}
+          Up to <code>{{ breakpoint.to }}px</code>
+        {% elsif breakpoint.id == 'fullhd' %}
+          <code>{{ breakpoint.from }}px</code> and above
+        {% else %}
+          Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
+        {% endif %}
+      </th>
+    {% endfor %}
   </tr>
 </thead>
 {% endcapture %}

@@ -1,0 +1,165 @@
+---
+fulltitle: Made with Bulma badges
+layout: default
+route: made-with-bulma
+images:
+- name: "Default"
+  description: "White boxed"
+  type: ""
+  bg: "#fff"
+- name: "Dark"
+  description: "Dark boxed"
+  type: "--dark"
+  bg: "#000"
+- name: "Semi white"
+  description: "Transparent white and turquoise"
+  type: "--semiwhite"
+  bg: "url(/images/various/tom-levold-260373.jpg) center center/cover no-repeat"
+- name: "White"
+  description: "Transparent white"
+  type: "--white"
+  bg: "url(/images/various/sven-scheuermeier-34477.jpg) center center/cover no-repeat"
+- name: "Semiblack"
+  description: "Transparent black and turquoise"
+  type: "--semiblack"
+  bg: "url(/images/various/rodion-kutsaev-24833.jpg) center top/cover no-repeat"
+- name: "Black"
+  description: "Transparent black"
+  type: "--black"
+  bg: "url(/images/various/dmitri-popov-265077.jpg) center center/cover no-repeat"
+---
+
+{% capture image_example %}
+<a href="https://bulma.io">
+  <img src="/path/to/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+</a>
+{% endcapture %}
+
+{% capture image_bigger_example %}
+<a href="https://bulma.io">
+  <img src="/path/to/made-with-bulma.png" alt="Made with Bulma" width="256" height="48">
+</a>
+{% endcapture %}
+
+<div class="container">
+  {% include navbar.html id="MadeWithBulmaHero" %}
+</div>
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1 class="title">
+            Made with Bulma
+          </h1>
+          <p class="subtitle">
+            Join the Bulma community by displaying a badge on your website
+          </p>
+        </div>
+        <div class="column is-narrow">
+          {% include carbon.html %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">6 badges available</h2>
+    <div class="content">
+      <p>
+        The <code>Made with Bulma</code> badge is available in <strong>6 different</strong> versions:
+      </p>
+    </div>
+    <table class="table is-bordered bd-mwb-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Preview</th>
+          <th>Description</th>
+          <th>Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for image in page.images %}
+          {% assign imageUrl = "/images/made-with-bulma" | prepend: site.url | append: image.type | append: ".png" %}
+          <tr>
+            <td>{{ image.name }}</td>
+            <td style="background: {{ image.bg }};"><img src="{{ imageUrl }}" alt="Made with Bulma" width="128" height="24"></td>
+            <td>{{ image.description }}</td>
+            <td>
+              <a class="button is-link is-small" href="{{ imageUrl }}">Download image</a>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr>
+          <td style="vertical-align: middle;">All 6</td>
+          <td style="vertical-align: middle;" colspan="2"><code>made-with-bulma-badges.zip</code></td>
+          <td><a class="button is-primary" href="{{ site.url }}/images/made-with-bulma-badges.zip"><span><strong>Download</strong> all 6 badges</span></a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% include anchor.html name="Usage" %}
+
+    <div class="content">
+      <p>
+        Ideally the image is displayed at <code>128x24</code> pixels, and links back to the Bulma website:
+      </p>
+    </div>
+
+    <div class="bd-snippet bd-is-vertical bd-is-two-fifths">
+      <div class="bd-snippet-preview">
+        <a href="https://bulma.io">
+          <img src="{{ site.url }}/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+        </a>
+      </div>
+      <div class="bd-snippet-code highlight-full">
+        {% highlight html %}{{ image_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        Since the original image dimensions are <code>512x96</code> pixels, you can also display it at <code>256x48</code> without losing any quality:
+      </p>
+    </div>
+
+    <div class="bd-snippet bd-is-vertical bd-is-two-fifths">
+      <div class="bd-snippet-preview">
+        <a href="https://bulma.io">
+          <img src="{{ site.url }}/images/made-with-bulma.png" alt="Made with Bulma" width="256" height="48">
+        </a>
+      </div>
+      <div class="bd-snippet-code highlight-full">
+        {% highlight html %}{{ image_bigger_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include anchor.html name="Badge snippets" %}
+
+    <div class="content">
+      <p>
+        You can simply <strong>embed</strong> an image <strong>directly</strong> on your website by using one of the following snippets.
+      </p>
+    </div>
+    {% for image in page.images %}
+{% capture image_example %}
+<a href="https://bulma.io">
+  <img src="{{ site.url }}/images/made-with-bulma{{ image.type }}.png" alt="Made with Bulma" width="128" height="24">
+</a>
+{% endcapture %}
+    <div class="bd-snippet bd-is-vertical bd-is-one-fifth">
+      <div class="bd-snippet-preview" style="background: {{ image.bg }};">
+        {{ image_example }}
+      </div>
+      <div class="bd-snippet-code highlight-full">
+        {% highlight html %}{{ image_example }}{% endhighlight %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+

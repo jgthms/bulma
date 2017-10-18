@@ -103,12 +103,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if ($highlights.length > 0) {
     $highlights.forEach($el => {
-      const copy = '<button class="button is-small bd-copy">Copy</button>';
-      const expand = '<button class="button is-small bd-expand">Expand</button>';
-      $el.insertAdjacentHTML('beforeend', copy);
+      const copyEl = '<button class="button is-small bd-copy">Copy</button>';
+      const expandEl = '<button class="button is-small bd-expand">Expand</button>';
+      $el.insertAdjacentHTML('beforeend', copyEl);
 
-      if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
-        $el.insertAdjacentHTML('beforeend', expand);
+      const $parent = $el.parentNode;
+      if ($parent && $parent.classList.contains('bd-is-more')) {
+        const showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
+        $el.insertAdjacentHTML('beforeend', showEl);
+      } else if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
+        $el.insertAdjacentHTML('beforeend', expandEl);
       }
 
       itemsProcessed++;
@@ -136,6 +140,14 @@ document.addEventListener('DOMContentLoaded', () => {
     $highlightExpands.forEach($el => {
       $el.addEventListener('click', () => {
         $el.parentNode.firstElementChild.style.maxHeight = 'none';
+      });
+    });
+
+    const $highlightShows = getAll('.highlight .bd-show');
+
+    $highlightShows.forEach($el => {
+      $el.addEventListener('click', () => {
+        $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
       });
     });
   }
