@@ -7,6 +7,10 @@
 * 🎉 [List of buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
 * #1287 New `.is-invisible` helper
 
+### Issues closed
+
+* #1313 Fix Table `is-selected` and `is-hoverable` styling issue
+
 ## 0.6.0
 
 ### Breaking changes
