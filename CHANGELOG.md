@@ -28,6 +28,7 @@
 
 * #1236 `.table` hover effect is opt-in, by using the `.is-hoverable` modifier class
 * #1254 `.dropdown` now supports `.is-up` modifier
+* #1235 Support for five column grid: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
 
 ### Improvements
 
