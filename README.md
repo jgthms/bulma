@@ -13,17 +13,15 @@ Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla
 
 ## Quick install
 
-Bulma is constantly in development! Try it out now:
+You only need **1 CSS file** to use Bulma.  
+There are serval ways to get started with Bulma:
 
-### NPM
+### NPM *(recommended)*
 
 ```sh
 npm install bulma
 ```
 **or**
-
-### Yarn
-
 ```sh
 yarn add bulma
 ```
@@ -38,6 +36,10 @@ bower install bulma
 
 [https://cdnjs.com/libraries/bulma](https://cdnjs.com/libraries/bulma)
 
+Example:
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+```
 Feel free to raise an issue or submit a pull request.
 
 ## CSS only
@@ -46,7 +48,7 @@ Bulma is a **CSS** framework. As such, the sole output is a single CSS file: [bu
 
 You can either use that file, "out of the box", or download the Sass source files to customize the [variables](https://bulma.io/documentation/overview/variables/).
 
-There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have one). Bulma can be considered "environment agnostic": it's just the style layer on top of the logic.
+There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have one). Bulma can be considered *environment agnostic*: it's just the style layer on top of the logic.
 
 ## Browser Support
 
@@ -86,8 +88,8 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [elm-bulma-classes](https://github.com/danielnarey/elm-bulma-classes)              | Bulma prepared for usage with ELM                                  |
 | [Bulma Customizer](https://bulma-customizer.bstash.io/)                            | Bulma Customizer &#8211; Create your own **bespoke** Bulma build   |
 | [Fulma](https://mangelmaxime.github.io/Fulma/)                                     | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)   |
-| [Laravel Enso](https://github.com/laravel-enso/enso)                               | SPA Admin Panel built with Bulma, VueJS and Laravel 			      |
-| [Django Bulma](https://github.com/timonweb/django-bulma)                           | Integrates Bulma with Django 			    |
+| [Laravel Enso](https://github.com/laravel-enso/enso)                               | SPA Admin Panel built with Bulma, VueJS and Laravel                   |
+| [Django Bulma](https://github.com/timonweb/django-bulma)                           | Integrates Bulma with Django                 |
 
 ## Copyright and license
 
