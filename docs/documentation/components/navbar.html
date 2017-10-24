@@ -296,6 +296,60 @@ doc-subtab: navbar
 </section>
 {% endcapture %}
 
+{% capture navbar_dropup_snippet %}
+<div class="navbar-item has-dropdown has-dropdown-up is-hoverable">
+  <a class="navbar-link" href="/documentation/overview/start/">
+    Docs
+  </a>
+  <div class="navbar-dropdown">
+    <a class="navbar-item" href="/documentation/overview/start/">
+      Overview
+    </a>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture navbar_dropup_example %}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
+
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown has-dropdown-up is-active">
+        <a class="navbar-link">
+          Dropup
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            Version {{ site.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
 {% capture navbar_dropdown_default_example %}
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
@@ -873,7 +927,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <h4 class="title is-4">
       Right dropdown
-      <span class="tag is-info">0.5.1</span>
     </h4>
 
     <div class="content">
@@ -893,6 +946,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <div class="column">
         {% highlight html %}{{ navbar_dropdown_right_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Dropup
+    </h4>
+
+    {% include elements/new-tag.html version="0.6.1" %}
+
+    <div class="content">
+      <p>
+        If you're using a navbar at the bottom, like the <a href="#fixed-navbar">fixed bottom navbar</a>, you might want to use a <strong>dropup menu</strong>. Simply add the <code>has-dropdown</code> and <code>has-dropdown-up</code> modifiers to the parent <code>navbar-item</code>.
+      </p>
+    </div>
+
+    {% highlight html %}{{ navbar_dropup_snippet }}{% endhighlight %}
+
+    <div class="columns">
+      <div class="column">
+        <div class="bd-example is-paddingless">
+          {{ navbar_dropup_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropup_example }}{% endhighlight %}
       </div>
     </div>
 
