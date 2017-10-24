@@ -16,7 +16,11 @@
 
 ### Issues closed
 
+* #1358 Fix indentation bug for .is-one-fifth
+* #1342 Remove black line from progress bar in IE
+* #1334 Fix progress bar colors in IE
 * #1313 Fix Table `is-selected` and `is-hoverable` styling issue
+* #963 Fix Delete Button Bug in iOS Safari
 
 ## 0.6.0
 
