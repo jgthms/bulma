@@ -1,5 +1,6 @@
 $navbar-background-color: $white !default
 $navbar-height: 3.25rem !default
+$navbar-fixed-z: 30 !default
 
 $navbar-item-color: $grey-dark !default
 $navbar-item-hover-color: $black !default
@@ -32,6 +33,17 @@ $navbar-dropdown-item-active-color: $link !default
 $navbar-dropdown-item-active-background-color: $background !default
 
 $navbar-divider-background-color: $border !default
+
+=navbar-fixed
+  left: 0
+  position: fixed
+  right: 0
+  z-index: $navbar-fixed-z
+
+=navbar-fixed-html
+  left: 0
+  position: fixed
+  right: 0
 
 .navbar
   background-color: $navbar-background-color
@@ -87,6 +99,19 @@ $navbar-divider-background-color: $border !default
     width: 100%
   &.has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
+  &.is-fixed-bottom,
+  &.is-fixed-top
+    +navbar-fixed
+  &.is-fixed-bottom
+    bottom: 0
+  &.is-fixed-top
+    top: 0
+
+html.has-navbar-fixed-top
+  padding-top: $navbar-height
+
+html.has-navbar-fixed-bottom
+  padding-bottom: $navbar-height
 
 .navbar-brand,
 .navbar-tabs
@@ -184,6 +209,19 @@ a.navbar-item,
     padding: 0.5rem 0
     &.is-active
       display: block
+  // Fixed navbar
+  .navbar
+    &.is-fixed-bottom-touch,
+    &.is-fixed-top-touch
+      +navbar-fixed
+    &.is-fixed-bottom-touch
+      bottom: 0
+    &.is-fixed-top-touch
+      top: 0
+  html.has-navbar-fixed-top-touch
+    padding-top: $navbar-height
+  html.has-navbar-fixed-bottom-touch
+    padding-bottom: $navbar-height
 
 +desktop
   .navbar,
@@ -285,11 +323,25 @@ a.navbar-item,
       right: 0
   .navbar-divider
     display: block
+  .navbar > .container,
   .container > .navbar
     .navbar-brand
       margin-left: -1rem
     .navbar-menu
       margin-right: -1rem
+  // Fixed navbar
+  .navbar
+    &.is-fixed-bottom-desktop,
+    &.is-fixed-top-desktop
+      +navbar-fixed
+    &.is-fixed-bottom-desktop
+      bottom: 0
+    &.is-fixed-top-desktop
+      top: 0
+  html.has-navbar-fixed-top-desktop
+    padding-top: $navbar-height
+  html.has-navbar-fixed-bottom-desktop
+    padding-bottom: $navbar-height
   // Hover/Active states
   a.navbar-item,
   .navbar-link
