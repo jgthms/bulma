@@ -8,7 +8,7 @@ doc-subtab: navbar
 {% include subnav-components.html %}
 
 {% capture navbar_example %}
-{% include navbar.html id="bd-example" %}
+{% include examples/navbar.html id="Default" %}
 {% endcapture %}
 
 {% capture navbar_brand_example %}
@@ -132,7 +132,7 @@ doc-subtab: navbar
 {% endcapture %}
 
 {% capture navbar_transparent_example %}
-{% include navbar.html transparent=true boxed=true id="TransparentExample" %}
+{% include examples/navbar.html transparent=true boxed=true id="TransparentExample" %}
 {% endcapture %}
 
 {% capture navbar_dropdown_example %}
@@ -750,6 +750,43 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     {% include snippet.html content=navbar_transparent_example paddingless=true horizontal=true more=true %}
+
+    {% include anchor.html name="Fixed navbar" %}
+
+    {% include elements/new-tag.html version="0.6.1" %}
+
+    <div class="content">
+      <p>
+        You can now <strong>fix</strong> the navbar to either the <strong>top</strong> or <strong>bottom</strong> of the page. This is a 2-step process:
+      </p>
+      <ul>
+        <li>
+          Add either <code>is-fixed-top</code> or <code>is-fixed-bottom</code> to the <code>navbar</code> component
+          {% highlight html %}<nav class="navbar is-fixed-top">{% endhighlight %}
+        </li>
+        <li>
+          Add the corresponding <code>has-navbar-fixed-top</code> or <code>has-navbar-fixed-bottom</code> modifier to the <code>&lt;html&gt;</code> element to provide the appropriate padding to the page
+          {% highlight html %}<html class="has-navbar-fixed-top">{% endhighlight %}
+        </li>
+      </ul>
+    </div>
+
+    <h4 class="title is-5">Try it out!</h4>
+
+    <div id="navbarToggles" class="buttons">
+      <a id="navbarFixTop" class="button is-link">
+        <span class="icon">
+          <i class="fa fa-square-o"></i>
+        </span>
+        <span>Fix top navbar</span>
+      </a>
+      <a id="navbarFixBottom" class="button is-link">
+        <span class="icon">
+          <i class="fa fa-square-o"></i>
+        </span>
+        <span>Show bottom navbar</span>
+      </a>
+    </div>
 
     {% include anchor.html name="Dropdown menu" %}
 
