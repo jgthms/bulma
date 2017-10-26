@@ -6655,6 +6655,11 @@ a.navbar-link.is-active {
   .navbar.is-fixed-top-touch {
     top: 0;
   }
+  .navbar.is-fixed-top .navbar-menu, .navbar.is-fixed-top-touch .navbar-menu {
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(100vh - 3.25rem);
+    overflow: auto;
+  }
   html.has-navbar-fixed-top-touch {
     padding-top: 3.25rem;
   }
@@ -10347,6 +10352,24 @@ svg {
 
 #alternative a:hover {
   text-decoration: underline;
+}
+
+.bd-special-shadow {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), transparent);
+  height: 10px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  transform: scaleY(0);
+  transform-origin: center top;
+}
+
+@media screen and (max-width: 1023px) {
+  .bd-is-clipped-touch {
+    overflow: hidden !important;
+  }
 }
 
 #images tr td:nth-child(2) {
