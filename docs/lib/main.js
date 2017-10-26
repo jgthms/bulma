@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var pinned = false;
   var horizon = navbarHeight;
   var whereYouStoppedScrolling = 0;
-  var threshold = 200;
+  var threshold = 160;
   var scrollFactor = 0;
 
   navbarBurger.addEventListener('click', function (el) {
@@ -227,10 +227,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var translateFactor = 1 + translateValue / navbarHeight;
     var navbarStyle = '\n      transform: translateY(' + translateValue + 'px);\n    ';
 
-    if (currentY > threshold) {
+    if (currentY > threshold * 2) {
       scrollFactor = 1;
+    } else if (currentY > threshold) {
+      scrollFactor = (currentY - threshold) / threshold;
     } else {
-      scrollFactor = currentY / threshold;
+      scrollFactor = 0;
     }
     specialShadow.style.opacity = scrollFactor;
     specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
