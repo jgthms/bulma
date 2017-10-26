@@ -7,6 +7,7 @@
 * 🎉 [List of buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
 * 🎉 #1235 Support for five column grid: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
 * 🎉 #1287 New `.is-invisible` helper
+* 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
 
 ### Improvements
 
