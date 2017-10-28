@@ -87,7 +87,8 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 | [Bulma Customizer](https://bulma-customizer.bstash.io/)                            | Bulma Customizer &#8211; Create your own **bespoke** Bulma build   |
 | [Fulma](https://mangelmaxime.github.io/Fulma/)                                     | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)   |
 | [Laravel Enso](https://github.com/laravel-enso/enso)                               | SPA Admin Panel built with Bulma, VueJS and Laravel            |
-| [Bulma Templates](https://github.com/dansup/bulma-templates)                       |  Free Templates for Bulma                       |
+| [Django Bulma](https://github.com/timonweb/django-bulma)                           | Integrates Bulma with Django           |
+| [Bulma Templates](https://github.com/dansup/bulma-templates)                       | Free Templates for Bulma                       |
 
 ## Copyright and license
 
