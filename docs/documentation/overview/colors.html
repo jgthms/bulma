@@ -4,16 +4,16 @@ layout: documentation
 doc-tab: overview
 doc-subtab: colors
 colors:
-- id: "white"
-- id: "black"
-- id: "light"
-- id: "dark"
-- id: "primary"
-- id: "link"
-- id: "info"
-- id: "success"
-- id: "warning"
-- id: "danger"
+- white
+- black
+- light
+- dark
+- primary
+- link
+- info
+- success
+- warning
+- danger
 ---
 
 {% include subnav-overview.html %}
@@ -47,8 +47,8 @@ colors:
       </thead>
       <tbody>
         {% for color in page.colors %}
-          {% assign derivedColor = site.data.variables.derived.colors | where: "id", color.id | first %}
-          {% assign initialColor = site.data.variables.initial.colors | where: "id", derivedColor.valueId | first %}
+          {% assign derivedColor = site.data.colors.derived | where: "id", color | first %}
+          {% assign initialColor = site.data.colors.initial | where: "id", derivedColor.valueId | first %}
           <tr>
             <td>
               <strong>{{ derivedColor.id | capitalize }}</strong>
@@ -70,7 +70,7 @@ colors:
                 {% include elements/color-square.html value=derivedColor.invertValue %}
               </td>
             {% elsif derivedColor.invertId %}
-              {% assign invertColor = site.data.variables.initial.colors | where: "id", derivedColor.invertId | first %}
+              {% assign invertColor = site.data.colors.initial | where: "id", derivedColor.invertId | first %}
               <td>
                 <code>${{ derivedColor.invertId }}</code>
               </td>

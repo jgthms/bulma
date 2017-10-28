@@ -5,39 +5,35 @@ doc-tab: modifiers
 doc-subtab: typography-helpers
 ---
 
+{% assign initial_vars = site.data.variables.utilities.initial-variables.vars %}
+{% assign sizes        = site.data.variables.utilities.derived-variables.vars.sizes.value | split: ' ' %}
+
 {% capture thead %}
 <thead>
   <tr>
     <th>
       Class
     </th>
-    <th>
-      Mobile<br>
-      Up to <code>768px</code>
-    </th>
-    <th>
-      Tablet<br>
-      Between <code>769px</code> and <code>1007px</code>
-    </th>
-    <th>
-      Desktop<br>
-      Between <code>1008px</code> and <code>1199px</code>
-    </th>
-    <th>
-      Widescreen<br>
-      Between <code>1200px</code> and <code>1391px</code>
-    </th>
-    <th>
-      FullHD<br>
-      Above <code>1392px</code>
-    </th>
+    {% for breakpoint_hash in site.data.breakpoints %}
+      {% assign breakpoint = breakpoint_hash[1] %}
+      <th>
+        {{ breakpoint.name }}<br>
+        {% if breakpoint.id == 'mobile' %}
+          Up to <code>{{ breakpoint.to }}px</code>
+        {% elsif breakpoint.id == 'fullhd' %}
+          <code>{{ breakpoint.from }}px</code> and above
+        {% else %}
+          Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
+        {% endif %}
+      </th>
+    {% endfor %}
   </tr>
 </thead>
 {% endcapture %}
 
 {% capture size1 %}
 <td class="is-narrow">
-  <p class="notification is-success"><code>3rem</code></p>
+  <p class="notification is-success"><code>{{ initial_vars.size-1.value }}</code></p>
 </td>
 {% endcapture %}
 
@@ -66,7 +62,7 @@ doc-subtab: typography-helpers
 
     <div class="content">
       <p>
-        There are <strong>7 sizes</strong> to choose from:
+        There are <strong>{{ sizes | size }} sizes</strong> to choose from:
       </p>
     </div>
 
@@ -82,34 +78,13 @@ doc-subtab: typography-helpers
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><code>is-size-1</code></td>
-          <td><code>3rem</code></td>
-        </tr>
-        <tr>
-          <td><code>is-size-2</code></td>
-          <td><code>2.5rem</code></td>
-        </tr>
-        <tr>
-          <td><code>is-size-3</code></td>
-          <td><code>2rem</code></td>
-        </tr>
-        <tr>
-          <td><code>is-size-4</code></td>
-          <td><code>1.5rem</code></td>
-        </tr>
-        <tr>
-          <td><code>is-size-5</code></td>
-          <td><code>1.25rem</code></td>
-        </tr>
-        <tr>
-          <td><code>is-size-6</code></td>
-          <td><code>1rem</code></td>
-        </tr>
-        <tr>
-          <td><code>is-size-7</code></td>
-          <td><code>0.75rem</code></td>
-        </tr>
+				{% for size in sizes %}
+					<tr>
+						{% assign key = 'size-' | append: forloop.index %}
+						<td><code>is-size-{{ forloop.index }}</code></td>
+						<td><code>{{ initial_vars[key].value }}</code></td>
+					</tr>
+        {% endfor %}
       </tbody>
     </table>
 
@@ -229,7 +204,7 @@ doc-subtab: typography-helpers
 
     <div class="content">
       <p>
-        You can align the text with the use of one of <strong>3 alignment helpers</strong>:
+        You can align the text with the use of one of <strong>4 alignment helpers</strong>:
       </p>
     </div>
 

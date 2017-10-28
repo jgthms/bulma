@@ -3,49 +3,6 @@ title: Button
 layout: documentation
 doc-tab: elements
 doc-subtab: button
-variables:
-- name: $button-color
-  value: $grey-darker
-- name: $button-background-color
-  value: $white
-- name: $button-border-color
-  value: $grey-lighter
-- name: $button-hover-color
-  value: $link-hover
-- name: $button-hover-border-color
-  value: $link-hover-border
-- name: $button-focus-color
-  value: $link-focus
-- name: $button-focus-border-color
-  value: $link-focus-border
-- name: $button-focus-box-shadow-size
-  value: 0 0 0 0.125em
-- name: $button-focus-box-shadow-color
-  value: rgba($link, 0.25)
-- name: $button-active-color
-  value: $link-active
-- name: $button-active-border-color
-  value: $link-active-border
-- name: $button-link-color
-  value: $text
-- name: $button-link-hover-background-color
-  value: $background
-- name: $button-link-hover-color
-  value: $text-strong
-- name: $button-disabled-background-color
-  value: $white
-- name: $button-disabled-border-color
-  value: $grey-lighter
-- name: $button-disabled-shadow
-  value: none
-- name: $button-disabled-opacity
-  value: 0.5
-- name: $button-static-color
-  value: $grey
-- name: $button-static-background-color
-  value: $white-ter
-- name: $button-static-border-color
-  value: $grey-lighter
 ---
 
 {% capture button_example %}
@@ -410,6 +367,83 @@ variables:
 </div>
 {% endcapture %}
 
+{% capture buttons %}
+<div class="buttons">
+  <span class="button is-success">Save changes</span>
+  <span class="button is-info">Save and continue</span>
+  <span class="button is-danger">Cancel</span>
+</div>
+{% endcapture %}
+
+{% capture buttons_multiple %}
+<div class="buttons">
+  <span class="button">One</span>
+  <span class="button">Two</span>
+  <span class="button">Three</span>
+  <span class="button">Four</span>
+  <span class="button">Five</span>
+  <span class="button">Six</span>
+  <span class="button">Seven</span>
+  <span class="button">Eight</span>
+  <span class="button">Nine</span>
+  <span class="button">Ten</span>
+  <span class="button">Eleven</span>
+  <span class="button">Twelve</span>
+  <span class="button">Thirteen</span>
+  <span class="button">Fourteen</span>
+  <span class="button">Fifteen</span>
+  <span class="button">Sixteen</span>
+  <span class="button">Seventeen</span>
+  <span class="button">Eighteen</span>
+  <span class="button">Nineteen</span>
+  <span class="button">Twenty</span>
+</div>
+{% endcapture %}
+
+{% capture buttons_addons %}
+<div class="buttons has-addons">
+  <span class="button">Yes</span>
+  <span class="button">Maybe</span>
+  <span class="button">No</span>
+</div>
+{% endcapture %}
+
+{% capture buttons_addons_centered %}
+<div class="buttons has-addons is-centered">
+  <span class="button">Yes</span>
+  <span class="button">Maybe</span>
+  <span class="button">No</span>
+</div>
+{% endcapture %}
+
+{% capture buttons_addons_right %}
+<div class="buttons has-addons is-right">
+  <span class="button">Yes</span>
+  <span class="button">Maybe</span>
+  <span class="button">No</span>
+</div>
+{% endcapture %}
+
+{% capture buttons_addons_selected %}
+<div class="buttons has-addons">
+  <span class="button is-success is-selected">Yes</span>
+  <span class="button">Maybe</span>
+  <span class="button">No</span>
+</div>
+
+<div class="buttons has-addons">
+  <span class="button">Yes</span>
+  <span class="button is-info is-selected">Maybe</span>
+  <span class="button">No</span>
+</div>
+
+<div class="buttons has-addons">
+  <span class="button">Yes</span>
+  <span class="button">Maybe</span>
+  <span class="button is-danger is-selected">No</span>
+</div>
+{% endcapture %}
+
 {% include subnav-elements.html %}
 
 <section class="section">
@@ -615,7 +649,125 @@ variables:
 
     {% include snippet.html content=button_group_addons_example %}
 
-    {% include variables.html %}
+    {% include anchor.html name="List of buttons" %}
+
+    {% include elements/new-tag.html version="0.6.1" %}
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            You can now create a <strong>list of buttons</strong> with the <code>.buttons</code> container.
+          </p>
+        </div>
+        <div class="bd-example">
+          {{ buttons }}
+        </div>
+      </div>
+      <div class="column">
+        {% highlight html %}{{ buttons }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            If the list is <strong>very long</strong>, it will automatically wrap on <strong>multiple lines</strong>, while keeping all buttons <strong>evenly spaced</strong>.
+          </p>
+        </div>
+        <div class="bd-example">
+          {{ buttons_multiple }}
+        </div>
+      </div>
+      <div class="column highlight-full">
+        {% highlight html %}{{ buttons_multiple }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            You can <strong>attach buttons together</strong> with the <code>.has-addons</code> modifier.
+          </p>
+        </div>
+        <div class="bd-example">
+          {{ buttons_addons }}
+        </div>
+      </div>
+      <div class="column highlight-full">
+        {% highlight html %}{{ buttons_addons }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            Use the <code>is-centered</code> or the <code>is-right</code> modifiers to alter the <strong>alignment</strong>.
+          </p>
+        </div>
+        <div class="bd-example">
+          {{ buttons_addons_centered }}
+          {{ buttons_addons_right }}
+        </div>
+      </div>
+      <div class="column highlight-full">
+        {% highlight html %}{{ buttons_addons_centered }}{{ buttons_addons_right }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="content">
+          <p>
+            You can use any <strong>modifier</strong> class on each button to differentiate them. Make sure to add the <code>is-selected</code> modifier as well to make sure the selected button is <em>above</em> its siblings.
+          </p>
+        </div>
+        <div class="bd-example">
+          {{ buttons_addons_selected }}
+        </div>
+      </div>
+      <div class="column highlight-full">
+        {% highlight html %}{{ buttons_addons_selected }}{% endhighlight %}
+      </div>
+    </div>
+
+    <div class="message is-info">
+      <div class="message-header">
+        <p>Difference between <a href="{{ site.url }}/documentation/form/general/#form-group">form groups</a> and <strong>list of buttons</strong></p>
+      </div>
+      <div class="message-body">
+        <div class="content">
+          <p>
+            While this list of buttons style can be achieved with either <code>field is-grouped</code> or the new <code>buttons</code> class, there are a few differences:
+          </p>
+          <ul>
+            <li>
+              <code>buttons</code> has a <strong>simpler markup</strong>
+            </li>
+            <li>
+              <code>buttons</code> can only contain <code>button</code> elements
+            </li>
+            <li>
+              <code>field is-grouped</code> can contain <em>any</em> type of <code>control</code> inputs
+            </li>
+            <li>
+              <code>field is-grouped</code> can be forced to fit all controls on a <strong>single line</strong>
+            </li>
+            <li>
+              with <code>field is-grouped</code> you can <strong>expand</strong> one of the controls
+            </li>
+          </ul>
+          <p>
+            Basically, if you only want a list of <em>buttons</em>, using <code>buttons</code> is recommended. If you need more control on the styling and the elements, use a <a href="{{ site.url }}/documentation/form/general/#form-group">form group</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {% include variables.html type='element' %}
 
   </div>
 </section>
