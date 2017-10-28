@@ -70,6 +70,7 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 
 | Project                                                                            | Description                                                        |
 |------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| [Bulma Templates](https://github.com/dansup/bulma-templates)                       |  Free Templates for Bulma                       |
 | [Bulma with Attribute Modules](https://github.com/j5bot/bulma-attribute-selectors) | Adds support for attribute-based selectors.                        |
 | [Bulma with Rails](https://github.com/joshuajansen/bulma-rails)                    | Integrates Bulma with the rails asset pipeline                     |
 | [Vue Admin](https://github.com/vue-bulma/vue-admin)                                | Vue Admin framework powered by Bulma                               |
