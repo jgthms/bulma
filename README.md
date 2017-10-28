@@ -70,7 +70,6 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 
 | Project                                                                            | Description                                                        |
 |------------------------------------------------------------------------------------|--------------------------------------------------------------------|
-| [Bulma Templates](https://github.com/dansup/bulma-templates)                       |  Free Templates for Bulma                       |
 | [Bulma with Attribute Modules](https://github.com/j5bot/bulma-attribute-selectors) | Adds support for attribute-based selectors.                        |
 | [Bulma with Rails](https://github.com/joshuajansen/bulma-rails)                    | Integrates Bulma with the rails asset pipeline                     |
 | [Vue Admin](https://github.com/vue-bulma/vue-admin)                                | Vue Admin framework powered by Bulma                               |
@@ -87,7 +86,8 @@ Browse the [online documentation here.](http://bulma.io/documentation/overview/s
 | [elm-bulma-classes](https://github.com/danielnarey/elm-bulma-classes)              | Bulma prepared for usage with ELM                                  |
 | [Bulma Customizer](https://bulma-customizer.bstash.io/)                            | Bulma Customizer &#8211; Create your own **bespoke** Bulma build   |
 | [Fulma](https://mangelmaxime.github.io/Fulma/)                                     | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)   |
-| [Laravel Enso](https://github.com/laravel-enso/enso)                               | SPA Admin Panel built with Bulma, VueJS and Laravel 			      |
+| [Laravel Enso](https://github.com/laravel-enso/enso)                               | SPA Admin Panel built with Bulma, VueJS and Laravel            |
+| [Bulma Templates](https://github.com/dansup/bulma-templates)                       |  Free Templates for Bulma                       |
 
 ## Copyright and license
 
