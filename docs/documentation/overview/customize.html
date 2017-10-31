@@ -27,7 +27,19 @@ $danger: $orange
 // Use the new serif family
 $family-primary: $family-serif
 
-// 4. Import the rest of Bulma
+// 4. Setup your Custom Colors
+$linkedin: #0077B5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #1DA1F2;
+$twitter-invert: findColorInvert($twitter);
+$github: #222222;
+$github-invert: findColorInvert($github);
+// Add new color variables to the color map.
+$colors: map-merge($colors, ("twitter":($twitter, $twitter-invert)));
+$colors: map-merge($colors, ("linkedin": ($linkedin, $linkedin-invert)));
+$colors: map-merge($colors, ("github": ($github, $github-invert)));
+
+// 5. Import the rest of Bulma
 @import "../bulma"
 {% endcapture %}
 
