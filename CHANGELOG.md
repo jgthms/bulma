@@ -8,8 +8,8 @@
 * 🎉 #1235 Support for five column grid: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
 * 🎉 #1287 New `.is-invisible` helper
 * 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
+* 🎉 #1384 New `.is-centered` and `.is-right` modifiers for `tags`
 * 🎉 #1383 New `.is-empty` modifier for `file`
-
 
 ### Improvements
 
@@ -18,7 +18,11 @@
 
 ### Issues closed
 
+* #1358 Fix indentation bug for .is-one-fifth
+* #1342 Remove black line from progress bar in IE
+* #1334 Fix progress bar colors in IE
 * #1313 Fix Table `is-selected` and `is-hoverable` styling issue
+* #963 Fix Delete Button Bug in iOS Safari
 
 ## 0.6.0
 
