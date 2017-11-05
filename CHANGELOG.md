@@ -8,6 +8,7 @@
 * 🎉 #1235 Support for five column grid: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
 * 🎉 #1287 New `.is-invisible` helper
 * 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
+* 🎉 #1384 New `.is-centered` and `.is-right` modifiers for `tags`
 
 ### Improvements
 
