@@ -8,7 +8,7 @@ doc-subtab: navbar
 {% include subnav-components.html %}
 
 {% capture navbar_example %}
-{% include navbar.html id="bd-example" %}
+{% include examples/navbar.html id="Default" %}
 {% endcapture %}
 
 {% capture navbar_brand_example %}
@@ -132,7 +132,7 @@ doc-subtab: navbar
 {% endcapture %}
 
 {% capture navbar_transparent_example %}
-{% include navbar.html transparent=true boxed=true id="TransparentExample" %}
+{% include examples/navbar.html transparent=true boxed=true id="TransparentExample" %}
 {% endcapture %}
 
 {% capture navbar_dropdown_example %}
@@ -294,6 +294,60 @@ doc-subtab: navbar
     </p>
   </div>
 </section>
+{% endcapture %}
+
+{% capture navbar_dropup_snippet %}
+<div class="navbar-item has-dropdown has-dropdown-up is-hoverable">
+  <a class="navbar-link" href="/documentation/overview/start/">
+    Docs
+  </a>
+  <div class="navbar-dropdown">
+    <a class="navbar-item" href="/documentation/overview/start/">
+      Overview
+    </a>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture navbar_dropup_example %}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
+
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown has-dropdown-up is-active">
+        <a class="navbar-link">
+          Dropup
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            Version {{ site.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 {% endcapture %}
 
 {% capture navbar_dropdown_default_example %}
@@ -692,7 +746,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <p>
         A <code>navbar-item</code> is a repeatable element that can be:
       </p>
-      <ul>
+      <ul class="bd-spaced">
         <li>
           a navigation <strong>link</strong>
           {% highlight html %}{{ navbar_item_link_example }}{% endhighlight %}
@@ -750,6 +804,43 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     {% include snippet.html content=navbar_transparent_example paddingless=true horizontal=true more=true %}
+
+    {% include anchor.html name="Fixed navbar" %}
+
+    {% include elements/new-tag.html version="0.6.1" %}
+
+    <div class="content">
+      <p>
+        You can now <strong>fix</strong> the navbar to either the <strong>top</strong> or <strong>bottom</strong> of the page. This is a 2-step process:
+      </p>
+      <ul class="bd-spaced">
+        <li>
+          Add either <code>is-fixed-top</code> or <code>is-fixed-bottom</code> to the <code>navbar</code> component
+          {% highlight html %}<nav class="navbar is-fixed-top">{% endhighlight %}
+        </li>
+        <li>
+          Add the corresponding <code>has-navbar-fixed-top</code> or <code>has-navbar-fixed-bottom</code> modifier to the <code>&lt;html&gt;</code> element to provide the appropriate padding to the page
+          {% highlight html %}<html class="has-navbar-fixed-top">{% endhighlight %}
+        </li>
+      </ul>
+    </div>
+
+    <h4 class="title is-5">Try it out!</h4>
+
+    <div id="navbarToggles" class="buttons">
+      <a id="navbarFixTop" class="button is-link">
+        <span class="icon">
+          <i class="fa fa-square-o"></i>
+        </span>
+        <span>Fix <strong>top</strong> navbar</span>
+      </a>
+      <a id="navbarFixBottom" class="button is-link">
+        <span class="icon">
+          <i class="fa fa-square-o"></i>
+        </span>
+        <span>Show <strong>bottom</strong> navbar</span>
+      </a>
+    </div>
 
     {% include anchor.html name="Dropdown menu" %}
 
@@ -839,7 +930,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <h4 class="title is-4">
       Right dropdown
-      <span class="tag is-info">0.5.1</span>
     </h4>
 
     <div class="content">
@@ -859,6 +949,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <div class="column">
         {% highlight html %}{{ navbar_dropdown_right_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Dropup
+    </h4>
+
+    {% include elements/new-tag.html version="0.6.1" %}
+
+    <div class="content">
+      <p>
+        If you're using a navbar at the bottom, like the <a href="#fixed-navbar">fixed bottom navbar</a>, you might want to use a <strong>dropup menu</strong>. Simply add the <code>has-dropdown</code> and <code>has-dropdown-up</code> modifiers to the parent <code>navbar-item</code>.
+      </p>
+    </div>
+
+    {% highlight html %}{{ navbar_dropup_snippet }}{% endhighlight %}
+
+    <div class="columns">
+      <div class="column">
+        <div class="bd-example is-paddingless">
+          {{ navbar_dropup_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropup_example }}{% endhighlight %}
       </div>
     </div>
 
