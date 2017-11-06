@@ -2,6 +2,38 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  // Intro
+
+  var introVideo = document.getElementById('introVideo');
+  var introIframe = document.getElementById('introIframe');
+  var introPlayer = new Vimeo.Player(introIframe);
+  var npmClipboard = new Clipboard('#npmCopy');
+
+  introPlayer.ready().then(function () {
+    introVideo.classList.add('has-loaded');
+  });
+
+  npmClipboard.on('success', function (e) {
+    e.trigger.innerText = 'copied!';
+    e.trigger.classList.add('is-success');
+    setTimeout(function () {
+      e.trigger.innerText = 'copy';
+      e.trigger.classList.remove('is-success');
+    }, 500);
+    e.clearSelection();
+  });
+
+  npmClipboard.on('error', function (e) {
+    e.trigger.innerText = 'error!';
+    e.trigger.classList.add('is-error');
+    setTimeout(function () {
+      e.trigger.innerText = 'copy';
+      e.trigger.classList.remove('is-error');
+    }, 500);
+  });
+
+  // Grid
+
   var $grid = document.getElementById('grid');
   var $columns = Array.prototype.slice.call(document.querySelectorAll('#grid > .column'), 0);
   var $markup = document.querySelector('#markup code');

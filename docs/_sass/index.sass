@@ -1,137 +1,189 @@
-@keyframes floatUp
-  0%
-    box-shadow: 0 0 0 rgba($black, 0), 0 0 0 rgba($black, 0), 0 0 0 rgba($black, 0)
-    transform: scale(0.86)
-  67%
-    box-shadow: 0 0 0 rgba($black, 0), 0 5px 10px rgba($black, 0.1), 0 1px 1px rgba($black, 0.2)
-    transform: scale(1)
-  100%
-    box-shadow: 0 20px 60px rgba($black, 0.05), 0 5px 10px rgba($black, 0.1), 0 1px 1px rgba($black, 0.2)
-    transform: scale(1)
+.intro-content
+  margin-left: auto
+  margin-right: auto
+  max-width: 640px
 
-@keyframes strokePath
-  from
-    stroke-dashoffset: 880
-  to
-    stroke-dashoffset: 0
+.intro-title
+  font-weight: $weight-normal
+  line-height: 1.375
+  strong
+    font-weight: $weight-semibold
 
-@keyframes fadeIn
-  from
-    opacity: 0
-    transform: scale(0.86)
-  to
-    opacity: 1
-    transform: scale(1)
+.intro-ghbtns
+  height: 30px
+  // margin-bottom: 24px
+  margin-bottom: 46px
 
-@keyframes fadeOut
-  0%
-    opacity: 1
-    transform: scale(0.86)
-  67%
-    opacity: 1
-    transform: scale(0.86)
-  100%
-    opacity: 0
-    transform: scale(1)
-
-@keyframes slideDown
-  0%
-    opacity: 0
-    transform: translateY(-10px)
-  100%
-    opacity: 1
-    transform: translateY(0)
-
-@keyframes slideUp
-  0%
-    opacity: 0
-    transform: translateY(10px)
-  100%
-    opacity: 1
-    transform: translateY(0)
-
-$curve: cubic-bezier(0, 0.71, 0.29, 1)
-
-#b
-  // animation-delay: 1s
-  animation-duration: 1.5s
-  animation-fill-mode: both
-  animation-name: floatUp
-  animation-timing-function: $curve
-  border-radius: 24px
-  display: inline-block
-  height: 240px
-  margin-bottom: 40px
-  position: relative
-  vertical-align: top
-  width: 240px
-  svg
-    +overlay
-    display: block
-    height: 240px
-    width: 240px
-    &:first-child
-      animation-duration: 1.5s
-      animation-fill-mode: both
-      animation-name: fadeOut
-      animation-timing-function: $curve
-      g
-        animation-duration: 1s
-        animation-fill-mode: both
-        animation-name: strokePath
-        animation-timing-function: $curve
-        fill: none
-        stroke: $turquoise
-        stroke-dasharray: 880
-        stroke-width: 2px
-    &:last-child
-      animation-delay: 1s
-      animation-duration: 1s
-      animation-fill-mode: both
-      animation-name: fadeIn
-      animation-timing-function: $curve
-      g
-        fill: $turquoise
-  +mobile
-    border-radius: 16px
-    height: 160px
-    width: 160px
-
-#bulma
-  animation: slideDown 500ms both
-  // animation-delay: 1s
-
-#modern-framework
-  animation: slideUp 500ms both
-  animation-delay: 0.2s
-
-#npm
-  align-items: center
-  animation: fadeIn 500ms both
-  animation-delay: 0.4s
-  background: none
+.intro-npm
+  background: $black-ter
+  border-radius: $radius-large
+  color: $white
   display: flex
-  justify-content: center
-  margin: -10px 0 20px
+  font-size: 15px
+  justify-content: space-between
+  line-height: 20px
+  padding: 15px 25px
+  position: relative
   code
-    background: $background
+    font-size: inherit
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+  .intro-npm-copy
     border-radius: $radius
-    color: $primary
-    display: inline-block
-    font-size: 16px
-    padding: 16px 32px
+    color: $yellow
+    cursor: pointer
+    margin: -2px -7px -3px
+    padding: 2px 7px 3px
+    &:hover
+      background-color: $yellow
+      color: $black-ter
+    &.is-success,
+    &.is-error
+      color: $white
+      pointer-events: none
+      text-decoration: none
+    &.is-success
+      background-color: $green
+    &.is-error
+      background-color: $red
+  \::-moz-selection
+    background: $yellow
+    color: $black-ter
+  \::selection
+    background: $yellow
+    color: $black-ter
 
-#ghbtns
-  animation: slideDown 500ms both
-  animation-delay: 0.6s
+.intro-buttons
+  margin-top: 1.5rem
+  .button
+    padding-left: 1.375em
+    padding-right: 1.375em
 
-html.route-index #carbon
-  animation: slideUp 500ms both
-  animation-delay: 0.8s
+.intro-video
+  background-color: $white
+  margin-left: auto
+  margin-right: auto
+  max-width: 640px
+  position: relative
+  &.has-loaded
+    .intro-spinner
+      display: none
+    .intro-iframe
+      opacity: 1
 
-#download
-  animation: fadeIn 500ms both
-  animation-delay: 1s
+@keyframes introSpinner
+  from
+    opacity: 0
+    transform: scale(1.14)
+  to
+    opacity: 1
+    transform: scale(1)
+
+.intro-spinner,
+.intro-shadow
+  animation-duration: 500ms
+  animation-easing-function: ease-out
+  animation-fill-mode: both
+  transform-origin: center
+
+.intro-spinner
+  +overlay
+  animation-name: introSpinner
+  &::before
+    +loader
+    border-bottom-color: $primary
+    border-left-color: $primary
+    height: 1.5em
+    left: calc(50% - 0.75em)
+    position: absolute
+    top: calc(50% - 0.75em)
+    width: 1.5em
+
+@keyframes introShadow
+  from
+    opacity: 0
+    transform: scale(0.86)
+  to
+    opacity: 1
+    transform: scale(1)
+
+.intro-shadow
+  +overlay
+  background-color: #776e70
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: cover
+  box-shadow: 0 1.5rem 3rem rgba(#000, 0.2)
+  animation-name: introShadow
+
+.intro-iframe
+  opacity: 0
+  // padding-top: 52.8125%
+  padding-top: 56.25%
+  position: relative
+  transition-duration: 500ms
+  transition-property: opacity
+  iframe
+    height: 100%
+    left: 0
+    position: absolute
+    top: 0
+    width: 100%
+
+.intro-author
+  color: $text-light
+  font-size: $size-small
+  margin-top: 1rem
+  text-align: center
+  a
+    color: $text-strong
+    &:hover
+      text-decoration: underline
+  span
+    opacity: 0.5
+    transition: 100ms opacity
+    &:hover
+      opacity: 1
+
++mobile
+  .intro-buttons
+    .button
+      display: flex
+      width: 100%
+      &.is-light
+        margin-top: 0.5rem
+
++tablet
+  .intro-title
+    font-size: 2.25rem
+  .intro-buttons
+    align-items: center
+    display: flex
+    justify-content: space-between
+
++touch
+  .intro-column.is-video,
+  .intro-carbon
+    margin-top: 3rem
+
++desktop
+  .intro-columns
+    display: flex
+    justify-content: center
+  .intro-column
+    width: calc(50% - 1.5rem)
+    &.is-content
+      margin-right: 1.5rem
+    &.is-video
+      margin-left: 1.5rem
+  .intro-content
+    max-width: 440px
+  .intro-title
+    margin-top: -11px
+    &:not(:last-child)
+      margin-bottom: 20px
+  .intro-carbon
+    margin-top: 3rem
 
 #grid
   .notification
@@ -141,8 +193,6 @@ html.route-index #carbon
 #message
   display: none
 
-#tweet
-  background: $white
-  border-radius: $radius-large
-  box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
-  padding: 1.5rem
+#markup
+  .highlight pre
+    max-height: none

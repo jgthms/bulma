@@ -3,6 +3,12 @@ title: Responsiveness
 layout: documentation
 doc-tab: overview
 doc-subtab: responsiveness
+variables_keys:
+- gap
+- tablet
+- desktop
+- widescreen
+- fullhd
 ---
 
 {% include subnav-overview.html %}
@@ -27,81 +33,71 @@ doc-subtab: responsiveness
     </div>
 
     {% include anchor.html name="Breakpoints" %}
+    
+    {% assign variables_file_url = "/blob/master/sass/utilities/initial-variables.sass#L46,L57" | prepend: site.github %}
+    {% assign mixins_file_url = "/blob/master/sass/utilities/mixins.sass#L182,L226" | prepend: site.github %}
 
     <div class="content">
-      <p>Bulma has 5 breakpoints:</p>
+      <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">5 breakpoints</a>:</p>
       <ul>
-        <li><code>mobile</code>: up to <code>768px</code></li>
-        <li><code>tablet</code>: from <code>769px</code></li>
-        <li><code>desktop</code>: from <code>1008px</code></li>
-        <li><code>widescreen</code>: from <code>1200px</code></li>
-        <li><span class="tag is-success">New!</span> <code>fullhd</code>: from <code>1392px</code></li>
+        {% for breakpoint_hash in site.data.breakpoints %}
+          {% assign breakpoint = breakpoint_hash[1] %}
+          <li>{% if breakpoint.id == 'fullhd' %}<span class="tag is-success">New!</span> {% endif %}<code>{{ breakpoint.id }}</code>: {% if breakpoint.id == 'mobile' %}up to <code>{{ breakpoint.to }}px</code>{% else %}from <code>{{ breakpoint.from }}px</code>{% endif %}</li>
+        {% endfor %}
       </ul>
-      <p>Bulma uses 9 responsive mixins:</p>
+      
+      <p>Bulma uses <a href="{{ mixins_file_url }}" target="_blank">9 responsive mixins</a>:</p>
       <ul>
-        <li>
-          <code>=mobile</code><br>
-          until <code>768px</code>
-        </li>
-        <li>
-          <code>=tablet</code><br>
-          from <code>769px</code>
-        </li>
-        <li>
-          <code>=tablet-only</code><br>
-          from <code>769px</code> and until <code>1007px</code>
-        </li>
-        <li>
-          <code>=touch</code><br>
-          until <code>1007px</code>
-        </li>
-        <li>
-          <code>=desktop</code><br>
-          from <code>1008px</code>
-        </li>
-        <li>
-          <code>=desktop-only</code><br>
-          from <code>1008px</code> and until <code>1199px</code>
-        </li>
-        <li>
-          <code>=widescreen</code><br>
-          from <code>1200px</code>
-        </li>
-        <li>
-          <code>=widescreen-only</code><br>
-          from <code>1200px</code> and until <code>1391px</code>
-        </li>
-        <li>
-          <span class="tag is-success">New!</span>
-          <code>=fullhd</code><br>
-          from <code>1392px</code>
-        </li>
+        {% for breakpoint_hash in site.data.breakpoints %}
+          {% assign breakpoint = breakpoint_hash[1] %}
+          {% case breakpoint.id %}
+            {% when 'mobile' %}
+              <li>
+                <code>={{ breakpoint.id }}</code><br>
+                until <code>{{ breakpoint.to }}px</code>
+              </li>
+            {% when 'fullhd' %}
+              <li>
+                <span class="tag is-success">New!</span>
+                <code>={{ breakpoint.id }}</code><br>
+                from <code>{{ breakpoint.from }}px</code>
+              </li>
+            {% else %}
+              <li>
+                <code>={{ breakpoint.id }}</code><br>
+                from <code>{{ breakpoint.from }}px</code>
+              </li>
+              <li>
+                <code>={{ breakpoint.id }}-only</code><br>
+                from <code>{{ breakpoint.from }}px</code> and until <code>{{ breakpoint.to }}px</code>
+              </li>
+              {% if breakpoint.id == 'tablet' %}
+                <li>
+                  <code>=touch</code><br>
+                  until <code>{{ breakpoint.to }}px</code>
+                </li>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
       </ul>
     </div>
 
     <table class="table is-bordered">
       <thead>
         <tr>
-          <th style="width: 20%;">
-            Mobile<br>
-            Up to <code>768px</code>
-          </th>
-          <th style="width: 20%;">
-            Tablet<br>
-            Between <code>769px</code> and <code>1007px</code>
-          </th>
-          <th style="width: 20%;">
-            Desktop<br>
-            Between <code>1008px</code> and <code>1199px</code>
-          </th>
-          <th style="width: 20%;">
-            Widescreen<br>
-            Between <code>1200px</code> and <code>1391px</code>
-          </th>
-          <th style="width: 20%;">
-            FullHD<br>
-            <code>1392px</code> and above
-          </th>
+          {% for breakpoint_hash in site.data.breakpoints %}
+            {% assign breakpoint = breakpoint_hash[1] %}
+            <th style="width: 20%;">
+              {{ breakpoint.name }}<br>
+              {% if breakpoint.id == 'mobile' %}
+                Up to <code>{{ breakpoint.to }}px</code>
+              {% elsif breakpoint.id == 'fullhd' %}
+                <code>{{ breakpoint.from }}px</code> and above
+              {% else %}
+                Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
+              {% endif %}
+            </th>
+          {% endfor %}
         </tr>
       </thead>
       <tbody>
@@ -188,5 +184,42 @@ doc-subtab: responsiveness
         </tr>
       </tbody>
     </table>
+    
+    {% include anchor.html name="Variables" %}
+
+    <div class="content">
+      <p>
+        You can use <a href="{{ variables_file_url }}" target="_blank">these variables</a> to <strong>customize</strong> the responsive breakpoints. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+      </p>
+    </div>
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Default value</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for key in page.variables_keys %}
+          {% assign variable = site.data.variables.utilities.initial-variables.vars[key] %}
+          <tr>
+            <td>
+              <code>{{ variable.name }}</code>
+            </td>
+            <td>
+              <code>{{ variable.value }}</code>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
   </div>
 </section>
