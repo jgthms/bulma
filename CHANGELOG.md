@@ -10,15 +10,17 @@
 * 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
 * 🎉 #1384 New `.is-centered` and `.is-right` modifiers for `tags`
 * 🎉 #1383 New `.is-empty` modifier for `file`
+* 🎉 #1380 Allow `.is-selected` class on `<td>` and `<th>` tags
 
 ### Improvements
 
 * #987 Improve `tag > icon` spacing
 * Improve `hamburger` alignment
 
-### Issues closed
+### Bug fixes
 
 * #1358 Fix indentation bug for .is-one-fifth
+* #1356 SASS 3.5+ variable parsing compatibility allows only #{}
 * #1342 Remove black line from progress bar in IE
 * #1334 Fix progress bar colors in IE
 * #1313 Fix Table `is-selected` and `is-hoverable` styling issue
