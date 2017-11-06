@@ -9,6 +9,7 @@
 * 🎉 #1287 New `.is-invisible` helper
 * 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
 * 🎉 #1384 New `.is-centered` and `.is-right` modifiers for `tags`
+* 🎉 #1383 New `.is-empty` modifier for `file`
 
 ### Improvements
 
