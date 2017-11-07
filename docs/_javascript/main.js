@@ -169,13 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbarEl = document.getElementById('navbar');
   const navbarBurger = document.getElementById('navbarBurger');
   const specialShadow = document.getElementById('specialShadow');
-  const navbarHeight = 52;
+  const NAVBAR_HEIGHT = 52;
+  const THRESHOLD = 160;
   let navbarOpen = false;
-  let pinned = false;
-  let horizon = navbarHeight;
+  let horizon = NAVBAR_HEIGHT;
   let whereYouStoppedScrolling = 0;
-  let threshold = 160;
   let scrollFactor = 0;
+  let currentTranslate = 0;
 
   navbarBurger.addEventListener('click', el => {
     navbarOpen = !navbarOpen;
@@ -195,55 +195,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function goingDown(currentY) {
-    const trigger = navbarHeight;
+    const trigger = NAVBAR_HEIGHT;
     whereYouStoppedScrolling = currentY;
 
     if (currentY > horizon) {
       horizon = currentY;
     }
 
-    translateHeader(currentY);
+    translateHeader(currentY, false);
   }
 
   function goingUp(currentY) {
     const trigger = 0;
 
-    if (currentY < (whereYouStoppedScrolling - navbarHeight)) {
-      horizon = currentY + navbarHeight;
+    if (currentY < (whereYouStoppedScrolling - NAVBAR_HEIGHT)) {
+      horizon = currentY + NAVBAR_HEIGHT;
     }
 
-    translateHeader(currentY);
+    translateHeader(currentY, true);
   }
 
   function constrainDelta(delta) {
-    return Math.max(0, Math.min(delta, navbarHeight));
+    return Math.max(0, Math.min(delta, NAVBAR_HEIGHT));
   }
 
-  function translateHeader(currentY) {
-    const delta = constrainDelta(Math.abs(currentY - horizon));
-    const translateValue = delta - navbarHeight;
-    const translateFactor = 1 + translateValue / navbarHeight;
-    let navbarStyle = `
-      transform: translateY(${translateValue}px);
-    `;
+  function translateHeader(currentY, upwards) {
+    // let topTranslateValue;
+    let translateValue;
 
-    if (currentY > threshold * 2) {
+    if (upwards && currentTranslate == 0) {
+      translateValue = 0;
+    } else if (currentY <= NAVBAR_HEIGHT) {
+      translateValue = currentY * -1;
+    } else {
+      const delta = constrainDelta(Math.abs(currentY - horizon));
+      translateValue = delta - NAVBAR_HEIGHT;
+    }
+
+    if (translateValue != currentTranslate) {
+      const navbarStyle = `
+        transform: translateY(${translateValue}px);
+      `;
+      currentTranslate = translateValue;
+      navbarEl.setAttribute('style', navbarStyle);
+    }
+
+    if (currentY > THRESHOLD * 2) {
       scrollFactor = 1;
-    } else if (currentY > threshold) {
-      scrollFactor = (currentY - threshold) / threshold;
+    } else if (currentY > THRESHOLD) {
+      scrollFactor = (currentY - THRESHOLD) / THRESHOLD;
     } else {
       scrollFactor = 0;
     }
+
+    const translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
     specialShadow.style.opacity = scrollFactor;
     specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
-
-    navbarEl.setAttribute('style', navbarStyle);
   }
 
-  translateHeader(window.scrollY);
+  translateHeader(window.scrollY, false);
 
   let ticking = false;
   let lastY = 0;
+
   window.addEventListener('scroll', function() {
     const currentY = window.scrollY;
 
