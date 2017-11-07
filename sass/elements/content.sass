@@ -18,6 +18,13 @@ $content-table-head-cell-color: $text-strong !default
 $content-table-foot-cell-border-width: 2px 0 0 !default
 $content-table-foot-cell-color: $text-strong !default
 
+$content-kbd-text-color: #555 !default
+$content-kbd-box-shadow: 0px 0px 0px black !default
+$content-kbd-dark-color: #000 !default 
+$content-kbd-dark-text-color: #ddd !default
+$content-kbd-dark-hover-color: white !default
+$content-kbd-font-family: Consolas, "Lucida Console", monospace !default
+
 .content
   +block
   // Inline
@@ -136,6 +143,52 @@ $content-table-foot-cell-color: $text-strong !default
           td,
           th
             border-bottom-width: 0
+
+    kbd 
+      font-family: $content-kbd-font-family
+      display: inline-block
+      border-radius: 3px
+      padding: 0px 4px
+      box-shadow: 1px 1px 1px #777
+      margin: 2px
+      font-size: small
+      vertical-align: text-bottom
+      background: #eee
+      font-weight: 500
+      color: $content-kbd-text-color
+      cursor: pointer
+      font-variant: small-caps
+      font-weight: 600
+      letter-spacing: 1px
+      &:hover 
+        color: $content-kbd-dark-color
+      
+      &:active 
+        color: $content-kbd-dark-color
+        box-shadow: 1px 1px 0px #ddd inset
+        kbd 
+          box-shadow: $content-kbd-box-shadow
+          background: none
+      //keyboard combination
+      kbd 
+        padding: 0px
+        margin: 0 1px
+        box-shadow: $content-kbd-box-shadow
+        vertical-align: baseline
+        background: none
+        &:hover 
+          box-shadow: $content-kbd-box-shadow
+    // keyboard dark theme
+    kbd.dark 
+      background: $content-kbd-dark-color
+      color: $content-kbd-dark-text-color
+      &:hover 
+        color: $content-kbd-dark-hover-color
+    .dark 
+      kbd 
+        @extend kbd.dark
+
+        
   // Sizes
   &.is-small
     font-size: $size-small
