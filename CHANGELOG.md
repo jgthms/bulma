@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.6.2
+
+### Improvements
+
+* #1343 Add `sub` and `sup` title sizes
+
 ## 0.6.1
 
 ### New features
