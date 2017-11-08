@@ -6,6 +6,10 @@
 
 * #1343 Add `sub` and `sup` title sizes
 
+### Bug fixes
+
+* #935 Bug dropdown in `hero` (primary) menu items not visible
+
 ## 0.6.1
 
 ### New features
