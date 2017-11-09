@@ -9,7 +9,6 @@ doc-subtab: customize
 // 1. Import the initial variables
 @import "../sass/utilities/initial-variables"
 @import "../sass/utilities/functions"
-@import "../sass/utilities/derived-variables.sass"
 
 // 2. Set your own initial variables
 // Update blue
@@ -36,7 +35,9 @@ $twitter: #1DA1F2
 $twitter-invert: findColorInvert($twitter)
 $github: #222222
 $github-invert: findColorInvert($github)
-// Add new color variables to the color map.
+
+// 5. Add new color variables to the color map.
+@import "../sass/utilities/derived-variables.sass"
 $addColors: (
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
@@ -44,7 +45,7 @@ $addColors: (
 )
 $colors: map-merge($colors, $addColors)
 
-// 5. Import the rest of Bulma
+// 6. Import the rest of Bulma
 @import "../bulma"
 {% endcapture %}
 
