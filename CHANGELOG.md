@@ -2,6 +2,10 @@
 
 ## 0.6.2
 
+### New features
+
+* 🎉 #1380 New `.is-selected` modifier for `<td>` and `<th>` on a table.
+
 ### Improvements
 
 * #1343 Add `sub` and `sup` title sizes
