@@ -1,4 +1,8 @@
-<nav class="navbar {% if include.transparent %}is-transparent{% endif %}">
+<nav id="navbar" class="navbar is-fixed-top {% if include.transparent %}is-transparent{% endif %}">
+  <div id="specialShadow" class="bd-special-shadow"></div>
+
+  <div class="container">
+
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
       <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
@@ -16,7 +20,7 @@
       </span>
     </a>
 
-    <div class="navbar-burger burger" data-target="navMenu{{ include.id }}">
+    <div id="navbarBurger" class="navbar-burger burger" data-target="navMenu{{ include.id }}">
       <span></span>
       <span></span>
       <span></span>
@@ -48,15 +52,9 @@
           <a class="navbar-item {% if page.doc-tab == 'elements' %}is-active{% endif %}" href="{{ site.url }}/documentation/elements/box/">
             Elements
           </a>
-          {% if site.vernum >= 43 %}
-            <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/breadcrumb/">
-              Components
-            </a>
-          {% else %}
-            <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/card/">
-              Components
-            </a>
-          {% endif %}
+          <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/breadcrumb/">
+            Components
+          </a>
           <hr class="navbar-divider">
           <div class="navbar-item">
             <div>
@@ -119,6 +117,14 @@
           More
         </div>
         <div id="moreDropdown" class="navbar-dropdown {% if include.boxed %}is-boxed{% endif %}">
+          <a class="navbar-item {% if page.route == 'bulma-start' %}is-active{% endif %}" href="{{ site.url }}/bulma-start/">
+            <p>
+              <strong>Bulma start</strong>
+              <br>
+              <small>A tiny npm package to get started</small>
+            </p>
+          </a>
+          <hr class="navbar-divider">
           <a class="navbar-item {% if page.route == 'made-with-bulma' %}is-active{% endif %}" href="{{ site.url }}/made-with-bulma/">
             <p>
               <strong>Made with Bulma</strong>
@@ -126,6 +132,7 @@
               <small>The official community badge</small>
             </p>
           </a>
+          <hr class="navbar-divider">
           <a class="navbar-item {% if page.route == 'extensions' %}is-active{% endif %}" href="{{ site.url }}/extensions/">
             <p>
               <strong>Extensions</strong>
@@ -172,5 +179,7 @@
         </div>
       </div>
     </div>
+  </div>
+
   </div>
 </nav>
