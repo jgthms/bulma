@@ -1,4 +1,8 @@
-<nav class="navbar {% if include.transparent %}is-transparent{% endif %}">
+<nav id="navbar" class="navbar is-fixed-top {% if include.transparent %}is-transparent{% endif %}">
+  <div id="specialShadow" class="bd-special-shadow"></div>
+
+  <div class="container">
+
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
       <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
@@ -6,17 +10,17 @@
 
     <a class="navbar-item is-hidden-desktop" href="{{ site.github }}" target="_blank">
       <span class="icon" style="color: #333;">
-        <i class="fa fa-github"></i>
+        <i class="fa fa-lg fa-github"></i>
       </span>
     </a>
 
     <a class="navbar-item is-hidden-desktop" href="{{ site.twitter }}" target="_blank">
       <span class="icon" style="color: #55acee;">
-        <i class="fa fa-twitter"></i>
+        <i class="fa fa-lg fa-twitter"></i>
       </span>
     </a>
 
-    <div class="navbar-burger burger" data-target="navMenu{{ include.id }}">
+    <div id="navbarBurger" class="navbar-burger burger" data-target="navMenu{{ include.id }}">
       <span></span>
       <span></span>
       <span></span>
@@ -48,24 +52,18 @@
           <a class="navbar-item {% if page.doc-tab == 'elements' %}is-active{% endif %}" href="{{ site.url }}/documentation/elements/box/">
             Elements
           </a>
-          {% if site.vernum >= 43 %}
-            <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/breadcrumb/">
-              Components
-            </a>
-          {% else %}
-            <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/card/">
-              Components
-            </a>
-          {% endif %}
+          <a class="navbar-item {% if page.doc-tab == 'components' %}is-active{% endif %}" href="{{ site.url }}/documentation/components/breadcrumb/">
+            Components
+          </a>
           <hr class="navbar-divider">
           <div class="navbar-item">
             <div>
               <p class="is-size-6-desktop">
-                <strong class="has-text-info">{{ site.version }}</strong>
+                <strong>{{ site.version }}</strong>
               </p>
               {{#unless site.deprecated}}
                 <small>
-                  <a class="bd-view-all-versions" href="/versions">View all versions</a>
+                  <a class="bd-view-all-versions" href="https://versions.bulma.io/">View all versions</a>
                 </small>
               {{/unless}}
             </div>
@@ -81,7 +79,7 @@
             <a class="navbar-item" href="{{ post.url }}">
               <div class="navbar-content">
                 <p>
-                  <small class="has-text-info">{{ post.date | date_to_string }}</small>
+                  <small class="has-text-link">{{ post.date | date_to_string }}</small>
                 </p>
                 <p>{{ post.title }}</p>
               </div>
@@ -119,30 +117,33 @@
           More
         </div>
         <div id="moreDropdown" class="navbar-dropdown {% if include.boxed %}is-boxed{% endif %}">
+          <a class="navbar-item {% if page.route == 'bulma-start' %}is-active{% endif %}" href="{{ site.url }}/bulma-start/">
+            <p>
+              <strong>Bulma start</strong>
+              <br>
+              <small>A tiny npm package to get started</small>
+            </p>
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item {% if page.route == 'made-with-bulma' %}is-active{% endif %}" href="{{ site.url }}/made-with-bulma/">
+            <p>
+              <strong>Made with Bulma</strong>
+              <br>
+              <small>The official community badge</small>
+            </p>
+          </a>
+          <hr class="navbar-divider">
           <a class="navbar-item {% if page.route == 'extensions' %}is-active{% endif %}" href="{{ site.url }}/extensions/">
-            <div class="level is-mobile">
-              <div class="level-left">
-                <div class="level-item">
-                  <p>
-                    <strong>Extensions</strong>
-                    <br>
-                    <small>Side projects to enhance Bulma</small>
-                  </p>
-                </div>
-              </div>
-              <div class="level-right">
-                <div class="level-item">
-                  <span class="icon has-text-info">
-                    <i class="fa fa-plug"></i>
-                  </span>
-                </div>
-              </div>
-            </div>
+            <p>
+              <strong>Extensions</strong>
+              <br>
+              <small>Side projects to enhance Bulma</small>
+            </p>
           </a>
         </div>
       </div>
       <a class="navbar-item {% if page.route == 'expo' %}is-active{% endif %}" href="{{ site.url }}/expo/">
-        <span class="bd-emoji">🎨</span>
+        <span class="bd-emoji">⭐️</span>
         Expo
       </a>
       <a class="navbar-item {% if page.route == 'love' %}is-active{% endif %}" href="{{ site.url }}/love/">
@@ -154,12 +155,12 @@
     <div class="navbar-end">
       <a class="navbar-item is-hidden-desktop-only" href="{{ site.github }}" target="_blank">
         <span class="icon" style="color: #333;">
-          <i class="fa fa-github"></i>
+          <i class="fa fa-lg fa-github"></i>
         </span>
       </a>
       <a class="navbar-item is-hidden-desktop-only" href="{{ site.twitter }}" target="_blank">
         <span class="icon" style="color: #55acee;">
-          <i class="fa fa-twitter"></i>
+          <i class="fa fa-lg fa-twitter"></i>
         </span>
       </a>
       <div class="navbar-item">
@@ -178,5 +179,7 @@
         </div>
       </div>
     </div>
+  </div>
+
   </div>
 </nav>

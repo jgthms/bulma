@@ -1,18 +1,19 @@
 $navbar-background-color: $white !default
 $navbar-height: 3.25rem !default
+$navbar-fixed-z: 30 !default
 
 $navbar-item-color: $grey-dark !default
-$navbar-item-hover-color: $black !default
+$navbar-item-hover-color: $link !default
 $navbar-item-hover-background-color: $background !default
 $navbar-item-active-color: $black !default
 $navbar-item-active-background-color: transparent !default
 $navbar-item-img-max-height: 1.75rem !default
 
 $navbar-tab-hover-background-color: transparent !default
-$navbar-tab-hover-border-bottom-color: $primary !default
-$navbar-tab-active-color: $primary !default
+$navbar-tab-hover-border-bottom-color: $link !default
+$navbar-tab-active-color: $link !default
 $navbar-tab-active-background-color: transparent !default
-$navbar-tab-active-border-bottom-color: $primary !default
+$navbar-tab-active-border-bottom-color: $link !default
 $navbar-tab-active-border-bottom-style: solid !default
 $navbar-tab-active-border-bottom-width: 3px !default
 
@@ -28,15 +29,69 @@ $navbar-dropdown-boxed-shadow: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($blac
 
 $navbar-dropdown-item-hover-color: $black !default
 $navbar-dropdown-item-hover-background-color: $background !default
-$navbar-dropdown-item-active-color: $primary !default
+$navbar-dropdown-item-active-color: $link !default
 $navbar-dropdown-item-active-background-color: $background !default
 
 $navbar-divider-background-color: $border !default
+
+=navbar-fixed
+  left: 0
+  position: fixed
+  right: 0
+  z-index: $navbar-fixed-z
+
+=navbar-fixed-html
+  left: 0
+  position: fixed
+  right: 0
 
 .navbar
   background-color: $navbar-background-color
   min-height: $navbar-height
   position: relative
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+      .navbar-brand
+        & > .navbar-item,
+        .navbar-link
+          color: $color-invert
+        & > a.navbar-item,
+        .navbar-link
+          &:hover,
+          &.is-active
+            background-color: darken($color, 5%)
+            color: $color-invert
+        .navbar-link
+          &::after
+            border-color: $color-invert
+      +desktop
+        .navbar-start,
+        .navbar-end
+          & > .navbar-item,
+          .navbar-link
+            color: $color-invert
+          & > a.navbar-item,
+          .navbar-link
+            &:hover,
+            &.is-active
+              background-color: darken($color, 5%)
+              color: $color-invert
+          .navbar-link
+            &::after
+              border-color: $color-invert
+        .navbar-item.has-dropdown:hover .navbar-link,
+        .navbar-item.has-dropdown.is-active .navbar-link
+          background-color: darken($color, 5%)
+          color: $color-invert
+        .navbar-dropdown
+          a.navbar-item
+            &.is-active
+              background-color: $color
+              color: $color-invert
   & > .container
     align-items: stretch
     display: flex
@@ -44,14 +99,32 @@ $navbar-divider-background-color: $border !default
     width: 100%
   &.has-shadow
     box-shadow: 0 2px 3px rgba($black, 0.1)
+  &.is-fixed-bottom,
+  &.is-fixed-top
+    +navbar-fixed
+  &.is-fixed-bottom
+    bottom: 0
+    &.has-shadow
+      box-shadow: 0 -2px 3px rgba($black, 0.1)
+  &.is-fixed-top
+    top: 0
 
-.navbar-brand
-  +overflow-touch
+html.has-navbar-fixed-top
+  padding-top: $navbar-height
+
+html.has-navbar-fixed-bottom
+  padding-bottom: $navbar-height
+
+.navbar-brand,
+.navbar-tabs
   align-items: stretch
   display: flex
   flex-shrink: 0
-  max-width: 100vw
   min-height: $navbar-height
+
+.navbar-tabs
+  +overflow-touch
+  max-width: 100vw
   overflow-x: auto
   overflow-y: hidden
 
@@ -71,7 +144,7 @@ $navbar-divider-background-color: $border !default
   position: relative
 
 a.navbar-item,
-.navbar-link
+a.navbar-link
   &:hover,
   &.is-active
     background-color: $navbar-item-hover-background-color
@@ -84,6 +157,9 @@ a.navbar-item,
     max-height: $navbar-item-img-max-height
   &.has-dropdown
     padding: 0
+  &.is-expanded
+    flex-grow: 1
+    flex-shrink: 1
   &.is-tab
     border-bottom: 1px solid transparent
     min-height: $navbar-height
@@ -124,15 +200,38 @@ a.navbar-item,
 +touch
   .navbar > .container
     display: block
-  .navbar-brand
+  .navbar-brand,
+  .navbar-tabs
     .navbar-item
       align-items: center
       display: flex
   .navbar-menu
+    background-color: $white
     box-shadow: 0 8px 16px rgba($black, 0.1)
     padding: 0.5rem 0
     &.is-active
       display: block
+  // Fixed navbar
+  .navbar
+    &.is-fixed-bottom-touch,
+    &.is-fixed-top-touch
+      +navbar-fixed
+    &.is-fixed-bottom-touch
+      bottom: 0
+      &.has-shadow
+        box-shadow: 0 -2px 3px rgba($black, 0.1)
+    &.is-fixed-top-touch
+      top: 0
+    &.is-fixed-top,
+    &.is-fixed-top-touch
+      .navbar-menu
+        +overflow-touch
+        max-height: calc(100vh - #{$navbar-height})
+        overflow: auto
+  html.has-navbar-fixed-top-touch
+    padding-top: $navbar-height
+  html.has-navbar-fixed-bottom-touch
+    padding-bottom: $navbar-height
 
 +desktop
   .navbar,
@@ -145,15 +244,15 @@ a.navbar-item,
     min-height: $navbar-height
     &.is-transparent
       a.navbar-item,
-      .navbar-link
+      a.navbar-link
         &:hover,
         &.is-active
-          background-color: transparent
+          background-color: transparent !important
       .navbar-item.has-dropdown
         &.is-active,
         &.is-hoverable:hover
           .navbar-link
-            background-color: transparent
+            background-color: transparent !important
       .navbar-dropdown
         a.navbar-item
           &:hover
@@ -171,6 +270,16 @@ a.navbar-item,
   .navbar-item
     &.has-dropdown
       align-items: stretch
+    &.has-dropdown-up
+      .navbar-link::after
+        transform: rotate(135deg) translate(0.25em, -0.25em)
+      .navbar-dropdown
+        border-bottom: $navbar-dropdown-border-top
+        border-radius: $navbar-dropdown-radius $navbar-dropdown-radius 0 0
+        border-top: none
+        bottom: 100%
+        box-shadow: 0 -8px 8px rgba($black, 0.1)
+        top: auto
     &.is-active,
     &.is-hoverable:hover
       .navbar-dropdown
@@ -234,12 +343,30 @@ a.navbar-item,
       right: 0
   .navbar-divider
     display: block
+  .navbar > .container,
   .container > .navbar
-    margin-left: -1rem
-    margin-right: -1rem
+    .navbar-brand
+      margin-left: -1rem
+    .navbar-menu
+      margin-right: -1rem
+  // Fixed navbar
+  .navbar
+    &.is-fixed-bottom-desktop,
+    &.is-fixed-top-desktop
+      +navbar-fixed
+    &.is-fixed-bottom-desktop
+      bottom: 0
+      &.has-shadow
+        box-shadow: 0 -2px 3px rgba($black, 0.1)
+    &.is-fixed-top-desktop
+      top: 0
+  html.has-navbar-fixed-top-desktop
+    padding-top: $navbar-height
+  html.has-navbar-fixed-bottom-desktop
+    padding-bottom: $navbar-height
   // Hover/Active states
   a.navbar-item,
-  .navbar-link
+  a.navbar-link
     &.is-active
       color: $navbar-item-active-color
     &.is-active:not(:hover)

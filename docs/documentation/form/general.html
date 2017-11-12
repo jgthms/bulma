@@ -3,6 +3,15 @@ title: Form controls
 layout: documentation
 doc-tab: form
 doc-subtab: general
+variables_controls_keys:
+- control-radius
+- control-radius-small
+- control-padding-vertical
+- control-padding-horizontal
+variables_form_keys:
+- label-color
+- label-weight
+- help-size
 ---
 
 {% capture example %}
@@ -84,10 +93,10 @@ doc-subtab: general
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button is-primary">Submit</button>
+    <button class="button is-link">Submit</button>
   </div>
   <div class="control">
-    <button class="button is-link">Cancel</button>
+    <button class="button is-text">Cancel</button>
   </div>
 </div>
 {% endcapture %}
@@ -813,18 +822,9 @@ doc-subtab: general
       When combining several controls in a <strong>form</strong>, use the <code>.field</code> class as a <strong>container</strong>, to keep the spacing consistent.</p>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        {{example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=example more=true %}
 
-    <hr>
-
-    <h3 id="form-field" class="title">Form field</h3>
+    {% include anchor.html name="Form field" %}
 
     <div class="content">
       <p>The <code>field</code> container is a simple container for:</p>
@@ -835,31 +835,15 @@ doc-subtab: general
       </ul>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        {{field_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{field_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=field_example %}
 
     <div class="content">
       <p>This container allows form fields to be <strong>spaced consistently</strong>.</p>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        {{fields_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{fields_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=fields_example %}
 
-    <hr>
-
-    <h3 id="form-control" class="title">Form control</h3>
+    {% include anchor.html name="Form control" %}
 
     <div class="content">
       <p>The <code>control</code> is a versatile container meant to <strong>enhance single form controls</strong>. Because it has the same height as a control elements, it can <strong class="has-text-danger">only contain</strong> the following elements:</p>
@@ -871,37 +855,15 @@ doc-subtab: general
       </ul>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        {{control_input_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{control_input_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=control_input_example %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{control_select_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{control_select_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=control_select_example %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{control_button_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{control_button_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=control_button_example %}
 
     <!-- Font Awesome Icons -->
-    <hr>
+    {% include anchor.html name="With icons" %}
 
-    <h3 class="title">With icons</h3>
     <div class="content">
       <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
       <ul>
@@ -923,153 +885,87 @@ doc-subtab: general
       </ul>
       <p>The size of the <strong>input</strong> will define the size of the icon container.</p>
     </div>
-    <div class="columns">
-      <div class="column is-half">
-        {{icons_example}}
-      </div>
-      <div class="column is-half highlight-full">
-        {% highlight html %}{{icons_example}}{% endhighlight %}
-      </div>
+
+    {% include snippet.html content=icons_example clipped=true %}
+
+    <div class="content">
+      <p>
+        You can append icons to <strong>select dropdowns</strong> as well.
+      </p>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        <div class="content">
-          <p>
-            You can append icons to <strong>select dropdowns</strong> as well.
-          </p>
-        </div>
-        {{select_icons_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{select_icons_example}}{% endhighlight %}
-      </div>
+    {% include snippet.html content=select_icons_example %}
+
+    <div class="content">
+      <p>
+        If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
+      </p>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        <div class="content">
-          <p>
-            If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
-          </p>
-        </div>
-        {{has_icons_small_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_small_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=has_icons_small_example %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{has_icons_normal_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_normal_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=has_icons_normal_example clipped=true %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{has_icons_medium_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_medium_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=has_icons_medium_example clipped=true %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{has_icons_large_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_large_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=has_icons_large_example clipped=true %}
 
-    <hr>
+    {% include anchor.html name="Form addons" %}
 
-    <h3 id="form-addons" class="title">Form addons</h3>
     <div class="content">
       <p>If you want to <strong>attach controls</strong> together, use the <code>has-addons</code> modifier on the <code>field</code> container:</p>
     </div>
-    <div class="bd-example">
-      {{addons_example}}
-    </div>
-    {% highlight html %}{{addons_example}}{% endhighlight %}
+
+    {% include snippet.html content=addons_example %}
+
     <div class="content">
       <p>You can attach inputs, buttons, and dropdowns <strong>only</strong>.</p>
     </div>
 
     <div class="content">
-      <p>
-        <span class="tag is-success">New!</span>
-        <span class="tag is-info">0.4.2</span>
-      </p>
       <p>It can be useful to append a <a href="{{site.url}}/documentation/elements/button#static-button">static button</a>.</p>
     </div>
 
-    <div class="bd-example">
-      {{addons_static_example}}
-    </div>
-    {% highlight html %}{{addons_static_example}}{% endhighlight %}
+    {% include snippet.html content=addons_static_example %}
 
     <div class="content">
       <p>Use the <code>is-expanded</code> modifier on the element you want to fill up the remaining space (in this case, the input):</p>
     </div>
-    <div class="bd-example">
-      {{addons_expanded_example}}
-    </div>
-    {% highlight html %}{{addons_expanded_example}}{% endhighlight %}
+
+    {% include snippet.html content=addons_expanded_example horizontal=true more=true %}
 
     <div class="content">
       <p>If you want a full width select dropdown, pair <code>control is-expanded</code> with <code>select is-fullwidth</code>.</p>
     </div>
-    <div class="bd-example">
-      {{addons_expanded_fullwidth_example}}
-    </div>
-    {% highlight html %}{{addons_expanded_fullwidth_example}}{% endhighlight %}
+
+    {% include snippet.html content=addons_expanded_fullwidth_example %}
 
     <div class="content">
-      <p>Use the <code>has-addons-centered</code> or the <code>has-addons-right</code> modifers to alter the <strong>alignment</strong>.</p>
+      <p>Use the <code>has-addons-centered</code> or the <code>has-addons-right</code> modifiers to alter the <strong>alignment</strong>.</p>
     </div>
-    <div class="bd-example">
-      {{addons_center_example}}
-    </div>
-    {% highlight html %}{{addons_center_example}}{% endhighlight %}
-    <div class="bd-example">
-      {{addons_right_example}}
-    </div>
-    {% highlight html %}{{addons_right_example}}{% endhighlight %}
 
-    <hr>
+    {% include snippet.html content=addons_center_example %}
 
-    <h3 class="title">Form group</h3>
+    {% include snippet.html content=addons_right_example %}
+
+    {% include anchor.html name="Form group" %}
+
     <div class="content">
       <p>
         If you want to <strong>group</strong> controls together, use the <code>is-grouped</code> modifier on the <code>field</code> container.
       </p>
     </div>
 
-    <div class="bd-example">
-      {{group_example}}
-    </div>
-    {% highlight html %}{{group_example}}{% endhighlight %}
+    {% include snippet.html content=group_example %}
 
     <div class="content">
-        Use the <code>is-grouped-centered</code> or the <code>is-grouped-right</code> modifers to alter the <strong>alignment</strong>.
+        Use the <code>is-grouped-centered</code> or the <code>is-grouped-right</code> modifiers to alter the <strong>alignment</strong>.
       </p>
     </div>
 
-    <div class="bd-example">
-      {{group_centered_example}}
-    </div>
-    {% highlight html %}{{group_centered_example}}{% endhighlight %}
+    {% include snippet.html content=group_centered_example %}
 
-    <div class="bd-example">
-      {{group_right_example}}
-    </div>
-    {% highlight html %}{{group_right_example}}{% endhighlight %}
+    {% include snippet.html content=group_right_example %}
 
     <div class="content">
       <p>
@@ -1077,35 +973,31 @@ doc-subtab: general
       </p>
     </div>
 
-    <div class="bd-example">
-      {{group_expanded_example}}
-    </div>
-    {% highlight html %}{{group_expanded_example}}{% endhighlight %}
+    {% include snippet.html content=group_expanded_example %}
 
     <div id="form-group-multiline" class="content">
-      <p>
-        <span class="tag is-success">New!</span>
-        <span class="tag is-info">0.4.4</span>
-      </p>
       <p>
         Add the <code>is-grouped-multiline</code> modifier to allow controls to fill up <strong>multiple lines</strong>. This is ideal for a long list of controls.
       </p>
     </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        <div class="bd-example">
-          {{group_multiline_example}}
-        </div>
+    {% include snippet.html content=group_multiline_example clipped=true %}
+
+    <div class="message is-info">
+      <div class="message-header">
+        <p>List of buttons</p>
       </div>
-      <div class="column is-half">
-        {% highlight html %}{{group_multiline_example}}{% endhighlight %}
+      <div class="message-body">
+        <div class="content">
+          <p>
+            If you only need a list of <em>buttons</em>, try out the new <code>buttons</code> class with which you can create a <a href="{{ site.url }}/documentation/elements/button/#list-of-buttons">multiline list of buttons</a>.
+          </p>
+        </div>
       </div>
     </div>
 
-    <hr>
+    {% include anchor.html name="Horizontal form" %}
 
-    <h3 class="title">Horizontal form</h3>
     <div class="content">
       <p>If you want a <strong>horizontal</strong> form control, use the <code>is-horizontal</code> modifier on the <code>field</code> container, in which you include:</p>
       <ul>
@@ -1118,10 +1010,8 @@ doc-subtab: general
       </ul>
       <p>You can use <code>is-grouped</code> or <code>has-addons</code> for the child elements.</p>
     </div>
-    <div class="bd-example">
-      {{horizontal_form_example}}
-    </div>
-    {% highlight html %}{{horizontal_form_example}}{% endhighlight %}
+
+    {% include snippet.html content=horizontal_form_example horizontal=true more=true %}
 
     <div class="content">
       <p>
@@ -1142,9 +1032,55 @@ doc-subtab: general
         </li>
       </ul>
     </div>
-    <div class="bd-example">
-      {{field_label_example}}
+
+    {% include snippet.html content=field_label_example horizontal=true more=true %}
+
+    {% include anchor.html name="Variables" %}
+
+    <div class="content">
+      <p>
+        Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+      </p>
     </div>
-    {% highlight html %}{{field_label_example}}{% endhighlight %}
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Default value</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for key in page.variables_controls_keys %}
+          {% assign variable = site.data.variables.utilities.controls.vars[key] %}
+          <tr>
+            <td>
+              <code>{{ variable.name }}</code>
+            </td>
+            <td>
+              <code>{{ variable.value }}</code>
+            </td>
+          </tr>
+        {% endfor %}
+        {% for key in page.variables_form_keys %}
+          {% assign variable = site.data.variables.elements.form.vars[key] %}
+          <tr>
+            <td>
+              <code>{{ variable.name }}</code>
+            </td>
+            <td>
+              <code>{{ variable.value }}</code>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
   </div>
 </section>

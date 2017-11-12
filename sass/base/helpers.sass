@@ -21,30 +21,33 @@
 
 // Typography
 
-@each $size in $sizes
-  $i: index($sizes, $size)
-  .is-size-#{$i}
-    font-size: $size !important
-  +mobile
-    .is-size-#{$i}-mobile
-      font-size: $size !important
-  +tablet
-    .is-size-#{$i}-tablet
-      font-size: $size !important
-  +touch
-    .is-size-#{$i}-touch
-      font-size: $size !important
-  +desktop
-    .is-size-#{$i}-desktop
-      font-size: $size !important
-  +widescreen
-    .is-size-#{$i}-widescreen
-      font-size: $size !important
-  +fullhd
-    .is-size-#{$i}-fullhd
+=typography-size($target:'')
+  @each $size in $sizes
+    $i: index($sizes, $size)
+    .is-size-#{$i}#{if($target == '', '', '-' + $target)}
       font-size: $size !important
 
-$alignments: ('centered': 'center', 'left': 'left', 'right': 'right')
++typography-size()
+
++mobile
+  +typography-size('mobile')
+
++tablet
+  +typography-size('tablet')
+
++touch
+  +typography-size('touch')
+
++desktop
+  +typography-size('desktop')
+
++widescreen
+  +typography-size('widescreen')
+
++fullhd
+  +typography-size('fullhd')
+
+$alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'right': 'right')
 
 @each $alignment, $text-align in $alignments
   .has-text-#{$alignment}
@@ -98,6 +101,15 @@ $alignments: ('centered': 'center', 'left': 'left', 'right': 'right')
 @each $name, $shade in $shades
   .has-text-#{$name}
     color: $shade !important
+
+.has-text-weight-light
+  font-weight: $weight-light !important
+.has-text-weight-normal
+  font-weight: $weight-normal !important
+.has-text-weight-semibold
+  font-weight: $weight-semibold !important
+.has-text-weight-bold
+  font-weight: $weight-bold !important
 
 // Visibility
 
@@ -172,6 +184,45 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 +fullhd
   .is-hidden-fullhd
     display: none !important
+
+.is-invisible
+  visibility: hidden !important
+
++mobile
+  .is-invisible-mobile
+    visibility: hidden !important
+
++tablet
+  .is-invisible-tablet
+    visibility: hidden !important
+
++tablet-only
+  .is-invisible-tablet-only
+    visibility: hidden !important
+
++touch
+  .is-invisible-touch
+    visibility: hidden !important
+
++desktop
+  .is-invisible-desktop
+    visibility: hidden !important
+
++desktop-only
+  .is-invisible-desktop-only
+    visibility: hidden !important
+
++widescreen
+  .is-invisible-widescreen
+    visibility: hidden !important
+
++widescreen-only
+  .is-invisible-widescreen-only
+    visibility: hidden !important
+
++fullhd
+  .is-invisible-fullhd
+    visibility: hidden !important
 
 // Other
 

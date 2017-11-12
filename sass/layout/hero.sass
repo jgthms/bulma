@@ -5,9 +5,8 @@
   display: flex
   flex-direction: column
   justify-content: space-between
-  .nav
+  .navbar
     background: none
-    box-shadow: 0 1px 0 rgba($border, 0.3)
   .tabs
     ul
       border-bottom: none
@@ -18,7 +17,7 @@
     &.is-#{$name}
       background-color: $color
       color: $color-invert
-      a:not(.button),
+      a:not(.button):not(.dropdown-item):not(.tag),
       strong
         color: inherit
       .title
@@ -28,16 +27,17 @@
         a:not(.button),
         strong
           color: $color-invert
-      .nav
-        box-shadow: 0 1px 0 rgba($color-invert, 0.2)
-      .nav-menu
-        +mobile
+      .navbar-menu
+        +touch
           background-color: $color
-      a.nav-item,
-      .nav-item a:not(.button)
+      .navbar-item,
+      .navbar-link
         color: rgba($color-invert, 0.7)
+      a.navbar-item,
+      .navbar-link
         &:hover,
         &.is-active
+          background-color: darken($color, 5%)
           color: $color-invert
       .tabs
         a
@@ -66,21 +66,21 @@
         $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
         background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
         +mobile
-          .nav-menu
+          .navbar-menu
             background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
       // Responsiveness
-      +mobile
-        .nav-toggle
-          span
-            background-color: $color-invert
-          &:hover
-            background-color: rgba($black, 0.1)
-          &.is-active
-            span
-              background-color: $color-invert
-        .nav-menu
-          .nav-item
-            border-top-color: rgba($color-invert, 0.2)
+      // +mobile
+      //   .nav-toggle
+      //     span
+      //       background-color: $color-invert
+      //     &:hover
+      //       background-color: rgba($black, 0.1)
+      //     &.is-active
+      //       span
+      //         background-color: $color-invert
+      //   .nav-menu
+      //     .nav-item
+      //       border-top-color: rgba($color-invert, 0.2)
   // Sizes
   &.is-small
     .hero-body

@@ -1,106 +1,52 @@
 ---
+title: Navbar
 layout: documentation
 doc-tab: components
 doc-subtab: navbar
-variables:
-- name: $navbar-background-color
-  value: $white
-- name: $navbar-height
-  value: 3.25rem
-- name: $navbar-item-color
-  value: $grey-dark
-- name: $navbar-item-hover-color
-  value: $black
-- name: $navbar-item-hover-background-color
-  value: $background
-- name: $navbar-item-active-color
-  value: $black
-- name: $navbar-item-active-background-color
-  value: transparent
-- name: $navbar-tab-hover-background-color
-  value: transparent
-- name: $navbar-tab-hover-border-bottom-color
-  value: $primary
-- name: $navbar-tab-active-color
-  value: $primary
-- name: $navbar-tab-active-background-color
-  value: transparent
-- name: $navbar-tab-active-border-bottom-color
-  value: $primary
-- name: $navbar-tab-active-border-bottom-style
-  value: solid
-- name: $navbar-tab-active-border-bottom-width
-  value: 3px
-- name: $navbar-dropdown-background-color
-  value: $white
-- name: $navbar-dropdown-border-top
-  value: 1px solid $border
-- name: $navbar-dropdown-offset
-  value: -4px
-- name: $navbar-dropdown-arrow
-  value: $link
-- name: $navbar-dropdown-radius
-  value: $radius-large
-- name: $navbar-dropdown-z
-  value: 20
-- name: $navbar-dropdown-boxed-radius
-  value: $radius-large
-- name: $navbar-dropdown-boxed-shadow
-  value: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
-- name: $navbar-dropdown-item-hover-color
-  value: $black
-- name: $navbar-dropdown-item-hover-background-color
-  value: $background
-- name: $navbar-dropdown-item-active-color
-  value: $primary
-- name: $navbar-dropdown-item-active-background-color
-  value: $background
-- name: $navbar-divider-background-color
-  value: $border
 ---
 
 {% include subnav-components.html %}
 
 {% capture navbar_example %}
-{% include navbar.html id="bd-example" %}
+{% include examples/navbar.html id="Default" %}
 {% endcapture %}
 
 {% capture navbar_brand_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <!-- navbar items, navbar burger ... -->
+    <!-- navbar items, navbar burger... -->
   </div>
 </nav>
 {% endcapture %}
 
 {% capture navbar_burger_example %}
-<div class="navbar-burger">
+<button class="button navbar-burger">
   <span></span>
   <span></span>
   <span></span>
-</div>
+</button>
 {% endcapture %}
 
 {% capture navbar_brand_items_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
       <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
     </a>
 
-    <div class="navbar-burger">
+    <button class="button navbar-burger">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
   </div>
 </nav>
 {% endcapture %}
 
 {% capture navbar_menu_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <!-- navbar items, nav burger ... -->
+    <!-- navbar items, navbar burger... -->
   </div>
   <div class="navbar-menu">
     <!-- navbar start, navbar end -->
@@ -138,7 +84,7 @@ variables:
 
 {% capture navbar_item_brand_example %}
 <a class="navbar-item">
-  <img src="{{ site.url }}/images/bulma-logo.png" width="112" height="28">
+  <img src="{{ site.url }}/images/bulma-logo.png" width="112" height="28" alt="Bulma">
 </a>
 {% endcapture %}
 
@@ -168,7 +114,7 @@ variables:
     <p class="control">
       <a class="button">
         <span class="icon">
-          <i class="fa fa-twitter"></i>
+          <i class="fa fa-twitter" aria-hidden="true"></i>
         </span>
         <span>Tweet</span>
       </a>
@@ -176,7 +122,7 @@ variables:
     <p class="control">
       <a class="button is-primary">
         <span class="icon">
-          <i class="fa fa-download"></i>
+          <i class="fa fa-download" aria-hidden="true"></i>
         </span>
         <span>Download</span>
       </a>
@@ -186,11 +132,11 @@ variables:
 {% endcapture %}
 
 {% capture navbar_transparent_example %}
-{% include navbar.html transparent=true boxed=true id="TransparentExample" %}
+{% include examples/navbar.html transparent=true boxed=true id="TransparentExample" %}
 {% endcapture %}
 
 {% capture navbar_dropdown_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <div class="navbar-item has-dropdown">
     <a class="navbar-link">
       Docs
@@ -222,7 +168,7 @@ variables:
 {% endcapture %}
 
 {% capture navbar_dropdown_hover_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <div class="navbar-item has-dropdown is-hoverable">
     <a class="navbar-link">
       Docs
@@ -254,7 +200,7 @@ variables:
 {% endcapture %}
 
 {% capture navbar_dropdown_active_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <div class="navbar-item has-dropdown is-active">
     <a class="navbar-link">
       Docs
@@ -286,7 +232,7 @@ variables:
 {% endcapture %}
 
 {% capture navbar_dropdown_right_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <div class="navbar-menu">
     <div class="navbar-start">
       <div class="navbar-item has-dropdown is-active">
@@ -350,8 +296,62 @@ variables:
 </section>
 {% endcapture %}
 
+{% capture navbar_dropup_snippet %}
+<div class="navbar-item has-dropdown has-dropdown-up is-hoverable">
+  <a class="navbar-link" href="/documentation/overview/start/">
+    Docs
+  </a>
+  <div class="navbar-dropdown">
+    <a class="navbar-item" href="/documentation/overview/start/">
+      Overview
+    </a>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture navbar_dropup_example %}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
+
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown has-dropdown-up is-active">
+        <a class="navbar-link">
+          Dropup
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            Version {{ site.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
 {% capture navbar_dropdown_default_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
     <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
   </a>
@@ -392,7 +392,7 @@ variables:
 {% endcapture %}
 
 {% capture navbar_dropdown_boxed_example %}
-<nav class="navbar is-transparent">
+<nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
     <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
   </a>
@@ -433,7 +433,7 @@ variables:
 {% endcapture %}
 
 {% capture navbar_dropdown_item_active_example %}
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
     <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
   </a>
@@ -478,11 +478,11 @@ variables:
 {% endcapture %}
 
 {% capture navbar_js_html %}
-<div class="navbar-burger" data-target="navMenu">
+<button class="button navbar-burger" data-target="navMenu">
   <span></span>
   <span></span>
   <span></span>
-</div>
+</button>
 
 <div class="navbar-menu" id="navMenu">
   <!-- navbar-start, navbar-end... -->
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Get all "navbar-burger" elements
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Check if there are any nav burgers
+  // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
 
     // Add a click event on each of them
@@ -517,6 +517,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 {% endcapture %}
 
+{% capture navbar_color_markup %}
+<nav class="navbar is-primary">
+  <!-- navbar brand, navbar menu... -->
+</nav>
+{% endcapture %}
+
 <section class="section">
   <div class="container">
 
@@ -528,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function () {
       include meta.html
       new=true
       since="0.4.3"
-      colors=false
+      colors=true
       sizes=false
       variables=true
     %}
@@ -590,12 +596,6 @@ document.addEventListener('DOMContentLoaded', function () {
         </li>
       </ul>
     </div>
-
-    <div class="bd-example is-paddingless">
-      {{navbar_example}}
-    </div>
-
-    {% highlight html %}{{navbar_example}}{% endhighlight %}
 
     {% include anchor.html name="Navbar brand" %}
 
@@ -746,7 +746,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <p>
         A <code>navbar-item</code> is a repeatable element that can be:
       </p>
-      <ul>
+      <ul class="bd-spaced">
         <li>
           a navigation <strong>link</strong>
           {% highlight html %}{{ navbar_item_link_example }}{% endhighlight %}
@@ -765,7 +765,9 @@ document.addEventListener('DOMContentLoaded', function () {
         </li>
         <li>
           a container for almost <strong>anything</strong> you want, like a <code>field</code>
-          {% highlight html %}{{ navbar_item_other_example }}{% endhighlight %}
+          <div class="highlight-full">
+            {% highlight html %}{{ navbar_item_other_example }}{% endhighlight %}
+          </div>
         </li>
       </ul>
       <p>
@@ -788,21 +790,51 @@ document.addEventListener('DOMContentLoaded', function () {
           <code>navbar-dropdown</code>
         </li>
       </ul>
+      <p>
+        You can add the modifier class <code>is-expanded</code> to turn it into a full-width element.
+      </p>
     </div>
 
     {% include anchor.html name="Transparent navbar" %}
 
     <div class="content">
       <p>
-        To seamlessly integrate the navbar in any visual context, you can add the <code>is-transparent</code> modifer on the <code>navbar</code> component. This will remove any hover or active background from the navbar items.
+        To seamlessly integrate the navbar in any visual context, you can add the <code>is-transparent</code> modifier on the <code>navbar</code> component. This will remove any hover or active background from the navbar items.
       </p>
     </div>
 
-    <div class="bd-example is-paddingless">
-      {{navbar_transparent_example}}
+    {% include snippet.html content=navbar_transparent_example paddingless=true horizontal=true more=true %}
+
+    {% include anchor.html name="Fixed navbar" %}
+
+    {% include elements/new-tag.html version="0.6.1" %}
+
+    <div class="content">
+      <p>
+        You can now <strong>fix</strong> the navbar to either the <strong>top</strong> or <strong>bottom</strong> of the page. This is a 2-step process:
+      </p>
+      <ul class="bd-spaced">
+        <li>
+          Add either <code>is-fixed-top</code> or <code>is-fixed-bottom</code> to the <code>navbar</code> component
+          {% highlight html %}<nav class="navbar is-fixed-top">{% endhighlight %}
+        </li>
+        <li>
+          Add the corresponding <code>has-navbar-fixed-top</code> or <code>has-navbar-fixed-bottom</code> modifier to the <code>&lt;html&gt;</code> element to provide the appropriate padding to the page
+          {% highlight html %}<html class="has-navbar-fixed-top">{% endhighlight %}
+        </li>
+      </ul>
     </div>
 
-    {% highlight html %}{{navbar_transparent_example}}{% endhighlight %}
+    <h4 class="title is-5">Try it out!</h4>
+
+    <div id="navbarToggles" class="buttons">
+      <a id="navbarFixBottom" class="button is-link">
+        <span class="icon">
+          <i class="fa fa-square-o"></i>
+        </span>
+        <span>Show <strong>bottom</strong> navbar</span>
+      </a>
+    </div>
 
     {% include anchor.html name="Dropdown menu" %}
 
@@ -892,7 +924,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <h4 class="title is-4">
       Right dropdown
-      <span class="tag is-info">0.5.1</span>
     </h4>
 
     <div class="content">
@@ -912,6 +943,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <div class="column">
         {% highlight html %}{{ navbar_dropdown_right_example }}{% endhighlight %}
+      </div>
+    </div>
+
+    <h4 class="title is-4">
+      Dropup
+    </h4>
+
+    {% include elements/new-tag.html version="0.6.1" %}
+
+    <div class="content">
+      <p>
+        If you're using a navbar at the bottom, like the <a href="#fixed-navbar">fixed bottom navbar</a>, you might want to use a <strong>dropup menu</strong>. Simply add the <code>has-dropdown</code> and <code>has-dropdown-up</code> modifiers to the parent <code>navbar-item</code>.
+      </p>
+    </div>
+
+    {% highlight html %}{{ navbar_dropup_snippet }}{% endhighlight %}
+
+    <div class="columns">
+      <div class="column">
+        <div class="bd-example is-paddingless">
+          {{ navbar_dropup_example }}
+        </div>
+      </div>
+
+      <div class="column">
+        {% highlight html %}{{ navbar_dropup_example }}{% endhighlight %}
       </div>
     </div>
 
@@ -1005,7 +1062,74 @@ document.addEventListener('DOMContentLoaded', function () {
 
     {% highlight html %}{{ navbar_divider_example }}{% endhighlight %}
 
-    {% include variables.html %}
+    {% include anchor.html name="Colors" %}
+
+    <div class="tags has-addons">
+      <span class="tag">New!</span>
+      <span class="tag is-info">0.5.2</span>
+    </div>
+
+    <div class="content">
+      <p>
+        You can change the background color of the <code>navbar</code> by using one of the <strong>9 color modifiers:</strong>
+      </p>
+      <ul>
+        <li><code>is-primary</code></li>
+        <li><code>is-link</code></li>
+        <li><code>is-info</code></li>
+        <li><code>is-success</code></li>
+        <li><code>is-warning</code></li>
+        <li><code>is-danger</code></li>
+        <li><code>is-black</code></li>
+        <li><code>is-dark</code></li>
+        <li><code>is-light</code></li>
+        <li><code>is-white</code></li>
+      </ul>
+    </div>
+
+    {% highlight html %}{{ navbar_color_markup }}{% endhighlight %}
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="primary" %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="link" %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="info" %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="success" %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="warning" light=true %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="danger" %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="black" %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="dark" %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="light" light=true %}
+    </div>
+
+    <div class="bd-example is-paddingless">
+      {% include examples/navbar-color.html color="white" light=true %}
+    </div>
+
+    {% include variables.html type='component' %}
 
   </div>
 </section>

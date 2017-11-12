@@ -24,7 +24,7 @@ Thanks for helping out! 😇
   * nested tags
   * pseudo-classes
   * color modifiers
-  * size modifers
+  * size modifiers
   * modifiers
   * responsive styles
 * Add appropriate one-line comments for each of these sections within a CSS rule

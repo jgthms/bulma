@@ -1,32 +1,8 @@
 ---
+title: Dropdown
 layout: documentation
 doc-tab: components
 doc-subtab: dropdown
-variables:
-- name: $dropdown-content-background-color
-  value: $white
-- name: $dropdown-content-arrow
-  value: $link
-- name: $dropdown-content-offset
-  value: 4px
-- name: $dropdown-content-radius
-  value: $radius
-- name: $dropdown-content-shadow
-  value: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
-- name: $dropdown-content-z
-  value: 20
-- name: $dropdown-item-color
-  value: $grey-dark
-- name: $dropdown-item-hover-color
-  value: $black
-- name: $dropdown-item-hover-background-color
-  value: $background
-- name: $dropdown-item-active-color
-  value: $primary-invert
-- name: $dropdown-item-active-background-color
-  value: $primary
-- name: $dropdown-divider-background-color
-  value: $border
 ---
 
 {% capture dropdown_example %}
@@ -65,7 +41,7 @@ variables:
 {% capture dropdown_content_example %}
 <div class="dropdown is-active">
   <div class="dropdown-trigger">
-    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
       <span>Content</span>
       <span class="icon is-small">
         <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -93,7 +69,7 @@ variables:
 {% capture dropdown_click_example %}
 <div class="dropdown">
   <div class="dropdown-trigger">
-    <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu3">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
       <span>Click me</span>
       <span class="icon is-small">
         <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -135,7 +111,7 @@ variables:
 {% capture dropdown_info_example %}
 <div class="dropdown is-hoverable">
   <div class="dropdown-trigger">
-    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu4">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
       <span>Hover me</span>
       <span class="icon is-small">
         <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -155,7 +131,7 @@ variables:
 {% capture dropdown_left_example %}
 <div class="dropdown is-active">
   <div class="dropdown-trigger">
-    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu5">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu5">
       <span>Left aligned</span>
       <span class="icon is-small">
         <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -175,7 +151,7 @@ variables:
 {% capture dropdown_right_example %}
 <div class="dropdown is-right is-active">
   <div class="dropdown-trigger">
-    <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu6">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu6">
       <span>Right aligned</span>
       <span class="icon is-small">
         <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -186,6 +162,26 @@ variables:
     <div class="dropdown-content">
       <div class="dropdown-item">
         <p>Add the <code>is-right</code> modifier for a <strong>right-aligned</strong> dropdown.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture dropdown_up_example %}
+<div class="dropdown is-up">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu7">
+      <span>Dropup button</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu7" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <p>You can add the <code>is-up</code> modifier to have a dropdown menu that appears above the dropdown button.</p>
       </div>
     </div>
   </div>
@@ -253,11 +249,7 @@ variables:
       </div>
     </div>
 
-    <hr>
-
-    <h3 class="title">
-      Dropdown content
-    </h3>
+    {% include anchor.html name="Dropdown content" %}
 
     <div class="content">
       <p>
@@ -274,11 +266,7 @@ variables:
       </div>
     </div>
 
-    <hr>
-
-    <h3 class="title">
-      Hoverable or Toggable
-    </h3>
+    {% include anchor.html name="Hoverable or Toggable" %}
 
     <div class="content">
       <p>
@@ -309,11 +297,7 @@ variables:
       </div>
     </div>
 
-    <hr>
-
-    <h3 class="title">
-      Right aligned
-    </h3>
+    {% include anchor.html name="Right aligned" %}
 
     <div class="content">
       <p>
@@ -341,7 +325,26 @@ variables:
       </div>
     </div>
 
-    {% include variables.html %}
+    {% include anchor.html name="Dropup" %}
+
+    {% include elements/new-tag.html version="0.5.4" %}
+
+    <div class="content">
+      <p>
+        You can add the <code>is-up</code> modifier to have a dropdown menu that appears above the dropdown button.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{ dropdown_up_example }}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{dropdown_up_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include variables.html type='component' %}
 
   </div>
 </section>

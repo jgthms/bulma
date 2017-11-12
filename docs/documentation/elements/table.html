@@ -3,39 +3,6 @@ title: Table
 layout: documentation
 doc-tab: elements
 doc-subtab: table
-variables:
-- name: $table-color
-  value: $grey-darker
-- name: $table-background-color
-  value: $white
-- name: $table-cell-border
-  value: 1px solid $grey-lighter
-- name: $table-cell-border-width
-  value: 0 0 1px
-- name: $table-cell-padding
-  value: 0.5em 0.75em
-- name: $table-cell-heading-color
-  value: $text-strong
-- name: $table-head-color
-  value: $grey
-- name: $table-head-cell-border-width
-  value: 0 0 2px
-- name: $table-head-cell-color
-  value: $text-strong
-- name: $table-foot-cell-border-width
-  value: 2px 0 0
-- name: $table-foot-cell-color
-  value: $text-strong
-- name: $table-row-hover-background-color
-  value: $white-bis
-- name: $table-row-active-background-color
-  value: $primary
-- name: $table-row-active-color
-  value: $primary-invert
-- name: $table-striped-row-even-background-color
-  value: $white-bis
-- name: $table-striped-row-even-hover-background-color
-  value: $white-ter
 ---
 
 {% capture table_example %}
@@ -385,23 +352,13 @@ variables:
         </li>
       </ul>
       <p>
-        <span class="tag is-success">New!</span>
-        <span class="tag is-info">0.4.2</span>
-      </p>
-      <p>
         You can set a table row as <strong>selected</strong> by appending the <code>is-selected</code> modifier on a <code>&lt;tr&gt;</code>
       </p>
     </div>
 
-    <div class="bd-example">
-      {{table_example}}
-    </div>
+    {% include snippet.html content=table_example horizontal=true more=true %}
 
-    {% highlight html %}{{table_example}}{% endhighlight %}
-
-    <hr>
-
-    <h3 class="title">Modifiers</h3>
+    {% include anchor.html name="Modifiers" %}
 
     <div class="columns">
       <div class="column">
@@ -510,6 +467,49 @@ variables:
       </div>
     </div>
 
+    {% include elements/new-tag.html version="0.5.4" %}
+
+    <div class="columns">
+      <div class="column">
+        <p>You can add a <strong>hover effect</strong> on each row</p>
+      </div>
+      <div class="column">
+        <code>table is-hoverable</code>
+      </div>
+      <div class="column is-half">
+        <table class="table is-hoverable">
+          <thead>
+            <tr>
+              <th>One</th>
+              <th>Two</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Three</td>
+              <td>Four</td>
+            </tr>
+            <tr>
+              <td>Five</td>
+              <td>Six</td>
+            </tr>
+            <tr>
+              <td>Seven</td>
+              <td>Eight</td>
+            </tr>
+            <tr>
+              <td>Nine</td>
+              <td>Ten</td>
+            </tr>
+            <tr>
+              <td>Eleven</td>
+              <td>Twelve</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="columns">
       <div class="column">
         <p>You can have a <strong>fullwidth</strong> table.</p>
@@ -559,7 +559,7 @@ variables:
         <code>table is-bordered is-striped is-narrow is-fullwidth</code>
       </div>
       <div class="column is-half">
-        <table class="table is-bordered is-striped is-narrow is-fullwidth">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
           <thead>
             <tr>
               <th>One</th>
@@ -592,7 +592,7 @@ variables:
       </div>
     </div>
 
-    {% include variables.html element=true %}
+    {% include variables.html type='element' %}
 
   </div>
 </section>

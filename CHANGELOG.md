@@ -1,16 +1,167 @@
 # Bulma Changelog
 
-## 0.5.2
+## 0.6.2
+
+### Improvements
+
+* #1343 Add `sub` and `sup` title sizes
+
+### Bug fixes
+
+* #935 Bug dropdown in `hero` (primary) menu items not visible
+
+## 0.6.1
+
+### New features
+
+* 🎉 [List of buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
+* 🎉 #1235 Support for five column grid: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
+* 🎉 #1287 New `.is-invisible` helper
+* 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
+* 🎉 #1384 New `.is-centered` and `.is-right` modifiers for `tags`
+* 🎉 #1383 New `.is-empty` modifier for `file`
+* 🎉 #1380 Allow `.is-selected` class on `<td>` and `<th>` tags
+
+### Improvements
+
+* #987 Improve `tag > icon` spacing
+* Improve `hamburger` alignment
+
+### Bug fixes
+
+* #1358 Fix indentation bug for .is-one-fifth
+* #1356 SASS 3.5+ variable parsing compatibility allows only #{}
+* #1342 Remove black line from progress bar in IE
+* #1334 Fix progress bar colors in IE
+* #1313 Fix Table `is-selected` and `is-hoverable` styling issue
+* #963 Fix Delete Button Bug in iOS Safari
+
+## 0.6.0
+
+### Breaking changes
+
+* The new `$link` color is part of the `$colors` map. As a result, `.button.is-link` is a colored button now. Use `.button.is-text` if you want the underlined button.
+* The deprecated `variables.sass` file has been removed.
+* The deprecated `nav.sass` file has been removed.
+
+### New features
+
+* #1236 `.table` hover effect is opt-in, by using the `.is-hoverable` modifier class
+* #1254 `.dropdown` now supports `.is-up` modifier
+
+### Improvements
+
+* #1257 Include placeholder mixin in `=input`
+
+The `$link` color is used instead of `$primary` in the following components:
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Old value</th>
+    <th>New value</th>
+  </tr>
+  <tr>
+    <td><code>$dropdown-item-active-color</code></td>
+    <td><code>$primary-invert</code></td>
+    <td><code>$link-invert</code></td>
+  </tr>
+  <tr>
+    <td><code>$dropdown-item-active-background-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-tab-hover-border-bottom-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-tab-active-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-tab-active-border-bottom-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$navbar-dropdown-item-active-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-link-active-border-bottom-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-link-active-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-toggle-link-active-background-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-toggle-link-active-border-color</code></td>
+    <td><code>$primary</code></td>
+    <td><code>$link</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs-toggle-link-active-color</code></td>
+    <td><code>$primary-invert</code></td>
+    <td><code>$link-invert</code></td>
+  </tr>
+</table>
 
 ### Issues closed
 
-* #1063 `$family-primary` customisation
+* #708 Import variables in mixins
+
+## 0.5.3
+
+### New features
+
+* #1101 `.card-header-title` can be centered with `.is-centered`
+* #1189 `.input` readonly and `.is-static`
+* #1189 `.textarea` readonly
+
+### Issues closed
+
+* #1177 Fix `.message .tag` combination
+* #1167 Fix `pre code`
+* #1207 Fix `.breadcrumb` alignment
+
+## 0.5.2
+
+### New features
+
+* #842 `navbar` color modifiers
+* #331 Support for third party icons
+* Added `$button-focus-box-shadow-size` and `$button-focus-box-shadow-color` for customization
+* Added `$input-focus-box-shadow-size` and `$input-focus-box-shadow-color` for customization
+* Navbar tabs
+
+### Issues closed
+
+* #1168 Undefined variable: `$navbar-item`
+* #930 Remove `vertical-align: top` for icons
+* #735 Font awesome custom `font-size`
+* #395 Font awesome stacked icons
+* #1152 Level-items not centered horizontally on mobile
+* #1147 Add `text-size-adjust: 100%` to `html`
+* #1106 `pagination` docs
+* #1063 `$family-primary` customization
 
 ## 0.5.1
 
 ### New features
 
-* 🎉 #280 [File upload element](http://bulma.io/documentation/form/file/)
+* 🎉 #280 [File upload element](https://bulma.io/documentation/form/file/)
 * `$container-offset` variable to determine the `.container` breakpoints
 * #1001 Text case helpers
 
@@ -29,7 +180,7 @@
 
 ### New features
 
-* 🎉 [List of tags](http://bulma.io/documentation/elements/tag/#list-of-tags)
+* 🎉 [List of tags](https://bulma.io/documentation/elements/tag/#list-of-tags)
 * New **variable naming system**: `component`-`subcomponent`-`state`-`property`
 * Improved **customization** thanks to new set of variables
 * #934 New `.is-shadowless` helper
@@ -123,9 +274,9 @@ Variable name changes (mostly appending `-color`):
 
 ### Improved documentation
 
-* [Starter template](http://bulma.io/documentation/overview/start/#starter-template)
-* [Colors page](http://bulma.io/documentation/overview/colors/)
-* [Typography helpers](http://bulma.io/documentation/modifiers/typography-helpers/)
+* [Starter template](https://bulma.io/documentation/overview/start/#starter-template)
+* [Colors page](https://bulma.io/documentation/overview/colors/)
+* [Typography helpers](https://bulma.io/documentation/modifiers/typography-helpers/)
 * **Meta** information for all elements and components
 * **Variables** information for most elements and components
 
@@ -140,7 +291,7 @@ Variable name changes (mostly appending `-color`):
 
 ### New features
 
-* New [dropdown button](http://bulma.io/documentation/components/dropdown/)!
+* New [dropdown button](https://bulma.io/documentation/components/dropdown/)!
 * The breakpoints and `.container` **gap** can be customized with the new `$gap` variable
 * The `.container` has 2 new modifiers: `.is-widescreen` and `.is-fullhd`
 
@@ -233,7 +384,7 @@ Variable name changes (mostly appending `-color`):
 * Split icon container dimensions and icon size
 * Fix delete button by using pixels instead of (r)em
 * Fix level on mobile
-* Add new `.is-spaced` modifer for titles and subtitles
+* Add new `.is-spaced` modifier for titles and subtitles
 
 * Fix #487
 * Fix #489

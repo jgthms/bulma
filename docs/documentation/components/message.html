@@ -1,32 +1,8 @@
 ---
+title: Message
 layout: documentation
 doc-tab: components
 doc-subtab: message
-variables:
-- name: $message-background-color
-  value: $background
-- name: $message-radius
-  value: $radius
-- name: $message-header-background-color
-  value: $text
-- name: $message-header-color
-  value: $text-invert
-- name: $message-header-padding
-  value: 0.5em 0.75em
-- name: $message-header-radius
-  value: $radius
-- name: $message-body-border
-  value: 1px solid $border
-- name: $message-body-color
-  value: $text
-- name: $message-body-padding
-  value: 1em 1.25em
-- name: $message-body-radius
-  value: $radius
-- name: $message-body-pre-background-color
-  value: $white
-- name: $message-body-pre-code-background-color
-  value: transparent
 ---
 
 {% capture message_example %}
@@ -51,51 +27,17 @@ variables:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
-<article class="message is-primary">
+{% for color in site.data.colors.justColors %}
+<article class="message is-{{ color }}">
   <div class="message-header">
-    <p>Primary</p>
+    <p>{{ color | capitalize }}</p>
     <button class="delete" aria-label="delete"></button>
   </div>
   <div class="message-body">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
-<article class="message is-info">
-  <div class="message-header">
-    <p>Info</p>
-    <button class="delete" aria-label="delete"></button>
-  </div>
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-<article class="message is-success">
-  <div class="message-header">
-    <p>Success</p>
-    <button class="delete" aria-label="delete"></button>
-  </div>
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-<article class="message is-warning">
-  <div class="message-header">
-    <p>Warning</p>
-    <button class="delete" aria-label="delete"></button>
-  </div>
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-<article class="message is-danger">
-  <div class="message-header">
-    <p><strong>Danger</strong>! <a>Learn more</a></p>
-    <button class="delete" aria-label="delete"></button>
-  </div>
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
+{% endfor %}
 {% endcapture %}
 
 {% capture message_small %}
@@ -157,31 +99,13 @@ variables:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
-<article class="message is-primary">
+{% for color in site.data.colors.justColors %}
+<article class="message is-{{ color }}">
   <div class="message-body">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
-<article class="message is-info">
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-<article class="message is-success">
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-<article class="message is-warning">
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-<article class="message is-danger">
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
+{% endfor %}
 {% endcapture %}
 
 {% include subnav-components.html %}
@@ -201,80 +125,31 @@ variables:
 
     <hr>
 
-    <div class="columns">
-      <div class="column is-half">
-        {{message_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{message_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=message_example %}
 
     {% include anchor.html name="Colors" %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{message_colors_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{message_colors_example}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=message_colors_example %}
 
-    <hr>
+    {% include anchor.html name="Message body only" %}
 
-    <h3 class="title">Message body only</h3>
     <div class="content">
       <p>You can <strong>omit</strong> the message header:</p>
     </div>
-    <div class="columns">
-      <div class="column is-half">
-        {{message_body_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{message_body_example}}{% endhighlight %}
-      </div>
-    </div>
+
+    {% include snippet.html content=message_body_example %}
 
     {% include anchor.html name="Sizes" %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{message_small}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{message_small}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=message_small %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{message_normal}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{message_normal}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=message_normal %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{message_medium}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{message_medium}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=message_medium %}
 
-    <div class="columns">
-      <div class="column is-half">
-        {{message_large}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{message_large}}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=message_large %}
 
-    {% include variables.html %}
+    {% include variables.html type='component' %}
 
   </div>
 </section>

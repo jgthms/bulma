@@ -1,13 +1,8 @@
 ---
-title: Progess Bar
+title: Progress Bar
 layout: documentation
 doc-tab: elements
 doc-subtab: progress
-variables:
-- name: $progress-bar-background-color
-  value: $border
-- name: $progress-value-background-color
-  value: $text
 ---
 
 {% capture progress %}
@@ -15,7 +10,8 @@ variables:
 {% endcapture %}
 
 {% capture progress_colors %}
-<progress class="progress is-primary" value="30" max="100">30%</progress>
+<progress class="progress is-primary" value="15" max="100">30%</progress>
+<progress class="progress is-link" value="30" max="100">30%</progress>
 <progress class="progress is-info" value="45" max="100">45%</progress>
 <progress class="progress is-success" value="60" max="100">60%</progress>
 <progress class="progress is-warning" value="75" max="100">75%</progress>
@@ -46,26 +42,17 @@ variables:
 
     <hr>
 
-    <div class="bd-example">
-      {{ progress }}
-    </div>
-    {% highlight html %}{{ progress }}{% endhighlight %}
+    {% include snippet.html content=progress %}
 
     {% include anchor.html name="Colors" %}
 
-    <div class="bd-example">
-      {{ progress_colors }}
-    </div>
-    {% highlight html %}{{ progress_colors }}{% endhighlight %}
+    {% include snippet.html content=progress_colors %}
 
     {% include anchor.html name="Sizes" %}
 
-    <div class="bd-example">
-      {{ progress_sizes }}
-    </div>
-    {% highlight html %}{{ progress_sizes }}{% endhighlight %}
+    {% include snippet.html content=progress_sizes %}
 
-    {% include variables.html element=true %}
+    {% include variables.html type='element' %}
 
   </div>
 </section>

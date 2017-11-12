@@ -1,18 +1,13 @@
 .bd-example,
-.bd-structure
-  border: 1px solid $warning
-  border-top-#{$right}-radius: $radius
-  color: $warning-invert
-  padding: 1.5rem
+.bd-structure,
+.bd-snippet
+  border: 1px solid $yellow
   position: relative
-  &:not(:first-child)
-    margin-top: 2rem
-  &:not(:last-child)
-    margin-bottom: 1.5rem
   &:before
-    background: $warning
+    background: $yellow
     border-radius: $radius $radius 0 0
     bottom: 100%
+    color: $yellow-invert
     content: "Example"
     display: inline-block
     font-size: 7px
@@ -29,25 +24,117 @@
       border-right: none
       padding: 0
 
+.bd-example,
+.bd-structure
+  padding: 1.5rem
+  &:not(:first-child)
+    margin-top: 2rem
+  &:not(:last-child)
+    margin-bottom: 1.5rem
+
 .bd-example
+  &.bd-is-clipped
+    border-top-right-radius: $radius-large
   & + .highlight
-    border: 1px solid $warning
+    border: 1px solid $yellow
     border-radius: 0 0 $radius $radius
     border-top: none
     margin-top: -1.5rem
     &:not(:last-child)
       margin-bottom: 1.5rem
 
+// Snippet
+.bd-snippet
+  +block
+  border: 1px solid $yellow
+  margin-top: 2rem
+  position: relative
+  &::before
+    content: "Snippet"
+    align-items: stretch
+    display: flex
+
+.bd-snippet-preview
+  padding: 1.5rem
+
+.bd-snippet-code
+  background-color: $pre-background
+
+.bd-snippet-code.bd-is-more.bd-is-more-clipped
+  .highlight
+    height: 2em
+    overflow: hidden
+    pre
+      overflow: hidden
+    .bd-show
+      display: flex
+
+.bd-snippet.bd-is-horizontal
+  border-radius: $radius-large
+  border-top-left-radius: 0
+  .bd-snippet-code.bd-is-more.bd-is-more-clipped
+    .highlight
+      pre
+        padding-top: 0.325rem
+
+.bd-snippet.bd-is-clipped
+  .bd-snippet-code
+    overflow: auto
+
++desktop
+  .bd-snippet.bd-is-vertical
+    align-items: stretch
+    border-radius: $radius-large
+    border-top-left-radius: 0
+    display: flex
+    justify-content: center
+    .bd-snippet-preview,
+    .bd-snippet-code
+      width: 50%
+    .bd-snippet-code
+      &,
+      .highlight,
+      .highlight pre
+        align-items: stretch
+        border-radius: 0 $radius-large $radius-large 0
+        display: flex
+        flex-direction: column
+      .highlight,
+      .highlight pre,
+      .highlight .language-html
+        flex-grow: 1
+      .highlight pre
+        white-space: pre
+    &.bd-is-one-fifth
+      .bd-snippet-preview
+        align-items: center
+        display: flex
+        justify-content: center
+        width: calc(128px + 3rem)
+      .bd-snippet-code
+        width: calc(100% - 128px - 3rem)
+    &.bd-is-two-fifths
+      .bd-snippet-preview
+        align-items: center
+        display: flex
+        justify-content: center
+        width: calc(256px + 3rem)
+      .bd-snippet-code
+        width: calc(100% - 256px - 3rem)
+    &.bd-is-one-third
+      .bd-snippet-preview
+        width: 33.3333%
+      .bd-snippet-code
+        width: 66.6666%
+
+// Highlight
 .highlight.bd-is-hovering
   border-radius: 2px
-  box-shadow: 0 0 0 3px $border
+  box-shadow: 0 0 0 2px $yellow
 
 .highlight pre
-  max-height: 480px
+  max-height: 320px
   margin-bottom: 0 !important
-  padding: 0
-  code
-    padding: 1.25em 1.5em
 
 .highlight-full,
 #navbarJsExample
@@ -111,10 +198,30 @@ $structure-invert: $danger-invert
     #{$right}: 0.25rem
     top: 0.25rem
     &:hover
-      background-color: $text
-      color: $white
+      background-color: $yellow
+      color: $yellow-invert
+    &:focus,
+    &:active
+      box-shadow: none
   .bd-expand
     #{$right}: 45px
+  .bd-show
+    +overlay
+    align-items: center
+    background-color: rgba($background, 0.7)
+    border: none
+    color: rgba(#000, 0.5)
+    cursor: pointer
+    display: none
+    font-size: $size-small
+    justify-content: center
+    width: 100%
+    strong
+      color: currentColor
+      font-weight: $weight-semibold
+    &:hover
+      background-color: rgba($yellow, 0.8)
+      color: rgba(#000, 0.7)
   +tablet
     pre
       white-space: pre-wrap
@@ -129,6 +236,10 @@ $structure-invert: $danger-invert
 
 .section.is-fullwidth
   padding: 0 !important
+  .bd-snippet
+    border-left: none
+    border-radius: 0
+    border-right: none
   .bd-example
     border-left: none
     border-radius: 0

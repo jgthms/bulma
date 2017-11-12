@@ -1,4 +1,4 @@
-$body-background-color: #fff !default
+$body-background-color: $white !default
 $body-size: 16px !default
 $body-rendering: optimizeLegibility !default
 $body-family: $family-primary !default
@@ -27,6 +27,7 @@ html
   overflow-x: hidden
   overflow-y: scroll
   text-rendering: $body-rendering
+  text-size-adjust: 100%
 
 article,
 aside,
@@ -103,19 +104,19 @@ strong
 // Block
 
 pre
+  +overflow-touch
   background-color: $pre-background
   color: $pre
   font-size: 0.875em
+  overflow-x: auto
+  padding: 1.25rem 1.5rem
   white-space: pre
   word-wrap: normal
   code
-    +overflow-touch
-    background: none
-    color: inherit
-    display: block
+    background-color: transparent
+    color: currentColor
     font-size: 1em
-    overflow-x: auto
-    padding: 1.25rem 1.5rem
+    padding: 0
 
 table
   td,

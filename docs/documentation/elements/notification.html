@@ -3,13 +3,6 @@ title: Notification
 layout: documentation
 doc-tab: elements
 doc-subtab: notification
-variables:
-- name: $notification-background-color
-  value: $background
-- name: $notification-radius
-  value: $radius
-- name: $notification-padding
-  value: 1.25rem 2.5rem 1.25rem 1.5rem
 ---
 
 {% capture notification %}
@@ -22,40 +15,14 @@ variables:
 {% endcapture %}
 
 {% capture notification_colors %}
-<div class="notification is-primary">
+{% for color in site.data.colors.justColors %}
+<div class="notification is-{{ color }}">
   <button class="delete"></button>
   Primar lorem ipsum dolor sit amet, consectetur
   adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
   consectetur adipiscing elit
 </div>
-
-<div class="notification is-info">
-  <button class="delete"></button>
-  Info lorem ipsum dolor sit amet, consectetur
-  adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
-  consectetur adipiscing elit
-</div>
-
-<div class="notification is-success">
-  <button class="delete"></button>
-  Success lorem ipsum dolor sit amet, consectetur
-  adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
-  consectetur adipiscing elit
-</div>
-
-<div class="notification is-warning">
-  <button class="delete"></button>
-  Warning lorem ipsum dolor sit amet, consectetur
-  adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
-  consectetur adipiscing elit
-</div>
-
-<div class="notification is-danger">
-  <button class="delete"></button>
-  Danger lorem ipsum dolor sit amet, consectetur
-  adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Sit amet,
-  consectetur adipiscing elit
-</div>
+{% endfor %}
 {% endcapture %}
 
 {% include subnav-elements.html %}
@@ -75,27 +42,13 @@ variables:
 
     <hr>
 
-    <div class="columns">
-      <div class="column">
-        {{ notification }}
-      </div>
-      <div class="column">
-        {% highlight html %}{{ notification }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=notification %}
 
     {% include anchor.html name="Colors" %}
 
-    <div class="columns">
-      <div class="column">
-        {{ notification_colors }}
-      </div>
-      <div class="column">
-        {% highlight html %}{{ notification_colors }}{% endhighlight %}
-      </div>
-    </div>
+    {% include snippet.html content=notification_colors %}
 
-    {% include variables.html %}
+    {% include variables.html type='element' %}
 
   </div>
 </section>
