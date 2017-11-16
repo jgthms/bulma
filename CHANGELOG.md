@@ -1,11 +1,5 @@
 # Bulma Changelog
 
-## 0.6.3
-
-### Improvements
-
-* New `.is-italic` helper
-
 ## 0.6.2
 
 ### Improvements
