@@ -5,6 +5,7 @@
 ### Improvements
 
 * #1343 Add `sub` and `sup` title sizes
+* `.textarea` supports `is-static`
 
 ### Bug fixes
 
