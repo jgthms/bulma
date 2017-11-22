@@ -129,6 +129,21 @@ doc-subtab: textarea
 </div>
 {% endcapture %}
 
+{% capture static_example %}
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Description</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea is-static" type="text"></textarea>
+      </p>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
 {% include subnav-form.html %}
 
 <section class="section">
@@ -222,6 +237,17 @@ doc-subtab: textarea
     </div>
 
     {% include snippet.html content=fixed_size_example %}
+    
+    <div class="content">
+      <p>
+        If you <em>also</em> append the <code>is-static</code> modifier, it removes the background, border, shadow, and horizontal padding, while maintaining the <strong>vertical spacing</strong> so you can easily align the input in any context, like a horizontal form.
+      </p>
+    </div>
+
+    <div class="bd-example">
+      {{ static_example }}
+    </div>
+    {% highlight html %}{{ static_example }}{% endhighlight %}
 
   </div>
 </section>
