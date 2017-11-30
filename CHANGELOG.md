@@ -6,6 +6,10 @@
 
 * New `.is-italic` helper
 
+### New features
+
+* #1488 Add fit image modifiers
+
 ## 0.6.2
 
 ### Improvements
