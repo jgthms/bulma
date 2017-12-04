@@ -2,6 +2,10 @@
 
 ## 0.6.3
 
+### New features
+
+* 🎉 Rounded buttons, inputs, pagination and toggle tabs
+
 ### Improvements
 
 * New `.is-italic` helper
