@@ -5,48 +5,48 @@ doc-tab: overview
 doc-subtab: customize
 ---
 
-{% capture sass %}
+{% capture scss_code %}
 // 1. Import the initial variables
-@import "../sass/utilities/initial-variables"
-@import "../sass/utilities/functions"
+@import "../sass/utilities/initial-variables";
+@import "../sass/utilities/functions";
 
 // 2. Set your own initial variables
 // Update blue
-$blue: #72d0eb
+$blue: #72d0eb;
 // Add pink and its invert
-$pink: #ffb3b3
-$pink-invert: #fff
+$pink: #ffb3b3;
+$pink-invert: #fff;
 // Add a serif family
-$family-serif: "Merriweather", "Georgia", serif
+$family-serif: "Merriweather", "Georgia", serif;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-$primary: $pink
-$primary-invert: $pink-invert
+$primary: $pink;
+$primary-invert: $pink-invert;
 // Use the existing orange as the danger color
-$danger: $orange
+$danger: $orange;
 // Use the new serif family
-$family-primary: $family-serif
+$family-primary: $family-serif;
 
 // 4. Setup your Custom Colors
-$linkedin: #0077B5
-$linkedin-invert: findColorInvert($linkedin)
-$twitter: #1DA1F2
-$twitter-invert: findColorInvert($twitter)
-$github: #222222
-$github-invert: findColorInvert($github)
+$linkedin: #0077b5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #55acee;
+$twitter-invert: findColorInvert($twitter);
+$github: #333;
+$github-invert: findColorInvert($github);
 
 // 5. Add new color variables to the color map.
-@import "../sass/utilities/derived-variables.sass"
+@import "../sass/utilities/derived-variables.sass";
 $addColors: (
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
   "github": ($github, $github-invert)
-)
-$colors: map-merge($colors, $addColors)
+);
+$colors: map-merge($colors, $addColors);
 
 // 6. Import the rest of Bulma
-@import "../bulma"
+@import "../bulma";
 {% endcapture %}
 
 {% include subnav-overview.html %}
@@ -84,10 +84,10 @@ $colors: map-merge($colors, $addColors)
           <strong>Set</strong> your variables
         </p>
         <p class="subtitle is-6">
-          Add your own colors, set new fonts, override Bulma's default styles...
+          Create a file called <code>mystyles.scss</code> and add your own colors, set new fonts, override Bulma's default styles...
         </p>
         <div class="highlight-full">
-          {% highlight sass %}{{ sass }}{% endhighlight %}
+          {% highlight sass %}{{ scss_code }}{% endhighlight %}
         </div>
       </div>
     </article>

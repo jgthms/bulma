@@ -6,6 +6,10 @@
 
 * New `.is-italic` helper
 
+### Bug fixes
+
+* #1456 Fix customize documentation
+
 ## 0.6.2
 
 ### Improvements
