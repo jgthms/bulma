@@ -96,10 +96,12 @@ $help-size: $size-small !default
   &.is-inline
     display: inline
     width: auto
-  &.is-rounded
-    border-radius: $radius-rounded
 
 .input
+  &.is-rounded
+    border-radius: $radius-rounded
+    padding-left: 1em
+    padding-right: 1em
   &.is-static
     background-color: transparent
     border-color: transparent
@@ -153,6 +155,10 @@ $help-size: $size-small !default
       right: 1.125em
       top: 50%
       z-index: 4
+  &.is-rounded
+    select
+      border-radius: $radius-rounded
+      padding-left: 1em
   select
     +input
     cursor: pointer
@@ -171,8 +177,6 @@ $help-size: $size-small !default
       padding: 0
       option
         padding: 0.5em 1em
-    &.is-rounded
-      border-radius: $radius-rounded
   // States
   &:hover
     &::after
@@ -311,17 +315,19 @@ $help-size: $size-small !default
         border-width: 0 1px 1px
   &.is-right
     .file-cta
-      border-radius: 0 $file-radius $file-radius 0
+      &:not(.is-rounded)
+        border-radius: 0 $file-radius $file-radius 0
       &.is-rounded
-        border-top-right-radius: $radius-rounded
         border-bottom-right-radius: $radius-rounded
+        border-top-right-radius: $radius-rounded
     .file-name
-      border-radius: $file-radius 0 0 $file-radius
       border-width: 1px 0 1px 1px
       order: -1
+      &:not(.is-rounded)
+        border-radius: $file-radius 0 0 $file-radius
       &.is-rounded
-        border-top-left-radius: $radius-rounded
         border-bottom-left-radius: $radius-rounded
+        border-top-left-radius: $radius-rounded
   &.is-fullwidth
     .file-label
       width: 100%
@@ -432,21 +438,27 @@ $help-size: $size-small !default
       &:first-child
         .button,
         .input,
-        .select select
-          border-bottom-left-radius: $input-radius
-          border-top-left-radius: $input-radius
+        .select
+          &:not(.is-rounded)
+            select
+              border-bottom-left-radius: $input-radius
+              border-top-left-radius: $input-radius
           &.is-rounded
-            border-bottom-left-radius: $radius-rounded
-            border-top-left-radius: $radius-rounded
+            select
+              border-bottom-left-radius: $radius-rounded
+              border-top-left-radius: $radius-rounded
       &:last-child
         .button,
         .input,
-        .select select
-          border-bottom-right-radius: $input-radius
-          border-top-right-radius: $input-radius
+        .select
+          &:not(.is-rounded)
+            select
+              border-bottom-right-radius: $input-radius
+              border-top-right-radius: $input-radius
           &.is-rounded
-            border-bottom-right-radius: $radius-rounded
-            border-top-right-radius: $radius-rounded
+            select
+              border-bottom-right-radius: $radius-rounded
+              border-top-right-radius: $radius-rounded
       .button,
       .input,
       .select select
