@@ -13,6 +13,7 @@
 ### Bug fixes
 
 * #1456 Fix customize documentation
+* #1190 Add `$variable-columns` to disable `--columnGap`
 
 ## 0.6.2
 
