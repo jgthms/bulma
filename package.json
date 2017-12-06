@@ -25,6 +25,7 @@
     "autoprefixer": "^7.1.1",
     "node-sass": "^4.5.3",
     "postcss-cli": "^4.1.0",
+    "replace-in-file": "^3.0.0",
     "rimraf": "^2.6.1",
     "sass-convert": "^0.5.2"
   },
@@ -33,7 +34,7 @@
     "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
     "build-clean": "rimraf css && rimraf bulma.scss && rimraf scss",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css && npm run build-scss",
-    "build-scss": "sass-convert -T scss bulma.sass bulma.scss && sass-convert --recursive --from sass --to scss sass scss",
+    "build-scss": "sass-convert -T scss bulma.sass bulma.scss && replace-in-file /sass/g scss bulma.scss --isRegex && sass-convert --recursive --from sass --to scss sass scss",
     "deploy": "npm run build && npm run docs",
     "docs": "npm run docs-sass && npm run docs-autoprefix",
     "docs-autoprefix": "postcss --use autoprefixer --map false --output docs/css/bulma-docs.css docs/css/bulma-docs.css",
