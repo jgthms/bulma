@@ -31,6 +31,18 @@ $dropdown-divider-background-color: $border !default
       padding-bottom: $dropdown-content-offset
       padding-top: unset
       top: auto
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      .dropdown-trigger
+        .button
+          @extend .is-#{$name}
+      a.dropdown-item
+        &.is-active
+          background-color: $color
+          color: $color-invert
 
 .dropdown-menu
   display: none
