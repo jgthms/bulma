@@ -2,6 +2,10 @@
 
 ## 0.6.3
 
+### New features
+
+* 🎉 Rounded buttons, inputs, pagination and toggle tabs
+
 ### Improvements
 
 * New `.is-italic` helper
@@ -9,6 +13,11 @@
 ### New features
 
 * #1488 Add fit image modifiers
+
+### Bug fixes
+
+* #1456 Fix customize documentation
+* #1190 Add `$variable-columns` to disable `--columnGap`
 
 ## 0.6.2
 

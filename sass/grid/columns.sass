@@ -464,13 +464,14 @@ $column-gap: 0.75rem !default
     &.is-desktop
       display: flex
 
-.columns.is-variable
-  --columnGap: 0.75rem
-  margin-left: calc(-1 * var(--columnGap))
-  margin-right: calc(-1 * var(--columnGap))
-  .column
-    padding-left: var(--columnGap)
-    padding-right: var(--columnGap)
-  @for $i from 0 through 8
-    &.is-#{$i}
-      --columnGap: #{$i * 0.25rem}
+@if $variable-columns
+  .columns.is-variable
+    --columnGap: 0.75rem
+    margin-left: calc(-1 * var(--columnGap))
+    margin-right: calc(-1 * var(--columnGap))
+    .column
+      padding-left: var(--columnGap)
+      padding-right: var(--columnGap)
+    @for $i from 0 through 8
+      &.is-#{$i}
+        --columnGap: #{$i * 0.25rem}

@@ -85,6 +85,22 @@ doc-subtab: pagination
 </nav>
 {% endcapture %}
 
+{% capture pagination_rounded_example %}
+<nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+  <a class="pagination-previous">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+  </ul>
+</nav>
+{% endcapture %}
+
 {% capture pagination_small_example %}
 <nav class="pagination is-small" role="navigation" aria-label="pagination">
   <a class="pagination-previous">Previous</a>
@@ -192,6 +208,16 @@ doc-subtab: pagination
     {% include snippet.html content=pagination_centered_example horizontal=true more=true %}
 
     {% include snippet.html content=pagination_right_example horizontal=true more=true %}
+
+    {% include anchor.html name="Styles" %}
+
+    {% include elements/new-tag.html version="0.6.2" %}
+
+    <p class="content">
+      Add the <code>is-rounded</code> modifier to have rounded pagination items.
+    </p>
+
+    {% include snippet.html content=pagination_rounded_example horizontal=true more=true %}
 
     {% include anchor.html name="Sizes" %}
 

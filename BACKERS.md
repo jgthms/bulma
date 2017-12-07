@@ -3,6 +3,7 @@
 ## Website sponsors via Patreon ($300+)
 
 * Ravi Gadesha [@_9brainz](https://twitter.com/@_9brainz)
+* Nazar [@nazar_io](https://twitter.com/@nazar_io)
 
 ## Homepage sponsors via Patreon ($100+)
 
@@ -23,4 +24,4 @@
 * Jordan Nemrow
 * Matt Swan
 * Kyu
-* Leo Zeba [@leozeba](https://twitter.com/@leozeba)
+* Takayuki Yamaguchi [@takyam](https://twitter.com/@takyam)
