@@ -1,0 +1,137 @@
+$range-bar-background-color: $border !default
+$range-value-background-color: $text !default
+
+.range
+  +block
+  -moz-appearance: none
+  -webkit-appearance: none
+  border-radius: $radius-rounded
+  border: none
+  display: block
+  height: $size-normal
+  overflow: hidden
+  padding: 0
+  width: 100%
+  &:focus
+    outline: none
+  &::-ms-tooltip
+    display: none
+  //Tracks  
+  &::-webkit-slider-runnable-track
+    background-color: $range-bar-background-color
+    border: none
+  &::-moz-range-track
+    background: $range-bar-background-color
+    border-radius: $radius-rounded
+    height: $size-normal
+  &::-ms-track
+    background: transparent
+    border-color: transparent
+    border-radius: $radius-rounded
+    border-width: 6px 0
+    color: transparent
+  &::-ms-fill-lower,
+  &::-ms-fill-upper
+    background: $range-bar-background-color
+    height: $size-normal
+  &::-ms-fill-lower
+    border-radius-left-top: $radius-rounded
+    border-radius-left-bottom: $radius-rounded
+  &::-ms-fill-upper
+    border-radius-right-top: $radius-rounded
+    border-radius-right-bottom: $radius-rounded
+  //Thumbs
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    background: $range-value-background-color
+    border-radius: $radius-rounded
+    cursor: pointer
+    height: $size-normal
+    width: $size-normal
+  &::-moz-range-thumb
+    background: $range-value-background-color
+    border-radius: $radius-rounded  
+    border: none
+    cursor: pointer
+    height: $size-normal
+    width: $size-normal
+  &::-ms-thumb
+    background: $range-value-background-color
+    border-radius: $radius-rounded
+    cursor: pointer
+    height: $size-normal
+    width: $size-normal
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name}
+      //Tracks
+      &::-webkit-slider-runnable-track
+        background-color: $color
+      &::-moz-range-track
+        background: $color
+      &::-ms-fill-lower,
+      &::-ms-fill-upper
+        background: $color
+      //Thumbs
+      &::-webkit-slider-thumb
+        background: findColorInvert($color)
+      &::-moz-range-thumb
+        background: findColorInvert($color)
+      &::-ms-thumb
+        background: findColorInvert($color)
+  // Sizes
+  &.is-small
+    //Tracks
+    height: $size-small
+    &::-moz-range-track
+      height: $size-small
+    &::-ms-fill-lower,
+    &::-ms-fill-upper
+      height: $size-small
+    //Thumbs
+    &::-webkit-slider-thumb
+      height: $size-small
+      width: $size-small
+    &::-moz-range-thumb
+      height: $size-small
+      width: $size-small
+    &::-ms-thumb
+      height: $size-small
+      width: $size-small
+  &.is-medium
+    //Tracks
+    height: $size-medium
+    &::-moz-range-track
+      height: $size-medium
+    &::-ms-fill-lower,
+    &::-ms-fill-upper
+      height: $size-medium
+    //Thumbs
+    &::-webkit-slider-thumb
+      height: $size-medium
+      width: $size-medium
+    &::-moz-range-thumb
+      height: $size-medium
+      width: $size-medium
+    &::-ms-thumb
+      height: $size-medium
+      width: $size-medium    
+  &.is-large
+    //Tracks
+    height: $size-large
+    &::-moz-range-track
+      height: $size-large
+    &::-ms-fill-lower,
+    &::-ms-fill-upper
+      height: $size-large
+    //Thumbs
+    &::-webkit-slider-thumb
+      height: $size-large
+      width: $size-large
+    &::-moz-range-thumb
+      height: $size-large
+      width: $size-large
+    &::-ms-thumb
+      height: $size-large
+      width: $size-large
