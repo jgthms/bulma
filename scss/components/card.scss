@@ -1,0 +1,81 @@
+$card-color: $text !default;
+$card-background-color: $white !default;
+$card-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default;
+
+$card-header-color: $text-strong !default;
+$card-header-shadow: 0 1px 2px rgba($black, 0.1) !default;
+$card-header-weight: $weight-bold !default;
+
+$card-footer-border-top: 1px solid $border !default;
+
+.card {
+  background-color: $card-background-color;
+  box-shadow: $card-shadow;
+  color: $card-color;
+  max-width: 100%;
+  position: relative;
+}
+
+.card-header {
+  align-items: stretch;
+  box-shadow: $card-header-shadow;
+  display: flex;
+}
+
+.card-header-title {
+  align-items: center;
+  color: $card-header-color;
+  display: flex;
+  flex-grow: 1;
+  font-weight: $card-header-weight;
+  padding: 0.75rem;
+
+  &.is-centered {
+    justify-content: center;
+  }
+}
+
+.card-header-icon {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.card-image {
+  display: block;
+  position: relative;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-footer {
+  border-top: $card-footer-border-top;
+  align-items: stretch;
+  display: flex;
+}
+
+.card-footer-item {
+  align-items: center;
+  display: flex;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 0.75rem;
+
+  &:not(:last-child) {
+    border-right: $card-footer-border-top;
+  }
+}
+
+// Combinations
+
+.card {
+  .media:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+}

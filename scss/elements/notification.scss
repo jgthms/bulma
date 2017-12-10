@@ -1,0 +1,53 @@
+$notification-background-color: $background !default;
+$notification-radius: $radius !default;
+$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default;
+
+.notification {
+  @include block;
+
+  background-color: $notification-background-color;
+  border-radius: $notification-radius;
+  padding: $notification-padding;
+  position: relative;
+
+  a:not(.button) {
+    color: currentColor;
+    text-decoration: underline;
+  }
+
+  strong {
+    color: currentColor;
+  }
+
+  code,
+  pre {
+    background: $white;
+  }
+
+  pre code {
+    background: transparent;
+  }
+
+  & > .delete {
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+  }
+
+  .title,
+  .subtitle,
+  .content {
+    color: currentColor;
+  }
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+    }
+  }
+}

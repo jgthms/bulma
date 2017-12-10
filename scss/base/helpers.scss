@@ -1,0 +1,420 @@
+// Float
+
+.is-clearfix {
+  @include clearfix;
+}
+
+.is-pulled-left {
+  float: left !important;
+}
+
+.is-pulled-right {
+  float: right !important;
+}
+
+// Overflow
+
+.is-clipped {
+  overflow: hidden !important;
+}
+
+// Overlay
+
+.is-overlay {
+  @include overlay;
+}
+
+// Typography
+
+@mixin typography-size($target: "") {
+  @each $size in $sizes {
+    $i: index($sizes, $size);
+
+    .is-size-#{$i}#{if($target == "", "", "-" + $target)} {
+      font-size: $size !important;
+    }
+  }
+}
+
+@include typography-size;
+
+@include mobile {
+  @include typography-size("mobile");
+}
+
+
+@include tablet {
+  @include typography-size("tablet");
+}
+
+
+@include touch {
+  @include typography-size("touch");
+}
+
+
+@include desktop {
+  @include typography-size("desktop");
+}
+
+
+@include widescreen {
+  @include typography-size("widescreen");
+}
+
+
+@include fullhd {
+  @include typography-size("fullhd");
+}
+
+
+$alignments: ("centered": "center", "justified": "justify", "left": "left", "right": "right");
+
+@each $alignment, $text-align in $alignments {
+  .has-text-#{$alignment} {
+    text-align: #{$text-align} !important;
+  }
+
+  @include mobile {
+    .has-text-#{$alignment}-mobile {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include tablet {
+    .has-text-#{$alignment}-tablet {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include tablet-only {
+    .has-text-#{$alignment}-tablet-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include touch {
+    .has-text-#{$alignment}-touch {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include desktop {
+    .has-text-#{$alignment}-desktop {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include desktop-only {
+    .has-text-#{$alignment}-desktop-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include widescreen {
+    .has-text-#{$alignment}-widescreen {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include widescreen-only {
+    .has-text-#{$alignment}-widescreen-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+
+  @include fullhd {
+    .has-text-#{$alignment}-fullhd {
+      text-align: #{$text-align} !important;
+    }
+  }
+}
+
+.is-capitalized {
+  text-transform: capitalize !important;
+}
+
+.is-lowercase {
+  text-transform: lowercase !important;
+}
+
+.is-uppercase {
+  text-transform: uppercase !important;
+}
+
+.is-italic {
+  font-style: italic !important;
+}
+
+@each $name, $pair in $colors {
+  $color: nth($pair, 1);
+
+  .has-text-#{$name} {
+    color: $color !important;
+  }
+
+  a.has-text-#{$name} {
+    &:hover,
+    &:focus {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
+
+@each $name, $shade in $shades {
+  .has-text-#{$name} {
+    color: $shade !important;
+  }
+}
+
+.has-text-weight-light {
+  font-weight: $weight-light !important;
+}
+
+.has-text-weight-normal {
+  font-weight: $weight-normal !important;
+}
+
+.has-text-weight-semibold {
+  font-weight: $weight-semibold !important;
+}
+
+.has-text-weight-bold {
+  font-weight: $weight-bold !important;
+}
+
+// Visibility
+
+$displays: "block" "flex" "inline" "inline-block" "inline-flex";
+
+@each $display in $displays {
+  .is-#{$display} {
+    display: #{$display} !important;
+  }
+
+  @include mobile {
+    .is-#{$display}-mobile {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include tablet {
+    .is-#{$display}-tablet {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include tablet-only {
+    .is-#{$display}-tablet-only {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include touch {
+    .is-#{$display}-touch {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include desktop {
+    .is-#{$display}-desktop {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include desktop-only {
+    .is-#{$display}-desktop-only {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include widescreen {
+    .is-#{$display}-widescreen {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include widescreen-only {
+    .is-#{$display}-widescreen-only {
+      display: #{$display} !important;
+    }
+  }
+
+
+  @include fullhd {
+    .is-#{$display}-fullhd {
+      display: #{$display} !important;
+    }
+  }
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+@include mobile {
+  .is-hidden-mobile {
+    display: none !important;
+  }
+}
+
+
+@include tablet {
+  .is-hidden-tablet {
+    display: none !important;
+  }
+}
+
+
+@include tablet-only {
+  .is-hidden-tablet-only {
+    display: none !important;
+  }
+}
+
+
+@include touch {
+  .is-hidden-touch {
+    display: none !important;
+  }
+}
+
+
+@include desktop {
+  .is-hidden-desktop {
+    display: none !important;
+  }
+}
+
+
+@include desktop-only {
+  .is-hidden-desktop-only {
+    display: none !important;
+  }
+}
+
+
+@include widescreen {
+  .is-hidden-widescreen {
+    display: none !important;
+  }
+}
+
+
+@include widescreen-only {
+  .is-hidden-widescreen-only {
+    display: none !important;
+  }
+}
+
+
+@include fullhd {
+  .is-hidden-fullhd {
+    display: none !important;
+  }
+}
+
+
+.is-invisible {
+  visibility: hidden !important;
+}
+
+@include mobile {
+  .is-invisible-mobile {
+    visibility: hidden !important;
+  }
+}
+
+
+@include tablet {
+  .is-invisible-tablet {
+    visibility: hidden !important;
+  }
+}
+
+
+@include tablet-only {
+  .is-invisible-tablet-only {
+    visibility: hidden !important;
+  }
+}
+
+
+@include touch {
+  .is-invisible-touch {
+    visibility: hidden !important;
+  }
+}
+
+
+@include desktop {
+  .is-invisible-desktop {
+    visibility: hidden !important;
+  }
+}
+
+
+@include desktop-only {
+  .is-invisible-desktop-only {
+    visibility: hidden !important;
+  }
+}
+
+
+@include widescreen {
+  .is-invisible-widescreen {
+    visibility: hidden !important;
+  }
+}
+
+
+@include widescreen-only {
+  .is-invisible-widescreen-only {
+    visibility: hidden !important;
+  }
+}
+
+
+@include fullhd {
+  .is-invisible-fullhd {
+    visibility: hidden !important;
+  }
+}
+
+
+// Other
+
+.is-marginless {
+  margin: 0 !important;
+}
+
+.is-paddingless {
+  padding: 0 !important;
+}
+
+.is-radiusless {
+  border-radius: 0 !important;
+}
+
+.is-shadowless {
+  box-shadow: none !important;
+}
+
+.is-unselectable {
+  @include unselectable;
+}
