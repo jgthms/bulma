@@ -87,6 +87,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Laravel Enso](https://github.com/laravel-enso/enso)                               | SPA Admin Panel built with Bulma, VueJS and Laravel 			      |
 | [Django Bulma](https://github.com/timonweb/django-bulma)                           | Integrates Bulma with Django 			    |
 | [Bulma Templates](https://github.com/dansup/bulma-templates)                       | Free Templates for Bulma                       |
+| [React Bulma Components](https://github.com/couds/react-bulma-components)          | Another React wrap on React for Bulma.io                           |
 
 ## Copyright and license
 
