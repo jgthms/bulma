@@ -88,6 +88,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Django Bulma](https://github.com/timonweb/django-bulma)                           | Integrates Bulma with Django 			    |
 | [Bulma Templates](https://github.com/dansup/bulma-templates)                       | Free Templates for Bulma                       |
 | [React Bulma Components](https://github.com/couds/react-bulma-components)          | Another React wrap on React for Bulma.io                           |
+| [purescript-bulma](https://github.com/sectore/purescript-bulma)                    | PureScript bindings for Bulma                                      |
 
 ## Copyright and license
 
