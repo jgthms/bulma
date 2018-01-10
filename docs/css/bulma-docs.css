@@ -11850,6 +11850,11 @@ svg {
   margin-top: 2px;
 }
 
+.bd-emoji-bis {
+  font-size: 1.25em;
+  vertical-align: middle;
+}
+
 .bd-notification {
   background-color: whitesmoke;
   border-radius: 3px;
@@ -13297,40 +13302,83 @@ html.route-index .hero.is-primary a.column:hover .title strong {
   white-space: nowrap;
 }
 
-.bd-patreon {
+.bd-banner {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #052d49;
-  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0.5rem 1rem;
+  overflow: hidden;
+  padding: 1rem;
+  position: relative;
 }
 
-.bd-patreon strong {
+.bd-banner strong {
   color: currentColor;
 }
 
-.bd-patreon-text {
-  font-size: 0.875rem;
-  line-height: 1.25;
-  margin-right: 0.5rem;
+.bd-banner .tag {
+  margin-right: 0.5em;
 }
 
-.bd-patreon-button {
+.bd-banner.is-patreon {
+  background-color: #052d49;
+  color: white;
+}
+
+.bd-banner.is-fortyfour {
+  background-color: #5f45bb;
+  color: white;
+}
+
+.bd-banner .button {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition-duration: 86ms;
+          transition-duration: 86ms;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+}
+
+.bd-banner:hover .button {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.bd-banner-background {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-image: url("/images/fortyfour-background.jpg");
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.bd-banner-text {
+  line-height: 1.25;
+  margin-right: 0.5rem;
+  position: relative;
+}
+
+.bd-banner-button {
   display: inline-block;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   height: 34px;
+  position: relative;
   width: 145px;
 }
 
-.bd-patreon-button img {
+.bd-banner-button img {
   max-height: 100%;
 }
 
@@ -13339,7 +13387,7 @@ html.route-index .hero.is-primary a.column:hover .title strong {
 }
 
 @media screen and (min-width: 480px) {
-  .bd-patreon-text {
+  .bd-banner-text {
     margin-right: 1rem;
   }
 }
