@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (fixedBottom) {
       fixBottomEl.className = 'button is-success';
-      fixBottomElIcon.className = 'fa fa-check-square-o';
+      fixBottomElIcon.className = 'far fa-check-square';
       rootEl.classList.add('has-navbar-fixed-bottom');
       navbarBottomEl.classList.remove('is-hidden');
     } else {
       fixBottomEl.className = 'button is-link';
-      fixBottomElIcon.className = 'fa fa-square-o';
+      fixBottomElIcon.className = 'far fa-square';
       rootEl.classList.remove('has-navbar-fixed-bottom');
       navbarBottomEl.classList.add('is-hidden');
     }

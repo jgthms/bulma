@@ -4,7 +4,8 @@ layout: post
 introduction: "Fix your navbar at the top or bottom"
 color: "primary"
 name: "Bulma on Patreon"
-icon: "support"
+icon: "patreon"
+icon_brand: true
 ---
 
 **Bulma** has now its own [Patreon page](https://www.patreon.com/jgthms):

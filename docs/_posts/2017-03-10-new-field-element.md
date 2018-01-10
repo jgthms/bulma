@@ -5,7 +5,7 @@ published: true
 introduction: "<p>The <code>.control</code> element has been a very versatile container for form controls. But it came at a cost: it was difficult to combine its <strong>block</strong> characteristics with its <strong>inline</strong> variations.</p>"
 color: "success"
 name: "Field element"
-icon: "square-o"
+icon: "square"
 ---
 
 **TL;DR: there's a new `.field` container, and `.control` has been re-purposed.**
@@ -63,7 +63,7 @@ But it allows more elaborate designs.
 <p class="control has-icon has-icon-right">
   <input class="input is-success" type="text" placeholder="Text input" value="bulma">
   <span class="icon is-small">
-    <i class="fa fa-check"></i>
+    <i class="fas fa-check"></i>
   </span>
   <span class="help is-success">This username is available</span>
 </p>
@@ -74,7 +74,7 @@ But it allows more elaborate designs.
   <p class="control has-icon has-icon-right">
     <input class="input is-success" type="text" placeholder="Text input" value="bulma">
     <span class="icon is-small">
-      <i class="fa fa-check"></i>
+      <i class="fas fa-check"></i>
     </span>
   </p>
   <p class="help is-success">This username is available</p>
@@ -89,13 +89,13 @@ Addons with multiple icons or states.
   <p class="control is-expanded has-icon">
     <input class="input is-success" type="text" placeholder="Username" value="alexsmith">
     <span class="icon is-small">
-      <i class="fa fa-check"></i>
+      <i class="fas fa-check"></i>
     </span>
   </p>
   <p class="control is-expanded has-icon">
     <input class="input is-warning" type="email" placeholder="Email" value="alex@smith.com">
     <span class="icon is-small">
-      <i class="fa fa-warning"></i>
+      <i class="fas fa-exclamation-triangle"></i>
     </span>
   </p>
   <p class="control is-expanded is-loading">
@@ -119,7 +119,7 @@ Horizontal form with help text
       <p class="control is-expanded has-icon has-icon-right">
         <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
         <span class="icon is-small">
-          <i class="fa fa-check"></i>
+          <i class="fas fa-check"></i>
         </span>
       </p>
       <p class="help is-success">This email is correct</p>

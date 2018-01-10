@@ -2,6 +2,7 @@
 bulma:
 - type: "bulma"
   icon: "css3"
+  icon_brand: true
   title: "Modern features"
   content: "By using the latest CSS3 features such as **Flexbox**, and planning on using **CSS Variables** and **CSS Grid**, Bulma aims to stay on the bleeding edge of browser technology."
 - type: "bulma"
@@ -13,9 +14,10 @@ bulma:
   title: "Easy-to-learn syntax"
   content: "With simple readable **class names** like `.button` or `.title`, and a straightforward **modifiers system** like `.is-primary` or `.is-large`, it's easy to pick up Bulma in **minutes**.<br>[More about modifiers](/documentation/modifiers/syntax/)"
 - type: "bulma"
-  icon: "fa"
-  title: "Font Awesome support"
-  content: "Bulma is compatible with [Font Awesome](http://fontawesome.io/) thanks to the `.icon` element."
+  icon: "font-awesome"
+  icon_brand: true
+  title: "Font Awesome 5 support"
+  content: "Bulma is compatible with both [Font Awesome 4](http://fontawesome.io/) and [Font Awesome 5](https://fontawesome.com/) thanks to the `.icon` element."
 - type: "bulma"
   icon: "plus"
   title: "100+ useful CSS helpers"
@@ -35,6 +37,7 @@ bootstrap:
   content: "Considering how long it has been around, Bootstrap has a **larger community** than Bulma. As a result, more tools (like theming and plugins) are available, and more questions are answered around the internet."
 - type: "bootstrap"
   icon: "internet-explorer"
+  icon_brand: true
   title: "Internet Explorer compatibility"
   content: "While 90% of Bulma works in IE11, Bootstrap has better **compatibility** with this browser."
 - type: "bootstrap"
@@ -44,7 +47,7 @@ bootstrap:
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +56,6 @@ bootstrap:
 
     <title>Bulma: an alternative to Bootstrap</title>
 
-    <link rel="stylesheet" href="{{ site.fontawesome }}">
     <link rel="stylesheet" href="{{ site.url }}/css/bulma-docs.css">
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
@@ -83,11 +85,11 @@ bootstrap:
     <link rel="shortcut icon" href="{{site.url}}/favicons/favicon.ico?v=201701041855">
     <meta name="msapplication-config" content="{{site.url}}/favicons/browserconfig.xml?v=201701041855">
     <meta name="theme-color" content="#00d1b2">
+
+    <script defer src="{{ site.data.icons.fontawesome5 }}"></script>
   </head>
   <body>
-    <div class="container">
-      {% include navbar.html id="Documentation" %}
-    </div>
+    {% include navbar.html id="Documentation" %}
 
     <main class="bd-bootstrap">
       <section class="hero is-medium">
@@ -136,6 +138,7 @@ bootstrap:
                   include pro.html
                   type=pro.type
                   icon=pro.icon
+                  icon_brand=pro.icon_brand
                   title=pro.title
                   content=pro.content
                 %}
@@ -156,6 +159,7 @@ bootstrap:
                   include pro.html
                   type=pro.type
                   icon=pro.icon
+                  icon_brand=pro.icon_brand
                   title=pro.title
                   content=pro.content
                 %}
