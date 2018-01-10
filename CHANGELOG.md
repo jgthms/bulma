@@ -1,6 +1,6 @@
 # Bulma Changelog
 
-## 0.6.3
+## 0.6.2
 
 ### New features
 
@@ -8,24 +8,16 @@
 
 ### Improvements
 
-* New `.is-italic` helper
-
-### Bug fixes
-
-* #1456 Fix customize documentation
-* #1190 Add `$variable-columns` to disable `--columnGap`
-* #1518 Fix spacing of the delete button in notification element
-* #1569 Fix missing use of `$pagination-color` variable
-
-## 0.6.2
-
-### Improvements
-
 * #1343 Add `sub` and `sup` title sizes
+* #1452 New `.is-italic` helper
 
 ### Bug fixes
 
 * #935 Bug dropdown in `hero` (primary) menu items not visible
+* #1456 Fix customize documentation
+* #1190 Add `$variable-columns` to disable `--columnGap`
+* #1518 Fix spacing of the delete button in notification element
+* #1569 Fix missing use of `$pagination-color` variable
 
 ## 0.6.1
 
