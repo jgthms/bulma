@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.6.3
+
+### Bug fixes
+
+* #1428 Fix `media-content` overflow
+
 ## 0.6.2
 
 ### New features
