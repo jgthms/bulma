@@ -47,7 +47,8 @@ tweets:
     </div>
 
     <div class="bd-tws-love">
-      {% for tweet in site.data.love.tweets reversed %}
+      {% for tweetId in site.data.love.tweets reversed %}
+        {% assign tweet = site.data.love.tweetsById[tweetId] %}
         {% include tw.html tweet=tweet %}
       {% endfor %}
     </div>
