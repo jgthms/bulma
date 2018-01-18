@@ -38,6 +38,9 @@
   {% if page.share_title %}
     <meta property="og:title" content="{{ page.share_title }}">
     <meta name="twitter:title" content="{{ page.share_title }}">
+  {% elsif page.title %}
+    <meta property="og:title" content="{{ page.title | replace: '&nbsp;', ' ' }}">
+    <meta name="twitter:title" content="{{ page.title | replace: '&nbsp;', ' ' }}">
   {% else %}
     <meta property="og:title" content="{{ site.title }}">
     <meta name="twitter:title" content="{{ site.title }}">
