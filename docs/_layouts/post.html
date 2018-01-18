@@ -3,30 +3,31 @@ layout: default
 route: blog
 ---
 
-{% include blog-hero.html %}
+{% include navbar.html id="BlogHero" %}
+
+<div class="bd-article-image is-single is-{{ page.color }}">
+  <span class="bd-article-overlay"></span>
+  <span class="bd-article-icon">
+    <i class="{% if page.icon_brand %}fab{% else %}fas{% endif %} fa-{{ page.icon }}"></i>
+  </span>
+  <strong class="bd-article-info">
+    <span>
+      <time class="bd-article-date" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date_to_string }}
+      </time>
+      <strong class="bd-article-title">
+        {{ page.name }}
+      </strong>
+    </span>
+  </strong>
+</div>
 
 <section class="section">
   <div class="container">
     <div class="columns">
       <div class="column is-offset-2 is-8">
-        <div class="bd-article-image is-single is-{{ page.color }}">
-          <span class="bd-article-overlay"></span>
-          <span class="bd-article-icon">
-            <i class="{% if page.icon_brand %}fab{% else %}fas{% endif %} fa-{{ page.icon }}"></i>
-          </span>
-          <strong class="bd-article-info">
-            <span>
-              <time class="bd-article-date" datetime="{{ page.date | date_to_xmlschema }}">
-                {{ page.date | date_to_string }}
-              </time>
-              <strong class="bd-article-title">
-                {{ page.name }}
-              </strong>
-            </span>
-          </strong>
-        </div>
         <p class="subtitle is-6">
-          <a class="bd-article-back" href="{{ site.url }}/blog">Back</a>
+          <a class="bd-article-back" href="{{ site.url }}/blog">Back to Blog home</a>
         </p>
         <h1 class="title is-2">
           {{ page.title }}

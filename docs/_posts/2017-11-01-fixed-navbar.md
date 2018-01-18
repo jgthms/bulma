@@ -2,7 +2,7 @@
 layout: post
 title: "New feature: fixed navbar"
 introduction: "Fix your navbar at the top or bottom"
-color: "info"
+color: "success"
 name: "Fixed navbar"
 icon: "map-pin"
 ---
