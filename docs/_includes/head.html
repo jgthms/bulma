@@ -46,6 +46,9 @@
   {% if page.share_description %}
     <meta property="og:description" content="{{ page.share_description }}">
     <meta name="twitter:description" content="{{ page.share_description }}">
+  {% elsif page.layout == 'post' %}
+    <meta property="og:description" content="{{ page.content | strip_html | truncate: 400, '…' }}">
+    <meta name="twitter:description" content="{{ page.content | strip_html | truncate: 400, '…' }}">
   {% else %}
     <meta property="og:description" content="{{ site.description }}">
     <meta name="twitter:description" content="{{ site.description }}">
@@ -54,6 +57,9 @@
   {% if page.share_image %}
     <meta property="og:image" content="{{ site.url }}{{ page.share_image }}">
     <meta name="twitter:image" content="{{ site.url }}{{ page.share_image }}">
+  {% elsif page.layout == 'post' %}
+    <meta property="og:image" content="{{ site.url }}/images/blog/share/{{ page.id | slice: 12,page.id.size }}.png">
+    <meta name="twitter:image" content="{{ site.url }}/images/blog/share/{{ page.id | slice: 12,page.id.size }}.png">
   {% else %}
     <meta property="og:image" content="{{ site.url }}/images/bulma-banner.png">
     <meta name="twitter:image" content="{{ site.url }}/images/bulma-banner.png">
