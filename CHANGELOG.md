@@ -3,11 +3,10 @@
 ## 0.6.4
 
 ### New features
-* Add margin and padding (gutter) modifiers.
+* Add margin and padding (gap) modifiers.
 * `has-margin-top-bottom`, `has-margin-left-right`, `has-padding-top-bottom`, `has-padding-left-right`.
-* `has-margin-sm`, `has-padding-sm` decreased gutter size in half.
-* Default gutter spacing is $gap (32px). The small gutter spacing is $gap / 2 (16px)
-
+* Use `has-margin-sm`, `has-padding-sm` to decrease gap size in half.
+* Default gap spacing is $gap (32px). Small gap spacing is $gap / 2 (16px).
 
 ## 0.6.3
 
