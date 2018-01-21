@@ -2,6 +2,10 @@
 
 ## 0.6.3
 
+### Improvements
+
+* Add $card-header-background-color, $card-content-background-color and $card-footer-background-color to allow different background customization for card elements
+
 ### Bug fixes
 
 * #1428 Fix `media-content` overflow
