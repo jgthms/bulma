@@ -18,6 +18,9 @@
   {% if page.mdi %}
     <link rel="stylesheet" href="{{ site.data.icons.mdi }}">
   {% endif %}
+  {% if page.layout == 'documentation' %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+  {% endif %}
   <link rel="stylesheet" href="{{ site.url }}/css/bulma-docs.css?v={{ site.time | date: "%Y%m%d%H%M" }}">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
@@ -32,7 +35,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@jgthms">
   <meta name="twitter:creator" content="@jgthms">
-
 
   <!-- Shared social media -->
   {% if page.share_title %}
@@ -76,6 +78,8 @@
   <link rel="shortcut icon" href="{{ site.url }}/favicons/favicon.ico?v=201701041855">
   <meta name="msapplication-config" content="{{ site.url }}/favicons/browserconfig.xml?v=201701041855">
   <meta name="theme-color" content="#00d1b2">
+
+  {% include javascript-settings.html %}
 
   <script defer src="{{ site.data.icons.fontawesome5 }}"></script>
 </head>
