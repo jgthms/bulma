@@ -12,10 +12,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Configure DocSearch
   var options = {
+    algoliaOptions: algoliaOptions,
     apiKey: bdSettings.algolia.key,
     indexName: bdSettings.algolia.index,
-    inputSelector: '#documention-search',
-    algoliaOptions: algoliaOptions,
+    inputSelector: '#documentionSearch',
+    autocompleteOptions: {
+      appendTo: "#documentionSearchWrapper",
+      hint: false
+    },
     transformData: function (hits) {
       return hits.map(function (hit) {
         hit.url = hit.url
