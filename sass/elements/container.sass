@@ -1,9 +1,13 @@
+$container-gap-factor-desktop: 2 !default
+$container-gap-factor-widescreen: $container-gap-factor-desktop !default
+$container-gap-factor-fullhd: $container-gap-factor-desktop !default
+
 .container
   margin: 0 auto
   position: relative
   +from($desktop)
-    max-width: $desktop - (2 * $gap)
-    width: $desktop - (2 * $gap)
+    max-width: $desktop - ($container-gap-factor-desktop * $gap)
+    width: $desktop - ($container-gap-factor-desktop * $gap)
     &.is-fluid
       margin-left: $gap
       margin-right: $gap
@@ -11,15 +15,15 @@
       width: auto
   +until($widescreen)
     &.is-widescreen
-      max-width: $widescreen - (2 * $gap)
+      max-width: $widescreen - ($container-gap-factor-widescreen * $gap)
       width: auto
   +until($fullhd)
     &.is-fullhd
-      max-width: $fullhd - (2 * $gap)
+      max-width: $fullhd - ($container-gap-factor-fullhd * $gap)
       width: auto
   +from($widescreen)
-    max-width: $widescreen - (2 * $gap)
-    width: $widescreen - (2 * $gap)
+    max-width: $widescreen - ($container-gap-factor-widescreen * $gap)
+    width: $widescreen - ($container-gap-factor-widescreen * $gap)
   +from($fullhd)
-    max-width: $fullhd - (2 * $gap)
-    width: $fullhd - (2 * $gap)
+    max-width: $fullhd - ($container-gap-factor-fullhd * $gap)
+    width: $fullhd - ($container-gap-factor-fullhd * $gap)
