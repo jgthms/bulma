@@ -1,0 +1,39 @@
+.grid
+  +block
+  display: grid
+  grid-column-gap: 0.75rem
+  grid-column-gap: 1px
+  grid-row-gap: 0.75rem
+  grid-row-gap: 1px
+  $var: #{"1fr"}
+  @for $i from 1 through 5
+    &.has-#{$i + 1}-columns
+      grid-template-columns: #{append($var, 1fr)}
+      $var: append($var, #{"1fr"})
+
+.cell
+  background-color: $primary
+  border-radius: $radius-large
+  color: $link-invert
+  padding: 1rem
+
+  @for $i from 1 through 6
+    &.is-#{$i}-wide
+      grid-column: span $i
+
+  // Colors
+  &:nth-child(7n-6)
+    background-color: $purple
+  &:nth-child(7n-5)
+    background-color: $link
+  &:nth-child(7n-4)
+    background-color: $info
+  &:nth-child(7n-3)
+    background-color: $primary
+  &:nth-child(7n-2)
+    background-color: $success
+  &:nth-child(7n-1)
+    background-color: $warning
+    color: $warning-invert
+  &:nth-child(7n)
+    background-color: $danger
