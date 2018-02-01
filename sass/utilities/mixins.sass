@@ -1,5 +1,9 @@
 @import "initial-variables"
 
+$delete-focus-border-color: $link !default
+$delete-focus-box-shadow-size: 0 0 0 0.125rem !default
+$delete-focus-box-shadow-color: rgba($link, 0.25) !default
+
 =arrow($color)
   border: 1px solid $color
   border-right: 0
@@ -37,7 +41,7 @@
   -moz-appearance: none
   -webkit-appearance: none
   background-color: rgba($black, 0.2)
-  border: none
+  border: 1px solid transparent
   border-radius: $radius-rounded
   cursor: pointer
   display: inline-block
@@ -65,13 +69,16 @@
     transform-origin: center center
   &:before
     height: 2px
-    width: 50%
+    width: 55%
   &:after
-    height: 50%
+    height: 55%
     width: 2px
   &:hover,
   &:focus
     background-color: rgba($black, 0.3)
+  &:focus
+    border: 1px solid $delete-focus-border-color
+    box-shadow: $delete-focus-box-shadow-size $delete-focus-box-shadow-color
   &:active
     background-color: rgba($black, 0.4)
   // Sizes
