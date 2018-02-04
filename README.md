@@ -89,6 +89,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Bulma Templates](https://github.com/dansup/bulma-templates)                       | Free Templates for Bulma                       |
 | [React Bulma Components](https://github.com/couds/react-bulma-components)          | Another React wrap on React for Bulma.io                           |
 | [purescript-bulma](https://github.com/sectore/purescript-bulma)                    | PureScript bindings for Bulma                                      |
+| [Vue Datatable](https://github.com/laravel-enso/vuedatatable)                      | Bulma themed datatable based on Vue, Laravel & JSON templates      |
 
 ## Copyright and license
 
