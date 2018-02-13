@@ -152,11 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  new Clipboard('.bd-copy', {
-    target: function(trigger) {
-      return trigger.previousSibling;
-    }
-  });
+  setTimeout(() => {
+    new Clipboard('.bd-copy', {
+      target: trigger => {
+        return trigger.previousElementSibling.firstElementChild;
+      }
+    });
+  }, 100);
 
   // Functions
 
