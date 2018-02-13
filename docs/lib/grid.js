@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   $cells.forEach(function (el) {
     var parentWidth = el.parentElement.offsetWidth;
     var percentage = el.offsetWidth / parentWidth * 100;
-    el.append('' + Math.round(percentage));
+    el.innerHTML = '' + percentage.toFixed(2);
+    // el.append(`${Math.round(el.offsetWidth)}`);
   });
 
   // Functions

@@ -1,10 +1,18 @@
+.grid-container
+  box-shadow: 0 0 0 1px $grey
+  margin: 0 auto
+  max-width: 1000px
+  padding: 0 !important
+
 .grid
+  --gridGap: 0.75rem
+  --gridGap: 0
+  --gridColumnGap: var(--gridGap)
+  --gridRowGap: var(--gridGap)
   +block
   display: grid
-  grid-column-gap: 0.75rem
-  grid-column-gap: 1px
-  grid-row-gap: 0.75rem
-  grid-row-gap: 1px
+  grid-column-gap: var(--gridColumnGap)
+  grid-row-gap: var(--gridRowGap)
   $var: #{"1fr"}
   @for $i from 1 through 5
     &.has-#{$i + 1}-columns
@@ -18,6 +26,8 @@
   padding: 1rem
 
   @for $i from 1 through 6
+    &.is-#{$i}-tall
+      grid-row: span $i
     &.is-#{$i}-wide
       grid-column: span $i
 
