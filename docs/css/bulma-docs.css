@@ -3103,7 +3103,7 @@ a.box:active {
 }
 
 .textarea[rows] {
-  height: unset;
+  height: initial;
 }
 
 .textarea.has-fixed-size {
@@ -3280,7 +3280,7 @@ a.box:active {
 }
 
 .select select[multiple] {
-  height: unset;
+  height: initial;
   padding: 0;
 }
 
@@ -5662,7 +5662,7 @@ a.tag:hover {
 .dropdown.is-up .dropdown-menu {
   bottom: 100%;
   padding-bottom: 4px;
-  padding-top: unset;
+  padding-top: initial;
   top: auto;
 }
 
@@ -7018,11 +7018,13 @@ a.dropdown-item.is-active {
   top: 0;
 }
 
-html.has-navbar-fixed-top {
+html.has-navbar-fixed-top,
+body.has-navbar-fixed-top {
   padding-top: 3.25rem;
 }
 
-html.has-navbar-fixed-bottom {
+html.has-navbar-fixed-bottom,
+body.has-navbar-fixed-bottom {
   padding-bottom: 3.25rem;
 }
 
@@ -11369,8 +11371,11 @@ svg {
 
 @media screen and (max-width: 1023px) {
   .intro-column.is-video,
-  .intro-carbon {
+  .intro-column.is-carbon {
     margin-top: 3rem;
+  }
+  .intro-columns.is-partners {
+    margin-top: 6rem;
   }
 }
 
@@ -11383,16 +11388,23 @@ svg {
         -ms-flex-pack: center;
             justify-content: center;
   }
+  .intro-columns.is-partners {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 3rem;
+  }
   .intro-column {
     width: calc(50% - 1.5rem);
   }
-  .intro-column.is-content {
+  .intro-column.is-content, .intro-column.is-sponsor {
     margin-right: 1.5rem;
   }
-  .intro-column.is-video {
+  .intro-column.is-video, .intro-column.is-carbon {
     margin-left: 1.5rem;
   }
-  .intro-content {
+  .intro-content,
+  .bd-sponsor {
     max-width: 440px;
   }
   .intro-title {
@@ -11400,9 +11412,6 @@ svg {
   }
   .intro-title:not(:last-child) {
     margin-bottom: 20px;
-  }
-  .intro-carbon {
-    margin-top: 3rem;
   }
 }
 
@@ -13426,6 +13435,43 @@ html.route-index .hero.is-primary a.column:hover .title strong {
           justify-content: center;
   margin-right: 3rem;
   width: 150px;
+}
+
+.bd-sponsor {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.bd-sponsor-title {
+  font-size: 0.75rem;
+  margin-bottom: 1em;
+  opacity: 0.5;
+}
+
+.bd-sponsor-list {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bd-sponsor-list a {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 200px;
 }
 
 /*# sourceMappingURL=bulma-docs.css.map */
