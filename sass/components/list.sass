@@ -3,20 +3,25 @@ $list-background-color: $white !default
 $list-radius: $radius !default
 
 $list-item-border: 1px solid $border !default
+$list-item-color: $text !default
+$list-item-active-color: $primary !default
+$list-item-active-text-color: $white !default
 $list-item-hover-color: $background !default
 
 .list
   background-color: $list-background-color
   border: $list-border
   border-radius: $list-radius
-  .list-item
-    color: black
-    cursor: default
-    display: flex
-    justify-content: flex-start
-    padding: 8px 16px
-    &:not(:last-child)
-      border-bottom: $list-item-border
-  & .is-hoverable:hover
+  &.is-hoverable > .list-item:hover:not(.is-active)
     background-color: $list-item-hover-color
     cursor: pointer
+
+.list-item
+  color: $list-item-color
+  display: flex
+  padding: 0.5em 1em
+  &.is-active
+    background-color: $list-item-active-color
+    color: $list-item-active-text-color
+  &:not(:last-child)
+    border-bottom: $list-item-border
