@@ -4922,6 +4922,17 @@ a.box:active {
   background-color: #fafafa;
 }
 
+.table-container {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+.table-container:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
 .tags {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -13474,23 +13485,60 @@ html.route-index .hero.is-primary a.column:hover .title strong {
   width: 200px;
 }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes zoomIn {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
 .bd-book-banner {
   background-color: white;
   position: relative;
 }
 
-.bd-book-pattern {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+.bd-book-pattern,
+.bd-book-modal-column.bd-is-cover {
   background-image: url("/images/hab/lightpaperfibers_@2X.png");
   background-repeat: repeat;
   background-size: 250px 150px;
 }
 
-.bd-book-pattern::after {
+.bd-book-pattern::before,
+.bd-book-modal-column.bd-is-cover::before {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -13501,8 +13549,27 @@ html.route-index .hero.is-primary a.column:hover .title strong {
   display: block;
 }
 
+.bd-book-pattern {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .bd-book-header {
   position: relative;
+}
+
+.bd-book-cover {
+  padding-top: 0.75rem;
+  position: relative;
+  text-align: center;
+}
+
+.bd-book-cover a {
+  display: inline-block;
+  vertical-align: top;
 }
 
 .bd-book-cover img {
@@ -13544,12 +13611,65 @@ html.route-index .hero.is-primary a.column:hover .title strong {
   max-width: 1080px;
 }
 
+.bd-book-modal-background {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: rgba(10, 10, 10, 0.86);
+}
+
+.bd-book-modal .bd-book-modal-background,
+.bd-book-modal .modal-content {
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
+  animation-easing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.bd-book-modal .bd-book-modal-background {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+
+.bd-book-modal .modal-content {
+  -webkit-animation-name: zoomIn;
+          animation-name: zoomIn;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.bd-book-modal-cover {
+  padding: 2rem;
+  position: relative;
+}
+
+.bd-book-modal-columns {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 @media screen and (max-width: 768px) {
   .bd-book-columns {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .bd-book-modal .bd-book-content {
+    padding: 2rem;
+  }
+  .bd-book-modal-column.bd-is-cover {
+    display: none;
   }
 }
 
@@ -13562,6 +13682,32 @@ html.route-index .hero.is-primary a.column:hover .title strong {
     position: absolute;
     right: calc(100% + 1.25rem);
     top: 0.5rem;
+  }
+  .bd-book-modal .modal-content {
+    width: 960px;
+  }
+  .bd-book-inline-cover {
+    display: none;
+  }
+  .bd-book-modal-column {
+    background-color: white;
+    position: relative;
+  }
+  .bd-book-modal-column.bd-is-cover {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 2rem;
+  }
+  .bd-book-modal-column.bd-is-content .bd-book-content {
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 

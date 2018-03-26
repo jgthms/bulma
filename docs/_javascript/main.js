@@ -1,6 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Dropdowns
+  // Cookies
+
+  const bdCookies = Cookies.getJSON('bulma') || {};
+
+  // Book modal
+
+  const $bookModal = document.getElementById('bookModal');
+  const $bookModalCloseButtons = getAll('.bd-book-modal-close');
+
+  if (!bdCookies['closed_book_modal']) {
+    setTimeout(() => {
+      openModal('bookModal');
+    }, 5000);
+  }
+
+  if ($bookModalCloseButtons.length > 0) {
+    $bookModalCloseButtons.forEach($el => {
+      $el.addEventListener('click', event => {
+        event.stopPropagation();
+        bdCookies['closed_book_modal'] = true;
+        Cookies.set('bulma', bdCookies);
+      });
+    });
+  }
+
+  // Meta links
 
   const $metalinks = getAll('#meta a');
 
@@ -66,9 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     $modalButtons.forEach($el => {
       $el.addEventListener('click', () => {
         const target = $el.dataset.target;
-        const $target = document.getElementById(target);
-        rootEl.classList.add('is-clipped');
-        $target.classList.add('is-active');
+        openModal(target);
       });
     });
   }
@@ -81,13 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  document.addEventListener('keydown', event => {
-    const e = event || window.event;
-    if (e.keyCode === 27) {
-      closeModals();
-      closeDropdowns();
-    }
-  });
+  function openModal(target) {
+    const $target = document.getElementById(target);
+    rootEl.classList.add('is-clipped');
+    $target.classList.add('is-active');
+  }
 
   function closeModals() {
     rootEl.classList.remove('is-clipped');

@@ -1,24 +1,45 @@
 $book-beige: #FFEDD7
 
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes zoomIn
+  from
+    transform: scale(0.8)
+  to
+    transform: scale(1)
+
 .bd-book-banner
   background-color: $white
   position: relative
 
-.bd-book-pattern
-  +overlay
+.bd-book-pattern,
+.bd-book-modal-column.bd-is-cover
   background-image: url("/images/hab/lightpaperfibers_@2X.png")
   background-repeat: repeat
   background-size: 250px 150px
-  &::after
+  &::before
     +overlay
     background-color: rgba($book-beige, 0.1)
     content: ""
     display: block
 
+.bd-book-pattern
+  +overlay
+
 .bd-book-header
   position: relative
 
 .bd-book-cover
+  padding-top: 0.75rem
+  position: relative
+  text-align: center
+  a
+    display: inline-block
+    vertical-align: top
   img
     display: block
 
@@ -45,9 +66,38 @@ $book-beige: #FFEDD7
   margin-right: auto
   max-width: 1080px
 
+.bd-book-modal-background
+  +overlay
+  background-color: rgba($black, 0.86)
+
+.bd-book-modal
+  .bd-book-modal-background,
+  .modal-content
+    animation-duration: 250ms
+    animation-easing-function: ease-out
+    animation-fill-mode: both
+  .bd-book-modal-background
+    animation-name: fadeIn
+  .modal-content
+    animation-name: zoomIn
+    transform-origin: center
+.bd-book-modal-cover
+  padding: 2rem
+  position: relative
+
+.bd-book-modal-columns
+  align-items: stretch
+  display: flex
+  justify-content: center
+
 +mobile
   .bd-book-columns
     flex-direction: column
+  .bd-book-modal
+    .bd-book-content
+      padding: 2rem
+  .bd-book-modal-column.bd-is-cover
+    display: none
 
 +tablet
   .bd-book-columns
@@ -57,3 +107,20 @@ $book-beige: #FFEDD7
       position: absolute
       right: calc(100% + 1.25rem)
       top: 0.5rem
+  // Modal
+  .bd-book-modal
+    .modal-content
+      width: 960px
+  .bd-book-inline-cover
+    display: none
+  .bd-book-modal-column
+    background-color: $white
+    position: relative
+    &.bd-is-cover
+      align-items: center
+      display: flex
+      justify-content: center
+      padding: 2rem
+    &.bd-is-content
+      .bd-book-content
+        box-shadow: none
