@@ -53,10 +53,40 @@ $book-beige: #FFEDD7
   max-width: 340px
 
 .bd-book-tags
-  margin-bottom: 3rem
+  margin-bottom: 1.5rem
   .tags
     .tag
       margin-right: 1px
+
+.bd-book-buttons
+  .button
+    height: auto
+    padding-bottom: calc(1em - 1px)
+    padding-top: calc(0.5em - 1px)
+    & > span
+      font-size: 0.875em
+      & > em
+        display: block
+        font-size: 0.5em
+        font-style: normal
+        line-height: 1em
+        margin-bottom: 0.5em
+        opacity: 0.5
+    img
+      display: block
+      max-height: 24px
+    &.bd-is-bleeding
+      background-color: $bleeding-green
+      border-color: transparent
+      &:hover
+        background-color: darken($bleeding-green, 5%)
+    &.bd-is-amazon
+      background-color: $amazon
+      border-color: transparent
+      &:hover
+        background-color: darken($amazon, 5%)
+      img
+        margin-bottom: -11px
 
 .bd-book-columns
   align-items: center
@@ -93,6 +123,12 @@ $book-beige: #FFEDD7
 +mobile
   .bd-book-columns
     flex-direction: column
+  .bd-book-buttons
+    .button
+      width: 100%
+      &:not(:last-child)
+        margin-right: 0
+        margin-bottom: 1rem
   .bd-book-modal
     .bd-book-content
       padding: 2rem
@@ -107,6 +143,9 @@ $book-beige: #FFEDD7
       position: absolute
       right: calc(100% + 1.25rem)
       top: 0.5rem
+  .bd-book-buttons
+    .button
+      width: calc(50% - 0.5rem)
   // Modal
   .bd-book-modal
     .modal-content
