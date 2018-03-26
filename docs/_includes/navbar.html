@@ -5,16 +5,16 @@
 
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
-      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
     </a>
 
-    <a class="navbar-item is-hidden-desktop" href="{{ site.github }}" target="_blank">
+    <a class="navbar-item is-hidden-desktop" href="{{ site.data.meta.github }}" target="_blank">
       <span class="icon" style="color: #333;">
         <i class="fab fa-lg fa-github"></i>
       </span>
     </a>
 
-    <a class="navbar-item is-hidden-desktop" href="{{ site.twitter }}" target="_blank">
+    <a class="navbar-item is-hidden-desktop" href="{{ site.data.meta.twitter }}" target="_blank">
       <span class="icon" style="color: #55acee;">
         <i class="fab fa-lg fa-twitter"></i>
       </span>
@@ -30,11 +30,11 @@
   <div id="navMenu{{ include.id }}" class="navbar-menu">
     <div class="navbar-start">
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.documentation }}">
+        <a class="navbar-link {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.data.meta.documentation }}">
           Docs
         </a>
         <div class="navbar-dropdown {% if include.boxed %}is-boxed{% endif %}">
-          <a class="navbar-item {% if page.doc-tab == 'overview' %}is-active{% endif %}" href="{{ site.documentation }}">
+          <a class="navbar-item {% if page.doc-tab == 'overview' %}is-active{% endif %}" href="{{ site.data.meta.documentation }}">
             Overview
           </a>
           <a class="navbar-item {% if page.doc-tab == 'modifiers' %}is-active{% endif %}" href="{{ site.url }}/documentation/modifiers/syntax/">
@@ -59,7 +59,7 @@
           <div class="navbar-item">
             <div>
               <p class="is-size-6-desktop">
-                <strong>{{ site.version }}</strong>
+                <strong>{{ site.data.meta.version }}</strong>
               </p>
               {{#unless site.deprecated}}
                 <small>
@@ -214,12 +214,12 @@
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item is-hidden-desktop-only" href="{{ site.github }}" target="_blank">
+      <a class="navbar-item is-hidden-desktop-only" href="{{ site.data.meta.github }}" target="_blank">
         <span class="icon" style="color: #333;">
           <i class="fab fa-lg fa-github"></i>
         </span>
       </a>
-      <a class="navbar-item is-hidden-desktop-only" href="{{ site.twitter }}" target="_blank">
+      <a class="navbar-item is-hidden-desktop-only" href="{{ site.data.meta.twitter }}" target="_blank">
         <span class="icon" style="color: #55acee;">
           <i class="fab fa-lg fa-twitter"></i>
         </span>
@@ -243,7 +243,7 @@
             {% include elements/tw-button.html label="Tweet" %}
           </p>
           <p class="control">
-            <a class="button is-primary" href="{{ site.download }}">
+            <a class="button is-primary" href="{{ site.data.meta.download }}">
               <span class="icon">
                 <i class="fas fa-download"></i>
               </span>

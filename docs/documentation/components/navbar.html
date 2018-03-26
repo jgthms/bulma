@@ -5,7 +5,7 @@ doc-tab: components
 doc-subtab: navbar
 ---
 
-{% include subnav-components.html %}
+{% include subnav/subnav-components.html %}
 
 {% capture navbar_example %}
 {% include examples/navbar.html id="Default" %}
@@ -31,7 +31,7 @@ doc-subtab: navbar
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
-      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
     </a>
 
     <div class="navbar-burger">
@@ -154,7 +154,7 @@ doc-subtab: navbar
       </a>
       <hr class="navbar-divider">
       <div class="navbar-item">
-        Version {{ site.version }}
+        Version {{ site.data.meta.version }}
       </div>
     </div>
   </div>
@@ -186,7 +186,7 @@ doc-subtab: navbar
       </a>
       <hr class="navbar-divider">
       <div class="navbar-item">
-        Version {{ site.version }}
+        Version {{ site.data.meta.version }}
       </div>
     </div>
   </div>
@@ -218,7 +218,7 @@ doc-subtab: navbar
       </a>
       <hr class="navbar-divider">
       <div class="navbar-item">
-        Version {{ site.version }}
+        Version {{ site.data.meta.version }}
       </div>
     </div>
   </div>
@@ -252,7 +252,7 @@ doc-subtab: navbar
           </a>
           <hr class="navbar-divider">
           <div class="navbar-item">
-            Version {{ site.version }}
+            Version {{ site.data.meta.version }}
           </div>
         </div>
       </div>
@@ -276,7 +276,7 @@ doc-subtab: navbar
           </a>
           <hr class="navbar-divider">
           <div class="navbar-item">
-            Version {{ site.version }}
+            Version {{ site.data.meta.version }}
           </div>
         </div>
       </div>
@@ -341,7 +341,7 @@ doc-subtab: navbar
           </a>
           <hr class="navbar-divider">
           <div class="navbar-item">
-            Version {{ site.version }}
+            Version {{ site.data.meta.version }}
           </div>
         </div>
       </div>
@@ -353,7 +353,7 @@ doc-subtab: navbar
 {% capture navbar_dropdown_default_example %}
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
-    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
   </a>
 
   <div class="navbar-item has-dropdown is-active">
@@ -373,7 +373,7 @@ doc-subtab: navbar
       </a>
       <hr class="navbar-divider">
       <div class="navbar-item">
-        Version {{ site.version }}
+        Version {{ site.data.meta.version }}
       </div>
     </div>
   </div>
@@ -394,7 +394,7 @@ doc-subtab: navbar
 {% capture navbar_dropdown_boxed_example %}
 <nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
-    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
   </a>
 
   <div class="navbar-item has-dropdown is-active">
@@ -414,7 +414,7 @@ doc-subtab: navbar
       </a>
       <hr class="navbar-divider">
       <div class="navbar-item">
-        Version {{ site.version }}
+        Version {{ site.data.meta.version }}
       </div>
     </div>
   </div>
@@ -435,7 +435,7 @@ doc-subtab: navbar
 {% capture navbar_dropdown_item_active_example %}
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
-    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.title }}" width="112" height="28">
+    <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
   </a>
 
   <div class="navbar-item has-dropdown is-active">
@@ -455,7 +455,7 @@ doc-subtab: navbar
       </a>
       <hr class="navbar-divider">
       <div class="navbar-item">
-        Version {{ site.version }}
+        Version {{ site.data.meta.version }}
       </div>
     </div>
   </div>
@@ -829,10 +829,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <div id="navbarToggles" class="buttons">
       <a id="navbarFixBottom" class="button is-link">
-        <span class="icon">
-          <i class="far fa-square"></i>
-        </span>
-        <span>Show <strong>bottom</strong> navbar</span>
+        <span><span id="navbarFixBottomText">Show</span> <strong>bottom</strong> navbar</span>
       </a>
     </div>
 
