@@ -527,6 +527,16 @@ variables_keys:
 </div>
 {% endcapture %}
 
+{% capture required_input_file %}
+<form>
+  <input
+    type="file"
+    name="file"
+    required
+  >
+</form>
+{% endcapture %}
+
 {% include subnav-form.html %}
 
 <section class="section">
@@ -738,6 +748,19 @@ variables_keys:
         User <a href="https://github.com/chintanbanugaria"><strong>@chintanbanugaria</strong></a> on GitHub <a href="https://github.com/jgthms/bulma/issues/280#issuecomment-294099510">has provided</a> a simple solution <a href="https://jsfiddle.net/chintanbanugaria/uzva5byy/">on JSFiddle</a>.
       </p>
     </div>
+
+    {% include anchor.html name="Limitations" %}
+
+    <div class="message is-warning">
+      <div class="message-body">
+        <p>
+          Please be aware that the browser validity message, when the input is <code>required</code> for example, will not be visible when using <code>.file</code>
+          field.
+        </p>
+      </div>
+    </div>
+
+    {% include snippet.html content=required_input_file %}
 
     {% include anchor.html name="Variables" %}
 
