@@ -26,6 +26,7 @@
 ### New features
 
 * 🎉 Rounded buttons, inputs, pagination and toggle tabs
+* #1764 New `.is-sr-only` helper
 
 ### Improvements
 
