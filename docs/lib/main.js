@@ -4,14 +4,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Cookies
 
-  var bdCookies = Cookies.getJSON('bulma') || {};
+  var cookieBookModalName = 'bulma_closed_book_modal';
+  var cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
 
   // Book modal
 
   var $bookModal = document.getElementById('bookModal');
   var $bookModalCloseButtons = getAll('.bd-book-modal-close');
 
-  if (!bdCookies['closed_book_modal']) {
+  if (!cookieBookModal) {
     setTimeout(function () {
       openModal('bookModal');
     }, 5000);
@@ -21,8 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $bookModalCloseButtons.forEach(function ($el) {
       $el.addEventListener('click', function (event) {
         event.stopPropagation();
-        bdCookies['closed_book_modal'] = true;
-        Cookies.set('bulma', bdCookies);
+        Cookies.set(cookieBookModalName, true, { expires: 30 });
       });
     });
   }
