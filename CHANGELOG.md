@@ -2,6 +2,10 @@
 
 ## 0.6.3
 
+### New features
+
+* 🎉 #1747 New `$custom-colors` variable for adding your own colors to Bulma's `$colors` map
+
 ### Improvements
 
 * #1767 Added minified bundle with cleancss
