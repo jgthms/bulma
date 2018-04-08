@@ -7,23 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Book modal
 
-  const $bookModal = document.getElementById('bookModal');
-  const $bookModalCloseButtons = getAll('.bd-book-modal-close');
+  // const $bookModal = document.getElementById('bookModal');
+  // const $bookModalCloseButtons = getAll('.bd-book-modal-close');
 
-  if (!cookieBookModal) {
-    setTimeout(() => {
-      openModal('bookModal');
-    }, 5000);
-  }
+  // if (!cookieBookModal) {
+  //   setTimeout(() => {
+  //     openModal('bookModal');
+  //   }, 5000);
+  // }
 
-  if ($bookModalCloseButtons.length > 0) {
-    $bookModalCloseButtons.forEach($el => {
-      $el.addEventListener('click', event => {
-        event.stopPropagation();
-        Cookies.set(cookieBookModalName, true, { expires: 30 });
-      });
-    });
-  }
+  // if ($bookModalCloseButtons.length > 0) {
+  //   $bookModalCloseButtons.forEach($el => {
+  //     $el.addEventListener('click', event => {
+  //       event.stopPropagation();
+  //       Cookies.set(cookieBookModalName, true, { expires: 30 });
+  //     });
+  //   });
+  // }
 
   // Meta links
 
@@ -116,6 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
       $el.classList.remove('is-active');
     });
   }
+
+  document.addEventListener('keydown', event => {
+    const e = event || window.event;
+    if (e.keyCode === 27) {
+      closeModals();
+      closeDropdowns();
+    }
+  });
 
   // Clipboard
 
