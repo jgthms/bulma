@@ -1,5 +1,13 @@
 # Bulma Changelog
 
+## 0.6.4
+
+### New features
+* Add margin and padding (gap) modifiers.
+* `has-margin-top-bottom`, `has-margin-left-right`, `has-padding-top-bottom`, `has-padding-left-right`.
+* Use `has-margin-sm`, `has-padding-sm` to decrease gap size in half.
+* Default gap spacing is $gap (32px). Small gap spacing is $gap / 2 (16px).
+
 ## 0.6.3
 
 ### New features
