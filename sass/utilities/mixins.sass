@@ -99,20 +99,34 @@
     @content
 
 =desktop-only
-  @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
-    @content
+  @if $widescreen-enabled
+    @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+      @content
+
+=until-widescreen
+  @if $widescreen-enabled
+    @media screen and (max-width: $widescreen - 1px)
+      @content
 
 =widescreen
-  @media screen and (min-width: $widescreen)
-    @content
+  @if $widescreen-enabled
+    @media screen and (min-width: $widescreen)
+      @content
 
 =widescreen-only
-  @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
-    @content
+  @if $widescreen-enabled and $fullhd-enabled
+    @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+      @content
+
+=until-fullhd
+  @if $fullhd-enabled
+    @media screen and (max-width: $fullhd - 1px)
+      @content
 
 =fullhd
-  @media screen and (min-width: $fullhd)
-    @content
+  @if $fullhd-enabled
+    @media screen and (min-width: $fullhd)
+      @content
 
 // Placeholders
 
