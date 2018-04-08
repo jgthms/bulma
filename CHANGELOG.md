@@ -8,6 +8,7 @@
 
 ### Improvements
 
+* #1619 Add $card-header-background-color, $card-content-background-color and $card-footer-background-color to allow different background customization for card elements
 * #1669 Add `.is-expanded` modifier to `.buttons.has-addons`
 * #1628 Add `.has-background` helpers for block background colors, like `.has-text`
 * #1767 Added minified bundle with cleancss
