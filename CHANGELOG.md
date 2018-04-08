@@ -16,6 +16,8 @@
 
 ### Bug fixes
 
+* #1571 Fix position of delete button on `.tag`
+* #1549 Implementing a simple version of the native sass percentage function
 * #1707 Disable table hover in `.content` by default
 * #1428 Fix `media-content` overflow
 
