@@ -16,6 +16,7 @@
 
 ### Bug fixes
 
+* #1778 Fix `is-text-right` precedence over `is-text-left-mobile`
 * #1571 Fix position of delete button on `.tag`
 * #1549 Implementing a simple version of the native sass percentage function
 * #1707 Disable table hover in `.content` by default
