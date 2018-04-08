@@ -2,6 +2,10 @@
 
 ## 0.6.3
 
+### Improvements
+
+* #1767 Added minified bundle with cleancss
+
 ### Bug fixes
 
 * #1428 Fix `media-content` overflow
