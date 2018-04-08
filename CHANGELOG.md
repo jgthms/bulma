@@ -4,6 +4,7 @@
 
 ### New features
 
+* New variables `$widescreen-enabled` and `$fullhd-enabled`: you can set them to `false` to disable each breakpoint
 * New variables `$control-border-width` and `$button-border-width`
 * 🎉 #1624 Add some common photography aspect ratios and portrait ratios
 * 🎉 #1747 New `$custom-colors` and `$custom-shades` variable for adding your own colors and shades to Bulma's `$colors` and `$shades` maps respectively

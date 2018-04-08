@@ -11,6 +11,14 @@ variables_keys:
 - fullhd
 ---
 
+{% capture scss_code %}
+// Disable the widescreen breakpoint
+$widescreen-enabled: false
+
+// Disable the fullhd breakpoint
+$fullhd-enabled: false
+{% endcapture %}
+
 {% include subnav/subnav-overview.html %}
 
 <section class="section">
@@ -42,7 +50,7 @@ variables_keys:
       <ul>
         {% for breakpoint_hash in site.data.breakpoints %}
           {% assign breakpoint = breakpoint_hash[1] %}
-          <li>{% if breakpoint.id == 'fullhd' %}<span class="tag is-success">New!</span> {% endif %}<code>{{ breakpoint.id }}</code>: {% if breakpoint.id == 'mobile' %}up to <code>{{ breakpoint.to }}px</code>{% else %}from <code>{{ breakpoint.from }}px</code>{% endif %}</li>
+          <li><code>{{ breakpoint.id }}</code>: {% if breakpoint.id == 'mobile' %}up to <code>{{ breakpoint.to }}px</code>{% else %}from <code>{{ breakpoint.from }}px</code>{% endif %}</li>
         {% endfor %}
       </ul>
 
@@ -58,7 +66,6 @@ variables_keys:
               </li>
             {% when 'fullhd' %}
               <li>
-                <span class="tag is-success">New!</span>
                 <code>={{ breakpoint.id }}</code><br>
                 from <code>{{ breakpoint.from }}px</code>
               </li>
@@ -182,8 +189,38 @@ variables_keys:
             <p class="notification">-</p>
           </td>
         </tr>
+        <tr>
+          <td colspan="3">
+            <p class="notification is-success">until-widescreen</p>
+          </td>
+          <td colspan="2">
+            <p class="notification">-</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <p class="notification is-success">until-fullhd</p>
+          </td>
+          <td colspan="1">
+            <p class="notification">-</p>
+          </td>
+        </tr>
       </tbody>
     </table>
+
+    {% include anchor.html name="Disabling breakpoints" %}
+
+    {% include elements/new-tag.html version="0.6.3" %}
+
+    <div class="content">
+      <p>
+        By default, the <code>$widecreen</code> and <code>$fullhd</code> breakpoints are <strong>enabled</strong>. You can disable them by setting the corresponding Sass boolean to <code>false</code>:
+      </p>
+    </div>
+
+    <div class="highlight-full">
+      {% highlight sass %}{{ scss_code }}{% endhighlight %}
+    </div>
 
     {% include anchor.html name="Variables" %}
 
