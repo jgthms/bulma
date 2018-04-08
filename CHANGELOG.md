@@ -10,6 +10,10 @@
 
 * #1767 Added minified bundle with cleancss
 
+### New features
+
+* #1488 Add fit image modifiers
+
 ### Bug fixes
 
 * #1428 Fix `media-content` overflow
