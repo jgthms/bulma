@@ -1,6 +1,11 @@
 $button-color: $grey-darker !default
 $button-background-color: $white !default
+
 $button-border-color: $grey-lighter !default
+$button-border-width: $control-border-width !default
+
+$button-padding-vertical: calc(0.375em - #{$button-border-width}) !default
+$button-padding-horizontal: 0.75em !default
 
 $button-hover-color: $link-hover !default
 $button-hover-border-color: $link-hover-border !default
@@ -40,11 +45,14 @@ $button-static-border-color: $grey-lighter !default
   +unselectable
   background-color: $button-background-color
   border-color: $button-border-color
+  border-width: $button-border-width
   color: $button-color
   cursor: pointer
   justify-content: center
-  padding-left: 0.75em
-  padding-right: 0.75em
+  padding-bottom: $button-padding-vertical
+  padding-left: $button-padding-horizontal
+  padding-right: $button-padding-horizontal
+  padding-top: $button-padding-vertical
   text-align: center
   white-space: nowrap
   strong
@@ -57,14 +65,14 @@ $button-static-border-color: $grey-lighter !default
       height: 1.5em
       width: 1.5em
     &:first-child:not(:last-child)
-      margin-left: calc(-0.375em - 1px)
+      margin-left: calc(-0.375em - #{$button-border-width})
       margin-right: 0.1875em
     &:last-child:not(:first-child)
       margin-left: 0.1875em
-      margin-right: calc(-0.375em - 1px)
+      margin-right: calc(-0.375em - #{$button-border-width})
     &:first-child:last-child
-      margin-left: calc(-0.375em - 1px)
-      margin-right: calc(-0.375em - 1px)
+      margin-left: calc(-0.375em - #{$button-border-width})
+      margin-right: calc(-0.375em - #{$button-border-width})
   // States
   &:hover,
   &.is-hovered
