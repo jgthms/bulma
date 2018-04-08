@@ -14,6 +14,10 @@
 
 * #1428 Fix `media-content` overflow
 
+### Improvements
+
+* Add `.has-bg` helpers for block background colors, like `.has-text`.
+
 ## 0.6.2
 
 ### New features
