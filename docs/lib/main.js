@@ -9,23 +9,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Book modal
 
-  var $bookModal = document.getElementById('bookModal');
-  var $bookModalCloseButtons = getAll('.bd-book-modal-close');
+  // const $bookModal = document.getElementById('bookModal');
+  // const $bookModalCloseButtons = getAll('.bd-book-modal-close');
 
-  if (!cookieBookModal) {
-    setTimeout(function () {
-      openModal('bookModal');
-    }, 5000);
-  }
+  // if (!cookieBookModal) {
+  //   setTimeout(() => {
+  //     openModal('bookModal');
+  //   }, 5000);
+  // }
 
-  if ($bookModalCloseButtons.length > 0) {
-    $bookModalCloseButtons.forEach(function ($el) {
-      $el.addEventListener('click', function (event) {
-        event.stopPropagation();
-        Cookies.set(cookieBookModalName, true, { expires: 30 });
-      });
-    });
-  }
+  // if ($bookModalCloseButtons.length > 0) {
+  //   $bookModalCloseButtons.forEach($el => {
+  //     $el.addEventListener('click', event => {
+  //       event.stopPropagation();
+  //       Cookies.set(cookieBookModalName, true, { expires: 30 });
+  //     });
+  //   });
+  // }
 
   // Meta links
 
@@ -118,6 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
       $el.classList.remove('is-active');
     });
   }
+
+  document.addEventListener('keydown', function (event) {
+    var e = event || window.event;
+    if (e.keyCode === 27) {
+      closeModals();
+      closeDropdowns();
+    }
+  });
 
   // Clipboard
 
