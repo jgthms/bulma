@@ -1,22 +1,5 @@
 @import "initial-variables"
 
-=arrow($color)
-  border: 1px solid $color
-  border-right: 0
-  border-top: 0
-  content: " "
-  display: block
-  height: 0.5em
-  pointer-events: none
-  position: absolute
-  transform: rotate(-45deg)
-  transform-origin: center
-  width: 0.5em
-
-=block
-  &:not(:last-child)
-    margin-bottom: 1.5rem
-
 =clearfix
   &:after
     clear: both
@@ -32,8 +15,143 @@
     left: calc(50% - (#{$width} / 2))
     top: calc(50% - (#{$width} / 2))
 
-=delete
-  +unselectable
+=fa($size, $dimensions)
+  display: inline-block
+  font-size: $size
+  height: $dimensions
+  line-height: $dimensions
+  text-align: center
+  vertical-align: top
+  width: $dimensions
+
+=hamburger($dimensions)
+  cursor: pointer
+  display: block
+  height: $dimensions
+  position: relative
+  width: $dimensions
+  span
+    background-color: currentColor
+    display: block
+    height: 1px
+    left: calc(50% - 8px)
+    position: absolute
+    transform-origin: center
+    transition-duration: $speed
+    transition-property: background-color, opacity, transform
+    transition-timing-function: $easing
+    width: 16px
+    &:nth-child(1)
+      top: calc(50% - 6px)
+    &:nth-child(2)
+      top: calc(50% - 1px)
+    &:nth-child(3)
+      top: calc(50% + 4px)
+  &:hover
+    background-color: rgba(black, 0.05)
+  // Modifers
+  &.is-active
+    span
+      &:nth-child(1)
+        transform: translateY(5px) rotate(45deg)
+      &:nth-child(2)
+        opacity: 0
+      &:nth-child(3)
+        transform: translateY(-5px) rotate(-45deg)
+
+=overflow-touch
+  -webkit-overflow-scrolling: touch
+
+=placeholder
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
+  @each $placeholder in $placeholders
+    &:#{$placeholder}-placeholder
+      @content
+
+// Responsiveness
+
+=from($device)
+  @media screen and (min-width: $device)
+    @content
+
+=until($device)
+  @media screen and (max-width: $device - 1px)
+    @content
+
+=mobile
+  @media screen and (max-width: $tablet - 1px)
+    @content
+
+=tablet
+  @media screen and (min-width: $tablet), print
+    @content
+
+=tablet-only
+  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
+    @content
+
+=touch
+  @media screen and (max-width: $desktop - 1px)
+    @content
+
+=desktop
+  @media screen and (min-width: $desktop)
+    @content
+
+=desktop-only
+  @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+    @content
+
+=widescreen
+  @media screen and (min-width: $widescreen)
+    @content
+
+=widescreen-only
+  @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+    @content
+
+=fullhd
+  @media screen and (min-width: $fullhd)
+    @content
+
+// Placeholders
+
+%unselectable
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+=unselectable
+  @extend %unselectable
+
+%arrow
+  border: 1px solid transparent
+  border-right: 0
+  border-top: 0
+  content: " "
+  display: block
+  height: 0.5em
+  pointer-events: none
+  position: absolute
+  transform: rotate(-45deg)
+  transform-origin: center
+  width: 0.5em
+
+=arrow($color)
+  @extend %arrow
+  border-color: $color
+
+%block
+  &:not(:last-child)
+    margin-bottom: 1.5rem
+
+=block
+  @extend %block
+
+%delete
+  @extend %unselectable
   -moz-appearance: none
   -webkit-appearance: none
   background-color: rgba($black, 0.2)
@@ -97,51 +215,10 @@
     min-width: 32px
     width: 32px
 
-=fa($size, $dimensions)
-  display: inline-block
-  font-size: $size
-  height: $dimensions
-  line-height: $dimensions
-  text-align: center
-  vertical-align: top
-  width: $dimensions
+=delete
+  @extend %delete
 
-=hamburger($dimensions)
-  cursor: pointer
-  display: block
-  height: $dimensions
-  position: relative
-  width: $dimensions
-  span
-    background-color: currentColor
-    display: block
-    height: 1px
-    left: calc(50% - 8px)
-    position: absolute
-    transform-origin: center
-    transition-duration: $speed
-    transition-property: background-color, opacity, transform
-    transition-timing-function: $easing
-    width: 16px
-    &:nth-child(1)
-      top: calc(50% - 6px)
-    &:nth-child(2)
-      top: calc(50% - 1px)
-    &:nth-child(3)
-      top: calc(50% + 4px)
-  &:hover
-    background-color: rgba(black, 0.05)
-  // Modifers
-  &.is-active
-    span
-      &:nth-child(1)
-        transform: translateY(5px) rotate(45deg)
-      &:nth-child(2)
-        opacity: 0
-      &:nth-child(3)
-        transform: translateY(-5px) rotate(-45deg)
-
-=loader
+%loader
   animation: spinAround 500ms infinite linear
   border: 2px solid $border
   border-radius: $radius-rounded
@@ -153,71 +230,20 @@
   position: relative
   width: 1em
 
-=overflow-touch
-  -webkit-overflow-scrolling: touch
+=loader
+  @extend %loader
+
+%overlay
+  bottom: 0
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
 
 =overlay($offset: 0)
-  bottom: $offset
-  left: $offset
-  position: absolute
-  right: $offset
-  top: $offset
-
-=placeholder
-  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
-  @each $placeholder in $placeholders
-    &:#{$placeholder}-placeholder
-      @content
-
-=unselectable
-  -webkit-touch-callout: none
-  -webkit-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
-
-// Responsiveness
-
-=from($device)
-  @media screen and (min-width: $device)
-    @content
-
-=until($device)
-  @media screen and (max-width: $device - 1px)
-    @content
-
-=mobile
-  @media screen and (max-width: $tablet - 1px)
-    @content
-
-=tablet
-  @media screen and (min-width: $tablet), print
-    @content
-
-=tablet-only
-  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
-    @content
-
-=touch
-  @media screen and (max-width: $desktop - 1px)
-    @content
-
-=desktop
-  @media screen and (min-width: $desktop)
-    @content
-
-=desktop-only
-  @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
-    @content
-
-=widescreen
-  @media screen and (min-width: $widescreen)
-    @content
-
-=widescreen-only
-  @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
-    @content
-
-=fullhd
-  @media screen and (min-width: $fullhd)
-    @content
+  @extend %overlay
+  @if $offset != 0
+    bottom: $offset
+    left: $offset
+    right: $offset
+    top: $offset
