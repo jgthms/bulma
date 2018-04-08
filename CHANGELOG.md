@@ -12,6 +12,7 @@
 
 ### Bug fixes
 
+* #1707 Disable table hover in `.content` by default
 * #1428 Fix `media-content` overflow
 
 ### Improvements
