@@ -8,16 +8,13 @@
 
 ### Improvements
 
+* #1628 Add `.has-background` helpers for block background colors, like `.has-text`
 * #1767 Added minified bundle with cleancss
 
 ### Bug fixes
 
 * #1707 Disable table hover in `.content` by default
 * #1428 Fix `media-content` overflow
-
-### Improvements
-
-* Add `.has-bg` helpers for block background colors, like `.has-text`.
 
 ## 0.6.2
 
