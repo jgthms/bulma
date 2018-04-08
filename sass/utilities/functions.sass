@@ -1,4 +1,4 @@
-@function colorMap($bulma-colors, $custom-colors)
+@function mergeColorMaps($bulma-colors, $custom-colors)
   // we return at least bulma hardcoded colors
   $merged-colors: $bulma-colors
   // we want a map as input
@@ -6,7 +6,13 @@
     @each $name, $components in $custom-colors
       // color name should be a string and colors pair a list with at least one element
       @if type-of($name) == 'string' and (type-of($components) == 'list' or type-of($components) == 'color') and length($components) >= 1
-        $color-base: nth($components, 1)
+        $color-base: null
+        // only a single color is provided
+        @if type-of($components) == 'color'
+          $color-base: $components
+        // a list of colors is provided
+        @else if type-of($components) == 'list'
+          $color-base: nth($components, 1)
         $color-invert: null
         // is an inverted color provided ?
         @if length($components) > 1

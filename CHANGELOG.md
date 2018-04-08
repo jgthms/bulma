@@ -4,7 +4,7 @@
 
 ### New features
 
-* 🎉 #1747 New `$custom-colors` variable for adding your own colors to Bulma's `$colors` map
+* 🎉 #1747 New `$custom-colors` and `$custom-shades` variable for adding your own colors and shades to Bulma's `$colors` and `$shades` maps respectively
 
 ### Improvements
 
