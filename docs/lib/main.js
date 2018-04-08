@@ -2,7 +2,32 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Dropdowns
+  // Cookies
+
+  var cookieBookModalName = 'bulma_closed_book_modal';
+  var cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
+
+  // Book modal
+
+  var $bookModal = document.getElementById('bookModal');
+  var $bookModalCloseButtons = getAll('.bd-book-modal-close');
+
+  if (!cookieBookModal) {
+    setTimeout(function () {
+      openModal('bookModal');
+    }, 5000);
+  }
+
+  if ($bookModalCloseButtons.length > 0) {
+    $bookModalCloseButtons.forEach(function ($el) {
+      $el.addEventListener('click', function (event) {
+        event.stopPropagation();
+        Cookies.set(cookieBookModalName, true, { expires: 30 });
+      });
+    });
+  }
+
+  // Meta links
 
   var $metalinks = getAll('#meta a');
 
@@ -68,9 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $modalButtons.forEach(function ($el) {
       $el.addEventListener('click', function () {
         var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-        rootEl.classList.add('is-clipped');
-        $target.classList.add('is-active');
+        openModal(target);
       });
     });
   }
@@ -83,13 +106,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  document.addEventListener('keydown', function (event) {
-    var e = event || window.event;
-    if (e.keyCode === 27) {
-      closeModals();
-      closeDropdowns();
-    }
-  });
+  function openModal(target) {
+    var $target = document.getElementById(target);
+    rootEl.classList.add('is-clipped');
+    $target.classList.add('is-active');
+  }
 
   function closeModals() {
     rootEl.classList.remove('is-clipped');
@@ -111,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var $parent = $el.parentNode;
       if ($parent && $parent.classList.contains('bd-is-more')) {
-        var showEl = '<button class="bd-show"><div><span class="icon"><i class="fa fa-code"></i></span> <strong>Show code</strong></div></button>';
+        var showEl = '<button class="bd-show"><div><span class="icon"><i class="fas fa-code"></i></span> <strong>Show code</strong></div></button>';
         $el.insertAdjacentHTML('beforeend', showEl);
       } else if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
         $el.insertAdjacentHTML('beforeend', expandEl);
@@ -154,11 +175,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  new Clipboard('.bd-copy', {
-    target: function target(trigger) {
-      return trigger.previousSibling;
-    }
-  });
+  setTimeout(function () {
+    new Clipboard('.bd-copy', {
+      target: function target(trigger) {
+        return trigger.previousElementSibling.firstElementChild;
+      }
+    });
+  }, 100);
 
   // Functions
 

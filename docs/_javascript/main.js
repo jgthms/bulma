@@ -1,6 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Dropdowns
+  // Cookies
+
+  const cookieBookModalName = 'bulma_closed_book_modal';
+  const cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
+
+  // Book modal
+
+  const $bookModal = document.getElementById('bookModal');
+  const $bookModalCloseButtons = getAll('.bd-book-modal-close');
+
+  if (!cookieBookModal) {
+    setTimeout(() => {
+      openModal('bookModal');
+    }, 5000);
+  }
+
+  if ($bookModalCloseButtons.length > 0) {
+    $bookModalCloseButtons.forEach($el => {
+      $el.addEventListener('click', event => {
+        event.stopPropagation();
+        Cookies.set(cookieBookModalName, true, { expires: 30 });
+      });
+    });
+  }
+
+  // Meta links
 
   const $metalinks = getAll('#meta a');
 
@@ -66,9 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     $modalButtons.forEach($el => {
       $el.addEventListener('click', () => {
         const target = $el.dataset.target;
-        const $target = document.getElementById(target);
-        rootEl.classList.add('is-clipped');
-        $target.classList.add('is-active');
+        openModal(target);
       });
     });
   }
@@ -81,13 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  document.addEventListener('keydown', event => {
-    const e = event || window.event;
-    if (e.keyCode === 27) {
-      closeModals();
-      closeDropdowns();
-    }
-  });
+  function openModal(target) {
+    const $target = document.getElementById(target);
+    rootEl.classList.add('is-clipped');
+    $target.classList.add('is-active');
+  }
 
   function closeModals() {
     rootEl.classList.remove('is-clipped');
@@ -152,11 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  new Clipboard('.bd-copy', {
-    target: function(trigger) {
-      return trigger.previousSibling;
-    }
-  });
+  setTimeout(() => {
+    new Clipboard('.bd-copy', {
+      target: trigger => {
+        return trigger.previousElementSibling.firstElementChild;
+      }
+    });
+  }, 100);
 
   // Functions
 

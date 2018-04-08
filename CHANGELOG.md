@@ -2,12 +2,20 @@
 
 ## 0.6.3
 
+### New features
+
+* 🎉 #1747 New `$custom-colors` and `$custom-shades` variable for adding your own colors and shades to Bulma's `$colors` and `$shades` maps respectively
+
 ### Improvements
 
-* Add $card-header-background-color, $card-content-background-color and $card-footer-background-color to allow different background customization for card elements
+* #1619 Add $card-header-background-color, $card-content-background-color and $card-footer-background-color to allow different background customization for card elements
+* #1669 Add `.is-expanded` modifier to `.buttons.has-addons`
+* #1628 Add `.has-background` helpers for block background colors, like `.has-text`
+* #1767 Added minified bundle with cleancss
 
 ### Bug fixes
 
+* #1707 Disable table hover in `.content` by default
 * #1428 Fix `media-content` overflow
 
 ## 0.6.2

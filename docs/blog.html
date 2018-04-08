@@ -5,29 +5,29 @@ route: blog
 
 {% include blog-hero.html %}
 
-  <section class="section">
-    <div class="container">
-      <div class="columns is-multiline">
-        {% for post in site.posts %}
-          <article class="column is-4">
-            <a class="bd-article-image is-{{ post.color }}" href="{{ post.url }}">
-              <span class="bd-article-overlay"></span>
-              <span class="bd-article-icon">
-                <i class="{% if post.icon_brand %}fab{% else %}fas{% endif %} fa-{{ post.icon }}"></i>
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      {% for post in site.posts %}
+        <article class="column is-4">
+          <a class="bd-article-image is-{{ post.color }}" href="{{ post.url }}">
+            <span class="bd-article-overlay"></span>
+            <span class="bd-article-icon">
+              <i class="{% if post.icon_brand %}fab{% else %}fas{% endif %} fa-{{ post.icon }}"></i>
+            </span>
+            <strong class="bd-article-info">
+              <span>
+                <time class="bd-article-date" datetime="{{ post.date | date_to_xmlschema }}">
+                  {{ post.date | date_to_string }}
+                </time>
+                <strong class="bd-article-title">
+                  {{ post.name }}
+                </strong>
               </span>
-              <strong class="bd-article-info">
-                <span>
-                  <time class="bd-article-date" datetime="{{ post.date | date_to_xmlschema }}">
-                    {{ post.date | date_to_string }}
-                  </time>
-                  <strong class="bd-article-title">
-                    {{ post.name }}
-                  </strong>
-                </span>
-              </strong>
-            </a>
-          </article>
-        {% endfor %}
-      </div>
+            </strong>
+          </a>
+        </article>
+      {% endfor %}
     </div>
-  </section>
+  </div>
+</section>
