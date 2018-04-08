@@ -116,13 +116,15 @@
     background-color: currentColor
     display: block
     height: 1px
-    left: calc(50% - 8px)
+    margin: auto
+    left: 8%
+    right: 8%
     position: absolute
     transform-origin: center
     transition-duration: $speed
     transition-property: background-color, opacity, transform
     transition-timing-function: $easing
-    width: 16px
+    width: 1rem
     &:nth-child(1)
       top: calc(50% - 6px)
     &:nth-child(2)
@@ -141,6 +143,34 @@
       &:nth-child(3)
         transform: translateY(-5px) rotate(-45deg)
 
+  &.is-small
+    width: $dimensions * 0.75
+    height: $dimensions * 0.75
+    span
+      width: 0.75rem
+      &:nth-child(1)
+        top: calc(50% - 0.27rem )
+      &:nth-child(2)
+        top: 50%
+      &:nth-child(3)
+        top: calc(50% + 0.35rem)
+
+  &.is-large
+    width: $dimensions * 2
+    height: $dimensions * 2
+    span
+      width: 2rem
+      &:nth-child(1)
+        top: calc(50% - (1rem / 1.8))
+      &:nth-child(2)
+        top: 50%
+      &:nth-child(3)
+        top: calc(50% + (1rem / 2))
+
+    &.is-active
+      span
+        &:nth-child(3)
+          top: calc(50% + (1rem / 8))
 =loader
   animation: spinAround 500ms infinite linear
   border: 2px solid $border
