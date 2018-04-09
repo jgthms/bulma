@@ -280,8 +280,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
-    specialShadow.style.opacity = scrollFactor;
-    specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
+
+    if (specialShadow) {
+      specialShadow.style.opacity = scrollFactor;
+      specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
+    }
   }
 
   translateHeader(window.scrollY, false);
