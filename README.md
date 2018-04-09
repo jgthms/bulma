@@ -19,14 +19,6 @@ Bulma is constantly in development! Try it out now:
 npm install bulma
 ```
 
-### Import
-
-After NPM installation, import css to your project -
-
-```sh
-import 'bulma/css/bulma.css'
-```
-
 **or**
 
 ### Yarn
@@ -39,6 +31,13 @@ yarn add bulma
 
 ```sh
 bower install bulma
+```
+
+### Import
+After installation, you can import the CSS file into your project using this snippet:
+
+```sh
+import 'bulma/css/bulma.css'
 ```
 
 ### CDN
