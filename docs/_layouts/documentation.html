@@ -67,22 +67,27 @@ route: documentation
         </div>
 
         <header class="bd-header">
-          <h1 class="title">
-            {{ page.title }}
-          </h1>
-          <p class="subtitle is-4">
-            {{ page.subtitle }}
-          </p>
+          <div class="bd-header-titles">
+            <h1 class="title">
+              {{ page.title }}
+            </h1>
+            <p class="subtitle is-4">
+              {{ page.subtitle }}
+            </p>
+            {% if page.meta %}
+              {%
+                include meta.html
+                colors=page.meta.colors
+                sizes=page.meta.sizes
+                variables=page.meta.variables
+                experimental=page.meta.experimental
+              %}
+            {% endif %}
+          </div>
 
-          {% if page.meta %}
-            {%
-              include meta.html
-              colors=page.meta.colors
-              sizes=page.meta.sizes
-              variables=page.meta.variables
-              experimental=page.meta.experimental
-            %}
-          {% endif %}
+          <div class="bd-header-carbon">
+            {% include carbon.html %}
+          </div>
         </header>
 
         <div class="bd-content">
@@ -94,7 +99,7 @@ route: documentation
 
       <aside class="bd-side">
         {% unless page.hide_carbon %}
-          {% include carbon.html %}
+
         {% endunless %}
       </aside>
     </div>
