@@ -5,8 +5,9 @@ route: documentation
 
 {% include navbar.html id="Documentation" %}
 
+{% assign current_category = page.doc-tab %}
 {% assign current_link_id = page.breadcrumb | last %}
-{% assign category_links = site.data.links.order[page.doc-tab] %}
+{% assign category_links = site.data.links.categories[current_category] %}
 
 {% for link_id in category_links %}
   {% if link_id == current_link_id %}
@@ -98,9 +99,38 @@ route: documentation
       </div>
 
       <aside class="bd-side">
-        {% unless page.hide_carbon %}
+        <nav class="bd-categories">
+          {% for category in site.data.links.categories %}
+            <div class="bd-category">
+              {% assign category_id = category[0] %}
+              {% assign category_links = category[1] %}
 
-        {% endunless %}
+              {% assign category_link = site.data.links.by_id[category_id] %}
+
+              <header class="bd-category-header">
+                <a class="bd-category-toggle">
+                  <span class="icon">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </a>
+                <a class="bd-category-name" href="{{ site.url }}{{ category_link.path }}">
+                  <strong>{{ category_link.name }}</strong>
+                </a>
+              </header>
+
+              <ul class="bd-category-list {% if category_id == current_category %}is-active{% endif %}">
+                {% for link_id in category_links %}
+                  {% assign link = site.data.links.by_id[link_id] %}
+                  <li {% if link_id == current_link_id %}class="is-current"{% endif %}>
+                    <a href="{{ site.url }}{{ link.path }}">
+                      {{ link.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </nav>
       </aside>
     </div>
   </div>
