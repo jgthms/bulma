@@ -4,7 +4,7 @@ layout: post
 introduction: "No change required!"
 color: "info"
 name: "Font Awesome 5"
-icon: "font-awesome-alt"
+icon: "font-awesome"
 icon_brand: true
 ---
 

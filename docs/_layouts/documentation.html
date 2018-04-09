@@ -31,42 +31,7 @@ route: documentation
   <div class="bd-main-container container">
     <div class="bd-duo">
       <div class="bd-lead">
-        <div class="bd-breadcrumb">
-          <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-              {% for key in page.breadcrumb %}
-                {% assign link = site.data.links.by_id[key] %}
-                <li{% if forloop.last %} class="is-active"{% endif %}>
-                  <a href="{{ site.url }}{{ link.path }}">{{ link.name }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </nav>
-
-          {% if previous_link or next_link %}
-            <nav class="bd-prev-next">
-              {% if previous_link %}
-                <a href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
-                  ←
-                </a>
-              {% else %}
-                <span>
-                  ←
-                </span>
-              {% endif %}
-
-              {% if next_link %}
-                <a href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
-                  →
-                </a>
-              {% else %}
-                <span>
-                  →
-                </span>
-              {% endif %}
-            </nav>
-          {% endif %}
-        </div>
+        {% include components/breadcrumb.html %}
 
         <header class="bd-header">
           <div class="bd-header-titles">
@@ -74,10 +39,10 @@ route: documentation
               {{ page.title }}
             </h1>
             <p class="subtitle is-4">
-              {% if current_link.subtitle %}
-                {{ current_link.subtitle }}
-              {% else %}
+              {% if page.subtitle %}
                 {{ page.subtitle }}
+              {% else %}
+                {{ current_link.subtitle }}
               {% endif %}
             </p>
             {% if page.meta %}

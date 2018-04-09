@@ -11,16 +11,29 @@
     font-weight: $weight-semibold
   &:hover
     background-color: $white-bis
+  &.bd-is-post
+    padding-left: 5rem
 
 .bd-link-name
+  line-height: 1.25
+  margin-bottom: 0.25em
   position: relative
+
+.bd-link-counter
+  color: $link
+  counter-increment: bd-links
+  font-weight: $weight-normal
+  position: absolute
+  right: calc(100% + 0.625em)
   &::before
-    color: $link
-    counter-increment: bd-links
     content: counter(bd-links)
-    font-weight: $weight-normal
-    position: absolute
-    right: calc(100% + 0.625em)
+
+.bd-link-icon
+  font-size: 2rem
+  position: absolute
+  right: calc(100% + 0.5em)
+  text-align: center
+  width: 1.5em
 
 +desktop
   .bd-links
@@ -162,83 +175,11 @@ $navbar-items: ("documentation": $primary, "templates": $info, "videos": $succes
 .has-text-orange
   color: $orange !important
 
-.bd-article-image
-  background-color: $primary
-  display: block
-  height: 240px
-  margin-left: auto
-  margin-right: auto
-  overflow: hidden
-  position: relative
-  text-align: center
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    &.is-#{$name}
-      background-color: $color
-  &.is-bootstrap
-    background-color: $bootstrap
-  &.is-orange
-    background-color: $orange
-  &:hover
-    .bd-article-overlay
-      opacity: 0.25
-    .bd-article-icon
-      transform: scale(1.4)
-    .bd-article-date
-      transform: scale(0.9)
-    .bd-article-title
-      transform: scale(1.1)
-  &.is-single
-    margin-bottom: 2rem
-    width: 100%
-  &.is-share
-    height: 315px
-    margin: 2rem auto
-    width: 600px
+.has-text-bootstrap
+  color: $bootstrap !important
 
-.bd-article-overlay
-  +overlay
-  background-color: $black
-  opacity: 0
-  transition-duration: $speed
-  transition-property: opacity
-  transition-timing-function: $easing
-
-.bd-article-icon,
-.bd-article-info
-  +overlay
-  align-items: center
-  display: flex
-  justify-content: center
-
-.bd-article-icon,
-.bd-article-date,
-.bd-article-title
-  transition-duration: $speed
-  transition-property: transform
-  transition-timing-function: $easing
-
-.bd-article-icon
-  color: $black
-  font-size: 56px
-  opacity: 0.25
-  & > span
-    display: block
-
-.bd-article-info
-  padding: 20px
-
-.bd-article-date
-  color: rgba(#000, 0.5)
-  display: block
-
-.bd-article-title
-  color: $white
-  display: block
-  font-size: 2.5rem
-  font-weight: $weight-bold
-  line-height: 1.25
-  padding: 0 20px
+.has-text-patreon
+  color: $patreon !important
 
 .bd-emoji
   margin-right: 0.5em

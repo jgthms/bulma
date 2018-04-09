@@ -6,6 +6,7 @@ introduction: "<p>The <code>.control</code> element has been a very versatile co
 color: "success"
 name: "Field element"
 icon: "square"
+icon_regular: true
 ---
 
 **TL;DR: there's a new `.field` container, and `.control` has been re-purposed.**
