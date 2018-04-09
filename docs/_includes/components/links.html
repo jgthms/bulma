@@ -1,0 +1,21 @@
+<nav class="bd-links">
+  {% if include.category_id %}
+    {% assign category_id = include.category_id %}
+    {% assign category_links = site.data.links.categories[category_id] %}
+  {% else %}
+    {% assign category_links = site.data.links.categories %}
+  {% endif %}
+
+  {% for link_id in category_links %}
+    {% if include.category_id %}
+      {% assign link = site.data.links.by_id[link_id] %}
+    {% else %}
+      {% assign thingy = link_id[0] %}
+      {% assign link = site.data.links.by_id[thingy] %}
+    {% endif %}
+    <a class="bd-link" href="{{ site.url }}{{ link.path }}">
+      <h2 class="bd-link-name">{{ link.name }}</h2>
+      <p class="bd-link-subtitle">{{ link.subtitle }}</p>
+    </a>
+  {% endfor %}
+</nav>

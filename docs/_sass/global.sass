@@ -40,8 +40,12 @@ $carbon-poweredby-height: 20px
     min-height: $carbon-height
     position: relative
     &:hover
-      .carbon-img
-        opacity: 0.9
+      .carbon-img::after
+        +overlay
+        background-color: rgba(#000, 0.05)
+        content: ""
+        display: block
+        right: $carbon-spacing
   .carbon-img
     bottom: 0
     float: left
@@ -70,7 +74,7 @@ $carbon-poweredby-height: 20px
       color: $link
   .carbon-poweredby
     bottom: 0
-    color: $text-light
+    color: $grey-light
     display: inline
     font-size: $size-small
     line-height: $carbon-poweredby-height

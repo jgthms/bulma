@@ -1,8 +1,14 @@
+{% assign current_category = page.doc-tab %}
+{% assign current_link_id = page.breadcrumb | last %}
+{% assign category_links = site.data.links.categories[current_category] %}
+
         </div>
       </div>
 
       <aside class="bd-side">
-        <!-- Empty on purpose -->
+        {% if include.show_categories %}
+          {% include elements/categories-nav.html %}
+        {% endif %}
       </aside>
     </div>
   </div>

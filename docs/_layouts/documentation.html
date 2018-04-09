@@ -7,6 +7,7 @@ route: documentation
 
 {% assign current_category = page.doc-tab %}
 {% assign current_link_id = page.breadcrumb | last %}
+{% assign current_link = site.data.links.by_id[current_link_id] %}
 {% assign category_links = site.data.links.categories[current_category] %}
 
 {% for link_id in category_links %}
@@ -73,7 +74,11 @@ route: documentation
               {{ page.title }}
             </h1>
             <p class="subtitle is-4">
-              {{ page.subtitle }}
+              {% if current_link.subtitle %}
+                {{ current_link.subtitle }}
+              {% else %}
+                {{ page.subtitle }}
+              {% endif %}
             </p>
             {% if page.meta %}
               {%
@@ -95,42 +100,27 @@ route: documentation
           {{ content }}
         </div>
 
+        <nav class="bd-prev-next-bis">
+          {% if previous_link %}
+            <a class="bd-prev-next-bis-previous" href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
+              ← {{ previous_link.name }}
+            </a>
+          {% endif %}
+
+          {% if next_link %}
+            <a class="bd-prev-next-bis-next" href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
+              {{ next_link.name }} →
+            </a>
+          {% endif %}
+        </nav>
+
         {% include elements/improve-page.html %}
       </div>
 
       <aside class="bd-side">
-        <nav class="bd-categories">
-          {% for category in site.data.links.categories %}
-            <div class="bd-category">
-              {% assign category_id = category[0] %}
-              {% assign category_links = category[1] %}
-
-              {% assign category_link = site.data.links.by_id[category_id] %}
-
-              <header class="bd-category-header">
-                <a class="bd-category-toggle">
-                  <span class="icon">
-                    <i class="fas fa-chevron-down"></i>
-                  </span>
-                </a>
-                <a class="bd-category-name" href="{{ site.url }}{{ category_link.path }}">
-                  <strong>{{ category_link.name }}</strong>
-                </a>
-              </header>
-
-              <ul class="bd-category-list {% if category_id == current_category %}is-active{% endif %}">
-                {% for link_id in category_links %}
-                  {% assign link = site.data.links.by_id[link_id] %}
-                  <li {% if link_id == current_link_id %}class="is-current"{% endif %}>
-                    <a href="{{ site.url }}{{ link.path }}">
-                      {{ link.name }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </nav>
+        {% unless page.hide_categories %}
+          {% include elements/categories-nav.html %}
+        {% endunless %}
       </aside>
     </div>
   </div>

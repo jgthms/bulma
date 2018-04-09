@@ -27,6 +27,30 @@ document.addEventListener('DOMContentLoaded', function () {
   //   });
   // }
 
+  // Sidebar links
+
+  var $categories = getAll('#categories .bd-category');
+
+  if ($categories.length > 0) {
+    $categories.forEach(function (el) {
+      var toggle_el = el.querySelector('.bd-category-toggle');
+
+      toggle_el.addEventListener('click', function (event) {
+        closeCategories(el);
+        el.classList.toggle('is-active');
+      });
+    });
+  }
+
+  function closeCategories(current_el) {
+    $categories.forEach(function (el) {
+      if (current_el == el) {
+        return;
+      }
+      el.classList.remove('is-active');
+    });
+  }
+
   // Meta links
 
   var $metalinks = getAll('#meta a');
@@ -38,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var target = $el.getAttribute('href');
         var $target = document.getElementById(target.substring(1));
         $target.scrollIntoView(true);
-        // window.history.replaceState(null, document.title, `${window.location.origin}${window.location.pathname}${target}`);
         return false;
       });
     });
@@ -289,8 +312,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // translateHeader(window.scrollY, false);
 
-  var ticking = false;
-  var lastY = 0;
+  // let ticking = false;
+  // let lastY = 0;
 
   // window.addEventListener('scroll', function() {
   //   const currentY = window.scrollY;

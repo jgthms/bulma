@@ -1,5 +1,3 @@
-$main-spacing: 2.5rem
-
 .bd-main
   overflow: hidden
   position: relative
@@ -31,6 +29,20 @@ $main-spacing: 2.5rem
   a
     &:hover
       background-color: $background
+
+.bd-prev-next-bis
+  border-top: 2px solid $background
+  display: flex
+  justify-content: space-between
+  margin-top: $main-spacing
+  a
+    margin-top: $main-spacing / 2
+
+.bd-prev-next-bis-previous
+  margin-right: auto
+
+.bd-prev-next-bis-next
+  margin-left: auto
 
 .bd-header
   border-bottom: 2px solid $background
@@ -72,6 +84,12 @@ $main-spacing: 2.5rem
       color: $link
   &:not(:last-child)
     margin-bottom: 0.5rem
+  &.is-active
+    .bd-category-toggle
+      .icon
+        transform: rotate(180deg)
+    .bd-category-list
+      display: block
 
 .bd-category-header
   position: relative
@@ -84,6 +102,9 @@ $main-spacing: 2.5rem
   justify-content: flex-end
   .icon
     font-size: 0.75rem
+    transform-origin: center
+    transition-duration: $speed
+    transition-property: transform
 
 .bd-category-name
   color: $text-strong
@@ -101,8 +122,6 @@ $main-spacing: 2.5rem
         color: $link
   a
     color: $text-light
-  &.is-active
-    display: block
 
 +touch
   .bd-lead,
@@ -146,7 +165,7 @@ $sidebar-width: 14rem
   .bd-header-carbon
     flex-grow: 0
     flex-shrink: 0
-    margin: -15px 0 -15px 1.5rem
+    margin: -15px 0 -15px $main-spacing
     width: $carbon-width
   .bd-side
     padding: 3rem 0 3rem 1.5rem
