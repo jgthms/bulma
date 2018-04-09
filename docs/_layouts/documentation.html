@@ -41,27 +41,29 @@ route: documentation
             </ul>
           </nav>
 
-          <nav class="bd-prev-next">
-            {% if previous_link %}
-              <a href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
-                ←
-              </a>
-            {% else %}
-              <span>
-                ←
-              </span>
-            {% endif %}
+          {% if previous_link or next_link %}
+            <nav class="bd-prev-next">
+              {% if previous_link %}
+                <a href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
+                  ←
+                </a>
+              {% else %}
+                <span>
+                  ←
+                </span>
+              {% endif %}
 
-            {% if next_link %}
-              <a href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
-                →
-              </a>
-            {% else %}
-              <span>
-                →
-              </span>
-            {% endif %}
-          </nav>
+              {% if next_link %}
+                <a href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
+                  →
+                </a>
+              {% else %}
+                <span>
+                  →
+                </span>
+              {% endif %}
+            </nav>
+          {% endif %}
         </div>
 
         <header class="bd-header">
@@ -71,6 +73,15 @@ route: documentation
           <p class="subtitle is-4">
             {{ page.subtitle }}
           </p>
+
+          {% if page.meta %}
+            {%
+              include meta.html
+              colors=page.meta.colors
+              sizes=page.meta.sizes
+              variables=page.meta.variables
+            %}
+          {% endif %}
         </header>
 
         <div class="bd-content">
