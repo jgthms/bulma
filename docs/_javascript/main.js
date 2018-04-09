@@ -287,23 +287,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  translateHeader(window.scrollY, false);
+  // translateHeader(window.scrollY, false);
 
   let ticking = false;
   let lastY = 0;
 
-  window.addEventListener('scroll', function() {
-    const currentY = window.scrollY;
+  // window.addEventListener('scroll', function() {
+  //   const currentY = window.scrollY;
 
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        upOrDown(lastY, currentY);
-        ticking = false;
-        lastY = currentY;
-      });
-    }
+  //   if (!ticking) {
+  //     window.requestAnimationFrame(function() {
+  //       upOrDown(lastY, currentY);
+  //       ticking = false;
+  //       lastY = currentY;
+  //     });
+  //   }
 
-    ticking = true;
-  });
+  //   ticking = true;
+  // });
 
 });

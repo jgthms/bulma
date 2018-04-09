@@ -3,73 +3,51 @@ layout: default
 route: documentation
 ---
 
-{% include navbar.html id="Documentation" has_container=true %}
+{% include navbar.html id="Documentation" %}
 
-<section class="hero is-link">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column">
-          <p class="title">
-            Documentation
-          </p>
+<main class="bd-main">
+  <div class="bd-side-background"></div>
+  <div class="bd-main-container container">
+    <div class="bd-duo">
+      <div class="bd-lead">
+        <div class="bd-breadcrumb">
+          <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+              <li>
+                <a href="{{ site.url }}">Home</a>
+              </li>
+              <li>
+                <a href="{{ site.url }}/documentation">Documentation</a>
+              </li>
+              <li>
+                <a href="{{ site.url }}/documentation/elements">Elements</a>
+              </li>
+              <li class="is-active">
+                <a href="#" aria-current="page">Button</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <header class="bd-header">
+          <h1 class="title">
+            {{ page.title }}
+          </h1>
           <p class="subtitle">
-            Everything you need to <strong>create a website</strong> with Bulma
+            {{ page.subtitle }}
           </p>
-        </div>
-        <div class="column is-narrow">
-          {% include carbon.html %}
+        </header>
+
+        <div class="bd-content">
+          {{ content }}
         </div>
       </div>
-    </div>
+
+      <aside class="bd-side">
+        {% include carbon.html %}
+      </aside>
+    </aside>
   </div>
+</main>
 
-  <div class="hero-foot">
-    <div class="container">
-      <nav class="tabs is-boxed">
-        <ul>
-          <li {% if page.doc-tab == 'overview' %}class="is-active"{% endif %}>
-            <a href="{{ site.data.meta.documentation }}">Overview</a>
-          </li>
-          <li {% if page.doc-tab == 'modifiers' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/modifiers/syntax">Modifiers</a>
-          </li>
-          <li {% if page.doc-tab == 'columns' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/columns/basics">Columns</a>
-          </li>
-          <li {% if page.doc-tab == 'layout' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/layout/container/">Layout</a>
-          </li>
-          <li {% if page.doc-tab == 'form' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/form/general">Form</a>
-          </li>
-          <li {% if page.doc-tab == 'elements' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/elements/box/">Elements</a>
-          </li>
-          <li {% if page.doc-tab == 'components' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/components/breadcrumb/">Components</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</section>
-
-{{ content }}
-
-<section class="section bd-typo">
-  <div class="container">
-    <p class="has-text-centered has-text-grey-light">
-      <a href="{{ site.url }}/made-with-bulma/">
-        <img src="{{ site.url }}/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
-      </a>
-      <br>
-      This page is <strong class="has-text-grey">open source</strong>.
-      Noticed a typo? Or something unclear?
-      <br>
-      <a class="has-text-grey" href="https://github.com/jgthms/bulma/blob/master/docs/{{ page.path }}" style="border-bottom: 1px solid currentColor;">
-        Improve this page on GitHub
-      </a>
-    </p>
-  </div>
-</section>
+{% include elements/improve-page.html %}

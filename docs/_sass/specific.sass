@@ -1,3 +1,28 @@
+.bd-has-text-rss
+  color: $rss
+
+.bd-has-text-star
+  color: $star
+
+$navbar-items: ("documentation": $primary, "templates": $info, "videos": $success, "blog": $rss, "expo": $star, "love": $red)
+
+@each $name, $color in $navbar-items
+  .bd-navbar-item-#{$name}
+    .icon
+      color: $color
+    &:hover
+      background-color: $color !important
+      color: #fff !important
+      .icon
+        color: currentColor !important
+
+.bd-navbar-item-expo
+  &:hover
+    color: #744F09 !important
+    .icon
+      color: #FF7B00 !important
+
+
 .bd-special-shadow
   background-image: linear-gradient(rgba(#000, 0.1), rgba(#000, 0))
   height: 8px
@@ -28,13 +53,13 @@
   width: 24px
 
 .button.bd-is-rss
-  background-color: #f26522
+  background-color: $rss
   border-color: transparent
   color: #fff
   &:hover
-    background-color: darken(#f26522, 5%)
+    background-color: darken($rss, 5%)
   &:active
-    background-color: darken(#f26522, 10%)
+    background-color: darken($rss, 10%)
 
 .bd-view-all-versions
   color: $text-light

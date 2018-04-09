@@ -287,22 +287,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  translateHeader(window.scrollY, false);
+  // translateHeader(window.scrollY, false);
 
   var ticking = false;
   var lastY = 0;
 
-  window.addEventListener('scroll', function () {
-    var currentY = window.scrollY;
+  // window.addEventListener('scroll', function() {
+  //   const currentY = window.scrollY;
 
-    if (!ticking) {
-      window.requestAnimationFrame(function () {
-        upOrDown(lastY, currentY);
-        ticking = false;
-        lastY = currentY;
-      });
-    }
+  //   if (!ticking) {
+  //     window.requestAnimationFrame(function() {
+  //       upOrDown(lastY, currentY);
+  //       ticking = false;
+  //       lastY = currentY;
+  //     });
+  //   }
 
-    ticking = true;
-  });
+  //   ticking = true;
+  // });
 });

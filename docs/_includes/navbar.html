@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar is-fixed-top {% if include.transparent %}is-transparent{% endif %}">
+<nav id="navbar" class="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
       <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
@@ -23,44 +23,24 @@
     </div>
   </div>
 
-  <div id="navMenu{{ include.id }}" class="navbar-menu is-active">
+  <div id="navMenu{{ include.id }}" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.data.meta.documentation }}">
+      <a class="navbar-item bd-navbar-item-documentation {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.data.meta.documentation }}">
         <span class="icon has-text-primary">
           <i class="fas fa-book"></i>
         </span>
         <span>Documentation</span>
       </a>
-      <a class="navbar-item {% if page.route == 'templates' %}is-active{% endif %}" href="{{ site.url }}/templates/">
-        <span class="icon has-text-info">
-          <i class="fas fa-code"></i>
-        </span>
-        <span>Templates</span>
-      </a>
-      <a class="navbar-item {% if page.route == 'videos' %}is-active{% endif %}" href="{{ site.url }}/videos/">
-        <span class="icon has-text-success">
-          <i class="fas fa-play-circle"></i>
-        </span>
-        <span>Videos</span>
-      </a>
-      <a class="navbar-item {% if page.route == 'blog' %}is-active{% endif %}" href="{{ site.url }}/blog/">
-        <span class="icon" style="color: #f26522;">
-          <i class="fas fa-rss"></i>
-        </span>
-        <span>Blog</span>
-      </a>
-      <a class="navbar-item {% if page.route == 'expo' %}is-active{% endif %}" href="{{ site.url }}/expo/">
-        <span class="icon" style="color: #FFD257;">
-          <i class="fas fa-star"></i>
-        </span>
-        <span>Expo</span>
-      </a>
-      <a class="navbar-item {% if page.route == 'love' %}is-active{% endif %}" href="{{ site.url }}/love/">
-        <span class="icon has-text-danger">
-          <i class="fas fa-heart"></i>
-        </span>
-        <span>Love</span>
-      </a>
+
+      {% for item in site.data.global.navbar_items %}
+        <a class="navbar-item bd-navbar-item-{{ item.id }} {% if page.route == item.id %}is-active{% endif %}" href="{{ site.url }}/{{ item.id }}/">
+          <span class="icon {{ item.color }}">
+            <i class="{{ item.fa_type }} {{ item.fa_icon }}"></i>
+          </span>
+          <span>{{ item.title }}</span>
+        </a>
+      {% endfor %}
+
       <div class="navbar-item has-dropdown is-hoverable">
         <div class="navbar-link">
           More
