@@ -347,10 +347,10 @@ code {
 }
 
 hr {
-  background-color: #dbdbdb;
+  background-color: whitesmoke;
   border: none;
   display: block;
-  height: 1px;
+  height: 2px;
   margin: 1.5rem 0;
 }
 
@@ -4960,7 +4960,7 @@ a.tag:hover {
 }
 
 .title:not(.is-spaced) + .subtitle {
-  margin-top: -1.5rem;
+  margin-top: -1.25rem;
 }
 
 .title.is-1 {
@@ -5004,7 +5004,7 @@ a.tag:hover {
 }
 
 .subtitle:not(.is-spaced) + .title {
-  margin-top: -1.5rem;
+  margin-top: -1.25rem;
 }
 
 .subtitle.is-1 {
@@ -5071,11 +5071,7 @@ a.tag:hover {
 }
 
 .breadcrumb {
-  align-items: stretch;
-  display: flex;
   font-size: 1rem;
-  overflow: hidden;
-  overflow-x: auto;
   white-space: nowrap;
 }
 
@@ -5107,15 +5103,15 @@ a.tag:hover {
 }
 
 .breadcrumb li + li::before {
-  color: #4a4a4a;
+  color: #b5b5b5;
   content: "\0002f";
 }
 
-.breadcrumb ul, .breadcrumb ol {
-  align-items: center;
+.breadcrumb ul,
+.breadcrumb ol {
+  align-items: flex-start;
   display: flex;
-  flex-grow: 1;
-  flex-shrink: 0;
+  flex-wrap: wrap;
   justify-content: flex-start;
 }
 
@@ -5127,11 +5123,11 @@ a.tag:hover {
   margin-left: 0.5em;
 }
 
-.breadcrumb.is-centered ol, .breadcrumb.is-centered ul {
+.breadcrumb.is-centered ol {
   justify-content: center;
 }
 
-.breadcrumb.is-right ol, .breadcrumb.is-right ul {
+.breadcrumb.is-right ol {
   justify-content: flex-end;
 }
 
@@ -9502,7 +9498,33 @@ label.panel-block:hover {
 }
 
 .bd-breadcrumb {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 2.5rem;
+}
+
+.bd-breadcrumb .breadcrumb:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.bd-prev-next {
+  align-items: flex-start;
+  color: #b5b5b5;
+  display: none;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  text-align: center;
+}
+
+.bd-prev-next a,
+.bd-prev-next span {
+  border-radius: 3px;
+  width: 1.5rem;
+}
+
+.bd-prev-next a:hover {
+  background-color: whitesmoke;
 }
 
 .bd-header {
@@ -9556,6 +9578,9 @@ label.panel-block:hover {
     overflow: hidden;
     flex-grow: 1;
     flex-shrink: 1;
+  }
+  .bd-prev-next {
+    display: flex;
   }
   .bd-side {
     flex: 0 0 300px;

@@ -5,6 +5,25 @@ route: documentation
 
 {% include navbar.html id="Documentation" %}
 
+{% assign current_link_id = page.breadcrumb | last %}
+{% assign category_links = site.data.links.order[page.doc-tab] %}
+
+{% for link_id in category_links %}
+  {% if link_id == current_link_id %}
+    {% unless forloop.first %}
+      {% assign previous_index = forloop.index0 | minus: 1 %}
+      {% assign previous_link_id = category_links[previous_index] %}
+      {% assign previous_link = site.data.links.by_id[previous_link_id] %}
+    {% endunless %}
+
+    {% unless forloop.last %}
+      {% assign next_index = forloop.index0 | plus: 1 %}
+      {% assign next_link_id = category_links[next_index] %}
+      {% assign next_link = site.data.links.by_id[next_link_id] %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
 <main class="bd-main">
   <div class="bd-side-background"></div>
   <div class="bd-main-container container">
@@ -13,19 +32,35 @@ route: documentation
         <div class="bd-breadcrumb">
           <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
-              <li>
-                <a href="{{ site.url }}">Home</a>
-              </li>
-              <li>
-                <a href="{{ site.url }}/documentation">Documentation</a>
-              </li>
-              <li>
-                <a href="{{ site.url }}/documentation/elements">Elements</a>
-              </li>
-              <li class="is-active">
-                <a href="#" aria-current="page">Button</a>
-              </li>
+              {% for key in page.breadcrumb %}
+                {% assign link = site.data.links.by_id[key] %}
+                <li{% if forloop.last %} class="is-active"{% endif %}>
+                  <a href="{{ site.url }}{{ link.path }}">{{ link.name }}</a>
+                </li>
+              {% endfor %}
             </ul>
+          </nav>
+
+          <nav class="bd-prev-next">
+            {% if previous_link %}
+              <a href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
+                ←
+              </a>
+            {% else %}
+              <span>
+                ←
+              </span>
+            {% endif %}
+
+            {% if next_link %}
+              <a href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
+                →
+              </a>
+            {% else %}
+              <span>
+                →
+              </span>
+            {% endif %}
           </nav>
         </div>
 
@@ -33,7 +68,7 @@ route: documentation
           <h1 class="title">
             {{ page.title }}
           </h1>
-          <p class="subtitle">
+          <p class="subtitle is-4">
             {{ page.subtitle }}
           </p>
         </header>
@@ -41,6 +76,8 @@ route: documentation
         <div class="bd-content">
           {{ content }}
         </div>
+
+        {% include elements/improve-page.html %}
       </div>
 
       <aside class="bd-side">
@@ -49,5 +86,3 @@ route: documentation
     </aside>
   </div>
 </main>
-
-{% include elements/improve-page.html %}
