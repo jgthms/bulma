@@ -80,6 +80,7 @@ route: documentation
               colors=page.meta.colors
               sizes=page.meta.sizes
               variables=page.meta.variables
+              experimental=page.meta.experimental
             %}
           {% endif %}
         </header>
@@ -92,8 +93,10 @@ route: documentation
       </div>
 
       <aside class="bd-side">
-        {% include carbon.html %}
+        {% unless page.hide_carbon %}
+          {% include carbon.html %}
+        {% endunless %}
       </aside>
-    </aside>
+    </div>
   </div>
 </main>

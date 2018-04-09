@@ -2,8 +2,12 @@ svg
   max-height: 100%
   max-width: 100%
 
-$carbon-space: 15px
-$carbon-width: 300px
+$carbon-spacing: 1rem
+$carbon-shadow-size: 0.75rem
+$carbon-height: 100px
+$carbon-image-height: 100px
+$carbon-image-width: 130px
+$carbon-poweredby-height: 20px
 
 #carboncontainer
   align-items: center
@@ -12,16 +16,17 @@ $carbon-width: 300px
   margin-left: auto
   margin-right: auto
   max-width: $carbon-width
-  min-height: 120px + ($carbon-space * 2)
+  min-height: 120px
   min-width: 280px
 
 #carbon
   flex-grow: 1
-  min-height: 100px + ($carbon-space * 2)
+  min-height: $carbon-height
   padding: 0
   position: relative
   &:hover
-    box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px $primary
+    background-color: $white
+    box-shadow: 0 0 0 $carbon-shadow-size $white
   +tablet
     width: $carbon-width
 
@@ -32,36 +37,44 @@ $carbon-width: 300px
   span
     display: block
   .carbon-wrap
-    min-height: 130px
+    min-height: $carbon-height
     position: relative
+    &:hover
+      .carbon-img
+        opacity: 0.9
   .carbon-img
     bottom: 0
     float: left
     left: 0
-    min-height: 130px
-    padding: 15px 0 15px 15px
+    min-height: $carbon-height
+    padding: 0
     position: absolute
     top: 0
-    width: 145px
+    width: calc(#{$carbon-image-width} + #{$carbon-spacing})
     img
       display: block
-      height: 100px
-      width: 130px
+      height: $carbon-image-height
+      width: $carbon-image-width
     &:hover
-      opacity: 0.9
+      & + .carbon-text
+        color: $link
     &:active
       opacity: 0.8
-  a:hover
-    text-decoration: underline
   .carbon-text
     display: block
     color: $text-strong
     line-height: 20px
-    padding: 15px 15px 35px 160px
+    min-height: $carbon-height
+    padding: 0 0 $carbon-poweredby-height calc(#{$carbon-image-width} + #{$carbon-spacing})
+    &:hover
+      color: $link
   .carbon-poweredby
-    bottom: 10px
+    bottom: 0
     color: $text-light
     display: inline
     font-size: $size-small
+    line-height: $carbon-poweredby-height
     position: absolute
-    right: 10px
+    right: 0
+    &:hover
+      text-decoration: underline
