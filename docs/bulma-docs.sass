@@ -15,6 +15,18 @@ $rss: #f26522
 $carbon-width: 300px
 $main-spacing: 3rem
 
+=selection($current-selector: false)
+  @if $current-selector
+    &::-moz-selection
+      @content
+    &::selection
+      @content
+  @else
+    \::-moz-selection
+      @content
+    \::selection
+      @content
+
 @import "../bulma"
 @import "./_sass/main"
 @import "./_sass/highlight"

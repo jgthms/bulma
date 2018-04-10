@@ -52,6 +52,10 @@ breadcrumb:
   </tbody>
 </table>
 
+{% assign vernum = site.version | downcase | remove: "." | plus: 0 %}
+
+{% if vernum >= 63 %}
+
 {% include elements/anchor.html name="Background color" %}
 
 {% include elements/new-tag.html version="0.6.3" %}
@@ -95,3 +99,5 @@ breadcrumb:
     <tr><td><code>has-background-white-bis</code></td><td>{% include color/white-bis.html %}</td></tr>
   </tbody>
 </table>
+
+{% endif %}
