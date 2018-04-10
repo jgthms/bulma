@@ -43,39 +43,38 @@
       {% endfor %}
 
       <div class="navbar-item has-dropdown is-hoverable">
-        <div class="navbar-link">
-          More
-        </div>
-        <div id="moreDropdown" class="navbar-dropdown {% if include.boxed %}is-boxed{% endif %}">
-          {% for item in site.data.global.more_items %}
-            <a class="navbar-item {% if page.route == item.id %}is-active{% endif %}" href="{{ site.url }}/{{ item.id }}/">
-              <div class="media">
-                <div class="media-left">
-                  <span class="icon is-large has-text-{{ item.color }}">
-                    <i class="{{ item.fa_type }} {{ item.fa_icon }} fa-2x"></i>
-                  </span>
-                </div>
-                <div class="media-content">
-                  <p>
-                    <strong>{{ item.title }}</strong>
-                    <br>
-                    <small>{{ item.description }}</small>
-                  </p>
-                </div>
-              </div>
+        {% assign link = site.data.links.by_id['more'] %}
+        <a class="navbar-link" href="{{ site.url }}{{ link.path }}">
+          {{ link.name }}
+        </a>
+        <div id="moreDropdown" class="navbar-dropdown is-boxed">
+          {% for link_id in site.data.links.more %}
+            {% assign link = site.data.links.by_id[link_id] %}
+            <a class="navbar-item {% if page.route == link_id %}is-active{% endif %}" href="{{ site.url }}/{{ link.path }}">
+              <span>
+                <span class="icon has-text-{{ link.color }}">
+                  <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
+                </span>
+                <strong>{{ link.name }}</strong>
+                <br>
+                {{ link.subtitle }}
+              </span>
             </a>
+            {% unless forloop.last %}
+              <hr class="navbar-divider">
+            {% endunless %}
           {% endfor %}
         </div>
       </div>
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item is-hidden-desktop-only" href="{{ site.data.meta.github }}" target="_blank">
+      <a class="navbar-item is-hidden-mobile" href="{{ site.data.meta.github }}" target="_blank">
         <span class="icon" style="color: #333;">
           <i class="fab fa-lg fa-github-alt"></i>
         </span>
       </a>
-      <a class="navbar-item is-hidden-desktop-only" href="{{ site.data.meta.twitter }}" target="_blank">
+      <a class="navbar-item is-hidden-mobile" href="{{ site.data.meta.twitter }}" target="_blank">
         <span class="icon" style="color: #55acee;">
           <i class="fab fa-lg fa-twitter"></i>
         </span>

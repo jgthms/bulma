@@ -33,7 +33,8 @@ $navbar-dropdown-item-hover-background-color: $background !default
 $navbar-dropdown-item-active-color: $link !default
 $navbar-dropdown-item-active-background-color: $background !default
 
-$navbar-divider-background-color: $border !default
+$navbar-divider-background-color: $background !default
+$navbar-divider-height: 2px !default
 
 =navbar-fixed
   left: 0
@@ -124,6 +125,11 @@ body
   flex-shrink: 0
   min-height: $navbar-height
 
+.navbar-brand
+  a.navbar-item
+    &:hover
+      background-color: transparent
+
 .navbar-tabs
   +overflow-touch
   max-width: 100vw
@@ -155,7 +161,7 @@ a.navbar-item,
     color: $navbar-item-hover-color
 
 .navbar-item
-  display: flex
+  display: block
   flex-grow: 0
   flex-shrink: 0
   img
@@ -201,7 +207,7 @@ a.navbar-item,
   background-color: $navbar-divider-background-color
   border: none
   display: none
-  height: 1px
+  height: $navbar-divider-height
   margin: 0.5rem 0
 
 +touch
@@ -279,6 +285,7 @@ a.navbar-item,
     align-items: center
     display: flex
   .navbar-item
+    display: flex
     &.has-dropdown
       align-items: stretch
     &.has-dropdown-up

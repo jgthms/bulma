@@ -15,7 +15,15 @@
     {% endif %}
     <a class="bd-link" href="{{ site.url }}{{ link.path }}">
       <h2 class="bd-link-name">
-        <span class="bd-link-counter"></span>
+        <figure class="bd-link-figure">
+          {% if include.icons %}
+            <span class="bd-link-icon has-text-{{ link.color }}">
+              <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
+            </span>
+          {% else %}
+            <span class="bd-link-counter"></span>
+          {% endif %}
+        </figure>
         {{ link.name }}
       </h2>
       <p class="bd-link-subtitle">
