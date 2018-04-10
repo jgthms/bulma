@@ -207,6 +207,10 @@ $fullhd-enabled: false
         </tr>
       </tbody>
     </table>
+    
+    {% assign vernum = site.version | replace: "." "" | plus: 1 | minus: 1 %}
+
+    {% if vernum >= 63 %}
 
     {% include anchor.html name="Disabling breakpoints" %}
 
@@ -221,6 +225,8 @@ $fullhd-enabled: false
     <div class="highlight-full">
       {% highlight sass %}{{ scss_code }}{% endhighlight %}
     </div>
+    
+    {% endif %}
 
     {% include anchor.html name="Variables" %}
 
