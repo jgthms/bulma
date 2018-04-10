@@ -38,6 +38,152 @@ doc-subtab: dropdown
 </div>
 {% endcapture %}
 
+{% capture dropdown_colors_example %}
+<div class="dropdown is-active is-primary">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Primary</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown is-hoverable is-link">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Link</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown is-hoverable is-info">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Link</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown is-hoverable is-success">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Link</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown is-hoverable is-warning">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Link</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown is-hoverable is-danger">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Link</span>
+      <span class="icon is-small">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
 {% capture dropdown_content_example %}
 <div class="dropdown is-active">
   <div class="dropdown-trigger">
@@ -201,7 +347,7 @@ doc-subtab: dropdown
       include meta.html
       new=true
       since="0.4.4"
-      colors=false
+      colors=true
       sizes=false
       variables=true
     %}
@@ -294,6 +440,23 @@ doc-subtab: dropdown
       </div>
       <div class="column is-half">
         {% highlight html %}{{dropdown_click_example}}{{dropdown_info_example}}{% endhighlight %}
+      </div>
+    </div>
+
+    {% include anchor.html name="Colors" %}
+
+    <div class="content">
+      <p>
+        You can provide a color to the main container, i.e., the <code>dropdown</code> element, and it will add the color to the <code>button</code> inside the <code>dropdown-trigger</code> element and to the <code>dropdown-item</code> anchor link with the <code>is-active</code> class.
+      </p>
+    </div>
+
+    <div class="columns">
+      <div class="column is-half">
+        {{dropdown_colors_example}}
+      </div>
+      <div class="column is-half">
+        {% highlight html %}{{dropdown_colors_example}}{% endhighlight %}
       </div>
     </div>
 
