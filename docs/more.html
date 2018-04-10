@@ -1,0 +1,53 @@
+---
+title: More
+layout: default
+breadcrumb:
+- home
+- more
+---
+
+{% include global/navbar.html id="More" %}
+
+<main class="bd-main">
+  <div class="bd-main-container container">
+    <div class="bd-duo">
+      <div class="bd-lead">
+        {% include components/breadcrumb.html %}
+
+        <header class="bd-header">
+          <div class="bd-header-titles">
+            <h1 class="title">
+              More
+            </h1>
+            <p class="subtitle is-4">
+              Projects and content related to Bulma
+            </p>
+          </div>
+
+          <div class="bd-header-carbon">
+            {% include elements/carbon.html %}
+          </div>
+        </header>
+
+        <div class="bd-content">
+          <div class="bd-links">
+            {% for link_id in site.data.links.more %}
+              {% assign link = site.data.links.by_id[link_id] %}
+              <a class="bd-link bd-is-post" href="{{ site.url }}{{ link.path }}">
+                <h2 class="bd-link-name">
+                  <span class="bd-link-icon has-text-{{ link.color }}">
+                    <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
+                  </span>
+                  {{ link.name }}
+                </h2>
+                <p class="bd-link-subtitle">
+                  {{ link.subtitle }}
+                </p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

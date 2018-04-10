@@ -2,7 +2,7 @@
   color: $text-strong
   font-size: 1.25rem
   line-height: 1.25
-  margin-bottom: 1rem
+  margin-bottom: 0.5rem
   transition-duration: $speed
   transition-property: color
   strong
@@ -10,7 +10,7 @@
 
 .bd-footer-subtitle
   color: $grey-light
-  margin-top: -1rem
+  margin-top: -0.5rem
   transition-duration: $speed
   transition-property: color
 
@@ -26,7 +26,7 @@
 
 .bd-footer-tsp
   color: $grey-light
-  margin-top: 1rem
+  margin-top: 1.5rem
 
 %bd-footer-box
   background-color: $white
@@ -36,15 +36,16 @@
   text-align: center
   .bd-footer-title
     font-size: 1.5rem
-    margin-bottom: 1rem
 
 // Support
 
 .bd-footer-support
   @extend %bd-footer-box
   margin-bottom: 3rem
-  margin-top: 2.25rem
-  padding: 2.5rem
+  margin-top: 3rem
+  padding: 3rem
+  .bd-footer-title
+    margin-bottom: 1.5rem
 
 .bd-footer-donations
   justify-content: center
@@ -61,7 +62,7 @@
 
 .bd-footer-donation-action
   @extend %center
-  min-height: 36px
+  height: 70px
   .paypal-form
     height: 30px
     img
@@ -139,13 +140,20 @@ $star-figure-height: 156px
     margin-top: 1.5em
 
 .bd-footer-link
-  margin-top: 0.25rem
+  margin-top: 0.5rem
   &.bd-is-more
     font-size: 0.875rem
     a:not(:hover)
       color: $grey-light
   &.bd-has-subtitle
     a
+      align-items: center
+      display: flex
+      justify-content: space-between
+      strong
+        flex-grow: 1
+        flex-shrink: 1
+        font-weight: unset
       em
         display: block
         font-size: 0.875rem
@@ -153,10 +161,19 @@ $star-figure-height: 156px
       &:not(:hover)
         em
           color: $grey-light
+      +mobile
+        flex-wrap: wrap
+        margin-top: 1rem
+        em
+          width: 100%
       +tablet
-        align-items: center
-        display: flex
-        justify-content: space-between
         em
           margin-left: 1rem
           text-align: right
+
+.bd-footer-link-icon
+  flex-grow: 0
+  flex-shrink: 0
+  margin-right: 0.5em
+  text-align: center
+  width: 1em
