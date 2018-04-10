@@ -1,14 +1,14 @@
 ---
 layout: default
-route: documentation
+route: more
 ---
 
-{% include global/navbar.html id="Documentation" %}
+{% include global/navbar.html id="More" %}
 
-{% assign current_category = page.doc-tab %}
 {% assign current_link_id = page.breadcrumb | last %}
 {% assign current_link = site.data.links.by_id[current_link_id] %}
-{% assign category_links = site.data.links.categories[current_category] %}
+
+{% assign category_links = site.data.links.more %}
 
 {% for link_id in category_links %}
   {% if link_id == current_link_id %}
@@ -36,7 +36,11 @@ route: documentation
         <header class="bd-header">
           <div class="bd-header-titles">
             <h1 class="title">
-              {{ page.title }}
+              {% if page.title %}
+                {{ page.title }}
+              {% else %}
+                {{ current_link.name }}
+              {% endif %}
             </h1>
             <p class="subtitle is-4">
               {% if page.subtitle %}
@@ -45,15 +49,6 @@ route: documentation
                 {{ current_link.subtitle }}
               {% endif %}
             </p>
-            {% if page.meta %}
-              {%
-                include elements/meta.html
-                colors=page.meta.colors
-                sizes=page.meta.sizes
-                variables=page.meta.variables
-                experimental=page.meta.experimental
-              %}
-            {% endif %}
           </div>
 
           <div class="bd-header-carbon">
@@ -83,9 +78,7 @@ route: documentation
       </div>
 
       <aside class="bd-side">
-        {% unless page.hide_categories %}
-          {% include components/categories.html %}
-        {% endunless %}
+        {% include components/more.html %}
       </aside>
     </div>
   </div>

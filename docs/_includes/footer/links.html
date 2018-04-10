@@ -50,22 +50,15 @@
         <a href="{{ site.url }}{{ more_link.path }}">More</a>
       </p>
 
+      {% assign link = site.data.links.by_id['expo'] %}
+      {% include footer/link.html %}
+
+      {% assign link = site.data.links.by_id['love'] %}
+      {% include footer/link.html %}
+
       {% for link_id in site.data.links.more %}
         {% assign link = site.data.links.by_id[link_id] %}
-
-        <p class="bd-footer-link bd-has-subtitle">
-          <a href="{{ site.url }}{{ link.path }}">
-            <span class="bd-footer-link-icon has-text-{{ link.color }}">
-              <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
-            </span>
-            <strong>
-              {{ link.name }}
-            </strong>
-            <em>
-              {{ link.subtitle }}
-            </em>
-          </a>
-        </p>
+        {% include footer/link.html %}
       {% endfor %}
     </div>
   </div>
