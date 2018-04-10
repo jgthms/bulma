@@ -38,19 +38,17 @@ breadcrumb:
         <div class="bd-content">
           <div class="bd-links">
             {% for post in site.posts %}
-              <a class="bd-link bd-is-post" href="{{ post.url }}">
-                <h2 class="bd-link-name">
-                  <figure class="bd-link-figure">
-                    <span class="bd-link-icon has-text-{{ post.color }}">
-                      <i class="{% if post.icon_brand %}fab{% elsif post.icon_regular %}far{% else %}fas{% endif %} fa-{{ post.icon }}"></i>
-                    </span>
-                  </figure>
-                  {{ post.name }}
-                </h2>
-                <time class="bd-link-subtitle" datetime="{{ post.date | date_to_xmlschema }}">
-                  {{ post.date | date_to_string }}
-                </time>
-              </a>
+              {% assign subtitle = post.date | date_to_string %}
+              {%
+                include elements/link.html
+                url=post.url
+                color=post.color
+                icon_brand=post.icon_brand
+                icon_regular=post.icon_regular
+                icon=post.icon
+                name=post.name
+                subtitle=subtitle
+              %}
             {% endfor %}
           </div>
         </div>
