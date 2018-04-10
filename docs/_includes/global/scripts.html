@@ -3,8 +3,21 @@
 <script src="{{ site.url }}/lib/main.js?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
 
 {% if page.route == 'index' %}
-  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="https://player.vimeo.com/api/player.js" ></script>
   <script type="text/javascript" src="{{ site.url }}/lib/index.js?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Nunito:400,700']
+      }
+    });
+    (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+  </script>
 {% elsif page.doc-subtab == 'navbar' %}
   {% include examples/navbar-bottom.html %}
   <script type="text/javascript" src="{{ site.url }}/lib/navbar.js?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>

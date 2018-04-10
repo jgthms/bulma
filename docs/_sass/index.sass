@@ -1,7 +1,6 @@
 // Index common
 
 .bd-index-header
-  margin-bottom: 3rem
   text-align: center
   a
     color: currentColor
@@ -18,8 +17,17 @@
     color: $grey-light !important
     strong
       color: currentColor
+  &:not(:last-child)
+    margin-bottom: 3rem
   &.bd-is-left
     text-align: left
+
+// JS
+
+.bd-index-js-tweet
+  .bd-tw
+    margin-left: auto
+    margin-right: auto
 
 // Customize
 
@@ -72,6 +80,9 @@
         background-color: darken($pink, 2.5%)
       &:active
         background-color: darken($pink, 5%)
+  +selection
+    background-color: $pink
+    color: $white
 
 // Fullscreen
 
@@ -129,10 +140,21 @@
   max-width: $intro-width
 
 .bd-focus-item
+  border-radius: $radius-large
+  padding-top: 1.25rem
+  transition-duration: $speed * 2
+  transition-property: background-color
   .subtitle
     color: $grey-light
     strong
       color: currentColor
+  .title
+    transition-duration: $speed * 2
+    transition-property: color
+  &:hover
+    background-color: $white-bis
+    .title
+      color: $link
 
 .bd-focus-icon
   .fa-mobile-alt
