@@ -50,8 +50,9 @@ tweets:
           </div>
 
           <div class="bd-tws-love">
-            {% for tweetId in site.data.love.tweets reversed %}
-              {% assign tweet = site.data.love.tweetsById[tweetId] %}
+            {% for tweet_pair in site.data.love.tweets_by_id reversed %}
+              {% assign tweet_id = tweet_pair[0] %}
+              {% assign tweet = site.data.love.tweets_by_id[tweet_id] %}
               {% include elements/tw.html tweet=tweet %}
             {% endfor %}
           </div>
