@@ -77,6 +77,19 @@
   right: 0
   top: 0
 
+%bd-list
+  font-size: 0.875rem
+  li
+    &:not(:last-child)
+      margin-bottom: 0.5em
+    &.is-current
+      a
+        color: $link
+  a
+    color: $text-light
+    &:hover
+      color: $link
+
 .bd-category
   a
     &:hover
@@ -110,17 +123,30 @@
   position: relative
 
 .bd-category-list
+  @extend %bd-list
   display: none
-  font-size: 0.875rem
   padding: 0.5rem
+
+.bd-anchors-reference
+  height: 1px
+
+.bd-anchors
+  padding-top: calc(1.5rem - 1px)
+  &.is-pinned
+    position: fixed
+    top: 0
+
+.bd-anchors-title
+  color: $grey-light
+  font-size: 0.875rem
+  font-weight: $weight-semibold
+  margin-bottom: 0.5rem
+
+.bd-anchors-list
+  @extend %bd-list
   li
-    &:not(:last-child)
-      margin-bottom: 0.5em
-    &.is-current
-      a
-        color: $link
-  a
-    color: $text-light
+    &:last-child
+      margin-top: 1em
 
 +touch
   .bd-lead,

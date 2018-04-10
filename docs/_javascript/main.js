@@ -5,26 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cookieBookModalName = 'bulma_closed_book_modal';
   const cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
 
-  // Book modal
-
-  // const $bookModal = document.getElementById('bookModal');
-  // const $bookModalCloseButtons = getAll('.bd-book-modal-close');
-
-  // if (!cookieBookModal) {
-  //   setTimeout(() => {
-  //     openModal('bookModal');
-  //   }, 5000);
-  // }
-
-  // if ($bookModalCloseButtons.length > 0) {
-  //   $bookModalCloseButtons.forEach($el => {
-  //     $el.addEventListener('click', event => {
-  //       event.stopPropagation();
-  //       Cookies.set(cookieBookModalName, true, { expires: 30 });
-  //     });
-  //   });
-  // }
-
   // Sidebar links
 
   const $categories = getAll('#categories .bd-category');
@@ -38,6 +18,56 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.toggle('is-active');
       });
     });
+  }
+
+  function closeCategories(current_el) {
+    $categories.forEach(el => {
+      if (current_el == el) {
+        return;
+      }
+      el.classList.remove('is-active');
+    });
+  }
+
+  const anchors_ref_el = document.getElementById('anchorsReference');
+  const anchors_el = document.getElementById('anchors');
+  const anchor_links_el = getAll('.bd-anchor-link');
+
+  if (anchors_el && anchor_links_el.length > 0) {
+    const anchors_el_list = anchors_el.querySelector('.bd-anchors-list');
+
+    anchor_links_el.forEach(el => {
+      const link_target = el.getAttribute('href');
+      const link_text = el.previousElementSibling.innerText;
+
+      if (link_text != '') {
+        const item_el = createAnchorLink(link_text, link_target);
+        anchors_el_list.appendChild(item_el);
+      }
+    });
+
+    const back_to_top_el = createAnchorLink('Back to top', '');
+    back_to_top_el.onclick = scrollToTop;
+    anchors_el_list.appendChild(back_to_top_el);
+  }
+
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
+  function createAnchorLink(text, target) {
+    const item_el = document.createElement('li');
+    const link_el = document.createElement('a');
+    const text_node = document.createTextNode(text);
+
+    if (target) {
+      link_el.setAttribute('href', target);
+    }
+
+    link_el.appendChild(text_node);
+    item_el.appendChild(link_el);
+
+    return item_el;
   }
 
   function closeCategories(current_el) {
@@ -220,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Scrolling
 
+  const html_el = document.documentElement;
   const navbarEl = document.getElementById('navbar');
   const navbarBurger = document.getElementById('navbarBurger');
   const specialShadow = document.getElementById('specialShadow');
@@ -240,6 +271,18 @@ document.addEventListener('DOMContentLoaded', () => {
       rootEl.classList.remove('bd-is-clipped-touch');
     }
   });
+
+  function whenScrolling(lastY, currentY) {
+    if (anchors_ref_el) {
+      const bounds = anchors_ref_el.getBoundingClientRect();
+
+      if (bounds.top < 1) {
+        anchors_el.classList.add('is-pinned');
+      } else {
+        anchors_el.classList.remove('is-pinned');
+      }
+    }
+  }
 
   function upOrDown(lastY, currentY) {
     if (currentY >= lastY) {
@@ -310,23 +353,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // translateHeader(window.scrollY, false);
+  let ticking = false;
+  let lastY = 0;
 
-  // let ticking = false;
-  // let lastY = 0;
+  window.addEventListener('scroll', function() {
+    const currentY = window.scrollY;
 
-  // window.addEventListener('scroll', function() {
-  //   const currentY = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        // upOrDown(lastY, currentY);
+        whenScrolling(lastY, currentY);
+        ticking = false;
+        lastY = currentY;
+      });
+    }
 
-  //   if (!ticking) {
-  //     window.requestAnimationFrame(function() {
-  //       upOrDown(lastY, currentY);
-  //       ticking = false;
-  //       lastY = currentY;
-  //     });
-  //   }
-
-  //   ticking = true;
-  // });
+    ticking = true;
+  });
 
 });
