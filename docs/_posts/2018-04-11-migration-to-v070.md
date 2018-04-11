@@ -7,7 +7,13 @@ name: "Migrating to v0.7.0"
 icon: "sync-alt"
 ---
 
-## Updated default values
+A new major Bulma update is out: [v0.7.0](#)!
+
+While this update is mainly focused on a massive [website redesign](#), it also includes a few bug fixes, some new features, and some variable changes.
+
+These variable changes are documented here, so you can edit or revert them if needed.
+
+{% include elements/anchor.html name="Updated default values" %}
 
 {% for item in site.data.blog.migratingv070.updated %}
   <table class="table is-bordered">
@@ -40,7 +46,7 @@ icon: "sync-alt"
   </table>
 {% endfor %}
 
-## New variables
+{% include elements/anchor.html name="New variables" %}
 
 {% for item in site.data.blog.migratingv070.new %}
   <table class="table is-bordered">
@@ -69,7 +75,7 @@ icon: "sync-alt"
   </table>
 {% endfor %}
 
-## Removed variables
+{% include elements/anchor.html name="Removed variables" %}
 
 <table class="table is-bordered">
   <thead>

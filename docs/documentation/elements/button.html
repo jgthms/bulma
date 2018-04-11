@@ -148,7 +148,7 @@ meta:
 {% endcapture %}
 
 {% capture button_fa_example %}
-<p class="field">
+<p class="buttons">
   <a class="button">
     <span class="icon is-small">
       <i class="fas fa-bold"></i>
@@ -165,7 +165,7 @@ meta:
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button">
     <span class="icon">
       <i class="fab fa-github"></i>
@@ -191,7 +191,7 @@ meta:
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button is-small">
     <span class="icon is-small">
       <i class="fab fa-github"></i>
@@ -220,14 +220,14 @@ meta:
 {% endcapture %}
 
 {% capture button_only_icon_example %}
-<p class="field">
+<p class="buttons">
   <a class="button is-small">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
@@ -239,7 +239,7 @@ meta:
   </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button is-medium">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
@@ -256,7 +256,7 @@ meta:
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button is-large">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
@@ -380,7 +380,7 @@ meta:
 </div>
 {% endcapture %}
 
-{% capture buttons %}
+{% capture buttons_list %}
 <div class="buttons">
   <span class="button is-success">Save changes</span>
   <span class="button is-info">Save and continue</span>
@@ -463,7 +463,7 @@ meta:
   </p>
 </div>
 
-{% include elements/snippet.html content=button_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_example %}
 
 <div class="content">
   <p>
@@ -485,30 +485,32 @@ meta:
   </ul>
 </div>
 
-{% include elements/snippet.html content=button_tags_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_tags_example %}
 
 {% include elements/anchor.html name="Colors" %}
 
-{% include elements/snippet.html content=button_colors_a_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_colors_a_example %}
 
-{% include elements/snippet.html content=button_colors_b_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_colors_b_example %}
 
 {% include elements/anchor.html name="Sizes" %}
 
-{% include elements/snippet.html content=button_sizes_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_sizes_example %}
 
 {% include elements/anchor.html name="Styles" %}
 
 <h4 class="subtitle">Outlined</h4>
 
-{% include elements/snippet.html content=button_outlined_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_outlined_example %}
 
 <h4 class="subtitle">Inverted (the text color becomes the background color, and vice-versa)</h4>
 
 <div class="columns">
   <div class="column">
     <div class="bd-callout is-primary">
-      {{button_inverted_example}}
+      <div class="buttons">
+        {{ button_inverted_example }}
+      </div>
     </div>
   </div>
   <div class="column">
@@ -521,11 +523,13 @@ meta:
 <div class="columns">
   <div class="column">
     <div class="bd-callout is-primary">
-      {{button_inverted_outlined_example}}
+      <div class="buttons">
+        {{ button_inverted_outlined_example }}
+      </div>
     </div>
   </div>
   <div class="column">
-    {% highlight html %}{{button_inverted_outlined_example}}{% endhighlight %}
+    {% highlight html %}{{ button_inverted_outlined_example }}{% endhighlight %}
   </div>
 </div>
 
@@ -534,7 +538,9 @@ meta:
 <div class="columns">
   <div class="column">
     {% include elements/new-tag.html version="0.6.2" %}
-    {{ button_rounded_example }}
+    <div class="buttons">
+      {{ button_rounded_example }}
+    </div>
   </div>
   <div class="column">
     {% highlight html %}{{ button_rounded_example }}{% endhighlight %}
@@ -545,26 +551,26 @@ meta:
 
 <h4 class="subtitle">Normal</h4>
 
-{% include elements/snippet.html content=button_normal_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_normal_example %}
 
 <h4 class="subtitle">Hover</h4>
 
-{% include elements/snippet.html content=button_hover_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_hover_example %}
 
 <h4 class="subtitle">Focus</h4>
 
-{% include elements/snippet.html content=button_focus_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_focus_example %}
 
 <h4 class="subtitle">Active</h4>
 
-{% include elements/snippet.html content=button_active_example %}
+{% include elements/snippet.html wrapper="buttons" content=button_active_example %}
 
 <h4 class="subtitle">Loading</h4>
 
 <div class="columns">
   <div class="column">
-    <div class="block">
-      {{button_loading_example}}
+    <div class="buttons">
+      {{ button_loading_example }}
     </div>
     <div class="message is-info">
       <div class="message-body">
@@ -590,10 +596,10 @@ meta:
         You can create a <strong>non-interactive button</strong> by using the <code>is-static</code> modifier. This is useful to align a text label with an input, for example when using <a href="{{site.url}}/documentation/form/general#form-addons">form addons</a>.
       </p>
     </div>
-    {{button_static_example}}
+    {{ button_static_example }}
   </div>
   <div class="column">
-    {% highlight html %}{{button_static_example}}{% endhighlight %}
+    {% highlight html %}{{ button_static_example }}{% endhighlight %}
   </div>
 </div>
 
@@ -601,8 +607,8 @@ meta:
 
 <div class="columns">
   <div class="column">
-    <div class="block">
-      {{button_disabled_example}}
+    <div class="buttons">
+      {{ button_disabled_example }}
     </div>
     <div class="message is-danger">
       <div class="message-body">
@@ -626,10 +632,10 @@ meta:
         If the button only contains an icon, Bulma will make sure the button remains <strong>square</strong>, no matter the size of the button <em>or</em> of the icon.
       </p>
     </div>
-    {{button_only_icon_example}}
+    {{ button_only_icon_example }}
   </div>
   <div class="column">
-    {% highlight html %}{{button_only_icon_example}}{% endhighlight %}
+    {% highlight html %}{{ button_only_icon_example }}{% endhighlight %}
   </div>
 </div>
 
@@ -669,11 +675,11 @@ meta:
       </p>
     </div>
     <div class="bd-example">
-      {{ buttons }}
+      {{ buttons_list }}
     </div>
   </div>
   <div class="column">
-    {% highlight html %}{{ buttons }}{% endhighlight %}
+    {% highlight html %}{{ buttons_list }}{% endhighlight %}
   </div>
 </div>
 

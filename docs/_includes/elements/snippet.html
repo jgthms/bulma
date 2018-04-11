@@ -19,7 +19,13 @@
     {% if include.fullwidth %}bd-is-fullwidth{% endif %}
     ">
     <div class="bd-snippet-preview {% if include.paddingless %}is-paddingless{% endif %}">
-      {{ include.content }}
+      {% if include.wrapper %}
+        <div class="{{ include.wrapper }}">
+          {{ include.content }}
+        </div>
+      {% else %}
+        {{ include.content }}
+      {% endif %}
     </div>
     <div class="bd-snippet-code {% unless include.clipped %}highlight-full{% endunless %} {% if include.more %}bd-is-more bd-is-more-clipped{% endif %}">
       {% highlight html %}{{ include.content }}{% endhighlight %}
