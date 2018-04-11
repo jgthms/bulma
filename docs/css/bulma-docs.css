@@ -133,7 +133,7 @@
   width: 1em;
 }
 
-.is-overlay, .image.is-square img, .image.is-1by1 img, .image.is-5by4 img, .image.is-4by3 img, .image.is-3by2 img, .image.is-5by3 img, .image.is-16by9 img, .image.is-2by1 img, .image.is-3by1 img, .image.is-4by5 img, .image.is-3by4 img, .image.is-2by3 img, .image.is-3by5 img, .image.is-9by16 img, .image.is-1by2 img, .image.is-1by3 img, .modal, .modal-background, .hero-video, .bd-category-toggle, #carbonads .carbon-wrap:hover .carbon-img::after, .intro-spinner, .intro-shadow, .bd-structure-item::before, .bd-structure-item::after, .highlight .bd-show, .bd-banner-background, .bd-book-pattern::before,
+.is-overlay, .image.is-square img, .image.is-1by1 img, .image.is-5by4 img, .image.is-4by3 img, .image.is-3by2 img, .image.is-5by3 img, .image.is-16by9 img, .image.is-2by1 img, .image.is-3by1 img, .image.is-4by5 img, .image.is-3by4 img, .image.is-2by3 img, .image.is-3by5 img, .image.is-9by16 img, .image.is-1by2 img, .image.is-1by3 img, .modal, .modal-background, .hero-video, .bd-category-toggle, .bd-patreon-button:hover::after, #carbonads .carbon-wrap:hover .carbon-img::after, .intro-spinner, .intro-shadow, .bd-structure-item::before, .bd-structure-item::after, .highlight .bd-show, .bd-banner-background, .bd-book-pattern::before,
 .bd-book-modal-column.bd-is-cover::before, .bd-book-pattern, .bd-book-modal-background {
   bottom: 0;
   left: 0;
@@ -6706,10 +6706,12 @@ a.navbar-item:hover, a.navbar-item.is-active,
     max-height: calc(100vh - 3.25rem);
     overflow: auto;
   }
-  html.has-navbar-fixed-top-touch {
+  html.has-navbar-fixed-top-touch,
+  body.has-navbar-fixed-top-touch {
     padding-top: 3.25rem;
   }
-  html.has-navbar-fixed-bottom-touch {
+  html.has-navbar-fixed-bottom-touch,
+  body.has-navbar-fixed-bottom-touch {
     padding-bottom: 3.25rem;
   }
 }
@@ -6868,11 +6870,21 @@ a.navbar-item:hover, a.navbar-item.is-active,
   .navbar.is-fixed-top-desktop {
     top: 0;
   }
-  html.has-navbar-fixed-top-desktop {
+  html.has-navbar-fixed-top-desktop,
+  body.has-navbar-fixed-top-desktop {
     padding-top: 3.25rem;
   }
-  html.has-navbar-fixed-bottom-desktop {
+  html.has-navbar-fixed-bottom-desktop,
+  body.has-navbar-fixed-bottom-desktop {
     padding-bottom: 3.25rem;
+  }
+  html.has-spaced-navbar-fixed-top,
+  body.has-spaced-navbar-fixed-top {
+    padding-top: 5.25rem;
+  }
+  html.has-spaced-navbar-fixed-bottom,
+  body.has-spaced-navbar-fixed-bottom {
+    padding-bottom: 5.25rem;
   }
   a.navbar-item.is-active,
   .navbar-link.is-active {
@@ -10155,8 +10167,22 @@ svg {
   max-width: 100%;
 }
 
+.bd-patreon-button {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+
 .bd-patreon-button img {
   border-radius: 4px;
+  display: block;
+}
+
+.bd-patreon-button:hover::after {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  content: "";
+  display: block;
 }
 
 #carboncontainer {

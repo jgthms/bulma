@@ -2,7 +2,8 @@ $navbar-background-color: $white !default
 $navbar-box-shadow-size: 0 2px 0 0 !default
 $navbar-box-shadow-color: $background !default
 $navbar-height: 3.25rem !default
-$navbar-padding: 1rem 2rem !default
+$navbar-padding-vertical: 1rem !default
+$navbar-padding-horizontal: 2rem !default
 $navbar-z: 30 !default
 $navbar-fixed-z: 30 !default
 
@@ -115,9 +116,6 @@ html,
 body
   &.has-navbar-fixed-top
     padding-top: $navbar-height
-
-html,
-body
   &.has-navbar-fixed-bottom
     padding-bottom: $navbar-height
 
@@ -252,10 +250,12 @@ a.navbar-item,
         +overflow-touch
         max-height: calc(100vh - #{$navbar-height})
         overflow: auto
-  html.has-navbar-fixed-top-touch
-    padding-top: $navbar-height
-  html.has-navbar-fixed-bottom-touch
-    padding-bottom: $navbar-height
+  html,
+  body
+    &.has-navbar-fixed-top-touch
+      padding-top: $navbar-height
+    &.has-navbar-fixed-bottom-touch
+      padding-bottom: $navbar-height
 
 +desktop
   .navbar,
@@ -267,7 +267,7 @@ a.navbar-item,
   .navbar
     min-height: $navbar-height
     &.is-spaced
-      padding: $navbar-padding
+      padding: $navbar-padding-vertical $navbar-padding-horizontal
       .navbar-start,
       .navbar-end
         align-items: center
@@ -389,10 +389,16 @@ a.navbar-item,
         box-shadow: 0 -2px 3px rgba($black, 0.1)
     &.is-fixed-top-desktop
       top: 0
-  html.has-navbar-fixed-top-desktop
-    padding-top: $navbar-height
-  html.has-navbar-fixed-bottom-desktop
-    padding-bottom: $navbar-height
+  html,
+  body
+    &.has-navbar-fixed-top-desktop
+      padding-top: $navbar-height
+    &.has-navbar-fixed-bottom-desktop
+      padding-bottom: $navbar-height
+    &.has-spaced-navbar-fixed-top
+      padding-top: $navbar-height + ($navbar-padding-vertical * 2)
+    &.has-spaced-navbar-fixed-bottom
+      padding-bottom: $navbar-height + ($navbar-padding-vertical * 2)
   // Hover/Active states
   a.navbar-item,
   .navbar-link
