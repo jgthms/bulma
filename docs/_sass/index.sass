@@ -142,19 +142,53 @@
 .bd-focus-item
   border-radius: $radius-large
   padding-top: 1.25rem
-  transition-duration: $speed * 2
-  transition-property: background-color
+  position: relative
+  .title a,
   .subtitle
-    color: $grey-light
-    strong
-      color: currentColor
-  .title
     transition-duration: $speed * 2
     transition-property: color
-  &:hover
+  .title
+    position: relative
+    transition-duration: $speed * 2
+    transition-property: color
+  .subtitle
+    color: $grey-light
+    position: relative
+    strong
+      color: currentColor
+  &::before
+    +overlay
     background-color: $white-bis
+    border-radius: $radius-large
+    content: ""
+    display: block
+    opacity: 0
+    pointer-events: none
+    transform: scale(1.1)
+    transform-origin: center
+    transition-duration: $speed * 2
+    transition-property: opacity, transform
+  &:hover
+    &::before
+      opacity: 1
+      transform: scale(1)
+    .subtitle
+      color: $text
+  &:nth-child(1):hover
+    .title
+      color: $orange
+  &:nth-child(2):hover
+    .title
+      color: $success
+  &:nth-child(3):hover
     .title
       color: $link
+  &:nth-child(4):hover
+    .title
+      color: $black
+
+.bd-focus-icon
+  position: relative
 
 .bd-focus-mobile
   color: $purple
@@ -172,6 +206,7 @@
   position: relative
   height: 3rem
   margin: 0 auto
+  top: -0.5rem
   width: 3rem
 
 .bd-focus-cube
