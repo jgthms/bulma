@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let anchor_nav_els = [];
 
   if (anchors_el && anchor_links_el.length > 0) {
+    anchors_el.classList.add('is-active');
     const anchors_el_list = anchors_el.querySelector('.bd-anchors-list');
 
     anchor_links_el.forEach((el, index) => {
