@@ -20,18 +20,21 @@
   user-select: none;
 }
 
-.select:not(.is-multiple)::after, .navbar-link::after {
-  border: 1px solid transparent;
+.select:not(.is-multiple):not(.is-loading)::after, .navbar-link::after {
+  border: 3px solid transparent;
+  border-radius: 2px;
   border-right: 0;
   border-top: 0;
   content: " ";
   display: block;
-  height: 0.5em;
+  height: 0.625em;
+  margin-top: -0.4375em;
   pointer-events: none;
   position: absolute;
+  top: 50%;
   transform: rotate(-45deg);
   transform-origin: center;
-  width: 0.5em;
+  width: 0.625em;
 }
 
 .box:not(:last-child), .content:not(:last-child), .notification:not(:last-child), .progress:not(:last-child), .table:not(:last-child), .table-container:not(:last-child), .title:not(:last-child),
@@ -3120,11 +3123,9 @@ a.box:active {
   height: 2.25em;
 }
 
-.select:not(.is-multiple)::after {
+.select:not(.is-multiple):not(.is-loading)::after {
   border-color: #3273dc;
-  margin-top: -0.375em;
   right: 1.125em;
-  top: 50%;
   z-index: 4;
 }
 
@@ -3213,84 +3214,164 @@ a.box:active {
   padding: 0.5em 1em;
 }
 
-.select:hover::after {
+.select:not(.is-multiple):not(.is-loading):hover::after {
   border-color: #363636;
+}
+
+.select.is-white:not(:hover)::after {
+  border-color: white;
 }
 
 .select.is-white select {
   border-color: white;
 }
 
+.select.is-white select:hover, .select.is-white select.is-hovered {
+  border-color: #f2f2f2;
+}
+
 .select.is-white select:focus, .select.is-white select.is-focused, .select.is-white select:active, .select.is-white select.is-active {
   box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25);
+}
+
+.select.is-black:not(:hover)::after {
+  border-color: #0a0a0a;
 }
 
 .select.is-black select {
   border-color: #0a0a0a;
 }
 
+.select.is-black select:hover, .select.is-black select.is-hovered {
+  border-color: black;
+}
+
 .select.is-black select:focus, .select.is-black select.is-focused, .select.is-black select:active, .select.is-black select.is-active {
   box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25);
+}
+
+.select.is-light:not(:hover)::after {
+  border-color: whitesmoke;
 }
 
 .select.is-light select {
   border-color: whitesmoke;
 }
 
+.select.is-light select:hover, .select.is-light select.is-hovered {
+  border-color: #e8e8e8;
+}
+
 .select.is-light select:focus, .select.is-light select.is-focused, .select.is-light select:active, .select.is-light select.is-active {
   box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
+}
+
+.select.is-dark:not(:hover)::after {
+  border-color: #363636;
 }
 
 .select.is-dark select {
   border-color: #363636;
 }
 
+.select.is-dark select:hover, .select.is-dark select.is-hovered {
+  border-color: #292929;
+}
+
 .select.is-dark select:focus, .select.is-dark select.is-focused, .select.is-dark select:active, .select.is-dark select.is-active {
   box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
+}
+
+.select.is-primary:not(:hover)::after {
+  border-color: #00d1b2;
 }
 
 .select.is-primary select {
   border-color: #00d1b2;
 }
 
+.select.is-primary select:hover, .select.is-primary select.is-hovered {
+  border-color: #00b89c;
+}
+
 .select.is-primary select:focus, .select.is-primary select.is-focused, .select.is-primary select:active, .select.is-primary select.is-active {
   box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
+}
+
+.select.is-link:not(:hover)::after {
+  border-color: #3273dc;
 }
 
 .select.is-link select {
   border-color: #3273dc;
 }
 
+.select.is-link select:hover, .select.is-link select.is-hovered {
+  border-color: #2366d1;
+}
+
 .select.is-link select:focus, .select.is-link select.is-focused, .select.is-link select:active, .select.is-link select.is-active {
   box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+}
+
+.select.is-info:not(:hover)::after {
+  border-color: #209cee;
 }
 
 .select.is-info select {
   border-color: #209cee;
 }
 
+.select.is-info select:hover, .select.is-info select.is-hovered {
+  border-color: #118fe4;
+}
+
 .select.is-info select:focus, .select.is-info select.is-focused, .select.is-info select:active, .select.is-info select.is-active {
   box-shadow: 0 0 0 0.125em rgba(32, 156, 238, 0.25);
+}
+
+.select.is-success:not(:hover)::after {
+  border-color: #23d160;
 }
 
 .select.is-success select {
   border-color: #23d160;
 }
 
+.select.is-success select:hover, .select.is-success select.is-hovered {
+  border-color: #20bc56;
+}
+
 .select.is-success select:focus, .select.is-success select.is-focused, .select.is-success select:active, .select.is-success select.is-active {
   box-shadow: 0 0 0 0.125em rgba(35, 209, 96, 0.25);
+}
+
+.select.is-warning:not(:hover)::after {
+  border-color: #ffdd57;
 }
 
 .select.is-warning select {
   border-color: #ffdd57;
 }
 
+.select.is-warning select:hover, .select.is-warning select.is-hovered {
+  border-color: #ffd83d;
+}
+
 .select.is-warning select:focus, .select.is-warning select.is-focused, .select.is-warning select:active, .select.is-warning select.is-active {
   box-shadow: 0 0 0 0.125em rgba(255, 221, 87, 0.25);
 }
 
+.select.is-danger:not(:hover)::after {
+  border-color: #ff3860;
+}
+
 .select.is-danger select {
   border-color: #ff3860;
+}
+
+.select.is-danger select:hover, .select.is-danger select.is-hovered {
+  border-color: #ff1f4b;
 }
 
 .select.is-danger select:focus, .select.is-danger select.is-focused, .select.is-danger select:active, .select.is-danger select.is-active {
@@ -6703,9 +6784,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
     transform: translateY(0);
   }
   .navbar-link::after {
-    margin-top: -0.375em;
     right: 1.125em;
-    top: 50%;
   }
   .navbar-menu {
     flex-grow: 1;
