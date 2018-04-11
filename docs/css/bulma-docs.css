@@ -9604,7 +9604,7 @@ label.panel-block:hover {
 .bd-footer-support, .bd-footer-star, .bd-book-content {
   background-color: white;
   border-radius: 6px;
-  box-shadow: 0 1.5rem 1.5rem -1.25rem rgba(10, 10, 10, 0.1);
+  box-shadow: 0 1.5rem 1.5rem -1.25rem rgba(10, 10, 10, 0.05);
   display: block;
 }
 
@@ -10512,32 +10512,53 @@ svg {
   color: #3273dc;
 }
 
-.bd-focus-icon .fa-mobile-alt {
+.bd-focus-mobile {
   color: #b86bff;
   margin-right: -20px;
 }
 
-.bd-focus-icon .fa-tablet-alt {
+.bd-focus-tablet {
   color: #ff3860;
-  margin-left: -20px;
 }
 
-.bd-focus-icon .fa-desktop {
+.bd-focus-desktop {
   color: #ff470f;
-  margin-left: -20px;
   position: relative;
   top: 2px;
 }
 
-.bd-focus-icon .fa-cubes {
-  color: #23d160;
+.bd-focus-cubes {
+  position: relative;
+  height: 3rem;
+  margin: 0 auto;
+  width: 3rem;
 }
 
-.bd-focus-icon .fa-css3 {
+.bd-focus-cube {
+  color: #23d160;
+  position: absolute;
+}
+
+.bd-focus-cube-1 {
+  left: 0;
+  top: 0;
+}
+
+.bd-focus-cube-2 {
+  left: -1rem;
+  top: 23px;
+}
+
+.bd-focus-cube-3 {
+  left: 1rem;
+  top: 23px;
+}
+
+.bd-focus-css3 {
   color: #3273dc;
 }
 
-.bd-focus-icon .fa-github-alt {
+.bd-focus-github {
   color: #333333;
 }
 
@@ -12814,6 +12835,7 @@ svg {
 }
 
 .bd-book-content {
+  box-shadow: 0 3rem 3rem -1rem rgba(10, 10, 10, 0.2);
   max-width: 520px;
   padding: 3rem;
 }
@@ -13071,5 +13093,172 @@ svg {
 @media screen and (min-width: 1280px) {
   .native-js {
     font-size: 1.25rem;
+  }
+}
+
+@keyframes bdGrow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.bd-focus-mobile,
+.bd-focus-tablet,
+.bd-focus-desktop, .bd-focus-cube-1, .bd-focus-cube-2, .bd-focus-cube-3 {
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.14, 0.71, 0.29, 0.86);
+  transform-origin: center center;
+}
+
+.bd-focus-mobile,
+.bd-focus-tablet,
+.bd-focus-desktop {
+  animation-name: bdGrow;
+  transform-origin: bottom center;
+}
+
+.bd-focus-tablet {
+  animation-delay: 250ms;
+}
+
+.bd-focus-desktop {
+  animation-delay: 500ms;
+}
+
+@keyframes moveCube1 {
+  0% {
+    transform: translate3d(0, -50px, 0);
+    opacity: 0;
+  }
+  25%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveCube2 {
+  0% {
+    transform: translate3d(-40px, 30px, 0);
+    opacity: 0;
+  }
+  25%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveCube3 {
+  0% {
+    transform: translate3d(40px, 30px, 0);
+    opacity: 0;
+  }
+  25%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.bd-focus-cube-1, .bd-focus-cube-2, .bd-focus-cube-3 {
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 2000ms;
+}
+
+.bd-focus-cube-1 {
+  animation-name: moveCube1;
+}
+
+.bd-focus-cube-2 {
+  animation-name: moveCube2;
+  animation-delay: 250ms;
+}
+
+.bd-focus-cube-3 {
+  animation-name: moveCube3;
+  animation-delay: 500ms;
+}
+
+@keyframes bdJellyGrow {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  3.4% {
+    transform: matrix3d(1.013, 0, 0, 0, 0, 1.016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    transform: matrix3d(1.018, 0, 0, 0, 0, 1.024, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  6.81% {
+    transform: matrix3d(1.026, 0, 0, 0, 0, 1.036, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    transform: matrix3d(1.035, 0, 0, 0, 0, 1.047, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  10.21% {
+    transform: matrix3d(1.038, 0, 0, 0, 0, 1.049, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  13.61% {
+    transform: matrix3d(1.045, 0, 0, 0, 0, 1.053, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    transform: matrix3d(1.046, 0, 0, 0, 0, 1.053, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  17.52% {
+    transform: matrix3d(1.048, 0, 0, 0, 0, 1.05, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    transform: matrix3d(1.048, 0, 0, 0, 0, 1.047, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  21.32% {
+    transform: matrix3d(1.048, 0, 0, 0, 0, 1.043, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    transform: matrix3d(1.046, 0, 0, 0, 0, 1.038, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  25.23% {
+    transform: matrix3d(1.045, 0, 0, 0, 0, 1.038, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.03% {
+    transform: matrix3d(1.043, 0, 0, 0, 0, 1.036, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    transform: matrix3d(1.042, 0, 0, 0, 0, 1.036, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    transform: matrix3d(1.039, 0, 0, 0, 0, 1.038, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  36.74% {
+    transform: matrix3d(1.039, 0, 0, 0, 0, 1.039, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    transform: matrix3d(1.038, 0, 0, 0, 0, 1.041, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  44.44% {
+    transform: matrix3d(1.039, 0, 0, 0, 0, 1.041, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    transform: matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  59.86% {
+    transform: matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    transform: matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  75.28% {
+    transform: matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    transform: matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  90.69% {
+    transform: matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    transform: matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   }
 }
