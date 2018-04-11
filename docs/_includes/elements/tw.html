@@ -1,6 +1,6 @@
 {% assign twUrl = "https://twitter.com/" | append: include.tweet.username | append: "/status/" | append: include.tweet.id %}
 
-<article class="bd-tw {{ include.modifier }}">
+<article class="bd-tw {{ include.modifier }} {% if include.drawing_id %}bd-has-drawing{% endif %}">
   <header class="bd-tw-header">
     <a class="bd-tw-author" href="{{ twUrl }}" target="_blank">
       <figure class="bd-tw-avatar">
@@ -54,4 +54,12 @@
       </a>
     </li>
   </ul>
+
+  {% if include.drawing_id %}
+    {% include elements/drawing.html
+      id=include.drawing_id
+      width=include.drawing_width
+      height=include.drawing_height
+    %}
+  {% endif %}
 </article>
