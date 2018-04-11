@@ -33,16 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const anchors_el = document.getElementById('anchors');
   const anchor_links_el = getAll('.bd-anchor-link');
 
+  let anchors_by_id = {};
+  let anchors_order = [];
+  let anchor_nav_els = [];
+
   if (anchors_el && anchor_links_el.length > 0) {
     const anchors_el_list = anchors_el.querySelector('.bd-anchors-list');
 
-    anchor_links_el.forEach(el => {
+    anchor_links_el.forEach((el, index) => {
       const link_target = el.getAttribute('href');
       const link_text = el.previousElementSibling.innerText;
 
       if (link_text != '') {
         const item_el = createAnchorLink(link_text, link_target);
         anchors_el_list.appendChild(item_el);
+
+        const anchor_key = link_target.substring(1); // #target -> target
+        anchors_by_id[anchor_key] = {
+          id: anchor_key,
+          index,
+          target: link_target,
+          text: link_text,
+          nav_el: item_el,
+        };
+        anchors_order.push(anchor_key);
+        anchor_nav_els.push(item_el);
       }
     });
 
@@ -272,17 +287,75 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function whenScrolling(lastY, currentY) {
+  // Anchors highlight
+
+  let past_anchors = [];
+  anchor_links_el.reverse();
+  const trigger_offset = 24 ; // In pixels
+  const typo_el = document.getElementById('typo');
+
+  function whenScrolling() {
     if (anchors_ref_el) {
       const bounds = anchors_ref_el.getBoundingClientRect();
+      const anchors_height = anchors_el.clientHeight;
+      const typo_bounds = typo_el.getBoundingClientRect();
+      const typo_height = typo_el.clientHeight;
 
-      if (bounds.top < 1) {
+      if (bounds.top < 1 && typo_bounds.top - anchors_height + typo_height > 0) {
         anchors_el.classList.add('is-pinned');
       } else {
         anchors_el.classList.remove('is-pinned');
       }
+
+      anchor_links_el.some(el => {
+        const bounds = el.getBoundingClientRect();
+        const href = el.getAttribute('href');
+        const key = href.substring(1); // #target -> target
+
+        if (bounds.top < 1 + trigger_offset && past_anchors.indexOf(key) == -1) {
+          past_anchors.push(key);
+          highlightAnchor();
+          return;
+        } else if (bounds.top > 0 + trigger_offset && past_anchors.indexOf(key) != -1) {
+          removeFromArray(past_anchors, key);
+          highlightAnchor();
+          return;
+        }
+      });
     }
   }
+
+  function highlightAnchor() {
+    const future_anchors = anchors_order.diff(past_anchors);
+    let highest_index = -1;
+    let highest_anchor_key = '';
+
+    if (past_anchors.length > 0) {
+      past_anchors.forEach((key, index) => {
+        const anchor = anchors_by_id[key];
+        anchor.nav_el.className = 'is-past';
+
+        // Keep track of the bottom most item
+        if (anchor.index > highest_index) {
+          highest_index = anchor.index;
+          highest_anchor_key = key;
+        }
+      });
+
+      if (highest_anchor_key in anchors_by_id) {
+        anchors_by_id[highest_anchor_key].nav_el.className = 'is-current';
+      }
+    }
+
+    if (future_anchors.length > 0) {
+      future_anchors.forEach((key, index) => {
+        const anchor = anchors_by_id[key];
+        anchor.nav_el.className = '';
+      });
+    }
+  }
+
+  // Scroll
 
   function upOrDown(lastY, currentY) {
     if (currentY >= lastY) {
@@ -362,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!ticking) {
       window.requestAnimationFrame(function() {
         // upOrDown(lastY, currentY);
-        whenScrolling(lastY, currentY);
+        whenScrolling();
         ticking = false;
         lastY = currentY;
       });
@@ -370,5 +443,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ticking = true;
   });
+
+  // Utils
+
+  function removeFromArray(array, value) {
+    if (array.includes(value)) {
+      const value_index = array.indexOf(value);
+      array.splice(value_index, 1);
+    }
+
+    return array;
+  }
+
+  Array.prototype.diff = function(a) {
+    return this.filter(function(i) {return a.indexOf(i) < 0;});
+  };
 
 });
