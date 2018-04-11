@@ -39,6 +39,7 @@ breadcrumb:
           <div class="bd-links">
             {% for post in site.posts %}
               {% assign subtitle = post.date | date_to_string %}
+              {% assign more = post.introduction | markdownify | strip_html %}
               {%
                 include elements/link.html
                 url=post.url
@@ -47,7 +48,8 @@ breadcrumb:
                 icon_regular=post.icon_regular
                 icon=post.icon
                 name=post.name
-                subtitle=subtitle
+                subtitle=more
+                more=subtitle
               %}
             {% endfor %}
           </div>
