@@ -28,59 +28,87 @@ $duration: 500ms
 $delay: 250ms
 $wait: 500ms
 
+$focus-delay: 1s
+
 %bd-focus-animation
+  animation-duration: $duration
   animation-fill-mode: both
   animation-timing-function: $cubic-less-dramatic
   transform-origin: center center
 
 $delay-subtitle: $delay / 2
 
+// Intro
+.intro-title
+  @extend %bd-focus-animation
+  animation-name: bdSlideDown
+
+.intro-ghbtns,
+.intro-author
+  @extend %bd-focus-animation
+  animation-delay: $focus-delay
+  animation-duration: $duration * 2
+  animation-name: bdFadeIn
+
+.intro-npm
+  @extend %bd-focus-animation
+  animation-delay: $delay
+  animation-name: bdSlowIn
+
+.intro-buttons .button
+  @extend %bd-focus-animation
+  animation-name: bdSlowIn
+  &:first-child
+    animation-delay: $delay * 2
+  &:last-child
+    animation-delay: $delay * 3
+
 // Titles
 .bd-focus-item
   .title
     @extend %bd-focus-animation
-    animation-duration: $duration
     animation-name: bdSlideDown
   .subtitle
     @extend %bd-focus-animation
-    animation-duration: $duration
     animation-name: bdSlideUp
   &:nth-child(1)
+    .title
+      animation-delay: $focus-delay
     .subtitle
-      animation-delay: $delay-subtitle
+      animation-delay: $focus-delay + $delay-subtitle
   &:nth-child(2)
     .title
-      animation-delay: $wait
+      animation-delay: $focus-delay + $wait
     .subtitle
-      animation-delay: $wait + $delay-subtitle
+      animation-delay: $focus-delay + $wait + $delay-subtitle
   &:nth-child(3)
     .title
-      animation-delay: ($wait * 2)
+      animation-delay: $focus-delay + ($wait * 2)
     .subtitle
-      animation-delay: ($wait * 2) + $delay-subtitle
+      animation-delay: $focus-delay + ($wait * 2) + $delay-subtitle
   &:nth-child(4)
     .title
-      animation-delay: ($wait * 3)
+      animation-delay: $focus-delay + ($wait * 3)
     .subtitle
-      animation-delay: ($wait * 3) + $delay-subtitle
+      animation-delay: $focus-delay + ($wait * 3) + $delay-subtitle
 
 // Devices
 %bd-focus-animation-device
   @extend %bd-focus-animation
-  animation-duration: $duration
   animation-name: bdGrow
   transform-origin: bottom center
 
 .bd-focus-mobile
   @extend %bd-focus-animation-device
+  animation-delay: $focus-delay
 
 .bd-focus-tablet
   @extend %bd-focus-animation-device
-  animation-delay: $delay
+  animation-delay: $focus-delay + $delay
 
 .bd-focus-desktop
   @extend %bd-focus-animation-device
-  animation-delay: $delay * 2
+  animation-delay: $focus-delay + ($delay * 2)
 
 // Cubes
 $cube-factor: 10px
@@ -117,20 +145,34 @@ $cube-factor: 10px
 
 .bd-focus-cube-1
   @extend %bd-focus-animation-cube
-  animation-delay: $wait
+  animation-delay: $focus-delay + $wait
   animation-name: bdCube1
 
 .bd-focus-cube-2
   @extend %bd-focus-animation-cube
   animation-name: bdCube2
-  animation-delay: $wait + $delay
+  animation-delay: $focus-delay + $wait + $delay
 
 .bd-focus-cube-3
   @extend %bd-focus-animation-cube
   animation-name: bdCube3
-  animation-delay: $wait + ($delay * 2)
+  animation-delay: $focus-delay + $wait + ($delay * 2)
 
-@keyframes fadeIn
+@keyframes bdFadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes bdSlowIn
+  from
+    opacity: 0
+    transform: scale(0.9)
+  to
+    opacity: 1
+    transform: scale(1)
+
+@keyframes bdScaleIn
   from
     opacity: 0
     transform: scale(0)
@@ -140,13 +182,12 @@ $cube-factor: 10px
 
 .bd-focus-css3
   @extend %bd-focus-animation
-  animation-delay: $wait * 2
-  animation-duration: $duration
-  animation-name: fadeIn
+  animation-delay: $focus-delay + ($wait * 2)
+  animation-name: bdScaleIn
 
 .bd-focus-github
   @extend %bd-focus-animation
-  animation-delay: $wait * 3
+  animation-delay: $focus-delay + ($wait * 3)
   animation-duration: $duration * 3
   animation-name: bdJellyPop
 

@@ -13169,62 +13169,97 @@ svg {
   }
 }
 
-.bd-focus-item .title, .bd-focus-item .subtitle, .bd-focus-mobile, .bd-focus-tablet, .bd-focus-desktop, .bd-focus-cube-1, .bd-focus-cube-2, .bd-focus-cube-3, .bd-focus-css3, .bd-focus-github {
+.intro-title, .intro-ghbtns,
+.intro-author, .intro-npm, .intro-buttons .button, .bd-focus-item .title, .bd-focus-item .subtitle, .bd-focus-mobile, .bd-focus-tablet, .bd-focus-desktop, .bd-focus-cube-1, .bd-focus-cube-2, .bd-focus-cube-3, .bd-focus-css3, .bd-focus-github {
+  animation-duration: 500ms;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.14, 0.71, 0.29, 0.86);
   transform-origin: center center;
 }
 
+.intro-title {
+  animation-name: bdSlideDown;
+}
+
+.intro-ghbtns,
+.intro-author {
+  animation-delay: 1s;
+  animation-duration: 1000ms;
+  animation-name: bdFadeIn;
+}
+
+.intro-npm {
+  animation-delay: 250ms;
+  animation-name: bdSlowIn;
+}
+
+.intro-buttons .button {
+  animation-name: bdSlowIn;
+}
+
+.intro-buttons .button:first-child {
+  animation-delay: 500ms;
+}
+
+.intro-buttons .button:last-child {
+  animation-delay: 750ms;
+}
+
 .bd-focus-item .title {
-  animation-duration: 500ms;
   animation-name: bdSlideDown;
 }
 
 .bd-focus-item .subtitle {
-  animation-duration: 500ms;
   animation-name: bdSlideUp;
 }
 
+.bd-focus-item:nth-child(1) .title {
+  animation-delay: 1s;
+}
+
 .bd-focus-item:nth-child(1) .subtitle {
-  animation-delay: 125ms;
+  animation-delay: 1.125s;
 }
 
 .bd-focus-item:nth-child(2) .title {
-  animation-delay: 500ms;
+  animation-delay: 1.5s;
 }
 
 .bd-focus-item:nth-child(2) .subtitle {
-  animation-delay: 625ms;
+  animation-delay: 1.625s;
 }
 
 .bd-focus-item:nth-child(3) .title {
-  animation-delay: 1000ms;
+  animation-delay: 2s;
 }
 
 .bd-focus-item:nth-child(3) .subtitle {
-  animation-delay: 1125ms;
+  animation-delay: 2.125s;
 }
 
 .bd-focus-item:nth-child(4) .title {
-  animation-delay: 1500ms;
+  animation-delay: 2.5s;
 }
 
 .bd-focus-item:nth-child(4) .subtitle {
-  animation-delay: 1625ms;
+  animation-delay: 2.625s;
 }
 
 .bd-focus-mobile, .bd-focus-tablet, .bd-focus-desktop {
-  animation-duration: 500ms;
   animation-name: bdGrow;
   transform-origin: bottom center;
 }
 
+.bd-focus-mobile {
+  animation-delay: 1s;
+}
+
 .bd-focus-tablet {
-  animation-delay: 250ms;
+  animation-delay: 1.25s;
 }
 
 .bd-focus-desktop {
-  animation-delay: 500ms;
+  animation-delay: 1.5s;
 }
 
 @keyframes bdCube1 {
@@ -13267,21 +13302,41 @@ svg {
 }
 
 .bd-focus-cube-1 {
-  animation-delay: 500ms;
+  animation-delay: 1.5s;
   animation-name: bdCube1;
 }
 
 .bd-focus-cube-2 {
   animation-name: bdCube2;
-  animation-delay: 750ms;
+  animation-delay: 1.75s;
 }
 
 .bd-focus-cube-3 {
   animation-name: bdCube3;
-  animation-delay: 1000ms;
+  animation-delay: 2s;
 }
 
-@keyframes fadeIn {
+@keyframes bdFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bdSlowIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bdScaleIn {
   from {
     opacity: 0;
     transform: scale(0);
@@ -13293,13 +13348,12 @@ svg {
 }
 
 .bd-focus-css3 {
-  animation-delay: 1000ms;
-  animation-duration: 500ms;
-  animation-name: fadeIn;
+  animation-delay: 2s;
+  animation-name: bdScaleIn;
 }
 
 .bd-focus-github {
-  animation-delay: 1500ms;
+  animation-delay: 2.5s;
   animation-duration: 1500ms;
   animation-name: bdJellyPop;
 }
