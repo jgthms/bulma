@@ -1,5 +1,8 @@
 $navbar-background-color: $white !default
+$navbar-box-shadow-size: 0 2px 0 0 !default
+$navbar-box-shadow-color: $background !default
 $navbar-height: 3.25rem !default
+$navbar-padding: 1rem 2rem !default
 $navbar-z: 30 !default
 $navbar-fixed-z: 30 !default
 
@@ -19,7 +22,7 @@ $navbar-tab-active-border-bottom-style: solid !default
 $navbar-tab-active-border-bottom-width: 3px !default
 
 $navbar-dropdown-background-color: $white !default
-$navbar-dropdown-border-top: 1px solid $border !default
+$navbar-dropdown-border-top: 2px solid $border !default
 $navbar-dropdown-offset: -4px !default
 $navbar-dropdown-arrow: $link !default
 $navbar-dropdown-radius: $radius-large !default
@@ -44,7 +47,7 @@ $navbar-divider-height: 2px !default
 
 .navbar
   background-color: $navbar-background-color
-  box-shadow: 0 2px 0 0 $background
+  box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color
   min-height: $navbar-height
   position: relative
   z-index: $navbar-z
@@ -153,7 +156,7 @@ body
 
 a.navbar-item,
 .navbar-link
-  border-radius: $radius
+  // background-color: coral
   cursor: pointer
   &:hover,
   &.is-active
@@ -254,11 +257,18 @@ a.navbar-item,
   .navbar-menu,
   .navbar-start,
   .navbar-end
-    align-items: center
+    align-items: stretch
     display: flex
   .navbar
     min-height: $navbar-height
-    padding: 1rem 2rem
+    &.is-spaced
+      padding: $navbar-padding
+      .navbar-start,
+      .navbar-end
+        align-items: center
+      a.navbar-item,
+      .navbar-link
+        border-radius: $radius
     &.is-transparent
       a.navbar-item,
       .navbar-link
@@ -302,6 +312,7 @@ a.navbar-item,
     &.is-hoverable:hover
       .navbar-dropdown
         display: block
+        .navbar.is-spaced &,
         &.is-boxed
           opacity: 1
           pointer-events: auto
@@ -344,6 +355,7 @@ a.navbar-item,
       &.is-active
         background-color: $navbar-dropdown-item-active-background-color
         color: $navbar-dropdown-item-active-color
+    .navbar.is-spaced &,
     &.is-boxed
       border-radius: $navbar-dropdown-boxed-radius
       border-top: none

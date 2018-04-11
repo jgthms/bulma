@@ -6496,7 +6496,6 @@ body.has-navbar-fixed-bottom {
 
 a.navbar-item,
 .navbar-link {
-  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -6631,12 +6630,22 @@ a.navbar-item:hover, a.navbar-item.is-active,
   .navbar-menu,
   .navbar-start,
   .navbar-end {
-    align-items: center;
+    align-items: stretch;
     display: flex;
   }
   .navbar {
     min-height: 3.25rem;
+  }
+  .navbar.is-spaced {
     padding: 1rem 2rem;
+  }
+  .navbar.is-spaced .navbar-start,
+  .navbar.is-spaced .navbar-end {
+    align-items: center;
+  }
+  .navbar.is-spaced a.navbar-item,
+  .navbar.is-spaced .navbar-link {
+    border-radius: 4px;
   }
   .navbar.is-transparent a.navbar-item:hover, .navbar.is-transparent a.navbar-item.is-active,
   .navbar.is-transparent .navbar-link:hover,
@@ -6672,7 +6681,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
     transform: rotate(135deg) translate(0.25em, -0.25em);
   }
   .navbar-item.has-dropdown-up .navbar-dropdown {
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 2px solid #dbdbdb;
     border-radius: 6px 6px 0 0;
     border-top: none;
     bottom: 100%;
@@ -6682,7 +6691,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
   .navbar-item.is-active .navbar-dropdown, .navbar-item.is-hoverable:hover .navbar-dropdown {
     display: block;
   }
-  .navbar-item.is-active .navbar-dropdown.is-boxed, .navbar-item.is-hoverable:hover .navbar-dropdown.is-boxed {
+  .navbar.is-spaced .navbar-item.is-active .navbar-dropdown, .navbar-item.is-active .navbar-dropdown.is-boxed, .navbar.is-spaced .navbar-item.is-hoverable:hover .navbar-dropdown, .navbar-item.is-hoverable:hover .navbar-dropdown.is-boxed {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
@@ -6708,7 +6717,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
     background-color: white;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-    border-top: 1px solid #dbdbdb;
+    border-top: 2px solid #dbdbdb;
     box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
     display: none;
     font-size: 0.875rem;
@@ -6733,7 +6742,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
     background-color: whitesmoke;
     color: #3273dc;
   }
-  .navbar-dropdown.is-boxed {
+  .navbar.is-spaced .navbar-dropdown, .navbar-dropdown.is-boxed {
     border-radius: 6px;
     border-top: none;
     box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
