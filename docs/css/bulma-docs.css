@@ -12834,12 +12834,15 @@ svg {
 }
 
 .bd-banner {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  border-radius: 6px;
+  display: block;
   overflow: hidden;
-  padding: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
   position: relative;
+  text-align: center;
+  transition-duration: 86ms;
+  transition-property: border-color, color;
 }
 
 .bd-banner strong {
@@ -12847,7 +12850,7 @@ svg {
 }
 
 .bd-banner .tag {
-  margin-right: 0.5em;
+  margin-bottom: 0.25em;
 }
 
 .bd-banner.is-patreon {
@@ -12856,8 +12859,8 @@ svg {
 }
 
 .bd-banner.is-fortyfour {
-  background-color: #5f45bb;
-  color: white;
+  background-color: white;
+  border: 2px solid whitesmoke;
 }
 
 .bd-banner .button {
@@ -12867,6 +12870,15 @@ svg {
   transition-property: -webkit-transform;
   transition-property: transform;
   transition-property: transform, -webkit-transform;
+}
+
+.bd-banner:hover {
+  border-color: #3273dc;
+  color: #3273dc;
+}
+
+.bd-banner:hover .bd-banner-title {
+  color: currentColor;
 }
 
 .bd-banner:hover .button {
@@ -12881,10 +12893,30 @@ svg {
   opacity: 0.5;
 }
 
-.bd-banner-text {
+.bd-banner-title {
+  color: #363636;
+  font-size: 1.25em;
+  font-weight: 600;
   line-height: 1.25;
-  margin-right: 0.5rem;
+  margin-bottom: 0.25em;
+}
+
+.bd-banner-text {
+  font-size: 0.875em;
+  line-height: 1.25;
+  padding: 0 0.5em;
   position: relative;
+}
+
+.bd-banner-image {
+  height: 176px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.bd-banner-image img {
+  display: inline-block;
+  vertical-align: top;
 }
 
 .bd-banner-button {
@@ -12901,12 +12933,6 @@ svg {
 
 .hero.bd-is-patreon {
   background-color: #f96854;
-}
-
-@media screen and (min-width: 480px) {
-  .bd-banner-text {
-    margin-right: 1rem;
-  }
 }
 
 .bd-sponsors {
