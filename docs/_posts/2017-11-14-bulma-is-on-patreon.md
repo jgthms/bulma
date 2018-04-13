@@ -2,7 +2,7 @@
 title: "Bulma is on Patreon!"
 layout: post
 introduction: "Support Bulma's future"
-color: "primary"
+color: "patreon"
 name: "Bulma on Patreon"
 icon: "patreon"
 icon_brand: true

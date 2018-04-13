@@ -1,0 +1,61 @@
+{% capture content %}
+
+  {% assign anchor_name = include.anchor_name | default: 'Variables' %}
+  {% assign tab         = include.tab         | default: page.doc-tab %}
+  {% assign subtab      = include.subtab      | default: page.doc-subtab %}
+  {% assign type        = include.type        | default: tab %}
+  {% assign data        = include.data        | default: site.data.variables[tab][subtab] %}
+  {% assign variables   = include.variables   | default: data.vars %}
+  {% assign table_class = include.table_class | default: 'is-bordered' %}
+
+  {% if include.custom_message %}
+    {{ include.custom_message }}
+  {% else %}
+    {% assign variables_link_text = "these variables" %}
+    {% capture variables_link %}
+      {% if data.file_url %}
+        <a href="{{ data.file_url }}" target="_blank">{{ variables_link_text }}</a>
+      {% else %}
+        {{ variables_link_text }}
+      {% endif %}
+    {% endcapture %}
+    You can use {{ variables_link | strip }} to <strong>customize</strong> this {{ type }}. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+  {% endif %}
+
+{% endcapture %}
+
+{% include elements/anchor.html name=anchor_name %}
+
+<div class="content">
+  <p>{{ content | strip }}</p>
+</div>
+
+<div class="table-container">
+  <table class="table {{ table_class }}">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>Name</th>
+        <th>Default value</th>
+      </tr>
+    </tfoot>
+    <tbody>
+      {% for variable_hash in variables %}
+        {% assign variable = variable_hash[1] %}
+        <tr>
+          <td >
+            <code style="white-space: nowrap;">{{ variable.name }}</code>
+          </td>
+          <td>
+            <code>{{ variable.value }}</code>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

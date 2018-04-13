@@ -3,119 +3,112 @@ title: Variables
 layout: documentation
 doc-tab: overview
 doc-subtab: variables
+breadcrumb:
+- home
+- documentation
+- overview
+- overview-variables
 ---
 
-{% include subnav/subnav-overview.html %}
+{% assign initial_variables = site.data.variables.utilities.initial-variables %}
+{% assign initial_vars      = initial_variables.vars %}
+{% assign derived_variables = site.data.variables.utilities.derived-variables %}
+{% assign derived_vars      = derived_variables.vars %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Variables</h1>
-    <h2 class="subtitle">Easily <strong>customize</strong> Bulma to match your design</h2>
-
-    <hr>
-
-    {% assign initial_variables = site.data.variables.utilities.initial-variables %}
-    {% assign initial_vars      = initial_variables.vars %}
-    {% assign derived_variables = site.data.variables.utilities.derived-variables %}
-    {% assign derived_vars      = derived_variables.vars %}
-
-    <div class="content">
-      <p>Bulma has <strong>two</strong> variable files divided into <strong>4</strong> sections:</p>
-      <ol>
+<div class="content">
+  <p>Bulma has <strong>two</strong> variable files divided into <strong>4</strong> sections:</p>
+  <ol>
+    <li>
+      <strong>Initial variables</strong>: where you define variables by <strong>literal value</strong>, like:
+      <ul>
+        <li><strong>colors</strong>: <code>{{ initial_vars.blue.name }}: {{ initial_vars.blue.value }}</code></li>
+        <li><strong>font sizes</strong>: <code>{{ initial_vars.size-1.name }}: {{ initial_vars.size-1.value }}</code></li>
+        <li><strong>dimensions</strong>: <code>{{ initial_vars.gap.name }}: {{ initial_vars.gap.value }}</code></li>
+        <li><strong>other values</strong>: <code>{{ initial_vars.easing.name }}: {{ initial_vars.easing.value }}</code> or <code>{{ initial_vars.radius-large.name }}: {{ initial_vars.radius-large.value }}</code></li>
+      </ul>
+    </li>
+    <li>
+      <strong>Derived variables</strong> where variables are <strong>calculated</strong> from the values set in the previous file. For example, you can have:
+      <ul>
         <li>
-          <strong>Initial variables</strong>: where you define variables by <strong>literal value</strong>, like:
+          <strong>Primary colors</strong> derived from the initial variables:
           <ul>
-            <li><strong>colors</strong>: <code>{{ initial_vars.blue.name }}: {{ initial_vars.blue.value }}</code></li>
-            <li><strong>font sizes</strong>: <code>{{ initial_vars.size-1.name }}: {{ initial_vars.size-1.value }}</code></li>
-            <li><strong>dimensions</strong>: <code>{{ initial_vars.gap.name }}: {{ initial_vars.gap.value }}</code></li>
-            <li><strong>other values</strong>: <code>{{ initial_vars.easing.name }}: {{ initial_vars.easing.value }}</code> or <code>{{ initial_vars.radius-large.name }}: {{ initial_vars.radius-large.value }}</code></li>
+            <li><code>{{ derived_vars.primary.name }}: {{ derived_vars.primary.value }}</code></li>
+            <li><code>{{ derived_vars.link.name }}: {{ derived_vars.link.value }}</code></li>
+            <li><code>{{ derived_vars.info.name }}: {{ derived_vars.info.value }}</code></li>
+            <li><code>{{ derived_vars.success.name }}: {{ derived_vars.success.value }}</code></li>
+            <li><code>{{ derived_vars.warning.name }}: {{ derived_vars.warning.value }}</code></li>
+            <li><code>{{ derived_vars.danger.name }}: {{ derived_vars.danger.value }}</code></li>
+            <li><code>{{ derived_vars.dark.name }}: {{ derived_vars.dark.value }}</code></li>
+            <li><code>{{ derived_vars.text.name }}: {{ derived_vars.text.value }}</code></li>
           </ul>
         </li>
+        <li><code>{{ derived_vars.background.name }}: {{ derived_vars.background.value }}</code>: a general background color</li>
+        <li><code>{{ derived_vars.link.name }}: {{ derived_vars.link.value }}</code>: the links use the primary color</li>
+        <li><code>{{ derived_vars.family-primary.name }}: {{ derived_vars.family-primary.value }}</code>: the primary font family is the sans-serif one</li>
         <li>
-          <strong>Derived variables</strong> where variables are <strong>calculated</strong> from the values set in the previous file. For example, you can have:
+          <strong>Lists and maps</strong> which are collections of already defined variables:
           <ul>
-            <li>
-              <strong>Primary colors</strong> derived from the initial variables:
-              <ul>
-                <li><code>{{ derived_vars.primary.name }}: {{ derived_vars.primary.value }}</code></li>
-                <li><code>{{ derived_vars.link.name }}: {{ derived_vars.link.value }}</code></li>
-                <li><code>{{ derived_vars.info.name }}: {{ derived_vars.info.value }}</code></li>
-                <li><code>{{ derived_vars.success.name }}: {{ derived_vars.success.value }}</code></li>
-                <li><code>{{ derived_vars.warning.name }}: {{ derived_vars.warning.value }}</code></li>
-                <li><code>{{ derived_vars.danger.name }}: {{ derived_vars.danger.value }}</code></li>
-                <li><code>{{ derived_vars.dark.name }}: {{ derived_vars.dark.value }}</code></li>
-                <li><code>{{ derived_vars.text.name }}: {{ derived_vars.text.value }}</code></li>
-              </ul>
-            </li>
-            <li><code>{{ derived_vars.background.name }}: {{ derived_vars.background.value }}</code>: a general background color</li>
-            <li><code>{{ derived_vars.link.name }}: {{ derived_vars.link.value }}</code>: the links use the primary color</li>
-            <li><code>{{ derived_vars.family-primary.name }}: {{ derived_vars.family-primary.value }}</code>: the primary font family is the sans-serif one</li>
-            <li>
-              <strong>Lists and maps</strong> which are collections of already defined variables:
-              <ul>
-                <li><code>{{ derived_vars.colors.name }}: {{ derived_vars.colors.value }}</code></li>
-                <li><code>{{ derived_vars.shades.name }}: {{ derived_vars.shades.value }}</code></li>
-                <li><code>{{ derived_vars.sizes.name }}: {{ derived_vars.sizes.value }}</code></li>
-              </ul>
-            </li>
+            <li><code>{{ derived_vars.colors.name }}: {{ derived_vars.colors.value }}</code></li>
+            <li><code>{{ derived_vars.shades.name }}: {{ derived_vars.shades.value }}</code></li>
+            <li><code>{{ derived_vars.sizes.name }}: {{ derived_vars.sizes.value }}</code></li>
           </ul>
         </li>
-      </ol>
-      <p>
-        To <strong>override</strong> any of these variables, just set them <em>before</em> importing Bulma.
-      </p>
-    </div>
+      </ul>
+    </li>
+  </ol>
+  <p>
+    To <strong>override</strong> any of these variables, just set them <em>before</em> importing Bulma.
+  </p>
+</div>
 
-    {% include anchor.html name="Initial variables" %}
+{% include elements/anchor.html name="Initial variables" %}
 
-    <div class="content">
-      <p>
-        These are <a href="{{ initial_variables.file_url }}" target="_blank">variables</a> with a <strong>literal</strong> value.
-      </p>
-    </div>
+<div class="content">
+  <p>
+    These are <a href="{{ initial_variables.file_url }}" target="_blank">variables</a> with a <strong>literal</strong> value.
+  </p>
+</div>
 
-    <table class="table is-bordered is-striped">
-      <tbody>
-      {% for variable_hash in initial_vars %}
-        {% assign variable    = variable_hash[1] %}
-        {% assign starts_with = variable.value | slice: 0, 3 %}
-        <tr>
-          <td>
-            <code style="white-space: nowrap;">{{ variable.name }}</code>
-          </td>
-          <td>
-            {% if starts_with == 'hsl' %}
-              <span class="bd-color" style="background: {{ variable.value }};"></span>
-            {% endif %}
-            <code>{{ variable.value }}</code>
-          </td>
-        </tr>
-      {% endfor %}
-      <tbody>
-    </table>
+<table class="table is-bordered is-striped">
+  <tbody>
+  {% for variable_hash in initial_vars %}
+    {% assign variable    = variable_hash[1] %}
+    {% assign starts_with = variable.value | slice: 0, 3 %}
+    <tr>
+      <td>
+        <code style="white-space: nowrap;">{{ variable.name }}</code>
+      </td>
+      <td>
+        {% if starts_with == 'hsl' %}
+          <span class="bd-color" style="background: {{ variable.value }};"></span>
+        {% endif %}
+        <code>{{ variable.value }}</code>
+      </td>
+    </tr>
+  {% endfor %}
+  <tbody>
+</table>
 
-    {% capture custom_message %}
-      These are <a href="{{ derived_variables.file_url }}" target="_blank">variables</a> with a value that <strong>references</strong> another variable.
-    {% endcapture %}
-    {%
-      include variables.html
-        anchor_name    = 'Derived variables'
-        data           = derived_variables
-        custom_message = custom_message
-        table_class    = 'is-bordered is-striped'
-    %}
+{% capture custom_message %}
+  These are <a href="{{ derived_variables.file_url }}" target="_blank">variables</a> with a value that <strong>references</strong> another variable.
+{% endcapture %}
+{%
+  include elements/variables.html
+    anchor_name    = 'Derived variables'
+    data           = derived_variables
+    custom_message = custom_message
+    table_class    = 'is-bordered is-striped'
+%}
 
-    {% capture custom_message %}
-      You can use the following <a href="{{ site.data.variables.base.generic.file_url }}" target="_blank">generic variables</a> for general <strong>customization</strong>. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
-    {% endcapture %}
-    {%
-      include variables.html
-        anchor_name    = 'Generic variables'
-        tab            = 'base'
-        subtab         = 'generic'
-        custom_message = custom_message
-        table_class    = 'is-bordered is-striped'
-    %}
-
-  </div>
-</section>
+{% capture custom_message %}
+  You can use the following <a href="{{ site.data.variables.base.generic.file_url }}" target="_blank">generic variables</a> for general <strong>customization</strong>. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+{% endcapture %}
+{%
+  include elements/variables.html
+    anchor_name    = 'Generic variables'
+    tab            = 'base'
+    subtab         = 'generic'
+    custom_message = custom_message
+    table_class    = 'is-bordered is-striped'
+%}

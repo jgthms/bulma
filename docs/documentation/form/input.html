@@ -3,6 +3,11 @@ title: Input
 layout: documentation
 doc-tab: form
 doc-subtab: input
+breadcrumb:
+- home
+- documentation
+- form
+- form-input
 variables_keys:
 - input-color
 - input-background-color
@@ -21,6 +26,10 @@ variables_keys:
 - input-icon-color
 - input-icon-active-color
 - input-radius
+meta:
+  colors: true
+  sizes: true
+  variables: true
 ---
 
 {% capture input_example %}
@@ -239,288 +248,268 @@ variables_keys:
 </div>
 {% endcapture %}
 
-{% include subnav/subnav-form.html %}
+<div class="content">
+  <p>The following <strong>modifiers</strong> are supported:</p>
+  <ul>
+    <li>the <strong><a href="#colors">color</a></strong></li>
+    <li>the <strong><a href="#sizes">size</a></strong></li>
+    <li>the <strong><a href="#states">state</a></strong></li>
+  </ul>
+  <p>The following <a href="http://htmlreference.io/element/input/" target="_blank">type attributes</a> are supported:</p>
+  <ul>
+    <li><code>type="text"</code></li>
+    <li><code>type="password"</code></li>
+    <li><code>type="email"</code></li>
+    <li><code>type="tel"</code></li>
+  </ul>
+</div>
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Input</h1>
-    <h2 class="subtitle">
-      The <strong>text input</strong> and its variations
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=true
-      variables=true
-    %}
-
-    <hr>
-
-    <div class="content">
-      <p>The following <strong>modifiers</strong> are supported:</p>
-      <ul>
-        <li>the <strong><a href="#colors">color</a></strong></li>
-        <li>the <strong><a href="#sizes">size</a></strong></li>
-        <li>the <strong><a href="#states">state</a></strong></li>
-      </ul>
-      <p>The following <a href="http://htmlreference.io/element/input/" target="_blank">type attributes</a> are supported:</p>
-      <ul>
-        <li><code>type="text"</code></li>
-        <li><code>type="password"</code></li>
-        <li><code>type="email"</code></li>
-        <li><code>type="tel"</code></li>
-      </ul>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-        {{input_example}}
-      </div>
-      <div class="column is-half highlight-full">
-        {% highlight html %}{{input_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Colors" %}
-
-    <div class="columns">
-      <div class="column is-half">
-        {{colors_example}}
-      </div>
-      <div class="column is-half highlight-full">
-        {% highlight html %}{{colors_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Sizes" %}
-
-    <div class="columns">
-      <div class="column is-half">
-        {{sizes_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{sizes_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Styles" %}
-
-    {% include elements/new-tag.html version="0.6.2" %}
-
-    <div class="columns">
-      <div class="column is-half">
-        {{ rounded_example }}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{ rounded_example }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="States" %}
-
-    <h4 class="subtitle">Normal</h4>
-    <div class="columns">
-      <div class="column is-half">
-        {{normal_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{normal_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Hover</h4>
-    <div class="columns">
-      <div class="column is-half">
-        {{hover_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{hover_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Focus</h4>
-    <div class="columns">
-      <div class="column is-half">
-        {{focus_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{focus_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Loading</h4>
-    <div class="columns">
-      <div class="column is-half">
-        {{loading_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{loading_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-        <div class="content">
-          <p>
-            You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
-          </p>
-        </div>
-        {{loading_sizes_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{loading_sizes_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Disabled</h4>
-    <div class="columns">
-      <div class="column is-half">
-        {{disabled_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{disabled_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Readonly and static inputs</h4>
-    <p style="margin-bottom: 0.5rem;">
-      <span class="tag is-success">New!</span>
-      <span class="tag is-info">0.5.3</span>
-    </p>
-    <div class="content">
-      <p>
-        If you use the <code>readonly</code> HTML attribute, the input will look similar to a normal one, but is not editable and has no shadow.
-      </p>
-    </div>
-    <div class="columns">
-      <div class="column is-half">
-        {{ readonly_example }}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{ readonly_example }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="content">
-      <p>
-        If you <em>also</em> append the <code>is-static</code> modifier, it removes the background, border, shadow, and horizontal padding, while maintaining the <strong>vertical spacing</strong> so you can easily align the input in any context, like a horizontal form.
-      </p>
-    </div>
-
-    <div class="bd-example">
-      {{ static_example }}
-    </div>
-    {% highlight html %}{{ static_example }}{% endhighlight %}
-
-    <!-- Font Awesome Icons -->
-    {% include anchor.html name="With Font Awesome icons" %}
-
-    <div class="content">
-      <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
-      <ul>
-        <li>
-          <code>has-icons-left</code>
-        </li>
-        <li>
-          and/or <code>has-icons-right</code>
-        </li>
-      </ul>
-      <p>You also need to add a modifier on the <strong>icon</strong>:</p>
-      <ul>
-        <li>
-          <code>icon is-left</code> if <code>has-icons-left</code> is used
-        </li>
-        <li>
-          <code>icon is-right</code> if <code>has-icons-right</code> is used
-        </li>
-      </ul>
-      <p>The size of the <strong>input</strong> will define the size of the icon container.</p>
-    </div>
-    <div class="columns">
-      <div class="column is-half">
-        {{icons_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{icons_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-        <div class="content">
-          <p>
-            If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
-          </p>
-        </div>
-        {{has_icons_small_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_small_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-        {{has_icons_normal_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_normal_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-        {{has_icons_medium_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_medium_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-half">
-        {{has_icons_large_example}}
-      </div>
-      <div class="column is-half">
-        {% highlight html %}{{has_icons_large_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Variables" %}
-
-    <div class="content">
-      <p>
-        You can use <a href="{{ site.data.meta.github | append: '/blob/master/sass/elements/form.sass#L1,L23' }}" target="_blank">these variables</a> to <strong>customize</strong> this element. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
-      </p>
-    </div>
-
-    <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Default value</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th>Name</th>
-          <th>Default value</th>
-        </tr>
-      </tfoot>
-      <tbody>
-        {% for key in page.variables_keys %}
-          {% assign variable = site.data.variables.elements.form.vars[key] %}
-          <tr>
-            <td>
-              <code>{{ variable.name }}</code>
-            </td>
-            <td>
-              <code>{{ variable.value }}</code>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
+<div class="columns">
+  <div class="column is-half">
+    {{input_example}}
   </div>
-</section>
+  <div class="column is-half highlight-full">
+    {% highlight html %}{{input_example}}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Colors" %}
+
+<div class="columns">
+  <div class="column is-half">
+    {{colors_example}}
+  </div>
+  <div class="column is-half highlight-full">
+    {% highlight html %}{{colors_example}}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Sizes" %}
+
+<div class="columns">
+  <div class="column is-half">
+    {{sizes_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{sizes_example}}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Styles" %}
+
+{% include elements/new-tag.html version="0.6.2" %}
+
+<div class="columns">
+  <div class="column is-half">
+    {{ rounded_example }}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{ rounded_example }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="States" %}
+
+<h4 class="subtitle">Normal</h4>
+<div class="columns">
+  <div class="column is-half">
+    {{normal_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{normal_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Hover</h4>
+<div class="columns">
+  <div class="column is-half">
+    {{hover_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{hover_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Focus</h4>
+<div class="columns">
+  <div class="column is-half">
+    {{focus_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{focus_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Loading</h4>
+<div class="columns">
+  <div class="column is-half">
+    {{loading_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{loading_example}}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    <div class="content">
+      <p>
+        You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
+      </p>
+    </div>
+    {{loading_sizes_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{loading_sizes_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Disabled</h4>
+<div class="columns">
+  <div class="column is-half">
+    {{disabled_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{disabled_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Readonly and static inputs</h4>
+<p style="margin-bottom: 0.5rem;">
+  <span class="tag is-success">New!</span>
+  <span class="tag is-info">0.5.3</span>
+</p>
+<div class="content">
+  <p>
+    If you use the <code>readonly</code> HTML attribute, the input will look similar to a normal one, but is not editable and has no shadow.
+  </p>
+</div>
+<div class="columns">
+  <div class="column is-half">
+    {{ readonly_example }}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{ readonly_example }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="content">
+  <p>
+    If you <em>also</em> append the <code>is-static</code> modifier, it removes the background, border, shadow, and horizontal padding, while maintaining the <strong>vertical spacing</strong> so you can easily align the input in any context, like a horizontal form.
+  </p>
+</div>
+
+<div class="bd-example">
+  {{ static_example }}
+</div>
+{% highlight html %}{{ static_example }}{% endhighlight %}
+
+<!-- Font Awesome Icons -->
+{% include elements/anchor.html name="With Font Awesome icons" %}
+
+<div class="content">
+  <p>You can append one of 2 <strong>modifiers</strong> on a control:</p>
+  <ul>
+    <li>
+      <code>has-icons-left</code>
+    </li>
+    <li>
+      and/or <code>has-icons-right</code>
+    </li>
+  </ul>
+  <p>You also need to add a modifier on the <strong>icon</strong>:</p>
+  <ul>
+    <li>
+      <code>icon is-left</code> if <code>has-icons-left</code> is used
+    </li>
+    <li>
+      <code>icon is-right</code> if <code>has-icons-right</code> is used
+    </li>
+  </ul>
+  <p>The size of the <strong>input</strong> will define the size of the icon container.</p>
+</div>
+<div class="columns">
+  <div class="column is-half">
+    {{icons_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{icons_example}}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    <div class="content">
+      <p>
+        If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
+      </p>
+    </div>
+    {{has_icons_small_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{has_icons_small_example}}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    {{has_icons_normal_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{has_icons_normal_example}}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    {{has_icons_medium_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{has_icons_medium_example}}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    {{has_icons_large_example}}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{has_icons_large_example}}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Variables" %}
+
+<div class="content">
+  <p>
+    You can use <a href="{{ site.data.meta.github | append: '/blob/master/sass/elements/form.sass#L1,L23' }}" target="_blank">these variables</a> to <strong>customize</strong> this element. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+  </p>
+</div>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Name</th>
+      <th>Default value</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    {% for key in page.variables_keys %}
+      {% assign variable = site.data.variables.elements.form.vars[key] %}
+      <tr>
+        <td>
+          <code>{{ variable.name }}</code>
+        </td>
+        <td>
+          <code>{{ variable.value }}</code>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -2,23 +2,22 @@ $breadcrumb-item-color: $link !default
 $breadcrumb-item-hover-color: $link-hover !default
 $breadcrumb-item-active-color: $text-strong !default
 
-$breadcrumb-item-separator-color: $text !default
+$breadcrumb-item-padding-vertical: 0 !default
+$breadcrumb-item-padding-horizontal: 0.75em !default
+
+$breadcrumb-item-separator-color: $grey-light !default
 
 .breadcrumb
   +block
   +unselectable
-  align-items: stretch
-  display: flex
   font-size: $size-normal
-  overflow: hidden
-  overflow-x: auto
   white-space: nowrap
   a
     align-items: center
     color: $breadcrumb-item-color
     display: flex
     justify-content: center
-    padding: 0.5em 0.75em
+    padding: $breadcrumb-item-padding-vertical $breadcrumb-item-padding-horizontal
     &:hover
       color: $breadcrumb-item-hover-color
   li
@@ -34,11 +33,11 @@ $breadcrumb-item-separator-color: $text !default
     & + li::before
       color: $breadcrumb-item-separator-color
       content: "\0002f"
-  ul, ol
-    align-items: center
+  ul,
+  ol
+    align-items: flex-start
     display: flex
-    flex-grow: 1
-    flex-shrink: 0
+    flex-wrap: wrap
     justify-content: flex-start
   .icon
     &:first-child
@@ -47,10 +46,12 @@ $breadcrumb-item-separator-color: $text !default
       margin-left: 0.5em
   // Alignment
   &.is-centered
-    ol, ul
+    ol,
+    ul
       justify-content: center
   &.is-right
-    ol, ul
+    ol,
+    ul
       justify-content: flex-end
   // Sizes
   &.is-small

@@ -3,6 +3,11 @@ title: File upload
 layout: documentation
 doc-tab: form
 doc-subtab: file
+breadcrumb:
+- home
+- documentation
+- form
+- form-file
 file_name: "Screen Shot 2017-07-29 at 15.54.25.png"
 variables_keys:
 - file-border-color
@@ -15,6 +20,11 @@ variables_keys:
 - file-name-border-style
 - file-name-border-width
 - file-name-max-width
+meta:
+  experimental: true
+  colors: true
+  sizes: true
+  variables: true
 ---
 
 {% capture file %}
@@ -527,253 +537,231 @@ variables_keys:
 </div>
 {% endcapture %}
 
-{% include subnav/subnav-form.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">File upload</h1>
-    <h2 class="subtitle">
-      A custom <strong>file upload</strong> input, without JavaScript
-    </h2>
-    {%
-      include meta.html
-      experimental=true
-      since="0.5.1"
-      colors=true
-      sizes=true
-      variables=true
-    %}
-
-    <hr>
-
-    <div class="content">
-      <p>
-        The <code>.file</code> element is a simple <strong>interactive label</strong> that wraps an <code>&lt;input type="file"&gt;</code>. It comprises several sub-elements:
-      </p>
+<div class="content">
+  <p>
+    The <code>.file</code> element is a simple <strong>interactive label</strong> that wraps an <code>&lt;input type="file"&gt;</code>. It comprises several sub-elements:
+  </p>
+  <ul>
+    <li>
+      <code>.file</code> the main <strong>container</strong>
       <ul>
         <li>
-          <code>.file</code> the main <strong>container</strong>
+          <code>.file-label</code> the actual <strong>interactive</strong> and clickable part of the element
           <ul>
             <li>
-              <code>.file-label</code> the actual <strong>interactive</strong> and clickable part of the element
+              <code>.file-input</code> the <strong>native</strong> file input, hidden for styling purposes
+            </li>
+            <li>
+              <code>.file-cta</code> the upload <strong>call-to-action</strong>
               <ul>
                 <li>
-                  <code>.file-input</code> the <strong>native</strong> file input, hidden for styling purposes
+                  <code>.file-icon</code> an optional <strong>upload</strong> icon
                 </li>
                 <li>
-                  <code>.file-cta</code> the upload <strong>call-to-action</strong>
-                  <ul>
-                    <li>
-                      <code>.file-icon</code> an optional <strong>upload</strong> icon
-                    </li>
-                    <li>
-                      <code>.file-label</code> the "Choose a file…" text
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <code>.file-name</code> a container for the <strong>chosen file</strong> name
+                  <code>.file-label</code> the "Choose a file…" text
                 </li>
               </ul>
+            </li>
+            <li>
+              <code>.file-name</code> a container for the <strong>chosen file</strong> name
             </li>
           </ul>
         </li>
       </ul>
-    </div>
+    </li>
+  </ul>
+</div>
 
-    {% include snippet.html content=file %}
+{% include elements/snippet.html content=file %}
 
-    {% include anchor.html name="Modifiers" %}
+{% include elements/anchor.html name="Modifiers" %}
 
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            With the <code>.has-name</code> modifier combined with the <code>.file-name</code> element, you can add a <strong>placeholder</strong> for the selected file name.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ file_name }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ file_name }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can move the CTA to the <strong>right side</strong> with the <code>.is-right</code> modifier.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ file_name_right }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ file_name_right }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can also <strong>expand</strong> the name to fill up the space with the <code>.is-fullwidth</code> modifier.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ file_name_fullwidth }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ file_name_fullwidth }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can have a <strong>boxed block</strong> with the <code>.is-boxed</code> modifier.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ file_boxed }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ file_boxed }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can <strong>combine</strong> <code>.has-name</code> and <code>.is-boxed</code>.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ file_boxed_name }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ file_boxed_name }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Colors" %}
-
+<div class="columns">
+  <div class="column">
     <div class="content">
       <p>
-        You can style the file element by appending one of the <strong>{{ site.data.colors.derived | size }} color modifiers</strong>:
-      </p>
-      <ul>
-        {% for color in site.data.colors.derived %}
-          <li>
-            <code>is-{{ color.id }}</code>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    {% include snippet.html content=file_colors clipped=true %}
-
-    {% include anchor.html name="Sizes" %}
-
-    <div class="content">
-      <p>
-        You can append one of <strong>3 additional sizes</strong>:
-      </p>
-      <ul>
-        <li>
-          <code>.is-small</code>
-        </li>
-        <li>
-          <code>.is-medium</code>
-        </li>
-        <li>
-          <code>.is-large</code>
-        </li>
-      </ul>
-    </div>
-
-    {% include snippet.html content=file_sizes clipped=true %}
-
-    {% include snippet.html content=file_sizes_name clipped=true %}
-
-    {% include snippet.html content=file_sizes_boxed clipped=true %}
-
-    {% include snippet.html content=file_sizes_boxed_name clipped=true %}
-
-    {% include anchor.html name="Alignment" %}
-
-    <div class="content">
-      <p>
-        You can <strong>align</strong> the file input:
-      </p>
-      <ul>
-        <li>
-          to the <strong>center</strong> with the <code>is-centered</code> modifier
-        </li>
-        <li>
-          to the <strong>right</strong> with the <code>is-right</code> modifier
-        </li>
-      </ul>
-    </div>
-
-    {% include snippet.html content=file_centered %}
-
-    {% include snippet.html content=file_right %}
-
-    {% include anchor.html name="JavaScript" %}
-
-    <div class="content">
-      <p>
-        A file upload input requires JavaScript to <strong>retrieve</strong> the <strong>selected file name</strong>.
-        <br>
-        User <a href="https://github.com/chintanbanugaria"><strong>@chintanbanugaria</strong></a> on GitHub <a href="https://github.com/jgthms/bulma/issues/280#issuecomment-294099510">has provided</a> a simple solution <a href="https://jsfiddle.net/chintanbanugaria/uzva5byy/">on JSFiddle</a>.
+        With the <code>.has-name</code> modifier combined with the <code>.file-name</code> element, you can add a <strong>placeholder</strong> for the selected file name.
       </p>
     </div>
-
-    {% include anchor.html name="Variables" %}
-
-    <div class="content">
-      <p>
-        You can use <a href="{{ site.data.meta.github | append: '/blob/master/sass/elements/form.sass#L25,L36' }}" target="_blank">these variables</a> to <strong>customize</strong> this element. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
-      </p>
+    <div class="bd-example">
+      {{ file_name }}
     </div>
-
-    <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Default value</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th>Name</th>
-          <th>Default value</th>
-        </tr>
-      </tfoot>
-      <tbody>
-        {% for key in page.variables_keys %}
-          {% assign variable = site.data.variables.elements.form.vars[key] %}
-          <tr>
-            <td>
-              <code>{{ variable.name }}</code>
-            </td>
-            <td>
-              <code>{{ variable.value }}</code>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
   </div>
-</section>
+  <div class="column highlight-full">
+    {% highlight html %}{{ file_name }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can move the CTA to the <strong>right side</strong> with the <code>.is-right</code> modifier.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ file_name_right }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ file_name_right }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can also <strong>expand</strong> the name to fill up the space with the <code>.is-fullwidth</code> modifier.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ file_name_fullwidth }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ file_name_fullwidth }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can have a <strong>boxed block</strong> with the <code>.is-boxed</code> modifier.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ file_boxed }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ file_boxed }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can <strong>combine</strong> <code>.has-name</code> and <code>.is-boxed</code>.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ file_boxed_name }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ file_boxed_name }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Colors" %}
+
+<div class="content">
+  <p>
+    You can style the file element by appending one of the <strong>{{ site.data.colors.derived | size }} color modifiers</strong>:
+  </p>
+  <ul>
+    {% for color in site.data.colors.derived %}
+      <li>
+        <code>is-{{ color.id }}</code>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% include elements/snippet.html content=file_colors clipped=true %}
+
+{% include elements/anchor.html name="Sizes" %}
+
+<div class="content">
+  <p>
+    You can append one of <strong>3 additional sizes</strong>:
+  </p>
+  <ul>
+    <li>
+      <code>.is-small</code>
+    </li>
+    <li>
+      <code>.is-medium</code>
+    </li>
+    <li>
+      <code>.is-large</code>
+    </li>
+  </ul>
+</div>
+
+{% include elements/snippet.html content=file_sizes clipped=true %}
+
+{% include elements/snippet.html content=file_sizes_name clipped=true %}
+
+{% include elements/snippet.html content=file_sizes_boxed clipped=true %}
+
+{% include elements/snippet.html content=file_sizes_boxed_name clipped=true %}
+
+{% include elements/anchor.html name="Alignment" %}
+
+<div class="content">
+  <p>
+    You can <strong>align</strong> the file input:
+  </p>
+  <ul>
+    <li>
+      to the <strong>center</strong> with the <code>is-centered</code> modifier
+    </li>
+    <li>
+      to the <strong>right</strong> with the <code>is-right</code> modifier
+    </li>
+  </ul>
+</div>
+
+{% include elements/snippet.html content=file_centered %}
+
+{% include elements/snippet.html content=file_right %}
+
+{% include elements/anchor.html name="JavaScript" %}
+
+<div class="content">
+  <p>
+    A file upload input requires JavaScript to <strong>retrieve</strong> the <strong>selected file name</strong>.
+    <br>
+    User <a href="https://github.com/chintanbanugaria"><strong>@chintanbanugaria</strong></a> on GitHub <a href="https://github.com/jgthms/bulma/issues/280#issuecomment-294099510">has provided</a> a simple solution <a href="https://jsfiddle.net/chintanbanugaria/uzva5byy/">on JSFiddle</a>.
+  </p>
+</div>
+
+{% include elements/anchor.html name="Variables" %}
+
+<div class="content">
+  <p>
+    You can use <a href="{{ site.data.meta.github | append: '/blob/master/sass/elements/form.sass#L25,L36' }}" target="_blank">these variables</a> to <strong>customize</strong> this element. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+  </p>
+</div>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Name</th>
+      <th>Default value</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    {% for key in page.variables_keys %}
+      {% assign variable = site.data.variables.elements.form.vars[key] %}
+      <tr>
+        <td>
+          <code>{{ variable.name }}</code>
+        </td>
+        <td>
+          <code>{{ variable.value }}</code>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

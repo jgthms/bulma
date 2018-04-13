@@ -1,0 +1,65 @@
+{% assign blog_link = site.data.links.by_id['blog'] %}
+{% assign documentation_link = site.data.links.by_id['documentation'] %}
+{% assign more_link = site.data.links.by_id['more'] %}
+
+<div class="bd-footer-links">
+  <div class="columns">
+    <div class="column is-3">
+      <p class="bd-footer-link-title">
+        <a href="{{ site.url }}">Home</a>
+      </p>
+
+      <p class="bd-footer-link-title">
+        <a href="{{ site.url }}{{ blog_link.path }}">Blog</a>
+      </p>
+
+      {% for post in site.posts | limit: 4 %}
+        <p class="bd-footer-link">
+          <a href="{{ post.url }}">
+            {{ post.name }}
+          </a>
+        </p>
+      {% endfor %}
+
+      <p class="bd-footer-link bd-is-more">
+        <a href="{{ site.url }}{{ blog_link.path }}">
+          View all posts
+        </a>
+      </p>
+    </div>
+
+    <div class="column is-3">
+      <p class="bd-footer-link-title">
+        <a href="{{ site.url }}{{ documentation_link.path }}">Documentation</a>
+      </p>
+
+      {% for category in site.data.links.categories %}
+        {% assign category_id = category[0] %}
+        {% assign category_link = site.data.links.by_id[category_id] %}
+
+        <p class="bd-footer-link">
+          <a href="{{ site.url }}{{ category_link.path }}">
+            {{ category_link.name }}
+          </a>
+        </p>
+      {% endfor %}
+    </div>
+
+    <div class="column is-6">
+      <p class="bd-footer-link-title">
+        <a href="{{ site.url }}{{ more_link.path }}">More</a>
+      </p>
+
+      {% assign link = site.data.links.by_id['expo'] %}
+      {% include footer/link.html %}
+
+      {% assign link = site.data.links.by_id['love'] %}
+      {% include footer/link.html %}
+
+      {% for link_id in site.data.links.more %}
+        {% assign link = site.data.links.by_id[link_id] %}
+        {% include footer/link.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

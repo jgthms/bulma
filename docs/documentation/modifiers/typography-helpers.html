@@ -1,8 +1,14 @@
 ---
 title: Typography helpers
 layout: documentation
+hide_categories: true
 doc-tab: modifiers
 doc-subtab: typography-helpers
+breadcrumb:
+- home
+- documentation
+- modifiers
+- modifiers-typography-helpers
 ---
 
 {% assign initial_vars = site.data.variables.utilities.initial-variables.vars %}
@@ -33,7 +39,7 @@ doc-subtab: typography-helpers
 
 {% capture size1 %}
 <td class="is-narrow">
-  <p class="notification is-success"><code>{{ initial_vars.size-1.value }}</code></p>
+  <p class="notification is-primary"><code>{{ initial_vars.size-1.value }}</code></p>
 </td>
 {% endcapture %}
 
@@ -45,60 +51,55 @@ doc-subtab: typography-helpers
 
 {% capture left %}
 <td class="is-narrow">
-  <p class="notification is-success">left-aligned</p>
+  <p class="notification is-primary">left-aligned</p>
 </td>
 {% endcapture %}
 
-{% include subnav/subnav-modifiers.html %}
+{% include elements/anchor.html name="Size" %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Typography helpers</h1>
-    <h2 class="subtitle">
-      Change the <strong>size</strong> and <strong>color</strong> of the text for one or multiple viewport width
-    </h2>
+<div class="content">
+  <p>
+    There are <strong>{{ sizes | size }} sizes</strong> to choose from:
+  </p>
+</div>
 
-    {% include anchor.html name="Size" %}
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>
+        Class
+      </th>
+      <th>
+        Font-size
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+		{% for size in sizes %}
+			<tr>
+				{% assign key = 'size-' | append: forloop.index %}
+				<td><code>is-size-{{ forloop.index }}</code></td>
+				<td><code>{{ initial_vars[key].value }}</code></td>
+			</tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    <div class="content">
-      <p>
-        There are <strong>{{ sizes | size }} sizes</strong> to choose from:
-      </p>
-    </div>
+{% include elements/anchor.html name="Responsive size" %}
 
-    <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th>
-            Class
-          </th>
-          <th>
-            Font-size
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-				{% for size in sizes %}
-					<tr>
-						{% assign key = 'size-' | append: forloop.index %}
-						<td><code>is-size-{{ forloop.index }}</code></td>
-						<td><code>{{ initial_vars[key].value }}</code></td>
-					</tr>
-        {% endfor %}
-      </tbody>
-    </table>
+<div class="content">
+  <p>
+    You can choose a <strong>specific</strong> size for <em>each</em> viewport width. You simply needed to append the <strong>viewport width</strong> to the size modifier.
+  </p>
+  <p>
+    For example, here are the modifiers for <code>$size-1</code>:
+  </p>
+</div>
 
-    {% include anchor.html name="Responsive size" %}
+{% include layout/main-close.html show_categories=true %}
 
-    <div class="content">
-      <p>
-        You can choose a <strong>specific</strong> size for <em>each</em> viewport width. You simply needed to append the <strong>viewport width</strong> to the size modifier.
-      </p>
-      <p>
-        For example, here are the modifiers for <code>$size-1</code>:
-      </p>
-    </div>
-
+<div class="container">
+  <div class="table-container">
     <table class="table is-bordered">
       {{ thead }}
       <tbody>
@@ -152,106 +153,114 @@ doc-subtab: typography-helpers
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
 
-    <div class="content">
-      <p>
-        You can use the same logic for each of the <strong>7 sizes</strong>.
-      </p>
-    </div>
+{% include layout/main-open.html %}
 
-    {% include anchor.html name="Colors" %}
+<div class="content">
+  <p>
+    You can use the same logic for each of the <strong>7 sizes</strong>.
+  </p>
+</div>
 
-    <div class="content">
-      <p>
-        You can set any element to one of the <strong>9 colors</strong> or <strong>9 shades of grey</strong>:
-      </p>
-    </div>
+{% include elements/anchor.html name="Colors" %}
 
-    <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th>
-            Class
-          </th>
-          <th>
-            Color
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><code>has-text-white</code></td><td>{% include color/white.html %}</td></tr>
-        <tr><td><code>has-text-black</code></td><td>{% include color/black.html %}</td></tr>
-        <tr><td><code>has-text-light</code></td><td>{% include color/white-ter.html %}</td></tr>
-        <tr><td><code>has-text-dark</code></td><td>{% include color/grey-darker.html %}</td></tr>
-        <tr><td><code>has-text-primary</code></td><td>{% include color/turquoise.html %}</td></tr>
-        <tr><td><code>has-text-info</code></td><td>{% include color/cyan.html %}</td></tr>
-        <tr><td><code>has-text-link</code></td><td>{% include color/blue.html %}</td></tr>
-        <tr><td><code>has-text-success</code></td><td>{% include color/green.html %}</td></tr>
-        <tr><td><code>has-text-warning</code></td><td>{% include color/yellow.html %}</td></tr>
-        <tr><td><code>has-text-danger</code></td><td>{% include color/red.html %}</td></tr>
-        <tr><td><code>has-text-black-bis</code></td><td>{% include color/black-bis.html %}</td></tr>
-        <tr><td><code>has-text-black-ter</code></td><td>{% include color/black-ter.html %}</td></tr>
-        <tr><td><code>has-text-grey-darker</code></td><td>{% include color/grey-darker.html %}</td></tr>
-        <tr><td><code>has-text-grey-dark</code></td><td>{% include color/grey-dark.html %}</td></tr>
-        <tr><td><code>has-text-grey</code></td><td>{% include color/grey.html %}</td></tr>
-        <tr><td><code>has-text-grey-light</code></td><td>{% include color/grey-light.html %}</td></tr>
-        <tr><td><code>has-text-grey-lighter</code></td><td>{% include color/grey-lighter.html %}</td></tr>
-        <tr><td><code>has-text-white-ter</code></td><td>{% include color/white-ter.html %}</td></tr>
-        <tr><td><code>has-text-white-bis</code></td><td>{% include color/white-bis.html %}</td></tr>
-      </tbody>
-    </table>
+<div class="content">
+  <p>
+    You can set any element to one of the <strong>9 colors</strong> or <strong>9 shades of grey</strong>:
+  </p>
+</div>
 
-    {% include anchor.html name="Alignment" %}
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>
+        Class
+      </th>
+      <th>
+        Color
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>has-text-white</code></td><td>{% include color/white.html %}</td></tr>
+    <tr><td><code>has-text-black</code></td><td>{% include color/black.html %}</td></tr>
+    <tr><td><code>has-text-light</code></td><td>{% include color/white-ter.html %}</td></tr>
+    <tr><td><code>has-text-dark</code></td><td>{% include color/grey-darker.html %}</td></tr>
+    <tr><td><code>has-text-primary</code></td><td>{% include color/turquoise.html %}</td></tr>
+    <tr><td><code>has-text-info</code></td><td>{% include color/cyan.html %}</td></tr>
+    <tr><td><code>has-text-link</code></td><td>{% include color/blue.html %}</td></tr>
+    <tr><td><code>has-text-success</code></td><td>{% include color/green.html %}</td></tr>
+    <tr><td><code>has-text-warning</code></td><td>{% include color/yellow.html %}</td></tr>
+    <tr><td><code>has-text-danger</code></td><td>{% include color/red.html %}</td></tr>
+    <tr><td><code>has-text-black-bis</code></td><td>{% include color/black-bis.html %}</td></tr>
+    <tr><td><code>has-text-black-ter</code></td><td>{% include color/black-ter.html %}</td></tr>
+    <tr><td><code>has-text-grey-darker</code></td><td>{% include color/grey-darker.html %}</td></tr>
+    <tr><td><code>has-text-grey-dark</code></td><td>{% include color/grey-dark.html %}</td></tr>
+    <tr><td><code>has-text-grey</code></td><td>{% include color/grey.html %}</td></tr>
+    <tr><td><code>has-text-grey-light</code></td><td>{% include color/grey-light.html %}</td></tr>
+    <tr><td><code>has-text-grey-lighter</code></td><td>{% include color/grey-lighter.html %}</td></tr>
+    <tr><td><code>has-text-white-ter</code></td><td>{% include color/white-ter.html %}</td></tr>
+    <tr><td><code>has-text-white-bis</code></td><td>{% include color/white-bis.html %}</td></tr>
+  </tbody>
+</table>
 
-    <div class="content">
-      <p>
-        You can align the text with the use of one of <strong>4 alignment helpers</strong>:
-      </p>
-    </div>
+{% include elements/anchor.html name="Alignment" %}
 
-    <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th>
-            Class
-          </th>
-          <th>
-            Alignment
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td><code>has-text-centered</code></td>
-        <td>Makes the text <strong>centered</strong></td>
-        </tr>
-        <tr>
-        <td><code>has-text-justified</code></td>
-        <td>Makes the text <strong>justified</strong></td>
-        </tr>
-        <tr>
-        <td><code>has-text-left</code></td>
-        <td>Makes the text aligned to the <strong>left</strong></td>
-        </tr>
-        <tr>
-        <td><code>has-text-right</code></td>
-        <td>Makes the text aligned to the <strong>right</strong></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="content">
+  <p>
+    You can align the text with the use of one of <strong>4 alignment helpers</strong>:
+  </p>
+</div>
 
-    {% include anchor.html name="Responsive Alignment" %}
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>
+        Class
+      </th>
+      <th>
+        Alignment
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td><code>has-text-centered</code></td>
+    <td>Makes the text <strong>centered</strong></td>
+    </tr>
+    <tr>
+    <td><code>has-text-justified</code></td>
+    <td>Makes the text <strong>justified</strong></td>
+    </tr>
+    <tr>
+    <td><code>has-text-left</code></td>
+    <td>Makes the text aligned to the <strong>left</strong></td>
+    </tr>
+    <tr>
+    <td><code>has-text-right</code></td>
+    <td>Makes the text aligned to the <strong>right</strong></td>
+    </tr>
+  </tbody>
+</table>
 
-    <div class="content">
-      <p>
-        You can now <strong>align text</strong> for <em>each</em> viewport width. You simply need to append the <strong>viewport width</strong> to the alignment modifier.
-      </p>
+{% include elements/anchor.html name="Responsive Alignment" %}
 
-      <p>
-        For example, here are the modifiers for <code>has-text-left</code>:
-      </p>
-    </div>
+<div class="content">
+  <p>
+    You can now <strong>align text</strong> for <em>each</em> viewport width. You simply need to append the <strong>viewport width</strong> to the alignment modifier.
+  </p>
 
+  <p>
+    For example, here are the modifiers for <code>has-text-left</code>:
+  </p>
+</div>
+
+{% include layout/main-close.html %}
+
+<div class="container">
+  <div class="table-container">
     <table class="table is-bordered">
       {{ thead }}
       <tbody>
@@ -329,84 +338,85 @@ doc-subtab: typography-helpers
         </tr>
       </tbody>
     </table>
-
-    {% include anchor.html name="Text transformation" %}
-
-    <div class="content">
-      <p>
-        You can transform the text with the use of one of <strong>4 text transformation helpers</strong>:
-      </p>
-    </div>
-
-    <table class="table is-bordered">
-      <thead>
-      <tr>
-        <th>
-          Class
-        </th>
-        <th>
-          Transformation
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><code>is-capitalized</code></td>
-        <td>Transforms <strong>the first character</strong> of each word to <strong>uppercase</strong></td>
-      </tr>
-      <tr>
-        <td><code>is-lowercase</code></td>
-        <td>Transforms <strong>all characters</strong> to <strong>lowercase</strong></td>
-      </tr>
-      <tr>
-        <td><code>is-uppercase</code></td>
-        <td>Transforms <strong>all characters</strong> to <strong>uppercase</strong></td>
-      </tr>
-      <tr>
-        <td><code>is-italic</code></td>
-        <td>Transforms <strong>all characters</strong> to <strong>italic</strong></td>
-      </tr>
-      </tbody>
-    </table>
-
-    {% include anchor.html name="Text weight" %}
-
-    <div class="content">
-      <p>
-        You can transform the text weight with the use of one of <strong>4 text weight helpers</strong>:
-      </p>
-    </div>
-
-    <table class="table is-bordered">
-      <thead>
-      <tr>
-        <th>
-          Class
-        </th>
-        <th>
-          Weight
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><code>has-text-weight-light</code></td>
-        <td>Transforms  text weight to <strong>light</strong></td>
-      </tr>
-      <tr>
-        <td><code>has-text-weight-normal</code></td>
-        <td>Transforms text weight to <strong>normal</strong></td>
-      </tr>
-      <tr>
-        <td><code>has-text-weight-semibold</code></td>
-        <td>Transforms text weight to <strong>semi-bold</strong></td>
-      </tr>
-      <tr>
-        <td><code>has-text-weight-bold</code></td>
-        <td>Transforms text weight to <strong>bold</strong></td>
-      </tr>
-      </tbody>
-    </table>
-
   </div>
-</section>
+</div>
+
+{% include layout/main-open.html %}
+
+{% include elements/anchor.html name="Text transformation" %}
+
+<div class="content">
+  <p>
+    You can transform the text with the use of one of <strong>4 text transformation helpers</strong>:
+  </p>
+</div>
+
+<table class="table is-bordered">
+  <thead>
+  <tr>
+    <th>
+      Class
+    </th>
+    <th>
+      Transformation
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>is-capitalized</code></td>
+    <td>Transforms <strong>the first character</strong> of each word to <strong>uppercase</strong></td>
+  </tr>
+  <tr>
+    <td><code>is-lowercase</code></td>
+    <td>Transforms <strong>all characters</strong> to <strong>lowercase</strong></td>
+  </tr>
+  <tr>
+    <td><code>is-uppercase</code></td>
+    <td>Transforms <strong>all characters</strong> to <strong>uppercase</strong></td>
+  </tr>
+  <tr>
+    <td><code>is-italic</code></td>
+    <td>Transforms <strong>all characters</strong> to <strong>italic</strong></td>
+  </tr>
+  </tbody>
+</table>
+
+{% include elements/anchor.html name="Text weight" %}
+
+<div class="content">
+  <p>
+    You can transform the text weight with the use of one of <strong>4 text weight helpers</strong>:
+  </p>
+</div>
+
+<table class="table is-bordered">
+  <thead>
+  <tr>
+    <th>
+      Class
+    </th>
+    <th>
+      Weight
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>has-text-weight-light</code></td>
+    <td>Transforms  text weight to <strong>light</strong></td>
+  </tr>
+  <tr>
+    <td><code>has-text-weight-normal</code></td>
+    <td>Transforms text weight to <strong>normal</strong></td>
+  </tr>
+  <tr>
+    <td><code>has-text-weight-semibold</code></td>
+    <td>Transforms text weight to <strong>semi-bold</strong></td>
+  </tr>
+  <tr>
+    <td><code>has-text-weight-bold</code></td>
+    <td>Transforms text weight to <strong>bold</strong></td>
+  </tr>
+  </tbody>
+</table>

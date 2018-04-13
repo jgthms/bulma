@@ -3,6 +3,15 @@ title: Modal
 layout: documentation
 doc-tab: components
 doc-subtab: modal
+breadcrumb:
+- home
+- documentation
+- components
+- components-modal
+meta:
+  colors: false
+  sizes: false
+  variables: true
 ---
 
 {% capture modal %}
@@ -46,91 +55,73 @@ doc-subtab: modal
 </div>
 {% endcapture %}
 
-{% include subnav/subnav-components.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Modal</h1>
-    <h2 class="subtitle">A classic <strong>modal</strong> overlay, in which you can include <em>any</em> content you want</h2>
-    {%
-      include meta.html
-      colors=false
-      sizes=false
-      variables=true
-    %}
-
-    <hr>
-
-    <div class="content">
-      <p>The modal structure is very simple:</p>
+<div class="content">
+  <p>The modal structure is very simple:</p>
+  <ul>
+    <li>
+      <code>modal</code>: the main container
       <ul>
         <li>
-          <code>modal</code>: the main container
-          <ul>
-            <li>
-              <code>modal-background</code>: a transparent overlay that can act as a click target to close the modal
-            </li>
-            <li>
-              <code>modal-content</code>: a horizontally and vertically centered container, with a maximum width of 640px, in which you can include <em>any</em> content
-            </li>
-            <li>
-              <code>modal-close</code>: a simple cross located in the top right corner
-            </li>
-          </ul>
+          <code>modal-background</code>: a transparent overlay that can act as a click target to close the modal
+        </li>
+        <li>
+          <code>modal-content</code>: a horizontally and vertically centered container, with a maximum width of 640px, in which you can include <em>any</em> content
+        </li>
+        <li>
+          <code>modal-close</code>: a simple cross located in the top right corner
         </li>
       </ul>
-      <p>
-        <button class="button is-primary is-large modal-button" data-target="modal" aria-haspopup="true">Launch example modal</button>
-      </p>
-    </div>
+    </li>
+  </ul>
+  <p>
+    <button class="button is-primary is-large modal-button" data-target="modal" aria-haspopup="true">Launch example modal</button>
+  </p>
+</div>
 
-    {% highlight html %}{{ modal }}{% endhighlight %}
+{% highlight html %}{{ modal }}{% endhighlight %}
 
-    <div class="content">
-      <p>To <strong>activate</strong> the modal, just add the <code>is-active</code> modifier on the <code>.modal</code> container</p>
-    </div>
+<div class="content">
+  <p>To <strong>activate</strong> the modal, just add the <code>is-active</code> modifier on the <code>.modal</code> container</p>
+</div>
 
-    <div class="message is-danger">
-      <div class="message-header">
-        No JavaScript
-      </div>
-      <div class="message-body">
-        Bulma does <strong>not</strong> include any JavaScript interaction. You will have to implement the class toggle yourself.
-      </div>
-    </div>
-
-    <hr>
-
-    <h3 class="title">Image modal</h3>
-
-    <div class="content">
-      <p>Because a modal can contain <strong>anything you want</strong>, you can very simply use it to build an image gallery for example:</p>
-      <p>
-        <a class="button is-primary is-large modal-button" data-target="modal-bis">Launch image modal</a>
-      </p>
-    </div>
-
-    {% highlight html %}{{ image_modal }}{% endhighlight %}
-
-    <hr>
-
-    <h3 class="title">Modal card</h3>
-
-    <div class="content">
-      <p>If you want a more classic modal, with a <strong>head</strong>, a <strong>body</strong> and a <strong>foot</strong>, use the <code>modal-card</code>.</p>
-      <p>
-        <button class="button is-primary is-large modal-button" data-target="modal-ter" aria-haspopup="true">Launch card modal</button>
-      </p>
-    </div>
-
-    <div class="highlight-full">
-      {% highlight html %}{{ modal_card }}{% endhighlight %}
-    </div>
-
-    {% include variables.html type='component' %}
-
+<div class="message is-danger">
+  <div class="message-header">
+    No JavaScript
   </div>
-</section>
+  <div class="message-body">
+    Bulma does <strong>not</strong> include any JavaScript interaction. You will have to implement the class toggle yourself.
+  </div>
+</div>
+
+<hr>
+
+<h3 class="title">Image modal</h3>
+
+<div class="content">
+  <p>Because a modal can contain <strong>anything you want</strong>, you can very simply use it to build an image gallery for example:</p>
+  <p>
+    <a class="button is-primary is-large modal-button" data-target="modal-bis">Launch image modal</a>
+  </p>
+</div>
+
+{% highlight html %}{{ image_modal }}{% endhighlight %}
+
+<hr>
+
+<h3 class="title">Modal card</h3>
+
+<div class="content">
+  <p>If you want a more classic modal, with a <strong>head</strong>, a <strong>body</strong> and a <strong>foot</strong>, use the <code>modal-card</code>.</p>
+  <p>
+    <button class="button is-primary is-large modal-button" data-target="modal-ter" aria-haspopup="true">Launch card modal</button>
+  </p>
+</div>
+
+<div class="highlight-full">
+  {% highlight html %}{{ modal_card }}{% endhighlight %}
+</div>
+
+{% include elements/variables.html type='component' %}
 
 <div id="modal" class="modal">
   <div class="modal-background"></div>

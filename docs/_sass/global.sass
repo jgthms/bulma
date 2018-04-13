@@ -2,7 +2,26 @@ svg
   max-height: 100%
   max-width: 100%
 
-$carbon-space: 15px
+.bd-patreon-button
+  display: inline-block
+  position: relative
+  vertical-align: top
+  img
+    border-radius: $radius
+    display: block
+  &:hover
+    &::after
+      +overlay
+      background-color: rgba(#000, 0.05)
+      border-radius: $radius
+      content: ""
+      display: block
+
+$carbon-spacing: 1rem
+$carbon-shadow-size: 0.75rem
+$carbon-image-height: 100px
+$carbon-image-width: 130px
+$carbon-poweredby-height: 20px
 
 #carboncontainer
   align-items: center
@@ -10,18 +29,20 @@ $carbon-space: 15px
   justify-content: center
   margin-left: auto
   margin-right: auto
-  max-width: 340px
-  min-height: 120px + ($carbon-space * 2)
+  max-width: $carbon-width
+  min-height: $carbon-height + $carbon-poweredby-height
+  min-width: 280px
 
 #carbon
   flex-grow: 1
-  min-height: 100px + ($carbon-space * 2)
+  min-height: $carbon-height
   padding: 0
   position: relative
   &:hover
-    box-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px $primary
+    background-color: $white
+    box-shadow: 0 0 0 $carbon-shadow-size $white
   +tablet
-    width: 340px
+    width: $carbon-width
 
 #carbonads
   font-size: 14px
@@ -30,36 +51,51 @@ $carbon-space: 15px
   span
     display: block
   .carbon-wrap
-    min-height: 130px
+    min-height: $carbon-height
     position: relative
+    &:hover
+      .carbon-img::after
+        background-color: rgba(#000, 0.05)
+        content: ""
+        display: block
+        height: $carbon-height
+        left: 0
+        position: absolute
+        right: $carbon-spacing
+        top: 0
   .carbon-img
     bottom: 0
     float: left
     left: 0
-    min-height: 130px
-    padding: 15px 0 15px 15px
+    min-height: $carbon-height
+    padding: 0
     position: absolute
     top: 0
-    width: 145px
+    width: calc(#{$carbon-image-width} + #{$carbon-spacing})
     img
       display: block
-      height: 100px
-      width: 130px
+      height: $carbon-image-height
+      width: $carbon-image-width
     &:hover
-      opacity: 0.9
+      & + .carbon-text
+        color: $link
     &:active
       opacity: 0.8
-  a:hover
-    text-decoration: underline
   .carbon-text
     display: block
     color: $text-strong
     line-height: 20px
-    padding: 15px 15px 35px 160px
+    min-height: $carbon-height
+    padding: 0 0 $carbon-poweredby-height calc(#{$carbon-image-width} + #{$carbon-spacing})
+    &:hover
+      color: $link
   .carbon-poweredby
-    bottom: 10px
-    color: $text-light
+    bottom: 0
+    color: $grey-light
     display: inline
     font-size: $size-small
+    line-height: $carbon-poweredby-height
     position: absolute
-    right: 10px
+    right: 0
+    &:hover
+      text-decoration: underline

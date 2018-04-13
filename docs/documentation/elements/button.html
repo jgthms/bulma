@@ -3,6 +3,15 @@ title: Button
 layout: documentation
 doc-tab: elements
 doc-subtab: button
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-button
+meta:
+  colors: true
+  sizes: true
+  variables: true
 ---
 
 {% capture button_example %}
@@ -139,7 +148,7 @@ doc-subtab: button
 {% endcapture %}
 
 {% capture button_fa_example %}
-<p class="field">
+<p class="buttons">
   <a class="button">
     <span class="icon is-small">
       <i class="fas fa-bold"></i>
@@ -156,7 +165,7 @@ doc-subtab: button
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button">
     <span class="icon">
       <i class="fab fa-github"></i>
@@ -182,7 +191,7 @@ doc-subtab: button
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button is-small">
     <span class="icon is-small">
       <i class="fab fa-github"></i>
@@ -211,14 +220,14 @@ doc-subtab: button
 {% endcapture %}
 
 {% capture button_only_icon_example %}
-<p class="field">
+<p class="buttons">
   <a class="button is-small">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
@@ -230,7 +239,7 @@ doc-subtab: button
   </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button is-medium">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
@@ -247,7 +256,7 @@ doc-subtab: button
     </span>
   </a>
 </p>
-<p class="field">
+<p class="buttons">
   <a class="button is-large">
     <span class="icon is-small">
       <i class="fas fa-heading"></i>
@@ -371,7 +380,7 @@ doc-subtab: button
 </div>
 {% endcapture %}
 
-{% capture buttons %}
+{% capture buttons_list %}
 <div class="buttons">
   <span class="button is-success">Save changes</span>
   <span class="button is-info">Save and continue</span>
@@ -448,342 +457,328 @@ doc-subtab: button
 </div>
 {% endcapture %}
 
-{% include subnav/subnav-elements.html %}
+<div class="content">
+  <p>
+    The <strong>button</strong> is an essential element of any design. It's meant to look and behave as an <strong>interactive</strong> element of your page.
+  </p>
+</div>
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Buttons</h1>
-    <h2 class="subtitle">
-      The classic <strong>button</strong>, in different colors, sizes, and states
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=true
-      variables=true
-    %}
+{% include elements/snippet.html wrapper="buttons" content=button_example %}
 
-    <hr>
+<div class="content">
+  <p>
+    The <code>.button</code> class can be used on:
+  </p>
+  <ul>
+    <li>
+      <code>&lt;a&gt;</code> anchor links
+    </li>
+    <li>
+      <code>&lt;button&gt;</code> form buttons
+    </li>
+    <li>
+      <code>&lt;input type="submit"&gt;</code> submit inputs
+    </li>
+    <li>
+      <code>&lt;input type="reset"&gt;</code> reset inputs
+    </li>
+  </ul>
+</div>
 
+{% include elements/snippet.html wrapper="buttons" content=button_tags_example %}
+
+{% include elements/anchor.html name="Colors" %}
+
+{% include elements/snippet.html wrapper="buttons" content=button_colors_a_example %}
+
+{% include elements/snippet.html wrapper="buttons" content=button_colors_b_example %}
+
+{% include elements/anchor.html name="Sizes" %}
+
+{% include elements/snippet.html wrapper="buttons" content=button_sizes_example %}
+
+{% include elements/anchor.html name="Styles" %}
+
+<h4 class="subtitle">Outlined</h4>
+
+{% include elements/snippet.html wrapper="buttons" content=button_outlined_example %}
+
+<h4 class="subtitle">Inverted (the text color becomes the background color, and vice-versa)</h4>
+
+<div class="columns">
+  <div class="column">
+    <div class="bd-callout is-primary">
+      <div class="buttons">
+        {{ button_inverted_example }}
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{button_inverted_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Invert Outlined (the invert color becomes the text and border colors)</h4>
+
+<div class="columns">
+  <div class="column">
+    <div class="bd-callout is-primary">
+      <div class="buttons">
+        {{ button_inverted_outlined_example }}
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{ button_inverted_outlined_example }}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Rounded buttons</h4>
+
+<div class="columns">
+  <div class="column">
+    {% include elements/new-tag.html version="0.6.2" %}
+    <div class="buttons">
+      {{ button_rounded_example }}
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{ button_rounded_example }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="States" %}
+
+<h4 class="subtitle">Normal</h4>
+
+{% include elements/snippet.html wrapper="buttons" content=button_normal_example %}
+
+<h4 class="subtitle">Hover</h4>
+
+{% include elements/snippet.html wrapper="buttons" content=button_hover_example %}
+
+<h4 class="subtitle">Focus</h4>
+
+{% include elements/snippet.html wrapper="buttons" content=button_focus_example %}
+
+<h4 class="subtitle">Active</h4>
+
+{% include elements/snippet.html wrapper="buttons" content=button_active_example %}
+
+<h4 class="subtitle">Loading</h4>
+
+<div class="columns">
+  <div class="column">
+    <div class="buttons">
+      {{ button_loading_example }}
+    </div>
+    <div class="message is-info">
+      <div class="message-body">
+        <p>
+          Since the loading spinner is implemented using the <code>:after</code> pseudo-element, it is not supported by the <code>&lt;input type="submit"&gt;</code> element.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{button_loading_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 id="static-button" class="subtitle">
+  Static
+</h4>
+
+<div class="columns">
+  <div class="column">
     <div class="content">
       <p>
-        The <strong>button</strong> is an essential element of any design. It's meant to look and behave as an <strong>interactive</strong> element of your page.
+        You can create a <strong>non-interactive button</strong> by using the <code>is-static</code> modifier. This is useful to align a text label with an input, for example when using <a href="{{site.url}}/documentation/form/general#form-addons">form addons</a>.
       </p>
     </div>
+    {{ button_static_example }}
+  </div>
+  <div class="column">
+    {% highlight html %}{{ button_static_example }}{% endhighlight %}
+  </div>
+</div>
 
-    {% include snippet.html content=button_example %}
+<h4 class="subtitle">Disabled</h4>
 
+<div class="columns">
+  <div class="column">
+    <div class="buttons">
+      {{ button_disabled_example }}
+    </div>
+    <div class="message is-danger">
+      <div class="message-body">
+        <p>The <code>is-disabled</code> CSS class has been deprecated in favor of the <code>disabled</code> HTML attribute. <a href="https://github.com/jgthms/bulma/issues/276">Learn more</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{button_disabled_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">With Font Awesome icons</h4>
+
+{% include elements/snippet.html content=button_fa_example clipped=true %}
+
+<div class="columns">
+  <div class="column">
     <div class="content">
       <p>
-        The <code>.button</code> class can be used on:
+        If the button only contains an icon, Bulma will make sure the button remains <strong>square</strong>, no matter the size of the button <em>or</em> of the icon.
+      </p>
+    </div>
+    {{ button_only_icon_example }}
+  </div>
+  <div class="column">
+    {% highlight html %}{{ button_only_icon_example }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Button group" %}
+
+<div class="content">
+  <p>If you want to <strong>group</strong> buttons together on a <strong>single line</strong>, use the <code>is-grouped</code> modifier on the <code>field</code> container:</p>
+</div>
+
+{% include elements/snippet.html content=button_group_example %}
+
+{% include elements/anchor.html name="Button addons" %}
+
+<div class="content">
+  <p>If you want to use buttons as <strong>addons</strong>, use the <code>has-addons</code> modifier on the <code>field</code> container:</p>
+</div>
+
+{% include elements/snippet.html content=button_addons_example %}
+
+{% include elements/anchor.html name="Button group with addons" %}
+
+<div class="content">
+  <p>You can group together addons as well:</p>
+</div>
+
+{% include elements/snippet.html content=button_group_addons_example %}
+
+{% include elements/anchor.html name="List of buttons" %}
+
+{% include elements/new-tag.html version="0.6.1" %}
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can now create a <strong>list of buttons</strong> with the <code>.buttons</code> container.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ buttons_list }}
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{ buttons_list }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        If the list is <strong>very long</strong>, it will automatically wrap on <strong>multiple lines</strong>, while keeping all buttons <strong>evenly spaced</strong>.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ buttons_multiple }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ buttons_multiple }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can <strong>attach buttons together</strong> with the <code>.has-addons</code> modifier.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ buttons_addons }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ buttons_addons }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        Use the <code>is-centered</code> or the <code>is-right</code> modifiers to alter the <strong>alignment</strong>.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ buttons_addons_centered }}
+      {{ buttons_addons_right }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ buttons_addons_centered }}{{ buttons_addons_right }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can use any <strong>modifier</strong> class on each button to differentiate them. Make sure to add the <code>is-selected</code> modifier as well to make sure the selected button is <em>above</em> its siblings.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ buttons_addons_selected }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ buttons_addons_selected }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="message is-info">
+  <div class="message-header">
+    <p>Difference between <a href="{{ site.url }}/documentation/form/general/#form-group">form groups</a> and <strong>list of buttons</strong></p>
+  </div>
+  <div class="message-body">
+    <div class="content">
+      <p>
+        While this list of buttons style can be achieved with either <code>field is-grouped</code> or the new <code>buttons</code> class, there are a few differences:
       </p>
       <ul>
         <li>
-          <code>&lt;a&gt;</code> anchor links
+          <code>buttons</code> has a <strong>simpler markup</strong>
         </li>
         <li>
-          <code>&lt;button&gt;</code> form buttons
+          <code>buttons</code> can only contain <code>button</code> elements
         </li>
         <li>
-          <code>&lt;input type="submit"&gt;</code> submit inputs
+          <code>field is-grouped</code> can contain <em>any</em> type of <code>control</code> inputs
         </li>
         <li>
-          <code>&lt;input type="reset"&gt;</code> reset inputs
+          <code>field is-grouped</code> can be forced to fit all controls on a <strong>single line</strong>
+        </li>
+        <li>
+          with <code>field is-grouped</code> you can <strong>expand</strong> one of the controls
         </li>
       </ul>
+      <p>
+        Basically, if you only want a list of <em>buttons</em>, using <code>buttons</code> is recommended. If you need more control on the styling and the elements, use a <a href="{{ site.url }}/documentation/form/general/#form-group">form group</a>.
+      </p>
     </div>
-
-    {% include snippet.html content=button_tags_example %}
-
-    {% include anchor.html name="Colors" %}
-
-    {% include snippet.html content=button_colors_a_example %}
-
-    {% include snippet.html content=button_colors_b_example %}
-
-    {% include anchor.html name="Sizes" %}
-
-    {% include snippet.html content=button_sizes_example %}
-
-    {% include anchor.html name="Styles" %}
-
-    <h4 class="subtitle">Outlined</h4>
-
-    {% include snippet.html content=button_outlined_example %}
-
-    <h4 class="subtitle">Inverted (the text color becomes the background color, and vice-versa)</h4>
-
-    <div class="columns">
-      <div class="column">
-        <div class="bd-callout is-primary">
-          {{button_inverted_example}}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_inverted_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Invert Outlined (the invert color becomes the text and border colors)</h4>
-
-    <div class="columns">
-      <div class="column">
-        <div class="bd-callout is-primary">
-          {{button_inverted_outlined_example}}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_inverted_outlined_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Rounded buttons</h4>
-
-    <div class="columns">
-      <div class="column">
-        {% include elements/new-tag.html version="0.6.2" %}
-        {{ button_rounded_example }}
-      </div>
-      <div class="column">
-        {% highlight html %}{{ button_rounded_example }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="States" %}
-
-    <h4 class="subtitle">Normal</h4>
-
-    {% include snippet.html content=button_normal_example %}
-
-    <h4 class="subtitle">Hover</h4>
-
-    {% include snippet.html content=button_hover_example %}
-
-    <h4 class="subtitle">Focus</h4>
-
-    {% include snippet.html content=button_focus_example %}
-
-    <h4 class="subtitle">Active</h4>
-
-    {% include snippet.html content=button_active_example %}
-
-    <h4 class="subtitle">Loading</h4>
-
-    <div class="columns">
-      <div class="column">
-        <div class="block">
-          {{button_loading_example}}
-        </div>
-        <div class="message is-info">
-          <div class="message-body">
-            <p>
-              Since the loading spinner is implemented using the <code>:after</code> pseudo-element, it is not supported by the <code>&lt;input type="submit"&gt;</code> element.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_loading_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 id="static-button" class="subtitle">
-      Static
-    </h4>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can create a <strong>non-interactive button</strong> by using the <code>is-static</code> modifier. This is useful to align a text label with an input, for example when using <a href="{{site.url}}/documentation/form/general#form-addons">form addons</a>.
-          </p>
-        </div>
-        {{button_static_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_static_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Disabled</h4>
-
-    <div class="columns">
-      <div class="column">
-        <div class="block">
-          {{button_disabled_example}}
-        </div>
-        <div class="message is-danger">
-          <div class="message-body">
-            <p>The <code>is-disabled</code> CSS class has been deprecated in favor of the <code>disabled</code> HTML attribute. <a href="https://github.com/jgthms/bulma/issues/276">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_disabled_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">With Font Awesome icons</h4>
-
-    {% include snippet.html content=button_fa_example clipped=true %}
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            If the button only contains an icon, Bulma will make sure the button remains <strong>square</strong>, no matter the size of the button <em>or</em> of the icon.
-          </p>
-        </div>
-        {{button_only_icon_example}}
-      </div>
-      <div class="column">
-        {% highlight html %}{{button_only_icon_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Button group" %}
-
-    <div class="content">
-      <p>If you want to <strong>group</strong> buttons together on a <strong>single line</strong>, use the <code>is-grouped</code> modifier on the <code>field</code> container:</p>
-    </div>
-
-    {% include snippet.html content=button_group_example %}
-
-    {% include anchor.html name="Button addons" %}
-
-    <div class="content">
-      <p>If you want to use buttons as <strong>addons</strong>, use the <code>has-addons</code> modifier on the <code>field</code> container:</p>
-    </div>
-
-    {% include snippet.html content=button_addons_example %}
-
-    {% include anchor.html name="Button group with addons" %}
-
-    <div class="content">
-      <p>You can group together addons as well:</p>
-    </div>
-
-    {% include snippet.html content=button_group_addons_example %}
-
-    {% include anchor.html name="List of buttons" %}
-
-    {% include elements/new-tag.html version="0.6.1" %}
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can now create a <strong>list of buttons</strong> with the <code>.buttons</code> container.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ buttons }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ buttons }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            If the list is <strong>very long</strong>, it will automatically wrap on <strong>multiple lines</strong>, while keeping all buttons <strong>evenly spaced</strong>.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ buttons_multiple }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ buttons_multiple }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can <strong>attach buttons together</strong> with the <code>.has-addons</code> modifier.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ buttons_addons }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ buttons_addons }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            Use the <code>is-centered</code> or the <code>is-right</code> modifiers to alter the <strong>alignment</strong>.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ buttons_addons_centered }}
-          {{ buttons_addons_right }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ buttons_addons_centered }}{{ buttons_addons_right }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can use any <strong>modifier</strong> class on each button to differentiate them. Make sure to add the <code>is-selected</code> modifier as well to make sure the selected button is <em>above</em> its siblings.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ buttons_addons_selected }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ buttons_addons_selected }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="message is-info">
-      <div class="message-header">
-        <p>Difference between <a href="{{ site.url }}/documentation/form/general/#form-group">form groups</a> and <strong>list of buttons</strong></p>
-      </div>
-      <div class="message-body">
-        <div class="content">
-          <p>
-            While this list of buttons style can be achieved with either <code>field is-grouped</code> or the new <code>buttons</code> class, there are a few differences:
-          </p>
-          <ul>
-            <li>
-              <code>buttons</code> has a <strong>simpler markup</strong>
-            </li>
-            <li>
-              <code>buttons</code> can only contain <code>button</code> elements
-            </li>
-            <li>
-              <code>field is-grouped</code> can contain <em>any</em> type of <code>control</code> inputs
-            </li>
-            <li>
-              <code>field is-grouped</code> can be forced to fit all controls on a <strong>single line</strong>
-            </li>
-            <li>
-              with <code>field is-grouped</code> you can <strong>expand</strong> one of the controls
-            </li>
-          </ul>
-          <p>
-            Basically, if you only want a list of <em>buttons</em>, using <code>buttons</code> is recommended. If you need more control on the styling and the elements, use a <a href="{{ site.url }}/documentation/form/general/#form-group">form group</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {% include variables.html type='element' %}
-
   </div>
-</section>
+</div>
+
+{% include elements/variables.html type='element' %}

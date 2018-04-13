@@ -1,0 +1,85 @@
+---
+layout: default
+route: more
+---
+
+{% include global/navbar.html id="More" %}
+
+{% assign current_link_id = page.breadcrumb | last %}
+{% assign current_link = site.data.links.by_id[current_link_id] %}
+
+{% assign category_links = site.data.links.more %}
+
+{% for link_id in category_links %}
+  {% if link_id == current_link_id %}
+    {% unless forloop.first %}
+      {% assign previous_index = forloop.index0 | minus: 1 %}
+      {% assign previous_link_id = category_links[previous_index] %}
+      {% assign previous_link = site.data.links.by_id[previous_link_id] %}
+    {% endunless %}
+
+    {% unless forloop.last %}
+      {% assign next_index = forloop.index0 | plus: 1 %}
+      {% assign next_link_id = category_links[next_index] %}
+      {% assign next_link = site.data.links.by_id[next_link_id] %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+<main class="bd-main">
+  <div class="bd-side-background"></div>
+  <div class="bd-main-container container">
+    <div class="bd-duo">
+      <div class="bd-lead">
+        {% include components/breadcrumb.html %}
+
+        <header class="bd-header">
+          <div class="bd-header-titles">
+            <h1 class="title">
+              {% if page.title %}
+                {{ page.title }}
+              {% else %}
+                {{ current_link.name }}
+              {% endif %}
+            </h1>
+            <p class="subtitle is-4">
+              {% if page.subtitle %}
+                {{ page.subtitle }}
+              {% else %}
+                {{ current_link.subtitle }}
+              {% endif %}
+            </p>
+          </div>
+
+          <div class="bd-header-carbon">
+            {% include elements/carbon.html %}
+          </div>
+        </header>
+
+        <div class="bd-content">
+          {{ content }}
+        </div>
+
+        <nav class="bd-prev-next-bis">
+          {% if previous_link %}
+            <a class="bd-prev-next-bis-previous" href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
+              ← {{ previous_link.name }}
+            </a>
+          {% endif %}
+
+          {% if next_link %}
+            <a class="bd-prev-next-bis-next" href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
+              {{ next_link.name }} →
+            </a>
+          {% endif %}
+        </nav>
+
+        {% include elements/improve-page.html %}
+      </div>
+
+      <aside class="bd-side">
+        {% include components/more.html %}
+      </aside>
+    </div>
+  </div>
+</main>

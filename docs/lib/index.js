@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
       $message.style.display = 'none';
     }
 
-    showing = Math.min(Math.max(parseInt(showing), 2), 12);
+    showing = Math.min(Math.max(parseInt(showing), 1), 12);
 
     $columns.forEach(function ($el) {
       $el.style.display = 'none';
