@@ -34,7 +34,7 @@ Just see for yourself!
 
 {% include elements/anchor.html name="Navbar" %}
 
-The **navbar** has been updated with a ligther markup and cleaner design:
+The **navbar** has been updated with a lighter markup and cleaner design:
 
 <figure>
   <a href="/images/blog/v7/navbar.png">
@@ -62,7 +62,7 @@ On the homepage, there's a new [**customization** section with a live example](/
   </a>
 </figure>
 
-A **breadcrumb** is not visible at the top of each page, to easily navigate up and down the hierarchy.
+A **breadcrumb** is now visible at the top of each page, to easily navigate up and down the hierarchy.
 
 This has led to the creation of new **intermediate pages**:
 
