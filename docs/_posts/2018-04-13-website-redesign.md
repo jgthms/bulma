@@ -7,7 +7,15 @@ name: "Website redesign"
 icon: "star"
 ---
 
-The Bulma website has been widely redesigned!
+The Bulma website has been widely redesigned! There's been a lot of work, to say the least:
+
+<figure>
+  <img src="/images/blog/v7/files.png" alt="files" width="312" height="37">
+  <br>
+  <img src="/images/blog/v7/diff.png" alt="diff" width="167" height="38">
+</figure>
+
+Just see for yourself!
 
 <div class="columns">
   <div class="column">

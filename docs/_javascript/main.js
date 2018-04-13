@@ -272,21 +272,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const specialShadow = document.getElementById('specialShadow');
   const NAVBAR_HEIGHT = 52;
   const THRESHOLD = 160;
-  let navbarOpen = false;
   let horizon = NAVBAR_HEIGHT;
   let whereYouStoppedScrolling = 0;
   let scrollFactor = 0;
   let currentTranslate = 0;
-
-  navbarBurger.addEventListener('click', el => {
-    navbarOpen = !navbarOpen;
-
-    if (navbarOpen) {
-      rootEl.classList.add('bd-is-clipped-touch');
-    } else {
-      rootEl.classList.remove('bd-is-clipped-touch');
-    }
-  });
 
   // Anchors highlight
 
