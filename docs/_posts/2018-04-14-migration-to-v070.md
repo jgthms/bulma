@@ -9,7 +9,7 @@ icon: "sync-alt"
 
 A new major Bulma update is out: [v0.7.0](#)!
 
-While this update is mainly focused on a massive [website redesign](#), it also includes a few bug fixes, some new features, and some variable changes.
+While this update is mainly focused on a massive [website redesign](/2018/04/13/website-redesign/), it also includes a few bug fixes, some new features, and some variable changes.
 
 These variable changes are documented here, so you can edit or revert them if needed.
 
