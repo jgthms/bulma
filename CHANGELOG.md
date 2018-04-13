@@ -24,6 +24,479 @@
 * #1707 Disable table hover in `.content` by default
 * #1428 Fix `media-content` overflow
 
+### Variable changes
+
+#### Updated default values
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/utilities/initial-variables.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$gap</code>
+        </td>
+        <td>
+          <code>32px</code>
+        </td>
+        <td>
+          <code>64px</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$radius</code>
+        </td>
+        <td>
+          <code>3px</code>
+        </td>
+        <td>
+          <code>4px</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$radius-large</code>
+        </td>
+        <td>
+          <code>5px</code>
+        </td>
+        <td>
+          <code>6px</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/base/generic.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$hr-background-color</code>
+        </td>
+        <td>
+          <code>$border</code>
+        </td>
+        <td>
+          <code>$background</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$hr-height</code>
+        </td>
+        <td>
+          <code>1px</code>
+        </td>
+        <td>
+          <code>2px</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/elements/content.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$content-heading-weight</code>
+        </td>
+        <td>
+          <code>$weight-normal</code>
+        </td>
+        <td>
+          <code>$weight-semibold</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/components/message.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$message-header-padding</code>
+        </td>
+        <td>
+          <code>0.5em 0.75em</code>
+        </td>
+        <td>
+          <code>0.75em 1em</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$message-body-padding</code>
+        </td>
+        <td>
+          <code>1em 1.25em</code>
+        </td>
+        <td>
+          <code>1.25em 1.5em</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/components/navbar.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-item-hover-background-color</code>
+        </td>
+        <td>
+          <code>$background</code>
+        </td>
+        <td>
+          <code>$white-bis</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-dropdown-border-top</code>
+        </td>
+        <td>
+          <code>1px solid $border</code>
+        </td>
+        <td>
+          <code>2px solid $border</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-divider-background-color</code>
+        </td>
+        <td>
+          <code>$border</code>
+        </td>
+        <td>
+          <code>$background</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/layout/footer.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$footer-background-color</code>
+        </td>
+        <td>
+          <code>$background</code>
+        </td>
+        <td>
+          <code>$white-bis</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+#### New variables
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/breadcrumb.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$breadcrumb-item-padding-vertical</code>
+        </td>
+        <td>
+          <code>0</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$breadcrumb-item-padding-horizontal</code>
+        </td>
+        <td>
+          <code>0.75em</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/message.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$message-body-border-color</code>
+        </td>
+        <td>
+          <code>$border</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$message-body-border-width</code>
+        </td>
+        <td>
+          <code>0 0 0 4px</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$message-header-weight</code>
+        </td>
+        <td>
+          <code>$weight-bold</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$message-header-body-border-width</code>
+        </td>
+        <td>
+          <code>0</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/navbar.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-box-shadow-size</code>
+        </td>
+        <td>
+          <code>0 2px 0 0</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-box-shadow-color</code>
+        </td>
+        <td>
+          <code>$background</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-padding-vertical</code>
+        </td>
+        <td>
+          <code>1rem</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-padding-horizontal</code>
+        </td>
+        <td>
+          <code>2rem</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$navbar-z</code>
+        </td>
+        <td>
+          <code>30</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/elements/title.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+
+      <tr>
+        <td>
+          <code>$title-line-height</code>
+        </td>
+        <td>
+          <code>1.125</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$subtitle-line-height</code>
+        </td>
+        <td>
+          <code>1.25</code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <code>$subtitle-negative-margin</code>
+        </td>
+        <td>
+          <code>-1.25rem</code>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+#### Removed variables
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>Removed</th>
+      <th>Replaced with</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <tr>
+        <td>
+          <code>sass/components/message.sass</code>
+        </td>
+        <td>
+          <code>$message-body-border</code>
+        </td>
+        <td>
+
+            <code>$message-body-border-color</code>
+
+            <code>$message-body-border-width</code>
+
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
 ## 0.6.2
 
 ### New features
