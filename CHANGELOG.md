@@ -11,7 +11,7 @@
 
 ### Improvements
 
-* #1619 Add $card-header-background-color, $card-content-background-color and $card-footer-background-color to allow different background customization for card elements
+* #1619 Add `$card-header-background-color`, `$card-content-background-color` and `$card-footer-background-color` to allow different background customization for card elements
 * #1669 Add `.is-expanded` modifier to `.buttons.has-addons`
 * #1628 Add `.has-background` helpers for block background colors, like `.has-text`
 * #1767 Added minified bundle with cleancss
@@ -41,43 +41,39 @@
       <th>From</th>
       <th>To</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$gap</code>
-        </td>
-        <td>
-          <code>32px</code>
-        </td>
-        <td>
-          <code>64px</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$radius</code>
-        </td>
-        <td>
-          <code>3px</code>
-        </td>
-        <td>
-          <code>4px</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$radius-large</code>
-        </td>
-        <td>
-          <code>5px</code>
-        </td>
-        <td>
-          <code>6px</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$gap</code>
+      </td>
+      <td>
+        <code>32px</code>
+      </td>
+      <td>
+        <code>64px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$radius</code>
+      </td>
+      <td>
+        <code>3px</code>
+      </td>
+      <td>
+        <code>4px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$radius-large</code>
+      </td>
+      <td>
+        <code>5px</code>
+      </td>
+      <td>
+        <code>6px</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -94,31 +90,28 @@
       <th>From</th>
       <th>To</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$hr-background-color</code>
-        </td>
-        <td>
-          <code>$border</code>
-        </td>
-        <td>
-          <code>$background</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$hr-height</code>
-        </td>
-        <td>
-          <code>1px</code>
-        </td>
-        <td>
-          <code>2px</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$hr-background-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$hr-height</code>
+      </td>
+      <td>
+        <code>1px</code>
+      </td>
+      <td>
+        <code>2px</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -135,19 +128,17 @@
       <th>From</th>
       <th>To</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$content-heading-weight</code>
-        </td>
-        <td>
-          <code>$weight-normal</code>
-        </td>
-        <td>
-          <code>$weight-semibold</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$content-heading-weight</code>
+      </td>
+      <td>
+        <code>$weight-normal</code>
+      </td>
+      <td>
+        <code>$weight-semibold</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -164,31 +155,28 @@
       <th>From</th>
       <th>To</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$message-header-padding</code>
-        </td>
-        <td>
-          <code>0.5em 0.75em</code>
-        </td>
-        <td>
-          <code>0.75em 1em</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$message-body-padding</code>
-        </td>
-        <td>
-          <code>1em 1.25em</code>
-        </td>
-        <td>
-          <code>1.25em 1.5em</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$message-header-padding</code>
+      </td>
+      <td>
+        <code>0.5em 0.75em</code>
+      </td>
+      <td>
+        <code>0.75em 1em</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-padding</code>
+      </td>
+      <td>
+        <code>1em 1.25em</code>
+      </td>
+      <td>
+        <code>1.25em 1.5em</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -205,43 +193,39 @@
       <th>From</th>
       <th>To</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-item-hover-background-color</code>
-        </td>
-        <td>
-          <code>$background</code>
-        </td>
-        <td>
-          <code>$white-bis</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-dropdown-border-top</code>
-        </td>
-        <td>
-          <code>1px solid $border</code>
-        </td>
-        <td>
-          <code>2px solid $border</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-divider-background-color</code>
-        </td>
-        <td>
-          <code>$border</code>
-        </td>
-        <td>
-          <code>$background</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$navbar-item-hover-background-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+      <td>
+        <code>$white-bis</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-dropdown-border-top</code>
+      </td>
+      <td>
+        <code>1px solid $border</code>
+      </td>
+      <td>
+        <code>2px solid $border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-divider-background-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -258,19 +242,17 @@
       <th>From</th>
       <th>To</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$footer-background-color</code>
-        </td>
-        <td>
-          <code>$background</code>
-        </td>
-        <td>
-          <code>$white-bis</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$footer-background-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+      <td>
+        <code>$white-bis</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -288,25 +270,22 @@
       <th>Name</th>
       <th>Value</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$breadcrumb-item-padding-vertical</code>
-        </td>
-        <td>
-          <code>0</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$breadcrumb-item-padding-horizontal</code>
-        </td>
-        <td>
-          <code>0.75em</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$breadcrumb-item-padding-vertical</code>
+      </td>
+      <td>
+        <code>0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$breadcrumb-item-padding-horizontal</code>
+      </td>
+      <td>
+        <code>0.75em</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -322,43 +301,38 @@
       <th>Name</th>
       <th>Value</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$message-body-border-color</code>
-        </td>
-        <td>
-          <code>$border</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$message-body-border-width</code>
-        </td>
-        <td>
-          <code>0 0 0 4px</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$message-header-weight</code>
-        </td>
-        <td>
-          <code>$weight-bold</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$message-header-body-border-width</code>
-        </td>
-        <td>
-          <code>0</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$message-body-border-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-border-width</code>
+      </td>
+      <td>
+        <code>0 0 0 4px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-weight</code>
+      </td>
+      <td>
+        <code>$weight-bold</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-body-border-width</code>
+      </td>
+      <td>
+        <code>0</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -374,52 +348,46 @@
       <th>Name</th>
       <th>Value</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-box-shadow-size</code>
-        </td>
-        <td>
-          <code>0 2px 0 0</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-box-shadow-color</code>
-        </td>
-        <td>
-          <code>$background</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-padding-vertical</code>
-        </td>
-        <td>
-          <code>1rem</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-padding-horizontal</code>
-        </td>
-        <td>
-          <code>2rem</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$navbar-z</code>
-        </td>
-        <td>
-          <code>30</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$navbar-box-shadow-size</code>
+      </td>
+      <td>
+        <code>0 2px 0 0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-box-shadow-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-padding-vertical</code>
+      </td>
+      <td>
+        <code>1rem</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-padding-horizontal</code>
+      </td>
+      <td>
+        <code>2rem</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-z</code>
+      </td>
+      <td>
+        <code>30</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -435,65 +403,55 @@
       <th>Name</th>
       <th>Value</th>
     </tr>
-
-      <tr>
-        <td>
-          <code>$title-line-height</code>
-        </td>
-        <td>
-          <code>1.125</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$subtitle-line-height</code>
-        </td>
-        <td>
-          <code>1.25</code>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <code>$subtitle-negative-margin</code>
-        </td>
-        <td>
-          <code>-1.25rem</code>
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>$title-line-height</code>
+      </td>
+      <td>
+        <code>1.125</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$subtitle-line-height</code>
+      </td>
+      <td>
+        <code>1.25</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$subtitle-negative-margin</code>
+      </td>
+      <td>
+        <code>-1.25rem</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
 #### Removed variables
 
 <table class="table is-bordered">
-  <thead>
+  <tbody>
     <tr>
       <th>File</th>
       <th>Removed</th>
       <th>Replaced with</th>
     </tr>
-  </thead>
-  <tbody>
-
-      <tr>
-        <td>
-          <code>sass/components/message.sass</code>
-        </td>
-        <td>
-          <code>$message-body-border</code>
-        </td>
-        <td>
-
-            <code>$message-body-border-color</code>
-
-            <code>$message-body-border-width</code>
-
-        </td>
-      </tr>
-
+    <tr>
+      <td>
+        <code>sass/components/message.sass</code>
+      </td>
+      <td>
+        <code>$message-body-border</code>
+      </td>
+      <td>
+        <code>$message-body-border-color</code>
+        <br>
+        <code>$message-body-border-width</code>
+      </td>
+    </tr>
   </tbody>
 </table>
 
