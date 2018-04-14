@@ -3,73 +3,91 @@ layout: default
 route: documentation
 ---
 
-{% include navbar.html id="Documentation" has_container=true %}
+{% include global/navbar.html id="Documentation" %}
 
-<section class="hero is-link">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column">
-          <p class="title">
-            Documentation
-          </p>
-          <p class="subtitle">
-            Everything you need to <strong>create a website</strong> with Bulma
-          </p>
+{% assign current_category = page.doc-tab %}
+{% assign current_link_id = page.breadcrumb | last %}
+{% assign current_link = site.data.links.by_id[current_link_id] %}
+{% assign category_links = site.data.links.categories[current_category] %}
+
+{% for link_id in category_links %}
+  {% if link_id == current_link_id %}
+    {% unless forloop.first %}
+      {% assign previous_index = forloop.index0 | minus: 1 %}
+      {% assign previous_link_id = category_links[previous_index] %}
+      {% assign previous_link = site.data.links.by_id[previous_link_id] %}
+    {% endunless %}
+
+    {% unless forloop.last %}
+      {% assign next_index = forloop.index0 | plus: 1 %}
+      {% assign next_link_id = category_links[next_index] %}
+      {% assign next_link = site.data.links.by_id[next_link_id] %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+<main class="bd-main">
+  <div class="bd-side-background"></div>
+  <div class="bd-main-container container">
+    <div class="bd-duo">
+      <div class="bd-lead">
+        {% include components/breadcrumb.html %}
+
+        <header class="bd-header">
+          <div class="bd-header-titles">
+            <h1 class="title">
+              {{ page.title }}
+            </h1>
+            <p class="subtitle is-4">
+              {% if page.subtitle %}
+                {{ page.subtitle }}
+              {% else %}
+                {{ current_link.subtitle }}
+              {% endif %}
+            </p>
+            {% if page.meta %}
+              {%
+                include elements/meta.html
+                colors=page.meta.colors
+                sizes=page.meta.sizes
+                variables=page.meta.variables
+                experimental=page.meta.experimental
+              %}
+            {% endif %}
+          </div>
+
+          <div class="bd-header-carbon">
+            {% include elements/carbon.html %}
+          </div>
+        </header>
+
+        <div class="bd-content">
+          {{ content }}
         </div>
-        <div class="column is-narrow">
-          {% include carbon.html %}
-        </div>
+
+        <nav class="bd-prev-next-bis">
+          {% if previous_link %}
+            <a class="bd-prev-next-bis-previous" href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
+              ← {{ previous_link.name }}
+            </a>
+          {% endif %}
+
+          {% if next_link %}
+            <a class="bd-prev-next-bis-next" href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
+              {{ next_link.name }} →
+            </a>
+          {% endif %}
+        </nav>
+
+        {% include elements/improve-page.html %}
       </div>
+
+      <aside class="bd-side">
+        {% unless page.hide_categories %}
+          {% include components/categories.html %}
+          {% include components/anchors.html %}
+        {% endunless %}
+      </aside>
     </div>
   </div>
-
-  <div class="hero-foot">
-    <div class="container">
-      <nav class="tabs is-boxed">
-        <ul>
-          <li {% if page.doc-tab == 'overview' %}class="is-active"{% endif %}>
-            <a href="{{ site.documentation }}">Overview</a>
-          </li>
-          <li {% if page.doc-tab == 'modifiers' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/modifiers/syntax">Modifiers</a>
-          </li>
-          <li {% if page.doc-tab == 'columns' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/columns/basics">Columns</a>
-          </li>
-          <li {% if page.doc-tab == 'layout' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/layout/container/">Layout</a>
-          </li>
-          <li {% if page.doc-tab == 'form' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/form/general">Form</a>
-          </li>
-          <li {% if page.doc-tab == 'elements' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/elements/box/">Elements</a>
-          </li>
-          <li {% if page.doc-tab == 'components' %}class="is-active"{% endif %}>
-            <a href="{{ site.url }}/documentation/components/breadcrumb/">Components</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</section>
-
-{{ content }}
-
-<section class="section bd-typo">
-  <div class="container">
-    <p class="has-text-centered has-text-grey-light">
-      <a href="{{ site.url }}/made-with-bulma/">
-        <img src="{{ site.url }}/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
-      </a>
-      <br>
-      This page is <strong class="has-text-grey">open source</strong>.
-      Noticed a typo? Or something unclear?
-      <a class="has-text-grey" href="https://github.com/jgthms/bulma/blob/master/docs/{{ page.path }}" style="border-bottom: 1px solid currentColor;">
-        Improve this page on GitHub
-      </a>
-    </p>
-  </div>
-</section>
-
+</main>

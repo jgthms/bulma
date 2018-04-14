@@ -3,9 +3,16 @@ title: Box
 layout: documentation
 doc-tab: elements
 doc-subtab: box
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-box
+meta:
+  colors: false
+  sizes: false
+  variables: true
 ---
-
-{% include subnav-elements.html %}
 
 {% capture box_example %}
 <div class="box">
@@ -25,14 +32,20 @@ doc-subtab: box
       </div>
       <nav class="level is-mobile">
         <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-reply"></i></span>
+          <a class="level-item" aria-label="reply">
+            <span class="icon is-small">
+              <i class="fas fa-reply" aria-hidden="true"></i>
+            </span>
           </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+          <a class="level-item" aria-label="retweet">
+            <span class="icon is-small">
+              <i class="fas fa-retweet" aria-hidden="true"></i>
+            </span>
           </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-heart"></i></span>
+          <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
           </a>
         </div>
       </nav>
@@ -41,32 +54,14 @@ doc-subtab: box
 </div>
 {% endcapture %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Box</h1>
-    <h2 class="subtitle">
-      A white <strong>box</strong> to contain other elements
-    </h2>
-    {%
-      include meta.html
-      colors=false
-      sizes=false
-      variables=true
-    %}
+<div class="content">
+  <p>
+    The <code>.box</code> element is simply a container with a shadow, a border, a radius, and some padding.
+    <br>
+    For example, you can include a media object:
+  </p>
+</div>
 
-    <hr>
+{% include elements/snippet.html content=box_example more=true %}
 
-    <div class="content">
-      <p>
-        The <code>.box</code> element is simply a container with a shadow, a border, a radius, and some padding.
-        <br>
-        For example, you can include a media object:
-      </p>
-    </div>
-
-    {% include snippet.html content=box_example more=true %}
-
-    {% include variables.html type='element' %}
-
-  </div>
-</section>
+{% include elements/variables.html type='element' %}

@@ -1,81 +1,176 @@
-#about
-  .twitter-container
-    display: block
-    height: 30px
-    line-height: 30px
-    margin-top: 0.5rem
-  small
-    display: block
-    margin-top: 5px
+.bd-footer-title
+  color: $text-strong
+  font-size: 1.25rem
+  line-height: 1.25
+  margin-bottom: 0.5rem
+  transition-duration: $speed
+  transition-property: color
+  strong
+    font-weight: $weight-semibold
 
-#mc_embed_signup
-  .field
-    margin-bottom: 0
-  .notification
-    margin-top: 0.75rem
+.bd-footer-subtitle
+  color: $grey-light
+  margin-top: -0.5rem
+  transition-duration: $speed
+  transition-property: color
 
-#share
-  form
-    height: 30px
-    margin-top: 10px
-
-#social
-  align-items: center
+.bd-footer-iframe
   display: flex
   flex-wrap: wrap
-  justify-content: flex-start
-  max-width: 400px
-  > iframe,
-  > a,
-  > form,
-  > div
-    display: inline-block
-    font-size: 11px
-    height: 30px
-    line-height: 30px
-    margin-top: 0.5rem
-  .github-btn
-    width: 160px
-  .twitter-share-button
-    margin-right: 10px
-    min-width: 76px
-  .paypal-form
-    min-width: 148px
+  margin-bottom: -10px
+  min-height: 30px
+  iframe
+    margin-bottom: 10px
   .fb-like
-    align-items: center
-    display: flex
-    width: 130px
-  .bd-patreon-button
-    height: 30px
-    margin-right: 0.5rem
-    width: 128px
+    margin-left: 10px
 
-#newsletter
-  .input
-    border-color: $white
-    box-shadow: none
+.bd-footer-tsp
+  color: $grey-light
+  margin-top: 1.5rem
 
-#sister
-  ul
-    display: flex
-    flex-wrap: wrap
-  li
-    display: flex
-    height: 30px
-    margin: 5px 1rem 0 0
-  img
-    height: 30px
-
-#tsp
-  margin-top: 3rem
+%bd-footer-box
+  @extend %bd-box
   text-align: center
-  small
-    display: block
+  .bd-footer-title
+    font-size: 1.5rem
 
-#alternative
-  font-size: 0.875rem
-  margin-top: 0.5rem
+// Support
+
+.bd-footer-support
+  @extend %bd-footer-box
+  margin-bottom: 3rem
+  margin-top: 3rem
+  padding: 3rem
+  .bd-footer-title
+    margin-bottom: 1.5rem
+
+.bd-footer-donations
+  justify-content: center
+
+.bd-footer-donation
+  flex: none
+  width: 240px
+
+.bd-footer-donation-title
+  color: $grey-light
+  margin-bottom: 0.5rem
+  strong
+    color: currentColor
+
+.bd-footer-donation-action
+  @extend %center
+  height: 70px
+  .paypal-form
+    height: 30px
+    img
+      display: block
+
+// Stars
+
+$star-figure-height: 156px
+
+.bd-footer-stars
+  +tablet
+    align-items: stretch
+    display: flex
+    justify-content: space-between
+
+.bd-footer-star
+  @extend %bd-footer-box
+  transition-duration: $speed
+  transition-property: box-shadow, transform
+  will-change: box-shadow, transform
+  +mobile
+    &:not(:last-child)
+      margin-bottom: 1.5rem
+  +tablet
+    width: calc(33.3333% - 2rem)
+  &:hover
+    box-shadow: 0 3rem 3rem -1.25rem rgba($black, 0.1)
+    transform: translateY(-0.5rem)
+    .bd-footer-title,
+    .bd-footer-subtitle
+      color: $link
+  &.bd-is-expo,
+  &.bd-is-love
+    padding-bottom: $star-figure-height
+    .bd-footer-title
+      align-items: center
+      display: flex
+      justify-content: center
+      .icon
+        margin-right: 0.25em
+  &.bd-is-expo
+    background-image: url("/images/footer/expo-examples.png")
+    background-repeat: repeat-x
+    background-position: bottom center
+    background-size: 352px $star-figure-height
+  &.bd-is-love
+    background-image: url("/images/footer/love.png")
+    background-repeat: no-repeat
+    background-position: bottom center
+    background-size: 440px 180px
+
+.bd-footer-star-header
+  padding: 1.5rem
+
+.bd-footer-star-figure
+  @extend %center
+  height: $star-figure-height
+  margin-top: -1rem
+
+// Links
+
+.bd-footer-links
+  margin-top: 6rem
+  padding-bottom: 6rem
   a
-    color: $text-light
+    color: currentColor
     &:hover
-      text-decoration: underline
+      color: $link
+
+.bd-footer-link-title
+  color: $text-strong
+  font-size: 1.25rem
+  font-weight: $weight-semibold
+  &:not(:first-child)
+    margin-top: 1.5em
+
+.bd-footer-link
+  margin-top: 0.5rem
+  &.bd-is-more
+    font-size: 0.875rem
+    a:not(:hover)
+      color: $grey-light
+  &.bd-has-subtitle
+    a
+      align-items: center
+      display: flex
+      justify-content: space-between
+      strong
+        flex-grow: 1
+        flex-shrink: 1
+        font-weight: unset
+      em
+        display: block
+        font-size: 0.875rem
+        font-style: normal
+      &:not(:hover)
+        em
+          color: $grey-light
+      +mobile
+        flex-wrap: wrap
+        margin-top: 1rem
+        em
+          width: 100%
+      +tablet
+        em
+          margin-left: 1rem
+          text-align: right
+
+.bd-footer-link-icon
+  flex-grow: 0
+  flex-shrink: 0
+  margin-right: 0.5em
+  text-align: center
+  width: 1em

@@ -1,33 +1,60 @@
 ---
 layout: default
 route: blog
+breadcrumb:
+- home
+- blog
 ---
 
-{% include blog-hero.html %}
+{% include global/navbar.html id="Blog" %}
 
-  <section class="section">
-    <div class="container">
-      <div class="columns is-multiline">
-        {% for post in site.posts %}
-          <article class="column is-4">
-            <a class="bd-article-image is-{{ post.color }}" href="{{ post.url }}">
-              <span class="bd-article-overlay"></span>
-              <span class="bd-article-icon">
-                <i class="{% if post.icon_brand %}fab{% else %}fas{% endif %} fa-{{ post.icon }}"></i>
+<main class="bd-main">
+  <div class="bd-main-container container">
+    <div class="bd-duo">
+      <div class="bd-lead">
+        {% include components/breadcrumb.html %}
+
+        <header class="bd-header">
+          <div class="bd-header-titles">
+            <h1 class="title">
+              Blog
+            </h1>
+            <p class="subtitle is-4">
+              Stay updated about new features, bug fixes, and releases
+            </p>
+            <a class="button bd-is-rss" href="{{ site.url }}/atom.xml">
+              <span class="icon">
+                <i class="fas fa-rss"></i>
               </span>
-              <strong class="bd-article-info">
-                <span>
-                  <time class="bd-article-date" datetime="{{ post.date | date_to_xmlschema }}">
-                    {{ post.date | date_to_string }}
-                  </time>
-                  <strong class="bd-article-title">
-                    {{ post.name }}
-                  </strong>
-                </span>
-              </strong>
+              <span>Subscribe</span>
             </a>
-          </article>
-        {% endfor %}
+          </div>
+
+          <div class="bd-header-carbon">
+            {% include elements/carbon.html %}
+          </div>
+        </header>
+
+        <div class="bd-content">
+          <div class="bd-links">
+            {% for post in site.posts %}
+              {% assign date = post.date | date_to_string %}
+              {% assign more = post.introduction | markdownify | strip_html %}
+              {%
+                include elements/link.html
+                url=post.url
+                color=post.color
+                icon_brand=post.icon_brand
+                icon_regular=post.icon_regular
+                icon=post.icon
+                surtitle=date
+                name=post.name
+                subtitle=more
+              %}
+            {% endfor %}
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</main>

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Blog launched, new responsive columns, new helpers"
-introduction: "First blog post on the newly launched blog! It even has its own [RSS feed](/atom.xml) for those who still use that. This blog will be more frequently updated than the [newsletter](#newsletter), so you can subscribe to either or both, as they will be used for different purposes."
+introduction: "Stay updated with everything that's coming up with Bulma"
+long_introduction: "First blog post on the newly launched blog! It even has its own [RSS feed](/atom.xml) for those who still use that. This blog will be more frequently updated than the [newsletter](#newsletter), so you can subscribe to either or both, as they will be used for different purposes."
 color: "danger"
 name: "Launch!"
 icon: "rocket"
