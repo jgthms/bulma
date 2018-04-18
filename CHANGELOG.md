@@ -1,5 +1,15 @@
 # Bulma Changelog
 
+## 0.7.1
+
+### Improvements
+
+* #1789 Add all shades to `has-background-*` helpers
+
+### Bug fixes
+
+* #1796 #1806 Remove navbar `box-shadow` by default
+
 ## 0.7.0
 
 ### New features
