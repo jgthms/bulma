@@ -40,6 +40,8 @@ $navbar-dropdown-item-active-background-color: $background !default
 $navbar-divider-background-color: $background !default
 $navbar-divider-height: 2px !default
 
+$navbar-bottom-box-shadow-size: 0 -2px 0 0 !default
+
 =navbar-fixed
   left: 0
   position: fixed
@@ -48,7 +50,6 @@ $navbar-divider-height: 2px !default
 
 .navbar
   background-color: $navbar-background-color
-  box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color
   min-height: $navbar-height
   position: relative
   z-index: $navbar-z
@@ -101,14 +102,14 @@ $navbar-divider-height: 2px !default
     min-height: $navbar-height
     width: 100%
   &.has-shadow
-    box-shadow: 0 2px 3px rgba($black, 0.1)
+    box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color
   &.is-fixed-bottom,
   &.is-fixed-top
     +navbar-fixed
   &.is-fixed-bottom
     bottom: 0
     &.has-shadow
-      box-shadow: 0 -2px 3px rgba($black, 0.1)
+      box-shadow: $navbar-bottom-box-shadow-size $navbar-box-shadow-color
   &.is-fixed-top
     top: 0
 
