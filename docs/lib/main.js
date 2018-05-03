@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var toggle_el = el.querySelector('.bd-category-toggle');
 
       toggle_el.addEventListener('click', function (event) {
-        closeCategories(el);
+        // closeCategories(el);
         el.classList.toggle('is-active');
       });
     });
