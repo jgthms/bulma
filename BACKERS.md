@@ -1,3 +1,5 @@
+# Backers via Patreon
+
 <h2 class="title is-5">
   Documentation sponsors via Patreon ($500+)
 </h2>
