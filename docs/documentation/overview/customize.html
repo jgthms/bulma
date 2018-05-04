@@ -1,8 +1,13 @@
 ---
-title: Customize Bulma
+title: Customize Bulma with Sass
 layout: documentation
 doc-tab: overview
 doc-subtab: customize
+breadcrumb:
+- home
+- documentation
+- overview
+- overview-customize
 ---
 
 {% capture scss_code %}
@@ -37,7 +42,7 @@ $github: #333;
 $github-invert: findColorInvert($github);
 
 // 5. Add new color variables to the color map.
-@import "../sass/utilities/derived-variables.sass";
+@import "../sass/utilities/derived-variables";
 $addColors: (
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
@@ -49,65 +54,54 @@ $colors: map-merge($colors, $addColors);
 @import "../bulma";
 {% endcapture %}
 
-{% include subnav-overview.html %}
+<div class="content">
+  <p>If you're familiar with <a href="http://sass-lang.com/">Sass</a> and want to <strong>customize</strong> Bulma with your own colors and variables, just install Bulma via <strong>npm</strong>:</p>
+</div>
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Customizing with Sass</h1>
-    <h2 class="subtitle">Create your <strong>own theme</strong> with a simple set of <strong>variables</strong></h2>
-
-    <hr>
-
-    <div class="content">
-      <p>If you're familiar with <a href="http://sass-lang.com/">Sass</a> and want to <strong>customize</strong> Bulma with your own colors and variables, just install Bulma via <strong>npm</strong>:</p>
-    </div>
-
-    <article class="media is-large">
-      <div class="media-left">
-        <p class="title is-5">1</p>
-      </div>
-      <div class="media-content">
-        <p class="title is-5">
-          <strong>Download</strong> the source files:
-        </p>
-        {% highlight bash %}npm install bulma{% endhighlight %}
-        <div class="content">or clone the repository: <a href="https://github.com/jgthms/bulma">https://github.com/jgthms/bulma</a></div>
-      </div>
-    </article>
-
-    <article class="media is-large">
-      <div class="media-left">
-        <p class="title is-5">2</p>
-      </div>
-      <div class="media-content">
-        <p class="title is-5">
-          <strong>Set</strong> your variables
-        </p>
-        <p class="subtitle is-6">
-          Create a file called <code>mystyles.scss</code> and add your own colors, set new fonts, override Bulma's default styles...
-        </p>
-        <div class="highlight-full">
-          {% highlight sass %}{{ scss_code }}{% endhighlight %}
-        </div>
-      </div>
-    </article>
-
-    <article class="media is-large">
-      <div class="media-left">
-        <p class="title is-5">3</p>
-      </div>
-      <div class="media-content">
-        <p class="title is-5">
-          See the <strong>result</strong>: before and after
-        </p>
-        <p class="subtitle is-6">
-          As <code>$blue</code> has been updated, and since <code>$blue-invert</code> is automatically calculated with the <strong>function</strong> <code>$blue-invert: findColorInvert($blue)</code>, the <code>$blue-invert</code> is now black instead of white</p>
-        </p>
-        <figure>
-          <img width="640" height="640" src="{{site.url}}/images/customize-before.png" alt="Customizing Bulma with Sass">
-          <img width="640" height="640" src="{{site.url}}/images/customize-after.png" alt="Customizing Bulma with Sass">
-        </figure>
-      </div>
-    </article>
+<article class="media is-large">
+  <div class="media-left">
+    <p class="title is-5">1</p>
   </div>
-</section>
+  <div class="media-content">
+    <p class="title is-5">
+      <strong>Download</strong> the source files:
+    </p>
+    {% highlight bash %}npm install bulma{% endhighlight %}
+    <div class="content">or clone the repository: <a href="https://github.com/jgthms/bulma">https://github.com/jgthms/bulma</a></div>
+  </div>
+</article>
+
+<article class="media is-large">
+  <div class="media-left">
+    <p class="title is-5">2</p>
+  </div>
+  <div class="media-content">
+    <p class="title is-5">
+      <strong>Set</strong> your variables
+    </p>
+    <p class="subtitle is-6">
+      Create a file called <code>mystyles.scss</code> and add your own colors, set new fonts, override Bulma's default styles...
+    </p>
+    <div class="highlight-full">
+      {% highlight sass %}{{ scss_code }}{% endhighlight %}
+    </div>
+  </div>
+</article>
+
+<article class="media is-large">
+  <div class="media-left">
+    <p class="title is-5">3</p>
+  </div>
+  <div class="media-content">
+    <p class="title is-5">
+      See the <strong>result</strong>: before and after
+    </p>
+    <p class="subtitle is-6">
+      As <code>$blue</code> has been updated, and since <code>$blue-invert</code> is automatically calculated with the <strong>function</strong> <code>$blue-invert: findColorInvert($blue)</code>, the <code>$blue-invert</code> is now black instead of white</p>
+    </p>
+    <figure>
+      <img width="640" height="640" src="{{site.url}}/images/customize-before.png" alt="Customizing Bulma with Sass">
+      <img width="640" height="640" src="{{site.url}}/images/customize-after.png" alt="Customizing Bulma with Sass">
+    </figure>
+  </div>
+</article>

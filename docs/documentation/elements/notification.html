@@ -3,6 +3,15 @@ title: Notification
 layout: documentation
 doc-tab: elements
 doc-subtab: notification
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-notification
+meta:
+  colors: true
+  sizes: false
+  variables: true
 ---
 
 {% capture notification %}
@@ -25,30 +34,10 @@ doc-subtab: notification
 {% endfor %}
 {% endcapture %}
 
-{% include subnav-elements.html %}
+{% include elements/snippet.html content=notification %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Notifications</h1>
-    <h2 class="subtitle">
-      Bold <strong>notification</strong> blocks, to alert your users of something
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=false
-      variables=true
-    %}
+{% include elements/anchor.html name="Colors" %}
 
-    <hr>
+{% include elements/snippet.html content=notification_colors %}
 
-    {% include snippet.html content=notification %}
-
-    {% include anchor.html name="Colors" %}
-
-    {% include snippet.html content=notification_colors %}
-
-    {% include variables.html type='element' %}
-
-  </div>
-</section>
+{% include elements/variables.html type='element' %}

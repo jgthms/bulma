@@ -1,0 +1,216 @@
+.bd-main
+  overflow: hidden
+  position: relative
+
+// Lead
+
+.bd-lead
+  position: relative
+
+.bd-breadcrumb
+  display: flex
+  justify-content: space-between
+  margin-bottom: $main-spacing
+  .breadcrumb:not(:last-child)
+    margin-bottom: 0
+
+.bd-prev-next
+  align-items: flex-start
+  color: $grey-light
+  display: none
+  flex-grow: 0
+  flex-shrink: 0
+  margin-left: 0.5rem
+  text-align: center
+  a,
+  span
+    border-radius: $radius
+    width: 1.5rem
+  a
+    &:hover
+      background-color: $background
+
+.bd-prev-next-bis
+  border-top: 2px solid $background
+  display: flex
+  justify-content: space-between
+  margin-top: $main-spacing
+  a
+    margin-top: $main-spacing / 2
+
+.bd-prev-next-bis-previous
+  margin-right: auto
+
+.bd-prev-next-bis-next
+  margin-left: auto
+
+.bd-header
+  border-bottom: 2px solid $background
+  margin-bottom: $main-spacing
+  padding-bottom: $main-spacing
+  .subtitle
+    color: $text-light
+    strong
+      color: currentColor
+  #meta
+    margin-top: -0.5rem
+
+.bd-content
+  hr:first-child
+    display: none
+    & + .bd-anchor-title
+      padding-top: 0
+
+// Side
+
+.bd-side,
+.bd-side-background
+  background-color: $white-bis
+
+.bd-side
+  position: relative
+
+.bd-side-background
+  bottom: 0
+  left: 50%
+  position: absolute
+  right: 0
+  top: 0
+
+%bd-list
+  font-size: 0.875rem
+  li
+    &:not(:last-child)
+      margin-bottom: 0.5em
+    &.is-past
+      a
+        color: $grey-light
+    &.is-current
+      a
+        color: $link
+  a
+    color: $text-light
+    &:hover
+      color: $link
+
+.bd-category
+  a
+    &:hover
+      color: $link
+  &:not(:last-child)
+    margin-bottom: 0.5rem
+  &.is-active
+    .bd-category-toggle
+      .icon
+        transform: rotate(180deg)
+    .bd-category-list
+      display: block
+
+.bd-category-header
+  position: relative
+
+.bd-category-toggle
+  +overlay
+  align-items: center
+  color: $grey-light
+  display: flex
+  justify-content: flex-end
+  .icon
+    font-size: 0.75rem
+    transform-origin: center
+    transition-duration: $speed
+    transition-property: transform
+
+.bd-category-name
+  color: $text-strong
+  position: relative
+  &.is-active
+    color: $link
+
+.bd-category-list
+  @extend %bd-list
+  display: none
+  padding: 0.5rem
+
+.bd-anchors-reference
+  height: 1px
+
+.bd-anchors
+  display: none
+  max-width: $sidebar-width
+  padding-top: calc(1.5rem - 1px)
+  +tablet
+    &.is-active
+      display: block
+    &.is-pinned
+      position: fixed
+      top: 0
+
+.bd-anchors-title
+  color: $grey-light
+  font-size: 0.875rem
+  font-weight: $weight-semibold
+  margin-bottom: 0.5rem
+
+.bd-anchors-list
+  @extend %bd-list
+  li
+    &:last-child
+      margin-top: 1em
+  a
+    color: $text-strong
+
++touch
+  .bd-lead,
+  .bd-side
+    padding: 1.5rem
+  .bd-header-carbon
+    margin-top: 1.5rem
+
++mobile
+  .bd-side-background
+    display: none
+
++tablet
+  .bd-duo
+    display: flex
+  .bd-lead
+    background-color: $white
+    overflow: hidden
+    flex-grow: 1
+    flex-shrink: 1
+  .bd-prev-next
+    display: flex
+  .bd-side
+    flex: 0 0 calc(#{$sidebar-width} + 1.5rem)
+
++desktop
+  .bd-main
+    padding: 0 3rem
+  .bd-lead
+    margin-left: -3rem
+    padding: 3rem
+    &:last-child
+      margin-right: -3rem
+  .bd-header
+    align-items: center
+    display: flex
+    min-height: 130px
+  .bd-header-titles
+    flex-grow: 1
+    flex-shrink: 1
+  .bd-header-carbon
+    flex-grow: 0
+    flex-shrink: 0
+    margin: -15px 0 -15px ($main-spacing * 2)
+    width: $carbon-width
+  .bd-side
+    padding: 3rem 0 3rem 1.5rem
+
++widescreen
+  .bd-header-carbon
+    margin-left: ($main-spacing * 3)
+
++fullhd
+  .bd-header-carbon
+    margin-left: ($main-spacing * 4)

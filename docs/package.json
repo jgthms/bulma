@@ -5,14 +5,25 @@
   "author": "Jeremy Thomas <bbxdesign@gmail.com> (https://jgthms.com)",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.2",
+    "autoprefixer": "^8.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015-ie": "^6.7.0",
-    "i": "^0.3.5",
-    "npm": "^5.0.4"
+    "clean-css-cli": "^4.1.11",
+    "node-sass": "^4.8.3",
+    "postcss-cli": "^5.0.0"
   },
   "scripts": {
-    "build": "babel _javascript --out-dir lib",
-    "watch": "npm run build -- --watch"
+    "css-build": "npm run css-sass && npm run css-autoprefix && npm run css-cleancss",
+    "css-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-docs.css css/bulma-docs.css",
+    "css-cleancss": "cleancss -o css/bulma-docs.min.css css/bulma-docs.css",
+    "css-sass": "node-sass --output-style expanded bulma-docs.sass css/bulma-docs.css",
+    "css-watch": "npm run css-sass -- --watch",
+    "deploy": "npm run css-build && npm run js-build",
+    "js-build": "babel _javascript --out-dir lib",
+    "js-watch": "npm run js-build -- --watch",
+    "start": "npm run css-watch | npm run js-watch",
+    "start-test": "npm run test-scss -- --watch",
+    "test-scss": "node-sass --output-style expanded bulma-test.scss css/bulma-test.css"
   }
 }

@@ -3,6 +3,15 @@ title: Message
 layout: documentation
 doc-tab: components
 doc-subtab: message
+breadcrumb:
+- home
+- documentation
+- components
+- components-message
+meta:
+  colors: true
+  sizes: true
+  variables: true
 ---
 
 {% capture message_example %}
@@ -108,48 +117,28 @@ doc-subtab: message
 {% endfor %}
 {% endcapture %}
 
-{% include subnav-components.html %}
+{% include elements/snippet.html content=message_example %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Messages</h1>
-    <h2 class="subtitle">
-      Colored <strong>message</strong> blocks, to emphasize part of your page
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=true
-      variables=true
-    %}
+{% include elements/anchor.html name="Colors" %}
 
-    <hr>
+{% include elements/snippet.html content=message_colors_example %}
 
-    {% include snippet.html content=message_example %}
+{% include elements/anchor.html name="Message body only" %}
 
-    {% include anchor.html name="Colors" %}
+<div class="content">
+  <p>You can <strong>omit</strong> the message header:</p>
+</div>
 
-    {% include snippet.html content=message_colors_example %}
+{% include elements/snippet.html content=message_body_example %}
 
-    {% include anchor.html name="Message body only" %}
+{% include elements/anchor.html name="Sizes" %}
 
-    <div class="content">
-      <p>You can <strong>omit</strong> the message header:</p>
-    </div>
+{% include elements/snippet.html content=message_small %}
 
-    {% include snippet.html content=message_body_example %}
+{% include elements/snippet.html content=message_normal %}
 
-    {% include anchor.html name="Sizes" %}
+{% include elements/snippet.html content=message_medium %}
 
-    {% include snippet.html content=message_small %}
+{% include elements/snippet.html content=message_large %}
 
-    {% include snippet.html content=message_normal %}
-
-    {% include snippet.html content=message_medium %}
-
-    {% include snippet.html content=message_large %}
-
-    {% include variables.html type='component' %}
-
-  </div>
-</section>
+{% include elements/variables.html type='component' %}

@@ -1,11 +1,11 @@
 .bd-example,
 .bd-structure,
 .bd-snippet
-  border: 1px solid $yellow
+  border: 2px solid $background
   position: relative
-  &:before
+  &::before
     background: $yellow
-    border-radius: $radius $radius 0 0
+    border-radius: $radius-small $radius-small 0 0
     bottom: 100%
     color: $yellow-invert
     content: "Example"
@@ -14,6 +14,7 @@
     font-weight: bold
     left: -1px
     letter-spacing: 1px
+    margin-left: -1px
     padding: 3px 5px
     position: absolute
     text-transform: uppercase
@@ -46,7 +47,6 @@
 // Snippet
 .bd-snippet
   +block
-  border: 1px solid $yellow
   margin-top: 2rem
   position: relative
   &::before
@@ -56,9 +56,6 @@
 
 .bd-snippet-preview
   padding: 1.5rem
-
-.bd-snippet-code
-  background-color: $pre-background
 
 .bd-snippet-code.bd-is-more.bd-is-more-clipped
   .highlight
@@ -72,14 +69,22 @@
 .bd-snippet.bd-is-horizontal
   border-radius: $radius-large
   border-top-left-radius: 0
-  .bd-snippet-code.bd-is-more.bd-is-more-clipped
+  .bd-snippet-code
     .highlight
-      pre
-        padding-top: 0.325rem
+      border-top-left-radius: 0
+      border-top-right-radius: 0
+    &.bd-is-more.bd-is-more-clipped
+      .highlight
+        pre
+          padding-top: 0.325rem
 
 .bd-snippet.bd-is-clipped
   .bd-snippet-code
     overflow: auto
+
+.bd-snippet.bd-is-fullwidth
+  border-radius: 0
+  border-width: 1px 0
 
 +desktop
   .bd-snippet.bd-is-vertical
@@ -150,14 +155,14 @@ $structure-invert: $danger-invert
   border-color: $structure
   border-radius: $radius
   padding: 1.5rem
-  &:before
+  &::before
     background: $structure
     color: $structure-invert
     content: "Structure"
 
 .bd-structure-item
   position: relative
-  &:before
+  &::before
     +overlay
     background: rgba($black, 0.7)
     background: $background
@@ -165,7 +170,7 @@ $structure-invert: $danger-invert
     content: ""
     display: block
     z-index: 1
-  &:after
+  &::after
     +overlay
     align-items: center
     content: attr(title)
@@ -177,7 +182,7 @@ $structure-invert: $danger-invert
     z-index: 2
   &.bd-is-structure-container
     padding: 1.5rem 0.75rem 0.75rem
-    &:after
+    &::after
       align-items: flex-start
       justify-content: flex-start
       padding: 0.5rem 0.75rem

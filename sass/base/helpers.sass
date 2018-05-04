@@ -52,6 +52,8 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
 @each $alignment, $text-align in $alignments
   .has-text-#{$alignment}
     text-align: #{$text-align} !important
+
+@each $alignment, $text-align in $alignments
   +mobile
     .has-text-#{$alignment}-mobile
       text-align: #{$text-align} !important
@@ -100,10 +102,14 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
     &:hover,
     &:focus
       color: darken($color, 10%) !important
+  .has-background-#{$name}
+    background-color: $color !important
 
 @each $name, $shade in $shades
   .has-text-#{$name}
     color: $shade !important
+  .has-background-#{$name}
+    background-color: $shade !important
 
 .has-text-weight-light
   font-weight: $weight-light !important

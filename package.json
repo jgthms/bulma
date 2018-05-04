@@ -1,11 +1,11 @@
 {
   "name": "bulma",
-  "version": "0.6.2",
+  "version": "0.7.1",
   "homepage": "https://bulma.io",
   "author": "Jeremy Thomas <bbxdesign@gmail.com> (https://jgthms.com)",
   "description": "Modern CSS framework based on Flexbox",
   "main": "bulma.sass",
-  "style": "bulma/css/bulma.css",
+  "style": "bulma/css/bulma.min.css",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jgthms/bulma.git"
@@ -22,25 +22,20 @@
     "url": "https://github.com/jgthms/bulma/issues"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "node-sass": "^4.5.3",
-    "postcss-cli": "^4.1.0",
-    "rimraf": "^2.6.1"
+    "autoprefixer": "^8.2.0",
+    "clean-css-cli": "^4.1.11",
+    "node-sass": "^4.8.3",
+    "postcss-cli": "^5.0.0",
+    "rimraf": "^2.6.2"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix",
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
     "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
+    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
     "build-clean": "rimraf css",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
-    "deploy": "npm run build && npm run docs",
-    "docs": "npm run docs-sass && npm run docs-autoprefix",
-    "docs-autoprefix": "postcss --use autoprefixer --map false --output docs/css/bulma-docs.css docs/css/bulma-docs.css",
-    "docs-sass": "node-sass --output-style expanded docs/bulma-docs.sass docs/css/bulma-docs.css",
-    "start": "npm run build-sass -- --watch",
-    "start-docs": "npm run docs-sass -- --watch",
-    "start-test": "npm run test-sass -- --watch",
-    "test-sass": "node-sass --output-style expanded docs/bulma-test.sass docs/css/bulma-test.css",
-    "test-scss": "node-sass --output-style expanded docs/bulma-test.scss docs/css/bulma-test.css"
+    "deploy": "npm run build",
+    "start": "npm run build-sass -- --watch"
   },
   "files": [
     "css",

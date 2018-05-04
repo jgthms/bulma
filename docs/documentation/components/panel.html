@@ -3,6 +3,15 @@ title: Panel
 layout: documentation
 doc-tab: components
 doc-subtab: panel
+breadcrumb:
+- home
+- documentation
+- components
+- components-panel
+meta:
+  colors: false
+  sizes: false
+  variables: true
 ---
 
 {% capture panel_example %}
@@ -14,7 +23,7 @@ doc-subtab: panel
     <p class="control has-icons-left">
       <input class="input is-small" type="text" placeholder="search">
       <span class="icon is-small is-left">
-        <i class="fas fa-search"></i>
+        <i class="fas fa-search" aria-hidden="true"></i>
       </span>
     </p>
   </div>
@@ -27,37 +36,37 @@ doc-subtab: panel
   </p>
   <a class="panel-block is-active">
     <span class="panel-icon">
-      <i class="fas fa-book"></i>
+      <i class="fas fa-book" aria-hidden="true"></i>
     </span>
     bulma
   </a>
   <a class="panel-block">
     <span class="panel-icon">
-      <i class="fas fa-book"></i>
+      <i class="fas fa-book" aria-hidden="true"></i>
     </span>
     marksheet
   </a>
   <a class="panel-block">
     <span class="panel-icon">
-      <i class="fas fa-book"></i>
+      <i class="fas fa-book" aria-hidden="true"></i>
     </span>
     minireset.css
   </a>
   <a class="panel-block">
     <span class="panel-icon">
-      <i class="fas fa-book"></i>
+      <i class="fas fa-book" aria-hidden="true"></i>
     </span>
     jgthms.github.io
   </a>
   <a class="panel-block">
     <span class="panel-icon">
-      <i class="fas fa-code-branch"></i>
+      <i class="fas fa-code-fork" aria-hidden="true"></i>
     </span>
     daniellowtw/infboard
   </a>
   <a class="panel-block">
     <span class="panel-icon">
-      <i class="fas fa-code-branch"></i>
+      <i class="fas fa-code-fork" aria-hidden="true"></i>
     </span>
     mojs
   </a>
@@ -73,50 +82,32 @@ doc-subtab: panel
 </nav>
 {% endcapture %}
 
-{% include subnav-components.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Panel</h1>
-    <h2 class="subtitle">A composable <strong>panel</strong>, for compact controls</h2>
-    {%
-      include meta.html
-      colors=false
-      sizes=false
-      variables=true
-    %}
-
-    <hr>
-
-    <div class="content">
-      <p>
-        The <code>panel</code> is container for several types:
-      </p>
+<div class="content">
+  <p>
+    The <code>panel</code> is container for several types:
+  </p>
+  <ul>
+    <li>
+      <code>panel-heading</code> as the first child
+    </li>
+    <li>
+      <code>panel-tabs</code> for navigation
+    </li>
+    <li>
+      <code>panel-block</code> which can contain other elements, like:
       <ul>
-        <li>
-          <code>panel-heading</code> as the first child
-        </li>
-        <li>
-          <code>panel-tabs</code> for navigation
-        </li>
-        <li>
-          <code>panel-block</code> which can contain other elements, like:
-          <ul>
-            <li><code>control</code></li>
-            <li><code>input</code></li>
-            <li><code>button</code></li>
-            <li><code>panel-icon</code></li>
-          </ul>
-        </li>
+        <li><code>control</code></li>
+        <li><code>input</code></li>
+        <li><code>button</code></li>
+        <li><code>panel-icon</code></li>
       </ul>
-      <p>
-        The <code>panel-block</code> can be an anchor tag <code>&lt;a&gt;</code> or a label <code>&lt;label&gt;</code> with a checkbox inside.
-      </p>
-    </div>
+    </li>
+  </ul>
+  <p>
+    The <code>panel-block</code> can be an anchor tag <code>&lt;a&gt;</code> or a label <code>&lt;label&gt;</code> with a checkbox inside.
+  </p>
+</div>
 
-    {% include snippet.html content=panel_example size="one-third" %}
+{% include elements/snippet.html content=panel_example %}
 
-    {% include variables.html type='component' %}
-
-  </div>
-</section>
+{% include elements/variables.html type='component' %}
