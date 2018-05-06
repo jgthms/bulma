@@ -22,9 +22,6 @@
       KeyCDN
     </li>
     <li>
-      Tooltwist
-    </li>
-    <li>
       Aaron
       <a href="https://twitter.com/aequasi" target="_blank" rel="nofollow">
       @aequasi
