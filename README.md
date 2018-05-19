@@ -89,6 +89,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Buefy](https://buefy.github.io)                                                   | Lightweight UI components for Vue.js based on Bulma                |
 | [vue-bulma-components](https://github.com/vouill/vue-bulma-components)             | Bulma components for Vue.js with straightforward syntax            |
 | [BulmaJS](https://github.com/VizuaaLOG/BulmaJS)                                    | Javascript integration for Bulma. Written in ES6 with a data-* API |
+| [Bulma-modal-fx](https://github.com/postare/bulma-modal-fx)                                  | A set of modal window effects with CSS transitions and animations for Bulma                                    |
 | [Bulma.styl](https://github.com/log1x/bulma.styl)                                  | 1:1 Stylus translation of Bulma                                    |
 | [elm-bulma](https://github.com/surprisetalk/elm-bulma)                             | Bulma + Elm                                                        |
 | [elm-bulma-classes](https://github.com/ahstro/elm-bulma-classes)                   | Bulma classes prepared for usage with Elm                          |
