@@ -40,7 +40,7 @@ videos:
               Videos
             </h1>
             <p class="subtitle is-4">
-              Learn Bulma with interactive <a href="{{ site.data.meta.scrimba_url }}" target="_blank" rel="nofollow">Scrimba</a> tutorials
+              Learn Bulma with interactive {% include external-link.html url=site.data.meta.scrimba_url text="Scrimba" %} tutorials
             </p>
           </div>
 
@@ -49,56 +49,69 @@ videos:
           </div>
         </header>
 
-        <div class="bd-content">
+        <div class="bd-shoutout message is-success">
+          <p class="title is-4 bd-shoutout-text">
+            Learn Bulma for free!
+          </p>
 
-          {% for video in page.videos %}
-            <div class="bd-video">
-              <div class="columns">
-                <div class="column is-3">
-                  <h2 class="title">
-                    {{ video.title }}
-                  </h2>
+          <p class="subtitle bd-shoutout-text">
+            Build 3 beautiful websites in 58 minutes
+          </p>
 
-                  <p class="subtitle has-text-grey-light">
-                    {{ video.subtitle }}
+          <p class="bd-shoutout-button">
+            {% include external-link.html
+                classes="button is-success"
+                url=site.data.meta.scrimba_url
+                text="Enroll in the course" %}
+          </p>
+        </div>
+
+        {% for video in page.videos %}
+          <div class="bd-video">
+            <div class="columns">
+              <div class="column is-3">
+                <h2 class="title">
+                  {{ video.title }}
+                </h2>
+
+                <p class="subtitle has-text-grey-light">
+                  {{ video.subtitle }}
+                </p>
+
+                <div class="content is-medium">
+                  <p>
+                    {{ video.content }}
                   </p>
-
-                  <div class="content is-medium">
-                    <p>
-                      {{ video.content }}
-                    </p>
-                  </div>
-
-                  <div class="buttons">
-                    <p>
-                      <a class="button is-link is-medium" href="{{ video.video_url }}" target="_blank" rel="nofollow">
-                        Watch video
-                      </a>
-
-                      {% if video.article_url %}
-                        <a class="button is-light is-medium" href="{{ video.article_url }}" target="_blank" rel="nofollow">
-                          Read article
-                        </a>
-                      {% endif %}
-                    </p>
-                  </div>
                 </div>
 
-                <div class="column is-8 is-offset-1">
-                  <a class="image" href="{{ video.video_url }}" target="_blank" rel="nofollow">
-                    {% if video.no_gif %}
-                      <img src="/images/videos/{{ video.id }}.png" alt="{{ video.title }} screenshot">
-                    {% else %}
-                      <img class="is-hidden-touch" src="/images/videos/{{ video.id }}.gif" alt="{{ video.title }} screenshot">
-                      <img class="is-hidden-desktop" src="/images/videos/{{ video.id }}.png" alt="{{ video.title }} screenshot">
-                      {% endif %}
-                  </a>
+                <div class="buttons">
+                  <p>
+                    <a class="button is-link is-medium" href="{{ video.video_url }}" target="_blank" rel="nofollow">
+                      Watch video
+                    </a>
+
+                    {% if video.article_url %}
+                      <a class="button is-light is-medium" href="{{ video.article_url }}" target="_blank" rel="nofollow">
+                        Read article
+                      </a>
+                    {% endif %}
+                  </p>
                 </div>
               </div>
-            </div>
-          {% endfor %}
 
-        </div>
+              <div class="column is-8 is-offset-1">
+                <a class="image" href="{{ video.video_url }}" target="_blank" rel="nofollow">
+                  {% if video.no_gif %}
+                    <img src="/images/videos/{{ video.id }}.png" alt="{{ video.title }} screenshot">
+                  {% else %}
+                    <img class="is-hidden-touch" src="/images/videos/{{ video.id }}.gif" alt="{{ video.title }} screenshot">
+                    <img class="is-hidden-desktop" src="/images/videos/{{ video.id }}.png" alt="{{ video.title }} screenshot">
+                    {% endif %}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </div>
