@@ -1,0 +1,69 @@
+// =============================================================================
+// IOTA.SCSS
+// -----------------------------------------------------------------------------
+// Iota styles.
+// =============================================================================
+
+// =============================================================================
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+//   01. Imports
+//   02. Grid
+// =============================================================================
+
+// Imports
+// =============================================================================
+
+@import "variables";
+@import "mixins";
+
+
+
+// Grid
+// =============================================================================
+
+.#{$iota_grid_class} {
+  display: grid;
+
+  @each $bp, $data in $iota_grid {
+    @include iota-breakpoint(map-get($data, "breakpoint")) {
+      grid-gap: var(#{--gap- + $bp}, map-get($data, "grid_gap"));
+      grid-auto-flow: var(#{--flow- + $bp}, map-get($data, "grid_auto_flow"));
+      grid-auto-columns: var(#{--auto-cols- + $bp}, map-get($data, "grid_auto_columns"));
+      grid-auto-rows: var(#{--auto-rows- + $bp}, map-get($data, "grid_auto_rows"));
+      grid-template-columns: var(#{--template-cols- + $bp}, repeat(var(#{--cols- + $bp}, map-get($data, "repeat_columns")), var(#{--cols-size- + $bp}, map-get($data, "repeat_columns_size"))));
+      grid-template-rows: var(#{--template-rows- + $bp}, none);
+      justify-content: var(#{--jc- + $bp}, map-get($data, "justify_content"));
+      justify-items: var(#{--ji- + $bp}, map-get($data, "justify_items"));
+      align-content: var(#{--ac- + $bp}, map-get($data, "align_content"));
+      align-items: var(#{--ai- + $bp}, map-get($data, "align_items"));
+    }
+  }
+
+  &.is-inline {
+    display: inline-grid;
+  }
+
+  > * {
+    min-width: 0px;
+    max-width: 100%;
+    min-height: 0px;
+
+    @each $bp, $data in $iota_grid {
+      @include iota-breakpoint(map-get($data, "breakpoint")) {
+        @if $iota_enable_grid_column_property {
+          grid-column: var(#{--col- + $bp}, map-get($data, "grid_column"));
+        }
+        @if $iota_enable_grid_row_property {
+          grid-row: var(#{--row- + $bp}, map-get($data, "grid_row"));
+        }
+        @if $iota_enable_justify_self_property {
+          justify-self: var(#{--js- + $bp}, map-get($data, "justify_self"));
+        }
+        @if $iota_enable_align_self_property {
+          align-self: var(#{--as- + $bp}, map-get($data, "align_self"));
+        }
+      }
+    }
+  }
+}
