@@ -23,7 +23,7 @@ videos:
   subtitle: 4 videos – 15 min
   content: Create web-based presentation slides with Bulma.
   video_url: https://scrimba.com/p/pV5eHk/cGym4Ta
-  no_gif: true
+  no_video: true
 ---
 
 {% include global/navbar.html id="Videos" %}
@@ -101,11 +101,12 @@ videos:
 
               <div class="column is-8 is-offset-1">
                 <a class="image" href="{{ video.video_url }}" target="_blank" rel="nofollow">
-                  {% if video.no_gif %}
+                  {% if video.no_video %}
                     <img src="/images/videos/{{ video.id }}.png" alt="{{ video.title }} screenshot">
                   {% else %}
-                    <img class="is-hidden-touch" src="/images/videos/{{ video.id }}.gif" alt="{{ video.title }} screenshot">
-                    <img class="is-hidden-desktop" src="/images/videos/{{ video.id }}.png" alt="{{ video.title }} screenshot">
+                    <video autoplay loop muted>
+                      <source media="(min-width: 640px)" src="/images/videos/{{ video.id }}.mp4">
+                    </video>
                     {% endif %}
                 </a>
               </div>
