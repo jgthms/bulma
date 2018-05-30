@@ -6,6 +6,10 @@
 
 * #1884 New `$navbar-burger-color` variable
 
+### Bug fixes
+
+* #1749 Fix icons floating out of input area
+
 ## 0.7.1
 
 ### Improvements
