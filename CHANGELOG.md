@@ -5,6 +5,7 @@
 ### New features
 
 * #1884 New `$navbar-burger-color` variable
+* #1679 Add breakpoint based column gaps
 
 ### Bug fixes
 
