@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.7.2
+
+### New features
+
+* #1884 New `$navbar-burger-color` variable
+
 ## 0.7.1
 
 ### Improvements
