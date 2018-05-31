@@ -6,6 +6,7 @@
 
 * #1884 New `$navbar-burger-color` variable
 * #1679 Add breakpoint based column gaps
+* #1905 Fix `modal` for IE11 #1902
 
 ### Bug fixes
 
