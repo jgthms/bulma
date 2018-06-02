@@ -137,4 +137,4 @@ The footer has been redesigned as well. Among other things, there's a **sitemap*
 
 The Bulma website is built with **Jekyll**. In the process of this redesign, the underlying code that helps maintain this website has been optimized and cleaned up as well.
 
-This well help further updates to be easier.
+This will help further updates to be easier.
