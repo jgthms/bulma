@@ -21,8 +21,7 @@ This is a **new feature | improvement | bugfix | documentation fix**.
 
 <!-- BEFORE SUBMITTING YOUR PR, MAKE SURE TO FOLLOW THESE STEPS: -->
 <!-- 1. Pull the latest `master` branch -->
-<!-- 2. Run `npm install` to install all Bulma dependencies -->
-<!-- 3. Make sure your Sass code is compliant with the [Bulma Sass styleguide](https://github.com/jgthms/bulma/blob/master/.github/CONTRIBUTING.md#bulma-sass-styleguide) -->
-<!-- 4. Make sure your PR only affects `.sass` or documentation files -->
+<!-- 2. Make sure your Sass code is compliant with the [Bulma Sass styleguide](https://github.com/jgthms/bulma/blob/master/.github/CONTRIBUTING.md#bulma-sass-styleguide) -->
+<!-- 3. Make sure your PR only affects `.sass` or documentation files -->
 
 <!-- Thanks! -->
