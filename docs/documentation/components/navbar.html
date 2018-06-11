@@ -952,6 +952,68 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </div>
 
+
+{% assign vernum = site.data.meta.version | downcase | remove: "." | plus: 0 %}
+
+{% if vernum >= 72 %}
+
+<h4 class="title is-4">
+  Dropdown without arrow
+</h4>
+
+<div class="content">
+  <p>
+    You can remove the arrow in the items of the Navbar by addind the <code>navbar-dropdown</code> class to them.
+  </p>
+</div>
+
+{% highlight html %}
+<div class="navbar-item has-dropdown is-hoverable">
+  <a class="navbar-link is-arrowless">
+    Docs
+  </a>
+  <!-- navbar-dropdowns -->
+</div>
+{% endhighlight %}
+
+{% capture navbar_dropup_without_arrow_example %}
+<div class="navbar-item has-dropdown is-hoverable">
+  <a class="navbar-link is-arrowless">
+    Link without arrow
+  </a>
+  <div class="navbar-dropdown">
+    <a class="navbar-item">
+      Overview
+    </a>
+    <a class="navbar-item">
+      Elements
+    </a>
+    <a class="navbar-item">
+      Components
+    </a>
+    <hr class="navbar-divider">
+    <div class="navbar-item">
+      Version {{ site.data.meta.version }}
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+<div class="columns">
+  <div class="column">
+    <div class="bd-example is-paddingless">
+      {{ navbar_dropup_without_arrow_example }}
+    </div>
+  </div>
+
+  <div class="column">
+    {% highlight html %}{{ navbar_dropup_without_arrow_example }}{% endhighlight %}
+  </div>
+</div>
+
+{% endif %}
+
+
 <h4 class="title is-4">
   Styles for the dropdown menu
 </h4>
