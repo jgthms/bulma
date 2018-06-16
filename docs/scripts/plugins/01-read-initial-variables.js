@@ -5,6 +5,7 @@ const utils = require('./utils');
 function plugin() {
   let variables = {
     by_name: {},
+    list: [],
   };
 
   return (files, metalsmith, done) => {
@@ -12,8 +13,6 @@ function plugin() {
 
     Object.keys(files).forEach(file_path => {
       const {file_name, lines} = utils.getLines(files, file_path);
-
-      variables[file_name] = [];
 
       lines.forEach(line => {
         const variable = utils.parseLine(line);
@@ -23,8 +22,8 @@ function plugin() {
           variables.list.push(variable.name);
         }
       });
-    });
 
-    utils.writeFile(utils.files.initial_variables, variables);
+      utils.writeFile(file_path, variables);
+    });
   };
 }
