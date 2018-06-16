@@ -5,20 +5,24 @@
   {% assign subtab      = include.subtab      | default: page.doc-subtab %}
   {% assign type        = include.type        | default: tab %}
   {% assign data        = include.data        | default: site.data.variables[tab][subtab] %}
-  {% assign variables   = include.variables   | default: data.vars %}
+  {% assign variables   = include.variables   | default: data.list %}
   {% assign table_class = include.table_class | default: 'is-bordered' %}
 
   {% if include.custom_message %}
     {{ include.custom_message }}
   {% else %}
     {% assign variables_link_text = "these variables" %}
+
     {% capture variables_link %}
-      {% if data.file_url %}
-        <a href="{{ data.file_url }}" target="_blank">{{ variables_link_text }}</a>
+      {% if data.file_path %}
+        <a href="https://github.com/jgthms/bulma/blob/master/sass/{{ data.file_path }}" target="_blank">
+          {{ variables_link_text }}
+        </a>
       {% else %}
         {{ variables_link_text }}
       {% endif %}
     {% endcapture %}
+
     You can use {{ variables_link | strip }} to <strong>customize</strong> this {{ type }}. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
   {% endif %}
 
@@ -35,24 +39,47 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Type</th>
         <th>Default value</th>
+        <th>Computed value</th>
       </tr>
     </thead>
     <tfoot>
       <tr>
         <th>Name</th>
+        <th>Type</th>
         <th>Default value</th>
+        <th>Computed value</th>
       </tr>
     </tfoot>
     <tbody>
-      {% for variable_hash in variables %}
-        {% assign variable = variable_hash[1] %}
+      {% for variable_name in variables %}
+        {% assign variable = data.by_name[variable_name] %}
+
         <tr>
           <td >
             <code style="white-space: nowrap;">{{ variable.name }}</code>
           </td>
           <td>
+            <small>
+              {% if variable.computed_type and variable.computed_type != variable.type %}
+                {{ variable.computed_type }}
+              {% else %}
+                {{ variable.type }}
+              {% endif %}
+            </small>
+          </td>
+          <td>
             <code>{{ variable.value }}</code>
+          </td>
+          <td>
+            {% if variable.computed_value != '' %}
+              {% if variable.computed_type == 'color' %}
+                {% include elements/color-square.html value=variable.computed_value %}
+              {% elsif variable.computed_value and variable.computed_value != variable.value %}
+                <code>{{ variable.computed_value }}</code>
+              {% endif %}
+            {% endif %}
           </td>
         </tr>
       {% endfor %}

@@ -1,8 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
+const base_path = '../_data/variables/';
+
 let utils = {
   getVariableType: (value) => {
+    if (!value) {
+      return 'string';
+    }
+
     if (value.startsWith('hsl')) {
       return 'color';
     } else if (value.startsWith('$')) {
@@ -15,8 +21,12 @@ let utils = {
       return 'computed';
     } else if (value.endsWith('00')) {
       return 'font-weight';
-    } else if (value.endsWith('px') || value.endsWith('rem')) {
+    } else if (value.endsWith('px') || value.endsWith('em')) {
       return 'size';
+    } else if (value.includes('$')) {
+      return 'compound';
+    } else if (value.startsWith('findColorInvert')) {
+      return 'function';
     }
 
     return 'string';
@@ -54,7 +64,8 @@ let utils = {
 
   writeFile: (file_path, data) => {
     const json_data = JSON.stringify(data, null, '  ');
-    const json_file_path = 'variables/' + file_path.replace('.sass', '.json');
+    const json_file_path = base_path + file_path.replace('.sass', '.json');
+
     utils.ensureDirectoryExistence(json_file_path);
 
     fs.writeFile(json_file_path, json_data, err => {
@@ -83,7 +94,9 @@ let utils = {
     return value;
   },
 
-  getComputedValue: (value, type, initial_variables, derived_variables) => {
+  getComputedData: (value, type, initial_variables, derived_variables) => {
+    let computed_value = '';
+
     if (value.startsWith('$')) {
       let second_value;
 
@@ -102,13 +115,22 @@ let utils = {
           third_value = derived_variables.by_name[second_value].value;
         }
 
-        return third_value;
+        computed_value = third_value;
+      } else {
+        computed_value = second_value;
       }
-
-      return second_value;
     }
 
-    return value;
+    if (computed_value != '') {
+      const computed_type = utils.getVariableType(computed_value);
+
+      return {
+        computed_type,
+        computed_value,
+      }
+    }
+
+    return {};
   },
 
   ensureDirectoryExistence: (file_path) => {
@@ -124,7 +146,7 @@ let utils = {
 }
 
 utils.files = {};
-utils.files.initial_variables = `./variables/utilities/initial-variables.json`;
-utils.files.derived_variables = `./variables/utilities/derived-variables.json`;
+utils.files.initial_variables = `${base_path}utilities/initial-variables.json`;
+utils.files.derived_variables = `${base_path}utilities/derived-variables.json`;
 
 module.exports = utils;
