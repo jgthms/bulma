@@ -6,8 +6,6 @@ const initial_plugin = require('./plugins/01-read-initial-variables');
 
 Metalsmith(__dirname)
   .source('../../sass')
-  .destination('./variables')
-  .clean(true)
   .use(filter(regex_initial))
   .use(initial_plugin())
   .build(function(err) {
