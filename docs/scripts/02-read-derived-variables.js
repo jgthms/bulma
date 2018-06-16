@@ -1,6 +1,9 @@
 module.exports = plugin;
 
 const utils = require('./utils');
+const fs = require('fs');
+
+let initial_variables = JSON.parse(fs.readFileSync(utils.files.initial_variables));
 
 function plugin() {
   let variables = {
@@ -19,14 +22,13 @@ function plugin() {
         const variable = utils.parseLine(line);
 
         if (variable != false) {
+          variable.computed_value = utils.getComputedValue(variable.value, variable.type, initial_variables);
           variables.by_name[variable.name] = variable;
-          variables[file_name].push(variable.name);
+          variables.list.push(variable.name);
         }
       });
-
-      metalsmith.variables = variables;
-
-      utils.writeFile('./output/initial-variables.json', variables);
     });
+
+    utils.writeFile(utils.files.derived_variables, variables);
   };
 }
