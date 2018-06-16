@@ -53,36 +53,22 @@
       </tr>
     </tfoot>
     <tbody>
-      {% for variable_name in variables %}
-        {% assign variable = data.by_name[variable_name] %}
-
-        <tr>
-          <td >
-            <code style="white-space: nowrap;">{{ variable.name }}</code>
-          </td>
-          <td>
-            <small>
-              {% if variable.computed_type and variable.computed_type != variable.type %}
-                {{ variable.computed_type }}
-              {% else %}
-                {{ variable.type }}
-              {% endif %}
-            </small>
-          </td>
-          <td>
-            <code>{{ variable.value }}</code>
-          </td>
-          <td>
-            {% if variable.computed_value != '' %}
-              {% if variable.computed_type == 'color' %}
-                {% include elements/color-square.html value=variable.computed_value %}
-              {% elsif variable.computed_value and variable.computed_value != variable.value %}
-                <code>{{ variable.computed_value }}</code>
-              {% endif %}
-            {% endif %}
-          </td>
-        </tr>
-      {% endfor %}
+      {% if include.variables_keys %}
+        {% for key in include.variables_keys %}
+          {% if include.responsiveness_variables %}
+            {% assign variable = site.data.variables.utilities.initial-variables.by_name[key] %}
+            {% include elements/variable-row.html variable=variable %}
+          {% else %}
+            {% assign variable = site.data.variables.elements.form.by_name[key] %}
+            {% include elements/variable-row.html variable=variable %}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% for variable_name in variables %}
+          {% assign variable = data.by_name[variable_name] %}
+          {% include elements/variable-row.html variable=variable %}
+        {% endfor %}
+      {% endif %}
     </tbody>
   </table>
 </div>
