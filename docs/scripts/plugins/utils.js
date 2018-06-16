@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 let utils = {
   getVariableType: (value) => {
@@ -53,22 +54,23 @@ let utils = {
 
   writeFile: (file_path, data) => {
     const json_data = JSON.stringify(data, null, '  ');
+    const json_file_path = 'variables/' + file_path.replace('.sass', '.json');
+    utils.ensureDirectoryExistence(json_file_path);
 
-    fs.writeFile(file_path, json_data, err => {
+    fs.writeFile(json_file_path, json_data, err => {
       if (err) {
         return console.log(err);
       }
 
-      console.log('The file was saved!');
+      console.log(`The file ${json_file_path} was saved!`);
     });
   },
 
-  getComputedValue: (value, type, initial_variables) => {
+  getInitialValue: (value, type, initial_variables) => {
     if (value.startsWith('$') && value in initial_variables.by_name) {
       const second_value = initial_variables.by_name[value].value;
-      console.log('second_value', second_value);
 
-      if (second_value.startsWith('$') && second_value in initial_variables) {
+      if (second_value.startsWith('$') && second_value in initial_variables.by_name) {
         const third_value = initial_variables.by_name[second_value].value;
         console.log('third_value', third_value);
 
@@ -79,13 +81,50 @@ let utils = {
     }
 
     return value;
+  },
+
+  getComputedValue: (value, type, initial_variables, derived_variables) => {
+    if (value.startsWith('$')) {
+      let second_value;
+
+      if (value in initial_variables.by_name) {
+        second_value = initial_variables.by_name[value].value;
+      } else if (value in derived_variables.by_name) {
+        second_value = derived_variables.by_name[value].value;
+      }
+
+      if (second_value && second_value.startsWith('$')) {
+        let third_value;
+
+        if (second_value in initial_variables.by_name) {
+          third_value = initial_variables.by_name[second_value].value;
+        } else if (second_value in derived_variables.by_name) {
+          third_value = derived_variables.by_name[second_value].value;
+        }
+
+        return third_value;
+      }
+
+      return second_value;
+    }
+
+    return value;
+  },
+
+  ensureDirectoryExistence: (file_path) => {
+    var dirname = path.dirname(file_path);
+
+    if (fs.existsSync(dirname)) {
+      return true;
+    }
+
+    utils.ensureDirectoryExistence(dirname);
+    fs.mkdirSync(dirname);
   }
 }
 
-const output_base = './output/';
-
 utils.files = {};
-utils.files.initial_variables = `${output_base}initial-variables.json`;
-utils.files.derived_variables = `${output_base}derived-variables.json`;
+utils.files.initial_variables = `./variables/utilities/initial-variables.json`;
+utils.files.derived_variables = `./variables/utilities/derived-variables.json`;
 
 module.exports = utils;
