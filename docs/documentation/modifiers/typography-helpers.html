@@ -11,8 +11,8 @@ breadcrumb:
 - modifiers-typography-helpers
 ---
 
-{% assign initial_vars = site.data.variables.utilities.initial-variables.vars %}
-{% assign sizes        = site.data.variables.utilities.derived-variables.vars.sizes.value | split: ' ' %}
+{% assign initial_vars = site.data.variables.utilities.initial-variables.by_name %}
+{% assign sizes        = site.data.variables.utilities.derived-variables.by_name.sizes.value | split: ' ' %}
 
 {% capture thead %}
 <thead>
@@ -39,7 +39,7 @@ breadcrumb:
 
 {% capture size1 %}
 <td class="is-narrow">
-  <p class="notification is-primary"><code>{{ initial_vars.size-1.value }}</code></p>
+  <p class="notification is-primary"><code>{{ initial_vars['$size-1'].value }}</code></p>
 </td>
 {% endcapture %}
 

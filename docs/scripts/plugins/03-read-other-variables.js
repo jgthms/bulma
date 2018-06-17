@@ -26,7 +26,7 @@ function plugin() {
         const variable = utils.parseLine(line);
 
         if (variable != false) {
-          const computed_data = utils.getComputedData(variable.value, variable.type, initial_variables, derived_variables);
+          const computed_data = utils.getComputedData(variable.name, variable.value, variable.type, initial_variables, derived_variables);
 
           if (Object.keys(computed_data).length > 0) {
             variable.computed_type = computed_data.computed_type;
