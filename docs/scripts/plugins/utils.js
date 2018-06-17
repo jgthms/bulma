@@ -2,31 +2,59 @@ const fs = require('fs');
 const path = require('path');
 
 const base_path = '../_data/variables/';
+const css_keywords = ['null', 'ease-out', 'optimizeLegibility'];
+const regex_unitless = /^([0-9]+\.[0-9]+)$/;
 
 let utils = {
-  getVariableType: (value) => {
+  getVariableType: (name, value) => {
     if (!value) {
       return 'string';
     }
 
-    if (value.startsWith('hsl')) {
+    if (name == '$sizes') {
+      return 'map';
+    }
+
+    if (value.startsWith('hsl') || value.startsWith('#') || value.startsWith('rgb')) {
       return 'color';
+    } else if (css_keywords.includes(value)) {
+      return 'keyword';
+    } else if (
+        value.startsWith('findColorInvert')
+        || value.startsWith('mergeColorMaps')
+      ) {
+      return 'function';
     } else if (value.startsWith('$')) {
       return 'variable';
-    } else if (value.startsWith('BlinkMacSystemFont') || value == 'monospace') {
+    } else if (
+        value.startsWith('BlinkMacSystemFont')
+        || value == 'monospace'
+      ) {
       return 'font-family';
-    } else if (value == 'true' || value == 'false') {
+    } else if (value == 'true'
+        || value == 'false'
+      ) {
       return 'boolean';
+    } else if (value.endsWith('ms')) {
+      return 'duration';
     } else if (value.includes('+')) {
       return 'computed';
-    } else if (value.endsWith('00')) {
+    } else if (
+        value.endsWith('00')
+        || value == 'normal'
+      ) {
       return 'font-weight';
-    } else if (value.endsWith('px') || value.endsWith('em')) {
+    } else if (
+        value.endsWith('px')
+        || value.endsWith('em')
+        || value.includes('px ')
+        || value.includes('em ')
+      ) {
       return 'size';
     } else if (value.includes('$')) {
       return 'compound';
-    } else if (value.startsWith('findColorInvert')) {
-      return 'function';
+    } else if (value.match(regex_unitless)) {
+      return 'unitless';
     }
 
     return 'string';
@@ -43,7 +71,7 @@ let utils = {
       return variable = {
         name: variable_name,
         value: variable_value,
-        type: utils.getVariableType(variable_value),
+        type: utils.getVariableType(variable_name, variable_value),
       };
     }
 
@@ -83,7 +111,6 @@ let utils = {
 
       if (second_value.startsWith('$') && second_value in initial_variables.by_name) {
         const third_value = initial_variables.by_name[second_value].value;
-        console.log('third_value', third_value);
 
         return third_value;
       }
@@ -94,7 +121,7 @@ let utils = {
     return value;
   },
 
-  getComputedData: (value, type, initial_variables, derived_variables) => {
+  getComputedData: (name, value, type, initial_variables, derived_variables = {}) => {
     let computed_value = '';
 
     if (value.startsWith('$')) {
@@ -102,7 +129,7 @@ let utils = {
 
       if (value in initial_variables.by_name) {
         second_value = initial_variables.by_name[value].value;
-      } else if (value in derived_variables.by_name) {
+      } else if (derived_variables.by_name && value in derived_variables.by_name) {
         second_value = derived_variables.by_name[value].value;
       }
 
@@ -111,7 +138,7 @@ let utils = {
 
         if (second_value in initial_variables.by_name) {
           third_value = initial_variables.by_name[second_value].value;
-        } else if (second_value in derived_variables.by_name) {
+        } else if (derived_variables.by_name && second_value in derived_variables.by_name) {
           third_value = derived_variables.by_name[second_value].value;
         }
 
@@ -119,10 +146,26 @@ let utils = {
       } else {
         computed_value = second_value;
       }
+    } else if (value.startsWith('findColorInvert')) {
+      // e.g. $turquoise-invert -> findColorInvert($turquoise)
+      if (value.endsWith('($yellow)')) {
+        computed_value = 'rgba(0, 0, 0, 0.7)';
+      } else {
+        computed_value = '#fff';
+      }
     }
 
-    if (computed_value != '') {
-      const computed_type = utils.getVariableType(computed_value);
+    if (computed_value && computed_value != '') {
+      // e.g. $primary-invert -> $turquoise-invert -> findColorInvert($turquoise)
+      if (computed_value.startsWith('findColorInvert')) {
+        if (computed_value.endsWith('($yellow)')) {
+          computed_value = 'rgba(0, 0, 0, 0.7)';
+        } else {
+          computed_value = '#fff';
+        }
+      }
+
+      const computed_type = utils.getVariableType(name, computed_value);
 
       return {
         computed_type,

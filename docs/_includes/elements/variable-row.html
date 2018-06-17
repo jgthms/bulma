@@ -2,8 +2,9 @@
   <td >
     <code style="white-space: nowrap;">{{ include.variable.name }}</code>
   </td>
+
   <td>
-    <small>
+    <small class="tag">
       {% if include.variable.computed_type and include.variable.computed_type != include.variable.type %}
         {{ include.variable.computed_type }}
       {% else %}
@@ -11,16 +12,24 @@
       {% endif %}
     </small>
   </td>
+
   <td>
-    <code>{{ include.variable.value }}</code>
-  </td>
-  <td>
-    {% if include.variable.computed_value != '' %}
-      {% if include.variable.computed_type == 'color' %}
-        {% include elements/color-square.html value=variable.computed_value %}
-      {% elsif include.variable.computed_value and include.variable.computed_value != include.variable.value %}
-        <code>{{ include.variable.computed_value }}</code>
-      {% endif %}
+    {% if include.variable.type == 'color' %}
+      {% include elements/color-square.html value=variable.value %}
+    {% else %}
+      <code>{{ include.variable.value }}</code>
     {% endif %}
   </td>
+
+  {% unless include.hide_computed %}
+    <td>
+      {% if include.variable.computed_value != '' %}
+        {% if include.variable.computed_type == 'color' %}
+          {% include elements/color-square.html value=variable.computed_value %}
+        {% elsif include.variable.computed_value and include.variable.computed_value != include.variable.value %}
+          <code>{{ include.variable.computed_value }}</code>
+        {% endif %}
+      {% endif %}
+    </td>
+  {% endunless %}
 </tr>
