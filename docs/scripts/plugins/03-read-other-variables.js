@@ -11,9 +11,9 @@ function plugin() {
     setImmediate(done);
 
     Object.keys(files).forEach(file_path => {
-      if (file_path.startsWith('utilities')) {
-        return;
-      }
+      // if (file_path.startsWith('utilities')) {
+      //   return;
+      // }
 
       const {file_name, lines} = utils.getLines(files, file_path);
       let variables = {
@@ -38,7 +38,9 @@ function plugin() {
         }
       });
 
-      utils.writeFile(file_path, variables);
+      if (variables.list.length > 0) {
+        utils.writeFile(file_path, variables);
+      }
     });
   };
 }
