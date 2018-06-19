@@ -28,11 +28,15 @@
 
 {% endcapture %}
 
-{% include elements/anchor.html name=anchor_name %}
+{% unless include.hide_anchor %}
+  {% include elements/anchor.html name=anchor_name %}
+{% endunless %}
 
-<div class="content">
-  <p>{{ content | strip }}</p>
-</div>
+{% unless include.hide_content %}
+  <div class="content">
+    <p>{{ content | strip }}</p>
+  </div>
+{% endunless %}
 
 <div class="table-container">
   <table class="table {{ table_class }}">
@@ -55,13 +59,8 @@
     <tbody>
       {% if include.variables_keys %}
         {% for key in include.variables_keys %}
-          {% if include.responsiveness_variables %}
-            {% assign variable = site.data.variables.utilities.initial-variables.by_name[key] %}
-            {% include elements/variable-row.html variable=variable %}
-          {% else %}
-            {% assign variable = site.data.variables.elements.form.by_name[key] %}
-            {% include elements/variable-row.html variable=variable %}
-          {% endif %}
+          {% assign variable = site.data.variables[include.folder][include.file].by_name[key] %}
+          {% include elements/variable-row.html variable=variable %}
         {% endfor %}
       {% else %}
         {% for variable_name in variables %}
