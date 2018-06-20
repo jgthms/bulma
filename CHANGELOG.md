@@ -8,7 +8,7 @@
 * #1679 Add breakpoint based column gaps
 * #1905 Fix `modal` for IE11 #1902
 * #1919 New `is-arrowless` class for navbar items
-* #1919 New `is-fullheight-with-navbar` class for heros
+* #1949 New `is-fullheight-with-navbar` class for heros
 
 ### Bug fixes
 
