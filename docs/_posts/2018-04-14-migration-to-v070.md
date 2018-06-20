@@ -4,7 +4,7 @@ layout: post
 introduction: "What has changed"
 color: "success"
 name: "Migrating to v0.7.0"
-icon: "sync-alt"
+icon: "angle-double-up"
 ---
 
 A new major Bulma update is out: [v0.7.0](#)!
