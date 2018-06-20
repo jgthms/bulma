@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var target = $el.dataset.target;
         var $target = document.getElementById(target);
 
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         $el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
 
@@ -521,6 +521,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+});
+{% endcapture %}
+
+{% capture navbar_jquery_code %}
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
 });
 {% endcapture %}
 
@@ -689,12 +703,22 @@ document.addEventListener('DOMContentLoaded', function () {
       <p>
         The Bulma package <strong>does not come with any JavaScript</strong>.
         <br>
-        Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>.
+        Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>, in Vanilla Javascript.
       </p>
 
       {% highlight html %}{{ navbar_js_html }}{% endhighlight %}
 
       {% highlight javascript %}{{ navbar_js_code }}{% endhighlight %}
+      
+      <p>
+        And here is another implementation example, which again toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>, but this time in jQuery.
+      </p>
+
+      {% highlight javascript %}{{ navbar_jquery_code }}{% endhighlight %}
+      
+      <p>
+        Remeber, these are just implementation examples. The Bulma package <strong>does not come with any JavaScript</strong>.
+      </p>
     </div>
   </div>
 </div>
