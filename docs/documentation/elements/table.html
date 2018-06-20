@@ -3,6 +3,15 @@ title: Table
 layout: documentation
 doc-tab: elements
 doc-subtab: table
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-table
+meta:
+  colors: false
+  sizes: false
+  variables: true
 ---
 
 {% capture table_example %}
@@ -305,294 +314,274 @@ doc-subtab: table
 </table>
 {% endcapture %}
 
-{% include subnav-elements.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Tables</h1>
-    <h2 class="subtitle">The inevitable HTML <strong>table</strong>, with special case cells</h2>
-    {%
-      include meta.html
-      colors=false
-      sizes=false
-      variables=true
-    %}
-
-    <hr>
-
-    <div class="content">
-      <p>You simply need to attach a single <code>.table</code> CSS class on a <code>&lt;table&gt;</code> with the following structure:</p>
+<div class="content">
+  <p>You simply need to attach a single <code>.table</code> CSS class on a <code>&lt;table&gt;</code> with the following structure:</p>
+  <ul>
+    <li>
+      <code>table</code> the main <strong>container</strong>
       <ul>
         <li>
-          <code>table</code> the main <strong>container</strong>
+          <code>thead</code> the optional <strong>top</strong> part of the table
+        </li>
+        <li>
+          <code>tfoot</code> the optional <strong>bottom</strong> part of the table
+        </li>
+        <li>
+          <code>tbody</code> the main <strong>content</strong> of the table
           <ul>
             <li>
-              <code>thead</code> the optional <strong>top</strong> part of the table
-            </li>
-            <li>
-              <code>tfoot</code> the optional <strong>bottom</strong> part of the table
-            </li>
-            <li>
-              <code>tbody</code> the main <strong>content</strong> of the table
+              <code>tr</code> each table <strong>row</strong>
               <ul>
                 <li>
-                  <code>tr</code> each table <strong>row</strong>
-                  <ul>
-                    <li>
-                      <code>th</code> a table cell <strong>heading</strong>
-                    </li>
-                    <li>
-                      <code>td</code> a table <strong>cell</strong>
-                    </li>
-                  </ul>
+                  <code>th</code> a table cell <strong>heading</strong>
+                </li>
+                <li>
+                  <code>td</code> a table <strong>cell</strong>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
       </ul>
-      <p>
-        You can set a table row as <strong>selected</strong> by appending the <code>is-selected</code> modifier on a <code>&lt;tr&gt;</code>
-      </p>
-    </div>
+    </li>
+  </ul>
+  <p>
+    You can set a table row as <strong>selected</strong> by appending the <code>is-selected</code> modifier on a <code>&lt;tr&gt;</code>
+  </p>
+</div>
 
-    {% include snippet.html content=table_example horizontal=true more=true %}
+{% include elements/snippet.html content=table_example horizontal=true more=true %}
 
-    {% include anchor.html name="Modifiers" %}
+{% include elements/anchor.html name="Modifiers" %}
 
-    <div class="columns">
-      <div class="column">
-        <p>Add <strong>borders</strong> to all the cells.</p>
-      </div>
-      <div class="column">
-        <code>table is-bordered</code>
-      </div>
-      <div class="column is-half">
-        <table class="table is-bordered">
-          <thead>
-            <tr>
-              <th>One</th>
-              <th>Two</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Three</td>
-              <td>Four</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <p>Add <strong>stripes</strong> to the table.</p>
-      </div>
-      <div class="column">
-        <code>table is-striped</code>
-      </div>
-      <div class="column is-half">
-        <table class="table is-striped">
-          <thead>
-            <tr>
-              <th>One</th>
-              <th>Two</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Three</td>
-              <td>Four</td>
-            </tr>
-            <tr>
-              <td>Five</td>
-              <td>Six</td>
-            </tr>
-            <tr>
-              <td>Seven</td>
-              <td>Eight</td>
-            </tr>
-            <tr>
-              <td>Nine</td>
-              <td>Ten</td>
-            </tr>
-            <tr>
-              <td>Eleven</td>
-              <td>Twelve</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <p>Make the cells <strong>narrower</strong>.</p>
-      </div>
-      <div class="column">
-        <code>table is-narrow</code>
-      </div>
-      <div class="column is-half">
-        <table class="table is-narrow">
-          <thead>
-            <tr>
-              <th>One</th>
-              <th>Two</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Three</td>
-              <td>Four</td>
-            </tr>
-            <tr>
-              <td>Five</td>
-              <td>Six</td>
-            </tr>
-            <tr>
-              <td>Seven</td>
-              <td>Eight</td>
-            </tr>
-            <tr>
-              <td>Nine</td>
-              <td>Ten</td>
-            </tr>
-            <tr>
-              <td>Eleven</td>
-              <td>Twelve</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    {% include elements/new-tag.html version="0.5.4" %}
-
-    <div class="columns">
-      <div class="column">
-        <p>You can add a <strong>hover effect</strong> on each row</p>
-      </div>
-      <div class="column">
-        <code>table is-hoverable</code>
-      </div>
-      <div class="column is-half">
-        <table class="table is-hoverable">
-          <thead>
-            <tr>
-              <th>One</th>
-              <th>Two</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Three</td>
-              <td>Four</td>
-            </tr>
-            <tr>
-              <td>Five</td>
-              <td>Six</td>
-            </tr>
-            <tr>
-              <td>Seven</td>
-              <td>Eight</td>
-            </tr>
-            <tr>
-              <td>Nine</td>
-              <td>Ten</td>
-            </tr>
-            <tr>
-              <td>Eleven</td>
-              <td>Twelve</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <p>You can have a <strong>fullwidth</strong> table.</p>
-      </div>
-      <div class="column">
-        <code>table is-fullwidth</code>
-      </div>
-      <div class="column is-half">
-        <table class="table is-fullwidth">
-          <thead>
-            <tr>
-              <th>One</th>
-              <th>Two</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Three</td>
-              <td>Four</td>
-            </tr>
-            <tr>
-              <td>Five</td>
-              <td>Six</td>
-            </tr>
-            <tr>
-              <td>Seven</td>
-              <td>Eight</td>
-            </tr>
-            <tr>
-              <td>Nine</td>
-              <td>Ten</td>
-            </tr>
-            <tr>
-              <td>Eleven</td>
-              <td>Twelve</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <p>You can <strong>combine</strong> all four modifiers.</p>
-      </div>
-      <div class="column">
-        <code>table is-bordered is-striped is-narrow is-fullwidth</code>
-      </div>
-      <div class="column is-half">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-          <thead>
-            <tr>
-              <th>One</th>
-              <th>Two</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Three</td>
-              <td>Four</td>
-            </tr>
-            <tr>
-              <td>Five</td>
-              <td>Six</td>
-            </tr>
-            <tr>
-              <td>Seven</td>
-              <td>Eight</td>
-            </tr>
-            <tr>
-              <td>Nine</td>
-              <td>Ten</td>
-            </tr>
-            <tr>
-              <td>Eleven</td>
-              <td>Twelve</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    {% include variables.html type='element' %}
-
+<div class="columns">
+  <div class="column">
+    <p>Add <strong>borders</strong> to all the cells.</p>
   </div>
-</section>
+  <div class="column">
+    <code>table is-bordered</code>
+  </div>
+  <div class="column is-half">
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>One</th>
+          <th>Two</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Three</td>
+          <td>Four</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <p>Add <strong>stripes</strong> to the table.</p>
+  </div>
+  <div class="column">
+    <code>table is-striped</code>
+  </div>
+  <div class="column is-half">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <th>One</th>
+          <th>Two</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Three</td>
+          <td>Four</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>Six</td>
+        </tr>
+        <tr>
+          <td>Seven</td>
+          <td>Eight</td>
+        </tr>
+        <tr>
+          <td>Nine</td>
+          <td>Ten</td>
+        </tr>
+        <tr>
+          <td>Eleven</td>
+          <td>Twelve</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <p>Make the cells <strong>narrower</strong>.</p>
+  </div>
+  <div class="column">
+    <code>table is-narrow</code>
+  </div>
+  <div class="column is-half">
+    <table class="table is-narrow">
+      <thead>
+        <tr>
+          <th>One</th>
+          <th>Two</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Three</td>
+          <td>Four</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>Six</td>
+        </tr>
+        <tr>
+          <td>Seven</td>
+          <td>Eight</td>
+        </tr>
+        <tr>
+          <td>Nine</td>
+          <td>Ten</td>
+        </tr>
+        <tr>
+          <td>Eleven</td>
+          <td>Twelve</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <p>You can add a <strong>hover effect</strong> on each row</p>
+  </div>
+  <div class="column">
+    <code>table is-hoverable</code>
+  </div>
+  <div class="column is-half">
+    <table class="table is-hoverable">
+      <thead>
+        <tr>
+          <th>One</th>
+          <th>Two</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Three</td>
+          <td>Four</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>Six</td>
+        </tr>
+        <tr>
+          <td>Seven</td>
+          <td>Eight</td>
+        </tr>
+        <tr>
+          <td>Nine</td>
+          <td>Ten</td>
+        </tr>
+        <tr>
+          <td>Eleven</td>
+          <td>Twelve</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <p>You can have a <strong>fullwidth</strong> table.</p>
+  </div>
+  <div class="column">
+    <code>table is-fullwidth</code>
+  </div>
+  <div class="column is-half">
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>One</th>
+          <th>Two</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Three</td>
+          <td>Four</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>Six</td>
+        </tr>
+        <tr>
+          <td>Seven</td>
+          <td>Eight</td>
+        </tr>
+        <tr>
+          <td>Nine</td>
+          <td>Ten</td>
+        </tr>
+        <tr>
+          <td>Eleven</td>
+          <td>Twelve</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <p>You can <strong>combine</strong> all five modifiers.</p>
+  </div>
+  <div class="column">
+    <code>table is-bordered is-striped is-narrow is-hoverable is-fullwidth</code>
+  </div>
+  <div class="column is-half">
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>One</th>
+          <th>Two</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Three</td>
+          <td>Four</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>Six</td>
+        </tr>
+        <tr>
+          <td>Seven</td>
+          <td>Eight</td>
+        </tr>
+        <tr>
+          <td>Nine</td>
+          <td>Ten</td>
+        </tr>
+        <tr>
+          <td>Eleven</td>
+          <td>Twelve</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% include elements/variables.html type='element' %}

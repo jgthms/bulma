@@ -3,6 +3,11 @@ title: Colors
 layout: documentation
 doc-tab: overview
 doc-subtab: colors
+breadcrumb:
+- home
+- documentation
+- overview
+- overview-colors
 colors:
 - white
 - black
@@ -14,73 +19,103 @@ colors:
 - success
 - warning
 - danger
+shades:
+- black-bis
+- black-ter
+- grey-darker
+- grey-dark
+- grey-light
+- grey-lighter
+- white-ter
+- white-bis
 ---
 
-{% include subnav-overview.html %}
+<div class="content">
+  <p>
+    Most elements and components have color variations thanks to <strong>modifiers</strong> with syntax <code>.is-$color</code>, like <code>is-primary</code> or <code>is-dark</code>.
+  </p>
+  <p>
+    This is thanks to the <code>$colors</code> <strong>Sass map</strong>, through which Bulma cycles to grab all the colors and their inverts.
+  </p>
+</div>
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Colors</h1>
-    <h2 class="subtitle">The <strong>colors</strong> that <strong>style</strong> most Bulma elements and components</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Color</th>
+      <th>Variable</th>
+      <th>Value</th>
+      <th>Computed value</th>
+      <th>Invert value</th>
+      <th>Computed invert value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for color in page.colors %}
+      {% assign derivedColor = site.data.colors.derived | where: "id", color | first %}
+      {% assign initialColor = site.data.colors.initial | where: "id", derivedColor.valueId | first %}
+      <tr>
+        <td>
+          <strong>{{ derivedColor.id | capitalize }}</strong>
+        </td>
+        <td>
+          <code>${{ derivedColor.id }}</code>
+        </td>
+        <td>
+          <code>${{ initialColor.id }}</code>
+        </td>
+        <td>
+          {% include elements/color-square.html value=initialColor.value %}
+        </td>
+        {% if derivedColor.invertValue %}
+          <td>
+            <code>{{ derivedColor.invertValue }}</code>
+          </td>
+          <td>
+            {% include elements/color-square.html value=derivedColor.invertValue %}
+          </td>
+        {% elsif derivedColor.invertId %}
+          {% assign invertColor = site.data.colors.initial | where: "id", derivedColor.invertId | first %}
+          <td>
+            <code>${{ derivedColor.invertId }}</code>
+          </td>
+          <td>
+            {% include elements/color-square.html value=invertColor.value %}
+          </td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    <hr>
+<div class="content">
+  <p>
+    Bulma also provides a <code>$shades</code> <strong>Sass map</strong>, that only contains shades of grey between black and white.
+  </p>
+</div>
 
-    <div class="content">
-      <p>
-        Most elements and components have color variations thanks to <strong>modifiers</strong> with syntax <code>.is-$color</code>, like <code>is-primary</code> or <code>is-dark</code>.
-      </p>
-      <p>
-        This is thanks to the <code>$colors</code> <strong>Sass map</strong>, through which Bulma cycles to grab all the colors and their inverts.
-      </p>
-    </div>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Color</th>
-          <th>Variable</th>
-          <th>Value</th>
-          <th>Computed value</th>
-          <th>Invert value</th>
-          <th>Computed invert value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for color in page.colors %}
-          {% assign derivedColor = site.data.colors.derived | where: "id", color | first %}
-          {% assign initialColor = site.data.colors.initial | where: "id", derivedColor.valueId | first %}
-          <tr>
-            <td>
-              <strong>{{ derivedColor.id | capitalize }}</strong>
-            </td>
-            <td>
-              <code>${{ derivedColor.id }}</code>
-            </td>
-            <td>
-              <code>${{ initialColor.id }}</code>
-            </td>
-            <td>
-              {% include elements/color-square.html value=initialColor.value %}
-            </td>
-            {% if derivedColor.invertValue %}
-              <td>
-                <code>{{ derivedColor.invertValue }}</code>
-              </td>
-              <td>
-                {% include elements/color-square.html value=derivedColor.invertValue %}
-              </td>
-            {% elsif derivedColor.invertId %}
-              {% assign invertColor = site.data.colors.initial | where: "id", derivedColor.invertId | first %}
-              <td>
-                <code>${{ derivedColor.invertId }}</code>
-              </td>
-              <td>
-                {% include elements/color-square.html value=invertColor.value %}
-              </td>
-            {% endif %}
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Color</th>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for shade in page.shades %}
+      {% assign initial_shade = site.data.colors.initial | where: "id", shade | first %}
+      <tr>
+        <td>
+          <strong>{{ initial_shade.name | capitalize }}</strong>
+        </td>
+        <td>
+          <code>${{ initial_shade.id }}</code>
+        </td>
+        <td>
+          {% include elements/color-square.html value=initial_shade.value %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

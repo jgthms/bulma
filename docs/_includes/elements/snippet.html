@@ -1,0 +1,34 @@
+{% if include.plain %}
+  <div class="columns">
+    <div class="column is-half">
+      <div class="bd-example">
+        {{ include.content }}
+      </div>
+    </div>
+    <div class="column is-half">
+      {% highlight html %}{{ include.content }}{% endhighlight %}
+    </div>
+  </div>
+{% else %}
+  <div class="
+    bd-snippet
+    {% if include.horizontal %}bd-is-horizontal{% else %}bd-is-vertical{% endif %}
+    {% if include.clipped %}bd-is-clipped{% endif %}
+    {% if include.size %}bd-is-{{ include.size }}{% endif %}
+    {% if include.one_fifth %}bd-is-one-fifth{% endif %}
+    {% if include.fullwidth %}bd-is-fullwidth{% endif %}
+    ">
+    <div class="bd-snippet-preview {% if include.paddingless %}is-paddingless{% endif %}">
+      {% if include.wrapper %}
+        <div class="{{ include.wrapper }}">
+          {{ include.content }}
+        </div>
+      {% else %}
+        {{ include.content }}
+      {% endif %}
+    </div>
+    <div class="bd-snippet-code {% unless include.clipped %}highlight-full{% endunless %} {% if include.more %}bd-is-more bd-is-more-clipped{% endif %}">
+      {% highlight html %}{{ include.content }}{% endhighlight %}
+    </div>
+  </div>
+{% endif %}

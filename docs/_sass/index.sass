@@ -1,3 +1,242 @@
+// Index common
+
+.bd-index-header
+  text-align: center
+  a,
+  strong
+    transition-duration: $speed
+    transition-property: color
+  a
+    color: currentColor
+    &:hover
+      color: $blue
+      strong
+        color: $link
+  strong
+    font-weight: $weight-semibold
+  .title
+    strong
+      color: $primary
+  .subtitle
+    color: $grey-light !important
+    strong
+      color: currentColor
+  &:not(:last-child)
+    margin-bottom: 3rem
+  &.bd-is-left
+    text-align: left
+
+// JS
+
+.bd-index-js-tweet
+  .bd-tw
+    margin-left: auto
+    margin-right: auto
+
+// Customize
+
+.bd-index-custom-title
+  color: $grey-light
+
+.bd-index-custom-example
+  padding: 1rem
+  .subtitle
+    margin-bottom: 0.5rem
+
+.bd-index-custom.bd-is-after
+  color: $brown
+  font-family: "Nunito", serif
+  margin-top: 0.5rem
+  a
+    color: $pink
+    &:hover
+      color: #363636
+  .subtitle
+    color: $brown
+  .input,
+  .select select
+    background-color: $beige-lighter
+    border-color: transparent
+    border-width: 2px
+    box-shadow: none
+    font-family: "Nunito", serif
+    &:hover
+      border-color: $beige-light
+    &:focus
+      border-color: $pink
+      box-shadow: 0 0 0 0.125em rgba($pink, 0.25)
+  .select
+    &:not(.is-multiple):not(:hover)
+      &::after
+        border-color: $pink
+  .button
+    &.is-primary
+      background-color: $mauve
+      color: $white
+      &:hover
+        background-color: darken($mauve, 2.5%)
+      &:active
+        background-color: darken($mauve, 5%)
+    &.is-link
+      background-color: $pink
+      color: $white
+      &:hover
+        background-color: darken($pink, 2.5%)
+      &:active
+        background-color: darken($pink, 5%)
+  +selection
+    background-color: $pink
+    color: $white
+
+// Fullscreen
+
+.bd-index-fullscreen
+  .tabs
+    a
+      color: $grey-light !important
+
+// Columns
+
+#grid
+  .notification
+    padding-left: 0
+    padding-right: 0
+
+.bd-columns-tools
+  margin-top: 3rem
+
+.bd-columns-tool
+  @extend %center
+  &.bd-is-try
+    .buttons
+      justify-content: center
+    .button
+      strong
+        font-weight: $weight-semibold
+
+#markup
+  width: 100%
+  .highlight pre
+    max-height: none
+
+#message
+  display: none
+  margin-top: 3rem
+
++mobile
+  .bd-columns-tool
+    &.bd-is-markup
+      margin-top: 3rem
+
++tablet
+  .bd-columns-tools
+    align-items: flex-start
+    display: flex
+  .bd-columns-tool
+    width: 50%
+    &.bd-is-try
+      padding-top: 60px
+
+// Focus
+
+.bd-focus
+  margin: 6rem auto 0
+  max-width: $intro-width
+
+.bd-focus-item
+  border-radius: $radius-large
+  padding-top: 1.25rem
+  position: relative
+  .title a,
+  .subtitle
+    transition-duration: $speed * 2
+    transition-property: color
+  .title
+    position: relative
+    transition-duration: $speed * 2
+    transition-property: color
+  .subtitle
+    color: $grey-light
+    position: relative
+    strong
+      color: currentColor
+  &::before
+    +overlay
+    background-color: $white-bis
+    border-radius: $radius-large
+    content: ""
+    display: block
+    opacity: 0
+    pointer-events: none
+    transform: scale(1.1)
+    transform-origin: center
+    transition-duration: $speed * 2
+    transition-property: opacity, transform
+  &:hover
+    &::before
+      opacity: 1
+      transform: scale(1)
+    .subtitle
+      color: $text
+  &:nth-child(1):hover
+    .title
+      color: $orange
+  &:nth-child(2):hover
+    .title
+      color: $success
+  &:nth-child(3):hover
+    .title
+      color: $link
+  &:nth-child(4):hover
+    .title
+      color: $black
+
+.bd-focus-icon
+  position: relative
+
+.bd-focus-mobile
+  color: $purple
+  margin-right: -20px
+
+.bd-focus-tablet
+  color: $red
+
+.bd-focus-desktop
+  color: $orange
+  position: relative
+  top: 2px
+
+.bd-focus-cubes
+  position: relative
+  height: 3rem
+  margin: 0 auto
+  top: -0.5rem
+  width: 3rem
+
+.bd-focus-cube
+  color: $green
+  position: absolute
+
+.bd-focus-cube-1
+  left: 0
+  top: 0
+
+.bd-focus-cube-2
+  left: -1rem
+  top: 23px
+
+.bd-focus-cube-3
+  left: 1rem
+  top: 23px
+
+.bd-focus-css3
+  color: $blue
+
+.bd-focus-github
+  color: $github
+
+// Intro
+
 .intro-content
   margin-left: auto
   margin-right: auto
@@ -10,13 +249,22 @@
     font-weight: $weight-semibold
 
 .intro-ghbtns
-  height: 30px
-  // margin-bottom: 24px
-  margin-bottom: 46px
+  margin-bottom: 26px
+  min-height: 30px
+  iframe,
+  a,
+  img
+    height: 30px
+  a
+    display: inline-block
+    min-width: 100px
+    vertical-align: top
+  img
+    display: block
 
 .intro-npm
   background: $black-ter
-  border-radius: $radius-large
+  border-radius: $radius
   color: $white
   display: flex
   font-size: 15px
@@ -133,7 +381,7 @@
 .intro-author
   color: $text-light
   font-size: $size-small
-  margin-top: 1rem
+  margin-top: 40px
   text-align: center
   a
     color: $text-strong
@@ -162,8 +410,7 @@
     justify-content: space-between
 
 +touch
-  .intro-column.is-video,
-  .intro-carbon
+  .intro-column.is-video
     margin-top: 3rem
 
 +desktop
@@ -182,17 +429,3 @@
     margin-top: -11px
     &:not(:last-child)
       margin-bottom: 20px
-  .intro-carbon
-    margin-top: 3rem
-
-#grid
-  .notification
-    padding-left: 0
-    padding-right: 0
-
-#message
-  display: none
-
-#markup
-  .highlight pre
-    max-height: none

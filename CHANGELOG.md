@@ -1,5 +1,502 @@
 # Bulma Changelog
 
+## 0.7.2
+
+### New features
+
+* #1884 New `$navbar-burger-color` variable
+* #1679 Add breakpoint based column gaps
+* #1905 Fix `modal` for IE11 #1902
+* #1919 New `is-arrowless` class for navbar items
+
+### Bug fixes
+
+* #1749 Fix icons floating out of input area
+
+## 0.7.1
+
+### Improvements
+
+* #1789 Add all shades to `has-background-*` helpers
+
+### Bug fixes
+
+* #1796 #1806 Remove navbar `box-shadow` by default
+
+## 0.7.0
+
+### New features
+
+* New variables `$widescreen-enabled` and `$fullhd-enabled`: you can set them to `false` to disable each breakpoint
+* New variables `$control-border-width` and `$button-border-width`
+* 🎉 #1624 Add some common photography aspect ratios and portrait ratios
+* 🎉 #1747 New `$custom-colors` and `$custom-shades` variable for adding your own colors and shades to Bulma's `$colors` and `$shades` maps respectively
+
+### Improvements
+
+* #1619 Add `$card-header-background-color`, `$card-content-background-color` and `$card-footer-background-color` to allow different background customization for card elements
+* #1669 Add `.is-expanded` modifier to `.buttons.has-addons`
+* #1628 Add `.has-background` helpers for block background colors, like `.has-text`
+* #1767 Added minified bundle with cleancss
+
+### Bug fixes
+
+* #1778 Fix `is-text-right` precedence over `is-text-left-mobile`
+* #1571 Fix position of delete button on `.tag`
+* #1549 Implementing a simple version of the native sass percentage function
+* #1707 Disable table hover in `.content` by default
+* #1428 Fix `media-content` overflow
+
+### Variable changes
+
+#### Updated default values
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/utilities/initial-variables.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$gap</code>
+      </td>
+      <td>
+        <code>32px</code>
+      </td>
+      <td>
+        <code>64px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$radius</code>
+      </td>
+      <td>
+        <code>3px</code>
+      </td>
+      <td>
+        <code>4px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$radius-large</code>
+      </td>
+      <td>
+        <code>5px</code>
+      </td>
+      <td>
+        <code>6px</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/base/generic.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$hr-background-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$hr-height</code>
+      </td>
+      <td>
+        <code>1px</code>
+      </td>
+      <td>
+        <code>2px</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/elements/content.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$content-heading-weight</code>
+      </td>
+      <td>
+        <code>$weight-normal</code>
+      </td>
+      <td>
+        <code>$weight-semibold</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/components/message.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-padding</code>
+      </td>
+      <td>
+        <code>0.5em 0.75em</code>
+      </td>
+      <td>
+        <code>0.75em 1em</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-padding</code>
+      </td>
+      <td>
+        <code>1em 1.25em</code>
+      </td>
+      <td>
+        <code>1.25em 1.5em</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/components/navbar.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-item-hover-background-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+      <td>
+        <code>$white-bis</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-dropdown-border-top</code>
+      </td>
+      <td>
+        <code>1px solid $border</code>
+      </td>
+      <td>
+        <code>2px solid $border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-divider-background-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/layout/footer.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$footer-background-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+      <td>
+        <code>$white-bis</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### New variables
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/breadcrumb.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$breadcrumb-item-padding-vertical</code>
+      </td>
+      <td>
+        <code>0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$breadcrumb-item-padding-horizontal</code>
+      </td>
+      <td>
+        <code>0.75em</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/message.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-border-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-border-width</code>
+      </td>
+      <td>
+        <code>0 0 0 4px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-weight</code>
+      </td>
+      <td>
+        <code>$weight-bold</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-body-border-width</code>
+      </td>
+      <td>
+        <code>0</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/navbar.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-box-shadow-size</code>
+      </td>
+      <td>
+        <code>0 2px 0 0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-box-shadow-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-padding-vertical</code>
+      </td>
+      <td>
+        <code>1rem</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-padding-horizontal</code>
+      </td>
+      <td>
+        <code>2rem</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-z</code>
+      </td>
+      <td>
+        <code>30</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/elements/title.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$title-line-height</code>
+      </td>
+      <td>
+        <code>1.125</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$subtitle-line-height</code>
+      </td>
+      <td>
+        <code>1.25</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$subtitle-negative-margin</code>
+      </td>
+      <td>
+        <code>-1.25rem</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Removed variables
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>File</th>
+      <th>Removed</th>
+      <th>Replaced with</th>
+    </tr>
+    <tr>
+      <td>
+        <code>sass/components/message.sass</code>
+      </td>
+      <td>
+        <code>$message-body-border</code>
+      </td>
+      <td>
+        <code>$message-body-border-color</code>
+        <br>
+        <code>$message-body-border-width</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 0.6.2
+
+### New features
+
+* 🎉 Rounded buttons, inputs, pagination and toggle tabs
+
+### Improvements
+
+* #1343 Add `sub` and `sup` title sizes
+* #1452 New `.is-italic` helper
+
+### Bug fixes
+
+* #935 Bug dropdown in `hero` (primary) menu items not visible
+* #1456 Fix customize documentation
+* #1190 Add `$variable-columns` to disable `--columnGap`
+* #1518 Fix spacing of the delete button in notification element
+* #1569 Fix missing use of `$pagination-color` variable
+
 ## 0.6.1
 
 ### New features
@@ -8,15 +505,23 @@
 * 🎉 #1235 Support for five column grid: `.is-one-fifth, .is-two-fifths, .is-three-fifths, .is-four-fifths`
 * 🎉 #1287 New `.is-invisible` helper
 * 🎉 #1255 New `.is-expanded` modifier for `navbar-item`
+* 🎉 #1384 New `.is-centered` and `.is-right` modifiers for `tags`
+* 🎉 #1383 New `.is-empty` modifier for `file`
+* 🎉 #1380 Allow `.is-selected` class on `<td>` and `<th>` tags
 
 ### Improvements
 
 * #987 Improve `tag > icon` spacing
 * Improve `hamburger` alignment
 
-### Issues closed
+### Bug fixes
 
+* #1358 Fix indentation bug for .is-one-fifth
+* #1356 SASS 3.5+ variable parsing compatibility allows only #{}
+* #1342 Remove black line from progress bar in IE
+* #1334 Fix progress bar colors in IE
 * #1313 Fix Table `is-selected` and `is-hoverable` styling issue
+* #963 Fix Delete Button Bug in iOS Safari
 
 ## 0.6.0
 

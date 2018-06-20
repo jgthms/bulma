@@ -2,7 +2,7 @@
 layout: post
 title: "New feature: list of tags"
 introduction: "What's better than one tag? Multiple tags!"
-color: "orange"
+color: "success"
 name: "List of tags"
 icon: "tag"
 ---
