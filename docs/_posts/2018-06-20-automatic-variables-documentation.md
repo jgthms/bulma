@@ -2,7 +2,7 @@
 title: "Automatic variables documentation"
 layout: post
 introduction: "Keeping the docs in sync"
-color: "info"
+color: "link"
 name: "Automatic variables docs"
 icon: "sync-alt"
 ---
