@@ -152,7 +152,7 @@
 }
 
 .is-overlay, .image.is-square img, .image.is-1by1 img, .image.is-5by4 img, .image.is-4by3 img, .image.is-3by2 img, .image.is-5by3 img, .image.is-16by9 img, .image.is-2by1 img, .image.is-3by1 img, .image.is-4by5 img, .image.is-3by4 img, .image.is-2by3 img, .image.is-3by5 img, .image.is-9by16 img, .image.is-1by2 img, .image.is-1by3 img, .modal, .modal-background, .hero-video, .bd-category-toggle, .bd-patreon-button:hover::after, .bd-focus-item::before, .intro-spinner, .intro-shadow, .bd-structure-item::before, .bd-structure-item::after, .highlight .bd-show, .bd-banner-background, .bd-book-pattern::before,
-.bd-book-modal-column.bd-is-cover::before, .bd-book-pattern, .bd-book-modal-background {
+.bd-book-modal-column.bd-is-cover::before, .bd-book-pattern, .bd-book-modal-background, .native-js::before {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -11604,7 +11604,8 @@ svg {
 }
 
 .bd-footer-support {
-  border-top: 2px solid whitesmoke;
+  border-top: none;
+  box-shadow: none;
   padding: 3rem;
 }
 
@@ -13815,11 +13816,23 @@ svg {
 }
 
 .native-js {
-  border-top: 2px solid whitesmoke;
   display: none;
   font-size: 1rem;
   opacity: 0;
+  position: relative;
   visibility: hidden;
+}
+
+.native-js::before {
+  background-color: #000;
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  opacity: 0.02;
+  pointer-events: none;
+  right: 0;
+  top: 0;
 }
 
 .native-show {
@@ -13833,6 +13846,7 @@ svg {
   display: flex;
   justify-content: center;
   padding: 2em;
+  position: relative;
   text-decoration: none;
 }
 
