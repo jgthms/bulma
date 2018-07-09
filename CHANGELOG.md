@@ -8,6 +8,7 @@
 * #1679 Add breakpoint based column gaps
 * #1905 Fix `modal` for IE11 #1902
 * #1919 New `is-arrowless` class for navbar items
+* #1764 New `.is-sr-only` helper
 
 ### Improvements
 
@@ -487,7 +488,6 @@
 ### New features
 
 * 🎉 Rounded buttons, inputs, pagination and toggle tabs
-* #1764 New `.is-sr-only` helper
 
 ### Improvements
 
