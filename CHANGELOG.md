@@ -9,6 +9,10 @@
 * #1905 Fix `modal` for IE11 #1902
 * #1919 New `is-arrowless` class for navbar items
 
+### Improvements
+
+* #1964 Allow `.notification` to have a `.dropdown-item`
+
 ### Bug fixes
 
 * #1749 Fix icons floating out of input area
