@@ -2,7 +2,19 @@
   display: none
   font-size: 1rem
   opacity: 0
+  position: relative
   visibility: hidden
+  &::before
+    +overlay
+    background-color: #000
+    bottom: 0
+    content: ""
+    display: block
+    left: 0
+    opacity: 0.02
+    pointer-events: none
+    right: 0
+    top: 0
 
 .native-show
   display: block
@@ -14,7 +26,12 @@
   display: flex
   justify-content: center
   padding: 2em
+  position: relative
   text-decoration: none
+  &:hover
+    .native-cta
+      box-shadow: 0 1rem 2rem 0 rgba($black, 0.1)
+      transform: translateY(-0.25rem)
 
 .native-img
   border-radius: 3px
@@ -45,22 +62,15 @@
 
 .native-cta
   border: none
-  border-radius: 3px
-  box-shadow: 0 6px 13px 0 hsla(0, 0%, 0%, .15)
-  display: inline-block
+  box-shadow: 0 0.5rem 1rem 0 rgba($black, 0.2)
   flex-grow: 0
   flex-shrink: 0
-  font-size: 0.75em
-  font-weight: $weight-normal
-  padding: 0.75em 1em
-  text-transform: uppercase
-  transform: translateY(-1px)
-  transition: transform .3s ease-in-out
-  vertical-align: top
-  white-space: nowrap
-  &:hover
-    box-shadow: none
-    transform: translateY(1px)
+  font-weight: $weight-semibold
+  height: auto
+  padding: 0.5em 1em
+  transition-duration: $speed * 2
+  transition-property: box-shadow, transform
+  will-change: box-shadow, transform
 
 $native-bp: 600px
 

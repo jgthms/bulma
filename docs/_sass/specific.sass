@@ -1,3 +1,173 @@
++selection
+  background-color: $primary
+  color: $primary-invert
+
+.bd-post
+  .table
+    font-size: 1rem
+  .bd-anchor-title
+    margin-top: 0 !important
+
+.bd-has-drawing
+  position: relative
+
+.bd-drawing
+  display: none
+  pointer-events: none
+  position: absolute
+  &.bd-is-try-it-out
+    bottom: 100%
+    right: 100%
+  &.bd-is-love-letters
+    bottom: 110%
+    right: 10%
+  &.bd-is-crazy
+    left: -10%
+    top: 110%
+  &.bd-is-customize
+    right: -10%
+    top: 105%
+  &.bd-is-opinion-free
+    right: 100%
+    top: 110%
+  &.bd-is-join-us
+    bottom: 80%
+    left: 100%
+  &.bd-is-spam-free
+    bottom: 100%
+    right: 90%
+
++tablet
+  .bd-drawing
+    display: inline
+
+.bd-links
+  counter-reset: bd-links
+
+.bd-link
+  border-radius: $radius-large
+  color: $text-light
+  display: block
+  font-size: $size-5
+  padding: 1rem 3rem 1.5rem 5rem
+  position: relative
+  transition-duration: $speed
+  transition-property: background-color, color
+  strong
+    font-weight: $weight-semibold
+  &:hover
+    background-color: $white-bis
+
+.bd-link-surtitle
+  float: right
+  font-size: 0.75em
+  margin-bottom: 1em
+  margin-left: 2em
+  opacity: 0.5
+  padding-top: 0.25em
+
+.bd-link-name
+  line-height: 1.25
+  margin-bottom: 0.25em
+  position: relative
+
+.bd-link-figure
+  position: absolute
+  right: calc(100% + 0.5em)
+  text-align: center
+  top: 0
+  min-width: 1.5em
+
+.bd-link-counter
+  color: $link
+  display: block
+  counter-increment: bd-links
+  font-weight: $weight-normal
+  &::before
+    content: counter(bd-links)
+
+.bd-link-icon
+  display: block
+  font-size: 2rem
+  width: 1.5em
+
+.bd-link-more
+  font-size: 0.75em
+  opacity: 0.5
+
++desktop
+  .bd-links
+    display: flex
+    flex-wrap: wrap
+  .bd-link
+    width: 50%
+
+.bd-link-name
+  color: $text-strong
+  font-size: $size-4
+  font-weight: $weight-semibold
+
+.bd-docs
+  display: flex
+  flex-wrap: wrap
+
+.bd-doc
+  margin: 0 3rem 1.5rem 0
+  +mobile
+    min-width: calc(50% - 3rem)
+  +tablet
+    min-width: calc(33.3333% - 3rem)
+
+.bd-doc-title
+  color: $text-strong
+  a
+    color: currentColor
+    &:hover
+      color: $link
+  &:not(:last-child)
+    margin-bottom: 0.75rem
+
+.bd-boxes
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+.bd-box
+  border: 4px solid $background
+  border-radius: $radius
+
+.bd-box-header
+  text-align: center
+
+.bd-typo
+  text-align: center
+  &:not(:first-child)
+    margin-top: $main-spacing
+
+.bd-has-text-rss
+  color: $rss
+
+.has-text-star
+  color: $star
+
+// $navbar-items: ("documentation": $primary, "templates": $info, "videos": $success, "blog": $rss, "expo": $star, "love": $red)
+
+// @each $name, $color in $navbar-items
+//   .bd-navbar-item-#{$name}
+//     .icon
+//       color: $color
+//     &:hover
+//       background-color: $color !important
+//       color: #fff !important
+//       .icon
+//         color: currentColor !important
+
+// .bd-navbar-item-expo
+//   &:hover
+//     color: #8F6900 !important
+//     .icon
+//       color: #F4B300 !important
+
 .bd-special-shadow
   background-image: linear-gradient(rgba(#000, 0.1), rgba(#000, 0))
   height: 8px
@@ -28,13 +198,13 @@
   width: 24px
 
 .button.bd-is-rss
-  background-color: #f26522
+  background-color: $rss
   border-color: transparent
   color: #fff
   &:hover
-    background-color: darken(#f26522, 5%)
+    background-color: darken($rss, 5%)
   &:active
-    background-color: darken(#f26522, 10%)
+    background-color: darken($rss, 10%)
 
 .bd-view-all-versions
   color: $text-light
@@ -65,83 +235,14 @@
 .has-text-orange
   color: $orange !important
 
-.bd-article-image
-  background-color: $primary
-  display: block
-  height: 240px
-  margin-left: auto
-  margin-right: auto
-  overflow: hidden
-  position: relative
-  text-align: center
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    &.is-#{$name}
-      background-color: $color
-  &.is-bootstrap
-    background-color: $bootstrap
-  &.is-orange
-    background-color: $orange
-  &:hover
-    .bd-article-overlay
-      opacity: 0.25
-    .bd-article-icon
-      transform: scale(1.4)
-    .bd-article-date
-      transform: scale(0.9)
-    .bd-article-title
-      transform: scale(1.1)
-  &.is-single
-    margin-bottom: 2rem
-    width: 100%
-  &.is-share
-    height: 315px
-    margin: 2rem auto
-    width: 600px
+.has-text-purple
+  color: $purple !important
 
-.bd-article-overlay
-  +overlay
-  background-color: $black
-  opacity: 0
-  transition-duration: $speed
-  transition-property: opacity
-  transition-timing-function: $easing
+.has-text-bootstrap
+  color: $bootstrap !important
 
-.bd-article-icon,
-.bd-article-info
-  +overlay
-  align-items: center
-  display: flex
-  justify-content: center
-
-.bd-article-icon,
-.bd-article-date,
-.bd-article-title
-  transition-duration: $speed
-  transition-property: transform
-  transition-timing-function: $easing
-
-.bd-article-icon
-  color: $black
-  font-size: 56px
-  opacity: 0.25
-  & > span
-    display: block
-
-.bd-article-info
-  padding: 20px
-
-.bd-article-date
-  color: rgba(#000, 0.5)
-  display: block
-
-.bd-article-title
-  color: $white
-  display: block
-  font-size: 2.5rem
-  font-weight: $weight-bold
-  line-height: 1.25
-  padding: 0 20px
+.has-text-patreon
+  color: $patreon !important
 
 .bd-emoji
   margin-right: 0.5em
@@ -158,6 +259,8 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
 .bd-notification
   background-color: $background
   border-radius: $radius
+  color: $text-light
+  font-weight: $weight-semibold
   padding: 1.25rem 0
   position: relative
   text-align: center
@@ -168,9 +271,11 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
     color: currentColor
   code,
   pre
-    background: $white
+    background-color: rgba($black, 0.2)
+    border-radius: $radius
+    color: $white
   pre code
-    background: transparent
+    background-color: transparent
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)

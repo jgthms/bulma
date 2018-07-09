@@ -3,8 +3,8 @@ layout: post
 title: "Roses are red – Links are blue"
 introduction: "What's better than one tag? Multiple tags!"
 color: "link"
-name: "Roses are red<br>Links are blue"
-icon: "tag"
+name: "Roses are red and links are blue"
+icon: "link"
 ---
 
 By default, a browser will display links in <strong style="color: blue;">blue</strong>. Bulma has up until now used the `$primary` color as the `$link` color:

@@ -9,10 +9,47 @@ $fortyfour: #5f45bb
 $amazon: #ffd863
 $bleeding-green: #ABF47C
 $bleeding-red: #CA1F26
+$star: #FFD257
+$rss: #f26522
 
-// $custom-colors: ("test": $bootstrap, "alt": ($bleeding-red, "jfoeij"), "debug": (pink, black))
+$mauve: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+$carbon-width: 300px
+$carbon-height: 100px
+$main-spacing: 3rem
+$intro-width: 1080px
+$sidebar-width: 14rem
 
 @import "../bulma"
+
+%center
+  align-items: center
+  display: flex
+  justify-content: center
+
+%bd-box
+  background-color: $white
+  border-radius: $radius-large
+  box-shadow: 0 1.5rem 1.5rem -1.25rem rgba($black, 0.05)
+  display: block
+
+=selection($current-selector: false)
+  @if $current-selector
+    &::-moz-selection
+      @content
+    &::selection
+      @content
+  @else
+    \::-moz-selection
+      @content
+    \::selection
+      @content
+
+@import "./_sass/main"
 @import "./_sass/highlight"
 @import "./_sass/override"
 @import "./_sass/global"
@@ -23,7 +60,6 @@ $bleeding-red: #CA1F26
 @import "./_sass/example"
 @import "./_sass/callout"
 @import "./_sass/bsa"
-@import "./_sass/route"
 @import "./_sass/twitter"
 @import "./_sass/expo"
 @import "./_sass/love"
@@ -33,3 +69,4 @@ $bleeding-red: #CA1F26
 @import "./_sass/sponsors"
 @import "./_sass/book"
 @import "./_sass/native"
+@import "./_sass/focus"

@@ -1,0 +1,128 @@
+---
+fulltitle: Bulma Videos
+layout: default
+route: videos
+breadcrumb:
+- home
+- videos
+videos:
+- id: tesla
+  title: Tesla launch page
+  subtitle: 4 videos – 20 min
+  content: Design a responsive launch page with Bulma's component and CSS Grid.
+  video_url: https://scrimba.com/p/pV5eHk/cvrwyfR
+  article_url: https://medium.freecodecamp.org/how-to-build-a-responsive-tesla-launch-page-with-bulma-css-2bf484057349
+- id: blog
+  title: Blog
+  subtitle: 4 videos – 23 min
+  content: Build a responsive blog with Bulma components.
+  video_url: https://scrimba.com/p/pV5eHk/c4EMaUR
+  article_url: https://medium.freecodecamp.org/how-to-build-a-responsive-blog-design-with-bulma-css-c2257a17c16b
+- id: slide
+  title: Slide
+  subtitle: 4 videos – 15 min
+  content: Create web-based presentation slides with Bulma.
+  video_url: https://scrimba.com/p/pV5eHk/cGym4Ta
+  no_video: true
+---
+
+{% include global/navbar.html id="Videos" %}
+
+<main class="bd-main">
+  <div class="bd-main-container container">
+    <div class="bd-duo">
+      <div class="bd-lead">
+        {% include components/breadcrumb.html %}
+
+        <header class="bd-header">
+          <div class="bd-header-titles">
+            <h1 class="title">
+              Videos
+            </h1>
+            <p class="subtitle is-4">
+              Learn Bulma with interactive {% include elements/external-link.html url=site.data.meta.scrimba_url text="Scrimba" %} tutorials
+            </p>
+          </div>
+
+          <div class="bd-header-carbon">
+            {% include elements/carbon.html %}
+          </div>
+        </header>
+
+        <div class="bd-shoutout message is-success">
+          <p class="title is-4 bd-shoutout-text">
+            Learn Bulma for free!
+          </p>
+
+          <p class="subtitle bd-shoutout-text">
+            Build 3 beautiful websites in 58 minutes
+          </p>
+
+          <p class="bd-shoutout-button">
+            {% include elements/external-link.html
+                classes="button is-success"
+                url=site.data.meta.scrimba_url
+                text="Enroll in the course" %}
+          </p>
+        </div>
+
+        {% for video in page.videos %}
+          <div class="bd-video">
+            <div class="columns">
+              <div class="column is-3">
+                <h2 class="title">
+                  {{ video.title }}
+                </h2>
+
+                <p class="subtitle has-text-grey-light">
+                  {{ video.subtitle }}
+                </p>
+
+                <div class="content is-medium">
+                  <p>
+                    {{ video.content }}
+                  </p>
+                </div>
+
+                <div class="buttons">
+                  <p>
+                    <a class="button is-link is-medium" href="{{ video.video_url }}" target="_blank" rel="nofollow">
+                      Watch video
+                    </a>
+
+                    {% if video.article_url %}
+                      <a class="button is-light is-medium" href="{{ video.article_url }}" target="_blank" rel="nofollow">
+                        Read article
+                      </a>
+                    {% endif %}
+                  </p>
+                </div>
+              </div>
+
+              <div class="column is-8 is-offset-1">
+                <a class="image" href="{{ video.video_url }}" target="_blank" rel="nofollow">
+                  {% if video.no_video %}
+                    <img src="/images/videos/{{ video.id }}.png" alt="{{ video.title }} screenshot">
+                  {% else %}
+                    <video autoplay loop muted>
+                      <source media="(min-width: 640px)" src="/images/videos/{{ video.id }}.mp4">
+                    </video>
+                    {% endif %}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="bd-embrace">
+          <p class="bd-embrace-text">
+            Did you make a Bulma video too? <strong>Post it here!</strong> <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>
+          </p>
+          <p class="bd-embrace-button">
+            {% include elements/external-link.html classes="button is-link" url="https://github.com/jgthms/bulma/compare" text="Make a PR" %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

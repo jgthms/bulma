@@ -1,0 +1,20 @@
+<article class="media bd-pro bd-is-{{ include.type }}">
+  <aside class="media-left">
+    <span class="icon">
+      <i class="{% if include.icon_brand %}fab{% else %}fas{% endif %} fa-{{ include.icon }}"></i>
+    </span>
+  </aside>
+  <div class="media-content">
+    <p class="title is-5 pro-title">
+      {{ include.title }}
+    </p>
+    <div class="bd-pro-content">
+      {{ include.content | markdownify }}
+
+      {% if include.title == 'No JavaScript' %}
+        {% assign tweet = site.data.love.tweets_by_id.860885116909998080 %}
+        {% include elements/tw.html tweet=tweet modifier='bd-is-grey' %}
+      {% endif %}
+    </div>
+  </div>
+</article>

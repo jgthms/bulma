@@ -1,0 +1,39 @@
+<nav id="categories" class="bd-categories">
+  {% for category in site.data.links.categories %}
+    {% assign category_id = category[0] %}
+    {% assign category_links = category[1] %}
+    {% assign category_link = site.data.links.by_id[category_id] %}
+
+    <div class="bd-category {% if category_id == current_category %}is-active{% endif %}">
+      <header class="bd-category-header">
+        <a class="bd-category-toggle">
+          <span class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </a>
+        <a class="bd-category-name {% if category_id == current_link_id %}is-active{% endif %}" href="{{ site.url }}{{ category_link.path }}">
+          <strong>{{ category_link.name }}</strong>
+        </a>
+      </header>
+
+      <ul class="bd-category-list">
+        {% for link_id in category_links %}
+          {% assign link = site.data.links.by_id[link_id] %}
+          <li {% if link_id == current_link_id %}class="is-current"{% endif %}>
+            <a href="{{ site.url }}{{ link.path }}">
+              {{ link.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</nav>
+
+{% unless page.hide_side_sponsor %}
+  {% include global/side-sponsor.html %}
+{% endunless %}
+
+{% unless page.hide_fortyfour %}
+  {% include global/fortyfour.html %}
+{% endunless %}

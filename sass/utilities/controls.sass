@@ -1,14 +1,16 @@
 $control-radius: $radius !default
 $control-radius-small: $radius-small !default
 
-$control-padding-vertical: calc(0.375em - 1px) !default
-$control-padding-horizontal: calc(0.625em - 1px) !default
+$control-border-width: 1px !default
 
-=control
+$control-padding-vertical: calc(0.375em - #{$control-border-width}) !default
+$control-padding-horizontal: calc(0.625em - #{$control-border-width}) !default
+
+%control
   -moz-appearance: none
   -webkit-appearance: none
   align-items: center
-  border: 1px solid transparent
+  border: $control-border-width solid transparent
   border-radius: $control-radius
   box-shadow: none
   display: inline-flex
@@ -30,6 +32,9 @@ $control-padding-horizontal: calc(0.625em - 1px) !default
     outline: none
   &[disabled]
     cursor: not-allowed
+
+=control
+  @extend %control
 
 // The controls sizes use mixins so they can be used at different breakpoints
 =control-small
