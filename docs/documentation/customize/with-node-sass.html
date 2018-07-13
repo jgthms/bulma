@@ -1,0 +1,289 @@
+---
+title: With node-sass
+layout: documentation
+doc-tab: customize
+doc-subtab: node-sass
+breadcrumb:
+- home
+- documentation
+- customize
+- customize-node-sass
+---
+
+{% capture init %}
+npm init
+{% endcapture %}
+
+{% capture step_1 %}
+  <div class="content">
+    <p>
+      In your terminal, create a new folder called <code>mybulma</code>, navigate to it, then type the following command:
+    </p>
+  </div>
+
+  {% highlight bash %}{{ init }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      This will launch an interactive setup to create <code>package.json</code>. When prompted for an <strong>entry point</strong>, enter <code>sass/mystyles.scss</code>.
+    </p>
+  </div>
+{% endcapture %}
+
+{% capture dependencies %}
+npm install node-sass --save-dev
+npm install bulma --save-dev
+{% endcapture %}
+
+{% capture step_2 %}
+  <div class="content">
+    <p>
+      You only need <strong>2 packages</strong> to customize Bulma: <code>node-sass</code> and <code>bulma</code> itself.
+    </p>
+  </div>
+
+  {% highlight bash %}{{ dependencies }}{% endhighlight %}
+{% endcapture %}
+
+{% capture scss_bulma %}
+@charset "utf-8";
+@import "../node_modules/bulma/bulma.sass";
+{% endcapture %}
+
+{% capture step_3 %}
+  <div class="content">
+    <p>
+      Create a <code>sass</code> folder in which you add a file called <code>mystyles.scss</code>:
+    </p>
+  </div>
+
+  {% highlight scss %}{{ scss_bulma }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      Make sure to write the correct path to the <code>bulma.sass</code> file.
+    </p>
+  </div>
+{% endcapture %}
+
+{% capture step_4 %}
+  <div class="content">
+    <p>
+      Let's create an HTML template which uses several Bulma components.
+    </p>
+  </div>
+
+  {% highlight html %}{% include snippets/mypage.html %}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      Notice the <code>css/mystyles.css</code> path for your stylesheet. This will be the location of the CSS file we will generate with Sass.
+    </p>
+  </div>
+
+  <figure class="bd-figure">
+    {%
+      include elements/responsive-image-2x.html
+      path="customize/custom-bulma-01-unstyled"
+      extension="png"
+      alt="Bulma unstyled"
+      width="600"
+      height="300"
+    %}
+    <figcaption>
+      The unstyled page
+    </figcaption>
+  </figure>
+{% endcapture %}
+
+{% capture scripts %}
+"scripts": {
+  "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+  "css-watch": "npm run css-build -- --watch",
+  "start": "npm run css-watch"
+}
+{% endcapture %}
+
+{% capture npm_build %}
+npm run css-build
+{% endcapture %}
+
+{% capture npm_build_success %}
+Rendering Complete, saving .css file...
+Wrote CSS to /path/to/mybulma/css/mystyles.css
+{% endcapture %}
+
+{% capture npm_watch %}
+npm start
+{% endcapture %}
+
+{% capture step_5 %}
+  <div class="content">
+    <p>
+      To build a CSS file from a Sass file, we can use <strong>node scripts</strong>:
+    </p>
+  </div>
+
+  {% highlight html %}{{ scripts }}{% endhighlight %}
+
+  <div class="content">
+    <ul>
+      <li>
+        <code>css-build</code> takes <code>sass/mystyles.scss</code> as an input, and outputs <code>css/mystyles.css</code>, while omitting the source map
+      </li>
+      <li>
+        <code>css-watch</code> builds the CSS and watches for changes
+      </li>
+      <li>
+        <code>start</code> is simply a shortcut for <code>css-watch</code>
+      </li>
+    </ul>
+
+    <p>
+      To test it out, go in your terminal and run the following command:
+    </p>
+
+    {% highlight bash %}{{ npm_build }}{% endhighlight %}
+  </div>
+
+  <figure class="bd-figure">
+    {%
+      include elements/responsive-image-2x.html
+      path="customize/custom-bulma-02-default"
+      extension="png"
+      alt="Bulma default styles"
+      width="600"
+      height="300"
+    %}
+    <figcaption>
+      Bulma's default styles
+    </figcaption>
+  </figure>
+
+  <div class="content">
+    <p>
+      If set up correctly, you will see the following message:
+    </p>
+  </div>
+
+  {% highlight bash %}{{ npm_build_success }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      To watch for changes, just launch the following command:
+    </p>
+  </div>
+
+  {% highlight bash %}{{ npm_watch }}{% endhighlight %}
+{% endcapture %}
+
+{% capture mystyles %}
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/form.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+{% endcapture %}
+
+{% capture step_6 %}
+  <div class="content">
+    <p>
+      Replace the content of the <code>mystyles.scss</code> file with the following:
+    </p>
+  </div>
+
+  <div class="highlight-full">
+    {% highlight scss %}{{ mystyles }}{% endhighlight %}
+  </div>
+
+  <div class="content">
+    <p>
+      Since you are watching for changes, simply <strong>save the file</strong> to see the result:
+    </p>
+  </div>
+
+  <figure class="bd-figure">
+    {%
+      include elements/responsive-image-2x.html
+      path="customize/custom-bulma-03-styled"
+      extension="png"
+      alt="Bulma customized"
+      width="600"
+      height="300"
+    %}
+    <figcaption>
+      Bulma's customized theme
+    </figcaption>
+  </figure>
+{% endcapture %}
+
+{% include components/step.html
+  title='1. Create a <code style="white-space: nowrap;">package.json</code> file'
+  content=step_1
+%}
+
+<hr>
+
+{% include components/step.html
+  title="2. Install the dev dependencies"
+  content=step_2
+%}
+
+<hr>
+
+{% include components/step.html
+  title="3. Create a Sass file"
+  content=step_3
+%}
+
+<hr>
+
+{% include components/step.html
+  title="4. Create an HTML page"
+  content=step_4
+%}
+
+<hr>
+
+{% include components/step.html
+  title="5. Add node scripts to build your CSS"
+  content=step_5
+%}
+
+<hr>
+
+{% include components/step.html
+  title="6. Add your own Bulma styles"
+  content=step_6
+%}
