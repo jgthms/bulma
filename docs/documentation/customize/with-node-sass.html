@@ -35,6 +35,19 @@ npm install node-sass --save-dev
 npm install bulma --save-dev
 {% endcapture %}
 
+{% capture package %}
+{
+  "name": "mybulma",
+  "version": "1.0.0",
+  "main": "sass/mystyles.scss",
+  "license": "MIT",
+  "devDependencies": {
+    "bulma": "^0.7.1",
+    "node-sass": "^4.9.2"
+  }
+}
+{% endcapture %}
+
 {% capture step_2 %}
   <div class="content">
     <p>
@@ -43,57 +56,14 @@ npm install bulma --save-dev
   </div>
 
   {% highlight bash %}{{ dependencies }}{% endhighlight %}
-{% endcapture %}
-
-{% capture scss_bulma %}
-@charset "utf-8";
-@import "../node_modules/bulma/bulma.sass";
-{% endcapture %}
-
-{% capture step_3 %}
-  <div class="content">
-    <p>
-      Create a <code>sass</code> folder in which you add a file called <code>mystyles.scss</code>:
-    </p>
-  </div>
-
-  {% highlight scss %}{{ scss_bulma }}{% endhighlight %}
 
   <div class="content">
     <p>
-      Make sure to write the correct path to the <code>bulma.sass</code> file.
-    </p>
-  </div>
-{% endcapture %}
-
-{% capture step_4 %}
-  <div class="content">
-    <p>
-      Let's create an HTML template which uses several Bulma components.
+      Your <code>package.json</code> should look like this at this point.
     </p>
   </div>
 
-  {% highlight html %}{% include snippets/mypage.html %}{% endhighlight %}
-
-  <div class="content">
-    <p>
-      Notice the <code>css/mystyles.css</code> path for your stylesheet. This will be the location of the CSS file we will generate with Sass.
-    </p>
-  </div>
-
-  <figure class="bd-figure">
-    {%
-      include elements/responsive-image-2x.html
-      path="customize/custom-bulma-01-unstyled"
-      extension="png"
-      alt="Bulma unstyled"
-      width="600"
-      height="300"
-    %}
-    <figcaption>
-      The unstyled page
-    </figcaption>
-  </figure>
+  {% highlight bash %}{{ package }}{% endhighlight %}
 {% endcapture %}
 
 {% capture scripts %}
@@ -120,7 +90,7 @@ npm start
 {% capture step_5 %}
   <div class="content">
     <p>
-      To build a CSS file from a Sass file, we can use <strong>node scripts</strong>:
+      To build a CSS file from a Sass file, we can use <strong>node scripts</strong>. In <code>package.json</code>, add the following:
     </p>
   </div>
 
@@ -140,25 +110,11 @@ npm start
     </ul>
 
     <p>
-      To test it out, go in your terminal and run the following command:
+      To test it out, go in your <strong>terminal</strong> and run the following command:
     </p>
 
     {% highlight bash %}{{ npm_build }}{% endhighlight %}
   </div>
-
-  <figure class="bd-figure">
-    {%
-      include elements/responsive-image-2x.html
-      path="customize/custom-bulma-02-default"
-      extension="png"
-      alt="Bulma default styles"
-      width="600"
-      height="300"
-    %}
-    <figcaption>
-      Bulma's default styles
-    </figcaption>
-  </figure>
 
   <div class="content">
     <p>
@@ -170,82 +126,27 @@ npm start
 
   <div class="content">
     <p>
-      To watch for changes, just launch the following command:
+      <strong>Reload</strong> the page and it should be styled like this:
+    </p>
+  </div>
+
+  {%
+    include components/figure.html
+    path="customize/custom-bulma-02-default"
+    extension="png"
+    alt="Bulma default styles"
+    width="600"
+    height="300"
+    caption="Bulma's default styles"
+  %}
+
+  <div class="content">
+    <p>
+      To <strong>watch for changes</strong>, just launch the following command:
     </p>
   </div>
 
   {% highlight bash %}{{ npm_watch }}{% endhighlight %}
-{% endcapture %}
-
-{% capture mystyles %}
-@charset "utf-8";
-
-// Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
-
-// Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
-$brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
-
-// Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-// Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
-
-// Import only what you need from Bulma
-@import "../node_modules/bulma/sass/utilities/_all.sass";
-@import "../node_modules/bulma/sass/base/_all.sass";
-@import "../node_modules/bulma/sass/elements/button.sass";
-@import "../node_modules/bulma/sass/elements/container.sass";
-@import "../node_modules/bulma/sass/elements/form.sass";
-@import "../node_modules/bulma/sass/elements/title.sass";
-@import "../node_modules/bulma/sass/layout/hero.sass";
-@import "../node_modules/bulma/sass/layout/section.sass";
-{% endcapture %}
-
-{% capture step_6 %}
-  <div class="content">
-    <p>
-      Replace the content of the <code>mystyles.scss</code> file with the following:
-    </p>
-  </div>
-
-  <div class="highlight-full">
-    {% highlight scss %}{{ mystyles }}{% endhighlight %}
-  </div>
-
-  <div class="content">
-    <p>
-      Since you are watching for changes, simply <strong>save the file</strong> to see the result:
-    </p>
-  </div>
-
-  <figure class="bd-figure">
-    {%
-      include elements/responsive-image-2x.html
-      path="customize/custom-bulma-03-styled"
-      extension="png"
-      alt="Bulma customized"
-      width="600"
-      height="300"
-    %}
-    <figcaption>
-      Bulma's customized theme
-    </figcaption>
-  </figure>
 {% endcapture %}
 
 {% include components/step.html
@@ -262,16 +163,15 @@ $input-shadow: none;
 
 <hr>
 
-{% include components/step.html
-  title="3. Create a Sass file"
-  content=step_3
+{% include steps/create-sass-file.html
+  number="3"
+  path="../node_modules"
 %}
 
 <hr>
 
-{% include components/step.html
-  title="4. Create an HTML page"
-  content=step_4
+{% include steps/create-html-page.html
+  number="4"
 %}
 
 <hr>
@@ -283,7 +183,6 @@ $input-shadow: none;
 
 <hr>
 
-{% include components/step.html
-  title="6. Add your own Bulma styles"
-  content=step_6
+{% include steps/add-custom-styles.html
+  number="6"
 %}

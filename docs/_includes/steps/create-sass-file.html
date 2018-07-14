@@ -1,0 +1,27 @@
+{% capture scss_bulma %}
+@charset "utf-8";
+@import "{{ include.path }}/bulma/bulma.sass";
+{% endcapture %}
+
+{% capture step_3 %}
+  <div class="content">
+    <p>
+      Create a <code>sass</code> folder in which you add a file called <code>mystyles.scss</code>:
+    </p>
+  </div>
+
+  {% highlight scss %}{{ scss_bulma }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      Make sure to write the correct path to the <code>bulma.sass</code> file.
+    </p>
+  </div>
+{% endcapture %}
+
+{% assign step_title = ". Create a Sass file" | prepend: include.number %}
+
+{% include components/step.html
+  title=step_title
+  content=step_3
+%}
