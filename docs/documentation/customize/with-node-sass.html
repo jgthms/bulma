@@ -10,26 +10,6 @@ breadcrumb:
 - customize-node-sass
 ---
 
-{% capture init %}
-npm init
-{% endcapture %}
-
-{% capture step_1 %}
-  <div class="content">
-    <p>
-      In your terminal, create a new folder called <code>mybulma</code>, navigate to it, then type the following command:
-    </p>
-  </div>
-
-  {% highlight bash %}{{ init }}{% endhighlight %}
-
-  <div class="content">
-    <p>
-      This will launch an interactive setup to create <code>package.json</code>. When prompted for an <strong>entry point</strong>, enter <code>sass/mystyles.scss</code>.
-    </p>
-  </div>
-{% endcapture %}
-
 {% capture dependencies %}
 npm install node-sass --save-dev
 npm install bulma --save-dev
@@ -112,9 +92,9 @@ npm start
     <p>
       To test it out, go in your <strong>terminal</strong> and run the following command:
     </p>
-
-    {% highlight bash %}{{ npm_build }}{% endhighlight %}
   </div>
+
+  {% highlight bash %}{{ npm_build }}{% endhighlight %}
 
   <div class="content">
     <p>
@@ -149,9 +129,9 @@ npm start
   {% highlight bash %}{{ npm_watch }}{% endhighlight %}
 {% endcapture %}
 
-{% include components/step.html
-  title='1. Create a <code style="white-space: nowrap;">package.json</code> file'
-  content=step_1
+{% include steps/create-package.html
+  number="1"
+  entry="sass/mystyles.scss"
 %}
 
 <hr>
@@ -165,7 +145,7 @@ npm start
 
 {% include steps/create-sass-file.html
   number="3"
-  path="../node_modules"
+  path="../node_modules/bulma/bulma.sass"
 %}
 
 <hr>
