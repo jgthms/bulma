@@ -13,6 +13,7 @@
 ### Improvements
 
 * #1964 Allow `.notification` to have a `.dropdown-item`
+* #1999 Change `$border` to `$grey-lighter` in mixins
 
 ### Bug fixes
 
