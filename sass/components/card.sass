@@ -60,32 +60,32 @@ $card-footer-border-top: 1px solid $border !default
   &:not(:last-child)
     border-right: $card-footer-border-top
 
+// Horizontal Card
+=horizontal-card
+  flex-direction: row
+  display: flex
+  flex-basis: 50ex
+  flex-grow: 0
+  flex-shrink: 1
+  .card-image
+    flex: 1
+    .image
+      min-height: 100%
+  .card-content
+    flex: 1
+  &.is-right
+    flex-direction: row-reverse
+
+.card
+  &.is-horizontal
+    +tablet
+      +horizontal-card
+    &.is-mobile
+      +mobile
+        +horizontal-card
+
 // Combinations
 
 .card
   .media:not(:last-child)
     margin-bottom: 0.75rem
-
-  &.is-horizontal
-    flex-direction: row
-    display: flex
-    flex-basis: 50ex
-    flex-grow: 0
-    flex-shrink: 1
-    .card-image
-      flex: 2
-      flex-shrink: 2
-      .image
-        display: block
-        position: relative
-        overflow: hidden
-        height: 100%
-        width: 100%
-        img
-          height: 100%
-          object-fit: cover
-          object-position: center
-
-    .card-content
-      flex: 3
-      flex-shrink: 3
