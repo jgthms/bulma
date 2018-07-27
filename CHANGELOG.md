@@ -1,5 +1,12 @@
 # Bulma Changelog
 
+## 0.7.2.1
+
+### Bugfix
+
+* 'Remove' the native upload button when file has-name modifier is added
+* Added Opacity 0 in file-input
+
 ## 0.7.2
 
 ### New features
