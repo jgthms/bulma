@@ -18,7 +18,9 @@
 ### Bug fixes
 
 * #1749 Fix icons floating out of input area
-* #1993 fixes #1992 Prevent disabled form elements hover state from overlapping, if control has add-ons elements
+* #1993 Fixes #1992 Prevent disabled form elements hover state from overlapping, if control has add-ons elements
+* #1909 Fix Modal card in IE11
+* #1908 Fix IE11 when textarea doesn't listen to `size=""`
 
 ## 0.7.1
 

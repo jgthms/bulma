@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var introVideo = document.getElementById('introVideo');
   var introIframe = document.getElementById('introIframe');
-  var introPlayer = new Vimeo.Player(introIframe);
   var npmClipboard = new Clipboard('#npmCopy');
 
-  introPlayer.ready().then(function () {
-    introVideo.classList.add('has-loaded');
-  });
+  if (Vimeo) {
+    var introPlayer = new Vimeo.Player(introIframe);
+    introPlayer.ready().then(function () {
+      introVideo.classList.add('has-loaded');
+    });
+  }
 
   npmClipboard.on('success', function (e) {
     e.trigger.innerText = 'copied!';
