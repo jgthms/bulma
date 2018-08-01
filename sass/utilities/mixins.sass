@@ -130,15 +130,15 @@
 
 // Placeholders
 
-%unselectable
+=unselectable
   -webkit-touch-callout: none
   -webkit-user-select: none
   -moz-user-select: none
   -ms-user-select: none
   user-select: none
-  
-=unselectable
-  @extend %unselectable
+
+%unselectable
+  +unselectable
 
 =arrow($color: transparent)
   border: 3px solid $color
@@ -156,11 +156,17 @@
   transform-origin: center
   width: 0.625em
 
+%arrow
+  +arrow
+
 =block
   &:not(:last-child)
     margin-bottom: 1.5rem
 
-%delete
+%block
+  +block
+
+=delete
   @extend %unselectable
   -moz-appearance: none
   -webkit-appearance: none
@@ -225,11 +231,11 @@
     min-height: 32px
     min-width: 32px
     width: 32px
-    
-=delete
-  @extend %delete
 
-%loader
+%delete
+  +delete
+
+=loader
   animation: spinAround 500ms infinite linear
   border: 2px solid $grey-lighter
   border-radius: $radius-rounded
@@ -241,8 +247,8 @@
   position: relative
   width: 1em
 
-=loader
-  @extend %loader
+%loader
+  +loader
 
 =overlay($offset: 0)
   bottom: 0
@@ -255,3 +261,6 @@
     left: $offset
     right: $offset
     top: $offset
+
+%overlay
+  +overlay
