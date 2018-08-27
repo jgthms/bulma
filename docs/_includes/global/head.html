@@ -52,6 +52,15 @@
   {% elsif page.layout == 'post' %}
     <meta property="og:description" content="{{ page.content | strip_html | truncate: 400, '…' }}">
     <meta name="twitter:description" content="{{ page.content | strip_html | truncate: 400, '…' }}">
+  {% elsif page.doc-tab %}
+    {% assign link = site.data.links.by_id[page.doc-tab] %}
+    {% if link.subtitle %}
+      <meta property="og:description" content="{{ link.subtitle | strip_html }}">
+      <meta name="twitter:description" content="{{ link.subtitle | strip_html }}">
+    {% else %}
+      <meta property="og:description" content="{{ site.data.meta.description }}">
+      <meta name="twitter:description" content="{{ site.data.meta.description }}">
+    {% endif %}
   {% else %}
     <meta property="og:description" content="{{ site.data.meta.description }}">
     <meta name="twitter:description" content="{{ site.data.meta.description }}">

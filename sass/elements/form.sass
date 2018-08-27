@@ -172,7 +172,7 @@ $help-size: $size-small !default
     &:not([multiple])
       padding-right: 2.5em
     &[multiple]
-      height: initial
+      height: auto
       padding: 0
       option
         padding: 0.5em 1em
@@ -449,16 +449,17 @@ $help-size: $size-small !default
       .button,
       .input,
       .select select
-        &:hover,
-        &.is-hovered
-          z-index: 2
-        &:focus,
-        &.is-focused,
-        &:active,
-        &.is-active
-          z-index: 3
-          &:hover
-            z-index: 4
+        &:not([disabled])
+          &:hover,
+          &.is-hovered
+            z-index: 2
+          &:focus,
+          &.is-focused,
+          &:active,
+          &.is-active
+            z-index: 3
+            &:hover
+              z-index: 4
       &.is-expanded
         flex-grow: 1
     &.has-addons-centered

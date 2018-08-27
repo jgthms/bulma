@@ -497,30 +497,44 @@ meta:
 {% endcapture %}
 
 {% capture navbar_js_code %}
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
   // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
 
     // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
 
         // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
 
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
 
       });
     });
   }
 
+});
+{% endcapture %}
+
+{% capture navbar_jquery_code %}
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
 });
 {% endcapture %}
 
@@ -689,12 +703,22 @@ document.addEventListener('DOMContentLoaded', function () {
       <p>
         The Bulma package <strong>does not come with any JavaScript</strong>.
         <br>
-        Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>.
+        Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>, in Vanilla Javascript.
       </p>
 
       {% highlight html %}{{ navbar_js_html }}{% endhighlight %}
 
       {% highlight javascript %}{{ navbar_js_code }}{% endhighlight %}
+
+      <p>
+        And here is another implementation example, which again toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>, but this time in jQuery.
+      </p>
+
+      {% highlight javascript %}{{ navbar_jquery_code }}{% endhighlight %}
+
+      <p>
+        Remember, these are just implementation examples. The Bulma package <strong>does not come with any JavaScript</strong>.
+      </p>
     </div>
   </div>
 </div>
@@ -774,8 +798,16 @@ document.addEventListener('DOMContentLoaded', function () {
     </li>
   </ul>
   <p>
-    You can add the modifier class <code>is-expanded</code> to turn it into a full-width element.
+    You can add the following <strong>modifier</strong> classes:
   </p>
+  <ul>
+    <li>
+      <code>is-expanded</code> to turn it into a full-width element
+    </li>
+    <li>
+      <code>is-tab</code> to add a bottom border on hover and show the bottom border using <code>is-active</code>
+    </li>
+  </ul>
 </div>
 
 {% include elements/anchor.html name="Transparent navbar" %}

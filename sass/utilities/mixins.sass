@@ -130,18 +130,18 @@
 
 // Placeholders
 
-%unselectable
+=unselectable
   -webkit-touch-callout: none
   -webkit-user-select: none
   -moz-user-select: none
   -ms-user-select: none
   user-select: none
 
-=unselectable
-  @extend %unselectable
+%unselectable
+  +unselectable
 
-%arrow
-  border: 3px solid transparent
+=arrow($color: transparent)
+  border: 3px solid $color
   border-radius: 2px
   border-right: 0
   border-top: 0
@@ -156,18 +156,17 @@
   transform-origin: center
   width: 0.625em
 
-=arrow($color)
-  @extend %arrow
-  border-color: $color
+%arrow
+  +arrow
 
-%block
+=block
   &:not(:last-child)
     margin-bottom: 1.5rem
 
-=block
-  @extend %block
+%block
+  +block
 
-%delete
+=delete
   @extend %unselectable
   -moz-appearance: none
   -webkit-appearance: none
@@ -233,12 +232,12 @@
     min-width: 32px
     width: 32px
 
-=delete
-  @extend %delete
+%delete
+  +delete
 
-%loader
+=loader
   animation: spinAround 500ms infinite linear
-  border: 2px solid $border
+  border: 2px solid $grey-lighter
   border-radius: $radius-rounded
   border-right-color: transparent
   border-top-color: transparent
@@ -248,20 +247,20 @@
   position: relative
   width: 1em
 
-=loader
-  @extend %loader
+%loader
+  +loader
 
-%overlay
+=overlay($offset: 0)
   bottom: 0
   left: 0
   position: absolute
   right: 0
   top: 0
-
-=overlay($offset: 0)
-  @extend %overlay
   @if $offset != 0
     bottom: $offset
     left: $offset
     right: $offset
     top: $offset
+
+%overlay
+  +overlay

@@ -61,6 +61,25 @@ route: documentation
           </div>
         </header>
 
+        {% if page.hide_tabs %}
+          <hr style="margin: 0 0 3rem;">
+        {% else %}
+          <nav class="bd-tabs">
+            <div class="tabs">
+              <ul>
+                {% for link_id in category_links %}
+                  {% assign link = site.data.links.by_id[link_id] %}
+                  <li {% if link_id == current_link_id %}class="is-active"{% endif %}>
+                    <a href="{{ site.url }}{{ link.path }}">
+                      {{ link.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </nav>
+        {% endif %}
+
         <div class="bd-content">
           {{ content }}
         </div>

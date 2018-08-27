@@ -52,7 +52,7 @@
 }
 
 .box:not(:last-child), .content:not(:last-child), .notification:not(:last-child), .progress:not(:last-child), .table:not(:last-child), .table-container:not(:last-child), .title:not(:last-child),
-.subtitle:not(:last-child), .block:not(:last-child), .highlight:not(:last-child), .breadcrumb:not(:last-child), .level:not(:last-child), .message:not(:last-child), .tabs:not(:last-child), .bd-snippet:not(:last-child), .bd-callout:not(:last-child) {
+.subtitle:not(:last-child), .block:not(:last-child), .highlight:not(:last-child), .breadcrumb:not(:last-child), .level:not(:last-child), .message:not(:last-child), .tabs:not(:last-child), .bd-figure:not(:last-child), .bd-snippet:not(:last-child), .bd-callout:not(:last-child) {
   margin-bottom: 1.5rem;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .is-overlay, .image.is-square img, .image.is-1by1 img, .image.is-5by4 img, .image.is-4by3 img, .image.is-3by2 img, .image.is-5by3 img, .image.is-16by9 img, .image.is-2by1 img, .image.is-3by1 img, .image.is-4by5 img, .image.is-3by4 img, .image.is-2by3 img, .image.is-3by5 img, .image.is-9by16 img, .image.is-1by2 img, .image.is-1by3 img, .modal, .modal-background, .hero-video, .bd-category-toggle, .bd-patreon-button:hover::after, .bd-focus-item::before, .intro-spinner, .intro-shadow, .bd-structure-item::before, .bd-structure-item::after, .highlight .bd-show, .bd-banner-background, .bd-book-pattern::before,
-.bd-book-modal-column.bd-is-cover::before, .bd-book-pattern, .bd-book-modal-background {
+.bd-book-modal-column.bd-is-cover::before, .bd-book-pattern, .bd-book-modal-background, .native-js::before {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -1364,6 +1364,19 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 
 .is-hidden {
   display: none !important;
+}
+
+.is-sr-only {
+  border: none !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  clip: rect(0, 0, 0, 0) !important;
+  height: 0.01em !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 0.01em !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -3263,7 +3276,7 @@ a.box:active {
 }
 
 .select select[multiple] {
-  height: initial;
+  height: auto;
   padding: 0;
 }
 
@@ -4014,35 +4027,35 @@ a.box:active {
   border-top-left-radius: 0;
 }
 
-.field.has-addons .control .button:hover, .field.has-addons .control .button.is-hovered,
-.field.has-addons .control .input:hover,
-.field.has-addons .control .input.is-hovered,
-.field.has-addons .control .select select:hover,
-.field.has-addons .control .select select.is-hovered {
+.field.has-addons .control .button:not([disabled]):hover, .field.has-addons .control .button:not([disabled]).is-hovered,
+.field.has-addons .control .input:not([disabled]):hover,
+.field.has-addons .control .input:not([disabled]).is-hovered,
+.field.has-addons .control .select select:not([disabled]):hover,
+.field.has-addons .control .select select:not([disabled]).is-hovered {
   z-index: 2;
 }
 
-.field.has-addons .control .button:focus, .field.has-addons .control .button.is-focused, .field.has-addons .control .button:active, .field.has-addons .control .button.is-active,
-.field.has-addons .control .input:focus,
-.field.has-addons .control .input.is-focused,
-.field.has-addons .control .input:active,
-.field.has-addons .control .input.is-active,
-.field.has-addons .control .select select:focus,
-.field.has-addons .control .select select.is-focused,
-.field.has-addons .control .select select:active,
-.field.has-addons .control .select select.is-active {
+.field.has-addons .control .button:not([disabled]):focus, .field.has-addons .control .button:not([disabled]).is-focused, .field.has-addons .control .button:not([disabled]):active, .field.has-addons .control .button:not([disabled]).is-active,
+.field.has-addons .control .input:not([disabled]):focus,
+.field.has-addons .control .input:not([disabled]).is-focused,
+.field.has-addons .control .input:not([disabled]):active,
+.field.has-addons .control .input:not([disabled]).is-active,
+.field.has-addons .control .select select:not([disabled]):focus,
+.field.has-addons .control .select select:not([disabled]).is-focused,
+.field.has-addons .control .select select:not([disabled]):active,
+.field.has-addons .control .select select:not([disabled]).is-active {
   z-index: 3;
 }
 
-.field.has-addons .control .button:focus:hover, .field.has-addons .control .button.is-focused:hover, .field.has-addons .control .button:active:hover, .field.has-addons .control .button.is-active:hover,
-.field.has-addons .control .input:focus:hover,
-.field.has-addons .control .input.is-focused:hover,
-.field.has-addons .control .input:active:hover,
-.field.has-addons .control .input.is-active:hover,
-.field.has-addons .control .select select:focus:hover,
-.field.has-addons .control .select select.is-focused:hover,
-.field.has-addons .control .select select:active:hover,
-.field.has-addons .control .select select.is-active:hover {
+.field.has-addons .control .button:not([disabled]):focus:hover, .field.has-addons .control .button:not([disabled]).is-focused:hover, .field.has-addons .control .button:not([disabled]):active:hover, .field.has-addons .control .button:not([disabled]).is-active:hover,
+.field.has-addons .control .input:not([disabled]):focus:hover,
+.field.has-addons .control .input:not([disabled]).is-focused:hover,
+.field.has-addons .control .input:not([disabled]):active:hover,
+.field.has-addons .control .input:not([disabled]).is-active:hover,
+.field.has-addons .control .select select:not([disabled]):focus:hover,
+.field.has-addons .control .select select:not([disabled]).is-focused:hover,
+.field.has-addons .control .select select:not([disabled]):active:hover,
+.field.has-addons .control .select select:not([disabled]).is-active:hover {
   z-index: 4;
 }
 
@@ -4437,7 +4450,7 @@ a.box:active {
   position: relative;
 }
 
-.notification a:not(.button) {
+.notification a:not(.button):not(.dropdown-item) {
   color: currentColor;
   text-decoration: underline;
 }
@@ -5936,6 +5949,7 @@ a.dropdown-item.is-active {
   flex-direction: column;
   max-height: calc(100vh - 40px);
   overflow: hidden;
+  -ms-overflow-y: visible;
 }
 
 .modal-card-head,
@@ -10179,6 +10193,27 @@ label.panel-block:hover {
   position: relative;
 }
 
+.bd-figure {
+  align-items: center;
+  border: 2px solid whitesmoke;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.bd-figure img {
+  margin: 1em;
+}
+
+.bd-figure figcaption {
+  align-self: stretch;
+  background-color: whitesmoke;
+  color: #7a7a7a;
+  font-size: 0.75rem;
+  padding: 1em;
+}
+
 .bd-lead {
   position: relative;
 }
@@ -10233,9 +10268,7 @@ label.panel-block:hover {
 }
 
 .bd-header {
-  border-bottom: 2px solid whitesmoke;
   margin-bottom: 3rem;
-  padding-bottom: 3rem;
 }
 
 .bd-header .subtitle {
@@ -10250,12 +10283,43 @@ label.panel-block:hover {
   margin-top: -0.5rem;
 }
 
+.bd-tabs {
+  margin-bottom: 3rem;
+}
+
+.bd-tabs .tabs {
+  overflow: visible;
+}
+
+.bd-tabs .tabs ul,
+.bd-tabs .tabs a {
+  border-bottom-color: whitesmoke;
+  border-bottom-width: 2px;
+}
+
+.bd-tabs .tabs ul {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.bd-tabs .tabs a {
+  margin-bottom: -2px;
+}
+
+.bd-tabs .tabs li:not(.is-active) a:hover {
+  border-bottom-color: #dbdbdb;
+}
+
 .bd-content hr:first-child {
   display: none;
 }
 
 .bd-content hr:first-child + .bd-anchor-title {
   padding-top: 0;
+}
+
+.bd-content hr:first-child + .bd-anchor-title .bd-anchor-link {
+  top: 0;
 }
 
 .bd-side,
@@ -10346,6 +10410,16 @@ label.panel-block:hover {
   color: #3273dc;
 }
 
+.bd-category-name .tag {
+  border-radius: 2px;
+  font-family: Verdana;
+  font-size: 0.5rem;
+  font-weight: bold;
+  height: 2.25em;
+  margin-left: 0.5em;
+  vertical-align: text-bottom;
+}
+
 .bd-category-list {
   display: none;
   padding: 0.5rem;
@@ -10357,7 +10431,7 @@ label.panel-block:hover {
 
 .bd-anchors {
   display: none;
-  max-width: 14rem;
+  max-width: 10.5rem;
   padding-top: calc(1.5rem - 1px);
 }
 
@@ -10396,13 +10470,13 @@ label.panel-block:hover {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1087px) {
   .bd-side-background {
     display: none;
   }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 1088px) {
   .bd-duo {
     display: flex;
   }
@@ -10416,7 +10490,7 @@ label.panel-block:hover {
     display: flex;
   }
   .bd-side {
-    flex: 0 0 calc(14rem + 1.5rem);
+    flex: 0 0 calc(10.5rem + 1.5rem);
   }
 }
 
@@ -10434,7 +10508,7 @@ label.panel-block:hover {
   .bd-header {
     align-items: center;
     display: flex;
-    min-height: 130px;
+    min-height: 140px;
   }
   .bd-header-titles {
     flex-grow: 1;
@@ -11604,7 +11678,8 @@ svg {
 }
 
 .bd-footer-support {
-  border-top: 2px solid whitesmoke;
+  border-top: none;
+  box-shadow: none;
   padding: 3rem;
 }
 
@@ -12113,6 +12188,7 @@ svg {
 .bd-anchor-link {
   position: absolute;
   right: calc(100% + 1rem);
+  top: 1.5rem;
 }
 
 @media screen and (max-width: 1279px) {
@@ -13390,10 +13466,12 @@ svg {
 }
 
 .bd-side-sponsors {
-  margin-top: 1.5rem;
+  margin-top: 3rem;
+  text-align: center;
 }
 
-.bd-side-sponsor-label {
+.bd-side-sponsor-label,
+.bd-banner-label {
   color: #b5b5b5;
   font-size: 0.75rem;
   margin-bottom: 0.75rem;
@@ -13413,9 +13491,8 @@ svg {
 .bd-banner {
   border-radius: 6px;
   display: block;
-  overflow: hidden;
-  margin-top: 1.5rem;
-  padding: 1.5rem;
+  margin-top: 3rem;
+  padding-bottom: 1.5rem;
   position: relative;
   text-align: center;
   transition-duration: 86ms;
@@ -13433,11 +13510,6 @@ svg {
 .bd-banner.is-patreon {
   background-color: #052d49;
   color: white;
-}
-
-.bd-banner.is-fortyfour {
-  background-color: white;
-  border: 2px solid whitesmoke;
 }
 
 .bd-banner .button {
@@ -13459,8 +13531,8 @@ svg {
 }
 
 .bd-banner:hover .button {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .bd-banner-background {
@@ -13479,9 +13551,10 @@ svg {
 }
 
 .bd-banner-text {
+  display: none;
   font-size: 0.875em;
   line-height: 1.25;
-  padding: 0 0.5em;
+  margin-bottom: 0.5rem;
   position: relative;
 }
 
@@ -13818,11 +13891,23 @@ svg {
 }
 
 .native-js {
-  border-top: 2px solid whitesmoke;
   display: none;
   font-size: 1rem;
   opacity: 0;
+  position: relative;
   visibility: hidden;
+}
+
+.native-js::before {
+  background-color: #000;
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  opacity: 0.02;
+  pointer-events: none;
+  right: 0;
+  top: 0;
 }
 
 .native-show {
@@ -13836,6 +13921,7 @@ svg {
   display: flex;
   justify-content: center;
   padding: 2em;
+  position: relative;
   text-decoration: none;
 }
 
