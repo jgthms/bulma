@@ -14,6 +14,7 @@
 
 * #1964 Allow `.notification` to have a `.dropdown-item`
 * #1999 Change `$border` to `$grey-lighter` in mixins
+* #2085 `.media-content` will allow scrolling horizontally if the content is too wide
 
 ### Bug fixes
 
