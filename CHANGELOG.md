@@ -9,14 +9,23 @@
 * #1905 Fix `modal` for IE11 #1902
 * #1919 New `is-arrowless` class for navbar items
 * #1764 New `.is-sr-only` helper
+* #2109 Add and use `$navbar-breakpoint` variable
+
+* New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
 
 ### Improvements
 
 * #1964 Allow `.notification` to have a `.dropdown-item`
+* #1999 Change `$border` to `$grey-lighter` in mixins
+* #2085 `.media-content` will allow scrolling horizontally if the content is too wide
 
 ### Bug fixes
 
 * #1749 Fix icons floating out of input area
+* #1993 Fixes #1992 Prevent disabled form elements hover state from overlapping, if control has add-ons elements
+* #1909 Fix Modal card in IE11
+* #1908 Fix IE11 when textarea doesn't listen to `size=""`
+* Fix #1991 The last button in list of full-width buttons has longer width
 
 ## 0.7.1
 

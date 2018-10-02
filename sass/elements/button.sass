@@ -41,8 +41,8 @@ $button-static-border-color: $grey-lighter !default
   font-size: $size-large
 
 .button
-  +control
-  +unselectable
+  @extend %control
+  @extend %unselectable
   background-color: $button-background-color
   border-color: $button-border-color
   border-width: $button-border-width
@@ -198,7 +198,7 @@ $button-static-border-color: $grey-lighter !default
     color: transparent !important
     pointer-events: none
     &::after
-      +loader
+      @extend %loader
       +center(1em)
       position: absolute !important
   &.is-static
@@ -219,7 +219,7 @@ $button-static-border-color: $grey-lighter !default
   justify-content: flex-start
   .button
     margin-bottom: 0.5rem
-    &:not(:last-child)
+    &:not(:last-child):not(.is-fullwidth)
       margin-right: 0.5rem
   &:last-child
     margin-bottom: -0.5rem

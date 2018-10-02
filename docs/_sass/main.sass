@@ -2,6 +2,23 @@
   overflow: hidden
   position: relative
 
+.bd-figure
+  +block
+  align-items: center
+  border: 2px solid $white-ter
+  border-radius: $radius
+  display: flex
+  flex-direction: column
+  text-align: center
+  img
+    margin: 1em
+  figcaption
+    align-self: stretch
+    background-color: $white-ter
+    color: $text-light
+    font-size: $size-small
+    padding: 1em
+
 // Lead
 
 .bd-lead
@@ -45,9 +62,7 @@
   margin-left: auto
 
 .bd-header
-  border-bottom: 2px solid $background
   margin-bottom: $main-spacing
-  padding-bottom: $main-spacing
   .subtitle
     color: $text-light
     strong
@@ -55,11 +70,29 @@
   #meta
     margin-top: -0.5rem
 
+.bd-tabs
+  margin-bottom: $main-spacing
+  .tabs
+    overflow: visible
+    ul,
+    a
+      border-bottom-color: $white-ter
+      border-bottom-width: 2px
+    ul
+      flex-wrap: wrap
+      max-width: 100%
+    a
+      margin-bottom: -2px
+    li:not(.is-active) a:hover
+        border-bottom-color: $border
+
 .bd-content
   hr:first-child
     display: none
     & + .bd-anchor-title
       padding-top: 0
+      .bd-anchor-link
+        top: 0
 
 // Side
 
@@ -126,6 +159,14 @@
   position: relative
   &.is-active
     color: $link
+  .tag
+    border-radius: 2px
+    font-family: Verdana
+    font-size: 0.5rem
+    font-weight: bold
+    height: 2.25em
+    margin-left: 0.5em
+    vertical-align: text-bottom
 
 .bd-category-list
   @extend %bd-list
@@ -195,7 +236,7 @@
   .bd-header
     align-items: center
     display: flex
-    min-height: 130px
+    min-height: 140px
   .bd-header-titles
     flex-grow: 1
     flex-shrink: 1

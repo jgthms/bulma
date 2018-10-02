@@ -84,7 +84,6 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Goldfish](https://github.com/Caiyeon/goldfish)                                    | Vault UI with Bulma, Golang, and Vue Admin                         |
 | [ember-bulma](https://github.com/open-tux/ember-bulma)                             | Ember addon providing a collection of UI components for Bulma      |
 | [Bloomer](https://bloomer.js.org)                                                  | A set of React components for Bulma                                |
-| [Re-bulma](https://github.com/bokuweb/re-bulma)                                    | Bulma components build with React                                  |
 | [React-bulma](https://github.com/kulakowka/react-bulma)                            | React.js components for Bulma                                      |
 | [Buefy](https://buefy.github.io)                                                   | Lightweight UI components for Vue.js based on Bulma                |
 | [vue-bulma-components](https://github.com/vouill/vue-bulma-components)             | Bulma components for Vue.js with straightforward syntax            |
@@ -102,6 +101,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [purescript-bulma](https://github.com/sectore/purescript-bulma)                    | PureScript bindings for Bulma                                      |
 | [Vue Datatable](https://github.com/laravel-enso/vuedatatable)                      | Bulma themed datatable based on Vue, Laravel & JSON templates      |
 | [bulma-fluent](https://mubaidr.github.io/bulma-fluent/)                            | Fluent Design Theme for Bulma inspired by Microsoft’s Fluent Design System      |
+| [csskrt-csskrt](https://github.com/4d11/csskrt-csskrt)                            | Automatically add Bulma classes to HTML files                       |
 
 ## Copyright and license
 
