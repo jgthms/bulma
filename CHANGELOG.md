@@ -26,6 +26,7 @@
 * #1909 Fix Modal card in IE11
 * #1908 Fix IE11 when textarea doesn't listen to `size=""`
 * Fix #1991 The last button in list of full-width buttons has longer width
+* #1982 Fix navbar-burger color when color modifier is used
 
 ## 0.7.1
 
