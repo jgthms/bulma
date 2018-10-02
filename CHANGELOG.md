@@ -11,6 +11,8 @@
 * #1764 New `.is-sr-only` helper
 * #2109 Add and use `$navbar-breakpoint` variable
 
+* New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
+
 ### Improvements
 
 * #1964 Allow `.notification` to have a `.dropdown-item`
