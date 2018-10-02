@@ -9,6 +9,7 @@
 * #1905 Fix `modal` for IE11 #1902
 * #1919 New `is-arrowless` class for navbar items
 * #1764 New `.is-sr-only` helper
+* #2109 Add and use `$navbar-breakpoint` variable
 
 ### Improvements
 
