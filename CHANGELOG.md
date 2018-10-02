@@ -10,8 +10,8 @@
 * #1919 New `is-arrowless` class for navbar items
 * #1764 New `.is-sr-only` helper
 * #2109 Add and use `$navbar-breakpoint` variable
-
 * New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
+* #1720 Add list element feature
 
 ### Improvements
 
