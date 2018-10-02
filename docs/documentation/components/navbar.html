@@ -14,6 +14,69 @@ meta:
   variables: true
 ---
 
+{% capture navbar_basic_example %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo.png" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
 {% capture navbar_example %}
 {% include examples/navbar.html id="Default" %}
 {% endcapture %}
@@ -593,6 +656,20 @@ $(document).ready(function() {
     </li>
   </ul>
 </div>
+
+{% include elements/anchor.html name="Basic Navbar" %}
+
+<div class="content">
+  <p>
+    To <strong>get started quickly</strong>, here is what a complete basic navbar looks like:
+  </p>
+</div>
+
+<div class="bd-example is-paddingless">
+  {{ navbar_basic_example }}
+</div>
+
+{% highlight html %}{{ navbar_basic_example }}{% endhighlight %}
 
 {% include elements/anchor.html name="Navbar brand" %}
 
