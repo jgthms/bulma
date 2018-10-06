@@ -1,10 +1,10 @@
 {
   "name": "bulma-rtl",
-  "version": "0.6.1",
+  "version": "0.7.1",
   "homepage": "https://bulma.io",
   "authors": [
     "Jeremy Thomas <bbxdesign@gmail.com> (http://jgthms.com)",
-    "Mohammad Rafigh <mohammad.rafigh@gmail.com> (http://lostsemicolon.com)"
+    "Mohammad Rafigh <mohammad.rafigh@gmail.com> (https://lostsemicolon.com)"
   ],
   "description": "RTL fork of Bulma",
   "main": "bulma-rtl.sass",
@@ -25,35 +25,26 @@
     "url": "https://github.com/mohammadrafigh/bulma-rtl/issues"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "node-sass": "^4.5.3",
-    "postcss-cli": "^4.1.0",
-    "rimraf": "^2.6.1"
+    "autoprefixer": "^8.2.0",
+    "clean-css-cli": "^4.1.11",
+    "node-sass": "^4.8.3",
+    "postcss-cli": "^5.0.0",
+    "rimraf": "^2.6.2"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix",
-    "build-rtl": "npm run build-clean && npm run build-sass-rtl && npm run build-autoprefix-rtl",
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
+    "build-rtl": "npm run build-clean && npm run build-sass-rtl && npm run build-autoprefix-rtl && npm run build-cleancss-rtl",
     "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
     "build-autoprefix-rtl": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css",
+    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
+    "build-cleancss-rtl": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
     "build-clean": "rimraf css",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
     "build-sass-rtl": "node-sass --output-style expanded --source-map true bulma-rtl.sass css/bulma-rtl.css",
-    "deploy": "npm run build && npm run docs",
-    "deploy-rtl": "npm run build-rtl && npm run docs-rtl",
-    "docs": "npm run docs-sass && npm run docs-autoprefix",
-    "docs-rtl": "npm run docs-sass-rtl && npm run docs-autoprefix-rtl",
-    "docs-autoprefix": "postcss --use autoprefixer --map false --output docs/css/bulma-docs.css docs/css/bulma-docs.css",
-    "docs-autoprefix-rtl": "postcss --use autoprefixer --map false --output docs/css/bulma-docs-rtl.css docs/css/bulma-docs-rtl.css",
-    "docs-sass": "node-sass --output-style expanded docs/bulma-docs.sass docs/css/bulma-docs.css",
-    "docs-sass-rtl": "node-sass --output-style expanded docs/bulma-docs-rtl.sass docs/css/bulma-docs-rtl.css",
+    "deploy": "npm run build",
+    "deploy-rtl": "npm run build-rtl",
     "start": "npm run build-sass -- --watch",
-    "start-rtl": "npm run build-sass-rtl -- --watch",
-    "start-docs": "npm run docs-sass -- --watch",
-    "start-docs-rtl": "npm run docs-sass-rtl -- --watch",
-    "start-test": "npm run test-sass -- --watch",
-    "start-test-rtl": "npm run test-sass-rtl -- --watch",
-    "test-sass": "node-sass --output-style expanded docs/bulma-test.sass docs/css/bulma-test.css",
-    "test-sass-rtl": "node-sass --output-style expanded docs/bulma-test-rtl.sass docs/css/bulma-test-rtl.css"
+    "start-rtl": "npm run build-sass-rtl -- --watch"
   },
   "files": [
     "css",

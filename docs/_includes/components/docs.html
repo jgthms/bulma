@@ -1,0 +1,28 @@
+<nav class="bd-docs">
+  {% for category in site.data.links.categories %}
+    {% assign category_id = category[0] %}
+    {% assign category_links = category[1] %}
+    {% assign category_link = site.data.links.by_id[category_id] %}
+
+    <article class="bd-doc">
+      <h2 class="bd-doc-title title is-5">
+        <a href="{{ site.url }}{{ category_link.path }}">
+          <strong>{{ category_link.name }}</strong>
+        </a>
+      </h2>
+
+      <div class="bd-doc-content">
+        <ul class="bd-doc-list">
+          {% for link_id in category_links %}
+            {% assign link = site.data.links.by_id[link_id] %}
+            <li {% if link_id == current_link_id %}class="is-current"{% endif %}>
+              <a href="{{ site.url }}{{ link.path }}">
+                {{ link.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </article>
+  {% endfor %}
+</nav>

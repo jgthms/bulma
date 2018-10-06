@@ -1,0 +1,97 @@
+<nav id="navbar" class="navbar has-shadow is-spaced">
+  <div class="container">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="{{ site.data.meta.github }}" target="_blank">
+      <span class="icon" style="color: #333;">
+        <i class="fab fa-lg fa-github-alt"></i>
+      </span>
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="{{ site.data.meta.twitter }}" target="_blank">
+      <span class="icon" style="color: #55acee;">
+        <i class="fab fa-lg fa-twitter"></i>
+      </span>
+    </a>
+
+    <div id="navbarBurger" class="navbar-burger burger" data-target="navMenu{{ include.id }}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenu{{ include.id }}" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item bd-navbar-item-documentation {% if page.route == 'documentation' %}is-active{% endif %} {% if page.layout == 'documentation' %}is-active{% endif %}" href="{{ site.data.meta.documentation }}">
+        <span class="icon has-text-primary">
+          <i class="fas fa-book"></i>
+        </span>
+        <span>Documentation</span>
+      </a>
+
+      {% for item in site.data.global.navbar_items %}
+        <a class="navbar-item bd-navbar-item-{{ item.id }} {% if page.route == item.id %}is-active{% endif %}" href="{{ site.url }}/{{ item.id }}/">
+          <span class="icon {{ item.color }}">
+            <i class="{{ item.fa_type }} {{ item.fa_icon }}"></i>
+          </span>
+          <span>{{ item.title }}</span>
+        </a>
+      {% endfor %}
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        {% assign link = site.data.links.by_id['more'] %}
+        <a class="navbar-link" href="{{ site.url }}{{ link.path }}">
+          {{ link.name }}
+        </a>
+        <div id="moreDropdown" class="navbar-dropdown">
+          {% for link_id in site.data.links.more %}
+            {% assign link = site.data.links.by_id[link_id] %}
+            <a class="navbar-item {% if page.route == link_id %}is-active{% endif %}" href="{{ site.url }}/{{ link.path }}">
+              <span>
+                <span class="icon has-text-{{ link.color }}">
+                  <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
+                </span>
+                <strong>{{ link.name }}</strong>
+                <br>
+                {{ link.subtitle }}
+              </span>
+            </a>
+            {% unless forloop.last %}
+              <hr class="navbar-divider">
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item is-hidden-mobile" href="{{ site.data.meta.github }}" target="_blank">
+        <span class="icon" style="color: #333;">
+          <i class="fab fa-lg fa-github-alt"></i>
+        </span>
+      </a>
+      <a class="navbar-item is-hidden-mobile" href="{{ site.data.meta.twitter }}" target="_blank">
+        <span class="icon" style="color: #55acee;">
+          <i class="fab fa-lg fa-twitter"></i>
+        </span>
+      </a>
+      <div class="navbar-item">
+        <div class="field is-grouped is-grouped-multiline">
+          <p class="control">
+            {% include elements/patreon.html %}
+          </p>
+          <p class="control">
+            <a class="button is-primary" href="{{ site.data.meta.download }}">
+              <strong>Download</strong>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>

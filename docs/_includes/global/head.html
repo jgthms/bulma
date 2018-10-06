@@ -1,0 +1,81 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.meta.description }}{% endif %}">
+
+  <title>{% if page.fulltitle %}{{ page.fulltitle }}{% else %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.data.meta.title }}{% endif %}</title>
+
+  {% if page.fontawesome4 %}
+    <link rel="stylesheet" href="{{ site.data.icons.fontawesome4 }}">
+  {% endif %}
+  {% if page.iconic %}
+    <link rel="stylesheet" href="{{ site.data.icons.iconic }}">
+  {% endif %}
+  {% if page.ionicons %}
+    <link rel="stylesheet" href="{{ site.data.icons.ionicons }}">
+  {% endif %}
+  {% if page.mdi %}
+    <link rel="stylesheet" href="{{ site.data.icons.mdi }}">
+  {% endif %}
+  <link rel="stylesheet" href="{{ site.url }}/css/{{ site.docs_file }}.css?v={{ site.time | date: "%Y%m%d%H%M" }}">
+
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.data.meta.title }}" href="{{ "/atom.xml" | prepend: site.url }}">
+
+  <meta property="og:url" content="{{ site.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@jgthms">
+  <meta name="twitter:creator" content="@jgthms">
+
+
+  <!-- Shared social media -->
+  {% if page.share_title %}
+    <meta property="og:title" content="{{ page.share_title }}">
+    <meta name="twitter:title" content="{{ page.share_title }}">
+  {% elsif page.title %}
+    <meta property="og:title" content="{{ page.title | replace: '&nbsp;', ' ' }}">
+    <meta name="twitter:title" content="{{ page.title | replace: '&nbsp;', ' ' }}">
+  {% else %}
+    <meta property="og:title" content="{{ site.data.meta.title }}">
+    <meta name="twitter:title" content="{{ site.data.meta.title }}">
+  {% endif %}
+
+  {% if page.share_description %}
+    <meta property="og:description" content="{{ page.share_description }}">
+    <meta name="twitter:description" content="{{ page.share_description }}">
+  {% elsif page.layout == 'post' %}
+    <meta property="og:description" content="{{ page.content | strip_html | truncate: 400, '…' }}">
+    <meta name="twitter:description" content="{{ page.content | strip_html | truncate: 400, '…' }}">
+  {% else %}
+    <meta property="og:description" content="{{ site.data.meta.description }}">
+    <meta name="twitter:description" content="{{ site.data.meta.description }}">
+  {% endif %}
+
+  {% if page.share_image %}
+    <meta property="og:image" content="{{ site.url }}{{ page.share_image }}">
+    <meta name="twitter:image" content="{{ site.url }}{{ page.share_image }}">
+  {% elsif page.layout == 'post' %}
+    <meta property="og:image" content="{{ site.url }}/images/blog/share/{{ page.id | slice: 12,page.id.size }}.jpg">
+    <meta name="twitter:image" content="{{ site.url }}/images/blog/share/{{ page.id | slice: 12,page.id.size }}.jpg">
+  {% else %}
+    <meta property="og:image" content="{{ site.url }}/images/bulma-banner.png">
+    <meta name="twitter:image" content="{{ site.url }}/images/bulma-banner.png">
+  {% endif %}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.url }}/favicons/apple-touch-icon.png?v=201701041855">
+  <link rel="icon" type="image/png" href="{{ site.url }}/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ site.url }}/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
+  <link rel="manifest" href="{{ site.url }}/favicons/manifest.json?v=201701041855">
+  <link rel="mask-icon" href="{{ site.url }}/favicons/safari-pinned-tab.svg?v=201701041855" color="#00d1b2">
+  <link rel="shortcut icon" href="{{ site.url }}/favicons/favicon.ico?v=201701041855">
+  <meta name="msapplication-config" content="{{ site.url }}/favicons/browserconfig.xml?v=201701041855">
+  <meta name="theme-color" content="#00d1b2">
+
+  <script defer src="{{ site.data.icons.fontawesome5 }}"></script>
+</head>

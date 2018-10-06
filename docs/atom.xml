@@ -3,27 +3,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>{{ site.name | xml_escape }}</title>
-    <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
+    <title>{{ site.data.meta.title | xml_escape }}</title>
+    <description>{% if site.data.meta.description %}{{ site.data.meta.description | xml_escape }}{% endif %}</description>
     <link>{{ site.url }}</link>
     <id>{{ site.url }}</id>
     <updated>{{ site.time | date_to_xmlschema }}</updated>
     <author>
-      <name>{{ site.name }}</name>
+      <name>{{ site.data.meta.title }}</name>
       <email>bbxdesign@gmail.com</email>
     </author>
-    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="{{ site.url }}/atom.xml" rel="self" type="application/rss+xml" />
     {% for post in site.posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         {% if post.author.name %}
           <dc:creator>{{ post.author.name | xml_escape }}</dc:creator>
         {% endif %}
-        {% if post.introduction %}
-          <description>{{ post.introduction | xml_escape }}</description>
-        {% else %}
-          <description>{{ post.content | xml_escape }}</description>
-        {% endif %}
+        <description>{{ post.content | xml_escape }}</description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ site.url }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>

@@ -1,0 +1,27 @@
+<a class="bd-link" href="{{ include.url }}">
+  {% if include.surtitle %}
+    <p class="bd-link-surtitle">
+      {{ include.surtitle }}
+    </p>
+  {% endif %}
+  <h2 class="bd-link-name">
+    <figure class="bd-link-figure">
+      {% if include.icon %}
+        <span class="bd-link-icon has-text-{% if include.color %}{{ include.color }}{% else %}link{% endif %}">
+          <i class="{% if include.icon_brand %}fab{% elsif include.icon_regular %}far{% else %}fas{% endif %} fa-{{ include.icon }}"></i>
+        </span>
+      {% else %}
+        <span class="bd-link-counter"></span>
+      {% endif %}
+    </figure>
+    {{ include.name }}
+  </h2>
+  <p class="bd-link-subtitle">
+    {{ include.subtitle }}
+  </p>
+  {% if include.more %}
+    <div class="bd-link-more">
+      {{ include.more }}
+    </div>
+  {% endif %}
+</a>

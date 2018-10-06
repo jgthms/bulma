@@ -9,7 +9,7 @@ The documentation HTML is produced with the Ruby-based `jekyll` tool.
 
 Then to view the documentation in your local checkout:
 
-1. Before you begin, cd into `docs/` directory, and `cp _config.yml _config.local.yml`. Then edit `_config.local.yml` and change the `url:` value to `http://localhost:4000`. This local config file will be ignored by git. 
+1. Before you begin, cd into `docs/` directory, and `cp _config.yml _config.local.yml`. Then edit `_config.local.yml` and change the `url:` value to `http://localhost:4000`. This local config file will be ignored by git.
 1. In a separate shell session, `cd` to the `docs/` directory, and do:
 ```
 jekyll serve --incremental --config _config.local.yml

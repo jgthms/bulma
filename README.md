@@ -2,8 +2,6 @@
 
 Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and this repo keeps the RTL version of it.
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/5pucRKHwhsqiAiYS1CdnS4SM/jgthms/bulma.svg' /></a>
-
 [![npm](https://img.shields.io/npm/v/bulma-rtl.svg)](https://www.npmjs.com/package/bulma-rtl)
 [![npm](https://img.shields.io/npm/dm/bulma-rtl.svg)](https://www.npmjs.com/package/bulma-rtl)
 [![Build Status](https://travis-ci.org/jgthms/bulma.svg?branch=master)](https://travis-ci.org/jgthms/bulma)
@@ -19,6 +17,7 @@ Bulma-rtl is constantly in development! Try it out now:
 ```sh
 npm install bulma-rtl
 ```
+
 **or**
 
 ### Yarn
@@ -26,7 +25,7 @@ npm install bulma-rtl
 ```sh
 yarn add bulma-rtl
 ```
-Then you can use **bulma.css/sass** for **LTR** or **bulma-rtl.css/sass** for **RTL** styles 
+Then you can use **bulma.css/sass** for **LTR** or **bulma-rtl.css/sass** for **RTL** styles
 (there is no need to include LTR styles to use RTL).
 
 Feel free to raise an issue or submit a pull request related to RTL styles.
@@ -51,4 +50,4 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 
 ## Copyright and license
 
-Code copyright 2017 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+Code copyright 2018 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).

@@ -3,6 +3,15 @@ title: Tags
 layout: documentation
 doc-tab: elements
 doc-subtab: tag
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-tag
+meta:
+  colors: true
+  sizes: true
+  variables: true
 ---
 
 {% capture tag %}
@@ -124,8 +133,6 @@ doc-subtab: tag
 </div>
 {% endcapture %}
 
-{% include subnav-elements.html %}
-
 {% capture tags_blog_addons %}
 <div class="field is-grouped is-grouped-multiline">
   <div class="control">
@@ -179,274 +186,257 @@ doc-subtab: tag
 </div>
 {% endcapture %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Tags</h1>
-    <h2 class="subtitle">
-      Small <strong>tag labels</strong> to insert anywhere
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=true
-      variables=true
-    %}
-
-    <hr>
-
-    <div class="columns">
-      <div class="column is-4">
-        By default, a <strong>tag</strong> is a 1.5rem high label.
-      </div>
-      <div class="column is-2">
-        <span class="tag">
-          Tag label
-        </span>
-      </div>
-      <div class="column is-6">
-        {% highlight html %}{{ tag }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Colors" %}
-
-    <div class="columns">
-      <div class="column is-4">
-        Like with buttons, there are <strong>9 different colors</strong> available.
-      </div>
-      <div class="column is-2">
-        <p class="field">
-          <span class="tag is-black">
-            Black
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-dark">
-            Dark
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-light">
-            Light
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-white">
-            White
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-primary">
-            Primary
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-link">
-            Link
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-info">
-            Info
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-success">
-            Success
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-warning">
-            Warning
-          </span>
-        </p>
-        <span class="tag is-danger">
-          Danger
-        </span>
-      </div>
-      <div class="column is-6">
-        {% highlight html %}{{ tags_colors }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Sizes" %}
-
-    <div class="columns">
-      <div class="column is-4">
-        And <strong>2 additional</strong> sizes.
-      </div>
-      <div class="column is-2">
-        <p class="field">
-          <span class="tag is-primary is-medium">
-            Medium
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-info is-large">
-            Large
-          </span>
-        </p>
-      </div>
-      <div class="column is-6">
-        {% highlight html %}{{ sizes }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Modifiers" %}
-
-    <div class="columns">
-      <div class="column is-4">
-        You can add the <code>is-rounded</code> modifier to make a <strong>rounded</strong> tag.
-      </div>
-      <div class="column is-2">
-        {{ rounded }}
-      </div>
-      <div class="column is-6">
-        {% highlight html %}{{ rounded }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column is-4">
-        You can add the <code>is-delete</code> modifier to turn the tag into a <strong>delete button</strong>.
-      </div>
-      <div class="column is-2">
-        {{ is_delete }}
-      </div>
-      <div class="column is-6">
-        {% highlight html %}{{ is_delete }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="Combinations" %}
-
-    <div class="columns">
-      <div class="column is-4">
-        You can append a <strong>delete button</strong>.
-      </div>
-      <div class="column is-2">
-        <p class="field">
-          <span class="tag is-success">
-            Bar
-            <button class="delete is-small"></button>
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-warning is-medium">
-            Hello
-            <button class="delete is-small"></button>
-          </span>
-        </p>
-        <p class="field">
-          <span class="tag is-danger is-large">
-            World
-            <button class="delete"></button>
-          </span>
-        </p>
-      </div>
-      <div class="column is-6">
-        {% highlight html %}{{ delete }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include anchor.html name="List of tags" %}
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can now create a <strong>list of tags</strong> with the <code>.tags</code> container.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ tags }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ tags }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            If the list is <strong>very long</strong>, it will automatically wrap on <strong>multiple lines</strong>, while keeping all tags <strong>evenly spaced</strong>.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ tags_multiple }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ tags_multiple }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can <strong>attach tags together</strong> with the <code>.has-addons</code> modifier.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ tags_addons }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ tags_addons }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            You can attach a <strong>text</strong> tag with a <strong>delete</strong> tag together.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ tags_delete_addons }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ tags_delete_addons }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            If you want to attach <code>.tags</code> containers <strong>together</strong>, simply use the <code>.field</code> element with the <code>.is-grouped</code> and <code>.is-grouped-multiline</code> modifiers.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ tags_field_addons }}
-        </div>
-      </div>
-      <div class="column highlight-full">
-        {% highlight html %}{{ tags_field_addons }}{% endhighlight %}
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="content">
-          <p>
-            This can be useful for a long list of <strong>blog tags</strong>.
-          </p>
-        </div>
-        <div class="bd-example">
-          {{ tags_blog_addons }}
-        </div>
-      </div>
-      <div class="column">
-        {% highlight html %}{{ tags_blog_addons }}{% endhighlight %}
-      </div>
-    </div>
-
-    {% include variables.html type='element' %}
+<div class="columns">
+  <div class="column is-4">
+    By default, a <strong>tag</strong> is a 1.5rem high label.
   </div>
-</section>
+  <div class="column is-2">
+    <span class="tag">
+      Tag label
+    </span>
+  </div>
+  <div class="column is-6">
+    {% highlight html %}{{ tag }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Colors" %}
+
+<div class="columns">
+  <div class="column is-4">
+    Like with buttons, there are <strong>10 different colors</strong> available.
+  </div>
+  <div class="column is-2">
+    <p class="field">
+      <span class="tag is-black">
+        Black
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-dark">
+        Dark
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-light">
+        Light
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-white">
+        White
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-primary">
+        Primary
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-link">
+        Link
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-info">
+        Info
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-success">
+        Success
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-warning">
+        Warning
+      </span>
+    </p>
+    <span class="tag is-danger">
+      Danger
+    </span>
+  </div>
+  <div class="column is-6">
+    {% highlight html %}{{ tags_colors }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Sizes" %}
+
+<div class="columns">
+  <div class="column is-4">
+    And <strong>2 additional</strong> sizes.
+  </div>
+  <div class="column is-2">
+    <p class="field">
+      <span class="tag is-primary is-medium">
+        Medium
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-info is-large">
+        Large
+      </span>
+    </p>
+  </div>
+  <div class="column is-6">
+    {% highlight html %}{{ sizes }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Modifiers" %}
+
+<div class="columns">
+  <div class="column is-4">
+    You can add the <code>is-rounded</code> modifier to make a <strong>rounded</strong> tag.
+  </div>
+  <div class="column is-2">
+    {{ rounded }}
+  </div>
+  <div class="column is-6">
+    {% highlight html %}{{ rounded }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-4">
+    You can add the <code>is-delete</code> modifier to turn the tag into a <strong>delete button</strong>.
+  </div>
+  <div class="column is-2">
+    {{ is_delete }}
+  </div>
+  <div class="column is-6">
+    {% highlight html %}{{ is_delete }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Combinations" %}
+
+<div class="columns">
+  <div class="column is-4">
+    You can append a <strong>delete button</strong>.
+  </div>
+  <div class="column is-2">
+    <p class="field">
+      <span class="tag is-success">
+        Bar
+        <button class="delete is-small"></button>
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-warning is-medium">
+        Hello
+        <button class="delete is-small"></button>
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-danger is-large">
+        World
+        <button class="delete"></button>
+      </span>
+    </p>
+  </div>
+  <div class="column is-6">
+    {% highlight html %}{{ delete }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="List of tags" %}
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can now create a <strong>list of tags</strong> with the <code>.tags</code> container.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ tags }}
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{ tags }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        If the list is <strong>very long</strong>, it will automatically wrap on <strong>multiple lines</strong>, while keeping all tags <strong>evenly spaced</strong>.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ tags_multiple }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ tags_multiple }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can <strong>attach tags together</strong> with the <code>.has-addons</code> modifier.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ tags_addons }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ tags_addons }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        You can attach a <strong>text</strong> tag with a <strong>delete</strong> tag together.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ tags_delete_addons }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ tags_delete_addons }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        If you want to attach <code>.tags</code> containers <strong>together</strong>, simply use the <code>.field</code> element with the <code>.is-grouped</code> and <code>.is-grouped-multiline</code> modifiers.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ tags_field_addons }}
+    </div>
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{ tags_field_addons }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="content">
+      <p>
+        This can be useful for a long list of <strong>blog tags</strong>.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ tags_blog_addons }}
+    </div>
+  </div>
+  <div class="column">
+    {% highlight html %}{{ tags_blog_addons }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/variables.html type='element' %}

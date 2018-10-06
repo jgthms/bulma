@@ -2,9 +2,9 @@
 layout: post
 title: "New feature: fixed navbar"
 introduction: "Fix your navbar at the top or bottom"
-color: "info"
+color: "success"
 name: "Fixed navbar"
-icon: "fix"
+icon: "map-pin"
 ---
 
 You can now fix a [navbar](/documentation/components/navbar/#fixed-navbar) to the **top** or the **bottom**:

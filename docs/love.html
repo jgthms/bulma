@@ -2,6 +2,9 @@
 fulltitle: Love for Bulma 😍
 layout: default
 route: love
+breadcrumb:
+- home
+- love
 tweets:
 - id: "900692286744535041"
   date: "2:12 PM - 24 Aug 2017"
@@ -13,43 +16,48 @@ tweets:
   retweets: "0"
 ---
 
-{% include navbar.html id="LoveHero" %}
+{% include global/navbar.html id="Love" %}
 
-<section class="hero bd-is-love bd-rainbow">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column">
-          <h1 class="title">
-            Love
-          </h1>
-          <p class="subtitle">
-            Happy thoughts from Twitter <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">😃</span>
-          </p>
-        </div>
-        <div class="column is-narrow">
-          {% include carbon.html %}
+<main class="bd-main">
+  <div class="bd-main-container container">
+    <div class="bd-duo">
+      <div class="bd-lead">
+        {% include components/breadcrumb.html %}
+
+        <header class="bd-header">
+          <div class="bd-header-titles">
+            <h1 class="title">
+              Love
+            </h1>
+            <p class="subtitle is-4">
+              Happy thoughts from Twitter <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">😃</span>
+            </p>
+          </div>
+
+          <div class="bd-header-carbon">
+            {% include elements/carbon.html %}
+          </div>
+        </header>
+
+        <div class="bd-content">
+          <div class="bd-embrace">
+            <p class="bd-embrace-text">
+              Are you a Bulma fan too? <strong>Show your support!</strong> <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>
+            </p>
+            <p class="bd-embrace-button">
+              {% include elements/tw-button.html label="Tweet #bulmaio" %}
+            </p>
+          </div>
+
+          <div class="bd-tws-love">
+            {% for tweet_pair in site.data.love.tweets_by_id reversed %}
+              {% assign tweet_id = tweet_pair[0] %}
+              {% assign tweet = site.data.love.tweets_by_id[tweet_id] %}
+              {% include elements/tw.html tweet=tweet %}
+            {% endfor %}
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<main class="bd-love">
-  <div class="container">
-    <div class="bd-embrace">
-      <p class="bd-embrace-text">
-        Are you a Bulma fan too? <strong>Show your support!</strong> <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>
-      </p>
-      <p class="bd-embrace-button">
-        {% include elements/tw-button.html label="Tweet #bulmaio" %}
-      </p>
-    </div>
-
-    <div class="bd-tws-love">
-      {% for tweet in site.data.love.tweets reversed %}
-        {% include tw.html tweet=tweet %}
-      {% endfor %}
     </div>
   </div>
 </main>

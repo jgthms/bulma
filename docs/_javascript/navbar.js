@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbarTopEl = document.getElementById('navbar');
   const navbarBottomEl = document.getElementById('navbarBottom');
   const fixBottomEl = document.getElementById('navbarFixBottom');
-  const fixBottomElIcon = fixBottomEl.querySelector('.fa');
+  const fixBottomElText = document.getElementById('navbarFixBottomText');
   let fixedBottom = false;
 
   fixBottomEl.addEventListener('click', event => {
@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (fixedBottom) {
       fixBottomEl.className = 'button is-success';
-      fixBottomElIcon.className = 'fa fa-check-square-o';
+      fixBottomElText.innerHTML = 'Hide';
       rootEl.classList.add('has-navbar-fixed-bottom');
       navbarBottomEl.classList.remove('is-hidden');
     } else {
       fixBottomEl.className = 'button is-link';
-      fixBottomElIcon.className = 'fa fa-square-o';
+      fixBottomElText.innerHTML = 'Show';
       rootEl.classList.remove('has-navbar-fixed-bottom');
       navbarBottomEl.classList.add('is-hidden');
     }

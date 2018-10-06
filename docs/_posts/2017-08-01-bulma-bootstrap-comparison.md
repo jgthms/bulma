@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Bulma / Bootstrap comparison"
-introduction: "If you're unsure _how_ or _why_ you should try out Bulma if you're familiar to Bootstrap, the new page [\"Alternative to Bootstrap\"](https://bulma.io/alternative-to-bootstrap/) tries to help you answer questions you might have."
+introduction: "New page \"Alternative to Bootstrap\""
+long_introduction: "If you're unsure _how_ or _why_ you should try out Bulma if you're familiar to Bootstrap, the new page [\"Alternative to Bootstrap\"](https://bulma.io/alternative-to-bootstrap/) tries to help you answer questions you might have."
 color: "bootstrap"
 name: "Bulma over Bootstrap?"
 icon: "heart"

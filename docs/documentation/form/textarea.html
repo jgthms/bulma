@@ -3,6 +3,15 @@ title: Textarea
 layout: documentation
 doc-tab: form
 doc-subtab: textarea
+breadcrumb:
+- home
+- documentation
+- form
+- form-textarea
+meta:
+  colors: true
+  sizes: true
+  variables: false
 ---
 
 {% capture textarea_example %}
@@ -123,91 +132,71 @@ doc-subtab: textarea
 </div>
 {% endcapture %}
 
-{% include subnav-form.html %}
+{% include elements/snippet.html content=textarea_example %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Textarea</h1>
-    <h2 class="subtitle">
-      The multiline <strong>textarea</strong> and its variations
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=true
-      variables=false
-    %}
+<div class="content">
+  <p>
+    You can set the height of the textarea using the `rows` HTML attribute.
+  </p>
+</div>
 
-    <hr>
+{% include elements/snippet.html content=textarea_rows_example %}
 
-    {% include snippet.html content=textarea_example %}
+{% include elements/anchor.html name="Colors" %}
 
+{% include elements/snippet.html content=colors_example %}
+
+{% include elements/anchor.html name="Sizes" %}
+
+{% include elements/snippet.html content=sizes_example %}
+
+{% include elements/anchor.html name="States" %}
+
+<h4 class="subtitle">Normal</h4>
+
+{% include elements/snippet.html content=normal_example %}
+
+<h4 class="subtitle">Hover</h4>
+
+{% include elements/snippet.html content=hover_example %}
+
+<h4 class="subtitle">Focus</h4>
+
+{% include elements/snippet.html content=focus_example %}
+
+<h4 class="subtitle">Loading</h4>
+
+{% include elements/snippet.html content=loading_example %}
+
+<div class="columns">
+  <div class="column is-half">
     <div class="content">
       <p>
-        You can set the height of the textarea using the `rows` HTML attribute.
+        You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
       </p>
     </div>
-
-    {% include snippet.html content=textarea_rows_example %}
-
-    {% include anchor.html name="Colors" %}
-
-    {% include snippet.html content=colors_example %}
-
-    {% include anchor.html name="Sizes" %}
-
-    {% include snippet.html content=sizes_example %}
-
-    {% include anchor.html name="States" %}
-
-    <h4 class="subtitle">Normal</h4>
-
-    {% include snippet.html content=normal_example %}
-
-    <h4 class="subtitle">Hover</h4>
-
-    {% include snippet.html content=hover_example %}
-
-    <h4 class="subtitle">Focus</h4>
-
-    {% include snippet.html content=focus_example %}
-
-    <h4 class="subtitle">Loading</h4>
-
-    {% include snippet.html content=loading_example %}
-
-    <div class="columns">
-      <div class="column is-half">
-        <div class="content">
-          <p>
-            You can resize the loading spinner by appending <code>is-small</code>, <code>is-medium</code> or <code>is-large</code> to the <code>control</code> container.
-          </p>
-        </div>
-        {{loading_sizes_example}}
-      </div>
-      <div class="column is-half highlight-full">
-        {% highlight html %}{{loading_sizes_example}}{% endhighlight %}
-      </div>
-    </div>
-
-    <h4 class="subtitle">Disabled</h4>
-
-    {% include snippet.html content=disabled_example %}
-
-    <h4 class="subtitle">Readonly</h4>
-
-    <div class="tags has-addons">
-      <span class="tag">New</span>
-      <span class="tag is-info">0.5.3</span>
-    </div>
-
-    <div class="content">
-      <p>
-        If you use the <code>readonly</code> HTML attribute, the textarea will look similar to a normal one, but is not editable and has no shadow.
-      </p>
-    </div>
-
-    {% include snippet.html content=readonly_example %}
-
+    {{loading_sizes_example}}
   </div>
-</section>
+  <div class="column is-half highlight-full">
+    {% highlight html %}{{loading_sizes_example}}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="subtitle">Disabled</h4>
+
+{% include elements/snippet.html content=disabled_example %}
+
+<h4 class="subtitle">Readonly</h4>
+
+<div class="tags has-addons">
+  <span class="tag">New</span>
+  <span class="tag is-info">0.5.3</span>
+</div>
+
+<div class="content">
+  <p>
+    If you use the <code>readonly</code> HTML attribute, the textarea will look similar to a normal one, but is not editable and has no shadow.
+  </p>
+</div>
+
+{% include elements/snippet.html content=readonly_example %}
