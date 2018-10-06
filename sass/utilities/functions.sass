@@ -1,3 +1,37 @@
+@function mergeColorMaps($bulma-colors, $custom-colors)
+  // we return at least bulma hardcoded colors
+  $merged-colors: $bulma-colors
+
+  // we want a map as input
+  @if type-of($custom-colors) == 'map'
+    @each $name, $components in $custom-colors
+      // color name should be a string and colors pair a list with at least one element
+      @if type-of($name) == 'string' and (type-of($components) == 'list' or type-of($components) == 'color') and length($components) >= 1
+        $color-base: null
+
+        // the param can either be a single color
+        // or a list of 2 colors
+        @if type-of($components) == 'color'
+          $color-base: $components
+        @else if type-of($components) == 'list'
+          $color-base: nth($components, 1)
+
+        $color-invert: null
+        // is an inverted color provided in the list
+        @if length($components) > 1
+          $color-invert: nth($components, 2)
+
+        // we only want a color as base color
+        @if type-of($color-base) == 'color'
+          // if inverted color is not provided or is not a color we compute it
+          @if type-of($color-invert) != 'color'
+            $color-invert: findColorInvert($color-base)
+
+          // we merge this colors elements as map with bulma colors (we can override them this way, no multiple definition for the same name)
+          $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert)))
+
+  @return $merged-colors
+
 @function powerNumber($number, $exp)
   $value: 1
   @if $exp > 0

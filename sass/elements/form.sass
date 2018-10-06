@@ -75,8 +75,6 @@ $help-size: $size-small !default
       text-align: right !important
     &::-moz-placeholder
       text-align: right !important
-  &[type="search"]
-    border-radius: 290486px
   &[readonly]
     box-shadow: none
   // Colors
@@ -105,6 +103,10 @@ $help-size: $size-small !default
     width: auto
 
 .input
+  &.is-rounded
+    border-radius: $radius-rounded
+    padding-left: 1em
+    padding-right: 1em
   &.is-static
     background-color: transparent
     border-color: transparent
@@ -122,7 +124,7 @@ $help-size: $size-small !default
     max-height: 600px
     min-height: 120px
   &[rows]
-    height: unset
+    height: initial
   // Modifiers
   &.has-fixed-size
     resize: none
@@ -152,12 +154,15 @@ $help-size: $size-small !default
   vertical-align: top
   &:not(.is-multiple)
     height: 2.25em
+  &:not(.is-multiple):not(.is-loading)
     &::after
       +arrow($input-arrow)
-      margin-top: -0.375em
       #{$right}: 1.125em
-      top: 50%
       z-index: 4
+  &.is-rounded
+    select
+      border-radius: $radius-rounded
+      padding-#{$left}: 1em
   select
     +input
     cursor: pointer
@@ -172,24 +177,30 @@ $help-size: $size-small !default
     &:not([multiple])
       padding-#{$right}: 2.5em
     &[multiple]
-      height: unset
+      height: initial
       padding: 0
       option
         padding: 0.5em 1em
   // States
-  &:hover
+  &:not(.is-multiple):not(.is-loading):hover
     &::after
       border-color: $input-hover-color
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
-    &.is-#{$name} select
-      border-color: $color
-      &:focus,
-      &.is-focused,
-      &:active,
-      &.is-active
-        box-shadow: $input-focus-box-shadow-size rgba($color, 0.25)
+    &.is-#{$name}
+      &:not(:hover)::after
+        border-color: $color
+      select
+        border-color: $color
+        &:hover,
+        &.is-hovered
+          border-color: darken($color, 5%)
+        &:focus,
+        &.is-focused,
+        &:active,
+        &.is-active
+          box-shadow: $input-focus-box-shadow-size rgba($color, 0.25)
   // Sizes
   &.is-small
     +control-small
@@ -279,10 +290,6 @@ $help-size: $size-small !default
         border-radius: $file-radius
       .file-name
         display: none
-  &.is-centered
-    justify-content: center
-  &.is-right
-    justify-content: flex-end
   &.is-boxed
     .file-label
       flex-direction: column
@@ -312,19 +319,22 @@ $help-size: $size-small !default
       .file-name
         border-radius: 0 0 $file-radius $file-radius
         border-width: 0 1px 1px
-  &.is-right
-    .file-cta
-      border-radius: 0 $file-radius $file-radius 0
-    .file-name
-      border-radius: $file-radius 0 0 $file-radius
-      border-width: 1px 0 1px 1px
-      order: -1
+  &.is-centered
+    justify-content: center
   &.is-fullwidth
     .file-label
       width: 100%
     .file-name
       flex-grow: 1
       max-width: none
+  &.is-right
+    justify-content: flex-end
+    .file-cta
+      border-radius: 0 $file-radius $file-radius 0
+    .file-name
+      border-radius: $file-radius 0 0 $file-radius
+      border-width: 1px 0 1px 1px
+      order: -1
 
 .file-label
   align-items: stretch
@@ -424,22 +434,26 @@ $help-size: $size-small !default
     .control
       &:not(:last-child)
         margin-#{$right}: -1px
+      &:not(:first-child):not(:last-child)
+        .button,
+        .input,
+        .select select
+          border-radius: 0
       &:first-child
         .button,
         .input,
         .select select
-          border-bottom-#{$left}-radius: $input-radius
-          border-top-#{$left}-radius: $input-radius
+          border-bottom-#{$right}-radius: 0
+          border-top-#{$right}-radius: 0
       &:last-child
         .button,
         .input,
         .select select
-          border-bottom-#{$right}-radius: $input-radius
-          border-top-#{$right}-radius: $input-radius
+          border-bottom-#{$left}-radius: 0
+          border-top-#{$left}-radius: 0
       .button,
       .input,
       .select select
-        border-radius: 0
         &:hover,
         &.is-hovered
           z-index: 2
@@ -608,6 +622,7 @@ $help-size: $size-small !default
       position: absolute !important
       #{$right}: 0.625em
       top: 0.625em
+      z-index: 4
     &.is-small:after
       font-size: $size-small
     &.is-medium:after
