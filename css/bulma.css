@@ -2642,6 +2642,10 @@ a.box:active {
   justify-content: flex-end;
 }
 
+.buttons.is-left {
+  justify-content: flex-start;
+}
+
 .container {
   margin: 0 auto;
   position: relative;
@@ -3834,6 +3838,20 @@ a.box:active {
   order: -1;
 }
 
+.file.is-left {
+  justify-content: flex-start;
+}
+
+.file.is-left .file-cta {
+  border-radius: 0 0 4px 4px;
+}
+
+.file.is-left .file-name {
+  border-radius: 4px 4px 0 0;
+  border-width: 1px 1px 1px 0;
+  order: 1;
+}
+
 .file-label {
   align-items: stretch;
   display: flex;
@@ -4910,6 +4928,18 @@ a.box:active {
   margin-right: 0;
 }
 
+.tags.is-left {
+  justify-content: flex-start;
+}
+
+.tags.is-left .tag:not(:first-child) {
+  margin-left: 0;
+}
+
+.tags.is-left .tag:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
 .tag:not(body) {
   align-items: center;
   background-color: whitesmoke;
@@ -5266,6 +5296,11 @@ a.tag:hover {
   justify-content: flex-end;
 }
 
+.breadcrumb.is-left ol,
+.breadcrumb.is-left ul {
+  justify-content: flex-start;
+}
+
 .breadcrumb.is-small {
   font-size: 0.75rem;
 }
@@ -5378,6 +5413,11 @@ a.tag:hover {
 .dropdown.is-right .dropdown-menu {
   left: auto;
   right: 0;
+}
+
+.dropdown.is-left .dropdown-menu {
+  left: 0;
+  right: auto;
 }
 
 .dropdown.is-up .dropdown-menu {
@@ -6914,6 +6954,10 @@ a.navbar-item:hover, a.navbar-item.is-active,
     left: auto;
     right: 0;
   }
+  .navbar-dropdown.is-left {
+    right: auto;
+    left: 0;
+  }
   .navbar-divider {
     display: block;
   }
@@ -7125,6 +7169,16 @@ a.navbar-item:hover, a.navbar-item.is-active,
   }
   .pagination.is-right .pagination-list {
     justify-content: flex-end;
+    order: 3;
+  }
+  .pagination.is-left .pagination-list {
+    justify-content: flex-start;
+    order: 1;
+  }
+  .pagination.is-left .pagination-previous {
+    order: 2;
+  }
+  .pagination.is-left .pagination-next {
     order: 3;
   }
 }
@@ -7366,11 +7420,17 @@ label.panel-block:hover {
 }
 
 .tabs.is-toggle li:first-child a {
-  border-radius: 4px 0 0 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 0;
 }
 
 .tabs.is-toggle li:last-child a {
-  border-radius: 0 4px 4px 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 4px;
 }
 
 .tabs.is-toggle li.is-active a {
