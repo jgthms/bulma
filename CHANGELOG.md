@@ -13,6 +13,7 @@
 * #2109 Add and use `$navbar-breakpoint` variable
 * New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
 * #1720 Add list element feature
+* #2123 Add `.content ol` types: `.is-lower-roman`, `.is-upper-roman`, `.is-lower-alpha`, `.is-upper-alpha`, and support for the `type=` HTML attribute
 
 ### Improvements
 
