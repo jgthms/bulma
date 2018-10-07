@@ -30,6 +30,7 @@
 * Fix #1991 The last button in list of full-width buttons has longer width
 * #1982 Fix navbar-burger color when color modifier is used
 * #1819 Fix #1137 error message for required file
+* Fix #1904 and #1969: hide native file input in Chrome
 
 ## 0.7.1
 
