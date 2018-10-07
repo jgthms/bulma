@@ -31,6 +31,7 @@
 * #1982 Fix navbar-burger color when color modifier is used
 * #1819 Fix #1137 error message for required file
 * Fix #1904 and #1969: hide native file input in Chrome
+* #2059 Remove unnecessary right margin from last level-item (level.is-mobile)
 
 ## 0.7.1
 
