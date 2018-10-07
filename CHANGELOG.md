@@ -28,7 +28,7 @@
 * #1908 Fix IE11 when textarea doesn't listen to `size=""`
 * Fix #1991 The last button in list of full-width buttons has longer width
 * #1982 Fix navbar-burger color when color modifier is used
-* #1819 Fix error message for required file
+* #1819 Fix #1137 error message for required file
 
 ## 0.7.1
 
