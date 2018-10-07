@@ -22,7 +22,7 @@ npm install
 npm run build
 ```
 
-To see documentation changes check [the documentation readme](docs/README.md).
+To see documentation changes check [the documentation readme](../docs/README.md).
 
 ### Bulma Sass styleguide
 
