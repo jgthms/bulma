@@ -20,6 +20,7 @@
 * #1999 Change `$border` to `$grey-lighter` in mixins
 * #2085 `.media-content` will allow scrolling horizontally if the content is too wide
 * #1744 Fix #1710 by using `$table-striped-row-even-hover-background-color` only for even rows
+* #2074 Allow `<button>` as `.dropdown-item`
 
 ### Bug fixes
 
