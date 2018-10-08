@@ -31,6 +31,21 @@ $progress-value-background-color: $text !default
         background-color: $color
       &::-ms-fill
         background-color: $color
+
+  &:indeterminate
+    &::-webkit-progress-bar
+      background-color: transparent
+    &::-moz-progress-bar
+      background-color: transparent
+
+    animation: progress-indeterminate 1.5s linear infinite
+    background: $progress-bar-background-color linear-gradient(to right, $text 30%, $progress-bar-background-color 30%) top left / 150% 150% no-repeat
+
+    @each $name, $pair in $colors
+      $color: nth($pair, 1)
+      &.is-#{$name}
+        background: $progress-bar-background-color linear-gradient(to right, $color 30%, $progress-bar-background-color 30%) top left / 150% 150% no-repeat
+
   // Sizes
   &.is-small
     height: $size-small
@@ -38,3 +53,9 @@ $progress-value-background-color: $text !default
     height: $size-medium
   &.is-large
     height: $size-large
+
+@keyframes progress-indeterminate
+  0%
+    background-position: 200% 0
+  100%
+    background-position: -200% 0
