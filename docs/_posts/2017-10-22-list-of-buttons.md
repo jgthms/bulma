@@ -10,8 +10,8 @@ icon: "hand-pointer"
 Similarly to the [list of tags](/2017/08/03/list-of-tags/) launched a few months ago, the [button](/documentation/elements/button/) has its own **list of buttons**:
 
 <figure>
-  <a href="/documentation/elements/button/#list-of-buttons">
-    <img src="/images/blog/list-of-buttons.png" alt="List of buttons in CSS" width="660" height="550">
+  <a href="{{ site.url }}/documentation/elements/button/#list-of-buttons">
+    <img src="{{ site.url }}/images/blog/list-of-buttons.png" alt="List of buttons in CSS" width="660" height="550">
   </a>
 </figure>
 
