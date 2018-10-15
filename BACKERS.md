@@ -105,6 +105,9 @@
       <tr>
         <td>Adrian Ocneanu</td>
         <td>
+          <a href="https://twitter.com/aocneanu" target="_blank" rel="nofollow">
+          @aocneanu
+          </a>
         </td>
         <td>
           <a href="https://www.earthlink.ro/" target="_blank" rel="nofollow">
