@@ -102,6 +102,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Vue Datatable](https://github.com/laravel-enso/vuedatatable)                      | Bulma themed datatable based on Vue, Laravel & JSON templates      |
 | [bulma-fluent](https://mubaidr.github.io/bulma-fluent/)                            | Fluent Design Theme for Bulma inspired by Microsoft’s Fluent Design System      |
 | [csskrt-csskrt](https://github.com/4d11/csskrt-csskrt)                            | Automatically add Bulma classes to HTML files                       |
+| [bulma-pagination-react](https://github.com/hipstersmoothie/bulma-pagination-react) | Bulma pagination as a react component.                       |
 
 ## Copyright and license
 
