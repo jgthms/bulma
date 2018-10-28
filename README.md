@@ -104,6 +104,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [csskrt-csskrt](https://github.com/4d11/csskrt-csskrt)                            | Automatically add Bulma classes to HTML files                       |
 | [bulma-pagination-react](https://github.com/hipstersmoothie/bulma-pagination-react) | Bulma pagination as a react component.                       |
 | [bulma-helpers](https://github.com/jmaczan/bulma-helpers) | Functional / Atomic CSS classes for Bulma.                       |
+| [bulma-swatch-hook](https://github.com/hipstersmoothie/bulma-swatch-hook) | Bulma swatches as a react hook and a component.  |
 
 ## Copyright and license
 
