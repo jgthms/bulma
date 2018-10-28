@@ -1,5 +1,15 @@
 # Bulma Changelog
 
+## 0.7.3
+
+### Improvements
+
+* #1978 Fix #1696. Force `box-sizing: border-box` on `details` element
+
+### Deprecation
+
+* `.control.has-icon` deprecated in favor of `.control.has-icons`
+
 ## 0.7.2
 
 ### New features
