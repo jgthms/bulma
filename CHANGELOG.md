@@ -5,6 +5,7 @@
 ### Improvements
 
 * #1978 Fix #1696 -> Force `box-sizing: border-box` on `details` element
+* #2167 Fix #1878 -> New `$footer-padding` variable
 
 ### Bug fixes
 
