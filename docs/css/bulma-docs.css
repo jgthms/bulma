@@ -4204,52 +4204,11 @@ a.box:active {
 }
 
 .control {
+  box-sizing: border-box;
   clear: both;
   font-size: 1rem;
   position: relative;
   text-align: left;
-}
-
-.control.has-icon .icon {
-  color: #dbdbdb;
-  height: 2.25em;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  width: 2.25em;
-  z-index: 4;
-}
-
-.control.has-icon .input:focus + .icon {
-  color: #7a7a7a;
-}
-
-.control.has-icon .input.is-small + .icon {
-  font-size: 0.75rem;
-}
-
-.control.has-icon .input.is-medium + .icon {
-  font-size: 1.25rem;
-}
-
-.control.has-icon .input.is-large + .icon {
-  font-size: 1.5rem;
-}
-
-.control.has-icon:not(.has-icon-right) .icon {
-  left: 0;
-}
-
-.control.has-icon:not(.has-icon-right) .input {
-  padding-left: 2.25em;
-}
-
-.control.has-icon.has-icon-right .icon {
-  right: 0;
-}
-
-.control.has-icon.has-icon-right .input {
-  padding-right: 2.25em;
 }
 
 .control.has-icons-left .input:focus ~ .icon,
@@ -10404,27 +10363,35 @@ label.panel-block:hover {
   margin-bottom: 3rem;
 }
 
-.bd-tabs .tabs {
-  overflow: visible;
+@media screen and (max-width: 768px) {
+  .bd-tabs {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  .bd-tabs .tabs ul {
+    flex-wrap: nowrap;
+  }
 }
 
-.bd-tabs .tabs ul,
-.bd-tabs .tabs a {
-  border-bottom-color: whitesmoke;
-  border-bottom-width: 2px;
-}
-
-.bd-tabs .tabs ul {
-  flex-wrap: wrap;
-  max-width: 100%;
-}
-
-.bd-tabs .tabs a {
-  margin-bottom: -2px;
-}
-
-.bd-tabs .tabs li:not(.is-active) a:hover {
-  border-bottom-color: #dbdbdb;
+@media screen and (min-width: 769px), print {
+  .bd-tabs .tabs {
+    overflow: visible;
+  }
+  .bd-tabs .tabs ul,
+  .bd-tabs .tabs a {
+    border-bottom-color: whitesmoke;
+    border-bottom-width: 2px;
+  }
+  .bd-tabs .tabs a {
+    margin-bottom: -2px;
+  }
+  .bd-tabs .tabs li:not(.is-active) a:hover {
+    border-bottom-color: #dbdbdb;
+  }
+  .bd-tabs .tabs ul {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
 }
 
 .bd-content hr:first-child {
