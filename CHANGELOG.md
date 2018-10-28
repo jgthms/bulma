@@ -6,6 +6,7 @@
 
 * #1978 Fix #1696 -> Force `box-sizing: border-box` on `details` element
 * #2167 Fix #1878 -> New `$footer-padding` variable
+* #2168 -> New `$input-placeholder-color` and `$input-disabled-placeholder-color` variables
 
 ### Bug fixes
 
