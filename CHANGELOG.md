@@ -4,7 +4,11 @@
 
 ### Improvements
 
-* #1978 Fix #1696. Force `box-sizing: border-box` on `details` element
+* #1978 Fix #1696 -> Force `box-sizing: border-box` on `details` element
+
+### Bug fixes
+
+* #2157 Fix #1656 -> Allow border radius if only one `.control` in `.field`
 
 ### Deprecation
 
