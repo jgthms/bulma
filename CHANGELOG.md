@@ -2,6 +2,10 @@
 
 ## 0.7.3
 
+### New features
+
+* #2145 Fix #372 -> New indeterminate progress bars
+
 ### Improvements
 
 * #1978 Fix #1696 -> Force `box-sizing: border-box` on `details` element

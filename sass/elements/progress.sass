@@ -1,6 +1,8 @@
 $progress-bar-background-color: $border !default
 $progress-value-background-color: $text !default
 
+$progress-indeterminate-duration: 1.5s !default
+
 .progress
   @extend %block
   -moz-appearance: none
@@ -21,6 +23,20 @@ $progress-value-background-color: $text !default
   &::-ms-fill
     background-color: $progress-value-background-color
     border: none
+  &:indeterminate
+    animation-duration: $progress-indeterminate-duration
+    animation-iteration-count: infinite
+    animation-name: moveIndeterminate
+    animation-timing-function: linear
+    background-color: $progress-bar-background-color
+    background-image: linear-gradient(to right, $text 30%, $progress-bar-background-color 30%)
+    background-position: top left
+    background-repeat: no-repeat
+    background-size: 150% 150%
+    &::-webkit-progress-bar
+      background-color: transparent
+    &::-moz-progress-bar
+      background-color: transparent
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -31,20 +47,8 @@ $progress-value-background-color: $text !default
         background-color: $color
       &::-ms-fill
         background-color: $color
-
-  &:indeterminate
-    &::-webkit-progress-bar
-      background-color: transparent
-    &::-moz-progress-bar
-      background-color: transparent
-
-    animation: progress-indeterminate 1.5s linear infinite
-    background: $progress-bar-background-color linear-gradient(to right, $text 30%, $progress-bar-background-color 30%) top left / 150% 150% no-repeat
-
-    @each $name, $pair in $colors
-      $color: nth($pair, 1)
-      &.is-#{$name}
-        background: $progress-bar-background-color linear-gradient(to right, $color 30%, $progress-bar-background-color 30%) top left / 150% 150% no-repeat
+      &:indeterminate
+        background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%)
 
   // Sizes
   &.is-small
@@ -54,8 +58,8 @@ $progress-value-background-color: $text !default
   &.is-large
     height: $size-large
 
-@keyframes progress-indeterminate
-  0%
+@keyframes moveIndeterminate
+  from
     background-position: 200% 0
-  100%
+  to
     background-position: -200% 0
