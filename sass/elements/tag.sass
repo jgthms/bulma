@@ -37,6 +37,19 @@ $tag-delete-margin: 1px !default
         margin-left: 0.5rem
       &:not(:last-child)
         margin-right: 0
+  &.are-medium
+    & .tag
+      font-size: $size-normal
+  &.are-large
+    & .tag
+      font-size: $size-medium
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.are-#{$name}
+      & .tag
+        background-color: $color
+        color: $color-invert
 
 .tag:not(body)
   align-items: center
