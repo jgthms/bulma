@@ -1,5 +1,62 @@
 # Bulma Changelog
 
+## 0.7.3
+
+### New features
+
+* #2145 Fix #372 -> New indeterminate progress bars
+* #2206 Fix #2046 -> New variables `$table-head-background-color`, `$table-body-background-color` and `$table-foot-background-color` for the `.table` element
+
+### Improvements
+
+* #1978 Fix #1696 -> Force `box-sizing: border-box` on `details` element
+* #2167 Fix #1878 -> New `$footer-padding` variable
+* #2168 -> New `$input-placeholder-color` and `$input-disabled-placeholder-color` variables
+
+### Bug fixes
+
+* #2157 Fix #1656 -> Allow border radius if only one `.control` in `.field`
+* #2091 Fix #2091 -> Remove CSS rule which causes `.tag.has-addons` to not work correctly
+
+### Deprecation
+
+* `.control.has-icon` deprecated in favor of `.control.has-icons`
+
+## 0.7.2
+
+### New features
+
+* #1884 New `$navbar-burger-color` variable
+* #1679 Add breakpoint based column gaps
+* #1905 Fix `modal` for IE11 #1902
+* #1919 New `is-arrowless` class for navbar items
+* #1949 New `is-fullheight-with-navbar` class for heros
+* #1764 New `.is-sr-only` helper
+* #2109 Add and use `$navbar-breakpoint` variable
+* New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
+* #1720 Add list element feature
+* #2123 Add `.content ol` types: `.is-lower-roman`, `.is-upper-roman`, `.is-lower-alpha`, `.is-upper-alpha`, and support for the `type=` HTML attribute
+
+### Improvements
+
+* #1964 Allow `.notification` to have a `.dropdown-item`
+* #1999 Change `$border` to `$grey-lighter` in mixins
+* #2085 `.media-content` will allow scrolling horizontally if the content is too wide
+* #1744 Fix #1710 by using `$table-striped-row-even-hover-background-color` only for even rows
+* #2074 Allow `<button>` as `.dropdown-item`
+
+### Bug fixes
+
+* #1749 Fix icons floating out of input area
+* #1993 Fixes #1992 Prevent disabled form elements hover state from overlapping, if control has add-ons elements
+* #1909 Fix Modal card in IE11
+* #1908 Fix IE11 when textarea doesn't listen to `size=""`
+* Fix #1991 The last button in list of full-width buttons has longer width
+* #1982 Fix navbar-burger color when color modifier is used
+* #1819 Fix #1137 error message for required file
+* Fix #1904 and #1969: hide native file input in Chrome
+* #2059 Remove unnecessary right margin from last level-item (level.is-mobile)
+
 ## 0.7.1
 
 ### Improvements

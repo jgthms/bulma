@@ -1,7 +1,6 @@
 ---
 title: Typography helpers
 layout: documentation
-hide_categories: true
 doc-tab: modifiers
 doc-subtab: typography-helpers
 breadcrumb:
@@ -11,8 +10,8 @@ breadcrumb:
 - modifiers-typography-helpers
 ---
 
-{% assign initial_vars = site.data.variables.utilities.initial-variables.vars %}
-{% assign sizes        = site.data.variables.utilities.derived-variables.vars.sizes.value | split: ' ' %}
+{% assign initial_vars = site.data.variables.utilities.initial-variables.by_name %}
+{% assign sizes        = site.data.variables.utilities.derived-variables.by_name['$sizes'].value | split: ' ' %}
 
 {% capture thead %}
 <thead>
@@ -39,7 +38,7 @@ breadcrumb:
 
 {% capture size1 %}
 <td class="is-narrow">
-  <p class="notification is-primary"><code>{{ initial_vars.size-1.value }}</code></p>
+  <p class="notification is-primary"><code>{{ initial_vars['$size-1'].value }}</code></p>
 </td>
 {% endcapture %}
 
@@ -77,7 +76,8 @@ breadcrumb:
   <tbody>
 		{% for size in sizes %}
 			<tr>
-				{% assign key = 'size-' | append: forloop.index %}
+				{% assign key = '$size-' | append: forloop.index %}
+
 				<td><code>is-size-{{ forloop.index }}</code></td>
 				<td><code>{{ initial_vars[key].value }}</code></td>
 			</tr>
@@ -89,16 +89,14 @@ breadcrumb:
 
 <div class="content">
   <p>
-    You can choose a <strong>specific</strong> size for <em>each</em> viewport width. You simply needed to append the <strong>viewport width</strong> to the size modifier.
+    You can choose a <strong>specific</strong> size for <em>each</em> viewport width. You simply need to append the <strong>viewport width</strong> to the size modifier.
   </p>
   <p>
     For example, here are the modifiers for <code>$size-1</code>:
   </p>
 </div>
 
-{% include layout/main-close.html show_categories=true %}
 
-<div class="container">
   <div class="table-container">
     <table class="table is-bordered">
       {{ thead }}
@@ -154,9 +152,7 @@ breadcrumb:
       </tbody>
     </table>
   </div>
-</div>
 
-{% include layout/main-open.html %}
 
 <div class="content">
   <p>
@@ -257,9 +253,7 @@ breadcrumb:
   </p>
 </div>
 
-{% include layout/main-close.html %}
 
-<div class="container">
   <div class="table-container">
     <table class="table is-bordered">
       {{ thead }}
@@ -339,9 +333,7 @@ breadcrumb:
       </tbody>
     </table>
   </div>
-</div>
 
-{% include layout/main-open.html %}
 
 {% include elements/anchor.html name="Text transformation" %}
 
@@ -404,7 +396,7 @@ breadcrumb:
   <tbody>
   <tr>
     <td><code>has-text-weight-light</code></td>
-    <td>Transforms  text weight to <strong>light</strong></td>
+    <td>Transforms text weight to <strong>light</strong></td>
   </tr>
   <tr>
     <td><code>has-text-weight-normal</code></td>
@@ -420,3 +412,37 @@ breadcrumb:
   </tr>
   </tbody>
 </table>
+
+{% include elements/anchor.html name="Font family" %}
+
+{% include elements/new-tag.html version="0.7.3" %}
+
+<div class="content">
+  <p>
+    You can change the font family with the use of one of <strong>3 font family helpers</strong>:
+  </p>
+</div>
+
+{% assign font_families = "sans-serif,monospace,primary,secondary,code" | split: ',' %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>
+        Class
+      </th>
+      <th>
+        Family
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for family in font_families %}
+      <tr>
+        <td><code>is-family-{{ family }}</code></td>
+        <td>Sets font family to <code>$family-{{ family }}</code></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+

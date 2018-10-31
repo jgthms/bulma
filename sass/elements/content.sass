@@ -18,7 +18,7 @@ $content-table-foot-cell-border-width: 2px 0 0 !default
 $content-table-foot-cell-color: $text-strong !default
 
 .content
-  +block
+  @extend %block
   // Inline
   li + li
     margin-top: 0.25em
@@ -70,9 +70,19 @@ $content-table-foot-cell-color: $text-strong !default
     border-left: $content-blockquote-border-left
     padding: $content-blockquote-padding
   ol
-    list-style: decimal outside
+    list-style-position: outside
     margin-left: 2em
     margin-top: 1em
+    &:not([type])
+      list-style-type: decimal
+      &.is-lower-alpha
+        list-style-type: lower-alpha
+      &.is-lower-roman
+        list-style-type: lower-roman
+      &.is-upper-alpha
+        list-style-type: upper-alpha
+      &.is-upper-roman
+        list-style-type: upper-roman
   ul
     list-style: disc outside
     margin-left: 2em

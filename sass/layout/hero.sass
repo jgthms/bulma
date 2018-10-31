@@ -97,7 +97,8 @@
         padding-bottom: 18rem
         padding-top: 18rem
   &.is-halfheight,
-  &.is-fullheight
+  &.is-fullheight,
+  &.is-fullheight-with-navbar
     .hero-body
       align-items: center
       display: flex
@@ -108,11 +109,13 @@
     min-height: 50vh
   &.is-fullheight
     min-height: 100vh
+  &.is-fullheight-with-navbar
+    min-height: calc(100vh - #{$navbar-height})
 
 // Components
 
 .hero-video
-  +overlay
+  @extend %overlay
   overflow: hidden
   video
     left: 50%

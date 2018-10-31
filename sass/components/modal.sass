@@ -29,9 +29,10 @@ $modal-card-body-background-color: $white !default
 $modal-card-body-padding: 20px !default
 
 .modal
-  +overlay
+  @extend %overlay
   align-items: center
   display: none
+  flex-direction: column
   justify-content: center
   overflow: hidden
   position: fixed
@@ -41,7 +42,7 @@ $modal-card-body-padding: 20px !default
     display: flex
 
 .modal-background
-  +overlay
+  @extend %overlay
   background-color: $modal-background-background-color
 
 .modal-content,
@@ -58,7 +59,7 @@ $modal-card-body-padding: 20px !default
     width: $modal-content-width
 
 .modal-close
-  +delete
+  @extend %delete
   background: none
   height: $modal-close-dimensions
   position: fixed
@@ -71,6 +72,7 @@ $modal-card-body-padding: 20px !default
   flex-direction: column
   max-height: calc(100vh - #{$modal-card-spacing})
   overflow: hidden
+  -ms-overflow-y: visible
 
 .modal-card-head,
 .modal-card-foot

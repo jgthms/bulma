@@ -8,15 +8,15 @@ breadcrumb:
 - documentation
 - form
 - form-general
-variables_controls_keys:
-- control-radius
-- control-radius-small
-- control-padding-vertical
-- control-padding-horizontal
-variables_form_keys:
-- label-color
-- label-weight
-- help-size
+variables_control_keys:
+- $control-radius
+- $control-radius-small
+- $control-padding-vertical
+- $control-padding-horizontal
+variables_keys:
+- $label-color
+- $label-weight
+- $help-size
 ---
 
 {% capture example %}
@@ -1029,49 +1029,23 @@ variables_form_keys:
 
 {% include elements/snippet.html content=field_label_example horizontal=true more=true %}
 
-{% include elements/anchor.html name="Variables" %}
+{% capture custom_message %}
+  Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+{% endcapture %}
 
-<div class="content">
-  <p>
-    Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
-  </p>
-</div>
+{% include elements/variables.html
+  type='element'
+  variables_keys=page.variables_control_keys
+  custom_message=custom_message
+  folder='utilities'
+  file='controls'
+%}
 
-<table class="table is-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th>Name</th>
-      <th>Default value</th>
-    </tr>
-  </tfoot>
-  <tbody>
-    {% for key in page.variables_controls_keys %}
-      {% assign variable = site.data.variables.utilities.controls.vars[key] %}
-      <tr>
-        <td>
-          <code>{{ variable.name }}</code>
-        </td>
-        <td>
-          <code>{{ variable.value }}</code>
-        </td>
-      </tr>
-    {% endfor %}
-    {% for key in page.variables_form_keys %}
-      {% assign variable = site.data.variables.elements.form.vars[key] %}
-      <tr>
-        <td>
-          <code>{{ variable.name }}</code>
-        </td>
-        <td>
-          <code>{{ variable.value }}</code>
-        </td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+{% include elements/variables.html
+  type='element'
+  variables_keys=page.variables_keys
+  folder='elements'
+  file='form'
+  hide_anchor=true
+  hide_content=true
+%}

@@ -1,8 +1,19 @@
-<li>
-  {{ backer.first_name }} {{ backer.last_name }}
-  {% if backer.twitter != "" %}
-    <a href="https://twitter.com/{{ backer.twitter }}" target="_blank" rel="nofollow">
-      @{{ backer.twitter }}
-    </a>
-  {% endif %}
-</li>
+<tr>
+  <td>{{ backer.name }}</td>
+
+  <td>
+    {% if backer.twitter != "" %}
+      <a href="https://twitter.com/{{ backer.twitter }}" target="_blank" rel="nofollow">
+        @{{ backer.twitter }}
+      </a>
+    {% endif %}
+  </td>
+
+  <td>
+    {% if backer.website_url %}
+      <a href="{{ backer.website_url }}" target="_blank" rel="nofollow">
+        {{ backer.website_name }}
+      </a>
+    {% endif %}
+  </td>
+</tr>

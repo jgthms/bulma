@@ -11,6 +11,10 @@ $table-head-cell-color: $text-strong !default
 $table-foot-cell-border-width: 2px 0 0 !default
 $table-foot-cell-color: $text-strong !default
 
+$table-head-background-color: transparent !default
+$table-body-background-color: transparent !default
+$table-foot-background-color: transparent !default
+
 $table-row-hover-background-color: $white-bis !default
 
 $table-row-active-background-color: $primary !default
@@ -20,7 +24,7 @@ $table-striped-row-even-background-color: $white-bis !default
 $table-striped-row-even-hover-background-color: $white-ter !default
 
 .table
-  +block
+  @extend %block
   background-color: $table-background-color
   color: $table-color
   td,
@@ -62,16 +66,19 @@ $table-striped-row-even-hover-background-color: $white-ter !default
         border-color: $table-row-active-color
         color: currentColor
   thead
+    background-color: $table-head-background-color
     td,
     th
       border-width: $table-head-cell-border-width
       color: $table-head-cell-color
   tfoot
+    background-color: $table-foot-background-color
     td,
     th
       border-width: $table-foot-cell-border-width
       color: $table-foot-cell-color
   tbody
+    background-color: $table-body-background-color
     tr
       &:last-child
         td,
@@ -98,7 +105,9 @@ $table-striped-row-even-hover-background-color: $white-ter !default
       tbody
         tr:not(.is-selected)
           &:hover
-            background-color: $table-striped-row-even-hover-background-color
+            background-color: $table-row-hover-background-color
+            &:nth-child(even)
+              background-color: $table-striped-row-even-hover-background-color
   &.is-narrow
     td,
     th
@@ -110,7 +119,7 @@ $table-striped-row-even-hover-background-color: $white-ter !default
           background-color: $table-striped-row-even-background-color
 
 .table-container
-  +block
+  @extend %block
   +overflow-touch
   overflow: auto
   overflow-y: hidden

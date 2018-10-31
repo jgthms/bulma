@@ -1,7 +1,9 @@
 $input-color: $grey-darker !default
 $input-background-color: $white !default
 $input-border-color: $grey-lighter !default
+$input-height: $control-height !default
 $input-shadow: inset 0 1px 2px rgba($black, 0.1) !default
+$input-placeholder-color: rgba($input-color, 0.3) !default
 
 $input-hover-color: $grey-darker !default
 $input-hover-border-color: $grey-light !default
@@ -14,6 +16,7 @@ $input-focus-box-shadow-color: rgba($link, 0.25) !default
 $input-disabled-color: $text-light !default
 $input-disabled-background-color: $background !default
 $input-disabled-border-color: $background !default
+$input-disabled-placeholder-color: rgba($input-disabled-color, 0.3) !default
 
 $input-arrow: $link !default
 
@@ -41,12 +44,12 @@ $label-weight: $weight-bold !default
 $help-size: $size-small !default
 
 =input
-  +control
+  @extend %control
   background-color: $input-background-color
   border-color: $input-border-color
   color: $input-color
   +placeholder
-    color: rgba($input-color, 0.3)
+    color: $input-placeholder-color
   &:hover,
   &.is-hovered
     border-color: $input-hover-border-color
@@ -62,7 +65,7 @@ $help-size: $size-small !default
     box-shadow: none
     color: $input-disabled-color
     +placeholder
-      color: rgba($input-disabled-color, 0.3)
+      color: $input-disabled-placeholder-color
 
 .input,
 .textarea
@@ -148,10 +151,11 @@ $help-size: $size-small !default
   position: relative
   vertical-align: top
   &:not(.is-multiple)
-    height: 2.25em
+    height: $input-height
   &:not(.is-multiple):not(.is-loading)
     &::after
-      +arrow($input-arrow)
+      @extend %arrow
+      border-color: $input-arrow
       right: 1.125em
       z-index: 4
   &.is-rounded
@@ -172,7 +176,7 @@ $help-size: $size-small !default
     &:not([multiple])
       padding-right: 2.5em
     &[multiple]
-      height: initial
+      height: auto
       padding: 0
       option
         padding: 0.5em 1em
@@ -213,7 +217,7 @@ $help-size: $size-small !default
       width: 100%
   &.is-loading
     &::after
-      +loader
+      @extend %loader
       margin-top: 0
       position: absolute
       right: 0.625em
@@ -227,7 +231,7 @@ $help-size: $size-small !default
       font-size: $size-large
 
 .file
-  +unselectable
+  @extend %unselectable
   align-items: stretch
   display: flex
   justify-content: flex-start
@@ -352,16 +356,17 @@ $help-size: $size-small !default
       border-color: darken($file-name-border-color, 5%)
 
 .file-input
-  height: 0.01em
+  height: 100%
   left: 0
+  opacity: 0
   outline: none
   position: absolute
   top: 0
-  width: 0.01em
+  width: 100%
 
 .file-cta,
 .file-name
-  +control
+  @extend %control
   border-color: $file-border-color
   border-radius: $file-radius
   font-size: 1em
@@ -434,13 +439,13 @@ $help-size: $size-small !default
         .input,
         .select select
           border-radius: 0
-      &:first-child
+      &:first-child:not(:only-child)
         .button,
         .input,
         .select select
           border-bottom-right-radius: 0
           border-top-right-radius: 0
-      &:last-child
+      &:last-child:not(:only-child)
         .button,
         .input,
         .select select
@@ -449,16 +454,17 @@ $help-size: $size-small !default
       .button,
       .input,
       .select select
-        &:hover,
-        &.is-hovered
-          z-index: 2
-        &:focus,
-        &.is-focused,
-        &:active,
-        &.is-active
-          z-index: 3
-          &:hover
-            z-index: 4
+        &:not([disabled])
+          &:hover,
+          &.is-hovered
+            z-index: 2
+          &:focus,
+          &.is-focused,
+          &:active,
+          &.is-active
+            z-index: 3
+            &:hover
+              z-index: 4
       &.is-expanded
         flex-grow: 1
     &.has-addons-centered
@@ -540,43 +546,12 @@ $help-size: $size-small !default
         margin-right: 0.75rem
 
 .control
+  box-sizing: border-box
+  clear: both //fixes the icon floating out of the input when help text is floated right
   font-size: $size-normal
   position: relative
   text-align: left
   // Modifiers
-  // DEPRECATED
-  &.has-icon
-    .icon
-      color: $input-icon-color
-      height: 2.25em
-      pointer-events: none
-      position: absolute
-      top: 0
-      width: 2.25em
-      z-index: 4
-    .input
-      &:focus
-        & + .icon
-          color: $input-icon-active-color
-      &.is-small
-        & + .icon
-          font-size: $size-small
-      &.is-medium
-        & + .icon
-          font-size: $size-medium
-      &.is-large
-        & + .icon
-          font-size: $size-large
-    &:not(.has-icon-right)
-      .icon
-        left: 0
-      .input
-        padding-left: 2.25em
-    &.has-icon-right
-      .icon
-        right: 0
-      .input
-        padding-right: 2.25em
   &.has-icons-left,
   &.has-icons-right
     .input,
@@ -592,27 +567,27 @@ $help-size: $size-small !default
         font-size: $size-large
     .icon
       color: $input-icon-color
-      height: 2.25em
+      height: $input-height
       pointer-events: none
       position: absolute
       top: 0
-      width: 2.25em
+      width: $input-height
       z-index: 4
   &.has-icons-left
     .input,
     .select select
-      padding-left: 2.25em
+      padding-left: $input-height
     .icon.is-left
       left: 0
   &.has-icons-right
     .input,
     .select select
-      padding-right: 2.25em
+      padding-right: $input-height
     .icon.is-right
       right: 0
   &.is-loading
     &::after
-      +loader
+      @extend %loader
       position: absolute !important
       right: 0.625em
       top: 0.625em

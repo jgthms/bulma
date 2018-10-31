@@ -14,6 +14,8 @@ $navbar-item-active-color: $black !default
 $navbar-item-active-background-color: transparent !default
 $navbar-item-img-max-height: 1.75rem !default
 
+$navbar-burger-color: $navbar-item-color !default
+
 $navbar-tab-hover-background-color: transparent !default
 $navbar-tab-hover-border-bottom-color: $link !default
 $navbar-tab-active-color: $link !default
@@ -41,6 +43,8 @@ $navbar-divider-background-color: $background !default
 $navbar-divider-height: 2px !default
 
 $navbar-bottom-box-shadow-size: 0 -2px 0 0 !default
+
+$navbar-breakpoint: $desktop !default
 
 =navbar-fixed
   left: 0
@@ -72,7 +76,9 @@ $navbar-bottom-box-shadow-size: 0 -2px 0 0 !default
         .navbar-link
           &::after
             border-color: $color-invert
-      +desktop
+      .navbar-burger
+        color: $color-invert
+      +from($navbar-breakpoint)
         .navbar-start,
         .navbar-end
           & > .navbar-item,
@@ -139,6 +145,7 @@ body
   overflow-y: hidden
 
 .navbar-burger
+  color: $navbar-burger-color
   +hamburger($navbar-height)
   margin-left: auto
 
@@ -195,10 +202,11 @@ a.navbar-item,
   flex-grow: 1
   flex-shrink: 1
 
-.navbar-link
+.navbar-link:not(.is-arrowless)
   padding-right: 2.5em
   &::after
-    +arrow($navbar-dropdown-arrow)
+    @extend %arrow
+    border-color: $navbar-dropdown-arrow
     margin-top: -0.375em
     right: 1.125em
 
@@ -217,7 +225,7 @@ a.navbar-item,
   height: $navbar-divider-height
   margin: 0.5rem 0
 
-+touch
++until($navbar-breakpoint)
   .navbar > .container
     display: block
   .navbar-brand,
@@ -258,7 +266,7 @@ a.navbar-item,
     &.has-navbar-fixed-bottom-touch
       padding-bottom: $navbar-height
 
-+desktop
++from($navbar-breakpoint)
   .navbar,
   .navbar-menu,
   .navbar-start,

@@ -84,6 +84,29 @@ breadcrumb:
 </div>
 {% endcapture %}
 
+{% capture columns_variable_responsive_gaps %}
+<div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+  <div class="column">
+    Column
+  </div>
+  <div class="column">
+    Column
+  </div>
+  <div class="column">
+    Column
+  </div>
+  <div class="column">
+    Column
+  </div>
+  <div class="column">
+    Column
+  </div>
+  <div class="column">
+    Column
+  </div>
+</div>
+{% endcapture %}
+
 {% include elements/anchor.html name="Default gap" %}
 
 <div class="content">
@@ -208,3 +231,53 @@ breadcrumb:
     </p>
   </div>
 </div>
+
+{% assign vernum = site.data.meta.version | downcase | remove: "." | plus: 0 %}
+
+{% if vernum >= 72 %}
+
+{% include elements/anchor.html name="Breakpoint based column gaps" %}
+
+{% include elements/new-tag.html version="0.7.2" %}
+
+<div class="content">
+  <p>
+    You can define a column gap for each viewport size:
+  </p>
+</div>
+
+For example, here's how it looks with the following modifiers: <code>is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd</code>
+
+<div class="highlight-full">
+  {% highlight html %}{{ columns_variable_responsive_gaps }}{% endhighlight %}
+</div>
+
+
+<div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+  <div class="column">
+    <p class="bd-notification is-primary">Column</p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-primary">Column</p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-primary">Column</p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-primary">Column</p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-primary">Column</p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-primary">Column</p>
+  </div>
+</div>
+
+<div class="message is-info">
+  <p class="message-body">
+    If you want to see the difference, resize your browser and see how the <strong>columns gap</strong> varies.
+  </p>
+</div>
+
+{% endif %}

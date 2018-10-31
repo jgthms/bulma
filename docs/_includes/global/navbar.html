@@ -30,7 +30,12 @@
         <span class="icon has-text-primary">
           <i class="fas fa-book"></i>
         </span>
-        <span>Documentation</span>
+        <span class="is-hidden-touch is-hidden-widescreen">
+          Docs
+        </span>
+        <span class="is-hidden-desktop-only">
+          Documentation
+        </span>
       </a>
 
       {% for item in site.data.global.navbar_items %}
@@ -38,6 +43,7 @@
           <span class="icon {{ item.color }}">
             <i class="{{ item.fa_type }} {{ item.fa_icon }}"></i>
           </span>
+
           <span>{{ item.title }}</span>
         </a>
       {% endfor %}
@@ -47,6 +53,7 @@
         <a class="navbar-link" href="{{ site.url }}{{ link.path }}">
           {{ link.name }}
         </a>
+
         <div id="moreDropdown" class="navbar-dropdown">
           {% for link_id in site.data.links.more %}
             {% assign link = site.data.links.by_id[link_id] %}
@@ -69,16 +76,18 @@
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item is-hidden-mobile" href="{{ site.data.meta.github }}" target="_blank">
+      <a class="navbar-item is-hidden-touch is-hidden-desktop-only" href="{{ site.data.meta.github }}" target="_blank">
         <span class="icon" style="color: #333;">
           <i class="fab fa-lg fa-github-alt"></i>
         </span>
       </a>
-      <a class="navbar-item is-hidden-mobile" href="{{ site.data.meta.twitter }}" target="_blank">
+
+      <a class="navbar-item is-hidden-touch is-hidden-desktop-only" href="{{ site.data.meta.twitter }}" target="_blank">
         <span class="icon" style="color: #55acee;">
           <i class="fab fa-lg fa-twitter"></i>
         </span>
       </a>
+
       <div class="navbar-item">
         <div class="field is-grouped is-grouped-multiline">
           <p class="control">

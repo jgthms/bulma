@@ -1,8 +1,10 @@
 $progress-bar-background-color: $border !default
 $progress-value-background-color: $text !default
 
+$progress-indeterminate-duration: 1.5s !default
+
 .progress
-  +block
+  @extend %block
   -moz-appearance: none
   -webkit-appearance: none
   border: none
@@ -21,6 +23,20 @@ $progress-value-background-color: $text !default
   &::-ms-fill
     background-color: $progress-value-background-color
     border: none
+  &:indeterminate
+    animation-duration: $progress-indeterminate-duration
+    animation-iteration-count: infinite
+    animation-name: moveIndeterminate
+    animation-timing-function: linear
+    background-color: $progress-bar-background-color
+    background-image: linear-gradient(to right, $text 30%, $progress-bar-background-color 30%)
+    background-position: top left
+    background-repeat: no-repeat
+    background-size: 150% 150%
+    &::-webkit-progress-bar
+      background-color: transparent
+    &::-moz-progress-bar
+      background-color: transparent
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -31,6 +47,9 @@ $progress-value-background-color: $text !default
         background-color: $color
       &::-ms-fill
         background-color: $color
+      &:indeterminate
+        background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%)
+
   // Sizes
   &.is-small
     height: $size-small
@@ -38,3 +57,9 @@ $progress-value-background-color: $text !default
     height: $size-medium
   &.is-large
     height: $size-large
+
+@keyframes moveIndeterminate
+  from
+    background-position: 200% 0
+  to
+    background-position: -200% 0
