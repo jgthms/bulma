@@ -16,6 +16,7 @@
 ### Bug fixes
 
 * #2157 Fix #1656 -> Allow border radius if only one `.control` in `.field`
+* #2091 Fix #2091 -> Remove CSS rule which causes `.tag.has-addons` to not work correctly
 
 ### Deprecation
 
