@@ -7,6 +7,7 @@
 * #2145 Fix #372 -> New indeterminate progress bars
 * #2206 Fix #2046 -> New variables `$table-head-background-color`, `$table-body-background-color` and `$table-foot-background-color` for the `.table` element
 * #592 -> Give arbitrary elements access to the image/ratio classes
+* #1682 Fix #1681 -> Adds disabled styles for `<fieldset disabled>`
 
 ### Improvements
 
