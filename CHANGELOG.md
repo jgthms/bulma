@@ -3,7 +3,7 @@
 ## 0.7.3
 
 ### New features
-
+* #2206 Fix #2046 -> Set background-color for Tables via sass vars
 * #2145 Fix #372 -> New indeterminate progress bars
 
 ### Improvements
