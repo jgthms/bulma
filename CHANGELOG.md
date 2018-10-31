@@ -3,8 +3,9 @@
 ## 0.7.3
 
 ### New features
-* #2206 Fix #2046 -> Set background-color for Tables via sass vars
+
 * #2145 Fix #372 -> New indeterminate progress bars
+* #2206 Fix #2046 -> New variables `$table-head-background-color`, `$table-body-background-color` and `$table-foot-background-color` for the `.table` element
 
 ### Improvements
 
