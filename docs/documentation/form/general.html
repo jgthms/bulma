@@ -800,6 +800,12 @@ variables_keys:
 </div>
 {% endcapture %}
 
+{% capture disabled_fields_example %}
+<fieldset disabled>
+  {{ fields_example }}
+</fieldset>
+{% endcapture %}
+
 <div class="content">
   <p>The following form controls <strong>classes</strong> are supported:</p>
   <ul>
@@ -1032,6 +1038,19 @@ variables_keys:
 {% capture custom_message %}
   Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
 {% endcapture %}
+
+{% include elements/anchor.html name="Disabled form" %}
+
+{% include elements/new-tag.html version="0.7.3" %}
+
+
+<div class="content">
+  <p>
+    You can disable part or a whole form by wrapping a set of controls in a <strong>fieldset</strong> with a <code>disabled</code> HTML attribute.
+  </p>
+</div>
+
+{% include elements/snippet.html content=disabled_fields_example %}
 
 {% include elements/variables.html
   type='element'

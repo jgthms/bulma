@@ -5,8 +5,11 @@
   {% if tag_version_value > current_version_value %}
     <span class="tag is-warning">Coming soon!</span>
     <span class="tag is-danger">{{ include.version }}</span>
-  {% else %}
+  {% elsif tag_version_value == current_version_value %}
     <span class="tag">New!</span>
+    <span class="tag is-success">{{ include.version }}</span>
+  {% else %}
+    <span class="tag">Since</span>
     <span class="tag is-info">{{ include.version }}</span>
   {% endif %}
 </div>

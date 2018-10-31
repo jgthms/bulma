@@ -5,6 +5,9 @@
 ### New features
 
 * #2145 Fix #372 -> New indeterminate progress bars
+* #2206 Fix #2046 -> New variables `$table-head-background-color`, `$table-body-background-color` and `$table-foot-background-color` for the `.table` element
+* #592 -> Give arbitrary elements access to the image/ratio classes
+* #1682 Fix #1681 -> Adds disabled styles for `<fieldset disabled>`
 
 ### Improvements
 
@@ -15,6 +18,9 @@
 ### Bug fixes
 
 * #2157 Fix #1656 -> Allow border radius if only one `.control` in `.field`
+* #2091 Fix #2091 -> Remove CSS rule which causes `.tag.has-addons` to not work correctly
+* #2186 Fix #1130 -> Prevent `.dropdown` links underlining in `.message` component
+* Fix #2154 -> Move `.hero.is-fullheight-with-navbar` to `navbar.sass` file
 
 ### Deprecation
 
