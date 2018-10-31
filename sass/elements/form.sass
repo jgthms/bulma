@@ -43,6 +43,7 @@ $label-weight: $weight-bold !default
 
 $help-size: $size-small !default
 
+
 =input
   @extend %control
   background-color: $input-background-color
@@ -59,7 +60,8 @@ $help-size: $size-small !default
   &.is-active
     border-color: $input-focus-border-color
     box-shadow: $input-focus-box-shadow-size $input-focus-box-shadow-color
-  &[disabled]
+  &[disabled],
+  fieldset[disabled] &
     background-color: $input-disabled-background-color
     border-color: $input-disabled-border-color
     box-shadow: none
@@ -137,7 +139,8 @@ $help-size: $size-small !default
     cursor: pointer
   &:hover
     color: $input-hover-color
-  &[disabled]
+  &[disabled],
+  fieldset[disabled] &
     color: $input-disabled-color
     cursor: not-allowed
 
@@ -171,7 +174,8 @@ $help-size: $size-small !default
     outline: none
     &::-ms-expand
       display: none
-    &[disabled]:hover
+    &[disabled]:hover,
+    fieldset[disabled] &:hover
       border-color: $input-disabled-border-color
     &:not([multiple])
       padding-right: 2.5em
