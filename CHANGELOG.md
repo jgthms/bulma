@@ -19,6 +19,7 @@
 * #2157 Fix #1656 -> Allow border radius if only one `.control` in `.field`
 * #2091 Fix #2091 -> Remove CSS rule which causes `.tag.has-addons` to not work correctly
 * #2186 Fix #1130 -> Prevent `.dropdown` links underlining in `.message` component
+* Fix #2154 -> Move `.hero.is-fullheight-with-navbar` to `navbar.sass` file
 
 ### Deprecation
 
