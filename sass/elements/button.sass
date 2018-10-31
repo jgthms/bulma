@@ -35,6 +35,8 @@ $button-static-border-color: $grey-lighter !default
 =button-small
   border-radius: $radius-small
   font-size: $size-small
+=button-normal
+  font-size: $size-normal
 =button-medium
   font-size: $size-medium
 =button-large
@@ -186,6 +188,8 @@ $button-static-border-color: $grey-lighter !default
   // Sizes
   &.is-small
     +button-small
+  &.is-normal
+    +button-normal
   &.is-medium
     +button-medium
   &.is-large
@@ -233,14 +237,14 @@ $button-static-border-color: $grey-lighter !default
     margin-bottom: 1rem
   // Sizes
   &.are-small
-    .button
+    .button:not(.is-normal):not(.is-medium):not(.is-large)
       +button-small
   &.are-medium
-    .button
+    .button:not(.is-small):not(.is-normal):not(.is-large)
       +button-medium
   &.are-large
-    .button
-      +button-large  
+    .button:not(.is-small):not(.is-normal):not(.is-medium)
+      +button-large
   &.has-addons
     .button
       &:not(:first-child)

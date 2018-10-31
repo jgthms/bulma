@@ -44,9 +44,28 @@ meta:
 
 {% capture button_sizes_example %}
 <a class="button is-small">Small</a>
-<a class="button">Normal</a>
+<a class="button">Default</a>
+<a class="button is-normal">Normal</a>
 <a class="button is-medium">Medium</a>
 <a class="button is-large">Large</a>
+{% endcapture %}
+
+{% capture buttons_medium_sizes_example %}
+<div class="buttons are-medium">
+  <a class="button">All</a>
+  <a class="button">Medium</a>
+  <a class="button">Size</a>
+</div>
+{% endcapture %}
+
+{% capture buttons_small_normal_sizes_example %}
+<div class="buttons are-small">
+  <a class="button">Small</a>
+  <a class="button">Small</a>
+  <a class="button">Small</a>
+  <a class="button is-normal">Normal</a>
+  <a class="button">Small</a>
+</div>
 {% endcapture %}
 
 {% capture button_displays_example %}
@@ -502,7 +521,61 @@ meta:
 
 {% include elements/anchor.html name="Sizes" %}
 
+<div class="content">
+  <p>
+    The button comes in <strong>4 different sizes:</strong>
+  </p>
+  <ul>
+    <li>
+      small
+    </li>
+    <li>
+      normal
+    </li>
+    <li>
+      medium
+    </li>
+    <li>
+      large
+    </li>
+  </ul>
+  <p>
+    While the default size is the <strong>normal</strong> one, the <code>is-normal</code> modifier exists in case you need to reset the button to its normal size.
+  </p>
+</div>
+
 {% include elements/snippet.html wrapper="buttons" content=button_sizes_example %}
+
+{% include elements/new-tag.html version="0.7.3" %}
+
+<div class="content">
+  <p>
+    You can change the size of <strong>multiple buttons</strong> at once by wrapping them in a <code>.buttons</code> parent, and applying one of 3 modifiers:
+  </p>
+  <ul>
+    <li>
+      <code>buttons are-small</code>
+    </li>
+    <li>
+      <code>buttons are-medium</code>
+    </li>
+    <li>
+      <code>buttons are-large</code>
+    </li>
+  </ul>
+</div>
+
+{% include elements/snippet.html content=buttons_medium_sizes_example %}
+
+<div class="content">
+  <p>
+    You can change the size of only a <strong>subset of buttons</strong> by simply applying a modifier class to them.
+    <br>
+    For example, if you want all buttons to be <strong>small</strong> but still have one in its <strong>normal</strong> size, simply do the following:
+  </p>
+</div>
+
+{% include elements/snippet.html content=buttons_small_normal_sizes_example %}
 
 {% include elements/anchor.html name="Displays" %}
 
