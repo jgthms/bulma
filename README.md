@@ -105,7 +105,8 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [bulma-pagination-react](https://github.com/hipstersmoothie/bulma-pagination-react) | Bulma pagination as a react component.                       |
 | [bulma-helpers](https://github.com/jmaczan/bulma-helpers) | Functional / Atomic CSS classes for Bulma.                       |
 | [bulma-swatch-hook](https://github.com/hipstersmoothie/bulma-swatch-hook) | Bulma swatches as a react hook and a component.  |
-| [BulmaWP](https://github.com/tomhrtly/BulmaWP)                                | Starter WordPress theme for Bulma
+| [BulmaWP](https://github.com/tomhrtly/BulmaWP)  | Starter WordPress theme for Bulma |
+| [Ralma](https://github.com/aldi/ralma) | Stateless Ractive.js Components for Bulma. |
 
 ## Copyright and license
 
