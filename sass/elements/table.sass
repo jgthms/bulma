@@ -27,10 +27,20 @@ $table-striped-row-even-hover-background-color: $white-ter !default
   @extend %block
   background-color: $table-background-color
   color: $table-color
+  display: table
+  .caption
+    display: table-caption
+  .col
+    display: table-column
+  .colgroup
+    display: table-column-group
+  .td,
+  .th,
   td,
   th
     border: $table-cell-border
     border-width: $table-cell-border-width
+    display: table-cell
     padding: $table-cell-padding
     vertical-align: top
     // Colors
@@ -51,69 +61,100 @@ $table-striped-row-even-hover-background-color: $white-ter !default
       a,
       strong
         color: currentColor
+  .th,
   th
     color: $table-cell-heading-color
     text-align: left
+  .tr,
   tr
+    display: table-row
     &.is-selected
       background-color: $table-row-active-background-color
       color: $table-row-active-color
       a,
       strong
         color: currentColor
+      .td,
+      .th,
       td,
       th
         border-color: $table-row-active-color
         color: currentColor
+  .thead,
   thead
     background-color: $table-head-background-color
+    display: table-header-group
+    .td,
+    .th,
     td,
     th
       border-width: $table-head-cell-border-width
       color: $table-head-cell-color
+  .tfoot,
   tfoot
     background-color: $table-foot-background-color
+    display: table-footer-group
+    .td,
+    .th,
     td,
     th
       border-width: $table-foot-cell-border-width
       color: $table-foot-cell-color
+  .tbody,
   tbody
     background-color: $table-body-background-color
+    display: table-row-group
+    .tr,
     tr
       &:last-child
+        .td,
+        .th,
         td,
         th
           border-bottom-width: 0
   // Modifiers
   &.is-bordered
+    .td,
+    .th,
     td,
     th
       border-width: 1px
+    .tr,
     tr
       &:last-child
+        .td,
+        .th,
         td,
         th
           border-bottom-width: 1px
   &.is-fullwidth
     width: 100%
   &.is-hoverable
+    .tbody,
     tbody
+      .tr:not(.is-selected),
       tr:not(.is-selected)
         &:hover
           background-color: $table-row-hover-background-color
     &.is-striped
+      .tbody,
       tbody
+        .tr:not(.is-selected),
         tr:not(.is-selected)
           &:hover
             background-color: $table-row-hover-background-color
             &:nth-child(even)
               background-color: $table-striped-row-even-hover-background-color
   &.is-narrow
+    .td,
+    .th,
     td,
     th
       padding: 0.25em 0.5em
   &.is-striped
+    .tbody,
     tbody
+      .tr:not(.is-selected),
       tr:not(.is-selected)
         &:nth-child(even)
           background-color: $table-striped-row-even-background-color
