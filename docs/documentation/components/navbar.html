@@ -562,27 +562,26 @@ meta:
 {% capture navbar_js_code %}
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  // Get burger element and his data-target menu
+  const burger = document.querySelector('.navbar-burger');
+  const menu = document.getElementById(burger.dataset.target);
+  
+  burger.addEventListener('click', () => {
+    // Toggle burger icon to cross
+    burger.classList.toggle('is-active');
 
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
+    // Toggle menu visibility on touch device
+    menu.classList.toggle('is-active');
+  });
 
-    // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
-      el.addEventListener('click', () => {
+  menu.addEventListener('click', () => {
 
-        // Get the target from the "data-target" attribute
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
+    // Hide menu after tap on touch device
+    if (window.getComputedStyle(burger).display == 'block') {
+      burger.click();
+    }
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
-      });
-    });
-  }
+  });
 
 });
 {% endcapture %}
