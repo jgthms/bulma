@@ -3,64 +3,31 @@
     <div class="bd-partnrs-list">
       <div class="bd-partner bd-is-sponsor">
         <p class="bd-partner-title">Sponsors</p>
+
         <div class="bd-partner-sponsors">
-          <div class="bd-partner-sponsor">
-            <a href="https://themeisle.com/" target="_blank" rel="nofollow">
-              <img src="{{ site.url }}/images/sponsors/themeisle.png" alt="themeisle logo" width="160" height="40">
-            </a>
-          </div>
+          {% for sponsor_id in site.data.sponsors.list %}
+            {% assign sponsor = site.data.sponsors.by_id[sponsor_id] %}
+            {% assign sponsor_path = "sponsors/" | append: sponsor_id %}
+            {% assign sponsor_alt = sponsor.name | append: " logo" %}
 
-          <div class="bd-partner-sponsor">
-            <a href="http://tooltwist.com/" target="_blank" rel="nofollow">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/tooltwist"
-                extension="png"
-                alt="tooltwist logo"
-                width="160"
-                height="51"
-              %}
-            </a>
-          </div>
-
-          <div class="bd-partner-sponsor">
-            <a href="https://www.dontpayfull.com/" target="_blank" rel="nofollow" style="mix-blend-mode: multiply;">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/dontpayfull"
-                extension="png"
-                alt="DontPayFull logo"
-                width="120"
-                height="60"
-              %}
-            </a>
-          </div>
-
-          <div class="bd-partner-sponsor">
-            <a href="https://hyper.host/" target="_blank" rel="nofollow">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/hyper-host"
-                extension="png"
-                alt="Hyper Host logo"
-                width="150"
-                height="50"
-              %}
-            </a>
-          </div>
-
-          <div class="bd-partner-sponsor">
-            <a href="https://devsquad.com/" target="_blank" rel="nofollow">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/devsquad"
-                extension="png"
-                alt="DevSquad logo"
-                width="140"
-                height="31"
-              %}
-            </a>
-          </div>
+            <div class="bd-partner-sponsor">
+              <a
+                href="{{ sponsor.url }}"
+                target="_blank"
+                rel="nofollow"
+                {% if sponsor.blend %}style="mix-blend-mode: multiply;"{% endif %}
+                >
+                {%
+                  include elements/responsive-image.html
+                  path=sponsor_path
+                  extension="png"
+                  alt=sponsor_alt
+                  width=sponsor.width
+                  height=sponsor.width
+                %}
+              </a>
+            </div>
+          {% endfor %}
         </div>
       </div>
 
