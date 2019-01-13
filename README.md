@@ -107,6 +107,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [bulma-swatch-hook](https://github.com/hipstersmoothie/bulma-swatch-hook) | Bulma swatches as a react hook and a component.  |
 | [BulmaWP](https://github.com/tomhrtly/BulmaWP)  | Starter WordPress theme for Bulma |
 | [Ralma](https://github.com/aldi/ralma) | Stateless Ractive.js Components for Bulma. |
+| [Django Simple Bulma](https://github.com/python-discord/django-simple-bulma) | Lightweight integration of Bulma and Bulma-Extensions for your Django app. |
 
 ## Copyright and license
 
