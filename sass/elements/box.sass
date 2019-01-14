@@ -16,9 +16,66 @@ $box-link-active-shadow: inset 0 1px 2px rgba($black, 0.2), 0 0 0 1px $link !def
   display: block
   padding: $box-padding
 
+  // Allows and individual .box to be the full screen width (consitent with other uses of .is-fullwidth)
+  &.is-fullwidth
+    width: 100%
+
 a.box
   &:hover,
   &:focus
     box-shadow: $box-link-hover-shadow
   &:active
     box-shadow: $box-link-active-shadow
+
+// Container for a group of .box's
+.boxes
+  align-items: stretch
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+
+  .box
+    margin-bottom: 1.5rem
+
+    &:not(:last-child)
+      margin-right: 0.5rem
+
+    // Allows an individual .box in group to fill remaining space (consitent with other uses of .is-expanded)
+    &.is-expanded
+      flex-grow: 1
+
+  // Connected .box's (consitent with other uses of .has-addons)
+  &.has-addons
+    .box
+      margin-right: 0
+
+      &:not(:first-child)
+        border-bottom-left-radius: 0
+        border-top-left-radius: 0
+
+      &:not(:last-child)
+        border-bottom-right-radius: 0
+        border-top-right-radius: 0
+
+  // .boxes group aligned to the center (consistent with other group containers .is-centered)
+  &.is-centered
+    justify-content: center
+
+    &:not(.has-addons)
+      .box
+        margin-right: 0.25rem
+        margin-left: 0.25rem
+
+  // .boxes group aligned to the right (consistent with other group containers .is-right)
+  &.is-right
+    justify-content: flex-end
+
+    &:not(.has-addons)
+      .box
+        &:not(:first-child)
+          margin-left: 0.5rem
+
+        &:not(:last-child)
+          margin-right: 0
+
+
