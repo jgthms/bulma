@@ -107,6 +107,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [bulma-swatch-hook](https://github.com/hipstersmoothie/bulma-swatch-hook) | Bulma swatches as a react hook and a component.  |
 | [BulmaWP](https://github.com/tomhrtly/BulmaWP)  | Starter WordPress theme for Bulma |
 | [Ralma](https://github.com/aldi/ralma) | Stateless Ractive.js Components for Bulma. |
+| [rbx](https://dfee.github.io/rbx) | Comprehensive React UI Framework written in TypeScript. |
 
 ## Copyright and license
 
