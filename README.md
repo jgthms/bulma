@@ -94,8 +94,8 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [elm-bulma-classes](https://github.com/ahstro/elm-bulma-classes)                     | Bulma classes prepared for usage with Elm                                              |
 | [Bulma Customizer](https://bulma-customizer.bstash.io/)                              | Bulma Customizer &#8211; Create your own **bespoke** Bulma build                       |
 | [Fulma](https://mangelmaxime.github.io/Fulma/)                                       | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)  |
-| [Laravel Enso](https://github.com/laravel-enso/enso)                                 | SPA Admin Panel built with Bulma, VueJS and Laravel 			                              |
-| [Django Bulma](https://github.com/timonweb/django-bulma)                             | Integrates Bulma with Django 			                                                    |
+| [Laravel Enso](https://github.com/laravel-enso/enso)                                 | SPA Admin Panel built with Bulma, VueJS and Laravel                                    |
+| [Django Bulma](https://github.com/timonweb/django-bulma)                             | Integrates Bulma with Django                                                           |
 | [Bulma Templates](https://github.com/dansup/bulma-templates)                         | Free Templates for Bulma                                                               |
 | [React Bulma Components](https://github.com/couds/react-bulma-components)            | Another React wrap on React for Bulma.io                                               |
 | [purescript-bulma](https://github.com/sectore/purescript-bulma)                      | PureScript bindings for Bulma                                                          |
@@ -108,7 +108,8 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [BulmaWP](https://github.com/tomhrtly/BulmaWP)                                       | Starter WordPress theme for Bulma                                                      |
 | [Ralma](https://github.com/aldi/ralma)                                               | Stateless Ractive.js Components for Bulma                                              |
 | [Django Simple Bulma](https://github.com/python-discord/django-simple-bulma)         | Lightweight integration of Bulma and Bulma-Extensions for your Django app              |
- 
+| [rbx](https://dfee.github.io/rbx)                                                    | Comprehensive React UI Framework written in TypeScript.                                |
+
 ## Copyright and license
 
 Code copyright 2019 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
