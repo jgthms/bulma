@@ -5,28 +5,11 @@
         <p class="bd-partner-title">Sponsors</p>
 
         <div class="bd-partner-sponsors">
-          {% for sponsor_id in site.data.sponsors.list %}
-            {% assign sponsor = site.data.sponsors.by_id[sponsor_id] %}
-            {% assign sponsor_path = "sponsors/" | append: sponsor_id %}
-            {% assign sponsor_alt = sponsor.name | append: " logo" %}
-
-            <div class="bd-partner-sponsor">
-              <a
-                href="{{ sponsor.url }}"
-                target="_blank"
-                rel="nofollow"
-                {% if sponsor.blend %}style="mix-blend-mode: multiply;"{% endif %}
-                >
-                {%
-                  include elements/responsive-image.html
-                  path=sponsor_path
-                  extension="png"
-                  alt=sponsor_alt
-                  width=sponsor.width
-                  height=sponsor.width
-                %}
-              </a>
-            </div>
+          {% for sponsor_id in site.data.sponsors.home %}
+            {% include elements/sponsor-item.html
+              sponsor_id=sponsor_id
+              classname="bd-partner-sponsor"
+              %}
           {% endfor %}
         </div>
       </div>
