@@ -46,7 +46,18 @@ $button-static-border-color: $grey-lighter !default
   padding-left: 0.75em
   padding-right: 0.75em
   text-align: center
-  white-space: nowrap
+  &:not(.is-multiline)
+    white-space: nowrap
+    .icon
+      &:first-child:not(:last-child)
+        margin-left: calc(-0.375em - 1px)
+        margin-right: 0.1875em
+      &:last-child:not(:first-child)
+        margin-left: 0.1875em
+        margin-right: calc(-0.375em - 1px)
+      &:first-child:last-child
+        margin-left: calc(-0.375em - 1px)
+        margin-right: calc(-0.375em - 1px)
   strong
     color: inherit
   .icon
@@ -56,15 +67,6 @@ $button-static-border-color: $grey-lighter !default
     &.is-large
       height: 1.5em
       width: 1.5em
-    &:first-child:not(:last-child)
-      margin-left: calc(-0.375em - 1px)
-      margin-right: 0.1875em
-    &:last-child:not(:first-child)
-      margin-left: 0.1875em
-      margin-right: calc(-0.375em - 1px)
-    &:first-child:last-child
-      margin-left: calc(-0.375em - 1px)
-      margin-right: calc(-0.375em - 1px)
   // States
   &:hover,
   &.is-hovered
@@ -193,6 +195,10 @@ $button-static-border-color: $grey-lighter !default
       +loader
       +center(1em)
       position: absolute !important
+  &.is-multiline
+    flex-direction: column
+    height: auto
+    min-height: 2.25em
   &.is-static
     background-color: $button-static-background-color
     border-color: $button-static-border-color
