@@ -110,6 +110,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Django Simple Bulma](https://github.com/python-discord/django-simple-bulma)         | Lightweight integration of Bulma and Bulma-Extensions for your Django app              |
 | [rbx](https://dfee.github.io/rbx)                                                    | Comprehensive React UI Framework written in TypeScript.                                |
 | [Awesome Bulma Templates](https://github.com/aldi/awesome-bulma-templates)           | Free real-world Templates built with Bulma                                              |
+| [Trunx](http://g14n.info/trunx)                                                      | Super Saiyan React components, son of awesome Bulma, implemented in TypeScript.        |
 
 ## Copyright and license
 
