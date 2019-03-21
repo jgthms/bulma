@@ -112,7 +112,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Awesome Bulma Templates](https://github.com/aldi/awesome-bulma-templates)           | Free real-world Templates built with Bulma                                              |
 | [Trunx](http://g14n.info/trunx)                                                      | Super Saiyan React components, son of awesome Bulma, implemented in TypeScript.        |
 | [@aybolit/bulma](https://github.com/web-padawan/aybolit/tree/master/packages/bulma)  | Web Components library inspired by Bulma and Bulma-extensions.                         |
-| [Drulma](hhttps://www.drupal.org/project/drulma)  | Drupal theme for Bulma.                         |
+| [Drulma](https://www.drupal.org/project/drulma)  | Drupal theme for Bulma.                         |
 
 
 ## Copyright and license
