@@ -1,35 +1,51 @@
 $button-color: $grey-darker !default
+$button-color-dark: $grey-lighter !default
 $button-background-color: $white !default
+$button-background-color-dark: $black !default
 
 $button-border-color: $grey-lighter !default
+$button-border-color-dark: $grey-darker !default
 $button-border-width: $control-border-width !default
 
 $button-padding-vertical: calc(0.375em - #{$button-border-width}) !default
 $button-padding-horizontal: 0.75em !default
 
 $button-hover-color: $link-hover !default
+$button-hover-color-dark: $link-hover-dark !default
 $button-hover-border-color: $link-hover-border !default
+$button-hover-border-color-dark: $link-hover-border-dark !default
 
 $button-focus-color: $link-focus !default
+$button-focus-color-dark: $link-focus-dark !default
 $button-focus-border-color: $link-focus-border !default
+$button-focus-border-color-dark: $link-focus-border-dark !default
 $button-focus-box-shadow-size: 0 0 0 0.125em !default
 $button-focus-box-shadow-color: rgba($link, 0.25) !default
 
 $button-active-color: $link-active !default
+$button-active-color-dark: $link-active-dark !default
 $button-active-border-color: $link-active-border !default
+$button-active-border-color-dark: $link-active-border-dark !default
 
 $button-text-color: $text !default
+$button-text-color-dark: $text-dark !default
 $button-text-hover-background-color: $background !default
+$button-text-hover-background-color-dark: $background-dark !default
 $button-text-hover-color: $text-strong !default
+$button-text-hover-color-dark: $text-strong-dark !default
 
 $button-disabled-background-color: $white !default
+$button-disabled-background-color-dark: $black !default
 $button-disabled-border-color: $grey-lighter !default
+$button-disabled-border-color-dark: $grey-darker !default
 $button-disabled-shadow: none !default
 $button-disabled-opacity: 0.5 !default
 
 $button-static-color: $grey !default
 $button-static-background-color: $white-ter !default
+$button-static-background-color-dark: $black-ter !default
 $button-static-border-color: $grey-lighter !default
+$button-static-border-color-dark: $grey-darker !default
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
@@ -57,6 +73,10 @@ $button-static-border-color: $grey-lighter !default
   padding-top: $button-padding-vertical
   text-align: center
   white-space: nowrap
+  @media (prefers-color-scheme: dark)
+    background-color: $button-background-color-dark
+    border-color: $button-border-color-dark
+    color: $button-color-dark
   strong
     color: inherit
   .icon
@@ -80,6 +100,9 @@ $button-static-border-color: $grey-lighter !default
   &.is-hovered
     border-color: $button-hover-border-color
     color: $button-hover-color
+    @media (prefers-color-scheme: dark)
+      border-color: $button-hover-border-color-dark
+      color: $button-hover-color-dark
   &:focus,
   &.is-focused
     border-color: $button-focus-border-color
@@ -90,18 +113,26 @@ $button-static-border-color: $grey-lighter !default
   &.is-active
     border-color: $button-active-border-color
     color: $button-active-color
+    @media (prefers-color-scheme: dark)
+      border-color: $button-active-border-color-dark
+      color: $button-active-color-dark
   // Colors
   &.is-text
     background-color: transparent
     border-color: transparent
     color: $button-text-color
     text-decoration: underline
+    @media (prefers-color-scheme: dark)
+      color: $button-text-color-dark
     &:hover,
     &.is-hovered,
     &:focus,
     &.is-focused
       background-color: $button-text-hover-background-color
       color: $button-text-hover-color
+      @media (prefers-color-scheme: dark)
+        background-color: $button-text-hover-background-color-dark
+        color: $button-text-hover-color-dark
     &:active,
     &.is-active
       background-color: darken($button-text-hover-background-color, 5%)

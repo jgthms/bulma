@@ -1,8 +1,10 @@
 $body-background-color: $white !default
+$body-background-color-dark: #17181c !default
 $body-size: 16px !default
 $body-rendering: optimizeLegibility !default
 $body-family: $family-primary !default
 $body-color: $text !default
+$body-color-dark: $text-dark !default
 $body-weight: $weight-normal !default
 $body-line-height: 1.5 !default
 $body-overflow-x: hidden !default
@@ -14,10 +16,12 @@ $code-weight: normal !default
 $code-size: 0.875em !default
 
 $hr-background-color: $background !default
+$hr-background-color-dark: $background-dark !default
 $hr-height: 2px !default
 $hr-margin: 1.5rem 0 !default
 
 $strong-color: $text-strong !default
+$strong-color-dark: $text-strong-dark !default
 $strong-weight: $weight-bold !default
 
 html
@@ -30,6 +34,8 @@ html
   overflow-y: $body-overflow-y
   text-rendering: $body-rendering
   text-size-adjust: 100%
+  @media (prefers-color-scheme: dark)
+    background-color: $body-background-color-dark
 
 article,
 aside,
@@ -58,6 +64,8 @@ body
   font-size: 1rem
   font-weight: $body-weight
   line-height: $body-line-height
+  @media (prefers-color-scheme: dark)
+    color: $body-color-dark
 
 // Inline
 
@@ -65,10 +73,14 @@ a
   color: $link
   cursor: pointer
   text-decoration: none
+  @media (prefers-color-scheme: dark)
+    color: $link-dark
   strong
     color: currentColor
   &:hover
     color: $link-hover
+    @media (prefers-color-scheme: dark)
+      color: $link-hover-dark
 
 code
   background-color: $code-background
@@ -83,6 +95,8 @@ hr
   display: block
   height: $hr-height
   margin: $hr-margin
+  @media (prefers-color-scheme: dark)
+    background-color: $hr-background-color-dark
 
 img
   height: auto
@@ -102,6 +116,8 @@ span
 strong
   color: $strong-color
   font-weight: $strong-weight
+  @media (prefers-color-scheme: dark)
+    color: $strong-color-dark
 
 // Block
 
@@ -117,6 +133,9 @@ pre
   padding: 1.25rem 1.5rem
   white-space: pre
   word-wrap: normal
+  @media (prefers-color-scheme: dark)
+    background-color: $pre-background-dark
+    color: $pre-dark
   code
     background-color: transparent
     color: currentColor
@@ -130,3 +149,5 @@ table
     vertical-align: top
   th
     color: $text-strong
+    @media (prefers-color-scheme: dark)
+      color: $text-strong-dark

@@ -1,6 +1,8 @@
 $navbar-background-color: $white !default
+$navbar-background-color-dark: #17181c !default
 $navbar-box-shadow-size: 0 2px 0 0 !default
 $navbar-box-shadow-color: $background !default
+$navbar-box-shadow-color-dark: $background-dark !default
 $navbar-height: 3.25rem !default
 $navbar-padding-vertical: 1rem !default
 $navbar-padding-horizontal: 2rem !default
@@ -8,8 +10,11 @@ $navbar-z: 30 !default
 $navbar-fixed-z: 30 !default
 
 $navbar-item-color: $grey-dark !default
+$navbar-item-color-dark: $grey-light !default
 $navbar-item-hover-color: $link !default
+$navbar-item-hover-color-dark: $link-dark !default
 $navbar-item-hover-background-color: $white-bis !default
+$navbar-item-hover-background-color-dark: $black-bis !default
 $navbar-item-active-color: $black !default
 $navbar-item-active-background-color: transparent !default
 $navbar-item-img-max-height: 1.75rem !default
@@ -57,6 +62,8 @@ $navbar-breakpoint: $desktop !default
   min-height: $navbar-height
   position: relative
   z-index: $navbar-z
+  @media (prefers-color-scheme: dark)
+    background-color: $navbar-background-color-dark
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
@@ -109,6 +116,8 @@ $navbar-breakpoint: $desktop !default
     width: 100%
   &.has-shadow
     box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color
+    @media (prefers-color-scheme: dark)
+      box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color-dark
   &.is-fixed-bottom,
   &.is-fixed-top
     +navbar-fixed
@@ -116,6 +125,8 @@ $navbar-breakpoint: $desktop !default
     bottom: 0
     &.has-shadow
       box-shadow: $navbar-bottom-box-shadow-size $navbar-box-shadow-color
+      @media (prefers-color-scheme: dark)
+        box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color-dark
   &.is-fixed-top
     top: 0
 
@@ -159,6 +170,8 @@ body
   line-height: 1.5
   padding: 0.5rem 0.75rem
   position: relative
+  @media (prefers-color-scheme: dark)
+    color: $navbar-item-color-dark
   .icon
     &:only-child
       margin-left: -0.25rem
@@ -171,6 +184,9 @@ a.navbar-item,
   &.is-active
     background-color: $navbar-item-hover-background-color
     color: $navbar-item-hover-color
+    @media (prefers-color-scheme: dark)
+      background-color: $navbar-item-hover-background-color-dark
+      color: $navbar-item-hover-color-dark
 
 .navbar-item
   display: block
