@@ -1,15 +1,23 @@
 $card-color: $text !default
+$card-color-dark: $text-dark !default
 $card-background-color: $white !default
+$card-background-color-dark: $black !default
 $card-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default
+$card-shadow-dark: 0 2px 3px rgba($white, 0.1), 0 0 0 1px rgba($white, 0.1) !default
 
 $card-header-background-color: transparent !default
+$card-header-background-color-dark: transparent !default
 $card-header-color: $text-strong !default
+$card-header-color-dark: $text-strong-dark !default
 $card-header-shadow: 0 1px 2px rgba($black, 0.1) !default
+$card-header-shadow-dark: 0 1px 2px rgba($white, 0.1) !default
 $card-header-weight: $weight-bold !default
 
 $card-content-background-color: transparent !default
+$card-content-background-color-dark: transparent !default
 
 $card-footer-background-color: transparent !default
+$card-footer-background-color-dark: transparent !default
 $card-footer-border-top: 1px solid $border !default
 
 .card
@@ -18,12 +26,19 @@ $card-footer-border-top: 1px solid $border !default
   color: $card-color
   max-width: 100%
   position: relative
+  @media (prefers-color-scheme: dark)
+    background-color: $card-background-color-dark
+    box-shadow: $card-shadow-dark
+    color: $card-color-dark
 
 .card-header
   background-color: $card-header-background-color
   align-items: stretch
   box-shadow: $card-header-shadow
   display: flex
+  @media (prefers-color-scheme: dark)
+    background-color: $card-header-background-color-dark
+    box-shadow: $card-header-shadow-dark
 
 .card-header-title
   align-items: center
@@ -32,6 +47,8 @@ $card-footer-border-top: 1px solid $border !default
   flex-grow: 1
   font-weight: $card-header-weight
   padding: 0.75rem
+  @media (prefers-color-scheme: dark)
+    color: $card-header-color-dark
   &.is-centered
     justify-content: center
 
@@ -49,12 +66,16 @@ $card-footer-border-top: 1px solid $border !default
 .card-content
   background-color: $card-content-background-color
   padding: 1.5rem
+  @media (prefers-color-scheme: dark)
+    background-color: $card-content-background-color-dark
 
 .card-footer
   background-color: $card-footer-background-color
   border-top: $card-footer-border-top
   align-items: stretch
   display: flex
+  @media (prefers-color-scheme: dark)
+    background-color: $card-footer-background-color-dark
 
 .card-footer-item
   align-items: center
