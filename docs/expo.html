@@ -62,7 +62,7 @@ breadcrumb:
           <div class="bd-websites">
             {% for website_id in site.data.expo.lists.expo %}
               {% assign website = site.data.expo.by_id[website_id] %}
-              {% assign imageName = website.name | slugify %}
+              {% assign imageName = website_id | slugify %}
               {% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
               <article class="bd-website {% if website.highlighted %}bd-is-highlighted{% endif %}">
                 <a class="bd-website-image" href="{{ website.url }}" target="_blank" rel="nofollow">
