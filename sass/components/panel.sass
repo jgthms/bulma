@@ -28,9 +28,13 @@ $panel-icon-color: $text-light !default
   &:not(:last-child)
     margin-bottom: 1.5rem
 
+button.panel-block
+  +reset-button
+
 .panel-heading,
 .panel-tabs,
-.panel-block
+.panel-block,
+button.panel-block
   border-bottom: $panel-item-border
   border-left: $panel-item-border
   border-right: $panel-item-border
@@ -51,27 +55,38 @@ $panel-icon-color: $text-light !default
   display: flex
   font-size: 0.875em
   justify-content: center
-  a
+  button
+    +reset-button
+  a,
+  button
+    color: $link
     border-bottom: $panel-tab-border-bottom
     margin-bottom: -1px
     padding: 0.5em
+    strong
+      color: currentColor
+    &:hover
+      color: $link-hover
     // Modifiers
     &.is-active
       border-bottom-color: $panel-tab-active-border-bottom-color
       color: $panel-tab-active-color
 
 .panel-list
-  a
+  a,
+  button
     color: $panel-list-item-color
     &:hover
       color: $panel-list-item-hover-color
 
-.panel-block
+.panel-block,
+button.panel-block
   align-items: center
   color: $panel-block-color
   display: flex
   justify-content: flex-start
   padding: 0.5em 0.75em
+  width: 100%
   input[type="checkbox"]
     margin-right: 0.75em
   & > .control
@@ -87,6 +102,7 @@ $panel-icon-color: $text-light !default
       color: $panel-block-active-icon-color
 
 a.panel-block,
+button.panel-block,
 label.panel-block
   cursor: pointer
   &:hover

@@ -68,6 +68,7 @@ $navbar-breakpoint: $desktop !default
         .navbar-link
           color: $color-invert
         & > a.navbar-item,
+        & > button.navbar-item,
         .navbar-link
           &:hover,
           &.is-active
@@ -85,6 +86,7 @@ $navbar-breakpoint: $desktop !default
           .navbar-link
             color: $color-invert
           & > a.navbar-item,
+          & > button.navbar-item,
           .navbar-link
             &:hover,
             &.is-active
@@ -98,7 +100,8 @@ $navbar-breakpoint: $desktop !default
           background-color: darken($color, 5%)
           color: $color-invert
         .navbar-dropdown
-          a.navbar-item
+          a.navbar-item,
+          button.navbar-item
             &.is-active
               background-color: $color
               color: $color-invert
@@ -134,7 +137,8 @@ body
   min-height: $navbar-height
 
 .navbar-brand
-  a.navbar-item
+  a.navbar-item,
+  button.navbar-item
     &:hover
       background-color: transparent
 
@@ -144,7 +148,11 @@ body
   overflow-x: auto
   overflow-y: hidden
 
-.navbar-burger
+button.navbar-burger
+  +reset-button
+
+.navbar-burger,
+button.navbar-burger
   color: $navbar-burger-color
   +hamburger($navbar-height)
   margin-left: auto
@@ -152,8 +160,14 @@ body
 .navbar-menu
   display: none
 
+button.navbar-item,
+button.navbar-link
+  +reset-button
+
 .navbar-item,
-.navbar-link
+button.navbar-item,
+.navbar-link,
+button.navbar-link
   color: $navbar-item-color
   display: block
   line-height: 1.5
@@ -165,6 +179,7 @@ body
       margin-right: -0.25rem
 
 a.navbar-item,
+button.navbar-item,
 .navbar-link
   cursor: pointer
   &:hover,
@@ -281,10 +296,12 @@ a.navbar-item,
       .navbar-end
         align-items: center
       a.navbar-item,
+      button.navbar-item,
       .navbar-link
         border-radius: $radius
     &.is-transparent
       a.navbar-item,
+      button.navbar-item,
       .navbar-link
         &:hover,
         &.is-active
@@ -295,7 +312,8 @@ a.navbar-item,
           .navbar-link
             background-color: transparent !important
       .navbar-dropdown
-        a.navbar-item
+        a.navbar-item,
+        button.navbar-item
           &:hover
             background-color: $navbar-dropdown-item-hover-background-color
             color: $navbar-dropdown-item-hover-color
@@ -356,8 +374,10 @@ a.navbar-item,
     .navbar-item
       padding: 0.375rem 1rem
       white-space: nowrap
-    a.navbar-item
+    a.navbar-item,
+    button.navbar-item
       padding-right: 3rem
+      width: 100%
       &:hover
         background-color: $navbar-dropdown-item-hover-background-color
         color: $navbar-dropdown-item-hover-color
@@ -410,6 +430,7 @@ a.navbar-item,
       padding-bottom: $navbar-height + ($navbar-padding-vertical * 2)
   // Hover/Active states
   a.navbar-item,
+  button.navbar-item,
   .navbar-link
     &.is-active
       color: $navbar-item-active-color
