@@ -1,31 +1,48 @@
 $input-color: $grey-darker !default
+$input-color-dark: $grey-lighter !default
 $input-background-color: $white !default
+$input-background-color-dark: $black !default
 $input-border-color: $grey-lighter !default
+$input-border-color-dark: $grey-darker !default
 $input-height: $control-height !default
 $input-shadow: inset 0 1px 2px rgba($black, 0.1) !default
 $input-placeholder-color: rgba($input-color, 0.3) !default
+$input-placeholder-color-dark: rgba($input-color-dark, 0.3) !default
 
 $input-hover-color: $grey-darker !default
+$input-hover-color-dark: $grey-lighter !default
 $input-hover-border-color: $grey-light !default
+$input-hover-border-color-dark: $grey-dark !default
 
 $input-focus-color: $grey-darker !default
+$input-focus-color-dark: $grey-lighter !default
 $input-focus-border-color: $link !default
+$input-focus-border-color-dark: $link-dark !default
 $input-focus-box-shadow-size: 0 0 0 0.125em !default
 $input-focus-box-shadow-color: rgba($link, 0.25) !default
+$input-focus-box-shadow-color-dark: rgba($link-dark, 0.25) !default
 
 $input-disabled-color: $text-light !default
+$input-disabled-color-dark: $text-dark !default
 $input-disabled-background-color: $background !default
+$input-disabled-background-color-dark: $background-dark !default
 $input-disabled-border-color: $background !default
+$input-disabled-border-color-dark: $background-dark !default
 $input-disabled-placeholder-color: rgba($input-disabled-color, 0.3) !default
+$input-disabled-placeholder-color-dark: rgba($input-disabled-color-dark, 0.3) !default
 
 $input-arrow: $link !default
+$input-arrow-dark: $link-dark !default
 
 $input-icon-color: $grey-lighter !default
+$input-icon-color-dark: $grey-darker !default
 $input-icon-active-color: $grey !default
+$input-icon-active-color-dark: $grey !default
 
 $input-radius: $radius !default
 
 $file-border-color: $border !default
+$file-border-color-dark: $border-dark !default
 $file-radius: $radius !default
 
 $file-cta-background-color: $white-ter !default
@@ -49,25 +66,41 @@ $help-size: $size-small !default
   border-color: $input-border-color
   border-radius: $input-radius
   color: $input-color
+  @media (prefers-color-scheme: dark)
+    background-color: $input-background-color-dark
+    border-color: $input-border-color-dark
+    color: $input-color-dark
   +placeholder
     color: $input-placeholder-color
+    @media (prefers-color-scheme: dark)
+      color: $input-placeholder-color-dark
   &:hover,
   &.is-hovered
     border-color: $input-hover-border-color
+    @media (prefers-color-scheme: dark)
+      border-color: $input-hover-border-color-dark
   &:focus,
   &.is-focused,
   &:active,
   &.is-active
     border-color: $input-focus-border-color
     box-shadow: $input-focus-box-shadow-size $input-focus-box-shadow-color
+    @media (prefers-color-scheme: dark)
+      border-color: $input-focus-border-color-dark
   &[disabled],
   fieldset[disabled] &
     background-color: $input-disabled-background-color
     border-color: $input-disabled-border-color
     box-shadow: none
     color: $input-disabled-color
+    @media (prefers-color-scheme: dark)
+      background-color: $input-disabled-background-color-dark
+      border-color: $input-disabled-border-color-dark
+      color: $input-disabled-color-dark
     +placeholder
       color: $input-disabled-placeholder-color
+      @media (prefers-color-scheme: dark)
+        color: $input-disabled-placeholder-color-dark
 
 .input,
 .textarea
@@ -139,10 +172,14 @@ $help-size: $size-small !default
     cursor: pointer
   &:hover
     color: $input-hover-color
+    @media (prefers-color-scheme: dark)
+      color: $input-hover-color-dark
   &[disabled],
   fieldset[disabled] &
     color: $input-disabled-color
     cursor: not-allowed
+    @media (prefers-color-scheme: dark)
+      color: $input-disabled-color-dark
 
 .radio
   & + .radio

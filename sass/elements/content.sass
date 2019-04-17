@@ -1,21 +1,27 @@
 $content-heading-color: $text-strong !default
+$content-heading-color-dark: $text-strong-dark !default
 $content-heading-weight: $weight-semibold !default
 $content-heading-line-height: 1.125 !default
 
 $content-blockquote-background-color: $background !default
+$content-blockquote-background-color-dark: $background-dark !default
 $content-blockquote-border-left: 5px solid $border !default
 $content-blockquote-padding: 1.25em 1.5em !default
 
 $content-pre-padding: 1.25em 1.5em !default
 
 $content-table-cell-border: 1px solid $border !default
+$content-table-cell-border-dark: 1px solid $border-dark !default
 $content-table-cell-border-width: 0 0 1px !default
 $content-table-cell-padding: 0.5em 0.75em !default
 $content-table-cell-heading-color: $text-strong !default
+$content-table-cell-heading-color-dark: $text-strong-dark !default
 $content-table-head-cell-border-width: 0 0 2px !default
 $content-table-head-cell-color: $text-strong !default
+$content-table-head-cell-color-dark: $text-strong-dark !default
 $content-table-foot-cell-border-width: 2px 0 0 !default
 $content-table-foot-cell-color: $text-strong !default
+$content-table-foot-cell-color-dark: $text-strong-dark !default
 
 .content
   @extend %block
@@ -41,6 +47,8 @@ $content-table-foot-cell-color: $text-strong !default
     color: $content-heading-color
     font-weight: $content-heading-weight
     line-height: $content-heading-line-height
+    @media (prefers-color-scheme: dark)
+      color: $content-heading-color-dark
   h1
     font-size: 2em
     margin-bottom: 0.5em
@@ -69,6 +77,9 @@ $content-table-foot-cell-color: $text-strong !default
     background-color: $content-blockquote-background-color
     border-left: $content-blockquote-border-left
     padding: $content-blockquote-padding
+    @media (prefers-color-scheme: dark)
+      background-color: $content-blockquote-background-color-dark
+      border-left: $content-table-cell-border-dark
   ol
     list-style-position: outside
     margin-left: 2em
@@ -126,6 +137,8 @@ $content-table-foot-cell-color: $text-strong !default
     th
       color: $content-table-cell-heading-color
       text-align: left
+      @media (prefers-color-scheme: dark)
+        color: $content-table-cell-heading-color-dark
     thead
       td,
       th

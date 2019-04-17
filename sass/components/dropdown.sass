@@ -1,15 +1,23 @@
 $dropdown-content-background-color: $white !default
+$dropdown-content-background-color-dark: $black !default
 $dropdown-content-arrow: $link !default
+$dropdown-content-arrow-dark: $link-dark !default
 $dropdown-content-offset: 4px !default
 $dropdown-content-radius: $radius !default
 $dropdown-content-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default
+$dropdown-content-shadow-dark: 0 2px 3px rgba($white, 0.1), 0 0 0 1px rgba($white, 0.1) !default
 $dropdown-content-z: 20 !default
 
 $dropdown-item-color: $grey-dark !default
+$dropdown-item-color-dark: $grey-light !default
 $dropdown-item-hover-color: $black !default
+$dropdown-item-hover-color-dark: $white !default
 $dropdown-item-hover-background-color: $background !default
+$dropdown-item-hover-background-color-dark: $background-dark !default
 $dropdown-item-active-color: $link-invert !default
+$dropdown-item-active-color-dark: $link-invert-dark !default
 $dropdown-item-active-background-color: $link !default
+$dropdown-item-active-background-color-dark: $link-dark !default
 
 $dropdown-divider-background-color: $border !default
 
@@ -47,6 +55,9 @@ $dropdown-divider-background-color: $border !default
   box-shadow: $dropdown-content-shadow
   padding-bottom: 0.5rem
   padding-top: 0.5rem
+  @media (prefers-color-scheme: dark)
+    background-color: $dropdown-content-background-color-dark
+  box-shadow: $dropdown-content-shadow-dark
 
 .dropdown-item
   color: $dropdown-item-color
@@ -55,6 +66,8 @@ $dropdown-divider-background-color: $border !default
   line-height: 1.5
   padding: 0.375rem 1rem
   position: relative
+  @media (prefers-color-scheme: dark)
+    color: $dropdown-item-color-dark
 
 a.dropdown-item,
 button.dropdown-item
@@ -65,9 +78,15 @@ button.dropdown-item
   &:hover
     background-color: $dropdown-item-hover-background-color
     color: $dropdown-item-hover-color
+    @media (prefers-color-scheme: dark)
+      background-color: $dropdown-item-hover-background-color-dark
+      color: $dropdown-item-hover-color-dark
   &.is-active
     background-color: $dropdown-item-active-background-color
     color: $dropdown-item-active-color
+    @media (prefers-color-scheme: dark)
+      background-color: $dropdown-item-active-background-color-dark
+      color: $dropdown-item-active-color-dark
 
 .dropdown-divider
   background-color: $dropdown-divider-background-color
@@ -75,3 +94,5 @@ button.dropdown-item
   display: block
   height: 1px
   margin: 0.5rem 0
+  @media (prefers-color-scheme: dark)
+    background-color: $dropdown-divider-background-color-dark

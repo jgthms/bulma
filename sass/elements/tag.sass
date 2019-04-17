@@ -1,5 +1,7 @@
 $tag-background-color: $background !default
+$tag-background-color-dark: $background-dark !default
 $tag-color: $text !default
+$tag-color-dark: $text-dark !default
 $tag-radius: $radius !default
 $tag-delete-margin: 1px !default
 
@@ -68,6 +70,9 @@ $tag-delete-margin: 1px !default
   padding-left: 0.75em
   padding-right: 0.75em
   white-space: nowrap
+  @media (prefers-color-scheme: dark)
+    background-color: $tag-background-color-dark
+    color: $tag-color-dark
   .delete
     margin-left: 0.25rem
     margin-right: -0.375rem
@@ -78,6 +83,9 @@ $tag-delete-margin: 1px !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+      @media (prefers-color-scheme: dark)
+        background-color: darken($color, 20%)
+        color: darken($color-invert, 5%)
   // Sizes
   &.is-normal
     font-size: $size-small
@@ -120,8 +128,12 @@ $tag-delete-margin: 1px !default
     &:hover,
     &:focus
       background-color: darken($tag-background-color, 5%)
+      @media (prefers-color-scheme: dark)
+        background-color: darken($tag-background-color-dark, 5%)
     &:active
       background-color: darken($tag-background-color, 10%)
+      @media (prefers-color-scheme: dark)
+        background-color: darken($tag-background-color-dark, 10%)
   &.is-rounded
     border-radius: $radius-rounded
 

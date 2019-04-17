@@ -1,6 +1,8 @@
 $navbar-background-color: $white !default
+$navbar-background-color-dark: #17181c !default
 $navbar-box-shadow-size: 0 2px 0 0 !default
 $navbar-box-shadow-color: $background !default
+$navbar-box-shadow-color-dark: $background-dark !default
 $navbar-height: 3.25rem !default
 $navbar-padding-vertical: 1rem !default
 $navbar-padding-horizontal: 2rem !default
@@ -8,38 +10,55 @@ $navbar-z: 30 !default
 $navbar-fixed-z: 30 !default
 
 $navbar-item-color: $grey-dark !default
+$navbar-item-color-dark: $grey-light !default
 $navbar-item-hover-color: $link !default
+$navbar-item-hover-color-dark: $link-dark !default
 $navbar-item-hover-background-color: $white-bis !default
+$navbar-item-hover-background-color-dark: $black-bis !default
 $navbar-item-active-color: $black !default
+$navbar-item-active-color-dark: $white !default
 $navbar-item-active-background-color: transparent !default
 $navbar-item-img-max-height: 1.75rem !default
 
 $navbar-burger-color: $navbar-item-color !default
+$navbar-burger-color-dark: $navbar-item-color-dark !default
 
 $navbar-tab-hover-background-color: transparent !default
 $navbar-tab-hover-border-bottom-color: $link !default
+$navbar-tab-hover-border-bottom-color-dark: $link-dark !default
 $navbar-tab-active-color: $link !default
+$navbar-tab-active-color-dark: $link-dark !default
 $navbar-tab-active-background-color: transparent !default
 $navbar-tab-active-border-bottom-color: $link !default
+$navbar-tab-active-border-bottom-color-dark: $link-dark !default
 $navbar-tab-active-border-bottom-style: solid !default
 $navbar-tab-active-border-bottom-width: 3px !default
 
 $navbar-dropdown-background-color: $white !default
+$navbar-dropdown-background-color-dark: $black !default
 $navbar-dropdown-border-top: 2px solid $border !default
+$navbar-dropdown-border-top-dark: 2px solid $border-dark !default
 $navbar-dropdown-offset: -4px !default
 $navbar-dropdown-arrow: $link !default
+$navbar-dropdown-arrow-dark: $link-dark !default
 $navbar-dropdown-radius: $radius-large !default
 $navbar-dropdown-z: 20 !default
 
 $navbar-dropdown-boxed-radius: $radius-large !default
 $navbar-dropdown-boxed-shadow: 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default
+$navbar-dropdown-boxed-shadow-dark: 0 8px 8px rgba($white, 0.1), 0 0 0 1px rgba($white, 0.1) !default
 
 $navbar-dropdown-item-hover-color: $black !default
+$navbar-dropdown-item-hover-color-dark: $white !default
 $navbar-dropdown-item-hover-background-color: $background !default
+$navbar-dropdown-item-hover-background-color-dark: $background-dark !default
 $navbar-dropdown-item-active-color: $link !default
+$navbar-dropdown-item-active-color-dark: $link-dark !default
 $navbar-dropdown-item-active-background-color: $background !default
+$navbar-dropdown-item-active-background-color-dark: $background-dark !default
 
 $navbar-divider-background-color: $background !default
+$navbar-divider-background-color-dark: $background-dark !default
 $navbar-divider-height: 2px !default
 
 $navbar-bottom-box-shadow-size: 0 -2px 0 0 !default
@@ -57,6 +76,8 @@ $navbar-breakpoint: $desktop !default
   min-height: $navbar-height
   position: relative
   z-index: $navbar-z
+  @media (prefers-color-scheme: dark)
+    background-color: $navbar-background-color-dark
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
@@ -109,6 +130,8 @@ $navbar-breakpoint: $desktop !default
     width: 100%
   &.has-shadow
     box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color
+    @media (prefers-color-scheme: dark)
+      box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color-dark
   &.is-fixed-bottom,
   &.is-fixed-top
     +navbar-fixed
@@ -116,6 +139,8 @@ $navbar-breakpoint: $desktop !default
     bottom: 0
     &.has-shadow
       box-shadow: $navbar-bottom-box-shadow-size $navbar-box-shadow-color
+      @media (prefers-color-scheme: dark)
+        box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color-dark
   &.is-fixed-top
     top: 0
 
@@ -148,6 +173,8 @@ body
   color: $navbar-burger-color
   +hamburger($navbar-height)
   margin-left: auto
+  @media (prefers-color-scheme: dark)
+    color: $navbar-burger-color-dark
 
 .navbar-menu
   display: none
@@ -159,6 +186,8 @@ body
   line-height: 1.5
   padding: 0.5rem 0.75rem
   position: relative
+  @media (prefers-color-scheme: dark)
+    color: $navbar-item-color-dark
   .icon
     &:only-child
       margin-left: -0.25rem
@@ -171,6 +200,9 @@ a.navbar-item,
   &.is-active
     background-color: $navbar-item-hover-background-color
     color: $navbar-item-hover-color
+    @media (prefers-color-scheme: dark)
+      background-color: $navbar-item-hover-background-color-dark
+      color: $navbar-item-hover-color-dark
 
 .navbar-item
   display: block
@@ -190,6 +222,8 @@ a.navbar-item,
     &:hover
       background-color: $navbar-tab-hover-background-color
       border-bottom-color: $navbar-tab-hover-border-bottom-color
+      @media (prefers-color-scheme: dark)
+        border-bottom-color: $navbar-tab-hover-border-bottom-color-dark
     &.is-active
       background-color: $navbar-tab-active-background-color
       border-bottom-color: $navbar-tab-active-border-bottom-color
@@ -197,6 +231,9 @@ a.navbar-item,
       border-bottom-width: $navbar-tab-active-border-bottom-width
       color: $navbar-tab-active-color
       padding-bottom: calc(0.5rem - #{$navbar-tab-active-border-bottom-width})
+      @media (prefers-color-scheme: dark)
+        border-bottom-color: $navbar-tab-active-border-bottom-color-dark
+        color: $navbar-tab-active-color-dark
 
 .navbar-content
   flex-grow: 1
@@ -209,6 +246,8 @@ a.navbar-item,
     border-color: $navbar-dropdown-arrow
     margin-top: -0.375em
     right: 1.125em
+    @media (prefers-color-scheme: dark)
+      border-color: $navbar-dropdown-arrow-dark
 
 .navbar-dropdown
   font-size: 0.875rem
@@ -224,6 +263,8 @@ a.navbar-item,
   display: none
   height: $navbar-divider-height
   margin: 0.5rem 0
+  @media (prefers-color-scheme: dark)
+    background-color: $navbar-divider-background-color-dark
 
 +until($navbar-breakpoint)
   .navbar > .container
@@ -240,6 +281,9 @@ a.navbar-item,
     background-color: $navbar-background-color
     box-shadow: 0 8px 16px rgba($black, 0.1)
     padding: 0.5rem 0
+    @media (prefers-color-scheme: dark)
+      background-color: $navbar-background-color-dark
+      box-shadow: 0 8px 16px rgba($white, 0.1)
     &.is-active
       display: block
   // Fixed navbar
@@ -251,6 +295,8 @@ a.navbar-item,
       bottom: 0
       &.has-shadow
         box-shadow: 0 -2px 3px rgba($black, 0.1)
+        @media (prefers-color-scheme: dark)
+          box-shadow: 0 -2px 3px rgba($white, 0.1)
     &.is-fixed-top-touch
       top: 0
     &.is-fixed-top,
@@ -299,9 +345,15 @@ a.navbar-item,
           &:hover
             background-color: $navbar-dropdown-item-hover-background-color
             color: $navbar-dropdown-item-hover-color
+            @media (prefers-color-scheme: dark)
+              background-color: $navbar-dropdown-item-hover-background-color-dark
+              color: $navbar-dropdown-item-hover-color-dark
           &.is-active
             background-color: $navbar-dropdown-item-active-background-color
             color: $navbar-dropdown-item-active-color
+            @media (prefers-color-scheme: dark)
+              background-color: $navbar-dropdown-item-active-background-color-dark
+              color: $navbar-dropdown-item-active-color-dark
   .navbar-burger
     display: none
   .navbar-item,
@@ -322,6 +374,9 @@ a.navbar-item,
         bottom: 100%
         box-shadow: 0 -8px 8px rgba($black, 0.1)
         top: auto
+        @media (prefers-color-scheme: dark)
+          border-bottom: $navbar-dropdown-border-top-dark
+          box-shadow: 0 -8px 8px rgba($white, 0.1)
     &.is-active,
     &.is-hoverable:hover
       .navbar-dropdown
@@ -353,6 +408,10 @@ a.navbar-item,
     position: absolute
     top: 100%
     z-index: $navbar-dropdown-z
+    @media (prefers-color-scheme: dark)
+      background-color: $navbar-dropdown-background-color-dark
+      border-top: $navbar-dropdown-border-top-dark
+      box-shadow: 0 8px 8px rgba($white, 0.1)
     .navbar-item
       padding: 0.375rem 1rem
       white-space: nowrap
@@ -361,9 +420,15 @@ a.navbar-item,
       &:hover
         background-color: $navbar-dropdown-item-hover-background-color
         color: $navbar-dropdown-item-hover-color
+        @media (prefers-color-scheme: dark)
+          background-color: $navbar-dropdown-item-hover-background-color-dark
+          color: $navbar-dropdown-item-hover-color-dark
       &.is-active
         background-color: $navbar-dropdown-item-active-background-color
         color: $navbar-dropdown-item-active-color
+        @media (prefers-color-scheme: dark)
+          background-color: $navbar-dropdown-item-active-background-color-dark
+          color: $navbar-dropdown-item-active-color-dark
     .navbar.is-spaced &,
     &.is-boxed
       border-radius: $navbar-dropdown-boxed-radius
@@ -376,6 +441,8 @@ a.navbar-item,
       transform: translateY(-5px)
       transition-duration: $speed
       transition-property: opacity, transform
+      @media (prefers-color-scheme: dark)
+        box-shadow: $navbar-dropdown-boxed-shadow-dark
     &.is-right
       left: auto
       right: 0
@@ -396,6 +463,8 @@ a.navbar-item,
       bottom: 0
       &.has-shadow
         box-shadow: 0 -2px 3px rgba($black, 0.1)
+        @media (prefers-color-scheme: dark)
+          box-shadow: 0 -2px 3px rgba($white, 0.1)
     &.is-fixed-top-desktop
       top: 0
   html,
@@ -413,6 +482,8 @@ a.navbar-item,
   .navbar-link
     &.is-active
       color: $navbar-item-active-color
+      @media (prefers-color-scheme: dark)
+        color: $navbar-item-active-color-dark
     &.is-active:not(:hover)
       background-color: $navbar-item-active-background-color
   .navbar-item.has-dropdown
@@ -420,6 +491,8 @@ a.navbar-item,
     &.is-active
       .navbar-link
         background-color: $navbar-item-hover-background-color
+        @media (prefers-color-scheme: dark)
+          background-color: $navbar-item-hover-background-color-dark
 
 // Combination
 

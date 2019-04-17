@@ -1,11 +1,15 @@
 $breadcrumb-item-color: $link !default
+$breadcrumb-item-color-dark: $link-dark !default
 $breadcrumb-item-hover-color: $link-hover !default
+$breadcrumb-item-hover-color-dark: $link-hover-dark !default
 $breadcrumb-item-active-color: $text-strong !default
+$breadcrumb-item-active-color-dark: $text-strong-dark !default
 
 $breadcrumb-item-padding-vertical: 0 !default
 $breadcrumb-item-padding-horizontal: 0.75em !default
 
 $breadcrumb-item-separator-color: $grey-light !default
+$breadcrumb-item-separator-color-dark: $grey-dark !default
 
 .breadcrumb
   @extend %block
@@ -18,8 +22,12 @@ $breadcrumb-item-separator-color: $grey-light !default
     display: flex
     justify-content: center
     padding: $breadcrumb-item-padding-vertical $breadcrumb-item-padding-horizontal
+    @media (prefers-color-scheme: dark)
+      color: $breadcrumb-item-color-dark
     &:hover
       color: $breadcrumb-item-hover-color
+      @media (prefers-color-scheme: dark)
+        color: $breadcrumb-item-hover-color-dark
   li
     align-items: center
     display: flex
@@ -30,9 +38,13 @@ $breadcrumb-item-separator-color: $grey-light !default
         color: $breadcrumb-item-active-color
         cursor: default
         pointer-events: none
+        @media (prefers-color-scheme: dark)
+          color: $breadcrumb-item-active-color-dark
     & + li::before
       color: $breadcrumb-item-separator-color
       content: "\0002f"
+      @media (prefers-color-scheme: dark)
+        color: $breadcrumb-item-separator-color-dark
   ul,
   ol
     align-items: flex-start
