@@ -2,6 +2,10 @@
 
 ## 0.7.4
 
+### Improvements
+
+* #2396 Update docs with webpack 4 example
+
 ### Bug fixes
 
 * #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
