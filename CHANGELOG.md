@@ -5,6 +5,7 @@
 ### New features
 
 * #2375 Add `.is-relative` helper
+* #2321 Make `.navbar` focus behave like hover for the navigation
 
 ### Improvements
 
