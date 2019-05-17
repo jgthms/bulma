@@ -5,6 +5,7 @@
 ### Improvements
 
 * #2396 Update docs with webpack 4 example
+* #2381 Make centered buttons have equal margin
 
 ### Bug fixes
 
