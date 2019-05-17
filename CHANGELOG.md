@@ -4,6 +4,8 @@
 
 ### New features
 
+#### Support for overriding the `font-family`
+
 You can now specify a different `font-family` for the `.title`, `.subtitle` and `.button` by using the variables `$title-family`, `$subtitle-family` and `$button-family` respectively.
 
 Simply set a value when importing Bulma:
