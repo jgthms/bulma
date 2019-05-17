@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.7.4
+
+### Bug fixes
+
+* #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
+
 ## 0.7.3
 
 ### New features
