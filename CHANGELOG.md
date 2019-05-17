@@ -1,6 +1,10 @@
 # Bulma Changelog
 
-## 0.7.4
+## Upcoming release
+
+### New features
+
+* #2375 Add `.is-relative` helper
 
 ### Improvements
 
