@@ -10,6 +10,51 @@
 * #2231 Add `.has-text-weight-medium` helper
 * #2224 Add customizable border radius to progress bar
 
+### New variables
+
+#### Initial variables
+
+* `$block-spacing`
+
+#### Base
+
+* `$body-font-size`
+* `$small-font-size`
+* `$pre-font-size`
+* `$pre-padding`
+* `$pre-code-font-size`
+
+#### Components
+
+* `$card-header-padding`
+* `$card-content-padding`
+* `$card-media-margin`
+* `$dropdown-menu-min-width`
+* `$dropdown-content-padding-bottom`
+* `$dropdown-content-padding-top`
+* `$level-item-spacing`
+* `$menu-list-line-height`
+* `$menu-list-link-padding`
+* `$menu-nested-list-margin`
+* `$menu-nested-list-padding-left`
+* `$menu-label-font-size`
+* `$menu-label-letter-spacing`
+* `$menu-label-spacing`
+* `$pagination-item-font-size`
+* `$pagination-item-margin`
+* `$pagination-item-padding-left`
+* `$pagination-item-padding-right`
+* `$panel-margin`
+* `$panel-tabs-font-size`
+
+#### Elements
+
+* `$container-offset`
+
+#### Grid
+
+* `$tile-spacing`
+
 ### Improvements
 
 * #2396 Update docs with webpack 4 example
