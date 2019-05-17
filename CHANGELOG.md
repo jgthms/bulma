@@ -4,6 +4,14 @@
 
 ### New features
 
+You can now specify a different `font-family` for the `.title`, `.subtitle` and `.button` by using the variables `$title-family`, `$subtitle-family` and `$button-family` respectively.
+
+Simply set a value when importing Bulma:
+
+```scss
+$title-family: "Georgia", serif;
+```
+
 * #2375 Add `.is-relative` helper
 * #2321 Make `.navbar` focus behave like hover for the navigation
 * #2290 Fix #1186 -> Reset the offset on columns
