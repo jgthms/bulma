@@ -5,6 +5,7 @@
 ### Bug fixes
 
 * #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
+* #2463 Remove duplicate `.has-addons` in `tag.sass`
 
 ## 0.7.3
 
