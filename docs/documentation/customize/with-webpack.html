@@ -86,6 +86,42 @@ module.exports = {
 };
 {% endcapture %}
 
+{% capture configv4 %}
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/bundle.js'
+  },
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              // options...
+            }
+          }
+        ]
+    }]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: css/[name].bundle.css'
+    }),
+  ]
+};
+{% endcapture %}
+
 {% capture step_3 %}
   <div class="content">
     <p>
@@ -95,6 +131,24 @@ module.exports = {
 
   <div class="highlight-full">
     {% highlight js %}{{ config }}{% endhighlight %}
+  </div>
+
+  <div class="content">
+    <p>
+      This setup takes the <code>src</code> folder as input, and outputs in the <code>dist</code> folder.
+    </p>
+  </div>
+{% endcapture %}
+
+{% capture step_3.5 %}
+  <div class="content">
+    <p>
+      Create a <code>webpack.config.js</code> file:
+    </p>
+  </div>
+
+  <div class="highlight-full">
+    {% highlight js %}{{ configv4 }}{% endhighlight %}
   </div>
 
   <div class="content">
@@ -174,8 +228,15 @@ Wrote CSS to /path/to/mybulma/css/mystyles.css
 <hr>
 
 {% include components/step.html
-  title="3. Create a webpack config"
+  title="3. Create a webpack config (Webpack <= 3)"
   content=step_3
+%}
+
+<hr>
+    
+{% include components/step.html
+  title="3.5. Create a webpack config (Webpack 4)"
+  content=step_3.5
 %}
 
 <hr>
