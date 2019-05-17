@@ -26,4 +26,8 @@ This is a **new feature | improvement | bugfix | documentation fix**.
 <!-- How have you confirmed this feature works? -->
 <!-- Please explain more than "Yes". -->
 
+### Changelog updated?
+
+Yes | No
+
 <!-- Thanks! -->
