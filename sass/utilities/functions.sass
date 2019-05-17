@@ -56,7 +56,17 @@
   @return (map-get($color-rgb, 'red') * .2126) + (map-get($color-rgb, 'green') * .7152) + (map-get($color-rgb, 'blue') * .0722)
 
 @function findColorInvert($color)
-  @if (colorLuminance($color) > 0.55)
+  @if (type-of($color) == 'color') and (colorLuminance($color) > 0.6)
     @return rgba(#000, 0.7)
   @else
     @return #fff
+
+@function findLightColor($color)
+  @if type-of($color) == 'color'
+    @return change-color($color, $lightness: 96%)
+  @return $background
+
+@function findDarkColor($color)
+  @if type-of($color) == 'color'
+    @return change-color($color, $lightness: 29%)
+  @return $text-strong

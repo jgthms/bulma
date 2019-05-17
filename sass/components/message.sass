@@ -37,21 +37,29 @@ $message-colors: $colors !default
   &.is-large
     font-size: $size-large
   // Colors
-  @each $name, $pair in $message-colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
-    $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-    $color-luminance: colorLuminance($color)
-    $darken-percentage: $color-luminance * 70%
-    $desaturate-percentage: $color-luminance * 30%
+  @each $name, $list in $message-colors
+    $color: nth($list, 1)
+    $color-invert: nth($list, 2)
+    $color-light: null
+    $color-dark: null
+    @if length($list) > 2
+      $color-light: nth($list, 3)
+      $color-dark: nth($list, 4)
+    @else
+      $color-light: findLightColor($color)
+      $color-dark: findDarkColor($color)
+    // $color-lightning: max((100% - lightness($color)) - 2%, 0%)
+    // $color-luminance: colorLuminance($color)
+    // $darken-percentage: $color-luminance * 70%
+    // $desaturate-percentage: $color-luminance * 30%
     &.is-#{$name}
-      background-color: lighten($color, $color-lightning)
+      background-color: $color-light
       .message-header
         background-color: $color
         color: $color-invert
       .message-body
         border-color: $color
-        color: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+        color: $color-dark
 
 .message-header
   align-items: center
