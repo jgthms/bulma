@@ -6,6 +6,7 @@
 
 * #2375 Add `.is-relative` helper
 * #2321 Make `.navbar` focus behave like hover for the navigation
+* #2290 Fix #1186 -> Reset the offset on columns
 
 ### Improvements
 
