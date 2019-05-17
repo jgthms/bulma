@@ -45,6 +45,30 @@
         </td>
       </tr>
       <tr>
+        <td>Robert Bolder</td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>Phil Alves</td>
+        <td>
+          <a href="https://twitter.com/philalves01" target="_blank" rel="nofollow">
+          @philalves01
+          </a>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>HebergeurWeb.ca</td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
         <td>DontPayFull</td>
         <td>
         </td>
@@ -66,27 +90,10 @@
     </thead>
     <tbody>
       <tr>
-        <td>Stuart Stanfield</td>
-        <td>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
         <td>Nazar</td>
         <td>
           <a href="https://twitter.com/nazar_io" target="_blank" rel="nofollow">
           @nazar_io
-          </a>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Jon Yongfook</td>
-        <td>
-          <a href="https://twitter.com/yongfook" target="_blank" rel="nofollow">
-          @yongfook
           </a>
         </td>
         <td>
@@ -140,15 +147,18 @@
     </thead>
     <tbody>
       <tr>
-        <td>Will Turnage</td>
+        <td>Wikiki</td>
         <td>
         </td>
         <td>
         </td>
       </tr>
       <tr>
-        <td>Wikiki</td>
+        <td>Tyler Weeres</td>
         <td>
+          <a href="https://twitter.com/tweeres04" target="_blank" rel="nofollow">
+          @tweeres04
+          </a>
         </td>
         <td>
         </td>
@@ -164,14 +174,7 @@
         </td>
       </tr>
       <tr>
-        <td>Stanley Eosakul</td>
-        <td>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Rob Mellett</td>
+        <td>Stuart Stanfield</td>
         <td>
         </td>
         <td>
@@ -192,42 +195,11 @@
         </td>
       </tr>
       <tr>
-        <td>MrG0lden</td>
-        <td>
-          <a href="https://twitter.com/mrg0lden" target="_blank" rel="nofollow">
-          @mrg0lden
-          </a>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Michael Schinis</td>
-        <td>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Luis Guillermo Moreno</td>
-        <td>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
         <td>Leo Zeba</td>
         <td>
           <a href="https://twitter.com/leozeba" target="_blank" rel="nofollow">
           @leozeba
           </a>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Kyu</td>
-        <td>
         </td>
         <td>
         </td>
@@ -259,26 +231,6 @@
       <tr>
         <td>Dmitry Malyshev</td>
         <td>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Daniel Zavala</td>
-        <td>
-          <a href="https://twitter.com/Siedrix" target="_blank" rel="nofollow">
-          @Siedrix
-          </a>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Corentin Hatte</td>
-        <td>
-          <a href="https://twitter.com/viki53" target="_blank" rel="nofollow">
-          @viki53
-          </a>
         </td>
         <td>
         </td>

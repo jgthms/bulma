@@ -1019,7 +1019,7 @@ Variable name changes (mostly appending `-color`):
 ## 0.0.26
 
 * Added: `.modal-card`
-* Added: display responsive utilites
+* Added: display responsive utilities
 * Added: `.nav-center`
 * Added: `.tabs ul` left center right
 * Changed: `.navbar` renamed to `.level`

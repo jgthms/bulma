@@ -18,18 +18,20 @@
       </div>
     </div>
 
-    <div class="bd-footer-donation column">
-      <p class="bd-footer-donation-title">
-        Visit our <strong>Sponsor</strong>
-      </p>
+    {% if site.data.sponsors.footer.size > 0 %}
+      <div class="bd-footer-donation column">
+        <p class="bd-footer-donation-title">
+          Visit our <strong>Sponsor</strong>
+        </p>
 
-      {% for sponsor_id in site.data.sponsors.footer %}
-        {% include elements/sponsor-item.html
-          sponsor_id=sponsor_id
-          classname="bd-footer-sponsor"
-          %}
-      {% endfor %}
-    </div>
+        {% for sponsor_id in site.data.sponsors.footer %}
+          {% include elements/sponsor-item.html
+            sponsor_id=sponsor_id
+            classname="bd-footer-sponsor"
+            %}
+        {% endfor %}
+      </div>
+    {% endif %}
 
     <div class="bd-footer-donation column">
       <p class="bd-footer-donation-title">
