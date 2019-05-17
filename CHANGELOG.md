@@ -14,6 +14,7 @@
 
 * #2396 Update docs with webpack 4 example
 * #2381 Make centered buttons have equal margin
+* Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
 
 ### Bug fixes
 
