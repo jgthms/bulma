@@ -17,6 +17,7 @@
 
 * #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
 * #2463 Remove duplicate `.has-addons` in `tag.sass`
+* #2253 Fix `$gap` variable default value
 
 ## 0.7.3
 
