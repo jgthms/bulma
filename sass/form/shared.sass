@@ -1,0 +1,55 @@
+$input-color: $grey-darker !default
+$input-background-color: $white !default
+$input-border-color: $grey-lighter !default
+$input-height: $control-height !default
+$input-shadow: inset 0 1px 2px rgba($black, 0.1) !default
+$input-placeholder-color: rgba($input-color, 0.3) !default
+
+$input-hover-color: $grey-darker !default
+$input-hover-border-color: $grey-light !default
+
+$input-focus-color: $grey-darker !default
+$input-focus-border-color: $link !default
+$input-focus-box-shadow-size: 0 0 0 0.125em !default
+$input-focus-box-shadow-color: rgba($link, 0.25) !default
+
+$input-disabled-color: $text-light !default
+$input-disabled-background-color: $background !default
+$input-disabled-border-color: $background !default
+$input-disabled-placeholder-color: rgba($input-disabled-color, 0.3) !default
+
+$input-arrow: $link !default
+
+$input-icon-color: $grey-lighter !default
+$input-icon-active-color: $grey !default
+
+$input-radius: $radius !default
+
+=input
+  @extend %control
+  background-color: $input-background-color
+  border-color: $input-border-color
+  border-radius: $input-radius
+  color: $input-color
+  +placeholder
+    color: $input-placeholder-color
+  &:hover,
+  &.is-hovered
+    border-color: $input-hover-border-color
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    border-color: $input-focus-border-color
+    box-shadow: $input-focus-box-shadow-size $input-focus-box-shadow-color
+  &[disabled],
+  fieldset[disabled] &
+    background-color: $input-disabled-background-color
+    border-color: $input-disabled-border-color
+    box-shadow: none
+    color: $input-disabled-color
+    +placeholder
+      color: $input-disabled-placeholder-color
+
+%input
+  +input
