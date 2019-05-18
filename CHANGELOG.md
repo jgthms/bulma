@@ -19,6 +19,7 @@ $title-family: "Georgia", serif;
 * #2290 Fix #1186 -> Reset the offset on columns
 * #2231 Add `.has-text-weight-medium` helper
 * #2224 Add customizable border radius to progress bar
+* #2480 Add `$footer-color` variable
 
 ### Improvements
 
