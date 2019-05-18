@@ -20,6 +20,19 @@ $title-family: "Georgia", serif;
 * #2231 Add `.has-text-weight-medium` helper
 * #2224 Add customizable border radius to progress bar
 
+### Improvements
+
+* #2396 Update docs with webpack 4 example
+* #2381 Make centered buttons have equal margin
+* Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
+
+### Bug fixes
+
+* #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
+* #2463 Remove duplicate `.has-addons` in `tag.sass`
+* #2253 Fix `$gap` variable default value
+* #2273 Fix #2258 -> Fix Indeterminate Progress Bar animation in Firefox
+
 ### New variables
 
 #### Initial variables
@@ -64,18 +77,6 @@ $title-family: "Georgia", serif;
 #### Grid
 
 * `$tile-spacing`
-
-### Improvements
-
-* #2396 Update docs with webpack 4 example
-* #2381 Make centered buttons have equal margin
-* Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
-
-### Bug fixes
-
-* #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
-* #2463 Remove duplicate `.has-addons` in `tag.sass`
-* #2253 Fix `$gap` variable default value
 
 ## 0.7.3
 
