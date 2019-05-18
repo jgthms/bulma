@@ -35,6 +35,7 @@ $title-family: "Georgia", serif;
 * #2253 Fix `$gap` variable default value
 * #2273 Fix #2258 -> Fix Indeterminate Progress Bar animation in Firefox
 * #2175 Proper aligning for `.tabs` within `.content`
+* #2476 Fix #2441 -> Correct active pagination link text colour on hero
 
 ### New variables
 
