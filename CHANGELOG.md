@@ -42,6 +42,11 @@ $title-family: "Georgia", serif;
 * #2175 Proper aligning for `.tabs` within `.content`
 * #2476 Fix #2441 -> Correct active pagination link text colour on hero
 
+Fix #1979 -> Correct loading spinner color when a button is:
+
+* outlined and hovered/focused
+* outlined, inverted and hovered/focused
+
 ### New variables
 
 #### Initial variables
