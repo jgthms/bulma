@@ -25,6 +25,7 @@ $title-family: "Georgia", serif;
 * #2396 Update docs with webpack 4 example
 * #2381 Make centered buttons have equal margin
 * Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
+* #2478 Move form.sass into its own folder
 
 ### Bug fixes
 
