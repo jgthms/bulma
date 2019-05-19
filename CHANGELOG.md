@@ -1,6 +1,6 @@
 # Bulma Changelog
 
-## Upcoming release
+## 0.7.5
 
 ### Deprecation warning
 
