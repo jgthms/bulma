@@ -4,7 +4,8 @@
 
 ### Bug fixes
 
-* Fix #2031, Fix #2483 Invalid output when declaring a custom shade map
+* Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
+* Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
 
 ## 0.7.5
 
