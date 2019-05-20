@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## Upcoming release
+
+### Bug fixes
+
+* Fix #2031, Fix #2483 Invalid output when declaring a custom shade map
+
 ## 0.7.5
 
 ### Deprecation warning
