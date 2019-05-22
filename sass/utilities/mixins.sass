@@ -6,14 +6,17 @@
     content: " "
     display: table
 
-=center($width, $height: 0)
+=center($width, $height: 0, $flag: false)
   @if $height != 0
     left: calc(50% - (#{$width} / 2))
     top: calc(50% - (#{$height} / 2))
   @else
     left: calc(50% - (#{$width} / 2))
     top: calc(50% - (#{$width} / 2))
-  position: absolute !important
+  @if $flag != false
+    position: absolute !important
+  @else
+    position: absolute
 
 =fa($size, $dimensions)
   display: inline-block
