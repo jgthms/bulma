@@ -1,0 +1,173 @@
+---
+title: With Vue CLI
+layout: documentation
+doc-tab: customize
+doc-subtab: vue-cli
+breadcrumb:
+- home
+- documentation
+- customize
+- customize-vue-cli
+---
+
+{% capture dependencies %}
+npm install bulma --save-dev
+npm install sass --save-dev
+npm install sass-loader --save-dev
+{% endcapture %}
+
+{% capture src %}
+- src
+  - assets
+  - components
+  - sass
+    - mystyles.scss
+  - views
+{% endcapture %}
+
+{% capture import %}
+@charset "utf-8";
+@import "bulma/bulma.sass";
+{% endcapture %}
+
+{% capture main %}
+import Vue from "vue";
+import App from "./App.vue";
+import "./sass/mystyles.scss";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  render: h => h(App)
+}).$mount("#app");
+{% endcapture %}
+
+{% capture custom %}
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+{% endcapture %}
+
+{% capture step_1 %}
+  {% highlight bash %}{{ dependencies }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      Your project may already contain the <code>sass</code> and <code>sass-loader</code> packages if you chose Sass support when you created your project from the Vue CLI.
+    </p>
+  </div>
+{% endcapture %}
+
+{% capture step_2 %}
+  <div class="content">
+    <p>
+      Create a <code>src/sass</code> folder in your Vue project and add a file called <code>mystyles.scss</code>.
+    </p>
+  </div>
+
+  {% highlight bash %}{{ src }}{% endhighlight %}
+{% endcapture %}
+
+{% capture step_3 %}
+  <div class="content">
+    <p>
+      import Bulma into the <code>mystyles.scss</code> file
+    </p>
+  </div>
+  {% highlight bash %}{{ import }}{% endhighlight %}
+{% endcapture %}
+
+{% capture step_4 %}
+  <div class="content">
+    <p>
+      Import the <code>mystyles.scss</code> file into your <code>main.js</code> file.
+    </p>
+  </div>
+  {% highlight bash %}{{ main }}{% endhighlight %}
+  <div class="content">
+    <p>
+      You can now use Bulma styles in any <code>.vue</code> file in your project.
+    </p>
+  </div>
+{% endcapture %}
+
+{% capture step_5 %}
+  <div class="content">
+    <p>
+      Replace the content of <code>mystyles.scss</code> file with the following:
+    </p>
+  </div>
+  {% highlight bash %}{{ custom }}{% endhighlight %}
+  <div class="content">
+    <p>
+      If you are running your project with <code>npm run serve</code>, your changes will automatically be picked up. You are now using a customized version of Bulma.
+    </p>
+  </div>
+{% endcapture %}
+
+{% include components/step.html
+  title="1. Install Bulma"
+  content=step_1
+%}
+
+<hr>
+
+{% include components/step.html
+  title="2. Create a Sass file"
+  content=step_2
+%}
+
+<hr>
+
+{% include components/step.html
+  title="3. Import Bulma"
+  content=step_3
+%}
+
+<hr>
+
+{% include components/step.html
+  title="4. Import mystyles.scss"
+  content=step_4
+%}
+
+<hr>
+
+{% include components/step.html
+  title="5. Customize which Bulma styles you want to use"
+  content=step_5
+%}
