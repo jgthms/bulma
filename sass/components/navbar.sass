@@ -152,8 +152,16 @@ body
   color: $navbar-burger-color
   +hamburger($navbar-height)
   margin-left: auto
-  @at-root button#{&}:hover
+  @at-root button#{&}
+    -webkit-appearance: none
+    -moz-appearance: none
     border: none
+    &:not(:hover)
+      background-color: inherit
+    &:hover
+      border: none
+    &:focus
+      outline: none
 
 .navbar-menu
   display: none
