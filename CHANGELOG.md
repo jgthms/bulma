@@ -4,7 +4,7 @@
 
 ### New features
 
-* Add .is-title-adjacent helper
+* #2522 Fix #2346 -> Add `.is-title-adjacent` helper
 
 ### Bug fixes
 
