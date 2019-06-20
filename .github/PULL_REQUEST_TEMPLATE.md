@@ -8,14 +8,18 @@ This is a **new feature | improvement | bugfix | documentation fix**.
 <!-- Bugfix? Reference that issue as well. -->
 
 ### Proposed solution
+
 <!-- Which specific problem does this PR solve and how?  -->
 <!-- If it fixes a particular Issue, add "Fixes #ISSUE_NUMBER" in your title -->
 
 ### Tradeoffs
+
 <!-- What are the drawbacks of this solution? Are there alternative ones? -->
 <!-- Think of performance, build time, usability, complexity, coupling…) -->
 
 ### Testing Done
+
+None.
 
 <!-- BEFORE SUBMITTING YOUR PR, MAKE SURE TO FOLLOW THESE STEPS: -->
 <!-- 1. Pull the latest `master` branch -->
@@ -25,5 +29,9 @@ This is a **new feature | improvement | bugfix | documentation fix**.
 
 <!-- How have you confirmed this feature works? -->
 <!-- Please explain more than "Yes". -->
+
+### Changelog updated?
+
+No.
 
 <!-- Thanks! -->

@@ -1,8 +1,13 @@
 $body-background-color: $white !default
 $body-size: 16px !default
+$body-min-width: 300px !default
 $body-rendering: optimizeLegibility !default
 $body-family: $family-primary !default
+$body-overflow-x: hidden !default
+$body-overflow-y: scroll !default
+
 $body-color: $text !default
+$body-font-size: 1em !default
 $body-weight: $weight-normal !default
 $body-line-height: 1.5 !default
 
@@ -11,6 +16,8 @@ $code-padding: 0.25em 0.5em 0.25em !default
 $code-weight: normal !default
 $code-size: 0.875em !default
 
+$small-font-size: 0.875em !default
+
 $hr-background-color: $background !default
 $hr-height: 2px !default
 $hr-margin: 1.5rem 0 !default
@@ -18,14 +25,18 @@ $hr-margin: 1.5rem 0 !default
 $strong-color: $text-strong !default
 $strong-weight: $weight-bold !default
 
+$pre-font-size: 0.875em !default
+$pre-padding: 1.25rem 1.5rem !default
+$pre-code-font-size: 1em !default
+
 html
   background-color: $body-background-color
   font-size: $body-size
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
-  min-width: 300px
-  overflow-x: hidden
-  overflow-y: scroll
+  min-width: $body-min-width
+  overflow-x: $body-overflow-x
+  overflow-y: $body-overflow-y
   text-rendering: $body-rendering
   text-size-adjust: 100%
 
@@ -53,7 +64,7 @@ pre
 
 body
   color: $body-color
-  font-size: 1rem
+  font-size: $body-font-size
   font-weight: $body-weight
   line-height: $body-line-height
 
@@ -91,7 +102,7 @@ input[type="radio"]
   vertical-align: baseline
 
 small
-  font-size: 0.875em
+  font-size: $small-font-size
 
 span
   font-style: inherit
@@ -110,21 +121,22 @@ pre
   +overflow-touch
   background-color: $pre-background
   color: $pre
-  font-size: 0.875em
+  font-size: $pre-font-size
   overflow-x: auto
-  padding: 1.25rem 1.5rem
+  padding: $pre-padding
   white-space: pre
   word-wrap: normal
   code
     background-color: transparent
     color: currentColor
-    font-size: 1em
+    font-size: $pre-code-font-size
     padding: 0
 
 table
   td,
   th
-    text-align: left
     vertical-align: top
+    &:not([align])
+      text-align: left
   th
     color: $text-strong

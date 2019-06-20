@@ -3,64 +3,14 @@
     <div class="bd-partnrs-list">
       <div class="bd-partner bd-is-sponsor">
         <p class="bd-partner-title">Sponsors</p>
+
         <div class="bd-partner-sponsors">
-          <div class="bd-partner-sponsor">
-            <a href="https://themeisle.com/" target="_blank" rel="nofollow">
-              <img src="{{ site.url }}/images/sponsors/themeisle.png" alt="themeisle logo" width="160" height="40">
-            </a>
-          </div>
-
-          <div class="bd-partner-sponsor">
-            <a href="http://tooltwist.com/" target="_blank" rel="nofollow">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/tooltwist"
-                extension="png"
-                alt="tooltwist logo"
-                width="160"
-                height="51"
+          {% for sponsor_id in site.data.sponsors.home %}
+            {% include elements/sponsor-item.html
+              sponsor_id=sponsor_id
+              classname="bd-partner-sponsor"
               %}
-            </a>
-          </div>
-
-          <div class="bd-partner-sponsor">
-            <a href="https://www.dontpayfull.com/" target="_blank" rel="nofollow" style="mix-blend-mode: multiply;">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/dontpayfull"
-                extension="png"
-                alt="DontPayFull logo"
-                width="120"
-                height="60"
-              %}
-            </a>
-          </div>
-
-          <div class="bd-partner-sponsor">
-            <a href="https://hyper.host/" target="_blank" rel="nofollow">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/hyper-host"
-                extension="png"
-                alt="Hyper Host logo"
-                width="150"
-                height="50"
-              %}
-            </a>
-          </div>
-
-          <div class="bd-partner-sponsor">
-            <a href="https://devsquad.com/" target="_blank" rel="nofollow">
-              {%
-                include elements/responsive-image.html
-                path="sponsors/devsquad"
-                extension="png"
-                alt="DevSquad logo"
-                width="140"
-                height="31"
-              %}
-            </a>
-          </div>
+          {% endfor %}
         </div>
       </div>
 
@@ -69,6 +19,35 @@
         <div class="bd-partner-carbon">
           {% include elements/carbon.html %}
         </div>
+      </div>
+    </div>
+
+    <div class="bd-minis">
+      <p class="bd-minis-title">
+        {% assign mini_item = site.data.global.navbar_items[2] %}
+        <a class="bd-minis-link" href="{{ site.url }}/{{ mini_item.id }}">
+          <span class="icon {{ mini_item.color }}">
+            <i class="{{ mini_item.fa_type }} {{ mini_item.fa_icon }}"></i>
+          </span>From the expo <strong>#builtwithbulma</strong>
+        </a>
+      </p>
+      <div class="bd-minis-list">
+        {% for website_id in site.data.expo.lists.home %}
+          {% assign website = site.data.expo.by_id[website_id] %}
+          {% assign imageName = website_id | slugify %}
+          {% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
+          {% assign size1x = "672x420" %}
+          {% assign size2x = "1344x840" %}
+          <a class="bd-mini" href="{{ site.url }}/{{ mini_item.id }}">
+            <img
+              src="{{ imagePath }}-{{ size1x }}.jpg"
+              data-src="{{ imagePath }}-{{ size1x }}.jpg"
+              data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+                           {{ imagePath }}-{{ size1x }}.jpg 1x"
+              width="672"
+              height="420">
+          </a>
+        {% endfor %}
       </div>
     </div>
   </div>
