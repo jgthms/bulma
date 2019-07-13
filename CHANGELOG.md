@@ -39,6 +39,7 @@ $title-family: "Georgia", serif;
 * #2381 Make centered buttons have equal margin
 * Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
 * #2478 Move form.sass into its own folder
+* Fix #2559 Improved code readability in columns.sass
 
 ### Bug fixes
 
