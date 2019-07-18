@@ -76,8 +76,22 @@ a
   text-decoration: none
   strong
     color: currentColor
-  &:hover
+  &:hover,
+  &.is-hovered
     color: $link-hover
+
+  @if $style-additional-link-pseudo-classes == true
+    &:visited,
+    &.is-visited
+      color: $link-visited
+
+    &:active,
+    &.is-active
+      color: $link-active
+
+    &:focus,
+    &.is-focused
+      color: $link-focus
 
 code
   background-color: $code-background
