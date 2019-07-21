@@ -148,6 +148,52 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+  
+  const $genericToggles = getAll('.bd-toggle');
+  $genericToggles.forEach($el => {
+    const $targets = getAll($el.dataset.target);
+    const targetClasses = splitNoEmpy($el.dataset.targetClass || '', ' ');
+    const ownClasses = splitNoEmpy($el.dataset.ownClass || '', ' ');
+    $el.addEventListener('click', () => {
+      targetClasses.forEach(targetClass =>
+        $targets.forEach($target => $target.classList.toggle(targetClass)));
+      ownClasses.forEach(ownClass => $el.classList.toggle(ownClass));
+    });
+  });
+
+  const $genericRadioToggles = getAll('.bd-toggle-radio-group');
+  $genericRadioToggles.forEach($group => {
+    const childSelector = $group.dataset.childSelector || '';
+    const $childNodes = childSelector.length > 0 ? getAll(childSelector, $group) : Array.prototype.slice.call($group.children, 0);
+    const $radios = $childNodes.filter($child => $child.classList.contains('bd-toggle-radio'));
+    const $targets = getAll($group.dataset.target);
+    const radioData = $radios.map(function($radio) {
+      const self = {};
+      self.$element = $radio;
+      self.targetClasses = splitNoEmpy($radio.dataset.targetClass || '', ' ');
+      self.ownClasses = splitNoEmpy($radio.dataset.ownClass || '', ' ');
+      self.isActive = ($radio.dataset.active || '').toLowerCase() == "true";
+      self.toggle = () => {
+        // toggle targets
+        self.targetClasses.forEach(targetClass => 
+          $targets.forEach($target => 
+            $target.classList.toggle(targetClass)));
+        // toggle self
+        self.ownClasses.forEach(ownClass => 
+          self.$element.classList.toggle(ownClass));
+        self.isActive = !self.isActive;
+      };
+      self.onClick = () => {
+        radioData.filter(other => other.isActive).forEach(other => other.toggle());
+        self.toggle();
+      };
+      return self;
+    });
+    // handle click and inital isActive
+    radioData.forEach(data => {
+      data.$element.addEventListener('click', data.onClick);
+    });
+  });
 
   // Modals
 
@@ -260,8 +306,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Functions
 
-  function getAll(selector) {
-    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+  function getAll(selector, $context) {
+    $context = $context || document;
+    if (selector.length <= 0)
+      return [];
+    return Array.prototype.slice.call($context.querySelectorAll(selector), 0);
+  }
+
+  function splitNoEmpy(str, splitby) {
+    return str.split(splitby).filter(p => p.length > 0);
   }
 
   // Scrolling
