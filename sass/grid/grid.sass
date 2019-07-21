@@ -8,7 +8,6 @@ $grid-column-row-count: 12 !default
   grid-auto-columns: 1fr
   grid-auto-rows: auto
   grid-template-columns: repeat($grid-column-row-count, 1fr)
-  margin-bottom: 1em
 
   // it applies globally but is equal to max-content for all column sizes/counts
   &.has-columns-inline
@@ -66,6 +65,7 @@ $grid-column-row-count: 12 !default
   column-gap: #{$grid-column-gap}
   grid-row-gap: #{$grid-row-gap}
   row-gap: #{$grid-row-gap}
+  margin-bottom: #{$grid-row-gap}
   &.is-column-gapless
     grid-column-gap: 0
     column-gap: 0
@@ -111,6 +111,9 @@ $grid-column-row-count: 12 !default
   & > *,
   & > .has-grid-children > *,
   & > .has-grid-children > .has-grid-children > *
+    // no margin for nested grids
+    &.grid
+      margin-bottom: 0
     +grid-item-positions(null)
     +mobile
       +grid-item-positions("mobile")
