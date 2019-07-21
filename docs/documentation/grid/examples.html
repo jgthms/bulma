@@ -1,0 +1,165 @@
+---
+title: Grid Examples
+layout: documentation
+doc-tab: grid
+doc-subtab: examples
+breadcrumb:
+- home
+- documentation
+- grid
+- grid-examples
+---
+
+{% capture navbar %}
+{% include examples/navbar.html boxed=true %}
+{% endcapture %}
+
+{% capture panel_example %}
+{% include examples/panel.html %}
+{% endcapture %}
+
+{% capture hero_content_snippet %}
+<div class="hero-body">
+  <h4 class="title">
+    I have some content here
+  </h4>
+</div>
+{% endcapture %}
+
+{% capture layout_sidebar_example %}
+<div class="box is-paddingless is-marginless">
+  {{ navbar }}
+  <div class="grid is-gapless">
+    <div class="is-width-5 is-width-4-touch">
+      {{ panel_example }}
+    </div>
+    <div class="is-width-7 is-width-8-touch">
+      <section class="hero is-info is-bold">
+        <div class="hero-body">
+          <h1 class="title">
+            I have some content here
+          </h1>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture fixed_ad_tile_example %}
+<div class="box is-paddingless is-marginless">
+  <div
+    class="grid has-rows-equal has-column-count-1-mobile has-column-count-2-tablet has-column-count-3-desktop has-column-count-4-widescreen has-column-count-6-fullhd">
+    <div class="is-width-2 is-width-1-mobile is-left-1 is-inverse-left is-top-2 hero is-primary is-bold">
+      <div class="hero-body">
+        I am an Ad<br>
+        I am always fixed to the right<br>
+        I am always two from the top
+      </div>
+    </div>
+    <div class="hero is-info is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-link is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-warning is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-danger is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-success is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-info is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-link is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-warning is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-danger is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-success is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-info is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-link is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-warning is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-danger is-bold">
+      {{ hero_content_snippet }}
+    </div>
+    <div class="hero is-success is-bold">
+      {{ hero_content_snippet }}
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture fixed_ad_tile_snippet %}
+<div class="box is-paddingless is-marginless">
+  <div
+    class="grid has-rows-equal has-column-count-1-mobile has-column-count-2-tablet has-column-count-3-desktop has-column-count-4-widescreen has-column-count-6-fullhd">
+    <div class="is-width-2 is-width-1-mobile is-left-1 is-inverse-left is-top-2 hero is-primary is-bold">
+      <div class="hero-body">
+        I am an Ad<br>
+        I am always fixed to the right<br>
+        I am always two from the top
+      </div>
+    </div>
+    <div class="hero is-info is-bold">
+    </div>
+    <!-- More items here -->
+  </div>
+</div>
+{% endcapture %}
+
+{% capture layout_sidebar_snippet %}
+<nav class="navbar">
+  <!-- navbar goes here -->
+</nav>
+<!-- Add .has-rows-fullheight-with-nav for a full page -->
+<div class="grid is-gapless">
+  <div class="is-width-5 is-width-4-touch">
+    <nav class="panel">
+      <!-- side pannel goes here -->
+    </nav>
+  </div>
+  <div class="is-width-7 is-width-8-touch">
+    <!-- content goes here -->
+  </div>
+</div>
+{% endcapture %}
+
+{% include elements/anchor.html name="Sidebar Layout" %}
+<div class="content">
+  <p>A simple <strong>touch repsonsive</strong> sidebar layout</p>
+  {{ layout_sidebar_example }}
+  {% highlight html %}{{ layout_sidebar_snippet }}{% endhighlight %}
+</div>
+
+{% include elements/anchor.html name="Sidebar Layout" %}
+<div class="content">
+  <p>A simple way to <strong>statically position ads</strong> on a scrolling item page</p>
+  {{ fixed_ad_tile_example }}
+  {% highlight html %}{{ fixed_ad_tile_snippet }}{% endhighlight %}
+
+  <div class="message is-info">
+    <p class="message-header">
+      Resize
+    </p>
+    <p class="message-body">
+      If you want to see the difference, resize your browser and see the grid breakpoints in action
+    </p>
+  </div>
+</div>
