@@ -1,141 +1,119 @@
-$grid-gap: 0.75rem !default
+$grid-gap: 1.5rem !default
 $grid-column-gap: $grid-gap !default
 $grid-row-gap: $grid-gap !default
-
-$sizes-map: ("narrow": min-content, "content-max": max-content, "auto": auto)
+$grid-column-row-count: 12 !default
 
 .grid
   display: grid
+  height: 100%
+  margin-bottom: 1em
 
-  &.is-inline
+  // it applies globally but is equal to max-content for all column sizes/counts
+  &.has-columns-inline
     display: inline-grid
 
   // defaults
-  grid-template-columns: repeat(12, 1fr)
+  grid-template-columns: repeat($grid-column-row-count, 1fr)
   grid-auto-columns: 1fr
-  grid-auto-rows: 1fr
+  grid-auto-rows: auto
 
-  // row/column counts and sizes (note 12 is default)
+  // row/column counts
   =grid-column-count($append-name, $size-value)
     $append-name: if($append-name == null, "", "-" + $append-name)
-    @for $times from 1 through 12
+    @for $times from 1 through $grid-column-row-count
       &.has-column-count-#{$times}#{$append-name}
         grid-template-columns: repeat(#{$times}, #{$size-value})
-  =grid-row-count($append-name, $size-value)
-    $append-name: if($append-name == null, "", "-" + $append-name)
-    @for $times from 1 through 12
-      &.has-row-count-#{$times}#{$append-name}
+  =grid-row-count($size-value)
+    @for $times from 1 through $grid-column-row-count
+      &.has-row-count-#{$times}
         grid-template-rows: repeat(#{$times}, #{$size-value})
 
+  // base size for all counts
   +grid-column-count(null, 1fr)
-  +grid-row-count(null, 1fr)
+  +grid-row-count(auto)
   +mobile
     +grid-column-count("mobile", 1fr)
-    +grid-row-count("mobile", 1fr)
   +tablet
     +grid-column-count("tablet", 1fr)
-    +grid-row-count("tablet", 1fr)
   +touch
     +grid-column-count("touch", 1fr)
-    +grid-row-count("touch", 1fr)
   +desktop
     +grid-column-count("desktop", 1fr)
-    +grid-row-count("desktop", 1fr)
   +widescreen
     +grid-column-count("widescreen", 1fr)
-    +grid-row-count("widescreen", 1fr)
   +fullhd
     +grid-column-count("fullhd", 1fr)
-    +grid-row-count("fullhd", 1fr)
 
-  @each $size-name, $size-value in $sizes-map
-    &.has-column-size-#{$size-name}
-      grid-template-columns: repeat(12, #{$size-value})
-      grid-auto-columns: #{$size-value}
-      +grid-column-count(null, $size-value)
-      +mobile
-        +grid-column-count("mobile", $size-value)
-      +tablet
-        +grid-column-count("tablet", $size-value)
-      +touch
-        +grid-column-count("touch", $size-value)
-      +desktop
-        +grid-column-count("desktop", $size-value)
-      +widescreen
-        +grid-column-count("widescreen", $size-value)
-      +fullhd
-        +grid-column-count("fullhd", $size-value)
-    &.has-row-size-#{$size-name}
-      grid-template-rows: repeat(12, #{$size-value})
-      grid-auto-rows: #{$size-value}
-      +grid-row-count(null, $size-value)
-      +mobile
-        +grid-row-count("mobile", $size-value)
-      +tablet
-        +grid-row-count("tablet", $size-value)
-      +touch
-        +grid-row-count("touch", $size-value)
-      +desktop
-        +grid-row-count("desktop", $size-value)
-      +widescreen
-        +grid-row-count("widescreen", $size-value)
-      +fullhd
-        +grid-row-count("fullhd", $size-value)
-
-  // auto flow is default row
+  // sizes for row
+  &.has-rows-fullheight
+    height: 100vh
+  &.has-rows-fullheight-with-navbar
+    height: calc(100vh - #{$navbar-height})
+  &.has-rows-equal,
+  &.has-rows-fullheight,
+  &.has-rows-fullheight-with-navbar
+    grid-auto-rows: 1fr
+    +grid-row-count(1fr)
+  
+  // auto flow - default is row
   grid-auto-flow: row
   &.has-flow-dense
     grid-auto-flow: row dense
-  &.has-flow-column,
+  &.has-flow-column
     grid-auto-flow: column
     &.has-flow-dense
       grid-auto-flow: column dense
 
-  grid-column-gap: $grid-column-gap
-  grid-row-gap: $grid-row-gap
-  margin-bottom: #{$grid-row-gap}
+  // grid gap
+  grid-column-gap: #{$grid-column-gap}
+  column-gap: #{$grid-column-gap}
+  grid-row-gap: #{$grid-row-gap}
+  row-gap: #{$grid-row-gap}
   &.is-column-gapless
     grid-column-gap: 0
+    column-gap: 0
   &.is-row-gapless
     grid-row-gap: 0
+    row-gap: 0
     margin-bottom: 0
   &.is-gapless
     grid-gap: 0
+    gap: 0
     margin-bottom: 0
 
+  =grid-item-positions($append-name)
+    $append-name: if($append-name == null, "", "-" + $append-name)
+    @for $i from 1 through $grid-column-row-count
+      &.is-left-#{$i}#{$append-name}
+        &:not(.is-inverse-left)
+          grid-column-start: #{$i}
+        &.is-inverse-left
+          grid-column-end: #{-$i}
+      &.is-width-#{$i}#{$append-name}
+        &:not(.is-inverse-left)
+          grid-column-end: #{$i} span
+        &.is-inverse-left
+          grid-column-start: #{$i} span
+      &.is-top-#{$i}#{$append-name}
+        &:not(.is-inverse-top)
+          grid-row-start: #{$i}
+        &.is-inverse-top
+          grid-row-end: #{-$i}
+      &.is-height-#{$i}#{$append-name}
+        &:not(.is-inverse-top)
+          grid-row-end: #{$i} span
+        &.is-inverse-top
+          grid-row-start: #{$i} span
+
   // nesting up to 3 deep
-  & > .is-grid-container,
-  & > .is-grid-container > .is-grid-container
+  & > .has-grid-children,
+  & > .has-grid-children > .has-grid-children
     display: contents
 
-  // positioning for the items
+  // positioning for the items (nesting 3 deep)
   & > *,
-  & > *.is-grid-container > *,
-  & > *.is-grid-container > *.is-grid-container > *
-    =grid-item-positions($append-name)
-      $append-name: if($append-name == null, "", "-" + $append-name)
-      @for $i from 1 through 12
-        &.is-left#{$append-name}-#{$i}
-          &:not(.is-inverse-left)
-            grid-column-start: #{$i}
-          &.is-inverse-left
-            grid-column-end: #{-$i}
-        &.is-width#{$append-name}-#{$i}
-          &:not(.is-inverse-left)
-            grid-column-end: #{$i} span
-          &.is-inverse-left
-            grid-column-start: #{$i} span
-        &.is-top#{$append-name}-#{$i}
-          &:not(.is-inverse-top)
-            grid-row-start: #{$i}
-          &.is-inverse-top
-            grid-row-end: #{-$i}
-        &.is-height#{$append-name}-#{$i}
-          &:not(.is-inverse-top)
-            grid-row-end: #{$i} span
-          &.is-inverse-top
-            grid-row-start: #{$i} span
-
+  & > .has-grid-children > *,
+  & > .has-grid-children > .has-grid-children > *
     +grid-item-positions(null)
     +mobile
       +grid-item-positions("mobile")
