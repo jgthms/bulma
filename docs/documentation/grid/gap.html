@@ -1,0 +1,84 @@
+---
+title: Grid Gap
+layout: documentation
+doc-tab: grid
+doc-subtab: gap
+breadcrumb:
+- home
+- documentation
+- grid
+- grid-gap
+---
+
+{% capture gap_modifiers_example %}
+<div class="buttons bd-toggle-radio-group" data-target="#gap-modifiers-example">
+  <a class="button bd-toggle-radio is-info is-selected" data-own-class="is-info is-selected" data-target-class=""
+    data-active="true">Original</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected" data-target-class="is-column-gapless">Column Gapless</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected" data-target-class="is-row-gapless">Row Gapless</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected" data-target-class="is-gapless">Gapless</a>
+</div>
+<div id="gap-modifiers-example" class="grid has-column-count-3">
+  <div class="is-primary bd-notification">
+    One
+  </div>
+  <div class="is-primary bd-notification">
+    Two
+  </div>
+  <div class="is-primary bd-notification">
+    Three
+  </div>
+  <div class="is-primary bd-notification">
+    Four
+  </div>
+</div>
+{% endcapture %}
+
+{% capture gap_modifiers_snippet %}
+<!-- Row Gapless Example Shown -->
+<div id="gap-modifiers-example" class="grid has-column-count-3 is-row-gapless">
+  <div>
+    One
+  </div>
+  <div>
+    Two
+  </div>
+  <div>
+    Three
+  </div>
+  <div>
+    Four
+  </div>
+</div>
+{% endcapture %}
+
+{% include elements/anchor.html name="Default Gap" %}
+<div class="content">
+  <p>You can <strong>change the default gap</strong> by setting one of the following Sass properties:</p>
+  <ul>
+    <li><code>$grid-gap</code> - Default: 1.5rem</li>
+    <li><code>$grid-column-gap</code> - Default: $grid-gap</li>
+    <li><code>$grid-row-gap</code> - Default: $grid-gap</li>
+  </ul>
+</div>
+
+{% include elements/anchor.html name="Gapless" %}
+<div class="content">
+  <p>You can specify a gapless <code>grid</code> by using the following modifiers:</p>
+  <ul>
+    <li><code>is-column-gapless</code> - No gap on <strong>columns</strong></li>
+    <li><code>is-row-gapless</code> - No gap on <strong>rows</strong></li>
+    <li><code>is-gapless</code> - No gap for the <strong>whole grid</strong></li>
+  </ul>
+  {{ gap_modifiers_example }}
+  <div class="highlight-full">
+    {% highlight html %}{{ gap_modifiers_snippet }}{% endhighlight %}
+  </div>
+
+
+  <div class="message is-info">
+    <p class="message-body">
+      <code>is-gapless</code> is most useful when designing layouts with custom padding.
+    </p>
+  </div>
+</div>

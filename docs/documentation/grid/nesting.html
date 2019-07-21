@@ -1,0 +1,152 @@
+---
+title: Grid Nesting
+layout: documentation
+doc-tab: grid
+doc-subtab: nesting
+breadcrumb:
+- home
+- documentation
+- grid
+- grid-nesting
+---
+
+{% capture grid_nesting_example %}
+<div class="grid has-column-count-3 has-rows-equal has-flow-dense">
+  <div class="is-left-2 is-width-2 is-height-2 grid has-column-count-2">
+    <div class="is-primary bd-notification">
+      1.1
+    </div>
+    <div class="is-primary bd-notification">
+      1.2
+    </div>
+  </div>
+  <div class="is-primary bd-notification">
+    2
+  </div>
+  <div class="is-primary bd-notification">
+    3
+  </div>
+  <div class="is-primary bd-notification">
+    4
+  </div>
+  <div class="is-primary bd-notification">
+    5
+  </div>
+</div>
+{% endcapture %}
+
+{% capture grid_nesting_snippet %}
+<div class="grid has-column-count-3 has-rows-equal has-flow-dense">
+  <div class="is-left-2 is-width-2 is-height-2 grid has-column-count-2">
+    <div>
+      1.1
+    </div>
+    <div>
+      1.2
+    </div>
+  </div>
+  <div>
+    2
+  </div>
+  <div>
+    3
+  </div>
+  <div>
+    4
+  </div>
+  <div>
+    5
+  </div>
+</div>
+{% endcapture %}
+
+{% capture grid_child_nesting_example %}
+<div class="grid has-column-count-3">
+  <div class="has-grid-children is-left-2">
+    <div class="is-primary bd-notification">
+      1.1
+    </div>
+    <div class="is-primary bd-notification">
+      1.2
+    </div>
+  </div>
+  <div class="is-primary bd-notification">
+    2
+  </div>
+  <div class="is-primary bd-notification">
+    3
+  </div>
+  <div class="is-primary bd-notification">
+    4
+  </div>
+  <div class="is-primary bd-notification">
+    5
+  </div>
+</div>
+{% endcapture %}
+
+{% capture grid_child_nesting_snippet %}
+<div class="grid has-column-count-3">
+  <div class="has-grid-children">
+    <div>
+      1.1
+    </div>
+    <div>
+      1.2
+    </div>
+  </div>
+  <div>
+    2
+  </div>
+  <div>
+    3
+  </div>
+  <div>
+    4
+  </div>
+  <div>
+    5
+  </div>
+</div>
+{% endcapture %}
+
+{% include elements/anchor.html name="Nested Grids" %}
+<div class="content">
+  <p>
+    You can nest a <code>grid</code> inside of another <code>grid</code> which allows for
+    <strong>more nuanced control</strong> over individual sections.
+  </p>
+
+  {{ grid_nesting_example }}
+  <div class="highlight-full">
+    {% highlight html %}{{ grid_nesting_snippet }}{% endhighlight %}
+  </div>
+
+  <div class="message is-info">
+    <p class="message-body">
+      These ideas pair esspecially well with <code>is-gapless</code>
+      when designing a layout
+    </p>
+  </div>
+</div>
+
+{% include elements/anchor.html name="Nested Children" %}
+<div class="content">
+  <p>You can nest <code>grid children</code> inside one another by using the <code>has-grid-children</code> class:</p>
+  {{ grid_child_nesting_example }}
+  <div class="highlight-full">
+    {% highlight html %}{{ grid_child_nesting_snippet }}{% endhighlight %}
+  </div>
+  <p>Nested <code>grid children</code> have the same properties as a regular <code>grid child</code>.
+    Which means <strong>you can use all</strong> of the same
+    <a href="/documentation/grid/children">size/control classes</a> such as:</p>
+  <ul>
+    <li><code>is-left-*</code> e.g. is-left-1</li>
+    <li><code>is-height-*</code> e.g. is-height-3</li>
+  </ul>
+  <div class="message is-info">
+    <p class="message-body">
+      By default Bulma supports nesting <strong>up to 3 deep</strong>.
+    </p>
+  </div>
+</div>

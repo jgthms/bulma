@@ -1,0 +1,221 @@
+---
+title: Grid Sizes
+layout: documentation
+doc-tab: grid
+doc-subtab: sizes
+breadcrumb:
+- home
+- documentation
+- grid
+- grid-sizes
+---
+
+{% capture count_modifiers_example %}
+<div class="buttons bd-toggle-radio-group" data-target="#count-modifiers-example">
+  <a class="button bd-toggle-radio is-info is-selected" data-own-class="is-info is-selected"
+    data-target-class="has-column-count-3" data-active="true">Original</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected"
+    data-target-class="has-column-count-2 has-row-count-2">2 x 2</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected"
+    data-target-class="has-column-count-3 has-row-count-2">2 x 3</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected"
+    data-target-class="has-column-count-1 has-row-count-4">4 x 1</a>
+</div>
+<div id="count-modifiers-example" class="grid has-column-count-3">
+  <div class="is-primary bd-notification">
+    One
+  </div>
+  <div class="is-primary bd-notification">
+    Two
+  </div>
+  <div class="is-primary bd-notification">
+    Three
+  </div>
+  <div class="is-primary bd-notification">
+    Four
+    <br>
+    I have some extra content
+    <br>
+    that makes me slightly bigger
+  </div>
+</div>
+{% endcapture %}
+
+{% capture count_modifiers_snippet %}
+<!-- 2 x 2 Example Shown -->
+<div class="grid has-column-count-2 has-row-count-2">
+  <div>
+    One
+  </div>
+  <div>
+    Two
+  </div>
+  <div>
+    Three
+  </div>
+  <div>
+    Four
+    <br>
+    I have some extra content
+    <br>
+    that makes me slightly bigger
+  </div>
+</div>
+{% endcapture %}
+
+{% capture column_modifiers_example %}
+<div class="buttons bd-toggle-radio-group" data-target="#column-modifiers-example">
+  <a class="button bd-toggle-radio is-info is-selected" data-own-class="is-info is-selected" data-target-class=""
+    data-active="true">Original</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected"
+    data-target-class="has-columns-inline">Inline</a>
+</div>
+<div id="column-modifiers-example" class="grid has-column-count-3">
+  <div class="is-primary bd-notification">
+    First column
+  </div>
+  <div class="is-primary bd-notification">
+    Second column
+  </div>
+  <div class="is-primary bd-notification">
+    Third column
+  </div>
+  <div class="is-primary bd-notification">
+    Fourth column
+  </div>
+  <div class="is-primary bd-notification">
+    Fifth column
+  </div>
+</div>
+{% endcapture %}
+
+{% capture column_modifiers_snippet %}
+<div class="grid has-column-count-3 has-columns-inline">
+  <div>
+    First column
+  </div>
+  <div>
+    Second column
+  </div>
+  <div>
+    Third column
+  </div>
+  <div>
+    Fourth column
+  </div>
+  <div>
+    Fifth column
+  </div>
+</div>
+{% endcapture %}
+
+{% capture row_modifiers_example %}
+<div class="buttons bd-toggle-radio-group" data-target="#row-modifiers-example">
+  <a class="button bd-toggle-radio is-info is-selected" data-own-class="is-info is-selected" data-target-class=""
+    data-active="true">Original</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected" data-target-class="has-rows-equal">Equal</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected"
+    data-target-class="has-rows-fullheight">Full</a>
+  <a class="button bd-toggle-radio" data-own-class="is-info is-selected" data-target-class="has-rows-fullheight">Full
+    With Nav</a>
+</div>
+<div id="row-modifiers-example" class="grid has-column-count-3">
+  <div class="is-primary bd-notification">
+    One
+  </div>
+  <div class="is-primary bd-notification">
+    Two
+  </div>
+  <div class="is-primary bd-notification">
+    Three
+  </div>
+  <div class="is-primary bd-notification">
+    Four
+    <br>
+    I have some extra content
+    <br>
+    that makes me slightly bigger
+  </div>
+</div>
+{% endcapture %}
+
+{% capture row_modifiers_snippet %}
+<!-- Equal Example Shown -->
+<div class="grid has-column-count-3 has-rows-equal">
+  <div>
+    One
+  </div>
+  <div>
+    Two
+  </div>
+  <div>
+    Three
+  </div>
+  <div>
+    Four
+    <br>
+    I have some extra content
+    <br>
+    that makes me slightly bigger
+  </div>
+</div>
+{% endcapture %}
+
+{% include elements/anchor.html name="Grid Sizes" %}
+<div class="content">
+  <p>You can specify the <code>grid</code> size by using the following modifiers:</p>
+  <ul>
+    <li><code>has-column-count-*</code> e.g. <code>has-column-count-1</code></li>
+    <li><code>has-row-count-*</code> e.g. <code>has-row-count-3</code></li>
+  </ul>
+  <div class="message is-info">
+    <p class="message-body">
+      By default Bulma supports column and row counts <strong>up to 12</strong>.
+      You can change this default by setting <code>$grid-column-row-count</code> to a larger value.
+    </p>
+  </div>
+
+  {{ count_modifiers_example }}
+  <div class="highlight-full">
+    {% highlight html %}{{ count_modifiers_snippet }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Column Sizes" %}
+<div class="content">
+  <p>The <code>grid</code> has <strong>1 column size</strong> modifiers:</p>
+  <ul>
+    <li><code>has-columns-inline</code></li>
+  </ul>
+  {{ column_modifiers_example }}
+  <div class="highlight-full">
+    {% highlight html %}{{ column_modifiers_snippet }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Row Sizes" %}
+<div class="content">
+  <p>The <code>grid</code> has <strong>3 row size</strong> modifiers:</p>
+  <ul>
+    <li><code>has-rows-equal</code> - All rows have <strong>equal size</strong></li>
+    <li><code>has-rows-fullheight</code> - All rows are fit inside <code>100vh</code></li>
+    <li><code>has-rows-fullheight-with-nav</code> - All rows are fit inside <code>100vh - $navbar-height</code></li>
+  </ul>
+  {{ row_modifiers_example }}
+  <div class="highlight-full">
+    {% highlight html %}{{ row_modifiers_snippet }}{% endhighlight %}
+  </div>
+</div>
+
+{% include elements/anchor.html name="Responsiveness" %}
+<div class="content">
+  <p>The following <strong>responsive modifiers</strong> are supported for the <code>grid</code>:</p>
+  <ul>
+    <li><code>has-column-count-*-mobile</code></li>
+    <li><code>has-column-count-*-tablet</code></li>
+    <li><code>has-column-count-*-touch</code></li>
+    <li><code>has-column-count-*-desktop</code></li>
+    <li><code>has-column-count-*-widescreen</code></li>
+    <li><code>has-column-count-*-fullhd</code></li>
+  </ul>
+</div>
