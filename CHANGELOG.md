@@ -2,6 +2,10 @@
 
 ## Upcoming release
 
+### New features
+
+* #2567 Add support for CSS Grids
+
 ### Bug fixes
 
 * Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
