@@ -5,17 +5,14 @@ $grid-column-row-count: 12 !default
 
 .grid
   display: grid
-  height: 100%
+  grid-auto-columns: 1fr
+  grid-auto-rows: auto
+  grid-template-columns: repeat($grid-column-row-count, 1fr)
   margin-bottom: 1em
 
   // it applies globally but is equal to max-content for all column sizes/counts
   &.has-columns-inline
     display: inline-grid
-
-  // defaults
-  grid-template-columns: repeat($grid-column-row-count, 1fr)
-  grid-auto-columns: 1fr
-  grid-auto-rows: auto
 
   // row/column counts
   =grid-column-count($append-name, $size-value)
@@ -64,7 +61,7 @@ $grid-column-row-count: 12 !default
     &.has-flow-dense
       grid-auto-flow: column dense
 
-  // grid gap
+  // grid gap with overrides (do not reorder)
   grid-column-gap: #{$grid-column-gap}
   column-gap: #{$grid-column-gap}
   grid-row-gap: #{$grid-row-gap}
