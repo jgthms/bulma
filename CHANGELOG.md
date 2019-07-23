@@ -6,6 +6,7 @@
 
 * Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+* Fix #1540 -> `.is-expanded` not working under `.navbar-start` or `.navbar-end`
 
 ## 0.7.5
 
