@@ -354,10 +354,26 @@ meta:
 
 {% include elements/anchor.html name="Modifiers" %}
 
-{% capture simple_scrollable_table_example %}
+{% capture scrollable_table %}
 <div class="table-container">
   <table class="table">
-    <!-- This is a scrollable table -->
+    <!-- Your table content -->
+  </table>
+</div>
+{% endcapture %}
+
+{% capture simple_scrollable_table_example %}
+<div class="table-container">
+  <table class="table is-bordered is-striped ">
+    <tbody>
+      {% for i in (1..5) %}
+        <tr>
+          {% for j in (1..100) %}
+            <td>{{ j | times: i }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
   </table>
 </div>
 {% endcapture %}
@@ -592,16 +608,14 @@ meta:
   </div>
 </div>
 
+{% include elements/anchor.html name="Table container" %}
 
-<div class="message is-info">
-  <div class="message-body">
-    <p class="content">
-      You can create a <strong>scrollable table</strong> by wrapping
-      a <code>table</code> in the <code>table-container</code> class:
-    </p>
-    {% highlight html %}{{ simple_scrollable_table_example }}{% endhighlight %}
-  </div>
-</div>
+<p class="content">
+  You can create a <strong>scrollable table</strong> by wrapping a <code>table</code> in a <code>table-container</code> element:
+</p>
 
+{% highlight html %}{{ scrollable_table }}{% endhighlight %}
+
+{{ simple_scrollable_table_example }}
 
 {% include elements/variables.html type='element' %}
