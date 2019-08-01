@@ -114,6 +114,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [@aybolit/bulma](https://github.com/web-padawan/aybolit/tree/master/packages/bulma)  | Web Components library inspired by Bulma and Bulma-extensions                          |
 | [Drulma](https://www.drupal.org/project/drulma)                                      | Drupal theme for Bulma.                                                                |
 | [Bulrush](https://github.com/textbook/bulrush)                                       | A Bulma-based Python Pelican blog theme                                                |
+| [Bulma Builder](https://bulma.dev)                                                   | Bulma Builder for busy developers                                                      |
 
 ## Copyright and license
 
