@@ -6,6 +6,7 @@
 
 * Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+* #2587 Fix #2501 -> Fix `.is-expanded` modifier for fields in panel blocks
 
 ### New features
 
