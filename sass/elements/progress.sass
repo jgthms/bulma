@@ -1,5 +1,6 @@
 $progress-bar-background-color: $border !default
 $progress-value-background-color: $text !default
+$progress-border-radius: $radius-rounded !default
 
 $progress-indeterminate-duration: 1.5s !default
 
@@ -8,7 +9,7 @@ $progress-indeterminate-duration: 1.5s !default
   -moz-appearance: none
   -webkit-appearance: none
   border: none
-  border-radius: $radius-rounded
+  border-radius: $progress-border-radius
   display: block
   height: $size-normal
   overflow: hidden
@@ -23,6 +24,19 @@ $progress-indeterminate-duration: 1.5s !default
   &::-ms-fill
     background-color: $progress-value-background-color
     border: none
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.is-#{$name}
+      &::-webkit-progress-value
+        background-color: $color
+      &::-moz-progress-bar
+        background-color: $color
+      &::-ms-fill
+        background-color: $color
+      &:indeterminate
+        background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%)
+
   &:indeterminate
     animation-duration: $progress-indeterminate-duration
     animation-iteration-count: infinite
@@ -37,18 +51,6 @@ $progress-indeterminate-duration: 1.5s !default
       background-color: transparent
     &::-moz-progress-bar
       background-color: transparent
-  // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    &.is-#{$name}
-      &::-webkit-progress-value
-        background-color: $color
-      &::-moz-progress-bar
-        background-color: $color
-      &::-ms-fill
-        background-color: $color
-      &:indeterminate
-        background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%)
 
   // Sizes
   &.is-small

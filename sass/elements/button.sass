@@ -1,5 +1,6 @@
 $button-color: $grey-darker !default
 $button-background-color: $white !default
+$button-family: false !default
 
 $button-border-color: $grey-lighter !default
 $button-border-width: $control-border-width !default
@@ -50,6 +51,8 @@ $button-static-border-color: $grey-lighter !default
   border-width: $button-border-width
   color: $button-color
   cursor: pointer
+  @if $button-family
+    font-family: $button-family
   justify-content: center
   padding-bottom: $button-padding-vertical
   padding-left: $button-padding-horizontal
@@ -142,7 +145,8 @@ $button-static-border-color: $grey-lighter !default
       &.is-inverted
         background-color: $color-invert
         color: $color
-        &:hover
+        &:hover,
+        &.is-hovered
           background-color: darken($color-invert, 5%)
         &[disabled],
         fieldset[disabled] &
@@ -158,13 +162,21 @@ $button-static-border-color: $grey-lighter !default
         border-color: $color
         color: $color
         &:hover,
-        &:focus
+        &.is-hovered,
+        &:focus,
+        &.is-focused
           background-color: $color
           border-color: $color
           color: $color-invert
         &.is-loading
           &::after
             border-color: transparent transparent $color $color !important
+          &:hover,
+          &.is-hovered,
+          &:focus,
+          &.is-focused
+            &::after
+              border-color: transparent transparent $color-invert $color-invert !important
         &[disabled],
         fieldset[disabled] &
           background-color: transparent
@@ -176,9 +188,18 @@ $button-static-border-color: $grey-lighter !default
         border-color: $color-invert
         color: $color-invert
         &:hover,
-        &:focus
+        &.is-hovered,
+        &:focus,
+        &.is-focused
           background-color: $color-invert
           color: $color
+        &.is-loading
+          &:hover,
+          &.is-hovered,
+          &:focus,
+          &.is-focused
+            &::after
+              border-color: transparent transparent $color $color !important
         &[disabled],
         fieldset[disabled] &
           background-color: transparent
@@ -269,7 +290,16 @@ $button-static-border-color: $grey-lighter !default
           z-index: 4
       &.is-expanded
         flex-grow: 1
+        flex-shrink: 1
   &.is-centered
     justify-content: center
+    &:not(.has-addons)
+      .button:not(.is-fullwidth)
+        margin-left: 0.25rem
+        margin-right: 0.25rem
   &.is-right
     justify-content: flex-end
+    &:not(.has-addons)
+      .button:not(.is-fullwidth)
+        margin-left: 0.25rem
+        margin-right: 0.25rem
