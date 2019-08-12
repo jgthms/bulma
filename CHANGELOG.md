@@ -6,6 +6,7 @@
 
 * Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+* Fix #706 -> Derive `-invert` variables using `findColorInvert()`
 
 ### New features
 
