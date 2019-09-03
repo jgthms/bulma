@@ -1,7 +1,10 @@
-# [Bulma](https://bulma.io)
+# Work-In-Progress
 
-Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
+# Mikasa
 
+Mikasa is a fork of the beloved Bulma, a **modern CSS framework** based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
+
+ --- From Bulma's original auther
 [![npm](https://img.shields.io/npm/v/bulma.svg)][npm-link]
 [![npm](https://img.shields.io/npm/dm/bulma.svg)][npm-link]
 [![Awesome][awesome-badge]][awesome-link]
