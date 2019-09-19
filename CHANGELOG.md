@@ -1,10 +1,634 @@
 # Bulma Changelog
 
-## 0.6.3
+## Upcoming release
 
 ### Bug fixes
 
+* Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
+* Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+
+### New features
+
+* #2563 `.image` has a new `.is-fullwidth` modifier
+
+## 0.7.5
+
+### Deprecation warning
+
+The `form.sass` file is **deprecated**. It has moved into its own `/form` folder. If you were importing `form.sass`, please import `sass/form/_all.sass` now.
+If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as bbefore.
+
+### New features
+
+#### Support for overriding the `font-family`
+
+You can now specify a different `font-family` for the `.title`, `.subtitle` and `.button` by using the variables `$title-family`, `$subtitle-family` and `$button-family` respectively.
+
+Simply set a value when importing Bulma:
+
+```scss
+$title-family: "Georgia", serif;
+```
+
+* #2375 Add `.is-relative` helper
+* #2321 Make `.navbar` focus behave like hover for the navigation
+* #2290 Fix #1186 -> Reset the offset on columns
+* #2231 Add `.has-text-weight-medium` helper
+* #2224 Add customizable border radius to progress bar
+* #2480 Add `$footer-color` variable
+
+### Improvements
+
+* #2396 Update docs with webpack 4 example
+* #2381 Make centered buttons have equal margin
+* Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
+* #2478 Move form.sass into its own folder
+
+### Bug fixes
+
+* #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
+* #2463 Remove duplicate `.has-addons` in `tag.sass`
+* #2253 Fix `$gap` variable default value
+* #2273 Fix #2258 -> Fix Indeterminate Progress Bar animation in Firefox
+* #2175 Proper aligning for `.tabs` within `.content`
+* #2476 Fix #2441 -> Correct active pagination link text colour on hero
+
+Fix #1979 -> Correct loading spinner color when a button is:
+
+* outlined and hovered/focused
+* outlined, inverted and hovered/focused
+
+### New variables
+
+#### Initial variables
+
+* `$block-spacing`
+
+#### Base
+
+* `$body-font-size`
+* `$small-font-size`
+* `$pre-font-size`
+* `$pre-padding`
+* `$pre-code-font-size`
+
+#### Components
+
+* `$card-header-padding`
+* `$card-content-padding`
+* `$card-media-margin`
+* `$dropdown-menu-min-width`
+* `$dropdown-content-padding-bottom`
+* `$dropdown-content-padding-top`
+* `$level-item-spacing`
+* `$menu-list-line-height`
+* `$menu-list-link-padding`
+* `$menu-nested-list-margin`
+* `$menu-nested-list-padding-left`
+* `$menu-label-font-size`
+* `$menu-label-letter-spacing`
+* `$menu-label-spacing`
+* `$pagination-item-font-size`
+* `$pagination-item-margin`
+* `$pagination-item-padding-left`
+* `$pagination-item-padding-right`
+* `$panel-margin`
+* `$panel-tabs-font-size`
+
+#### Elements
+
+* `$container-offset`
+
+#### Grid
+
+* `$tile-spacing`
+
+## 0.7.3
+
+### New features
+
+* #2145 Fix #372 -> New indeterminate progress bars
+* #2206 Fix #2046 -> New variables `$table-head-background-color`, `$table-body-background-color` and `$table-foot-background-color` for the `.table` element
+* #592 -> Give arbitrary elements access to the image/ratio classes
+* #1682 Fix #1681 -> Adds disabled styles for `<fieldset disabled>`
+* #2201 Fix #1875 -> `.buttons` and `.tags` group sizing (`.are-small`, `.are-medium`, `.are-large`)
+
+### Improvements
+
+* #1978 Fix #1696 -> Force `box-sizing: border-box` on `details` element
+* #2167 Fix #1878 -> New `$footer-padding` variable
+* #2168 -> New `$input-placeholder-color` and `$input-disabled-placeholder-color` variables
+
+### Bug fixes
+
+* #2157 Fix #1656 -> Allow border radius if only one `.control` in `.field`
+* #2091 Fix #2091 -> Remove CSS rule which causes `.tag.has-addons` to not work correctly
+* #2186 Fix #1130 -> Prevent `.dropdown` links underlining in `.message` component
+* Fix #2154 -> Move `.hero.is-fullheight-with-navbar` to `navbar.sass` file
+
+### Deprecation
+
+* `.control.has-icon` deprecated in favor of `.control.has-icons`
+
+## 0.7.2
+
+### New features
+
+* #1884 New `$navbar-burger-color` variable
+* #1679 Add breakpoint based column gaps
+* #1905 Fix `modal` for IE11 #1902
+* #1919 New `is-arrowless` class for navbar items
+* #1949 New `is-fullheight-with-navbar` class for heros
+* #1764 New `.is-sr-only` helper
+* #2109 Add and use `$navbar-breakpoint` variable
+* New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
+* #1720 Add list element feature
+* #2123 Add `.content ol` types: `.is-lower-roman`, `.is-upper-roman`, `.is-lower-alpha`, `.is-upper-alpha`, and support for the `type=` HTML attribute
+
+### Improvements
+
+* #1964 Allow `.notification` to have a `.dropdown-item`
+* #1999 Change `$border` to `$grey-lighter` in mixins
+* #2085 `.media-content` will allow scrolling horizontally if the content is too wide
+* #1744 Fix #1710 by using `$table-striped-row-even-hover-background-color` only for even rows
+* #2074 Allow `<button>` as `.dropdown-item`
+
+### Bug fixes
+
+* #1749 Fix icons floating out of input area
+* #1993 Fixes #1992 Prevent disabled form elements hover state from overlapping, if control has add-ons elements
+* #1909 Fix Modal card in IE11
+* #1908 Fix IE11 when textarea doesn't listen to `size=""`
+* Fix #1991 The last button in list of full-width buttons has longer width
+* #1982 Fix navbar-burger color when color modifier is used
+* #1819 Fix #1137 error message for required file
+* Fix #1904 and #1969: hide native file input in Chrome
+* #2059 Remove unnecessary right margin from last level-item (level.is-mobile)
+
+## 0.7.1
+
+### Improvements
+
+* #1789 Add all shades to `has-background-*` helpers
+
+### Bug fixes
+
+* #1796 #1806 Remove navbar `box-shadow` by default
+
+## 0.7.0
+
+### New features
+
+* New variables `$widescreen-enabled` and `$fullhd-enabled`: you can set them to `false` to disable each breakpoint
+* New variables `$control-border-width` and `$button-border-width`
+* 🎉 #1624 Add some common photography aspect ratios and portrait ratios
+* 🎉 #1747 New `$custom-colors` and `$custom-shades` variable for adding your own colors and shades to Bulma's `$colors` and `$shades` maps respectively
+
+### Improvements
+
+* #1619 Add `$card-header-background-color`, `$card-content-background-color` and `$card-footer-background-color` to allow different background customization for card elements
+* #1669 Add `.is-expanded` modifier to `.buttons.has-addons`
+* #1628 Add `.has-background` helpers for block background colors, like `.has-text`
+* #1767 Added minified bundle with cleancss
+
+### Bug fixes
+
+* #1778 Fix `is-text-right` precedence over `is-text-left-mobile`
+* #1571 Fix position of delete button on `.tag`
+* #1549 Implementing a simple version of the native sass percentage function
+* #1707 Disable table hover in `.content` by default
 * #1428 Fix `media-content` overflow
+
+### Variable changes
+
+#### Updated default values
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/utilities/initial-variables.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$gap</code>
+      </td>
+      <td>
+        <code>32px</code>
+      </td>
+      <td>
+        <code>64px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$radius</code>
+      </td>
+      <td>
+        <code>3px</code>
+      </td>
+      <td>
+        <code>4px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$radius-large</code>
+      </td>
+      <td>
+        <code>5px</code>
+      </td>
+      <td>
+        <code>6px</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/base/generic.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$hr-background-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$hr-height</code>
+      </td>
+      <td>
+        <code>1px</code>
+      </td>
+      <td>
+        <code>2px</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/elements/content.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$content-heading-weight</code>
+      </td>
+      <td>
+        <code>$weight-normal</code>
+      </td>
+      <td>
+        <code>$weight-semibold</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/components/message.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-padding</code>
+      </td>
+      <td>
+        <code>0.5em 0.75em</code>
+      </td>
+      <td>
+        <code>0.75em 1em</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-padding</code>
+      </td>
+      <td>
+        <code>1em 1.25em</code>
+      </td>
+      <td>
+        <code>1.25em 1.5em</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/components/navbar.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-item-hover-background-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+      <td>
+        <code>$white-bis</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-dropdown-border-top</code>
+      </td>
+      <td>
+        <code>1px solid $border</code>
+      </td>
+      <td>
+        <code>2px solid $border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-divider-background-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="3">
+        File
+        <code>sass/layout/footer.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$footer-background-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+      <td>
+        <code>$white-bis</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### New variables
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/breadcrumb.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$breadcrumb-item-padding-vertical</code>
+      </td>
+      <td>
+        <code>0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$breadcrumb-item-padding-horizontal</code>
+      </td>
+      <td>
+        <code>0.75em</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/message.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-border-color</code>
+      </td>
+      <td>
+        <code>$border</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-body-border-width</code>
+      </td>
+      <td>
+        <code>0 0 0 4px</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-weight</code>
+      </td>
+      <td>
+        <code>$weight-bold</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$message-header-body-border-width</code>
+      </td>
+      <td>
+        <code>0</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/components/navbar.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-box-shadow-size</code>
+      </td>
+      <td>
+        <code>0 2px 0 0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-box-shadow-color</code>
+      </td>
+      <td>
+        <code>$background</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-padding-vertical</code>
+      </td>
+      <td>
+        <code>1rem</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-padding-horizontal</code>
+      </td>
+      <td>
+        <code>2rem</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$navbar-z</code>
+      </td>
+      <td>
+        <code>30</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th class="is-light" colspan="2">
+        File
+        <code>sass/elements/title.sass</code>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>
+        <code>$title-line-height</code>
+      </td>
+      <td>
+        <code>1.125</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$subtitle-line-height</code>
+      </td>
+      <td>
+        <code>1.25</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>$subtitle-negative-margin</code>
+      </td>
+      <td>
+        <code>-1.25rem</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Removed variables
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>File</th>
+      <th>Removed</th>
+      <th>Replaced with</th>
+    </tr>
+    <tr>
+      <td>
+        <code>sass/components/message.sass</code>
+      </td>
+      <td>
+        <code>$message-body-border</code>
+      </td>
+      <td>
+        <code>$message-body-border-color</code>
+        <br>
+        <code>$message-body-border-width</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## 0.6.2
 
@@ -498,7 +1122,7 @@ Variable name changes (mostly appending `-color`):
 ## 0.0.26
 
 * Added: `.modal-card`
-* Added: display responsive utilites
+* Added: display responsive utilities
 * Added: `.nav-center`
 * Added: `.tabs ul` left center right
 * Changed: `.navbar` renamed to `.level`

@@ -1,20 +1,44 @@
 ---
 title: Hero
 layout: documentation
+hide_categories: true
+hide_fortyfour: true
 doc-tab: layout
 doc-subtab: hero
+breadcrumb:
+- home
+- documentation
+- layout
+- layout-hero
+meta:
+  colors: true
+  sizes: true
+  variables: false
 ---
 
-{% include subnav-layout.html %}
+<div class="content">
+  <p>
+    The hero component allows you to add a <strong>full width banner</strong> to your webpage, which can optionally cover the full height of the page as well.
+  </p>
+  <p>
+    The basic requirement of this component are:
+  </p>
+  <ul>
+    <li>
+      <code>hero</code> as the main container
+      <ul>
+        <li>
+          <code>hero-body</code> as a direct child, in which you can put all your content
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <p>
+    For the <a href="#full-height-hero">full height hero</a> to work, you will also need a <code>hero-head</code> and a <code>hero-foot</code>.
+  </p>
+</div>
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Hero</h1>
-    <h2 class="subtitle">
-      An imposing <strong>hero banner</strong> to showcase something
-    </h2>
-  </div>
-</section>
+{% include layout/main-close.html show_categories=true %}
 
 <section class="section is-fullwidth">
   <div class="bd-example">
@@ -31,6 +55,7 @@ doc-subtab: hero
       </div>
     </section>
   </div>
+</section>
 
 {% highlight html %}
 <section class="hero">
@@ -50,10 +75,10 @@ doc-subtab: hero
 
 <section class="section">
   <div class="container">
-    <h3 class="title">Colors</h3>
-    <h4 class="subtitle">
-        As with buttons, you can choose one of the <strong>7 different colors</strong>:
-    </h4>
+    {% include elements/anchor.html name="Colors" %}
+    <div class="content">
+      As with buttons, you can choose one of the <strong>7 different colors</strong>:
+    </div>
   </div>
 </section>
 
@@ -181,13 +206,10 @@ doc-subtab: hero
 
 <section class="section">
   <div class="container">
-    <h3 class="title">
-      Gradients
-      <span class="tag is-warning">Experimental</span>
-    </h3>
-    <h4 class="subtitle">
+    {% include elements/anchor.html name="Gradients" %}
+    <div class="content">
       By adding the <code>is-bold</code> modifier, you can generate a subtle <strong>gradient</strong>
-    </h4>
+    </div>
   </div>
 </section>
 
@@ -308,10 +330,23 @@ doc-subtab: hero
 
 <section class="section">
   <div class="container">
-    <h3 class="title">Sizes</h3>
-    <h4 class="subtitle">
-      You can have even more imposing banners by using one of <strong>3 different sizes</strong>
-    </h4>
+    {% include elements/anchor.html name="Sizes" %}
+    <div class="content">
+      <p>
+        You can have even more imposing banners by using one of <strong>3 different sizes</strong>:
+      </p>
+      <ul>
+        <li>
+          medium
+        </li>
+        <li>
+          large
+        </li>
+        <li>
+          fullheight
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -381,10 +416,10 @@ doc-subtab: hero
       <div class="hero-body">
         <div class="container">
           <p class="title">
-            Full Height title
+            Fullheight title
           </p>
           <p class="subtitle">
-            Full Height subtitle
+            Fullheight subtitle
           </p>
         </div>
       </div>
@@ -396,10 +431,10 @@ doc-subtab: hero
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Full Height title
+        Fullheight title
       </h1>
       <h2 class="subtitle">
-        Full Height subtitle
+        Fullheight subtitle
       </h2>
     </div>
   </div>
@@ -407,12 +442,50 @@ doc-subtab: hero
 {% endhighlight %}
 </section>
 
+<!-- Fullheight with navbar -->
 <section class="section">
   <div class="container">
-    <h3 class="title">Full height hero</h3>
-    <h4 class="subtitle">And vertically centered</h4>
+    {% include elements/anchor.html name="Fullheight with navbar" %}
+    {% include elements/new-tag.html version="0.7.2" %}
     <div class="content">
-      <p>You can split the hero in <strong>3 vertical parts</strong>:</p>
+      <p>
+        If you are using a <a href="{{ site.url }}/documentation/components/navbar/#fixed-navbar">fixed navbar</a>, you can use the <code>is-fullheight-with-navbar</code> modifier on the hero for it to occupy the viewport height minus the navbar height.
+      </p>
+    </div>
+  </div>
+</section>
+
+  <div class="bd-example is-fullwidth">
+    {% include examples/navbar-basic.html %}
+    <section class="hero is-link is-fullheight-with-navbar">
+      <div class="hero-body">
+        <div class="container">
+          <p class="title">
+            Fullheight hero with navbar
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+{% highlight html %}
+<section class="hero is-link is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <p class="title">
+        Fullheight hero with navbar
+      </p>
+    </div>
+  </div>
+</section>
+{% endhighlight %}
+
+<!-- Fullheight with 3 parts -->
+<section class="section">
+  <div class="container">
+    {% include elements/anchor.html name="Fullheight hero in 3 parts" %}
+    <div class="content">
+      <p>To obtain a hero that will cover the whole height of the viewport, you can split it in <strong>3 vertical parts</strong>:</p>
       <ul>
         <li>
           <code>hero</code>
@@ -650,7 +723,11 @@ doc-subtab: hero
 {% endcapture %}
 
 <section class="section is-fullwidth">
-  {% include snippet.html content=heroNavbarA horizontal=true more=true %}
-  {% include snippet.html content=heroNavbarB horizontal=true more=true %}
-  {% include snippet.html content=heroNavbarC horizontal=true more=true %}
+  {% include elements/snippet.html content=heroNavbarA horizontal=true more=true %}
+  {% include elements/snippet.html content=heroNavbarB horizontal=true more=true %}
+  {% include elements/snippet.html content=heroNavbarC horizontal=true more=true %}
 </section>
+
+{% include layout/main-open.html %}
+
+{% include elements/variables.html type='component' hide_content=true %}

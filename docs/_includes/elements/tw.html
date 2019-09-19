@@ -1,0 +1,66 @@
+{% assign tweet = site.data.love.tweets_by_id[include.tweet_id] %}
+{% assign twUrl = "https://twitter.com/" | append: tweet.username | append: "/status/" | append: tweet.id %}
+
+<article class="bd-tw {{ include.modifier }} {% if include.drawing_id %}bd-has-drawing{% endif %}">
+  <header class="bd-tw-header">
+    <a class="bd-tw-author" href="{{ twUrl }}" target="_blank">
+      <figure class="bd-tw-avatar">
+        <img class="lazyload" src="{{ tweet.avatar }}">
+      </figure>
+      <div class="bd-tw-name">
+        <strong class="bd-tw-fullname">
+          {{ tweet.fullname }}
+        </strong>
+        <span class="bd-tw-username">
+          @{{ tweet.username }}
+        </span>
+      </div>
+    </a>
+  </header>
+
+  <div class="bd-tw-content">
+    {{ tweet.content }}
+  </div>
+
+  <p class="bd-tw-date">
+    <a href="{{ twUrl }}" target="_blank">
+      {{ tweet.date }}
+    </a>
+  </p>
+
+  <ul class="Tweet-actions">
+    <li class="Tweet-action">
+      <a class="TweetAction TweetAction--replyEdge web-intent" href="https://twitter.com/intent/tweet?in_reply_to={{ tweet.id }}">
+        <div class="Icon Icon--reply TweetAction-icon Icon--replyEdge"></div>
+      </a>
+    </li>
+    <li class="Tweet-action Tweet-action--retweet">
+      <a class="TweetAction TweetAction--retweetEdge web-intent" href="https://twitter.com/intent/retweet?tweet_id={{ tweet.id }}">
+        <div class="Icon Icon--retweet TweetAction-icon Icon--retweetEdge"></div>
+        {% if tweet.retweets != 0 %}
+          <span class="TweetAction-stat">
+            {{ tweet.retweets }}
+          </span>
+        {% endif %}
+      </a>
+    </li>
+    <li class="Tweet-action Tweet-action--heart">
+      <a class="TweetAction TweetAction--heartEdge web-intent" href="https://twitter.com/intent/like?tweet_id={{ tweet.id }}&amp;ref_src=twsrc%5Etfw&amp;ref_url=http%3A%2F%2Fbulma.io%2F&amp;original_referer=http%3A%2F%2Fbulma.io%2F&amp;tw_i={{ tweet.id }}&amp;tw_p=tweetembed" target="_blank">
+        <div class="Icon Icon--heartEdge TweetAction-icon Icon--heartEdge"></div>
+        {% if tweet.hearts != 0 %}
+          <span class="TweetAction-stat">
+            {{ tweet.hearts }}
+          </span>
+        {% endif %}
+      </a>
+    </li>
+  </ul>
+
+  {% if include.drawing_id %}
+    {% include elements/drawing.html
+      id=include.drawing_id
+      width=include.drawing_width
+      height=include.drawing_height
+    %}
+  {% endif %}
+</article>

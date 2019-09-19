@@ -1,0 +1,52 @@
+<script src="{{ site.url }}/vendor/clipboard-1.7.1.min.js"></script>
+<script src="{{ site.url }}/vendor/js.cookie-2.1.4.min.js"></script>
+<script src="{{ site.url }}/lib/main.js?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+
+{% if page.route == 'index' %}
+  <script src="https://player.vimeo.com/api/player.js" ></script>
+  <script type="text/javascript" src="{{ site.url }}/lib/index.js?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+  <script>
+    WebFontConfig = {
+      google: {
+        families: ['Nunito:400,700']
+      }
+    };
+    (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+  </script>
+{% elsif page.doc-subtab == 'navbar' %}
+  {% include examples/navbar-bottom.html %}
+  <script type="text/javascript" src="{{ site.url }}/lib/navbar.js?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+{% endif %}
+
+<div id="fb-root"></div>
+
+<script async defer type="text/javascript">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.async = true;
+  js.defer = true;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=310296819307942";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script async defer id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script>
+
+<script async defer type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82634666-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+{% if page.route == 'index' %}
+  <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script>
+{% endif %}

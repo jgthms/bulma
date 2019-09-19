@@ -56,12 +56,12 @@ $column-gap: 0.75rem !default
     margin-left: 60%
   .columns.is-mobile > &.is-offset-four-fifths
     margin-left: 80%
-  @for $i from 1 through 12
+  @for $i from 0 through 12
     .columns.is-mobile > &.is-#{$i}
       flex: none
-      width: ($i / 12) * 100%
+      width: percentage($i / 12)
     .columns.is-mobile > &.is-offset-#{$i}
-      margin-left: ($i / 12) * 100%
+      margin-left: percentage($i / 12)
   +mobile
     &.is-narrow-mobile
       flex: none
@@ -113,12 +113,12 @@ $column-gap: 0.75rem !default
       margin-left: 60%
     &.is-offset-four-fifths-mobile
       margin-left: 80%
-    @for $i from 1 through 12
+    @for $i from 0 through 12
       &.is-#{$i}-mobile
         flex: none
-        width: ($i / 12) * 100%
+        width: percentage($i / 12)
       &.is-offset-#{$i}-mobile
-        margin-left: ($i / 12) * 100%
+        margin-left: percentage($i / 12)
   +tablet
     &.is-narrow,
     &.is-narrow-tablet
@@ -190,14 +190,14 @@ $column-gap: 0.75rem !default
     &.is-offset-four-fifths,
     &.is-offset-four-fifths-tablet
       margin-left: 80%
-    @for $i from 1 through 12
+    @for $i from 0 through 12
       &.is-#{$i},
       &.is-#{$i}-tablet
         flex: none
-        width: ($i / 12) * 100%
+        width: percentage($i / 12)
       &.is-offset-#{$i},
       &.is-offset-#{$i}-tablet
-        margin-left: ($i / 12) * 100%
+        margin-left: percentage($i / 12)
   +touch
     &.is-narrow-touch
       flex: none
@@ -249,12 +249,12 @@ $column-gap: 0.75rem !default
       margin-left: 60%
     &.is-offset-four-fifths-touch
       margin-left: 80%
-    @for $i from 1 through 12
+    @for $i from 0 through 12
       &.is-#{$i}-touch
         flex: none
-        width: ($i / 12) * 100%
+        width: percentage($i / 12)
       &.is-offset-#{$i}-touch
-        margin-left: ($i / 12) * 100%
+        margin-left: percentage($i / 12)
   +desktop
     &.is-narrow-desktop
       flex: none
@@ -306,12 +306,12 @@ $column-gap: 0.75rem !default
       margin-left: 60%
     &.is-offset-four-fifths-desktop
       margin-left: 80%
-    @for $i from 1 through 12
+    @for $i from 0 through 12
       &.is-#{$i}-desktop
         flex: none
-        width: ($i / 12) * 100%
+        width: percentage($i / 12)
       &.is-offset-#{$i}-desktop
-        margin-left: ($i / 12) * 100%
+        margin-left: percentage($i / 12)
   +widescreen
     &.is-narrow-widescreen
       flex: none
@@ -363,12 +363,12 @@ $column-gap: 0.75rem !default
       margin-left: 60%
     &.is-offset-four-fifths-widescreen
       margin-left: 80%
-    @for $i from 1 through 12
+    @for $i from 0 through 12
       &.is-#{$i}-widescreen
         flex: none
-        width: ($i / 12) * 100%
+        width: percentage($i / 12)
       &.is-offset-#{$i}-widescreen
-        margin-left: ($i / 12) * 100%
+        margin-left: percentage($i / 12)
   +fullhd
     &.is-narrow-fullhd
       flex: none
@@ -420,12 +420,12 @@ $column-gap: 0.75rem !default
       margin-left: 60%
     &.is-offset-four-fifths-fullhd
       margin-left: 80%
-    @for $i from 1 through 12
+    @for $i from 0 through 12
       &.is-#{$i}-fullhd
         flex: none
-        width: ($i / 12) * 100%
+        width: percentage($i / 12)
       &.is-offset-#{$i}-fullhd
-        margin-left: ($i / 12) * 100%
+        margin-left: percentage($i / 12)
 
 .columns
   margin-left: (-$column-gap)
@@ -475,3 +475,30 @@ $column-gap: 0.75rem !default
     @for $i from 0 through 8
       &.is-#{$i}
         --columnGap: #{$i * 0.25rem}
+      +mobile
+        &.is-#{$i}-mobile
+          --columnGap: #{$i * 0.25rem}
+      +tablet
+        &.is-#{$i}-tablet
+          --columnGap: #{$i * 0.25rem}
+      +tablet-only
+        &.is-#{$i}-tablet-only
+          --columnGap: #{$i * 0.25rem}
+      +touch
+        &.is-#{$i}-touch
+          --columnGap: #{$i * 0.25rem}
+      +desktop
+        &.is-#{$i}-desktop
+          --columnGap: #{$i * 0.25rem}
+      +desktop-only
+        &.is-#{$i}-desktop-only
+          --columnGap: #{$i * 0.25rem}
+      +widescreen
+        &.is-#{$i}-widescreen
+          --columnGap: #{$i * 0.25rem}
+      +widescreen-only
+        &.is-#{$i}-widescreen-only
+          --columnGap: #{$i * 0.25rem}
+      +fullhd
+        &.is-#{$i}-fullhd
+          --columnGap: #{$i * 0.25rem}

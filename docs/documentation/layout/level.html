@@ -3,6 +3,11 @@ title: Level
 layout: documentation
 doc-tab: layout
 doc-subtab: level
+breadcrumb:
+- home
+- documentation
+- layout
+- layout-level
 ---
 
 {% capture nav_example %}
@@ -118,96 +123,84 @@ doc-subtab: level
 </nav>
 {% endcapture %}
 
-{% include subnav-layout.html %}
-
-<section class="section">
-  <div class="container">
-    <h1 class="title">Level</h1>
-    <h2 class="subtitle">A multi-purpose <strong>horizontal level</strong>, which can contain almost any other element</h2>
-
-    <hr>
-
-    <div class="content">
-      <p>The <strong>structure</strong> of a level is the following:</p>
+<div class="content">
+  <p>The <strong>structure</strong> of a level is the following:</p>
+  <ul>
+    <li>
+      <code>level</code>: main container
       <ul>
+        <li><code>level-left</code> for the left side
         <li>
-          <code>level</code>: main container
+          <code>level-right</code> for the right side
           <ul>
-            <li><code>level-left</code> for the left side
-            <li>
-              <code>level-right</code> for the right side
-              <ul>
-                <li><code>level-item</code> for each individual element</li>
-              </ul>
-            </li>
+            <li><code>level-item</code> for each individual element</li>
           </ul>
         </li>
       </ul>
-      <p>In a <code>level-item</code>, you can then insert almost <em>anything</em> you want: a title, a button, a text input, or just simple text. No matter what elements you put inside a Bulma <code>level</code>, they will always be <strong>vertically centered</strong>.</p>
-    </div>
+    </li>
+  </ul>
+  <p>In a <code>level-item</code>, you can then insert almost <em>anything</em> you want: a title, a button, a text input, or just simple text. No matter what elements you put inside a Bulma <code>level</code>, they will always be <strong>vertically centered</strong>.</p>
+</div>
 
-    <div class="bd-structure">
-      <nav class="level bd-structure-item bd-is-structure-container" title="level">
-        <div class="level-left bd-structure-item" title="level-left">
-          <div class="level-item">
-            <p class="subtitle is-5">
-              <strong>123</strong> posts
-            </p>
-          </div>
-          <div class="level-item">
-            <div class="field has-addons">
-              <p class="control">
-                <input class="input" type="text" placeholder="Find a post">
-              </p>
-              <p class="control">
-                <button class="button">
-                  Search
-                </button>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="level-right bd-structure-item" title="level-right">
-          <p class="level-item">
-            <strong>All</strong>
+<div class="bd-structure">
+  <nav class="level bd-structure-item bd-is-structure-container" title="level">
+    <div class="level-left bd-structure-item" title="level-left">
+      <div class="level-item">
+        <p class="subtitle is-5">
+          <strong>123</strong> posts
+        </p>
+      </div>
+      <div class="level-item">
+        <div class="field has-addons">
+          <p class="control">
+            <input class="input" type="text" placeholder="Find a post">
           </p>
-          <p class="level-item">
-            <a>Published</a>
-          </p>
-          <p class="level-item">
-            <a>Drafts</a>
-          </p>
-          <p class="level-item">
-            <a>Deleted</a>
-          </p>
-          <p class="level-item">
-            <a class="button is-success">
-              New
-            </a>
+          <p class="control">
+            <button class="button">
+              Search
+            </button>
           </p>
         </div>
-      </nav>
+      </div>
     </div>
-
-    {% include snippet.html content=nav_example horizontal=true more=true %}
-
-    {% include anchor.html name="Centered level" %}
-
-    <div class="content">
-      If you want a <strong>centered level</strong>, you can use as many <code>level-item</code> as you want, as long as they are <strong>direct</strong> children of the <code>level</code> container.
+    <div class="level-right bd-structure-item" title="level-right">
+      <p class="level-item">
+        <strong>All</strong>
+      </p>
+      <p class="level-item">
+        <a>Published</a>
+      </p>
+      <p class="level-item">
+        <a>Drafts</a>
+      </p>
+      <p class="level-item">
+        <a>Deleted</a>
+      </p>
+      <p class="level-item">
+        <a class="button is-success">
+          New
+        </a>
+      </p>
     </div>
+  </nav>
+</div>
 
-    {% include snippet.html content=nav_centered_example horizontal=true more=true %}
+{% include elements/snippet.html content=nav_example horizontal=true more=true %}
 
-    {% include snippet.html content=nav_centered_bis_example horizontal=true more=true %}
+{% include elements/anchor.html name="Centered level" %}
 
-    {% include anchor.html name="Mobile level" %}
+<div class="content">
+  If you want a <strong>centered level</strong>, you can use as many <code>level-item</code> as you want, as long as they are <strong>direct</strong> children of the <code>level</code> container.
+</div>
 
-    <div class="content">
-      By default, for space concerns, the level is vertical on mobile. If you want the level to be horizontal on mobile as well, add the <code>is-mobile</code> modifier on the <code>level</code> container.
-    </div>
+{% include elements/snippet.html content=nav_centered_example horizontal=true more=true %}
 
-    {% include snippet.html content=nav_mobile_example horizontal=true more=true %}
+{% include elements/snippet.html content=nav_centered_bis_example horizontal=true more=true %}
 
-  </div>
-</section>
+{% include elements/anchor.html name="Mobile level" %}
+
+<div class="content">
+  By default, for space concerns, the level is vertical on mobile. If you want the level to be horizontal on mobile as well, add the <code>is-mobile</code> modifier on the <code>level</code> container.
+</div>
+
+{% include elements/snippet.html content=nav_mobile_example horizontal=true more=true %}

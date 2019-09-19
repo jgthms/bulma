@@ -1,0 +1,15 @@
+{% assign current_link_id = page.breadcrumb | last %}
+
+<nav class="bd-categories">
+  {% for link_id in site.data.links.more %}
+    {% assign link = site.data.links.by_id[link_id] %}
+
+    <div class="bd-category">
+      <header class="bd-category-header">
+        <a class="bd-category-name {% if link_id == current_link_id %}is-active{% endif %}" href="{{ site.url }}{{ link.path }}">
+          <strong>{{ link.name }}</strong>
+        </a>
+      </header>
+    </div>
+  {% endfor %}
+</nav>

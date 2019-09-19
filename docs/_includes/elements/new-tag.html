@@ -1,4 +1,15 @@
+{% assign current_version_value = site.data.meta.version | remove: "." | plus: 0 %}
+{% assign tag_version_value = include.version | remove: "." | plus: 0 %}
+
 <div class="tags has-addons">
-  <span class="tag">New!</span>
-  <span class="tag is-info">{{ include.version }}</span>
+  {% if tag_version_value > current_version_value %}
+    <span class="tag is-warning">Coming soon!</span>
+    <span class="tag is-danger">{{ include.version }}</span>
+  {% elsif tag_version_value == current_version_value %}
+    <span class="tag">New!</span>
+    <span class="tag is-success">{{ include.version }}</span>
+  {% else %}
+    <span class="tag">Since</span>
+    <span class="tag is-info">{{ include.version }}</span>
+  {% endif %}
 </div>

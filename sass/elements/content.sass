@@ -1,5 +1,5 @@
 $content-heading-color: $text-strong !default
-$content-heading-weight: $weight-normal !default
+$content-heading-weight: $weight-semibold !default
 $content-heading-line-height: 1.125 !default
 
 $content-blockquote-background-color: $background !default
@@ -12,14 +12,13 @@ $content-table-cell-border: 1px solid $border !default
 $content-table-cell-border-width: 0 0 1px !default
 $content-table-cell-padding: 0.5em 0.75em !default
 $content-table-cell-heading-color: $text-strong !default
-$content-table-row-hover-background-color: $background !default
 $content-table-head-cell-border-width: 0 0 2px !default
 $content-table-head-cell-color: $text-strong !default
 $content-table-foot-cell-border-width: 2px 0 0 !default
 $content-table-foot-cell-color: $text-strong !default
 
 .content
-  +block
+  @extend %block
   // Inline
   li + li
     margin-top: 0.25em
@@ -71,9 +70,19 @@ $content-table-foot-cell-color: $text-strong !default
     border-left: $content-blockquote-border-left
     padding: $content-blockquote-padding
   ol
-    list-style: decimal outside
+    list-style-position: outside
     margin-left: 2em
     margin-top: 1em
+    &:not([type])
+      list-style-type: decimal
+      &.is-lower-alpha
+        list-style-type: lower-alpha
+      &.is-lower-roman
+        list-style-type: lower-roman
+      &.is-upper-alpha
+        list-style-type: upper-alpha
+      &.is-upper-roman
+        list-style-type: upper-roman
   ul
     list-style: disc outside
     margin-left: 2em
@@ -116,10 +125,8 @@ $content-table-foot-cell-color: $text-strong !default
       vertical-align: top
     th
       color: $content-table-cell-heading-color
-      text-align: left
-    tr
-      &:hover
-        background-color: $content-table-row-hover-background-color
+      &:not([align])
+        text-align: left
     thead
       td,
       th
@@ -136,6 +143,9 @@ $content-table-foot-cell-color: $text-strong !default
           td,
           th
             border-bottom-width: 0
+  .tabs
+    li + li
+      margin-top: 0
   // Sizes
   &.is-small
     font-size: $size-small

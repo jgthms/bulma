@@ -3,6 +3,15 @@ title: Notification
 layout: documentation
 doc-tab: elements
 doc-subtab: notification
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-notification
+meta:
+  colors: true
+  sizes: false
+  variables: true
 ---
 
 {% capture notification %}
@@ -25,30 +34,49 @@ doc-subtab: notification
 {% endfor %}
 {% endcapture %}
 
-{% include subnav-elements.html %}
+{% capture notification_js_html %}
+<div class="notification">
+  <button class="delete"></button>
+  Lorem ipsum
+</div>
+{% endcapture %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Notifications</h1>
-    <h2 class="subtitle">
-      Bold <strong>notification</strong> blocks, to alert your users of something
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=false
-      variables=true
-    %}
+{% capture notification_js_code %}
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    $notification = $delete.parentNode;
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+{% endcapture %}
 
-    <hr>
+{% include elements/snippet.html content=notification %}
 
-    {% include snippet.html content=notification %}
+{% include elements/anchor.html name="Colors" %}
 
-    {% include anchor.html name="Colors" %}
+{% include elements/snippet.html content=notification_colors %}
 
-    {% include snippet.html content=notification_colors %}
+<div id="notificationJsExample" class="message is-info">
+  <h4 class="message-header">Javascript delete notification</h4>
+  <div class="message-body">
+    <div class="content">
+      <p>
+        The Bulma package <strong>does not come with any JavaScript</strong>.
+        <br>
+        Here is however an implementation example, which sets <code>click</code> handler for <code>delete</code> elements of all notifications on the page, in Vanilla Javascript.
+      </p>
 
-    {% include variables.html type='element' %}
+      {% highlight html %}{{ notification_js_html }}{% endhighlight %}
 
+      {% highlight javascript %}{{ notification_js_code }}{% endhighlight %}
+
+      <p>
+        Remember, these are just implementation examples. The Bulma package <strong>does not come with any JavaScript</strong>.
+      </p>
+    </div>
   </div>
-</section>
+</div>
+
+{% include elements/variables.html type='element' %}

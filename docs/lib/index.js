@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var introVideo = document.getElementById('introVideo');
   var introIframe = document.getElementById('introIframe');
-  var introPlayer = new Vimeo.Player(introIframe);
   var npmClipboard = new Clipboard('#npmCopy');
 
-  introPlayer.ready().then(function () {
-    introVideo.classList.add('has-loaded');
-  });
+  if (Vimeo) {
+    var introPlayer = new Vimeo.Player(introIframe);
+    introPlayer.ready().then(function () {
+      introVideo.classList.add('has-loaded');
+    });
+  }
 
   npmClipboard.on('success', function (e) {
     e.trigger.innerText = 'copied!';
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
       $message.style.display = 'none';
     }
 
-    showing = Math.min(Math.max(parseInt(showing), 2), 12);
+    showing = Math.min(Math.max(parseInt(showing), 1), 12);
 
     $columns.forEach(function ($el) {
       $el.style.display = 'none';

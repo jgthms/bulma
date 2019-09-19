@@ -16,15 +16,13 @@ $tag-delete-margin: 1px !default
     margin-bottom: -0.5rem
   &:not(:last-child)
     margin-bottom: 1rem
-  &.has-addons
-    .tag
-      margin-right: 0
-      &:not(:first-child)
-        border-bottom-left-radius: 0
-        border-top-left-radius: 0
-      &:not(:last-child)
-        border-bottom-right-radius: 0
-        border-top-right-radius: 0
+  // Sizes
+  &.are-medium
+    .tag:not(.is-normal):not(.is-large)
+      font-size: $size-normal
+  &.are-large
+    .tag:not(.is-normal):not(.is-medium)
+      font-size: $size-medium
   &.is-centered
     justify-content: center
     .tag
@@ -37,6 +35,16 @@ $tag-delete-margin: 1px !default
         margin-left: 0.5rem
       &:not(:last-child)
         margin-right: 0
+  &.has-addons
+    .tag
+      margin-right: 0
+      &:not(:first-child)
+        margin-left: 0
+        border-bottom-left-radius: 0
+        border-top-left-radius: 0
+      &:not(:last-child)
+        border-bottom-right-radius: 0
+        border-top-right-radius: 0
 
 .tag:not(body)
   align-items: center
@@ -52,8 +60,8 @@ $tag-delete-margin: 1px !default
   padding-right: 0.75em
   white-space: nowrap
   .delete
-    margin-left: 0.25em
-    margin-right: -0.375em
+    margin-left: 0.25rem
+    margin-right: -0.375rem
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -62,6 +70,8 @@ $tag-delete-margin: 1px !default
       background-color: $color
       color: $color-invert
   // Sizes
+  &.is-normal
+    font-size: $size-small
   &.is-medium
     font-size: $size-normal
   &.is-large
@@ -82,8 +92,8 @@ $tag-delete-margin: 1px !default
     padding: 0
     position: relative
     width: 2em
-    &:before,
-    &:after
+    &::before,
+    &::after
       background-color: currentColor
       content: ""
       display: block
@@ -92,10 +102,10 @@ $tag-delete-margin: 1px !default
       top: 50%
       transform: translateX(-50%) translateY(-50%) rotate(45deg)
       transform-origin: center center
-    &:before
+    &::before
       height: 1px
       width: 50%
-    &:after
+    &::after
       height: 50%
       width: 1px
     &:hover,

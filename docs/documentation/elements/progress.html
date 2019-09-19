@@ -3,6 +3,15 @@ title: Progress Bar
 layout: documentation
 doc-tab: elements
 doc-subtab: progress
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-progress
+meta:
+  colors: true
+  sizes: true
+  variables: true
 ---
 
 {% capture progress %}
@@ -10,7 +19,7 @@ doc-subtab: progress
 {% endcapture %}
 
 {% capture progress_colors %}
-<progress class="progress is-primary" value="15" max="100">30%</progress>
+<progress class="progress is-primary" value="15" max="100">15%</progress>
 <progress class="progress is-link" value="30" max="100">30%</progress>
 <progress class="progress is-info" value="45" max="100">45%</progress>
 <progress class="progress is-success" value="60" max="100">60%</progress>
@@ -25,34 +34,33 @@ doc-subtab: progress
 <progress class="progress is-large" value="60" max="100">60%</progress>
 {% endcapture %}
 
-{% include subnav-elements.html %}
+{% capture progress_indeterminate %}
+<progress class="progress is-small is-primary" max="100">15%</progress>
+<progress class="progress is-danger" max="100">30%</progress>
+<progress class="progress is-medium is-dark" max="100">45%</progress>
+<progress class="progress is-large is-info" max="100">60%</progress>
+{% endcapture %}
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">Progress bars</h1>
-    <h2 class="subtitle">
-      Native HTML <strong>progress</strong> bars
-    </h2>
-    {%
-      include meta.html
-      colors=true
-      sizes=true
-      variables=true
-    %}
+{% include elements/snippet.html content=progress %}
 
-    <hr>
+{% include elements/anchor.html name="Colors" %}
 
-    {% include snippet.html content=progress %}
+{% include elements/snippet.html content=progress_colors %}
 
-    {% include anchor.html name="Colors" %}
+{% include elements/anchor.html name="Sizes" %}
 
-    {% include snippet.html content=progress_colors %}
+{% include elements/snippet.html content=progress_sizes %}
 
-    {% include anchor.html name="Sizes" %}
+{% include elements/anchor.html name="Indeterminate" %}
 
-    {% include snippet.html content=progress_sizes %}
+{% include elements/new-tag.html version="0.7.4" %}
 
-    {% include variables.html type='element' %}
+<div class="content">
+  <p>
+    If you don't set the HTML <code>value</code> attribute, you can display an <strong>indeterminate</strong> progress bar. It's used to show that some progress is going on, but the actual duration is not yet determined.
+  </p>
+</div>
 
-  </div>
-</section>
+{% include elements/snippet.html content=progress_indeterminate %}
+
+{% include elements/variables.html type='element' %}

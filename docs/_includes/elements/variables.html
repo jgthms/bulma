@@ -1,0 +1,76 @@
+{% capture content %}
+  {% assign anchor_name = include.anchor_name | default: 'Variables' %}
+  {% assign tab         = include.tab         | default: page.doc-tab %}
+  {% assign subtab      = include.subtab      | default: page.doc-subtab %}
+  {% assign type        = include.type        | default: tab %}
+  {% assign data        = include.data        | default: site.data.variables[tab][subtab] %}
+  {% assign variables   = include.variables   | default: data.list %}
+  {% assign table_class = include.table_class | default: 'is-bordered' %}
+
+  {% if include.custom_message %}
+    {{ include.custom_message }}
+  {% else %}
+    {% assign variables_link_text = "these variables" %}
+
+    {% capture variables_link %}
+      {% if data.file_path %}
+        <a href="https://github.com/jgthms/bulma/blob/master/sass/{{ data.file_path }}" target="_blank" rel="nofollow">
+          {{ variables_link_text }}
+        </a>
+      {% else %}
+        {{ variables_link_text }}
+      {% endif %}
+    {% endcapture %}
+
+    You can use {{ variables_link | strip }} to <strong>customize</strong> this {{ type }}. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+  {% endif %}
+{% endcapture %}
+
+{% capture variables_size %}{{ variables | size }}{% endcapture %}
+{% capture variables_keys_size %}{{ include.variables_keys | size }}{% endcapture %}
+
+{% if variables_size != '0' or variables_keys_size != '0' %}
+  {% unless include.hide_anchor %}
+    {% include elements/anchor.html name=anchor_name %}
+  {% endunless %}
+
+  {% unless include.hide_content %}
+    <div class="content">
+      <p>{{ content | strip }}</p>
+    </div>
+  {% endunless %}
+
+  <div class="table-container">
+    <table class="table {{ table_class }}">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default value</th>
+          <th>Computed value</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default value</th>
+          <th>Computed value</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% if include.variables_keys %}
+          {% for key in include.variables_keys %}
+            {% assign variable = site.data.variables[include.folder][include.file].by_name[key] %}
+            {% include elements/variable-row.html variable=variable %}
+          {% endfor %}
+        {% else %}
+          {% for variable_name in variables %}
+            {% assign variable = data.by_name[variable_name] %}
+            {% include elements/variable-row.html variable=variable %}
+          {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+{% endif %}

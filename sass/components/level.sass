@@ -1,5 +1,7 @@
+$level-item-spacing: ($block-spacing / 2) !default
+
 .level
-  +block
+  @extend %block
   align-items: center
   justify-content: space-between
   code
@@ -18,9 +20,9 @@
     .level-item
       &:not(:last-child)
         margin-bottom: 0
+        margin-right: $level-item-spacing
       &:not(.is-narrow)
         flex-grow: 1
-      margin-right: 0.75rem
   // Responsiveness
   +tablet
     display: flex
@@ -41,7 +43,7 @@
   // Responsiveness
   +mobile
     &:not(:last-child)
-      margin-bottom: 0.75rem
+      margin-bottom: $level-item-spacing
 
 .level-left,
 .level-right
@@ -55,7 +57,7 @@
     // Responsiveness
     +tablet
       &:not(:last-child)
-        margin-right: 0.75rem
+        margin-right: $level-item-spacing
 
 .level-left
   align-items: center

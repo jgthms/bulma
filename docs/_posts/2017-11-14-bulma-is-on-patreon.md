@@ -1,8 +1,8 @@
 ---
 title: "Bulma is on Patreon!"
 layout: post
-introduction: "Fix your navbar at the top or bottom"
-color: "primary"
+introduction: "Support Bulma's future"
+color: "patreon"
 name: "Bulma on Patreon"
 icon: "patreon"
 icon_brand: true
@@ -12,7 +12,7 @@ icon_brand: true
 
 <figure>
   <a href="https://www.patreon.com/jgthms" target="_blank">
-    <img src="/images/blog/patreon-homepage.png" alt="Bulma Patreon homepage" width="840" height="525">
+    <img src="{{ site.url }}/images/blog/patreon-homepage.png" alt="Bulma Patreon homepage" width="840" height="525">
   </a>
 </figure>
 

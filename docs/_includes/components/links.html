@@ -1,0 +1,28 @@
+<nav class="bd-links">
+  {% if include.category_id %}
+    {% assign category_id = include.category_id %}
+    {% assign category_links = site.data.links.categories[category_id] %}
+  {% else %}
+    {% assign category_links = site.data.links.categories %}
+  {% endif %}
+
+  {% for link_id in category_links %}
+    {% if include.category_id %}
+      {% assign link = site.data.links.by_id[link_id] %}
+    {% else %}
+      {% assign thingy = link_id[0] %}
+      {% assign link = site.data.links.by_id[thingy] %}
+    {% endif %}
+    {% assign link_url = site.url | append: link.path %}
+    {%
+      include elements/link.html
+      url=link_url
+      color=link.color
+      icon_brand=link.icon_brand
+      icon_regular=link.icon_regular
+      icon=link.icon
+      name=link.name
+      subtitle=link.subtitle
+    %}
+  {% endfor %}
+</nav>

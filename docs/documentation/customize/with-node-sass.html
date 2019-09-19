@@ -1,0 +1,168 @@
+---
+title: With node-sass
+layout: documentation
+doc-tab: customize
+doc-subtab: node-sass
+breadcrumb:
+- home
+- documentation
+- customize
+- customize-node-sass
+---
+
+{% capture dependencies %}
+npm install node-sass --save-dev
+npm install bulma --save-dev
+{% endcapture %}
+
+{% capture package %}
+{
+  "name": "mybulma",
+  "version": "1.0.0",
+  "main": "sass/mystyles.scss",
+  "license": "MIT",
+  "devDependencies": {
+    "bulma": "^0.7.2",
+    "node-sass": "^4.9.2"
+  }
+}
+{% endcapture %}
+
+{% capture step_2 %}
+  <div class="content">
+    <p>
+      You only need <strong>2 packages</strong> to customize Bulma: <code>node-sass</code> and <code>bulma</code> itself.
+    </p>
+  </div>
+
+  {% highlight bash %}{{ dependencies }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      Your <code>package.json</code> should look like this at this point.
+    </p>
+  </div>
+
+  {% highlight bash %}{{ package }}{% endhighlight %}
+{% endcapture %}
+
+{% capture scripts %}
+"scripts": {
+  "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+  "css-watch": "npm run css-build -- --watch",
+  "start": "npm run css-watch"
+}
+{% endcapture %}
+
+{% capture npm_build %}
+npm run css-build
+{% endcapture %}
+
+{% capture npm_build_success %}
+Rendering Complete, saving .css file...
+Wrote CSS to /path/to/mybulma/css/mystyles.css
+{% endcapture %}
+
+{% capture npm_watch %}
+npm start
+{% endcapture %}
+
+{% capture step_5 %}
+  <div class="content">
+    <p>
+      To build a CSS file from a Sass file, we can use <strong>node scripts</strong>. In <code>package.json</code>, add the following:
+    </p>
+  </div>
+
+  {% highlight html %}{{ scripts }}{% endhighlight %}
+
+  <div class="content">
+    <ul>
+      <li>
+        <code>css-build</code> takes <code>sass/mystyles.scss</code> as an input, and outputs <code>css/mystyles.css</code>, while omitting the source map
+      </li>
+      <li>
+        <code>css-watch</code> builds the CSS and watches for changes
+      </li>
+      <li>
+        <code>start</code> is simply a shortcut for <code>css-watch</code>
+      </li>
+    </ul>
+
+    <p>
+      To test it out, go in your <strong>terminal</strong> and run the following command:
+    </p>
+  </div>
+
+  {% highlight bash %}{{ npm_build }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      If set up correctly, you will see the following message:
+    </p>
+  </div>
+
+  {% highlight bash %}{{ npm_build_success }}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      <strong>Reload</strong> the page and it should be styled like this:
+    </p>
+  </div>
+
+  {%
+    include components/figure.html
+    path="customize/custom-bulma-02-default"
+    extension="png"
+    alt="Bulma default styles"
+    width="600"
+    height="300"
+    caption="Bulma's default styles"
+  %}
+
+  <div class="content">
+    <p>
+      To <strong>watch for changes</strong>, just launch the following command:
+    </p>
+  </div>
+
+  {% highlight bash %}{{ npm_watch }}{% endhighlight %}
+{% endcapture %}
+
+{% include steps/create-package.html
+  number="1"
+  entry="sass/mystyles.scss"
+%}
+
+<hr>
+
+{% include components/step.html
+  title="2. Install the dev dependencies"
+  content=step_2
+%}
+
+<hr>
+
+{% include steps/create-sass-file.html
+  number="3"
+  path="../node_modules/bulma/bulma.sass"
+%}
+
+<hr>
+
+{% include steps/create-html-page.html
+  number="4"
+%}
+
+<hr>
+
+{% include components/step.html
+  title="5. Add node scripts to build your CSS"
+  content=step_5
+%}
+
+<hr>
+
+{% include steps/add-custom-styles.html
+  number="6"
+%}
