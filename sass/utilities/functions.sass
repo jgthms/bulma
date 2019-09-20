@@ -65,3 +65,20 @@
     @return rgba(#000, 0.7)
   @else
     @return #fff
+
+@function findLightColor($color)
+  @if type-of($color) == 'color'
+    @return change-color($color, $lightness: 96%)
+  @return $background
+
+@function findDarkColor($color)
+  @if type-of($color) == 'color'
+    @return change-color($color, $lightness: 29%)
+  @return $text-strong
+
+@function getCssVariable($color, $name)
+  $hue: hue($color)
+  $saturation: saturation($color)
+  $lightness: lightness($color)
+  $alpha: alpha($color)
+  @return $hue, $saturation, $lightness

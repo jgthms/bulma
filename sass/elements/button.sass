@@ -303,3 +303,93 @@ $button-static-border-color: $grey-lighter !default
       .button:not(.is-fullwidth)
         margin-left: 0.25rem
         margin-right: 0.25rem
+
+.vbuttons
+  display: flex
+  flex-wrap: wrap
+  .vbutton
+    margin: 0 1em 1em 0
+
+.vbutton
+  --cssvar-background-color: #{$button-background-color}
+  --cssvar-border-color: #{$button-border-color}
+  --cssvar-color: #{$button-color}
+  --cssvar-hover-border-color: #{$button-hover-border-color}
+  --cssvar-hover-color: #{$button-hover-color}
+  --cssvar-active-border-color: #{$button-active-border-color}
+  --cssvar-active-color: #{$button-active-color}
+  -moz-appearance: none
+  -webkit-appearance: none
+  background-color: var(--cssvar-background-color)
+  border-color: var(--cssvar-border-color)
+  border-style: solid
+  border-width: 1px
+  color: var(--cssvar-color)
+  font-size: 1rem
+  padding: 1em 2em
+  outline: none
+  &:hover
+    background-color: var(--cssvar-hover-background-color)
+    border-color: var(--cssvar-hover-border-color)
+    color: var(--cssvar-hover-color)
+  &:active
+    background-color: var(--cssvar-active-background-color)
+    border-color: var(--cssvar-hover-border-color)
+    color: var(--cssvar-hover-color)
+  &.is-light
+    --cssvar-background-color: var(--cssvar-light-background-color)
+    --cssvar-border-color: var(--cssvar-light-border-color)
+    --cssvar-color: var(--cssvar-light-color)
+    --cssvar-hover-background-color: var(--cssvar-light-hover-background-color)
+    --cssvar-hover-border-color: var(--cssvar-light-hover-border-color)
+    --cssvar-hover-color: var(--cssvar-light-hover-color)
+    --cssvar-active-background-color: var(--cssvar-light-active-background-color)
+    --cssvar-active-border-color: var(--cssvar-light-active-border-color)
+    --cssvar-active-color: var(--cssvar-light-active-color)
+  &.is-dark
+    --cssvar-background-color: var(--cssvar-dark-background-color)
+    --cssvar-border-color: var(--cssvar-dark-border-color)
+    --cssvar-color: var(--cssvar-dark-color)
+    --cssvar-hover-background-color: var(--cssvar-dark-hover-background-color)
+    --cssvar-hover-border-color: var(--cssvar-dark-hover-border-color)
+    --cssvar-hover-color: var(--cssvar-dark-hover-color)
+    --cssvar-active-background-color: var(--cssvar-dark-active-background-color)
+    --cssvar-active-border-color: var(--cssvar-dark-active-border-color)
+    --cssvar-active-color: var(--cssvar-dark-active-color)
+  &.is-text
+    background-color: transparent
+    border-color: transparent
+    color: $text
+    text-decoration: underline
+  @each $name, $trio in $colors
+    $base: "#{$prefix}#{$name}"
+    &.is-#{$name}
+      --cssvar-background-color: var(--#{$base})
+      --cssvar-border-color: var(--#{$base})
+      --cssvar-color: var(--#{$base}-invert)
+      --cssvar-hover-background-color: var(--#{$base}-hover)
+      --cssvar-hover-border-color: var(--#{$base}-hover)
+      --cssvar-hover-color: var(--#{$base}-invert)
+      --cssvar-active-background-color: var(--#{$base}-active)
+      --cssvar-active-border-color: var(--#{$base}-active)
+      --cssvar-active-color: var(--#{$base}-invert)
+      &.is-light
+        --cssvar-background-color: var(--#{$base}-light)
+        --cssvar-border-color: var(--#{$base}-light)
+        --cssvar-color: var(--#{$base}-dark)
+        --cssvar-hover-background-color: var(--#{$base}-light-hover)
+        --cssvar-hover-border-color: var(--#{$base}-light-hover)
+        --cssvar-hover-color: var(--#{$base}-dark)
+        --cssvar-active-background-color: var(--#{$base}-light-active)
+        --cssvar-active-border-color: var(--#{$base}-light-active)
+        --cssvar-active-color: var(--#{$base}-dark)
+      &.is-dark
+        --cssvar-background-color: var(--#{$base}-dark)
+        --cssvar-border-color: var(--#{$base}-dark)
+        --cssvar-color: var(--#{$base}-light)
+        --cssvar-hover-background-color: var(--#{$base}-dark-hover)
+        --cssvar-hover-border-color: var(--#{$base}-dark-hover)
+        --cssvar-hover-color: var(--#{$base}-light)
+        --cssvar-active-background-color: var(--#{$base}-dark-active)
+        --cssvar-active-border-color: var(--#{$base}-dark-active)
+        --cssvar-active-color: var(--#{$base}-light)

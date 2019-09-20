@@ -81,7 +81,53 @@ $size-large: $size-4 !default
 $custom-colors: null !default
 $custom-shades: null !default
 
-$colors: mergeColorMaps(("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert), "link": ($link, $link-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert), "danger": ($danger, $danger-invert)), $custom-colors) !default
+$colors: mergeColorMaps(("white": ($white, $black, "black"), "black": ($black, $white, "white"), "light": ($light, $light-invert, "dark"), "dark": ($dark, $dark-invert, "light"), "primary": ($primary, $primary-invert), "link": ($link, $link-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert), "danger": ($danger, $danger-invert)), $custom-colors) !default
 $shades: mergeColorMaps(("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis), $custom-shades) !default
 
 $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default
+
+@function findLightColor($color)
+  @if type-of($color) == 'color'
+    @return change-color($color, $lightness: 96%)
+  @return $background
+
+@function findDarkColor($color)
+  @if type-of($color) == 'color'
+    @return change-color($color, $lightness: 29%)
+  @return $text-strong
+
+=css-variable($color, $name, $cssvar-invert)
+  $hue: hue($color)
+  $saturation: saturation($color)
+  $lightness: lightness($color)
+  $base: "#{$prefix}#{$name}"
+  --#{$base}-h: #{$hue}
+  --#{$base}-s: #{$saturation}
+  --#{$base}-l: #{$lightness}
+  --#{$base}: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)))
+  --#{$base}-hover: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)  - 5%))
+  --#{$base}-active: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)  - 10%))
+
+  $light: findLightColor($color)
+  --#{$base}-light: #{$light}
+  --#{$base}-light-hover: #{darken($light, 5%)}
+  --#{$base}-light-active: #{darken($light, 10%)}
+
+  $dark: findDarkColor($color)
+  --#{$base}-dark: #{$dark}
+  --#{$base}-dark-hover: #{darken($dark, 5%)}
+  --#{$base}-dark-active: #{darken($dark, 10%)}
+
+  @if $cssvar-invert
+    --#{$base}-invert: var(--#{$prefix}#{$cssvar-invert})
+  @else
+    --#{$base}-invert: #{findColorInvert($color)}
+
+\:root
+  @each $name, $trio in $colors
+    $color: nth($trio, 1)
+    $color-invert: nth($trio, 2)
+    $cssvar-invert: false
+    @if length($trio) > 2
+      $cssvar-invert: nth($trio, 3)
+    +css-variable($color, $name, $cssvar-invert)

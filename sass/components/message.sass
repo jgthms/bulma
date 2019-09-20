@@ -19,6 +19,10 @@ $message-body-pre-code-background-color: transparent !default
 $message-header-body-border-width: 0 !default
 $message-colors: $colors !default
 
+\:root
+  --bulma-message-background-color-lightness: 96
+  --bulma-message-color-lightness: 29
+
 .message
   @extend %block
   background-color: $message-background-color
@@ -85,3 +89,35 @@ $message-colors: $colors !default
     background-color: $message-body-pre-background-color
   pre code
     background-color: $message-body-pre-code-background-color
+
+.vmessage-header
+  @extend .message-header
+  background-color: var(--cssvar-header-background-color)
+  color: var(--cssvar-header-color)
+
+.vmessage-body
+  @extend .message-body
+  border-color: var(--cssvar-body-border-color)
+  color: var(--cssvar-body-color)
+
+.vmessage
+  --cssvar-background-color: #{$message-background-color}
+  --cssvar-header-background-color: #{$message-header-background-color}
+  --cssvar-header-color: #{$message-header-color}
+  --cssvar-body-border-color: #{$message-body-border-color}
+  --cssvar-body-color: #{$message-body-color}
+  background-color: var(--cssvar-background-color)
+  margin-bottom: 1.5rem
+  strong
+    color: currentColor
+  a:not(.button):not(.tag):not(.dropdown-item)
+    color: currentColor
+    text-decoration: underline
+  @each $name, $trio in $colors
+    $base: "#{$prefix}#{$name}"
+    &.is-#{$name}
+      --cssvar-background-color: var(--#{$base}-light)
+      --cssvar-header-background-color: var(--#{$base})
+      --cssvar-header-color: var(--#{$base}-invert)
+      --cssvar-body-border-color: var(--#{$base})
+      --cssvar-body-color: var(--#{$base}-dark)
