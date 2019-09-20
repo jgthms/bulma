@@ -341,9 +341,6 @@ $button-static-border-color: $grey-lighter !default
   border-width: $button-border-width
   color: var(--cssvar-color)
   cursor: pointer
-  font-size: 1rem
-  outline: none
-  padding: 1em 2em
   @if $button-family
     font-family: $button-family
   justify-content: center
@@ -379,7 +376,6 @@ $button-static-border-color: $grey-lighter !default
   &:focus,
   &.is-focused
     border-color: var(--cssvar-focus-border-color)
-    // color: var(--cssvar-focus-color)
     &:not(:active)
       box-shadow: $button-focus-box-shadow-size #{var(--cssvar-focus-box-shadow-color)}
   &:active,
@@ -387,21 +383,8 @@ $button-static-border-color: $grey-lighter !default
     background-color: var(--cssvar-active-background-color)
     border-color: var(--cssvar-active-border-color)
     color: var(--cssvar-active-color)
-  // &.is-outlined
-  //   background-color: transparent
-  //   border-color: var(--cssvar-outlined-color)
-  //   color: var(--cssvar-outlined-color)
-  //   &:hover,
-  //   &.is-hovered
-  //     background-color: var(--cssvar-outlined-hover-background-color)
-  //     border-color: transparent
-  //     color: var(--cssvar-outlined-hover-color)
-  //   &:active,
-  //   &.is-active
-  //     background-color: var(--cssvar-outlined-active-background-color)
-  //     border-color: transparent
-  //     color: var(--cssvar-outlined-active-color)
   &.is-outlined
+    --cssvar-background-color: transparent
     --cssvar-border-color: #{$button-color}
     --cssvar-color: #{$button-color}
     --cssvar-hover-background-color: #{$button-color}
@@ -412,31 +395,14 @@ $button-static-border-color: $grey-lighter !default
     --cssvar-focus-box-shadow-color: #{$border}
     &:not(:hover):not(.is-hovered):not(:active):not(.is-active)
       background-color: transparent
-    &:hover,
-    &.is-hovered,
-    &:active,
-    &.is-active
-      border-color: transparent
-  &.is-light
-    --cssvar-background-color: var(--cssvar-light-background-color)
-    --cssvar-border-color: var(--cssvar-light-border-color)
-    --cssvar-color: var(--cssvar-light-color)
-    --cssvar-hover-background-color: var(--cssvar-light-hover-background-color)
-    --cssvar-hover-border-color: var(--cssvar-light-hover-border-color)
-    --cssvar-hover-color: var(--cssvar-light-hover-color)
-    --cssvar-active-background-color: var(--cssvar-light-active-background-color)
-    --cssvar-active-border-color: var(--cssvar-light-active-border-color)
-    --cssvar-active-color: var(--cssvar-light-active-color)
-  &.is-dark
-    --cssvar-background-color: var(--cssvar-dark-background-color)
-    --cssvar-border-color: var(--cssvar-dark-border-color)
-    --cssvar-color: var(--cssvar-dark-color)
-    --cssvar-hover-background-color: var(--cssvar-dark-hover-background-color)
-    --cssvar-hover-border-color: var(--cssvar-dark-hover-border-color)
-    --cssvar-hover-color: var(--cssvar-dark-hover-color)
-    --cssvar-active-background-color: var(--cssvar-dark-active-background-color)
-    --cssvar-active-border-color: var(--cssvar-dark-active-border-color)
-    --cssvar-active-color: var(--cssvar-dark-active-color)
+    &:not(.is-inverted):not([disabled])
+      &:hover,
+      &.is-hovered,
+      &:active,
+      &.is-active
+        border-color: transparent
+  &.is-outlined.is-inverted
+    background-color: transparent
   &.is-text
     --cssvar-background-color: transparent
     --cssvar-border-color: transparent
@@ -453,11 +419,6 @@ $button-static-border-color: $grey-lighter !default
     --cssvar-active-border-color: transparent
     --cssvar-active-color: #{$button-text-active-color}
     text-decoration: underline
-    &[disabled],
-    fieldset[disabled] &
-      background-color: transparent
-      border-color: transparent
-      box-shadow: none
   @each $name, $trio in $colors
     $base: "#{$prefix}#{$name}"
     &.is-#{$name}
@@ -475,27 +436,76 @@ $button-static-border-color: $grey-lighter !default
       --cssvar-active-border-color: transparent
       --cssvar-active-color: var(--#{$base}-invert)
       --cssvar-outlined-color: var(--#{$base})
+      &.is-inverted
+        --cssvar-background-color: var(--#{$base}-invert)
+        --cssvar-color: var(--#{$base})
+        --cssvar-hover-background-color: var(--#{$base}-invert)
+        --cssvar-hover-color: var(--#{$base}-hover)
+        --cssvar-active-background-color: var(--#{$base}-invert)
+        --cssvar-active-color: var(--#{$base}-active)
       &.is-outlined
+        --cssvar-background-color: transparent
         --cssvar-border-color: var(--#{$base})
         --cssvar-color: var(--#{$base})
         --cssvar-hover-background-color: var(--#{$base})
-        // --cssvar-hover-color: var(--#{$base}-invert)
-        // --cssvar-active-background-color: var(--#{$base}-active)
-        // --cssvar-active-color: var(--#{$base}-invert)
-        // --cssvar-focus-border-color: var(--#{$base})
-        // --cssvar-focus-box-shadow-color: var(--#{$base})
-    &.is-#{$name}-light
-      --cssvar-background-color: var(--#{$base}-light)
-      --cssvar-border-color: transparent
-      --cssvar-color: var(--#{$base}-dark)
-      --cssvar-hover-background-color: var(--#{$base}-light-hover)
-      --cssvar-hover-border-color: transparent
-      --cssvar-hover-color: var(--#{$base}-dark)
-      --cssvar-focus-background-color: var(--#{$base}-light)
-      --cssvar-focus-border-color: transparent
-      --cssvar-focus-color: var(--#{$base}-dark)
-      --cssvar-focus-box-shadow-color: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), 86%)
-      --cssvar-active-background-color: var(--#{$base}-light-active)
-      --cssvar-active-border-color: transparent
-      --cssvar-active-color: var(--#{$base}-dark)
-
+        --cssvar-focus-border-color: var(--#{$base})
+      &.is-outlined.is-inverted
+        --cssvar-background-color: transparent
+        --cssvar-border-color: var(--#{$base}-invert)
+        --cssvar-color: var(--#{$base}-invert)
+        --cssvar-hover-border-color: var(--#{$base}-hover)
+        --cssvar-hover-color: var(--#{$base}-invert)
+        --cssvar-active-border-color: var(--#{$base}-active)
+        --cssvar-active-color: var(--#{$base}-active)
+        --cssvar-focus-box-shadow-color: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), 14%)
+      &.is-light
+        --cssvar-background-color: var(--#{$base}-light)
+        --cssvar-border-color: transparent
+        --cssvar-color: var(--#{$base}-dark)
+        --cssvar-hover-background-color: var(--#{$base}-light-hover)
+        --cssvar-hover-border-color: transparent
+        --cssvar-hover-color: var(--#{$base}-dark)
+        --cssvar-focus-background-color: var(--#{$base}-light)
+        --cssvar-focus-border-color: transparent
+        --cssvar-focus-color: var(--#{$base}-dark)
+        --cssvar-focus-box-shadow-color: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), 86%)
+        --cssvar-active-background-color: var(--#{$base}-light-active)
+        --cssvar-active-border-color: transparent
+        --cssvar-active-color: var(--#{$base}-dark)
+  // Sizes
+  &.is-small
+    +button-small
+  &.is-normal
+    +button-normal
+  &.is-medium
+    +button-medium
+  &.is-large
+    +button-large
+  // Modifiers
+  &[disabled],
+  fieldset[disabled] &
+    --cssvar-hover-background-color: var(--cssvar-background-color) !important
+    --cssvar-hover-border-color: var(--cssvar-border-color) !important
+    --cssvar-hover-color: var(--cssvar-color) !important
+    opacity: $button-disabled-opacity
+  &.is-fullwidth
+    display: flex
+    width: 100%
+  &.is-loading
+    color: transparent !important
+    pointer-events: none
+    &::after
+      @extend %loader
+      +center(1em)
+      border-color: transparent transparent var(--cssvar-color) var(--cssvar-color) !important
+      position: absolute !important
+  &.is-static
+    --cssvar-background-color: #{$button-static-background-color}
+    --cssvar-border-color: #{$button-static-border-color}
+    --cssvar-color: #{$button-static-color}
+    box-shadow: none
+    pointer-events: none
+  &.is-rounded
+    border-radius: $radius-rounded
+    padding-left: 1.25em
+    padding-right: 1.25em
