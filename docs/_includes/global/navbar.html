@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar has-shadow is-spaced">
+<nav id="navbar" class="bd-navbar navbar has-shadow is-spaced">
   <div class="container">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
@@ -33,18 +33,19 @@
         <span class="is-hidden-touch is-hidden-widescreen">
           Docs
         </span>
-        <span class="is-hidden-desktop-only">
+        <span class="is-hidden-tablet-only is-hidden-desktop-only">
           Documentation
         </span>
       </a>
 
-      {% for item in site.data.global.navbar_items %}
-        <a class="navbar-item bd-navbar-item-{{ item.id }} {% if page.route == item.id %}is-active{% endif %}" href="{{ site.url }}/{{ item.id }}/">
-          <span class="icon {{ item.color }}">
-            <i class="{{ item.fa_type }} {{ item.fa_icon }}"></i>
+      {% for link_id in site.data.links.navbar %}
+        {% assign link = site.data.links.by_id[link_id] %}
+        <a class="navbar-item bd-navbar-item-{{ link.id }} {% if page.route == link.id %}is-active{% endif %}" href="{{ site.url }}{{ link.path }}/">
+          <span class="icon has-text-{{ link.color }}">
+            <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
           </span>
 
-          <span>{{ item.title }}</span>
+          <span>{{ link.title }}</span>
         </a>
       {% endfor %}
 
@@ -57,7 +58,7 @@
         <div id="moreDropdown" class="navbar-dropdown">
           {% for link_id in site.data.links.more %}
             {% assign link = site.data.links.by_id[link_id] %}
-            <a class="navbar-item {% if page.route == link_id %}is-active{% endif %}" href="{{ site.url }}/{{ link.path }}">
+            <a class="navbar-item {% if page.route == link_id %}is-active{% endif %}" href="{{ site.url }}{{ link.path }}">
               <span>
                 <span class="icon has-text-{{ link.color }}">
                   <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
@@ -76,13 +77,13 @@
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item is-hidden-touch is-hidden-desktop-only" href="{{ site.data.meta.github }}" target="_blank">
+      <a class="bd-navbar-icon navbar-item" href="{{ site.data.meta.github }}" target="_blank">
         <span class="icon" style="color: #333;">
           <i class="fab fa-lg fa-github-alt"></i>
         </span>
       </a>
 
-      <a class="navbar-item is-hidden-touch is-hidden-desktop-only" href="{{ site.data.meta.twitter }}" target="_blank">
+      <a class="bd-navbar-icon navbar-item" href="{{ site.data.meta.twitter }}" target="_blank">
         <span class="icon" style="color: #55acee;">
           <i class="fab fa-lg fa-twitter"></i>
         </span>
@@ -90,6 +91,9 @@
 
       <div class="navbar-item">
         <div class="field is-grouped is-grouped-multiline">
+          <p class="control">
+            {% include elements/github.html %}
+          </p>
           <p class="control">
             {% include elements/patreon.html %}
           </p>

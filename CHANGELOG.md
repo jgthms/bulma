@@ -6,7 +6,12 @@
 
 * Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+* #1608 Fix #1552 -> `.container.is-fluid` margins
 * Fix #2271 -> Add `.is-disabled` for checkbox/radio labels
+
+### New features
+
+* #2563 `.image` has a new `.is-fullwidth` modifier
 
 ## 0.7.5
 
