@@ -459,6 +459,35 @@ meta:
 </div>
 {% endcapture %}
 
+{% capture file_javascript %}
+<div id="file-js-example" class="file has-name">
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+    <span class="file-name">
+      No file uploaded
+    </span>
+  </label>
+</div>
+
+<script>
+  const fileInput = document.querySelector('#file-js-example input[type=file]');
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector('#file-js-example .file-name');
+      fileName.textContent = fileInput.files[0].name;
+    }
+  }
+</script>
+{% endcapture %}
+
 {% capture file_sizes_boxed_name %}
 <div class="field">
   <div class="file is-small is-boxed has-name">
@@ -725,9 +754,9 @@ meta:
 <div class="content">
   <p>
     A file upload input requires JavaScript to <strong>retrieve</strong> the <strong>selected file name</strong>.
-    <br>
-    User <a href="https://github.com/chintanbanugaria"><strong>@chintanbanugaria</strong></a> on GitHub <a href="https://github.com/jgthms/bulma/issues/280#issuecomment-294099510">has provided</a> a simple solution <a href="https://jsfiddle.net/chintanbanugaria/uzva5byy/">on JSFiddle</a>.
+    Here is an example of how this could be done:
   </p>
+  {% include elements/snippet.html content=file_javascript %}
 </div>
 
 {% include elements/variables.html

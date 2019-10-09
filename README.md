@@ -93,7 +93,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [elm-bulma](https://github.com/surprisetalk/elm-bulma)                               | Bulma + Elm                                                                            |
 | [elm-bulma-classes](https://github.com/ahstro/elm-bulma-classes)                     | Bulma classes prepared for usage with Elm                                              |
 | [Bulma Customizer](https://bulma-customizer.bstash.io/)                              | Bulma Customizer &#8211; Create your own **bespoke** Bulma build                       |
-| [Fulma](https://mangelmaxime.github.io/Fulma/)                                       | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)  |
+| [Fulma](https://fulma.github.io/Fulma/)                                       | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)  |
 | [Laravel Enso](https://github.com/laravel-enso/enso)                                 | SPA Admin Panel built with Bulma, VueJS and Laravel                                    |
 | [Django Bulma](https://github.com/timonweb/django-bulma)                             | Integrates Bulma with Django                                                           |
 | [Bulma Templates](https://github.com/dansup/bulma-templates)                         | Free Templates for Bulma                                                               |
@@ -114,6 +114,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [@aybolit/bulma](https://github.com/web-padawan/aybolit/tree/master/packages/bulma)  | Web Components library inspired by Bulma and Bulma-extensions                          |
 | [Drulma](https://www.drupal.org/project/drulma)                                      | Drupal theme for Bulma.                                                                |
 | [Bulrush](https://github.com/textbook/bulrush)                                       | A Bulma-based Python Pelican blog theme                                                |
+| [Bulma Variable Export](https://github.com/service-paradis/bulma-variables-export)                                       | Access Bulma Variables in Javascript/Typescript in project using Webpack                                                |
 
 ## Copyright and license
 
