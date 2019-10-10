@@ -2,24 +2,108 @@
 
 ## Upcoming release
 
+### Bug fixes
+
+* Fix #2647 -> Missing meta tags in snippet
+* Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
+* Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+* #1608 Fix #1552 -> `.container.is-fluid` margins
+
 ### New features
+
+* #2563 `.image` has a new `.is-fullwidth` modifier
+
+## 0.7.5
+
+### Deprecation warning
+
+The `form.sass` file is **deprecated**. It has moved into its own `/form` folder. If you were importing `form.sass`, please import `sass/form/_all.sass` now.
+If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as bbefore.
+
+### New features
+
+#### Support for overriding the `font-family`
+
+You can now specify a different `font-family` for the `.title`, `.subtitle` and `.button` by using the variables `$title-family`, `$subtitle-family` and `$button-family` respectively.
+
+Simply set a value when importing Bulma:
+
+```scss
+$title-family: "Georgia", serif;
+```
 
 * #2375 Add `.is-relative` helper
 * #2321 Make `.navbar` focus behave like hover for the navigation
 * #2290 Fix #1186 -> Reset the offset on columns
 * #2231 Add `.has-text-weight-medium` helper
 * #2224 Add customizable border radius to progress bar
+* #2480 Add `$footer-color` variable
 
 ### Improvements
 
 * #2396 Update docs with webpack 4 example
 * #2381 Make centered buttons have equal margin
+* Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
+* #2478 Move form.sass into its own folder
 
 ### Bug fixes
 
 * #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
 * #2463 Remove duplicate `.has-addons` in `tag.sass`
 * #2253 Fix `$gap` variable default value
+* #2273 Fix #2258 -> Fix Indeterminate Progress Bar animation in Firefox
+* #2175 Proper aligning for `.tabs` within `.content`
+* #2476 Fix #2441 -> Correct active pagination link text colour on hero
+
+Fix #1979 -> Correct loading spinner color when a button is:
+
+* outlined and hovered/focused
+* outlined, inverted and hovered/focused
+
+### New variables
+
+#### Initial variables
+
+* `$block-spacing`
+
+#### Base
+
+* `$body-font-size`
+* `$small-font-size`
+* `$pre-font-size`
+* `$pre-padding`
+* `$pre-code-font-size`
+
+#### Components
+
+* `$card-header-padding`
+* `$card-content-padding`
+* `$card-media-margin`
+* `$dropdown-menu-min-width`
+* `$dropdown-content-padding-bottom`
+* `$dropdown-content-padding-top`
+* `$level-item-spacing`
+* `$menu-list-line-height`
+* `$menu-list-link-padding`
+* `$menu-nested-list-margin`
+* `$menu-nested-list-padding-left`
+* `$menu-label-font-size`
+* `$menu-label-letter-spacing`
+* `$menu-label-spacing`
+* `$pagination-item-font-size`
+* `$pagination-item-margin`
+* `$pagination-item-padding-left`
+* `$pagination-item-padding-right`
+* `$panel-margin`
+* `$panel-tabs-font-size`
+
+#### Elements
+
+* `$container-offset`
+
+#### Grid
+
+* `$tile-spacing`
 
 ## 0.7.3
 

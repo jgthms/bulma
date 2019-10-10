@@ -1,6 +1,9 @@
 {% assign sponsor = site.data.sponsors.by_id[include.sponsor_id] %}
-{% assign sponsor_path = "sponsors/" | append: include.sponsor_id %}
+{% assign sponsor_path = "amis/" | append: include.sponsor_id %}
 {% assign sponsor_alt = sponsor.name | append: " logo" %}
+{% if sponsor.title != "" %}
+  {% assign sponsor_alt = sponsor.title %}
+{% endif %}
 
 <div class="{{ include.classname }}">
   <a
@@ -9,15 +12,15 @@
     {% unless sponsor.follow %}
     rel="nofollow"
     {% endunless %}
-    {% if sponsor.blend %}style="mix-blend-mode: multiply;"{% endif %}
+    title="{{ sponsor_alt }}"
     >
     {%
-      include elements/responsive-image.html
+      include elements/responsive-image-2x.html
       path=sponsor_path
       extension="png"
       alt=sponsor_alt
       width=sponsor.width
-      height=sponsor.width
+      height=sponsor.height
     %}
   </a>
 </div>

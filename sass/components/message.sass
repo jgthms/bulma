@@ -17,6 +17,7 @@ $message-body-pre-background-color: $white !default
 $message-body-pre-code-background-color: transparent !default
 
 $message-header-body-border-width: 0 !default
+$message-colors: $colors !default
 
 .message
   @extend %block
@@ -36,7 +37,7 @@ $message-header-body-border-width: 0 !default
   &.is-large
     font-size: $size-large
   // Colors
-  @each $name, $pair in $colors
+  @each $name, $pair in $message-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     $color-lightning: max((100% - lightness($color)) - 2%, 0%)
