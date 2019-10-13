@@ -4,9 +4,11 @@
 
 ### Bug fixes
 
+* Fix #2647 -> Missing meta tags in snippet
 * Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
 * Fix #706 -> Derive `-invert` variables using `findColorInvert()`
+* #1608 Fix #1552 -> `.container.is-fluid` margins
 
 ### New features
 
