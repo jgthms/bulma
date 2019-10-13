@@ -13,7 +13,7 @@ $message-body-color: $text !default
 $message-body-padding: 1.25em 1.5em !default
 $message-body-radius: $radius !default
 
-$message-body-pre-background-color: $white !default
+$message-body-pre-background-color: $scheme-main !default
 $message-body-pre-code-background-color: transparent !default
 
 $message-header-body-border-width: 0 !default
@@ -40,18 +40,31 @@ $message-colors: $colors !default
   @each $name, $pair in $message-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
-    $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-    $color-luminance: colorLuminance($color)
-    $darken-percentage: $color-luminance * 70%
-    $desaturate-percentage: $color-luminance * 30%
+
+    $light-background: null
+    @if length($pair) > 2
+      $light-background: nth($pair, 3)
+    @else
+      $color-lightning: max((100% - lightness($color)) - 2%, 0%)
+      $light-background: lighten($color, $color-lightning)
+
+    $dark-color: null
+    @if length($pair) > 3
+      $dark-color: nth($pair, 4)
+    @else
+      $color-luminance: colorLuminance($color)
+      $darken-percentage: $color-luminance * 70%
+      $desaturate-percentage: $color-luminance * 30%
+      $dark-color: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+
     &.is-#{$name}
-      background-color: lighten($color, $color-lightning)
+      background-color: $light-background
       .message-header
         background-color: $color
         color: $color-invert
       .message-body
         border-color: $color
-        color: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+        color: $dark-color
 
 .message-header
   align-items: center
