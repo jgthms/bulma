@@ -37,34 +37,33 @@ $message-colors: $colors !default
   &.is-large
     font-size: $size-large
   // Colors
-  @each $name, $pair in $message-colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+  @each $name, $components in $message-colors
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    $color-light: null
+    $color-dark: null
 
-    $light-background: null
-    @if length($pair) > 2
-      $light-background: nth($pair, 3)
+    @if length($components) >= 3
+      $color-light: nth($components, 3)
+      @if length($components) >= 4
+        $color-dark: nth($components, 4)
+      @else
+        $color-luminance: colorLuminance($color)
+        $darken-percentage: $color-luminance * 70%
+        $desaturate-percentage: $color-luminance * 30%
+        $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
     @else
       $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-      $light-background: lighten($color, $color-lightning)
-
-    $dark-color: null
-    @if length($pair) > 3
-      $dark-color: nth($pair, 4)
-    @else
-      $color-luminance: colorLuminance($color)
-      $darken-percentage: $color-luminance * 70%
-      $desaturate-percentage: $color-luminance * 30%
-      $dark-color: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+      $color-light: lighten($color, $color-lightning)
 
     &.is-#{$name}
-      background-color: $light-background
+      background-color: $color-light
       .message-header
         background-color: $color
         color: $color-invert
       .message-body
         border-color: $color
-        color: $dark-color
+        color: $color-dark
 
 .message-header
   align-items: center
