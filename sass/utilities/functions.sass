@@ -65,3 +65,19 @@
     @return rgba(#000, 0.7)
   @else
     @return #fff
+
+@function findLightColor($color)
+  @if type-of($color) == 'color'
+    $l: 96%
+    @if lightness($color) > 96%
+      $l: lightness($color)
+    @return change-color($color, $lightness: $l)
+  @return $background
+
+@function findDarkColor($color)
+  @if type-of($color) == 'color'
+    $l: 29%
+    @if lightness($color) < 29%
+      $l: lightness($color)
+    @return change-color($color, $lightness: $l)
+  @return $text-strong
