@@ -8,13 +8,13 @@ icon: "sun"
 published: false
 ---
 
-The new version **[Bulma 0.8.0](#)** is out! It comes with several bug fixes and a lot of nice new features:
+The new version **[Bulma 0.8.0](#)** is out! 😃 It comes with several bug fixes and a lot of nice new features:
 
 * [Light/Dark colors](#light-dark-colors)
 * [Better visual look](#better-visual-look)
 * [Panel colors](#panel-colors)
 * [4-value color map](#4-value-color-map)
-* [Scheme variables](#scheme-variables)
+* [Scheme variables for "Dark mode"](#scheme-variables-for-dark-mode)
 
 More in the [Changelog](#).
 
@@ -132,10 +132,12 @@ $custom-colors: (
 
 This is processed by the updated `mergeColorMaps()` Sass function.
 
-{% include elements/anchor.html name="Scheme variables" %}
+{% include elements/anchor.html name='Scheme variables for "Dark mode"' %}
 
 There are 6 new `$scheme` derived variables: `$scheme-main` `$scheme-main-bis` `$scheme-main-ter` `$scheme-invert` `$scheme-invert-bis` `$scheme-invert-ter`
-They replace the `$white` and `$black` occurences in the codebase. This makes it easy to create a "Dark mode" simply by swapping the values:
+They replace the `$white` and `$black` occurences in the codebase.
+
+This makes it easy to create a **"Dark mode"** simply by swapping the values:
 
 ```sass
 $scheme-main: $black
@@ -144,3 +146,7 @@ $scheme-invert: $white
 ```
 
 That is also why most of the codebase now references **derived** variables (`$text`, `$background`, `$border` etc.) instead of **initial** ones (`$grey`, `$grey-lighter`, `$grey-darker` etc.): updating the derived variables will affect all elements and components directly.
+
+<hr class="hr">
+
+The new 0.8.0 version should be fully compatible with any Bulma setup. Feel free to <a href="https://github.com/jgthms/bulma/issues" target="_blank">post an issue</a> if you encounter any problem upgrading.
