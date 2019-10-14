@@ -4,7 +4,7 @@
 
 ### Big update
 
-#### Larger controls
+#### Larger form controls
 
 Controls and buttons are now `2.5em` high. You can revert this resizing by setting these previous values:
 

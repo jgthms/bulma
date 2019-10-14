@@ -1,5 +1,5 @@
 ---
-title: "Light and Dark colors, better look, larger buttons, panel colors, and more"
+title: "Light and Dark colors, better look, larger form controls, panel colors, and more"
 layout: post
 introduction: "A big update for more colors and flexibility"
 color: "primary"
@@ -13,6 +13,7 @@ The new version **[Bulma 0.8.0](#)** is out! 😃 It comes with several bug fixe
 * [Light/Dark colors](#light-dark-colors)
 * [Better visual look](#better-visual-look)
 * [Panel colors](#panel-colors)
+* [Larger form controls](#larger-form-controls)
 * [4-value color map](#4-value-color-map)
 * [Scheme variables for "Dark mode"](#scheme-variables-for-dark-mode)
 
@@ -114,6 +115,19 @@ The <strong>shadows</strong> of the <code>box</code> and <code>card</code> have 
     <img src="{{ site.url }}/images/blog/v8/panel-colors.png" alt="Panel colors" width="768" height="1029">
   </a>
 </div>
+
+{% include elements/anchor.html name="Larger form controls" %}
+
+Form controls and buttons are now `2.5em` high. You can revert this resizing by setting these previous values:
+
+```sass
+$control-height: 2.25em
+$control-padding-vertical: calc(0.375em - #{$control-border-width})
+$control-padding-horizontal: calc(0.625em - #{$control-border-width})
+
+$button-padding-vertical: calc(0.375em - #{$button-border-width})
+$button-padding-horizontal: 0.75em
+```
 
 {% include elements/anchor.html name="4-value color map" %}
 
