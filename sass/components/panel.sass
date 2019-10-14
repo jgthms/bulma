@@ -3,7 +3,7 @@ $panel-item-border: 1px solid $border-light !default
 $panel-radius: $radius-large !default
 $panel-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
 
-$panel-heading-background-color: $background !default
+$panel-heading-background-color: $border-light !default
 $panel-heading-color: $text-strong !default
 $panel-heading-line-height: 1.25 !default
 $panel-heading-padding: 0.75em 1em !default
@@ -33,6 +33,18 @@ $panel-icon-color: $text-light !default
   font-size: $size-normal
   &:not(:last-child)
     margin-bottom: $panel-margin
+  // Colors
+  @each $name, $components in $message-colors
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    &.is-#{$name}
+      .panel-heading
+        background-color: $color
+        color: $color-invert
+      .panel-tabs a.is-active
+        border-bottom-color: $color
+      .panel-block.is-active .panel-icon
+        color: $color
 
 .panel-tabs,
 .panel-block
