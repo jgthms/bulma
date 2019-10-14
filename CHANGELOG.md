@@ -25,6 +25,10 @@ Each main color (`"primary"`, `"info"`, `"success"`, `"warning"`, `"danger"`) no
 
 The light colors are used by the `button` element, while the light and dark colors are used by the `message` component.
 
+#### Panel colors
+
+The `panel` component is now available in all the different colors.
+
 #### 4-value color map
 
 The `$colors` Sass map now accepts, for each of its values, a map of up to **4** values. For example: the key `"info"` now has the `($info, $info-invert, $info-light, $info-dark)` map.
