@@ -115,6 +115,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Drulma](https://www.drupal.org/project/drulma)                                      | Drupal theme for Bulma.                                                                |
 | [Bulrush](https://github.com/textbook/bulrush)                                       | A Bulma-based Python Pelican blog theme                                                |
 | [Bulma Variable Export](https://github.com/service-paradis/bulma-variables-export)                                       | Access Bulma Variables in Javascript/Typescript in project using Webpack                                                |
+| [Bulmil](https://github.com/gomah/bulmil)                                       | An agnostic UI components library based on Web Components, made with Bulma & Stencil.                                                |
 
 ## Copyright and license
 
