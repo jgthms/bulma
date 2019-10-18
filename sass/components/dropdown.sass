@@ -1,7 +1,7 @@
 $dropdown-menu-min-width: 12rem !default
 
 $dropdown-content-background-color: $white !default
-$dropdown-content-arrow: $link !default
+$dropdown-content-arrow: $black !default
 $dropdown-content-offset: 4px !default
 $dropdown-content-padding-bottom: 0.5rem !default
 $dropdown-content-padding-top: 0.5rem !default
@@ -21,6 +21,11 @@ $dropdown-divider-background-color: $border !default
   display: inline-flex
   position: relative
   vertical-align: top
+  &::after
+    @extend %arrow
+    border-color: $dropdown-content-arrow
+    right: 1.125em
+    z-index: 4
   &.is-active,
   &.is-hoverable:hover
     .dropdown-menu
@@ -30,6 +35,9 @@ $dropdown-divider-background-color: $border !default
       left: auto
       right: 0
   &.is-up
+    &::after
+      transform: rotate(135deg)
+      top: 1.4em
     .dropdown-menu
       bottom: 100%
       padding-bottom: $dropdown-content-offset
@@ -79,3 +87,7 @@ button.dropdown-item
   display: block
   height: 1px
   margin: 0.5rem 0
+
+.dropdown-trigger
+  button
+    padding-right: 2.3em;
