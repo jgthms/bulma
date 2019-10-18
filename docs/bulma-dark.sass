@@ -1,52 +1,114 @@
 @import "../sass/utilities/initial-variables.sass"
 
+
 @media (prefers-color-scheme: light)
   .bd-scheme-dark
     display: none
 
 @media (prefers-color-scheme: dark)
+  // General colors
+  $scheme-main: $black
+  $scheme-main-bis: $black-bis
+  $scheme-main-ter: $black-ter
+  $scheme-invert: $white
+  $scheme-invert-bis: $white-bis
+  $scheme-invert-ter: $white-ter
+  $background: $black-ter
+  $border: lime
+  $border-hover: $grey-dark
+  $border-light: $grey-darker
+  $border-light-hover: $grey-dark
+  // Text colors
+  $text: $grey-light
+  $text-invert: $grey-darker
+  $text-light: $grey
+  $text-strong: $white
+  // Link colors
+  $link-hover: $white
+  $link-hover-border: $grey-dark
+  $link-focus: $white
+  $link-focus-border: $blue
+  $link-active: $white
+  $link-active-border: $grey-light
   .bd-scheme-light
     display: none
-  html
-    background-color: $scheme-invert-bis
-    color: $scheme-main-ter
+  \:root
+    --#{$prefix}-scheme-main: #{$scheme-main}
+    --#{$prefix}-scheme-main-bis: #{$scheme-main-bis}
+    --#{$prefix}-scheme-main-ter: #{$scheme-main-ter}
+    --#{$prefix}-scheme-invert: #{$scheme-invert}
+    --#{$prefix}-scheme-invert-bis: #{$scheme-invert-bis}
+    --#{$prefix}-scheme-invert-ter: #{$scheme-invert-ter}
+    --#{$prefix}-background: #{$background}
+    --#{$prefix}-border: #{$border}
+    --#{$prefix}-border-hover: #{$border-hover}
+    --#{$prefix}-border-light: #{$border-light}
+    --#{$prefix}-border-light-hover: #{$border-light-hover}
+    --#{$prefix}-text: #{$text}
+    --#{$prefix}-text-invert: #{$text-invert}
+    --#{$prefix}-text-light: #{$text-light}
+    --#{$prefix}-text-strong: #{$text-strong}
+    --#{$prefix}-code: #{$code}
+    --#{$prefix}-code-background: #{$code-background}
+    --#{$prefix}-pre: #{$pre}
+    --#{$prefix}-pre-background: #{$pre-background}
+    --#{$prefix}-link: #{$link}
+    --#{$prefix}-link-invert: #{$link-invert}
+    --#{$prefix}-link-light: #{$link-light}
+    --#{$prefix}-link-dark: #{$link-dark}
+    --#{$prefix}-link-visited: #{$link-visited}
+    --#{$prefix}-link-hover: #{$link-hover}
+    --#{$prefix}-link-hover-border: #{$link-hover-border}
+    --#{$prefix}-link-focus: #{$link-focus}
+    --#{$prefix}-link-focus-border: #{$link-focus-border}
+    --#{$prefix}-link-active: #{$link-active}
+    --#{$prefix}-link-active-border: #{$link-active-border}
   .bd-navbar
-    background-color: $scheme-invert-ter
+    background-color: var(--#{$prefix}-scheme-main-bis)
     &.has-shadow
       box-shadow: none
-  .title
-    color: $scheme-main
 
-// // General colors
+html
+  background-color: var(--#{$prefix}-scheme-main)
 
-// $scheme-main: $black
-// $scheme-main-bis: $black-bis
-// $scheme-main-ter: $black-ter
-// $scheme-invert: $white
-// $scheme-invert-bis: $white-bis
-// $scheme-invert-ter: $white-ter
+body
+  color: var(--#{$prefix}-text)
 
-// $background: $black-ter
+a
+  color: var(--#{$prefix}-link)
 
-// $border: $grey-darker
-// $border-hover: $grey-dark
-// $border-light: $grey-darker
-// $border-light-hover: $grey-dark
+  &:hover
+    color: var(--#{$prefix}-link-hover)
 
-// // Text colors
+code
+  background-color: var(--#{$prefix}-code-background)
+  color: var(--#{$prefix}-code)
 
-// $text: $grey-light
-// $text-invert: $grey-darker
-// $text-light: $grey
-// $text-strong: $white
+hr
+  background-color: var(--#{$prefix}-background)
 
-// // Link colors
+strong
+  color: var(--#{$prefix}-text-strong)
 
-// $link-hover: $white
-// $link-hover-border: $grey-dark
+pre
+  background-color: var(--#{$prefix}-pre-background)
+  color: var(--#{$prefix}-pre)
 
-// $link-focus: $white
-// $link-focus-border: $blue
+table
+  th
+    color: var(--#{$prefix}-text-strong)
 
-// $link-active: $white
-// $link-active-border: $grey-light
+.title
+  color: var(--#{$prefix}-text-strong)
+
+.subtitle
+  color: var(--#{$prefix}-text)
+  strong
+    color: var(--#{$prefix}-text-strong)
+
+.footer
+  background-color: var(--#{$prefix}-scheme-main-bis)
+
+.media .media,
+.media + .media
+  border-top-color: rgba(var(--#{$prefix}-border), 0.5)

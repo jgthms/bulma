@@ -25,9 +25,22 @@ $intro-width: 1080px
 $sidebar-width: 10.5rem
 
 @import "../bulma"
-// @import "../sass/utilities/_all.sass"
-@import "./bulma-cssvar.scss"
-// @import "./bulma-dark"
+@import "./bulma-cssvar.sass"
+@import "./bulma-dark"
+
+// Dark mode steps
+//
+// 1. Swap values
+// $scheme-main: $black
+//
+// 2. Assign updated CSS vars to :root
+// :root
+//   --bulma-scheme-main: #{$scheme-main}
+//
+// 3. Assign CSS vars to elements/components
+// html
+//   background-color: var(--#{$prefix}-scheme-main)
+//
 
 %center
   align-items: center
@@ -35,7 +48,7 @@ $sidebar-width: 10.5rem
   justify-content: center
 
 %bd-box
-  background-color: $scheme-main
+  background-color: var(--#{$prefix}-scheme-main)
   border-radius: $radius-large
   box-shadow: 0 1.5rem 1.5rem -1.25rem rgba($black, 0.05)
   display: block

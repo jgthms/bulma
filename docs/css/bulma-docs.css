@@ -10808,36 +10808,6 @@ label.panel-block:hover {
   --bulma--white: white;
   --bulma--black: #0a0a0a;
   --bulma--black-transparent: rgba(0, 0, 0, 0.7);
-  --bulma--scheme-main: white;
-  --bulma--scheme-main-bis: #fafafa;
-  --bulma--scheme-main-ter: whitesmoke;
-  --bulma--scheme-invert: #0a0a0a;
-  --bulma--scheme-invert-bis: #121212;
-  --bulma--scheme-invert-ter: #242424;
-  --bulma--background: whitesmoke;
-  --bulma--border: #dbdbdb;
-  --bulma--border-hover: #b5b5b5;
-  --bulma--border-light: #ededed;
-  --bulma--border-light-hover: #b5b5b5;
-  --bulma--text: #4a4a4a;
-  --bulma--text-invert: var(--bulma--white);
-  --bulma--text-light: #7a7a7a;
-  --bulma--text-strong: #363636;
-  --bulma--code: #f14668;
-  --bulma--code-background: whitesmoke;
-  --bulma--pre: #4a4a4a;
-  --bulma--pre-background: whitesmoke;
-  --bulma--link: #3273dc;
-  --bulma--link-invert: var(--bulma--white);
-  --bulma--link-light: #eef3fc;
-  --bulma--link-dark: #2160c4;
-  --bulma--link-visited: #b86bff;
-  --bulma--link-hover: #363636;
-  --bulma--link-hover-border: #b5b5b5;
-  --bulma--link-focus: #363636;
-  --bulma--link-focus-border: #3273dc;
-  --bulma--link-active: #363636;
-  --bulma--link-active-border: #4a4a4a;
   --bulma-primary-h: 171deg;
   --bulma-primary-s: 100%;
   --bulma-primary-l: 41%;
@@ -10944,6 +10914,56 @@ label.panel-block:hover {
   --bulma-dark-dark-active: #707070;
 }
 
+@media (prefers-color-scheme: light) {
+  .bd-scheme-dark {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .bd-scheme-light {
+    display: none;
+  }
+  :root {
+    --bulma--scheme-main: #0a0a0a;
+    --bulma--scheme-main-bis: #121212;
+    --bulma--scheme-main-ter: #242424;
+    --bulma--scheme-invert: white;
+    --bulma--scheme-invert-bis: #fafafa;
+    --bulma--scheme-invert-ter: whitesmoke;
+    --bulma--background: #242424;
+    --bulma--border: lime;
+    --bulma--border-hover: #4a4a4a;
+    --bulma--border-light: #363636;
+    --bulma--border-light-hover: #4a4a4a;
+    --bulma--text: #b5b5b5;
+    --bulma--text-invert: #363636;
+    --bulma--text-light: #7a7a7a;
+    --bulma--text-strong: white;
+    --bulma--code: #f14668;
+    --bulma--code-background: whitesmoke;
+    --bulma--pre: #4a4a4a;
+    --bulma--pre-background: whitesmoke;
+    --bulma--link: #3273dc;
+    --bulma--link-invert: #fff;
+    --bulma--link-light: #eef3fc;
+    --bulma--link-dark: #2160c4;
+    --bulma--link-visited: #b86bff;
+    --bulma--link-hover: white;
+    --bulma--link-hover-border: #4a4a4a;
+    --bulma--link-focus: white;
+    --bulma--link-focus-border: #3273dc;
+    --bulma--link-active: white;
+    --bulma--link-active-border: #b5b5b5;
+  }
+  .bd-navbar {
+    background-color: var(--bulma--scheme-main-bis);
+  }
+  .bd-navbar.has-shadow {
+    box-shadow: none;
+  }
+}
+
 html {
   background-color: var(--bulma--scheme-main);
 }
@@ -10966,7 +10986,41 @@ code {
 }
 
 hr {
-  background-color: whitesmoke;
+  background-color: var(--bulma--background);
+}
+
+strong {
+  color: var(--bulma--text-strong);
+}
+
+pre {
+  background-color: var(--bulma--pre-background);
+  color: var(--bulma--pre);
+}
+
+table th {
+  color: var(--bulma--text-strong);
+}
+
+.title {
+  color: var(--bulma--text-strong);
+}
+
+.subtitle {
+  color: var(--bulma--text);
+}
+
+.subtitle strong {
+  color: var(--bulma--text-strong);
+}
+
+.footer {
+  background-color: var(--bulma--scheme-main-bis);
+}
+
+.media .media,
+.media + .media {
+  border-top-color: rgba(var(--bulma--border), 0.5);
 }
 
 .bd-columns-tool, .bd-footer-sponsor a, .bd-footer-donation-action, .bd-footer-star-figure, .bd-minis-title, .bd-minis-link, .bd-mini {
@@ -10978,7 +11032,7 @@ hr {
 .bd-footer-support, .bd-footer-star, .bd-book-content {
   background-color: var(--bulma--scheme-main);
   border-radius: 6px;
-  box-shadow: 0 1.5rem 1.5rem -1.25rem rgba(var(--bulma--black), 0.05);
+  box-shadow: 0 1.5rem 1.5rem -1.25rem rgba(10, 10, 10, 0.05);
   display: block;
 }
 
@@ -11047,7 +11101,7 @@ hr {
 }
 
 .bd-prev-next-bis {
-  border-top: 2px solid var(--bulma--background);
+  border-top: 2px solid whitesmoke;
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
@@ -12227,7 +12281,7 @@ svg {
 .intro-npm {
   background: #242424;
   border-radius: 4px;
-  color: var(--bulma--white);
+  color: white;
   display: flex;
   font-size: 15px;
   justify-content: space-between;
@@ -13034,7 +13088,7 @@ svg {
 }
 
 .bd-box {
-  border: 4px solid var(--bulma--background);
+  border: 4px solid whitesmoke;
   border-radius: 4px;
 }
 
@@ -13268,7 +13322,7 @@ svg {
 .bd-example,
 .bd-structure,
 .bd-snippet {
-  border: 2px solid var(--bulma--background);
+  border: 2px solid whitesmoke;
   position: relative;
 }
 
@@ -13484,8 +13538,8 @@ svg {
   right: 0;
   top: 0;
   background: rgba(var(--bulma--scheme-invert), 0.7);
-  background: var(--bulma--background);
-  border: 1px solid var(--bulma--border);
+  background: whitesmoke;
+  border: 1px solid #dbdbdb;
   content: "";
   display: block;
   z-index: 1;
@@ -13559,7 +13613,7 @@ svg {
   right: 0;
   top: 0;
   align-items: center;
-  background-color: rgba(var(--bulma--background), 0.7);
+  background-color: rgba(245, 245, 245, 0.7);
   border: none;
   color: rgba(0, 0, 0, 0.5);
   cursor: pointer;

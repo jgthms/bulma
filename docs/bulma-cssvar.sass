@@ -1,6 +1,29 @@
 $prefix: "bulma-"
 
-$cssvar-colors: ("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark), "link": ($link, $link-invert, $link-light, $link-dark), "info": ($info, $info-invert, $info-light, $info-dark), "success": ($success, $success-invert, $success-light, $success-dark), "warning": ($warning, $warning-invert, $warning-light, $warning-dark), "danger": ($danger, $danger-invert, $danger-light, $danger-dark), "scheme-main": ($scheme-main, $scheme-invert))
+@function findCSSVarColorInvert($color)
+  @if colorLuminance($color) > 0.55
+    @return var(--#{$prefix}-black-transparent)
+  @else
+    @return var(--#{$prefix}-white)
+
+@function findCSSVarLightColor($color)
+  @if type-of($color) == "color"
+    $l: 96%
+    @if lightness($color) > 96%
+      $l: lightness($color)
+    @return change-color($color, $lightness: $l)
+  @return var(--#{$prefix}-background)
+
+@function findCSSVarDarkColor($color)
+  @if type-of($color) == "color"
+    $base-l: 29%
+    $luminance: colorLuminance($color)
+    $luminance-delta: 0.53 - $luminance
+    $target-l: round($base-l + $luminance-delta * 53)
+    @return change-color($color, $lightness: max($base-l, $target-l))
+  @return var(--#{$prefix}-text-strong)
+
+$cssvar-colors: ("primary": $primary, "link": $link, "info": $info, "success": $success, "warning": $warning, "danger": $danger, "light": $white-ter, "dark": $grey-darker)
 
 @function getCssVariable($color, $name)
   $hue: hue($color)
@@ -9,55 +32,65 @@ $cssvar-colors: ("white": ($white, $black), "black": ($black, $white), "light": 
   $alpha: alpha($color)
   @return $hue, $saturation, $lightness
 
-=cssvar($color, $name, $color-light, $color-dark)
+=cssvar($name, $color)
   $hue: hue($color)
   $saturation: saturation($color)
   $lightness: lightness($color)
   $base: "#{$prefix}#{$name}"
-
   --#{$base}-h: #{$hue}
   --#{$base}-s: #{$saturation}
   --#{$base}-l: #{$lightness}
   --#{$base}: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)))
-  --#{$base}-hover: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)  - 5%))
-  --#{$base}-active: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)  - 10%))
-
+  --#{$base}-hover: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l) - 5%))
+  --#{$base}-active: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l) - 10%))
+  $color-invert: findCSSVarColorInvert($color)
+  --#{$base}-invert: #{$color-invert}
+  $color-light: findCSSVarLightColor($color)
   --#{$base}-light: #{$color-light}
   --#{$base}-light-hover: #{darken($color-light, 5%)}
   --#{$base}-light-active: #{darken($color-light, 10%)}
-
+  $color-dark: findCSSVarDarkColor($color)
   --#{$base}-dark: #{$color-dark}
   --#{$base}-dark-hover: #{darken($color-dark, 5%)}
   --#{$base}-dark-active: #{darken($color-dark, 10%)}
 
-  // @if $cssvar-invert
-  //   --#{$base}-invert: var(--#{$prefix}#{$cssvar-invert})
-  // @else
-  //   --#{$base}-invert: #{findColorInvert($color)}
-
 \:root
-  @each $name, $components in $cssvar-colors
-    $color: nth($components, 1)
-    $color-invert: nth($components, 2)
-    $color-light: null
-    $color-dark: null
-    // $cssvar-invert-name: ""
+  --#{$prefix}-white: #{$white}
+  --#{$prefix}-black: #{$black}
+  --#{$prefix}-black-transparent: #{rgba(#000, 0.7)}
+  @each $name, $color in $cssvar-colors
+    +cssvar($name, $color)
 
-    // @if length($components) >= 5
-    //   $color-light: nth($components, 3)
-    //   $color-dark: nth($components, 4)
-    //   $cssvar-invert-name: nth($components, 5)
-    @if length($components) >= 4
-      $color-light: nth($components, 3)
-      $color-dark: nth($components, 4)
-      // $cssvar-invert-name: findColorInvert($color)
-    @else if length($components) >= 3
-      $color-light: nth($components, 3)
-      $color-dark: findDarkColor($color)
-      // $cssvar-invert-name: findColorInvert($color)
-    @else
-      $color-light: findLightColor($color)
-      $color-dark: findDarkColor($color)
-      // $cssvar-invert-name: findColorInvert($color)
-
-    +cssvar($color, $name, $color-light, $color-dark)
+// $white: var(--#{$prefix}-white)
+// $black: var(--#{$prefix}-black)
+// $black-transparent: var(--#{$prefix}-black-transparent)
+// $scheme-main: var(--#{$prefix}-scheme-main)
+// $scheme-main-bis: var(--#{$prefix}-scheme-main-bis)
+// $scheme-main-ter: var(--#{$prefix}-scheme-main-ter)
+// $scheme-invert: var(--#{$prefix}-scheme-invert)
+// $scheme-invert-bis: var(--#{$prefix}-scheme-invert-bis)
+// $scheme-invert-ter: var(--#{$prefix}-scheme-invert-ter)
+// $background: var(--#{$prefix}-background)
+// $border: var(--#{$prefix}-border)
+// $border-hover: var(--#{$prefix}-border-hover)
+// $border-light: var(--#{$prefix}-border-light)
+// $border-light-hover: var(--#{$prefix}-border-light-hover)
+// $text: var(--#{$prefix}-text)
+// $text-invert: var(--#{$prefix}-text-invert)
+// $text-light: var(--#{$prefix}-text-light)
+// $text-strong: var(--#{$prefix}-text-strong)
+// $code: var(--#{$prefix}-code)
+// $code-background: var(--#{$prefix}-code-background)
+// $pre: var(--#{$prefix}-pre)
+// $pre-background: var(--#{$prefix}-pre-background)
+// $link: var(--#{$prefix}-link)
+// $link-invert: var(--#{$prefix}-link-invert)
+// $link-light: var(--#{$prefix}-link-light)
+// $link-dark: var(--#{$prefix}-link-dark)
+// $link-visited: var(--#{$prefix}-link-visited)
+// $link-hover: var(--#{$prefix}-link-hover)
+// $link-hover-border: var(--#{$prefix}-link-hover-border)
+// $link-focus: var(--#{$prefix}-link-focus)
+// $link-focus-border: var(--#{$prefix}-link-focus-border)
+// $link-active: var(--#{$prefix}-link-active)
+// $link-active-border: var(--#{$prefix}-link-active-border)
