@@ -2,6 +2,10 @@
 
 ## Upcoming release
 
+### New features
+
+* #2567 Add support for CSS Grids
+
 ### Bug fixes
 
 * Fix #2647 -> Missing meta tags in snippet
