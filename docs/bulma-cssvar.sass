@@ -1,0 +1,63 @@
+$prefix: "bulma-"
+
+$cssvar-colors: ("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark), "link": ($link, $link-invert, $link-light, $link-dark), "info": ($info, $info-invert, $info-light, $info-dark), "success": ($success, $success-invert, $success-light, $success-dark), "warning": ($warning, $warning-invert, $warning-light, $warning-dark), "danger": ($danger, $danger-invert, $danger-light, $danger-dark), "scheme-main": ($scheme-main, $scheme-invert))
+
+@function getCssVariable($color, $name)
+  $hue: hue($color)
+  $saturation: saturation($color)
+  $lightness: lightness($color)
+  $alpha: alpha($color)
+  @return $hue, $saturation, $lightness
+
+=cssvar($color, $name, $color-light, $color-dark)
+  $hue: hue($color)
+  $saturation: saturation($color)
+  $lightness: lightness($color)
+  $base: "#{$prefix}#{$name}"
+
+  --#{$base}-h: #{$hue}
+  --#{$base}-s: #{$saturation}
+  --#{$base}-l: #{$lightness}
+  --#{$base}: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)))
+  --#{$base}-hover: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)  - 5%))
+  --#{$base}-active: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)  - 10%))
+
+  --#{$base}-light: #{$color-light}
+  --#{$base}-light-hover: #{darken($color-light, 5%)}
+  --#{$base}-light-active: #{darken($color-light, 10%)}
+
+  --#{$base}-dark: #{$color-dark}
+  --#{$base}-dark-hover: #{darken($color-dark, 5%)}
+  --#{$base}-dark-active: #{darken($color-dark, 10%)}
+
+  // @if $cssvar-invert
+  //   --#{$base}-invert: var(--#{$prefix}#{$cssvar-invert})
+  // @else
+  //   --#{$base}-invert: #{findColorInvert($color)}
+
+\:root
+  @each $name, $components in $cssvar-colors
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    $color-light: null
+    $color-dark: null
+    // $cssvar-invert-name: ""
+
+    // @if length($components) >= 5
+    //   $color-light: nth($components, 3)
+    //   $color-dark: nth($components, 4)
+    //   $cssvar-invert-name: nth($components, 5)
+    @if length($components) >= 4
+      $color-light: nth($components, 3)
+      $color-dark: nth($components, 4)
+      // $cssvar-invert-name: findColorInvert($color)
+    @else if length($components) >= 3
+      $color-light: nth($components, 3)
+      $color-dark: findDarkColor($color)
+      // $cssvar-invert-name: findColorInvert($color)
+    @else
+      $color-light: findLightColor($color)
+      $color-dark: findDarkColor($color)
+      // $cssvar-invert-name: findColorInvert($color)
+
+    +cssvar($color, $name, $color-light, $color-dark)
