@@ -1,6 +1,5 @@
 @import "../sass/utilities/initial-variables.sass"
 
-
 @media (prefers-color-scheme: light)
   .bd-scheme-dark
     display: none
@@ -14,7 +13,7 @@
   $scheme-invert-bis: $white-bis
   $scheme-invert-ter: $white-ter
   $background: $black-ter
-  $border: lime
+  $border: $grey-darker
   $border-hover: $grey-dark
   $border-light: $grey-darker
   $border-light-hover: $grey-dark
@@ -23,6 +22,11 @@
   $text-invert: $grey-darker
   $text-light: $grey
   $text-strong: $white
+  // Code colors
+  $code: $red
+  $code-background: $background
+  $pre: $text
+  $pre-background: $background
   // Link colors
   $link-hover: $white
   $link-hover-border: $grey-dark
@@ -33,82 +37,364 @@
   .bd-scheme-light
     display: none
   \:root
-    --#{$prefix}-scheme-main: #{$scheme-main}
-    --#{$prefix}-scheme-main-bis: #{$scheme-main-bis}
-    --#{$prefix}-scheme-main-ter: #{$scheme-main-ter}
-    --#{$prefix}-scheme-invert: #{$scheme-invert}
-    --#{$prefix}-scheme-invert-bis: #{$scheme-invert-bis}
-    --#{$prefix}-scheme-invert-ter: #{$scheme-invert-ter}
-    --#{$prefix}-background: #{$background}
-    --#{$prefix}-border: #{$border}
-    --#{$prefix}-border-hover: #{$border-hover}
-    --#{$prefix}-border-light: #{$border-light}
-    --#{$prefix}-border-light-hover: #{$border-light-hover}
-    --#{$prefix}-text: #{$text}
-    --#{$prefix}-text-invert: #{$text-invert}
-    --#{$prefix}-text-light: #{$text-light}
-    --#{$prefix}-text-strong: #{$text-strong}
-    --#{$prefix}-code: #{$code}
-    --#{$prefix}-code-background: #{$code-background}
-    --#{$prefix}-pre: #{$pre}
-    --#{$prefix}-pre-background: #{$pre-background}
-    --#{$prefix}-link: #{$link}
-    --#{$prefix}-link-invert: #{$link-invert}
-    --#{$prefix}-link-light: #{$link-light}
-    --#{$prefix}-link-dark: #{$link-dark}
-    --#{$prefix}-link-visited: #{$link-visited}
-    --#{$prefix}-link-hover: #{$link-hover}
-    --#{$prefix}-link-hover-border: #{$link-hover-border}
-    --#{$prefix}-link-focus: #{$link-focus}
-    --#{$prefix}-link-focus-border: #{$link-focus-border}
-    --#{$prefix}-link-active: #{$link-active}
-    --#{$prefix}-link-active-border: #{$link-active-border}
+    --#{$prefix}scheme-main: #{$scheme-main}
+    --#{$prefix}scheme-main-bis: #{$scheme-main-bis}
+    --#{$prefix}scheme-main-ter: #{$scheme-main-ter}
+    --#{$prefix}scheme-invert: #{$scheme-invert}
+    --#{$prefix}scheme-invert-bis: #{$scheme-invert-bis}
+    --#{$prefix}scheme-invert-ter: #{$scheme-invert-ter}
+    --#{$prefix}background: #{$background}
+    --#{$prefix}border: #{$border}
+    --#{$prefix}border-hover: #{$border-hover}
+    --#{$prefix}border-light: #{$border-light}
+    --#{$prefix}border-light-hover: #{$border-light-hover}
+    --#{$prefix}text: #{$text}
+    --#{$prefix}text-invert: #{$text-invert}
+    --#{$prefix}text-light: #{$text-light}
+    --#{$prefix}text-strong: #{$text-strong}
+    --#{$prefix}code: #{$code}
+    --#{$prefix}code-background: #{$code-background}
+    --#{$prefix}pre: #{$pre}
+    --#{$prefix}pre-background: #{$pre-background}
+    --#{$prefix}link: #{$link}
+    --#{$prefix}link-invert: #{$link-invert}
+    --#{$prefix}link-light: #{$link-light}
+    --#{$prefix}link-dark: #{$link-dark}
+    --#{$prefix}link-visited: #{$link-visited}
+    --#{$prefix}link-hover: #{$link-hover}
+    --#{$prefix}link-hover-border: #{$link-hover-border}
+    --#{$prefix}link-focus: #{$link-focus}
+    --#{$prefix}link-focus-border: #{$link-focus-border}
+    --#{$prefix}link-active: #{$link-active}
+    --#{$prefix}link-active-border: #{$link-active-border}
   .bd-navbar
-    background-color: var(--#{$prefix}-scheme-main-bis)
+    background-color: $scheme-main-bis
     &.has-shadow
       box-shadow: none
+    .navbar-burger
+      color: $text
+    .navbar-item,
+    .navbar-link
+      color: $text
+    a.navbar-item,
+    .navbar-link
+      &:focus,
+      &:focus-within,
+      &:hover,
+      &.is-active
+        background-color: $scheme-main-bis
+        color: $link
+    .navbar-divider
+      background-color: $background
+    +until($navbar-breakpoint)
+      .navbar-menu
+        background-color: $scheme-main
+        box-shadow: 0 8px 16px rgba($scheme-invert, 0.1)
+    +from($navbar-breakpoint)
+      .navbar-dropdown
+        background-color: $scheme-main-bis
+        border-top-color: $border
+        box-shadow: 0 8px 8px rgba($scheme-invert, 0.1)
+        a.navbar-item
+          &:focus,
+          &:hover
+            background-color: $background
+            color: $scheme-invert
+          &.is-active
+            background-color: $background
+            color: $white
+      a.navbar-item,
+      .navbar-link
+        &.is-active
+          color: $white
+        &.is-active:not(:focus)
+          background-color: $background
+      .navbar-item.has-dropdown
+        &:focus,
+        &:hover,
+        &.is-active
+          .navbar-link
+            background-color: $background
+  .card
+    background-color: $scheme-main-bis
+    box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+  .card-header
+    box-shadow: 0 0.125em 0.25em rgba($scheme-invert, 0.1)
+  .dropdown-content
+    background-color: $scheme-main-bis
+    box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+  .media .media,
+  .media + .media
+    border-top-color: rgba($border, 0.5)
+  .pagination-previous,
+  .pagination-next,
+  .pagination-link
+    &:active
+      box-shadow: inset 0 1px 2px rgba($scheme-invert, 0.2)
+  .panel
+    background-color: $scheme-main-bis
+    box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+  .box
+    box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)
+  a.box
+    &:hover,
+    &:focus
+      box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0 0 1px $link
+    &:active
+      box-shadow: inset 0 1px 2px rgba($scheme-invert, 0.2), 0 0 0 1px $link
 
 html
-  background-color: var(--#{$prefix}-scheme-main)
+  background-color: var(--#{$prefix}scheme-main)
 
 body
-  color: var(--#{$prefix}-text)
+  color: var(--#{$prefix}text)
 
 a
-  color: var(--#{$prefix}-link)
+  color: var(--#{$prefix}link)
 
   &:hover
-    color: var(--#{$prefix}-link-hover)
+    color: var(--#{$prefix}link-hover)
 
 code
-  background-color: var(--#{$prefix}-code-background)
-  color: var(--#{$prefix}-code)
+  background-color: var(--#{$prefix}code-background)
+  color: var(--#{$prefix}code)
 
 hr
-  background-color: var(--#{$prefix}-background)
+  background-color: var(--#{$prefix}background)
 
 strong
-  color: var(--#{$prefix}-text-strong)
+  color: var(--#{$prefix}text-strong)
 
 pre
-  background-color: var(--#{$prefix}-pre-background)
-  color: var(--#{$prefix}-pre)
+  background-color: var(--#{$prefix}pre-background)
+  color: var(--#{$prefix}pre)
 
 table
   th
-    color: var(--#{$prefix}-text-strong)
+    color: var(--#{$prefix}text-strong)
+
+// Components
+.breadcrumb
+  a
+    color: var(--#{$prefix}link)
+    &:hover
+      color: var(--#{$prefix}link-hover)
+  li
+    &.is-active
+      a
+        color: var(--#{$prefix}text-strong)
+    & + li::before
+      color: var(--#{$prefix}border-hover)
+
+.card
+  // background-color: var(--#{$prefix}scheme-main)
+  color: var(--#{$prefix}text)
+
+.card-header-title
+  color: var(--#{$prefix}text-strong)
+
+.card-footer
+  border-top-color: var(--#{$prefix}border-light)
+
+.card-footer-item
+  &:not(:last-child)
+    border-right-color: var(--#{$prefix}border-light)
+
+.dropdown-content
+  // background-color: var(--#{$prefix}scheme-main)
+
+.dropdown-item
+  color: var(--#{$prefix}text)
+
+a.dropdown-item,
+button.dropdown-item
+  &:hover
+    background-color: var(--#{$prefix}background)
+    color: var(--#{$prefix}scheme-invert)
+  &.is-active
+    background-color: var(--#{$prefix}link)
+    color: var(--#{$prefix}link-invert)
+
+.dropdown-divider
+  background-color: var(--#{$prefix}border-light)
+
+.menu-list
+  a
+    color: var(--#{$prefix}text)
+    &:hover
+      background-color: var(--#{$prefix}background)
+      color: var(--#{$prefix}text-strong)
+    &.is-active
+      background-color: var(--#{$prefix}link)
+      color: var(--#{$prefix}link-invert)
+  li
+    ul
+      border-left-color: var(--#{$prefix}border)
+
+.menu-label
+  color: var(--#{$prefix}text-light)
+
+// .message
+//   background-color: var(--#{$prefix}background)
+
+// .message-header
+//   background-color: var(--#{$prefix}text)
+//   color: var(--#{$prefix}text-invert)
+
+// .message-body
+//   border-color: var(--#{$prefix}border)
+//   color: var(--#{$prefix}text)
+//   code,
+//   pre
+//     background-color: var(--#{$prefix}scheme-main)
+
+.modal-card-head,
+.modal-card-foot
+  background-color: var(--#{$prefix}background)
+
+.modal-card-head
+  border-bottom-color: var(--#{$prefix}border)
+
+.modal-card-title
+  color: var(--#{$prefix}text-strong)
+
+.modal-card-foot
+  border-top-color: var(--#{$prefix}border)
+
+.modal-card-body
+  background-color: var(--#{$prefix}scheme-main)
+
+// .navbar
+//   background-color: var(--#{$prefix}scheme-main)
+
+// .navbar-burger
+//   color: var(--#{$prefix}text)
+
+// .navbar-item,
+// .navbar-link
+//   color: var(--#{$prefix}text)
+
+// a.navbar-item,
+// .navbar-link
+//   cursor: pointer
+//   &:focus,
+//   &:focus-within,
+//   &:hover,
+//   &.is-active
+//     background-color: var(--#{$prefix}scheme-main-bis)
+//     color: var(--#{$prefix}link)
+
+.pagination-previous,
+.pagination-next,
+.pagination-link
+  border-color: var(--#{$prefix}border)
+  color: var(--#{$prefix}text-strong)
+  &:hover
+    border-color: var(--#{$prefix}link-hover-border)
+    color: var(--#{$prefix}link-hover)
+  &:focus
+    border-color: var(--#{$prefix}link-focus-border)
+  &[disabled]
+    background-color: var(--#{$prefix}border)
+    border-color: var(--#{$prefix}border)
+    color: var(--#{$prefix}text-light)
+
+.pagination-link
+  &.is-current
+    background-color: var(--#{$prefix}link)
+    border-color: var(--#{$prefix}link)
+    color: var(--#{$prefix}link-invert)
+
+.pagination-ellipsis
+  color: var(--#{$prefix}border-hover)
+
+.panel-tabs,
+.panel-block
+  &:not(:last-child)
+    border-bottom-color: var(--#{$prefix}border-light)
+
+.panel-heading
+  background-color: var(--#{$prefix}border-light)
+  color: var(--#{$prefix}text-strong)
+
+.panel-tabs
+  a
+    border-bottom-color: var(--#{$prefix}border)
+    &.is-active
+      border-bottom-color: var(--#{$prefix}link-active-border)
+      color: var(--#{$prefix}link-active)
+
+.panel-list
+  a
+    color: var(--#{$prefix}text)
+    &:hover
+      color: var(--#{$prefix}link)
+
+.panel-block
+  color: var(--#{$prefix}text-strong)
+  &.is-active
+    border-left-color: var(--#{$prefix}link)
+    color: var(--#{$prefix}link-active)
+    .panel-icon
+      color: var(--#{$prefix}link)
+
+a.panel-block,
+label.panel-block
+  &:hover
+    background-color: var(--#{$prefix}background)
+
+.panel-icon
+  color: var(--#{$prefix}text-light)
+
+.tabs
+  a
+    border-bottom-color: var(--#{$prefix}border)
+    color: var(--#{$prefix}text)
+    &:hover
+      border-bottom-color: var(--#{$prefix}text-strong)
+      color: var(--#{$prefix}text-strong)
+  li
+    &.is-active
+      a
+        border-bottom-color: var(--#{$prefix}link)
+        color: var(--#{$prefix}link)
+  ul
+    border-bottom-color: var(--#{$prefix}border)
+  &.is-boxed
+    a
+      &:hover
+        background-color: var(--#{$prefix}background)
+        border-bottom-color: var(--#{$prefix}border)
+    li
+      &.is-active
+        a
+          background-color: var(--#{$prefix}scheme-main)
+          border-color: var(--#{$prefix}border)
+  &.is-toggle
+    a
+      border-color: var(--#{$prefix}border)
+      &:hover
+        background-color: var(--#{$prefix}background)
+        border-color: var(--#{$prefix}border-hover)
+    li
+      &.is-active
+        a
+          background-color: var(--#{$prefix}link)
+          border-color: var(--#{$prefix}link)
+          color: var(--#{$prefix}link-invert)
+
+// Elements
+.box
+  background-color: var(--#{$prefix}scheme-main)
+  color: var(--#{$prefix}text)
 
 .title
-  color: var(--#{$prefix}-text-strong)
+  color: var(--#{$prefix}text-strong)
 
 .subtitle
-  color: var(--#{$prefix}-text)
+  color: var(--#{$prefix}text)
   strong
-    color: var(--#{$prefix}-text-strong)
+    color: var(--#{$prefix}text-strong)
 
 .footer
-  background-color: var(--#{$prefix}-scheme-main-bis)
-
-.media .media,
-.media + .media
-  border-top-color: rgba(var(--#{$prefix}-border), 0.5)
+  background-color: var(--#{$prefix}scheme-main-bis)

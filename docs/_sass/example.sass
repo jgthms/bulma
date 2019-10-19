@@ -1,7 +1,7 @@
 .bd-example,
 .bd-structure,
 .bd-snippet
-  border: 2px solid $background
+  border: 2px solid var(--#{$prefix}background)
   position: relative
   &::before
     background: $yellow
@@ -164,7 +164,7 @@ $structure-invert: $danger-invert
   position: relative
   &::before
     +overlay
-    background: rgba(var(--#{$prefix}-scheme-invert), 0.7)
+    background: rgba(var(--#{$prefix}scheme-invert), 0.7)
     background: $background
     border: 1px solid $border
     content: ""
@@ -193,7 +193,7 @@ $structure-invert: $danger-invert
   .bd-expand
     background: none
     border: none
-    color: var(--#{$prefix}-text)
+    color: var(--#{$prefix}text)
     cursor: pointer
     font-size: 0.625rem
     outline: none
@@ -213,20 +213,23 @@ $structure-invert: $danger-invert
   .bd-show
     +overlay
     align-items: center
-    background-color: rgba($background, 0.7)
+    background-color: var(--#{$prefix}background)
     border: none
-    color: rgba(#000, 0.5)
+    color: var(--#{$prefix}scheme-invert)
     cursor: pointer
     display: none
     font-size: $size-small
     justify-content: center
+    opacity: 0.8
     width: 100%
     strong
       color: currentColor
       font-weight: $weight-semibold
+      opacity: 1
     &:hover
       background-color: rgba($yellow, 0.8)
       color: rgba(#000, 0.7)
+      opacity: 1
   +tablet
     pre
       white-space: pre-wrap

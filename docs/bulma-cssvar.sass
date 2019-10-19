@@ -2,9 +2,9 @@ $prefix: "bulma-"
 
 @function findCSSVarColorInvert($color)
   @if colorLuminance($color) > 0.55
-    @return var(--#{$prefix}-black-transparent)
+    @return var(--#{$prefix}black-transparent)
   @else
-    @return var(--#{$prefix}-white)
+    @return var(--#{$prefix}white)
 
 @function findCSSVarLightColor($color)
   @if type-of($color) == "color"
@@ -12,7 +12,7 @@ $prefix: "bulma-"
     @if lightness($color) > 96%
       $l: lightness($color)
     @return change-color($color, $lightness: $l)
-  @return var(--#{$prefix}-background)
+  @return var(--#{$prefix}background)
 
 @function findCSSVarDarkColor($color)
   @if type-of($color) == "color"
@@ -21,7 +21,7 @@ $prefix: "bulma-"
     $luminance-delta: 0.53 - $luminance
     $target-l: round($base-l + $luminance-delta * 53)
     @return change-color($color, $lightness: max($base-l, $target-l))
-  @return var(--#{$prefix}-text-strong)
+  @return var(--#{$prefix}text-strong)
 
 $cssvar-colors: ("primary": $primary, "link": $link, "info": $info, "success": $success, "warning": $warning, "danger": $danger, "light": $white-ter, "dark": $grey-darker)
 
@@ -55,42 +55,42 @@ $cssvar-colors: ("primary": $primary, "link": $link, "info": $info, "success": $
   --#{$base}-dark-active: #{darken($color-dark, 10%)}
 
 \:root
-  --#{$prefix}-white: #{$white}
-  --#{$prefix}-black: #{$black}
-  --#{$prefix}-black-transparent: #{rgba(#000, 0.7)}
+  --#{$prefix}white: #{$white}
+  --#{$prefix}black: #{$black}
+  --#{$prefix}black-transparent: #{rgba(#000, 0.7)}
   @each $name, $color in $cssvar-colors
     +cssvar($name, $color)
 
-// $white: var(--#{$prefix}-white)
-// $black: var(--#{$prefix}-black)
-// $black-transparent: var(--#{$prefix}-black-transparent)
-// $scheme-main: var(--#{$prefix}-scheme-main)
-// $scheme-main-bis: var(--#{$prefix}-scheme-main-bis)
-// $scheme-main-ter: var(--#{$prefix}-scheme-main-ter)
-// $scheme-invert: var(--#{$prefix}-scheme-invert)
-// $scheme-invert-bis: var(--#{$prefix}-scheme-invert-bis)
-// $scheme-invert-ter: var(--#{$prefix}-scheme-invert-ter)
-// $background: var(--#{$prefix}-background)
-// $border: var(--#{$prefix}-border)
-// $border-hover: var(--#{$prefix}-border-hover)
-// $border-light: var(--#{$prefix}-border-light)
-// $border-light-hover: var(--#{$prefix}-border-light-hover)
-// $text: var(--#{$prefix}-text)
-// $text-invert: var(--#{$prefix}-text-invert)
-// $text-light: var(--#{$prefix}-text-light)
-// $text-strong: var(--#{$prefix}-text-strong)
-// $code: var(--#{$prefix}-code)
-// $code-background: var(--#{$prefix}-code-background)
-// $pre: var(--#{$prefix}-pre)
-// $pre-background: var(--#{$prefix}-pre-background)
-// $link: var(--#{$prefix}-link)
-// $link-invert: var(--#{$prefix}-link-invert)
-// $link-light: var(--#{$prefix}-link-light)
-// $link-dark: var(--#{$prefix}-link-dark)
-// $link-visited: var(--#{$prefix}-link-visited)
-// $link-hover: var(--#{$prefix}-link-hover)
-// $link-hover-border: var(--#{$prefix}-link-hover-border)
-// $link-focus: var(--#{$prefix}-link-focus)
-// $link-focus-border: var(--#{$prefix}-link-focus-border)
-// $link-active: var(--#{$prefix}-link-active)
-// $link-active-border: var(--#{$prefix}-link-active-border)
+// $white: var(--#{$prefix}white)
+// $black: var(--#{$prefix}black)
+// $black-transparent: var(--#{$prefix}black-transparent)
+// $scheme-main: var(--#{$prefix}scheme-main)
+// $scheme-main-bis: var(--#{$prefix}scheme-main-bis)
+// $scheme-main-ter: var(--#{$prefix}scheme-main-ter)
+// $scheme-invert: var(--#{$prefix}scheme-invert)
+// $scheme-invert-bis: var(--#{$prefix}scheme-invert-bis)
+// $scheme-invert-ter: var(--#{$prefix}scheme-invert-ter)
+// $background: var(--#{$prefix}background)
+// $border: var(--#{$prefix}border)
+// $border-hover: var(--#{$prefix}border-hover)
+// $border-light: var(--#{$prefix}border-light)
+// $border-light-hover: var(--#{$prefix}border-light-hover)
+// $text: var(--#{$prefix}text)
+// $text-invert: var(--#{$prefix}text-invert)
+// $text-light: var(--#{$prefix}text-light)
+// $text-strong: var(--#{$prefix}text-strong)
+// $code: var(--#{$prefix}code)
+// $code-background: var(--#{$prefix}code-background)
+// $pre: var(--#{$prefix}pre)
+// $pre-background: var(--#{$prefix}pre-background)
+// $link: var(--#{$prefix}link)
+// $link-invert: var(--#{$prefix}link-invert)
+// $link-light: var(--#{$prefix}link-light)
+// $link-dark: var(--#{$prefix}link-dark)
+// $link-visited: var(--#{$prefix}link-visited)
+// $link-hover: var(--#{$prefix}link-hover)
+// $link-hover-border: var(--#{$prefix}link-hover-border)
+// $link-focus: var(--#{$prefix}link-focus)
+// $link-focus-border: var(--#{$prefix}link-focus-border)
+// $link-active: var(--#{$prefix}link-active)
+// $link-active-border: var(--#{$prefix}link-active-border)
