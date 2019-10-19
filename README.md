@@ -43,7 +43,7 @@ import 'bulma/css/bulma.css'
 
 ### CDN
 
-[https://cdnjs.com/libraries/bulma](https://cdnjs.com/libraries/bulma)
+[https://www.jsdelivr.com/package/npm/bulma](https://www.jsdelivr.com/package/npm/bulma)
 
 Feel free to raise an issue or submit a pull request.
 
