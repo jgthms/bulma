@@ -142,6 +142,35 @@
       box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0 0 1px $link
     &:active
       box-shadow: inset 0 1px 2px rgba($scheme-invert, 0.2), 0 0 0 1px $link
+  .delete
+    background-color: rgba($scheme-invert, 0.2)
+    &::before,
+    &::after
+      background-color: $scheme-main
+    &:hover,
+    &:focus
+      background-color: rgba($scheme-invert, 0.3)
+    &:active
+      background-color: rgba($scheme-invert, 0.4)
+  .notification
+    background-color: $background
+  .progress
+    &::-webkit-progress-bar
+      background-color: $border-light
+    &::-webkit-progress-value
+      background-color: $text
+    &::-moz-progress-bar
+      background-color: $text
+    &::-ms-fill
+      background-color: $text
+    @each $name, $pair in $colors
+      $color: nth($pair, 1)
+      &.is-#{$name}
+        &:indeterminate
+          background-image: linear-gradient(to right, $color 30%, $border-light 30%)
+    &:indeterminate
+      background-color: $border-light
+      background-image: linear-gradient(to right, $text 30%, $border-light 30%)
 
 html
   background-color: var(--#{$prefix}scheme-main)
@@ -387,6 +416,90 @@ label.panel-block
 .box
   background-color: var(--#{$prefix}scheme-main)
   color: var(--#{$prefix}text)
+
+.content
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    color: var(--#{$prefix}text-strong)
+  blockquote
+    background-color: var(--#{$prefix}background)
+    border-left-color: var(--#{$prefix}border)
+  table
+    td,
+    th
+      border-color: var(--#{$prefix}border)
+    th
+      color: var(--#{$prefix}text-strong)
+    thead
+      td,
+      th
+        color: var(--#{$prefix}text-strong)
+    tfoot
+      td,
+      th
+        color: var(--#{$prefix}text-strong)
+
+.table
+  background-color: var(--#{$prefix}scheme-main)
+  color: var(--#{$prefix}text-strong)
+  td,
+  th
+    border-color: var(--#{$prefix}border)
+    &.is-selected
+      background-color: var(--#{$prefix}primary)
+      color: var(--#{$prefix}primary-invert)
+  th
+    color: var(--#{$prefix}text-strong)
+  tr
+    &.is-selected
+      background-color: var(--#{$prefix}primary)
+      color: var(--#{$prefix}primary-invert)
+      td,
+      th
+        border-color: var(--#{$prefix}primary-invert)
+  thead
+    td,
+    th
+      color: var(--#{$prefix}text-strong)
+  tfoot
+    td,
+    th
+      color: var(--#{$prefix}text-strong)
+  &.is-hoverable
+    tbody
+      tr:not(.is-selected)
+        &:hover
+          background-color: var(--#{$prefix}scheme-main-bis)
+    &.is-striped
+      tbody
+        tr:not(.is-selected)
+          &:hover
+            background-color: var(--#{$prefix}scheme-main-bis)
+            &:nth-child(even)
+              background-color: var(--#{$prefix}scheme-main-ter)
+  &.is-striped
+    tbody
+      tr:not(.is-selected)
+        &:nth-child(even)
+          background-color: var(--#{$prefix}scheme-main-bis)
+
+.tag:not(body)
+  background-color: var(--tag-background-color) !important
+  color: var(--tag-color) !important
+  --tag-background-color: var(--#{$prefix}background)
+  --tag-color: var(--#{$prefix}text)
+  @each $name, $color in $cssvar-colors
+    $base: "#{$prefix}#{$name}"
+    &.is-#{$name}
+      --tag-background-color: var(--#{$base})
+      --tag-color: var(--#{$base}-invert)
+      &.is-light
+        --tag-background-color: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), 7%)
+        --tag-color: var(--#{$base})
 
 .title
   color: var(--#{$prefix}text-strong)
