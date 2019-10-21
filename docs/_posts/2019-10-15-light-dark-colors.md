@@ -7,7 +7,7 @@ name: "Light/Dark colors, better look, larger controls"
 icon: "sun"
 ---
 
-The new version **[Bulma 0.8.0](#)** is out! 😃 It comes with several bug fixes and a lot of nice new features:
+The new version **[Bulma 0.8.0](https://github.com/jgthms/bulma/releases/tag/0.8.0)** is out! 😃 It comes with several bug fixes and a lot of nice new features:
 
 * [Light/Dark colors](#light-dark-colors)
 * [Better visual look](#better-visual-look)
@@ -16,7 +16,7 @@ The new version **[Bulma 0.8.0](#)** is out! 😃 It comes with several bug fixe
 * [4-value color map](#4-value-color-map)
 * [Scheme variables for "Dark mode"](#scheme-variables-for-dark-mode)
 
-More in the [Changelog](#).
+More in the [Changelog](https://github.com/jgthms/bulma/releases/tag/0.8.0).
 
 {% include elements/anchor.html name="Light/Dark colors" %}
 
