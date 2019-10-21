@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.8.1
+
+### Bug fixes
+
+* #2664 Fixes #2671 -> Add `$panel-colors` variable
+
 ## 0.8.0
 
 ### Big update

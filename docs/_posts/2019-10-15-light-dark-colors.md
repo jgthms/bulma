@@ -5,7 +5,6 @@ introduction: "A big update for more colors and flexibility"
 color: "primary"
 name: "Light/Dark colors, better look, larger controls"
 icon: "sun"
-published: false
 ---
 
 The new version **[Bulma 0.8.0](#)** is out! 😃 It comes with several bug fixes and a lot of nice new features:
