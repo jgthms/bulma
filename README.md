@@ -117,6 +117,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Bulrush](https://github.com/textbook/bulrush)                                       | A Bulma-based Python Pelican blog theme                                                |
 | [Bulma Variable Export](https://github.com/service-paradis/bulma-variables-export)                                       | Access Bulma Variables in Javascript/Typescript in project using Webpack                                                |
 | [Bulmil](https://github.com/gomah/bulmil)                                       | An agnostic UI components library based on Web Components, made with Bulma & Stencil.                                                |
+| [Svelte Bulma Components](https://github.com/elcobvg/svelte-bulma-components)                                       | Library of UI components to be used in [Svelte.js](https://svelte.technology/) or standalone.                                                |
 
 ## Copyright and license
 
