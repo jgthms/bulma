@@ -128,7 +128,7 @@ That is also why most of the codebase now references **derived** variables (`$te
 ### Deprecation warning
 
 The `form.sass` file is **deprecated**. It has moved into its own `/form` folder. If you were importing `form.sass`, please import `sass/form/_all.sass` now.
-If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as bbefore.
+If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
 
 ### New features
 
