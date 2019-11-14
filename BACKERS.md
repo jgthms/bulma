@@ -69,19 +69,6 @@
 
     
       <tr>
-  <td>usave</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
   <td>Tooltwist</td>
 
   <td>
@@ -151,20 +138,7 @@
 
     
       <tr>
-  <td>KeyCDN</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>HebergeurWeb.ca</td>
+  <td>Iaroslav Baklan</td>
 
   <td>
     
@@ -178,19 +152,6 @@
     
       <tr>
   <td>DontPayFull</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>CodeFirst</td>
 
   <td>
     
@@ -222,73 +183,9 @@
   <tbody>
     
       <tr>
-  <td>Yagamii Society-Squad</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Tony James</td>
-
-  <td>
-    
-      <a href="https://twitter.com/tryhyperhost" target="_blank" rel="nofollow">
-        @tryhyperhost
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
   <td>Roman Chvanikoff</td>
 
   <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Nazar</td>
-
-  <td>
-    
-      <a href="https://twitter.com/nazar_io" target="_blank" rel="nofollow">
-        @nazar_io
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Jon Yongfook</td>
-
-  <td>
-    
-      <a href="https://twitter.com/yongfook" target="_blank" rel="nofollow">
-        @yongfook
-      </a>
     
   </td>
 
@@ -373,32 +270,6 @@
   <tbody>
     
       <tr>
-  <td>Wikiki</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Tőrös Egon Richárd</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
   <td>Tyler Weeres</td>
 
   <td>
@@ -446,196 +317,6 @@
 
     
       <tr>
-  <td>Stanley Eosakul</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Rob</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Peter Ryszkiewicz</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Patrick Cool</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Niklas</td>
-
-  <td>
-    
-      <a href="https://twitter.com/paradoxxger" target="_blank" rel="nofollow">
-        @paradoxxger
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>MrG0lden</td>
-
-  <td>
-    
-      <a href="https://twitter.com/mrg0lden" target="_blank" rel="nofollow">
-        @mrg0lden
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Millie Lin</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Michael Schinis</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Matt Swan</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Marozed</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Marcel Schiering</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Mae van Dijk</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Luis Guillermo Moreno</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Luis Castro Martín</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
   <td>Leo Zeba</td>
 
   <td>
@@ -643,32 +324,6 @@
       <a href="https://twitter.com/leozeba" target="_blank" rel="nofollow">
         @leozeba
       </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Kyu</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>JustBoil.me</td>
-
-  <td>
     
   </td>
 
@@ -693,49 +348,6 @@
     
       <tr>
   <td>Jason Seminara</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Jan Kremlacek</td>
-
-  <td>
-    
-      <a href="https://twitter.com/jankremlacek" target="_blank" rel="nofollow">
-        @jankremlacek
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Heli Herrera</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>GameTop.com</td>
 
   <td>
     
@@ -782,7 +394,7 @@
 
     
       <tr>
-  <td>Emil Sonesson</td>
+  <td>Dodzidenu Dzakuma</td>
 
   <td>
     
@@ -795,56 +407,9 @@
 
     
       <tr>
-  <td>Dmitry Malyshev</td>
+  <td>Dave Matthews</td>
 
   <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>dansup</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Daniel Zavala</td>
-
-  <td>
-    
-      <a href="https://twitter.com/Siedrix" target="_blank" rel="nofollow">
-        @Siedrix
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Charles Treece</td>
-
-  <td>
-    
-      <a href="https://twitter.com/charlestreece" target="_blank" rel="nofollow">
-        @charlestreece
-      </a>
     
   </td>
 
