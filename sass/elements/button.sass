@@ -1,12 +1,12 @@
-$button-color: $grey-darker !default
-$button-background-color: $white !default
+$button-color: $text-strong !default
+$button-background-color: $scheme-main !default
 $button-family: false !default
 
-$button-border-color: $grey-lighter !default
+$button-border-color: $border !default
 $button-border-width: $control-border-width !default
 
-$button-padding-vertical: calc(0.375em - #{$button-border-width}) !default
-$button-padding-horizontal: 0.75em !default
+$button-padding-vertical: calc(0.5em - #{$button-border-width}) !default
+$button-padding-horizontal: 1em !default
 
 $button-hover-color: $link-hover !default
 $button-hover-border-color: $link-hover-border !default
@@ -23,14 +23,14 @@ $button-text-color: $text !default
 $button-text-hover-background-color: $background !default
 $button-text-hover-color: $text-strong !default
 
-$button-disabled-background-color: $white !default
-$button-disabled-border-color: $grey-lighter !default
+$button-disabled-background-color: $scheme-main !default
+$button-disabled-border-color: $border !default
 $button-disabled-shadow: none !default
 $button-disabled-opacity: 0.5 !default
 
-$button-static-color: $grey !default
-$button-static-background-color: $white-ter !default
-$button-static-border-color: $grey-lighter !default
+$button-static-color: $text-light !default
+$button-static-background-color: $scheme-main-ter !default
+$button-static-border-color: $border !default
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
@@ -70,14 +70,14 @@ $button-static-border-color: $grey-lighter !default
       height: 1.5em
       width: 1.5em
     &:first-child:not(:last-child)
-      margin-left: calc(-0.375em - #{$button-border-width})
-      margin-right: 0.1875em
+      margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      margin-right: $button-padding-horizontal / 4
     &:last-child:not(:first-child)
-      margin-left: 0.1875em
-      margin-right: calc(-0.375em - #{$button-border-width})
+      margin-left: $button-padding-horizontal / 4
+      margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
     &:first-child:last-child
-      margin-left: calc(-0.375em - #{$button-border-width})
-      margin-right: calc(-0.375em - #{$button-border-width})
+      margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
   // States
   &:hover,
   &.is-hovered
@@ -206,6 +206,23 @@ $button-static-border-color: $grey-lighter !default
           border-color: $color-invert
           box-shadow: none
           color: $color-invert
+      // If light and dark colors are provided
+      @if length($pair) >= 4
+        $color-light: nth($pair, 3)
+        $color-dark: nth($pair, 4)
+        &.is-light
+          background-color: $color-light
+          color: $color-dark
+          &:hover,
+          &.is-hovered
+            background-color: darken($color-light, 2.5%)
+            border-color: transparent
+            color: $color-dark
+          &:active,
+          &.is-active
+            background-color: darken($color-light, 5%)
+            border-color: transparent
+            color: $color-dark
   // Sizes
   &.is-small
     +button-small
@@ -240,8 +257,8 @@ $button-static-border-color: $grey-lighter !default
     pointer-events: none
   &.is-rounded
     border-radius: $radius-rounded
-    padding-left: 1em
-    padding-right: 1em
+    padding-left: calc(#{$button-padding-horizontal} + 0.25em)
+    padding-right: calc(#{$button-padding-horizontal} + 0.25em)
 
 .buttons
   align-items: center

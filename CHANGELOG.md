@@ -1,11 +1,122 @@
 # Bulma Changelog
 
-## Upcoming release
+## 0.8.1
 
 ### Bug fixes
 
+* #2664 Fixes #2671 -> Add `$panel-colors` variable
+
+## 0.8.0
+
+### Big update
+
+#### Larger form controls
+
+Controls and buttons are now `2.5em` high. You can revert this resizing by setting these previous values:
+
+```sass
+$control-height: 2.25em
+$control-padding-vertical: calc(0.375em - #{$control-border-width})
+$control-padding-horizontal: calc(0.625em - #{$control-border-width})
+$button-padding-vertical: calc(0.375em - #{$button-border-width})
+$button-padding-horizontal: 0.75em 
+```
+
+#### Light and dark colors
+
+Each main color (`"primary"`, `"info"`, `"success"`, `"warning"`, `"danger"`) now has a `*-light` and `*-dark` version. They are calculated using 2 new color functions:
+
+* `findLightColor()` which finds the light version of a color
+* `findDarkolor()` which finds the dark version of a color
+
+The light colors are used by the `button` element, while the light and dark colors are used by the `message` component.
+
+#### Panel colors
+
+The `panel` component is now available in all the different colors.
+
+#### 4-value color map
+
+The `$colors` Sass map now accepts, for each of its values, a map of up to **4** values. For example: the key `"info"` now has the `($info, $info-invert, $info-light, $info-dark)` map.
+
+If you provide a `$custom-colors` map, you can decide to provide a map of 1, 2, 3 or 4 values for each value. If fewer than 4 are provided, Bulma will calculate the remaining ones:
+
+```scss
+$custom-colors: (
+  "lime": (lime),
+  "tomato": (tomato, white),
+  "orange": ($orange, $orange-invert, $orange-light),
+  "lavender": ($lavender, $lavender-invert, $lavender-light, $lavender-dark)
+);
+```
+
+This is processed by the updated `mergeColorMaps()` Sass function.
+
+#### Scheme variables
+
+There are 6 new `$scheme` derived variables: `$scheme-main` `$scheme-main-bis` `$scheme-main-ter` `$scheme-invert` `$scheme-invert-bis` `$scheme-invert-ter`
+They replace the `$white` and `$black` occurences in the codebase. This makes it easy to create a "Dark mode" simply by swapping the values:
+
+```sass
+$scheme-main: $black
+$scheme-invert: $white
+// etc.
+```
+
+That is also why most of the codebase now references **derived** variables (`$text`, `$background`, `$border` etc.) instead of **initial** ones (`$grey`, `$grey-lighter`, `$grey-darker` etc.): updating the derived variables will affect all elements and components directly.
+
+#### Initial variables
+
+* `$green: hsl(141, 53%, 53%)`
+* `$cyan: hsl(204, 71%, 53%)`
+* `$red: hsl(348, 86%, 61%)`
+
+#### Derived variables
+
+* `$primary-invert: findColorInvert($primary)`
+* `$primary-light: findLightColor($primary)`
+* `$primary-dark: findDarkColor($primary)`
+* `$info-invert: findColorInvert($info)`
+* `$info-light: findLightColor($info)`
+* `$info-dark: findDarkColor($info)`
+* `$success-invert: findColorInvert($success)`
+* `$success-light: findLightColor($success)`
+* `$success-dark: findDarkColor($success)`
+* `$warning-invert: findColorInvert($warning)`
+* `$warning-light: findLightColor($warning)`
+* `$warning-dark: findDarkColor($warning)`
+* `$danger-invert: findColorInvert($danger)`
+* `$danger-light: findLightColor($danger)`
+* `$danger-dark: findDarkColor($danger)`
+* `$light-invert: findColorInvert($light)`
+* `$dark-invert: findColorInvert($dark)`
+
+* `$scheme-main: $white`
+* `$scheme-main-bis: $white-bis`
+* `$scheme-main-ter: $white-ter`
+* `$scheme-invert: $black`
+* `$scheme-invert-bis: $black-bis`
+* `$scheme-invert-ter: $black-ter`
+
+### Other variables
+
+* `$control-height: 2.5em`
+* `$control-padding-vertical: calc(0.5em - #{$control-border-width})`
+* `$control-padding-horizontal: calc(0.75em - #{$control-border-width})`
+* `$media-border-color: rgba($border, 0.5)`
+* `$notification-code-background-color: $scheme-main`
+* `$panel-radius: $radius-large`
+* `$panel-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)`
+* `$textarea-padding: $control-padding-horizontal`
+* `$textarea-max-height: 40em`
+* `$textarea-min-height: 8em`
+
+### Bug fixes
+
+* Fix #2647 -> Missing meta tags in snippet
 * Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+* Fix #706 -> Derive `-invert` variables using `findColorInvert()`
 * #1608 Fix #1552 -> `.container.is-fluid` margins
 
 ### New features
@@ -17,7 +128,7 @@
 ### Deprecation warning
 
 The `form.sass` file is **deprecated**. It has moved into its own `/form` folder. If you were importing `form.sass`, please import `sass/form/_all.sass` now.
-If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as bbefore.
+If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
 
 ### New features
 

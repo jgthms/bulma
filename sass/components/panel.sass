@@ -1,13 +1,15 @@
 $panel-margin: $block-spacing !default
-$panel-item-border: 1px solid $border !default
+$panel-item-border: 1px solid $border-light !default
+$panel-radius: $radius-large !default
+$panel-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
 
-$panel-heading-background-color: $background !default
+$panel-heading-background-color: $border-light !default
 $panel-heading-color: $text-strong !default
 $panel-heading-line-height: 1.25 !default
-$panel-heading-padding: 0.5em 0.75em !default
+$panel-heading-padding: 0.75em 1em !default
 $panel-heading-radius: $radius !default
 $panel-heading-size: 1.25em !default
-$panel-heading-weight: $weight-light !default
+$panel-heading-weight: $weight-bold !default
 
 $panel-tabs-font-size: 0.875em !default
 $panel-tab-border-bottom: 1px solid $border !default
@@ -24,24 +26,35 @@ $panel-block-active-color: $link-active !default
 $panel-block-active-icon-color: $link !default
 
 $panel-icon-color: $text-light !default
+$panel-colors: $colors !default
 
 .panel
+  border-radius: $panel-radius
+  box-shadow: $panel-shadow
   font-size: $size-normal
   &:not(:last-child)
     margin-bottom: $panel-margin
+  // Colors
+  @each $name, $components in $panel-colors
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    &.is-#{$name}
+      .panel-heading
+        background-color: $color
+        color: $color-invert
+      .panel-tabs a.is-active
+        border-bottom-color: $color
+      .panel-block.is-active .panel-icon
+        color: $color
 
-.panel-heading,
 .panel-tabs,
 .panel-block
-  border-bottom: $panel-item-border
-  border-left: $panel-item-border
-  border-right: $panel-item-border
-  &:first-child
-    border-top: $panel-item-border
+  &:not(:last-child)
+    border-bottom: $panel-item-border
 
 .panel-heading
   background-color: $panel-heading-background-color
-  border-radius: $panel-heading-radius $panel-heading-radius 0 0
+  border-radius: $panel-radius $panel-radius 0 0
   color: $panel-heading-color
   font-size: $panel-heading-size
   font-weight: $panel-heading-weight
@@ -87,6 +100,9 @@ $panel-icon-color: $text-light !default
     color: $panel-block-active-color
     .panel-icon
       color: $panel-block-active-icon-color
+  &:last-child
+    border-bottom-left-radius: $panel-radius
+    border-bottom-right-radius: $panel-radius
 
 a.panel-block,
 label.panel-block
