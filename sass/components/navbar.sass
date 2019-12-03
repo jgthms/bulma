@@ -232,6 +232,10 @@ a.navbar-item,
   height: $navbar-divider-height
   margin: 0.5rem 0
 
+
+.navbar-checkbox
+  display: none
+
 +until($navbar-breakpoint)
   .navbar > .container
     display: block
@@ -249,6 +253,19 @@ a.navbar-item,
     padding: 0.5rem 0
     &.is-active
       display: block
+
+  .navbar-checkbox:checked ~ .navbar-menu
+    display: block
+
+  .navbar-checkbox:checked ~ .navbar-brand
+    .navbar-burger span
+      &:nth-child(1)
+        transform: translateY(5px) rotate(45deg)
+      &:nth-child(2)
+        opacity: 0
+      &:nth-child(3)
+        transform: translateY(-5px) rotate(-45deg)
+
   // Fixed navbar
   .navbar
     &.is-fixed-bottom-touch,
