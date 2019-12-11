@@ -5,6 +5,7 @@
 ### Bug fixes
 
 * #2664 Fixes #2671 -> Add `$panel-colors` variable
+* #2471 Document `has-spaced-navbar-fixed-top` for Navbar
 
 ## 0.8.0
 
@@ -19,7 +20,7 @@ $control-height: 2.25em
 $control-padding-vertical: calc(0.375em - #{$control-border-width})
 $control-padding-horizontal: calc(0.625em - #{$control-border-width})
 $button-padding-vertical: calc(0.375em - #{$button-border-width})
-$button-padding-horizontal: 0.75em 
+$button-padding-horizontal: 0.75em
 ```
 
 #### Light and dark colors
