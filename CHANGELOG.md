@@ -6,6 +6,10 @@
 
 * #2664 Fixes #2671 -> Add `$panel-colors` variable
 
+### New features
+
+* #2723 `.columns` has a new `has-[1..12]-[mobile..fullhd]` modifier for max number column into all lines and with `.column.is-fullwidth` the column is one into line.
+
 ## 0.8.0
 
 ### Big update
