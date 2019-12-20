@@ -5,6 +5,7 @@
 ### Bug fixes
 
 * #2664 Fixes #2671 -> Add `$panel-colors` variable
+* #2731 Fixes Button size with is-sr-only label adding `is-only-child` to icon
 
 ## 0.8.0
 
@@ -251,7 +252,7 @@ Fix #1979 -> Correct loading spinner color when a button is:
 * #1905 Fix `modal` for IE11 #1902
 * #1919 New `is-arrowless` class for navbar items
 * #1949 New `is-fullheight-with-navbar` class for heros
-* #1764 New `.is-sr-only` helper
+* #1764 New `.is-only-child` button helper
 * #2109 Add and use `$navbar-breakpoint` variable
 * New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
 * #1720 Add list element feature

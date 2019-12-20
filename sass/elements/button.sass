@@ -69,20 +69,16 @@ $button-static-border-color: $border !default
     &.is-large
       height: 1.5em
       width: 1.5em
-    &:first-child:not(:last-child)
+    &:first-child:not(:last-child):not(.is-only-child)
       margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
       margin-right: $button-padding-horizontal / 4
     &:last-child:not(:first-child)
       margin-left: $button-padding-horizontal / 4
       margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
-    &:first-child:last-child
+    &:first-child:last-child,
+    &.is-only-child
       margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
       margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
-  .is-sr-only
-    + .icon
-        &:last-child:not(:first-child)
-          margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
-          margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
   // States
   &:hover,
   &.is-hovered
