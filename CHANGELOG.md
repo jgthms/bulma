@@ -224,6 +224,7 @@ Fix #1979 -> Correct loading spinner color when a button is:
 * #592 -> Give arbitrary elements access to the image/ratio classes
 * #1682 Fix #1681 -> Adds disabled styles for `<fieldset disabled>`
 * #2201 Fix #1875 -> `.buttons` and `.tags` group sizing (`.are-small`, `.are-medium`, `.are-large`)
+* #2747 Fix #2729 Adds item alignment classes
 
 ### Improvements
 
