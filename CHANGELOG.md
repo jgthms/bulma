@@ -1,5 +1,282 @@
 # Bulma Changelog
 
+## 0.8.1
+
+### Bug fixes
+
+* #2664 Fixes #2671 -> Add `$panel-colors` variable
+
+## 0.8.0
+
+### Big update
+
+#### Larger form controls
+
+Controls and buttons are now `2.5em` high. You can revert this resizing by setting these previous values:
+
+```sass
+$control-height: 2.25em
+$control-padding-vertical: calc(0.375em - #{$control-border-width})
+$control-padding-horizontal: calc(0.625em - #{$control-border-width})
+$button-padding-vertical: calc(0.375em - #{$button-border-width})
+$button-padding-horizontal: 0.75em 
+```
+
+#### Light and dark colors
+
+Each main color (`"primary"`, `"info"`, `"success"`, `"warning"`, `"danger"`) now has a `*-light` and `*-dark` version. They are calculated using 2 new color functions:
+
+* `findLightColor()` which finds the light version of a color
+* `findDarkolor()` which finds the dark version of a color
+
+The light colors are used by the `button` element, while the light and dark colors are used by the `message` component.
+
+#### Panel colors
+
+The `panel` component is now available in all the different colors.
+
+#### 4-value color map
+
+The `$colors` Sass map now accepts, for each of its values, a map of up to **4** values. For example: the key `"info"` now has the `($info, $info-invert, $info-light, $info-dark)` map.
+
+If you provide a `$custom-colors` map, you can decide to provide a map of 1, 2, 3 or 4 values for each value. If fewer than 4 are provided, Bulma will calculate the remaining ones:
+
+```scss
+$custom-colors: (
+  "lime": (lime),
+  "tomato": (tomato, white),
+  "orange": ($orange, $orange-invert, $orange-light),
+  "lavender": ($lavender, $lavender-invert, $lavender-light, $lavender-dark)
+);
+```
+
+This is processed by the updated `mergeColorMaps()` Sass function.
+
+#### Scheme variables
+
+There are 6 new `$scheme` derived variables: `$scheme-main` `$scheme-main-bis` `$scheme-main-ter` `$scheme-invert` `$scheme-invert-bis` `$scheme-invert-ter`
+They replace the `$white` and `$black` occurences in the codebase. This makes it easy to create a "Dark mode" simply by swapping the values:
+
+```sass
+$scheme-main: $black
+$scheme-invert: $white
+// etc.
+```
+
+That is also why most of the codebase now references **derived** variables (`$text`, `$background`, `$border` etc.) instead of **initial** ones (`$grey`, `$grey-lighter`, `$grey-darker` etc.): updating the derived variables will affect all elements and components directly.
+
+#### Initial variables
+
+* `$green: hsl(141, 53%, 53%)`
+* `$cyan: hsl(204, 71%, 53%)`
+* `$red: hsl(348, 86%, 61%)`
+
+#### Derived variables
+
+* `$primary-invert: findColorInvert($primary)`
+* `$primary-light: findLightColor($primary)`
+* `$primary-dark: findDarkColor($primary)`
+* `$info-invert: findColorInvert($info)`
+* `$info-light: findLightColor($info)`
+* `$info-dark: findDarkColor($info)`
+* `$success-invert: findColorInvert($success)`
+* `$success-light: findLightColor($success)`
+* `$success-dark: findDarkColor($success)`
+* `$warning-invert: findColorInvert($warning)`
+* `$warning-light: findLightColor($warning)`
+* `$warning-dark: findDarkColor($warning)`
+* `$danger-invert: findColorInvert($danger)`
+* `$danger-light: findLightColor($danger)`
+* `$danger-dark: findDarkColor($danger)`
+* `$light-invert: findColorInvert($light)`
+* `$dark-invert: findColorInvert($dark)`
+
+* `$scheme-main: $white`
+* `$scheme-main-bis: $white-bis`
+* `$scheme-main-ter: $white-ter`
+* `$scheme-invert: $black`
+* `$scheme-invert-bis: $black-bis`
+* `$scheme-invert-ter: $black-ter`
+
+### Other variables
+
+* `$control-height: 2.5em`
+* `$control-padding-vertical: calc(0.5em - #{$control-border-width})`
+* `$control-padding-horizontal: calc(0.75em - #{$control-border-width})`
+* `$media-border-color: rgba($border, 0.5)`
+* `$notification-code-background-color: $scheme-main`
+* `$panel-radius: $radius-large`
+* `$panel-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)`
+* `$textarea-padding: $control-padding-horizontal`
+* `$textarea-max-height: 40em`
+* `$textarea-min-height: 8em`
+
+### Bug fixes
+
+* Fix #2647 -> Missing meta tags in snippet
+* Fix #2031, Fix #2483 -> Invalid output when declaring a custom shade map
+* Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
+* Fix #706 -> Derive `-invert` variables using `findColorInvert()`
+* #1608 Fix #1552 -> `.container.is-fluid` margins
+
+### New features
+
+* #2563 `.image` has a new `.is-fullwidth` modifier
+
+## 0.7.5
+
+### Deprecation warning
+
+The `form.sass` file is **deprecated**. It has moved into its own `/form` folder. If you were importing `form.sass`, please import `sass/form/_all.sass` now.
+If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
+
+### New features
+
+#### Support for overriding the `font-family`
+
+You can now specify a different `font-family` for the `.title`, `.subtitle` and `.button` by using the variables `$title-family`, `$subtitle-family` and `$button-family` respectively.
+
+Simply set a value when importing Bulma:
+
+```scss
+$title-family: "Georgia", serif;
+```
+
+* #2375 Add `.is-relative` helper
+* #2321 Make `.navbar` focus behave like hover for the navigation
+* #2290 Fix #1186 -> Reset the offset on columns
+* #2231 Add `.has-text-weight-medium` helper
+* #2224 Add customizable border radius to progress bar
+* #2480 Add `$footer-color` variable
+
+### Improvements
+
+* #2396 Update docs with webpack 4 example
+* #2381 Make centered buttons have equal margin
+* Fix #2297 -> Remove `.container` fixed width values, use `flex-grow`
+* #2478 Move form.sass into its own folder
+
+### Bug fixes
+
+* #2420 Fix #2414 -> Fix `align` attribute in `td/th` being ignored
+* #2463 Remove duplicate `.has-addons` in `tag.sass`
+* #2253 Fix `$gap` variable default value
+* #2273 Fix #2258 -> Fix Indeterminate Progress Bar animation in Firefox
+* #2175 Proper aligning for `.tabs` within `.content`
+* #2476 Fix #2441 -> Correct active pagination link text colour on hero
+
+Fix #1979 -> Correct loading spinner color when a button is:
+
+* outlined and hovered/focused
+* outlined, inverted and hovered/focused
+
+### New variables
+
+#### Initial variables
+
+* `$block-spacing`
+
+#### Base
+
+* `$body-font-size`
+* `$small-font-size`
+* `$pre-font-size`
+* `$pre-padding`
+* `$pre-code-font-size`
+
+#### Components
+
+* `$card-header-padding`
+* `$card-content-padding`
+* `$card-media-margin`
+* `$dropdown-menu-min-width`
+* `$dropdown-content-padding-bottom`
+* `$dropdown-content-padding-top`
+* `$level-item-spacing`
+* `$menu-list-line-height`
+* `$menu-list-link-padding`
+* `$menu-nested-list-margin`
+* `$menu-nested-list-padding-left`
+* `$menu-label-font-size`
+* `$menu-label-letter-spacing`
+* `$menu-label-spacing`
+* `$pagination-item-font-size`
+* `$pagination-item-margin`
+* `$pagination-item-padding-left`
+* `$pagination-item-padding-right`
+* `$panel-margin`
+* `$panel-tabs-font-size`
+
+#### Elements
+
+* `$container-offset`
+
+#### Grid
+
+* `$tile-spacing`
+
+## 0.7.3
+
+### New features
+
+* #2145 Fix #372 -> New indeterminate progress bars
+* #2206 Fix #2046 -> New variables `$table-head-background-color`, `$table-body-background-color` and `$table-foot-background-color` for the `.table` element
+* #592 -> Give arbitrary elements access to the image/ratio classes
+* #1682 Fix #1681 -> Adds disabled styles for `<fieldset disabled>`
+* #2201 Fix #1875 -> `.buttons` and `.tags` group sizing (`.are-small`, `.are-medium`, `.are-large`)
+
+### Improvements
+
+* #1978 Fix #1696 -> Force `box-sizing: border-box` on `details` element
+* #2167 Fix #1878 -> New `$footer-padding` variable
+* #2168 -> New `$input-placeholder-color` and `$input-disabled-placeholder-color` variables
+
+### Bug fixes
+
+* #2157 Fix #1656 -> Allow border radius if only one `.control` in `.field`
+* #2091 Fix #2091 -> Remove CSS rule which causes `.tag.has-addons` to not work correctly
+* #2186 Fix #1130 -> Prevent `.dropdown` links underlining in `.message` component
+* Fix #2154 -> Move `.hero.is-fullheight-with-navbar` to `navbar.sass` file
+
+### Deprecation
+
+* `.control.has-icon` deprecated in favor of `.control.has-icons`
+
+## 0.7.2
+
+### New features
+
+* #1884 New `$navbar-burger-color` variable
+* #1679 Add breakpoint based column gaps
+* #1905 Fix `modal` for IE11 #1902
+* #1919 New `is-arrowless` class for navbar items
+* #1949 New `is-fullheight-with-navbar` class for heros
+* #1764 New `.is-sr-only` helper
+* #2109 Add and use `$navbar-breakpoint` variable
+* New variables `$control-height`, `$control-line-height`, `$pagination-min-width`, `$input-height`
+* #1720 Add list element feature
+* #2123 Add `.content ol` types: `.is-lower-roman`, `.is-upper-roman`, `.is-lower-alpha`, `.is-upper-alpha`, and support for the `type=` HTML attribute
+
+### Improvements
+
+* #1964 Allow `.notification` to have a `.dropdown-item`
+* #1999 Change `$border` to `$grey-lighter` in mixins
+* #2085 `.media-content` will allow scrolling horizontally if the content is too wide
+* #1744 Fix #1710 by using `$table-striped-row-even-hover-background-color` only for even rows
+* #2074 Allow `<button>` as `.dropdown-item`
+
+### Bug fixes
+
+* #1749 Fix icons floating out of input area
+* #1993 Fixes #1992 Prevent disabled form elements hover state from overlapping, if control has add-ons elements
+* #1909 Fix Modal card in IE11
+* #1908 Fix IE11 when textarea doesn't listen to `size=""`
+* Fix #1991 The last button in list of full-width buttons has longer width
+* #1982 Fix navbar-burger color when color modifier is used
+* #1819 Fix #1137 error message for required file
+* Fix #1904 and #1969: hide native file input in Chrome
+* #2059 Remove unnecessary right margin from last level-item (level.is-mobile)
+
 ## 0.7.1
 
 ### Improvements
@@ -957,7 +1234,7 @@ Variable name changes (mostly appending `-color`):
 ## 0.0.26
 
 * Added: `.modal-card`
-* Added: display responsive utilites
+* Added: display responsive utilities
 * Added: `.nav-center`
 * Added: `.tabs ul` left center right
 * Changed: `.navbar` renamed to `.level`

@@ -110,6 +110,61 @@ meta:
 </div>
 {% endcapture %}
 
+{% capture content_ol_html_example %}
+<div class="content">
+  <ol type="1">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  <ol type="A">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  <ol type="a">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  <ol type="I">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  <ol type="i">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+</div>
+{% endcapture %}
+
+{% capture content_ol_css_example %}
+<div class="content">
+  <ol class="is-lower-alpha">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  <ol class="is-lower-roman">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  <ol class="is-upper-alpha">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  <ol class="is-upper-roman">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+</div>
+{% endcapture %}
+
 <div class="content">
   <p>When you can't use the CSS classes you want, or when you just want to directly use HTML tags, use <code>content</code> as container. It can handle almost any HTML tag:</p>
   <ul>
@@ -123,7 +178,25 @@ meta:
   <p>This <code>content</code> class can be used in <em>any</em> context where you just want to (or can only) write some <strong>text</strong>. For example, it's used for the paragraph you're currently reading.</p>
 </div>
 
-{% include elements/snippet.html content=content_example %}
+{% include elements/new-tag.html version="0.7.2" %}
+
+<div class="content">
+  <p>
+    <strong>Ordered lists</strong> <code>&lt;ol&gt;</code> support different <strong>types</strong> of items markers. To modify them, use either:
+  </p>
+  <ul>
+    <li>
+      the corresponding HTML attribute value
+    </li>
+    <li>
+      one of the following CSS modifier classes: <code>is-lower-alpha</code>, <code>is-lower-roman</code>, <code>is-upper-alpha</code> or <code>is-upper-roman</code>
+    </li>
+  </ul>
+</div>
+
+{% include elements/snippet.html content=content_ol_html_example %}
+
+{% include elements/snippet.html content=content_ol_css_example %}
 
 {% include elements/anchor.html name="Sizes" %}
 

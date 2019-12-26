@@ -1,34 +1,53 @@
 @function mergeColorMaps($bulma-colors, $custom-colors)
-  // we return at least bulma hardcoded colors
+  // We return at least Bulma's hard-coded colors
   $merged-colors: $bulma-colors
 
-  // we want a map as input
+  // We want a map as input
   @if type-of($custom-colors) == 'map'
     @each $name, $components in $custom-colors
-      // color name should be a string and colors pair a list with at least one element
+      // The color name should be a string
+      // and the components either a single color
+      // or a colors list with at least one element
       @if type-of($name) == 'string' and (type-of($components) == 'list' or type-of($components) == 'color') and length($components) >= 1
         $color-base: null
+        $color-invert: null
+        $color-light: null
+        $color-dark: null
+        $value: null
 
-        // the param can either be a single color
+        // The param can either be a single color
         // or a list of 2 colors
         @if type-of($components) == 'color'
           $color-base: $components
+          $color-invert: findColorInvert($color-base)
+          $color-light: findLightColor($color-base)
+          $color-dark: findDarkColor($color-base)
         @else if type-of($components) == 'list'
           $color-base: nth($components, 1)
+          // If Invert, Light and Dark are provided
+          @if length($components) > 3
+            $color-invert: nth($components, 2)
+            $color-light: nth($components, 3)
+            $color-dark: nth($components, 4)
+            // If only Invert and Light are provided
+          @else if length($components) > 2
+            $color-invert: nth($components, 2)
+            $color-light: nth($components, 3)
+            $color-dark: findDarkColor($color-base)
+            // If only Invert is provided
+          @else
+            $color-invert: nth($components, 2)
+            $color-light: findLightColor($color-base)
+            $color-dark: findDarkColor($color-base)
 
-        $color-invert: null
-        // is an inverted color provided in the list
-        @if length($components) > 1
-          $color-invert: nth($components, 2)
+        $value: ($color-base, $color-invert, $color-light, $color-dark)
 
-        // we only want a color as base color
+        // We only want to merge the map if the color base is an actual color
         @if type-of($color-base) == 'color'
-          // if inverted color is not provided or is not a color we compute it
-          @if type-of($color-invert) != 'color'
-            $color-invert: findColorInvert($color-base)
-
-          // we merge this colors elements as map with bulma colors (we can override them this way, no multiple definition for the same name)
-          $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert)))
+          // We merge this colors elements as map with Bulma's colors map
+          // (we can override them this way, no multiple definition for the same name)
+          // $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert, $color-light, $color-dark)))
+          $merged-colors: map_merge($merged-colors, ($name: $value))
 
   @return $merged-colors
 
@@ -60,3 +79,20 @@
     @return rgba(#000, 0.7)
   @else
     @return #fff
+
+@function findLightColor($color)
+  @if type-of($color) == 'color'
+    $l: 96%
+    @if lightness($color) > 96%
+      $l: lightness($color)
+    @return change-color($color, $lightness: $l)
+  @return $background
+
+@function findDarkColor($color)
+  @if type-of($color) == 'color'
+    $base-l: 29%
+    $luminance: colorLuminance($color)
+    $luminance-delta: (0.53 - $luminance)
+    $target-l: round($base-l + ($luminance-delta * 53))
+    @return change-color($color, $lightness: max($base-l, $target-l))
+  @return $text-strong

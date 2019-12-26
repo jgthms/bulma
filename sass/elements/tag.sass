@@ -16,15 +16,13 @@ $tag-delete-margin: 1px !default
     margin-bottom: -0.5rem
   &:not(:last-child)
     margin-bottom: 1rem
-  &.has-addons
-    .tag
-      margin-right: 0
-      &:not(:first-child)
-        border-bottom-left-radius: 0
-        border-top-left-radius: 0
-      &:not(:last-child)
-        border-bottom-right-radius: 0
-        border-top-right-radius: 0
+  // Sizes
+  &.are-medium
+    .tag:not(.is-normal):not(.is-large)
+      font-size: $size-normal
+  &.are-large
+    .tag:not(.is-normal):not(.is-medium)
+      font-size: $size-medium
   &.is-centered
     justify-content: center
     .tag
@@ -44,6 +42,16 @@ $tag-delete-margin: 1px !default
         margin-left: 0
       &:not(:last-child)
         margin-right: 0.5rem
+  &.has-addons
+    .tag
+      margin-right: 0
+      &:not(:first-child)
+        margin-left: 0
+        border-bottom-left-radius: 0
+        border-top-left-radius: 0
+      &:not(:last-child)
+        border-bottom-right-radius: 0
+        border-top-right-radius: 0
 
 .tag:not(body)
   align-items: center
@@ -68,7 +76,16 @@ $tag-delete-margin: 1px !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+      // If a light and dark colors are provided
+      @if length($pair) > 3
+        $color-light: nth($pair, 3)
+        $color-dark: nth($pair, 4)
+        &.is-light
+          background-color: $color-light
+          color: $color-dark
   // Sizes
+  &.is-normal
+    font-size: $size-small
   &.is-medium
     font-size: $size-normal
   &.is-large

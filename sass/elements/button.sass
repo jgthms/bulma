@@ -1,11 +1,12 @@
-$button-color: $grey-darker !default
-$button-background-color: $white !default
+$button-color: $text-strong !default
+$button-background-color: $scheme-main !default
+$button-family: false !default
 
-$button-border-color: $grey-lighter !default
+$button-border-color: $border !default
 $button-border-width: $control-border-width !default
 
-$button-padding-vertical: calc(0.375em - #{$button-border-width}) !default
-$button-padding-horizontal: 0.75em !default
+$button-padding-vertical: calc(0.5em - #{$button-border-width}) !default
+$button-padding-horizontal: 1em !default
 
 $button-hover-color: $link-hover !default
 $button-hover-border-color: $link-hover-border !default
@@ -22,32 +23,36 @@ $button-text-color: $text !default
 $button-text-hover-background-color: $background !default
 $button-text-hover-color: $text-strong !default
 
-$button-disabled-background-color: $white !default
-$button-disabled-border-color: $grey-lighter !default
+$button-disabled-background-color: $scheme-main !default
+$button-disabled-border-color: $border !default
 $button-disabled-shadow: none !default
 $button-disabled-opacity: 0.5 !default
 
-$button-static-color: $grey !default
-$button-static-background-color: $white-ter !default
-$button-static-border-color: $grey-lighter !default
+$button-static-color: $text-light !default
+$button-static-background-color: $scheme-main-ter !default
+$button-static-border-color: $border !default
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
   border-radius: $radius-small
   font-size: $size-small
+=button-normal
+  font-size: $size-normal
 =button-medium
   font-size: $size-medium
 =button-large
   font-size: $size-large
 
 .button
-  +control
-  +unselectable
+  @extend %control
+  @extend %unselectable
   background-color: $button-background-color
   border-color: $button-border-color
   border-width: $button-border-width
   color: $button-color
   cursor: pointer
+  @if $button-family
+    font-family: $button-family
   justify-content: center
   padding-bottom: $button-padding-vertical
   padding-left: $button-padding-horizontal
@@ -65,14 +70,14 @@ $button-static-border-color: $grey-lighter !default
       height: 1.5em
       width: 1.5em
     &:first-child:not(:last-child)
-      margin-#{$left}: calc(-0.375em - #{$button-border-width})
-      margin-#{$right}: 0.1875em
+      margin-#{$left}: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      margin-#{$right}: $button-padding-horizontal / 4
     &:last-child:not(:first-child)
-      margin-#{$left}: 0.1875em
-      margin-#{$right}: calc(-0.375em - #{$button-border-width})
+      margin-#{$left}: $button-padding-horizontal / 4
+      margin-#{$right}: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
     &:first-child:last-child
-      margin-#{$left}: calc(-0.375em - #{$button-border-width})
-      margin-#{$right}: calc(-0.375em - #{$button-border-width})
+      margin-#{$left}: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      margin-#{$right}: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
   // States
   &:hover,
   &.is-hovered
@@ -104,7 +109,8 @@ $button-static-border-color: $grey-lighter !default
     &.is-active
       background-color: darken($button-text-hover-background-color, 5%)
       color: $button-text-hover-color
-    &[disabled]
+    &[disabled],
+    fieldset[disabled] &
       background-color: transparent
       border-color: transparent
       box-shadow: none
@@ -131,16 +137,19 @@ $button-static-border-color: $grey-lighter !default
         background-color: darken($color, 5%)
         border-color: transparent
         color: $color-invert
-      &[disabled]
+      &[disabled],
+      fieldset[disabled] &
         background-color: $color
         border-color: transparent
         box-shadow: none
       &.is-inverted
         background-color: $color-invert
         color: $color
-        &:hover
+        &:hover,
+        &.is-hovered
           background-color: darken($color-invert, 5%)
-        &[disabled]
+        &[disabled],
+        fieldset[disabled] &
           background-color: $color-invert
           border-color: transparent
           box-shadow: none
@@ -153,14 +162,23 @@ $button-static-border-color: $grey-lighter !default
         border-color: $color
         color: $color
         &:hover,
-        &:focus
+        &.is-hovered,
+        &:focus,
+        &.is-focused
           background-color: $color
           border-color: $color
           color: $color-invert
         &.is-loading
           &::after
             border-color: transparent transparent $color $color !important
-        &[disabled]
+          &:hover,
+          &.is-hovered,
+          &:focus,
+          &.is-focused
+            &::after
+              border-color: transparent transparent $color-invert $color-invert !important
+        &[disabled],
+        fieldset[disabled] &
           background-color: transparent
           border-color: $color
           box-shadow: none
@@ -170,23 +188,53 @@ $button-static-border-color: $grey-lighter !default
         border-color: $color-invert
         color: $color-invert
         &:hover,
-        &:focus
+        &.is-hovered,
+        &:focus,
+        &.is-focused
           background-color: $color-invert
           color: $color
-        &[disabled]
+        &.is-loading
+          &:hover,
+          &.is-hovered,
+          &:focus,
+          &.is-focused
+            &::after
+              border-color: transparent transparent $color $color !important
+        &[disabled],
+        fieldset[disabled] &
           background-color: transparent
           border-color: $color-invert
           box-shadow: none
           color: $color-invert
+      // If light and dark colors are provided
+      @if length($pair) >= 4
+        $color-light: nth($pair, 3)
+        $color-dark: nth($pair, 4)
+        &.is-light
+          background-color: $color-light
+          color: $color-dark
+          &:hover,
+          &.is-hovered
+            background-color: darken($color-light, 2.5%)
+            border-color: transparent
+            color: $color-dark
+          &:active,
+          &.is-active
+            background-color: darken($color-light, 5%)
+            border-color: transparent
+            color: $color-dark
   // Sizes
   &.is-small
     +button-small
+  &.is-normal
+    +button-normal
   &.is-medium
     +button-medium
   &.is-large
     +button-large
   // Modifiers
-  &[disabled]
+  &[disabled],
+  fieldset[disabled] &
     background-color: $button-disabled-background-color
     border-color: $button-disabled-border-color
     box-shadow: $button-disabled-shadow
@@ -198,7 +246,7 @@ $button-static-border-color: $grey-lighter !default
     color: transparent !important
     pointer-events: none
     &::after
-      +loader
+      @extend %loader
       +center(1em)
       position: absolute !important
   &.is-static
@@ -209,8 +257,8 @@ $button-static-border-color: $grey-lighter !default
     pointer-events: none
   &.is-rounded
     border-radius: $radius-rounded
-    padding-left: 1em
-    padding-right: 1em
+    padding-left: calc(#{$button-padding-horizontal} + 0.25em)
+    padding-right: calc(#{$button-padding-horizontal} + 0.25em)
 
 .buttons
   align-items: center
@@ -219,12 +267,22 @@ $button-static-border-color: $grey-lighter !default
   justify-content: flex-start
   .button
     margin-bottom: 0.5rem
-    &:not(:last-child)
+    &:not(:last-child):not(.is-fullwidth)
       margin-right: 0.5rem
   &:last-child
     margin-bottom: -0.5rem
   &:not(:last-child)
     margin-bottom: 1rem
+  // Sizes
+  &.are-small
+    .button:not(.is-normal):not(.is-medium):not(.is-large)
+      +button-small
+  &.are-medium
+    .button:not(.is-small):not(.is-normal):not(.is-large)
+      +button-medium
+  &.are-large
+    .button:not(.is-small):not(.is-normal):not(.is-medium)
+      +button-large
   &.has-addons
     .button
       &:not(:first-child)
@@ -249,9 +307,22 @@ $button-static-border-color: $grey-lighter !default
           z-index: 4
       &.is-expanded
         flex-grow: 1
+        flex-shrink: 1
   &.is-centered
     justify-content: center
+    &:not(.has-addons)
+      .button:not(.is-fullwidth)
+        margin-left: 0.25rem
+        margin-right: 0.25rem
   &.is-right
     justify-content: flex-end
+    &:not(.has-addons)
+      .button:not(.is-fullwidth)
+        margin-left: 0.25rem
+        margin-right: 0.25rem
   &.is-left
     justify-content: flex-start
+    &:not(.has-addons)
+      .button:not(.is-fullwidth)
+        margin-left: 0.25rem
+        margin-right: 0.25rem

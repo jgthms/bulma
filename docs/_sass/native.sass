@@ -1,9 +1,20 @@
 .native-js
-  border-top: 2px solid $background
   display: none
   font-size: 1rem
   opacity: 0
+  position: relative
   visibility: hidden
+  &::before
+    +overlay
+    background-color: #000
+    bottom: 0
+    content: ""
+    display: block
+    left: 0
+    opacity: 0.02
+    pointer-events: none
+    right: 0
+    top: 0
 
 .native-show
   display: block
@@ -15,10 +26,11 @@
   display: flex
   justify-content: center
   padding: 2em
+  position: relative
   text-decoration: none
   &:hover
     .native-cta
-      box-shadow: 0 1rem 2rem 0 rgba($black, 0.1)
+      box-shadow: 0 1rem 2rem 0 rgba($scheme-invert, 0.1)
       transform: translateY(-0.25rem)
 
 .native-img
@@ -50,7 +62,7 @@
 
 .native-cta
   border: none
-  box-shadow: 0 0.5rem 1rem 0 rgba($black, 0.2)
+  box-shadow: 0 0.5rem 1rem 0 rgba($scheme-invert, 0.2)
   flex-grow: 0
   flex-shrink: 0
   font-weight: $weight-semibold

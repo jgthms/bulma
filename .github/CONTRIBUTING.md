@@ -13,6 +13,17 @@ Thanks for helping out! 😇
 * Limit the first line to 72 characters or fewer
 * Reference issues and pull requests liberally
 
+### Try your changes
+
+When modifying any `.sass`, you will need to rebuild the css. You can do this by running:
+
+```
+npm install
+npm run build
+```
+
+To see documentation changes check [the documentation readme](../docs/README.md).
+
 ### Bulma Sass styleguide
 
 * **No semi-colons** `;` or **curly braces** `{` `}`

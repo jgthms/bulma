@@ -10,6 +10,17 @@ breadcrumb:
 - columns-options
 ---
 
+{% capture columns_vcentered %}
+<div class="columns is-vcentered">
+  <div class="column is-8">
+    <p class="bd-notification is-primary">First column</p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-primary">Second column with more content. This is so you can see the vertical alignment.</p>
+  </div>
+</div>
+{% endcapture %}
+
 {% capture columns_multiline %}
 <div class="columns is-multiline is-mobile">
   <div class="column is-one-quarter">
@@ -44,10 +55,9 @@ breadcrumb:
 
 {% capture columns_mobile_centered %}
 <div class="columns is-mobile is-centered">
-  <div class="column is-half is-narrow">
+  <div class="column is-half">
     <p class="bd-notification is-primary">
       <code class="html">is-half</code><br>
-      <code class="html">is-narrow</code>
     </p>
   </div>
 </div>
@@ -88,10 +98,27 @@ breadcrumb:
 </div>
 {% endcapture %}
 
+{% include elements/anchor.html name="Vertical alignment" %}
+
+<div class="content">
+  <p>To align your columns vertically, add the <code>is-vcentered</code> modifier to the <code>columns</code> container.</p>
+</div>
+
+<div class="columns is-vcentered">
+  <div class="column is-8">
+    <p class="bd-notification is-primary">First column</p>
+  </div>
+  <div class="column">
+    <p class="bd-notification is-primary">Second column with more content. This is so you can see the vertical alignment.</p>
+  </div>
+</div>
+
+{% highlight html %}{{ columns_vcentered }}{% endhighlight %}
+
 {% include elements/anchor.html name="Multiline" %}
 
 <div class="content">
-  <p>Whenever you want to start a new line, you can close a <code>columns</code> container and start a new one. But you can also add the <code>is-multiline</code> modifier and add <strong>more</strong> column elements that would fit in a single row.</p>
+  <p>Whenever you want to start a new line, you can close a <code>columns</code> container and start a new one. But you can also add the <code>is-multiline</code> modifier and add <strong>more</strong> column elements than would fit in a single row.</p>
 </div>
 
 <div class="columns is-multiline is-mobile">
@@ -135,10 +162,9 @@ breadcrumb:
 </div>
 
 <div class="columns is-mobile is-centered">
-  <div class="column is-half is-narrow">
+  <div class="column is-half">
     <p class="bd-notification is-primary">
       <code class="html">is-half</code><br>
-      <code class="html">is-narrow</code>
     </p>
   </div>
 </div>

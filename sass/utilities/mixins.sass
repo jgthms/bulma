@@ -130,18 +130,18 @@
 
 // Placeholders
 
-%unselectable
+=unselectable
   -webkit-touch-callout: none
   -webkit-user-select: none
   -moz-user-select: none
   -ms-user-select: none
   user-select: none
 
-=unselectable
-  @extend %unselectable
+%unselectable
+  +unselectable
 
-%arrow
-  border: 3px solid transparent
+=arrow($color: transparent)
+  border: 3px solid $color
   border-radius: 2px
   border-right: 0
   border-top: 0
@@ -156,25 +156,25 @@
   transform-origin: center
   width: 0.625em
 
-=arrow($color)
-  @extend %arrow
-  border-color: $color
+%arrow
+  +arrow
+
+=block($spacing: $block-spacing)
+  &:not(:last-child)
+    margin-bottom: $spacing
 
 %block
-  &:not(:last-child)
-    margin-bottom: 1.5rem
+  +block
 
-=block
-  @extend %block
-
-%delete
+=delete
   @extend %unselectable
   -moz-appearance: none
   -webkit-appearance: none
-  background-color: rgba($black, 0.2)
+  background-color: rgba($scheme-invert, 0.2)
   border: none
   border-radius: $radius-rounded
   cursor: pointer
+  pointer-events: auto
   display: inline-block
   flex-grow: 0
   flex-shrink: 0
@@ -190,7 +190,7 @@
   width: 20px
   &::before,
   &::after
-    background-color: $white
+    background-color: $scheme-main
     content: ""
     display: block
     left: 50%
@@ -206,9 +206,9 @@
     width: 2px
   &:hover,
   &:focus
-    background-color: rgba($black, 0.3)
+    background-color: rgba($scheme-invert, 0.3)
   &:active
-    background-color: rgba($black, 0.4)
+    background-color: rgba($scheme-invert, 0.4)
   // Sizes
   &.is-small
     height: 16px
@@ -232,12 +232,12 @@
     min-width: 32px
     width: 32px
 
-=delete
-  @extend %delete
+%delete
+  +delete
 
-%loader
+=loader
   animation: spinAround 500ms infinite linear
-  border: 2px solid $border
+  border: 2px solid $grey-lighter
   border-radius: $radius-rounded
   border-right-color: transparent
   border-top-color: transparent
@@ -247,20 +247,15 @@
   position: relative
   width: 1em
 
-=loader
-  @extend %loader
-
-%overlay
-  bottom: 0
-  left: 0
-  position: absolute
-  right: 0
-  top: 0
+%loader
+  +loader
 
 =overlay($offset: 0)
-  @extend %overlay
-  @if $offset != 0
-    bottom: $offset
-    left: $offset
-    right: $offset
-    top: $offset
+  bottom: $offset
+  left: $offset
+  position: absolute
+  right: $offset
+  top: $offset
+
+%overlay
+  +overlay

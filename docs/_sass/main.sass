@@ -2,6 +2,23 @@
   overflow: hidden
   position: relative
 
+.bd-figure
+  +block
+  align-items: center
+  border: 2px solid $scheme-main-ter
+  border-radius: $radius
+  display: flex
+  flex-direction: column
+  text-align: center
+  img
+    margin: 1em
+  figcaption
+    align-self: stretch
+    background-color: $scheme-main-ter
+    color: $text-light
+    font-size: $size-small
+    padding: 1em
+
 // Lead
 
 .bd-lead
@@ -16,7 +33,7 @@
 
 .bd-prev-next
   align-items: flex-start
-  color: $grey-light
+  color: $border-hover
   display: none
   flex-grow: 0
   flex-shrink: 0
@@ -45,9 +62,7 @@
   margin-#{$left}: auto
 
 .bd-header
-  border-bottom: 2px solid $background
   margin-bottom: $main-spacing
-  padding-bottom: $main-spacing
   .subtitle
     color: $text-light
     strong
@@ -55,17 +70,46 @@
   #meta
     margin-top: -0.5rem
 
+.bd-tabs
+  margin-bottom: $main-spacing
+
++mobile
+  .bd-tabs
+    margin-left: -1.5rem
+    margin-right: -1.5rem
+    .tabs
+      ul
+        flex-wrap: nowrap
+
++tablet
+  .bd-tabs
+    .tabs
+      overflow: visible
+      ul,
+      a
+        border-bottom-color: $scheme-main-ter
+        border-bottom-width: 2px
+      a
+        margin-bottom: -2px
+      li:not(.is-active) a:hover
+          border-bottom-color: $border
+      ul
+        flex-wrap: wrap
+        max-width: 100%
+
 .bd-content
   hr:first-child
     display: none
     & + .bd-anchor-title
       padding-top: 0
+      .bd-anchor-link
+        top: 0
 
 // Side
 
 .bd-side,
 .bd-side-background
-  background-color: $white-bis
+  background-color: $scheme-main-bis
 
 .bd-side
   position: relative
@@ -84,7 +128,7 @@
       margin-bottom: 0.5em
     &.is-past
       a
-        color: $grey-light
+        color: $border-hover
     &.is-current
       a
         color: $link
@@ -112,7 +156,7 @@
 .bd-category-toggle
   +overlay
   align-items: center
-  color: $grey-light
+  color: $border-hover
   display: flex
   justify-content: flex-end
   .icon
@@ -121,11 +165,21 @@
     transition-duration: $speed
     transition-property: transform
 
+.tag.bd-mini-tag
+  border-radius: 2px !important
+  font-family: Verdana, sans-serif
+  font-size: 0.5rem
+  font-weight: bold
+  height: 2.25em
+  vertical-align: text-bottom
+
 .bd-category-name
   color: $text-strong
   position: relative
   &.is-active
     color: $link
+  .bd-mini-tag
+    margin-left: 0.5em
 
 .bd-category-list
   @extend %bd-list
@@ -147,7 +201,7 @@
       top: 0
 
 .bd-anchors-title
-  color: $grey-light
+  color: $border-hover
   font-size: 0.875rem
   font-weight: $weight-semibold
   margin-bottom: 0.5rem
@@ -167,15 +221,15 @@
   .bd-header-carbon
     margin-top: 1.5rem
 
-+mobile
++touch
   .bd-side-background
     display: none
 
-+tablet
++desktop
   .bd-duo
     display: flex
   .bd-lead
-    background-color: $white
+    background-color: $scheme-main
     overflow: hidden
     flex-grow: 1
     flex-shrink: 1
@@ -195,7 +249,7 @@
   .bd-header
     align-items: center
     display: flex
-    min-height: 130px
+    min-height: 140px
   .bd-header-titles
     flex-grow: 1
     flex-shrink: 1

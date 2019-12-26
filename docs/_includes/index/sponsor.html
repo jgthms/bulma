@@ -1,50 +1,31 @@
-<div class="section bd-partners">
+<div class="section bd-partnrs">
   <div class="container">
-    <div class="bd-partners-list">
-      <div class="bd-partner bd-is-sponsor">
-        <p class="bd-partner-title">Sponsors</p>
-        <div class="bd-partner-sponsors">
-          <a href="https://themeisle.com/" target="_blank" rel="nofollow">
-            <img src="{{ site.url }}/images/sponsors/themeisle.png" alt="themeisle logo" width="160" height="40">
+    <div class="bd-minis">
+      <p class="bd-minis-title">
+        {% assign mini_item = site.data.global.navbar_items[2] %}
+        <a class="bd-minis-link" href="{{ site.url }}/{{ mini_item.id }}">
+          <span class="icon {{ mini_item.color }}">
+            <i class="{{ mini_item.fa_type }} {{ mini_item.fa_icon }}"></i>
+          </span>From the expo <strong>#builtwithbulma</strong>
+        </a>
+      </p>
+      <div class="bd-minis-list">
+        {% for website_id in site.data.expo.lists.home %}
+          {% assign website = site.data.expo.by_id[website_id] %}
+          {% assign imageName = website_id | slugify %}
+          {% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
+          {% assign size1x = "672x420" %}
+          {% assign size2x = "1344x840" %}
+          <a class="bd-mini" href="{{ site.url }}/{{ mini_item.id }}">
+            <img
+              src="{{ imagePath }}-{{ size1x }}.jpg"
+              data-src="{{ imagePath }}-{{ size1x }}.jpg"
+              data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+                           {{ imagePath }}-{{ size1x }}.jpg 1x"
+              width="672"
+              height="420">
           </a>
-          <a href="https://chainaxe.io/" target="_blank" rel="nofollow">
-            {%
-              include elements/responsive-image.html
-              path="sponsors/chainaxe"
-              extension="png"
-              alt="chainaxe logo"
-              width="85"
-              height="60"
-            %}
-          </a>
-          <a href="https://www.keycdn.com/" target="_blank" rel="nofollow">
-            {%
-              include elements/responsive-image.html
-              path="sponsors/keycdn"
-              extension="png"
-              alt="keycdn logo"
-              width="150"
-              height="43.5"
-            %}
-          </a>
-          <a href="http://tooltwist.com/" target="_blank" rel="nofollow">
-            {%
-              include elements/responsive-image.html
-              path="sponsors/tooltwist"
-              extension="png"
-              alt="tooltwist logo"
-              width="160"
-              height="51"
-            %}
-          </a>
-        </div>
-      </div>
-
-      <div class="bd-partner bd-is-carbon">
-        <p class="bd-partner-title">Ads via Carbon</p>
-        <div class="bd-partner-carbon">
-          {% include elements/carbon.html %}
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

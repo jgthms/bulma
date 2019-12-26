@@ -1,0 +1,38 @@
+{% capture step_4 %}
+  <div class="content">
+    <p>
+      Create an HTML template which uses several Bulma components.
+    </p>
+  </div>
+
+  {% highlight html %}{% include snippets/mypage.html %}{% endhighlight %}
+
+  <div class="content">
+    <p>
+      Save this file as <code>mypage.html</code>{% if include.dist == true %} in the <code>dist</code> folder{% endif %}.
+    </p>
+    <p>
+      Notice the <code>css/mystyles.css</code> path for your stylesheet. This will be the location of the CSS file we will generate with Sass.
+    </p>
+    <p>
+      Open the page in your browser:
+    </p>
+  </div>
+
+  {%
+    include components/figure.html
+    path="customize/custom-bulma-01-unstyled"
+    extension="png"
+    alt="Bulma unstyled"
+    width="600"
+    height="300"
+    caption="The unstyled page"
+  %}
+{% endcapture %}
+
+{% assign step_title = ". Create an HTML page" | prepend: include.number %}
+
+{% include components/step.html
+  title=step_title
+  content=step_4
+%}

@@ -280,7 +280,22 @@ meta:
 {% endcapture %}
 
 <div class="content">
-  <p>The following <strong>modifiers</strong> are supported:</p>
+  <p>
+    The <code>select</code> class is a simple wrapper around the <code>&lt;select&gt;</code> HTML element, which gives the styling more flexibility and support for icons.
+  </p>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    {{ select_example }}
+  </div>
+  <div class="column is-half highlight-full">
+    {% highlight html %}{{ select_example }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="content">
+  <p>Several <strong>modifiers</strong> are supported which affect:</p>
   <ul>
     <li>the <strong><a href="#select-color">color</a></strong></li>
     <li>the <strong><a href="#select-size">size</a></strong></li>
@@ -288,18 +303,7 @@ meta:
   </ul>
 </div>
 
-<div class="columns">
-  <div class="column is-half">
-    {{select_example}}
-  </div>
-  <div class="column is-half highlight-full">
-    {% highlight html %}{{select_example}}{% endhighlight %}
-  </div>
-</div>
-
-<hr>
-
-<h3 class="title">Multiple select</h3>
+{% include elements/anchor.html name="Multiple select" %}
 
 <div class="columns">
   <div class="column is-half">
@@ -308,10 +312,10 @@ meta:
         You can style a <strong>multiple select</strong> dropdown, by using the <code>is-multiple</code> modifier, and by using the <code>multiple</code> HTML attribute.
       </p>
     </div>
-    {{select_multiple_example}}
+    {{ select_multiple_example }}
   </div>
   <div class="column is-half highlight-full">
-    {% highlight html %}{{select_multiple_example}}{% endhighlight %}
+    {% highlight html %}{{ select_multiple_example }}{% endhighlight %}
   </div>
 </div>
 
@@ -319,16 +323,22 @@ meta:
 
 <div class="columns">
   <div class="column is-half">
-    {{colors_example}}
+    {{ colors_example }}
   </div>
   <div class="column is-half highlight-full">
-    {% highlight html %}{{colors_example}}{% endhighlight %}
+    {% highlight html %}{{ colors_example }}{% endhighlight %}
   </div>
 </div>
 
 {% include elements/anchor.html name="Styles" %}
 
 {% include elements/new-tag.html version="0.6.2" %}
+
+<div class="content">
+  <p>
+    You can create a <strong>rounded dropdown</strong> by appending the <code>is-rounded</code> modifier:
+  </p>
+</div>
 
 <div class="columns">
   <div class="column is-half">
@@ -341,62 +351,86 @@ meta:
 
 {% include elements/anchor.html name="Sizes" %}
 
+<div class="content">
+  <p>
+    The <code>select</code> element comes in <strong>4</strong> different sizes:
+  </p>
+</div>
+
 <div class="columns">
   <div class="column is-half">
-    {{sizes_example}}
+    {{ sizes_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{sizes_example}}{% endhighlight %}
+    {% highlight html %}{{ sizes_example }}{% endhighlight %}
   </div>
 </div>
 
-<hr>
+{% include elements/anchor.html name="States" %}
 
-<h3 id="select-state" class="title">States</h3>
+<div class="content">
+  <p>
+    Bulma styles the different <strong>states</strong> of the <code>select</code> elment. Each state is available as a pseudo-class and a CSS class:
+  </p>
+  <ul>
+    <li>
+      <code>:hover</code> and <code>is-hovered</code>
+    </li>
+    <li>
+      <code>:focus</code> and <code>is-focused</code>
+    </li>
+    <li>
+      <code>:active</code> and <code>is-active</code>
+    </li>
+  </ul>
+  <p>
+    This allows you to obtain the style of a certain state without having to trigger it.
+  </p>
+</div>
+
 <h4 class="subtitle">Normal</h4>
+
 <div class="columns">
   <div class="column is-half">
-    {{normal_example}}
+    {{ normal_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{normal_example}}{% endhighlight %}
+    {% highlight html %}{{ normal_example }}{% endhighlight %}
   </div>
 </div>
 
 <h4 class="subtitle">Hover</h4>
 <div class="columns">
   <div class="column is-half">
-    {{hover_example}}
+    {{ hover_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{hover_example}}{% endhighlight %}
+    {% highlight html %}{{ hover_example }}{% endhighlight %}
   </div>
 </div>
 
 <h4 class="subtitle">Focus</h4>
 <div class="columns">
   <div class="column is-half">
-    {{focus_example}}
+    {{ focus_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{focus_example}}{% endhighlight %}
+    {% highlight html %}{{ focus_example }}{% endhighlight %}
   </div>
 </div>
 
 <h4 class="subtitle">Loading</h4>
 <div class="columns">
   <div class="column is-half">
-    {{loading_example}}
+    {{ loading_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{loading_example}}{% endhighlight %}
+    {% highlight html %}{{ loading_example }}{% endhighlight %}
   </div>
 </div>
 
-<!-- Font Awesome Icons -->
-<hr>
+{% include elements/anchor.html name="With icons" %}
 
-<h3 id="input-with-icons" class="title">With icons</h3>
 <div class="content">
   <p>You can append the <strong>modifier</strong> on a control:</p>
   <ul>
@@ -414,10 +448,10 @@ meta:
 </div>
 <div class="columns">
   <div class="column is-half">
-    {{icons_example}}
+    {{ icons_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{icons_example}}{% endhighlight %}
+    {% highlight html %}{{ icons_example }}{% endhighlight %}
   </div>
 </div>
 
@@ -428,36 +462,36 @@ meta:
         If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
       </p>
     </div>
-    {{has_icons_small_example}}
+    {{ has_icons_small_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{has_icons_small_example}}{% endhighlight %}
-  </div>
-</div>
-
-<div class="columns">
-  <div class="column is-half">
-    {{has_icons_normal_example}}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{has_icons_normal_example}}{% endhighlight %}
+    {% highlight html %}{{ has_icons_small_example }}{% endhighlight %}
   </div>
 </div>
 
 <div class="columns">
   <div class="column is-half">
-    {{has_icons_medium_example}}
+    {{ has_icons_normal_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{has_icons_medium_example}}{% endhighlight %}
+    {% highlight html %}{{ has_icons_normal_example }}{% endhighlight %}
   </div>
 </div>
 
 <div class="columns">
   <div class="column is-half">
-    {{has_icons_large_example}}
+    {{ has_icons_medium_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{has_icons_large_example}}{% endhighlight %}
+    {% highlight html %}{{ has_icons_medium_example }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">
+    {{ has_icons_large_example }}
+  </div>
+  <div class="column is-half">
+    {% highlight html %}{{ has_icons_large_example }}{% endhighlight %}
   </div>
 </div>

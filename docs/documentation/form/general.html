@@ -8,15 +8,15 @@ breadcrumb:
 - documentation
 - form
 - form-general
-variables_controls_keys:
-- control-radius
-- control-radius-small
-- control-padding-vertical
-- control-padding-horizontal
-variables_form_keys:
-- label-color
-- label-weight
-- help-size
+variables_control_keys:
+- $control-radius
+- $control-radius-small
+- $control-padding-vertical
+- $control-padding-horizontal
+variables_keys:
+- $label-color
+- $label-weight
+- $help-size
 ---
 
 {% capture example %}
@@ -101,8 +101,14 @@ variables_form_keys:
     <button class="button is-link">Submit</button>
   </div>
   <div class="control">
-    <button class="button is-text">Cancel</button>
+    <button class="button is-link is-light">Cancel</button>
   </div>
+</div>
+{% endcapture %}
+
+{% capture control_example %}
+<div class="control">
+  <input class="input" type="text" placeholder="Text input">
 </div>
 {% endcapture %}
 
@@ -800,23 +806,48 @@ variables_form_keys:
 </div>
 {% endcapture %}
 
+{% capture disabled_fields_example %}
+<fieldset disabled>
+  {{ fields_example }}
+</fieldset>
+{% endcapture %}
+
 <div class="content">
-  <p>The following form controls <strong>classes</strong> are supported:</p>
+  <p>
+    Bulma supports the following native <strong>HTML form elements</strong>: <code>&lt;form&gt;</code> <code>&lt;button&gt;</code> <code>&lt;input&gt;</code> <code>&lt;textarea&gt;</code> and <code>&lt;label&gt;</code>.
+  </p>
+  <p>
+    The following CSS <strong>classes</strong> are supported:
+  </p>
   <ul>
-    <li><code>.label</code></li>
-    <li><code>.input</code></li>
-    <li><code>.textarea</code></li>
-    <li><code>.select</code></li>
-    <li><code>.checkbox</code></li>
-    <li><code>.radio</code></li>
-    <li><code>.button</code></li>
-    <li><code>.help</code></li>
+    <li><code>label</code></li>
+    <li><code>input</code></li>
+    <li><code>textarea</code></li>
+    <li><code>select</code></li>
+    <li><code>checkbox</code></li>
+    <li><code>radio</code></li>
+    <li><code>button</code></li>
+    <li><code>help</code></li>
   </ul>
-  <p>Each of them should be wrapped in a <code>.control</code> container.<br>
-  When combining several controls in a <strong>form</strong>, use the <code>.field</code> class as a <strong>container</strong>, to keep the spacing consistent.</p>
 </div>
 
+<div class="content">
+  <p>
+    To maintain the design evenly balanced, Bulma provides a very useful <code>control</code> container with which you can <strong>wrap</strong> the form controls.
+    <br>
+    When combining several controls in a <strong>form</strong>, use the <code>field</code> class as a <strong>container</strong>, to keep the spacing consistent.
+  </p>
+</div>
+
+{% include elements/anchor.html name="Complete form example" %}
+
 {% include elements/snippet.html content=example more=true %}
+
+<div class="content">
+  <p>
+    For the best results using Bulma, it's recommended to use the <code>control</code> element as often as possible.
+  </p>
+</div>
 
 {% include elements/anchor.html name="Form field" %}
 
@@ -840,12 +871,32 @@ variables_form_keys:
 {% include elements/anchor.html name="Form control" %}
 
 <div class="content">
-  <p>The <code>control</code> is a versatile container meant to <strong>enhance single form controls</strong>. Because it has the same height as a control elements, it can <strong class="has-text-danger">only contain</strong> the following elements:</p>
+  <p>
+    The Bulma <code>control</code> is a versatile <strong>block</strong> container meant to <strong>enhance single form controls</strong>. Because it has the same height as the element that it wraps, it can <strong class="has-text-danger">only contain</strong> the following Bulma elements:
+  </p>
+
   <ul>
     <li><code>input</code></li>
     <li><code>select</code></li>
     <li><code>button</code></li>
     <li><code>icon</code></li>
+  </ul>
+  <p>
+    This container gives the ability to:
+  </p>
+  <ul>
+    <li>
+      keep the <strong>spacing</strong> consistent
+    </li>
+    <li>
+      combine form controls into a <strong>group</strong>
+    </li>
+    <li>
+      combine form controls into a <strong>list</strong>
+    </li>
+    <li>
+      append and prepend <strong>icons</strong> to a form control
+    </li>
   </ul>
 </div>
 
@@ -1009,69 +1060,56 @@ variables_form_keys:
 
 <div class="content">
   <p>
-    To preserve the <strong>vertical alignment</strong> of labels with each type and size of control, the <code>.field-label</code> comes with <strong>4 size modifiers</strong>:
+    To preserve the <strong>vertical alignment</strong> of labels with each type and size of control, the <code>field-label</code> comes with <strong>4 size modifiers</strong>:
   </p>
   <ul>
     <li>
-      <code>.is-small</code>
+      <code>is-small</code>
     </li>
     <li>
-      <code>.is-normal</code> for any <code>.input</code> or <code>.button</code>
+      <code>is-normal</code> for any <code>input</code> or <code>button</code>
     </li>
     <li>
-      <code>.is-medium</code>
+      <code>is-medium</code>
     </li>
     <li>
-      <code>.is-large</code>
+      <code>is-large</code>
     </li>
   </ul>
 </div>
 
 {% include elements/snippet.html content=field_label_example horizontal=true more=true %}
 
-{% include elements/anchor.html name="Variables" %}
+{% capture custom_message %}
+  Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+{% endcapture %}
+
+{% include elements/anchor.html name="Disabled form" %}
+
+{% include elements/new-tag.html version="0.7.4" %}
+
 
 <div class="content">
   <p>
-    Form elements can be <strong>customized</strong> using the following generic variables. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+    You can disable part or a whole form by wrapping a set of controls in a <strong>fieldset</strong> with a <code>disabled</code> HTML attribute.
   </p>
 </div>
 
-<table class="table is-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th>Name</th>
-      <th>Default value</th>
-    </tr>
-  </tfoot>
-  <tbody>
-    {% for key in page.variables_controls_keys %}
-      {% assign variable = site.data.variables.utilities.controls.vars[key] %}
-      <tr>
-        <td>
-          <code>{{ variable.name }}</code>
-        </td>
-        <td>
-          <code>{{ variable.value }}</code>
-        </td>
-      </tr>
-    {% endfor %}
-    {% for key in page.variables_form_keys %}
-      {% assign variable = site.data.variables.elements.form.vars[key] %}
-      <tr>
-        <td>
-          <code>{{ variable.name }}</code>
-        </td>
-        <td>
-          <code>{{ variable.value }}</code>
-        </td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+{% include elements/snippet.html content=disabled_fields_example %}
+
+{% include elements/variables.html
+  type='element'
+  variables_keys=page.variables_control_keys
+  custom_message=custom_message
+  folder='utilities'
+  file='controls'
+%}
+
+{% include elements/variables.html
+  type='element'
+  variables_keys=page.variables_keys
+  folder='elements'
+  file='form'
+  hide_anchor=true
+  hide_content=true
+%}

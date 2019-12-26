@@ -13,6 +13,11 @@
         </a>
         <a class="bd-category-name {% if category_id == current_link_id %}is-active{% endif %}" href="{{ site.url }}{{ category_link.path }}">
           <strong>{{ category_link.name }}</strong>
+          {% if category_link.name == 'Customize' %}
+            <span class="tag bd-mini-tag is-success">
+              New!
+            </span>
+          {% endif %}
         </a>
       </header>
 
@@ -29,6 +34,10 @@
     </div>
   {% endfor %}
 </nav>
+
+{% unless page.hide_side_sponsor %}
+  {% include global/side-sponsor.html %}
+{% endunless %}
 
 {% unless page.hide_fortyfour %}
   {% include global/fortyfour.html %}

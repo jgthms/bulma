@@ -1,17 +1,21 @@
-$dropdown-content-background-color: $white !default
+$dropdown-menu-min-width: 12rem !default
+
+$dropdown-content-background-color: $scheme-main !default
 $dropdown-content-arrow: $link !default
 $dropdown-content-offset: 4px !default
+$dropdown-content-padding-bottom: 0.5rem !default
+$dropdown-content-padding-top: 0.5rem !default
 $dropdown-content-radius: $radius !default
-$dropdown-content-shadow: 0 2px 3px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1) !default
+$dropdown-content-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
 $dropdown-content-z: 20 !default
 
-$dropdown-item-color: $grey-dark !default
-$dropdown-item-hover-color: $black !default
+$dropdown-item-color: $text !default
+$dropdown-item-hover-color: $scheme-invert !default
 $dropdown-item-hover-background-color: $background !default
 $dropdown-item-active-color: $link-invert !default
 $dropdown-item-active-background-color: $link !default
 
-$dropdown-divider-background-color: $border !default
+$dropdown-divider-background-color: $border-light !default
 
 .dropdown
   display: inline-flex
@@ -39,7 +43,7 @@ $dropdown-divider-background-color: $border !default
 .dropdown-menu
   display: none
   $left: 0
-  min-width: 12rem
+  min-width: $dropdown-menu-min-width
   padding-top: $dropdown-content-offset
   position: absolute
   top: 100%
@@ -49,8 +53,8 @@ $dropdown-divider-background-color: $border !default
   background-color: $dropdown-content-background-color
   border-radius: $dropdown-content-radius
   box-shadow: $dropdown-content-shadow
-  padding-bottom: 0.5rem
-  padding-top: 0.5rem
+  padding-bottom: $dropdown-content-padding-bottom
+  padding-top: $dropdown-content-padding-top
 
 .dropdown-item
   color: $dropdown-item-color
@@ -60,9 +64,12 @@ $dropdown-divider-background-color: $border !default
   padding: 0.375rem 1rem
   position: relative
 
-a.dropdown-item
+a.dropdown-item,
+button.dropdown-item
   padding-#{$right}: 3rem
+  text-align: $left
   white-space: nowrap
+  width: 100%
   &:hover
     background-color: $dropdown-item-hover-background-color
     color: $dropdown-item-hover-color

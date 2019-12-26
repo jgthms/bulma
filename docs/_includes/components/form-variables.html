@@ -1,0 +1,35 @@
+{% include elements/anchor.html name="Variables" %}
+
+<div class="content">
+  <p>
+    You can use <a href="{{ site.data.meta.github | append: '/blob/master/sass/form/shared.sass#L1,L23' }}" target="_blank">these variables</a> to <strong>customize</strong> this element. Simply set one or multiple of these variables <em>before</em> importing Bulma. <a href="{{ site.url }}/documentation/overview/customize/">Learn how</a>.
+  </p>
+</div>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Name</th>
+      <th>Default value</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    {% for key in page.variables_keys %}
+      {% assign variable = site.data.variables.elements.form.vars[key] %}
+      <tr>
+        <td>
+          <code>{{ variable.name }}</code>
+        </td>
+        <td>
+          <code>{{ variable.value }}</code>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

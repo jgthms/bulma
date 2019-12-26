@@ -14,6 +14,69 @@ meta:
   variables: true
 ---
 
+{% capture navbar_basic_example %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo.png" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+
 {% capture navbar_example %}
 {% include examples/navbar.html id="Default" %}
 {% endcapture %}
@@ -305,11 +368,11 @@ meta:
 
 {% capture navbar_dropup_snippet %}
 <div class="navbar-item has-dropdown has-dropdown-up is-hoverable">
-  <a class="navbar-link" href="/documentation/overview/start/">
+  <a class="navbar-link" href="{{ site.url }}/documentation/overview/start/">
     Docs
   </a>
   <div class="navbar-dropdown">
-    <a class="navbar-item" href="/documentation/overview/start/">
+    <a class="navbar-item" href="{{ site.url }}/documentation/overview/start/">
       Overview
     </a>
   </div>
@@ -497,30 +560,44 @@ meta:
 {% endcapture %}
 
 {% capture navbar_js_code %}
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
   // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
 
     // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
 
         // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
 
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
 
       });
     });
   }
 
+});
+{% endcapture %}
+
+{% capture navbar_jquery_code %}
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
 });
 {% endcapture %}
 
@@ -580,6 +657,20 @@ document.addEventListener('DOMContentLoaded', function () {
   </ul>
 </div>
 
+{% include elements/anchor.html name="Basic Navbar" %}
+
+<div class="content">
+  <p>
+    To <strong>get started quickly</strong>, here is what a complete basic navbar looks like:
+  </p>
+</div>
+
+<div class="bd-example is-paddingless">
+  {{ navbar_basic_example }}
+</div>
+
+{% highlight html %}{{ navbar_basic_example }}{% endhighlight %}
+
 {% include elements/anchor.html name="Navbar brand" %}
 
 <div class="content">
@@ -620,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="content">
   <p>
-    The <code>navbar-burger</code> is a hamburger menu that only appears on <strong>mobile</strong>. It has to appear as the last child of <code>navbar-brand</code>.
+    The <code>navbar-burger</code> is a hamburger menu that only appears on <strong>mobile</strong>. It has to appear as the last child of <code>navbar-brand</code>. It has to contain three empty <code>span</code> tags in order to visualize the hamburger lines or the cross (when active).
   </p>
 </div>
 
@@ -689,12 +780,22 @@ document.addEventListener('DOMContentLoaded', function () {
       <p>
         The Bulma package <strong>does not come with any JavaScript</strong>.
         <br>
-        Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>.
+        Here is however an implementation example, which toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>, in Vanilla Javascript.
       </p>
 
       {% highlight html %}{{ navbar_js_html }}{% endhighlight %}
 
       {% highlight javascript %}{{ navbar_js_code }}{% endhighlight %}
+
+      <p>
+        And here is another implementation example, which again toggles the class <code>is-active</code> on both the <code>navbar-burger</code> and the targeted <code>navbar-menu</code>, but this time in jQuery.
+      </p>
+
+      {% highlight javascript %}{{ navbar_jquery_code }}{% endhighlight %}
+
+      <p>
+        Remember, these are just implementation examples. The Bulma package <strong>does not come with any JavaScript</strong>.
+      </p>
     </div>
   </div>
 </div>
@@ -774,8 +875,16 @@ document.addEventListener('DOMContentLoaded', function () {
     </li>
   </ul>
   <p>
-    You can add the modifier class <code>is-expanded</code> to turn it into a full-width element.
+    You can add the following <strong>modifier</strong> classes:
   </p>
+  <ul>
+    <li>
+      <code>is-expanded</code> to turn it into a full-width element
+    </li>
+    <li>
+      <code>is-tab</code> to add a bottom border on hover and show the bottom border using <code>is-active</code>
+    </li>
+  </ul>
 </div>
 
 {% include elements/anchor.html name="Transparent navbar" %}
@@ -952,6 +1061,68 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </div>
 
+
+{% assign vernum = site.data.meta.version | downcase | remove: "." | plus: 0 %}
+
+{% if vernum >= 72 %}
+
+<h4 class="title is-4">
+  Dropdown without arrow
+</h4>
+
+<div class="content">
+  <p>
+    You can remove the arrow in the items of the navbar by adding the <code>is-arrowless</code> modifier to them.
+  </p>
+</div>
+
+{% highlight html %}
+<div class="navbar-item has-dropdown is-hoverable">
+  <a class="navbar-link is-arrowless">
+    Docs
+  </a>
+  <!-- navbar-dropdowns -->
+</div>
+{% endhighlight %}
+
+{% capture navbar_dropup_without_arrow_example %}
+<div class="navbar-item has-dropdown is-hoverable">
+  <a class="navbar-link is-arrowless">
+    Link without arrow
+  </a>
+  <div class="navbar-dropdown">
+    <a class="navbar-item">
+      Overview
+    </a>
+    <a class="navbar-item">
+      Elements
+    </a>
+    <a class="navbar-item">
+      Components
+    </a>
+    <hr class="navbar-divider">
+    <div class="navbar-item">
+      Version {{ site.data.meta.version }}
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+<div class="columns">
+  <div class="column">
+    <div class="bd-example is-paddingless">
+      {{ navbar_dropup_without_arrow_example }}
+    </div>
+  </div>
+
+  <div class="column">
+    {% highlight html %}{{ navbar_dropup_without_arrow_example }}{% endhighlight %}
+  </div>
+</div>
+
+{% endif %}
+
+
 <h4 class="title is-4">
   Styles for the dropdown menu
 </h4>
@@ -1109,5 +1280,24 @@ document.addEventListener('DOMContentLoaded', function () {
   {% include examples/navbar-color.html color="white" light=true %}
 </div>
 
-{% include elements/variables.html type='component' %}
+{% include elements/anchor.html name="Navbar Helper Classes" %}
 
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th rowspan="1">Spacing</th>
+      <td><code>is-spaced</code></td>
+      <td>Sets <strong>Top</strong> and <strong>Bottom</strong> paddings with <strong>1rem</strong>,
+          <br> <strong>Left</strong> and <strong>Right</strong> paddings with <strong>2rem</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% include elements/variables.html type='component' %}

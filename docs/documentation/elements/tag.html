@@ -33,9 +33,45 @@ meta:
 <span class="tag is-danger">Danger</span>
 {% endcapture %}
 
+{% capture tags_light_colors %}
+<span class="tag is-primary is-light">Primary</span>
+<span class="tag is-link is-light">Link</span>
+<span class="tag is-info is-light">Info</span>
+<span class="tag is-success is-light">Success</span>
+<span class="tag is-warning is-light">Warning</span>
+<span class="tag is-danger is-light">Danger</span>
+{% endcapture %}
+
 {% capture sizes %}
+<span class="tag is-link is-normal">Normal</span>
 <span class="tag is-primary is-medium">Medium</span>
 <span class="tag is-info is-large">Large</span>
+{% endcapture %}
+
+{% capture are_medium %}
+<div class="tags are-medium">
+  <span class="tag">All</span>
+  <span class="tag">Medium</span>
+  <span class="tag">Size</span>
+</div>
+{% endcapture %}
+
+{% capture are_large %}
+<div class="tags are-large">
+  <span class="tag">All</span>
+  <span class="tag">Large</span>
+  <span class="tag">Size</span>
+</div>
+{% endcapture %}
+
+{% capture are_medium_one_large %}
+<div class="tags are-medium">
+  <span class="tag">Medium</span>
+  <span class="tag is-normal">Normal</span>
+  <span class="tag">Medium</span>
+  <span class="tag is-large">Large</span>
+  <span class="tag">Medium</span>
+</div>
 {% endcapture %}
 
 {% capture rounded %}
@@ -106,7 +142,7 @@ meta:
   <div class="control">
     <div class="tags has-addons">
       <span class="tag is-dark">npm</span>
-      <span class="tag is-info">0.5.0</span>
+      <span class="tag is-info">{{ site.version }}</span>
     </div>
   </div>
 
@@ -186,6 +222,12 @@ meta:
 </div>
 {% endcapture %}
 
+<div class="content">
+  <p>
+    The Bulma <strong>tag</strong> is a small but versatile element. It's very useful as a way to attach information to a block or other component. Its size makes it also easy to display in numbers, making it appropriate for long lists of items.
+  </p>
+</div>
+
 <div class="columns">
   <div class="column is-4">
     By default, a <strong>tag</strong> is a 1.5rem high label.
@@ -261,13 +303,68 @@ meta:
   </div>
 </div>
 
+{% include elements/new-tag.html version="0.8.0" %}
+
+<div class="columns">
+  <div class="column is-4">
+    <p>
+      You can now choose the <strong>light version</strong> of a color.
+    </p>
+  </div>
+  <div class="column is-2">
+    <p class="field">
+      <span class="tag is-primary is-light">
+        Primary
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-link is-light">
+        Link
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-info is-light">
+        Info
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-success is-light">
+        Success
+      </span>
+    </p>
+    <p class="field">
+      <span class="tag is-warning is-light">
+        Warning
+      </span>
+    </p>
+    <span class="tag is-danger is-light">
+      Danger
+    </span>
+  </div>
+  <div class="column is-6">
+    {% highlight html %}{{ tags_light_colors }}{% endhighlight %}
+  </div>
+</div>
+
 {% include elements/anchor.html name="Sizes" %}
 
 <div class="columns">
   <div class="column is-4">
-    And <strong>2 additional</strong> sizes.
+    <div class="content">
+      <p>
+        The tag comes in <strong>3 different</strong> sizes.
+      </p>
+      <p>
+        While the default size is the <strong>normal</strong> one, the <code>is-normal</code> modifier exists in case you need to reset the tag to its normal size.
+      </p>
+    </div>
   </div>
   <div class="column is-2">
+    <p class="field">
+      <span class="tag is-link is-normal">
+        Normal
+      </span>
+    </p>
     <p class="field">
       <span class="tag is-primary is-medium">
         Medium
@@ -283,6 +380,26 @@ meta:
     {% highlight html %}{{ sizes }}{% endhighlight %}
   </div>
 </div>
+
+{% include elements/new-tag.html version="0.7.4" %}
+
+<div class="content">
+  <p>
+    You can change the size of <strong>all</strong> tags at once:
+  </p>
+</div>
+
+{% include elements/snippet.html content=are_medium %}
+
+{% include elements/snippet.html content=are_large %}
+
+<div class="content">
+  <p>
+    You can however keep the original size of a <strong>subset</strong> of tags, simply by applying one of its modifier class:
+  </p>
+</div>
+
+{% include elements/snippet.html content=are_medium_one_large %}
 
 {% include elements/anchor.html name="Modifiers" %}
 
@@ -347,7 +464,7 @@ meta:
   <div class="column">
     <div class="content">
       <p>
-        You can now create a <strong>list of tags</strong> with the <code>.tags</code> container.
+        You can now create a <strong>list of tags</strong> with the <code>tags</code> container.
       </p>
     </div>
     <div class="bd-example">
@@ -379,7 +496,7 @@ meta:
   <div class="column">
     <div class="content">
       <p>
-        You can <strong>attach tags together</strong> with the <code>.has-addons</code> modifier.
+        You can <strong>attach tags together</strong> with the <code>has-addons</code> modifier.
       </p>
     </div>
     <div class="bd-example">
@@ -411,7 +528,7 @@ meta:
   <div class="column">
     <div class="content">
       <p>
-        If you want to attach <code>.tags</code> containers <strong>together</strong>, simply use the <code>.field</code> element with the <code>.is-grouped</code> and <code>.is-grouped-multiline</code> modifiers.
+        If you want to attach <code>tags</code> containers <strong>together</strong>, simply use the <code>field</code> element with the <code>is-grouped</code> and <code>is-grouped-multiline</code> modifiers.
       </p>
     </div>
     <div class="bd-example">

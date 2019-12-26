@@ -315,10 +315,13 @@ meta:
 {% endcapture %}
 
 <div class="content">
-  <p>You simply need to attach a single <code>.table</code> CSS class on a <code>&lt;table&gt;</code> with the following structure:</p>
+  <p>
+    You can create a <strong>Bulma table</strong> simply by attaching a single <code>table</code> CSS class on a <code>&lt;table&gt;</code> HTML element with the following structure:
+  </p>
+
   <ul>
     <li>
-      <code>table</code> the main <strong>container</strong>
+      <code>&lt;table class="table"&gt;</code> as the main <strong>container</strong>
       <ul>
         <li>
           <code>thead</code> the optional <strong>top</strong> part of the table
@@ -353,6 +356,30 @@ meta:
 {% include elements/snippet.html content=table_example horizontal=true more=true %}
 
 {% include elements/anchor.html name="Modifiers" %}
+
+{% capture scrollable_table %}
+<div class="table-container">
+  <table class="table">
+    <!-- Your table content -->
+  </table>
+</div>
+{% endcapture %}
+
+{% capture simple_scrollable_table_example %}
+<div class="table-container">
+  <table class="table is-bordered is-striped ">
+    <tbody>
+      {% for i in (1..5) %}
+        <tr>
+          {% for j in (1..100) %}
+            <td>{{ j | times: i }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endcapture %}
 
 <div class="columns">
   <div class="column">
@@ -583,5 +610,15 @@ meta:
     </table>
   </div>
 </div>
+
+{% include elements/anchor.html name="Table container" %}
+
+<p class="content">
+  You can create a <strong>scrollable table</strong> by wrapping a <code>table</code> in a <code>table-container</code> element:
+</p>
+
+{% highlight html %}{{ scrollable_table }}{% endhighlight %}
+
+{{ simple_scrollable_table_example }}
 
 {% include elements/variables.html type='element' %}
