@@ -17,6 +17,8 @@ $file-name-max-width: 16em !default
   display: flex
   justify-content: flex-start
   position: relative
+  @if ($right == 'left')
+    flex-direction: row-reverse
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -60,11 +62,11 @@ $file-name-max-width: 16em !default
   // Modifiers
   &.has-name
     .file-cta
-      border-bottom-right-radius: 0
-      border-top-right-radius: 0
+      border-bottom-#{$right}-radius: 0
+      border-top-#{$right}-radius: 0
     .file-name
-      border-bottom-left-radius: 0
-      border-top-left-radius: 0
+      border-bottom-#{$left}-radius: 0
+      border-top-#{$left}-radius: 0
     &.is-empty
       .file-cta
         border-radius: $file-radius
@@ -96,9 +98,13 @@ $file-name-max-width: 16em !default
     &.has-name
       .file-cta
         border-radius: $file-radius $file-radius 0 0
+        @if ($right == 'left')
+          border-radius: $file-radius 0 0 $file-radius
       .file-name
         border-radius: 0 0 $file-radius $file-radius
         border-width: 0 1px 1px
+        @if ($right == 'left')
+          border-radius: 0 $file-radius $file-radius 0
   &.is-centered
     justify-content: center
   &.is-fullwidth
@@ -107,13 +113,21 @@ $file-name-max-width: 16em !default
     .file-name
       flex-grow: 1
       max-width: none
-  &.is-right
+  &.is-#{$right}
     justify-content: flex-end
     .file-cta
       border-radius: 0 $file-radius $file-radius 0
     .file-name
       border-radius: $file-radius 0 0 $file-radius
       border-width: 1px 0 1px 1px
+      order: -1
+  &.is-#{$left}
+    justify-content: flex-start
+    .file-cta
+      border-radius: 0 0 $file-radius $file-radius
+    .file-name
+      border-radius: $file-radius $file-radius 0 0
+      border-width: 1px 1px 1px 0
       order: -1
 
 .file-label
@@ -123,6 +137,8 @@ $file-name-max-width: 16em !default
   justify-content: flex-start
   overflow: hidden
   position: relative
+  @if ($right == 'left')
+    flex-direction: row-reverse
   &:hover
     .file-cta
       background-color: darken($file-cta-background-color, 2.5%)
@@ -138,7 +154,7 @@ $file-name-max-width: 16em !default
 
 .file-input
   height: 100%
-  left: 0
+  #{$left}: 0
   opacity: 0
   outline: none
   position: absolute
@@ -151,8 +167,8 @@ $file-name-max-width: 16em !default
   border-color: $file-border-color
   border-radius: $file-radius
   font-size: 1em
-  padding-left: 1em
-  padding-right: 1em
+  padding-#{$left}: 1em
+  padding-#{$right}: 1em
   white-space: nowrap
 
 .file-cta
@@ -166,7 +182,7 @@ $file-name-max-width: 16em !default
   display: block
   max-width: $file-name-max-width
   overflow: hidden
-  text-align: left
+  text-align: $left
   text-overflow: ellipsis
 
 .file-icon
@@ -174,7 +190,9 @@ $file-name-max-width: 16em !default
   display: flex
   height: 1em
   justify-content: center
-  margin-right: 0.5em
+  margin-#{$right}: 0.5em
   width: 1em
+  @if ($right == 'left')
+    flex-direction: row-reverse
   .fa
     font-size: 14px

@@ -110,6 +110,8 @@ $navbar-breakpoint: $desktop !default
     display: flex
     min-height: $navbar-height
     width: 100%
+    @if ($right == 'left')
+      flex-direction: row-reverse
   &.has-shadow
     box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color
   &.is-fixed-bottom,
@@ -135,6 +137,8 @@ body
   display: flex
   flex-shrink: 0
   min-height: $navbar-height
+  @if ($right == 'left')
+    flex-direction: row-reverse
 
 .navbar-brand
   a.navbar-item
@@ -240,6 +244,8 @@ a.navbar-item,
     .navbar-item
       align-items: center
       display: flex
+      @if ($right == 'left')
+        flex-direction: row-reverse
   .navbar-link
     &::after
       display: none
@@ -280,6 +286,8 @@ a.navbar-item,
   .navbar-end
     align-items: stretch
     display: flex
+    @if ($right == 'left')
+      flex-direction: row-reverse
   .navbar
     min-height: $navbar-height
     &.is-spaced
@@ -319,8 +327,12 @@ a.navbar-item,
   .navbar-link
     align-items: center
     display: flex
+    @if ($right == 'left')
+      flex-direction: row-reverse
   .navbar-item
     display: flex
+    @if ($right == 'left')
+      flex-direction: row-reverse
     &.has-dropdown
       align-items: stretch
     &.has-dropdown-up

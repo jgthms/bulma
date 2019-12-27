@@ -55,6 +55,8 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
   display: flex
   justify-content: center
   text-align: center
+  @if ($right == 'left')
+    flex-direction: row-reverse
 
 .pagination-previous,
 .pagination-next,
@@ -140,7 +142,7 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
         order: 2
       .pagination-next
         order: 3
-    &.is-right
+    &.is-#{$right}
       .pagination-previous
         order: 1
       .pagination-next
@@ -148,7 +150,7 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
       .pagination-list
         justify-content: flex-end
         order: 3
-    &.is-left
+    &.is-#{$left}
       .pagination-list
         justify-content: flex-start
         order: 1

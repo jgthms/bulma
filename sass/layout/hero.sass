@@ -89,6 +89,8 @@
     .hero-body
       align-items: center
       display: flex
+      @if ($right == 'left')
+        flex-direction: row-reverse
       & > .container
         flex-grow: 1
         flex-shrink: 1
@@ -122,11 +124,15 @@
   +mobile
     .button
       display: flex
+      @if ($right == 'left')
+        flex-direction: row-reverse
       &:not(:last-child)
         margin-bottom: 0.75rem
   +tablet
     display: flex
     justify-content: center
+    @if ($right == 'left')
+      flex-direction: row-reverse
     .button:not(:last-child)
       margin-#{$right}: 1.5rem
 

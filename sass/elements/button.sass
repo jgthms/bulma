@@ -242,6 +242,8 @@ $button-static-border-color: $border !default
   &.is-fullwidth
     display: flex
     width: 100%
+    @if ($right == 'left')
+      flex-direction: row-reverse
   &.is-loading
     color: transparent !important
     pointer-events: none
@@ -265,10 +267,12 @@ $button-static-border-color: $border !default
   display: flex
   flex-wrap: wrap
   justify-content: flex-start
+  @if ($right == 'left')
+    flex-direction: row-reverse
   .button
     margin-bottom: 0.5rem
     &:not(:last-child):not(.is-fullwidth)
-      margin-right: 0.5rem
+      margin-#{$right}: 0.5rem
   &:last-child
     margin-bottom: -0.5rem
   &:not(:last-child)
@@ -286,14 +290,14 @@ $button-static-border-color: $border !default
   &.has-addons
     .button
       &:not(:first-child)
-        border-bottom-left-radius: 0
-        border-top-left-radius: 0
+        border-bottom-#{$left}-radius: 0
+        border-top-#{$left}-radius: 0
       &:not(:last-child)
-        border-bottom-right-radius: 0
-        border-top-right-radius: 0
-        margin-right: -1px
+        border-bottom-#{$right}-radius: 0
+        border-top-#{$right}-radius: 0
+        margin-#{$right}: -1px
       &:last-child
-        margin-right: 0
+        margin-#{$right}: 0
       &:hover,
       &.is-hovered
         z-index: 2
@@ -314,13 +318,13 @@ $button-static-border-color: $border !default
       .button:not(.is-fullwidth)
         margin-left: 0.25rem
         margin-right: 0.25rem
-  &.is-right
+  &.is-#{$right}
     justify-content: flex-end
     &:not(.has-addons)
       .button:not(.is-fullwidth)
         margin-left: 0.25rem
         margin-right: 0.25rem
-  &.is-left
+  &.is-#{$left}
     justify-content: flex-start
     &:not(.has-addons)
       .button:not(.is-fullwidth)

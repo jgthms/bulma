@@ -36,9 +36,11 @@ $help-size: $size-small !default
   &.has-addons
     display: flex
     justify-content: flex-start
+    @if ($right == 'left')
+      flex-direction: row-reverse
     .control
       &:not(:last-child)
-        margin-right: -1px
+        margin-#{$right}: -1px
       &:not(:first-child):not(:last-child)
         .button,
         .input,
@@ -48,14 +50,14 @@ $help-size: $size-small !default
         .button,
         .input,
         .select select
-          border-bottom-right-radius: 0
-          border-top-right-radius: 0
+          border-bottom-#{$right}-radius: 0
+          border-top-#{$right}-radius: 0
       &:last-child:not(:only-child)
         .button,
         .input,
         .select select
-          border-bottom-left-radius: 0
-          border-top-left-radius: 0
+          border-bottom-#{$left}-radius: 0
+          border-top-#{$left}-radius: 0
       .button,
       .input,
       .select select
@@ -75,7 +77,7 @@ $help-size: $size-small !default
         flex-shrink: 1
     &.has-addons-centered
       justify-content: center
-    &.has-addons-right
+    &.has-addons-#{$right}
       justify-content: flex-end
     &.has-addons-fullwidth
       .control
@@ -84,17 +86,19 @@ $help-size: $size-small !default
   &.is-grouped
     display: flex
     justify-content: flex-start
+    @if ($right == 'left')
+      flex-direction: row-reverse
     & > .control
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
-        margin-right: 0.75rem
+        margin-#{$right}: 0.75rem
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
     &.is-grouped-centered
       justify-content: center
-    &.is-grouped-right
+    &.is-grouped-#{$right}
       justify-content: flex-end
     &.is-grouped-multiline
       flex-wrap: wrap
@@ -109,6 +113,8 @@ $help-size: $size-small !default
   &.is-horizontal
     +tablet
       display: flex
+      @if ($right == 'left')
+        flex-direction: row-reverse
 
 .field-label
   .label
@@ -119,8 +125,8 @@ $help-size: $size-small !default
     flex-basis: 0
     flex-grow: 1
     flex-shrink: 0
-    margin-right: 1.5rem
-    text-align: right
+    margin-#{$right}: 1.5rem
+    text-align: $right
     &.is-small
       font-size: $size-small
       padding-top: 0.375em
@@ -141,6 +147,8 @@ $help-size: $size-small !default
     flex-basis: 0
     flex-grow: 5
     flex-shrink: 1
+    @if ($right == 'left')
+      flex-direction: row-reverse
     .field
       margin-bottom: 0
     & > .field
@@ -148,14 +156,14 @@ $help-size: $size-small !default
       &:not(.is-narrow)
         flex-grow: 1
       &:not(:last-child)
-        margin-right: 0.75rem
+        margin-#{$right}: 0.75rem
 
 .control
   box-sizing: border-box
   clear: both
   font-size: $size-normal
   position: relative
-  text-align: left
+  text-align: $left
   // Modifiers
   &.has-icons-left,
   &.has-icons-right
@@ -181,20 +189,20 @@ $help-size: $size-small !default
   &.has-icons-left
     .input,
     .select select
-      padding-left: $input-height
+      padding-#{$left}: $input-height
     .icon.is-left
       left: 0
   &.has-icons-right
     .input,
     .select select
-      padding-right: $input-height
+      padding-#{$right}: $input-height
     .icon.is-right
       right: 0
   &.is-loading
     &::after
       @extend %loader
       position: absolute !important
-      right: 0.625em
+      #{$right}: 0.625em
       top: 0.625em
       z-index: 4
     &.is-small:after

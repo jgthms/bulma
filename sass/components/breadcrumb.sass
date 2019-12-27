@@ -18,11 +18,15 @@ $breadcrumb-item-separator-color: $border-hover !default
     display: flex
     justify-content: center
     padding: $breadcrumb-item-padding-vertical $breadcrumb-item-padding-horizontal
+    @if ($right == 'left')
+      flex-direction: row-reverse
     &:hover
       color: $breadcrumb-item-hover-color
   li
     align-items: center
     display: flex
+    @if ($right == 'left')
+      flex-direction: row-reverse
     &:first-child a
       padding-#{$left}: 0
     &.is-active
@@ -39,6 +43,8 @@ $breadcrumb-item-separator-color: $border-hover !default
     display: flex
     flex-wrap: wrap
     justify-content: flex-start
+    @if ($right == 'left')
+      flex-direction: row-reverse
   .icon
     &:first-child
       margin-#{$right}: 0.5em
@@ -49,11 +55,11 @@ $breadcrumb-item-separator-color: $border-hover !default
     ol,
     ul
       justify-content: center
-  &.is-right
+  &.is-#{$right}
     ol,
     ul
       justify-content: flex-end
-  &.is-left
+  &.is-#{$left}
     ol,
     ul
       justify-content: flex-start
