@@ -6,6 +6,7 @@
 
 * #2709 Add light colors to the `notification` element
 * #2740 Fixes #2739 -> Add variables size for layout `hero`
+* Fix #2741 -> Create `bulmaRgba()` function to support `inherit` value
 
 ### Bug fixes
 

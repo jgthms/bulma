@@ -96,3 +96,8 @@
     $target-l: round($base-l + ($luminance-delta * 53))
     @return change-color($color, $lightness: max($base-l, $target-l))
   @return $text-strong
+
+@function bulmaRgba($color, $alpha)
+  @if type-of($color) == 'color'
+    @return rgba($color, $alpha)
+  @return $color
