@@ -34,3 +34,10 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+      // If light and dark colors are provided
+      @if length($pair) >= 4
+        $color-light: nth($pair, 3)
+        $color-dark: nth($pair, 4)
+        &.is-light
+          background-color: $color-light
+          color: $color-dark
