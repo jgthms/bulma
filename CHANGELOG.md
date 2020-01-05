@@ -5,6 +5,7 @@
 ### Improvements
 
 * #2709 Add light colors to the `notification` element
+* #2740 Fixes #2739 -> Add variables size for layout `hero`
 
 ### Bug fixes
 
