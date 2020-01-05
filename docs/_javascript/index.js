@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const introIframe = document.getElementById('introIframe');
   const npmClipboard = new Clipboard('#npmCopy');
 
-  if (Vimeo) {
+  if (window.Vimeo) {
     const introPlayer = new Vimeo.Player(introIframe);
     introPlayer.ready().then(function() {
       introVideo.classList.add('has-loaded');

@@ -1,9 +1,9 @@
 $panel-margin: $block-spacing !default
 $panel-item-border: 1px solid $border-light !default
 $panel-radius: $radius-large !default
-$panel-shadow: 0 0.5em 1em -0.125em rgba($black, 0.1), 0 0px 0 1px rgba($black, 0.02) !default
+$panel-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
 
-$panel-heading-background-color: $white !default
+$panel-heading-background-color: $border-light !default
 $panel-heading-color: $text-strong !default
 $panel-heading-line-height: 1.25 !default
 $panel-heading-padding: 0.75em 1em !default
@@ -26,6 +26,7 @@ $panel-block-active-color: $link-active !default
 $panel-block-active-icon-color: $link !default
 
 $panel-icon-color: $text-light !default
+$panel-colors: $colors !default
 
 .panel
   border-radius: $panel-radius
@@ -33,8 +34,19 @@ $panel-icon-color: $text-light !default
   font-size: $size-normal
   &:not(:last-child)
     margin-bottom: $panel-margin
+  // Colors
+  @each $name, $components in $panel-colors
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    &.is-#{$name}
+      .panel-heading
+        background-color: $color
+        color: $color-invert
+      .panel-tabs a.is-active
+        border-bottom-color: $color
+      .panel-block.is-active .panel-icon
+        color: $color
 
-.panel-heading,
 .panel-tabs,
 .panel-block
   &:not(:last-child)

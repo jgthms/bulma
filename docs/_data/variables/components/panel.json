@@ -9,15 +9,27 @@
     },
     "$panel-item-border": {
       "name": "$panel-item-border",
-      "value": "1px solid $border",
+      "value": "1px solid $border-light",
+      "type": "size"
+    },
+    "$panel-radius": {
+      "name": "$panel-radius",
+      "value": "$radius-large",
+      "type": "variable",
+      "computed_type": "size",
+      "computed_value": "6px"
+    },
+    "$panel-shadow": {
+      "name": "$panel-shadow",
+      "value": "0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02)",
       "type": "size"
     },
     "$panel-heading-background-color": {
       "name": "$panel-heading-background-color",
-      "value": "$background",
+      "value": "$border-light",
       "type": "variable",
       "computed_type": "color",
-      "computed_value": "hsl(0, 0%, 96%)"
+      "computed_value": "hsl(0, 0%, 93%)"
     },
     "$panel-heading-color": {
       "name": "$panel-heading-color",
@@ -33,7 +45,7 @@
     },
     "$panel-heading-padding": {
       "name": "$panel-heading-padding",
-      "value": "0.5em 0.75em",
+      "value": "0.75em 1em",
       "type": "size"
     },
     "$panel-heading-radius": {
@@ -50,10 +62,10 @@
     },
     "$panel-heading-weight": {
       "name": "$panel-heading-weight",
-      "value": "$weight-light",
+      "value": "$weight-bold",
       "type": "variable",
       "computed_type": "font-weight",
-      "computed_value": "300"
+      "computed_value": "700"
     },
     "$panel-tabs-font-size": {
       "name": "$panel-tabs-font-size",
@@ -134,11 +146,20 @@
       "type": "variable",
       "computed_type": "color",
       "computed_value": "hsl(0, 0%, 48%)"
+    },
+    "$panel-colors": {
+      "name": "$panel-colors",
+      "value": "$colors",
+      "type": "variable",
+      "computed_type": "function",
+      "computed_value": "mergeColorMaps((\"white\": ($white, $black), \"black\": ($black, $white), \"light\": ($light, $light-invert), \"dark\": ($dark, $dark-invert), \"primary\": ($primary, $primary-invert, $primary-light, $primary-dark), \"link\": ($link, $link-invert, $link-light, $link-dark), \"info\": ($info, $info-invert, $info-light, $info-dark), \"success\": ($success, $success-invert, $success-light, $success-dark), \"warning\": ($warning, $warning-invert, $warning-light, $warning-dark), \"danger\": ($danger, $danger-invert, $danger-light, $danger-dark)), $custom-colors)"
     }
   },
   "list": [
     "$panel-margin",
     "$panel-item-border",
+    "$panel-radius",
+    "$panel-shadow",
     "$panel-heading-background-color",
     "$panel-heading-color",
     "$panel-heading-line-height",
@@ -157,7 +178,8 @@
     "$panel-block-active-border-left-color",
     "$panel-block-active-color",
     "$panel-block-active-icon-color",
-    "$panel-icon-color"
+    "$panel-icon-color",
+    "$panel-colors"
   ],
   "file_path": "components/panel.sass"
 }

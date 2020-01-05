@@ -12,14 +12,14 @@
       "value": "$cyan",
       "type": "variable",
       "computed_type": "color",
-      "computed_value": "hsl(204, 86%,  53%)"
+      "computed_value": "hsl(204, 71%,  53%)"
     },
     "$success": {
       "name": "$success",
       "value": "$green",
       "type": "variable",
       "computed_type": "color",
-      "computed_value": "hsl(141, 71%,  48%)"
+      "computed_value": "hsl(141, 53%,  53%)"
     },
     "$warning": {
       "name": "$warning",
@@ -33,7 +33,7 @@
       "value": "$red",
       "type": "variable",
       "computed_type": "color",
-      "computed_value": "hsl(348, 100%, 61%)"
+      "computed_value": "hsl(348, 86%, 61%)"
     },
     "$light": {
       "name": "$light",
@@ -107,52 +107,144 @@
     },
     "$primary-invert": {
       "name": "$primary-invert",
-      "value": "$turquoise-invert",
-      "type": "variable",
+      "value": "findColorInvert($primary)",
+      "type": "function",
       "computed_type": "color",
       "computed_value": "#fff"
+    },
+    "$primary-light": {
+      "name": "$primary-light",
+      "value": "findLightColor($primary)",
+      "type": "compound"
+    },
+    "$primary-dark": {
+      "name": "$primary-dark",
+      "value": "findDarkColor($primary)",
+      "type": "compound"
     },
     "$info-invert": {
       "name": "$info-invert",
-      "value": "$cyan-invert",
-      "type": "variable",
+      "value": "findColorInvert($info)",
+      "type": "function",
       "computed_type": "color",
       "computed_value": "#fff"
+    },
+    "$info-light": {
+      "name": "$info-light",
+      "value": "findLightColor($info)",
+      "type": "compound"
+    },
+    "$info-dark": {
+      "name": "$info-dark",
+      "value": "findDarkColor($info)",
+      "type": "compound"
     },
     "$success-invert": {
       "name": "$success-invert",
-      "value": "$green-invert",
-      "type": "variable",
+      "value": "findColorInvert($success)",
+      "type": "function",
       "computed_type": "color",
       "computed_value": "#fff"
+    },
+    "$success-light": {
+      "name": "$success-light",
+      "value": "findLightColor($success)",
+      "type": "compound"
+    },
+    "$success-dark": {
+      "name": "$success-dark",
+      "value": "findDarkColor($success)",
+      "type": "compound"
     },
     "$warning-invert": {
       "name": "$warning-invert",
-      "value": "$yellow-invert",
-      "type": "variable",
-      "computed_type": "color",
-      "computed_value": "rgba(0, 0, 0, 0.7)"
-    },
-    "$danger-invert": {
-      "name": "$danger-invert",
-      "value": "$red-invert",
-      "type": "variable",
+      "value": "findColorInvert($warning)",
+      "type": "function",
       "computed_type": "color",
       "computed_value": "#fff"
     },
+    "$warning-light": {
+      "name": "$warning-light",
+      "value": "findLightColor($warning)",
+      "type": "compound"
+    },
+    "$warning-dark": {
+      "name": "$warning-dark",
+      "value": "findDarkColor($warning)",
+      "type": "compound"
+    },
+    "$danger-invert": {
+      "name": "$danger-invert",
+      "value": "findColorInvert($danger)",
+      "type": "function",
+      "computed_type": "color",
+      "computed_value": "#fff"
+    },
+    "$danger-light": {
+      "name": "$danger-light",
+      "value": "findLightColor($danger)",
+      "type": "compound"
+    },
+    "$danger-dark": {
+      "name": "$danger-dark",
+      "value": "findDarkColor($danger)",
+      "type": "compound"
+    },
     "$light-invert": {
       "name": "$light-invert",
-      "value": "$dark",
-      "type": "variable",
+      "value": "findColorInvert($light)",
+      "type": "function",
       "computed_type": "color",
-      "computed_value": "hsl(0, 0%, 21%)"
+      "computed_value": "#fff"
     },
     "$dark-invert": {
       "name": "$dark-invert",
-      "value": "$light",
+      "value": "findColorInvert($dark)",
+      "type": "function",
+      "computed_type": "color",
+      "computed_value": "#fff"
+    },
+    "$scheme-main": {
+      "name": "$scheme-main",
+      "value": "$white",
+      "type": "variable",
+      "computed_type": "color",
+      "computed_value": "hsl(0, 0%, 100%)"
+    },
+    "$scheme-main-bis": {
+      "name": "$scheme-main-bis",
+      "value": "$white-bis",
+      "type": "variable",
+      "computed_type": "color",
+      "computed_value": "hsl(0, 0%, 98%)"
+    },
+    "$scheme-main-ter": {
+      "name": "$scheme-main-ter",
+      "value": "$white-ter",
       "type": "variable",
       "computed_type": "color",
       "computed_value": "hsl(0, 0%, 96%)"
+    },
+    "$scheme-invert": {
+      "name": "$scheme-invert",
+      "value": "$black",
+      "type": "variable",
+      "computed_type": "color",
+      "computed_value": "hsl(0, 0%, 4%)"
+    },
+    "$scheme-invert-bis": {
+      "name": "$scheme-invert-bis",
+      "value": "$black-bis",
+      "type": "variable",
+      "computed_type": "color",
+      "computed_value": "hsl(0, 0%, 7%)"
+    },
+    "$scheme-invert-ter": {
+      "name": "$scheme-invert-ter",
+      "value": "$black-ter",
+      "type": "variable",
+      "computed_type": "color",
+      "computed_value": "hsl(0, 0%, 14%)"
     },
     "$background": {
       "name": "$background",
@@ -170,6 +262,20 @@
     },
     "$border-hover": {
       "name": "$border-hover",
+      "value": "$grey-light",
+      "type": "variable",
+      "computed_type": "color",
+      "computed_value": "hsl(0, 0%, 71%)"
+    },
+    "$border-light": {
+      "name": "$border-light",
+      "value": "$grey-lightest",
+      "type": "variable",
+      "computed_type": "color",
+      "computed_value": "hsl(0, 0%, 93%)"
+    },
+    "$border-light-hover": {
+      "name": "$border-light-hover",
       "value": "$grey-light",
       "type": "variable",
       "computed_type": "color",
@@ -208,7 +314,7 @@
       "value": "$red",
       "type": "variable",
       "computed_type": "color",
-      "computed_value": "hsl(348, 100%, 61%)"
+      "computed_value": "hsl(348, 86%, 61%)"
     },
     "$code-background": {
       "name": "$code-background",
@@ -240,10 +346,20 @@
     },
     "$link-invert": {
       "name": "$link-invert",
-      "value": "$blue-invert",
-      "type": "variable",
+      "value": "findColorInvert($link)",
+      "type": "function",
       "computed_type": "color",
       "computed_value": "#fff"
+    },
+    "$link-light": {
+      "name": "$link-light",
+      "value": "findLightColor($link)",
+      "type": "compound"
+    },
+    "$link-dark": {
+      "name": "$link-dark",
+      "value": "findDarkColor($link)",
+      "type": "compound"
     },
     "$link-visited": {
       "name": "$link-visited",
@@ -355,7 +471,7 @@
     },
     "$colors": {
       "name": "$colors",
-      "value": "mergeColorMaps((\"white\": ($white, $black), \"black\": ($black, $white), \"light\": ($light, $light-invert), \"dark\": ($dark, $dark-invert), \"primary\": ($primary, $primary-invert), \"link\": ($link, $link-invert), \"info\": ($info, $info-invert), \"success\": ($success, $success-invert), \"warning\": ($warning, $warning-invert), \"danger\": ($danger, $danger-invert)), $custom-colors)",
+      "value": "mergeColorMaps((\"white\": ($white, $black), \"black\": ($black, $white), \"light\": ($light, $light-invert), \"dark\": ($dark, $dark-invert), \"primary\": ($primary, $primary-invert, $primary-light, $primary-dark), \"link\": ($link, $link-invert, $link-light, $link-dark), \"info\": ($info, $info-invert, $info-light, $info-dark), \"success\": ($success, $success-invert, $success-light, $success-dark), \"warning\": ($warning, $warning-invert, $warning-light, $warning-dark), \"danger\": ($danger, $danger-invert, $danger-light, $danger-dark)), $custom-colors)",
       "type": "function"
     },
     "$shades": {
@@ -386,15 +502,33 @@
     "$purple-invert",
     "$red-invert",
     "$primary-invert",
+    "$primary-light",
+    "$primary-dark",
     "$info-invert",
+    "$info-light",
+    "$info-dark",
     "$success-invert",
+    "$success-light",
+    "$success-dark",
     "$warning-invert",
+    "$warning-light",
+    "$warning-dark",
     "$danger-invert",
+    "$danger-light",
+    "$danger-dark",
     "$light-invert",
     "$dark-invert",
+    "$scheme-main",
+    "$scheme-main-bis",
+    "$scheme-main-ter",
+    "$scheme-invert",
+    "$scheme-invert-bis",
+    "$scheme-invert-ter",
     "$background",
     "$border",
     "$border-hover",
+    "$border-light",
+    "$border-light-hover",
     "$text",
     "$text-invert",
     "$text-light",
@@ -405,6 +539,8 @@
     "$pre-background",
     "$link",
     "$link-invert",
+    "$link-light",
+    "$link-dark",
     "$link-visited",
     "$link-hover",
     "$link-hover-border",

@@ -9,7 +9,7 @@ breadcrumb:
 - components
 - components-panel
 meta:
-  colors: false
+  colors: true
   sizes: false
   variables: true
 ---
@@ -17,22 +17,22 @@ meta:
 {% capture panel_example %}
 <nav class="panel">
   <p class="panel-heading">
-    repositories
+    Repositories
   </p>
   <div class="panel-block">
     <p class="control has-icons-left">
-      <input class="input is-small" type="text" placeholder="search">
-      <span class="icon is-small is-left">
+      <input class="input" type="text" placeholder="Search">
+      <span class="icon is-left">
         <i class="fas fa-search" aria-hidden="true"></i>
       </span>
     </p>
   </div>
   <p class="panel-tabs">
-    <a class="is-active">all</a>
-    <a>public</a>
-    <a>private</a>
-    <a>sources</a>
-    <a>forks</a>
+    <a class="is-active">All</a>
+    <a>Public</a>
+    <a>Private</a>
+    <a>Sources</a>
+    <a>Forks</a>
   </p>
   <a class="panel-block is-active">
     <span class="panel-icon">
@@ -76,10 +76,59 @@ meta:
   </label>
   <div class="panel-block">
     <button class="button is-link is-outlined is-fullwidth">
-      reset all filters
+      Reset all filters
     </button>
   </div>
 </nav>
+{% endcapture %}
+
+{% capture panel_colors_example %}
+{% for color in site.data.colors.justColors %}
+<article class="panel is-{{ color }}">
+  <p class="panel-heading">
+    {{ color | capitalize }}
+  </p>
+  <p class="panel-tabs">
+    <a class="is-active">All</a>
+    <a>Public</a>
+    <a>Private</a>
+    <a>Sources</a>
+    <a>Forks</a>
+  </p>
+  <div class="panel-block">
+    <p class="control has-icons-left">
+      <input class="input is-{{ color }}" type="text" placeholder="Search">
+      <span class="icon is-left">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </span>
+    </p>
+  </div>
+  <a class="panel-block is-active">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    bulma
+  </a>
+  <a class="panel-block">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    marksheet
+  </a>
+  <a class="panel-block">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    minireset.css
+  </a>
+  <a class="panel-block">
+    <span class="panel-icon">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </span>
+    jgthms.github.io
+  </a>
+</article>
+{% endfor %}
 {% endcapture %}
 
 <div class="content">
@@ -108,6 +157,21 @@ meta:
   </p>
 </div>
 
-{% include elements/snippet.html content=panel_example %}
+{% include elements/snippet.html content=panel_example more=true %}
+
+{% include elements/anchor.html name="Colors" %}
+
+{% include elements/new-tag.html version="0.8.0" %}
+
+<div class="content">
+  <p>
+    The panel component is available in all the <strong>different colors</strong> defined by the <a href="{{ site.data.links.by_id.customize-variables.path }}"><code>$colors</code> Sass map</a>.     Simply append one of the color modifiers.
+  </p>
+  <p>
+    For example, to use your primary color, use <code>"panel is-primary"</code> as a class.
+  </p>
+</div>
+
+{% include elements/snippet.html content=panel_colors_example more=true %}
 
 {% include elements/variables.html type='component' %}

@@ -10,29 +10,43 @@
       // or a colors list with at least one element
       @if type-of($name) == 'string' and (type-of($components) == 'list' or type-of($components) == 'color') and length($components) >= 1
         $color-base: null
+        $color-invert: null
+        $color-light: null
+        $color-dark: null
         $value: null
 
         // The param can either be a single color
         // or a list of 2 colors
         @if type-of($components) == 'color'
           $color-base: $components
-          $value: $components
+          $color-invert: findColorInvert($color-base)
+          $color-light: findLightColor($color-base)
+          $color-dark: findDarkColor($color-base)
         @else if type-of($components) == 'list'
           $color-base: nth($components, 1)
-          $color-invert: null
-          // Check if the invert color is provided,
-          // otherwise compute it
-          @if length($components) > 1
+          // If Invert, Light and Dark are provided
+          @if length($components) > 3
             $color-invert: nth($components, 2)
+            $color-light: nth($components, 3)
+            $color-dark: nth($components, 4)
+            // If only Invert and Light are provided
+          @else if length($components) > 2
+            $color-invert: nth($components, 2)
+            $color-light: nth($components, 3)
+            $color-dark: findDarkColor($color-base)
+            // If only Invert is provided
           @else
-            $color-invert: findColorInvert($color-base)
-          $value: ($color-base, $color-invert)
+            $color-invert: nth($components, 2)
+            $color-light: findLightColor($color-base)
+            $color-dark: findDarkColor($color-base)
+
+        $value: ($color-base, $color-invert, $color-light, $color-dark)
 
         // We only want to merge the map if the color base is an actual color
         @if type-of($color-base) == 'color'
           // We merge this colors elements as map with Bulma's colors map
           // (we can override them this way, no multiple definition for the same name)
-          // $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert)))
+          // $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert, $color-light, $color-dark)))
           $merged-colors: map_merge($merged-colors, ($name: $value))
 
   @return $merged-colors
@@ -68,12 +82,19 @@
 
 @function findLightColor($color)
   @if type-of($color) == 'color'
-    @return change-color($color, $lightness: 96%)
+    $l: 96%
+    @if lightness($color) > 96%
+      $l: lightness($color)
+    @return change-color($color, $lightness: $l)
   @return $background
 
 @function findDarkColor($color)
   @if type-of($color) == 'color'
-    @return change-color($color, $lightness: 29%)
+    $base-l: 29%
+    $luminance: colorLuminance($color)
+    $luminance-delta: (0.53 - $luminance)
+    $target-l: round($base-l + ($luminance-delta * 53))
+    @return change-color($color, $lightness: max($base-l, $target-l))
   @return $text-strong
 
 @function getCssVariable($color, $name)
@@ -82,3 +103,8 @@
   $lightness: lightness($color)
   $alpha: alpha($color)
   @return $hue, $saturation, $lightness
+
+@function bulmaRgba($color, $alpha)
+  @if type-of($color) == 'color'
+    @return rgba($color, $alpha)
+  @return $color

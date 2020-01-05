@@ -69,6 +69,13 @@ $tag-delete-margin: 1px !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+      // If a light and dark colors are provided
+      @if length($pair) > 3
+        $color-light: nth($pair, 3)
+        $color-dark: nth($pair, 4)
+        &.is-light
+          background-color: $color-light
+          color: $color-dark
   // Sizes
   &.is-normal
     font-size: $size-small
