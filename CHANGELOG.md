@@ -1,6 +1,10 @@
 # Bulma Changelog
 
-## 0.8.1
+## Next release
+
+### Improvements
+
+* #2709 Add light colors to the `notification` element
 
 ### Bug fixes
 
