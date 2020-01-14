@@ -37,7 +37,7 @@ After installation, you can use **bulma.css** or **bulma.sass** for **LTR** or *
 (there is no need to include LTR styles to use RTL).
 
 ```css
-import 'bulma/css/bulma-rtl.css'
+import 'bulma-rtl/css/bulma-rtl.css'
 ```
 
 Feel free to raise an issue or submit a pull request related to RTL styles.
