@@ -100,7 +100,7 @@ $size-large: $size-4 !default
 $custom-colors: null !default
 $custom-shades: null !default
 
-$colors: mergeColorMaps(("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark), "link": ($link, $link-invert, $link-light, $link-dark), "info": ($info, $info-invert, $info-light, $info-dark), "success": ($success, $success-invert, $success-light, $success-dark), "warning": ($warning, $warning-invert, $warning-light, $warning-dark), "danger": ($danger, $danger-invert, $danger-light, $danger-dark)), $custom-colors) !default
+$colors: mergeColorMaps(("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark, "white"), "link": ($link, $link-invert, $link-light, $link-dark, "white"), "info": ($info, $info-invert, $info-light, $info-dark, "white"), "success": ($success, $success-invert, $success-light, $success-dark, "white"), "warning": ($warning, $warning-invert, $warning-light, $warning-dark, "white"), "danger": ($danger, $danger-invert, $danger-light, $danger-dark, "white")), $custom-colors) !default
 $shades: mergeColorMaps(("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis), $custom-shades) !default
 
 $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default
@@ -150,10 +150,10 @@ $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default
     --#{$base}-invert: #{findColorInvert($color)}
 
 \:root
-  @each $name, $trio in $colors
-    $color: nth($trio, 1)
-    $color-invert: nth($trio, 2)
+  @each $name, $components in $colors
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
     $cssvar-invert: false
-    @if length($trio) > 2
-      $cssvar-invert: nth($trio, 3)
+    @if length($components) >= 5
+      $cssvar-invert: nth($components, 5)
     +css-variable($color, $name, $cssvar-invert)
