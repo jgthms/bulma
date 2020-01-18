@@ -60,6 +60,129 @@ $progress-indeterminate-duration: 1.5s !default
   &.is-large
     height: $size-large
 
+  &.is-circle
+    $progress: 0
+    $color-active: #2ecc71
+    $color-inactive: #eee
+    $color-bg: $white
+    $color-font: #eee    
+
+    // background: $color-inactive
+    border-radius: 50%
+    position: relative
+    font-family: 'Lato', sans-serif
+    height: 150px
+    width: 150px
+    &.is-small
+      height: $size-small
+      width: $size-small
+    &.is-medium
+      height: $size-medium
+      width: $size-medium
+    &.is-large
+      height: $size-large
+      width: $size-large
+    &:not(.is-borderless)
+      border: 1px solid $color-active !important
+      &:before
+        border: 1px solid $color-active
+    overflow: hidden
+    &:before
+      content: $progress + "%"
+      text-align: center
+      padding-top: 34%
+      color: $color-font
+      width: 90%
+      height: 90%
+      //line-height: 100%
+      padding-top: calc($body-size + 23%)
+      background: $color-bg
+      position: absolute
+      border-radius: 50%
+      left: 5%
+      top: 5%
+      z-index: 1000
+      //box-shadow: inset 0px 0px 20px rgba(#000, 0.5)
+      border: 2px solid $color-bg
+      box-sizing: border-box
+    &.has-background-light
+      &:before
+        background-color: $grey-lighter
+    &.has-background-heavy
+      &:before
+        background-color: $grey-light
+
+    .hide 
+      height: 100%
+      width: 50%
+      position: absolute
+      left: 50%
+      top: 0
+      background: $color-inactive
+      z-index: 200
+      transform-origin: left center
+      $deg: (360 / 100) * $progress
+      transform: rotate($deg + deg)
+    
+    .active, .active2 
+      width: 50%
+      height: 100%
+      background: $color-active
+      position: absolute
+      @if $progress > 50 
+        z-index: 300
+      
+      left: 50%
+      top: 0
+    
+    @if $progress > 50 
+      .active2 
+        transform-origin: left center
+        $deg: (360 / 100) * ($progress - 50)
+        transform: rotate($deg + deg)
+    
+    @each $name, $pair in $colors
+      $color: nth($pair, 1)
+      $color-invert: nth($pair, 2)
+      &.is-#{$name}
+        &:not(.is-borderless)
+          border: 1px solid $color !important
+          &:before
+            border: 1px solid $color
+          .hide
+
+        .active, .active2
+          background-color: $color
+        .hide
+          background: $color-invert
+        @if $progress > 50 
+          .active2
+            background-color: $color !important
+      &.has-text-#{$name}
+        &:before
+          color: $color
+    
+    @for $i from 0 through 100 // 0 - 100
+      &.is-#{$i}
+        &:before
+          content: $i + "%"
+        .hide
+          $deg: (360 / 100) * $i
+          transform: rotate($deg + deg)
+        .active, .active2
+          width: 50%
+          height: 100%
+          position: absolute
+          @if $i > 50 
+            z-index: 300
+          left: 50%
+          top: 0
+        @if $i > 50 
+          .active2
+            transform-origin: left center
+            $deg: (360 / 100) * ($i - 50)
+            transform: rotate($deg + deg)
+
 @keyframes moveIndeterminate
   from
     background-position: 200% 0
