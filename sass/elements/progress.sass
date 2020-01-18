@@ -60,6 +60,45 @@ $progress-indeterminate-duration: 1.5s !default
   &.is-large
     height: $size-large
 
+  &.has-percentage
+    background-color: $progress-bar-background-color
+    $value: 0
+    @extend .is-#{$value}
+    .progress-bar
+      position: relative
+      display: block
+      width: 0
+      height: 100%
+      background-color: $progress-value-background-color
+    .progress-text
+      top: 50%
+      left: 50%
+      -webkit-transform: translate(-50%,-50%)
+      transform: translate(-50%,-50%)
+      position: absolute
+      margin: 0
+      font-size: .75rem
+      font-weight: 700
+      color: #fff
+      white-space: nowrap
+
+    @each $name, $pair in $colors
+      $color: nth($pair, 1)
+      $color-invert: nth($pair, 2)
+      &.is-#{$name}
+        .progress-bar
+          background-color: $color
+        .progress-text
+          color: $color-invert
+    @for $i from 0 through 100 // 0 - 100
+      &.is-#{$i}
+        .progress-bar
+          width: percentage($i/100)
+        .progress-text:after
+          content: "#{$i}%"
+      &[value="#{$i}"]
+        @extend .is-#{$i}
+        
 @keyframes moveIndeterminate
   from
     background-position: 200% 0
