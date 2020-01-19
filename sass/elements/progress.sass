@@ -65,7 +65,9 @@ $progress-indeterminate-duration: 1.5s !default
     $color-active: #2ecc71
     $color-inactive: #eee
     $color-bg: $white
-    $color-font: #eee    
+    $color-font: #eee
+
+    @extend .is-0
 
     // background: $color-inactive
     border-radius: 50%
@@ -182,6 +184,8 @@ $progress-indeterminate-duration: 1.5s !default
             transform-origin: left center
             $deg: (360 / 100) * ($i - 50)
             transform: rotate($deg + deg)
+      &[value="#{$i}"]
+        @extend .is-#{$i}
 
 @keyframes moveIndeterminate
   from
