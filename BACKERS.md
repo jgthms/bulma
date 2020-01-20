@@ -4,7 +4,114 @@
           
 
 <h2 class="title is-5">
-  Documentation sponsors via Patreon ($500+)
+  Generous backers ($30+)
+</h2>
+
+<table class="table is-bordered">
+  
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Twitter</th>
+    <th>Website</th>
+  </tr>
+</thead>
+
+  <tbody>
+    
+      <tr>
+  <td>Roman Chvanikoff</td>
+
+  <td>
+    
+  </td>
+
+  <td>
+    
+  </td>
+</tr>
+
+    
+      <tr>
+  <td>Garry Newman</td>
+
+  <td>
+    
+      <a href="https://twitter.com/garrynewman" target="_blank" rel="nofollow">
+        @garrynewman
+      </a>
+    
+  </td>
+
+  <td>
+    
+  </td>
+</tr>
+
+    
+      <tr>
+  <td>Bjørn Nese</td>
+
+  <td>
+    
+  </td>
+
+  <td>
+    
+  </td>
+</tr>
+
+    
+      <tr>
+  <td>Adrian Ocneanu</td>
+
+  <td>
+    
+      <a href="https://twitter.com/aocneanu" target="_blank" rel="nofollow">
+        @aocneanu
+      </a>
+    
+  </td>
+
+  <td>
+    
+      <a href="https://www.earthlink.ro/" target="_blank" rel="nofollow">
+        Earthlink
+      </a>
+    
+  </td>
+</tr>
+
+    
+      <tr>
+  <td>Aaron</td>
+
+  <td>
+    
+      <a href="https://twitter.com/aequasi" target="_blank" rel="nofollow">
+        @aequasi
+      </a>
+    
+  </td>
+
+  <td>
+    
+  </td>
+</tr>
+
+    
+    
+      <tr>
+  <td>wingerdkm1</td>
+  <td colspan="2"><a href="https://github.com/wingerdkm1" target="_blank" rel="nofollow">GitHub</a></td>
+</tr>
+
+    
+  </tbody>
+</table>
+
+<h2 class="title is-5">
+  Documentation sponsors ($500+)
 </h2>
 
 <table class="table is-bordered">
@@ -40,7 +147,7 @@
 </table>
 
 <h2 class="title is-5">
-  Homepage sponsors via Patreon ($100+)
+  Homepage sponsors ($100+)
 </h2>
 
 <table class="table is-bordered">
@@ -125,19 +232,6 @@
 
     
       <tr>
-  <td>Mark Mazza</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
   <td>Iaroslav Baklan</td>
 
   <td>
@@ -163,90 +257,16 @@
 </tr>
 
     
-  </tbody>
-</table>
-
-<h2 class="title is-5">
-  Generous backers via Patreon ($30+)
-</h2>
-
-<table class="table is-bordered">
-  
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Twitter</th>
-    <th>Website</th>
-  </tr>
-</thead>
-
-  <tbody>
     
       <tr>
-  <td>Roman Chvanikoff</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
+  <td>patrick136</td>
+  <td colspan="2"><a href="https://github.com/patrick136" target="_blank" rel="nofollow">GitHub</a></td>
 </tr>
 
     
       <tr>
-  <td>Garry Newman</td>
-
-  <td>
-    
-      <a href="https://twitter.com/garrynewman" target="_blank" rel="nofollow">
-        @garrynewman
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Adrian Ocneanu</td>
-
-  <td>
-    
-      <a href="https://twitter.com/aocneanu" target="_blank" rel="nofollow">
-        @aocneanu
-      </a>
-    
-  </td>
-
-  <td>
-    
-      <a href="https://www.earthlink.ro/" target="_blank" rel="nofollow">
-        Earthlink
-      </a>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Aaron</td>
-
-  <td>
-    
-      <a href="https://twitter.com/aequasi" target="_blank" rel="nofollow">
-        @aequasi
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
+  <td>airtract</td>
+  <td colspan="2"><a href="https://github.com/airtract" target="_blank" rel="nofollow">GitHub</a></td>
 </tr>
 
     
@@ -254,7 +274,7 @@
 </table>
 
 <h2 class="title is-5">
-  Backers via Patreon ($10+)
+  Bulma backers ($10+)
 </h2>
 
 <table class="table is-bordered">
@@ -317,6 +337,19 @@
 
     
       <tr>
+  <td>Maurice Perry</td>
+
+  <td>
+    
+  </td>
+
+  <td>
+    
+  </td>
+</tr>
+
+    
+      <tr>
   <td>Leo Zeba</td>
 
   <td>
@@ -360,12 +393,12 @@
 
     
       <tr>
-  <td>Franz Geffke</td>
+  <td>Florian Breisch</td>
 
   <td>
     
-      <a href="https://twitter.com/f_anzs" target="_blank" rel="nofollow">
-        @f_anzs
+      <a href="https://twitter.com/FlorianBreisch" target="_blank" rel="nofollow">
+        @FlorianBreisch
       </a>
     
   </td>
@@ -377,13 +410,9 @@
 
     
       <tr>
-  <td>Florian Breisch</td>
+  <td>dvkt</td>
 
   <td>
-    
-      <a href="https://twitter.com/FlorianBreisch" target="_blank" rel="nofollow">
-        @FlorianBreisch
-      </a>
     
   </td>
 
@@ -406,16 +435,22 @@
 </tr>
 
     
+    
       <tr>
-  <td>Dave Matthews</td>
+  <td>Gomah</td>
+  <td colspan="2"><a href="https://github.com/Gomah" target="_blank" rel="nofollow">GitHub</a></td>
+</tr>
 
-  <td>
     
-  </td>
+      <tr>
+  <td>sasmithjr</td>
+  <td colspan="2"><a href="https://github.com/sasmithjr" target="_blank" rel="nofollow">GitHub</a></td>
+</tr>
 
-  <td>
     
-  </td>
+      <tr>
+  <td>kuwaitbinary</td>
+  <td colspan="2"><a href="https://github.com/kuwaitbinary" target="_blank" rel="nofollow">GitHub</a></td>
 </tr>
 
     
