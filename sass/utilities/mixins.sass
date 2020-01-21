@@ -138,41 +138,21 @@
 
 // $directions: ("left": "right", "right": "left")
 
-=border-right($spacing)
+=directioner($property, $spacing, $right: true)
+  $normal: if($right, "right", "left")
+  $opposite: if($right, "left", "right")
   @if $rtl
-    border-left: $spacing
+    /* RTL */
+    #{$property}-#{$opposite}: $spacing
   @else
-    border-right: $spacing
-
-=border-left($spacing)
-  @if $rtl
-    border-right: $spacing
-  @else
-    border-left: $spacing
-
-=margin-right($spacing)
-  @if $rtl
-    margin-left: $spacing
-  @else
-    margin-right: $spacing
+    /* LTR */
+    #{$property}-#{$normal}: $spacing
 
 =right($spacing)
   @if $rtl
     left: $spacing
   @else
     right: $spacing
-
-=left($spacing)
-  @if $rtl
-    right: $spacing
-  @else
-    left: $spacing
-
-=margin-left($spacing)
-  @if $rtl
-    margin-right: $spacing
-  @else
-    margin-left: $spacing
 
 // =directioner($spacing)
 //   @supports (margin-inline-end: 1px)
