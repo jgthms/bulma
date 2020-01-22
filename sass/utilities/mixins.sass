@@ -136,32 +136,21 @@
   @if $rtl
     @content
 
-// $directions: ("left": "right", "right": "left")
-
-=directioner($property, $spacing, $right: true)
+=ltr-property($property, $spacing, $right: true)
   $normal: if($right, "right", "left")
   $opposite: if($right, "left", "right")
   @if $rtl
-    /* RTL */
     #{$property}-#{$opposite}: $spacing
   @else
-    /* LTR */
     #{$property}-#{$normal}: $spacing
 
-=right($spacing)
+=ltr-position($spacing, $right: true)
+  $normal: if($right, "right", "left")
+  $opposite: if($right, "left", "right")
   @if $rtl
-    left: $spacing
+    #{$opposite}: $spacing
   @else
-    right: $spacing
-
-// =directioner($spacing)
-//   @supports (margin-inline-end: 1px)
-//     margin-inline-end: $spacing
-//   @supports
-//     @if $rtl
-//       margin-left: $spacing
-//     @else
-//       margin-right: $spacing
+    #{$normal}: $spacing
 
 // Placeholders
 
