@@ -46,8 +46,8 @@ $subtitle-negative-margin: -1.25rem !default
   &:not(.is-spaced) + .subtitle
     margin-top: $subtitle-negative-margin
   // Sizes
-  @each $size in $sizes
-    $i: index($sizes, $size)
+  @for $i from 1 through length($sizes)
+    $size: nth($sizes, $i)
     &.is-#{$i}
       font-size: $size
 
@@ -64,7 +64,7 @@ $subtitle-negative-margin: -1.25rem !default
   &:not(.is-spaced) + .title
     margin-top: $subtitle-negative-margin
   // Sizes
-  @each $size in $sizes
-    $i: index($sizes, $size)
+  @for $i from 1 through length($sizes)
+    $size: nth($sizes, $i)
     &.is-#{$i}
       font-size: $size
