@@ -47,21 +47,9 @@ meta:
 
 {% capture notification_js_html %}
 <div class="notification">
-  <button class="delete"></button>
+  <button class="delete" onClick="this.parentElement.remove()"></button>
   Lorem ipsum
 </div>
-{% endcapture %}
-
-{% capture notification_js_code %}
-document.addEventListener('DOMContentLoaded', () => {
-  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-    $notification = $delete.parentNode;
-
-    $delete.addEventListener('click', () => {
-      $notification.parentNode.removeChild($notification);
-    });
-  });
-});
 {% endcapture %}
 
 <div class="content">
@@ -94,7 +82,7 @@ Each color now comes in its <strong>light</strong> version. Simply append the <c
 
 <div class="content">
   <p>
-    The Bulma package <strong>does not come with any JavaScript</strong>. Here is however an implementation example, which sets the <code>click</code> handler for Bulma <code>delete</code> all on the page, in vanilla JavaScript.
+    The Bulma package <strong>does not come with any JavaScript</strong>. Here is however an implementation example, which sets the <code>onClick</code> handler for Bulma <code>delete</code> in vanilla JavaScript.
   </p>
 
   {% highlight html %}{{ notification_js_html }}{% endhighlight %}
