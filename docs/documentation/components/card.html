@@ -98,6 +98,60 @@ meta:
 </div>
 {% endcapture %}
 
+{% capture card_overlay_example %}
+<div class="card has-image-cover">
+  <div class="card-image">
+    <figure class="image">
+      <img src="{{site.url}}/images/various/tom-levold-260373.jpg" alt="Tom Levold">
+    </figure>
+  </div>
+  <div class="card-content">
+    <p class="title">
+      “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+    </p>
+    <p class="subtitle">
+      Jeff Atwood
+    </p>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture card_overlay_default_example %}
+<div class="card has-image-cover">
+  <div class="card-image">
+    <figure class="image">
+      <img src="{{site.url}}/images/various/tom-levold-260373.jpg" alt="Tom Levold">
+    </figure>
+  </div>
+  <div class="card-content">
+    <p class="title">
+      “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+    </p>
+    <p class="subtitle">
+      Jeff Atwood
+    </p>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture card_overlay_top_example %}
+<div class="card has-image-cover is-text-top">
+  <div class="card-image">
+    <figure class="image">
+      <img src="{{site.url}}/images/various/tom-levold-260373.jpg" alt="Tom Levold">
+    </figure>
+  </div>
+  <div class="card-content">
+    <p class="title">
+      “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+    </p>
+    <p class="subtitle">
+      Jeff Atwood
+    </p>
+  </div>
+</div>
+{% endcapture %}
+
 <div class="content">
   <p>The <strong>card</strong> component comprises several elements that you can mix and match:</p>
   <ul>
@@ -177,5 +231,26 @@ meta:
     {% highlight html %}{{card_title_example}}{% endhighlight %}
   </div>
 </div>
+
+<hr>
+
+<div class="columns">
+  <div class="column is-half">
+    {{card_overlay_default_example}}
+  </div>
+  <div class="column">
+    {{card_overlay_top_example}}
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-half highlight-full">
+    {% highlight html %}{{card_overlay_default_example}}{% endhighlight %}
+  </div>
+  <div class="column highlight-full">
+    {% highlight html %}{{card_overlay_top_example}}{% endhighlight %}
+  </div>
+</div>
+
+
 
 {% include elements/variables.html type='component' %}
