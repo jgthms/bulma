@@ -65,7 +65,7 @@
   --bulma-primary-dark: #00947e;
   --bulma-primary-dark-hover: #007a68;
   --bulma-primary-dark-active: #006152;
-  --bulma-primary-invert: var(--bulma-#ebfffc);
+  --bulma-primary-invert: var(--bulma-white);
   --bulma-link-h: 217deg;
   --bulma-link-s: 71%;
   --bulma-link-l: 53%;
@@ -78,7 +78,7 @@
   --bulma-link-dark: #153e7e;
   --bulma-link-dark-hover: #123369;
   --bulma-link-dark-active: #0e2853;
-  --bulma-link-invert: var(--bulma-#eef3fc);
+  --bulma-link-invert: var(--bulma-white);
   --bulma-info-h: 204deg;
   --bulma-info-s: 71%;
   --bulma-info-l: 53%;
@@ -91,7 +91,7 @@
   --bulma-info-dark: #15547e;
   --bulma-info-dark-hover: #124669;
   --bulma-info-dark-active: #0e3753;
-  --bulma-info-invert: var(--bulma-#eef6fc);
+  --bulma-info-invert: var(--bulma-white);
   --bulma-success-h: 141deg;
   --bulma-success-s: 53%;
   --bulma-success-l: 53%;
@@ -104,7 +104,7 @@
   --bulma-success-dark: #23713e;
   --bulma-success-dark-hover: #1d5e33;
   --bulma-success-dark-active: #174a29;
-  --bulma-success-invert: var(--bulma-#effaf3);
+  --bulma-success-invert: var(--bulma-white);
   --bulma-warning-h: 48deg;
   --bulma-warning-s: 100%;
   --bulma-warning-l: 67%;
@@ -117,7 +117,7 @@
   --bulma-warning-dark: #947600;
   --bulma-warning-dark-hover: #7a6200;
   --bulma-warning-dark-active: #614e00;
-  --bulma-warning-invert: var(--bulma-#fffbeb);
+  --bulma-warning-invert: var(--bulma-white);
   --bulma-danger-h: 348deg;
   --bulma-danger-s: 86%;
   --bulma-danger-l: 61%;
@@ -130,7 +130,7 @@
   --bulma-danger-dark: #8a0a24;
   --bulma-danger-dark-hover: #72091e;
   --bulma-danger-dark-active: #5a0717;
-  --bulma-danger-invert: var(--bulma-#feecf0);
+  --bulma-danger-invert: var(--bulma-white);
 }
 
 @-webkit-keyframes spinAround {
@@ -11902,7 +11902,7 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
-.bd-columns-tool, .bd-footer-sponsor a, .bd-footer-donation-action, .bd-footer-star-figure, .bd-minis-title, .bd-minis-link, .bd-mini {
+.bd-columns-tool, .bd-footer-sponsor a, .bd-footer-donation-action, .bd-footer-star-figure, .bd-sponsor-item, .bd-minis-title, .bd-minis-link, .bd-mini {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -11913,6 +11913,29 @@ label.panel-block:hover {
   border-radius: 6px;
   box-shadow: 0 1.5rem 1.5rem -1.25rem rgba(10, 10, 10, 0.05);
   display: block;
+}
+
+.bd-focus-item::before, .bd-sponsor-item::before {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #fafafa;
+  border-radius: 6px;
+  content: "";
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.1);
+  transform-origin: center;
+  transition-duration: 172ms;
+  transition-property: opacity, transform;
+}
+
+.bd-focus-item:hover::before, .bd-sponsor-item:hover::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .bd-main {
@@ -13023,30 +13046,7 @@ svg {
   color: currentColor;
 }
 
-.bd-focus-item::before {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  background-color: #fafafa;
-  border-radius: 6px;
-  content: "";
-  display: block;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(1.1);
-  transform-origin: center;
-  transition-duration: 172ms;
-  transition-property: opacity, transform;
-}
-
-.bd-focus-item:hover::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.bd-focus-item:hover .subtitle {
+.bd-focus-item .subtitle .subtitle {
   color: #4a4a4a;
 }
 
@@ -13569,6 +13569,16 @@ svg {
 
 .bd-footer-donation {
   flex: none;
+}
+
+.bd-footer-donation-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bd-footer-donation-items .bd-footer-sponsor {
+  width: 12rem;
 }
 
 .bd-footer-sponsor a {
@@ -15539,12 +15549,13 @@ svg {
   justify-content: space-around;
   justify-content: center;
   margin: 0 auto;
-  max-width: 84rem;
+  max-width: 96rem;
 }
 
 .bd-partner-sponsor {
-  align-items: center;
+  align-items: stretch;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 0.25rem 1rem;
   min-height: 80px;
@@ -15556,6 +15567,23 @@ svg {
   font-size: 0.875em;
   line-height: 1.25;
   min-height: 0;
+}
+
+.bd-partner-sponsor.is-text .bd-sponsor-item {
+  display: inline;
+}
+
+.bd-partner-sponsor.is-text .bd-sponsor-item:before {
+  display: none;
+}
+
+.bd-sponsor-item {
+  flex-grow: 1;
+  position: relative;
+}
+
+.bd-sponsor-item img {
+  position: relative;
 }
 
 .bd-partnrs {

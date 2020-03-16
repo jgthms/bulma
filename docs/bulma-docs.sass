@@ -38,6 +38,24 @@ $sidebar-width: 10.5rem
   box-shadow: 0 1.5rem 1.5rem -1.25rem rgba($black, 0.05)
   display: block
 
+%link-before-background
+  &::before
+    +overlay
+    background-color: $scheme-main-bis
+    border-radius: $radius-large
+    content: ""
+    display: block
+    opacity: 0
+    pointer-events: none
+    transform: scale(1.1)
+    transform-origin: center
+    transition-duration: $speed * 2
+    transition-property: opacity, transform
+  &:hover
+    &::before
+      opacity: 1
+      transform: scale(1)
+
 =selection($current-selector: false)
   @if $current-selector
     &::-moz-selection
