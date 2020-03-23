@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Main Bulma package is going to support RTL in next release, so this fork is not maintained by me anymore.
+
 # Bulma-RTL
 
 Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and this repo keeps the RTL version of it.
