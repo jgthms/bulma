@@ -230,6 +230,9 @@ a.navbar-item,
   display: none
   height: $navbar-divider-height
   margin: 0.5rem 0
+.navbar.is-burger .navbar-menu
+  &.is-active
+    display: block!important
 
 +until($navbar-breakpoint)
   .navbar > .container
@@ -273,13 +276,13 @@ a.navbar-item,
       padding-bottom: $navbar-height
 
 +from($navbar-breakpoint)
-  .navbar,
-  .navbar-menu,
-  .navbar-start,
-  .navbar-end
+  .navbar:not(.is-burger),
+  .navbar:not(.is-burger) .navbar-menu,
+  .navbar:not(.is-burger) .navbar-start,
+  .navbar:not(.is-burger) .navbar-end
     align-items: stretch
     display: flex
-  .navbar
+  .navbar:not(.is-burger)
     min-height: $navbar-height
     &.is-spaced
       padding: $navbar-padding-vertical $navbar-padding-horizontal
@@ -312,13 +315,13 @@ a.navbar-item,
           &.is-active
             background-color: $navbar-dropdown-item-active-background-color
             color: $navbar-dropdown-item-active-color
-  .navbar-burger
+  .navbar:not(.is-burger) .navbar-burger
     display: none
-  .navbar-item,
-  .navbar-link
+  .navbar:not(.is-burger) .navbar-item,
+  .navbar:not(.is-burger) .navbar-link
     align-items: center
     display: flex
-  .navbar-item
+  .navbar:not(.is-burger) .navbar-item
     display: flex
     &.has-dropdown
       align-items: stretch
@@ -343,16 +346,16 @@ a.navbar-item,
           opacity: 1
           pointer-events: auto
           transform: translateY(0)
-  .navbar-menu
+  .navbar:not(.is-burger) .navbar-menu
     flex-grow: 1
     flex-shrink: 0
-  .navbar-start
+  .navbar:not(.is-burger) .navbar-start
     justify-content: flex-start
     margin-right: auto
-  .navbar-end
+  .navbar:not(.is-burger) .navbar-end
     justify-content: flex-end
     margin-left: auto
-  .navbar-dropdown
+  .navbar:not(.is-burger) .navbar-dropdown
     background-color: $navbar-dropdown-background-color
     border-bottom-left-radius: $navbar-dropdown-radius
     border-bottom-right-radius: $navbar-dropdown-radius
@@ -392,16 +395,16 @@ a.navbar-item,
     &.is-right
       left: auto
       right: 0
-  .navbar-divider
+  .navbar:not(.is-burger) .navbar-divider
     display: block
-  .navbar > .container,
-  .container > .navbar
+  .navbar:not(.is-burger) > .container,
+  .container > .navbar:not(.is-burger)
     .navbar-brand
       margin-left: -.75rem
     .navbar-menu
       margin-right: -.75rem
   // Fixed navbar
-  .navbar
+  .navbar:not(.is-burger)
     &.is-fixed-bottom-desktop,
     &.is-fixed-top-desktop
       +navbar-fixed
@@ -422,13 +425,13 @@ a.navbar-item,
     &.has-spaced-navbar-fixed-bottom
       padding-bottom: $navbar-height + ($navbar-padding-vertical * 2)
   // Hover/Active states
-  a.navbar-item,
-  .navbar-link
+  .navbar:not(.is-burger) a.navbar-item,
+  .navbar:not(.is-burger) .navbar-link
     &.is-active
       color: $navbar-item-active-color
     &.is-active:not(:focus):not(:hover)
       background-color: $navbar-item-active-background-color
-  .navbar-item.has-dropdown
+  .navbar:not(.is-burger) .navbar-item.has-dropdown
     &:focus,
     &:hover,
     &.is-active
