@@ -78,9 +78,9 @@ $tabs-toggle-link-active-color: $link-invert !default
       padding-left: 0.75em
   .icon
     &:first-child
-      margin-right: 0.5em
+      margin-inline-end: 0.5em
     &:last-child
-      margin-left: 0.5em
+      margin-inline-start: 0.5em
   // Alignment
   &.is-centered
     ul
@@ -92,7 +92,8 @@ $tabs-toggle-link-active-color: $link-invert !default
   &.is-boxed
     a
       border: 1px solid transparent
-      border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0
+      border-start-start-radius: $tabs-boxed-link-radius
+      border-start-end-radius: $tabs-boxed-link-radius
       &:hover
         background-color: $tabs-boxed-link-hover-background-color
         border-bottom-color: $tabs-boxed-link-hover-border-bottom-color
@@ -119,11 +120,13 @@ $tabs-toggle-link-active-color: $link-invert !default
         z-index: 2
     li
       & + li
-        margin-left: -#{$tabs-toggle-link-border-width}
+        margin-inline-start: -#{$tabs-toggle-link-border-width}
       &:first-child a
-        border-radius: $tabs-toggle-link-radius 0 0 $tabs-toggle-link-radius
+        border-start-start-radius: $tabs-toggle-link-radius
+        border-end-start-radius: $tabs-toggle-link-radius
       &:last-child a
-        border-radius: 0 $tabs-toggle-link-radius $tabs-toggle-link-radius 0
+        border-start-end-radius: $tabs-toggle-link-radius
+        border-end-end-radius: $tabs-toggle-link-radius
       &.is-active
         a
           background-color: $tabs-toggle-link-active-background-color
@@ -135,13 +138,13 @@ $tabs-toggle-link-active-color: $link-invert !default
     &.is-toggle-rounded
       li
         &:first-child a
-          border-bottom-left-radius: $radius-rounded
-          border-top-left-radius: $radius-rounded
-          padding-left: 1.25em
+          border-end-start-radius: $radius-rounded
+          border-start-start-radius: $radius-rounded
+          padding-inline-start: 1.25em
         &:last-child a
-          border-bottom-right-radius: $radius-rounded
-          border-top-right-radius: $radius-rounded
-          padding-right: 1.25em
+          border-end-end-radius: $radius-rounded
+          border-start-end-radius: $radius-rounded
+          padding-inline-end: 1.25em
   // Sizes
   &.is-small
     font-size: $size-small

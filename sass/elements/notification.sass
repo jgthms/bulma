@@ -1,13 +1,15 @@
 $notification-background-color: $background !default
 $notification-code-background-color: $scheme-main !default
 $notification-radius: $radius !default
-$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
+$notification-padding: 1.25rem 1.5rem !default
+$notification-padding-start: 2.5rem !default
 
 .notification
   @extend %block
   background-color: $notification-background-color
   border-radius: $notification-radius
   padding: $notification-padding
+  padding-inline-start: $notification-padding-start
   position: relative
   a:not(.button):not(.dropdown-item)
     color: currentColor
@@ -21,7 +23,7 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
     background: transparent
   & > .delete
     position: absolute
-    right: 0.5rem
+    +inset-inline-end(0.5rem)
     top: 0.5rem
   .title,
   .subtitle,
