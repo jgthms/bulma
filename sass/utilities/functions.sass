@@ -84,19 +84,18 @@
 
 @function findLightColor($color)
   @if type-of($color) == 'color'
-    $l: 96%
-    @if lightness($color) > 96%
-      $l: lightness($color)
-    @return change-color($color, $lightness: $l)
+    $target-l: max(lightness($color), 96%)
+    @return change-color($color, $lightness: $target-l)
   @return $background
 
 @function findDarkColor($color)
   @if type-of($color) == 'color'
-    $base-l: 29%
+    $min-l: 29%
+    $max-l: 48%
     $luminance: colorLuminance($color)
     $luminance-delta: (0.53 - $luminance)
-    $target-l: round($base-l + ($luminance-delta * 53))
-    @return change-color($color, $lightness: max($base-l, $target-l))
+    $target-l: round($min-l + ($luminance-delta * 53))
+    @return change-color($color, $lightness: max($min-l, min($max-l, $target-l)))
   @return $text-strong
 
 @function getCssVariable($color, $name)

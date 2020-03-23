@@ -100,26 +100,26 @@ $size-large: $size-4 !default
 $custom-colors: null !default
 $custom-shades: null !default
 
-$colors: mergeColorMaps(("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark, "white"), "link": ($link, $link-invert, $link-light, $link-dark, "white"), "info": ($info, $info-invert, $info-light, $info-dark, "white"), "success": ($success, $success-invert, $success-light, $success-dark, "white"), "warning": ($warning, $warning-invert, $warning-light, $warning-dark, "white"), "danger": ($danger, $danger-invert, $danger-light, $danger-dark, "white")), $custom-colors) !default
+$colors: mergeColorMaps(("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark, "white"), "link": ($link, $link-invert, $link-light, $link-dark, "white"), "info": ($info, $info-invert, $info-light, $info-dark, "white"), "success": ($success, $success-invert, $success-light, $success-dark, "white"), "warning": ($warning, $warning-invert, $warning-light, $warning-dark), "danger": ($danger, $danger-invert, $danger-light, $danger-dark, "white")), $custom-colors) !default
 $shades: mergeColorMaps(("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis), $custom-shades) !default
 
 $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default
 
-@function findLightColor($color)
-  @if type-of($color) == 'color'
-    $l: 96%
-    @if lightness($color) > 96%
-      $l: lightness($color)
-    @return change-color($color, $lightness: $l)
-  @return $background
+// @function findLightColor($color)
+//   @if type-of($color) == 'color'
+//     $l: 96%
+//     @if lightness($color) > 96%
+//       $l: lightness($color)
+//     @return change-color($color, $lightness: $l)
+//   @return $background
 
-@function findDarkColor($color)
-  @if type-of($color) == 'color'
-    $l: 29%
-    @if lightness($color) < 29%
-      $l: lightness($color)
-    @return change-color($color, $lightness: $l)
-  @return $text-strong
+// @function findDarkColor($color)
+//   @if type-of($color) == 'color'
+//     $l: 29%
+//     @if lightness($color) < 29%
+//       $l: lightness($color)
+//     @return change-color($color, $lightness: $l)
+//   @return $text-strong
 
 =css-variable($color, $name, $cssvar-invert)
   $hue: hue($color)
