@@ -46,6 +46,41 @@ $tag-delete-margin: 1px !default
         border-bottom-right-radius: 0
         border-top-right-radius: 0
 
+.vtags
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  &:not(:last-child)
+    margin-bottom: 1.5rem
+  .vtag
+    &:not(:last-child)
+      margin-right: 0.5rem
+
+.vtag
+  --background-color: #{$tag-background-color}
+  --color: #{$tag-color}
+  align-items: center
+  background-color: var(--background-color)
+  border-radius: $tag-radius
+  color: var(--color)
+  display: inline-flex
+  font-size: $size-small
+  height: 2em
+  justify-content: center
+  line-height: 1.5
+  padding-left: 0.75em
+  padding-right: 0.75em
+  white-space: nowrap
+  @each $name, $trio in $colors
+    $base: "#{$prefix}#{$name}"
+    &.is-#{$name}
+      --background-color: var(--#{$base})
+      --color: var(--#{$base}-invert)
+      &.is-light
+        --background-color: var(--#{$base}-light)
+        --color: var(--#{$base}-dark)
+
 .tag:not(body)
   align-items: center
   background-color: $tag-background-color

@@ -41,3 +41,23 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
         &.is-light
           background-color: $color-light
           color: $color-dark
+
+.vnotification
+  @extend %block
+  background-color: var(--background-color)
+  border-radius: $notification-radius
+  color: var(--color)
+  padding: $notification-padding
+  position: relative
+  & > .delete
+    position: absolute
+    right: 0.5rem
+    top: 0.5rem
+  @each $name, $trio in $colors
+    $base: "#{$prefix}#{$name}"
+    &.is-#{$name}
+      --background-color: var(--#{$base})
+      --color: var(--#{$base}-invert)
+      &.is-light
+        --background-color: var(--#{$base}-light)
+        --color: var(--#{$base}-dark)

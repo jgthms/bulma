@@ -1,4 +1,5 @@
 $button-color: $text-strong !default
+$button-color-invert: $white !default
 $button-background-color: $scheme-main !default
 $button-family: false !default
 
@@ -23,6 +24,12 @@ $button-text-color: $text !default
 $button-text-decoration: underline !default
 $button-text-hover-background-color: $background !default
 $button-text-hover-color: $text-strong !default
+$button-text-focus-background-color: $border-light !default
+$button-text-focus-border-color: $border !default
+$button-text-focus-color: $text-strong !default
+$button-text-focus-box-shadow-color: $border-light !default
+$button-text-active-background-color: $border-light !default
+$button-text-active-color: $text-strong !default
 
 $button-disabled-background-color: $scheme-main !default
 $button-disabled-border-color: $border !default
@@ -321,3 +328,206 @@ $button-static-border-color: $border !default
       .button:not(.is-fullwidth)
         margin-left: 0.25rem
         margin-right: 0.25rem
+
+.vbuttons
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  &:not(:last-child)
+    margin-bottom: 1rem
+  .vbutton
+    margin-right: 1em
+
+.vbutton
+  --background-color: #{$button-background-color}
+  --border-color: #{$button-border-color}
+  --color: #{$button-color}
+  --hover-border-color: #{$button-hover-border-color}
+  --hover-color: #{$button-hover-color}
+  --focus-border-color: #{$button-focus-border-color}
+  --focus-color: #{$button-focus-color}
+  --focus-box-shadow-color: #{$button-focus-box-shadow-color}
+  --active-border-color: #{$button-active-border-color}
+  --active-color: #{$button-active-color}
+  --outlined-color: #{$button-color}
+  --outlined-hover-background-color: #{$button-color}
+  --outlined-hover-color: #{$button-color-invert}
+  --outlined-active-background-color: #{darken($button-color, 5%)}
+  --outlined-active-color: #{$button-color-invert}
+  --outlined-focus-box-shadow-color: #{$border}
+  @extend %control
+  @extend %unselectable
+  background-color: var(--background-color)
+  border-color: var(--border-color)
+  border-width: $button-border-width
+  color: var(--color)
+  cursor: pointer
+  @if $button-family
+    font-family: $button-family
+  justify-content: center
+  padding-bottom: $button-padding-vertical
+  padding-left: $button-padding-horizontal
+  padding-right: $button-padding-horizontal
+  padding-top: $button-padding-vertical
+  text-align: center
+  white-space: nowrap
+  strong
+    color: inherit
+  .icon
+    &,
+    &.is-small,
+    &.is-medium,
+    &.is-large
+      height: 1.5em
+      width: 1.5em
+    &:first-child:not(:last-child)
+      margin-left: calc(-0.375em - #{$button-border-width})
+      margin-right: 0.1875em
+    &:last-child:not(:first-child)
+      margin-left: 0.1875em
+      margin-right: calc(-0.375em - #{$button-border-width})
+    &:first-child:last-child
+      margin-left: calc(-0.375em - #{$button-border-width})
+      margin-right: calc(-0.375em - #{$button-border-width})
+  &:hover,
+  &.is-hovered
+    background-color: var(--hover-background-color)
+    border-color: var(--hover-border-color)
+    color: var(--hover-color)
+  &:focus,
+  &.is-focused
+    border-color: var(--focus-border-color)
+    &:not(:active)
+      box-shadow: $button-focus-box-shadow-size #{var(--focus-box-shadow-color)}
+  &:active,
+  &.is-active
+    background-color: var(--active-background-color)
+    border-color: var(--active-border-color)
+    color: var(--active-color)
+  &.is-outlined
+    --background-color: transparent
+    --border-color: #{$button-color}
+    --color: #{$button-color}
+    --hover-background-color: #{$button-color}
+    --hover-color: #{$button-color-invert}
+    --active-background-color: #{darken($button-color, 5%)}
+    --active-color: #{$button-color-invert}
+    --focus-border-color: #{$button-color}
+    --focus-box-shadow-color: #{$border}
+    &:not(:hover):not(.is-hovered):not(:active):not(.is-active)
+      background-color: transparent
+    &:not(.is-inverted):not([disabled])
+      &:hover,
+      &.is-hovered,
+      &:active,
+      &.is-active
+        border-color: transparent
+  &.is-outlined.is-inverted
+    background-color: transparent
+  &.is-text
+    --background-color: transparent
+    --border-color: transparent
+    --color: #{$text}
+    --hover-background-color: #{$button-text-hover-background-color}
+    --hover-border-color: transparent
+    --hover-color: #{$button-text-hover-color}
+    --focus-background-color: #{$button-text-focus-background-color}
+    --focus-border-color: transparent
+    --focus-border-color: #{$button-text-focus-border-color}
+    --focus-color: #{$button-text-focus-color}
+    --focus-box-shadow-color: #{$button-text-focus-box-shadow-color}
+    --active-background-color: #{$button-text-active-background-color}
+    --active-border-color: transparent
+    --active-color: #{$button-text-active-color}
+    text-decoration: underline
+  @each $name, $trio in $colors
+    $base: "#{$prefix}#{$name}"
+    &.is-#{$name}
+      --background-color: var(--#{$base})
+      --border-color: transparent
+      --color: var(--#{$base}-invert)
+      --hover-background-color: var(--#{$base}-hover)
+      --hover-border-color: transparent
+      --hover-color: var(--#{$base}-invert)
+      --focus-background-color: var(--#{$base})
+      --focus-border-color: transparent
+      --focus-color: var(--#{$base}-invert)
+      --focus-box-shadow-color: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), 86%)
+      --active-background-color: var(--#{$base}-active)
+      --active-border-color: transparent
+      --active-color: var(--#{$base}-invert)
+      --outlined-color: var(--#{$base})
+      &.is-inverted
+        --background-color: var(--#{$base}-invert)
+        --color: var(--#{$base})
+        --hover-background-color: var(--#{$base}-invert)
+        --hover-color: var(--#{$base}-hover)
+        --active-background-color: var(--#{$base}-invert)
+        --active-color: var(--#{$base}-active)
+      &.is-outlined
+        --background-color: transparent
+        --border-color: var(--#{$base})
+        --color: var(--#{$base})
+        --hover-background-color: var(--#{$base})
+        --focus-border-color: var(--#{$base})
+      &.is-outlined.is-inverted
+        --background-color: transparent
+        --border-color: var(--#{$base}-invert)
+        --color: var(--#{$base}-invert)
+        --hover-border-color: var(--#{$base}-hover)
+        --hover-color: var(--#{$base}-invert)
+        --active-border-color: var(--#{$base}-active)
+        --active-color: var(--#{$base}-active)
+        --focus-box-shadow-color: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), 14%)
+      &.is-light
+        --background-color: var(--#{$base}-light)
+        --border-color: transparent
+        --color: var(--#{$base}-dark)
+        --hover-background-color: var(--#{$base}-light-hover)
+        --hover-border-color: transparent
+        --hover-color: var(--#{$base}-dark)
+        --focus-background-color: var(--#{$base}-light)
+        --focus-border-color: transparent
+        --focus-color: var(--#{$base}-dark)
+        --focus-box-shadow-color: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), 86%)
+        --active-background-color: var(--#{$base}-light-active)
+        --active-border-color: transparent
+        --active-color: var(--#{$base}-dark)
+  // Sizes
+  &.is-small
+    +button-small
+  &.is-normal
+    +button-normal
+  &.is-medium
+    +button-medium
+  &.is-large
+    +button-large
+  // Modifiers
+  &[disabled],
+  fieldset[disabled] &
+    --hover-background-color: var(--background-color) !important
+    --hover-border-color: var(--border-color) !important
+    --hover-color: var(--color) !important
+    opacity: $button-disabled-opacity
+  &.is-fullwidth
+    display: flex
+    width: 100%
+  &.is-loading
+    color: transparent !important
+    pointer-events: none
+    &::after
+      @extend %loader
+      +center(1em)
+      border-color: transparent transparent var(--color) var(--color) !important
+      position: absolute !important
+  &.is-static
+    --background-color: #{$button-static-background-color}
+    --border-color: #{$button-static-border-color}
+    --color: #{$button-static-color}
+    box-shadow: none
+    pointer-events: none
+  &.is-rounded
+    border-radius: $radius-rounded
+    padding-left: 1.25em
+    padding-right: 1.25em

@@ -97,3 +97,58 @@ $message-colors: $colors !default
     background-color: $message-body-pre-background-color
   pre code
     background-color: $message-body-pre-code-background-color
+
+.vmessage-header
+  @extend .message-header
+  background-color: var(--header-background-color)
+  border-top-left-radius: $message-radius
+  border-top-right-radius: $message-radius
+  color: var(--header-color)
+  &:hover
+    background-color: var(--header-background-color-hover)
+  &:active
+    background-color: var(--header-background-color-active)
+  & + .vmessage-body
+    border-width: $message-header-body-border-width
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+
+.vmessage-body
+  @extend .message-body
+  border-color: var(--body-border-color)
+  color: var(--body-color)
+  &:hover
+    background-color: var(--background-color-hover)
+    color: var(--body-color-hover)
+  &:active
+    background-color: var(--background-color-active)
+    color: var(--body-color-active)
+
+.vmessage
+  --background-color: #{$message-background-color}
+  --header-background-color: #{$message-header-background-color}
+  --header-color: #{$message-header-color}
+  --body-border-color: #{$message-body-border-color}
+  --body-color: #{$message-body-color}
+  background-color: var(--background-color)
+  border-radius: $message-radius
+  margin-bottom: 1.5rem
+  strong
+    color: currentColor
+  a:not(.button):not(.tag):not(.dropdown-item)
+    color: currentColor
+    text-decoration: underline
+  @each $name, $trio in $colors
+    $base: "#{$prefix}#{$name}"
+    &.is-#{$name}
+      --background-color: var(--#{$base}-light)
+      --background-color-hover: var(--#{$base}-light-hover)
+      --background-color-active: var(--#{$base}-light-active)
+      --header-background-color: var(--#{$base})
+      --header-background-color-hover: var(--#{$base}-hover)
+      --header-background-color-active: var(--#{$base}-active)
+      --header-color: var(--#{$base}-invert)
+      --body-border-color: var(--#{$base})
+      --body-color: var(--#{$base}-dark)
+      --body-color-hover: var(--#{$base}-dark-hover)
+      --body-color-active: var(--#{$base}-dark-active)

@@ -104,3 +104,55 @@ $colors: mergeColorMaps(("white": ($white, $black), "black": ($black, $white), "
 $shades: mergeColorMaps(("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis), $custom-shades) !default
 
 $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default
+
+@function getLightness($color)
+  $min: 96%
+  @if type-of($color) == 'color'
+    @return max($min, lightness($color))
+  @return $min
+
+@function getDarkness($color)
+  $min: 29%
+  @if type-of($color) == 'color'
+    $luminance: colorLuminance($color)
+    $luminance-delta: (0.53 - $luminance)
+    $target: round($min + ($luminance-delta * 53))
+    @return max($min, $target)
+  @return $max
+
+=css-variable($color, $name, $cssvar-invert)
+  $hue: hue($color)
+  $saturation: saturation($color)
+  $lightness: lightness($color)
+  $base: "#{$prefix}#{$name}"
+
+  --#{$base}-h: #{$hue}
+  --#{$base}-s: #{$saturation}
+  --#{$base}-l: #{$lightness}
+  --#{$base}: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l)))
+  --#{$base}-hover: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l) - 5%))
+  --#{$base}-active: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), calc(var(--#{$base}-l) - 10%))
+
+  $l: getLightness($color)
+  --#{$base}-light: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), #{$l})
+  --#{$base}-light-hover: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), #{$l - 2%})
+  --#{$base}-light-active: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), #{$l - 4%})
+
+  $d: getDarkness($color)
+  --#{$base}-dark: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), #{$d})
+  --#{$base}-dark-hover: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), #{$d - 5%})
+  --#{$base}-dark-active: hsl(var(--#{$base}-h), calc(var(--#{$base}-s)), #{$d - 10%})
+
+  @if $cssvar-invert
+    --#{$base}-invert: var(--#{$prefix}#{$cssvar-invert})
+  @else
+    --#{$base}-invert: #{findColorInvert($color)}
+
+\:root
+  @each $name, $components in $colors
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    $cssvar-invert: false
+    @if length($components) >= 5
+      $cssvar-invert: nth($components, 5)
+    +css-variable($color, $name, $cssvar-invert)
