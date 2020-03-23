@@ -17,7 +17,7 @@ build_sass()
 	  local name="${fileName%.*}"
 		local destFile="$CSS_DIR/$name.css"
 
-		sass "$1" "${destFile}" ${SASS_OPTIONS}
+		sass "$1" "${destFile}"
 }
 
 run_it()
