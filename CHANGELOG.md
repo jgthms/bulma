@@ -1,6 +1,12 @@
 # Bulma Changelog
 
-## Next release
+## 0.8.2
+
+### Bug fixes
+
+* Fix #2885 -> Revert `$input-color: $text-strong`
+
+## 0.8.1
 
 ### Improvements
 
