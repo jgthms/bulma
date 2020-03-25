@@ -29,16 +29,11 @@ npm install bulma
 yarn add bulma
 ```
 
-### Bower
-
-```sh
-bower install bulma
-```
 
 ### Import
 After installation, you can import the CSS file into your project using this snippet:
 
-```sh
+```javascript
 import 'bulma/css/bulma.css'
 ```
 
