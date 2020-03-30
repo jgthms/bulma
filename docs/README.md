@@ -14,8 +14,8 @@ To view the documentation on your system locally:
 ### Setup
 
 1. `cd` into `docs/` directory
-1. Copy the config file, `cp _config.yml _config.local.yml`
-1. Edit `_config.local.yml` and change the `url:` value to `http://localhost:4000`. This local config file will be ignored by git.
+2. Copy the config file, `cp _config.yml _config.local.yml`
+3. Edit `_config.local.yml` and change the `url:` value to `http://localhost:4000`. This local config file will be ignored by git.
 
 ### Run Jekyll
 
