@@ -1,6 +1,19 @@
 # Bulma Changelog
 
+## 0.8.2
+
+### Bug fixes
+
+* Fix #2885 -> Revert `$input-color: $text-strong`
+
 ## 0.8.1
+
+### Improvements
+
+* #2709 Add light colors to the `notification` element
+* #2740 Fixes #2739 -> Add variables size for layout `hero`
+* Fix #2741 -> Create `bulmaRgba()` function to support `inherit` value
+* #2756 Add `$button-text-decoration` variable 
 
 ### Bug fixes
 

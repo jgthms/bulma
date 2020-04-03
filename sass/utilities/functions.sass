@@ -62,6 +62,8 @@
   @return $value
 
 @function colorLuminance($color)
+  @if type-of($color) != 'color'
+    @return 0.55
   $color-rgb: ('red': red($color),'green': green($color),'blue': blue($color))
   @each $name, $value in $color-rgb
     $adjusted: 0
@@ -96,3 +98,13 @@
     $target-l: round($base-l + ($luminance-delta * 53))
     @return change-color($color, $lightness: max($base-l, $target-l))
   @return $text-strong
+
+@function bulmaRgba($color, $alpha)
+  @if type-of($color) != 'color'
+    @return $color
+  @return rgba($color, $alpha)
+
+@function bulmaDarken($color, $amount)
+  @if type-of($color) != 'color'
+    @return $color
+  @return darken($color, $amount)

@@ -1,5 +1,9 @@
-// Main container
+$hero-body-padding: 3rem 1.5rem !default
+$hero-body-padding-small: 1.5rem !default
+$hero-body-padding-medium: 9rem 1.5rem !default
+$hero-body-padding-large: 18rem 1.5rem !default
 
+// Main container
 .hero
   align-items: stretch
   display: flex
@@ -23,7 +27,7 @@
       .title
         color: $color-invert
       .subtitle
-        color: rgba($color-invert, 0.9)
+        color: bulmaRgba($color-invert, 0.9)
         a:not(.button),
         strong
           color: $color-invert
@@ -32,12 +36,12 @@
           background-color: $color
       .navbar-item,
       .navbar-link
-        color: rgba($color-invert, 0.7)
+        color: bulmaRgba($color-invert, 0.7)
       a.navbar-item,
       .navbar-link
         &:hover,
         &.is-active
-          background-color: darken($color, 5%)
+          background-color: bulmaDarken($color, 5%)
           color: $color-invert
       .tabs
         a
@@ -53,7 +57,7 @@
           a
             color: $color-invert
             &:hover
-              background-color: rgba($scheme-invert, 0.1)
+              background-color: bulmaRgba($scheme-invert, 0.1)
           li.is-active a
             &,
             &:hover
@@ -61,28 +65,26 @@
               border-color: $color-invert
               color: $color
       // Modifiers
-      &.is-bold
-        $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
-        $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
-        background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
-        +mobile
-          .navbar-menu
-            background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+      @if type-of($color) == 'color'
+        &.is-bold
+          $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
+          $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
+          background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+          +mobile
+            .navbar-menu
+              background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
   // Sizes
   &.is-small
     .hero-body
-      padding-bottom: 1.5rem
-      padding-top: 1.5rem
+      padding: $hero-body-padding-small
   &.is-medium
     +tablet
       .hero-body
-        padding-bottom: 9rem
-        padding-top: 9rem
+        padding: $hero-body-padding-medium
   &.is-large
     +tablet
       .hero-body
-        padding-bottom: 18rem
-        padding-top: 18rem
+        padding: $hero-body-padding-large
   &.is-halfheight,
   &.is-fullheight,
   &.is-fullheight-with-navbar
@@ -140,4 +142,4 @@
 .hero-body
   flex-grow: 1
   flex-shrink: 0
-  padding: 3rem 1.5rem
+  padding: $hero-body-padding
