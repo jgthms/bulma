@@ -31,11 +31,13 @@
     "clean-css-cli": "^4.3.0",
     "node-sass": "^4.13.1",
     "postcss-cli": "^7.1.0",
+    "postcss-prefixer": "^2.1.2",
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-addprefix && npm run build-cleancss",
     "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
+    "build-addprefix": "postcss --output css/bulma.css css/bulma.css",
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
     "build-clean": "rimraf css",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
