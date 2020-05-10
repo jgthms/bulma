@@ -1,0 +1,16 @@
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  .has-text-#{$name}
+    color: $color !important
+  a.has-text-#{$name}
+    &:hover,
+    &:focus
+      color: bulmaDarken($color, 10%) !important
+  .has-background-#{$name}
+    background-color: $color !important
+
+@each $name, $shade in $shades
+  .has-text-#{$name}
+    color: $shade !important
+  .has-background-#{$name}
+    background-color: $shade !important

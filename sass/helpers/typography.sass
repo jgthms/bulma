@@ -1,0 +1,98 @@
+=typography-size($target:'')
+  @each $size in $sizes
+    $i: index($sizes, $size)
+    .is-size-#{$i}#{if($target == '', '', '-' + $target)}
+      font-size: $size !important
+
++typography-size()
+
++mobile
+  +typography-size('mobile')
+
++tablet
+  +typography-size('tablet')
+
++touch
+  +typography-size('touch')
+
++desktop
+  +typography-size('desktop')
+
++widescreen
+  +typography-size('widescreen')
+
++fullhd
+  +typography-size('fullhd')
+
+$alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'right': 'right')
+
+@each $alignment, $text-align in $alignments
+  .has-text-#{$alignment}
+    text-align: #{$text-align} !important
+
+@each $alignment, $text-align in $alignments
+  +mobile
+    .has-text-#{$alignment}-mobile
+      text-align: #{$text-align} !important
+  +tablet
+    .has-text-#{$alignment}-tablet
+      text-align: #{$text-align} !important
+  +tablet-only
+    .has-text-#{$alignment}-tablet-only
+      text-align: #{$text-align} !important
+  +touch
+    .has-text-#{$alignment}-touch
+      text-align: #{$text-align} !important
+  +desktop
+    .has-text-#{$alignment}-desktop
+      text-align: #{$text-align} !important
+  +desktop-only
+    .has-text-#{$alignment}-desktop-only
+      text-align: #{$text-align} !important
+  +widescreen
+    .has-text-#{$alignment}-widescreen
+      text-align: #{$text-align} !important
+  +widescreen-only
+    .has-text-#{$alignment}-widescreen-only
+      text-align: #{$text-align} !important
+  +fullhd
+    .has-text-#{$alignment}-fullhd
+      text-align: #{$text-align} !important
+
+.is-capitalized
+  text-transform: capitalize !important
+
+.is-lowercase
+  text-transform: lowercase !important
+
+.is-uppercase
+  text-transform: uppercase !important
+
+.is-italic
+  font-style: italic !important
+
+.has-text-weight-light
+  font-weight: $weight-light !important
+.has-text-weight-normal
+  font-weight: $weight-normal !important
+.has-text-weight-medium
+  font-weight: $weight-medium !important
+.has-text-weight-semibold
+  font-weight: $weight-semibold !important
+.has-text-weight-bold
+  font-weight: $weight-bold !important
+
+.is-family-primary
+  font-family: $family-primary !important
+
+.is-family-secondary
+  font-family: $family-secondary !important
+
+.is-family-sans-serif
+  font-family: $family-sans-serif !important
+
+.is-family-monospace
+  font-family: $family-monospace !important
+
+.is-family-code
+  font-family: $family-code !important
