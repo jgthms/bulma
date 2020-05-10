@@ -260,8 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Functions
 
-  function getAll(selector) {
-    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+  function getAll(selector, parent = document) {
+    return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
   }
 
   // Scrolling
@@ -343,6 +343,46 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.nav_el.className = '';
       });
     }
+  }
+
+  // Spacing table
+
+  const spacingEl = document.getElementById('spacingTable');
+  const spacingRows = getAll('tbody tr', spacingEl);
+  const spacingCells = getAll('tbody td', spacingEl);
+  const spacingValues = getAll('tfoot th', spacingEl);
+
+  spacingEl.addEventListener('mouseleave', () => {
+    resetTable();
+  });
+
+  spacingCells.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      resetTable();
+      const row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
+      const column = Array.prototype.indexOf.call(el.parentNode.children, el);
+      highlightRowAndColumn(row, column);
+    });
+  });
+
+  function resetTable() {
+    spacingRows.forEach(el => el.classList.remove('bd-current-row'));
+    spacingCells.forEach(el => el.classList.remove('bd-current-column'));
+    spacingValues.forEach(el => el.classList.remove('bd-current-value'));
+  }
+
+  function highlightRowAndColumn(rowIndex, columnIndex) {
+    const row = spacingRows[rowIndex];
+    row.classList.add('bd-current-row');
+
+    spacingRows.forEach(r => {
+      r.children[columnIndex].classList.add('bd-current-column');
+    });
+
+    if (columnIndex < 2) {
+      return;
+    }
+    spacingValues[columnIndex - 1].classList.add('bd-current-value');
   }
 
   // Scroll
