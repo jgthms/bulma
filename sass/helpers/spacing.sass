@@ -11,18 +11,18 @@ $spacing-vertical: "y" !default
 $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem) !default
 
 @each $property, $shortcut in $spacing-shortcuts
-  @each $direction, $suffix in $spacing-directions
-    @each $name, $value in $spacing-values
-      // Cardinal directions
+  @each $name, $value in $spacing-values
+    // Cardinal directions
+    @each $direction, $suffix in $spacing-directions
       .#{$shortcut}#{$suffix}-#{$name}
         #{$property}-#{$direction}: $value !important
-      // Horizontal axis
-      @if $spacing-horizontal != null
-        .#{$shortcut}#{$spacing-horizontal}-#{$name}
-          #{$property}-left: $value !important
-          #{$property}-right: $value !important
-      // Vertical axis
-      @if $spacing-vertical != null
-        .#{$shortcut}#{$spacing-vertical}-#{$name}
-          #{$property}-top: $value !important
-          #{$property}-bottom: $value !important
+    // Horizontal axis
+    @if $spacing-horizontal != null
+      .#{$shortcut}#{$spacing-horizontal}-#{$name}
+        #{$property}-left: $value !important
+        #{$property}-right: $value !important
+    // Vertical axis
+    @if $spacing-vertical != null
+      .#{$shortcut}#{$spacing-vertical}-#{$name}
+        #{$property}-top: $value !important
+        #{$property}-bottom: $value !important

@@ -263,7 +263,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Functions
 
   function getAll(selector) {
-    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+    var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
+    return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
   }
 
   // Scrolling
@@ -345,6 +347,52 @@ document.addEventListener('DOMContentLoaded', function () {
         anchor.nav_el.className = '';
       });
     }
+  }
+
+  // Spacing table
+
+  var spacingEl = document.getElementById('spacingTable');
+  var spacingRows = getAll('tbody tr', spacingEl);
+  var spacingCells = getAll('tbody td', spacingEl);
+  var spacingValues = getAll('tfoot th', spacingEl);
+
+  spacingEl.addEventListener('mouseleave', function () {
+    resetTable();
+  });
+
+  spacingCells.forEach(function (el) {
+    el.addEventListener('mouseenter', function () {
+      resetTable();
+      var row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
+      var column = Array.prototype.indexOf.call(el.parentNode.children, el);
+      highlightRowAndColumn(row, column);
+    });
+  });
+
+  function resetTable() {
+    spacingRows.forEach(function (el) {
+      return el.classList.remove('bd-current-row');
+    });
+    spacingCells.forEach(function (el) {
+      return el.classList.remove('bd-current-column');
+    });
+    spacingValues.forEach(function (el) {
+      return el.classList.remove('bd-current-value');
+    });
+  }
+
+  function highlightRowAndColumn(rowIndex, columnIndex) {
+    var row = spacingRows[rowIndex];
+    row.classList.add('bd-current-row');
+
+    spacingRows.forEach(function (r) {
+      r.children[columnIndex].classList.add('bd-current-column');
+    });
+
+    if (columnIndex < 2) {
+      return;
+    }
+    spacingValues[columnIndex - 1].classList.add('bd-current-value');
   }
 
   // Scroll
