@@ -370,11 +370,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   function resetTable() {
-    spacingRows.forEach(function (el) {
-      return el.classList.remove('bd-current-row');
-    });
+    // spacingRows.forEach(el => el.classList.remove('bd-current-row'));
     spacingCells.forEach(function (el) {
-      return el.classList.remove('bd-current-column');
+      return el.classList.remove('bd-current-row', 'bd-current-column');
     });
     spacingValues.forEach(function (el) {
       return el.classList.remove('bd-current-value');
@@ -383,9 +381,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function highlightRowAndColumn(rowIndex, columnIndex) {
     var row = spacingRows[rowIndex];
-    row.classList.add('bd-current-row');
+    var i = columnIndex;
 
-    spacingRows.forEach(function (r) {
+    while (i > -1) {
+      row.children[i].classList.add('bd-current-row');
+      i--;
+    }
+
+    var nextRows = spacingRows.slice(rowIndex);
+    nextRows.forEach(function (r) {
       r.children[columnIndex].classList.add('bd-current-column');
     });
 

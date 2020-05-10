@@ -366,16 +366,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function resetTable() {
-    spacingRows.forEach(el => el.classList.remove('bd-current-row'));
-    spacingCells.forEach(el => el.classList.remove('bd-current-column'));
+    // spacingRows.forEach(el => el.classList.remove('bd-current-row'));
+    spacingCells.forEach(el => el.classList.remove('bd-current-row', 'bd-current-column'));
     spacingValues.forEach(el => el.classList.remove('bd-current-value'));
   }
 
   function highlightRowAndColumn(rowIndex, columnIndex) {
     const row = spacingRows[rowIndex];
-    row.classList.add('bd-current-row');
+    let i = columnIndex;
 
-    spacingRows.forEach(r => {
+    while (i > -1) {
+      row.children[i].classList.add('bd-current-row');
+      i--;
+    }
+
+    const nextRows = spacingRows.slice(rowIndex);
+    nextRows.forEach(r => {
       r.children[columnIndex].classList.add('bd-current-column');
     });
 
