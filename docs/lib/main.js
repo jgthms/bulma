@@ -351,36 +351,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Spacing table
 
-  var spacingEl = document.getElementById('spacingTable');
-  var spacingRows = getAll('tbody tr', spacingEl);
-  var spacingCells = getAll('tbody td', spacingEl);
-  var spacingValues = getAll('tfoot th', spacingEl);
+  var spacingTables = getAll('.bd-spacing-table');
 
-  spacingEl.addEventListener('mouseleave', function () {
-    resetTable();
-  });
+  spacingTables.forEach(function (spacingEl) {
+    var spacingRows = getAll('tbody tr', spacingEl);
+    var spacingCells = getAll('tbody td', spacingEl);
+    var spacingValues = getAll('tfoot th', spacingEl);
 
-  spacingCells.forEach(function (el) {
-    el.addEventListener('mouseenter', function () {
-      resetTable();
-      var row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
-      var column = Array.prototype.indexOf.call(el.parentNode.children, el);
-      highlightRowAndColumn(row, column);
+    spacingEl.addEventListener('mouseleave', function () {
+      resetTable(spacingCells, spacingValues);
+    });
+
+    spacingCells.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        resetTable(spacingCells, spacingValues);
+        var row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
+        var column = Array.prototype.indexOf.call(el.parentNode.children, el);
+        highlightRowAndColumn(row, column, spacingRows, spacingValues);
+      });
     });
   });
 
-  function resetTable() {
-    // spacingRows.forEach(el => el.classList.remove('bd-current-row'));
-    spacingCells.forEach(function (el) {
+  function resetTable(cells, values) {
+    cells.forEach(function (el) {
       return el.classList.remove('bd-current-row', 'bd-current-column');
     });
-    spacingValues.forEach(function (el) {
+    values.forEach(function (el) {
       return el.classList.remove('bd-current-value');
     });
   }
 
-  function highlightRowAndColumn(rowIndex, columnIndex) {
-    var row = spacingRows[rowIndex];
+  function highlightRowAndColumn(rowIndex, columnIndex, rows, values) {
+    var row = rows[rowIndex];
     var i = columnIndex;
 
     while (i > -1) {
@@ -388,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
       i--;
     }
 
-    var nextRows = spacingRows.slice(rowIndex);
+    var nextRows = rows.slice(rowIndex);
     nextRows.forEach(function (r) {
       r.children[columnIndex].classList.add('bd-current-column');
     });
@@ -396,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (columnIndex < 2) {
       return;
     }
-    spacingValues[columnIndex - 1].classList.add('bd-current-value');
+    values[columnIndex - 1].classList.add('bd-current-value');
   }
 
   // Scroll
