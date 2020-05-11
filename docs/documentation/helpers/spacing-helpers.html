@@ -26,6 +26,13 @@ values:
   4: 1rem
   5: 1.5rem
   6: 3rem
+customShortcuts:
+  margin: mg
+customHorizontal: h
+customValues:
+  small: 10px
+  medium: 30px
+  large: 60px
 ---
 
 {% include elements/new-tag.html version="0.9.0" %}
@@ -87,55 +94,67 @@ values:
 
 {% include elements/anchor.html name="List of all spacing helpers" %}
 
-<table id="spacingTable" class="table is-bordered">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Shortcut</th>
-      <th colspan="7">Classes ↓</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th colspan="2">Values →</th>
-      {% for value in page.values %}
-        <th><code>{{ value[1] }}</code></th>
-      {% endfor %}
-    </tr>
-  </tfoot>
-  <tbody>
-    {% for shortcut in page.shortcuts %}
-      {% for direction in page.directions %}
-        <tr>
-          <td><code>{{ shortcut[0] }}-{{ direction[0] }}</code></td>
-          <td><code>{{ shortcut[1] }}{{ direction[1] }}</code></td>
-          {% for value in page.values %}
-            <td><code>{{ shortcut[1] }}{{ direction[1] }}-{{ value[0] }}</code></td>
-          {% endfor %}
-        </tr>
-      {% endfor %}
+<p>
+  There are <strong>84 spacing helpers</strong> to choose from:
+</p>
 
-      <tr>
-        <td>
-          <code>{{ shortcut[0] }}-left</code> <small>and</small> <br>
-          <code>{{ shortcut[0] }}-right</code>
-        </td>
-        <td><code>{{ shortcut[1] }}{{ page.horizontal }}</code></td>
-        {% for value in page.values %}
-          <td><code>{{ shortcut[1] }}{{ page.horizontal }}-{{ value[0] }}</code></td>
-        {% endfor %}
-      </tr>
+{% include
+  components/spacing-table.html
+  values=page.values
+  shortcuts=page.shortcuts
+  directions=page.directions
+  horizontal=page.horizontal
+  vertical=page.vertical
+%}
 
-      <tr>
-        <td>
-          <code>{{ shortcut[0] }}-top</code> <small>and</small> <br>
-          <code>{{ shortcut[0] }}-bottom</code>
-        </td>
-        <td><code>{{ shortcut[1] }}{{ page.vertical }}</code></td>
-        {% for value in page.values %}
-          <td><code>{{ shortcut[1] }}{{ page.vertical }}-{{ value[0] }}</code></td>
-        {% endfor %}
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+{% include elements/anchor.html name="Configuration" %}
+
+{% capture custom %}
+$spacing-shortcuts: ("margin": "mg");
+$spacing-horizontal: "h";
+$spacing-vertical: null;
+$spacing-values: ("small": 10px, "medium": 30px, "large": 60px);
+{% endcapture %}
+
+<div class="content">
+  <p>
+    Because every developer has their own preferences, and to satisfy Bulma's customization features, it's possible to specify your own <strong>class name shortcuts</strong> as well as the <strong>spacing values</strong>.
+  </p>
+  <p>
+    For example, if you wanted:
+  </p>
+  <ul>
+    <li>
+      <strong>margin</strong> to be abbreviated to <code>mg</code>
+    </li>
+    <li>
+      <strong>padding</strong> to be totally <strong class="has-text-danger">excluded</strong>
+    </li>
+    <li>
+      <strong>horizontal</strong> to be abbreviated to <code>h</code> as shortcut
+    </li>
+    <li>
+      <strong>vertical</strong> to be ommited
+    </li>
+    <li>
+      to only have 3 values: <strong>"small"</strong> at <code>10px</code>, <strong>"medium"</strong> at <code>30px</code>, and <strong>"large"</strong> at <code>60px</code>
+    </li>
+  </ul>
+  <p>
+    You can simplify the CSS output by customizing these <strong>SCSS variables</strong>:
+  </p>
+</div>
+
+{% highlight scss %}{{ custom }}{% endhighlight %}
+
+{% include
+  components/spacing-table.html
+  values=page.customValues
+  shortcuts=page.customShortcuts
+  directions=page.directions
+  horizontal=page.customHorizontal
+%}
+
+<p>
+  By customizing the output, you've narrowed down the list of spacing helpers from 84 to only <strong>15</strong>.
+</p>
