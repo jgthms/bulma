@@ -11,7 +11,7 @@ $tag-delete-margin: 1px !default
   .tag
     margin-bottom: 0.5rem
     &:not(:last-child)
-      margin-right: 0.5rem
+      +ltr-property("margin", 0.5rem)
   &:last-child
     margin-bottom: -0.5rem
   &:not(:last-child)
@@ -37,14 +37,22 @@ $tag-delete-margin: 1px !default
         margin-right: 0
   &.has-addons
     .tag
-      margin-right: 0
+      +ltr-property("margin", 0)
       &:not(:first-child)
-        margin-left: 0
-        border-bottom-left-radius: 0
-        border-top-left-radius: 0
+        +ltr-property("margin", 0, false)
+        +ltr
+          border-top-left-radius: 0
+          border-bottom-left-radius: 0
+        +rtl
+          border-top-right-radius: 0
+          border-bottom-right-radius: 0
       &:not(:last-child)
-        border-bottom-right-radius: 0
-        border-top-right-radius: 0
+        +ltr
+          border-top-right-radius: 0
+          border-bottom-right-radius: 0
+        +rtl
+          border-top-left-radius: 0
+          border-bottom-left-radius: 0
 
 .tag:not(body)
   align-items: center
@@ -60,8 +68,8 @@ $tag-delete-margin: 1px !default
   padding-right: 0.75em
   white-space: nowrap
   .delete
-    margin-left: 0.25rem
-    margin-right: -0.375rem
+    +ltr-property("margin", 0.25rem, false)
+    +ltr-property("margin", -0.375rem)
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -85,17 +93,17 @@ $tag-delete-margin: 1px !default
     font-size: $size-medium
   .icon
     &:first-child:not(:last-child)
-      margin-left: -0.375em
-      margin-right: 0.1875em
+      +ltr-property("margin", -0.375em, false)
+      +ltr-property("margin", 0.1875em)
     &:last-child:not(:first-child)
-      margin-left: 0.1875em
-      margin-right: -0.375em
+      +ltr-property("margin", 0.1875em, false)
+      +ltr-property("margin", -0.375em)
     &:first-child:last-child
-      margin-left: -0.375em
-      margin-right: -0.375em
+      +ltr-property("margin", -0.375em, false)
+      +ltr-property("margin", -0.375em)
   // Modifiers
   &.is-delete
-    margin-left: $tag-delete-margin
+    +ltr-property("margin", $tag-delete-margin, false)
     padding: 0
     position: relative
     width: 2em
