@@ -1,6 +1,6 @@
 {
   "name": "bulma",
-  "version": "0.8.0",
+  "version": "0.8.2",
   "homepage": "https://bulma.io",
   "author": {
     "name": "Jeremy Thomas",
@@ -27,30 +27,25 @@
     "url": "https://github.com/jgthms/bulma/issues"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.4",
+    "autoprefixer": "^9.8.0",
     "clean-css-cli": "^4.3.0",
-    "node-sass": "^4.13.1",
-    "postcss-cli": "^7.1.0",
+    "node-sass": "^4.14.1",
+    "postcss-cli": "^7.1.1",
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "build": "npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
     "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
+    "build-clean": "rimraf css",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
-    "clean": "rimraf css",
-    "rtl": "npm run rtl-sass && npm run rtl-autoprefix && npm run rtl-cleancss",
-    "rtl-sass": "node-sass --output-style expanded --source-map true bulma-rtl.sass css/bulma-rtl.css",
-    "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css",
-    "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
-    "deploy": "npm run clean && npm run build && npm run rtl",
+    "deploy": "npm run build",
     "start": "npm run build-sass -- --watch"
   },
   "files": [
     "css",
     "sass",
     "bulma.sass",
-    "bulma-rtl.sass",
     "LICENSE",
     "README.md"
   ]

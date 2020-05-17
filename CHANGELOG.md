@@ -1,6 +1,22 @@
 # Bulma Changelog
 
-## Next release
+## 0.9.0
+
+### Improvements
+
+* #2925 Center table cell content vertically with `is-vcentered`
+
+### Bug fixes
+
+* #2955 Fix issue when there's only one `is-toggle` tag
+
+## 0.8.2
+
+### Bug fixes
+
+* Fix #2885 -> Revert `$input-color: $text-strong`
+
+## 0.8.1
 
 ### Improvements
 

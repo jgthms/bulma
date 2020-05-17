@@ -41,7 +41,7 @@ $hero-body-padding-large: 18rem 1.5rem !default
       .navbar-link
         &:hover,
         &.is-active
-          background-color: darken($color, 5%)
+          background-color: bulmaDarken($color, 5%)
           color: $color-invert
       .tabs
         a
@@ -65,13 +65,14 @@ $hero-body-padding-large: 18rem 1.5rem !default
               border-color: $color-invert
               color: $color
       // Modifiers
-      &.is-bold
-        $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
-        $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
-        background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
-        +mobile
-          .navbar-menu
-            background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+      @if type-of($color) == 'color'
+        &.is-bold
+          $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
+          $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
+          background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+          +mobile
+            .navbar-menu
+              background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
   // Sizes
   &.is-small
     .hero-body

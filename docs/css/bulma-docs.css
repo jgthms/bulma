@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.8.2 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
     transform: rotate(0deg);
@@ -3829,6 +3829,11 @@ fieldset[disabled] .button {
   color: currentColor;
 }
 
+.table td.is-vcentered,
+.table th.is-vcentered {
+  vertical-align: middle;
+}
+
 .table th {
   color: #363636;
 }
@@ -4320,23 +4325,23 @@ a.tag:hover {
   background-color: white;
   border-color: #dbdbdb;
   border-radius: 4px;
-  color: inherit;
+  color: #363636;
 }
 
 .input::-moz-placeholder, .textarea::-moz-placeholder, .select select::-moz-placeholder {
-  color: inherit;
+  color: rgba(54, 54, 54, 0.3);
 }
 
 .input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder, .select select::-webkit-input-placeholder {
-  color: inherit;
+  color: rgba(54, 54, 54, 0.3);
 }
 
 .input:-moz-placeholder, .textarea:-moz-placeholder, .select select:-moz-placeholder {
-  color: inherit;
+  color: rgba(54, 54, 54, 0.3);
 }
 
 .input:-ms-input-placeholder, .textarea:-ms-input-placeholder, .select select:-ms-input-placeholder {
-  color: inherit;
+  color: rgba(54, 54, 54, 0.3);
 }
 
 .input:hover, .textarea:hover, .select select:hover, .is-hovered.input, .is-hovered.textarea, .select select.is-hovered {
@@ -7188,7 +7193,6 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 }
 
 .navbar-item {
-  display: block;
   flex-grow: 0;
   flex-shrink: 0;
 }
@@ -7355,9 +7359,6 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   .navbar-item,
   .navbar-link {
     align-items: center;
-    display: flex;
-  }
-  .navbar-item {
     display: flex;
   }
   .navbar-item.has-dropdown {
@@ -8023,11 +8024,13 @@ label.panel-block:hover {
 }
 
 .tabs.is-toggle li:first-child a {
-  border-radius: 4px 0 0 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .tabs.is-toggle li:last-child a {
-  border-radius: 0 4px 4px 0;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .tabs.is-toggle li.is-active a {
@@ -11590,10 +11593,9 @@ svg {
 }
 
 .bd-github-button {
-  background-color: #eff3f6;
-  background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
-  border-color: #1b1f2333;
-  color: #24292e;
+  background-color: #ea4aaa;
+  border-color: #ea4aaa !important;
+  color: #fff;
   font-size: 0.875rem;
   height: auto;
   padding: calc(0.5em - 1px) 1em;
@@ -11606,7 +11608,7 @@ svg {
 }
 
 .bd-github-button .icon {
-  color: #ea4aaa;
+  color: inherit;
 }
 
 .bd-github-button .tag {
@@ -11615,11 +11617,16 @@ svg {
   margin: -1px -8px 0 7px;
 }
 
-.bd-github-button:hover {
-  background-color: #e6ebf1;
-  background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
-  background-position: -.5em;
-  border-color: #1b1f2359;
+.bd-github-button:hover, .bd-github-button:focus {
+  background-color: #e7339f;
+}
+
+.bd-github-button:active {
+  background-color: #e51c95;
+}
+
+.bd-github-button:hover, .bd-github-button:focus, .bd-github-button:active {
+  color: #fff;
 }
 
 .bd-patreon-button {
@@ -11768,6 +11775,18 @@ svg {
   #moreDropdown .navbar-item:first-child,
   #moreDropdown .navbar-divider:nth-child(2) {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bd-index-buttons {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 769px), print {
+  .bd-index-buttons {
+    margin-top: 6rem;
   }
 }
 
@@ -14520,9 +14539,25 @@ svg {
 
 .bd-partner-sponsor.is-text {
   color: #7a7a7a;
-  font-size: 0.875em;
   line-height: 1.25;
-  min-height: 0;
+}
+
+.bd-partner-sponsor.is-text .bd-sponsor-item {
+  display: inline;
+}
+
+.bd-partner-sponsor.is-text .bd-sponsor-item:before {
+  display: none;
+}
+
+.bd-sponsor-item {
+  flex-grow: 1;
+  position: relative;
+}
+
+.bd-sponsor-item strong,
+.bd-sponsor-item img {
+  position: relative;
 }
 
 .bd-partner-sponsor.is-text .bd-sponsor-item {
