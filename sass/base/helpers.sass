@@ -279,3 +279,72 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
 .is-relative
   position: relative !important
+
+//Margin, Padding
+
+$sizeUnit: em
+$marginKey: 'margin'
+$paddingKey: 'padding'
+$separator: '-'
+$allKey: 'all'
+$verticalKey: 'vertical'
+$horizontalKey: 'horizontal'
+$positions: (top: 'top', right: 'right', bottom: 'bottom', left: 'left')
+$sizes: (center: 'center', auto: 'auto', none: 'none', xxs: 0.125, xs: 0.25, s: 0.5, m: 1, l: 2, xl: 4, xxl: 8)
+
+@function size-value($value)
+  @if $value == 'none'
+    @debug $value == 'none'
+    @return 0 !important
+
+  @if $value == 'auto'
+    @return auto !important
+
+  @if $value == 'center'
+    @return 0 auto !important
+
+  @return #{$value}#{$sizeUnit}
+
+@each $sizeKey, $sizeValue in $sizes
+
+  /* margin "auto", "center", 0 */
+  .#{$marginKey}#{$separator}#{$sizeKey}
+    margin: size-value($sizeKey)
+
+  /* padding "auto", "center", 0 */
+  .#{$paddingKey}#{$separator}#{$sizeKey}
+    margin: size-value($sizeKey)
+
+  /* margin  "all" (top-right-bottom-left) */
+  .#{$marginKey}#{$separator}#{$allKey}#{$separator}#{$sizeKey}
+    margin: size-value($sizeValue)
+
+  .#{$paddingKey}#{$separator}#{$allKey}#{$separator}#{$sizeKey}
+    margin: size-value($sizeValue)
+
+  /* vertical (top-bottom) */
+  .#{$marginKey}#{$separator}#{$verticalKey}#{$separator}#{$sizeKey}
+    margin-top: size-value($sizeValue)
+    margin-bottom: size-value($sizeValue)
+
+  .#{$paddingKey}#{$separator}#{$verticalKey}#{$separator}#{$sizeKey}
+    padding-top: size-value($sizeValue)
+    padding-bottom: size-value($sizeValue)
+
+  /* horizontal (left-right) */
+  .#{$marginKey}#{$separator}#{$horizontalKey}#{$separator}#{$sizeKey}
+    margin-left: size-value($sizeValue)
+    margin-right: size-value($sizeValue)
+
+  .#{$paddingKey}#{$separator}#{$horizontalKey}#{$separator}#{$sizeKey}
+    padding-left: size-value($sizeValue)
+    padding-right: size-value($sizeValue)
+
+  /* each of top,right,bottom,left: */
+  @each $posKey, $posValue in $positions
+    .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey}
+      margin-#{$posValue}: size-value($sizeValue)
+
+    .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey}
+      padding-#{$posValue}: size-value($sizeValue)
+
