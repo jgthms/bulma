@@ -141,6 +141,7 @@ That is also why most of the codebase now references **derived** variables (`$te
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
 * Fix #706 -> Derive `-invert` variables using `findColorInvert()`
 * #1608 Fix #1552 -> `.container.is-fluid` margins
+* #2587 Fix #2501 -> Fix `.is-expanded` modifier for fields in panel blocks
 
 ### New features
 
