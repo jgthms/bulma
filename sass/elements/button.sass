@@ -1,4 +1,4 @@
-$button-color: $text-strong !default
+$button-color: red !default
 $button-background-color: $scheme-main !default
 $button-family: false !default
 
@@ -22,7 +22,7 @@ $button-active-border-color: $link-active-border !default
 $button-text-color: $text !default
 $button-text-decoration: underline !default
 $button-text-hover-background-color: $background !default
-$button-text-hover-color: $text-strong !default
+$button-text-hover-color: red !default
 
 $button-disabled-background-color: $scheme-main !default
 $button-disabled-border-color: $border !default
@@ -70,13 +70,14 @@ $button-static-border-color: $border !default
     &.is-large
       height: 1.5em
       width: 1.5em
-    &:first-child:not(:last-child)
+    &:first-child:not(:last-child):not(.is-only-child)
       margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
       margin-right: $button-padding-horizontal / 4
     &:last-child:not(:first-child)
       margin-left: $button-padding-horizontal / 4
       margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
-    &:first-child:last-child
+    &:first-child:last-child,
+    &.is-only-child
       margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
       margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
   // States
