@@ -1,11 +1,11 @@
 $card-color: $text !default
 $card-background-color: $scheme-main !default
-$card-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
+$card-shadow: 0 0.5em 1em -0.125em bulmaRgba($scheme-invert, 0.1), 0 0px 0 1px bulmaRgba($scheme-invert, 0.02) !default
 
 $card-header-background-color: transparent !default
 $card-header-color: $text-strong !default
 $card-header-padding: 0.75rem 1rem !default
-$card-header-shadow: 0 0.125em 0.25em rgba($scheme-invert, 0.1) !default
+$card-header-shadow: 0 0.125em 0.25em bulmaRgba($scheme-invert, 0.1) !default
 $card-header-weight: $weight-bold !default
 
 $card-content-background-color: transparent !default
@@ -18,25 +18,25 @@ $card-footer-padding: 0.75rem !default
 $card-media-margin: $block-spacing !default
 
 .card
-  background-color: $card-background-color
-  box-shadow: $card-shadow
-  color: $card-color
+  background-color: v(card-background-color, $card-background-color)
+  box-shadow: v(card-shadow, $card-shadow)
+  color: v(card-color, $card-color)
   max-width: 100%
   position: relative
 
 .card-header
-  background-color: $card-header-background-color
+  background-color: v(card-header-background-color, $card-header-background-color)
   align-items: stretch
-  box-shadow: $card-header-shadow
+  box-shadow: v(card-header-shadow, $card-header-shadow)
   display: flex
 
 .card-header-title
   align-items: center
-  color: $card-header-color
+  color: v(card-header-color, $card-header-color)
   display: flex
   flex-grow: 1
-  font-weight: $card-header-weight
-  padding: $card-header-padding
+  font-weight: v(card-header-weight, $card-header-weight)
+  padding: v(card-header-padding, $card-header-padding)
   &.is-centered
     justify-content: center
 
@@ -45,19 +45,19 @@ $card-media-margin: $block-spacing !default
   cursor: pointer
   display: flex
   justify-content: center
-  padding: $card-header-padding
+  padding: v(card-header-padding, $card-header-padding)
 
 .card-image
   display: block
   position: relative
 
 .card-content
-  background-color: $card-content-background-color
-  padding: $card-content-padding
+  background-color: v(card-content-background-color, $card-content-background-color)
+  padding: v(card-content-padding, $card-content-padding)
 
 .card-footer
-  background-color: $card-footer-background-color
-  border-top: $card-footer-border-top
+  background-color: v(card-footer-background-color, $card-footer-background-color)
+  border-top: v(card-footer-border-top, $card-footer-border-top)
   align-items: stretch
   display: flex
 
@@ -68,12 +68,12 @@ $card-media-margin: $block-spacing !default
   flex-grow: 1
   flex-shrink: 0
   justify-content: center
-  padding: $card-footer-padding
+  padding: v(card-footer-padding, $card-footer-padding)
   &:not(:last-child)
-    border-right: $card-footer-border-top
+    border-right: v(card-footer-border-top, $card-footer-border-top)
 
 // Combinations
 
 .card
   .media:not(:last-child)
-    margin-bottom: $card-media-margin
+    margin-bottom: v(card-media-margin, $card-media-margin)

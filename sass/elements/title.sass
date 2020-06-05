@@ -25,26 +25,26 @@ $subtitle-negative-margin: -1.25rem !default
   span
     font-weight: inherit
   sub
-    font-size: $title-sub-size
+    font-size: v(title-sub-size, $title-sub-size)
   sup
-    font-size: $title-sup-size
+    font-size: v(title-sup-size, $title-sup-size)
   .tag
     vertical-align: middle
 
 .title
-  color: $title-color
+  color: v(title-color, $title-color)
   @if $title-family
-    font-family: $title-family
-  font-size: $title-size
-  font-weight: $title-weight
-  line-height: $title-line-height
+    font-family: v(title-family, $title-family)
+  font-size: v(title-size, $title-size)
+  font-weight: v(title-weight, $title-weight)
+  line-height: v(title-line-height, $title-line-height)
   strong
-    color: $title-strong-color
-    font-weight: $title-strong-weight
+    color: v(title-strong-color, $title-strong-color)
+    font-weight: v(title-strong-weight, $title-strong-weight)
   & + .highlight
     margin-top: -0.75rem
   &:not(.is-spaced) + .subtitle
-    margin-top: $subtitle-negative-margin
+    margin-top: v(subtitle-negative-margin, $subtitle-negative-margin)
   // Sizes
   @each $size in $sizes
     $i: index($sizes, $size)
@@ -52,17 +52,17 @@ $subtitle-negative-margin: -1.25rem !default
       font-size: $size
 
 .subtitle
-  color: $subtitle-color
-  @if $subtitle-family
-    font-family: $subtitle-family
-  font-size: $subtitle-size
-  font-weight: $subtitle-weight
-  line-height: $subtitle-line-height
+  color: v(subtitle-color, $subtitle-color)
+  @if $subtitle-family // Maybe replace with inherit
+    font-family: v(subtitle-family, $subtitle-family)
+  font-size: v(subtitle-size, $subtitle-size)
+  font-weight: v(subtitle-weight, $subtitle-weight)
+  line-height: v(subtitle-line-height, $subtitle-line-height)
   strong
-    color: $subtitle-strong-color
-    font-weight: $subtitle-strong-weight
+    color: v(subtitle-strong-color, $subtitle-strong-color)
+    font-weight: v(subtitle-strong-weight, $subtitle-strong-weight)
   &:not(.is-spaced) + .title
-    margin-top: $subtitle-negative-margin
+    margin-top: v(subtitle-negative-margin, $subtitle-negative-margin)
   // Sizes
   @each $size in $sizes
     $i: index($sizes, $size)

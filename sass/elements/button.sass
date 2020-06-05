@@ -35,30 +35,27 @@ $button-static-border-color: $border !default
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
-  border-radius: $radius-small
-  font-size: $size-small
+  border-radius: v(radius-small, $radius-small)
+  font-size: v(size-small, $size-small)
 =button-normal
-  font-size: $size-normal
+  font-size: v(size-normal, $size-normal)
 =button-medium
-  font-size: $size-medium
+  font-size: v(size-medium, $size-medium)
 =button-large
-  font-size: $size-large
+  font-size: v(size-large, $size-large)
 
 .button
   @extend %control
   @extend %unselectable
-  background-color: $button-background-color
-  border-color: $button-border-color
-  border-width: $button-border-width
-  color: $button-color
+  background-color: v(button-background-color, $button-background-color)
+  border-color: v(button-border-color, $button-border-color)
+  border-width: v(button-border-width, $button-border-width)
+  color: v(button-color, $button-color)
   cursor: pointer
   @if $button-family
-    font-family: $button-family
+    font-family: v(button-family, $button-family)
   justify-content: center
-  padding-bottom: $button-padding-vertical
-  padding-left: $button-padding-horizontal
-  padding-right: $button-padding-horizontal
-  padding-top: $button-padding-vertical
+  padding: v(button-padding-vertical, $button-padding-vertical) v(button-padding-horizontal, $button-padding-horizontal)
   text-align: center
   white-space: nowrap
   strong
@@ -71,45 +68,45 @@ $button-static-border-color: $border !default
       height: 1.5em
       width: 1.5em
     &:first-child:not(:last-child)
-      margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
-      margin-right: $button-padding-horizontal / 4
+      margin-left: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
+      margin-right: calc(#{v(button-padding-horizontal, $button-padding-horizontal)} / 4)
     &:last-child:not(:first-child)
-      margin-left: $button-padding-horizontal / 4
-      margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      margin-left: calc(#{v(button-padding-horizontal, $button-padding-horizontal)} / 4)
+      margin-right: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
     &:first-child:last-child
-      margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
-      margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      margin-left: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
+      margin-right: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
   // States
   &:hover,
   &.is-hovered
-    border-color: $button-hover-border-color
-    color: $button-hover-color
+    border-color: v(button-hover-border-color, $button-hover-border-color)
+    color: v(button-hover-color, $button-hover-color)
   &:focus,
   &.is-focused
-    border-color: $button-focus-border-color
-    color: $button-focus-color
+    border-color: v(button-focus-border-color, $button-focus-border-color)
+    color: v(button-focus-color, $button-focus-color)
     &:not(:active)
-      box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color
+      box-shadow: v(button-focus-box-shadow-size, $button-focus-box-shadow-size) v(button-focus-box-shadow-color, $button-focus-box-shadow-color)
   &:active,
   &.is-active
-    border-color: $button-active-border-color
-    color: $button-active-color
+    border-color: v(button-active-border-color, $button-active-border-color)
+    color: v(button-active-color, $button-active-color)
   // Colors
   &.is-text
     background-color: transparent
     border-color: transparent
-    color: $button-text-color
-    text-decoration: $button-text-decoration
+    color: v(button-text-color, $button-text-color)
+    text-decoration: v(button-text-decoration, $button-text-decoration)
     &:hover,
     &.is-hovered,
     &:focus,
     &.is-focused
-      background-color: $button-text-hover-background-color
-      color: $button-text-hover-color
+      background-color: v(button-text-hover-background-color, $button-text-hover-background-color)
+      color: v(button-text-hover-color, $button-text-hover-color)
     &:active,
     &.is-active
-      background-color: bulmaDarken($button-text-hover-background-color, 5%)
-      color: $button-text-hover-color
+      background-color: vDarken(button-text-hover-background-color, $button-text-hover-background-color, 5%)
+      color: v(button-text-hover-color, $button-text-hover-color)
     &[disabled],
     fieldset[disabled] &
       background-color: transparent
@@ -124,7 +121,7 @@ $button-static-border-color: $border !default
       color: $color-invert
       &:hover,
       &.is-hovered
-        background-color: bulmaDarken($color, 2.5%)
+        background-color: vDarken($name, $color, 2.5%)
         border-color: transparent
         color: $color-invert
       &:focus,
@@ -132,10 +129,10 @@ $button-static-border-color: $border !default
         border-color: transparent
         color: $color-invert
         &:not(:active)
-          box-shadow: $button-focus-box-shadow-size bulmaRgba($color, 0.25)
+          box-shadow: v(button-focus-box-shadow-size, $button-focus-box-shadow-size) bulmaRgba($color, 0.25)
       &:active,
       &.is-active
-        background-color: bulmaDarken($color, 5%)
+        background-color: vDarken($name, $color, 5%)
         border-color: transparent
         color: $color-invert
       &[disabled],
@@ -148,7 +145,7 @@ $button-static-border-color: $border !default
         color: $color
         &:hover,
         &.is-hovered
-          background-color: bulmaDarken($color-invert, 5%)
+          background-color: vDarken($name+'-invert', $color-invert, 5%)
         &[disabled],
         fieldset[disabled] &
           background-color: $color-invert
@@ -216,12 +213,12 @@ $button-static-border-color: $border !default
           color: $color-dark
           &:hover,
           &.is-hovered
-            background-color: bulmaDarken($color-light, 2.5%)
+            background-color: vDarken($name+'-light', $color-light, 2.5%)
             border-color: transparent
             color: $color-dark
           &:active,
           &.is-active
-            background-color: bulmaDarken($color-light, 5%)
+            background-color: vDarken($name+'-light', $color-light, 5%)
             border-color: transparent
             color: $color-dark
   // Sizes
@@ -236,10 +233,10 @@ $button-static-border-color: $border !default
   // Modifiers
   &[disabled],
   fieldset[disabled] &
-    background-color: $button-disabled-background-color
-    border-color: $button-disabled-border-color
-    box-shadow: $button-disabled-shadow
-    opacity: $button-disabled-opacity
+    background-color: v(button-disabled-background-color, $button-disabled-background-color)
+    border-color: v(button-disabled-border-color, $button-disabled-border-color)
+    box-shadow: v(button-disabled-shadow, $button-disabled-shadow)
+    opacity: v(button-disabled-opacity, $button-disabled-opacity)
   &.is-fullwidth
     display: flex
     width: 100%
@@ -251,14 +248,14 @@ $button-static-border-color: $border !default
       +center(1em)
       position: absolute !important
   &.is-static
-    background-color: $button-static-background-color
-    border-color: $button-static-border-color
-    color: $button-static-color
+    background-color: v(button-static-background-color, $button-static-background-color)
+    border-color: v(button-static-border-color, $button-static-border-color)
+    color: v(button-static-color, $button-static-color)
     box-shadow: none
     pointer-events: none
   &.is-rounded
-    border-radius: $radius-rounded
-    padding-left: calc(#{$button-padding-horizontal} + 0.25em)
+    border-radius: v(radius-rounded, $radius-rounded)
+    padding-left: calc(#{v(button-padding-horizontal, $button-padding-horizontal)} + 0.25em)
     padding-right: calc(#{$button-padding-horizontal} + 0.25em)
 
 .buttons

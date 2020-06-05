@@ -4,23 +4,23 @@ $label-weight: $weight-bold !default
 $help-size: $size-small !default
 
 .label
-  color: $label-color
+  color: v(label-color, $label-color)
   display: block
-  font-size: $size-normal
-  font-weight: $label-weight
+  font-size: v(size-normal, $size-normal)
+  font-weight: v(label-weight, $label-weight)
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: v(size-small, $size-small)
   &.is-medium
-    font-size: $size-medium
+    font-size: v(size-medium, $size-medium)
   &.is-large
-    font-size: $size-large
+    font-size: v(size-large, $size-large)
 
 .help
   display: block
-  font-size: $help-size
+  font-size: v(help-size, $help-size)
   margin-top: 0.25rem
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -122,15 +122,15 @@ $help-size: $size-small !default
     margin-right: 1.5rem
     text-align: right
     &.is-small
-      font-size: $size-small
+      font-size: v(size-small, $size-small)
       padding-top: 0.375em
     &.is-normal
       padding-top: 0.375em
     &.is-medium
-      font-size: $size-medium
+      font-size: v(size-medium, $size-medium)
       padding-top: 0.375em
     &.is-large
-      font-size: $size-large
+      font-size: v(size-large, $size-large)
       padding-top: 0.375em
 
 .field-body
@@ -153,7 +153,7 @@ $help-size: $size-small !default
 .control
   box-sizing: border-box
   clear: both
-  font-size: $size-normal
+  font-size: v(size-normal, $size-normal)
   position: relative
   text-align: left
   // Modifiers
@@ -163,31 +163,31 @@ $help-size: $size-small !default
     .select
       &:focus
         & ~ .icon
-          color: $input-icon-active-color
+          color: v(input-icon-active-color, $input-icon-active-color)
       &.is-small ~ .icon
-        font-size: $size-small
+        font-size: v(size-small, $size-small)
       &.is-medium ~ .icon
-        font-size: $size-medium
+        font-size: v(size-medium, $size-medium)
       &.is-large ~ .icon
-        font-size: $size-large
+        font-size: v(size-large, $size-large)
     .icon
-      color: $input-icon-color
-      height: $input-height
+      color: v(input-icon-color, $input-icon-color)
+      height: v(input-height, $input-height)
       pointer-events: none
       position: absolute
       top: 0
-      width: $input-height
+      width: v(input-height, $input-height)
       z-index: 4
   &.has-icons-left
     .input,
     .select select
-      padding-left: $input-height
+      padding-left: v(input-height, $input-height)
     .icon.is-left
       left: 0
   &.has-icons-right
     .input,
     .select select
-      padding-right: $input-height
+      padding-right: v(input-height, $input-height)
     .icon.is-right
       right: 0
   &.is-loading
@@ -198,8 +198,8 @@ $help-size: $size-small !default
       top: 0.625em
       z-index: 4
     &.is-small:after
-      font-size: $size-small
+      font-size: v(size-small, $size-small)
     &.is-medium:after
-      font-size: $size-medium
+      font-size: v(size-medium, $size-medium)
     &.is-large:after
-      font-size: $size-large
+      font-size: v(size-large, $size-large)

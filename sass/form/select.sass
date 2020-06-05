@@ -4,16 +4,16 @@
   position: relative
   vertical-align: top
   &:not(.is-multiple)
-    height: $input-height
+    height: v(input-height, $input-height)
   &:not(.is-multiple):not(.is-loading)
     &::after
       @extend %arrow
-      border-color: $input-arrow
+      border-color: v(input-arrow, $input-arrow)
       right: 1.125em
       z-index: 4
   &.is-rounded
     select
-      border-radius: $radius-rounded
+      border-radius: v(radius-rounded, $radius-rounded)
       padding-left: 1em
   select
     @extend %input
@@ -26,7 +26,7 @@
       display: none
     &[disabled]:hover,
     fieldset[disabled] &:hover
-      border-color: $input-disabled-border-color
+      border-color: v(input-disabled-border-color, $input-disabled-border-color)
     &:not([multiple])
       padding-right: 2.5em
     &[multiple]
@@ -37,7 +37,7 @@
   // States
   &:not(.is-multiple):not(.is-loading):hover
     &::after
-      border-color: $input-hover-color
+      border-color: v(input-hover-color, $input-hover-color)
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -48,12 +48,12 @@
         border-color: $color
         &:hover,
         &.is-hovered
-          border-color: bulmaDarken($color, 5%)
+          border-color: vDarken($name, $color, 5%)
         &:focus,
         &.is-focused,
         &:active,
         &.is-active
-          box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25)
+          box-shadow: v(input-focus-box-shadow-size, $input-focus-box-shadow-size) vAlpha($name, $color, 0.25)
   // Sizes
   &.is-small
     +control-small
@@ -64,7 +64,7 @@
   // Modifiers
   &.is-disabled
     &::after
-      border-color: $input-disabled-color
+      border-color: v(input-disabled-color, $input-disabled-color)
   &.is-fullwidth
     width: 100%
     select
@@ -78,8 +78,8 @@
       top: 0.625em
       transform: none
     &.is-small:after
-      font-size: $size-small
+      font-size: v(size-small, $size-small)
     &.is-medium:after
-      font-size: $size-medium
+      font-size: v(size-medium, $size-medium)
     &.is-large:after
-      font-size: $size-large
+      font-size: v(size-large, $size-large)

@@ -107,4 +107,71 @@
 @function bulmaDarken($color, $amount)
   @if type-of($color) != 'color'
     @return $color
-  @return darken($color, $amount)
+  @if $amount > 0
+    @return darken($color, $amount)
+  @else
+    @return lighten($color, -$amount)
+
+//Pluggables for theming
+
+@function v($name, $color)
+  @if function-exists(_v)
+    @return _v($name, $color)
+  @return $color
+
+@function vDarken($name, $color, $amount)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
+  @if function-exists(_vAdjustHSLA)
+    @return _vAdjustHSLA($name, $color, 0, 0, -$amount, 0)
+  @return bulmaDarken($color, $amount)
+
+@function vLighten($name, $color, $amount)
+  @return vDarken($name, $color, -$amount)
+
+@function vSaturate($name, $color, $amount)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
+  @if function-exists(_vAdjustHSLA)
+    @return _vAdjustHSLA($name, $color, 0, $amount, 0, 0)
+  @return saturate($color, $amount)
+
+@function vAlpha($name, $color, $amount)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
+  @if function-exists(_vAdjustHSLA)
+    @return _vAdjustHSLA($name, $color, 0, 0, 0, $amount)
+  @return bulmaRgba($color, $amount)
+
+@function vHSLAdjust($name, $color, $h, $s, $l)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
+  @if function-exists(_vAdjustHSLA)
+    @return _vAdjustHSLA($name, $color, $h, $s, $l, 0)
+  @if $h
+    $color: adjust_hue($color, $h)
+  @if $s > 0
+    $color: saturate($color, $s)
+  @if $s < 0
+    $color: desaturate($color, -$s)
+  @if $l > 0
+    $color: lighten($color, $l)
+  @if $l < 0
+    $color:  darken($color, -$l)
+  @return $color
+
+@function vLight($name, $color)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
+  @if function-exists(_vLight)
+    @return _vLight($name, $color)
+  $color-lightning: max((100% - lightness($color)) - 2%, 0%)
+  @return lighten($color, $color-lightning)
+
+@function vDark($name, $color)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
+  @if function-exists(_vDark)
+    @return _vDark($name, $color)
+  $color-luminance: colorLuminance($color)
+  @return desaturate(darken($color, $color-luminance * 70%), $color-luminance * 30%)

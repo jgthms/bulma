@@ -9,41 +9,41 @@ $progress-indeterminate-duration: 1.5s !default
   -moz-appearance: none
   -webkit-appearance: none
   border: none
-  border-radius: $progress-border-radius
+  border-radius: v(progress-border-radius, $progress-border-radius)
   display: block
-  height: $size-normal
+  height: v(size-normal, $size-normal)
   overflow: hidden
   padding: 0
   width: 100%
   &::-webkit-progress-bar
-    background-color: $progress-bar-background-color
+    background-color: v(progress-bar-background-color, $progress-bar-background-color)
   &::-webkit-progress-value
-    background-color: $progress-value-background-color
+    background-color: v(progress-value-background-color, $progress-value-background-color)
   &::-moz-progress-bar
-    background-color: $progress-value-background-color
+    background-color: v(progress-value-background-color, $progress-value-background-color)
   &::-ms-fill
-    background-color: $progress-value-background-color
+    background-color: v(progress-value-background-color, $progress-value-background-color)
     border: none
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
       &::-webkit-progress-value
-        background-color: $color
+        background-color: v($name, $color)
       &::-moz-progress-bar
-        background-color: $color
+        background-color: v($name, $color)
       &::-ms-fill
-        background-color: $color
+        background-color: v($name, $color)
       &:indeterminate
-        background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%)
+        background-image: linear-gradient(to right, v($name, $color) 30%, v(progress-bar-background-color, $progress-bar-background-color) 30%)
 
   &:indeterminate
-    animation-duration: $progress-indeterminate-duration
+    animation-duration: v(progress-indeterminate-duration, $progress-indeterminate-duration)
     animation-iteration-count: infinite
     animation-name: moveIndeterminate
     animation-timing-function: linear
-    background-color: $progress-bar-background-color
-    background-image: linear-gradient(to right, $text 30%, $progress-bar-background-color 30%)
+    background-color: v(progress-bar-background-color, $progress-bar-background-color)
+    background-image: linear-gradient(to right, v(text, $text) 30%, v(progress-bar-background-color, $progress-bar-background-color) 30%)
     background-position: top left
     background-repeat: no-repeat
     background-size: 150% 150%
@@ -54,11 +54,11 @@ $progress-indeterminate-duration: 1.5s !default
 
   // Sizes
   &.is-small
-    height: $size-small
+    height: v(size-small, $size-small)
   &.is-medium
-    height: $size-medium
+    height: v(size-medium, $size-medium)
   &.is-large
-    height: $size-large
+    height: v(size-large, $size-large)
 
 @keyframes moveIndeterminate
   from

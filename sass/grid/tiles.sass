@@ -9,17 +9,13 @@ $tile-spacing: 0.75rem !default
   min-height: min-content
   // Modifiers
   &.is-ancestor
-    margin-left: $tile-spacing * -1
-    margin-right: $tile-spacing * -1
-    margin-top: $tile-spacing * -1
-    &:last-child
-      margin-bottom: $tile-spacing * -1
+    margin: calc(#{v(tile-spacing, $tile-spacing)} * -1)
     &:not(:last-child)
-      margin-bottom: $tile-spacing
+      margin-bottom: v(tile-spacing, $tile-spacing)
   &.is-child
     margin: 0 !important
   &.is-parent
-    padding: $tile-spacing
+    padding: v(tile-spacing, $tile-spacing)
   &.is-vertical
     flex-direction: column
     & > .tile.is-child:not(:last-child)

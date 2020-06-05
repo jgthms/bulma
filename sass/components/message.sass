@@ -21,9 +21,9 @@ $message-colors: $colors !default
 
 .message
   @extend %block
-  background-color: $message-background-color
-  border-radius: $message-radius
-  font-size: $size-normal
+  background-color: v(message-background-color, $message-background-color)
+  border-radius: v(message-radius, $message-radius)
+  font-size: v(size-normal, $size-normal)
   strong
     color: currentColor
   a:not(.button):not(.tag):not(.dropdown-item)
@@ -31,11 +31,11 @@ $message-colors: $colors !default
     text-decoration: underline
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: v(size-small, $size-small)
   &.is-medium
-    font-size: $size-medium
+    font-size: v(size-medium, $size-medium)
   &.is-large
-    font-size: $size-large
+    font-size: v(size-large, $size-large)
   // Colors
   @each $name, $components in $message-colors
     $color: nth($components, 1)
@@ -48,13 +48,9 @@ $message-colors: $colors !default
       @if length($components) >= 4
         $color-dark: nth($components, 4)
       @else
-        $color-luminance: colorLuminance($color)
-        $darken-percentage: $color-luminance * 70%
-        $desaturate-percentage: $color-luminance * 30%
-        $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+        $color-dark: vDark($name, $color)
     @else
-      $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-      $color-light: lighten($color, $color-lightning)
+      $color-light: vLight($name, $color)
 
     &.is-#{$name}
       background-color: $color-light
@@ -67,33 +63,33 @@ $message-colors: $colors !default
 
 .message-header
   align-items: center
-  background-color: $message-header-background-color
-  border-radius: $message-header-radius $message-header-radius 0 0
-  color: $message-header-color
+  background-color: v(message-header-background-color, $message-header-background-color)
+  border-radius: v(message-header-radius, $message-header-radius) $message-header-radius 0 0
+  color: v(message-header-color, $message-header-color)
   display: flex
-  font-weight: $message-header-weight
+  font-weight: v(message-header-weight, $message-header-weight)
   justify-content: space-between
   line-height: 1.25
-  padding: $message-header-padding
+  padding: v(message-header-padding, $message-header-padding)
   position: relative
   .delete
     flex-grow: 0
     flex-shrink: 0
     margin-left: 0.75em
   & + .message-body
-    border-width: $message-header-body-border-width
+    border-width: v(message-header-body-border-width, $message-header-body-border-width)
     border-top-left-radius: 0
     border-top-right-radius: 0
 
 .message-body
-  border-color: $message-body-border-color
-  border-radius: $message-body-radius
+  border-color: v(message-body-border-color, $message-body-border-color)
+  border-radius: v(message-body-radius, $message-body-radius)
   border-style: solid
-  border-width: $message-body-border-width
-  color: $message-body-color
-  padding: $message-body-padding
+  border-width: v(message-body-border-width, $message-body-border-width)
+  color: v(message-body-color, $message-body-color)
+  padding: v(message-body-padding, $message-body-padding)
   code,
   pre
-    background-color: $message-body-pre-background-color
+    background-color: v(message-body-pre-background-color, $message-body-pre-background-color)
   pre code
-    background-color: $message-body-pre-code-background-color
+    background-color: v(message-body-pre-code-background-color, $message-body-pre-code-background-color)

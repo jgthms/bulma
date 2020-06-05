@@ -97,45 +97,45 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
 @each $name, $pair in $colors
   $color: nth($pair, 1)
   .has-text-#{$name}
-    color: $color !important
+    color: v($name, $color) !important
   a.has-text-#{$name}
     &:hover,
     &:focus
-      color: bulmaDarken($color, 10%) !important
+      color: vDarken($name, $color, 10%) !important
   .has-background-#{$name}
     background-color: $color !important
 
 @each $name, $shade in $shades
   .has-text-#{$name}
-    color: $shade !important
+    color: v($name, $shade) !important
   .has-background-#{$name}
-    background-color: $shade !important
+    background-color: v($name, $shade) !important
 
 .has-text-weight-light
-  font-weight: $weight-light !important
+  font-weight: v(weight-light, $weight-light) !important
 .has-text-weight-normal
-  font-weight: $weight-normal !important
+  font-weight: v(weight-normal, $weight-normal) !important
 .has-text-weight-medium
-  font-weight: $weight-medium !important
+  font-weight: v(weight-medium, $weight-medium) !important
 .has-text-weight-semibold
-  font-weight: $weight-semibold !important
+  font-weight: v(weight-semibold, $weight-semibold) !important
 .has-text-weight-bold
-  font-weight: $weight-bold !important
+  font-weight: v(weight-bold, $weight-bold) !important
 
 .is-family-primary
-  font-family: $family-primary !important
+  font-family: v(family-primary, $family-primary) !important
 
 .is-family-secondary
-  font-family: $family-secondary !important
+  font-family: v(family-secondary, $family-secondary) !important
 
 .is-family-sans-serif
-  font-family: $family-sans-serif !important
+  font-family: v(family-sans-serif, $family-sans-serif) !important
 
 .is-family-monospace
-  font-family: $family-monospace !important
+  font-family: v(family-monospace, $family-monospace) !important
 
 .is-family-code
-  font-family: $family-code !important
+  font-family: v(family-code, $family-code) !important
 
 // Visibility
 
