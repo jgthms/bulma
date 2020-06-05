@@ -112,12 +112,20 @@ const sassToString = (value) => {
   return val
 }
 
-const maybeCalc = (name, value) => {
+const maybeVar = (name, value, modified) => {
+  if (modified === undefined || name.indexOf(modified)) {
+    return 'var(--bulma-'+name+')'
+  } else {
+    return value
+  }
+}
+
+const maybeCalc = (name, value, modified, original) => {
   if (value && value.getValue() !== 0) {
     const val = parseFloat(sassToString(value));
-    return 'calc(var(--bulma-'+name+') '+ (val > 0 ? '+' : '-') + ' ' + Math.abs(val)+')'
+    return 'calc('+maybeVar(name, original, modified) + (val > 0 ? '+' : '-') + ' ' + Math.abs(val)+')'
   } else {
-    return 'var(--bulma-'+name+')'
+    return maybeVar(name, original, modified)
   }
 }
 
@@ -129,5 +137,29 @@ const ensureDirectoryExistence = (filePath) => {
   fs.mkdirSync(dirname, {recursive: true});
 }
 
+const postcss = require('postcss')
+const autoprefixer = require('autoprefixer')
+const postcssCalc = require('postcss-calc')
+const cleanCSS = require('clean-css')
 
-module.exports = { rgbToHsl, maybeCalc, ensureDirectoryExistence, makeAdjustableVar, sassToString };
+const writeOutput = (output, css, map, input) => {
+  postcss([autoprefixer, postcssCalc]).process(css, {map: { prev: map, inline: false, sourcesContent: true }, from: output + '.css', to: output + '.css'}).then((result) => {
+    fs.writeFile(output + '.css', result.css, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css'))
+    fs.writeFile(output + '.css.map', result.map, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css.map'))
+
+    fs.writeFile(output+'.min.css', new cleanCSS().minify(result.css).styles, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.min.css'))
+  });
+}
+
+const renderSassSync = (input, data, functions) => {
+  data += '\n@import "' + input + '";'
+  return sass.renderSync({
+    data,
+    includePaths: [path.resolve(process.cwd(), input)],
+    outputStyle: 'expanded',
+    sourceMap: true,
+    functions
+  });
+}
+
+module.exports = { rgbToHsl, maybeCalc, ensureDirectoryExistence, makeAdjustableVar, sassToString, writeOutput, renderSassSync, maybeVar};

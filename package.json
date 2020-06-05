@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.0",
-    "clean-css-cli": "^4.3.0",
+    "clean-css": "^4.2.3",
     "node-sass": "^4.14.1",
     "postcss": "^7.0.32",
     "postcss-calc": "^7.0.2",
@@ -36,11 +36,10 @@
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
-    "build-autoprefix": "postcss --use autoprefixer --use postcss-calc --map false --output css/bulma.css css/bulma.css && postcss --use autoprefixer --use postcss-calc --map false --output css/bulma.themeable.css css/bulma.themeable.css",
-    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css && cleancss -o css/bulma.themeable.min.css css/bulma.themeable.css",
+    "build": "npm run build-clean && npm run build-sass",
     "build-clean": "rimraf css",
-    "build-sass": "node build.js bulma.sass css/bulma",
+    "build-theme-test": "node build.js css/bulma.theme.css bulma.sass test/themes/darkly.scss test/themes/united.scss",
+    "build-sass": "node build.js css/bulma.css bulma.sass && node build.js css/bulma.themeable.css bulma.sass any",
     "deploy": "npm run build",
     "start": "npm run build-sass -- --watch"
   },

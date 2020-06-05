@@ -4,17 +4,21 @@ const path = require('path')
 const fs = require('fs');
 const sass = require('node-sass')
 
-const { makeAdjustableVar, sassToString, maybeCalc, ensureDirectoryExistence } = require("./utils");
+const {makeAdjustableVar, sassToString, maybeCalc, ensureDirectoryExistence, rgbToHsl, renderSassSync, writeOutput, maybeVar} = require("./utils");
 
 const args = process.argv.slice(2);
 
 if (args.length < 2) {
-  console.error("Usage:" + process.argv[0] + process.argv[1] + " input.sass ouput.css")
+  console.error("Usage:" + process.argv[0] + process.argv[1] + " ouput.css input.sass [...[theme-name:]theme-file.sass | any]")
+  console.log("Passing 'any' as a third argument will generate a file with all of the css variables")
+  console.log("If passing a list of theme they will all be bundled in the same file but it will be optimized to only use the modified variables")
 }
 
-const input = args[0];
+const argThemes = args.slice(2);
 
-const outInfo = path.parse(args[1])
+const input = args[1];
+
+const outInfo = path.parse(args[0])
 
 const output = path.resolve(process.cwd(), outInfo.dir + path.sep + outInfo.name);
 
@@ -23,88 +27,152 @@ const varFile = path.resolve(__dirname, 'sass/themeable/variable-list.sass');
 //List of found vars and their value
 const vars = {}
 
+ensureDirectoryExistence(output)
+
 //Empty the variable list to first compile without theming enabled
 fs.writeFileSync(varFile, '');
 
-let data = '@import "'+input+'"'
+let data = '@import "' + input + '"'
 
-const non_themeable = sass.renderSync({
-  data,
-  includePaths: [path.resolve(__dirname, input)],
-  outputStyle: 'expanded',
-  sourceMap: true,
-  functions: {
-    '_v($name, $value)': function (name, value) {
-      vars[name.getValue()] = sassToString(value);
+//No variables build
+const non_themeable = renderSassSync(input, "", {
+  '_v($name, $value)': function (name, value) {
+    vars[name.getValue()] = sassToString(value);
 
-      return value;
-    },
-    '_vRegisterHSLA($name, $value)': function (name, value) {
-        if (value instanceof sass.types.Color) {
-          makeAdjustableVar(name.getValue(), value, vars)
+    return value;
+  },
+  '_vRegisterHSLA($name, $value)': function (name, value) {
+    if (value instanceof sass.types.Color) {
+      makeAdjustableVar(name.getValue(), value, vars)
+    }
+    return sass.types.Null.NULL
+  },
+});
+
+if (argThemes.length === 0) {
+  //Output the non themeable generated css
+  writeOutput(output, non_themeable.css, non_themeable.map, input)
+} else {
+  const defaultVars = '(' + Object.keys(vars).map((v) => '"' + v + '":' + vars[v]).join(', ') + ')';
+  if (argThemes.length === 1 && argThemes[0] === 'any') {
+    //Insert all the found vars into a sass list
+
+    fs.writeFileSync(varFile, '// This file was automatically generated do not modify it\n'
+      + '$css_vars: '+defaultVars);
+
+    data = '$themeable: "any";';
+    const render = renderSassSync(input, data, {
+      '_v($name, $value)': function (name, value) {
+        return new sass.types.String(maybeVar(name.getValue()));
+      },
+      '_vAdjustHSLA($name, $value, $h, $s, $l, $a)': function (name, value, h, s, l, a) {
+        let str = "hsla(";
+        name = name.getValue();
+        str += maybeCalc(name + "-h", h) + ','
+        str += maybeCalc(name + "-s", s) + ','
+        str += maybeCalc(name + "-l", l) + ','
+        str += maybeCalc(name + "-a", a)
+
+        return sass.types.String(str + ')')
+      },
+    });
+
+    //Output the themeable generated css
+    writeOutput(output, render.css, render.map, input)
+  } else {
+    const promises = [];
+
+    const themes = {};
+    const themesVars = {};
+
+    argThemes.forEach((theme) => {
+      let name = "";
+      let file = theme;
+      if (theme.indexOf(':') > 0) {
+        [name, file] = theme.split(':', 2)
+      } else {
+        name = path.parse(theme).name
+      }
+      if (!name) {
+        console.error('A theme must have a unique name')
+        return;
+      }
+      themes[name] = file;
+
+      let data = '@import "' + file + '"'
+
+      const themeVars = themesVars[name] = {}
+
+      //Make all renders of theme async to speed things up
+      //They are just run blank to get all the variables of each theme
+      promises.push(new Promise((resolve) => {
+        sass.render({
+          data,
+          includePaths: [path.resolve(process.cwd(), file)],
+          functions: {
+            '_v($name, $value)': function (name, value) {
+              themeVars[name.getValue()] = sassToString(value);
+              return value;
+            },
+            '_vRegisterHSLA($name, $value)': function (name, value) {
+              if (value instanceof sass.types.Color) {
+                makeAdjustableVar(name.getValue(), value, themeVars)
+              }
+              return sass.types.Null.NULL
+            },
+          }
+        }, resolve)
+      }));
+
+    })
+
+    if (Object.keys(themes).length === 0) {
+      console.error("No theme to process, exiting")
+      return;
+    }
+
+    //When all renders are done
+    Promise.all(promises).then(() => {
+      const modified = [];
+      Object.keys(vars).forEach((varName) => {
+        let val = vars[varName];
+        for (let themeName in themes) {
+          if (val !== themesVars[themeName][varName]) {
+            modified.push(varName);
+            break;
+          }
         }
-        return sass.types.Null.NULL
-    },
+      })
+
+      fs.writeFileSync(varFile, '// This file was automatically generated, do not modify it\n'
+        + '$css_vars: (default: '+defaultVars+ ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') +')'
+      )
+
+      data = '$themeable: true;'
+      const render = renderSassSync(input, data, {
+        '_v($name, $value)': function (name, value) {
+          if (modified.indexOf(name.getValue()) >= 0) {
+            return new sass.types.String(maybeVar(name.getValue()));
+          }
+          return value
+        },
+        '_vAdjustHSLA($name, $value, $h, $s, $l, $a)': function (name, value, h, s, l, a) {
+          let str = "hsla(";
+
+          const [oH, oS, oL] = rgbToHsl(value.getR(), value.getG(), value.getB());
+
+          name = name.getValue();
+          str += maybeCalc(name + "-h", h, modified, oH) + ','
+          str += maybeCalc(name + "-s", s, modified, oS) + ','
+          str += maybeCalc(name + "-l", l, modified, oL) + ','
+          str += maybeCalc(name + "-a", a, modified, value.getA())
+
+          return sass.types.String(str + ')')
+        },
+      })
+
+      writeOutput(output, render.css, render.map, input)
+    })
   }
-})
 
-ensureDirectoryExistence(output)
-
-//Insert all the found vars into a sass list
-fs.writeFileSync(varFile, '// This file was automatically generated do not modify it\n'
-  + '$css_vars: (' + Object.keys(vars).map((v) => '"' + v + '":' + vars[v]).join(', ') + ')')
-
-//Output the non themeable generated css
-fs.writeFile(output+'.css', non_themeable.css, (err) => err ? console.error(err) : console.log('wrote to '+output+'.css'))
-fs.writeFile(output+'.css.map', non_themeable.map, (err) => err ? console.error(err) : console.log('wrote to '+output+'.css.map'))
-
-
-data = '$themeable: "yes";\n' +
-  '@import "'+input+'";'
-const themeable = sass.renderSync({
-  data,
-  includePaths: [path.resolve(__dirname, input)],
-  outputStyle: 'expanded',
-  sourceMap: true,
-  functions: {
-    '_v($name, $value)': function (name, value) {
-      return new sass.types.String('var(--bulma-' + name.getValue() + ')');
-    },
-    '_vAdjustHSLA($name, $value, $h, $s, $l, $a)': function (name, value, h, s, l, a) {
-      let str = "hsla(";
-      name = name.getValue();
-      str += maybeCalc(name+"-h", h) +','
-      str += maybeCalc(name+"-s", s) +','
-      str += maybeCalc(name+"-l", l) +','
-      str += maybeCalc(name+"-a"+',1', a)
-
-      return sass.types.String(str + ')')
-    },
-    // This may be used later on to reduce the numbers of variables but now limited because of the use of max()
-    // '_vDark($name, $value)': function (name, value) {
-    //
-    //   let str = "hsla(";
-    //   name = name.getValue();
-    //   str += maybeCalc(name+"-h") +','
-    //   str += 'calc('+maybeCalc(name+'-s')+' - 0.3 * '+maybeCalc(name+'-s')+')),'
-    //   str += 'calc('+maybeCalc(name+'-l')+' - 0.7 * '+maybeCalc(name+'-l')+')),'
-    //   str += maybeCalc(name+"-a"+',1')
-    //
-    //   return sass.types.String(str + ')')
-    // },
-    // '_vLight($name, $value)': function (name, value) {
-    //   let str = "hsla(";
-    //   name = name.getValue();
-    //   str += maybeCalc(name+"-h") +','
-    //   str += maybeCalc(name+"-s") +','
-    //   str += 'calc(.98 - '+maybeCalc(name+'-l')+'),'
-    //   str += maybeCalc(name+"-a"+',1')
-    //
-    //   return sass.types.String(str + ')')
-    // }
-  }
-})
-
-//Output the themeable generated css
-fs.writeFile(output+'.themeable.css', themeable.css, (err) => err ? console.error(err) : console.log('wrote to '+output+'.themeable.css'))
-fs.writeFile(output+'.themeable.css.map', themeable.map, (err) => err ? console.error(err) : console.log('wrote to '+output+'.themeable.css.map'))
+}

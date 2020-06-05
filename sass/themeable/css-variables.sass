@@ -1,18 +1,18 @@
 @import 'variable-list.sass'
 
-@mixin defineColor($var, $color)
-  --bulma-#{$var}-h: #{hue($color)}
-  --bulma-#{$var}-s: #{saturation($color)}
-  --bulma-#{$var}-l: #{lightness($color)}
-  --bulma-#{$var}: #{$color}
-
 @mixin defineVariable($var, $value)
   --bulma-#{$var}: #{$value}
 
-
 @if variable-exists(themeable)
-  \:root
-    @each $name, $value in $css_vars
-      @include defineVariable($name, $value)
-
-
+  @if $themeable == "any"
+    \:root, [data-theme=bulma]
+      @each $name, $value in $css_vars
+        @include defineVariable($name, $value)
+  @else
+    @each $theme, $vars in $css_vars
+      $selector: "[data-theme=#{$theme}]"
+      @if $theme == "default"
+        $selector: ":root #{$selector}"
+      #{$selector}
+        @each $name, $value in $vars
+          @include defineVariable($name, $value)
