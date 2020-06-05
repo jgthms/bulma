@@ -113,7 +113,7 @@ const sassToString = (value) => {
 }
 
 const maybeCalc = (name, value) => {
-  if (value.getValue() !== 0) {
+  if (value && value.getValue() !== 0) {
     const val = parseFloat(sassToString(value));
     return 'calc(var(--bulma-'+name+') '+ (val > 0 ? '+' : '-') + ' ' + Math.abs(val)+')'
   } else {

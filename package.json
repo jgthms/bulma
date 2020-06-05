@@ -37,12 +37,15 @@
   },
   "scripts": {
     "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
-    "build-autoprefix": "postcss --use autoprefixer --use postcss-calc --map false --output css/bulma.css css/bulma.css && postcss --use autoprefixer --map false --output css/bulma.themeable.css css/bulma.themeable.css",
+    "build-autoprefix": "postcss --use autoprefixer --use postcss-calc --map false --output css/bulma.css css/bulma.css && postcss --use autoprefixer --use postcss-calc --map false --output css/bulma.themeable.css css/bulma.themeable.css",
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css && cleancss -o css/bulma.themeable.min.css css/bulma.themeable.css",
     "build-clean": "rimraf css",
     "build-sass": "node build.js bulma.sass css/bulma",
     "deploy": "npm run build",
     "start": "npm run build-sass -- --watch"
+  },
+  "bin": {
+    "bulma-build-css": "./build.js"
   },
   "files": [
     "css",

@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+const path = require('path')
 const fs = require('fs');
 const sass = require('node-sass')
 
@@ -6,18 +9,24 @@ const { makeAdjustableVar, sassToString, maybeCalc, ensureDirectoryExistence } =
 const args = process.argv.slice(2);
 
 const input = args[0];
-const output = args[1];
+
+const outInfo = path.parse(args[1])
+
+const output = path.resolve(process.cwd(), outInfo.dir + path.sep + outInfo.name);
+
+const varFile = path.resolve(__dirname, 'sass/themeable/variable-list.sass');
 
 //List of found vars and their value
 const vars = {}
 
 //Empty the variable list to first compile without theming enabled
-fs.writeFileSync('sass/themeable/variable-list.sass', '');
+fs.writeFileSync(varFile, '');
 
 let data = '@import "'+input+'"'
 
 const non_themeable = sass.renderSync({
   data,
+  includePaths: [path.resolve(__dirname, input)],
   outputStyle: 'expanded',
   sourceMap: true,
   functions: {
@@ -38,7 +47,7 @@ const non_themeable = sass.renderSync({
 ensureDirectoryExistence(output)
 
 //Insert all the found vars into a sass list
-fs.writeFileSync('sass/themeable/variable-list.sass', '// This file was automatically generated do not modify it\n'
+fs.writeFileSync(varFile, '// This file was automatically generated do not modify it\n'
   + '$css_vars: (' + Object.keys(vars).map((v) => '"' + v + '":' + vars[v]).join(', ') + ')')
 
 //Output the non themeable generated css
@@ -50,6 +59,7 @@ data = '$themeable: "yes";\n' +
   '@import "'+input+'";'
 const themeable = sass.renderSync({
   data,
+  includePaths: [path.resolve(__dirname, input)],
   outputStyle: 'expanded',
   sourceMap: true,
   functions: {
@@ -66,14 +76,28 @@ const themeable = sass.renderSync({
 
       return sass.types.String(str + ')')
     },
-    '_vDark($name, $value)': function (name, value) {
-      //TODO
-      return value
-    },
-    '_vLight($name, $value)': function (name, value) {
-      //TODO
-      return value
-    }
+    // This may be used later on to reduce the numbers of variables but now limited because of the use of max()
+    // '_vDark($name, $value)': function (name, value) {
+    //
+    //   let str = "hsla(";
+    //   name = name.getValue();
+    //   str += maybeCalc(name+"-h") +','
+    //   str += 'calc('+maybeCalc(name+'-s')+' - 0.3 * '+maybeCalc(name+'-s')+')),'
+    //   str += 'calc('+maybeCalc(name+'-l')+' - 0.7 * '+maybeCalc(name+'-l')+')),'
+    //   str += maybeCalc(name+"-a"+',1')
+    //
+    //   return sass.types.String(str + ')')
+    // },
+    // '_vLight($name, $value)': function (name, value) {
+    //   let str = "hsla(";
+    //   name = name.getValue();
+    //   str += maybeCalc(name+"-h") +','
+    //   str += maybeCalc(name+"-s") +','
+    //   str += 'calc(.98 - '+maybeCalc(name+'-l')+'),'
+    //   str += maybeCalc(name+"-a"+',1')
+    //
+    //   return sass.types.String(str + ')')
+    // }
   }
 })
 

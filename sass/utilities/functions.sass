@@ -140,7 +140,7 @@
   @if function_exists(_vRegisterHSLA)
     $null: _vRegisterHSLA($name, $color)
   @if function-exists(_vAdjustHSLA)
-    @return _vAdjustHSLA($name, $color, 0, 0, 0, $amount)
+    @return _vAdjustHSLA($name, $color, 0, 0, 0, 1-$amount)
   @return bulmaRgba($color, $amount)
 
 @function vHSLAdjust($name, $color, $h, $s, $l)
@@ -161,17 +161,13 @@
   @return $color
 
 @function vLight($name, $color)
-  @if function_exists(_vRegisterHSLA)
-    $null: _vRegisterHSLA($name, $color)
-  @if function-exists(_vLight)
-    @return _vLight($name, $color) //TODO
   $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-  @return lighten($color, $color-lightning)
+  $color: lighten($color, $color-lightning)
+
+  @return v($name+'-light', $color)
 
 @function vDark($name, $color)
-  @if function_exists(_vRegisterHSLA)
-    $null: _vRegisterHSLA($name, $color)
-  @if function-exists(_vDark)
-    @return _vDark($name, $color) //TODO
   $color-luminance: colorLuminance($color)
-  @return desaturate(darken($color, $color-luminance * 70%), $color-luminance * 30%)
+  $color: desaturate(darken($color, $color-luminance * 70%), $color-luminance * 30%)
+
+  @return v($name+'-dark', $color)

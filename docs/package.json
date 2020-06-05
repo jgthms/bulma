@@ -18,9 +18,9 @@
   },
   "scripts": {
     "css-build": "npm run css-sass && npm run css-autoprefix && npm run css-cleancss",
-    "css-autoprefix": "postcss --use autoprefixer --use postcss-calc --map false --output css/bulma-docs.css css/bulma-docs.css",
-    "css-cleancss": "cleancss -o css/bulma-docs.min.css css/bulma-docs.css",
-    "css-sass": "node-sass --output-style expanded bulma-docs.sass css/bulma-docs.css",
+    "css-autoprefix": "postcss --use autoprefixer --use postcss-calc --map false --output css/bulma-docs.css css/bulma-docs.css && postcss --use autoprefixer --use postcss-calc --map false --output css/bulma-docs.themeable.css css/bulma-docs.themeable.css",
+    "css-cleancss": "cleancss -o css/bulma-docs.min.css css/bulma-docs.css && cleancss -o css/bulma-docs.themeable.min.css css/bulma-docs.themeable.css",
+    "css-sass": "node ../build.js bulma-docs.sass css/bulma-docs.css",
     "css-watch": "npm run css-sass -- --watch",
     "deploy": "npm run css-build && npm run js-build",
     "js-build": "babel _javascript --out-dir lib",
