@@ -164,7 +164,7 @@
   @if function_exists(_vRegisterHSLA)
     $null: _vRegisterHSLA($name, $color)
   @if function-exists(_vLight)
-    @return _vLight($name, $color)
+    @return _vLight($name, $color) //TODO
   $color-lightning: max((100% - lightness($color)) - 2%, 0%)
   @return lighten($color, $color-lightning)
 
@@ -172,6 +172,6 @@
   @if function_exists(_vRegisterHSLA)
     $null: _vRegisterHSLA($name, $color)
   @if function-exists(_vDark)
-    @return _vDark($name, $color)
+    @return _vDark($name, $color) //TODO
   $color-luminance: colorLuminance($color)
   @return desaturate(darken($color, $color-luminance * 70%), $color-luminance * 30%)
