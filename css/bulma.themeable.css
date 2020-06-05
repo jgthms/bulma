@@ -1,4 +1,12 @@
 /*! bulma.io v0.8.2 | MIT License | github.com/jgthms/bulma */
+@-webkit-keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 @keyframes spinAround {
   from {
     transform: rotate(0deg);
@@ -121,7 +129,8 @@
 }
 
 .button.is-loading::after, .loader, .select.is-loading::after, .control.is-loading::after {
-  animation: spinAround 500ms infinite linear;
+  -webkit-animation: spinAround 500ms infinite linear;
+          animation: spinAround 500ms infinite linear;
   border: 2px solid var(--bulma-grey-lighter);
   border-radius: var(--bulma-radius-rounded);
   border-right-color: transparent;
@@ -308,7 +317,10 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
 }
 
 article,
@@ -1579,18 +1591,18 @@ a.box:active {
 }
 
 .button .icon:first-child:not(:last-child) {
-  margin-left: calc(-1 / 2 * var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
-  margin-right: calc(var(--bulma-button-padding-horizontal) / 4);
+  margin-left: calc(-0.5*var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
+  margin-right: calc(var(--bulma-button-padding-horizontal)/4);
 }
 
 .button .icon:last-child:not(:first-child) {
-  margin-left: calc(var(--bulma-button-padding-horizontal) / 4);
-  margin-right: calc(-1 / 2 * var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
+  margin-left: calc(var(--bulma-button-padding-horizontal)/4);
+  margin-right: calc(-0.5*var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
 }
 
 .button .icon:first-child:last-child {
-  margin-left: calc(-1 / 2 * var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
-  margin-right: calc(-1 / 2 * var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
+  margin-left: calc(-0.5*var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
+  margin-right: calc(-0.5*var(--bulma-button-padding-horizontal) - var(--bulma-button-border-width));
 }
 
 .button:hover, .button.is-hovered {
@@ -1616,7 +1628,8 @@ a.box:active {
   background-color: transparent;
   border-color: transparent;
   color: var(--bulma-button-text-color);
-  text-decoration: var(--bulma-button-text-decoration);
+  -webkit-text-decoration: var(--bulma-button-text-decoration);
+          text-decoration: var(--bulma-button-text-decoration);
 }
 
 .button.is-text:hover, .button.is-text.is-hovered, .button.is-text:focus, .button.is-text.is-focused {
@@ -2835,8 +2848,8 @@ fieldset[disabled] .button {
 
 .button.is-loading::after {
   position: absolute;
-  left: calc(50% - (1em / 2));
-  top: calc(50% - (1em / 2));
+  left: calc(50% - 0.5em);
+  top: calc(50% - 0.5em);
   position: absolute !important;
 }
 
@@ -2851,7 +2864,7 @@ fieldset[disabled] .button {
 .button.is-rounded {
   border-radius: var(--bulma-radius-rounded);
   padding-left: calc(var(--bulma-button-padding-horizontal) + 0.25em);
-  padding-right: calc(1em + 0.25em);
+  padding-right: 1.25em;
 }
 
 .buttons {
@@ -3655,10 +3668,14 @@ fieldset[disabled] .button {
 }
 
 .progress:indeterminate {
-  animation-duration: var(--bulma-progress-indeterminate-duration);
-  animation-iteration-count: infinite;
-  animation-name: moveIndeterminate;
-  animation-timing-function: linear;
+  -webkit-animation-duration: var(--bulma-progress-indeterminate-duration);
+          animation-duration: var(--bulma-progress-indeterminate-duration);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: moveIndeterminate;
+          animation-name: moveIndeterminate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
   background-color: var(--bulma-progress-bar-background-color);
   background-image: linear-gradient(to right, var(--bulma-text) 30%, var(--bulma-progress-bar-background-color) 30%);
   background-position: top left;
@@ -3684,6 +3701,15 @@ fieldset[disabled] .button {
 
 .progress.is-large {
   height: var(--bulma-size-large);
+}
+
+@-webkit-keyframes moveIndeterminate {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @keyframes moveIndeterminate {
@@ -7399,7 +7425,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     display: block;
     opacity: 0;
     pointer-events: none;
-    top: calc(100% + (var(--bulma-navbar-dropdown-offset)));
+    top: calc(100% + var(--bulma-navbar-dropdown-offset));
     transform: translateY(-5px);
     transition-duration: var(--bulma-speed);
     transition-property: opacity, transform;
@@ -7890,7 +7916,7 @@ label.panel-block:hover {
   color: var(--bulma-tabs-link-color);
   display: flex;
   justify-content: center;
-  margin-bottom: calc(-1 * var(--bulma-tabs-border-bottom-width));
+  margin-bottom: calc(-1*var(--bulma-tabs-border-bottom-width));
   padding: var(--bulma-tabs-link-padding);
   vertical-align: top;
 }
@@ -7988,7 +8014,7 @@ label.panel-block:hover {
 }
 
 .tabs.is-toggle li + li {
-  margin-left: calc(-1 * var(--bulma-tabs-toggle-link-border-width));
+  margin-left: calc(-1*var(--bulma-tabs-toggle-link-border-width));
 }
 
 .tabs.is-toggle li:first-child a {
@@ -9236,7 +9262,7 @@ label.panel-block:hover {
 }
 
 .columns {
-  margin: calc(-1 * var(--bulma-column-gap));
+  margin: calc(-1*var(--bulma-column-gap));
 }
 
 .columns:not(:last-child) {
@@ -9292,8 +9318,8 @@ label.panel-block:hover {
 
 .columns.is-variable {
   --columnGap: 0.75rem;
-  margin-left: calc(-1 * var(--columnGap));
-  margin-right: calc(-1 * var(--columnGap));
+  margin-left: calc(-1*var(--columnGap));
+  margin-right: calc(-1*var(--columnGap));
 }
 
 .columns.is-variable .column {
@@ -9829,11 +9855,13 @@ label.panel-block:hover {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
   min-height: min-content;
 }
 
 .tile.is-ancestor {
-  margin: calc(var(--bulma-tile-spacing) * -1);
+  margin: calc(var(--bulma-tile-spacing)*-1);
 }
 
 .tile.is-ancestor:not(:last-child) {
@@ -11366,3 +11394,5 @@ label.panel-block:hover {
   --bulma-footer-background-color: #f9f9f9;
   --bulma-footer-padding: 3rem 1.5rem 6rem;
 }
+
+/*# sourceMappingURL=bulma.themeable.css.map */

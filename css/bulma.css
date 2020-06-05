@@ -1,4 +1,12 @@
 /*! bulma.io v0.8.2 | MIT License | github.com/jgthms/bulma */
+@-webkit-keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 @keyframes spinAround {
   from {
     transform: rotate(0deg);
@@ -121,7 +129,8 @@
 }
 
 .button.is-loading::after, .loader, .select.is-loading::after, .control.is-loading::after {
-  animation: spinAround 500ms infinite linear;
+  -webkit-animation: spinAround 500ms infinite linear;
+          animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
   border-radius: 290486px;
   border-right-color: transparent;
@@ -308,7 +317,10 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
 }
 
 article,
@@ -1579,18 +1591,18 @@ a.box:active {
 }
 
 .button .icon:first-child:not(:last-child) {
-  margin-left: calc(-1 / 2 * 1em - 1px);
-  margin-right: calc(1em / 4);
+  margin-left: calc(-0.5em - 1px);
+  margin-right: 0.25em;
 }
 
 .button .icon:last-child:not(:first-child) {
-  margin-left: calc(1em / 4);
-  margin-right: calc(-1 / 2 * 1em - 1px);
+  margin-left: 0.25em;
+  margin-right: calc(-0.5em - 1px);
 }
 
 .button .icon:first-child:last-child {
-  margin-left: calc(-1 / 2 * 1em - 1px);
-  margin-right: calc(-1 / 2 * 1em - 1px);
+  margin-left: calc(-0.5em - 1px);
+  margin-right: calc(-0.5em - 1px);
 }
 
 .button:hover, .button.is-hovered {
@@ -2835,8 +2847,8 @@ fieldset[disabled] .button {
 
 .button.is-loading::after {
   position: absolute;
-  left: calc(50% - (1em / 2));
-  top: calc(50% - (1em / 2));
+  left: calc(50% - 0.5em);
+  top: calc(50% - 0.5em);
   position: absolute !important;
 }
 
@@ -2850,8 +2862,8 @@ fieldset[disabled] .button {
 
 .button.is-rounded {
   border-radius: 290486px;
-  padding-left: calc(1em + 0.25em);
-  padding-right: calc(1em + 0.25em);
+  padding-left: 1.25em;
+  padding-right: 1.25em;
 }
 
 .buttons {
@@ -2956,31 +2968,31 @@ fieldset[disabled] .button {
 
 @media screen and (min-width: 1024px) {
   .container {
-    max-width: calc(1024px - 64px);
+    max-width: 960px;
   }
 }
 
 @media screen and (max-width: 1215px) {
   .container.is-widescreen {
-    max-width: calc(1216px - 64px);
+    max-width: 1152px;
   }
 }
 
 @media screen and (max-width: 1407px) {
   .container.is-fullhd {
-    max-width: calc(1408px - 64px);
+    max-width: 1344px;
   }
 }
 
 @media screen and (min-width: 1216px) {
   .container {
-    max-width: calc(1216px - 64px);
+    max-width: 1152px;
   }
 }
 
 @media screen and (min-width: 1408px) {
   .container {
-    max-width: calc(1408px - 64px);
+    max-width: 1344px;
   }
 }
 
@@ -3655,10 +3667,14 @@ fieldset[disabled] .button {
 }
 
 .progress:indeterminate {
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-name: moveIndeterminate;
-  animation-timing-function: linear;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: moveIndeterminate;
+          animation-name: moveIndeterminate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
   background-color: #ededed;
   background-image: linear-gradient(to right, #4a4a4a 30%, #ededed 30%);
   background-position: top left;
@@ -3684,6 +3700,15 @@ fieldset[disabled] .button {
 
 .progress.is-large {
   height: 1.5rem;
+}
+
+@-webkit-keyframes moveIndeterminate {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @keyframes moveIndeterminate {
@@ -4479,8 +4504,8 @@ fieldset[disabled] .select select:-ms-input-placeholder,
 
 .input.is-rounded {
   border-radius: 290486px;
-  padding-left: calc(calc(0.75em - 1px) + 0.375em);
-  padding-right: calc(calc(0.75em - 1px) + 0.375em);
+  padding-left: calc(1.125em - 1px);
+  padding-right: calc(1.125em - 1px);
 }
 
 .input.is-static {
@@ -7399,7 +7424,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     display: block;
     opacity: 0;
     pointer-events: none;
-    top: calc(100% + (-4px));
+    top: calc(100% + -4px);
     transform: translateY(-5px);
     transition-duration: 86ms;
     transition-property: opacity, transform;
@@ -7890,7 +7915,7 @@ label.panel-block:hover {
   color: #4a4a4a;
   display: flex;
   justify-content: center;
-  margin-bottom: calc(-1 * 1px);
+  margin-bottom: -1px;
   padding: 0.5em 1em;
   vertical-align: top;
 }
@@ -7988,7 +8013,7 @@ label.panel-block:hover {
 }
 
 .tabs.is-toggle li + li {
-  margin-left: calc(-1 * 1px);
+  margin-left: -1px;
 }
 
 .tabs.is-toggle li:first-child a {
@@ -9236,11 +9261,11 @@ label.panel-block:hover {
 }
 
 .columns {
-  margin: calc(-1 * 0.75rem);
+  margin: -0.75rem;
 }
 
 .columns:not(:last-child) {
-  margin-bottom: calc(1.5rem - 0.75rem);
+  margin-bottom: 0.75rem;
 }
 
 .columns.is-centered {
@@ -9292,8 +9317,8 @@ label.panel-block:hover {
 
 .columns.is-variable {
   --columnGap: 0.75rem;
-  margin-left: calc(-1 * var(--columnGap));
-  margin-right: calc(-1 * var(--columnGap));
+  margin-left: calc(-1*var(--columnGap));
+  margin-right: calc(-1*var(--columnGap));
 }
 
 .columns.is-variable .column {
@@ -9829,11 +9854,13 @@ label.panel-block:hover {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
   min-height: min-content;
 }
 
 .tile.is-ancestor {
-  margin: calc(0.75rem * -1);
+  margin: -0.75rem;
 }
 
 .tile.is-ancestor:not(:last-child) {
@@ -10814,3 +10841,5 @@ label.panel-block:hover {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
 }
+
+/*# sourceMappingURL=bulma.css.map */

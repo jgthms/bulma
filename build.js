@@ -8,6 +8,10 @@ const { makeAdjustableVar, sassToString, maybeCalc, ensureDirectoryExistence } =
 
 const args = process.argv.slice(2);
 
+if (args.length < 2) {
+  console.error("Usage:" + process.argv[0] + process.argv[1] + " input.sass ouput.css")
+}
+
 const input = args[0];
 
 const outInfo = path.parse(args[1])
