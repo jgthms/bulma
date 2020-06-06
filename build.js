@@ -22,15 +22,10 @@ const outInfo = path.parse(args[0])
 
 const output = path.resolve(process.cwd(), outInfo.dir + path.sep + outInfo.name);
 
-const varFile = path.resolve(__dirname, 'sass/themeable/variable-list.sass');
-
 //List of found vars and their value
 const vars = {}
 
 ensureDirectoryExistence(output)
-
-//Empty the variable list to first compile without theming enabled
-fs.writeFileSync(varFile, '');
 
 let data = '@import "' + input + '"'
 
@@ -55,12 +50,10 @@ if (argThemes.length === 0) {
 } else {
   const defaultVars = '(' + Object.keys(vars).map((v) => '"' + v + '":' + vars[v]).join(', ') + ')';
   if (argThemes.length === 1 && argThemes[0] === 'any') {
-    //Insert all the found vars into a sass list
 
-    fs.writeFileSync(varFile, '// This file was automatically generated do not modify it\n'
-      + '$css_vars: '+defaultVars);
-
-    data = '$themeable: "any";';
+    //Insert all the found vars into a sass list and inject it for compilation
+    data = '$themeable: "any";\n'
+    +'$css_vars: '+defaultVars + ";";
     const render = renderSassSync(input, data, {
       '_v($name, $value)': function (name, value) {
         return new sass.types.String(maybeVar(name.getValue()));
@@ -144,11 +137,8 @@ if (argThemes.length === 0) {
         }
       })
 
-      fs.writeFileSync(varFile, '// This file was automatically generated, do not modify it\n'
-        + '$css_vars: (default: '+defaultVars+ ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') +')'
-      )
-
-      data = '$themeable: true;'
+      data = '$themeable: true;\n' +
+        '$css_vars: (default: '+defaultVars+ ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') +');'
       const render = renderSassSync(input, data, {
         '_v($name, $value)': function (name, value) {
           if (modified.indexOf(name.getValue()) >= 0) {
