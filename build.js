@@ -4,7 +4,7 @@ const path = require('path')
 const fs = require('fs');
 const sass = require('node-sass')
 
-const {makeAdjustableVar, sassToString, maybeCalc, ensureDirectoryExistence, rgbToHsl, renderSassSync, writeOutput, maybeVar} = require("./utils");
+const {makeAdjustableVar, sassToString, maybeCalc, maybeCalcP, ensureDirectoryExistence, rgbToHsl, renderSassSync, writeOutput, maybeVar} = require("./utils");
 
 const args = process.argv.slice(2);
 
@@ -61,10 +61,12 @@ if (argThemes.length === 0) {
       '_vAdjustHSLA($name, $value, $h, $s, $l, $a)': function (name, value, h, s, l, a) {
         let str = "hsla(";
         name = name.getValue();
+        s.setUnit('%');
+        l.setUnit('%')
         str += maybeCalc(name + "-h", h) + ','
         str += maybeCalc(name + "-s", s) + ','
         str += maybeCalc(name + "-l", l) + ','
-        str += maybeCalc(name + "-a", a)
+        str += maybeCalc(name + "-a", a, true)
 
         return sass.types.String(str + ')')
       },
@@ -152,10 +154,12 @@ if (argThemes.length === 0) {
           const [oH, oS, oL] = rgbToHsl(value.getR(), value.getG(), value.getB());
 
           name = name.getValue();
-          str += maybeCalc(name + "-h", h, modified, oH) + ','
-          str += maybeCalc(name + "-s", s, modified, oS) + ','
-          str += maybeCalc(name + "-l", l, modified, oL) + ','
-          str += maybeCalc(name + "-a", a, modified, value.getA())
+          s.setUnit('%')
+          l.setUnit('%')
+          str += maybeCalc(name + "-h", h, false, modified, oH) + ','
+          str += maybeCalc(name + "-s", s, false, modified, oS) + ','
+          str += maybeCalc(name + "-l", l, false, modified, oL) + ','
+          str += maybeCalc(name + "-a", a, true, modified, value.getA())
 
           return sass.types.String(str + ')')
         },

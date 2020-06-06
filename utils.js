@@ -43,7 +43,7 @@ const rgbToHsl = (r, g, b) => {
     h /= 6;
   }
 
-  return [Math.round(h * 360), s, l];
+  return [Math.round(h * 360), Math.round(s*100), Math.round(l*100)];
 }
 
 /**
@@ -55,9 +55,9 @@ const rgbToHsl = (r, g, b) => {
 const makeAdjustableVar = (varName, color, vars) => {
   const [h, s, l] = rgbToHsl(color.getR(), color.getG(), color.getB());
   const a = color.getA();
-  vars[varName + '-h'] = h;
-  vars[varName + '-s'] = s;
-  vars[varName + '-l'] = l;
+  vars[varName + '-h'] = h+'deg';
+  vars[varName + '-s'] = s+'%';
+  vars[varName + '-l'] = l+'%';
   if (a)
     vars[varName + '-a'] = a;
 }
@@ -120,10 +120,12 @@ const maybeVar = (name, value, modified) => {
   }
 }
 
-const maybeCalc = (name, value, modified, original) => {
+const maybeCalc = (name, value, multiply, modified, original) => {
   if (value && value.getValue() !== 0) {
+    const unit = value.getUnit();
+    value.setUnit('')
     const val = parseFloat(sassToString(value));
-    return 'calc('+maybeVar(name, original, modified) + (val > 0 ? '+' : '-') + ' ' + Math.abs(val)+')'
+    return 'calc('+maybeVar(name, original, modified) + (multiply ? "*" : (val > 0 ? '+' : '-')) + ' ' + Math.abs(val)+unit+')'
   } else {
     return maybeVar(name, original, modified)
   }
