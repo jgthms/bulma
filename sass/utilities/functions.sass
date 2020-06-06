@@ -120,6 +120,8 @@
   @return $color
 
 @function vDarken($name, $color, $amount)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
   @if function-exists(_vAdjustHSLA)
     @return vHSLAdjust($name, $color, 0, 0, -$amount)
   @return bulmaDarken($color, $amount)
@@ -128,6 +130,8 @@
   @return vDarken($name, $color, -$amount)
 
 @function vSaturate($name, $color, $amount)
+  @if function_exists(_vRegisterHSLA)
+    $null: _vRegisterHSLA($name, $color)
   @if function-exists(_vAdjustHSLA)
     @return vHSLAdjust($name, $color, 0, $amount, 0)
   @return saturate($color, $amount)

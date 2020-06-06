@@ -55,7 +55,7 @@ const rgbToHsl = (r, g, b) => {
 const makeAdjustableVar = (varName, color, vars) => {
   const [h, s, l] = rgbToHsl(color.getR(), color.getG(), color.getB());
   const a = color.getA();
-  vars[varName + '-h'] = h+'deg';
+  vars[varName + '-h'] = h+'';
   vars[varName + '-s'] = s+'%';
   vars[varName + '-l'] = l+'%';
   if (a)

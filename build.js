@@ -61,6 +61,8 @@ if (argThemes.length === 0) {
       '_vAdjustHSLA($name, $value, $h, $s, $l, $a)': function (name, value, h, s, l, a) {
         let str = "hsla(";
         name = name.getValue();
+        //The h unit is deg but it can safely be remove from the variable registration and the calc
+        h.setUnit('')
         s.setUnit('%');
         l.setUnit('%')
         str += maybeCalc(name + "-h", h) + ','
@@ -154,6 +156,7 @@ if (argThemes.length === 0) {
           const [oH, oS, oL] = rgbToHsl(value.getR(), value.getG(), value.getB());
 
           name = name.getValue();
+          h.setUnit('')
           s.setUnit('%')
           l.setUnit('%')
           str += maybeCalc(name + "-h", h, false, modified, oH) + ','
