@@ -67,11 +67,11 @@ $content-table-foot-cell-color: $text-strong !default
     margin-bottom: 1em
   blockquote
     background-color: $content-blockquote-background-color
-    border-left: $content-blockquote-border-left
+    +ltr-property("border", $content-blockquote-border-left, false)
     padding: $content-blockquote-padding
   ol
     list-style-position: outside
-    margin-left: 2em
+    +ltr-property("margin", 2em, false)
     margin-top: 1em
     &:not([type])
       list-style-type: decimal
@@ -85,7 +85,7 @@ $content-table-foot-cell-color: $text-strong !default
         list-style-type: upper-roman
   ul
     list-style: disc outside
-    margin-left: 2em
+    +ltr-property("margin", 2em, false)
     margin-top: 1em
     ul
       list-style-type: circle
@@ -93,7 +93,7 @@ $content-table-foot-cell-color: $text-strong !default
       ul
         list-style-type: square
   dd
-    margin-left: 2em
+    +ltr-property("margin", 2em, false)
   figure
     margin-left: 2em
     margin-right: 2em
@@ -126,7 +126,7 @@ $content-table-foot-cell-color: $text-strong !default
     th
       color: $content-table-cell-heading-color
       &:not([align])
-        text-align: left
+        text-align: inherit
     thead
       td,
       th
