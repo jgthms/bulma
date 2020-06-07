@@ -2,7 +2,20 @@
 
 ## 0.9.0
 
-### New features
+### RTL support
+
+Bulma now has **RTL support**.
+
+By setting the Sass flag `$rtl` to `true`, you can create an RTL version of Bulma, thanks to 4 new Sass mixins:
+
+* `=ltr`
+* `=rtl`
+* `=ltr-property($property, $spacing, $right: true)`
+* `=ltr-position($spacing, $right: true)`
+
+The Bulma package now also comes with a `bulma-rtl.css` and `bulma-rtl.min.css` file to be used straight away.
+
+### Spacing helpers
 
 Bulma now has **spacing helpers**: https://bulma.io/documentation/helpers/spacing-helpers/
 
