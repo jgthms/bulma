@@ -1,0 +1,54 @@
+<table class="bd-spacing-table table is-bordered">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Shortcut</th>
+      <th colspan="7">Classes ↓</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th colspan="2">Values →</th>
+      {% for value in include.values %}
+        <th><code>{{ value[1] }}</code></th>
+      {% endfor %}
+    </tr>
+  </tfoot>
+  <tbody>
+    {% for shortcut in include.shortcuts %}
+      {% for direction in include.directions %}
+        <tr>
+          <td><code>{{ shortcut[0] }}-{{ direction[0] }}</code></td>
+          <td><code>{{ shortcut[1] }}{{ direction[1] }}</code></td>
+          {% for value in include.values %}
+            <td><code>{{ shortcut[1] }}{{ direction[1] }}-{{ value[0] }}</code></td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+
+      <tr>
+        <td>
+          <code>{{ shortcut[0] }}-left</code> <small>and</small> <br>
+          <code>{{ shortcut[0] }}-right</code>
+        </td>
+        <td><code>{{ shortcut[1] }}{{ include.horizontal }}</code></td>
+        {% for value in include.values %}
+          <td><code>{{ shortcut[1] }}{{ include.horizontal }}-{{ value[0] }}</code></td>
+        {% endfor %}
+      </tr>
+
+      {% if include.vertical %}
+        <tr>
+          <td>
+            <code>{{ shortcut[0] }}-top</code> <small>and</small> <br>
+            <code>{{ shortcut[0] }}-bottom</code>
+          </td>
+          <td><code>{{ shortcut[1] }}{{ include.vertical }}</code></td>
+          {% for value in include.values %}
+            <td><code>{{ shortcut[1] }}{{ include.vertical }}-{{ value[0] }}</code></td>
+          {% endfor %}
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>

@@ -2,6 +2,52 @@
 
 ## 0.9.0
 
+### New features
+
+Bulma now has **spacing helpers**: https://bulma.io/documentation/helpers/spacing-helpers/
+
+<p>Bulma provides <strong>margin</strong> <code>m*</code> and <strong>padding</strong> <code>p*</code> helpers in all <strong>directions</strong>:</p>
+
+<ul>
+  <li>
+    <code>*t</code> for <strong>top</strong>
+  </li>
+  <li>
+    <code>*r</code> for <strong>right</strong>
+  </li>
+  <li>
+    <code>*b</code> for <strong>bottom</strong>
+  </li>
+  <li>
+    <code>*l</code> for <strong>left</strong>
+  </li>
+  <li>
+    <code>*x</code> horizontally for both <strong>left</strong> and <strong>right</strong>
+  </li>
+  <li>
+    <code>*y</code> vertically for both <strong>top</strong> and <strong>bottom</strong>
+  </li>
+</ul>
+
+<p>
+  You need to <strong>combine</strong> a margin/padding prefix with a direciton suffix. For example:
+</p>
+
+<ul>
+  <li>for a <code>margin-top</code>, use <code>mt-*</code></li>
+  <li>for a <code>padding-bottom</code>, use <code>pb-*</code></li>
+  <li>for both <code>margin-left</code> and <code>margin-right</code>, use <code>mx-*</code></li>
+</ul>
+
+<p>
+  Each of these <code>property-direction</code> <strong>combinations</strong> needs to be appended with one of <strong>6 value suffixes</strong>
+</p>
+
+This release also includes the following helpers:
+
+* light and dark color helpers
+* light and dark background color helpers
+
 ### Improvements
 
 * #2925 Center table cell content vertically with `is-vcentered`
