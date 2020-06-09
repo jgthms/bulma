@@ -2,6 +2,13 @@
 
 ## 0.9.0
 
+### Deprecation warning
+
+The `base/helpers.sass` file is **deprecated**. It has moved into its own `/helpers` folder. If you were importing `base/helpers.sass` or `base/_all.sass`, please import `sass/helpers/_all.sass` now.
+If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
+
+The `list` component is also **deprecated**: the `components/list.sass` file has been deleted. It was never officialy supported as it was too similar to  `panel` component. Use that one instead.
+
 ### RTL support
 
 Bulma now has **RTL support**.
