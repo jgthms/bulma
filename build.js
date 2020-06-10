@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 const path = require('path')
-const fs = require('fs');
 const sass = require('node-sass')
 
-const {makeAdjustableVar, sassToString, maybeCalc, maybeCalcP, ensureDirectoryExistence, rgbToHsl, renderSassSync, writeOutput, maybeVar} = require("./utils");
+const { sassToString, ensureDirectoryExistence, renderSassSync, writeOutput } = require("./utils");
 
 const args = process.argv.slice(2);
 
