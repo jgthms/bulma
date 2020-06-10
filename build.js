@@ -31,7 +31,7 @@ if (argThemes.length === 0) {
   //No variables build
   const non_themeable = renderSassSync(input, output);
   //Output the non themeable generated css
-  writeOutput(output, non_themeable, input)
+  writeOutput(output, non_themeable)
 } else {
   const defaultVars = '(' + Object.keys(vars).map((v) => '"' + v + '":' + vars[v]).join(', ') + ')';
   if (argThemes.length === 1 && argThemes[0] === 'any') {
@@ -41,12 +41,27 @@ if (argThemes.length === 0) {
     const render = renderSassSync(input, output, data);
 
     //Output the themeable generated css
-    writeOutput(output, render, input)
+    writeOutput(output, render)
   } else {
     const promises = [];
 
     const themes = {};
     const themesVars = {};
+    const defaultVars = {};
+
+    let data = '$themeable: any;\n@import "' + input + '";'
+    promises.push(new Promise((resolve) => {
+      sass.render({
+        data,
+        includePaths: [path.resolve(process.cwd(), input)],
+        functions: {
+          '_vRegister($name, $value)': function (name, value) {
+            defaultVars[name.getValue()] = sassToString(value);
+            return value;
+          },
+        }
+      }, resolve)
+    }));
 
     argThemes.forEach((theme) => {
       let name = "";
@@ -62,7 +77,7 @@ if (argThemes.length === 0) {
       }
       themes[name] = file;
 
-      let data = '@import "' + file + '"'
+      let data = '$themeable: any;\n@import "' + file + '";'
 
       const themeVars = themesVars[name] = {}
 
@@ -91,8 +106,8 @@ if (argThemes.length === 0) {
     //When all renders are done
     Promise.all(promises).then(() => {
       const modified = [];
-      Object.keys(vars).forEach((varName) => {
-        let val = vars[varName];
+      Object.keys(defaultVars).forEach((varName) => {
+        let val = defaultVars[varName];
         for (let themeName in themes) {
           if (val !== themesVars[themeName][varName]) {
             modified.push(varName);
@@ -102,10 +117,12 @@ if (argThemes.length === 0) {
       })
 
       let data = '$themeable: true;\n' +
-        '$css_vars: (default: ' + defaultVars + ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') + ');'
+        '$default_vars: (' + modified.map((v) => '"' + v + '":' + defaultVars[v]).join(', ')  + ');\n' +
+        '$css_vars: (' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') + ');'
+      console.log(data)
       const render = renderSassSync(input, output, data)
 
-      writeOutput(output, render, input)
+      writeOutput(output, render)
     })
   }
 

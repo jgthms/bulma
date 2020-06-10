@@ -153,10 +153,22 @@
 
   @return $split-arr
 
+$hash_map: ()
 
 @function shorten-var($string)
-  @each $letter in (a, e, i, o, u, y)
-    $string: str-replace($string, $letter, '')
+  @if $shorten
+    $short: $string
+    @each $find, $replace in ("background": "bg", "invert": "inv", "scheme": "sch", "text": "txt", "large": "lg", "disabled": "dsbl", "current": "cur", "toggle": "tgl", "border": "bd", "margin": "m", "padding": "p", "color": "clr", "size": "s", "button": "bt", "warning": "warn", "danger": "dang", "success": "sucs", "primary": "prim", "dimensions": "dim", "content": "ct", "heading": "hdg", "header": "hd", "footer": "ft", "notification": "noti", "progress": "prg", "dropdown": "drp", "divider": "dvd", "item": "itm", "hover": "hov", "focus": "foc", "active": "act", "message": "msg", "pagination": "pag", "control": "ctrl", "breadcrumb": "bread", "navbar": "nav", "panel": "pnl", "section": "sct")
+      $short: str-replace($short, $find, $replace)
+    //@each $letter in (e, i, u, y)
+    //  $short: str-replace($short, $letter, '')
+    $hash_map: map_merge($hash_map, ($short: $string)) !global
+    $string: $short
+  @return $string
+
+@function unshorten-var($string)
+  @if $shorten
+    $string: map_get($hash_map, $string)
   @return $string
 
 @function strip-unit($number)
@@ -177,16 +189,23 @@ $used_vars: ()
 
 @function getRegistered($name: null)
   @if $name != null
-    $value: map_get($registered_vars, $name)
+    @if str-index($name, "var(--blm-") == 1
+      $name: unshorten-var(str-slice(str-replace($name, " ", ""), 11, -2))
 
+    $value: map_get($registered_vars, $name)
     @if not index($used_vars, $name)
       $used_vars: append($used_vars, $name) !global
 
-    @while (type_of($value) == "string" and str-index($value, "var(--blm-") == 1)
-      $name: str-slice($value, 10, -1)
-      $value: map_get($registered_vars, $name)
-      @if not index($used_vars, $name)
-        $used_vars: append($used_vars, $name) !global
+    @if $themeable and type-of($value) == "string"
+      @if str-index($value, "hsla(") == 1
+        $value: str-slice($value, 6, -2)
+        //Remove hsla() part
+        $parts: str-split($value, ',')
+
+        $value: hsla(getRegistered(nth($parts, 1)), getRegistered(nth($parts, 2)), getRegistered(nth($parts, 3)), getRegistered(nth($parts, 4))) !global
+      @elseif str-index($value, "var(--blm-") == 1
+        $value: getRegistered($value)
+
     @return $value
   @return $registered_vars
 
@@ -194,7 +213,7 @@ $used_vars: ()
   @if function-exists(_vRegister)
     $value: _vRegister($name, $value)
 
-  @if variable-exists(themeable)
+  @if $themeable
     @if type-of($value) == "color"
       $registered_vars: map-merge($registered_vars, (#{$name}-h: hue($value), #{$name}-s: saturation($value), #{$name}-l: lightness($value), #{$name}-a: opacity($value))) !global
     @else if type-of($value) == "string"
@@ -205,12 +224,12 @@ $used_vars: ()
 
         $registered_vars: map-merge($registered_vars, (#{$name}-h: nth($parts, 1), #{$name}-s: nth($parts, 2), #{$name}-l: nth($parts, 3), #{$name}-a: nth($parts, 4))) !global
       @if str-index($value, "var(--blm-") == 1
-        $var: str-slice(str-replace($value, " ", ""), 11, -2)
+        $var: unshorten-var(str-slice(str-replace($value, " ", ""), 11, -2))
         @if isVColor($var)
-          $registered_vars: map-merge($registered_vars, (#{$name}-h: v($var+"-h"), #{$name}-s: v($var+"-s"), #{$name}-l: v($var+"-l"), #{$name}-a:  v($var+"-a"))) !global
+          $registered_vars: map-merge($registered_vars, (#{$name}-h: var(varName($var+"-h")), #{$name}-s: var(varName($var+"-s")), #{$name}-l: var(varName($var+"-l")), #{$name}-a: var(varName($var+"-a")) )) !global
 
   @if isRegistered($name+"-h")
-    $registered_vars: map-merge($registered_vars, (#{$name}: unquote("hsla(#{v($name+"-h")},#{v($name+"-s")},#{v($name+"-l")},#{v($name+"-a")})"))) !global
+    $registered_vars: map-merge($registered_vars, (#{$name}: unquote("hsla(#{var(varName($name+"-h"))},#{var(varName($name+"-s"))},#{var(varName($name+"-l"))},#{var(varName($name+"-a"))})"))) !global
   @else
     $registered_vars: map-merge($registered_vars, ($name: $value)) !global
 
@@ -219,29 +238,13 @@ $used_vars: ()
 @mixin vRegister($name, $value)
   $null: vRegister($name, $value)
 
-@function vLight($name, $color)
-  $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-  $color: lighten($color, $color-lightning)
-
-  @return vRegister($name+'-light', $color)
-
-@function vDark($name, $color)
-  $color-luminance: colorLuminance($color)
-  $color: desaturate(darken($color, $color-luminance * 70%), $color-luminance * 30%)
-
-  @return vRegister($name+'-dark', $color)
-
-@function vInvert($name)
-  $color: getRegistered($name)
-  @return vRegister($name+'-inv', findColorInvert($color))
-
 @function varName($name)
-  @return --blm-#{$name}
+  @return --blm-#{shorten-var($name)}
 
 @function v($name)
   $value: getRegistered($name)
   //Make sure to let the compiler know we used this variable
-  @if variable-exists(themeable)
+  @if ($themeable and not variable-exists(default_vars)) or (variable-exists(default_vars) and map_get($default_vars, $name))
     @if isRegistered($name)
       @return var(varName($name))
     @warn $name + " was not registered before use"
@@ -284,7 +287,7 @@ $used_vars: ()
     @return $value
 
 @function vAdjust($name, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1)
-  @if variable-exists(themeable)
+  @if $themeable
     @return hsla(maybeCalc(v(#{$name}-h), $hue + 0deg), maybeCalc(v(#{$name}-s), $saturation), maybeCalc(v(#{$name}-l), $lightness), maybeCalcMult(v(#{$name}-a), $alpha))
   @else
     $color: getRegistered($name)
@@ -298,7 +301,7 @@ $used_vars: ()
     @return scale_color(adjust_color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness), $alpha: $alpha)
 
 @function vChange($name, $hue: null, $saturation: null, $lightness: null, $alpha: null)
-  @if variable-exists(themeable)
+  @if $themeable
     @if $hue == null
       $hue: v($name+"-h")
     @if $saturation == null
