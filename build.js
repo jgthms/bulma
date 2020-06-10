@@ -29,19 +29,19 @@ ensureDirectoryExistence(output)
 
 if (argThemes.length === 0) {
   //No variables build
-  const non_themeable = renderSassSync(input);
+  const non_themeable = renderSassSync(input, output);
   //Output the non themeable generated css
-  writeOutput(output, non_themeable.css, non_themeable.map, input)
+  writeOutput(output, non_themeable, input)
 } else {
   const defaultVars = '(' + Object.keys(vars).map((v) => '"' + v + '":' + vars[v]).join(', ') + ')';
   if (argThemes.length === 1 && argThemes[0] === 'any') {
 
     //Insert all the found vars into a sass list and inject it for compilation
     let data = '$themeable: "any";'
-    const render = renderSassSync(input, data);
+    const render = renderSassSync(input, output, data);
 
     //Output the themeable generated css
-    writeOutput(output, render.css, render.map, input)
+    writeOutput(output, render, input)
   } else {
     const promises = [];
 
@@ -103,9 +103,9 @@ if (argThemes.length === 0) {
 
       let data = '$themeable: true;\n' +
         '$css_vars: (default: ' + defaultVars + ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') + ');'
-      const render = renderSassSync(input, data)
+      const render = renderSassSync(input, output, data)
 
-      writeOutput(output, render.css, render.map, input)
+      writeOutput(output, render, input)
     })
   }
 

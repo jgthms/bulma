@@ -15,8 +15,8 @@ const autoprefixer = require('autoprefixer')
 const postcssCalc = require('postcss-calc')
 const cleanCSS = require('clean-css')
 
-const writeOutput = (output, css, map, input) => {
-  postcss([autoprefixer, postcssCalc]).process(css, {map: { prev: map, inline: false, sourcesContent: true }, from: output + '.css', to: output + '.css'}).then((result) => {
+const writeOutput = (output, result, input) => {
+  postcss([autoprefixer, postcssCalc]).process(result.css, {map: { prev: result.map.toString(), inline: false, sourcesContent: true }, from: input, to: output + '.css'}).then((result) => {
     fs.writeFile(output + '.css', result.css, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css'))
     fs.writeFile(output + '.css.map', result.map, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css.map'))
 
@@ -24,14 +24,16 @@ const writeOutput = (output, css, map, input) => {
   });
 }
 
-const renderSassSync = (input, data, functions) => {
+const renderSassSync = (input, output, data, functions) => {
   data = data || "";
   data += '\n@import "' + input + '";'
   return sass.renderSync({
     data,
+    outFile: output + '.css',
     includePaths: [path.resolve(process.cwd(), input)],
     outputStyle: 'expanded',
     sourceMap: true,
+    sourceMapContents: true,
     functions
   });
 }
