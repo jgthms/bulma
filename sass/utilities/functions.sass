@@ -191,8 +191,8 @@ $used_vars: ()
   @return $registered_vars
 
 @function vRegister($name, $value)
-  //@if function-exists(_vRegister)
-  //  @return _vRegister($name, $value)
+  @if function-exists(_vRegister)
+    $value: _vRegister($name, $value)
 
   @if variable-exists(themeable)
     @if type-of($value) == "color"
@@ -248,10 +248,7 @@ $used_vars: ()
     @return null
   @else
     @if $value == null
-      @if function-exists(_v)
-        $name: _v($name)
-      @else
-        @warn $name + " was not registered before use"
+      @warn $name + " was not registered before use"
     @return $value
 
 @function vDarken($name, $amount)

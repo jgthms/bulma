@@ -30,17 +30,7 @@ ensureDirectoryExistence(output)
 
 if (argThemes.length === 0) {
   //No variables build
-  const non_themeable = renderSassSync(input, "", {
-    '_v($name)': function (name) {
-      try {
-        vars[name.getValue()] = true;
-      } catch (e) {
-        console.log(name)
-      }
-
-      return name;
-    },
-  });
+  const non_themeable = renderSassSync(input);
   //Output the non themeable generated css
   writeOutput(output, non_themeable.css, non_themeable.map, input)
 } else {
@@ -49,11 +39,7 @@ if (argThemes.length === 0) {
 
     //Insert all the found vars into a sass list and inject it for compilation
     let data = '$themeable: "any";'
-    const render = renderSassSync(input, data, {
-      '_v($name, $value)': function (name, value) {
-        return new sass.types.String(maybeVar(name.getValue()));
-      },
-    });
+    const render = renderSassSync(input, data);
 
     //Output the themeable generated css
     writeOutput(output, render.css, render.map, input)
@@ -88,7 +74,7 @@ if (argThemes.length === 0) {
           data,
           includePaths: [path.resolve(process.cwd(), file)],
           functions: {
-            '_v($name, $value)': function (name, value) {
+            '_vRegister($name, $value)': function (name, value) {
               themeVars[name.getValue()] = sassToString(value);
               return value;
             },
@@ -116,32 +102,9 @@ if (argThemes.length === 0) {
         }
       })
 
-      data = '$themeable: true;\n' +
+      let data = '$themeable: true;\n' +
         '$css_vars: (default: ' + defaultVars + ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') + ');'
-      const render = renderSassSync(input, data, {
-        '_v($name, $value)': function (name, value) {
-          if (modified.indexOf(name.getValue()) >= 0) {
-            return new sass.types.String(maybeVar(name.getValue()));
-          }
-          return value
-        },
-        '_vAdjustHSLA($name, $value, $h, $s, $l, $a)': function (name, value, h, s, l, a) {
-          let str = "hsla(";
-
-          const [oH, oS, oL] = rgbToHsl(value.getR(), value.getG(), value.getB());
-
-          name = name.getValue();
-          h.setUnit('')
-          s.setUnit('%')
-          l.setUnit('%')
-          str += maybeCalc(name + "-h", h, false, modified, oH) + ','
-          str += maybeCalc(name + "-s", s, false, modified, oS) + ','
-          str += maybeCalc(name + "-l", l, false, modified, oL) + ','
-          str += maybeCalc(name + "-a", a, true, modified, value.getA())
-
-          return sass.types.String(str + ')')
-        },
-      })
+      const render = renderSassSync(input, data)
 
       writeOutput(output, render.css, render.map, input)
     })

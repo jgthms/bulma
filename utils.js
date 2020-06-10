@@ -154,6 +154,7 @@ const writeOutput = (output, css, map, input) => {
 }
 
 const renderSassSync = (input, data, functions) => {
+  data = data || "";
   data += '\n@import "' + input + '";'
   return sass.renderSync({
     data,
