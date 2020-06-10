@@ -5,20 +5,27 @@ $container-offset: (2 * $gap) !default
   margin: 0 auto
   position: relative
   width: auto
-  &.is-fluid
-    max-width: none
-    padding-left: v(gap, $gap)
-    padding-right: v(gap, $gap)
-    width: 100%
   +desktop
-    max-width: calc(#{v(desktop, $desktop)} - #{v(container-offset, $container-offset)})
+    max-width: $desktop - $container-offset
+    &.is-fluid
+      margin-left: $gap
+      margin-right: $gap
+      max-width: none
+  &.is-fluid
+    margin-left: $gap
+    margin-right: $gap
+    max-width: none
+    width: auto
+  +desktop
+    max-width: $desktop - $container-offset
   +until-widescreen
     &.is-widescreen
-      max-width: calc(#{v(widescreen, $widescreen)} - #{v(container-offset, $container-offset)})
+      max-width: $widescreen - $container-offset
   +until-fullhd
     &.is-fullhd
-      max-width: calc(#{v(fullhd, $fullhd)} - #{v(container-offset, $container-offset)})
+      max-width: $fullhd - $container-offset
   +widescreen
-    max-width: calc(#{v(widescreen, $widescreen)} - #{v(container-offset, $container-offset)})
+    max-width: $widescreen - $container-offset
   +fullhd
-    max-width: calc(#{v(fullhd, $fullhd)} - #{v(container-offset, $container-offset)})
+    max-width: $fullhd - $container-offset
+

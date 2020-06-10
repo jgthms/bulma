@@ -1,31 +1,34 @@
-$label-color: $text-strong !default
-$label-weight: $weight-bold !default
+$label-color: v("text-strong") !default
+$label-weight: v("weight-bold") !default
 
-$help-size: $size-small !default
+$help-size: v("size-small") !default
+
+@include vRegister(label-color, $label-color)
+@include vRegister(label-weight, $label-weight)
+@include vRegister(help-size, $help-size)
 
 .label
-  color: v(label-color, $label-color)
+  color: v("label-color")
   display: block
-  font-size: v(size-normal, $size-normal)
-  font-weight: v(label-weight, $label-weight)
+  font-size: v("size-normal")
+  font-weight: v("label-weight")
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
   &.is-small
-    font-size: v(size-small, $size-small)
+    font-size: v("size-small")
   &.is-medium
-    font-size: v(size-medium, $size-medium)
+    font-size: v("size-medium")
   &.is-large
-    font-size: v(size-large, $size-large)
+    font-size: v("size-large")
 
 .help
   display: block
-  font-size: v(help-size, $help-size)
+  font-size: v("help-size")
   margin-top: 0.25rem
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
+  @each $name in $colors-list
     &.is-#{$name}
-      color: $color
+      color: v($name)
 
 // Containers
 
@@ -122,15 +125,15 @@ $help-size: $size-small !default
     margin-right: 1.5rem
     text-align: right
     &.is-small
-      font-size: v(size-small, $size-small)
+      font-size: v("size-small")
       padding-top: 0.375em
     &.is-normal
       padding-top: 0.375em
     &.is-medium
-      font-size: v(size-medium, $size-medium)
+      font-size: v("size-medium")
       padding-top: 0.375em
     &.is-large
-      font-size: v(size-large, $size-large)
+      font-size: v("size-large")
       padding-top: 0.375em
 
 .field-body
@@ -153,7 +156,7 @@ $help-size: $size-small !default
 .control
   box-sizing: border-box
   clear: both
-  font-size: v(size-normal, $size-normal)
+  font-size: v("size-normal")
   position: relative
   text-align: left
   // Modifiers
@@ -163,31 +166,31 @@ $help-size: $size-small !default
     .select
       &:focus
         & ~ .icon
-          color: v(input-icon-active-color, $input-icon-active-color)
+          color: v("input-icon-active-color")
       &.is-small ~ .icon
-        font-size: v(size-small, $size-small)
+        font-size: v("size-small")
       &.is-medium ~ .icon
-        font-size: v(size-medium, $size-medium)
+        font-size: v("size-medium")
       &.is-large ~ .icon
-        font-size: v(size-large, $size-large)
+        font-size: v("size-large")
     .icon
-      color: v(input-icon-color, $input-icon-color)
-      height: v(input-height, $input-height)
+      color: v("input-icon-color")
+      height: v("input-height")
       pointer-events: none
       position: absolute
       top: 0
-      width: v(input-height, $input-height)
+      width: v("input-height")
       z-index: 4
   &.has-icons-left
     .input,
     .select select
-      padding-left: v(input-height, $input-height)
+      padding-left: v("input-height")
     .icon.is-left
       left: 0
   &.has-icons-right
     .input,
     .select select
-      padding-right: v(input-height, $input-height)
+      padding-right: v("input-height")
     .icon.is-right
       right: 0
   &.is-loading
@@ -198,8 +201,8 @@ $help-size: $size-small !default
       top: 0.625em
       z-index: 4
     &.is-small:after
-      font-size: v(size-small, $size-small)
+      font-size: v("size-small")
     &.is-medium:after
-      font-size: v(size-medium, $size-medium)
+      font-size: v("size-medium")
     &.is-large:after
-      font-size: v(size-large, $size-large)
+      font-size: v("size-large")

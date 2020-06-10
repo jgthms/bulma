@@ -1,7 +1,12 @@
-$tag-background-color: $background !default
-$tag-color: $text !default
-$tag-radius: $radius !default
+$tag-background-color: v("background") !default
+$tag-color: v("text") !default
+$tag-radius: v("radius") !default
 $tag-delete-margin: 1px !default
+
+@include vRegister(tag-background-color,$tag-background-color)
+@include vRegister(tag-radius,$tag-radius)
+@include vRegister(tag-color,$tag-color)
+@include vRegister(tag-delete-margin,$tag-delete-margin)
 
 .tags
   align-items: center
@@ -19,10 +24,10 @@ $tag-delete-margin: 1px !default
   // Sizes
   &.are-medium
     .tag:not(.is-normal):not(.is-large)
-      font-size: v(size-normal, $size-normal)
+      font-size: v("size-normal")
   &.are-large
     .tag:not(.is-normal):not(.is-medium)
-      font-size: v(size-medium, $size-medium)
+      font-size: v("size-medium")
   &.is-centered
     justify-content: center
     .tag
@@ -48,11 +53,11 @@ $tag-delete-margin: 1px !default
 
 .tag:not(body)
   align-items: center
-  background-color: v(tag-background-color, $tag-background-color)
-  border-radius: v(tag-radius, $tag-radius)
-  color: v(tag-color, $tag-color)
+  background-color: v("tag-background-color")
+  border-radius: v("tag-radius")
+  color: v("tag-color")
   display: inline-flex
-  font-size: v(size-small, $size-small)
+  font-size: v("size-small")
   height: 2em
   justify-content: center
   line-height: 1.5
@@ -63,26 +68,26 @@ $tag-delete-margin: 1px !default
     margin-left: 0.25rem
     margin-right: -0.375rem
   // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+  @each $name in $colors-list
+    $color: v($name)
+    $color-invert: v($name+"-invert")
     &.is-#{$name}
-      background-color: v($name, $color)
-      color: v($name+'-invert', $color-invert)
+      background-color: $color
+      color: $color-invert
       // If a light and dark colors are provided
-      @if length($pair) > 3
-        $color-light: nth($pair, 3)
-        $color-dark: nth($pair, 4)
+      @if isRegistered($name+'-dark')
+        $color-light: v($name+'-light')
+        $color-dark: v($name+'-dark')
         &.is-light
-          background-color: v($name+'-light', $color-light)
-          color: v($name+'-dark', $color-dark)
+          background-color: $color-light
+          color: $color-dark
   // Sizes
   &.is-normal
-    font-size: v(size-small, $size-small)
+    font-size: v("size-small")
   &.is-medium
-    font-size: v(size-normal, $size-normal)
+    font-size: v("size-normal")
   &.is-large
-    font-size: v(size-medium, $size-medium)
+    font-size: v("size-medium")
   .icon
     &:first-child:not(:last-child)
       margin-left: -0.375em
@@ -95,7 +100,7 @@ $tag-delete-margin: 1px !default
       margin-right: -0.375em
   // Modifiers
   &.is-delete
-    margin-left: v(tag-delete-margin, $tag-delete-margin)
+    margin-left: v("tag-delete-margin")
     padding: 0
     position: relative
     width: 2em
@@ -117,11 +122,11 @@ $tag-delete-margin: 1px !default
       width: 1px
     &:hover,
     &:focus
-      background-color: vDarken(tag-background-color, $tag-background-color, 5%)
+      background-color: vDarken("tag-background-color",  5%)
     &:active
-      background-color: vDarken(tag-background-color, $tag-background-color, 10%)
+      background-color: vDarken("tag-background-color",  10%)
   &.is-rounded
-    border-radius: v(radius-rounded, $radius-rounded)
+    border-radius: v("radius-rounded")
 
 a.tag
   &:hover

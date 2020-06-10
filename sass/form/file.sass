@@ -1,15 +1,26 @@
-$file-border-color: $border !default
-$file-radius: $radius !default
+$file-border-color: v("border") !default
+$file-radius: v("radius") !default
 
-$file-cta-background-color: $scheme-main-ter !default
-$file-cta-color: $text !default
-$file-cta-hover-color: $text-strong !default
-$file-cta-active-color: $text-strong !default
+$file-cta-background-color: v("scheme-main-ter") !default
+$file-cta-color: v("text") !default
+$file-cta-hover-color: v("text-strong") !default
+$file-cta-active-color: v("text-strong") !default
 
-$file-name-border-color: $border !default
+$file-name-border-color: v("border") !default
 $file-name-border-style: solid !default
 $file-name-border-width: 1px 1px 1px 0 !default
 $file-name-max-width: 16em !default
+
+@include vRegister(file-radius,$file-radius)
+@include vRegister(file-cta-background-color,$file-cta-background-color)
+@include vRegister(file-cta-hover-color,$file-cta-hover-color)
+@include vRegister(file-name-border-color,$file-name-border-color)
+@include vRegister(file-cta-active-color,$file-cta-active-color)
+@include vRegister(file-border-color,$file-border-color)
+@include vRegister(file-cta-color,$file-cta-color)
+@include vRegister(file-name-border-style,$file-name-border-style)
+@include vRegister(file-name-border-width,$file-name-border-width)
+@include vRegister(file-name-max-width,$file-name-max-width)
 
 .file
   @extend %unselectable
@@ -18,42 +29,42 @@ $file-name-max-width: 16em !default
   justify-content: flex-start
   position: relative
   // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+  @each $name in $colors-list
+    $color: v($name)
+    $color-invert: v($name+"-invert")
     &.is-#{$name}
       .file-cta
-        background-color: v($name, $color)
+        background-color: $color
         border-color: transparent
-        color: v($name+'-invert', $color-invert)
+        color: $color-invert
       &:hover,
       &.is-hovered
         .file-cta
-          background-color: vDarken($name, $color, 2.5%)
+          background-color: vDarken($name,  2.5%)
           border-color: transparent
-          color: v($name+'-invert', $color-invert)
+          color: $color-invert
       &:focus,
       &.is-focused
         .file-cta
           border-color: transparent
-          box-shadow: 0 0 0.5em bulmaRgba($color, 0.25)
-          color: v($name+'-invert', $color-invert)
+          box-shadow: 0 0 0.5em vAlphaChange($name, 0.25)
+          color: $color-invert
       &:active,
       &.is-active
         .file-cta
-          background-color: vDarken($name, $color, 5%)
+          background-color: vDarken($name, 5%)
           border-color: transparent
-          color: v($name+'-invert', $color-invert)
+          color: $color-invert
   // Sizes
   &.is-small
-    font-size: v(size-small, $size-small)
+    font-size: v("size-small")
   &.is-medium
-    font-size: v(size-medium, $size-medium)
+    font-size: v("size-medium")
     .file-icon
       .fa
         font-size: 21px
   &.is-large
-    font-size: v(size-large, $size-large)
+    font-size: v("size-large")
     .file-icon
       .fa
         font-size: 28px
@@ -67,7 +78,7 @@ $file-name-max-width: 16em !default
       border-top-left-radius: 0
     &.is-empty
       .file-cta
-        border-radius: v(file-radius, $file-radius)
+        border-radius: v("file-radius")
       .file-name
         display: none
   &.is-boxed
@@ -95,9 +106,9 @@ $file-name-max-width: 16em !default
         font-size: 35px
     &.has-name
       .file-cta
-        border-radius: v(file-radius, $file-radius) $file-radius 0 0
+        border-radius: v("file-radius") v("file-radius") 0 0
       .file-name
-        border-radius: 0 0 v(file-radius, $file-radius) $file-radius
+        border-radius: 0 0 v("file-radius") v("file-radius")
         border-width: 0 1px 1px
   &.is-centered
     justify-content: center
@@ -110,9 +121,9 @@ $file-name-max-width: 16em !default
   &.is-right
     justify-content: flex-end
     .file-cta
-      border-radius: 0 v(file-radius, $file-radius) v(file-radius, $file-radius) 0
+      border-radius: 0 v("file-radius") v("file-radius") 0
     .file-name
-      border-radius: v(file-radius, $file-radius) 0 0 v(file-radius, $file-radius)
+      border-radius: v("file-radius") 0 0 v("file-radius")
       border-width: 1px 0 1px 1px
       order: -1
 
@@ -125,16 +136,16 @@ $file-name-max-width: 16em !default
   position: relative
   &:hover
     .file-cta
-      background-color: vDarken(file-cta-background-color, $file-cta-background-color, 2.5%)
-      color: v(file-cta-hover-color, $file-cta-hover-color)
+      background-color: vDarken("file-cta-background-color",  2.5%)
+      color: v("file-cta-hover-color")
     .file-name
-      border-color: vDarken(file-name-border-color, $file-name-border-color, 2.5%)
+      border-color: vDarken("file-name-border-color",  2.5%)
   &:active
     .file-cta
-      background-color: vDarken(file-cta-background-color, $file-cta-background-color, 5%)
-      color: v(file-cta-active-color, $file-cta-active-color)
+      background-color: vDarken("file-cta-background-color",  5%)
+      color: v("file-cta-active-color")
     .file-name
-      border-color: vDarken(file-name-border-color, $file-name-border-color, 5%)
+      border-color: vDarken("file-name-border-color",  5%)
 
 .file-input
   height: 100%
@@ -148,23 +159,23 @@ $file-name-max-width: 16em !default
 .file-cta,
 .file-name
   @extend %control
-  border-color: v(file-border-color, $file-border-color)
-  border-radius: v(file-radius, $file-radius)
+  border-color: v("file-border-color")
+  border-radius: v("file-radius")
   font-size: 1em
   padding-left: 1em
   padding-right: 1em
   white-space: nowrap
 
 .file-cta
-  background-color: v(file-cta-background-color, $file-cta-background-color)
-  color: v(file-cta-color, $file-cta-color)
+  background-color: v("file-cta-background-color")
+  color: v("file-cta-color")
 
 .file-name
-  border-color: v(file-name-border-color, $file-name-border-color)
-  border-style: v(file-name-border-style, $file-name-border-style)
-  border-width: v(file-name-border-width, $file-name-border-width)
+  border-color: v("file-name-border-color")
+  border-style: v("file-name-border-style")
+  border-width: v("file-name-border-width")
   display: block
-  max-width: v(file-name-max-width, $file-name-max-width)
+  max-width: v("file-name-max-width")
   overflow: hidden
   text-align: left
   text-overflow: ellipsis

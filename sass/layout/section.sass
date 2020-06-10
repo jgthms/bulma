@@ -2,12 +2,16 @@ $section-padding: 3rem 1.5rem !default
 $section-padding-medium: 9rem 1.5rem !default
 $section-padding-large: 18rem 1.5rem !default
 
+@include vRegister(section-padding,$section-padding)
+@include vRegister(section-padding-medium,$section-padding-medium)
+@include vRegister(section-padding-large,$section-padding-large)
+
 .section
-  padding: v(section-padding, $section-padding)
+  padding: v("section-padding")
   // Responsiveness
   +desktop
     // Sizes
     &.is-medium
-      padding: v(section-padding-medium, $section-padding-medium)
+      padding: v("section-padding-medium")
     &.is-large
-      padding: v(section-padding-large, $section-padding-large)
+      padding: v("section-padding-large")

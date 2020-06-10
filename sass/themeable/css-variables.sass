@@ -1,11 +1,11 @@
 @mixin defineVariable($var, $value)
-  --bulma-#{$var}: #{$value}
+  #{varName($var)}: #{$value}
 
 @if variable-exists(themeable)
   @if $themeable == "any"
     \:root, [data-theme=bulma]
-      @each $name, $value in $css_vars
-        @include defineVariable($name, $value)
+      @each $name in $used_vars
+        @include defineVariable($name, map_get($registered_vars, $name))
   @else
     @each $theme, $vars in $css_vars
       $selector: "[data-theme=#{$theme}]"
@@ -13,4 +13,4 @@
         $selector: ":root #{$selector}"
       #{$selector}
         @each $name, $value in $vars
-          @include defineVariable($name, $value)
+          @include defineVariable($name, map_get($registered_vars, $name))

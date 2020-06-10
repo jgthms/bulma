@@ -64,7 +64,7 @@
 @function colorLuminance($color)
   @if type-of($color) != 'color'
     @return 0.55
-  $color-rgb: ('red': red($color),'green': green($color),'blue': blue($color))
+  $color-rgb: ('red': red($color), 'green': green($color), 'blue': blue($color))
   @each $name, $value in $color-rgb
     $adjusted: 0
     $value: $value / 255
@@ -77,27 +77,40 @@
   @return (map-get($color-rgb, 'red') * .2126) + (map-get($color-rgb, 'green') * .7152) + (map-get($color-rgb, 'blue') * .0722)
 
 @function findColorInvert($color)
-  @if (colorLuminance($color) > 0.55)
-    @return rgba(#000, 0.7)
-  @else
-    @return #fff
+  @if (type_of($color) == "string")
+    $color: getRegistered($color)
+
+  @if type-of($color) == 'color'
+    @if (colorLuminance($color) > 0.55)
+      @return bulmaRgba(#000, 0.7)
+    @else
+      @return #fff
+
+  @return #fff
 
 @function findLightColor($color)
+  @if (type_of($color) == "string")
+    $color: getRegistered($color)
+
   @if type-of($color) == 'color'
     $l: 96%
     @if lightness($color) > 96%
       $l: lightness($color)
     @return change-color($color, $lightness: $l)
-  @return $background
+
+  @return $light
 
 @function findDarkColor($color)
+  @if (type_of($color) == "string")
+    $color: getRegistered($color)
+
   @if type-of($color) == 'color'
     $base-l: 29%
     $luminance: colorLuminance($color)
     $luminance-delta: (0.53 - $luminance)
     $target-l: round($base-l + ($luminance-delta * 53))
     @return change-color($color, $lightness: max($base-l, $target-l))
-  @return $text-strong
+  @return $dark
 
 @function bulmaRgba($color, $alpha)
   @if type-of($color) != 'color'
@@ -112,62 +125,198 @@
   @else
     @return lighten($color, -$amount)
 
+@function str-replace($string, $search, $replace: '')
+  $index: str-index($string, $search)
+
+  @if $index
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+  @return $string
+
+@function str-split($string, $separator)
+  // empty array/list
+  $split-arr: ()
+  // first index of separator in string
+  $index: str-index($string, $separator)
+  // loop through string
+  @while $index != null
+    // get the substring from the first character to the separator
+    $item: str-slice($string, 1, $index - 1)
+    // push item to array
+    $split-arr: append($split-arr, $item)
+    // remove item and separator from string
+    $string: str-slice($string, $index + str-length($separator))
+    // find new index of separator
+    $index: str-index($string, $separator)
+
+  // add the remaining string to list (the last item)
+  $split-arr: append($split-arr, $string)
+
+  @return $split-arr
+
+
+@function shorten-var($string)
+  @each $letter in (a, e, i, o, u, y)
+    $string: str-replace($string, $letter, '')
+  @return $string
+
+@function strip-unit($number)
+  @if type-of($number) == 'number' and not unitless($number)
+    @return $number / ($number * 0 + 1)
+
+  @return $number
+
 //Pluggables for theming
+$registered_vars: ()
+$used_vars: ()
 
-@function v($name, $color)
-  @if function-exists(_v)
-    @return _v($name, $color)
-  @return $color
+@function isRegistered($name)
+  @return map_get($registered_vars, $name) != null
 
-@function vDarken($name, $color, $amount)
-  @if function_exists(_vRegisterHSLA)
-    $null: _vRegisterHSLA($name, $color)
-  @if function-exists(_vAdjustHSLA)
-    @return vHSLAdjust($name, $color, 0, 0, -$amount)
-  @return bulmaDarken($color, $amount)
+@function isVColor($name)
+  @return map_get($registered_vars, $name+"-h") != null
 
-@function vLighten($name, $color, $amount)
-  @return vDarken($name, $color, -$amount)
+@function getRegistered($name: null)
+  @if $name != null
+    $value: map_get($registered_vars, $name)
 
-@function vSaturate($name, $color, $amount)
-  @if function_exists(_vRegisterHSLA)
-    $null: _vRegisterHSLA($name, $color)
-  @if function-exists(_vAdjustHSLA)
-    @return vHSLAdjust($name, $color, 0, $amount, 0)
-  @return saturate($color, $amount)
+    @if not index($used_vars, $name)
+      $used_vars: append($used_vars, $name) !global
 
-@function vAlpha($name, $color, $amount)
-  @if function_exists(_vRegisterHSLA)
-    $null: _vRegisterHSLA($name, $color)
-  @if function-exists(_vAdjustHSLA)
-    @return _vAdjustHSLA($name, $color, 0, 0, 0, $amount)
-  @return bulmaRgba($color, $amount)
+    @while (type_of($value) == "string" and str-index($value, "var(--blm-") == 1)
+      $name: str-slice($value, 10, -1)
+      $value: map_get($registered_vars, $name)
+      @if not index($used_vars, $name)
+        $used_vars: append($used_vars, $name) !global
+    @return $value
+  @return $registered_vars
 
-@function vHSLAdjust($name, $color, $h, $s, $l)
-  @if function_exists(_vRegisterHSLA)
-    $null: _vRegisterHSLA($name, $color)
-  @if function-exists(_vAdjustHSLA)
-    @return _vAdjustHSLA($name, $color, $h, $s, $l, 0)
-  @if $h
-    $color: adjust_hue($color, $h)
-  @if $s > 0
-    $color: saturate($color, $s)
-  @if $s < 0
-    $color: desaturate($color, -$s)
-  @if $l > 0
-    $color: lighten($color, $l)
-  @if $l < 0
-    $color:  darken($color, -$l)
-  @return $color
+@function vRegister($name, $value)
+  //@if function-exists(_vRegister)
+  //  @return _vRegister($name, $value)
+
+  @if variable-exists(themeable)
+    @if type-of($value) == "color"
+      $registered_vars: map-merge($registered_vars, (#{$name}-h: hue($value), #{$name}-s: saturation($value), #{$name}-l: lightness($value), #{$name}-a: opacity($value))) !global
+    @else if type-of($value) == "string"
+      @if str-index($value, "hsla(") == 1
+        $value: str-slice($value, 5, -1)
+        //Remove hsla() part
+        $parts: str-split($value, ',')
+
+        $registered_vars: map-merge($registered_vars, (#{$name}-h: nth($parts, 1), #{$name}-s: nth($parts, 2), #{$name}-l: nth($parts, 3), #{$name}-a: nth($parts, 4))) !global
+      @if str-index($value, "var(--blm-") == 1
+        $var: str-slice(str-replace($value, " ", ""), 11, -2)
+        @if isVColor($var)
+          $registered_vars: map-merge($registered_vars, (#{$name}-h: v($var+"-h"), #{$name}-s: v($var+"-s"), #{$name}-l: v($var+"-l"), #{$name}-a:  v($var+"-a"))) !global
+
+  @if isRegistered($name+"-h")
+    $registered_vars: map-merge($registered_vars, (#{$name}: unquote("hsla(#{v($name+"-h")},#{v($name+"-s")},#{v($name+"-l")},#{v($name+"-a")})"))) !global
+  @else
+    $registered_vars: map-merge($registered_vars, ($name: $value)) !global
+
+  @return $name
+
+@mixin vRegister($name, $value)
+  $null: vRegister($name, $value)
 
 @function vLight($name, $color)
   $color-lightning: max((100% - lightness($color)) - 2%, 0%)
   $color: lighten($color, $color-lightning)
 
-  @return v($name+'-light', $color)
+  @return vRegister($name+'-light', $color)
 
 @function vDark($name, $color)
   $color-luminance: colorLuminance($color)
   $color: desaturate(darken($color, $color-luminance * 70%), $color-luminance * 30%)
 
-  @return v($name+'-dark', $color)
+  @return vRegister($name+'-dark', $color)
+
+@function vInvert($name)
+  $color: getRegistered($name)
+  @return vRegister($name+'-inv', findColorInvert($color))
+
+@function varName($name)
+  @return --blm-#{$name}
+
+@function v($name)
+  $value: getRegistered($name)
+  //Make sure to let the compiler know we used this variable
+  @if variable-exists(themeable)
+    @if isRegistered($name)
+      @return var(varName($name))
+    @warn $name + " was not registered before use"
+    @return null
+  @else
+    @if $value == null
+      @if function-exists(_v)
+        $name: _v($name)
+      @else
+        @warn $name + " was not registered before use"
+    @return $value
+
+@function vDarken($name, $amount)
+  @return vAdjust($name, $lightness: -$amount)
+
+@function vLighten($name, $amount)
+  @return vDarken($name, -$amount)
+
+@function vSaturate($name, $amount)
+  @return vAdjust($name, $saturation: $amount)
+
+@function vAlpha($name, $amount)
+  @return vAdjust($name, $alpha: $amount)
+
+@function vAlphaChange($name, $amount)
+  @return vChange($name, $alpha: $amount)
+
+@function maybeCalc($value, $increment)
+  $no_u: strip-unit($increment)
+  @if $no_u != 0
+    @if $no_u > 0
+      @return calc(#{$value} + #{$increment})
+    @else
+      @return calc(#{$value} - #{-$increment})
+  @else
+    @return $value
+
+
+@function maybeCalcMult($value, $multiply)
+  @if $multiply != 1
+    @return calc(#{$value} * #{$multiply})
+  @else
+    @return $value
+
+@function vAdjust($name, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1)
+  @if variable-exists(themeable)
+    @return hsla(maybeCalc(v(#{$name}-h), $hue + 0deg), maybeCalc(v(#{$name}-s), $saturation), maybeCalc(v(#{$name}-l), $lightness), maybeCalcMult(v(#{$name}-a), $alpha))
+  @else
+    $color: getRegistered($name)
+    @if type_of($color) != "color"
+      @warn $name + " is not a color"
+      @return $color
+
+    @if (unit($alpha) == '')
+      $alpha: (1 - $alpha) * -100 + 0%
+
+    @return scale_color(adjust_color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness), $alpha: $alpha)
+
+@function vChange($name, $hue: null, $saturation: null, $lightness: null, $alpha: null)
+  @if variable-exists(themeable)
+    @if $hue == null
+      $hue: v($name+"-h")
+    @if $saturation == null
+      $saturation: v($name+"-s")
+    @if $lightness == null
+      $lightness: v($name+"-l")
+    @if $alpha == null
+      $alpha: v($name+"-a")
+
+    @return unquote("hsla(") + $hue, $saturation, $lightness, $alpha + unquote(")")
+  @else
+    $color: getRegistered($name)
+    @if type_of($color) != "color"
+      @warn $name + " is not a color"
+      @return $color
+
+    @return change_color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness, $alpha: $alpha)
+

@@ -1,55 +1,79 @@
-$input-color: $text-strong !default
-$input-background-color: $scheme-main !default
-$input-border-color: $border !default
-$input-height: $control-height !default
-$input-shadow: inset 0 0.0625em 0.125em rgba($scheme-invert, 0.05) !default
-$input-placeholder-color: bulmaRgba($input-color, 0.3) !default
+$input-color: v("text-strong") !default
 
-$input-hover-color: $text-strong !default
-$input-hover-border-color: $border-hover !default
+@include vRegister(input-color,$input-color)
 
-$input-focus-color: $text-strong !default
-$input-focus-border-color: $link !default
+$input-background-color: v("scheme-main") !default
+$input-border-color: v("border") !default
+$input-height: v("control-height") !default
+$input-shadow: inset 0 0.0625em 0.125em vAlphaChange("scheme-invert", 0.05) !default
+$input-placeholder-color: vAlphaChange("input-color", 0.3) !default
+
+$input-hover-color: v("text-strong") !default
+$input-hover-border-color: v("border-hover") !default
+
+$input-focus-color: v("text-strong") !default
+$input-focus-border-color: v("link") !default
 $input-focus-box-shadow-size: 0 0 0 0.125em !default
-$input-focus-box-shadow-color: bulmaRgba($link, 0.25) !default
+$input-focus-box-shadow-color: vAlphaChange("link", 0.25) !default
 
-$input-disabled-color: $text-light !default
-$input-disabled-background-color: $background !default
-$input-disabled-border-color: $background !default
-$input-disabled-placeholder-color: bulmaRgba($input-disabled-color, 0.3) !default
+$input-disabled-color: v("text-light") !default
+$input-disabled-background-color: v("background") !default
+$input-disabled-border-color: v("background") !default
 
-$input-arrow: $link !default
+@include vRegister("input-disabled-color", $input-disabled-color)
 
-$input-icon-color: $border !default
-$input-icon-active-color: $text !default
+$input-disabled-placeholder-color: vAlphaChange("input-disabled-color", 0.3) !default
 
-$input-radius: $radius !default
+$input-arrow: v("link") !default
+
+$input-icon-color: v("border") !default
+$input-icon-active-color: v("text") !default
+
+$input-radius: v("radius") !default
+
+@include vRegister(input-background-color,$input-background-color)
+@include vRegister(input-border-color,$input-border-color)
+@include vRegister(input-radius,$input-radius)
+@include vRegister(input-placeholder-color,$input-placeholder-color)
+@include vRegister(input-hover-border-color,$input-hover-border-color)
+@include vRegister(input-focus-border-color,$input-focus-border-color)
+@include vRegister(input-focus-box-shadow-size,$input-focus-box-shadow-size)
+@include vRegister(input-focus-box-shadow-color,$input-focus-box-shadow-color)
+@include vRegister(input-disabled-background-color,$input-disabled-background-color)
+@include vRegister(input-disabled-border-color,$input-disabled-border-color)
+@include vRegister(input-disabled-placeholder-color,$input-disabled-placeholder-color)
+@include vRegister(input-shadow,$input-shadow)
+@include vRegister(input-hover-color,$input-hover-color)
+@include vRegister(input-height,$input-height)
+@include vRegister(input-arrow,$input-arrow)
+@include vRegister(input-icon-active-color, $input-icon-active-color)
+@include vRegister(input-icon-color, $input-icon-color)
 
 =input
   @extend %control
-  background-color: v(input-background-color, $input-background-color)
-  border-color: v(input-border-color, $input-border-color)
-  border-radius: v(input-radius, $input-radius)
-  color: v(input-color, $input-color)
+  background-color: v("input-background-color")
+  border-color: v("input-border-color")
+  border-radius: v("input-radius")
+  color: v("input-color")
   +placeholder
-    color: v(input-placeholder-color, $input-placeholder-color)
+    color: v("input-placeholder-color")
   &:hover,
   &.is-hovered
-    border-color: v(input-hover-border-color, $input-hover-border-color)
+    border-color: v("input-hover-border-color")
   &:focus,
   &.is-focused,
   &:active,
   &.is-active
-    border-color: v(input-focus-border-color, $input-focus-border-color)
-    box-shadow: v(input-focus-box-shadow-size, $input-focus-box-shadow-size) v(input-focus-box-shadow-color, $input-focus-box-shadow-color)
+    border-color: v("input-focus-border-color")
+    box-shadow: v("input-focus-box-shadow-size") v("input-focus-box-shadow-color")
   &[disabled],
   fieldset[disabled] &
-    background-color: v(input-disabled-background-color, $input-disabled-background-color)
-    border-color: v(input-disabled-border-color, $input-disabled-border-color)
+    background-color: v("input-disabled-background-color")
+    border-color: v("input-disabled-border-color")
     box-shadow: none
-    color: v(input-disabled-color, $input-disabled-color)
+    color: v("input-disabled-color")
     +placeholder
-      color: v(input-disabled-placeholder-color, $input-disabled-placeholder-color)
+      color: v("input-disabled-placeholder-color")
 
 %input
   +input

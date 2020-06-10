@@ -1,4 +1,6 @@
-$media-border-color: bulmaRgba($border, 0.5) !default
+$media-border-color: vAlphaChange("border", 0.5) !default
+
+@include vRegister(media-border-color, $media-border-color)
 
 .media
   align-items: flex-start
@@ -7,7 +9,7 @@ $media-border-color: bulmaRgba($border, 0.5) !default
   .content:not(:last-child)
     margin-bottom: 0.75rem
   .media
-    border-top: 1px solid v(media-border-color, $media-border-color)
+    border-top: 1px solid v("media-border-color")
     display: flex
     padding-top: 0.75rem
     .content:not(:last-child),
@@ -18,7 +20,7 @@ $media-border-color: bulmaRgba($border, 0.5) !default
       & + .media
         margin-top: 0.5rem
   & + .media
-    border-top: 1px solid v(media-border-color, $media-border-color)
+    border-top: 1px solid v("media-border-color")
     margin-top: 1rem
     padding-top: 1rem
   // Sizes

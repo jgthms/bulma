@@ -27,24 +27,20 @@ const vars = {}
 
 ensureDirectoryExistence(output)
 
-let data = '@import "' + input + '"'
-
-//No variables build
-const non_themeable = renderSassSync(input, "", {
-  '_v($name, $value)': function (name, value) {
-    vars[name.getValue()] = sassToString(value);
-
-    return value;
-  },
-  '_vRegisterHSLA($name, $value)': function (name, value) {
-    if (value instanceof sass.types.Color) {
-      makeAdjustableVar(name.getValue(), value, vars)
-    }
-    return sass.types.Null.NULL
-  },
-});
 
 if (argThemes.length === 0) {
+  //No variables build
+  const non_themeable = renderSassSync(input, "", {
+    '_v($name)': function (name) {
+      try {
+        vars[name.getValue()] = true;
+      } catch (e) {
+        console.log(name)
+      }
+
+      return name;
+    },
+  });
   //Output the non themeable generated css
   writeOutput(output, non_themeable.css, non_themeable.map, input)
 } else {
@@ -52,25 +48,10 @@ if (argThemes.length === 0) {
   if (argThemes.length === 1 && argThemes[0] === 'any') {
 
     //Insert all the found vars into a sass list and inject it for compilation
-    data = '$themeable: "any";\n'
-    +'$css_vars: '+defaultVars + ";";
+    let data = '$themeable: "any";'
     const render = renderSassSync(input, data, {
       '_v($name, $value)': function (name, value) {
         return new sass.types.String(maybeVar(name.getValue()));
-      },
-      '_vAdjustHSLA($name, $value, $h, $s, $l, $a)': function (name, value, h, s, l, a) {
-        let str = "hsla(";
-        name = name.getValue();
-        //The h unit is deg but it can safely be remove from the variable registration and the calc
-        h.setUnit('')
-        s.setUnit('%');
-        l.setUnit('%')
-        str += maybeCalc(name + "-h", h) + ','
-        str += maybeCalc(name + "-s", s) + ','
-        str += maybeCalc(name + "-l", l) + ','
-        str += maybeCalc(name + "-a", a, true)
-
-        return sass.types.String(str + ')')
       },
     });
 
@@ -111,12 +92,6 @@ if (argThemes.length === 0) {
               themeVars[name.getValue()] = sassToString(value);
               return value;
             },
-            '_vRegisterHSLA($name, $value)': function (name, value) {
-              if (value instanceof sass.types.Color) {
-                makeAdjustableVar(name.getValue(), value, themeVars)
-              }
-              return sass.types.Null.NULL
-            },
           }
         }, resolve)
       }));
@@ -142,7 +117,7 @@ if (argThemes.length === 0) {
       })
 
       data = '$themeable: true;\n' +
-        '$css_vars: (default: '+defaultVars+ ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') +');'
+        '$css_vars: (default: ' + defaultVars + ',' + Object.keys(themes).map((theme) => '"' + theme + '":(' + modified.map((v) => '"' + v + '":' + themesVars[theme][v]).join(', ') + ')') + ');'
       const render = renderSassSync(input, data, {
         '_v($name, $value)': function (name, value) {
           if (modified.indexOf(name.getValue()) >= 0) {

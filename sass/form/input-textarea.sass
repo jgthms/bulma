@@ -1,24 +1,27 @@
-$textarea-padding: $control-padding-horizontal !default
+$textarea-padding: v("control-padding-horizontal") !default
 $textarea-max-height: 40em !default
 $textarea-min-height: 8em !default
 
+@include vRegister(textarea-padding,$textarea-padding)
+@include vRegister(textarea-max-height,$textarea-max-height)
+@include vRegister(textarea-min-height,$textarea-min-height)
+
 %input-textarea
   @extend %input
-  box-shadow: v(input-shadow, $input-shadow)
+  box-shadow: v("input-shadow")
   max-width: 100%
   width: 100%
   &[readonly]
     box-shadow: none
   // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
+  @each $name in $colors-list
     &.is-#{$name}
-      border-color: $color
+      border-color: v($name)
       &:focus,
       &.is-focused,
       &:active,
       &.is-active
-        box-shadow: v(input-focus-box-shadow-size, $input-focus-box-shadow-size) bulmaRgba($color, 0.25)
+        box-shadow: v("input-focus-box-shadow-size") vAlphaChange($name, 0.25)
   // Sizes
   &.is-small
     +control-small
@@ -37,9 +40,9 @@ $textarea-min-height: 8em !default
 .input
   @extend %input-textarea
   &.is-rounded
-    border-radius: v(radius-rounded, $radius-rounded)
-    padding-left: calc(#{v(control-padding-horizontal, $control-padding-horizontal)} + 0.375em)
-    padding-right: calc(#{v(control-padding-horizontal, $control-padding-horizontal)} + 0.375em)
+    border-radius: v("radius-rounded")
+    padding-left: calc(#{v("control-padding-horizontal")} + 0.375em)
+    padding-right: calc(#{v("control-padding-horizontal")} + 0.375em)
   &.is-static
     background-color: transparent
     border-color: transparent
@@ -52,11 +55,11 @@ $textarea-min-height: 8em !default
   display: block
   max-width: 100%
   min-width: 100%
-  padding: v(textarea-padding, $textarea-padding)
+  padding: v("textarea-padding")
   resize: vertical
   &:not([rows])
-    max-height: v(textarea-max-height, $textarea-max-height)
-    min-height: v(textarea-min-height, $textarea-min-height)
+    max-height: v("textarea-max-height")
+    min-height: v("textarea-min-height")
   &[rows]
     height: initial
   // Modifiers

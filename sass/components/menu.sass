@@ -1,57 +1,73 @@
-$menu-item-color: $text !default
-$menu-item-radius: $radius-small !default
-$menu-item-hover-color: $text-strong !default
-$menu-item-hover-background-color: $background !default
-$menu-item-active-color: $link-invert !default
-$menu-item-active-background-color: $link !default
+$menu-item-color: v("text") !default
+$menu-item-radius: v("radius-small") !default
+$menu-item-hover-color: v("text-strong") !default
+$menu-item-hover-background-color: v("background") !default
+$menu-item-active-color: v("link-invert") !default
+$menu-item-active-background-color: v("link") !default
 
-$menu-list-border-left: 1px solid $border !default
+$menu-list-border-left: 1px solid v("border") !default
 $menu-list-line-height: 1.25 !default
 $menu-list-link-padding: 0.5em 0.75em !default
 $menu-nested-list-margin: 0.75em !default
 $menu-nested-list-padding-left: 0.75em !default
 
-$menu-label-color: $text-light !default
+$menu-label-color: v("text-light") !default
 $menu-label-font-size: 0.75em !default
 $menu-label-letter-spacing: 0.1em !default
 $menu-label-spacing: 1em !default
 
+@include vRegister(menu-list-line-height,$menu-list-line-height)
+@include vRegister(menu-item-radius,$menu-item-radius)
+@include vRegister(menu-item-color,$menu-item-color)
+@include vRegister(menu-list-link-padding,$menu-list-link-padding)
+@include vRegister(menu-item-hover-background-color,$menu-item-hover-background-color)
+@include vRegister(menu-item-hover-color,$menu-item-hover-color)
+@include vRegister(menu-item-active-background-color,$menu-item-active-background-color)
+@include vRegister(menu-item-active-color,$menu-item-active-color)
+@include vRegister(menu-list-border-left,$menu-list-border-left)
+@include vRegister(menu-nested-list-margin,$menu-nested-list-margin)
+@include vRegister(menu-nested-list-padding-left,$menu-nested-list-padding-left)
+@include vRegister(menu-label-color,$menu-label-color)
+@include vRegister(menu-label-font-size,$menu-label-font-size)
+@include vRegister(menu-label-letter-spacing,$menu-label-letter-spacing)
+@include vRegister(menu-label-spacing,$menu-label-spacing)
+
 .menu
-  font-size: v(size-normal, $size-normal)
+  font-size: v("size-normal")
   // Sizes
   &.is-small
-    font-size: v(size-small, $size-small)
+    font-size: v("size-small")
   &.is-medium
-    font-size: v(size-medium, $size-medium)
+    font-size: v("size-medium")
   &.is-large
-    font-size: v(size-large, $size-large)
+    font-size: v("size-large")
 
 .menu-list
-  line-height: v(menu-list-line-height, $menu-list-line-height)
+  line-height: v("menu-list-line-height")
   a
-    border-radius: v(menu-item-radius, $menu-item-radius)
-    color: v(menu-item-color, $menu-item-color)
+    border-radius: v("menu-item-radius")
+    color: v("menu-item-color")
     display: block
-    padding: v(menu-list-link-padding, $menu-list-link-padding)
+    padding: v("menu-list-link-padding")
     &:hover
-      background-color: v(menu-item-hover-background-color, $menu-item-hover-background-color)
-      color: v(menu-item-hover-color, $menu-item-hover-color)
+      background-color: v("menu-item-hover-background-color")
+      color: v("menu-item-hover-color")
     // Modifiers
     &.is-active
-      background-color: v(menu-item-active-background-color, $menu-item-active-background-color)
-      color: v(menu-item-active-color, $menu-item-active-color)
+      background-color: v("menu-item-active-background-color")
+      color: v("menu-item-active-color")
   li
     ul
-      border-left: v(menu-list-border-left, $menu-list-border-left)
-      margin: v(menu-nested-list-margin, $menu-nested-list-margin)
-      padding-left: v(menu-nested-list-padding-left, $menu-nested-list-padding-left)
+      border-left: v("menu-list-border-left")
+      margin: v("menu-nested-list-margin")
+      padding-left: v("menu-nested-list-padding-left")
 
 .menu-label
-  color: v(menu-label-color, $menu-label-color)
-  font-size: v(menu-label-font-size, $menu-label-font-size)
-  letter-spacing: v(menu-label-letter-spacing, $menu-label-letter-spacing)
+  color: v("menu-label-color")
+  font-size: v("menu-label-font-size")
+  letter-spacing: v("menu-label-letter-spacing")
   text-transform: uppercase
   &:not(:first-child)
-    margin-top: v(menu-label-spacing, $menu-label-spacing)
+    margin-top: v("menu-label-spacing")
   &:not(:last-child)
-    margin-bottom: v(menu-label-spacing, $menu-label-spacing)
+    margin-bottom: v("menu-label-spacing")

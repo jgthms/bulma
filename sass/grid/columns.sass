@@ -1,11 +1,13 @@
 $column-gap: 0.75rem !default
 
+@include vRegister(column-gap, $column-gap)
+
 .column
   display: block
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 1
-  padding: v(column-gap, $column-gap)
+  padding: v("column-gap")
   .columns.is-mobile > &.is-narrow
     flex: none
   .columns.is-mobile > &.is-full
@@ -428,9 +430,9 @@ $column-gap: 0.75rem !default
         margin-left: percentage($i / 12)
 
 .columns
-  margin: calc(-1 * #{v(column-gap, $column-gap)})
+  margin: calc(-1 * #{v("column-gap")})
   &:not(:last-child)
-    margin-bottom: calc(1.5rem - #{v(column-gap, $column-gap)})
+    margin-bottom: calc(1.5rem - #{v("column-gap")})
   // Modifiers
   &.is-centered
     justify-content: center

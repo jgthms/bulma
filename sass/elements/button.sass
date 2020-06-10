@@ -1,65 +1,97 @@
-$button-color: $text-strong !default
-$button-background-color: $scheme-main !default
-$button-family: false !default
+$button-color: v("text-strong") !default
+$button-background-color: v("scheme-main") !default
+$button-family: inherit !default
 
-$button-border-color: $border !default
-$button-border-width: $control-border-width !default
+$button-border-color: v("border") !default
+$button-border-width: v("control-border-width") !default
 
-$button-padding-vertical: calc(0.5em - #{$button-border-width}) !default
+@include vRegister(button-border-width, $button-border-width)
+
+$button-padding-vertical: calc(0.5em - #{v("button-border-width")}) !default
 $button-padding-horizontal: 1em !default
 
-$button-hover-color: $link-hover !default
-$button-hover-border-color: $link-hover-border !default
+$button-hover-color: v("link-hover") !default
+$button-hover-border-color: v("link-hover-border") !default
 
-$button-focus-color: $link-focus !default
-$button-focus-border-color: $link-focus-border !default
+$button-focus-color: v("link-focus") !default
+$button-focus-border-color: v("link-focus-border") !default
 $button-focus-box-shadow-size: 0 0 0 0.125em !default
-$button-focus-box-shadow-color: bulmaRgba($link, 0.25) !default
+$button-focus-box-shadow-color: vAlphaChange("link", 0.25) !default
 
-$button-active-color: $link-active !default
-$button-active-border-color: $link-active-border !default
+$button-active-color: v("link-active") !default
+$button-active-border-color: v("link-active-border") !default
 
-$button-text-color: $text !default
+$button-text-color: v("text") !default
 $button-text-decoration: underline !default
-$button-text-hover-background-color: $background !default
-$button-text-hover-color: $text-strong !default
+$button-text-hover-background-color: v("background") !default
+$button-text-hover-color: v("text-strong") !default
 
-$button-disabled-background-color: $scheme-main !default
-$button-disabled-border-color: $border !default
+$button-disabled-background-color: v("scheme-main") !default
+$button-disabled-border-color: v("border") !default
 $button-disabled-shadow: none !default
 $button-disabled-opacity: 0.5 !default
 
-$button-static-color: $text-light !default
-$button-static-background-color: $scheme-main-ter !default
-$button-static-border-color: $border !default
+$button-static-color: v("text-light") !default
+$button-static-background-color: v("scheme-main-ter") !default
+$button-static-border-color: v("border") !default
+
+@include vRegister(button-background-color, $button-background-color)
+@include vRegister(button-border-color, $button-border-color)
+@include vRegister(button-color, $button-color)
+@include vRegister(button-padding-vertical, $button-padding-vertical)
+@include vRegister(button-padding-horizontal, $button-padding-horizontal)
+@include vRegister(button-hover-border-color, $button-hover-border-color)
+@include vRegister(button-hover-color, $button-hover-color)
+@include vRegister(button-focus-border-color, $button-focus-border-color)
+@include vRegister(button-focus-color, $button-focus-color)
+@include vRegister(button-focus-box-shadow-size, $button-focus-box-shadow-size)
+@include vRegister(button-focus-box-shadow-color, $button-focus-box-shadow-color)
+@include vRegister(button-active-border-color, $button-active-border-color)
+@include vRegister(button-active-color, $button-active-color)
+@include vRegister(button-text-color, $button-text-color)
+@include vRegister(button-text-decoration, $button-text-decoration)
+@include vRegister(button-text-hover-background-color, $button-text-hover-background-color)
+@include vRegister(button-text-hover-color, $button-text-hover-color)
+@include vRegister(button-disabled-background-color, $button-disabled-background-color)
+@include vRegister(button-disabled-border-color, $button-disabled-border-color)
+@include vRegister(button-disabled-shadow, $button-disabled-shadow)
+@include vRegister(button-disabled-opacity, $button-disabled-opacity)
+@include vRegister(button-static-background-color, $button-static-background-color)
+@include vRegister(button-static-border-color, $button-static-border-color)
+@include vRegister(button-static-color, $button-static-color)
+@include vRegister(button-family, $button-family)
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
-  border-radius: v(radius-small, $radius-small)
-  font-size: v(size-small, $size-small)
+  border-radius: v("radius-small")
+  font-size: v("size-small")
+
 =button-normal
-  font-size: v(size-normal, $size-normal)
+  font-size: v("size-normal")
+
 =button-medium
-  font-size: v(size-medium, $size-medium)
+  font-size: v("size-medium")
+
 =button-large
-  font-size: v(size-large, $size-large)
+  font-size: v("size-large")
 
 .button
   @extend %control
   @extend %unselectable
-  background-color: v(button-background-color, $button-background-color)
-  border-color: v(button-border-color, $button-border-color)
-  border-width: v(button-border-width, $button-border-width)
-  color: v(button-color, $button-color)
+  background-color: v("button-background-color")
+  border-color: v("button-border-color")
+  border-width: v("button-border-width")
+  color: v("button-color")
   cursor: pointer
-  @if $button-family
-    font-family: v(button-family, $button-family)
+  font-family: v("button-family")
   justify-content: center
-  padding: v(button-padding-vertical, $button-padding-vertical) v(button-padding-horizontal, $button-padding-horizontal)
+  padding: v("button-padding-vertical") v("button-padding-horizontal")
   text-align: center
   white-space: nowrap
+
   strong
     color: inherit
+
   .icon
     &,
     &.is-small,
@@ -67,98 +99,119 @@ $button-static-border-color: $border !default
     &.is-large
       height: 1.5em
       width: 1.5em
+
     &:first-child:not(:last-child)
-      margin-left: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
-      margin-right: calc(#{v(button-padding-horizontal, $button-padding-horizontal)} / 4)
+      margin-left: calc(-1 / 2 * #{v("button-padding-horizontal")} - #{v("button-border-width")})
+      margin-right: calc(#{v("button-padding-horizontal")} / 4)
+
     &:last-child:not(:first-child)
-      margin-left: calc(#{v(button-padding-horizontal, $button-padding-horizontal)} / 4)
-      margin-right: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
+      margin-left: calc(#{v("button-padding-horizontal")} / 4)
+      margin-right: calc(-1 / 2 * #{v("button-padding-horizontal")} - #{v("button-border-width")})
+
     &:first-child:last-child
-      margin-left: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
-      margin-right: calc(-1 / 2 * #{v(button-padding-horizontal, $button-padding-horizontal)} - #{v(button-border-width, $button-border-width)})
+      margin-left: calc(-1 / 2 * #{v("button-padding-horizontal")} - #{v("button-border-width")})
+      margin-right: calc(-1 / 2 * #{v("button-padding-horizontal")} - #{v("button-border-width")})
   // States
   &:hover,
   &.is-hovered
-    border-color: v(button-hover-border-color, $button-hover-border-color)
-    color: v(button-hover-color, $button-hover-color)
+    border-color: v("button-hover-border-color")
+    color: v("button-hover-color")
+
   &:focus,
   &.is-focused
-    border-color: v(button-focus-border-color, $button-focus-border-color)
-    color: v(button-focus-color, $button-focus-color)
+    border-color: v("button-focus-border-color")
+    color: v("button-focus-color")
+
     &:not(:active)
-      box-shadow: v(button-focus-box-shadow-size, $button-focus-box-shadow-size) v(button-focus-box-shadow-color, $button-focus-box-shadow-color)
+      box-shadow: v("button-focus-box-shadow-size") v("button-focus-box-shadow-color")
+
   &:active,
   &.is-active
-    border-color: v(button-active-border-color, $button-active-border-color)
-    color: v(button-active-color, $button-active-color)
+    border-color: v("button-active-border-color")
+    color: v("button-active-color")
   // Colors
   &.is-text
     background-color: transparent
     border-color: transparent
-    color: v(button-text-color, $button-text-color)
-    text-decoration: v(button-text-decoration, $button-text-decoration)
+    color: v("button-text-color")
+    text-decoration: v("button-text-decoration")
+
     &:hover,
     &.is-hovered,
     &:focus,
     &.is-focused
-      background-color: v(button-text-hover-background-color, $button-text-hover-background-color)
-      color: v(button-text-hover-color, $button-text-hover-color)
+      background-color: v("button-text-hover-background-color")
+      color: v("button-text-hover-color")
+
     &:active,
     &.is-active
-      background-color: vDarken(button-text-hover-background-color, $button-text-hover-background-color, 5%)
-      color: v(button-text-hover-color, $button-text-hover-color)
+      background-color: vDarken("button-text-hover-background-color", 5%)
+      color: v("button-text-hover-color")
+
     &[disabled],
     fieldset[disabled] &
       background-color: transparent
       border-color: transparent
       box-shadow: none
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+
+  @each $name in $colors-list
+    $color: v($name)
+    $color-invert: v($name+"-invert")
     &.is-#{$name}
       background-color: $color
       border-color: transparent
       color: $color-invert
+
       &:hover,
       &.is-hovered
-        background-color: vDarken($name, $color, 2.5%)
+        background-color: vDarken($name, 2.5%)
         border-color: transparent
         color: $color-invert
+
       &:focus,
       &.is-focused
         border-color: transparent
         color: $color-invert
+
         &:not(:active)
-          box-shadow: v(button-focus-box-shadow-size, $button-focus-box-shadow-size) bulmaRgba($color, 0.25)
+          box-shadow: v("button-focus-box-shadow-size") vAlphaChange($name, 0.25)
+
       &:active,
       &.is-active
-        background-color: vDarken($name, $color, 5%)
+        background-color: vDarken($name, 5%)
         border-color: transparent
         color: $color-invert
+
       &[disabled],
       fieldset[disabled] &
         background-color: $color
         border-color: transparent
         box-shadow: none
+
       &.is-inverted
         background-color: $color-invert
         color: $color
+
         &:hover,
         &.is-hovered
-          background-color: vDarken($name+'-invert', $color-invert, 5%)
+          background-color: vDarken($name+'-invert', 5%)
+
         &[disabled],
         fieldset[disabled] &
           background-color: $color-invert
           border-color: transparent
           box-shadow: none
           color: $color
+
       &.is-loading
         &::after
           border-color: transparent transparent $color-invert $color-invert !important
+
       &.is-outlined
         background-color: transparent
         border-color: $color
         color: $color
+
         &:hover,
         &.is-hovered,
         &:focus,
@@ -166,31 +219,37 @@ $button-static-border-color: $border !default
           background-color: $color
           border-color: $color
           color: $color-invert
+
         &.is-loading
           &::after
             border-color: transparent transparent $color $color !important
+
           &:hover,
           &.is-hovered,
           &:focus,
           &.is-focused
             &::after
               border-color: transparent transparent $color-invert $color-invert !important
+
         &[disabled],
         fieldset[disabled] &
           background-color: transparent
           border-color: $color
           box-shadow: none
           color: $color
+
       &.is-inverted.is-outlined
         background-color: transparent
         border-color: $color-invert
         color: $color-invert
+
         &:hover,
         &.is-hovered,
         &:focus,
         &.is-focused
           background-color: $color-invert
           color: $color
+
         &.is-loading
           &:hover,
           &.is-hovered,
@@ -198,6 +257,7 @@ $button-static-border-color: $border !default
           &.is-focused
             &::after
               border-color: transparent transparent $color $color !important
+
         &[disabled],
         fieldset[disabled] &
           background-color: transparent
@@ -205,57 +265,67 @@ $button-static-border-color: $border !default
           box-shadow: none
           color: $color-invert
       // If light and dark colors are provided
-      @if length($pair) >= 4
-        $color-light: nth($pair, 3)
-        $color-dark: nth($pair, 4)
+      @if isRegistered($name+"-dark")
+        $color-light: v($name+"-light")
+        $color-dark: v($name+"-dark")
         &.is-light
           background-color: $color-light
           color: $color-dark
+
           &:hover,
           &.is-hovered
-            background-color: vDarken($name+'-light', $color-light, 2.5%)
+            background-color: vDarken($name+'-light', 2.5%)
             border-color: transparent
             color: $color-dark
+
           &:active,
           &.is-active
-            background-color: vDarken($name+'-light', $color-light, 5%)
+            background-color: vDarken($name+'-light', 5%)
             border-color: transparent
             color: $color-dark
   // Sizes
   &.is-small
     +button-small
+
   &.is-normal
     +button-normal
+
   &.is-medium
     +button-medium
+
   &.is-large
     +button-large
   // Modifiers
   &[disabled],
   fieldset[disabled] &
-    background-color: v(button-disabled-background-color, $button-disabled-background-color)
-    border-color: v(button-disabled-border-color, $button-disabled-border-color)
-    box-shadow: v(button-disabled-shadow, $button-disabled-shadow)
-    opacity: v(button-disabled-opacity, $button-disabled-opacity)
+    background-color: v("button-disabled-background-color")
+    border-color: v("button-disabled-border-color")
+    box-shadow: v("button-disabled-shadow")
+    opacity: v("button-disabled-opacity")
+
   &.is-fullwidth
     display: flex
     width: 100%
+
   &.is-loading
     color: transparent !important
     pointer-events: none
+
     &::after
       @extend %loader
       +center(1em)
       position: absolute !important
+
   &.is-static
-    background-color: v(button-static-background-color, $button-static-background-color)
-    border-color: v(button-static-border-color, $button-static-border-color)
-    color: v(button-static-color, $button-static-color)
+    background-color: v("button-static-background-color")
+    border-color: v("button-static-border-color")
+    color: v("button-static-color")
     box-shadow: none
     pointer-events: none
+
   &.is-rounded
-    border-radius: v(radius-rounded, $radius-rounded)
-    padding-left: calc(#{v(button-padding-horizontal, $button-padding-horizontal)} + 0.25em)
+    border-radius: v("radius-rounded")
+    padding-left: calc(#{v("button-padding-horizontal")} + 0.25em)
     padding-right: calc(#{$button-padding-horizontal} + 0.25em)
 
 .buttons
@@ -263,57 +333,74 @@ $button-static-border-color: $border !default
   display: flex
   flex-wrap: wrap
   justify-content: flex-start
+
   .button
     margin-bottom: 0.5rem
+
     &:not(:last-child):not(.is-fullwidth)
       margin-right: 0.5rem
+
   &:last-child
     margin-bottom: -0.5rem
+
   &:not(:last-child)
     margin-bottom: 1rem
   // Sizes
   &.are-small
     .button:not(.is-normal):not(.is-medium):not(.is-large)
       +button-small
+
   &.are-medium
     .button:not(.is-small):not(.is-normal):not(.is-large)
       +button-medium
+
   &.are-large
     .button:not(.is-small):not(.is-normal):not(.is-medium)
       +button-large
+
   &.has-addons
     .button
       &:not(:first-child)
         border-bottom-left-radius: 0
         border-top-left-radius: 0
+
       &:not(:last-child)
         border-bottom-right-radius: 0
         border-top-right-radius: 0
         margin-right: -1px
+
       &:last-child
         margin-right: 0
+
       &:hover,
       &.is-hovered
         z-index: 2
+
       &:focus,
       &.is-focused,
       &:active,
       &.is-active,
       &.is-selected
         z-index: 3
+
         &:hover
           z-index: 4
+
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
+
   &.is-centered
     justify-content: center
+
     &:not(.has-addons)
       .button:not(.is-fullwidth)
         margin-left: 0.25rem
         margin-right: 0.25rem
+
   &.is-right
     justify-content: flex-end
+
     &:not(.has-addons)
       .button:not(.is-fullwidth)
         margin-left: 0.25rem

@@ -1,29 +1,45 @@
-$message-background-color: $background !default
-$message-radius: $radius !default
+$message-background-color: v("background") !default
+$message-radius: v("radius") !default
 
-$message-header-background-color: $text !default
-$message-header-color: $text-invert !default
-$message-header-weight: $weight-bold !default
+$message-header-background-color: v("text") !default
+$message-header-color: v("text-invert") !default
+$message-header-weight: v("weight-bold") !default
 $message-header-padding: 0.75em 1em !default
-$message-header-radius: $radius !default
+$message-header-radius: v("radius") !default
 
-$message-body-border-color: $border !default
+$message-body-border-color: v("border") !default
 $message-body-border-width: 0 0 0 4px !default
-$message-body-color: $text !default
+$message-body-color: v("text") !default
 $message-body-padding: 1.25em 1.5em !default
-$message-body-radius: $radius !default
+$message-body-radius: v("radius") !default
 
-$message-body-pre-background-color: $scheme-main !default
+$message-body-pre-background-color: v("scheme-main") !default
 $message-body-pre-code-background-color: transparent !default
 
 $message-header-body-border-width: 0 !default
-$message-colors: $colors !default
+$message-colors: $colors-list !default
+
+@include vRegister(message-background-color,$message-background-color)
+@include vRegister(message-radius,$message-radius)
+@include vRegister(message-header-background-color,$message-header-background-color)
+@include vRegister(message-header-radius,$message-header-radius)
+@include vRegister(message-header-color,$message-header-color)
+@include vRegister(message-header-weight,$message-header-weight)
+@include vRegister(message-header-padding,$message-header-padding)
+@include vRegister(message-header-body-border-width,$message-header-body-border-width)
+@include vRegister(message-body-border-color,$message-body-border-color)
+@include vRegister(message-body-radius,$message-body-radius)
+@include vRegister(message-body-border-width,$message-body-border-width)
+@include vRegister(message-body-color,$message-body-color)
+@include vRegister(message-body-padding,$message-body-padding)
+@include vRegister(message-body-pre-background-color,$message-body-pre-background-color)
+@include vRegister(message-body-pre-code-background-color,$message-body-pre-code-background-color)
 
 .message
   @extend %block
-  background-color: v(message-background-color, $message-background-color)
-  border-radius: v(message-radius, $message-radius)
-  font-size: v(size-normal, $size-normal)
+  background-color: v("message-background-color")
+  border-radius: v("message-radius")
+  font-size: v("size-normal")
   strong
     color: currentColor
   a:not(.button):not(.tag):not(.dropdown-item)
@@ -31,65 +47,62 @@ $message-colors: $colors !default
     text-decoration: underline
   // Sizes
   &.is-small
-    font-size: v(size-small, $size-small)
+    font-size: v("size-small")
   &.is-medium
-    font-size: v(size-medium, $size-medium)
+    font-size: v("size-medium")
   &.is-large
-    font-size: v(size-large, $size-large)
+    font-size: v("size-large")
   // Colors
-  @each $name, $components in $message-colors
-    $color: nth($components, 1)
-    $color-invert: nth($components, 2)
-    $color-light: null
-    $color-dark: null
-
-    @if length($components) >= 3
-      $color-light: nth($components, 3)
-      @if length($components) >= 4
-        $color-dark: nth($components, 4)
-      @else
-        $color-dark: vDark($name, $color)
-    @else
-      $color-light: vLight($name, $color)
+  @each $name in $message-colors
+    $color: v($name)
+    $color-invert: v($name+"-invert")
 
     &.is-#{$name}
-      background-color: $color-light
       .message-header
         background-color: $color
         color: $color-invert
       .message-body
         border-color: $color
-        color: $color-dark
+        @if isRegistered($name+"-dark")
+          color: v($name+"-dark")
+        @elseif $name == 'dark'
+
+        @if isRegistered($name+"-light")
+          background-color: v($name+"-light")
+        @elseif $name == 'white'
+          background-color: $color
+        @else
+          background-color: v("scheme-main-bis")
 
 .message-header
   align-items: center
-  background-color: v(message-header-background-color, $message-header-background-color)
-  border-radius: v(message-header-radius, $message-header-radius) v(message-header-radius, $message-header-radius) 0 0
-  color: v(message-header-color, $message-header-color)
+  background-color: v("message-header-background-color")
+  border-radius: v("message-header-radius") v("message-header-radius") 0 0
+  color: v("message-header-color")
   display: flex
-  font-weight: v(message-header-weight, $message-header-weight)
+  font-weight: v("message-header-weight")
   justify-content: space-between
   line-height: 1.25
-  padding: v(message-header-padding, $message-header-padding)
+  padding: v("message-header-padding")
   position: relative
   .delete
     flex-grow: 0
     flex-shrink: 0
     margin-left: 0.75em
   & + .message-body
-    border-width: v(message-header-body-border-width, $message-header-body-border-width)
+    border-width: v("message-header-body-border-width")
     border-top-left-radius: 0
     border-top-right-radius: 0
 
 .message-body
-  border-color: v(message-body-border-color, $message-body-border-color)
-  border-radius: v(message-body-radius, $message-body-radius)
+  border-color: v("message-body-border-color")
+  border-radius: v("message-body-radius")
   border-style: solid
-  border-width: v(message-body-border-width, $message-body-border-width)
-  color: v(message-body-color, $message-body-color)
-  padding: v(message-body-padding, $message-body-padding)
+  border-width: v("message-body-border-width")
+  color: v("message-body-color")
+  padding: v("message-body-padding")
   code,
   pre
-    background-color: v(message-body-pre-background-color, $message-body-pre-background-color)
+    background-color: v("message-body-pre-background-color")
   pre code
-    background-color: v(message-body-pre-code-background-color, $message-body-pre-code-background-color)
+    background-color: v("message-body-pre-code-background-color")

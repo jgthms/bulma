@@ -1,27 +1,36 @@
-$control-radius: $radius !default
-$control-radius-small: $radius-small !default
+$control-radius: v("radius") !default
+$control-radius-small: v("radius-small") !default
 
 $control-border-width: 1px !default
+
+@include vRegister(control-border-width,$control-border-width)
 
 $control-height: 2.5em !default
 $control-line-height: 1.5 !default
 
-$control-padding-vertical: calc(0.5em - #{$control-border-width}) !default
-$control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
+$control-padding-vertical: calc(0.5em - #{v("control-border-width")}) !default
+$control-padding-horizontal: calc(0.75em - #{v("control-border-width")}) !default
+
+@include vRegister(control-radius,$control-radius)
+@include vRegister(control-radius-small,$control-radius-small)
+@include vRegister(control-height,$control-height)
+@include vRegister(control-line-height,$control-line-height)
+@include vRegister(control-padding-vertical,$control-padding-vertical)
+@include vRegister(control-padding-horizontal,$control-padding-horizontal)
 
 =control
   -moz-appearance: none
   -webkit-appearance: none
   align-items: center
-  border: v(control-border-width, $control-border-width) solid transparent
-  border-radius: v(control-radius, $control-radius)
+  border: v("control-border-width") solid transparent
+  border-radius: v("control-radius")
   box-shadow: none
   display: inline-flex
-  font-size: v(size-normal, $size-normal)
-  height: v(control-height, $control-height)
+  font-size: v("size-normal")
+  height: v("control-height")
   justify-content: flex-start
-  line-height: v(control-line-height, $control-line-height)
-  padding: v(control-padding-vertical, $control-padding-vertical) v(control-padding-horizontal, $control-padding-horizontal)
+  line-height: v("control-line-height")
+  padding: v("control-padding-vertical") v("control-padding-horizontal")
   position: relative
   vertical-align: top
   // States
@@ -39,9 +48,9 @@ $control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
 
 // The controls sizes use mixins so they can be used at different breakpoints
 =control-small
-  border-radius: v(control-radius-small, $control-radius-small)
-  font-size: v(size-small, $size-small)
+  border-radius: v("control-radius-small")
+  font-size: v("size-small")
 =control-medium
-  font-size: v(size-medium, $size-medium)
+  font-size: v("size-medium")
 =control-large
-  font-size: v(size-large, $size-large)
+  font-size: v("size-large")

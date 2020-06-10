@@ -1,43 +1,54 @@
-$notification-background-color: $background !default
-$notification-code-background-color: $scheme-main !default
-$notification-radius: $radius !default
+$notification-background-color: v("background") !default
+$notification-code-background-color: v("scheme-main") !default
+$notification-radius: v("radius") !default
 $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
+
+@include vRegister(notification-background-color, $notification-background-color)
+@include vRegister(notification-radius, $notification-radius)
+@include vRegister(notification-padding, $notification-padding)
+@include vRegister(notification-code-background-color, $notification-code-background-color)
 
 .notification
   @extend %block
-  background-color: v(notification-background-color, $notification-background-color)
-  border-radius: v(notification-radius, $notification-radius)
-  padding: v(notification-padding, $notification-padding)
+  background-color: v("notification-background-color")
+  border-radius: v("notification-radius")
+  padding: v("notification-padding")
   position: relative
+
   a:not(.button):not(.dropdown-item)
     color: currentColor
     text-decoration: underline
+
   strong
     color: currentColor
+
   code,
   pre
-    background: v(notification-code-background-color, $notification-code-background-color)
+    background: v("notification-code-background-color")
+
   pre code
     background: transparent
+
   & > .delete
     position: absolute
     right: 0.5rem
     top: 0.5rem
+
   .title,
   .subtitle,
   .content
     color: currentColor
   // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+  @each $name in $colors-list
+    $color: v($name)
+    $color-invert: v($name+"-invert")
     &.is-#{$name}
-      background-color: v($name, $color)
-      color: v($name+'-invert', $color-invert)
+      background-color: $color
+      color: $color-invert
       // If light and dark colors are provided
-      @if length($pair) >= 4
-        $color-light: nth($pair, 3)
-        $color-dark: nth($pair, 4)
+      @if isRegistered($name+"-dark")
+        $color-light: v($name+"-light")
+        $color-dark: v($name+"-dark")
         &.is-light
-          background-color: v($name+'-light', $color-light)
-          color: v($name+'-dark', $color-dark)
+          background-color: $color-light
+          color: $color-dark

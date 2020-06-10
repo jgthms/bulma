@@ -1,24 +1,32 @@
-$box-color: $text !default
-$box-background-color: $scheme-main !default
-$box-radius: $radius-large !default
-$box-shadow: 0 0.5em 1em -0.125em bulmaRgba($scheme-invert, 0.1), 0 0px 0 1px bulmaRgba($scheme-invert, 0.02) !default
+$box-color: v("text") !default
+$box-background-color: v("scheme-main") !default
+$box-radius: v("radius-large") !default
+$box-shadow: 0 0.5em 1em -0.125em vAlphaChange("scheme-invert", 0.1), 0 0px 0 1px vAlphaChange("scheme-invert", 0.02) !default
 $box-padding: 1.25rem !default
 
-$box-link-hover-shadow: 0 0.5em 1em -0.125em bulmaRgba($scheme-invert, 0.1), 0 0 0 1px $link !default
-$box-link-active-shadow: inset 0 1px 2px bulmaRgba($scheme-invert, 0.2), 0 0 0 1px $link !default
+$box-link-hover-shadow: 0 0.5em 1em -0.125em vAlphaChange("scheme-invert", 0.1), 0 0 0 1px v("link") !default
+$box-link-active-shadow: inset 0 1px 2px vAlphaChange("scheme-invert", 0.2), 0 0 0 1px v("link") !default
+
+@include vRegister(box-background-color,$box-background-color)
+@include vRegister(box-radius,$box-radius)
+@include vRegister(box-shadow,$box-shadow)
+@include vRegister(box-color,$box-color)
+@include vRegister(box-padding,$box-padding)
+@include vRegister(box-link-hover-shadow,$box-link-hover-shadow)
+@include vRegister(box-link-active-shadow,$box-link-active-shadow)
 
 .box
   @extend %block
-  background-color: v(box-background-color, $box-background-color)
-  border-radius: v(box-radius, $box-radius)
-  box-shadow: v(box-shadow, $box-shadow)
-  color: v(box-color, $box-color)
+  background-color: v("box-background-color")
+  border-radius: v("box-radius")
+  box-shadow: v("box-shadow")
+  color: v("box-color")
   display: block
-  padding: v(box-padding, $box-padding)
+  padding: v("box-padding")
 
 a.box
   &:hover,
   &:focus
-    box-shadow: v(box-link-hover-shadow, $box-link-hover-shadow)
+    box-shadow: v("box-link-hover-shadow")
   &:active
-    box-shadow: v(box-link-active-shadow, $box-link-active-shadow)
+    box-shadow: v("box-link-active-shadow")

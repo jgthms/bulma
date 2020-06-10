@@ -1,21 +1,37 @@
-$content-heading-color: $text-strong !default
-$content-heading-weight: $weight-semibold !default
+$content-heading-color: v("text-strong") !default
+$content-heading-weight: v("weight-semibold") !default
 $content-heading-line-height: 1.125 !default
 
-$content-blockquote-background-color: $background !default
-$content-blockquote-border-left: 5px solid $border !default
+$content-blockquote-background-color: v("background") !default
+$content-blockquote-border-left: 5px solid v("border") !default
 $content-blockquote-padding: 1.25em 1.5em !default
 
 $content-pre-padding: 1.25em 1.5em !default
 
-$content-table-cell-border: 1px solid $border !default
+$content-table-cell-border: 1px solid v("border") !default
 $content-table-cell-border-width: 0 0 1px !default
 $content-table-cell-padding: 0.5em 0.75em !default
-$content-table-cell-heading-color: $text-strong !default
+$content-table-cell-heading-color: v("text-strong") !default
 $content-table-head-cell-border-width: 0 0 2px !default
-$content-table-head-cell-color: $text-strong !default
+$content-table-head-cell-color: v("text-strong") !default
 $content-table-foot-cell-border-width: 2px 0 0 !default
-$content-table-foot-cell-color: $text-strong !default
+$content-table-foot-cell-color: v("text-strong") !default
+
+@include vRegister(content-heading-color,$content-heading-color)
+@include vRegister(content-heading-weight,$content-heading-weight)
+@include vRegister(content-heading-line-height,$content-heading-line-height)
+@include vRegister(content-blockquote-background-color,$content-blockquote-background-color)
+@include vRegister(content-blockquote-border-left,$content-blockquote-border-left)
+@include vRegister(content-blockquote-padding,$content-blockquote-padding)
+@include vRegister(content-pre-padding,$content-pre-padding)
+@include vRegister(content-table-cell-border,$content-table-cell-border)
+@include vRegister(content-table-cell-border-width,$content-table-cell-border-width)
+@include vRegister(content-table-cell-padding,$content-table-cell-padding)
+@include vRegister(content-table-cell-heading-color,$content-table-cell-heading-color)
+@include vRegister(content-table-head-cell-border-width,$content-table-head-cell-border-width)
+@include vRegister(content-table-head-cell-color,$content-table-head-cell-color)
+@include vRegister(content-table-foot-cell-border-width,$content-table-foot-cell-border-width)
+@include vRegister(content-table-foot-cell-color,$content-table-foot-cell-color)
 
 .content
   @extend %block
@@ -38,9 +54,9 @@ $content-table-foot-cell-color: $text-strong !default
   h4,
   h5,
   h6
-    color: v(content-heading-color, $content-heading-color)
-    font-weight: v(content-heading-weight, $content-heading-weight)
-    line-height: v(content-heading-line-height, $content-heading-line-height)
+    color: v("content-heading-color")
+    font-weight: v("content-heading-weight")
+    line-height: v("content-heading-line-height")
   h1
     font-size: 2em
     margin-bottom: 0.5em
@@ -66,9 +82,9 @@ $content-table-foot-cell-color: $text-strong !default
     font-size: 1em
     margin-bottom: 1em
   blockquote
-    background-color: v(content-blockquote-background-color, $content-blockquote-background-color)
-    border-left: v(content-blockquote-border-left, $content-blockquote-border-left)
-    padding: v(content-blockquote-padding, $content-blockquote-padding)
+    background-color: v("content-blockquote-background-color")
+    border-left: v("content-blockquote-border-left")
+    padding: v("content-blockquote-padding")
   ol
     list-style-position: outside
     margin-left: 2em
@@ -109,7 +125,7 @@ $content-table-foot-cell-color: $text-strong !default
   pre
     +overflow-touch
     overflow-x: auto
-    padding: v(content-pre-padding, $content-pre-padding)
+    padding: v("content-pre-padding")
     white-space: pre
     word-wrap: normal
   sup,
@@ -119,24 +135,24 @@ $content-table-foot-cell-color: $text-strong !default
     width: 100%
     td,
     th
-      border: v(content-table-cell-border, $content-table-cell-border)
-      border-width: v(content-table-cell-border-width, $content-table-cell-border-width)
-      padding: v(content-table-cell-padding, $content-table-cell-padding)
+      border: v("content-table-cell-border")
+      border-width: v("content-table-cell-border-width")
+      padding: v("content-table-cell-padding")
       vertical-align: top
     th
-      color: v(content-table-cell-heading-color, $content-table-cell-heading-color)
+      color: v("content-table-cell-heading-color")
       &:not([align])
         text-align: left
     thead
       td,
       th
-        border-width: v(content-table-head-cell-border-width, $content-table-head-cell-border-width)
-        color: v(content-table-head-cell-color, $content-table-head-cell-color)
+        border-width: v("content-table-head-cell-border-width")
+        color: v("content-table-head-cell-color")
     tfoot
       td,
       th
-        border-width: v(content-table-foot-cell-border-width, $content-table-foot-cell-border-width)
-        color: v(content-table-foot-cell-color, $content-table-foot-cell-color)
+        border-width: v("content-table-foot-cell-border-width")
+        color: v("content-table-foot-cell-color")
     tbody
       tr
         &:last-child
@@ -148,8 +164,8 @@ $content-table-foot-cell-color: $text-strong !default
       margin-top: 0
   // Sizes
   &.is-small
-    font-size: v(size-small, $size-small)
+    font-size: v("size-small")
   &.is-medium
-    font-size: v(size-medium, $size-medium)
+    font-size: v("size-medium")
   &.is-large
-    font-size: v(size-large, $size-large)
+    font-size: v("size-large")

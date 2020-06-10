@@ -3,6 +3,11 @@ $hero-body-padding-small: 1.5rem !default
 $hero-body-padding-medium: 9rem 1.5rem !default
 $hero-body-padding-large: 18rem 1.5rem !default
 
+@include vRegister(hero-body-padding-small,$hero-body-padding-small)
+@include vRegister(hero-body-padding-medium,$hero-body-padding-medium)
+@include vRegister(hero-body-padding-large,$hero-body-padding-large)
+@include vRegister(hero-body-padding,$hero-body-padding)
+
 // Main container
 .hero
   align-items: stretch
@@ -15,9 +20,9 @@ $hero-body-padding-large: 18rem 1.5rem !default
     ul
       border-bottom: none
   // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+  @each $name in $colors-list
+    $color: v($name)
+    $color-invert: v($name+"-invert")
     &.is-#{$name}
       background-color: $color
       color: $color-invert
@@ -27,7 +32,7 @@ $hero-body-padding-large: 18rem 1.5rem !default
       .title
         color: $color-invert
       .subtitle
-        color: bulmaRgba($color-invert, 0.9)
+        color: vAlphaChange($name+"-invert", .9)
         a:not(.button),
         strong
           color: $color-invert
@@ -36,12 +41,12 @@ $hero-body-padding-large: 18rem 1.5rem !default
           background-color: $color
       .navbar-item,
       .navbar-link
-        color: bulmaRgba($color-invert, 0.7)
+        color: vAlphaChange($name+"-invert", .7)
       a.navbar-item,
       .navbar-link
         &:hover,
         &.is-active
-          background-color: vDarken($name, $color, 5%)
+          background-color: vDarken($name, 5%)
           color: $color-invert
       .tabs
         a
@@ -57,7 +62,7 @@ $hero-body-padding-large: 18rem 1.5rem !default
           a
             color: $color-invert
             &:hover
-              background-color: bulmaRgba($scheme-invert, 0.1)
+              background-color: vAlphaChange("scheme-invert", 0.1)
           li.is-active a
             &,
             &:hover
@@ -65,26 +70,25 @@ $hero-body-padding-large: 18rem 1.5rem !default
               border-color: $color-invert
               color: $color
       // Modifiers
-      @if type-of($color) == 'color'
-        &.is-bold
-          $gradient-top-left: vHSLAdjust($name, $color, -10deg, 10%, -10%)
-          $gradient-bottom-right: vHSLAdjust($name, $color, 10deg, 5%, 5%)
-          background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
-          +mobile
-            .navbar-menu
-              background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+      &.is-bold
+        $gradient-top-left: vAdjust($name, -10deg, 10%, -10%)
+        $gradient-bottom-right: vAdjust($name, 10deg, 5%, 5%)
+        background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
+        +mobile
+          .navbar-menu
+            background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
   // Sizes
   &.is-small
     .hero-body
-      padding: v(hero-body-padding-small, $hero-body-padding-small)
+      padding: v("hero-body-padding-small")
   &.is-medium
     +tablet
       .hero-body
-        padding: v(hero-body-padding-medium, $hero-body-padding-medium)
+        padding: v("hero-body-padding-medium")
   &.is-large
     +tablet
       .hero-body
-        padding: v(hero-body-padding-large, $hero-body-padding-large)
+        padding: v("hero-body-padding-large")
   &.is-halfheight,
   &.is-fullheight,
   &.is-fullheight-with-navbar
@@ -142,4 +146,4 @@ $hero-body-padding-large: 18rem 1.5rem !default
 .hero-body
   flex-grow: 1
   flex-shrink: 0
-  padding: v(hero-body-padding, $hero-body-padding)
+  padding: v("hero-body-padding")

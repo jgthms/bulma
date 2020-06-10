@@ -1,53 +1,74 @@
-$pagination-color: $text-strong !default
-$pagination-border-color: $border !default
+$pagination-color: v("text-strong") !default
+$pagination-border-color: v("border") !default
 $pagination-margin: -0.25rem !default
-$pagination-min-width: $control-height !default
+$pagination-min-width: v("control-height") !default
 
 $pagination-item-font-size: 1em !default
 $pagination-item-margin: 0.25rem !default
 $pagination-item-padding-left: 0.5em !default
 $pagination-item-padding-right: 0.5em !default
 
-$pagination-hover-color: $link-hover !default
-$pagination-hover-border-color: $link-hover-border !default
+$pagination-hover-color: v("link-hover") !default
+$pagination-hover-border-color: v("link-hover-border") !default
 
-$pagination-focus-color: $link-focus !default
-$pagination-focus-border-color: $link-focus-border !default
+$pagination-focus-color: v("link-focus") !default
+$pagination-focus-border-color: v("link-focus-border") !default
 
-$pagination-active-color: $link-active !default
-$pagination-active-border-color: $link-active-border !default
+$pagination-active-color: v("link-active") !default
+$pagination-active-border-color: v("link-active-border") !default
 
-$pagination-disabled-color: $text-light !default
-$pagination-disabled-background-color: $border !default
-$pagination-disabled-border-color: $border !default
+$pagination-disabled-color: v("text-light") !default
+$pagination-disabled-background-color: v("border") !default
+$pagination-disabled-border-color: v("border") !default
 
-$pagination-current-color: $link-invert !default
-$pagination-current-background-color: $link !default
-$pagination-current-border-color: $link !default
+$pagination-current-color: v("link-invert") !default
+$pagination-current-background-color: v("link") !default
+$pagination-current-border-color: v("link") !default
 
-$pagination-ellipsis-color: $grey-light !default
+$pagination-ellipsis-color: v("grey-light") !default
 
-$pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
+$pagination-shadow-inset: inset 0 1px 2px vAlphaChange("scheme-invert", 0.2)
+
+
+@include vRegister(pagination-margin,$pagination-margin)
+@include vRegister(pagination-item-font-size,$pagination-item-font-size)
+@include vRegister(pagination-item-margin,$pagination-item-margin)
+@include vRegister(pagination-item-padding-left,$pagination-item-padding-left)
+@include vRegister(pagination-item-padding-right,$pagination-item-padding-right)
+@include vRegister(pagination-border-color,$pagination-border-color)
+@include vRegister(pagination-color,$pagination-color)
+@include vRegister(pagination-min-width,$pagination-min-width)
+@include vRegister(pagination-hover-border-color,$pagination-hover-border-color)
+@include vRegister(pagination-hover-color,$pagination-hover-color)
+@include vRegister(pagination-focus-border-color,$pagination-focus-border-color)
+@include vRegister(pagination-shadow-inset,$pagination-shadow-inset)
+@include vRegister(pagination-disabled-background-color,$pagination-disabled-background-color)
+@include vRegister(pagination-disabled-border-color,$pagination-disabled-border-color)
+@include vRegister(pagination-disabled-color,$pagination-disabled-color)
+@include vRegister(pagination-current-background-color,$pagination-current-background-color)
+@include vRegister(pagination-current-border-color,$pagination-current-border-color)
+@include vRegister(pagination-current-color,$pagination-current-color)
+@include vRegister(pagination-ellipsis-color,$pagination-ellipsis-color)
 
 .pagination
   @extend %block
-  font-size: v(size-normal, $size-normal)
-  margin: v(pagination-margin, $pagination-margin)
+  font-size: v("size-normal")
+  margin: v("pagination-margin")
   // Sizes
   &.is-small
-    font-size: v(size-small, $size-small)
+    font-size: v("size-small")
   &.is-medium
-    font-size: v(size-medium, $size-medium)
+    font-size: v("size-medium")
   &.is-large
-    font-size: v(size-large, $size-large)
+    font-size: v("size-large")
   &.is-rounded
     .pagination-previous,
     .pagination-next
       padding-left: 1em
       padding-right: 1em
-      border-radius: v(radius-rounded, $radius-rounded)
+      border-radius: v("radius-rounded")
     .pagination-link
-      border-radius: v(radius-rounded, $radius-rounded)
+      border-radius: v("radius-rounded")
 
 .pagination,
 .pagination-list
@@ -62,31 +83,31 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
 .pagination-ellipsis
   @extend %control
   @extend %unselectable
-  font-size: v(pagination-item-font-size, $pagination-item-font-size)
+  font-size: v("pagination-item-font-size")
   justify-content: center
-  margin: v(pagination-item-margin, $pagination-item-margin)
-  padding-left: v(pagination-item-padding-left, $pagination-item-padding-left)
-  padding-right: v(pagination-item-padding-right, $pagination-item-padding-right)
+  margin: v("pagination-item-margin")
+  padding-left: v("pagination-item-padding-left")
+  padding-right: v("pagination-item-padding-right")
   text-align: center
 
 .pagination-previous,
 .pagination-next,
 .pagination-link
-  border-color: v(pagination-border-color, $pagination-border-color)
-  color: v(pagination-color, $pagination-color)
-  min-width: v(pagination-min-width, $pagination-min-width)
+  border-color: v("pagination-border-color")
+  color: v("pagination-color")
+  min-width: v("pagination-min-width")
   &:hover
-    border-color: v(pagination-hover-border-color, $pagination-hover-border-color)
-    color: v(pagination-hover-color, $pagination-hover-color)
+    border-color: v("pagination-hover-border-color")
+    color: v("pagination-hover-color")
   &:focus
-    border-color: v(pagination-focus-border-color, $pagination-focus-border-color)
+    border-color: v("pagination-focus-border-color")
   &:active
-    box-shadow: v(pagination-shadow-inset, $pagination-shadow-inset)
+    box-shadow: v("pagination-shadow-inset")
   &[disabled]
-    background-color: v(pagination-disabled-background-color, $pagination-disabled-background-color)
-    border-color: v(pagination-disabled-border-color, $pagination-disabled-border-color)
+    background-color: v("pagination-disabled-background-color")
+    border-color: v("pagination-disabled-border-color")
     box-shadow: none
-    color: v(pagination-disabled-color, $pagination-disabled-color)
+    color: v("pagination-disabled-color")
     opacity: 0.5
 
 .pagination-previous,
@@ -97,12 +118,12 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
 
 .pagination-link
   &.is-current
-    background-color: v(pagination-current-background-color, $pagination-current-background-color)
-    border-color: v(pagination-current-border-color, $pagination-current-border-color)
-    color: v(pagination-current-color, $pagination-current-color)
+    background-color: v("pagination-current-background-color")
+    border-color: v("pagination-current-border-color")
+    color: v("pagination-current-color")
 
 .pagination-ellipsis
-  color: v(pagination-ellipsis-color, $pagination-ellipsis-color)
+  color: v("pagination-ellipsis-color")
   pointer-events: none
 
 .pagination-list

@@ -1,39 +1,48 @@
-$list-background-color: $scheme-main !default
-$list-shadow: 0 2px 3px bulmaRgba($scheme-invert, 0.1), 0 0 0 1px bulmaRgba($scheme-invert, 0.1) !default
-$list-radius: $radius !default
+$list-background-color: v("scheme-main") !default
+$list-shadow: 0 2px 3px vAlphaChange("scheme-invert", 0.1), 0 0 0 1px vAlphaChange("scheme-invert", 0.1) !default
+$list-radius: v("radius") !default
 
-$list-item-border: 1px solid $border !default
-$list-item-color: $text !default
-$list-item-active-background-color: $link !default
-$list-item-active-color: $link-invert !default
-$list-item-hover-background-color: $background !default
+$list-item-border: 1px solid v("border") !default
+$list-item-color: v("text") !default
+$list-item-active-background-color: v("link") !default
+$list-item-active-color: v("link-invert") !default
+$list-item-hover-background-color: v("background") !default
+
+@include vRegister(list-background-color,$list-background-color)
+@include vRegister(list-radius,$list-radius)
+@include vRegister(list-shadow,$list-shadow)
+@include vRegister(list-item-color,$list-item-color)
+@include vRegister(list-item-border,$list-item-border)
+@include vRegister(list-item-active-background-color,$list-item-active-background-color)
+@include vRegister(list-item-active-color,$list-item-active-color)
+@include vRegister(list-item-hover-background-color,$list-item-hover-background-color)
 
 .list
   @extend %block
-  background-color: v(list-background-color, $list-background-color)
-  border-radius: v(list-radius, $list-radius)
-  box-shadow: v(list-shadow, $list-shadow)
+  background-color: v("list-background-color")
+  border-radius: v("list-radius")
+  box-shadow: v("list-shadow")
   // &.is-hoverable > .list-item:hover:not(.is-active)
-  //   background-color: v(list-item-hover-background-color, $list-item-hover-background-color)
+  //   background-color: v("list-item-hover-background-color")
   //   cursor: pointer
 
 .list-item
   display: block
   padding: 0.5em 1em
   &:not(a)
-    color: v(list-item-color, $list-item-color)
+    color: v("list-item-color")
   &:first-child
-    border-top-left-radius: v(list-radius, $list-radius)
-    border-top-right-radius: v(list-radius, $list-radius)
+    border-top-left-radius: v("list-radius")
+    border-top-right-radius: v("list-radius")
   &:last-child
-    border-bottom-left-radius: v(list-radius, $list-radius)
-    border-bottom-right-radius: v(list-radius, $list-radius)
+    border-bottom-left-radius: v("list-radius")
+    border-bottom-right-radius: v("list-radius")
   &:not(:last-child)
-    border-bottom: v(list-item-border, $list-item-border)
+    border-bottom: v("list-item-border")
   &.is-active
-    background-color: v(list-item-active-background-color, $list-item-active-background-color)
-    color: v(list-item-active-color, $list-item-active-color)
+    background-color: v("list-item-active-background-color")
+    color: v("list-item-active-color")
 
 a.list-item
-  background-color: v(list-item-hover-background-color, $list-item-hover-background-color)
+  background-color: v("list-item-hover-background-color")
   cursor: pointer

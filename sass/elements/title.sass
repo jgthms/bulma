@@ -1,21 +1,38 @@
-$title-color: $text-strong !default
+$title-color: v("text-strong") !default
 $title-family: false !default
-$title-size: $size-3 !default
-$title-weight: $weight-semibold !default
+$title-size: v("size-3") !default
+$title-weight: v("weight-semibold") !default
 $title-line-height: 1.125 !default
 $title-strong-color: inherit !default
 $title-strong-weight: inherit !default
 $title-sub-size: 0.75em !default
 $title-sup-size: 0.75em !default
 
-$subtitle-color: $text !default
+$subtitle-color: v("text") !default
 $subtitle-family: false !default
-$subtitle-size: $size-5 !default
-$subtitle-weight: $weight-normal !default
+$subtitle-size: v("size-5") !default
+$subtitle-weight: v("weight-normal") !default
 $subtitle-line-height: 1.25 !default
-$subtitle-strong-color: $text-strong !default
-$subtitle-strong-weight: $weight-semibold !default
+$subtitle-strong-color: v("text-strong") !default
+$subtitle-strong-weight: v("weight-semibold") !default
 $subtitle-negative-margin: -1.25rem !default
+
+@include vRegister(title-sub-size,$title-sub-size)
+@include vRegister(title-sup-size,$title-sup-size)
+@include vRegister(title-color,$title-color)
+@include vRegister(title-size,$title-size)
+@include vRegister(title-weight,$title-weight)
+@include vRegister(title-line-height,$title-line-height)
+@include vRegister(title-strong-color,$title-strong-color)
+@include vRegister(title-strong-weight,$title-strong-weight)
+
+@include vRegister(subtitle-negative-margin,$subtitle-negative-margin)
+@include vRegister(subtitle-color,$subtitle-color)
+@include vRegister(subtitle-size,$subtitle-size)
+@include vRegister(subtitle-weight,$subtitle-weight)
+@include vRegister(subtitle-line-height,$subtitle-line-height)
+@include vRegister(subtitle-strong-color,$subtitle-strong-color)
+@include vRegister(subtitle-strong-weight,$subtitle-strong-weight)
 
 .title,
 .subtitle
@@ -25,26 +42,26 @@ $subtitle-negative-margin: -1.25rem !default
   span
     font-weight: inherit
   sub
-    font-size: v(title-sub-size, $title-sub-size)
+    font-size: v("title-sub-size")
   sup
-    font-size: v(title-sup-size, $title-sup-size)
+    font-size: v("title-sup-size")
   .tag
     vertical-align: middle
 
 .title
-  color: v(title-color, $title-color)
+  color: v("title-color")
   @if $title-family
-    font-family: v(title-family, $title-family)
-  font-size: v(title-size, $title-size)
-  font-weight: v(title-weight, $title-weight)
-  line-height: v(title-line-height, $title-line-height)
+    font-family: v("title-family")
+  font-size: v("title-size")
+  font-weight: v("title-weight")
+  line-height: v("title-line-height")
   strong
-    color: v(title-strong-color, $title-strong-color)
-    font-weight: v(title-strong-weight, $title-strong-weight)
+    color: v("title-strong-color")
+    font-weight: v("title-strong-weight")
   & + .highlight
     margin-top: -0.75rem
   &:not(.is-spaced) + .subtitle
-    margin-top: v(subtitle-negative-margin, $subtitle-negative-margin)
+    margin-top: v("subtitle-negative-margin")
   // Sizes
   @each $size in $sizes
     $i: index($sizes, $size)
@@ -52,17 +69,17 @@ $subtitle-negative-margin: -1.25rem !default
       font-size: $size
 
 .subtitle
-  color: v(subtitle-color, $subtitle-color)
+  color: v("subtitle-color")
   @if $subtitle-family // Maybe replace with inherit
-    font-family: v(subtitle-family, $subtitle-family)
-  font-size: v(subtitle-size, $subtitle-size)
-  font-weight: v(subtitle-weight, $subtitle-weight)
-  line-height: v(subtitle-line-height, $subtitle-line-height)
+    font-family: v("subtitle-family")
+  font-size: v("subtitle-size")
+  font-weight: v("subtitle-weight")
+  line-height: v("subtitle-line-height")
   strong
-    color: v(subtitle-strong-color, $subtitle-strong-color)
-    font-weight: v(subtitle-strong-weight, $subtitle-strong-weight)
+    color: v("subtitle-strong-color")
+    font-weight: v("subtitle-strong-weight")
   &:not(.is-spaced) + .title
-    margin-top: v(subtitle-negative-margin, $subtitle-negative-margin)
+    margin-top: v("subtitle-negative-margin")
   // Sizes
   @each $size in $sizes
     $i: index($sizes, $size)

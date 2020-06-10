@@ -1,9 +1,12 @@
-$footer-background-color: $scheme-main-bis !default
-$footer-color: false !default
+$footer-background-color: v("scheme-main-bis") !default
+$footer-color: inherit !default
 $footer-padding: 3rem 1.5rem 6rem !default
 
+@include vRegister(footer-background-color,$footer-background-color)
+@include vRegister(footer-padding,$footer-padding)
+@include vRegister(footer-color,$footer-color)
+
 .footer
-  background-color: v(footer-background-color, $footer-background-color)
-  padding: v(footer-padding, $footer-padding)
-  @if $footer-color
-    color: v(footer-color, $footer-color)
+  background-color: v("footer-background-color")
+  padding: v("footer-padding")
+  color: v("footer-color")

@@ -1,42 +1,61 @@
-$table-color: $text-strong !default
-$table-background-color: $scheme-main !default
+$table-color: v("text-strong") !default
+$table-background-color: v("scheme-main") !default
 
-$table-cell-border: 1px solid $border !default
+$table-cell-border: 1px solid v("border") !default
 $table-cell-border-width: 0 0 1px !default
 $table-cell-padding: 0.5em 0.75em !default
-$table-cell-heading-color: $text-strong !default
+$table-cell-heading-color: v("text-strong") !default
 
 $table-head-cell-border-width: 0 0 2px !default
-$table-head-cell-color: $text-strong !default
+$table-head-cell-color: v("text-strong") !default
 $table-foot-cell-border-width: 2px 0 0 !default
-$table-foot-cell-color: $text-strong !default
+$table-foot-cell-color: v("text-strong") !default
 
 $table-head-background-color: transparent !default
 $table-body-background-color: transparent !default
 $table-foot-background-color: transparent !default
 
-$table-row-hover-background-color: $scheme-main-bis !default
+$table-row-hover-background-color: v("scheme-main-bis") !default
 
-$table-row-active-background-color: $primary !default
-$table-row-active-color: $primary-invert !default
+$table-row-active-background-color: v("primary") !default
+$table-row-active-color: v("primary-invert") !default
 
-$table-striped-row-even-background-color: $scheme-main-bis !default
-$table-striped-row-even-hover-background-color: $scheme-main-ter !default
+$table-striped-row-even-background-color: v("scheme-main-bis") !default
+$table-striped-row-even-hover-background-color: v("scheme-main-ter") !default
+
+@include vRegister(table-background-color,$table-background-color)
+@include vRegister(table-color,$table-color)
+@include vRegister(table-cell-border,$table-cell-border)
+@include vRegister(table-cell-border-width,$table-cell-border-width)
+@include vRegister(table-cell-padding,$table-cell-padding)
+@include vRegister(table-row-active-background-color,$table-row-active-background-color)
+@include vRegister(table-row-active-color,$table-row-active-color)
+@include vRegister(table-cell-heading-color,$table-cell-heading-color)
+@include vRegister(table-head-background-color,$table-head-background-color)
+@include vRegister(table-head-cell-border-width,$table-head-cell-border-width)
+@include vRegister(table-head-cell-color,$table-head-cell-color)
+@include vRegister(table-foot-background-color,$table-foot-background-color)
+@include vRegister(table-foot-cell-border-width,$table-foot-cell-border-width)
+@include vRegister(table-foot-cell-color,$table-foot-cell-color)
+@include vRegister(table-body-background-color,$table-body-background-color)
+@include vRegister(table-row-hover-background-color,$table-row-hover-background-color)
+@include vRegister(table-striped-row-even-hover-background-color,$table-striped-row-even-hover-background-color)
+@include vRegister(table-striped-row-even-background-color,$table-striped-row-even-background-color)
 
 .table
   @extend %block
-  background-color: v(table-background-color, $table-background-color)
-  color: v(table-color, $table-color)
+  background-color: v("table-background-color")
+  color: v("table-color")
   td,
   th
-    border: v(table-cell-border, $table-cell-border)
-    border-width: v(table-cell-border-width, $table-cell-border-width)
-    padding: v(table-cell-padding, $table-cell-padding)
+    border: v("table-cell-border")
+    border-width: v("table-cell-border-width")
+    padding: v("table-cell-padding")
     vertical-align: top
     // Colors
-    @each $name, $pair in $colors
-      $color: nth($pair, 1)
-      $color-invert: nth($pair, 2)
+    @each $name in $colors-list
+      $color: v($name)
+      $color-invert: v($name+"-invert")
       &.is-#{$name}
         background-color: $color
         border-color: $color
@@ -46,42 +65,42 @@ $table-striped-row-even-hover-background-color: $scheme-main-ter !default
       white-space: nowrap
       width: 1%
     &.is-selected
-      background-color: v(table-row-active-background-color, $table-row-active-background-color)
-      color: v(table-row-active-color, $table-row-active-color)
+      background-color: v("table-row-active-background-color")
+      color: v("table-row-active-color")
       a,
       strong
         color: currentColor
     &.is-vcentered
       vertical-align: middle
   th
-    color: v(table-cell-heading-color, $table-cell-heading-color)
+    color: v("table-cell-heading-color")
     &:not([align])
       text-align: left
   tr
     &.is-selected
-      background-color: v(table-row-active-background-color, $table-row-active-background-color)
-      color: v(table-row-active-color, $table-row-active-color)
+      background-color: v("table-row-active-background-color")
+      color: v("table-row-active-color")
       a,
       strong
         color: currentColor
       td,
       th
-        border-color: v(table-row-active-color, $table-row-active-color)
+        border-color: v("table-row-active-color")
         color: currentColor
   thead
-    background-color: v(table-head-background-color, $table-head-background-color)
+    background-color: v("table-head-background-color")
     td,
     th
-      border-width: v(table-head-cell-border-width, $table-head-cell-border-width)
-      color: v(table-head-cell-color, $table-head-cell-color)
+      border-width: v("table-head-cell-border-width")
+      color: v("table-head-cell-color")
   tfoot
-    background-color: v(table-foot-background-color, $table-foot-background-color)
+    background-color: v("table-foot-background-color")
     td,
     th
-      border-width: v(table-foot-cell-border-width, $table-foot-cell-border-width)
-      color: v(table-foot-cell-color, $table-foot-cell-color)
+      border-width: v("table-foot-cell-border-width")
+      color: v("table-foot-cell-color")
   tbody
-    background-color: v(table-body-background-color, $table-body-background-color)
+    background-color: v("table-body-background-color")
     tr
       &:last-child
         td,
@@ -103,14 +122,14 @@ $table-striped-row-even-hover-background-color: $scheme-main-ter !default
     tbody
       tr:not(.is-selected)
         &:hover
-          background-color: v(table-row-hover-background-color, $table-row-hover-background-color)
+          background-color: v("table-row-hover-background-color")
     &.is-striped
       tbody
         tr:not(.is-selected)
           &:hover
-            background-color: v(table-row-hover-background-color, $table-row-hover-background-color)
+            background-color: v("table-row-hover-background-color")
             &:nth-child(even)
-              background-color: v(table-striped-row-even-hover-background-color, $table-striped-row-even-hover-background-color)
+              background-color: v("table-striped-row-even-hover-background-color")
   &.is-narrow
     td,
     th
@@ -119,7 +138,7 @@ $table-striped-row-even-hover-background-color: $scheme-main-ter !default
     tbody
       tr:not(.is-selected)
         &:nth-child(even)
-          background-color: v(table-striped-row-even-background-color, $table-striped-row-even-background-color)
+          background-color: v("table-striped-row-even-background-color")
 
 .table-container
   @extend %block

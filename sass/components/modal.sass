@@ -1,6 +1,6 @@
 $modal-z: 40 !default
 
-$modal-background-background-color: bulmaRgba($scheme-invert, 0.86) !default
+$modal-background-background-color: vAlphaChange("scheme-invert", 0.86) !default
 
 $modal-content-width: 640px !default
 $modal-content-margin-mobile: 20px !default
@@ -13,20 +13,43 @@ $modal-close-top: 20px !default
 
 $modal-card-spacing: 40px !default
 
-$modal-card-head-background-color: $background !default
-$modal-card-head-border-bottom: 1px solid $border !default
+$modal-card-head-background-color: v("background") !default
+$modal-card-head-border-bottom: 1px solid v("border") !default
 $modal-card-head-padding: 20px !default
-$modal-card-head-radius: $radius-large !default
+$modal-card-head-radius: v("radius-large") !default
 
-$modal-card-title-color: $text-strong !default
+$modal-card-title-color: v("text-strong") !default
 $modal-card-title-line-height: 1 !default
-$modal-card-title-size: $size-4 !default
+$modal-card-title-size: v("size-4") !default
 
-$modal-card-foot-radius: $radius-large !default
-$modal-card-foot-border-top: 1px solid $border !default
+$modal-card-foot-radius: v("radius-large") !default
+$modal-card-foot-border-top: 1px solid v("border") !default
 
-$modal-card-body-background-color: $scheme-main !default
+$modal-card-body-background-color: v("scheme-main") !default
 $modal-card-body-padding: 20px !default
+
+
+@include vRegister(modal-z, $modal-z)
+@include vRegister(modal-background-background-color,$modal-background-background-color)
+@include vRegister(modal-content-margin-mobile,$modal-content-margin-mobile)
+@include vRegister(modal-content-spacing-mobile,$modal-content-spacing-mobile)
+@include vRegister(modal-content-spacing-tablet,$modal-content-spacing-tablet)
+@include vRegister(modal-content-width,$modal-content-width)
+@include vRegister(modal-close-dimensions,$modal-close-dimensions)
+@include vRegister(modal-close-right,$modal-close-right)
+@include vRegister(modal-close-top,$modal-close-top)
+@include vRegister(modal-card-spacing,$modal-card-spacing)
+@include vRegister(modal-card-head-background-color,$modal-card-head-background-color)
+@include vRegister(modal-card-head-padding,$modal-card-head-padding)
+@include vRegister(modal-card-head-border-bottom,$modal-card-head-border-bottom)
+@include vRegister(modal-card-head-radius,$modal-card-head-radius)
+@include vRegister(modal-card-title-color,$modal-card-title-color)
+@include vRegister(modal-card-title-size,$modal-card-title-size)
+@include vRegister(modal-card-title-line-height,$modal-card-title-line-height)
+@include vRegister(modal-card-foot-radius,$modal-card-foot-radius)
+@include vRegister(modal-card-foot-border-top,$modal-card-foot-border-top)
+@include vRegister(modal-card-body-background-color,$modal-card-body-background-color)
+@include vRegister(modal-card-body-padding,$modal-card-body-padding)
 
 .modal
   @extend %overlay
@@ -36,78 +59,78 @@ $modal-card-body-padding: 20px !default
   justify-content: center
   overflow: hidden
   position: fixed
-  z-index: v(modal-z, $modal-z)
+  z-index: v("modal-z")
   // Modifiers
   &.is-active
     display: flex
 
 .modal-background
   @extend %overlay
-  background-color: v(modal-background-background-color, $modal-background-background-color)
+  background-color: v("modal-background-background-color")
 
 .modal-content,
 .modal-card
-  margin: 0 v(modal-content-margin-mobile, $modal-content-margin-mobile)
-  max-height: calc(100vh - #{v(modal-content-spacing-mobile, $modal-content-spacing-mobile)})
+  margin: 0 v("modal-content-margin-mobile")
+  max-height: calc(100vh - #{v("modal-content-spacing-mobile")})
   overflow: auto
   position: relative
   width: 100%
   // Responsiveness
   +tablet
     margin: 0 auto
-    max-height: calc(100vh - #{v(modal-content-spacing-tablet, $modal-content-spacing-tablet)})
-    width: v(modal-content-width, $modal-content-width)
+    max-height: calc(100vh - #{v("modal-content-spacing-tablet")})
+    width: v("modal-content-width")
 
 .modal-close
   @extend %delete
   background: none
-  height: v(modal-close-dimensions, $modal-close-dimensions)
+  height: v("modal-close-dimensions")
   position: fixed
-  right: v(modal-close-right, $modal-close-right)
-  top: v(modal-close-top, $modal-close-top)
-  width: v(modal-close-dimensions, $modal-close-dimensions)
+  right: v("modal-close-right")
+  top: v("modal-close-top")
+  width: v("modal-close-dimensions")
 
 .modal-card
   display: flex
   flex-direction: column
-  max-height: calc(100vh - #{v(modal-card-spacing, $modal-card-spacing)})
+  max-height: calc(100vh - #{v("modal-card-spacing")})
   overflow: hidden
   -ms-overflow-y: visible
 
 .modal-card-head,
 .modal-card-foot
   align-items: center
-  background-color: v(modal-card-head-background-color, $modal-card-head-background-color)
+  background-color: v("modal-card-head-background-color")
   display: flex
   flex-shrink: 0
   justify-content: flex-start
-  padding: v(modal-card-head-padding, $modal-card-head-padding)
+  padding: v("modal-card-head-padding")
   position: relative
 
 .modal-card-head
-  border-bottom: v(modal-card-head-border-bottom, $modal-card-head-border-bottom)
-  border-top-left-radius: v(modal-card-head-radius, $modal-card-head-radius)
-  border-top-right-radius: v(modal-card-head-radius, $modal-card-head-radius)
+  border-bottom: v("modal-card-head-border-bottom")
+  border-top-left-radius: v("modal-card-head-radius")
+  border-top-right-radius: v("modal-card-head-radius")
 
 .modal-card-title
-  color: v(modal-card-title-color, $modal-card-title-color)
+  color: v("modal-card-title-color")
   flex-grow: 1
   flex-shrink: 0
-  font-size: v(modal-card-title-size, $modal-card-title-size)
-  line-height: v(modal-card-title-line-height, $modal-card-title-line-height)
+  font-size: v("modal-card-title-size")
+  line-height: v("modal-card-title-line-height")
 
 .modal-card-foot
-  border-bottom-left-radius: v(modal-card-foot-radius, $modal-card-foot-radius)
-  border-bottom-right-radius: v(modal-card-foot-radius, $modal-card-foot-radius)
-  border-top: v(modal-card-foot-border-top, $modal-card-foot-border-top)
+  border-bottom-left-radius: v("modal-card-foot-radius")
+  border-bottom-right-radius: v("modal-card-foot-radius")
+  border-top: v("modal-card-foot-border-top")
   .button
     &:not(:last-child)
       margin-right: 0.5em
 
 .modal-card-body
   +overflow-touch
-  background-color: v(modal-card-body-background-color, $modal-card-body-background-color)
+  background-color: v("modal-card-body-background-color")
   flex-grow: 1
   flex-shrink: 1
   overflow: auto
-  padding: v(modal-card-body-padding, $modal-card-body-padding)
+  padding: v("modal-card-body-padding")

@@ -1,5 +1,7 @@
 $tile-spacing: 0.75rem !default
 
+@include vRegister(tile-spacing, $tile-spacing)
+
 .tile
   align-items: stretch
   display: block
@@ -9,13 +11,13 @@ $tile-spacing: 0.75rem !default
   min-height: min-content
   // Modifiers
   &.is-ancestor
-    margin: calc(#{v(tile-spacing, $tile-spacing)} * -1)
+    margin: calc(#{v("tile-spacing")} * -1)
     &:not(:last-child)
-      margin-bottom: v(tile-spacing, $tile-spacing)
+      margin-bottom: v("tile-spacing")
   &.is-child
     margin: 0 !important
   &.is-parent
-    padding: v(tile-spacing, $tile-spacing)
+    padding: v("tile-spacing")
   &.is-vertical
     flex-direction: column
     & > .tile.is-child:not(:last-child)
