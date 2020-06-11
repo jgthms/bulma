@@ -1,6 +1,6 @@
 +selection
-  background-color: $primary
-  color: $primary-invert
+  background-color: v("primary")
+  color: v("primary-invert")
 
 .bd-post-container
   margin: 0 auto
@@ -57,18 +57,18 @@
   counter-reset: bd-links
 
 .bd-link
-  border-radius: $radius-large
-  color: $text-light
+  border-radius: v("radius-large")
+  color: v("text-light")
   display: block
-  font-size: $size-5
+  font-size: v("size-5")
   padding: 1rem 3rem 1.5rem 5rem
   position: relative
-  transition-duration: $speed
+  transition-duration: v("speed")
   transition-property: background-color, color
   strong
-    font-weight: $weight-semibold
+    font-weight: v("weight-semibold")
   &:hover
-    background-color: $scheme-main-bis
+    background-color: v("scheme-main-bis")
 
 .bd-link-surtitle
   float: right
@@ -91,10 +91,10 @@
   min-width: 1.5em
 
 .bd-link-counter
-  color: $link
+  color: v("link")
   display: block
   counter-increment: bd-links
-  font-weight: $weight-normal
+  font-weight: v("weight-normal")
   &::before
     content: counter(bd-links)
 
@@ -123,9 +123,9 @@
     width: 50%
 
 .bd-link-name
-  color: $text-strong
-  font-size: $size-4
-  font-weight: $weight-semibold
+  color: v("text-strong")
+  font-size: v("size-4")
+  font-weight: v("weight-semibold")
 
 .bd-docs
   display: flex
@@ -139,11 +139,11 @@
     min-width: calc(33.3333% - 3rem)
 
 .bd-doc-title
-  color: $text-strong
+  color: v("text-strong")
   a
     color: currentColor
     &:hover
-      color: $link
+      color: v("link")
   &:not(:last-child)
     margin-bottom: 0.75rem
 
@@ -153,8 +153,8 @@
   justify-content: space-between
 
 .bd-box
-  border: 4px solid $background
-  border-radius: $radius
+  border: 4px solid v("background")
+  border-radius: v("radius")
 
 .bd-box-header
   text-align: center
@@ -227,17 +227,17 @@
     background-color: darken($rss, 10%)
 
 .bd-view-all-versions
-  color: $text-light
+  color: v("text-light")
   &:hover
     text-decoration: underline
 
 .bd-feature-title
-  color: $text-light
+  color: v("text-light")
   a
     border-bottom: 1px solid transparent
-    color: $text-strong
+    color: v("text-strong")
     &:hover
-      border-bottom-color: $primary
+      border-bottom-color: v("primary")
 
 .bd-anchor-title
   padding-top: 1.5rem
@@ -254,10 +254,10 @@
     right: auto
 
 .has-text-orange
-  color: $orange !important
+  color: v("orange") !important
 
 .has-text-purple
-  color: $purple !important
+  color: v("purple") !important
 
 .has-text-bootstrap
   color: $bootstrap !important
@@ -278,10 +278,10 @@ $notification-radius: v("radius") !default
 $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
 
 .bd-notification
-  background-color: $background
-  border-radius: $radius
-  color: $text-light
-  font-weight: $weight-semibold
+  background-color: v("background")
+  border-radius: v("radius")
+  color: v("text-light")
+  font-weight: v("weight-semibold")
   padding: 1.25rem 0
   position: relative
   text-align: center
@@ -292,21 +292,21 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
     color: currentColor
   code,
   pre
-    background-color: rgba($scheme-invert, 0.2)
-    border-radius: $radius
-    color: $scheme-main
+    background-color: vAlphaChange(scheme-invert, 0.2)
+    border-radius: v("radius")
+    color: v("scheme-main")
   pre code
     background-color: transparent
   // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
-    $color-invert: nth($pair, 2)
+  @each $name in $colors-list
+    $color: v($name)
+    $color-invert: v($name+"-invert")
     &.is-#{$name}
       background-color: $color
       color: $color-invert
 
 .bd-icon-size .icon
-  background-color: $yellow
+  background-color: v("yellow")
 
 .bd-mwb-table
   td

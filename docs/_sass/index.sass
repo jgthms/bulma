@@ -12,21 +12,21 @@
   text-align: center
   a,
   strong
-    transition-duration: $speed
+    transition-duration: v("speed")
     transition-property: color
   a
     color: currentColor
     &:hover
-      color: $blue
+      color: v("blue")
       strong
-        color: $link
+        color: v("link")
   strong
-    font-weight: $weight-semibold
+    font-weight: v("weight-semibold")
   .title
     strong
-      color: $primary
+      color: v("primary")
   .subtitle
-    color: $border-hover !important
+    color: v("border-hover") !important
     strong
       color: currentColor
   &:not(:last-child)
@@ -49,7 +49,7 @@
     margin-right: auto
 
 .bd-index-custom-title
-  color: $border-hover
+  color: v("border-hover")
 
 .bd-index-custom-example
   padding: 1rem
@@ -57,56 +57,56 @@
     margin-bottom: 0.5rem
 
 .bd-index-custom.bd-is-after
-  color: $brown
+  color: v("brown")
   font-family: "Nunito", serif
   margin-top: 0.5rem
   a
-    color: $pink
+    color: v("pink")
     &:hover
       color: #363636
   .subtitle
-    color: $brown
+    color: v("brown")
   .input,
   .select select
-    background-color: $beige-lighter
+    background-color: v("beige-lighter")
     border-color: transparent
     border-width: 2px
     box-shadow: none
     font-family: "Nunito", serif
     &:hover
-      border-color: $beige-light
+      border-color: v("beige-light")
     &:focus
-      border-color: $pink
-      box-shadow: 0 0 0 0.125em rgba($pink, 0.25)
+      border-color: v("pink")
+      box-shadow: 0 0 0 0.125em vAlphaChange("pink", 0.25)
   .select
     &:not(.is-multiple):not(:hover)
       &::after
-        border-color: $pink
+        border-color: v("pink")
   .button
     &.is-primary
-      background-color: $mauve
-      color: $scheme-main
+      background-color: v("mauve")
+      color: v("scheme-main")
       &:hover
-        background-color: darken($mauve, 2.5%)
+        background-color: vDarken("mauve", 2.5%)
       &:active
-        background-color: darken($mauve, 5%)
+        background-color: vDarken("mauve", 5%)
     &.is-link
-      background-color: $pink
-      color: $scheme-main
+      background-color: v("pink")
+      color: v("scheme-main")
       &:hover
-        background-color: darken($pink, 2.5%)
+        background-color: vDarken("pink", 2.5%)
       &:active
-        background-color: darken($pink, 5%)
+        background-color: vDarken("pink", 5%)
   +selection
-    background-color: $pink
-    color: $scheme-main
+    background-color: v("pink")
+    color: v("scheme-main")
 
 // Fullscreen
 
 .bd-index-fullscreen
   .tabs
     a
-      color: $border-hover !important
+      color: v("border-hover") !important
 
 // Columns
 
@@ -125,7 +125,7 @@
       justify-content: center
     .button
       strong
-        font-weight: $weight-semibold
+        font-weight: v("weight-semibold")
 
 #markup
   width: 100%
@@ -158,49 +158,49 @@
 
 .bd-focus-item
   @extend %link-before-background
-  border-radius: $radius-large
+  border-radius: v("radius-large")
   padding-top: 1.25rem
   position: relative
   .title a,
   .subtitle
-    transition-duration: $speed * 2
+    transition-duration: calc(#{v("speed")} * 2)
     transition-property: color
   .title
     position: relative
-    transition-duration: $speed * 2
+    transition-duration: calc(#{v("speed")} * 2)
     transition-property: color
   .subtitle
-    color: $border-hover
+    color: v("border-hover")
     position: relative
     strong
       color: currentColor
     .subtitle
-      color: $text
+      color: v("text")
   &:nth-child(1):hover
     .title
-      color: $orange
+      color: v("orange")
   &:nth-child(2):hover
     .title
-      color: $success
+      color: v("success")
   &:nth-child(3):hover
     .title
-      color: $link
+      color: v("link")
   &:nth-child(4):hover
     .title
-      color: $scheme-invert
+      color: v("scheme-invert")
 
 .bd-focus-icon
   position: relative
 
 .bd-focus-mobile
-  color: $purple
+  color: v("purple")
   margin-right: -20px
 
 .bd-focus-tablet
-  color: $red
+  color: v("red")
 
 .bd-focus-desktop
-  color: $orange
+  color: v("orange")
   position: relative
   top: 2px
 
@@ -212,7 +212,7 @@
   width: 3rem
 
 .bd-focus-cube
-  color: $green
+  color: v("green")
   position: absolute
 
 .bd-focus-cube-1
@@ -228,7 +228,7 @@
   top: 23px
 
 .bd-focus-css3
-  color: $blue
+  color: v("blue")
 
 .bd-focus-github
   color: $github
@@ -241,10 +241,10 @@
   max-width: 640px
 
 .intro-title
-  font-weight: $weight-normal
+  font-weight: v("weight-normal")
   line-height: 1.375
   strong
-    font-weight: $weight-semibold
+    font-weight: v("weight-semibold")
 
 .intro-ghbtns
   margin-bottom: 16px
@@ -261,9 +261,9 @@
     display: block
 
 .intro-npm
-  background: $black-ter
-  border-radius: $radius
-  color: $white
+  background: v("black-ter")
+  border-radius: v("radius")
+  color: v("white")
   display: flex
   font-size: 15px
   justify-content: space-between
@@ -275,29 +275,29 @@
     -moz-osx-font-smoothing: grayscale
     -webkit-font-smoothing: antialiased
   .intro-npm-copy
-    border-radius: $radius
-    color: $yellow
+    border-radius: v("radius")
+    color: v("yellow")
     cursor: pointer
     margin: -2px -7px -3px
     padding: 2px 7px 3px
     &:hover
-      background-color: $yellow
-      color: $black-ter
+      background-color: v("yellow")
+      color: v("black-ter")
     &.is-success,
     &.is-error
-      color: $scheme-main
+      color: v("scheme-main")
       pointer-events: none
       text-decoration: none
     &.is-success
-      background-color: $green
+      background-color: v("green")
     &.is-error
-      background-color: $red
+      background-color: v("red")
   \::-moz-selection
-    background: $yellow
-    color: $scheme-invert-ter
+    background: v("yellow")
+    color: v("scheme-invert-ter")
   \::selection
-    background: $yellow
-    color: $scheme-invert-ter
+    background: v("yellow")
+    color: v("scheme-invert-ter")
 
 .intro-buttons
   margin-top: 1.5rem
@@ -306,7 +306,7 @@
     padding-right: 1.375em
 
 .intro-video
-  background-color: $scheme-main
+  background-color: v("scheme-main")
   margin-left: auto
   margin-right: auto
   max-width: 640px
@@ -337,8 +337,8 @@
   animation-name: introSpinner
   &::before
     +loader
-    border-bottom-color: $primary
-    border-left-color: $primary
+    border-bottom-color: v("primary")
+    border-left-color: v("primary")
     height: 1.5em
     left: calc(50% - 0.75em)
     position: absolute
@@ -377,12 +377,12 @@
     width: 100%
 
 .intro-author
-  color: $text-light
-  font-size: $size-small
+  color: v("text-light")
+  font-size: v("size-small")
   margin-top: 40px
   text-align: center
   a
-    color: $text-strong
+    color: v("text-strong")
     &:hover
       text-decoration: underline
   span

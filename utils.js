@@ -65,13 +65,26 @@ const autoprefixer = require('autoprefixer')
 const postcssCalc = require('postcss-calc')
 const cleanCSS = require('clean-css')
 
-const writeOutput = (output, result) => {
-  postcss([autoprefixer, postcssCalc]).process(result.css, {map: { prev: result.map.toString(), inline: false, sourcesContent: false }, from: output + ".css", to: output + '.css'}).then((result) => {
-    fs.writeFile(output + '.css', result.css, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css'))
-    fs.writeFile(output + '.css.map', result.map, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css.map'))
+const writeOutput = async (output, result) => {
+  result = await postcss([autoprefixer, postcssCalc]).process(result.css, {map: { prev: result.map.toString(), inline: false, sourcesContent: false }, from: output + ".css", to: output + '.css'})
 
-    fs.writeFile(output+'.min.css', new cleanCSS({level: 2}).minify(result.css).styles, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.min.css'))
-  });
+  const p = [];
+  p.push(new Promise((resolve, reject) =>
+    fs.writeFile(output + '.css', result.css, (err) =>
+      err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.css') || resolve())
+  ))
+
+  p.push(new Promise((resolve, reject) =>
+    fs.writeFile(output + '.css.map', result.map, (err) =>
+      err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.css.map') || resolve())
+  ))
+
+  p.push(new Promise((resolve, reject) =>
+    fs.writeFile(output + '.min.css', new cleanCSS({level: 2}).minify(result.css).styles, (err) =>
+      err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.min.css') || resolve())
+  ))
+
+  await Promise.all(p)
 }
 
 const renderSassSync = (input, output, data, functions) => {
@@ -84,8 +97,31 @@ const renderSassSync = (input, output, data, functions) => {
     outputStyle: 'expanded',
     sourceMap: true,
     sourceMapContents: true,
-    functions
+
+    functions,
+  })
+}
+
+const watched = [];
+const watch = (render, cb) => {
+  render.stats.includedFiles.map((file) => {
+      watched.push(fs.watch(file, () => {
+        cb(file)
+      }));
   });
 }
 
-module.exports = { ensureDirectoryExistence, writeOutput, renderSassSync, sassToString };
+const unwatch = () => {
+  watched.map((watcher) => {
+    watcher.close()
+  })
+}
+
+
+const partition = (array, isValid) => {
+  return array.reduce(([pass, fail], elem) => {
+    return isValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]];
+  }, [[], []]);
+}
+
+module.exports = { ensureDirectoryExistence, writeOutput, renderSassSync, sassToString, partition, watch, unwatch };

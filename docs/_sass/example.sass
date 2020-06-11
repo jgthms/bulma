@@ -1,13 +1,13 @@
 .bd-example,
 .bd-structure,
 .bd-snippet
-  border: 2px solid $background
+  border: 2px solid v("background")
   position: relative
   &::before
-    background: $yellow
-    border-radius: $radius-small $radius-small 0 0
+    background: v("yellow")
+    border-radius: v("radius-small") v("radius-small") 0 0
     bottom: 100%
-    color: $yellow-invert
+    color: v("yellow-invert")
     content: "Example"
     display: inline-block
     font-size: 7px
@@ -35,10 +35,10 @@
 
 .bd-example
   &.bd-is-clipped
-    border-top-right-radius: $radius-large
+    border-top-right-radius: v("radius-large")
   & + .highlight
-    border: 1px solid $yellow
-    border-radius: 0 0 $radius $radius
+    border: 1px solid v("yellow")
+    border-radius: 0 0 v("radius") v("radius")
     border-top: none
     margin-top: -1.5rem
     &:not(:last-child)
@@ -67,8 +67,8 @@
       display: flex
 
 .bd-snippet.bd-is-horizontal
-  border-radius: $radius-large
-  border-top-left-radius: 0
+  border-radius: 0 v("radius-large") v("radius-large") v("radius-large")
+
   .bd-snippet-code
     .highlight
       border-top-left-radius: 0
@@ -89,8 +89,7 @@
 +desktop
   .bd-snippet.bd-is-vertical
     align-items: stretch
-    border-radius: $radius-large
-    border-top-left-radius: 0
+    border-radius: 0 v("radius-large") v("radius-large") v("radius-large")
     display: flex
     justify-content: center
     .bd-snippet-preview,
@@ -101,7 +100,7 @@
       .highlight,
       .highlight pre
         align-items: stretch
-        border-radius: 0 $radius-large $radius-large 0
+        border-radius: 0 v("radius-large") v("radius-large") 0
         display: flex
         flex-direction: column
       .highlight,
@@ -135,7 +134,7 @@
 // Highlight
 .highlight.bd-is-hovering
   border-radius: 2px
-  box-shadow: 0 0 0 2px $yellow
+  box-shadow: 0 0 0 2px v("yellow")
 
 .highlight pre
   max-height: 320px
@@ -148,8 +147,8 @@
   .highlight pre
     max-height: none
 
-$structure: $danger
-$structure-invert: $danger-invert
+$structure: v("danger")
+$structure-invert: v("danger-invert")
 
 .bd-structure
   border-color: $structure
@@ -164,9 +163,9 @@ $structure-invert: $danger-invert
   position: relative
   &::before
     +overlay
-    background: rgba($scheme-invert, 0.7)
-    background: $background
-    border: 1px solid $border
+    background: vAlphaChange(scheme-invert, 0.7)
+    background: v("background")
+    border: 1px solid v("border")
     content: ""
     display: block
     z-index: 1
@@ -175,7 +174,7 @@ $structure-invert: $danger-invert
     align-items: center
     content: attr(title)
     display: flex
-    font-family: $family-monospace
+    font-family: v("family-monospace")
     font-size: 11px
     justify-content: center
     padding: 3px 5px
@@ -193,7 +192,7 @@ $structure-invert: $danger-invert
   .bd-expand
     background: none
     border: none
-    color: $text
+    color: v("text")
     cursor: pointer
     font-size: 0.625rem
     outline: none
@@ -203,8 +202,8 @@ $structure-invert: $danger-invert
     right: 0.25rem
     top: 0.25rem
     &:hover
-      background-color: $yellow
-      color: $yellow-invert
+      background-color: v("yellow")
+      color: v("yellow-invert")
     &:focus,
     &:active
       box-shadow: none
@@ -213,19 +212,19 @@ $structure-invert: $danger-invert
   .bd-show
     +overlay
     align-items: center
-    background-color: rgba($background, 0.7)
+    background-color: vAlphaChange("background", 0.7)
     border: none
     color: rgba(#000, 0.5)
     cursor: pointer
     display: none
-    font-size: $size-small
+    font-size: v("size-small")
     justify-content: center
     width: 100%
     strong
       color: currentColor
-      font-weight: $weight-semibold
+      font-weight: v("weight-semibold")
     &:hover
-      background-color: rgba($yellow, 0.8)
+      background-color: vAlphaChange("yellow", 0.8)
       color: rgba(#000, 0.7)
   +tablet
     pre
