@@ -28,7 +28,7 @@ const outInfo = path.parse(args[1])
 
 const output = path.resolve(process.cwd(), outInfo.dir + path.sep + outInfo.name);
 
-const shouldWatch = args.indexOf("--watch")
+const shouldWatch = options.indexOf("--watch") >= 0
 
 const build = async () => {
   ensureDirectoryExistence(output)
@@ -90,15 +90,15 @@ build().then(render => {
       }
       watch(render, watcher)
 
-      rl.question('Continuing watcher, enter q to exit: ', (answer) => {
+      rl.question('Continuing watcher, press enter to exit: ', (answer) => {
         rl.close();
         unwatch();
       });
     }
     watch(render, watcher)
-    rl.question('Started watcher, enter q to exit: ', (answer) => {
-      rl.close();
-      unwatch();
+    rl.question('Started watcher, press enter to exit', (answer) => {
+        rl.close();
+        unwatch();
     });
   }
 });
