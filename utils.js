@@ -70,7 +70,7 @@ const writeOutput = (output, result) => {
     fs.writeFile(output + '.css', result.css, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css'))
     fs.writeFile(output + '.css.map', result.map, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.css.map'))
 
-    fs.writeFile(output+'.min.css', new cleanCSS().minify(result.css).styles, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.min.css'))
+    fs.writeFile(output+'.min.css', new cleanCSS({level: 2}).minify(result.css).styles, (err) => err ? console.error(err) : console.log('wrote to ' + output + '.min.css'))
   });
 }
 

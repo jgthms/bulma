@@ -1,117 +1,413 @@
 ////////////////////////////////////////////////
 // DARKLY
 ////////////////////////////////////////////////
-$grey-lighter: #dbdee0;
-$grey-light: #8c9b9d;
-$grey: darken($grey-light, 18);
-$grey-dark: darken($grey, 18);
-$grey-darker: darken($grey, 23);
+$grey-lighter: vRegister("grey-lighter", #dbdee0);
+$grey-light: vRegister("grey-light", #8c9b9d);
 
-$orange: #e67e22;
-$yellow: #f1b70e;
-$green: #2ecc71;
-$turquoise: #1abc9c;
-$blue: #3498db;
-$purple: #8e44ad;
-$red: #e74c3c;
-$white-ter: #ecf0f1;
+$grey: vRegister("grey", vDarken("grey-light", 18%));
+$grey-dark: vRegister("grey-dark", vDarken("grey", 18%));
+$grey-darker: vRegister("grey-darker", vDarken("grey", 23%));
+
+$orange: vRegister("orange", #e67e22);
+$yellow: vRegister("yellow", #f1b70e);
+$green: vRegister("green", #2ecc71);
+$turquoise: vRegister("turquoise", #1abc9c);
+$blue: vRegister("blue", #3498db);
+$purple: vRegister("purple", #8e44ad);
+$red: vRegister("red", #e74c3c);
+$white-ter: vRegister("white-ter", #ecf0f1);
 $primary: #375a7f !default;
-$yellow-invert: #fff;
+$yellow-invert: vRegister("yellow-invert", #fff);
 
-$family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
-"Helvetica Neue", "Helvetica", "Arial", sans-serif;
-$family-monospace: "Inconsolata", "Consolas", "Monaco", monospace;
+$primary: vRegister("primary", $primary);
 
-$radius-small: 3px;
-$radius: 0.4em;
-$radius-large: 8px;
-$size-6: 15px;
-$size-7: 0.85em;
-$title-weight: 500;
-$subtitle-weight: 400;
-$subtitle-color: $grey-dark;
+$family-sans-serif: vRegister("family-sans-serif", ("Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
+"Helvetica Neue", "Helvetica", "Arial", sans-serif));
+$family-monospace: vRegister("family-monospace", ("Inconsolata", "Consolas", "Monaco", monospace));
 
-$border-width: 2px;
-$border: $grey;
+$radius-small: vRegister("radius-small", 3px);
+$radius: vRegister("radius", 0.4em);
+$radius-large: vRegister("radius-large", 8px);
+$size-6: vRegister("size-6", 15px);
+$size-7: vRegister("size-7", 0.85em);
+$title-weight: vRegister("title-weight", 500);
+$subtitle-weight: vRegister("subtitle-weight", 400);
+$subtitle-color: vRegister("subtitle-color", v("grey-dark"));
 
-$body-background-color: darken($grey-darker, 4);
-$body-size: 15px;
+$border-width: vRegister("border-width", 2px);
+$border: vRegister("border", v("grey"));
 
-$background: $grey-darker;
-$footer-background-color: $background;
-$button-background-color: $background;
-$button-border-color: lighten($button-background-color, 15);
+$body-background-color: vRegister("body-background-color", vDarken("grey-darker", 4%));
+$body-size: vRegister("body-size", 15px);
 
-$title-color: #fff;
-$subtitle-color: $grey-light;
-$subtitle-strong-color: $grey-light;
+$background: vRegister("background", v("grey-darker"));
+$footer-background-color: vRegister("footer-background-color", v("background"));
+$button-background-color: vRegister("button-background-color", v("background"));
+$button-border-color: vLighten("button-background-color", 15%);
 
-$text: #fff;
-$text-light: lighten($text, 10);
-$text-strong: darken($text, 5);
+$title-color: vRegister("title-color", #fff);
+$subtitle-color: vRegister("subtitle-color", v("grey-light"));
+$subtitle-strong-color: vRegister("subtitle-strong-color", v("grey-light"));
 
-$box-color: $text;
-$box-background-color: $grey-dark;
-$box-shadow: none;
+$text: vRegister("text", #fff);
+$text-light: vRegister("text-light", vLighten("text", 10%));
+$text-strong: vRegister("text-strong", vDarken("text", 5%));
 
-$link: $turquoise;
-$link-hover: lighten($link, 5);
-$link-focus: darken($link, 5);
-$link-active: darken($link, 5);
-$link-focus-border: $grey-light;
+$box-color: vRegister("box-color", v("text"));
+$box-background-color: vRegister("box-background-color", v("grey-dark"));
+$box-shadow: vRegister("box-shadow", none);
 
-$button-color: $primary;
-$button-hover-color: darken($text, 5); // text-dark
-$button-focus: darken($text, 5); // text-dark
-$button-active-color: darken($text, 5); // text-dark
-$button-disabled-background-color: $grey-light;
+$link: vRegister("link", v("turquoise"));
+$link-hover: vRegister("link-hover", vLighten("link", 5%));
+$link-focus: vRegister("link-focus", vDarken("link", 5%));
+$link-active: vRegister("link-active", vDarken("link", 5%));
+$link-focus-border: vRegister("link-focus-border", v("grey-light"));
 
-$input-color: $grey-darker;
-$input-icon-color: $grey;
-$input-icon-active-color: $input-color;
-$input-hover-color: $grey-light;
-$input-disabled-background-color: $grey-light;
-$input-disabled-border: $grey-lighter;
+$button-color: vRegister("button-color", v("primary"));
+$button-hover-color: vRegister("button-hover-color", vDarken("text", 5%)); // text-dark
+$button-focus: vRegister("button-focus", vDarken("text", 5%)); // text-dark
+$button-active-color: vRegister("button-active-color", vDarken("text", 5%)); // text-dark
+$button-disabled-background-color: vRegister("button-disabled-background-color", v("grey-light"));
 
-$table-color: $text;
-$table-head: $grey-lighter;
-$table-background-color: $grey-dark;
-$table-cell-border: 1px solid $grey;
+$input-color: vRegister("input-color", v("grey-darker"));
+$input-icon-color: vRegister("input-icon-color", v("grey"));
+$input-icon-active-color: vRegister("input-icon-active-color", v("input-color"));
+$input-hover-color: vRegister("input-hover-color", v("grey-light"));
+$input-disabled-background-color: vRegister("input-disabled-background-color", v("grey-light"));
+$input-disabled-border: vRegister("input-disabled-border", v("grey-lighter"));
 
-$table-row-hover-background-color: $grey-darker;
-$table-striped-row-even-background-color: $grey-darker;
-$table-striped-row-even-hover-background-color: lighten($grey-darker, 2);
+$table-color: vRegister("table-color", v("text"));
+$table-head: vRegister("table-head", v("grey-lighter"));
+$table-background-color: vRegister("table-background-color", v("grey-dark"));
+$table-cell-border: vRegister("table-cell-border", 1px solid v("grey"));
 
-$pagination-color: $link;
-$pagination-border-color: $border;
+$table-row-hover-background-color: vRegister("table-row-hover-background-color", v("grey-darker"));
+$table-striped-row-even-background-color: vRegister("table-striped-row-even-background-color", v("grey-darker"));
+$table-striped-row-even-hover-background-color: vRegister("table-striped-row-even-hover-background-color", vLighten("grey-darker", 2%));
 
-$navbar-height: 4rem;
+$pagination-color: vRegister("pagination-color", v("link"));
+$pagination-border-color: vRegister("pagination-border-color", v("border"));
 
-$navbar-background-color: $primary;
-$navbar-item-color: $text;
-$navbar-item-hover-color: $link;
-$navbar-item-hover-background-color: transparent;
-$navbar-item-active-color: $link;
-$navbar-dropdown-arrow: #fff;
-$navbar-divider-background-color: rgba(0, 0, 0, 0.2);
-$navbar-dropdown-border-top: 1px solid $navbar-divider-background-color;
-$navbar-dropdown-background-color: $primary;
-$navbar-dropdown-item-hover-color: $grey-lighter;
-$navbar-dropdown-item-hover-background-color: transparent;
-$navbar-dropdown-item-active-background-color: transparent;
-$navbar-dropdown-item-active-color: $link;
+$navbar-height: vRegister("navbar-height", 4rem);
 
-$dropdown-content-background-color: $background;
-$dropdown-item-color: $text;
+$navbar-background-color: vRegister("navbar-background-color", v("primary"));
+$navbar-item-color: vRegister("navbar-item-color", v("text"));
+$navbar-item-hover-color: vRegister("navbar-item-hover-color", v("link"));
+$navbar-item-hover-background-color: vRegister("navbar-item-hover-background-color", transparent);
+$navbar-item-active-color: vRegister("navbar-item-active-color", v("link"));
+$navbar-dropdown-arrow: vRegister("navbar-dropdown-arrow", v("white"));
+$navbar-divider-background-color: vRegister("navbar-divider-background-color", vAlphaChange("black", .2));
+$navbar-dropdown-border-top: vRegister("navbar-dropdown-border-top", 1px solid v("navbar-divider-background-color"));
+$navbar-dropdown-background-color: vRegister("navbar-dropdown-background-color", v("primary"));
+$navbar-dropdown-item-hover-color: vRegister("navbar-dropdown-item-hover-color", v("grey-lighter"));
+$navbar-dropdown-item-hover-background-color: vRegister("navbar-dropdown-item-hover-background-color", transparent);
+$navbar-dropdown-item-active-background-color: vRegister("navbar-dropdown-item-active-background-color", transparent);
+$navbar-dropdown-item-active-color: vRegister("navbar-dropdown-item-active-color", v("link"));
 
-$progress-value-background-color: $grey-lighter;
+$dropdown-content-background-color: vRegister("dropdown-content-background-color", v("background"));
+$dropdown-item-color: vRegister("dropdown-item-color", v("text"));
 
-$bulmaswatch-import-font: true !default;
+$progress-value-background-color: vRegister("progress-value-background-color", v("grey-lighter"));
 
-$file-cta-background-color: $grey-darker;
+$file-cta-background-color: vRegister("file-cta-background-color", v("grey-darker"));
 
-$progress-bar-background-color: $grey-dark;
+$progress-bar-background-color: vRegister("progress-bar-background-color", v("grey-dark"));
 
-$panel-heading-background-color: $grey-dark;
+$panel-heading-background-color: vRegister("panel-heading-background-color", v("grey-dark"));
 
-@import "../../bulma.sass";
+
+// Overrides
+hr {
+  height: v("border-width");
+}
+
+h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero {
+  background-color: v("grey-dark");
+}
+
+a {
+  transition: all 200ms ease;
+}
+
+.button {
+  transition: all 200ms ease;
+  border-width: v("border-width");
+  color: v("white");
+
+  &.is-active,
+  &.is-focused,
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 2px vAlphaChange("button-focus-border-color", 0.5);
+  }
+
+  @each $name in $colors-list {
+    $color: v($name);
+    $color-invert: v($name+"-invert");
+
+    &.is-#{$name} {
+      &.is-hovered,
+      &:hover {
+        background-color: vLighten($name, 7.5%);
+      }
+
+      &.is-active,
+      &.is-focused,
+      &:active,
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 2px vAlphaChange($name, 0.5);
+      }
+    }
+  }
+}
+
+.label {
+  color: v("grey-lighter");
+}
+
+.button,
+.control.has-icons-left .icon,
+.control.has-icons-right .icon,
+.input,
+.pagination-ellipsis,
+.pagination-link,
+.pagination-next,
+.pagination-previous,
+.select,
+.select select,
+.textarea {
+  height: 2.5em;
+}
+
+.input,
+.textarea {
+  transition: all 200ms ease;
+  box-shadow: none;
+  border-width: v("border-width");
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.select {
+  &:after,
+  select {
+    border-width: v("border-width");
+  }
+}
+
+.control {
+  &.has-addons {
+    .button,
+    .input,
+    .select {
+      margin-right: calc(-1 * #{v("border-width")});
+    }
+  }
+}
+
+.notification {
+  background-color: v("grey-dark");
+}
+
+.card {
+  $card-border-color: vLighten("grey-darker", 5%);
+  box-shadow: none;
+  border: v("border-width") solid $card-border-color;
+  background-color: v("grey-darker");
+  border-radius: v("radius");
+
+  .card-image {
+    img {
+      border-radius: v("radius") v("radius") 0 0;
+    }
+  }
+
+  .card-header {
+    box-shadow: none;
+    background-color: vAlphaChange("black-bis", 0.2);
+    border-radius: v("radius") v("radius") 0 0;
+  }
+
+  .card-footer {
+    background-color: vAlphaChange("black-bis", 0.2);
+  }
+
+  .card-footer,
+  .card-footer-item {
+    border-width: v("border-width");
+    border-color: $card-border-color;
+  }
+}
+
+.notification {
+  @each $name in $colors-list {
+    $color-invert: v($name+"-invert");
+
+    &.is-#{$name} {
+      a:not(.button) {
+        color: $color-invert;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.tag {
+  border-radius: v("radius");
+}
+
+.menu-list {
+  a {
+    transition: all 300ms ease;
+  }
+}
+
+.modal-card-body {
+  background-color: v("grey-darker");
+}
+
+.modal-card-foot,
+.modal-card-head {
+  border-color: v("grey-dark");
+}
+
+.message-header {
+  font-weight: v("weight-bold");
+  background-color: v("grey-dark");
+  color: v("white");
+}
+
+.message-body {
+  border-width: v("border-width");
+  border-color: v("grey-dark");
+}
+
+.navbar {
+  border-radius: v("radius");
+
+  &.is-transparent {
+    background: none;
+  }
+
+  &.is-primary {
+    .navbar-dropdown {
+      a.navbar-item.is-active {
+        background-color: v("link");
+      }
+    }
+  }
+
+  @include touch {
+    .navbar-menu {
+      background-color: v("navbar-background-color");
+      border-radius: 0 0 v("radius") v("radius");
+    }
+  }
+}
+
+.hero .navbar,
+body > .navbar {
+  border-radius: 0;
+}
+
+.pagination-link,
+.pagination-next,
+.pagination-previous {
+  border-width: v("border-width");
+}
+
+.panel-block,
+.panel-heading,
+.panel-tabs {
+  border-width: v("border-width");
+
+  &:first-child {
+    border-top-width: v("border-width");
+  }
+}
+
+.panel-heading {
+  font-weight: v("weight-bold");
+}
+
+.panel-tabs {
+  a {
+    border-width: v("border-width");
+    margin-bottom: calc(-1 * #{v("border-width")});
+
+    &.is-active {
+      border-bottom-color: v("link-active");
+    }
+  }
+}
+
+.panel-block {
+  &:hover {
+    color: v("link-hover");
+
+    .panel-icon {
+      color: v("link-hover");
+    }
+  }
+
+  &.is-active {
+    .panel-icon {
+      color: v("link-active");
+    }
+  }
+}
+
+.tabs {
+  a {
+    border-bottom-width: v("border-width");
+    margin-bottom: calc(-1 * #{v("border-width")});
+  }
+
+  ul {
+    border-bottom-width: v("border-width");
+  }
+
+  &.is-boxed {
+    a {
+      border-width: v("border-width");
+    }
+
+    li.is-active a {
+      background-color: vDarken("grey-darker", 4%);
+    }
+  }
+
+  &.is-toggle {
+    li a {
+      border-width: v("border-width");
+      margin-bottom: 0;
+    }
+
+    li + li {
+      margin-left: calc(-1 * #{v("border-width")});
+    }
+  }
+}
+
+.hero {
+  // Colors
+  @each $name in $colors-list {
+
+    &.is-#{$name} {
+      .navbar {
+        .navbar-dropdown {
+          .navbar-item:hover {
+            background-color: v("navbar-dropdown-item-hover-background-color");
+          }
+        }
+      }
+    }
+  }
+}
+
