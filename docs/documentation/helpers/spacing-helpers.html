@@ -1,0 +1,183 @@
+---
+title: Spacing helpers
+layout: documentation
+doc-tab: helpers
+doc-subtab: helpers-spacing
+breadcrumb:
+- home
+- documentation
+- helpers
+- helpers-spacing
+shortcuts:
+  margin: m
+  padding: p
+directions:
+  top: t
+  right: r
+  bottom: b
+  left: l
+horizontal: x
+vertical: y
+values:
+  0: 0
+  1: 0.25rem
+  2: 0.5rem
+  3: 0.75rem
+  4: 1rem
+  5: 1.5rem
+  6: 3rem
+customShortcuts:
+  margin: mg
+customHorizontal: h
+customValues:
+  small: 10px
+  medium: 30px
+  large: 60px
+---
+
+{% include elements/new-tag.html version="0.9.0" %}
+
+<div class="content">
+  <p>Bulma provides <strong>margin</strong> <code>m*</code> and <strong>padding</strong> <code>p*</code> helpers in all <strong>directions</strong>:</p>
+
+  <ul>
+    <li>
+      <code>*t</code> for <strong>top</strong>
+    </li>
+    <li>
+      <code>*r</code> for <strong>right</strong>
+    </li>
+    <li>
+      <code>*b</code> for <strong>bottom</strong>
+    </li>
+    <li>
+      <code>*l</code> for <strong>left</strong>
+    </li>
+    <li>
+      <code>*x</code> horizontally for both <strong>left</strong> and <strong>right</strong>
+    </li>
+    <li>
+      <code>*y</code> vertically for both <strong>top</strong> and <strong>bottom</strong>
+    </li>
+  </ul>
+
+  <p>
+    You need to <strong>combine</strong> a margin/padding prefix with a direction suffix. For example:
+  </p>
+
+  <ul>
+    <li>for a <code>margin-top</code>, use <code>mt-*</code></li>
+    <li>for a <code>padding-bottom</code>, use <code>pb-*</code></li>
+    <li>for both <code>margin-left</code> and <code>margin-right</code>, use <code>mx-*</code></li>
+  </ul>
+
+  <p>
+    Each of these <code>property-direction</code> <strong>combinations</strong> needs to be appended with one of <strong>6 value suffixes</strong>:
+  </p>
+</div>
+
+<table class="table is-bordered">
+  <thead>
+    <th>Suffix</th>
+    <th>Value</th>
+  </thead>
+  <tbody>
+    <tr><td><code>*-0</code></td><td><code>0</code></td></tr>
+    <tr><td><code>*-1</code></td><td><code>0.25rem</code></td></tr>
+    <tr><td><code>*-2</code></td><td><code>0.5rem</code></td></tr>
+    <tr><td><code>*-3</code></td><td><code>0.75rem</code></td></tr>
+    <tr><td><code>*-4</code></td><td><code>1rem</code></td></tr>
+    <tr><td><code>*-5</code></td><td><code>1.5rem</code></td></tr>
+    <tr><td><code>*-6</code></td><td><code>3rem</code></td></tr>
+  </tbody>
+</table>
+
+{% include elements/anchor.html name="List of all spacing helpers" %}
+
+<p class="block">
+  There are <strong>84 spacing helpers</strong> to choose from:
+</p>
+
+{% include
+  components/spacing-table.html
+  values=page.values
+  shortcuts=page.shortcuts
+  directions=page.directions
+  horizontal=page.horizontal
+  vertical=page.vertical
+%}
+
+<div class="content">
+  <p>
+    To use these classes, simply append them to any HTML element:
+  </p>
+</div>
+
+{% highlight html %}
+<!-- Adds 1rem of margin at the bottom -->
+<p class="mb-4">
+  Margin bottom
+</p>
+
+<!-- Adds 0.25rem of padding on the left and the right -->
+<p class="px-1">
+  Horizontal padding
+</p>
+
+<!-- Removes the margin on the right and adds 0.75rem padding at the top -->
+<p class="mr-0 pt-3">
+  Both
+</p>
+{% endhighlight %}
+
+{% include elements/anchor.html name="Configuration" %}
+
+{% capture custom %}
+$spacing-shortcuts: ("margin": "mg");
+$spacing-horizontal: "h";
+$spacing-vertical: null;
+$spacing-values: ("small": 10px, "medium": 30px, "large": 60px);
+{% endcapture %}
+
+<div class="content">
+  <p>
+    Because every developer has their own preferences, and to satisfy Bulma's customization features, it's possible to specify your own <strong>class name shortcuts</strong> as well as the <strong>spacing values</strong>.
+  </p>
+  <p>
+    For example, if you wanted:
+  </p>
+  <ul>
+    <li>
+      <strong>margin</strong> to be abbreviated to <code>mg</code>
+    </li>
+    <li>
+      <strong>padding</strong> to be totally <strong class="has-text-danger">excluded</strong>
+    </li>
+    <li>
+      <strong>horizontal</strong> to be abbreviated to <code>h</code>
+    </li>
+    <li>
+      <strong>vertical</strong> to be excluded as well
+    </li>
+    <li>
+      and to only have 3 values: <strong>"small"</strong> at <code>10px</code>, <strong>"medium"</strong> at <code>30px</code>, and <strong>"large"</strong> at <code>60px</code>
+    </li>
+  </ul>
+  <p>
+    You can simplify the CSS output by customizing these <strong>SCSS variables</strong>:
+  </p>
+</div>
+
+{% highlight scss %}{{ custom }}{% endhighlight %}
+
+{% include
+  components/spacing-table.html
+  values=page.customValues
+  shortcuts=page.customShortcuts
+  directions=page.directions
+  horizontal=page.customHorizontal
+%}
+
+<p>
+  By customizing the output, you've narrowed down the list of spacing helpers from 84 to only <strong>15</strong>.
+</p>

@@ -37,11 +37,13 @@ svg
     p:first-child
       margin-right: 1em
 
+$github-pink: #ea4aaa
 .bd-github-button
-  background-color: #eff3f6
-  background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%)
-  border-color: #1b1f2333
-  color: #24292e
+  background-color: $github-pink
+  // background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%)
+  border-color: $github-pink !important
+  // color: #24292e
+  color: #fff
   font-size: 0.875rem
   height: auto
   padding: calc(0.5em - 1px) 1em
@@ -50,16 +52,23 @@ svg
     font-weight: $weight-semibold
     margin-top: -2px
   .icon
-    color: #ea4aaa
+    color: inherit
   .tag
     font-size: 0.5rem
     font-style: normal
     margin: -1px -8px 0 7px
-  &:hover
-    background-color: #e6ebf1
-    background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%)
-    background-position: -.5em
-    border-color: #1b1f2359
+  &:hover,
+  &:focus
+    background-color: darken($github-pink, 5%)
+  &:active
+    background-color: darken($github-pink, 10%)
+  &:hover,
+  &:focus,
+  &:active
+    color: #fff
+    // background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%)
+    // background-position: -.5em
+    // border-color: #1b1f2359
 
 .bd-patreon-button
   display: inline-block

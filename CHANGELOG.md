@@ -1,5 +1,81 @@
 # Bulma Changelog
 
+## 0.9.0
+
+### Deprecation warning
+
+The `base/helpers.sass` file is **deprecated**. It has moved into its own `/helpers` folder. If you were importing `base/helpers.sass` or `base/_all.sass`, please import `sass/helpers/_all.sass` now.
+If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
+
+The `list` component is also **deprecated**: the `components/list.sass` file has been deleted. It was never officialy supported as it was too similar to  `panel` component. Use that one instead.
+
+### RTL support
+
+Bulma now has **RTL support**.
+
+By setting the Sass flag `$rtl` to `true`, you can create an RTL version of Bulma, thanks to 4 new Sass mixins:
+
+* `=ltr`
+* `=rtl`
+* `=ltr-property($property, $spacing, $right: true)`
+* `=ltr-position($spacing, $right: true)`
+
+The Bulma package now also comes with a `bulma-rtl.css` and `bulma-rtl.min.css` file to be used straight away.
+
+### Spacing helpers
+
+Bulma now has **spacing helpers**: https://bulma.io/documentation/helpers/spacing-helpers/
+
+<p>Bulma provides <strong>margin</strong> <code>m*</code> and <strong>padding</strong> <code>p*</code> helpers in all <strong>directions</strong>:</p>
+
+<ul>
+  <li>
+    <code>*t</code> for <strong>top</strong>
+  </li>
+  <li>
+    <code>*r</code> for <strong>right</strong>
+  </li>
+  <li>
+    <code>*b</code> for <strong>bottom</strong>
+  </li>
+  <li>
+    <code>*l</code> for <strong>left</strong>
+  </li>
+  <li>
+    <code>*x</code> horizontally for both <strong>left</strong> and <strong>right</strong>
+  </li>
+  <li>
+    <code>*y</code> vertically for both <strong>top</strong> and <strong>bottom</strong>
+  </li>
+</ul>
+
+<p>
+  You need to <strong>combine</strong> a margin/padding prefix with a direciton suffix. For example:
+</p>
+
+<ul>
+  <li>for a <code>margin-top</code>, use <code>mt-*</code></li>
+  <li>for a <code>padding-bottom</code>, use <code>pb-*</code></li>
+  <li>for both <code>margin-left</code> and <code>margin-right</code>, use <code>mx-*</code></li>
+</ul>
+
+<p>
+  Each of these <code>property-direction</code> <strong>combinations</strong> needs to be appended with one of <strong>6 value suffixes</strong>
+</p>
+
+This release also includes the following helpers:
+
+* light and dark color helpers
+* light and dark background color helpers
+
+### Improvements
+
+* #2925 Center table cell content vertically with `is-vcentered`
+
+### Bug fixes
+
+* #2955 Fix issue when there's only one `is-toggle` tag
+
 ## 0.8.2
 
 ### Bug fixes

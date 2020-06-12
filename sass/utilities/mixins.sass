@@ -128,6 +128,30 @@
     @media screen and (min-width: $fullhd)
       @content
 
+=ltr
+  @if not $rtl
+    @content
+
+=rtl
+  @if $rtl
+    @content
+
+=ltr-property($property, $spacing, $right: true)
+  $normal: if($right, "right", "left")
+  $opposite: if($right, "left", "right")
+  @if $rtl
+    #{$property}-#{$opposite}: $spacing
+  @else
+    #{$property}-#{$normal}: $spacing
+
+=ltr-position($spacing, $right: true)
+  $normal: if($right, "right", "left")
+  $opposite: if($right, "left", "right")
+  @if $rtl
+    #{$opposite}: $spacing
+  @else
+    #{$normal}: $spacing
+
 // Placeholders
 
 =unselectable
