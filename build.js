@@ -50,7 +50,7 @@ const build = async () => {
     const defaultVars = {};
     const modifiedVars = {};
 
-    let data = variables + '$themeable: "any";'
+    let data = variables + '$themeable: "full";'
 
     let render = renderSassSync(input, output, data, {
       '_vRegister($name, $value)': function (name, value) {
