@@ -260,8 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Functions
 
-  function getAll(selector) {
-    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+  function getAll(selector, parent = document) {
+    return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
   }
 
   // Scrolling
@@ -343,6 +343,54 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.nav_el.className = '';
       });
     }
+  }
+
+  // Spacing table
+
+  const spacingTables = getAll('.bd-spacing-table');
+
+  spacingTables.forEach(spacingEl => {
+    const spacingRows = getAll('tbody tr', spacingEl);
+    const spacingCells = getAll('tbody td', spacingEl);
+    const spacingValues = getAll('tfoot th', spacingEl);
+
+    spacingEl.addEventListener('mouseleave', () => {
+      resetTable(spacingCells, spacingValues);
+    });
+
+    spacingCells.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        resetTable(spacingCells, spacingValues);
+        const row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
+        const column = Array.prototype.indexOf.call(el.parentNode.children, el);
+        highlightRowAndColumn(row, column, spacingRows, spacingValues);
+      });
+    });
+  });
+
+  function resetTable(cells, values) {
+    cells.forEach(el => el.classList.remove('bd-current-row', 'bd-current-column'));
+    values.forEach(el => el.classList.remove('bd-current-value'));
+  }
+
+  function highlightRowAndColumn(rowIndex, columnIndex, rows, values) {
+    const row = rows[rowIndex];
+    let i = columnIndex;
+
+    while (i > -1) {
+      row.children[i].classList.add('bd-current-row');
+      i--;
+    }
+
+    const nextRows = rows.slice(rowIndex);
+    nextRows.forEach(r => {
+      r.children[columnIndex].classList.add('bd-current-column');
+    });
+
+    if (columnIndex < 2) {
+      return;
+    }
+    values[columnIndex - 1].classList.add('bd-current-value');
   }
 
   // Scroll

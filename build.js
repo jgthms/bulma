@@ -30,12 +30,18 @@ const output = path.resolve(process.cwd(), outInfo.dir + path.sep + outInfo.name
 
 const shouldWatch = options.indexOf("--watch") >= 0
 
+let variables = "";
+
+if (options.indexOf('--rtl') >= 0) {
+  variables += "$rtl: true;\n"
+}
+
 const build = async () => {
   ensureDirectoryExistence(output)
 
   if (options.indexOf('--themeable') < 0) {
     //No variables build
-    let data = '$themeable: "any";'
+    let data = variables + '$themeable: false;'
     const render = renderSassSync(input, output, data);
     //Output the non themeable generated css
     await writeOutput(output, render)
@@ -44,7 +50,7 @@ const build = async () => {
     const defaultVars = {};
     const modifiedVars = {};
 
-    let data = '$themeable: "any";'
+    let data = variables + '$themeable: "any";'
 
     let render = renderSassSync(input, output, data, {
       '_vRegister($name, $value)': function (name, value) {
@@ -64,7 +70,7 @@ const build = async () => {
       await writeOutput(output, render)
     } else {
       //Default makes a compressed output
-      data = '$themeable: true;\n' +
+      data = variables + '$themeable: true;\n' +
         '$css_vars: (' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ');\n' +
         '$default_vars: (' + Object.keys(defaultVars).map((v) => '"' + v + '":'+defaultVars[v]).join(', ') + ');'
       render = renderSassSync(input, output, data)

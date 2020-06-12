@@ -19,21 +19,21 @@ $message-body-pre-code-background-color: transparent !default
 $message-header-body-border-width: 0 !default
 $message-colors: $colors-list !default
 
-@include vRegister(message-background-color,$message-background-color)
-@include vRegister(message-radius,$message-radius)
-@include vRegister(message-header-background-color,$message-header-background-color)
-@include vRegister(message-header-radius,$message-header-radius)
-@include vRegister(message-header-color,$message-header-color)
-@include vRegister(message-header-weight,$message-header-weight)
-@include vRegister(message-header-padding,$message-header-padding)
-@include vRegister(message-header-body-border-width,$message-header-body-border-width)
-@include vRegister(message-body-border-color,$message-body-border-color)
-@include vRegister(message-body-radius,$message-body-radius)
-@include vRegister(message-body-border-width,$message-body-border-width)
-@include vRegister(message-body-color,$message-body-color)
-@include vRegister(message-body-padding,$message-body-padding)
-@include vRegister(message-body-pre-background-color,$message-body-pre-background-color)
-@include vRegister(message-body-pre-code-background-color,$message-body-pre-code-background-color)
++register(message-background-color,$message-background-color)
++register(message-radius,$message-radius)
++register(message-header-background-color,$message-header-background-color)
++register(message-header-radius,$message-header-radius)
++register(message-header-color,$message-header-color)
++register(message-header-weight,$message-header-weight)
++register(message-header-padding,$message-header-padding)
++register(message-header-body-border-width,$message-header-body-border-width)
++register(message-body-border-color,$message-body-border-color)
++register(message-body-radius,$message-body-radius)
++register(message-body-border-width,$message-body-border-width)
++register(message-body-color,$message-body-color)
++register(message-body-padding,$message-body-padding)
++register(message-body-pre-background-color,$message-body-pre-background-color)
++register(message-body-pre-code-background-color,$message-body-pre-code-background-color)
 
 .message
   @extend %block
@@ -88,7 +88,7 @@ $message-colors: $colors-list !default
   .delete
     flex-grow: 0
     flex-shrink: 0
-    margin-left: 0.75em
+    +ltr-property("margin-left", 0.75em)
   & + .message-body
     border-width: v("message-header-body-border-width")
     border-top-left-radius: 0

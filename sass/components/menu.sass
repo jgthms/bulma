@@ -16,21 +16,21 @@ $menu-label-font-size: 0.75em !default
 $menu-label-letter-spacing: 0.1em !default
 $menu-label-spacing: 1em !default
 
-@include vRegister(menu-list-line-height,$menu-list-line-height)
-@include vRegister(menu-item-radius,$menu-item-radius)
-@include vRegister(menu-item-color,$menu-item-color)
-@include vRegister(menu-list-link-padding,$menu-list-link-padding)
-@include vRegister(menu-item-hover-background-color,$menu-item-hover-background-color)
-@include vRegister(menu-item-hover-color,$menu-item-hover-color)
-@include vRegister(menu-item-active-background-color,$menu-item-active-background-color)
-@include vRegister(menu-item-active-color,$menu-item-active-color)
-@include vRegister(menu-list-border-left,$menu-list-border-left)
-@include vRegister(menu-nested-list-margin,$menu-nested-list-margin)
-@include vRegister(menu-nested-list-padding-left,$menu-nested-list-padding-left)
-@include vRegister(menu-label-color,$menu-label-color)
-@include vRegister(menu-label-font-size,$menu-label-font-size)
-@include vRegister(menu-label-letter-spacing,$menu-label-letter-spacing)
-@include vRegister(menu-label-spacing,$menu-label-spacing)
++register(menu-list-line-height,$menu-list-line-height)
++register(menu-item-radius,$menu-item-radius)
++register(menu-item-color,$menu-item-color)
++register(menu-list-link-padding,$menu-list-link-padding)
++register(menu-item-hover-background-color,$menu-item-hover-background-color)
++register(menu-item-hover-color,$menu-item-hover-color)
++register(menu-item-active-background-color,$menu-item-active-background-color)
++register(menu-item-active-color,$menu-item-active-color)
++register(menu-list-border-left,$menu-list-border-left)
++register(menu-nested-list-margin,$menu-nested-list-margin)
++register(menu-nested-list-padding-left,$menu-nested-list-padding-left)
++register(menu-label-color,$menu-label-color)
++register(menu-label-font-size,$menu-label-font-size)
++register(menu-label-letter-spacing,$menu-label-letter-spacing)
++register(menu-label-spacing,$menu-label-spacing)
 
 .menu
   font-size: v("size-normal")
@@ -58,9 +58,9 @@ $menu-label-spacing: 1em !default
       color: v("menu-item-active-color")
   li
     ul
-      border-left: v("menu-list-border-left")
+      +ltr-property("border-left", v("menu-list-border-left"))
       margin: v("menu-nested-list-margin")
-      padding-left: v("menu-nested-list-padding-left")
+      +ltr-property("padding-left", v("menu-nested-list-padding-left"))
 
 .menu-label
   color: v("menu-label-color")

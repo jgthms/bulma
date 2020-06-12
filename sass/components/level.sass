@@ -1,6 +1,6 @@
 $level-item-spacing: calc(#{v(block-spacing)} / 2) !default
 
-@include vRegister(level-item-spacing, $level-item-spacing)
++register(level-item-spacing, $level-item-spacing)
 
 .level
   @extend %block
@@ -22,7 +22,7 @@ $level-item-spacing: calc(#{v(block-spacing)} / 2) !default
     .level-item
       &:not(:last-child)
         margin-bottom: 0
-        margin-right: v("level-item-spacing")
+        +ltr-property("margin-right", v("level-item-spacing"))
       &:not(.is-narrow)
         flex-grow: 1
   // Responsiveness
@@ -59,7 +59,7 @@ $level-item-spacing: calc(#{v(block-spacing)} / 2) !default
     // Responsiveness
     +tablet
       &:not(:last-child)
-        margin-right: v("level-item-spacing")
+        +ltr-property("margin-right", v("level-item-spacing"))
 
 .level-left
   align-items: center

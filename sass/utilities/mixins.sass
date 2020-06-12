@@ -48,7 +48,7 @@
     &:nth-child(3)
       top: calc(50% + 4px)
   &:hover
-    background-color: bulmaRgba(black, 0.05)
+    background-color: vAlphaChange("scheme-invert", 0.05)
   // Modifers
   &.is-active
     span
@@ -127,6 +127,44 @@
   @if $fullhd-enabled
     @media screen and (min-width: $fullhd)
       @content
+
+=ltr
+  @if not $rtl
+    @content
+
+=rtl
+  @if $rtl
+    @content
+
+=ltr-property($property, $spacing, $deprecated: null)
+  @if $deprecated != null
+    $pos: "left"
+    @if $deprecated
+      $pos: "right"
+    @warn "The third argument of ltr-property was deprecated, use the full name of the property instead"
+    +ltr-property($property+"-"+$pos, $spacing)
+  @else
+    @if $rtl
+      @if str-index($property, 'left')
+        #{str-replace($property, 'left', 'right')}: $spacing
+      @elseif str-index($property, 'right')
+        #{str-replace($property, 'right', 'left')}: $spacing
+      @elseif type-of($spacing) == 'list' and length($spacing) == 4
+          #{$property}: nth($spacing, 1) nth($spacing, 4) nth($spacing, 3) nth($spacing, 2)
+      @else
+        +ltr-property($property, $spacing, true) //Warn of deprecated use
+    @else
+      @if not str-index($property, 'left') and not str-index($property, 'right') and type-of($spacing) != 'list'
+        +ltr-property($property, $spacing, true) //Warn of deprecated use
+      @else
+        #{$property}: $spacing
+
+=ltr-position($spacing, $right: true)
+  @warn "ltr-position was deprecated, use ltr-property with left of right as first parameter instead"
+  @if $right
+    +ltr-property("right", $spacing)
+  @else
+    +ltr-property("left", $spacing)
 
 // Placeholders
 
@@ -259,3 +297,24 @@
 
 %overlay
   +overlay
+
+
+=defineVariable($var, $value)
+  #{varName($var)}: #{$value}
+
+=theme($name)
+  @if $name == "default"
+    .theme, :root
+      @each $name in $bulma_used_vars
+        +defineVariable($name, map_get($bulma_registered_vars, $name))
+  @else
+    $registered: $bulma_registered_vars
+    $selector: unquote(".theme.#{$name}")
+
+    @at-root #{$selector}
+      @content
+
+    #{$selector}
+      @each $var in $bulma_used_vars
+        @if map_get($bulma_registered_vars, $var) != map_get($registered, $var)
+          +defineVariable($var, map_get($bulma_registered_vars, $var))

@@ -1,0 +1,307 @@
+---
+title: Responsive helpers
+layout: documentation
+doc-tab: helpers
+doc-subtab: helpers-visibility
+breadcrumb:
+- home
+- documentation
+- helpers
+- helpers-visibility
+---
+
+{% capture thead %}
+<thead>
+  <tr>
+    <th>
+      Class
+    </th>
+    {% for breakpoint_hash in site.data.breakpoints %}
+      {% assign breakpoint = breakpoint_hash[1] %}
+      <th>
+        {{ breakpoint.name }}<br>
+        {% if breakpoint.id == 'mobile' %}
+          Up to <code>{{ breakpoint.to }}px</code>
+        {% elsif breakpoint.id == 'fullhd' %}
+          <code>{{ breakpoint.from }}px</code> and above
+        {% else %}
+          Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
+        {% endif %}
+      </th>
+    {% endfor %}
+  </tr>
+</thead>
+{% endcapture %}
+
+{% capture flex %}
+<td class="is-narrow has-text-primary has-background-primary-light">
+  Flex
+</td>
+{% endcapture %}
+
+{% capture visible %}
+<td class="is-narrow has-text-success has-background-success-light">
+  Visible
+</td>
+{% endcapture %}
+
+{% capture hidden %}
+<td class="is-narrow has-text-danger has-background-danger-light">
+  Hidden
+</td>
+{% endcapture %}
+
+{% capture unchanged %}
+<td class="is-narrow has-text-grey-light">
+  Unchanged
+</td>
+{% endcapture %}
+
+{% include elements/anchor.html name="Show" %}
+
+<div class="content">
+  <p>
+    You can use one of the following <code>display</code> classes:
+  </p>
+  <ul>
+    <li><code>is-block</code></li>
+    <li><code>is-flex</code></li>
+    <li><code>is-inline</code></li>
+    <li><code>is-inline-block</code></li>
+    <li><code>is-inline-flex</code></li>
+  </ul>
+  <p>For example, here's how the <code>is-flex</code> helper works:</p>
+</div>
+
+<div class="table-container">
+  <table class="table is-bordered">
+    {{ thead }}
+    <tbody>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-mobile</code>
+        </td>
+        {{ flex }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-tablet-only</code>
+        </td>
+        {{ unchanged }}
+        {{ flex }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-desktop-only</code>
+        </td>
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ flex }}
+        {{ unchanged }}
+        {{ unchanged }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-widescreen-only</code>
+        </td>
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ flex }}
+        {{ unchanged }}
+      </tr>
+      <tr>
+        <th colspan="5">
+          <p>Classes to display <strong>up to</strong> or <strong>from</strong> a specific breakpoint</p>
+        </th>
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-touch</code>
+        </td>
+        {{ flex }}
+        {{ flex }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-tablet</code>
+        </td>
+        {{ unchanged }}
+        {{ flex }}
+        {{ flex }}
+        {{ flex }}
+        {{ flex }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-desktop</code>
+        </td>
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ flex }}
+        {{ flex }}
+        {{ flex }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-widescreen</code>
+        </td>
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ flex }}
+        {{ flex }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-flex-fullhd</code>
+        </td>
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ unchanged }}
+        {{ flex }}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="content">
+  <p>
+    For the other display options, just replace <code>is-flex</code> with <code>is-block</code> <code>is-inline</code> <code>is-inline-block</code> or <code>is-inline-flex</code>
+  </p>
+</div>
+
+{% include elements/anchor.html name="Hide" %}
+
+<div class="table-container">
+  <table class="table is-bordered">
+    {{ thead }}
+    <tbody>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-mobile</code>
+        </td>
+        {{ hidden }}
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-tablet-only</code>
+        </td>
+        {{ visible }}
+        {{ hidden }}
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-desktop-only</code>
+        </td>
+        {{ visible }}
+        {{ visible }}
+        {{ hidden }}
+        {{ visible }}
+        {{ visible }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-widescreen-only</code>
+        </td>
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+        {{ hidden }}
+        {{ visible }}
+      </tr>
+      <tr>
+        <th colspan="5">
+          <p>Classes to hide <strong>up to</strong> or <strong>from</strong> a specific breakpoint</p>
+        </th>
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-touch</code>
+        </td>
+        {{ hidden }}
+        {{ hidden }}
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-tablet</code>
+        </td>
+        {{ visible }}
+        {{ hidden }}
+        {{ hidden }}
+        {{ hidden }}
+        {{ hidden }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-desktop</code>
+        </td>
+        {{ visible }}
+        {{ visible }}
+        {{ hidden }}
+        {{ hidden }}
+        {{ hidden }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-widescreen</code>
+        </td>
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+        {{ hidden }}
+        {{ hidden }}
+      </tr>
+      <tr>
+        <td class="is-narrow">
+          <code>is-hidden-fullhd</code>
+        </td>
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+        {{ visible }}
+        {{ hidden }}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% include elements/anchor.html name="Other visibility helpers" %}
+
+<table class="table is-bordered">
+  <tbody>
+    <tr>
+      <td><code>is-invisible</code></td>
+      <td>Adds visibility <strong>hidden</strong></td>
+    </tr>
+    <tr>
+      <td><code>is-hidden</code></td>
+      <td>Hides element</td>
+    </tr>
+    <tr>
+      <td><code>is-sr-only</code></td>
+      <td>Hide elements <strong>visually</strong> but keep the element available to be announced by a <strong>screen reader</strong></td>
+    </tr>
+  </tbody>
+</table>

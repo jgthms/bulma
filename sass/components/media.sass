@@ -1,11 +1,15 @@
 $media-border-color: vAlphaChange("border", 0.5) !default
+$media-spacing: 1rem
+$media-spacing-large: 1.5rem
 
-@include vRegister(media-border-color, $media-border-color)
++register(media-border-color, $media-border-color)
++register(media-spacing, $media-spacing)
++register(media-spacing-large, $media-spacing-large)
 
 .media
   align-items: flex-start
   display: flex
-  text-align: left
+  text-align: inherit
   .content:not(:last-child)
     margin-bottom: 0.75rem
   .media
@@ -21,13 +25,13 @@ $media-border-color: vAlphaChange("border", 0.5) !default
         margin-top: 0.5rem
   & + .media
     border-top: 1px solid v("media-border-color")
-    margin-top: 1rem
-    padding-top: 1rem
+    margin-top: v("media-spacing")
+    padding-top: v("media-spacing")
   // Sizes
   &.is-large
     & + .media
-      margin-top: 1.5rem
-      padding-top: 1.5rem
+      margin-top: v("media-spacing-large")
+      padding-top: v("media-spacing-large")
 
 .media-left,
 .media-right
@@ -36,16 +40,16 @@ $media-border-color: vAlphaChange("border", 0.5) !default
   flex-shrink: 0
 
 .media-left
-  margin-right: 1rem
+  +ltr-property("margin-right", v("media-spacing"))
 
 .media-right
-  margin-left: 1rem
+  +ltr-property("margin-left", v("media-spacing"))
 
 .media-content
   flex-basis: auto
   flex-grow: 1
   flex-shrink: 1
-  text-align: left
+  text-align: inherit
 
 +mobile
   .media-content

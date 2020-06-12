@@ -17,21 +17,21 @@ $content-table-head-cell-color: v("text-strong") !default
 $content-table-foot-cell-border-width: 2px 0 0 !default
 $content-table-foot-cell-color: v("text-strong") !default
 
-@include vRegister(content-heading-color,$content-heading-color)
-@include vRegister(content-heading-weight,$content-heading-weight)
-@include vRegister(content-heading-line-height,$content-heading-line-height)
-@include vRegister(content-blockquote-background-color,$content-blockquote-background-color)
-@include vRegister(content-blockquote-border-left,$content-blockquote-border-left)
-@include vRegister(content-blockquote-padding,$content-blockquote-padding)
-@include vRegister(content-pre-padding,$content-pre-padding)
-@include vRegister(content-table-cell-border,$content-table-cell-border)
-@include vRegister(content-table-cell-border-width,$content-table-cell-border-width)
-@include vRegister(content-table-cell-padding,$content-table-cell-padding)
-@include vRegister(content-table-cell-heading-color,$content-table-cell-heading-color)
-@include vRegister(content-table-head-cell-border-width,$content-table-head-cell-border-width)
-@include vRegister(content-table-head-cell-color,$content-table-head-cell-color)
-@include vRegister(content-table-foot-cell-border-width,$content-table-foot-cell-border-width)
-@include vRegister(content-table-foot-cell-color,$content-table-foot-cell-color)
++register(content-heading-color,$content-heading-color)
++register(content-heading-weight,$content-heading-weight)
++register(content-heading-line-height,$content-heading-line-height)
++register(content-blockquote-background-color,$content-blockquote-background-color)
++register(content-blockquote-border-left,$content-blockquote-border-left)
++register(content-blockquote-padding,$content-blockquote-padding)
++register(content-pre-padding,$content-pre-padding)
++register(content-table-cell-border,$content-table-cell-border)
++register(content-table-cell-border-width,$content-table-cell-border-width)
++register(content-table-cell-padding,$content-table-cell-padding)
++register(content-table-cell-heading-color,$content-table-cell-heading-color)
++register(content-table-head-cell-border-width,$content-table-head-cell-border-width)
++register(content-table-head-cell-color,$content-table-head-cell-color)
++register(content-table-foot-cell-border-width,$content-table-foot-cell-border-width)
++register(content-table-foot-cell-color,$content-table-foot-cell-color)
 
 .content
   @extend %block
@@ -83,11 +83,11 @@ $content-table-foot-cell-color: v("text-strong") !default
     margin-bottom: 1em
   blockquote
     background-color: v("content-blockquote-background-color")
-    border-left: v("content-blockquote-border-left")
+    +ltr-property("border-left", v("content-blockquote-border-left"))
     padding: v("content-blockquote-padding")
   ol
     list-style-position: outside
-    margin-left: 2em
+    +ltr-property("margin-left", 2em)
     margin-top: 1em
     &:not([type])
       list-style-type: decimal
@@ -101,7 +101,7 @@ $content-table-foot-cell-color: v("text-strong") !default
         list-style-type: upper-roman
   ul
     list-style: disc outside
-    margin-left: 2em
+    +ltr-property("margin-left", 2em)
     margin-top: 1em
     ul
       list-style-type: circle
@@ -109,7 +109,7 @@ $content-table-foot-cell-color: v("text-strong") !default
       ul
         list-style-type: square
   dd
-    margin-left: 2em
+    +ltr-property("margin-left", 2em)
   figure
     margin-left: 2em
     margin-right: 2em
@@ -142,7 +142,7 @@ $content-table-foot-cell-color: v("text-strong") !default
     th
       color: v("content-table-cell-heading-color")
       &:not([align])
-        text-align: left
+        text-align: inherit
     thead
       td,
       th

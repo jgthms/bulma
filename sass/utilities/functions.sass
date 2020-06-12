@@ -179,6 +179,11 @@
   @else
     @return lighten($color, -$amount)
 
+@function bulmaLighten($color, $amount)
+  @if type-of($color) != 'color'
+    @return $color
+  @return lighten($color, $amount)
+
 @function str-replace($string, $search, $replace: '')
   $index: str-index($string, $search)
 
@@ -258,16 +263,18 @@ $hash_map: ()
 //Pluggables for theming
 
 $css_vars: null !default //If set only the list of those variables will be converted to css vars
-$exclude: () !default //If set this list of variables will not be converted
-$default_vars: () !default //This can be set to provide a map of preregistered var
-$registered_vars: $default_vars
-$used_vars: ()
+$exclude: () !default //If set this list of variables will not be converted to css vars
+
+//Variables used internally only
+$bulma_default_vars: () !default //This can be set to provide a map of preregistered var
+$bulma_registered_vars: $bulma_default_vars
+$bulma_used_vars: ()
 
 @function isRegistered($name)
-  @return map_get($registered_vars, $name) != null
+  @return map_get($bulma_registered_vars, $name) != null
 
 @function isVColor($name)
-  @return map_get($registered_vars, $name+"-h") != null
+  @return map_get($bulma_registered_vars, $name+"-h") != null
 
 @function isThemeable($name)
   //TODO fix bug where nested variables of modified are not considered themeable
@@ -287,10 +294,10 @@ $used_vars: ()
 
       @return $value
 
-    $value: map_get($registered_vars, $name)
+    $value: map_get($bulma_registered_vars, $name)
 
-    @if not index($used_vars, $name)
-      $used_vars: append($used_vars, $name) !global
+    @if not index($bulma_used_vars, $name)
+      $used_vars: append($bulma_used_vars, $name) !global
 
     @if $themeable and type-of($value) == "string"
       $value: str-replace($value, " ", "")
@@ -309,10 +316,10 @@ $used_vars: ()
         $value: getRegistered($value)
 
     @return $value
-  @return $registered_vars
+  @return $bulma_registered_vars
 
 @function _register($values)
-  $registered_vars: map-merge($registered_vars, $values) !global
+  $bulma_registered_vars: map-merge($bulma_registered_vars, $values) !global
 
   @if function-exists(_vRegister)
     @each $name, $value in $values
@@ -344,29 +351,8 @@ $used_vars: ()
 
   @return $name
 
-@mixin vRegister($name, $value)
-  $null: vRegister($name, $value)
-
-@mixin defineVariable($var, $value)
-  #{varName($var)}: #{$value}
-
-@mixin theme($name)
-  @if $name == "default"
-    .theme, :root
-      @each $name in $used_vars
-        @include defineVariable($name, map_get($registered_vars, $name))
-  @else
-    $registered: $registered_vars
-    $selector: unquote(".theme.#{$name}")
-
-    @at-root #{$selector}
-      @content
-
-    #{$selector}
-      @each $var in $used_vars
-        @if map_get($registered_vars, $var) != map_get($registered, $var)
-          @include defineVariable($var, map_get($registered_vars, $var))
-
+=register($name, $value)
+  $_: vRegister($name, $value)
 
 @function varName($name)
   @return --blm-#{shorten-var($name)}

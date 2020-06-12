@@ -7,12 +7,12 @@ $breadcrumb-item-padding-horizontal: 0.75em !default
 
 $breadcrumb-item-separator-color: v("border-hover") !default
 
-@include vRegister(breadcrumb-item-color,$breadcrumb-item-color)
-@include vRegister(breadcrumb-item-padding-vertical,$breadcrumb-item-padding-vertical)
-@include vRegister(breadcrumb-item-padding-horizontal,$breadcrumb-item-padding-horizontal)
-@include vRegister(breadcrumb-item-hover-color,$breadcrumb-item-hover-color)
-@include vRegister(breadcrumb-item-active-color,$breadcrumb-item-active-color)
-@include vRegister(breadcrumb-item-separator-color,$breadcrumb-item-separator-color)
++register(breadcrumb-item-color,$breadcrumb-item-color)
++register(breadcrumb-item-padding-vertical,$breadcrumb-item-padding-vertical)
++register(breadcrumb-item-padding-horizontal,$breadcrumb-item-padding-horizontal)
++register(breadcrumb-item-hover-color,$breadcrumb-item-hover-color)
++register(breadcrumb-item-active-color,$breadcrumb-item-active-color)
++register(breadcrumb-item-separator-color,$breadcrumb-item-separator-color)
 
 .breadcrumb
   @extend %block
@@ -31,7 +31,7 @@ $breadcrumb-item-separator-color: v("border-hover") !default
     align-items: center
     display: flex
     &:first-child a
-      padding-left: 0
+      +ltr-property("padding-left", 0)
     &.is-active
       a
         color: v("breadcrumb-item-active-color")
@@ -48,9 +48,9 @@ $breadcrumb-item-separator-color: v("border-hover") !default
     justify-content: flex-start
   .icon
     &:first-child
-      margin-right: 0.5em
+      +ltr-property("margin-right", 0.5em)
     &:last-child
-      margin-left: 0.5em
+      +ltr-property("margin-left", 0.5em)
   // Alignment
   &.is-centered
     ol,

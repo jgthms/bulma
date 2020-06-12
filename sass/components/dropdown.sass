@@ -17,20 +17,20 @@ $dropdown-item-active-background-color: v("link") !default
 
 $dropdown-divider-background-color: v("border-light") !default
 
-@include vRegister(dropdown-content-offset,$dropdown-content-offset)
-@include vRegister(dropdown-menu-min-width,$dropdown-menu-min-width)
-@include vRegister(dropdown-content-z,$dropdown-content-z)
-@include vRegister(dropdown-content-background-color,$dropdown-content-background-color)
-@include vRegister(dropdown-content-radius,$dropdown-content-radius)
-@include vRegister(dropdown-content-shadow,$dropdown-content-shadow)
-@include vRegister(dropdown-content-padding-bottom,$dropdown-content-padding-bottom)
-@include vRegister(dropdown-content-padding-top,$dropdown-content-padding-top)
-@include vRegister(dropdown-item-color,$dropdown-item-color)
-@include vRegister(dropdown-item-hover-background-color,$dropdown-item-hover-background-color)
-@include vRegister(dropdown-item-hover-color,$dropdown-item-hover-color)
-@include vRegister(dropdown-item-active-background-color,$dropdown-item-active-background-color)
-@include vRegister(dropdown-item-active-color,$dropdown-item-active-color)
-@include vRegister(dropdown-divider-background-color,$dropdown-divider-background-color)
++register(dropdown-content-offset,$dropdown-content-offset)
++register(dropdown-menu-min-width,$dropdown-menu-min-width)
++register(dropdown-content-z,$dropdown-content-z)
++register(dropdown-content-background-color,$dropdown-content-background-color)
++register(dropdown-content-radius,$dropdown-content-radius)
++register(dropdown-content-shadow,$dropdown-content-shadow)
++register(dropdown-content-padding-bottom,$dropdown-content-padding-bottom)
++register(dropdown-content-padding-top,$dropdown-content-padding-top)
++register(dropdown-item-color,$dropdown-item-color)
++register(dropdown-item-hover-background-color,$dropdown-item-hover-background-color)
++register(dropdown-item-hover-color,$dropdown-item-hover-color)
++register(dropdown-item-active-background-color,$dropdown-item-active-background-color)
++register(dropdown-item-active-color,$dropdown-item-active-color)
++register(dropdown-divider-background-color,$dropdown-divider-background-color)
 
 .dropdown
   display: inline-flex
@@ -53,7 +53,7 @@ $dropdown-divider-background-color: v("border-light") !default
 
 .dropdown-menu
   display: none
-  left: 0
+  +ltr-property("left", 0)
   min-width: v("dropdown-menu-min-width")
   padding-top: v("dropdown-content-offset")
   position: absolute
@@ -77,8 +77,8 @@ $dropdown-divider-background-color: v("border-light") !default
 
 a.dropdown-item,
 button.dropdown-item
-  padding-right: 3rem
-  text-align: left
+  +ltr-property("padding-right", 3rem)
+  text-align: inherit
   white-space: nowrap
   width: 100%
   &:hover
