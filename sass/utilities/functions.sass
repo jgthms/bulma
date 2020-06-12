@@ -234,16 +234,22 @@
 
   @return $split-arr
 
-$hash_map: ()
+$hash_map: () !default
 
 @function shorten-var($string)
   @if $shorten
+    @if map_get($hash_map, $string)
+      @warn $string + " is already shortened"
+      @return $string
+
     $short: $string
     @each $find, $replace in ("background": "bg", "invert": "inv", "scheme": "sch", "text": "txt", "large": "lg", "disabled": "dsbl", "current": "cur", "toggle": "tgl", "border": "bd", "margin": "m", "padding": "p", "color": "clr", "size": "s", "button": "bt", "warning": "warn", "danger": "dang", "success": "sucs", "primary": "prim", "dimensions": "dim", "content": "ct", "heading": "hdg", "header": "hd", "footer": "ft", "notification": "noti", "progress": "prg", "dropdown": "drp", "divider": "dvd", "item": "itm", "hover": "hov", "focus": "foc", "active": "act", "message": "msg", "pagination": "pag", "control": "ctrl", "breadcrumb": "bread", "navbar": "nav", "panel": "pnl", "section": "sct")
       $short: str-replace($short, $find, $replace)
     //@each $letter in (e, i, u, y)
     //  $short: str-replace($short, $letter, '')
-    $hash_map: map_merge($hash_map, ($short: $string)) !global
+
+    @if $short != $string and not map_get($hash_map, $short)
+      $hash_map: map_merge($hash_map, ($short: $string)) !global
     $string: $short
   @return $string
 
@@ -276,8 +282,29 @@ $bulma_used_vars: ()
 @function isVColor($name)
   @return map_get($bulma_registered_vars, $name+"-h") != null
 
+@function getThemeable($name)
+  @if not isThemeable($name)
+    $value: map_get($bulma_registered_vars, $name)
+    @if type-of($value) != "string"
+      @return null
+    $parts: str-match($value, "var(--blm-", ")")
+    @if length($parts) == 0
+      @return null
+    $map: ()
+    @each $match in $parts
+      $match: unshorten-var($match)
+      $themeable: getThemeable($match)
+      @if $themeable == null
+        $themeable: getRegistered($match)
+      @if $themeable != null
+        $value: str-replace($value, var(varName($match)), $themeable)
+    @return $value
+  @else
+    @if not index($bulma_used_vars, $name)
+      $bulma_used_vars: append($bulma_used_vars, $name) !global
+  @return var(varName($name))
+
 @function isThemeable($name)
-  //TODO fix bug where nested variables of modified are not considered themeable
   @return $themeable and not index($exclude, $name) and ($css_vars == null or index($css_vars, $name) != null)
 
 @function getRegistered($name: null)
@@ -329,6 +356,7 @@ $bulma_used_vars: ()
 
 @function vRegister($name, $value)
   @if $themeable
+    $_: shorten-var($name)
     @if type-of($value) == "color"
       $_: _register((#{$name}-h: round(strip-unit(hue($value))), #{$name}-s: round(saturation($value)), #{$name}-l: round(lightness($value)), #{$name}-a: round(opacity($value) * 100) / 100))
     @else if type-of($value) == "string"
@@ -358,14 +386,19 @@ $bulma_used_vars: ()
   @return --blm-#{shorten-var($name)}
 
 @function v($name)
-  $value: getRegistered($name) //Make sure to let the compiler know we used this variable
-  @if isThemeable($name)
-    @if isRegistered($name)
+  @if $themeable == "full"
+    $value: getRegistered($name) //Make sure to let the compiler know we used this variable and all it's parents
+    @if $value
       @return var(varName($name))
 
     @warn $name + " was not registered before use"
     @return null
+
+  $val: getThemeable($name)
+  @if $val
+    @return $val
   @else
+    $value: getRegistered($name)
     @if $value == null
       @warn $name + " was not registered before use"
     @return $value
@@ -403,7 +436,7 @@ $bulma_used_vars: ()
     @return $value
 
 @function vAdjust($name, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1)
-  @if isThemeable($name)
+  @if getThemeable($name)
     @return hsla(maybeCalc(v(#{$name}-h), strip-unit($hue)), maybeCalc(v(#{$name}-s), $saturation), maybeCalc(v(#{$name}-l), $lightness), maybeCalcMult(v(#{$name}-a), $alpha))
   @else
     $color: getRegistered($name)
@@ -418,7 +451,7 @@ $bulma_used_vars: ()
     @return scale_color(adjust_color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness), $alpha: $alpha)
 
 @function vChange($name, $hue: null, $saturation: null, $lightness: null, $alpha: null)
-  @if isThemeable($name)
+  @if getThemeable($name)
     @if $hue == null
       $hue: v($name+"-h")
     @else
