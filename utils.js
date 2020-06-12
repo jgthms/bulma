@@ -44,7 +44,7 @@ const sassToString = (value) => {
     for (let i = 0; i < value.getLength(); ++i) {
       val += sassToString(value.getValue(i)) + " "
     }
-    val = val.slice(0, -1)
+    val = '(' + val.slice(0, -1) + ')'
   } else if (value instanceof sass.types.Map) {
     for (let i = 0; i < value.getLength(); ++i) {
       val += value.getKey(i) + ':' + sassToString(value.getValue(i)) + ","
@@ -53,7 +53,9 @@ const sassToString = (value) => {
   } else if (value instanceof sass.types.Null) {
     val = ""
   } else if (value instanceof sass.types.Number) {
-    val = value.getValue() + value.getUnit();
+    val = value.getValue().toPrecision(2) + value.getUnit();
+  } else if (value instanceof sass.types.String) {
+    val = '"'+value.getValue()+'"';
   } else {
     val = value.getValue();
   }
@@ -90,16 +92,20 @@ const writeOutput = async (output, result) => {
 const renderSassSync = (input, output, data, functions) => {
   data = data || "";
   data += '\n@import "' + input + '";'
-  return sass.renderSync({
-    data,
-    outFile: output + '.css',
-    includePaths: [path.resolve(process.cwd(), input)],
-    outputStyle: 'expanded',
-    sourceMap: true,
-    sourceMapContents: true,
+  try {
+    return sass.renderSync({
+      data,
+      outFile: output + '.css',
+      includePaths: [path.resolve(process.cwd(), input)],
+      outputStyle: 'expanded',
+      sourceMap: true,
+      sourceMapContents: true,
 
-    functions,
-  })
+      functions,
+    })
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 const watched = [];

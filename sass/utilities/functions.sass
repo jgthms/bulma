@@ -256,10 +256,12 @@ $hash_map: ()
   @return $number
 
 //Pluggables for theming
-$css_vars: null !default
-$default_vars: () !default
+
+$css_vars: null !default //If set only the list of those variables will be converted to css vars
+$exclude: () !default //If set this list of variables will not be converted
+$default_vars: () !default //This can be set to provide a map of preregistered var
 $registered_vars: $default_vars
-$used_vars: map-keys($default_vars)
+$used_vars: ()
 
 @function isRegistered($name)
   @return map_get($registered_vars, $name) != null
@@ -267,8 +269,9 @@ $used_vars: map-keys($default_vars)
 @function isVColor($name)
   @return map_get($registered_vars, $name+"-h") != null
 
-@function is-themeable($name)
-  @return $themeable and ($css_vars == null or index($css_vars, $name))
+@function isThemeable($name)
+  //TODO fix bug where nested variables of modified are not considered themeable
+  @return $themeable and not index($exclude, $name) and ($css_vars == null or index($css_vars, $name) != null)
 
 @function getRegistered($name: null)
   $value: $name
@@ -278,7 +281,7 @@ $used_vars: map-keys($default_vars)
       $parts: str-match($name, "var(--blm-", ")")
       // This will not get the correct value if there is a calc
       // but since it's only used to check the type or to tree shake the used variables
-      // it's good enough
+      // it's good enough for now
       @each $match in $parts
         $value: getRegistered(unshorten-var($match))
 
@@ -289,7 +292,7 @@ $used_vars: map-keys($default_vars)
     @if not index($used_vars, $name)
       $used_vars: append($used_vars, $name) !global
 
-    @if is-themeable($name) and type-of($value) == "string"
+    @if $themeable and type-of($value) == "string"
       $value: str-replace($value, " ", "")
       @if str-index($value, "hsla(") == 1
         $value: str-slice($value, 6, -2)
@@ -301,7 +304,7 @@ $used_vars: map-keys($default_vars)
         $l: to-number(getRegistered(nth($parts, 3)))
         $a: to-number(getRegistered(nth($parts, 4)))
 
-        $value: hsla($h, $s, $l, $a) !global
+        $value: hsla($h, $s, $l, $a)
       @else if str-index($value, "var(--blm-") != null
         $value: getRegistered($value)
 
@@ -309,18 +312,18 @@ $used_vars: map-keys($default_vars)
   @return $registered_vars
 
 @function _register($values)
+  $registered_vars: map-merge($registered_vars, $values) !global
+
   @if function-exists(_vRegister)
     @each $name, $value in $values
       $value: _vRegister($name, $value)
-  $registered_vars: map-merge($registered_vars, $values) !global
 
   @return null
 
 @function vRegister($name, $value)
-
-  @if is-themeable($name)
+  @if $themeable
     @if type-of($value) == "color"
-      $_: _register((#{$name}-h: hue($value), #{$name}-s: saturation($value), #{$name}-l: lightness($value), #{$name}-a: opacity($value)))
+      $_: _register((#{$name}-h: round(strip-unit(hue($value))), #{$name}-s: round(saturation($value)), #{$name}-l: round(lightness($value)), #{$name}-a: round(opacity($value) * 100) / 100))
     @else if type-of($value) == "string"
       $value: str-replace($value, " ", "")
       @if str-index($value, "hsla(") == 1
@@ -349,14 +352,12 @@ $used_vars: map-keys($default_vars)
 
 @mixin theme($name)
   @if $name == "default"
-    [data-theme=default], :root
+    .theme, :root
       @each $name in $used_vars
         @include defineVariable($name, map_get($registered_vars, $name))
   @else
-    $used: $used_vars
     $registered: $registered_vars
-    $used_vars: () !global
-    $selector: unquote("[data-theme=#{$name}]")
+    $selector: unquote(".theme.#{$name}")
 
     @at-root #{$selector}
       @content
@@ -366,15 +367,13 @@ $used_vars: map-keys($default_vars)
         @if map_get($registered_vars, $var) != map_get($registered, $var)
           @include defineVariable($var, map_get($registered_vars, $var))
 
-    $used_vars: $used !global
-
 
 @function varName($name)
   @return --blm-#{shorten-var($name)}
 
 @function v($name)
   $value: getRegistered($name) //Make sure to let the compiler know we used this variable
-  @if is-themeable($name)
+  @if isThemeable($name)
     @if isRegistered($name)
       @return var(varName($name))
 
@@ -418,8 +417,8 @@ $used_vars: map-keys($default_vars)
     @return $value
 
 @function vAdjust($name, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1)
-  @if is-themeable($name)
-    @return hsla(maybeCalc(v(#{$name}-h), $hue), maybeCalc(v(#{$name}-s), $saturation), maybeCalc(v(#{$name}-l), $lightness), maybeCalcMult(v(#{$name}-a), $alpha))
+  @if isThemeable($name)
+    @return hsla(maybeCalc(v(#{$name}-h), strip-unit($hue)), maybeCalc(v(#{$name}-s), $saturation), maybeCalc(v(#{$name}-l), $lightness), maybeCalcMult(v(#{$name}-a), $alpha))
   @else
     $color: getRegistered($name)
     @if type_of($color) != "color"
@@ -433,9 +432,11 @@ $used_vars: map-keys($default_vars)
     @return scale_color(adjust_color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness), $alpha: $alpha)
 
 @function vChange($name, $hue: null, $saturation: null, $lightness: null, $alpha: null)
-  @if is-themeable($name)
+  @if isThemeable($name)
     @if $hue == null
       $hue: v($name+"-h")
+    @else
+      $hue: strip-unit($hue)
     @if $saturation == null
       $saturation: v($name+"-s")
     @if $lightness == null
@@ -447,6 +448,7 @@ $used_vars: map-keys($default_vars)
   @else
     $color: getRegistered($name)
     @if type_of($color) != "color"
+      @debug $color
       @warn $name + " is not a color"
       @return $color
 

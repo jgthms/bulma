@@ -35,7 +35,8 @@ const build = async () => {
 
   if (options.indexOf('--themeable') < 0) {
     //No variables build
-    const render = renderSassSync(input, output, false);
+    let data = '$themeable: "any";'
+    const render = renderSassSync(input, output, data);
     //Output the non themeable generated css
     await writeOutput(output, render)
     return render
@@ -45,7 +46,7 @@ const build = async () => {
 
     let data = '$themeable: "any";'
 
-    let render = renderSassSync(input, output, false, data, {
+    let render = renderSassSync(input, output, data, {
       '_vRegister($name, $value)': function (name, value) {
         const val = sassToString(value);
         name = name.getValue();
@@ -62,10 +63,11 @@ const build = async () => {
     if (options.indexOf('--full') >= 0) {
       await writeOutput(output, render)
     } else {
-      //Default compressed
+      //Default makes a compressed output
       data = '$themeable: true;\n' +
-        '$css_vars: (' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ');';
-      render = renderSassSync(input, output, false, data)
+        '$css_vars: (' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ');\n' +
+        '$default_vars: (' + Object.keys(defaultVars).map((v) => '"' + v + '":'+defaultVars[v]).join(', ') + ');'
+      render = renderSassSync(input, output, data)
       await writeOutput(output, render)
     }
     return render;
@@ -90,7 +92,7 @@ build().then(render => {
       }
       watch(render, watcher)
 
-      rl.question('Continuing watcher, press enter to exit: ', (answer) => {
+      rl.question('Continuing watcher, press enter to exit', (answer) => {
         rl.close();
         unwatch();
       });
