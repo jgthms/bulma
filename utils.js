@@ -67,8 +67,14 @@ const autoprefixer = require('autoprefixer')
 const postcssCalc = require('postcss-calc')
 const cleanCSS = require('clean-css')
 
-const writeOutput = async (output, result) => {
-  result = await postcss([autoprefixer, postcssCalc]).process(result.css, {map: { prev: result.map.toString(), inline: false, sourcesContent: false }, from: output + ".css", to: output + '.css'})
+const writeOutput = async (output, result, options) => {
+  options = options || []
+
+  console.log("Rendering Complete, saving .css file...")
+
+  const map = options.indexOf('--map') >= 0 ? { prev: result.map.toString(), inline: false, sourcesContent: false } : false;
+
+  result = await postcss([autoprefixer, postcssCalc]).process(result.css, {map, from: output + ".css", to: output + '.css'})
 
   const p = [];
   p.push(new Promise((resolve, reject) =>
@@ -76,21 +82,27 @@ const writeOutput = async (output, result) => {
       err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.css') || resolve())
   ))
 
-  p.push(new Promise((resolve, reject) =>
-    fs.writeFile(output + '.css.map', result.map, (err) =>
-      err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.css.map') || resolve())
-  ))
+  if (result.map) {
+    p.push(new Promise((resolve, reject) =>
+      fs.writeFile(output + '.css.map', result.map, (err) =>
+        err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.css.map') || resolve())
+    ))
+  }
 
-  p.push(new Promise((resolve, reject) =>
-    fs.writeFile(output + '.min.css', new cleanCSS({level: 2}).minify(result.css).styles, (err) =>
-      err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.min.css') || resolve())
-  ))
+  if (options.indexOf('--min') >= 0) {
+    p.push(new Promise((resolve, reject) =>
+      fs.writeFile(output + '.min.css', new cleanCSS({level: 2}).minify(result.css).styles, (err) =>
+        err ? console.error(err) || reject() : console.log('Wrote to ' + output + '.min.css') || resolve())
+    ))
+  }
 
   await Promise.all(p)
 }
 
-const renderSassSync = (input, output, data, functions) => {
-  data = data || "";
+const renderSassSync = (input, output, variables, functions) => {
+  variables = variables || {};
+  let data = Object.keys(variables).map((v) => "$"+v+':'+variables[v]+";").join("\n")
+
   data += '\n@import "' + input + '";'
   try {
     return sass.renderSync({

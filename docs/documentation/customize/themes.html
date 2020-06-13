@@ -1,0 +1,166 @@
+---
+title: Themes
+layout: documentation
+doc-tab: customize
+doc-subtab: themes
+breadcrumb:
+- home
+- documentation
+- customize
+- customize-themes
+---
+
+{% capture theme %}
+// General colors
+
++register("scheme-main", v("black"))
++register("scheme-main-bis", v("black-bis"))
++register("scheme-main-ter", v("black-ter"))
++register("scheme-invert", v("white"))
++register("scheme-invert-bis", v("white-bis"))
++register("scheme-invert-ter", v("white-ter"))
+
++register("background", v("black-ter"))
+
+// Border colors
+
++register("border", v("grey-darker"))
++register("border-hover", v("grey-dark"))
++register("border-light", v("grey-darker"))
++register("border-light-hover", v("grey-dark"))
+
+// Text colors
+
++register("text", v("grey-light"))
++register("text-invert", v("grey-darker"))
++register("text-light", v("grey"))
++register("text-strong", v("white"))
+
+// Link colors
+
++register("link-hover", v("white"))
++register("link-hover-border", v("grey-dark"))
+
++register("link-focus", v("white"))
++register("link-focus-border", v("blue"))
+
++register("link-active", v("white"))
++register("link-active-border", v("grey-light"))
+
+// Overrides
+
+img[src$="png"] {
+  // This will invert all png images, modify accordingly
+  filter: invert(1);
+}
+{% endcapture %}
+
+{% capture importing %}
+$themeable: true
+
+@import "bulma/bulma.sass"
+
++theme("my-theme")
+  @import "my-theme.sass"
+{% endcapture %}
+
+
+{% capture as_default %}
+$themeable: true
+
+@import "bulma/customizer.sass"
+
+@import "my-theme.sass"
+
+@import "bulma/bulma.sass"
+
++theme("my-other-theme")
+  @import "my-other-theme.sass"
+{% endcapture %}
+
+
+{% capture step_1 %}
+<div class="content">
+  <p>Create a file called <code>my-theme.sass</code> and paste the following content:</p>
+  {% highlight sass %}{{ theme }}{% endhighlight %}
+  <p>This is a simple dark theme, but you can search online for themes created by other contributors</p>
+</div>
+{% endcapture %}
+
+{% capture step_2 %}
+<div class="content">
+  <p>Create a file called <code>my-bulma.sass</code> and paste the following content, this will be your entrypoint</p>
+  {% highlight sass %}{{ importing }}{% endhighlight %}
+</div>
+{% endcapture %}
+
+{% capture step_3 %}
+<div class="content">
+  <p>To compile your theme you can use any of the following methods:</p>
+  <ul>
+    <li><a href="{{ site.url }}{{site.data.links.by_id['customize-node-sass'].path}}">Bulma Build script</a> (Recommended)</li>
+    <li><a href="{{ site.url }}{{site.data.links.by_id['customize-sass-cli'].path}}">Sass cli</a></li>
+    <li><a href="{{ site.url }}{{site.data.links.by_id['customize-webpack'].path}}">Webpack</a></li>
+  </ul>
+  <p>
+    We highly recommend the bulma build script as it is currently the only method capable of generating an
+    optimized css for your themes (by only declaring and using the css variables that your imported themes are
+    modifying)
+    That is until a postcss loader capable of optimizing nested css variables from multiple elements is made
+    (postcss-css-variables does not do the job as it tries to replace all variables instead of only replacing the
+    ones that are not modified in other selectors, but it could be taken as a starting point)
+  </p>
+</div>
+{% endcapture %}
+
+
+{% capture step_4 %}
+<div class="content">
+  <p>To switch between your themes, you simply need to add a data attribute to your <code>html</code> element</p>
+  <p>The attribute is of the following form: <code>data-theme="my-theme"</code></p>
+
+  <article class="message">
+    <div class="message-body">You can also have different parts of your application use different themes.<br>
+      For this you need to wrap the part you want to style differently in a <br><code>&lt;div data-theme="my-theme
+        "&gt;</code>
+    </div>
+  </article>
+</div>
+{% endcapture %}
+
+
+{% capture step_5 %}
+<div class="content">
+  <p>If you followed the previous steps you may have noticed that by default you still have the bulma theme</p>
+  <p>So what if you want to change it?</p>
+  <p>Nothing simpler! Change your entrypoint like so:</p>
+  {% highlight sass %}{{ as_default }}{% endhighlight %}
+  <p>By importing the theme before importing bulma, it will be considered as the default theme</p>
+  <p>You can then add other themes like shown in the step 2</p>
+</div>
+{% endcapture %}
+
+{% include components/step.html
+title='1. Create your theme or find one online'
+content=step_1
+%}
+<hr>
+{% include components/step.html
+title='2. Create an entrypoint'
+content=step_2
+%}
+<hr>
+{% include components/step.html
+title='3. Compile your theme'
+content=step_3
+%}
+<hr>
+{% include components/step.html
+title='4. Use your theme'
+content=step_4
+%}
+<hr>
+{% include components/step.html
+title='5. Make it the default'
+content=step_5
+%}

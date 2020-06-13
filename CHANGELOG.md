@@ -10,12 +10,14 @@ By setting the Sass flag `$themeable` to `full`, you can create a version of Bul
 
 There is also a new build script that can take care of the compression and `$rtl` and `$themeable` flags for you
 
-Usage: `bulma-build-css sass-entry-file.sass output.css [--themeable [--full]] [--rtl] [--watch]`
+Usage: `bulma-build-css sass-entry-file.sass output.css [--themeable [--full]] [--rtl] [--watch] [--min] [--map]`
 
 Flags:
 - `themeable`: Enables the use of the new css variables library
 - `full`: Will output all of the css variables, for theming outside of sass, this flag is not recommended, if it's omitted only the variables reregistered in the theme mixins will be converted to css variables 
 - `rtl`: Builds the rtl version of bulma
+- `min`: Builds the minified file as well
+- `map`: Builds the map file as well
 - `watch`: Builds and watch for file change to recompile
 
 A `theme` mixin was added, it should be used with the `$themeable` flag set to true, you can then reregister variables in it and output custom rules that will be applied only to elements under a `[data-theme="name"]`
@@ -26,9 +28,26 @@ Functions:
 - `vDarken/vLighten/vSaturate/vAlpha/vAlphaChange($name, 10%)`: Adjusts the corresponding value of a registered variable
 - `vAdjust/vChange($name, $hue, $saturation, $lightness, $alpha)`: Adjusts/Replace the corresponding value of a registered variable
 
-Deprecations:
+A simple dark theme of bulma has been included in `bulma-dark.sass`
+
+Usage:
+```sass
+$themeable: true
+@import "bulma.sass"
+
++theme("dark")
+    @import "bulma-dark.sass"
+    .some-override
+      color: v("white")
+```
+Compile it using `bulma-build-css your-file.sass your-output.css --themeable --min`
+
+You can then add the property [data-theme="dark"] to the `<html>` element and watch the theme become dark in real time
+
+### Deprecation warning
 - The use of overridable sass variables is therefore deprecated and the `+register("color", #fff)` mixin should be used instead when creating a theme
 - `$colors,$custom-colors`: this map of colors was deprecated, it was replaced with a list of color names under the variable `$colors-list`
+- `$shades`: this map of (name: values) was changed to a list of names only
 - `+rtl-property`: the third parameter was deprecated in favor of using the full name of the property as a first parameter
 - `+rtl-position`: use `+rtl-property` instead
 - `+rtl,+ltr`: use `+rtl-property` instead as it may later be extendable with css vars

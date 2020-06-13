@@ -1,5 +1,5 @@
 ---
-title: With node-sass
+title: With build script
 layout: documentation
 doc-tab: customize
 doc-subtab: node-sass
@@ -11,7 +11,6 @@ breadcrumb:
 ---
 
 {% capture dependencies %}
-npm install node-sass --save-dev
 npm install bulma --save-dev
 {% endcapture %}
 
@@ -22,8 +21,7 @@ npm install bulma --save-dev
   "main": "sass/mystyles.scss",
   "license": "MIT",
   "devDependencies": {
-    "bulma": "^0.7.2",
-    "node-sass": "^4.9.2"
+    "bulma": "^0.9",
   }
 }
 {% endcapture %}
@@ -31,7 +29,7 @@ npm install bulma --save-dev
 {% capture step_2 %}
   <div class="content">
     <p>
-      You only need <strong>2 packages</strong> to customize Bulma: <code>node-sass</code> and <code>bulma</code> itself.
+      You only need <strong>bulma</strong> itself to start customizing which bundles node-sass and a custom build binary
     </p>
   </div>
 
@@ -48,19 +46,19 @@ npm install bulma --save-dev
 
 {% capture scripts %}
 "scripts": {
-  "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
-  "css-watch": "npm run css-build -- --watch",
+  "build:css": "bulma-build-css sass/mystyles.scss css/mystyles.css",
+  "watch:css": "npm run build:css -- --watch",
   "start": "npm run css-watch"
 }
 {% endcapture %}
 
 {% capture npm_build %}
-npm run css-build
+npm run build:css
 {% endcapture %}
 
 {% capture npm_build_success %}
 Rendering Complete, saving .css file...
-Wrote CSS to /path/to/mybulma/css/mystyles.css
+Wrote to /path/to/mybulma/css/mystyles.css
 {% endcapture %}
 
 {% capture npm_watch %}
@@ -79,13 +77,15 @@ npm start
   <div class="content">
     <ul>
       <li>
-        <code>css-build</code> takes <code>sass/mystyles.scss</code> as an input, and outputs <code>css/mystyles.css</code>, while omitting the source map
+        <code>build:css</code> takes <code>sass/mystyles.scss</code> as an input, and outputs <code>css/mystyles
+        .css</code>, while omitting the source map and minification, add flags <code>--min</code> and <code>--map</code> if
+        you want them
       </li>
       <li>
-        <code>css-watch</code> builds the CSS and watches for changes
+        <code>watch:css</code> builds the CSS and watches for changes
       </li>
       <li>
-        <code>start</code> is simply a shortcut for <code>css-watch</code>
+        <code>start</code> is simply a shortcut for <code>watch:css</code>
       </li>
     </ul>
 

@@ -14,7 +14,7 @@ let options;
 })
 
 if (args.length < 2) {
-  console.error("Usage:" + process.argv[0] + process.argv[1] + " input.sass ouput.css [--themeable [--full]]")
+  console.error("Usage:" + process.argv[0] + process.argv[1] + " input.sass ouput.css [--themeable [--full]] [--min] [--map]")
 }
 
 const input = args[0];
@@ -30,10 +30,10 @@ const output = path.resolve(process.cwd(), outInfo.dir + path.sep + outInfo.name
 
 const shouldWatch = options.indexOf("--watch") >= 0
 
-let variables = "";
+let variables = {};
 
 if (options.indexOf('--rtl') >= 0) {
-  variables += "$rtl: true;\n"
+  variables.rtl = true
 }
 
 const build = async () => {
@@ -41,18 +41,18 @@ const build = async () => {
 
   if (options.indexOf('--themeable') < 0) {
     //No variables build
-    let data = variables + '$themeable: false;'
-    const render = renderSassSync(input, output, data);
+    variables.themeable = false
+    const render = renderSassSync(input, output, variables);
     //Output the non themeable generated css
-    await writeOutput(output, render)
+    await writeOutput(output, render, options)
     return render
   } else {
     let theme = 'default';
     const vars = {default: {}};
     const modifiedVars = {};
-    let data = variables + '$themeable: "full";'
+    variables.themeable = true;
 
-    let render = renderSassSync(input, output, data, {
+    let render = renderSassSync(input, output, variables, {
       '_theme($name)': function (name) {
         theme = name.getValue();
         vars[theme] = {}
@@ -70,14 +70,14 @@ const build = async () => {
     });
 
     if (options.indexOf('--full') >= 0) {
-      await writeOutput(output, render)
+      await writeOutput(output, render, options)
     } else {
       //Default makes a compressed output
-      data = variables + '$themeable: true;\n' +
-        '$css_vars: (' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ');\n' +
-        '$default_vars: (' + Object.keys(vars.default).map((v) => '"' + v + '":'+vars.default[v]).join(', ') + ');'
-      render = renderSassSync(input, output, data)
-      await writeOutput(output, render)
+      variables.themeable = '"compressed"'
+      variables.css_vars = '(' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ')';
+      variables.default_vars = '(' + Object.keys(vars.default).map((v) => '"' + v + '":'+vars.default[v]).join(', ') + ')'
+      render = renderSassSync(input, output, variables)
+      await writeOutput(output, render, options)
     }
     return render;
   }
