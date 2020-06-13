@@ -56,7 +56,8 @@ img[src$="png"] {
 {% endcapture %}
 
 {% capture importing %}
-$themeable: true
+$themeable: true !default
+// Do not forget the !default or your theme will not be optimized when building with bulma-build-css
 
 @import "bulma/bulma.sass"
 
@@ -66,7 +67,7 @@ $themeable: true
 
 
 {% capture as_default %}
-$themeable: true
+$themeable: true !default
 
 @import "bulma/customizer.sass"
 
