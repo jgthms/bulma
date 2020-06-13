@@ -149,6 +149,18 @@
         #{str-replace($property, 'left', 'right')}: $spacing
       @elseif str-index($property, 'right')
         #{str-replace($property, 'right', 'left')}: $spacing
+      @else if str-index($property, 'border-radius')
+        @if type-of($spacing) == 'list'
+          @if length($spacing) == 2
+            #{$property}: nth($spacing, 2) nth($spacing, 1)
+          @elseif length($spacing) == 3
+            #{$property}: nth($spacing, 2) nth($spacing, 1) nth($spacing, 2) nth($spacing, 3)
+          @elseif length($spacing) == 4
+            #{$property}: nth($spacing, 2) nth($spacing, 1) nth($spacing, 4) nth($spacing, 3)
+          @else
+            @warn "Invalid usage of ltr-property"
+        @else
+          @warn "Invalid usage of ltr-property"
       @elseif type-of($spacing) == 'list' and length($spacing) == 4
           #{$property}: nth($spacing, 1) nth($spacing, 4) nth($spacing, 3) nth($spacing, 2)
       @else

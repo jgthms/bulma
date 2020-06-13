@@ -48,9 +48,9 @@ You can then add the property [data-theme="dark"] to the `<html>` element and wa
 - The use of overridable sass variables is therefore deprecated and the `+register("color", #fff)` mixin should be used instead when creating a theme
 - `$colors,$custom-colors`: this map of colors was deprecated, it was replaced with a list of color names under the variable `$colors-list`
 - `$shades`: this map of (name: values) was changed to a list of names only
-- `+rtl-property`: the third parameter was deprecated in favor of using the full name of the property as a first parameter
-- `+rtl-position`: use `+rtl-property` instead
-- `+rtl,+ltr`: use `+rtl-property` instead as it may later be extendable with css vars
+- `+ltr-property`: the third parameter was deprecated in favor of using the full name of the property as a first parameter
+- `+ltr-position`: use `+ltr-property` instead
+- `+rtl,+ltr`: use `+ltr-property` instead as it may later be extendable with css vars
 
 ## 0.9.0
 
