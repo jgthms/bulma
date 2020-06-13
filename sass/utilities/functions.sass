@@ -191,7 +191,8 @@
     @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
   @return $string
 
-
+// Finds every substring between $prefix and $ŝuffix
+// @return {List}
 @function str-match($string, $prefix, $suffix)
   // empty array/list
   $match-arr: ()
@@ -236,6 +237,7 @@
 
 $hash_map: () !default
 
+// This converts a variable name to it's shorthand version for output
 @function shorten-var($string)
   @if $shorten
     @if map_get($hash_map, $string)
@@ -253,6 +255,8 @@ $hash_map: () !default
     $string: $short
   @return $string
 
+// This retrieves the variable name from it's shorthand version
+// shorten-var must have been called at least once before on the unshortened name
 @function unshorten-var($string)
   @if $shorten
     $res: map_get($hash_map, $string)
@@ -260,6 +264,7 @@ $hash_map: () !default
       @return $res
   @return $string
 
+// Removes the unit of a number
 @function strip-unit($number)
   @if type-of($number) == 'number' and not unitless($number)
     @return $number / ($number * 0 + 1)
@@ -345,20 +350,23 @@ $bulma_used_vars: ()
     @return $value
   @return $bulma_registered_vars
 
-@function _register($values)
+@function __register($values)
   $bulma_registered_vars: map-merge($bulma_registered_vars, $values) !global
 
-  @if function-exists(_vRegister)
+  @if function-exists(_register)
     @each $name, $value in $values
-      $value: _vRegister($name, $value)
+      $value: _register($name, $value)
 
   @return null
 
-@function vRegister($name, $value)
+@function register($name, $value, $default: false)
   @if $themeable
+    @if $default and isRegistered($name)
+      @return $name
+
     $_: shorten-var($name)
     @if type-of($value) == "color"
-      $_: _register((#{$name}-h: round(strip-unit(hue($value))), #{$name}-s: round(saturation($value)), #{$name}-l: round(lightness($value)), #{$name}-a: round(opacity($value) * 100) / 100))
+      $_: __register((#{$name}-h: round(strip-unit(hue($value))), #{$name}-s: round(saturation($value)), #{$name}-l: round(lightness($value)), #{$name}-a: round(opacity($value) * 100) / 100))
     @else if type-of($value) == "string"
       $value: str-replace($value, " ", "")
       @if str-index($value, "hsla(") == 1
@@ -366,21 +374,21 @@ $bulma_used_vars: ()
         //Remove hsla() part
         $parts: str-split($value, ',')
 
-        $_: _register((#{$name}-h: nth($parts, 1), #{$name}-s: nth($parts, 2), #{$name}-l: nth($parts, 3), #{$name}-a: nth($parts, 4)))
+        $_: __register((#{$name}-h: nth($parts, 1), #{$name}-s: nth($parts, 2), #{$name}-l: nth($parts, 3), #{$name}-a: nth($parts, 4)))
       @else if str-index($value, "var(--blm-") == 1
         $var: unshorten-var(str-slice($value, 11, -2))
         @if isVColor($var)
-          $_: _register((#{$name}-h: var(varName($var+"-h")), #{$name}-s: var(varName($var+"-s")), #{$name}-l: var(varName($var+"-l")), #{$name}-a: var(varName($var+"-a"))))
+          $_: __register((#{$name}-h: var(varName($var+"-h")), #{$name}-s: var(varName($var+"-s")), #{$name}-l: var(varName($var+"-l")), #{$name}-a: var(varName($var+"-a"))))
 
   @if isRegistered($name+"-h")
-    $_: _register((#{$name}: unquote("hsla(#{var(varName($name+"-h"))}, #{var(varName($name+"-s"))}, #{var(varName($name+"-l"))}, #{var(varName($name+"-a"))})")))
+    $_: __register((#{$name}: unquote("hsla(#{var(varName($name+"-h"))}, #{var(varName($name+"-s"))}, #{var(varName($name+"-l"))}, #{var(varName($name+"-a"))})")))
   @else
-    $_: _register(($name: $value))
+    $_: __register(($name: $value))
 
   @return $name
 
-=register($name, $value)
-  $_: vRegister($name, $value)
+=register($name, $value, $default: false)
+  $_: register($name, $value, $default)
 
 @function varName($name)
   @return --blm-#{shorten-var($name)}

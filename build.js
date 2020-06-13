@@ -47,20 +47,23 @@ const build = async () => {
     await writeOutput(output, render)
     return render
   } else {
-    const defaultVars = {};
+    let theme = 'default';
+    const vars = {default: {}};
     const modifiedVars = {};
-
     let data = variables + '$themeable: "full";'
 
     let render = renderSassSync(input, output, data, {
-      '_vRegister($name, $value)': function (name, value) {
+      '_theme($name)': function (name) {
+        theme = name.getValue();
+        vars[theme] = {}
+        return name
+      },
+      '_register($name, $value)': function (name, value) {
         const val = sassToString(value);
         name = name.getValue();
-        if (!(name in defaultVars) || defaultVars[name] === val) {
-          defaultVars[name] = val;
-        } else {
-          // If variable is registered again with a different value, it was modified
-          modifiedVars[name] = val;
+        vars[theme][name] = val
+        if (theme !== 'default' && val !== vars.default[name]) {
+          modifiedVars[name] = val
         }
         return value;
       },
@@ -72,7 +75,7 @@ const build = async () => {
       //Default makes a compressed output
       data = variables + '$themeable: true;\n' +
         '$css_vars: (' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ');\n' +
-        '$default_vars: (' + Object.keys(defaultVars).map((v) => '"' + v + '":'+defaultVars[v]).join(', ') + ');'
+        '$default_vars: (' + Object.keys(vars.default).map((v) => '"' + v + '":'+vars.default[v]).join(', ') + ');'
       render = renderSassSync(input, output, data)
       await writeOutput(output, render)
     }
