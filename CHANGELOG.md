@@ -1,5 +1,38 @@
 # Bulma Changelog
 
+## [Unreleased]
+
+### CSS Vars and theme support
+
+Bulma now has **CSS variables support**
+
+By setting the Sass flag `$themeable` to `full`, you can create a version of Bulma where almost all sass variables become css variables
+
+There is also a new build script that can take care of the compression and `$rtl` and `$themeable` flags for you
+
+Usage: `bulma-build-css sass-entry-file.sass output.css [--themeable [--full]] [--rtl] [--watch]`
+
+Flags:
+- `themeable`: Enables the use of the new css variables library
+- `full`: Will output all of the css variables, for theming outside of sass, this flag is not recommended, if it's omitted only the variables reregistered in the theme mixins will be converted to css variables 
+- `rtl`: Builds the rtl version of bulma
+- `watch`: Builds and watch for file change to recompile
+
+A `theme` mixin was added, it should be used with the `$themeable` flag set to true, you can then reregister variables in it and output custom rules that will be applied only to elements under a `[data-theme="name"]`
+
+Functions:
+- `register($name, $value, $default)`: registers a variable that can be used as a css variable, the `$default` parameter works the same as the !default flag when setting a variable in sass, also available as a mixin
+- `v($name)`: output a registered css variable
+- `vDarken/vLighten/vSaturate/vAlpha/vAlphaChange($name, 10%)`: Adjusts the corresponding value of a registered variable
+- `vAdjust/vChange($name, $hue, $saturation, $lightness, $alpha)`: Adjusts/Replace the corresponding value of a registered variable
+
+Deprecations:
+- The use of overridable sass variables is therefore deprecated and the `+register("color", #fff)` mixin should be used instead when creating a theme
+- `$colors,$custom-colors`: this map of colors was deprecated, it was replaced with a list of color names under the variable `$colors-list`
+- `+rtl-property`: the third parameter was deprecated in favor of using the full name of the property as a first parameter
+- `+rtl-position`: use `+rtl-property` instead
+- `+rtl,+ltr`: use `+rtl-property` instead as it may later be extendable with css vars
+
 ## 0.9.0
 
 ### Deprecation warning
