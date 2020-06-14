@@ -52,7 +52,6 @@ You can then add the property [data-theme="dark"] to the `<html>` element and wa
 - `$shades`: this map of (name: values) was changed to a list of names only
 - `+ltr-property`: the third parameter was deprecated in favor of using the full name of the property as a first parameter
 - `+ltr-position`: use `+ltr-property` instead
-- `+rtl,+ltr`: use `+ltr-property` instead as it may later be extendable with css vars
 
 ## 0.9.0
 
