@@ -16,8 +16,13 @@ breadcrumb:
     <li>
       <h3>Customizer functions</h3>
       <ul>
-        <li><code>register($name, $color)</code>: registers a css variable</li>
+        <li><code>register($name, $color, $default: false)</code>: registers a css variable, if
+          <code>$default</code> is true and the variable was previously registered it will ignore the new
+          declaration</li>
         <li><code>v($name)</code>: outputs a css variable</li>
+        <li><code>getRegistered($name)</code>: retrieves the real value of a registered variable, it will parse up
+          the tree of variables, beware that calc() values are not parsed yet, which may result in incorrect values
+        when a trying to retrieve a variable that was vAdjust'ed</li>
         <li><code>vAdjust($name, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1)</code>: outputs an adjusted css color variable</li>
         <li><code>vSaturate|vLighten|vDarken|vAlpha($name, $value)</code>: aliases of <code>vAdjust</code> for only
           one parameter</li>
