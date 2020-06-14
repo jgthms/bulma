@@ -339,7 +339,7 @@ button,
 input,
 select,
 textarea {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 code,
@@ -523,7 +523,8 @@ a.box:active {
   background-color: transparent;
   border-color: transparent;
   color: hsla(0, 0%, var(--blm-txt-l), 1);
-  text-decoration: underline;
+  -webkit-text-decoration: underline;
+          text-decoration: underline;
 }
 
 .button.is-text:hover, .button.is-text.is-hovered, .button.is-text:focus, .button.is-text.is-focused {
@@ -9959,15 +9960,15 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .is-family-primary {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
 }
 
 .is-family-secondary {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
 }
 
 .is-family-sans-serif {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
 }
 
 .is-family-monospace {
@@ -11301,25 +11302,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   color: inherit;
 }
 
-[data-theme], :root {
-  --blm-txt-l: 29%;
-  --blm-sch-inv-l: 4%;
-  --blm-sch-main-l: 100%;
-  --blm-bd-l: 86%;
-  --blm-txt-strong-l: 21%;
-  --blm-link-hov-bd-l: 71%;
-  --blm-link-hov-l: 21%;
-  --blm-link-foc-l: 21%;
-  --blm-link-act-bd-l: 29%;
-  --blm-link-act-l: 21%;
-  --blm-bg-l: 96%;
-  --blm-sch-main-ter-l: 96%;
-  --blm-bd-light-l: 93%;
-  --blm-sch-main-bis-l: 98%;
-  --blm-bd-hov-l: 71%;
-  --blm-txt-inv-l: 100%;
-}
-
 .bd-columns-tool, .bd-footer-sponsor a, .bd-footer-donation-action, .bd-footer-star-figure, .bd-sponsor-item, .bd-minis-title, .bd-minis-link, .bd-mini {
   align-items: center;
   display: flex;
@@ -12638,12 +12620,12 @@ svg {
 
 .intro-npm ::-moz-selection {
   background: hsla(48, 100%, 67%, 1);
-  color: var(--blm-sch-inv-ter);
+  color: hsla(0, 0%, var(--blm-sch-inv-ter-l), 1);
 }
 
 .intro-npm ::selection {
   background: hsla(48, 100%, 67%, 1);
-  color: var(--blm-sch-inv-ter);
+  color: hsla(0, 0%, var(--blm-sch-inv-ter-l), 1);
 }
 
 .intro-buttons {
@@ -16047,6 +16029,26 @@ svg {
   }
 }
 
+[data-theme], :root {
+  --blm-txt-l: 29%;
+  --blm-bg-l: 96%;
+  --blm-sch-inv-l: 4%;
+  --blm-sch-main-l: 100%;
+  --blm-txt-strong-l: 21%;
+  --blm-bd-l: 86%;
+  --blm-link-hov-l: 21%;
+  --blm-link-hov-bd-l: 71%;
+  --blm-link-foc-l: 21%;
+  --blm-link-act-l: 21%;
+  --blm-link-act-bd-l: 29%;
+  --blm-sch-main-ter-l: 96%;
+  --blm-bd-light-l: 93%;
+  --blm-sch-main-bis-l: 98%;
+  --blm-bd-hov-l: 71%;
+  --blm-txt-inv-l: 100%;
+  --blm-sch-inv-ter-l: 14%;
+}
+
 [data-theme=dark] .bd-navbar {
   background-color: hsla(0, 0%, var(--blm-sch-main-bis-l), 1);
 }
@@ -16062,20 +16064,21 @@ svg {
 
 [data-theme=dark] {
   --blm-txt-l: 71%;
+  --blm-bg-l: 14%;
   --blm-sch-inv-l: 100%;
   --blm-sch-main-l: 4%;
-  --blm-bd-l: 21%;
   --blm-txt-strong-l: 100%;
-  --blm-link-hov-bd-l: 29%;
+  --blm-bd-l: 21%;
   --blm-link-hov-l: 100%;
+  --blm-link-hov-bd-l: 29%;
   --blm-link-foc-l: 100%;
-  --blm-link-act-bd-l: 71%;
   --blm-link-act-l: 100%;
-  --blm-bg-l: 14%;
+  --blm-link-act-bd-l: 71%;
   --blm-sch-main-ter-l: 14%;
   --blm-bd-light-l: 21%;
   --blm-sch-main-bis-l: 7%;
   --blm-bd-hov-l: 29%;
   --blm-txt-inv-l: 21%;
+  --blm-sch-inv-ter-l: 96%;
 }
 /*# sourceMappingURL=bulma-docs.css.map */

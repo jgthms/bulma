@@ -14,7 +14,7 @@ Usage: `bulma-build-css sass-entry-file.sass output.css [--themeable [--full]] [
 
 Flags:
 - `themeable`: Enables the use of the new css variables library
-- `full`: Will output all of the css variables, for theming outside of sass, this flag is not recommended, if it's omitted only the variables reregistered in the theme mixins will be converted to css variables 
+- `full`: Will output all of the css variables, for theming outside of sass, this flag is only recommended while creating a theme and is not recommended to be used in production, if it's omitted only the variables reregistered in the theme mixins will be converted to css variables 
 - `rtl`: Builds the rtl version of bulma
 - `min`: Builds the minified file as well
 - `map`: Builds the map file as well
@@ -32,8 +32,10 @@ A simple dark theme of bulma has been included in `bulma-dark.sass`
 
 Usage:
 ```sass
-$themeable: true
+$themeable: true !default
 @import "bulma.sass"
+
++theme("default")
 
 +theme("dark")
     @import "bulma-dark.sass"

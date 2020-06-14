@@ -25,17 +25,19 @@ $main-spacing: 3rem
 $intro-width: 1080px
 $sidebar-width: 10.5rem
 
+@import "../customizer"
+
 @import "../bulma"
 
 // Make colors relative to initial colors
 $mauve: vAdjust("purple", $hue: hue($mauve) - getRegistered("purple-h"), $saturation: saturation($mauve) - getRegistered("purple-s"), $lightness: lightness($mauve) - getRegistered("purple-l"))
 $pink: vAdjust("purple", $hue: hue($pink) - getRegistered("purple-h"), $saturation: saturation($pink) - getRegistered("purple-s"), $lightness: lightness($pink) - getRegistered("purple-l"))
 
-+register("mauve", $mauve)
-+register("pink", $pink)
-+register("brown", $brown)
-+register("beige-light", $beige-light)
-+register("beige-lighter", vAdjust("beige-light", $lightness: -10%))
++register("mauve", $mauve, true)
++register("pink", $pink, true)
++register("brown", $brown, true)
++register("beige-light", $beige-light, true)
++register("beige-lighter", vAdjust("beige-light", $lightness: -10%), true)
 
 %center
   align-items: center
@@ -99,6 +101,8 @@ $pink: vAdjust("purple", $hue: hue($pink) - getRegistered("purple-h"), $saturati
 @import "./_sass/book"
 @import "./_sass/native"
 @import "./_sass/focus"
+
++theme("default")
 
 +theme("dark")
   @import "../bulma-dark"

@@ -65,6 +65,7 @@ const sassToString = (value) => {
 const postcss = require('postcss')
 const autoprefixer = require('autoprefixer')
 const postcssCalc = require('postcss-calc')
+const postcssVarOptimize = require('postcss-var-optimize')
 const cleanCSS = require('clean-css')
 
 const writeOutput = async (output, result, options) => {
@@ -74,7 +75,7 @@ const writeOutput = async (output, result, options) => {
 
   const map = options.indexOf('--map') >= 0 ? { prev: result.map.toString(), inline: false, sourcesContent: false } : false;
 
-  result = await postcss([autoprefixer, postcssCalc]).process(result.css, {map, from: output + ".css", to: output + '.css'})
+  result = await postcss([autoprefixer, options.indexOf('--full') < 0 ? postcssVarOptimize : postcssCalc]).process(result.css, {map, from: output + ".css", to: output + '.css'})
 
   const p = [];
   p.push(new Promise((resolve, reject) =>

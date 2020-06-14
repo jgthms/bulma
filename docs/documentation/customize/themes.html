@@ -57,10 +57,11 @@ img[src$="png"] {
 
 {% capture importing %}
 $themeable: true !default
-// Do not forget the !default or your theme will not be optimized when building with bulma-build-css
+// Do not forget the !default or build flags will have no effect
 
 @import "bulma/bulma.sass"
 
++theme("default")
 +theme("my-theme")
   @import "my-theme.sass"
 {% endcapture %}
@@ -74,6 +75,9 @@ $themeable: true !default
 @import "my-theme.sass"
 
 @import "bulma/bulma.sass"
+
++theme("default")
+// The default theme will contain the variables of my-theme.sass
 
 +theme("my-other-theme")
   @import "my-other-theme.sass"
@@ -99,18 +103,10 @@ $themeable: true !default
 <div class="content">
   <p>To compile your theme you can use any of the following methods:</p>
   <ul>
-    <li><a href="{{ site.url }}{{site.data.links.by_id['customize-node-sass'].path}}">Bulma Build script</a> (Recommended)</li>
+    <li><a href="{{ site.url }}{{site.data.links.by_id['customize-node-sass'].path}}">Bulma Build script</a></li>
     <li><a href="{{ site.url }}{{site.data.links.by_id['customize-sass-cli'].path}}">Sass cli</a></li>
     <li><a href="{{ site.url }}{{site.data.links.by_id['customize-webpack'].path}}">Webpack</a></li>
   </ul>
-  <p>
-    We highly recommend the bulma build script as it is currently the only method capable of generating an
-    optimized css for your themes (by only declaring and using the css variables that your imported themes are
-    modifying)
-    That is until a postcss loader capable of optimizing nested css variables from multiple elements is made
-    (postcss-css-variables does not do the job as it tries to replace all variables instead of only replacing the
-    ones that are not modified in other selectors, but it could be taken as a starting point)
-  </p>
 </div>
 {% endcapture %}
 

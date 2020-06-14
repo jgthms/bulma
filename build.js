@@ -47,12 +47,12 @@ const build = async () => {
     await writeOutput(output, render, options)
     return render
   } else {
-    let theme = 'default';
-    const vars = {default: {}};
-    const modifiedVars = {};
-    variables.themeable = true;
+    // let theme = 'default';
+    // const vars = {default: {}};
+    // const modifiedVars = {};
+    // variables.themeable = true;
 
-    let render = renderSassSync(input, output, variables, {
+    let render = renderSassSync(input, output, variables/*, {
       '_theme($name)': function (name) {
         theme = name.getValue();
         vars[theme] = {}
@@ -67,18 +67,18 @@ const build = async () => {
         }
         return value;
       },
-    });
+    }*/);
 
-    if (options.indexOf('--full') >= 0) {
-      await writeOutput(output, render, options)
-    } else {
-      //Default makes a compressed output
-      variables.themeable = '"compressed"'
-      variables.css_vars = '(' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ')';
-      variables.default_vars = '(' + Object.keys(vars.default).map((v) => '"' + v + '":'+vars.default[v]).join(', ') + ')'
-      render = renderSassSync(input, output, variables)
-      await writeOutput(output, render, options)
-    }
+    await writeOutput(output, render, options)
+    // if (options.indexOf('--full') >= 0) {
+    // } else {
+    //   //Default makes a compressed output
+    //   variables.themeable = '"compressed"'
+    //   variables.css_vars = '(' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ')';
+    //   variables.default_vars = '(' + Object.keys(vars.default).map((v) => '"' + v + '":'+vars.default[v]).join(', ') + ')'
+    //   render = renderSassSync(input, output, variables)
+    //   await writeOutput(output, render, options)
+    // }
     return render;
   }
 }
