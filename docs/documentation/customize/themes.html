@@ -110,21 +110,18 @@ $themeable: true !default
 </div>
 {% endcapture %}
 
-
 {% capture step_4 %}
 <div class="content">
   <p>To switch between your themes, you simply need to add a data attribute to your <code>html</code> element</p>
   <p>The attribute is of the following form: <code>data-theme="my-theme"</code></p>
 
   <article class="message">
-    <div class="message-body">You can also have different parts of your application use different themes.<br>
-      For this you need to wrap the part you want to style differently in a <br><code>&lt;div data-theme="my-theme
-        "&gt;</code>
+    <div class="message-body">You can also have different parts of your application use different themes.<br> For this
+      you need to wrap the part you want to style differently in a <br><code>&lt;div data-theme="my-theme "&gt;</code>
     </div>
   </article>
 </div>
 {% endcapture %}
-
 
 {% capture step_5 %}
 <div class="content">
@@ -161,3 +158,91 @@ content=step_4
 title='5. Make it the default'
 content=step_5
 %}
+
+<br>
+
+{% capture old_theme %}
+$scheme-main: #abc
+$background: $scheme-main
+.override
+  background-color: darken($background, 5%)
+{% endcapture %}
+
+{% capture new_theme %}
++register("scheme-main", #abc)
++register("background", v("scheme-main"))
+.override
+  background-color: vDarken("background", 5%)
+{% endcapture %}
+
+{% capture old_theme_scss %}
+$scheme-main: #abc;
+$background: $scheme-main;
+.override {
+  background-color: darken($background, 5%);
+}
+{% endcapture %}
+
+{% capture new_theme_scss %}
+$_: register("scheme-main", #abc);
+$_: register("background", v("scheme-main"));
+.override {
+  background-color: vDarken("background", 5%);
+}
+{% endcapture %}
+
+<div class="content">
+  <h2>{% include elements/anchor.html name="Migrating an old theme" %}</h2>
+  <p>Themes released before bulma 1.0 used variables to override bulma, while it may still work for replacing the
+    default theme, it does not for multiple bundled themes</p>
+  <p>To make an old theme compatible with bundled themeing, you will need to convert your variables declaration</p>
+
+  <div>
+    <strong>For example, the following:</strong>
+    <div class="columns">
+      <div class="column is-6">
+        SASS: {% highlight sass %}{{ old_theme }}{% endhighlight %}
+      </div>
+      <div class="column is-6">
+        SCSS: {% highlight scss %}{{ old_theme_scss }}{% endhighlight %}
+      </div>
+    </div>
+    <p><strong>would become</strong></p>
+    <div class="columns">
+      <div class="column is-6">
+        SASS: {% highlight sass %}{{ new_theme }}{% endhighlight %}
+      </div>
+      <div class="column is-6">
+        SCSS: {% highlight sass %}{{ new_theme_scss }}{% endhighlight %}
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div>
+    Here are some regex you can use, to help you get started
+    <div>
+        <ul>
+          <li>Search: <code>\$(.*):\s+(.*)(;)?</code></li>
+          <li>Replace: <code>$_: register("$1", $2)$3</code></li>
+        </ul>
+        <div class="message is-warning">
+          <div class="message-body">
+            This regex does not handle lists declared with spaces, so make sure to wrap your declared lists in parenthesis
+          </div>
+        </div>
+    </div>
+    <div>
+      <ul>
+        <li>Search: <code>$([a-zA-Z0-9-]+)</code></li>
+        <li>Replace: <code>v("$1")</code></li>
+      </ul>
+      <div class="message is-warning">
+        <div class="message-body">
+          This regex will replace all the variables, this may not be desired for all of them, for example in a
+          <code>@each</code> loop or for flag variables, so make sure to <strong>not</strong> use replace all with this
+          regex
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
