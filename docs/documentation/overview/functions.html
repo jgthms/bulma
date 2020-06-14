@@ -11,11 +11,35 @@ breadcrumb:
 ---
 
 <div class="content">
-  <p>Bulma uses 3 custom functions to help define the values and colors dynamically:</p>
+  <p>Bulma uses functions to help define the values and colors dynamically:</p>
   <ul>
-    <li><code>powerNumber($number, $exp)</code>: calculates the value of a number exposed to another one. Returns a number.</li>
-    <li><code>colorLuminance($color)</code>: defines if a color is dark or light. Return a decimal number between 0 and 1 where <= 0.5 is dark and > 0.5 is light.</li>
-    <li><code>findColorInvert($color)</code>: returns either 70% transparent black or 100% opaque white depending on the luminance of the color.</li>
+    <li>
+      <h3>Customizer functions</h3>
+      <ul>
+        <li><code>register($name, $color)</code>: registers a css variable</li>
+        <li><code>v($name)</code>: outputs a css variable</li>
+        <li><code>vAdjust($name, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1)</code>: outputs an adjusted css color variable</li>
+        <li><code>vSaturate|vLighten|vDarken|vAlpha($name, $value)</code>: aliases of <code>vAdjust</code> for only
+          one parameter</li>
+        <li><code>vChange($name, $hue: null, $saturation: null, $lightness: null, $alpha: null)</code>: outputs a css
+          color variable, replacing parts of it with the provided values</li>
+        <li><code>vAlphaChange($name, $value)</code>: Alias of <code>vChange($name, $alpha: $value)</code>, it will
+          output a css variable replacing it's opacity with the provided value</li>
+      </ul>
+      <br>
+    </li>
+    <li>
+      <h3>Color functions</h3>
+      <ul>
+        <li><code>powerNumber($number, $exp)</code>: calculates the value of a number exposed to another one. Returns a number.</li>
+        <li><code>colorLuminance($color)</code>: defines if a color is dark or light. Return a decimal number between 0 and 1 where <= 0.5 is dark and > 0.5 is light.</li>
+        <li><code>findColorInvert($color)</code>: returns either 70% transparent black or 100% opaque white depending on the luminance of the color.</li>
+        <li><code>findDarkColor($color)</code>: returns the toned down color. The color will have it's lightness
+          set between 29% and 53%</li>
+        <li><code>findLightColor($color)</code>: returns the highlight of a color. The color will have it's lightness
+          changed to 96% or more</li>
+      </ul>
+    </li>
   </ul>
 </div>
 
