@@ -36,16 +36,18 @@
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "build": "npm run build-clean && npm run build:sass && npm run build:rtl",
-    "build-clean": "rimraf css",
-    "test-theme": "node build.js test/sass/theme.sass test/output/theme.css bulma.sass --themeable",
-    "build-sass": "npm run build:sass --",
+    "build": "npm run build:clean && npm run build:sass && npm run build:rtl",
+    "build:clean": "rimraf css",
     "build:sass": "node build.js bulma.sass css/bulma.css --map --min",
     "build:sass-vars": "node build.js bulma.sass css/bulma.themeable.css --themeable --full --map --min",
-    "rtl": "npm run build:rtl && echo 'The rtl script has been deprecated use build:rtl instead'",
     "build:rtl": "node build.js bulma.sass css/bulma-rtl.css --rtl --map --min",
+    "test:theme": "node build.js test/sass/theme.sass test/output/theme.css bulma.sass --themeable",
     "deploy": "npm run build",
-    "start": "npm run build:sass -- --watch"
+    "start": "npm run build:sass -- --watch",
+
+    "rtl": "echo 'The rtl script has been deprecated use build:rtl instead' && npm run build:rtl --",
+    "build-clean": "echo 'The build-clean script has been deprecated use build:clean instead' && npm run build:clean --",
+    "build-sass": "echo 'The build-sass script has been deprecated use build:sass instead' && npm run build:sass --"
   },
   "bin": {
     "bulma-build-css": "./build.js"
