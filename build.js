@@ -2,7 +2,7 @@
 
 const path = require('path')
 
-const {sassToString, ensureDirectoryExistence, renderSassSync, writeOutput, partition, watch, unwatch} = require("./utils");
+const {ensureDirectoryExistence, renderSassSync, writeOutput, partition, watch, unwatch} = require("./utils");
 
 let args = process.argv.slice(2);
 
@@ -47,38 +47,11 @@ const build = async () => {
     await writeOutput(output, render, options)
     return render
   } else {
-    // let theme = 'default';
-    // const vars = {default: {}};
-    // const modifiedVars = {};
-    // variables.themeable = true;
+    variables.themeable = options.indexOf('--full') < 0 ? true : "full";
 
-    let render = renderSassSync(input, output, variables/*, {
-      '_theme($name)': function (name) {
-        theme = name.getValue();
-        vars[theme] = {}
-        return name
-      },
-      '_register($name, $value)': function (name, value) {
-        const val = sassToString(value);
-        name = name.getValue();
-        vars[theme][name] = val
-        if (theme !== 'default' && val !== vars.default[name]) {
-          modifiedVars[name] = val
-        }
-        return value;
-      },
-    }*/);
+    let render = renderSassSync(input, output, variables);
 
     await writeOutput(output, render, options)
-    // if (options.indexOf('--full') >= 0) {
-    // } else {
-    //   //Default makes a compressed output
-    //   variables.themeable = '"compressed"'
-    //   variables.css_vars = '(' + Object.keys(modifiedVars).map((v) => '"' + v + '"').join(', ') + ')';
-    //   variables.default_vars = '(' + Object.keys(vars.default).map((v) => '"' + v + '":'+vars.default[v]).join(', ') + ')'
-    //   render = renderSassSync(input, output, variables)
-    //   await writeOutput(output, render, options)
-    // }
     return render;
   }
 }

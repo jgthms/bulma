@@ -6,7 +6,7 @@
 
 Bulma now has **CSS variables support**
 
-By setting the Sass flag `$themeable` to `full`, you can create a version of Bulma where almost all sass variables become css variables
+By setting the Sass flag `$themeable` to `true`, you can create a version of Bulma where almost all sass variables become css variables
 
 There is also a new build script that can take care of the compression and `$rtl` and `$themeable` flags for you
 
@@ -19,6 +19,8 @@ Flags:
 - `min`: Builds the minified file as well
 - `map`: Builds the map file as well
 - `watch`: Builds and watch for file change to recompile
+
+You can also compile a theme without the build script, just don't forget to use the `postcss-var-optimize` plugin
 
 A `theme` mixin was added, it should be used with the `$themeable` flag set to true, you can then reregister variables in it and output custom rules that will be applied only to elements under a `[data-theme="name"]`
 
@@ -47,9 +49,9 @@ Compile it using `bulma-build-css your-file.sass your-output.css --themeable --m
 You can then add the property [data-theme="dark"] to the `<html>` element and watch the theme become dark in real time
 
 ### Deprecation warning
-- The use of overridable sass variables is therefore deprecated and the `+register("color", #fff)` mixin should be used instead when creating a theme
+- The use of sass variables is therefore deprecated for customizing bulma (but it will still work) and the `+register("color", #fff)` mixin should be used instead when creating a theme
 - `$colors,$custom-colors`: this map of colors was deprecated, it was replaced with a list of color names under the variable `$colors-list`
-- `$shades`: this map of (name: values) was changed to a list of names only
+- `$shades`: this map of (name: values) was changed to a list of names only, if you were using it, make sure to modify your code accordingly
 - `+ltr-property`: the third parameter was deprecated in favor of using the full name of the property as a first parameter
 - `+ltr-position`: use `+ltr-property` instead
 

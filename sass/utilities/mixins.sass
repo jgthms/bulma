@@ -314,24 +314,37 @@
 =defineVariable($var, $value)
   #{varName($var)}: #{$value}
 
-=theme($name)
-  @if function-exists("_theme")
-    $name: _theme($name)
+// Wrapper to output a css theme, the $all flag will output all of the variables even if they are not used, which can be useful if you want to output a theme without bulma
+=theme($name, $all: false)
+  @if $themeable
 
-  @if $name == "default"
-    [data-theme], :root
-      @each $name in $bulma_used_vars
-        @if isThemeable($name)
-          +defineVariable($name, map_get($bulma_registered_vars, $name))
-  @else
-    $registered: $bulma_registered_vars
-    $selector: unquote("[data-theme=#{$name}]")
+    @if function-exists("_theme")
+      $name: _theme($name)
 
-    @at-root #{$selector}
-      @content
+    @if $name == "default"
 
-    #{$selector}
-      @each $var in $bulma_used_vars
-        @if map_get($bulma_registered_vars, $var) != map_get($registered, $var)
-          +defineVariable($var, map_get($bulma_registered_vars, $var))
+      [data-theme], :root
+        @content
 
+        $vars: $bulma_used_vars
+        @if $all
+          $vars: map_keys($bulma_registered_vars)
+
+        @each $name in $vars
+          @if isThemeable($name)
+            +defineVariable($name, map_get($bulma_registered_vars, $name))
+    @else
+      $registered: $bulma_registered_vars
+      $selector: unquote("[data-theme=#{$name}]")
+
+      @at-root #{$selector}
+        @content
+
+      $vars: $bulma_used_vars
+      @if $all
+        $vars: map_keys($bulma_registered_vars)
+
+      #{$selector}
+        @each $var in $vars
+          @if map_get($bulma_registered_vars, $var) != map_get($registered, $var)
+            +defineVariable($var, map_get($bulma_registered_vars, $var))
