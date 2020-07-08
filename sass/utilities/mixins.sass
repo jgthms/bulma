@@ -75,11 +75,11 @@
     @content
 
 =until($device)
-  @media screen and (max-width: $device - 1px)
+  @media screen and (max-width: calculateMqMaxWidth($device))
     @content
 
 =mobile
-  @media screen and (max-width: $tablet - 1px)
+  @media screen and (max-width: calculateMqMaxWidth($tablet))
     @content
 
 =tablet
@@ -87,11 +87,11 @@
     @content
 
 =tablet-only
-  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
+  @media screen and (min-width: $tablet) and (max-width: calculateMqMaxWidth($desktop))
     @content
 
 =touch
-  @media screen and (max-width: $desktop - 1px)
+  @media screen and (max-width: calculateMqMaxWidth($desktop))
     @content
 
 =desktop
@@ -100,12 +100,12 @@
 
 =desktop-only
   @if $widescreen-enabled
-    @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+    @media screen and (min-width: $desktop) and (max-width: calculateMqMaxWidth($widescreen))
       @content
 
 =until-widescreen
   @if $widescreen-enabled
-    @media screen and (max-width: $widescreen - 1px)
+    @media screen and (max-width: calculateMqMaxWidth($widescreen))
       @content
 
 =widescreen
@@ -115,12 +115,12 @@
 
 =widescreen-only
   @if $widescreen-enabled and $fullhd-enabled
-    @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+    @media screen and (min-width: $widescreen) and (max-width: calculateMqMaxWidth($fullhd))
       @content
 
 =until-fullhd
   @if $fullhd-enabled
-    @media screen and (max-width: $fullhd - 1px)
+    @media screen and (max-width: calculateMqMaxWidth($fullhd))
       @content
 
 =fullhd
@@ -283,3 +283,13 @@
 
 %overlay
   +overlay
+  
+@function calculateMqMaxWidth($width) 
+  @if unit($width) == px 
+    @return $width - 1px 
+  @else if unit($width) == em 
+    @return $width - 0.01em 
+  @else if unit($width) == rem 
+    @return $width - 0.01rem 
+  @else 
+    @warn "Cannot recognize unit of media query width '#{$width}'"
