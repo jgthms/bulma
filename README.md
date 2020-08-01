@@ -121,7 +121,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Svelte Bulma Components](https://github.com/elcobvg/svelte-bulma-components)                                       | Library of UI components to be used in [Svelte.js](https://svelte.technology/) or standalone.                                                |
 | [Bulma Nunjucks Starterkit](https://github.com/benninkcorien/nunjucks-starter-kit)                                       | Starterkit for Nunjucks with Bulma.                                                |
 
-## Copyright and license
+## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma)
 
 Code copyright 2020 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
 
