@@ -2,6 +2,7 @@
 
 Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes).
 
+![Github](https://img.shields.io/github/v/release/jgthms/bulma)
 [![npm](https://img.shields.io/npm/v/bulma.svg)][npm-link]
 [![npm](https://img.shields.io/npm/dm/bulma.svg)][npm-link]
 [![](https://data.jsdelivr.com/v1/package/npm/bulma/badge)](https://www.jsdelivr.com/package/npm/bulma)
