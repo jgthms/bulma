@@ -371,7 +371,7 @@ $bulma_used_vars: ()
       $value: str-replace($value, " ", "")
       @if str-index($value, "hsla(") == 1
         $value: str-slice($value, 6, -2)
-        //Remove hsla() part
+        // Remove hsla() part
         $parts: str-split($value, ',')
 
         $_: __register((#{$name}-h: nth($parts, 1), #{$name}-s: nth($parts, 2), #{$name}-l: nth($parts, 3), #{$name}-a: nth($parts, 4)))
@@ -395,7 +395,8 @@ $bulma_used_vars: ()
 
 @function v($name)
   @if $themeable
-    $value: getRegistered($name) // Make sure to let the compiler know we used this variable and all it's parents
+    // Make sure to let the compiler know we used this variable and all it's parents
+    $value: getRegistered($name)
     @if $value
       @return var(varName($name))
 
