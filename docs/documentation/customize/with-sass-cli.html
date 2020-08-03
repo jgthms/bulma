@@ -105,6 +105,16 @@ sass --watch --sourcemap=none sass/mystyles.scss:css/mystyles.css
   {% highlight bash %}{{ watch_sass }}{% endhighlight %}
 {% endcapture %}
 
+{% capture step_7 %}
+<div class="content">
+  If you are building with the themeable version, you might want to process the output css with <code>postcss
+  -cli</code> and the plugin <code>postcss-var-optimize</code> that you can install with <code>yarn</code> or <code>
+  npm</code> as it will severely decrease the size of the generated css by converting css variables you don't need
+  back to their original value
+  {% highlight bash %}postcss --use postcss-var-optimize --output css/mystyles.css css/mystyles.css{% endhighlight %}
+</div>
+{% endcapture %}
+
 {% include components/step.html
   title='1. Install Sass'
   content=step_1
@@ -143,4 +153,11 @@ sass --watch --sourcemap=none sass/mystyles.scss:css/mystyles.css
 
 {% include steps/add-custom-styles.html
   number="6"
+%}
+
+<hr>
+
+{% include components/step.html
+title='7. Css optimization'
+content=step_7
 %}

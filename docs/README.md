@@ -5,6 +5,8 @@ The documentation HTML is produced with the Ruby-based `jekyll` tool.
 1. Make sure Ruby 2.x is installed.
 2. `gem install jekyll` if `jekyll` is not already installed.
 
+Or you can also run `sudo apt-get get install jekyll` if available for your distribution
+
 > **Note**: If you are an ```Ubuntu user```, make sure ruby2.x-dev is installed.
 
 ## Viewing the documentation locally

@@ -497,4 +497,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return this.filter(function(i) {return a.indexOf(i) < 0;});
   };
 
+  document.querySelectorAll('[data-toggle-theme]').forEach((el) => {
+    el.addEventListener('click', function (event) {
+      event.preventDefault()
+      const prevTheme = document.documentElement.dataset.theme || ""
+      document.documentElement.dataset.theme = this.dataset.toggleTheme;
+      this.dataset.toggleTheme = prevTheme;
+    })
+  });
 });

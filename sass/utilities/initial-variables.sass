@@ -1,34 +1,69 @@
+// Flags
+$variable-columns: true !default
+$fullhd-enabled: true !default
+$widescreen-enabled: true !default
+$themeable: false !default // Whether to output css vars or not
+$shorten: true !default // Whether to shorten css vars
+$rtl: false !default // Whether to compile rtl or ltr
+
 // Colors
+$black: hsl(0, 0%, 4%) !default
+$black-bis: hsl(0, 0%, 7%) !default
+$black-ter: hsl(0, 0%, 14%) !default
 
-$black:        hsl(0, 0%, 4%) !default
-$black-bis:    hsl(0, 0%, 7%) !default
-$black-ter:    hsl(0, 0%, 14%) !default
++register("black", $black, true)
++register("black-bis", $black-bis, true)
++register("black-ter", $black-ter, true)
 
-$grey-darker:  hsl(0, 0%, 21%) !default
-$grey-dark:    hsl(0, 0%, 29%) !default
-$grey:         hsl(0, 0%, 48%) !default
-$grey-light:   hsl(0, 0%, 71%) !default
+$grey-darker: hsl(0, 0%, 21%) !default
+$grey-dark: hsl(0, 0%, 29%) !default
+$grey: hsl(0, 0%, 48%) !default
+$grey-light: hsl(0, 0%, 71%) !default
 $grey-lighter: hsl(0, 0%, 86%) !default
 $grey-lightest: hsl(0, 0%, 93%) !default
 
-$white-ter:    hsl(0, 0%, 96%) !default
-$white-bis:    hsl(0, 0%, 98%) !default
-$white:        hsl(0, 0%, 100%) !default
++register("grey-lighter", $grey-lighter, true)
++register("grey-light", $grey-light, true)
++register("grey-lightest", $grey-lightest, true)
++register("grey-dark", $grey-dark, true)
++register("grey", $grey, true)
++register("grey-darker", $grey-darker, true)
 
-$orange:       hsl(14,  100%, 53%) !default
-$yellow:       hsl(48,  100%, 67%) !default
-$green:        hsl(141, 53%,  53%) !default
-$turquoise:    hsl(171, 100%, 41%) !default
-$cyan:         hsl(204, 71%,  53%) !default
-$blue:         hsl(217, 71%,  53%) !default
-$purple:       hsl(271, 100%, 71%) !default
-$red:          hsl(348, 86%, 61%) !default
+$white-ter: hsl(0, 0%, 96%) !default
+$white-bis: hsl(0, 0%, 98%) !default
+$white: hsl(0, 0%, 100%) !default
+
++register("white-ter", $white-ter, true)
++register("white", $white, true)
++register("white-bis", $white-bis, true)
+
+$orange: hsl(14, 100%, 53%) !default
+$yellow: hsl(48, 100%, 67%) !default
+$green: hsl(141, 53%, 53%) !default
+$turquoise: hsl(171, 100%, 41%) !default
+$cyan: hsl(204, 71%, 53%) !default
+$blue: hsl(217, 71%, 53%) !default
+$purple: hsl(271, 100%, 71%) !default
+$red: hsl(348, 86%, 61%) !default
+
++register("orange", $orange, true)
++register("yellow", $yellow, true)
++register("green", $green, true)
++register("turquoise", $turquoise, true)
++register("cyan", $cyan, true)
++register("blue", $blue, true)
++register("purple", $purple, true)
++register("red", $red, true)
 
 // Typography
 
 $family-sans-serif: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
 $family-monospace: monospace !default
 $render-mode: optimizeLegibility !default
+
++register(family-sans-serif, $family-sans-serif, true)
++register(family-monospace, $family-monospace, true)
++register(render-mode, $render-mode, true)
 
 $size-1: 3rem !default
 $size-2: 2.5rem !default
@@ -38,18 +73,35 @@ $size-5: 1.25rem !default
 $size-6: 1rem !default
 $size-7: 0.75rem !default
 
++register(size-1, $size-1, true)
++register(size-2, $size-2, true)
++register(size-3, $size-3, true)
++register(size-4, $size-4, true)
++register(size-5, $size-5, true)
++register(size-6, $size-6, true)
++register(size-7, $size-7, true)
+
+
 $weight-light: 300 !default
 $weight-normal: 400 !default
 $weight-medium: 500 !default
 $weight-semibold: 600 !default
 $weight-bold: 700 !default
 
++register(weight-light, $weight-light, true)
++register(weight-normal, $weight-normal, true)
++register(weight-medium, $weight-medium, true)
++register(weight-semibold, $weight-semibold, true)
++register(weight-bold, $weight-bold, true)
+
 // Spacing
 
 $block-spacing: 1.5rem !default
 
-// Responsiveness
++register(block-spacing, $block-spacing, true)
 
+// Responsiveness
+// Calc and variables for media queries are supported only since 2018 so don't use variables yet
 // The container horizontal gap, which acts as the offset for breakpoints
 $gap: 32px !default
 // 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
@@ -58,10 +110,9 @@ $tablet: 769px !default
 $desktop: 960px + (2 * $gap) !default
 // 1152px container + 4rem
 $widescreen: 1152px + (2 * $gap) !default
-$widescreen-enabled: true !default
 // 1344px container + 4rem
 $fullhd: 1344px + (2 * $gap) !default
-$fullhd-enabled: true !default
+
 
 // Miscellaneous
 
@@ -72,7 +123,9 @@ $radius-large: 6px !default
 $radius-rounded: 290486px !default
 $speed: 86ms !default
 
-// Flags
-
-$variable-columns: true !default
-$rtl: false !default
++register(easing, $easing, true)
++register(radius-small, $radius-small, true)
++register(radius, $radius, true)
++register(radius-large, $radius-large, true)
++register(radius-rounded, $radius-rounded, true)
++register(speed, $speed, true)

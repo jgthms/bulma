@@ -61,10 +61,64 @@
       $value: $value / $number
   @return $value
 
+
+///
+/// Casts a string into a number
+///
+/// @param {String | Number} $value - Value to be parsed
+///
+/// @return {Number}
+///
+@function to-number($value)
+  @if type-of($value) == 'number'
+    @return $value
+  @else if type-of($value) != 'string'
+    @warn 'Value for `to-number` should be a number or a string.'
+
+  $result: 0
+  $digits: 0
+  $minus: str-slice($value, 1, 1) == '-'
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9)
+  @for $i from if($minus, 2, 1) through str-length($value)
+    $character: str-slice($value, $i, $i)
+
+    @if not (map-get($numbers, $character) or $character == '.')
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+
+
+    @if $character == '.'
+      $digits: 1
+    @else if $digits == 0
+      $result: $result * 10 + map-get($numbers, $character)
+    @else
+      $digits: $digits * 10
+      $result: $result + map-get($numbers, $character) / $digits
+
+
+  @return if($minus, -$result, $result)
+
+
+///
+/// Add `$unit` to `$value`
+///
+/// @param {Number} $value - Value to add unit to
+/// @param {String} $unit - String representation of the unit
+///
+/// @return {Number} - `$value` expressed in `$unit`
+///
+@function to-length($value, $unit)
+  $units: ('deg': 1deg, 'px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax)
+
+  @if not map-get($units, $unit)
+    @error 'Invalid unit `#{$unit}`.'
+
+  @return $value * map-get($units, $unit)
+
+
 @function colorLuminance($color)
   @if type-of($color) != 'color'
     @return 0.55
-  $color-rgb: ('red': red($color),'green': green($color),'blue': blue($color))
+  $color-rgb: ('red': red($color), 'green': green($color), 'blue': blue($color))
   @each $name, $value in $color-rgb
     $adjusted: 0
     $value: $value / 255
@@ -77,27 +131,40 @@
   @return (map-get($color-rgb, 'red') * .2126) + (map-get($color-rgb, 'green') * .7152) + (map-get($color-rgb, 'blue') * .0722)
 
 @function findColorInvert($color)
-  @if (colorLuminance($color) > 0.55)
-    @return rgba(#000, 0.7)
-  @else
-    @return #fff
+  @if (type_of($color) == "string")
+    $color: getRegistered($color)
+
+  @if type-of($color) == 'color'
+    @if (colorLuminance($color) > 0.55)
+      @return bulmaRgba(#000, 0.7)
+    @else
+      @return #fff
+
+  @return #fff
 
 @function findLightColor($color)
+  @if (type_of($color) == "string")
+    $color: getRegistered($color)
+
   @if type-of($color) == 'color'
     $l: 96%
     @if lightness($color) > 96%
       $l: lightness($color)
     @return change-color($color, $lightness: $l)
-  @return $background
+
+  @return $light
 
 @function findDarkColor($color)
+  @if (type_of($color) == "string")
+    $color: getRegistered($color)
+
   @if type-of($color) == 'color'
     $base-l: 29%
     $luminance: colorLuminance($color)
     $luminance-delta: (0.53 - $luminance)
     $target-l: round($base-l + ($luminance-delta * 53))
     @return change-color($color, $lightness: max($base-l, $target-l))
-  @return $text-strong
+  @return $dark
 
 @function bulmaRgba($color, $alpha)
   @if type-of($color) != 'color'
@@ -107,9 +174,315 @@
 @function bulmaDarken($color, $amount)
   @if type-of($color) != 'color'
     @return $color
-  @return darken($color, $amount)
+  @if $amount > 0
+    @return darken($color, $amount)
+  @else
+    @return lighten($color, -$amount)
 
 @function bulmaLighten($color, $amount)
   @if type-of($color) != 'color'
     @return $color
   @return lighten($color, $amount)
+
+@function str-replace($string, $search, $replace: '')
+  $index: str-index($string, $search)
+
+  @if $index
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+  @return $string
+
+// Finds every substring between $prefix and $ŝuffix
+// @return {List}
+@function str-match($string, $prefix, $suffix)
+  // empty array/list
+  $match-arr: ()
+  // first index of separator in string
+  $index: str-index($string, $prefix)
+  $index-end: str-index($string, $suffix)
+  // loop through string
+  @while $index != null and $index-end != null
+
+    // get the substring from the first character to the separator
+    $item: str-slice($string, $index + str-length($prefix), $index-end - 1)
+    // push item to array
+    $match-arr: append($match-arr, $item)
+    // remove item and separator from string
+    $string: str-slice($string, $index-end + str-length($suffix))
+    // find new index of separator
+    $index: str-index($string, $prefix)
+    $index-end: str-index($string, $suffix)
+
+  @return $match-arr
+
+@function str-split($string, $separator)
+  // empty array/list
+  $split-arr: ()
+  // first index of separator in string
+  $index: str-index($string, $separator)
+  // loop through string
+  @while $index != null
+    // get the substring from the first character to the separator
+    $item: str-slice($string, 1, $index - 1)
+    // push item to array
+    $split-arr: append($split-arr, $item)
+    // remove item and separator from string
+    $string: str-slice($string, $index + str-length($separator))
+    // find new index of separator
+    $index: str-index($string, $separator)
+
+  // add the remaining string to list (the last item)
+  $split-arr: append($split-arr, $string)
+
+  @return $split-arr
+
+$hash_map: () !default
+
+// This converts a variable name to it's shorthand version for output
+@function shorten-var($string)
+  @if $shorten
+    @if map_get($hash_map, $string)
+      @warn $string + " is already shortened"
+      @return $string
+
+    $short: $string
+    @each $find, $replace in ("background": "bg", "invert": "inv", "scheme": "sch", "text": "txt", "large": "lg", "disabled": "dsbl", "current": "cur", "toggle": "tgl", "border": "bd", "margin": "m", "padding": "p", "color": "clr", "size": "s", "button": "bt", "warning": "warn", "danger": "dang", "success": "sucs", "primary": "prim", "dimensions": "dim", "content": "ct", "heading": "hdg", "header": "hd", "footer": "ft", "notification": "noti", "progress": "prg", "dropdown": "drp", "divider": "dvd", "item": "itm", "hover": "hov", "focus": "foc", "active": "act", "message": "msg", "pagination": "pag", "control": "ctrl", "breadcrumb": "bread", "navbar": "nav", "panel": "pnl", "section": "sct")
+      $short: str-replace($short, $find, $replace)
+    //@each $letter in (e, i, u, y)
+    //  $short: str-replace($short, $letter, '')
+
+    @if $short != $string and not map_get($hash_map, $short)
+      $hash_map: map_merge($hash_map, ($short: $string)) !global
+    $string: $short
+  @return $string
+
+// This retrieves the variable name from it's shorthand version
+// shorten-var must have been called at least once before on the unshortened name
+@function unshorten-var($string)
+  @if $shorten
+    $res: map_get($hash_map, $string)
+    @if $res
+      @return $res
+  @return $string
+
+// Removes the unit of a number
+@function strip-unit($number)
+  @if type-of($number) == 'number' and not unitless($number)
+    @return $number / ($number * 0 + 1)
+
+  @return $number
+
+// Pluggables for theming
+
+// If set only the list of those variables will be converted to css vars
+$css_vars: null !default
+// If set this list of variables will not be converted to css vars
+$exclude: () !default 
+
+// Variables used internally only
+
+// This can be set to provide a map of preregistered var
+$bulma_default_vars: () !default
+$bulma_registered_vars: $bulma_default_vars
+$bulma_used_vars: ()
+
+@function isRegistered($name)
+  @return map_get($bulma_registered_vars, $name) != null
+
+@function isVColor($name)
+  @return map_get($bulma_registered_vars, $name+"-h") != null
+
+@function getThemeable($name)
+  @if not isThemeable($name)
+    $value: map_get($bulma_registered_vars, $name)
+    @if type-of($value) != "string"
+      @return null
+    $parts: str-match($value, "var(--blm-", ")")
+    @if length($parts) == 0
+      @return null
+    $map: ()
+    @each $match in $parts
+      $match: unshorten-var($match)
+      $themeable: getThemeable($match)
+      @if $themeable == null
+        $themeable: getRegistered($match)
+      @if $themeable != null
+        $value: str-replace($value, var(varName($match)), $themeable)
+    @return $value
+  @else
+    @if not index($bulma_used_vars, $name)
+      $bulma_used_vars: append($bulma_used_vars, $name) !global
+  @return var(varName($name))
+
+@function isThemeable($name)
+  @return $themeable and not index($exclude, $name) and ($css_vars == null or index($css_vars, $name) != null)
+
+@function getRegistered($name: null)
+  $value: $name
+  @if $name != null
+
+    @if str-index($name, "var(--blm-") != null
+      $parts: str-match($name, "var(--blm-", ")")
+      // This will not get the correct value if there is a calc
+      // but since it's only used to check the type or to tree shake the used variables
+      // it's good enough for now
+      @each $match in $parts
+        $value: getRegistered(unshorten-var($match))
+
+      @return $value
+
+    $value: map_get($bulma_registered_vars, $name)
+
+    @if not index($bulma_used_vars, $name)
+      $bulma_used_vars: append($bulma_used_vars, $name) !global
+
+    @if $themeable and type-of($value) == "string"
+      $value: str-replace($value, " ", "")
+      @if str-index($value, "hsla(") == 1
+        $value: str-slice($value, 6, -2)
+        //Remove hsla() part
+        $parts: str-split($value, ',')
+
+        $h: to-number(getRegistered(nth($parts, 1)))
+        $s: to-number(getRegistered(nth($parts, 2)))
+        $l: to-number(getRegistered(nth($parts, 3)))
+        $a: to-number(getRegistered(nth($parts, 4)))
+
+        $value: hsla($h, $s, $l, $a)
+      @else if str-index($value, "var(--blm-") != null
+        $value: getRegistered($value)
+
+    @return $value
+  @return $bulma_registered_vars
+
+@function __register($values)
+  $bulma_registered_vars: map-merge($bulma_registered_vars, $values) !global
+
+  @if function-exists(_register)
+    @each $name, $value in $values
+      $value: _register($name, $value)
+
+  @return null
+
+@function register($name, $value, $default: false)
+  @if $themeable
+    @if $default and isRegistered($name)
+      @return $name
+
+    $_: shorten-var($name)
+    @if type-of($value) == "color"
+      $_: __register((#{$name}-h: round(strip-unit(hue($value))), #{$name}-s: round(saturation($value)), #{$name}-l: round(lightness($value)), #{$name}-a: round(opacity($value) * 100) / 100))
+    @else if type-of($value) == "string"
+      $value: str-replace($value, " ", "")
+      @if str-index($value, "hsla(") == 1
+        $value: str-slice($value, 6, -2)
+        // Remove hsla() part
+        $parts: str-split($value, ',')
+
+        $_: __register((#{$name}-h: nth($parts, 1), #{$name}-s: nth($parts, 2), #{$name}-l: nth($parts, 3), #{$name}-a: nth($parts, 4)))
+      @else if str-index($value, "var(--blm-") == 1
+        $var: unshorten-var(str-slice($value, 11, -2))
+        @if isVColor($var)
+          $_: __register((#{$name}-h: var(varName($var+"-h")), #{$name}-s: var(varName($var+"-s")), #{$name}-l: var(varName($var+"-l")), #{$name}-a: var(varName($var+"-a"))))
+
+  @if isRegistered($name+"-h")
+    $_: __register((#{$name}: unquote("hsla(#{var(varName($name+"-h"))}, #{var(varName($name+"-s"))}, #{var(varName($name+"-l"))}, #{var(varName($name+"-a"))})")))
+  @else
+    $_: __register(($name: $value))
+
+  @return $value
+
+=register($name, $value, $default: false)
+  $_: register($name, $value, $default)
+
+@function varName($name)
+  @return --blm-#{shorten-var($name)}
+
+@function v($name)
+  @if $themeable
+    // Make sure to let the compiler know we used this variable and all it's parents
+    $value: getRegistered($name)
+    @if $value
+      @return var(varName($name))
+
+    @warn $name + " was not registered before use"
+    @return null
+
+  $val: getThemeable($name)
+  @if $val
+    @return $val
+  @else
+    $value: getRegistered($name)
+    @if $value == null
+      @warn $name + " was not registered before use"
+    @return $value
+
+@function vDarken($name, $amount)
+  @return vAdjust($name, $lightness: -$amount)
+
+@function vLighten($name, $amount)
+  @return vDarken($name, -$amount)
+
+@function vSaturate($name, $amount)
+  @return vAdjust($name, $saturation: $amount)
+
+@function vAlpha($name, $amount)
+  @return vAdjust($name, $alpha: $amount)
+
+@function vAlphaChange($name, $amount)
+  @return vChange($name, $alpha: $amount)
+
+@function maybeCalc($value, $increment)
+  $no_u: strip-unit($increment)
+  @if $no_u != 0
+    @if $no_u > 0
+      @return calc(#{$value} + #{$increment})
+    @else
+      @return calc(#{$value} - #{-$increment})
+  @else
+    @return $value
+
+
+@function maybeCalcMult($value, $multiply)
+  @if $multiply != 1
+    @return calc(#{$value} * #{$multiply})
+  @else
+    @return $value
+
+@function vAdjust($name, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1)
+  @if getThemeable($name)
+    @return hsla(maybeCalc(v(#{$name}-h), strip-unit($hue)), maybeCalc(v(#{$name}-s), $saturation), maybeCalc(v(#{$name}-l), $lightness), maybeCalcMult(v(#{$name}-a), $alpha))
+  @else
+    $color: getRegistered($name)
+    @if type_of($color) != "color"
+      @warn $name + " is not a color"
+      @debug $color
+      @return $color
+
+    @if (unit($alpha) == '')
+      $alpha: (1 - $alpha) * -100 + 0%
+
+    @return scale_color(adjust_color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness), $alpha: $alpha)
+
+@function vChange($name, $hue: null, $saturation: null, $lightness: null, $alpha: null)
+  @if getThemeable($name)
+    @if $hue == null
+      $hue: v($name+"-h")
+    @else
+      $hue: strip-unit($hue)
+    @if $saturation == null
+      $saturation: v($name+"-s")
+    @if $lightness == null
+      $lightness: v($name+"-l")
+    @if $alpha == null
+      $alpha: v($name+"-a")
+
+    @return unquote("hsla(#{$hue}, #{$saturation}, #{$lightness}, #{$alpha})")
+  @else
+    $color: getRegistered($name)
+    @if type_of($color) != "color"
+      @debug $color
+      @warn $name + " is not a color"
+      @return $color
+
+    @return change_color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness, $alpha: $alpha)
+

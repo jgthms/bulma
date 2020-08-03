@@ -1,31 +1,34 @@
-$label-color: $text-strong !default
-$label-weight: $weight-bold !default
+$label-color: v("text-strong") !default
+$label-weight: v("weight-bold") !default
 
-$help-size: $size-small !default
+$help-size: v("size-small") !default
+
++register(label-color, $label-color, true)
++register(label-weight, $label-weight, true)
++register(help-size, $help-size, true)
 
 .label
-  color: $label-color
+  color: v("label-color")
   display: block
-  font-size: $size-normal
-  font-weight: $label-weight
+  font-size: v("size-normal")
+  font-weight: v("label-weight")
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: v("size-small")
   &.is-medium
-    font-size: $size-medium
+    font-size: v("size-medium")
   &.is-large
-    font-size: $size-large
+    font-size: v("size-large")
 
 .help
   display: block
-  font-size: $help-size
+  font-size: v("help-size")
   margin-top: 0.25rem
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
+  @each $name in $colors-list
     &.is-#{$name}
-      color: $color
+      color: v($name)
 
 // Containers
 
@@ -38,7 +41,7 @@ $help-size: $size-small !default
     justify-content: flex-start
     .control
       &:not(:last-child)
-        +ltr-property("margin", -1px)
+        +ltr-property("margin-right", -1px)
       &:not(:first-child):not(:last-child)
         .button,
         .input,
@@ -96,7 +99,7 @@ $help-size: $size-small !default
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
-        +ltr-property("margin", 0.75rem)
+        +ltr-property("margin-right", 0.75rem)
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
@@ -127,18 +130,18 @@ $help-size: $size-small !default
     flex-basis: 0
     flex-grow: 1
     flex-shrink: 0
-    +ltr-property("margin", 1.5rem)
+    +ltr-property("margin-right", 1.5rem)
     text-align: right
     &.is-small
-      font-size: $size-small
+      font-size: v("size-small")
       padding-top: 0.375em
     &.is-normal
       padding-top: 0.375em
     &.is-medium
-      font-size: $size-medium
+      font-size: v("size-medium")
       padding-top: 0.375em
     &.is-large
-      font-size: $size-large
+      font-size: v("size-large")
       padding-top: 0.375em
 
 .field-body
@@ -156,12 +159,12 @@ $help-size: $size-small !default
       &:not(.is-narrow)
         flex-grow: 1
       &:not(:last-child)
-        +ltr-property("margin", 0.75rem)
+        +ltr-property("margin-right", 0.75rem)
 
 .control
   box-sizing: border-box
   clear: both
-  font-size: $size-normal
+  font-size: v("size-normal")
   position: relative
   text-align: inherit
   // Modifiers
@@ -171,43 +174,43 @@ $help-size: $size-small !default
     .select
       &:focus
         & ~ .icon
-          color: $input-icon-active-color
+          color: v("input-icon-active-color")
       &.is-small ~ .icon
-        font-size: $size-small
+        font-size: v("size-small")
       &.is-medium ~ .icon
-        font-size: $size-medium
+        font-size: v("size-medium")
       &.is-large ~ .icon
-        font-size: $size-large
+        font-size: v("size-large")
     .icon
-      color: $input-icon-color
-      height: $input-height
+      color: v("input-icon-color")
+      height: v("input-height")
       pointer-events: none
       position: absolute
       top: 0
-      width: $input-height
+      width: v("input-height")
       z-index: 4
   &.has-icons-left
     .input,
     .select select
-      padding-left: $input-height
+      padding-left: v("input-height")
     .icon.is-left
       left: 0
   &.has-icons-right
     .input,
     .select select
-      padding-right: $input-height
+      padding-right: v("input-height")
     .icon.is-right
       right: 0
   &.is-loading
     &::after
       @extend %loader
       position: absolute !important
-      +ltr-position(0.625em)
+      +ltr-property("right", 0.625em)
       top: 0.625em
       z-index: 4
     &.is-small:after
-      font-size: $size-small
+      font-size: v("size-small")
     &.is-medium:after
-      font-size: $size-medium
+      font-size: v("size-medium")
     &.is-large:after
-      font-size: $size-large
+      font-size: v("size-large")

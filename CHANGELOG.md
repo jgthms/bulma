@@ -1,5 +1,60 @@
 # Bulma Changelog
 
+## [Unreleased]
+
+### CSS Vars and theme support
+
+Bulma now has **CSS variables support**
+
+By setting the Sass flag `$themeable` to `true`, you can create a version of Bulma where almost all sass variables become css variables
+
+There is also a new build script that can take care of the compression and `$rtl` and `$themeable` flags for you
+
+Usage: `bulma-build-css sass-entry-file.sass output.css [--themeable [--full]] [--rtl] [--watch] [--min] [--map]`
+
+Flags:
+- `themeable`: Enables the use of the new css variables library
+- `full`: Will output all of the css variables, for theming outside of sass, this flag is only recommended while creating a theme and is not recommended to be used in production, if it's omitted only the variables reregistered in the theme mixins will be converted to css variables 
+- `rtl`: Builds the rtl version of bulma
+- `min`: Builds the minified file as well
+- `map`: Builds the map file as well
+- `watch`: Builds and watch for file change to recompile
+
+You can also compile a theme without the build script, just don't forget to use the `postcss-var-optimize` plugin
+
+A `theme` mixin was added, it should be used with the `$themeable` flag set to true, you can then reregister variables in it and output custom rules that will be applied only to elements under a `[data-theme="name"]`
+
+Functions:
+- `register($name, $value, $default)`: registers a variable that can be used as a css variable, the `$default` parameter works the same as the !default flag when setting a variable in sass, also available as a mixin
+- `v($name)`: output a registered css variable
+- `vDarken/vLighten/vSaturate/vAlpha/vAlphaChange($name, 10%)`: Adjusts the corresponding value of a registered variable
+- `vAdjust/vChange($name, $hue, $saturation, $lightness, $alpha)`: Adjusts/Replace the corresponding value of a registered variable
+
+A simple dark theme of bulma has been included in `bulma-dark.sass`
+
+Usage:
+```sass
+$themeable: true !default
+@import "bulma.sass"
+
++theme("default")
+
++theme("dark")
+    @import "bulma-dark.sass"
+    .some-override
+      color: v("white")
+```
+Compile it using `bulma-build-css your-file.sass your-output.css --themeable --min`
+
+You can then add the property [data-theme="dark"] to the `<html>` element and watch the theme become dark in real time
+
+### Deprecation warning
+- The use of sass variables is therefore deprecated for customizing bulma (but it will still work) and the `+register("color", #fff)` mixin should be used instead when creating a theme
+- `$colors,$custom-colors`: this map of colors was deprecated, it was replaced with a list of color names under the variable `$colors-list`
+- `$shades`: this map of (name: values) was changed to a list of names only, if you were using it, make sure to modify your code accordingly
+- `+ltr-property`: the third parameter was deprecated in favor of using the full name of the property as a first parameter
+- `+ltr-position`: use `+ltr-property` instead
+
 ## 0.9.0
 
 ### Deprecation warning

@@ -1,6 +1,10 @@
-$media-border-color: bulmaRgba($border, 0.5) !default
+$media-border-color: vAlphaChange("border", 0.5) !default
 $media-spacing: 1rem
 $media-spacing-large: 1.5rem
+
++register(media-border-color, $media-border-color, true)
++register(media-spacing, $media-spacing, true)
++register(media-spacing-large, $media-spacing-large, true)
 
 .media
   align-items: flex-start
@@ -9,7 +13,7 @@ $media-spacing-large: 1.5rem
   .content:not(:last-child)
     margin-bottom: 0.75rem
   .media
-    border-top: 1px solid $media-border-color
+    border-top: 1px solid v("media-border-color")
     display: flex
     padding-top: 0.75rem
     .content:not(:last-child),
@@ -20,14 +24,14 @@ $media-spacing-large: 1.5rem
       & + .media
         margin-top: 0.5rem
   & + .media
-    border-top: 1px solid $media-border-color
-    margin-top: $media-spacing
-    padding-top: $media-spacing
+    border-top: 1px solid v("media-border-color")
+    margin-top: v("media-spacing")
+    padding-top: v("media-spacing")
   // Sizes
   &.is-large
     & + .media
-      margin-top: $media-spacing-large
-      padding-top: $media-spacing-large
+      margin-top: v("media-spacing-large")
+      padding-top: v("media-spacing-large")
 
 .media-left,
 .media-right
@@ -36,10 +40,10 @@ $media-spacing-large: 1.5rem
   flex-shrink: 0
 
 .media-left
-  +ltr-property("margin", $media-spacing)
+  +ltr-property("margin-right", v("media-spacing"))
 
 .media-right
-  +ltr-property("margin", $media-spacing, false)
+  +ltr-property("margin-left", v("media-spacing"))
 
 .media-content
   flex-basis: auto

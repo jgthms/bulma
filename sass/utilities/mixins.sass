@@ -37,9 +37,9 @@
     left: calc(50% - 8px)
     position: absolute
     transform-origin: center
-    transition-duration: $speed
+    transition-duration: v("speed")
     transition-property: background-color, opacity, transform
-    transition-timing-function: $easing
+    transition-timing-function: v("easing")
     width: 16px
     &:nth-child(1)
       top: calc(50% - 6px)
@@ -48,7 +48,7 @@
     &:nth-child(3)
       top: calc(50% + 4px)
   &:hover
-    background-color: bulmaRgba(black, 0.05)
+    background-color: vAlphaChange("scheme-invert", 0.05)
   // Modifers
   &.is-active
     span
@@ -136,21 +136,47 @@
   @if $rtl
     @content
 
-=ltr-property($property, $spacing, $right: true)
-  $normal: if($right, "right", "left")
-  $opposite: if($right, "left", "right")
-  @if $rtl
-    #{$property}-#{$opposite}: $spacing
+=ltr-property($property, $spacing, $deprecated: null)
+  @if $deprecated != null
+    $pos: "left"
+    @if $deprecated
+      $pos: "right"
+    @warn "The third argument of ltr-property was deprecated, use the full name of the property instead"
+    +ltr-property($property+"-"+$pos, $spacing)
   @else
-    #{$property}-#{$normal}: $spacing
+    @if $rtl
+      @if str-index($property, 'left')
+        #{str-replace($property, 'left', 'right')}: $spacing
+      @elseif str-index($property, 'right')
+        #{str-replace($property, 'right', 'left')}: $spacing
+      @else if str-index($property, 'border-radius')
+        @if type-of($spacing) == 'list'
+          @if length($spacing) == 2
+            #{$property}: nth($spacing, 2) nth($spacing, 1)
+          @elseif length($spacing) == 3
+            #{$property}: nth($spacing, 2) nth($spacing, 1) nth($spacing, 2) nth($spacing, 3)
+          @elseif length($spacing) == 4
+            #{$property}: nth($spacing, 2) nth($spacing, 1) nth($spacing, 4) nth($spacing, 3)
+          @else
+            @warn "Invalid usage of ltr-property"
+        @else
+          @warn "Invalid usage of ltr-property"
+      @elseif type-of($spacing) == 'list' and length($spacing) == 4
+          #{$property}: nth($spacing, 1) nth($spacing, 4) nth($spacing, 3) nth($spacing, 2)
+      @else
+        +ltr-property($property, $spacing, true) //Warn of deprecated use
+    @else
+      @if not str-index($property, 'left') and not str-index($property, 'right') and type-of($spacing) != 'list'
+        +ltr-property($property, $spacing, true) //Warn of deprecated use
+      @else
+        #{$property}: $spacing
 
 =ltr-position($spacing, $right: true)
-  $normal: if($right, "right", "left")
-  $opposite: if($right, "left", "right")
-  @if $rtl
-    #{$opposite}: $spacing
+  @warn "ltr-position was deprecated, use ltr-property with left of right as first parameter instead"
+  @if $right
+    +ltr-property("right", $spacing)
   @else
-    #{$normal}: $spacing
+    +ltr-property("left", $spacing)
 
 // Placeholders
 
@@ -194,9 +220,9 @@
   @extend %unselectable
   -moz-appearance: none
   -webkit-appearance: none
-  background-color: bulmaRgba($scheme-invert, 0.2)
+  background-color: vAlpha("scheme-invert", 0.2)
   border: none
-  border-radius: $radius-rounded
+  border-radius: v("radius-rounded")
   cursor: pointer
   pointer-events: auto
   display: inline-block
@@ -214,7 +240,7 @@
   width: 20px
   &::before,
   &::after
-    background-color: $scheme-main
+    background-color: v("scheme-main")
     content: ""
     display: block
     left: 50%
@@ -230,9 +256,9 @@
     width: 2px
   &:hover,
   &:focus
-    background-color: bulmaRgba($scheme-invert, 0.3)
+    background-color: vAlpha("scheme-invert", 0.3)
   &:active
-    background-color: bulmaRgba($scheme-invert, 0.4)
+    background-color: vAlpha("scheme-invert", 0.4)
   // Sizes
   &.is-small
     height: 16px
@@ -261,8 +287,8 @@
 
 =loader
   animation: spinAround 500ms infinite linear
-  border: 2px solid $grey-lighter
-  border-radius: $radius-rounded
+  border: 2px solid v("grey-lighter")
+  border-radius: v("radius-rounded")
   border-right-color: transparent
   border-top-color: transparent
   content: ""
@@ -283,3 +309,42 @@
 
 %overlay
   +overlay
+
+
+=defineVariable($var, $value)
+  #{varName($var)}: #{$value}
+
+// Wrapper to output a css theme, the $all flag will output all of the variables even if they are not used, which can be useful if you want to output a theme without bulma
+=theme($name, $all: false)
+  @if $themeable
+
+    @if function-exists("_theme")
+      $name: _theme($name)
+
+    @if $name == "default"
+
+      [data-theme], :root
+        @content
+
+        $vars: $bulma_used_vars
+        @if $all
+          $vars: map_keys($bulma_registered_vars)
+
+        @each $name in $vars
+          @if isThemeable($name)
+            +defineVariable($name, map_get($bulma_registered_vars, $name))
+    @else
+      $registered: $bulma_registered_vars
+      $selector: unquote("[data-theme=#{$name}]")
+
+      @at-root #{$selector}
+        @content
+
+      $vars: $bulma_used_vars
+      @if $all
+        $vars: map_keys($bulma_registered_vars)
+
+      #{$selector}
+        @each $var in $vars
+          @if map_get($bulma_registered_vars, $var) != map_get($registered, $var)
+            +defineVariable($var, map_get($bulma_registered_vars, $var))

@@ -28,23 +28,29 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.0",
-    "clean-css-cli": "^4.3.0",
+    "clean-css": "^4.2.3",
     "node-sass": "^4.14.1",
-    "postcss-cli": "^7.1.1",
+    "postcss": "^7.0.32",
+    "postcss-calc": "^7.0.2",
+    "postcss-var-optimize": "^0.0.4",
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "build": "npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
-    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
-    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
-    "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
-    "clean": "rimraf css",
-    "rtl": "npm run rtl-sass && npm run rtl-autoprefix && npm run rtl-cleancss",
-    "rtl-sass": "node-sass --output-style expanded --source-map true bulma-rtl.sass css/bulma-rtl.css",
-    "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css",
-    "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
-    "deploy": "npm run clean && npm run build && npm run rtl",
-    "start": "npm run build-sass -- --watch"
+    "build": "npm run build:clean && npm run build:sass && npm run build:rtl",
+    "build:clean": "rimraf css",
+    "build:sass": "node build.js bulma.sass css/bulma.css --map --min",
+    "build:sass-vars": "node build.js bulma.sass css/bulma.themeable.css --themeable --full --map --min",
+    "build:rtl": "node build.js bulma.sass css/bulma-rtl.css --rtl --map --min",
+    "test:theme": "node build.js test/sass/theme.sass test/output/theme.css bulma.sass --themeable",
+    "deploy": "npm run build",
+    "start": "npm run build:sass -- --watch",
+
+    "rtl": "echo 'The rtl script has been deprecated use build:rtl instead' && npm run build:rtl --",
+    "build-clean": "echo 'The build-clean script has been deprecated use build:clean instead' && npm run build:clean --",
+    "build-sass": "echo 'The build-sass script has been deprecated use build:sass instead' && npm run build:sass --"
+  },
+  "bin": {
+    "bulma-build-css": "./build.js"
   },
   "files": [
     "css",

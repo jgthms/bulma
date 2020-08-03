@@ -5,11 +5,17 @@ $container-offset: (2 * $gap) !default
   margin: 0 auto
   position: relative
   width: auto
+  +desktop
+    max-width: $desktop - $container-offset
+    &.is-fluid
+      margin-left: $gap
+      margin-right: $gap
+      max-width: none
   &.is-fluid
+    margin-left: $gap
+    margin-right: $gap
     max-width: none
-    padding-left: $gap
-    padding-right: $gap
-    width: 100%
+    width: auto
   +desktop
     max-width: $desktop - $container-offset
   +until-widescreen
@@ -22,3 +28,4 @@ $container-offset: (2 * $gap) !default
     max-width: $widescreen - $container-offset
   +fullhd
     max-width: $fullhd - $container-offset
+

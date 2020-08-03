@@ -1,30 +1,36 @@
-$control-radius: $radius !default
-$control-radius-small: $radius-small !default
+$control-radius: v("radius") !default
+$control-radius-small: v("radius-small") !default
 
 $control-border-width: 1px !default
+
++register(control-border-width,$control-border-width, true)
 
 $control-height: 2.5em !default
 $control-line-height: 1.5 !default
 
-$control-padding-vertical: calc(0.5em - #{$control-border-width}) !default
-$control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
+$control-padding-vertical: calc(0.5em - #{v("control-border-width")}) !default
+$control-padding-horizontal: calc(0.75em - #{v("control-border-width")}) !default
+
++register(control-radius,$control-radius, true)
++register(control-radius-small,$control-radius-small, true)
++register(control-height,$control-height, true)
++register(control-line-height,$control-line-height, true)
++register(control-padding-vertical,$control-padding-vertical, true)
++register(control-padding-horizontal,$control-padding-horizontal, true)
 
 =control
   -moz-appearance: none
   -webkit-appearance: none
   align-items: center
-  border: $control-border-width solid transparent
-  border-radius: $control-radius
+  border: v("control-border-width") solid transparent
+  border-radius: v("control-radius")
   box-shadow: none
   display: inline-flex
-  font-size: $size-normal
-  height: $control-height
+  font-size: v("size-normal")
+  height: v("control-height")
   justify-content: flex-start
-  line-height: $control-line-height
-  padding-bottom: $control-padding-vertical
-  padding-left: $control-padding-horizontal
-  padding-right: $control-padding-horizontal
-  padding-top: $control-padding-vertical
+  line-height: v("control-line-height")
+  padding: v("control-padding-vertical") v("control-padding-horizontal")
   position: relative
   vertical-align: top
   // States
@@ -42,9 +48,9 @@ $control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
 
 // The controls sizes use mixins so they can be used at different breakpoints
 =control-small
-  border-radius: $control-radius-small
-  font-size: $size-small
+  border-radius: v("control-radius-small")
+  font-size: v("size-small")
 =control-medium
-  font-size: $size-medium
+  font-size: v("size-medium")
 =control-large
-  font-size: $size-large
+  font-size: v("size-large")

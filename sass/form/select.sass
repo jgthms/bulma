@@ -4,17 +4,17 @@
   position: relative
   vertical-align: top
   &:not(.is-multiple)
-    height: $input-height
+    height: v("input-height")
   &:not(.is-multiple):not(.is-loading)
     &::after
       @extend %arrow
-      border-color: $input-arrow
-      +ltr-position(1.125em)
+      border-color: v("input-arrow")
+      +ltr-property("right", 1.125em)
       z-index: 4
   &.is-rounded
     select
-      border-radius: $radius-rounded
-      +ltr-property("padding", 1em, false)
+      border-radius: v("radius-rounded")
+      +ltr-property("padding-left", 1em)
   select
     @extend %input
     cursor: pointer
@@ -26,9 +26,9 @@
       display: none
     &[disabled]:hover,
     fieldset[disabled] &:hover
-      border-color: $input-disabled-border-color
+      border-color: v("input-disabled-border-color")
     &:not([multiple])
-      +ltr-property("padding", 2.5em)
+      +ltr-property("padding-right", 2.5em)
     &[multiple]
       height: auto
       padding: 0
@@ -37,10 +37,10 @@
   // States
   &:not(.is-multiple):not(.is-loading):hover
     &::after
-      border-color: $input-hover-color
+      border-color: v("input-hover-color")
   // Colors
-  @each $name, $pair in $colors
-    $color: nth($pair, 1)
+  @each $name in $colors-list
+    $color: v($name)
     &.is-#{$name}
       &:not(:hover)::after
         border-color: $color
@@ -48,12 +48,12 @@
         border-color: $color
         &:hover,
         &.is-hovered
-          border-color: bulmaDarken($color, 5%)
+          border-color: vDarken($name,  5%)
         &:focus,
         &.is-focused,
         &:active,
         &.is-active
-          box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25)
+          box-shadow: v("input-focus-box-shadow-size") vAlphaChange($name, 0.25)
   // Sizes
   &.is-small
     +control-small
@@ -64,7 +64,7 @@
   // Modifiers
   &.is-disabled
     &::after
-      border-color: $input-disabled-color
+      border-color: v("input-disabled-color")
   &.is-fullwidth
     width: 100%
     select
@@ -74,12 +74,12 @@
       @extend %loader
       margin-top: 0
       position: absolute
-      +ltr-position(0.625em)
+      +ltr-property("right", 0.625em)
       top: 0.625em
       transform: none
     &.is-small:after
-      font-size: $size-small
+      font-size: v("size-small")
     &.is-medium:after
-      font-size: $size-medium
+      font-size: v("size-medium")
     &.is-large:after
-      font-size: $size-large
+      font-size: v("size-large")
