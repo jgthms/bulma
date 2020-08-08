@@ -5,6 +5,7 @@
 TEST_DIR=$(dirname $BASH_SOURCE)
 FILES=$TEST_DIR/sass/*
 CSS_DIR=$TEST_DIR/css
+CSS_FILES=$TEST_DIR/css/*.css
 SASS_OPTIONS=--sourcemap=none
 
 # FUNCTIONS
@@ -20,7 +21,7 @@ build_sass()
 		sass "$1" "${destFile}"
 }
 
-run_it()
+build_all_css_files()
 {
 	rm -r $CSS_DIR
 
@@ -40,6 +41,25 @@ run_it()
 	fi
 }
 
+check_keywords_inclusion()
+{
+	for f in $CSS_FILES
+	do
+		BASE=$(basename $f)
+		KEYWORDS_FILE=$TEST_DIR/keywords/$BASE.txt
+		while read p; do
+			if ! grep -q "$p" "$f"
+			then
+			#   echo "Ok"
+			# else
+			  echo "$p not found in $f"
+			fi
+	    # echo "Checking for $p "
+		done < $KEYWORDS_FILE
+	done
+}
+
 # EXECUTION
 
-run_it $@
+build_all_css_files $@
+check_keywords_inclusion $@
