@@ -1,0 +1,61 @@
+// Responsiveness
+
+=from($device)
+  @media screen and (min-width: $device)
+    @content
+
+=until($device)
+  @media screen and (max-width: $device - 1px)
+    @content
+
+=mobile
+  @media screen and (max-width: $tablet - 1px)
+    @content
+
+=tablet
+  @media screen and (min-width: $tablet), print
+    @content
+
+=tablet-only
+  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
+    @content
+
+=touch
+  @media screen and (max-width: $desktop - 1px)
+    @content
+
+=desktop
+  @media screen and (min-width: $desktop)
+    @content
+
+=desktop-only
+  @if $widescreen-enabled
+    @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+      @content
+
+=until-widescreen
+  @if $widescreen-enabled
+    @media screen and (max-width: $widescreen - 1px)
+      @content
+
+=widescreen
+  @if $widescreen-enabled
+    @media screen and (min-width: $widescreen)
+      @content
+
+=widescreen-only
+  @if $widescreen-enabled and $fullhd-enabled
+    @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+      @content
+
+=until-fullhd
+  @if $fullhd-enabled
+    @media screen and (max-width: $fullhd - 1px)
+      @content
+
+=fullhd
+  @if $fullhd-enabled
+    @media screen and (min-width: $fullhd)
+      @content
+
+
