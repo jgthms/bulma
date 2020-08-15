@@ -53,8 +53,11 @@ $message-colors: $colors !default
         $desaturate-percentage: $color-luminance * 30%
         $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
     @else
-      $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-      $color-light: lighten($color, $color-lightning)
+      @if type-of($color) == 'color'
+        $color-lightning: max((100% - lightness($color)) - 2%, 0%)
+        $color-light: lighten($color, $color-lightning)
+      @else
+        $color-light: $color
 
     &.is-#{$name}
       background-color: $color-light

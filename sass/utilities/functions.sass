@@ -76,31 +76,49 @@
     $color-rgb: map-merge($color-rgb, ($name: $value))
   @return (map-get($color-rgb, 'red') * .2126) + (map-get($color-rgb, 'green') * .7152) + (map-get($color-rgb, 'blue') * .0722)
 
-@function findColorInvert($color)
-  @if (colorLuminance($color) > 0.55)
-    @return rgba(#000, 0.7)
-  @else
-    @return #fff
+@function findColorInvert($color, $fallback: null)
+  @if type-of($color) == 'color'
+    @if (colorLuminance($color) > 0.55)
+      @return rgba(#000, 0.7)
+    @else
+      @return #fff
+  @else if type-of($fallback) == 'color'
+    @if (colorLuminance($fallback) > 0.55)
+      @return var(--black-70, rgba(#000, 0.7))
+    @else
+      @return var(--white, #fff)
+  @return $color
 
-@function findLightColor($color)
+@function findLightColor($color, $fallback: null)
   @if type-of($color) == 'color'
     $l: 96%
     @if lightness($color) > 96%
       $l: lightness($color)
     @return change-color($color, $lightness: $l)
-  @return $background
+  @else if type-of($fallback) == 'color'
+    $l: 96%
+    @if lightness($fallback) > 96%
+      $l: lightness($fallback)
+    @return change-color($fallback, $lightness: $l)
+  @return $color
 
-@function findDarkColor($color)
+@function calculateDarkColor($color)
+  $base-l: 29%
+  $luminance: colorLuminance($color)
+  $luminance-delta: (0.53 - $luminance)
+  $target-l: round($base-l + ($luminance-delta * 53))
+  @return change-color($color, $lightness: max($base-l, $target-l))
+
+@function findDarkColor($color, $fallback: null)
   @if type-of($color) == 'color'
-    $base-l: 29%
-    $luminance: colorLuminance($color)
-    $luminance-delta: (0.53 - $luminance)
-    $target-l: round($base-l + ($luminance-delta * 53))
-    @return change-color($color, $lightness: max($base-l, $target-l))
-  @return $text-strong
+    @return calculateDarkColor($color)
+  @else if type-of($fallback) == 'color'
+    @return calculateDarkColor($fallback)
+  @return $color
 
 @function bulmaRgba($color, $alpha)
   @if type-of($color) != 'color'
+    @debug $color
     @return $color
   @return rgba($color, $alpha)
 
