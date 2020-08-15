@@ -84,7 +84,7 @@
       @return #fff
   @else if type-of($fallback) == 'color'
     @if (colorLuminance($fallback) > 0.55)
-      @return var(--black-70, rgba(#000, 0.7))
+      @return var(--black-70, rgba(0, 0, 0, 0.7))
     @else
       @return var(--white, #fff)
   @return $color
@@ -117,6 +117,7 @@
   @return $color
 
 @function bulmaRgba($color, $alpha)
+  @debug $color
   @if type-of($color) != 'color'
     @return $color
   @return rgba($color, $alpha)
@@ -130,3 +131,6 @@
   @if type-of($color) != 'color'
     @return $color
   @return lighten($color, $amount)
+
+@function bulmaToRGB($color)
+  @return red($color), green($color), blue($color)
