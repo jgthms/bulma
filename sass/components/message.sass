@@ -60,13 +60,13 @@ $message-colors: $colors !default
         $color-light: $color
 
     &.is-#{$name}
-      background-color: $color-light
+      background-color: var(--#{$name}-light, #{$color-light})
       .message-header
-        background-color: $color
-        color: $color-invert
+        background-color: var(--#{$name}, #{$color})
+        color: var(--#{$name}-invert, #{$color-invert})
       .message-body
-        border-color: $color
-        color: $color-dark
+        border-color: var(--#{$name}, #{$color})
+        color: var(--#{$name}-dark, #{$color-dark})
 
 .message-header
   align-items: center
