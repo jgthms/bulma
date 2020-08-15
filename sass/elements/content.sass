@@ -1,24 +1,43 @@
-$content-heading-color: $text-strong !default
-$content-heading-weight: $weight-semibold !default
+$content-font-size: var(--size-normal, #{$size-normal}) !default
+
+$content-heading-color: var(--text-strong, #{$text-strong}) !default
+$content-heading-weight: var(--weight-semibold, #{$weight-semibold}) !default
 $content-heading-line-height: 1.125 !default
 
-$content-blockquote-background-color: $background !default
-$content-blockquote-border-left: 5px solid $border !default
+$content-blockquote-background-color: var(--background, #{$background}) !default
+$content-blockquote-border-left: 5px solid var(--border, #{$border}) !default
 $content-blockquote-padding: 1.25em 1.5em !default
 
 $content-pre-padding: 1.25em 1.5em !default
 
-$content-table-cell-border: 1px solid $border !default
+$content-table-cell-border: 1px solid var(--border, #{$border}) !default
 $content-table-cell-border-width: 0 0 1px !default
 $content-table-cell-padding: 0.5em 0.75em !default
-$content-table-cell-heading-color: $text-strong !default
+$content-table-cell-heading-color: var(--text-strong, #{$text-strong}) !default
 $content-table-head-cell-border-width: 0 0 2px !default
-$content-table-head-cell-color: $text-strong !default
+$content-table-head-cell-color: var(--text-strong, #{$text-strong}) !default
 $content-table-foot-cell-border-width: 2px 0 0 !default
-$content-table-foot-cell-color: $text-strong !default
+$content-table-foot-cell-color: var(--text-strong, #{$text-strong}) !default
 
 .content
+  --content-font-size: #{$content-font-size}
+  --content-heading-color: #{$content-heading-color}
+  --content-heading-weight: #{$content-heading-weight}
+  --content-heading-line-height: #{$content-heading-line-height}
+  --content-blockquote-background-color: #{$content-blockquote-background-color}
+  --content-blockquote-border-left: #{$content-blockquote-border-left}
+  --content-blockquote-padding: #{$content-blockquote-padding}
+  --content-pre-padding: #{$content-pre-padding}
+  --content-table-cell-border: #{$content-table-cell-border}
+  --content-table-cell-border-width: #{$content-table-cell-border-width}
+  --content-table-cell-padding: #{$content-table-cell-padding}
+  --content-table-cell-heading-color: #{$content-table-cell-heading-color}
+  --content-table-head-cell-border-width: #{$content-table-head-cell-border-width}
+  --content-table-head-cell-color: #{$content-table-head-cell-color}
+  --content-table-foot-cell-border-width: #{$content-table-foot-cell-border-width}
+  --content-table-foot-cell-color: #{$content-table-foot-cell-color}
   @extend %block
+  font-size: var(--content-font-size)
   // Inline
   li + li
     margin-top: 0.25em
@@ -38,9 +57,9 @@ $content-table-foot-cell-color: $text-strong !default
   h4,
   h5,
   h6
-    color: $content-heading-color
-    font-weight: $content-heading-weight
-    line-height: $content-heading-line-height
+    color: var(--content-heading-color)
+    font-weight: var(--content-heading-weight)
+    line-height: var(--content-heading-line-height)
   h1
     font-size: 2em
     margin-bottom: 0.5em
@@ -66,9 +85,9 @@ $content-table-foot-cell-color: $text-strong !default
     font-size: 1em
     margin-bottom: 1em
   blockquote
-    background-color: $content-blockquote-background-color
-    +ltr-property("border", $content-blockquote-border-left, false)
-    padding: $content-blockquote-padding
+    background-color: var(--content-blockquote-background-color)
+    +ltr-property("border", var(--content-blockquote-border-left), false)
+    padding: var(--content-blockquote-padding)
   ol
     list-style-position: outside
     +ltr-property("margin", 2em, false)
@@ -109,7 +128,7 @@ $content-table-foot-cell-color: $text-strong !default
   pre
     +overflow-touch
     overflow-x: auto
-    padding: $content-pre-padding
+    padding: var(--content-pre-padding)
     white-space: pre
     word-wrap: normal
   sup,
@@ -119,24 +138,24 @@ $content-table-foot-cell-color: $text-strong !default
     width: 100%
     td,
     th
-      border: $content-table-cell-border
-      border-width: $content-table-cell-border-width
-      padding: $content-table-cell-padding
+      border: var(--content-table-cell-border)
+      border-width: var(--content-table-cell-border-width)
+      padding: var(--content-table-cell-padding)
       vertical-align: top
     th
-      color: $content-table-cell-heading-color
+      color: var(--content-table-cell-heading-color)
       &:not([align])
         text-align: inherit
     thead
       td,
       th
-        border-width: $content-table-head-cell-border-width
-        color: $content-table-head-cell-color
+        border-width: var(--content-table-head-cell-border-width)
+        color: var(--content-table-head-cell-color)
     tfoot
       td,
       th
-        border-width: $content-table-foot-cell-border-width
-        color: $content-table-foot-cell-color
+        border-width: var(--content-table-foot-cell-border-width)
+        color: var(--content-table-foot-cell-color)
     tbody
       tr
         &:last-child
@@ -148,8 +167,8 @@ $content-table-foot-cell-color: $text-strong !default
       margin-top: 0
   // Sizes
   &.is-small
-    font-size: $size-small
+    --content-font-size: var(--size-small, #{$size-small})
   &.is-medium
-    font-size: $size-medium
+    --content-font-size: var(--size-medium, #{$size-medium})
   &.is-large
-    font-size: $size-large
+    --content-font-size: var(--size-large, #{$size-large})
