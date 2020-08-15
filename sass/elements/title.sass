@@ -46,8 +46,8 @@ $subtitle-negative-margin: -1.25rem !default
   // color: var(--title-color, var(--text-strong))
 
   // Approach C
-  // Sass variable references a CSS variable
-  // $title-color: var(--text-strong)
+  // Sass variable references a CSS variable with fallback
+  // $title-color: var(--text-strong, #{$text-strong})
   --title-color: #{$title-color}
   color: var(--title-color)
 
@@ -56,18 +56,19 @@ $subtitle-negative-margin: -1.25rem !default
   --title-line-height: #{$title-line-height}
   --title-strong-color: #{$title-strong-color}
   --title-strong-weight: #{$title-strong-weight}
-  @if $title-family
-    font-family: $title-family
   font-size: var(--title-size)
   font-weight: var(--title-weight)
   line-height: var(--title-line-height)
+  @if $title-family
+    --title-family: #{$title-family}
+    font-family: var(--title-family)
   strong
     color: var(--title-strong-color)
     font-weight: var(--title-strong-weight)
   & + .highlight
     margin-top: -0.75rem
   &:not(.is-spaced) + .subtitle
-    margin-top: $subtitle-negative-margin
+    margin-top: var(--subtitle-negative-margin)
   // Sizes
   @each $size in $sizes
     $i: index($sizes, $size)
@@ -75,17 +76,25 @@ $subtitle-negative-margin: -1.25rem !default
       font-size: $size
 
 .subtitle
-  color: $subtitle-color
+  --subtitle-negative-margin: #{$subtitle-negative-margin}
+  --subtitle-color: #{$subtitle-color}
+  --subtitle-size: #{$subtitle-size}
+  --subtitle-weight: #{$subtitle-weight}
+  --subtitle-line-height: #{$subtitle-line-height}
+  --subtitle-strong-color: #{$subtitle-strong-color}
+  --subtitle-strong-weight: #{$subtitle-strong-weight}
+  color: var(--subtitle-color)
+  font-size: var(--subtitle-size)
+  font-weight: var(--subtitle-weight)
+  line-height: var(--subtitle-line-height)
   @if $subtitle-family
-    font-family: $subtitle-family
-  font-size: $subtitle-size
-  font-weight: $subtitle-weight
-  line-height: $subtitle-line-height
+    --subtitle-family: #{$subtitle-family}
+    font-family: var(--subtitle-family)
   strong
-    color: $subtitle-strong-color
-    font-weight: $subtitle-strong-weight
+    color: var(--subtitle-strong-color)
+    font-weight: var(--subtitle-strong-weight)
   &:not(.is-spaced) + .title
-    margin-top: $subtitle-negative-margin
+    margin-top: var(--subtitle-negative-margin)
   // Sizes
   @each $size in $sizes
     $i: index($sizes, $size)
