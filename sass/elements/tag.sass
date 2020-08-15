@@ -1,6 +1,6 @@
-$tag-background-color: $background !default
-$tag-color: $text !default
-$tag-radius: $radius !default
+$tag-background-color: var(--background, #{$background}) !default
+$tag-color: var(--text, #{$text}) !default
+$tag-radius: var(--radius, #{$radius}) !default
 $tag-delete-margin: 1px !default
 
 .tags
@@ -19,10 +19,10 @@ $tag-delete-margin: 1px !default
   // Sizes
   &.are-medium
     .tag:not(.is-normal):not(.is-large)
-      font-size: $size-normal
+      --tag-font-size: var(--size-normal, #{$size-normal})
   &.are-large
     .tag:not(.is-normal):not(.is-medium)
-      font-size: $size-medium
+      --tag-font-size: var(--size-medium, #{$size-medium})
   &.is-centered
     justify-content: center
     .tag
@@ -55,12 +55,17 @@ $tag-delete-margin: 1px !default
           border-bottom-left-radius: 0
 
 .tag:not(body)
+  --tag-background-color: #{$tag-background-color}
+  --tag-radius: #{$tag-radius}
+  --tag-color: #{$tag-color}
+  --tag-font-size: #{$size-small}
+  --tag-delete-margin: #{$tag-delete-margin}
   align-items: center
-  background-color: $tag-background-color
-  border-radius: $tag-radius
-  color: $tag-color
+  background-color: var(--tag-background-color)
+  border-radius: var(--tag-radius)
+  color: var(--tag-color)
   display: inline-flex
-  font-size: $size-small
+  font-size: var(--tag-font-size)
   height: 2em
   justify-content: center
   line-height: 1.5
@@ -75,22 +80,22 @@ $tag-delete-margin: 1px !default
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
-      background-color: $color
-      color: $color-invert
+      --tag-background-color: var(--#{$name}, #{$color})
+      --tag-color: var(--#{$name}-invert, #{$color-invert})
       // If a light and dark colors are provided
       @if length($pair) > 3
         $color-light: nth($pair, 3)
         $color-dark: nth($pair, 4)
         &.is-light
-          background-color: $color-light
-          color: $color-dark
+          --tag-background-color: var(--#{$name}-light, #{$color-light})
+          --tag-color: var(--#{$name}-dark, #{$color-dark})
   // Sizes
-  &.is-normal
-    font-size: $size-small
+  &.is-small
+    --tag-font-size: var(--size-small, #{$size-small})
   &.is-medium
-    font-size: $size-normal
+    --tag-font-size: var(--size-medium, #{$size-medium})
   &.is-large
-    font-size: $size-medium
+    --tag-font-size: var(--size-large, #{$size-large})
   .icon
     &:first-child:not(:last-child)
       +ltr-property("margin", -0.375em, false)
@@ -103,7 +108,7 @@ $tag-delete-margin: 1px !default
       +ltr-property("margin", -0.375em)
   // Modifiers
   &.is-delete
-    +ltr-property("margin", $tag-delete-margin, false)
+    +ltr-property("margin", var(--tag-delete-margin), false)
     padding: 0
     position: relative
     width: 2em
@@ -129,7 +134,7 @@ $tag-delete-margin: 1px !default
     &:active
       background-color: bulmaDarken($tag-background-color, 10%)
   &.is-rounded
-    border-radius: $radius-rounded
+    border-radius: var(--radius-rounded, #{$radius-rounded})
 
 a.tag
   &:hover

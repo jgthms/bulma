@@ -51,12 +51,13 @@ $subtitle-negative-margin: -1.25rem !default
   --title-color: #{$title-color}
   color: var(--title-color)
 
-  --title-size: #{$title-size}
+  --title-font-size: #{$title-size}
   --title-weight: #{$title-weight}
   --title-line-height: #{$title-line-height}
   --title-strong-color: #{$title-strong-color}
   --title-strong-weight: #{$title-strong-weight}
-  font-size: var(--title-size)
+
+  font-size: var(--title-font-size)
   font-weight: var(--title-weight)
   line-height: var(--title-line-height)
   @if $title-family
@@ -78,13 +79,14 @@ $subtitle-negative-margin: -1.25rem !default
 .subtitle
   --subtitle-negative-margin: #{$subtitle-negative-margin}
   --subtitle-color: #{$subtitle-color}
-  --subtitle-size: #{$subtitle-size}
+  --subtitle-font-size: #{$subtitle-size}
   --subtitle-weight: #{$subtitle-weight}
   --subtitle-line-height: #{$subtitle-line-height}
   --subtitle-strong-color: #{$subtitle-strong-color}
   --subtitle-strong-weight: #{$subtitle-strong-weight}
+
   color: var(--subtitle-color)
-  font-size: var(--subtitle-size)
+  font-size: var(--subtitle-font-size)
   font-weight: var(--subtitle-weight)
   line-height: var(--subtitle-line-height)
   @if $subtitle-family
@@ -99,4 +101,4 @@ $subtitle-negative-margin: -1.25rem !default
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
-      font-size: $size
+      --subtitle-font-size: $size
