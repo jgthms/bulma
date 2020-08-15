@@ -1,46 +1,69 @@
-$title-color: $text-strong !default
+$title-color: var(--text-strong, #{$text-strong}) !default
 $title-family: false !default
-$title-size: $size-3 !default
-$title-weight: $weight-semibold !default
+$title-size: var(--size-3, #{$size-3}) !default
+$title-weight: var(--weight-semibold, #{$weight-semibold}) !default
 $title-line-height: 1.125 !default
 $title-strong-color: inherit !default
 $title-strong-weight: inherit !default
 $title-sub-size: 0.75em !default
 $title-sup-size: 0.75em !default
 
-$subtitle-color: $text !default
+$subtitle-color: var(--text, #{$text}) !default
 $subtitle-family: false !default
-$subtitle-size: $size-5 !default
-$subtitle-weight: $weight-normal !default
+$subtitle-size: var(--size-5, #{$size-5}) !default
+$subtitle-weight: var(--weight-normal, #{$weight-normal}) !default
 $subtitle-line-height: 1.25 !default
-$subtitle-strong-color: $text-strong !default
-$subtitle-strong-weight: $weight-semibold !default
+$subtitle-strong-color: var(--text-strong, #{$text-strong}) !default
+$subtitle-strong-weight: var(--weight-semibold, #{$weight-semibold}) !default
 $subtitle-negative-margin: -1.25rem !default
 
 .title,
 .subtitle
+  --title-sub-size: #{$title-sub-size}
+  --title-sup-size: #{$title-sup-size}
   @extend %block
   word-break: break-word
   em,
   span
     font-weight: inherit
   sub
-    font-size: $title-sub-size
+    font-size: var(--title-sub-size)
   sup
-    font-size: $title-sup-size
+    font-size: var(--title-sup-size)
   .tag
     vertical-align: middle
 
 .title
-  color: $title-color
+  // Approach A
+  // CSS Variable takes precedence, if theme is included
+  // --title-color: var(--text-strong, #{$title-color})
+  // color: var(--title-color)
+
+  // Approach B
+  // Sass Variable takes precedence
+  // Problem: --title-color is always set, so the fallback is never used
+  // --title-color: #{$title-color}
+  // color: var(--title-color, var(--text-strong))
+
+  // Approach C
+  // Sass variable references a CSS variable
+  // $title-color: var(--text-strong)
+  --title-color: #{$title-color}
+  color: var(--title-color)
+
+  --title-size: #{$title-size}
+  --title-weight: #{$title-weight}
+  --title-line-height: #{$title-line-height}
+  --title-strong-color: #{$title-strong-color}
+  --title-strong-weight: #{$title-strong-weight}
   @if $title-family
     font-family: $title-family
-  font-size: $title-size
-  font-weight: $title-weight
-  line-height: $title-line-height
+  font-size: var(--title-size)
+  font-weight: var(--title-weight)
+  line-height: var(--title-line-height)
   strong
-    color: $title-strong-color
-    font-weight: $title-strong-weight
+    color: var(--title-strong-color)
+    font-weight: var(--title-strong-weight)
   & + .highlight
     margin-top: -0.75rem
   &:not(.is-spaced) + .subtitle

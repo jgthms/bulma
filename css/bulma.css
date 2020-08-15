@@ -1,12 +1,5 @@
 /*! bulma.io v0.9.0 | MIT License | github.com/jgthms/bulma */
-@-webkit-keyframes spinAround {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
+/* Bulma Utilities */
 @keyframes spinAround {
   from {
     transform: rotate(0deg);
@@ -129,8 +122,7 @@
 }
 
 .button.is-loading::after, .loader, .select.is-loading::after, .control.is-loading::after {
-  -webkit-animation: spinAround 500ms infinite linear;
-          animation: spinAround 500ms infinite linear;
+  animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
   border-radius: 290486px;
   border-right-color: transparent;
@@ -229,6 +221,7 @@ fieldset[disabled] .pagination-ellipsis {
   cursor: not-allowed;
 }
 
+/* Bulma Base */
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
 html,
 body,
@@ -320,10 +313,7 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   text-rendering: optimizeLegibility;
-  -webkit-text-size-adjust: 100%;
-     -moz-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 article,
@@ -448,6 +438,7 @@ table th {
   color: #363636;
 }
 
+/* Bulma Elements */
 .box {
   background-color: white;
   border-radius: 6px;
@@ -2566,14 +2557,10 @@ fieldset[disabled] .button {
 }
 
 .progress:indeterminate {
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: moveIndeterminate;
-          animation-name: moveIndeterminate;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-name: moveIndeterminate;
+  animation-timing-function: linear;
   background-color: #ededed;
   background-image: linear-gradient(to right, #4a4a4a 30%, #ededed 30%);
   background-position: top left;
@@ -2599,15 +2586,6 @@ fieldset[disabled] .button {
 
 .progress.is-large {
   height: 1.5rem;
-}
-
-@-webkit-keyframes moveIndeterminate {
-  from {
-    background-position: 200% 0;
-  }
-  to {
-    background-position: -200% 0;
-  }
 }
 
 @keyframes moveIndeterminate {
@@ -3061,6 +3039,8 @@ a.tag:hover {
 
 .title,
 .subtitle {
+  --title-sub-size: 0.75em;
+  --title-sup-size: 0.75em;
   word-break: break-word;
 }
 
@@ -3073,12 +3053,12 @@ a.tag:hover {
 
 .title sub,
 .subtitle sub {
-  font-size: 0.75em;
+  font-size: var(--title-sub-size);
 }
 
 .title sup,
 .subtitle sup {
-  font-size: 0.75em;
+  font-size: var(--title-sup-size);
 }
 
 .title .tag,
@@ -3087,15 +3067,21 @@ a.tag:hover {
 }
 
 .title {
-  color: #363636;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.125;
+  --title-color: var(--text-strong, #363636);
+  color: var(--title-color);
+  --title-size: var(--size-3, 2rem);
+  --title-weight: var(--weight-semibold, 600);
+  --title-line-height: 1.125;
+  --title-strong-color: inherit;
+  --title-strong-weight: inherit;
+  font-size: var(--title-size);
+  font-weight: var(--title-weight);
+  line-height: var(--title-line-height);
 }
 
 .title strong {
-  color: inherit;
-  font-weight: inherit;
+  color: var(--title-strong-color);
+  font-weight: var(--title-strong-weight);
 }
 
 .title + .highlight {
@@ -3135,15 +3121,15 @@ a.tag:hover {
 }
 
 .subtitle {
-  color: #4a4a4a;
-  font-size: 1.25rem;
-  font-weight: 400;
+  color: var(--text, #4a4a4a);
+  font-size: var(--size-5, 1.25rem);
+  font-weight: var(--weight-normal, 400);
   line-height: 1.25;
 }
 
 .subtitle strong {
-  color: #363636;
-  font-weight: 600;
+  color: var(--text-strong, #363636);
+  font-weight: var(--weight-semibold, 600);
 }
 
 .subtitle:not(.is-spaced) + .title {
@@ -3213,6 +3199,7 @@ a.tag:hover {
   vertical-align: top;
 }
 
+/* Bulma Form */
 .input, .textarea, .select select {
   background-color: white;
   border-color: #dbdbdb;
@@ -4495,6 +4482,7 @@ fieldset[disabled] .select select:hover {
   font-size: 1.5rem;
 }
 
+/* Bulma Components */
 .breadcrumb {
   font-size: 1rem;
   white-space: nowrap;
@@ -4592,6 +4580,8 @@ fieldset[disabled] .select select:hover {
   color: #4a4a4a;
   max-width: 100%;
   position: relative;
+  border-radius: 0;
+  overflow: hidden;
 }
 
 .card-header {
@@ -6921,6 +6911,7 @@ label.panel-block:hover {
   font-size: 1.5rem;
 }
 
+/* Bulma Grid */
 .column {
   display: block;
   flex-basis: 0;
@@ -8720,8 +8711,6 @@ label.panel-block:hover {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
-  min-height: -webkit-min-content;
-  min-height: -moz-min-content;
   min-height: min-content;
 }
 
@@ -8809,6 +8798,7 @@ label.panel-block:hover {
   }
 }
 
+/* Bulma Helpers */
 .has-text-white {
   color: white !important;
 }
@@ -10424,6 +10414,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 }
 
+/* Bulma Layout */
 .hero {
   align-items: stretch;
   display: flex;
@@ -11328,4 +11319,112 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
 }
+
+:root {
+  --black: #0a0a0a;
+  --black-bis: #121212;
+  --black-ter: #242424;
+  --grey-darker: #363636;
+  --grey-dark: #4a4a4a;
+  --grey: #7a7a7a;
+  --grey-light: #b5b5b5;
+  --grey-lighter: #dbdbdb;
+  --grey-lightest: #ededed;
+  --white-ter: whitesmoke;
+  --white-bis: #fafafa;
+  --white: white;
+  --orange: #ff470f;
+  --yellow: #ffdd57;
+  --green: #48c774;
+  --turquoise: #00d1b2;
+  --cyan: #3298dc;
+  --blue: #3273dc;
+  --purple: #b86bff;
+  --red: #f14668;
+  --family-sans-serif: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --family-monospace: monospace;
+  --render-mode: optimizeLegibility;
+  --size-1: 3rem;
+  --size-2: 2.5rem;
+  --size-3: 2rem;
+  --size-4: 1.5rem;
+  --size-5: 1.25rem;
+  --size-6: 1rem;
+  --size-7: 0.75rem;
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --block-spacing: 1.5rem;
+  --easing: ease-out;
+  --radius-small: 2px;
+  --radius: 4px;
+  --radius-large: 6px;
+  --radius-rounded: 290486px;
+  --speed: 86ms;
+  --primary: var(--turquoise);
+  --info: var(--cyan);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --danger: var(--red);
+  --light: var(--white-ter);
+  --dark: var(--grey-darker);
+  --orange-invert: #fff;
+  --yellow-invert: rgba(0, 0, 0, 0.7);
+  --green-invert: #fff;
+  --turquoise-invert: #fff;
+  --cyan-invert: #fff;
+  --blue-invert: #fff;
+  --purple-invert: #fff;
+  --red-invert: #fff;
+  --primary-invert: #fff;
+  --primary-light: findLightColor($primary);
+  --primary-dark: findDarkColor($primary);
+  --info-invert: #fff;
+  --info-light: findLightColor($info);
+  --info-dark: findDarkColor($info);
+  --success-invert: #fff;
+  --success-light: findLightColor($success);
+  --success-dark: findDarkColor($success);
+  --warning-invert: rgba(0, 0, 0, 0.7);
+  --warning-light: findLightColor($warning);
+  --warning-dark: findDarkColor($warning);
+  --danger-invert: #fff;
+  --danger-light: findLightColor($danger);
+  --danger-dark: findDarkColor($danger);
+  --light-invert: rgba(0, 0, 0, 0.7);
+  --dark-invert: #fff;
+  --scheme-main: var(--white);
+  --scheme-main-bis: var(--white-bis);
+  --scheme-main-ter: var(--white-ter);
+  --scheme-invert: var(--black);
+  --scheme-invert-bis: var(--black-bis);
+  --scheme-invert-ter: var(--black-ter);
+  --background: var(--white-ter);
+  --border: var(--grey-lighter);
+  --border-hover: var(--grey-light);
+  --border-light: var(--grey-lightest);
+  --border-light-hover: var(--grey-light);
+  --text: var(--grey-dark);
+  --text-invert: #fff;
+  --text-light: var(--grey);
+  --text-strong: var(--grey-darker);
+  --code: var(--red);
+  --code-background: var(--background);
+  --pre: var(--text);
+  --pre-background: var(--background);
+  --link: var(--blue);
+  --link-invert: #fff;
+  --link-light: findLightColor($link);
+  --link-dark: findDarkColor($link);
+  --link-visited: var(--purple);
+  --link-hover: var(--grey-darker);
+  --link-hover-border: var(--grey-light);
+  --link-focus: var(--grey-darker);
+  --link-focus-border: var(--blue);
+  --link-active: var(--grey-darker);
+  --link-active-border: var(--grey-dark);
+}
+
 /*# sourceMappingURL=bulma.css.map */
