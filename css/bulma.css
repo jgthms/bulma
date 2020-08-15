@@ -1,5 +1,13 @@
 /*! bulma.io v0.9.0 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
+@-webkit-keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 @keyframes spinAround {
   from {
     transform: rotate(0deg);
@@ -122,7 +130,8 @@
 }
 
 .button.is-loading::after, .loader, .select.is-loading::after, .control.is-loading::after {
-  animation: spinAround 500ms infinite linear;
+  -webkit-animation: spinAround 500ms infinite linear;
+          animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
   border-radius: 290486px;
   border-right-color: transparent;
@@ -313,7 +322,10 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
 }
 
 article,
@@ -2564,10 +2576,14 @@ fieldset[disabled] .button {
 }
 
 .progress:indeterminate {
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-name: moveIndeterminate;
-  animation-timing-function: linear;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: moveIndeterminate;
+          animation-name: moveIndeterminate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
   background-color: var(--grey-lightest, #ededed);
   background-image: linear-gradient(to right, var(--grey-dark, #4a4a4a) 30%, var(--grey-lightest, #ededed) 30%);
   background-position: top left;
@@ -2593,6 +2609,15 @@ fieldset[disabled] .button {
 
 .progress.is-large {
   height: 1.5rem;
+}
+
+@-webkit-keyframes moveIndeterminate {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @keyframes moveIndeterminate {
@@ -4977,9 +5002,12 @@ button.dropdown-item.is-active {
 }
 
 .message {
-  background-color: var(--white-ter, whitesmoke);
-  border-radius: 4px;
-  font-size: 1rem;
+  --message-font-size: var(--size-normal, 1rem);
+  --message-radius: var(--radius, 4px);
+  --message-background-color: var(--background, var(--white-ter, whitesmoke));
+  background-color: var(--message-background-color);
+  border-radius: var(--message-radius);
+  font-size: var(--message-font-size);
 }
 
 .message strong {
@@ -4992,15 +5020,15 @@ button.dropdown-item.is-active {
 }
 
 .message.is-small {
-  font-size: 0.75rem;
+  --message-font-size: var(--size-small, 0.75rem);
 }
 
 .message.is-medium {
-  font-size: 1.25rem;
+  --message-font-size: var(--size-medium, 1.25rem);
 }
 
 .message.is-large {
-  font-size: 1.5rem;
+  --message-font-size: var(--size-large, 1.5rem);
 }
 
 .message.is-white {
@@ -5144,15 +5172,19 @@ button.dropdown-item.is-active {
 }
 
 .message-header {
+  --message-header-background-color: var(--text, var(--grey-dark, #4a4a4a));
+  --message-header-color: var(--text-invert, var(--grey-dark, #4a4a4a));
+  --message-header-weight: var(--weight-bold, 700);
+  --message-header-padding: 0.75em 1em;
   align-items: center;
-  background-color: var(--grey-dark, #4a4a4a);
-  border-radius: 4px 4px 0 0;
-  color: var(--grey-dark, #4a4a4a);
+  background-color: var(--message-header-background-color);
+  border-radius: var(--radius, 4px) var(--radius, 4px) 0 0;
+  color: var(--message-header-color);
   display: flex;
-  font-weight: 700;
+  font-weight: var(--message-header-weight);
   justify-content: space-between;
   line-height: 1.25;
-  padding: 0.75em 1em;
+  padding: var(--message-header-padding);
   position: relative;
 }
 
@@ -5163,27 +5195,35 @@ button.dropdown-item.is-active {
 }
 
 .message-header + .message-body {
-  border-width: 0;
+  border-width: var(--message-header-body-border-width);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
 .message-body {
-  border-color: var(--grey-lighter, #dbdbdb);
-  border-radius: 4px;
+  --message-body-border-color: var(--border, var(--grey-lighter, #dbdbdb));
+  --message-body-radius: var(--radius, 4px);
+  --message-body-border-width: 0 0 0 4px;
+  --message-body-color: var(--text, var(--grey-dark, #4a4a4a));
+  --message-body-padding: 1.25em 1.5em;
+  --message-body-pre-background-color: var(--scheme-main, var(--white, white));
+  --message-body-pre-code-background-color: transparent;
+  --message-header-body-border-width: 0;
+  border-color: var(--message-body-border-color);
+  border-radius: var(--message-body-radius);
   border-style: solid;
-  border-width: 0 0 0 4px;
-  color: var(--grey-dark, #4a4a4a);
-  padding: 1.25em 1.5em;
+  border-width: var(--message-body-border-width);
+  color: var(--message-body-color);
+  padding: var(--message-body-padding);
 }
 
 .message-body code,
 .message-body pre {
-  background-color: var(--white, white);
+  background-color: var(--message-body-pre-background-color);
 }
 
 .message-body pre code {
-  background-color: transparent;
+  background-color: var(--message-body-pre-code-background-color);
 }
 
 .modal {
@@ -8729,6 +8769,8 @@ label.panel-block:hover {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
   min-height: min-content;
 }
 
@@ -11365,5 +11407,4 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   --link-active: var(--grey-darker, #363636);
   --link-active-border: var(--grey-dark, #4a4a4a);
 }
-
 /*# sourceMappingURL=bulma.css.map */
