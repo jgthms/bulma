@@ -23,6 +23,8 @@ $table-row-active-color: $primary-invert !default
 $table-striped-row-even-background-color: $scheme-main-bis !default
 $table-striped-row-even-hover-background-color: $scheme-main-ter !default
 
+$table-colors: $colors !default
+
 .table
   @extend %block
   background-color: $table-background-color
@@ -34,7 +36,7 @@ $table-striped-row-even-hover-background-color: $scheme-main-ter !default
     padding: $table-cell-padding
     vertical-align: top
     // Colors
-    @each $name, $pair in $colors
+    @each $name, $pair in $table-colors
       $color: nth($pair, 1)
       $color-invert: nth($pair, 2)
       &.is-#{$name}

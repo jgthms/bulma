@@ -5,6 +5,8 @@ $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
 $notification-padding-ltr: 1.25rem 2.5rem 1.25rem 1.5rem !default
 $notification-padding-rtl: 1.25rem 1.5rem 1.25rem 2.5rem !default
 
+$notification-colors: $colors !default
+
 .notification
   @extend %block
   background-color: $notification-background-color
@@ -33,7 +35,7 @@ $notification-padding-rtl: 1.25rem 1.5rem 1.25rem 2.5rem !default
   .content
     color: currentColor
   // Colors
-  @each $name, $pair in $colors
+  @each $name, $pair in $notification-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}

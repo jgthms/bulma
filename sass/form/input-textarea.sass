@@ -2,6 +2,8 @@ $textarea-padding: $control-padding-horizontal !default
 $textarea-max-height: 40em !default
 $textarea-min-height: 8em !default
 
+$textarea-colors: $form-colors !default
+
 %input-textarea
   @extend %input
   box-shadow: $input-shadow
@@ -10,7 +12,7 @@ $textarea-min-height: 8em !default
   &[readonly]
     box-shadow: none
   // Colors
-  @each $name, $pair in $colors
+  @each $name, $pair in $textarea-colors
     $color: nth($pair, 1)
     &.is-#{$name}
       border-color: $color

@@ -3,6 +3,8 @@ $tag-color: $text !default
 $tag-radius: $radius !default
 $tag-delete-margin: 1px !default
 
+$tag-colors: $colors !default
+
 .tags
   align-items: center
   display: flex
@@ -71,7 +73,7 @@ $tag-delete-margin: 1px !default
     +ltr-property("margin", 0.25rem, false)
     +ltr-property("margin", -0.375rem)
   // Colors
-  @each $name, $pair in $colors
+  @each $name, $pair in $tag-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
