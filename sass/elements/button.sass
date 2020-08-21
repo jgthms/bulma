@@ -33,6 +33,8 @@ $button-static-color: $text-light !default
 $button-static-background-color: $scheme-main-ter !default
 $button-static-border-color: $border !default
 
+$button-colors: $colors !default
+
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
   border-radius: $radius-small
@@ -115,7 +117,7 @@ $button-static-border-color: $border !default
       background-color: transparent
       border-color: transparent
       box-shadow: none
-  @each $name, $pair in $colors
+  @each $name, $pair in $button-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}

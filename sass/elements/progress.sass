@@ -4,6 +4,8 @@ $progress-border-radius: $radius-rounded !default
 
 $progress-indeterminate-duration: 1.5s !default
 
+$progress-colors: $colors !default
+
 .progress
   @extend %block
   -moz-appearance: none
@@ -25,7 +27,7 @@ $progress-indeterminate-duration: 1.5s !default
     background-color: $progress-value-background-color
     border: none
   // Colors
-  @each $name, $pair in $colors
+  @each $name, $pair in $progress-colors
     $color: nth($pair, 1)
     &.is-#{$name}
       &::-webkit-progress-value
