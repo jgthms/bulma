@@ -207,6 +207,7 @@ That is also why most of the codebase now references **derived** variables (`$te
 * Fix #2060 -> `height: auto` on HTML `audio` element breaks height of element
 * Fix #706 -> Derive `-invert` variables using `findColorInvert()`
 * #1608 Fix #1552 -> `.container.is-fluid` margins
+* Fix #2271 -> Add `.is-disabled` for checkbox/radio labels
 
 ### New features
 
