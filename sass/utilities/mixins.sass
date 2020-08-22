@@ -194,9 +194,9 @@
   @extend %unselectable
   -moz-appearance: none
   -webkit-appearance: none
-  background-color: bulmaRgba($scheme-invert, 0.2)
+  background-color: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.2)
   border: none
-  border-radius: $radius-rounded
+  border-radius: var(--radius-rounded, #{$radius-rounded})
   cursor: pointer
   pointer-events: auto
   display: inline-block
@@ -214,7 +214,7 @@
   width: 20px
   &::before,
   &::after
-    background-color: $scheme-main
+    background-color: var(--scheme-main, #{$scheme-main})
     content: ""
     display: block
     left: 50%
@@ -230,9 +230,9 @@
     width: 2px
   &:hover,
   &:focus
-    background-color: bulmaRgba($scheme-invert, 0.3)
+    background-color: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.3)
   &:active
-    background-color: bulmaRgba($scheme-invert, 0.4)
+    background-color: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.4)
   // Sizes
   &.is-small
     height: 16px

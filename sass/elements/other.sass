@@ -12,8 +12,9 @@
   text-transform: uppercase
 
 .highlight
+  --highlight-font-weight: var(--weight-normal, #{$weight-normal})
   @extend %block
-  font-weight: $weight-normal
+  font-weight: var(--highlight-font-weight)
   max-width: 100%
   overflow: hidden
   padding: 0
@@ -25,11 +26,14 @@
   @extend %loader
 
 .number
+  --number-background: var(--background, #{$background})
+  --number-radius-rounded: var(--radius-rounded, #{$radius-rounded})
+  --number-font-size: var(--size-medium, #{$size-medium})
   align-items: center
-  background-color: $background
-  border-radius: $radius-rounded
+  background-color: var(--number-background)
+  border-radius: var(--number-radius-rounded)
   display: inline-flex
-  font-size: $size-medium
+  font-size: var(--number-font-size)
   height: 2em
   justify-content: center
   margin-right: 1.5rem

@@ -133,3 +133,23 @@
 
 @function bulmaToRGB($color)
   @return red($color), green($color), blue($color)
+
+=registerCSSVar($name, $value, $at-root: true)
+  @if $at-root
+    @at-root :root
+      --#{$name}: #{$value}
+  @else
+    --#{$name}: #{$value}
+
+=registerCSSVars($list, $at-root: true)
+  @if $at-root
+    @at-root :root
+      @each $name, $value in $list
+        --#{$name}: #{$value}
+  @else
+    @each $name, $value in $list
+      --#{$name}: #{$value}
+
+@function assignCSSVar($name, $fallback)
+  // +registerCSSVar($name, $fallback)
+  @return var(--#{$name}, #{$fallback})

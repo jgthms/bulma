@@ -1,25 +1,35 @@
-$breadcrumb-item-color: $link !default
-$breadcrumb-item-hover-color: $link-hover !default
-$breadcrumb-item-active-color: $text-strong !default
+$breadcrumb-font-size: var(--size-normal, #{$size-normal}) !default
+
+$breadcrumb-item-color: var(--link, #{$link}) !default
+$breadcrumb-item-hover-color: var(--link-hover, #{$link-hover}) !default
+$breadcrumb-item-active-color: var(--text-strong, #{$text-strong}) !default
 
 $breadcrumb-item-padding-vertical: 0 !default
 $breadcrumb-item-padding-horizontal: 0.75em !default
 
-$breadcrumb-item-separator-color: $border-hover !default
+$breadcrumb-item-separator-color: var(--border-hover, #{$border-hover}) !default
 
 .breadcrumb
+  --breadcrumb-font-size: #{$content-font-size}
+  --breadcrumb-item-color: #{$breadcrumb-item-color}
+  --breadcrumb-item-hover-color: #{$breadcrumb-item-hover-color}
+  --breadcrumb-item-active-color: #{$breadcrumb-item-active-color}
+  --breadcrumb-item-separator-color: #{$breadcrumb-item-separator-color}
+  --breadcrumb-item-padding-vertical: #{$breadcrumb-item-padding-vertical}
+  --breadcrumb-item-padding-horizontal: #{$breadcrumb-item-padding-horizontal}
+
   @extend %block
   @extend %unselectable
-  font-size: $size-normal
+  font-size: var(--breadcrumb-font-size)
   white-space: nowrap
   a
     align-items: center
-    color: $breadcrumb-item-color
+    color: var(--breadcrumb-item-color)
     display: flex
     justify-content: center
-    padding: $breadcrumb-item-padding-vertical $breadcrumb-item-padding-horizontal
+    padding: var(--breadcrumb-item-padding-vertical) var(--breadcrumb-item-padding-horizontal)
     &:hover
-      color: $breadcrumb-item-hover-color
+      color: var(--breadcrumb-item-hover-color)
   li
     align-items: center
     display: flex
@@ -27,11 +37,11 @@ $breadcrumb-item-separator-color: $border-hover !default
       +ltr-property("padding", 0, false)
     &.is-active
       a
-        color: $breadcrumb-item-active-color
+        color: var(--breadcrumb-item-active-color)
         cursor: default
         pointer-events: none
     & + li::before
-      color: $breadcrumb-item-separator-color
+      color: var(--breadcrumb-item-separator-color)
       content: "\0002f"
   ul,
   ol
@@ -55,11 +65,11 @@ $breadcrumb-item-separator-color: $border-hover !default
       justify-content: flex-end
   // Sizes
   &.is-small
-    font-size: $size-small
+    --breadcrumb-font-size: var(--size-small, #{$size-small})
   &.is-medium
-    font-size: $size-medium
+    --breadcrumb-font-size: var(--size-medium, #{$size-medium})
   &.is-large
-    font-size: $size-large
+    --breadcrumb-font-size: var(--size-large, #{$size-large})
   // Styles
   &.has-arrow-separator
     li + li::before

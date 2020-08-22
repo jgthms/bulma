@@ -1,23 +1,41 @@
 $dropdown-menu-min-width: 12rem !default
 
-$dropdown-content-background-color: $scheme-main !default
-$dropdown-content-arrow: $link !default
+$dropdown-content-background-color: var(--scheme-main, #{$scheme-main}) !default
+$dropdown-content-arrow: var(--link, #{$link}) !default
 $dropdown-content-offset: 4px !default
 $dropdown-content-padding-bottom: 0.5rem !default
 $dropdown-content-padding-top: 0.5rem !default
-$dropdown-content-radius: $radius !default
-$dropdown-content-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
+$dropdown-content-radius: var(--radius, #{$radius}) !default
+$dropdown-content-shadow-color: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.1) !default
+$dropdown-content-shadow-color-bis: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.02) !default
+$dropdown-content-shadow: 0 0.5em 1em -0.125em $dropdown-content-shadow-color, 0 0px 0 1px $dropdown-content-shadow-color-bis !default
 $dropdown-content-z: 20 !default
 
-$dropdown-item-color: $text !default
-$dropdown-item-hover-color: $scheme-invert !default
-$dropdown-item-hover-background-color: $background !default
-$dropdown-item-active-color: $link-invert !default
-$dropdown-item-active-background-color: $link !default
+$dropdown-item-color: var(--text, #{$text}) !default
+$dropdown-item-hover-color: var(--scheme-invert, #{$scheme-invert}) !default
+$dropdown-item-hover-background-color: var(--background, #{$background}) !default
+$dropdown-item-active-color: var(--link-invert, #{$link-invert}) !default
+$dropdown-item-active-background-color: var(--link, #{$link}) !default
 
-$dropdown-divider-background-color: $border-light !default
+$dropdown-divider-background-color: var(--border-light, #{$border-light}) !default
 
 .dropdown
+  --dropdown-content-offset: #{$dropdown-content-offset}
+  --dropdown-menu-min-width: #{$dropdown-menu-min-width}
+  --dropdown-content-offset: #{$dropdown-content-offset}
+  --dropdown-content-z: #{$dropdown-content-z}
+  --dropdown-content-background-color: #{$dropdown-content-background-color}
+  --dropdown-content-radius: #{$dropdown-content-radius}
+  --dropdown-content-shadow: #{$dropdown-content-shadow}
+  --dropdown-content-padding-bottom: #{$dropdown-content-padding-bottom}
+  --dropdown-content-padding-top: #{$dropdown-content-padding-top}
+  --dropdown-item-color: #{$dropdown-item-color}
+  --dropdown-item-hover-background-color: #{$dropdown-item-hover-background-color}
+  --dropdown-item-hover-color: #{$dropdown-item-hover-color}
+  --dropdown-item-active-background-color: #{$dropdown-item-active-background-color}
+  --dropdown-item-active-color: #{$dropdown-item-active-color}
+  --dropdown-divider-background-color: #{$dropdown-divider-background-color}
+
   display: inline-flex
   position: relative
   vertical-align: top
@@ -32,28 +50,28 @@ $dropdown-divider-background-color: $border-light !default
   &.is-up
     .dropdown-menu
       bottom: 100%
-      padding-bottom: $dropdown-content-offset
+      padding-bottom: var(--dropdown-content-offset)
       padding-top: initial
       top: auto
 
 .dropdown-menu
   display: none
   +ltr-position(0, false)
-  min-width: $dropdown-menu-min-width
-  padding-top: $dropdown-content-offset
+  min-width: var(--dropdown-menu-min-width)
+  padding-top: var(--dropdown-content-offset)
   position: absolute
   top: 100%
-  z-index: $dropdown-content-z
+  z-index: var(--dropdown-content-z)
 
 .dropdown-content
-  background-color: $dropdown-content-background-color
-  border-radius: $dropdown-content-radius
-  box-shadow: $dropdown-content-shadow
-  padding-bottom: $dropdown-content-padding-bottom
-  padding-top: $dropdown-content-padding-top
+  background-color: var(--dropdown-content-background-color)
+  border-radius: var(--dropdown-content-radius)
+  box-shadow: var(--dropdown-content-shadow)
+  padding-bottom: var(--dropdown-content-padding-bottom)
+  padding-top: var(--dropdown-content-padding-top)
 
 .dropdown-item
-  color: $dropdown-item-color
+  color: var(--dropdown-item-color)
   display: block
   font-size: 0.875rem
   line-height: 1.5
@@ -67,14 +85,14 @@ button.dropdown-item
   white-space: nowrap
   width: 100%
   &:hover
-    background-color: $dropdown-item-hover-background-color
-    color: $dropdown-item-hover-color
+    background-color: var(--dropdown-item-hover-background-color)
+    color: var(--dropdown-item-hover-color)
   &.is-active
-    background-color: $dropdown-item-active-background-color
-    color: $dropdown-item-active-color
+    background-color: var(--dropdown-item-active-background-color)
+    color: var(--dropdown-item-active-color)
 
 .dropdown-divider
-  background-color: $dropdown-divider-background-color
+  background-color: var(--dropdown-divider-background-color)
   border: none
   display: block
   height: 1px

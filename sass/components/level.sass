@@ -1,6 +1,7 @@
-$level-item-spacing: ($block-spacing / 2) !default
+$level-item-spacing: calc(var(--block-spacing, #{$block-spacing}) / 2) !default
 
 .level
+  --level-item-spacing: #{$level-item-spacing}
   @extend %block
   align-items: center
   justify-content: space-between
@@ -20,7 +21,7 @@ $level-item-spacing: ($block-spacing / 2) !default
     .level-item
       &:not(:last-child)
         margin-bottom: 0
-        +ltr-property("margin", $level-item-spacing)
+        +ltr-property("margin", var(--level-item-spacing))
       &:not(.is-narrow)
         flex-grow: 1
   // Responsiveness
@@ -43,7 +44,7 @@ $level-item-spacing: ($block-spacing / 2) !default
   // Responsiveness
   +mobile
     &:not(:last-child)
-      margin-bottom: $level-item-spacing
+      margin-bottom: var(--level-item-spacing)
 
 .level-left,
 .level-right
@@ -57,7 +58,7 @@ $level-item-spacing: ($block-spacing / 2) !default
     // Responsiveness
     +tablet
       &:not(:last-child)
-        +ltr-property("margin", $level-item-spacing)
+        +ltr-property("margin", var(--level-item-spacing))
 
 .level-left
   align-items: center
