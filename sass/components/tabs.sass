@@ -1,67 +1,94 @@
-$tabs-border-bottom-color: $border !default
+$tabs-font-size: var(--size-normal, #{$size-normal}) !default
+$tabs-border-bottom-color: var(--border, #{$border}) !default
 $tabs-border-bottom-style: solid !default
 $tabs-border-bottom-width: 1px !default
-$tabs-link-color: $text !default
-$tabs-link-hover-border-bottom-color: $text-strong !default
-$tabs-link-hover-color: $text-strong !default
-$tabs-link-active-border-bottom-color: $link !default
-$tabs-link-active-color: $link !default
+$tabs-link-color: var(--text, #{$text}) !default
+$tabs-link-hover-border-bottom-color: var(--text-strong, #{$text-strong}) !default
+$tabs-link-hover-color: var(--text-strong, #{$text-strong}) !default
+$tabs-link-active-border-bottom-color: var(--link, #{$link}) !default
+$tabs-link-active-color: var(--link, #{$link}) !default
 $tabs-link-padding: 0.5em 1em !default
 
-$tabs-boxed-link-radius: $radius !default
-$tabs-boxed-link-hover-background-color: $background !default
-$tabs-boxed-link-hover-border-bottom-color: $border !default
+$tabs-boxed-link-radius: var(--radius, #{$radius}) !default
+$tabs-boxed-link-hover-background-color: var(--background, #{$background}) !default
+$tabs-boxed-link-hover-border-bottom-color: var(--border, #{$border}) !default
 
-$tabs-boxed-link-active-background-color: $scheme-main !default
-$tabs-boxed-link-active-border-color: $border !default
+$tabs-boxed-link-active-background-color: var(--scheme-main, #{$scheme-main}) !default
+$tabs-boxed-link-active-border-color: var(--border, #{$border}) !default
 $tabs-boxed-link-active-border-bottom-color: transparent !default
 
-$tabs-toggle-link-border-color: $border !default
+$tabs-toggle-link-border-color: var(--border, #{$border}) !default
 $tabs-toggle-link-border-style: solid !default
 $tabs-toggle-link-border-width: 1px !default
-$tabs-toggle-link-hover-background-color: $background !default
-$tabs-toggle-link-hover-border-color: $border-hover !default
-$tabs-toggle-link-radius: $radius !default
-$tabs-toggle-link-active-background-color: $link !default
-$tabs-toggle-link-active-border-color: $link !default
-$tabs-toggle-link-active-color: $link-invert !default
+$tabs-toggle-link-hover-background-color: var(--background, #{$background}) !default
+$tabs-toggle-link-hover-border-color: var(--border-hover, #{$border-hover}) !default
+$tabs-toggle-link-radius: var(--radius, #{$radius}) !default
+$tabs-toggle-link-active-background-color: var(--link, #{$link}) !default
+$tabs-toggle-link-active-border-color: var(--link, #{$link}) !default
+$tabs-toggle-link-active-color: var(--link-invert, #{$link-invert}) !default
 
 .tabs
+  --tabs-font-size: #{$tabs-font-size}
+  --tabs-border-bottom-color: #{$tabs-border-bottom-color}
+  --tabs-border-bottom-style: #{$tabs-border-bottom-style}
+  --tabs-border-bottom-width: #{$tabs-border-bottom-width}
+  --tabs-link-color: #{$tabs-link-color}
+  --tabs-link-padding: #{$tabs-link-padding}
+  --tabs-link-hover-border-bottom-color: #{$tabs-link-hover-border-bottom-color}
+  --tabs-link-hover-color: #{$tabs-link-hover-color}
+  --tabs-link-active-border-bottom-color: #{$tabs-link-active-border-bottom-color}
+  --tabs-link-active-color: #{$tabs-link-active-color}
+  --tabs-boxed-link-radius: #{$tabs-boxed-link-radius}
+  --tabs-boxed-link-hover-background-color: #{$tabs-boxed-link-hover-background-color}
+  --tabs-boxed-link-hover-border-bottom-color: #{$tabs-boxed-link-hover-border-bottom-color}
+  --tabs-boxed-link-active-background-color: #{$tabs-boxed-link-active-background-color}
+  --tabs-boxed-link-active-border-color: #{$tabs-boxed-link-active-border-color}
+  --tabs-boxed-link-active-border-bottom-color: #{$tabs-boxed-link-active-border-bottom-color}
+  --tabs-toggle-link-border-color: #{$tabs-toggle-link-border-color}
+  --tabs-toggle-link-border-style: #{$tabs-toggle-link-border-style}
+  --tabs-toggle-link-border-width: #{$tabs-toggle-link-border-width}
+  --tabs-toggle-link-hover-background-color: #{$tabs-toggle-link-hover-background-color}
+  --tabs-toggle-link-hover-border-color: #{$tabs-toggle-link-hover-border-color}
+  --tabs-toggle-link-radius: #{$tabs-toggle-link-radius}
+  --tabs-toggle-link-active-background-color: #{$tabs-toggle-link-active-background-color}
+  --tabs-toggle-link-active-border-color: #{$tabs-toggle-link-active-border-color}
+  --tabs-toggle-link-active-color: #{$tabs-toggle-link-active-color}
+
   @extend %block
   +overflow-touch
   @extend %unselectable
   align-items: stretch
   display: flex
-  font-size: $size-normal
+  font-size: var(--tabs-font-size)
   justify-content: space-between
   overflow: hidden
   overflow-x: auto
   white-space: nowrap
   a
     align-items: center
-    border-bottom-color: $tabs-border-bottom-color
-    border-bottom-style: $tabs-border-bottom-style
-    border-bottom-width: $tabs-border-bottom-width
-    color: $tabs-link-color
+    border-bottom-color: var(--tabs-border-bottom-color)
+    border-bottom-style: var(--tabs-border-bottom-style)
+    border-bottom-width: var(--tabs-border-bottom-width)
+    color: var(--tabs-link-color)
     display: flex
     justify-content: center
-    margin-bottom: -#{$tabs-border-bottom-width}
-    padding: $tabs-link-padding
+    margin-bottom: calc(-1 * #{var(--tabs-border-bottom-width)})
+    padding: var(--tabs-link-padding)
     vertical-align: top
     &:hover
-      border-bottom-color: $tabs-link-hover-border-bottom-color
-      color: $tabs-link-hover-color
+      border-bottom-color: var(--tabs-link-hover-border-bottom-color)
+      color: var(--tabs-link-hover-color)
   li
     display: block
     &.is-active
       a
-        border-bottom-color: $tabs-link-active-border-bottom-color
-        color: $tabs-link-active-color
+        border-bottom-color: var(--tabs-link-active-border-bottom-color)
+        color: var(--tabs-link-active-color)
   ul
     align-items: center
-    border-bottom-color: $tabs-border-bottom-color
-    border-bottom-style: $tabs-border-bottom-style
-    border-bottom-width: $tabs-border-bottom-width
+    border-bottom-color: var(--tabs-border-bottom-color)
+    border-bottom-style: var(--tabs-border-bottom-style)
+    border-bottom-width: var(--tabs-border-bottom-width)
     display: flex
     flex-grow: 1
     flex-shrink: 0
@@ -93,55 +120,55 @@ $tabs-toggle-link-active-color: $link-invert !default
     a
       border: 1px solid transparent
       +ltr
-        border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0
+        border-radius: var(--tabs-boxed-link-radius) var(--tabs-boxed-link-radius) 0 0
       +rtl
-        border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius
+        border-radius: 0 0 var(--tabs-boxed-link-radius) var(--tabs-boxed-link-radius)
       &:hover
-        background-color: $tabs-boxed-link-hover-background-color
-        border-bottom-color: $tabs-boxed-link-hover-border-bottom-color
+        background-color: var(--tabs-boxed-link-hover-background-color)
+        border-bottom-color: var(--tabs-boxed-link-hover-border-bottom-color)
     li
       &.is-active
         a
-          background-color: $tabs-boxed-link-active-background-color
-          border-color: $tabs-boxed-link-active-border-color
-          border-bottom-color: $tabs-boxed-link-active-border-bottom-color !important
+          background-color: var(--tabs-boxed-link-active-background-color)
+          border-color: var(--tabs-boxed-link-active-border-color)
+          border-bottom-color: var(--tabs-boxed-link-active-border-bottom-color) !important
   &.is-fullwidth
     li
       flex-grow: 1
       flex-shrink: 0
   &.is-toggle
     a
-      border-color: $tabs-toggle-link-border-color
-      border-style: $tabs-toggle-link-border-style
-      border-width: $tabs-toggle-link-border-width
+      border-color: var(--tabs-toggle-link-border-color)
+      border-style: var(--tabs-toggle-link-border-style)
+      border-width: var(--tabs-toggle-link-border-width)
       margin-bottom: 0
       position: relative
       &:hover
-        background-color: $tabs-toggle-link-hover-background-color
-        border-color: $tabs-toggle-link-hover-border-color
+        background-color: var(--tabs-toggle-link-hover-background-color)
+        border-color: var(--tabs-toggle-link-hover-border-color)
         z-index: 2
     li
       & + li
-        +ltr-property("margin", -#{$tabs-toggle-link-border-width}, false)
+        +ltr-property("margin", calc(-1 * #{var(--tabs-toggle-link-border-width)}), false)
       &:first-child a
         +ltr
-          border-top-left-radius: $tabs-toggle-link-radius
-          border-bottom-left-radius: $tabs-toggle-link-radius
+          border-top-left-radius: var(--tabs-toggle-link-radius)
+          border-bottom-left-radius: var(--tabs-toggle-link-radius)
         +rtl
-          border-top-right-radius: $tabs-toggle-link-radius
-          border-bottom-right-radius: $tabs-toggle-link-radius
+          border-top-right-radius: var(--tabs-toggle-link-radius)
+          border-bottom-right-radius: var(--tabs-toggle-link-radius)
       &:last-child a
         +ltr
-          border-top-right-radius: $tabs-toggle-link-radius
-          border-bottom-right-radius: $tabs-toggle-link-radius
+          border-top-right-radius: var(--tabs-toggle-link-radius)
+          border-bottom-right-radius: var(--tabs-toggle-link-radius)
         +rtl
-          border-top-left-radius: $tabs-toggle-link-radius
-          border-bottom-left-radius: $tabs-toggle-link-radius
+          border-top-left-radius: var(--tabs-toggle-link-radius)
+          border-bottom-left-radius: var(--tabs-toggle-link-radius)
       &.is-active
         a
-          background-color: $tabs-toggle-link-active-background-color
-          border-color: $tabs-toggle-link-active-border-color
-          color: $tabs-toggle-link-active-color
+          background-color: var(--tabs-toggle-link-active-background-color)
+          border-color: var(--tabs-toggle-link-active-border-color)
+          color: var(--tabs-toggle-link-active-color)
           z-index: 1
     ul
       border-bottom: none
@@ -149,26 +176,26 @@ $tabs-toggle-link-active-color: $link-invert !default
       li
         &:first-child a
           +ltr
-            border-bottom-left-radius: $radius-rounded
-            border-top-left-radius: $radius-rounded
+            border-bottom-left-radius: var(--radius-rounded, #{$radius-rounded})
+            border-top-left-radius: var(--radius-rounded, #{$radius-rounded})
             padding-left: 1.25em
           +rtl
-            border-bottom-right-radius: $radius-rounded
-            border-top-right-radius: $radius-rounded
+            border-bottom-right-radius: var(--radius-rounded, #{$radius-rounded})
+            border-top-right-radius: var(--radius-rounded, #{$radius-rounded})
             padding-right: 1.25em
         &:last-child a
           +ltr
-            border-bottom-right-radius: $radius-rounded
-            border-top-right-radius: $radius-rounded
+            border-bottom-right-radius: var(--radius-rounded, #{$radius-rounded})
+            border-top-right-radius: var(--radius-rounded, #{$radius-rounded})
             padding-right: 1.25em
           +rtl
-            border-bottom-left-radius: $radius-rounded
-            border-top-left-radius: $radius-rounded
+            border-bottom-left-radius: var(--radius-rounded, #{$radius-rounded})
+            border-top-left-radius: var(--radius-rounded, #{$radius-rounded})
             padding-left: 1.25em
   // Sizes
   &.is-small
-    font-size: $size-small
+    --tabs-font-size: var(--size-small, #{$size-small})
   &.is-medium
-    font-size: $size-medium
+    --tabs-font-size: var(--size-medium, #{$size-medium})
   &.is-large
-    font-size: $size-large
+    --tabs-font-size: var(--size-large, #{$size-large})
