@@ -143,31 +143,42 @@ function plugin() {
       const {fileName, lines} = utils.getLines(files, filePath);
       const file = files[filePath];
       const contents = file.contents.toString();
-      let assignments = contents.match(regexAssign);
+      const assignments = contents.match(regexAssign);
 
       if (!assignments) {
         logThis(`${filePath} has no CSS var assignments`);
         return;
       }
 
-      assignments = assignments.map(assignment => assignment.replace(':', ''));
-      assignments = [...assignments, ...DEFAULT_ASSIGNMENTS];
-      const usages = contents.match(regexUsage);
+      const fileAssignments = assignments.map(assignment => assignment.replace(':', ''));
+      const allAssignments = [...fileAssignments, ...DEFAULT_ASSIGNMENTS];
+
+      let usages = contents.match(regexUsage);
 
       if (!usages) {
         logThis(`${filePath} has no CSS var usages`);
         return;
       }
 
+      // var(--foobar) ==> --foobar
+      usages = usages.map(usage => {
+        usage = usage.replace('var(', '');
+        usage = usage.replace(')', '');
+        return usage;
+      });
+
       let errorCount = 0;
 
       usages.forEach(usage => {
-        // var(--foobar) ==> --foobar
-        let varName = usage.replace('var(', '');
-        varName = varName.replace(')', '');
-
-        if (!assignments.includes(varName)) {
+        if (!allAssignments.includes(usage)) {
           console.log(`${usage} is not assigned`);
+          errorCount++;
+        }
+      });
+
+      fileAssignments.forEach(assignment => {
+        if (!usages.includes(assignment)) {
+          console.log(`${assignment} is not used`);
           errorCount++;
         }
       });
@@ -182,7 +193,7 @@ function plugin() {
     if (hasErrors) {
       console.log(`There are some errors`);
     } else {
-      console.log(`All used CSS variables are assigned correctly!`);
+      console.log(`All CSS variables are used and assigned correctly!`);
     }
   };
 }
