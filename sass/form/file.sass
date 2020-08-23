@@ -1,20 +1,32 @@
-$file-border-color: $border !default
-$file-radius: $radius !default
+$file-border-color: var(--border, #{$border}) !default
+$file-radius: var(--radius, #{$radius}) !default
 
-$file-cta-background-color: $scheme-main-ter !default
-$file-cta-color: $text !default
-$file-cta-hover-color: $text-strong !default
-$file-cta-active-color: $text-strong !default
+$file-cta-background-color: var(--scheme-main-ter, #{$scheme-main-ter}) !default
+$file-cta-color: var(--text, #{$text}) !default
+$file-cta-hover-color: var(--text-strong, #{$text-strong}) !default
+$file-cta-active-color: var(--text-strong, #{$text-strong}) !default
 
-$file-name-border-color: $border !default
+$file-name-border-color: var(--border, #{$border}) !default
 $file-name-border-style: solid !default
 $file-name-border-width: 1px 1px 1px 0 !default
 $file-name-max-width: 16em !default
 
 .file
+  --file-radius: #{$file-radius}
+  --file-cta-hover-color: #{$file-cta-hover-color}
+  --file-cta-active-color: #{$file-cta-active-color}
+  --file-border-color: #{$file-border-color}
+  --file-cta-background-color: #{$file-cta-background-color}
+  --file-cta-color: #{$file-cta-color}
+  --file-name-border-color: #{$file-name-border-color}
+  --file-name-border-style: #{$file-name-border-style}
+  --file-name-border-width: #{$file-name-border-width}
+  --file-name-max-width: #{$file-name-max-width}
+
   @extend %unselectable
   align-items: stretch
   display: flex
+  font-size: var(--file-font-size)
   justify-content: flex-start
   position: relative
   // Colors
@@ -46,14 +58,14 @@ $file-name-max-width: 16em !default
           color: $color-invert
   // Sizes
   &.is-small
-    font-size: $size-small
+    --file-font-size: var(--size-small, #{$size-small})
   &.is-medium
-    font-size: $size-medium
+    --file-font-size: var(--size-medium, #{$size-medium})
     .file-icon
       .fa
         font-size: 21px
   &.is-large
-    font-size: $size-large
+    --file-font-size: var(--size-large, #{$size-large})
     .file-icon
       .fa
         font-size: 28px
@@ -67,7 +79,7 @@ $file-name-max-width: 16em !default
       border-top-left-radius: 0
     &.is-empty
       .file-cta
-        border-radius: $file-radius
+        border-radius: var(--file-radius)
       .file-name
         display: none
   &.is-boxed
@@ -95,9 +107,9 @@ $file-name-max-width: 16em !default
         font-size: 35px
     &.has-name
       .file-cta
-        border-radius: $file-radius $file-radius 0 0
+        border-radius: var(--file-radius) var(--file-radius) 0 0
       .file-name
-        border-radius: 0 0 $file-radius $file-radius
+        border-radius: 0 0 var(--file-radius) var(--file-radius)
         border-width: 0 1px 1px
   &.is-centered
     justify-content: center
@@ -110,9 +122,9 @@ $file-name-max-width: 16em !default
   &.is-right
     justify-content: flex-end
     .file-cta
-      border-radius: 0 $file-radius $file-radius 0
+      border-radius: 0 var(--file-radius) var(--file-radius) 0
     .file-name
-      border-radius: $file-radius 0 0 $file-radius
+      border-radius: var(--file-radius) 0 0 var(--file-radius)
       border-width: 1px 0 1px 1px
       order: -1
 
@@ -126,13 +138,13 @@ $file-name-max-width: 16em !default
   &:hover
     .file-cta
       background-color: bulmaDarken($file-cta-background-color, 2.5%)
-      color: $file-cta-hover-color
+      color: var(--file-cta-hover-color)
     .file-name
       border-color: bulmaDarken($file-name-border-color, 2.5%)
   &:active
     .file-cta
       background-color: bulmaDarken($file-cta-background-color, 5%)
-      color: $file-cta-active-color
+      color: var(--file-cta-active-color)
     .file-name
       border-color: bulmaDarken($file-name-border-color, 5%)
 
@@ -148,23 +160,23 @@ $file-name-max-width: 16em !default
 .file-cta,
 .file-name
   @extend %control
-  border-color: $file-border-color
-  border-radius: $file-radius
+  border-color: var(--file-border-color)
+  border-radius: var(--file-radius)
   font-size: 1em
   padding-left: 1em
   padding-right: 1em
   white-space: nowrap
 
 .file-cta
-  background-color: $file-cta-background-color
-  color: $file-cta-color
+  background-color: var(--file-cta-background-color)
+  color: var(--file-cta-color)
 
 .file-name
-  border-color: $file-name-border-color
-  border-style: $file-name-border-style
-  border-width: $file-name-border-width
+  border-color: var(--file-name-border-color)
+  border-style: var(--file-name-border-style)
+  border-width: var(--file-name-border-width)
   display: block
-  max-width: $file-name-max-width
+  max-width: var(--file-name-max-width)
   overflow: hidden
   text-align: inherit
   text-overflow: ellipsis

@@ -1,13 +1,20 @@
-$label-color: $text-strong !default
-$label-weight: $weight-bold !default
+$label-font-size: var(--size-normal, #{$size-normal}) !default
+$label-color: var(--text-strong, #{$text-strong}) !default
+$label-weight: var(--weight-bold, #{$weight-bold}) !default
 
-$help-size: $size-small !default
+$help-size: var(--size-small, #{$size-small}) !default
+
+$control-font-size: var(--size-normal, #{$size-normal}) !default
 
 .label
-  color: $label-color
+  --label-color: #{$label-color}
+  --label-font-size: #{$label-font-size}
+  --label-font-weight: #{$label-weight}
+
+  color: var(--label-color)
   display: block
-  font-size: $size-normal
-  font-weight: $label-weight
+  font-size: var(--label-font-size)
+  font-weight: var(--label-font-weight)
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
@@ -19,8 +26,10 @@ $help-size: $size-small !default
     font-size: $size-large
 
 .help
+  --help-font-size: #{$help-size}
+
   display: block
-  font-size: $help-size
+  font-size: var(--help-font-size)
   margin-top: 0.25rem
   @each $name, $pair in $colors
     $color: nth($pair, 1)
@@ -130,15 +139,15 @@ $help-size: $size-small !default
     +ltr-property("margin", 1.5rem)
     text-align: right
     &.is-small
-      font-size: $size-small
+      font-size: var(--size-small, #{$size-small})
       padding-top: 0.375em
     &.is-normal
       padding-top: 0.375em
     &.is-medium
-      font-size: $size-medium
+      font-size: var(--size-medium, #{$size-medium})
       padding-top: 0.375em
     &.is-large
-      font-size: $size-large
+      font-size: var(--size-large, #{$size-large})
       padding-top: 0.375em
 
 .field-body
@@ -159,9 +168,11 @@ $help-size: $size-small !default
         +ltr-property("margin", 0.75rem)
 
 .control
+  --control-font-size: #{$control-font-size}
+
   box-sizing: border-box
   clear: both
-  font-size: $size-normal
+  font-size: var(--control-font-size)
   position: relative
   text-align: inherit
   // Modifiers
@@ -173,11 +184,11 @@ $help-size: $size-small !default
         & ~ .icon
           color: $input-icon-active-color
       &.is-small ~ .icon
-        font-size: $size-small
+        font-size: var(--size-small, #{$size-small})
       &.is-medium ~ .icon
-        font-size: $size-medium
+        font-size: var(--size-medium, #{$size-medium})
       &.is-large ~ .icon
-        font-size: $size-large
+        font-size: var(--size-large, #{$size-large})
     .icon
       color: $input-icon-color
       height: $input-height
@@ -206,8 +217,8 @@ $help-size: $size-small !default
       top: 0.625em
       z-index: 4
     &.is-small:after
-      font-size: $size-small
+      font-size: var(--size-small, #{$size-small})
     &.is-medium:after
-      font-size: $size-medium
+      font-size: var(--size-medium, #{$size-medium})
     &.is-large:after
-      font-size: $size-large
+      font-size: var(--size-large, #{$size-large})

@@ -1,10 +1,13 @@
-$textarea-padding: $control-padding-horizontal !default
+$textarea-padding: var(--control-padding-horizontal, #{$control-padding-horizontal}) !default
 $textarea-max-height: 40em !default
 $textarea-min-height: 8em !default
 
 %input-textarea
+  --input-shadow: #{$input-shadow}
+  --input-focus-box-shadow-size: #{$input-focus-box-shadow-size}
+
   @extend %input
-  box-shadow: $input-shadow
+  box-shadow: var(--input-shadow)
   max-width: 100%
   width: 100%
   &[readonly]
@@ -18,7 +21,7 @@ $textarea-min-height: 8em !default
       &.is-focused,
       &:active,
       &.is-active
-        box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25)
+        box-shadow: var(--input-focus-box-shadow-size) bulmaRgba($color, 0.25)
   // Sizes
   &.is-small
     +control-small
@@ -37,9 +40,9 @@ $textarea-min-height: 8em !default
 .input
   @extend %input-textarea
   &.is-rounded
-    border-radius: $radius-rounded
-    padding-left: calc(#{$control-padding-horizontal} + 0.375em)
-    padding-right: calc(#{$control-padding-horizontal} + 0.375em)
+    border-radius: var(--radius-rounded, #{$radius-rounded})
+    padding-left: calc(#{var(--control-padding-horizontal, #{$control-padding-horizontal})} + 0.375em)
+    padding-right: calc(#{var(--control-padding-horizontal, #{$control-padding-horizontal})} + 0.375em)
   &.is-static
     background-color: transparent
     border-color: transparent
@@ -48,15 +51,19 @@ $textarea-min-height: 8em !default
     padding-right: 0
 
 .textarea
+  --textarea-padding: #{$textarea-padding}
+  --textarea-max-height: #{$textarea-max-height}
+  --textarea-min-height: #{$textarea-min-height}
+
   @extend %input-textarea
   display: block
   max-width: 100%
   min-width: 100%
-  padding: $textarea-padding
+  padding: var(--textarea-padding)
   resize: vertical
   &:not([rows])
-    max-height: $textarea-max-height
-    min-height: $textarea-min-height
+    max-height: var(--textarea-max-height)
+    min-height: var(--textarea-min-height)
   &[rows]
     height: initial
   // Modifiers

@@ -1,4 +1,10 @@
 .select
+  --select-arrow: #{$input-arrow}
+  --select-disabled-border-color: #{$input-disabled-border-color}
+  --select-hover-color: #{$input-hover-color}
+  --select-disabled-color: #{$input-disabled-color}
+  --select-focus-box-shadow-size: #{$input-focus-box-shadow-size}
+
   display: inline-block
   max-width: 100%
   position: relative
@@ -8,12 +14,12 @@
   &:not(.is-multiple):not(.is-loading)
     &::after
       @extend %arrow
-      border-color: $input-arrow
+      border-color: var(--select-arrow)
       +ltr-position(1.125em)
       z-index: 4
   &.is-rounded
     select
-      border-radius: $radius-rounded
+      border-radius: var(--radius-rounded, #{$radius-rounded})
       +ltr-property("padding", 1em, false)
   select
     @extend %input
@@ -26,7 +32,7 @@
       display: none
     &[disabled]:hover,
     fieldset[disabled] &:hover
-      border-color: $input-disabled-border-color
+      border-color: var(--select-disabled-border-color)
     &:not([multiple])
       +ltr-property("padding", 2.5em)
     &[multiple]
@@ -37,15 +43,15 @@
   // States
   &:not(.is-multiple):not(.is-loading):hover
     &::after
-      border-color: $input-hover-color
+      border-color: var(--select-hover-color)
   // Colors
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
       &:not(:hover)::after
-        border-color: $color
+        border-color: var(--#{$name}, #{$color})
       select
-        border-color: $color
+        border-color: var(--#{$name}, #{$color})
         &:hover,
         &.is-hovered
           border-color: bulmaDarken($color, 5%)
@@ -53,7 +59,7 @@
         &.is-focused,
         &:active,
         &.is-active
-          box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25)
+          box-shadow: var(--select-focus-box-shadow-size) bulmaRgba($color, 0.25)
   // Sizes
   &.is-small
     +control-small
@@ -64,7 +70,7 @@
   // Modifiers
   &.is-disabled
     &::after
-      border-color: $input-disabled-color
+      border-color: var(--select-disabled-color)
   &.is-fullwidth
     width: 100%
     select
@@ -78,8 +84,8 @@
       top: 0.625em
       transform: none
     &.is-small:after
-      font-size: $size-small
+      font-size: var(--size-small, #{$size-small})
     &.is-medium:after
-      font-size: $size-medium
+      font-size: var(--size-medium, #{$size-medium})
     &.is-large:after
-      font-size: $size-large
+      font-size: var(--size-large, #{$size-large})

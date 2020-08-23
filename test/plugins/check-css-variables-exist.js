@@ -125,6 +125,13 @@ const DEFAULT_ASSIGNMENTS = [
   '--size-normal',
   '--size-medium',
   '--size-large',
+  '--control-radius',
+  '--control-radius-small',
+  '--control-border-width',
+  '--control-height',
+  '--control-line-height',
+  '--control-padding-vertical',
+  '--control-padding-horizontal',
 ];
 
 function logThis(message) {
@@ -145,8 +152,11 @@ function plugin() {
       const contents = file.contents.toString();
       const assignments = contents.match(regexAssign);
 
+      let errorCount = 0;
+
       if (!assignments) {
         logThis(`${filePath} has no CSS var assignments`);
+        errorCount++;
         return;
       }
 
@@ -157,6 +167,7 @@ function plugin() {
 
       if (!usages) {
         logThis(`${filePath} has no CSS var usages`);
+        errorCount++;
         return;
       }
 
@@ -167,7 +178,10 @@ function plugin() {
         return usage;
       });
 
-      let errorCount = 0;
+      if (filePath.endsWith('shared.sass')) {
+        console.log('ZLOG usages', usages);
+        console.log('ZLOG assignments', fileAssignments);
+      }
 
       usages.forEach(usage => {
         if (!allAssignments.includes(usage)) {
@@ -185,6 +199,7 @@ function plugin() {
 
       if (errorCount) {
         console.log(`There are some errors in ${filePath}`);
+        hasErrors = true;
       } else {
         logThis(`${filePath} is all good!`);
       }

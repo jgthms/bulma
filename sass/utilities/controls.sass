@@ -1,5 +1,5 @@
-$control-radius: $radius !default
-$control-radius-small: $radius-small !default
+$control-radius: var(--radius, #{$radius}) !default
+$control-radius-small: var(--radius-small, #{$radius-small}) !default
 
 $control-border-width: 1px !default
 
@@ -14,17 +14,17 @@ $control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
   -webkit-appearance: none
   align-items: center
   border: $control-border-width solid transparent
-  border-radius: $control-radius
+  border-radius: var(--control-radius, #{$control-radius})
   box-shadow: none
   display: inline-flex
-  font-size: $size-normal
-  height: $control-height
+  font-size: var(--size-normal, #{$size-normal})
+  height: var(--control-height, #{$control-height})
   justify-content: flex-start
-  line-height: $control-line-height
-  padding-bottom: $control-padding-vertical
-  padding-left: $control-padding-horizontal
-  padding-right: $control-padding-horizontal
-  padding-top: $control-padding-vertical
+  line-height: var(--control-line-height, #{$control-line-height})
+  padding-bottom: var(--control-padding-vertical, #{$control-padding-vertical})
+  padding-left: var(--control-padding-horizontal, #{$control-padding-horizontal})
+  padding-right: var(--control-padding-horizontal, #{$control-padding-horizontal})
+  padding-top: var(--control-padding-vertical, #{$control-padding-vertical})
   position: relative
   vertical-align: top
   // States
@@ -42,9 +42,9 @@ $control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
 
 // The controls sizes use mixins so they can be used at different breakpoints
 =control-small
-  border-radius: $control-radius-small
-  font-size: $size-small
+  border-radius: var(--control-radius-small, #{$control-radius-small})
+  font-size: var(--size-small, #{$size-small})
 =control-medium
-  font-size: $size-medium
+  font-size: var(--size-medium, #{$size-medium})
 =control-large
-  font-size: $size-large
+  font-size: var(--size-large, #{$size-large})
