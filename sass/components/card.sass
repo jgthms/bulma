@@ -16,7 +16,8 @@ $card-content-background-color: transparent !default
 $card-content-padding: 1.5rem !default
 
 $card-footer-background-color: transparent !default
-$card-footer-border-top: 1px solid $border-light !default
+$card-footer-border-top-color: var(--border-light, #{$border-light}) !default
+$card-footer-border-top: 1px solid $card-footer-border-top-color !default
 $card-footer-padding: 0.75rem !default
 
 $card-media-margin: var(--block-spacing, #{$block-spacing}) !default
@@ -38,6 +39,7 @@ $card-media-margin: var(--block-spacing, #{$block-spacing}) !default
   --card-footer-border-top: #{$card-footer-border-top}
   --card-footer-padding: #{$card-footer-padding}
   --card-media-margin: #{$card-media-margin}
+
   background-color: var(--card-background-color)
   box-shadow: var(--card-shadow)
   color: var(--card-color)
@@ -92,7 +94,7 @@ $card-media-margin: var(--block-spacing, #{$block-spacing}) !default
   justify-content: center
   padding: var(--card-footer-padding)
   &:not(:last-child)
-    +ltr-property("border", $card-footer-border-top)
+    +ltr-property("border", var(--card-footer-border-top))
 
 // Combinations
 
