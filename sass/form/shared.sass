@@ -28,29 +28,29 @@ $input-radius: var(--radius, #{$radius}) !default
 
 =input
   @extend %control
-  background-color: var(--input-background-color)
-  border-color: var(--input-border-color)
-  border-radius: var(--input-radius)
-  color: var(--input-color)
+  background-color: var(--input-background-color, #{$input-background-color})
+  border-color: var(--input-border-color, #{$input-border-color})
+  border-radius: var(--input-radius, #{$input-radius})
+  color: var(--input-color, #{$input-color})
   +placeholder
-    color: var(--input-placeholder-color)
+    color: var(--input-placeholder-color, #{$input-placeholder-color})
   &:hover,
   &.is-hovered
-    border-color: var(--input-hover-border-color)
+    border-color: var(--input-hover-border-color, #{$input-hover-border-color})
   &:focus,
   &.is-focused,
   &:active,
   &.is-active
-    border-color: var(--input-focus-border-color)
-    box-shadow: var(--input-focus-box-shadow-size) var(--input-focus-box-shadow-color)
+    border-color: var(--input-focus-border-color, #{$input-focus-border-color})
+    box-shadow: var(--input-focus-box-shadow-size, #{$input-focus-box-shadow-size}) var(--input-focus-box-shadow-color, #{$input-focus-box-shadow-color})
   &[disabled],
   fieldset[disabled] &
-    background-color: var(--input-disabled-background-color)
-    border-color: var(--input-disabled-border-color)
+    background-color: var(--input-disabled-background-color, #{$input-disabled-background-color})
+    border-color: var(--input-disabled-border-color, #{$input-disabled-border-color})
     box-shadow: none
-    color: var(--input-disabled-color)
+    color: var(--input-disabled-color, #{$input-disabled-color})
     +placeholder
-      color: var(--input-disabled-placeholder-color)
+      color: var(--input-disabled-placeholder-color, #{$input-disabled-placeholder-color})
 
 %input
   +input

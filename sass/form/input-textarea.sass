@@ -7,7 +7,7 @@ $textarea-min-height: 8em !default
   --input-focus-box-shadow-size: #{$input-focus-box-shadow-size}
 
   @extend %input
-  box-shadow: var(--input-shadow)
+  box-shadow: var(--input-shadow, #{$input-shadow})
   max-width: 100%
   width: 100%
   &[readonly]
@@ -16,12 +16,12 @@ $textarea-min-height: 8em !default
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
-      border-color: $color
+      border-color: var(--#{$name}, #{$color})
       &:focus,
       &.is-focused,
       &:active,
       &.is-active
-        box-shadow: var(--input-focus-box-shadow-size) bulmaRgba($color, 0.25)
+        box-shadow: var(--input-focus-box-shadow-size, #{$input-focus-box-shadow-size}) bulmaRgba($color, 0.25)
   // Sizes
   &.is-small
     +control-small

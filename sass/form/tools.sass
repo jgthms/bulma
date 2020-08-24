@@ -34,7 +34,7 @@ $control-font-size: var(--size-normal, #{$size-normal}) !default
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     &.is-#{$name}
-      color: $color
+      color: var(--#{$name}, #{$color})
 
 // Containers
 
@@ -168,11 +168,9 @@ $control-font-size: var(--size-normal, #{$size-normal}) !default
         +ltr-property("margin", 0.75rem)
 
 .control
-  --control-font-size: #{$control-font-size}
-
   box-sizing: border-box
   clear: both
-  font-size: var(--control-font-size)
+  font-size: var(--control-font-size, #{$control-font-size})
   position: relative
   text-align: inherit
   // Modifiers
@@ -182,7 +180,7 @@ $control-font-size: var(--size-normal, #{$size-normal}) !default
     .select
       &:focus
         & ~ .icon
-          color: var(--input-icon-active-color)
+          color: var(--input-icon-active-color, #{$input-icon-active-color})
       &.is-small ~ .icon
         font-size: var(--size-small, #{$size-small})
       &.is-medium ~ .icon
@@ -190,23 +188,23 @@ $control-font-size: var(--size-normal, #{$size-normal}) !default
       &.is-large ~ .icon
         font-size: var(--size-large, #{$size-large})
     .icon
-      color: var(--input-icon-color)
-      height: var(--input-height)
+      color: var(--input-icon-color, #{$input-icon-color})
+      height: var(--input-height, #{$input-height})
       pointer-events: none
       position: absolute
       top: 0
-      width: var(--input-height)
+      width: var(--input-height, #{$input-height})
       z-index: 4
   &.has-icons-left
     .input,
     .select select
-      padding-left: var(--input-height)
+      padding-left: var(--input-height, #{$input-height})
     .icon.is-left
       left: 0
   &.has-icons-right
     .input,
     .select select
-      padding-right: var(--input-height)
+      padding-right: var(--input-height, #{$input-height})
     .icon.is-right
       right: 0
   &.is-loading
