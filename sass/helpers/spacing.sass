@@ -12,6 +12,9 @@ $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5
 
 @each $property, $shortcut in $spacing-shortcuts
   @each $name, $value in $spacing-values
+    // All directions
+    .#{$shortcut}-#{$name}
+      #{$property}: $value !important
     // Cardinal directions
     @each $direction, $suffix in $spacing-directions
       .#{$shortcut}#{$suffix}-#{$name}
