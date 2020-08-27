@@ -1,9 +1,13 @@
-$footer-background-color: $scheme-main-bis !default
+$footer-background-color: var(--scheme-main-bis, #{$scheme-main-bis}) !default
 $footer-color: false !default
 $footer-padding: 3rem 1.5rem 6rem !default
 
 .footer
-  background-color: $footer-background-color
-  padding: $footer-padding
+  --footer-background-color: #{$footer-background-color}
+  --footer-padding: #{$footer-padding}
+  --footer-color: #{$footer-color}
+
+  background-color: var(--footer-background-color)
+  padding: var(--footer-padding)
   @if $footer-color
-    color: $footer-color
+    color: var(--footer-color, #{$footer-color})

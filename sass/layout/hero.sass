@@ -5,6 +5,11 @@ $hero-body-padding-large: 18rem 1.5rem !default
 
 // Main container
 .hero
+  --hero-body-padding: #{$hero-body-padding}
+  --hero-body-padding-small: #{$hero-body-padding-small}
+  --hero-body-padding-medium: #{$hero-body-padding-medium}
+  --hero-body-padding-large: #{$hero-body-padding-large}
+
   align-items: stretch
   display: flex
   flex-direction: column
@@ -76,15 +81,15 @@ $hero-body-padding-large: 18rem 1.5rem !default
   // Sizes
   &.is-small
     .hero-body
-      padding: $hero-body-padding-small
+      --hero-body-padding: var(--hero-body-padding-small)
   &.is-medium
     +tablet
       .hero-body
-        padding: $hero-body-padding-medium
+        --hero-body-padding: var(--hero-body-padding-medium)
   &.is-large
     +tablet
       .hero-body
-        padding: $hero-body-padding-large
+        --hero-body-padding: var(--hero-body-padding-large)
   &.is-halfheight,
   &.is-fullheight,
   &.is-fullheight-with-navbar
@@ -142,4 +147,4 @@ $hero-body-padding-large: 18rem 1.5rem !default
 .hero-body
   flex-grow: 1
   flex-shrink: 0
-  padding: $hero-body-padding
+  padding: var(--hero-body-padding)

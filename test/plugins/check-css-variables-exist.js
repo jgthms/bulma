@@ -3,7 +3,7 @@ module.exports = plugin;
 const utils = require('./utils');
 const fs = require('fs');
 const regexAssign = /--[a-z-]*:/g;
-const regexUsage = /var\(--[a-z-]*\)/g;
+const regexUsage = /var\(--[a-z-]*(\, \#|\))/g;
 const LOG_EVERYTHING = false;
 
 function logThis(message) {
@@ -51,6 +51,7 @@ function plugin() {
       usages = usages.map(usage => {
         usage = usage.replace('var(', '');
         usage = usage.replace(')', '');
+        usage = usage.replace(', #', '');
         return usage;
       });
 
