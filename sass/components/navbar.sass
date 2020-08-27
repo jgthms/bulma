@@ -97,37 +97,51 @@ $navbar-colors: $colors !default
   --navbar-item-active-background-color: #{$navbar-item-active-background-color}
 
   background-color: var(--navbar-background-color)
+  color: var(--navbar-color)
   min-height: var(--navbar-height)
   position: relative
   z-index: var(--navbar-z)
   @each $name, $pair in $navbar-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
+
     &.is-#{$name}
-      background-color: $color
-      color: $color-invert
+      --navbar-background-color: var(--#{$name}, #{$color})
+      --navbar-color: var(--#{$name}-invert, #{$color-invert})
+      --navbar-item-color: var(--#{$name}-invert, #{$color-invert})
+      --navbar-dropdown-arrow: var(--#{$name}-invert, #{$color-invert})
+      --navbar-burger-color: var(--#{$name}-invert, #{$color-invert})
+      --navbar-item-hover-background-color: blue
+      --navbar-item-hover-color: var(--#{$name}-invert, #{$color-invert})
+
+      --navbar-item-active-background-delta: -5%
+      --navbar-item-active-background-#{$name}-l: calc(#{var(--#{$name}-l)} + #{var(--navbar-item-active-background-delta)})
+      --navbar-item-active-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--navbar-item-active-background-#{$name}-l), var(--#{$name}-a))
+
+      // background-color: $color
+      // color: $color-invert
       .navbar-brand
         & > .navbar-item,
         .navbar-link
-          color: $color-invert
+          // color: $color-invert
         & > a.navbar-item,
         .navbar-link
           &:focus,
           &:hover,
           &.is-active
-            background-color: bulmaDarken($color, 5%)
-            color: $color-invert
+            background-color: var(--navbar-item-active-background-color, #{bulmaDarken($color, 5%)})
+            // color: var(--#{$name}-invert, #{$color-invert})
         .navbar-link
           &::after
-            border-color: $color-invert
+            // border-color: $color-invert
       .navbar-burger
-        color: $color-invert
+        // color: $color-invert
       +from($navbar-breakpoint)
         .navbar-start,
         .navbar-end
           & > .navbar-item,
           .navbar-link
-            color: $color-invert
+            // color: $color-invert
           & > a.navbar-item,
           .navbar-link
             &:focus,
@@ -137,7 +151,7 @@ $navbar-colors: $colors !default
               color: $color-invert
           .navbar-link
             &::after
-              border-color: $color-invert
+              // border-color: $color-invert
         .navbar-item.has-dropdown:focus .navbar-link,
         .navbar-item.has-dropdown:hover .navbar-link,
         .navbar-item.has-dropdown.is-active .navbar-link
