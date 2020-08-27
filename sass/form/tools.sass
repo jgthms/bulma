@@ -6,6 +6,8 @@ $help-size: var(--size-small, #{$size-small}) !default
 
 $control-font-size: var(--size-normal, #{$size-normal}) !default
 
+$label-colors: $form-colors !default
+
 .label
   --label-color: #{$label-color}
   --label-font-size: #{$label-font-size}
@@ -31,7 +33,7 @@ $control-font-size: var(--size-normal, #{$size-normal}) !default
   display: block
   font-size: var(--help-font-size)
   margin-top: 0.25rem
-  @each $name, $pair in $colors
+  @each $name, $pair in $label-colors
     $color: nth($pair, 1)
     &.is-#{$name}
       color: var(--#{$name}, #{$color})

@@ -17,13 +17,23 @@
   <tbody>
     {% for shortcut in include.shortcuts %}
       {% for direction in include.directions %}
-        <tr>
-          <td><code>{{ shortcut[0] }}-{{ direction[0] }}</code></td>
-          <td><code>{{ shortcut[1] }}{{ direction[1] }}</code></td>
-          {% for value in include.values %}
-            <td><code>{{ shortcut[1] }}{{ direction[1] }}-{{ value[0] }}</code></td>
-          {% endfor %}
-        </tr>
+        {% if direction[0] == 'all' %}
+          <tr>
+            <td><code>{{ shortcut[0] }}</code></td>
+            <td><code>{{ shortcut[1] }}</code></td>
+            {% for value in include.values %}
+              <td><code>{{ shortcut[1] }}-{{ value[0] }}</code></td>
+            {% endfor %}
+          </tr>
+        {% else %}
+          <tr>
+            <td><code>{{ shortcut[0] }}-{{ direction[0] }}</code></td>
+            <td><code>{{ shortcut[1] }}{{ direction[1] }}</code></td>
+            {% for value in include.values %}
+              <td><code>{{ shortcut[1] }}{{ direction[1] }}-{{ value[0] }}</code></td>
+            {% endfor %}
+          </tr>
+        {% endif %}
       {% endfor %}
 
       <tr>
