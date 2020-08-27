@@ -79,9 +79,9 @@
 @function findColorInvert($color, $fallback: null)
   @if type-of($color) == 'color'
     @if (colorLuminance($color) > 0.55)
-      @return rgba(#000, 0.7)
+      @return var(--black-70, rgba(0, 0, 0, 0.7))
     @else
-      @return #fff
+      @return var(--white, #fff)
   @else if type-of($fallback) == 'color'
     @if (colorLuminance($fallback) > 0.55)
       @return var(--black-70, rgba(0, 0, 0, 0.7))
@@ -149,6 +149,44 @@
   @else
     @each $name, $value in $list
       --#{$name}: #{$value}
+
+// bulmaDarken($color, 5%)
+// bulmaDarken($color, 10%)
+// bulmaDarken($color, 2.5%)
+// bulmaRgba($color, 0.25)
+// bulmaDarken($color-light, 10%)
+// bulmaDarken($color-light, 2.5%)
+// bulmaDarken($color-light, 5%)
+// bulmaLighten($color-dark, 10%)
+// bulmaDarken($color-invert, 5%)
+// bulmaRgba($color-invert, 0.9)
+// bulmaRgba($color-invert, 0.7)
+=registerCSSVarColor($name, $components, $fallback: null)
+  $color: nth($components, 1)
+
+  --#{$name}-h: #{hue($color)}
+  --#{$name}-s: #{saturation($color)}
+  --#{$name}-l: #{lightness($color)}
+  --#{$name}-a: 1
+  --#{$name}: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-l), var(--#{$name}-a))
+
+  // Invert color
+  --#{$name}-invert: #{findColorInvert($color)}
+
+  // Light color
+  $light-l: 96%
+  @if lightness($color) > 96%
+    $light-l: lightness($color)
+  --#{$name}-light-l: #{$light-l}
+  --#{$name}-light: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-light-l), var(--#{$name}-a))
+
+  // Dark color
+  $base-l: 29%
+  $luminance: colorLuminance($color)
+  $luminance-delta: (0.53 - $luminance)
+  $dark-l: round($base-l + ($luminance-delta * 53))
+  --#{$name}-dark-l: #{$dark-l}
+  --#{$name}-dark: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-dark-l), var(--#{$name}-a))
 
 @function assignCSSVar($name, $fallback)
   // +registerCSSVar($name, $fallback)

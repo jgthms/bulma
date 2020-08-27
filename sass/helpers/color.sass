@@ -1,11 +1,14 @@
 @each $name, $pair in $colors
   $color: nth($pair, 1)
   .has-text-#{$name}
+    --has-text-hover-delta: 10%
+    --has-text-hover-#{$name}-l: calc(#{var(--#{$name}-l)} + #{var(--has-text-hover-delta)})
+    --has-text-hover-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--has-text-hover-#{$name}-l), var(--#{$name}-a))
     color: var(--#{$name}, #{$color}) !important
-  a.has-text-#{$name}
+  .has-text-#{$name}
     &:hover,
     &:focus
-      color: bulmaDarken($color, 10%) !important
+      color: var(--has-text-hover-color, #{bulmaDarken($color, 10%)}) !important
   .has-background-#{$name}
     background-color: var(--#{$name}, #{$color}) !important
   @if length($pair) >= 4
