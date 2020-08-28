@@ -1,66 +1,92 @@
-$button-color: $text-strong !default
-$button-background-color: $scheme-main !default
+$button-color: var(--text-strong, #{$text-strong}) !default
+$button-background-color: var(--scheme-main, #{$scheme-main}) !default
 $button-family: false !default
 
-$button-border-color: $border !default
-$button-border-width: $control-border-width !default
+$button-border-color: var(--border, #{$border}) !default
+$button-border-width: var(--control-border-width, #{$control-border-width}) !default
 
 $button-padding-vertical: calc(0.5em - #{$button-border-width}) !default
 $button-padding-horizontal: 1em !default
 
-$button-hover-color: $link-hover !default
-$button-hover-border-color: $link-hover-border !default
+$button-hover-color: var(--link-hover, #{$link-hover}) !default
+$button-hover-border-color: var(--link-hover-border, #{$link-hover-border}) !default
 
-$button-focus-color: $link-focus !default
-$button-focus-border-color: $link-focus-border !default
+$button-focus-color: var(--link-focus, #{$link-focus}) !default
+$button-focus-border-color: var(--link-focus-border, #{$link-focus-border}) !default
 $button-focus-box-shadow-size: 0 0 0 0.125em !default
 $button-focus-box-shadow-color: bulmaRgba($link, 0.25) !default
 
-$button-active-color: $link-active !default
-$button-active-border-color: $link-active-border !default
+$button-active-color: var(--link-active, #{$link-active}) !default
+$button-active-border-color: var(--link-active-border, #{$link-active-border}) !default
 
-$button-text-color: $text !default
+$button-text-color: var(--text, #{$text}) !default
 $button-text-decoration: underline !default
-$button-text-hover-background-color: $background !default
-$button-text-hover-color: $text-strong !default
+$button-text-hover-background-color: var(--background, #{$background}) !default
+$button-text-hover-color: var(--text-strong, #{$text-strong}) !default
 
-$button-disabled-background-color: $scheme-main !default
-$button-disabled-border-color: $border !default
+$button-disabled-background-color: var(--scheme-main, #{$scheme-main}) !default
+$button-disabled-border-color: var(--border, #{$border}) !default
 $button-disabled-shadow: none !default
 $button-disabled-opacity: 0.5 !default
 
-$button-static-color: $text-light !default
-$button-static-background-color: $scheme-main-ter !default
-$button-static-border-color: $border !default
+$button-static-color: var(--text-light, #{$text-light}) !default
+$button-static-background-color: var(--scheme-main-ter, #{$scheme-main-ter}) !default
+$button-static-border-color: var(--border, #{$border}) !default
 
 $button-colors: $colors !default
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
-  border-radius: $radius-small
-  font-size: $size-small
+  border-radius: var(--radius-small, #{$radius-small})
+  --button-font-size: var(--size-small, #{$size-small})
 =button-normal
-  font-size: $size-normal
+  --button-font-size: var(--size-normal, #{$size-normal})
 =button-medium
-  font-size: $size-medium
+  --button-font-size: var(--size-medium, #{$size-medium})
 =button-large
-  font-size: $size-large
+  --button-font-size: var(--size-large, #{$size-large})
 
 .button
+  --button-background-color: #{$button-background-color}
+  --button-border-color: #{$button-border-color}
+  --button-border-width: #{$button-border-width}
+  --button-color: #{$button-color}
+  --button-family: #{$button-family}
+  --button-padding-vertical: #{$button-padding-vertical}
+  --button-padding-horizontal: #{$button-padding-horizontal}
+  --button-hover-border-color: #{$button-hover-border-color}
+  --button-hover-color: #{$button-hover-color}
+  --button-focus-border-color: #{$button-focus-border-color}
+  --button-focus-color: #{$button-focus-color}
+  --button-active-border-color: #{$button-active-border-color}
+  --button-active-color: #{$button-active-color}
+  --button-text-color: #{$button-text-color}
+  --button-text-decoration: #{$button-text-decoration}
+  --button-text-hover-background-color: #{$button-text-hover-background-color}
+  --button-text-hover-color: #{$button-text-hover-color}
+  --button-disabled-background-color: #{$button-disabled-background-color}
+  --button-disabled-border-color: #{$button-disabled-border-color}
+  --button-disabled-shadow: #{$button-disabled-shadow}
+  --button-disabled-opacity: #{$button-disabled-opacity}
+  --button-static-background-color: #{$button-static-background-color}
+  --button-static-border-color: #{$button-static-border-color}
+  --button-static-color: #{$button-static-color}
+
   @extend %control
   @extend %unselectable
-  background-color: $button-background-color
-  border-color: $button-border-color
-  border-width: $button-border-width
-  color: $button-color
+  background-color: var(--button-background-color)
+  border-color: var(--button-border-color)
+  border-width: var(--button-border-width)
+  color: var(--button-color)
   cursor: pointer
   @if $button-family
-    font-family: $button-family
+    font-family: var(--button-family)
+  font-size: var(--button-font-size)
   justify-content: center
-  padding-bottom: $button-padding-vertical
-  padding-left: $button-padding-horizontal
-  padding-right: $button-padding-horizontal
-  padding-top: $button-padding-vertical
+  padding-bottom: var(--button-padding-vertical)
+  padding-left: var(--button-padding-horizontal)
+  padding-right: var(--button-padding-horizontal)
+  padding-top: var(--button-padding-vertical)
   text-align: center
   white-space: nowrap
   strong
@@ -73,45 +99,45 @@ $button-colors: $colors !default
       height: 1.5em
       width: 1.5em
     &:first-child:not(:last-child)
-      +ltr-property("margin", calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}), false)
-      +ltr-property("margin", $button-padding-horizontal / 4)
+      +ltr-property("margin", calc(-1 / 2 * #{var(--button-padding-horizontal, #{$button-padding-horizontal})} - #{var(--button-border-width, #{$button-border-width})}), false)
+      +ltr-property("margin", calc(#{var(--button-padding-horizontal, #{$button-padding-horizontal})} / 4))
     &:last-child:not(:first-child)
-      +ltr-property("margin", $button-padding-horizontal / 4, false)
-      +ltr-property("margin", calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width}))
+      +ltr-property("margin", calc(#{var(--button-padding-horizontal, #{$button-padding-horizontal})} / 4), false)
+      +ltr-property("margin", calc(-1 / 2 * #{var(--button-padding-horizontal, #{$button-padding-horizontal})} - #{var(--button-border-width, #{$button-border-width})}))
     &:first-child:last-child
-      margin-left: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
-      margin-right: calc(#{-1 / 2 * $button-padding-horizontal} - #{$button-border-width})
+      margin-left: calc(-1 / 2 * #{var(--button-padding-horizontal, #{$button-padding-horizontal})} - #{var(--button-border-width, #{$button-border-width})})
+      margin-right: calc(-1 / 2 * #{var(--button-padding-horizontal, #{$button-padding-horizontal})} - #{var(--button-border-width, #{$button-border-width})})
   // States
   &:hover,
   &.is-hovered
-    border-color: $button-hover-border-color
-    color: $button-hover-color
+    border-color: var(--button-hover-border-color)
+    color: var(--button-hover-color)
   &:focus,
   &.is-focused
-    border-color: $button-focus-border-color
-    color: $button-focus-color
+    border-color: var(--button-focus-border-color)
+    color: var(--button-focus-color)
     &:not(:active)
-      box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color
+      box-shadow: var(--button-focus-box-shadow-size, #{$button-focus-box-shadow-size}) var(--button-focus-box-shadow-color, #{$button-focus-box-shadow-color})
   &:active,
   &.is-active
-    border-color: $button-active-border-color
-    color: $button-active-color
+    border-color: var(--button-active-border-color)
+    color: var(--button-active-color)
   // Colors
   &.is-text
     background-color: transparent
     border-color: transparent
-    color: $button-text-color
-    text-decoration: $button-text-decoration
+    color: var(--button-text-color)
+    text-decoration: var(--button-text-decoration)
     &:hover,
     &.is-hovered,
     &:focus,
     &.is-focused
-      background-color: $button-text-hover-background-color
-      color: $button-text-hover-color
+      background-color: var(--button-text-hover-background-color)
+      color: var(--button-text-hover-color)
     &:active,
     &.is-active
       background-color: bulmaDarken($button-text-hover-background-color, 5%)
-      color: $button-text-hover-color
+      color: var(--button-text-hover-color)
     &[disabled],
     fieldset[disabled] &
       background-color: transparent
@@ -121,113 +147,117 @@ $button-colors: $colors !default
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
-      background-color: $color
+      background-color: var(--#{$name}, #{$color})
       border-color: transparent
-      color: $color-invert
+      color: var(--#{$name}-invert, #{$color-invert})
       &:hover,
       &.is-hovered
-        --hover-#{$name}-l: calc(#{var(--#{$name}-l)} + 10%)
-        --button-hover-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--hover-#{$name}-l), var(--#{$name}-a))
+        --button-hover-background-l-delta: -2.5%
+        --button-hover-background-#{$name}-l: calc(#{var(--#{$name}-l)} + #{var(--button-hover-background-l-delta)})
+        --button-hover-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--button-hover-background-#{$name}-l), var(--#{$name}-a))
         background-color: var(--button-hover-background-color, #{bulmaDarken($color, 2.5%)})
         border-color: transparent
-        color: $color-invert
+        color: var(--#{$name}-invert, #{$color-invert})
       &:focus,
       &.is-focused
         border-color: transparent
-        color: $color-invert
+        color: var(--#{$name}-invert, #{$color-invert})
         &:not(:active)
-          box-shadow: $button-focus-box-shadow-size bulmaRgba($color, 0.25)
+          box-shadow: var(--button-focus-box-shadow-size, #{$button-focus-box-shadow-size}) bulmaRgba($color, 0.25)
       &:active,
       &.is-active
-        background-color: bulmaDarken($color, 5%)
+        --button-active-background-l-delta: -5%
+        --button-active-background-#{$name}-l: calc(#{var(--#{$name}-l)} + #{var(--button-active-background-l-delta)})
+        --button-active-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--button-active-background-#{$name}-l), var(--#{$name}-a))
+        background-color: var(--button-active-background-color, #{bulmaDarken($color, 5%)})
         border-color: transparent
-        color: $color-invert
+        color: var(--#{$name}-invert, #{$color-invert})
       &[disabled],
       fieldset[disabled] &
-        background-color: $color
+        background-color: var(--#{$name}, #{$color})
         border-color: transparent
         box-shadow: none
       &.is-inverted
-        background-color: $color-invert
-        color: $color
+        background-color: var(--#{$name}-invert, #{$color-invert})
+        color: var(--#{$name}, #{$color})
         &:hover,
         &.is-hovered
           background-color: bulmaDarken($color-invert, 5%)
         &[disabled],
         fieldset[disabled] &
-          background-color: $color-invert
+          background-color: var(--#{$name}-invert, #{$color-invert})
           border-color: transparent
           box-shadow: none
-          color: $color
+          color: var(--#{$name}, #{$color})
       &.is-loading
         &::after
-          border-color: transparent transparent $color-invert $color-invert !important
+          border-color: transparent transparent var(--#{$name}-invert, #{$color-invert}) var(--#{$name}-invert, #{$color-invert}) !important
       &.is-outlined
         background-color: transparent
-        border-color: $color
-        color: $color
+        border-color: var(--#{$name}, #{$color})
+        color: var(--#{$name}, #{$color})
         &:hover,
         &.is-hovered,
         &:focus,
         &.is-focused
-          background-color: $color
-          border-color: $color
-          color: $color-invert
+          background-color: var(--#{$name}, #{$color})
+          border-color: var(--#{$name}, #{$color})
+          color: var(--#{$name}-invert, #{$color-invert})
         &.is-loading
           &::after
-            border-color: transparent transparent $color $color !important
+            border-color: transparent transparent var(--#{$name}, #{$color}) var(--#{$name}, #{$color}) !important
           &:hover,
           &.is-hovered,
           &:focus,
           &.is-focused
             &::after
-              border-color: transparent transparent $color-invert $color-invert !important
+              border-color: transparent transparent var(--#{$name}-invert, #{$color-invert}) var(--#{$name}-invert, #{$color-invert}) !important
         &[disabled],
         fieldset[disabled] &
           background-color: transparent
-          border-color: $color
+          border-color: var(--#{$name}, #{$color})
           box-shadow: none
-          color: $color
+          color: var(--#{$name}, #{$color})
       &.is-inverted.is-outlined
         background-color: transparent
-        border-color: $color-invert
-        color: $color-invert
+        border-color: var(--#{$name}-invert, #{$color-invert})
+        color: var(--#{$name}-invert, #{$color-invert})
         &:hover,
         &.is-hovered,
         &:focus,
         &.is-focused
-          background-color: $color-invert
-          color: $color
+          background-color: var(--#{$name}-invert, #{$color-invert})
+          color: var(--#{$name}, #{$color})
         &.is-loading
           &:hover,
           &.is-hovered,
           &:focus,
           &.is-focused
             &::after
-              border-color: transparent transparent $color $color !important
+              border-color: transparent transparent var(--#{$name}, #{$color}) var(--#{$name}, #{$color}) !important
         &[disabled],
         fieldset[disabled] &
           background-color: transparent
-          border-color: $color-invert
+          border-color: var(--#{$name}-invert, #{$color-invert})
           box-shadow: none
-          color: $color-invert
+          color: var(--#{$name}-invert, #{$color-invert})
       // If light and dark colors are provided
       @if length($pair) >= 4
         $color-light: nth($pair, 3)
         $color-dark: nth($pair, 4)
         &.is-light
-          background-color: $color-light
-          color: $color-dark
+          background-color: var(--#{$name}-light, #{$color-light})
+          color: var(--#{$name}-dark, #{$color-dark})
           &:hover,
           &.is-hovered
             background-color: bulmaDarken($color-light, 2.5%)
             border-color: transparent
-            color: $color-dark
+            color: var(--#{$name}-dark, #{$color-dark})
           &:active,
           &.is-active
             background-color: bulmaDarken($color-light, 5%)
             border-color: transparent
-            color: $color-dark
+            color: var(--#{$name}-dark, #{$color-dark})
   // Sizes
   &.is-small
     +button-small
@@ -240,10 +270,10 @@ $button-colors: $colors !default
   // Modifiers
   &[disabled],
   fieldset[disabled] &
-    background-color: $button-disabled-background-color
-    border-color: $button-disabled-border-color
-    box-shadow: $button-disabled-shadow
-    opacity: $button-disabled-opacity
+    background-color: var(--button-disabled-background-color)
+    border-color: var(--button-disabled-border-color)
+    box-shadow: var(--button-disabled-shadow)
+    opacity: var(--button-disabled-opacity)
   &.is-fullwidth
     display: flex
     width: 100%
@@ -255,15 +285,15 @@ $button-colors: $colors !default
       +center(1em)
       position: absolute !important
   &.is-static
-    background-color: $button-static-background-color
-    border-color: $button-static-border-color
-    color: $button-static-color
+    background-color: var(--button-static-background-color)
+    border-color: var(--button-static-border-color)
+    color: var(--button-static-color)
     box-shadow: none
     pointer-events: none
   &.is-rounded
-    border-radius: $radius-rounded
-    padding-left: calc(#{$button-padding-horizontal} + 0.25em)
-    padding-right: calc(#{$button-padding-horizontal} + 0.25em)
+    border-radius: var(--radius-rounded, #{$radius-rounded})
+    padding-left: calc(#{var(--button-padding-horizontal, #{$button-padding-horizontal})} + 0.25em)
+    padding-right: calc(#{var(--button-padding-horizontal, #{$button-padding-horizontal})} + 0.25em)
 
 .buttons
   align-items: center

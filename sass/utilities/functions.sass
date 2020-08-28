@@ -161,32 +161,37 @@
 // bulmaDarken($color-invert, 5%)
 // bulmaRgba($color-invert, 0.9)
 // bulmaRgba($color-invert, 0.7)
-=registerCSSVarColor($name, $components, $fallback: null)
+=registerCSSVarColor($name, $components, $prefix: '')
   $color: nth($components, 1)
+  $base: $prefix + $name
 
-  --#{$name}-h: #{hue($color)}
-  --#{$name}-s: #{saturation($color)}
-  --#{$name}-l: #{lightness($color)}
-  --#{$name}-a: 1
-  --#{$name}: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-l), var(--#{$name}-a))
+  --#{$base}-h: #{hue($color)}
+  --#{$base}-s: #{saturation($color)}
+  --#{$base}-l: #{lightness($color)}
+  --#{$base}-a: 1
+  --#{$base}: hsla(var(--#{$base}-h), var(--#{$base}-s), var(--#{$base}-l), var(--#{$base}-a))
 
   // Invert color
-  --#{$name}-invert: #{findColorInvert($color)}
+  --#{$base}-invert: #{findColorInvert($color)}
 
   // Light color
   $light-l: 96%
   @if lightness($color) > 96%
     $light-l: lightness($color)
-  --#{$name}-light-l: #{$light-l}
-  --#{$name}-light: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-light-l), var(--#{$name}-a))
+  --#{$base}-light-l: #{$light-l}
+  --#{$base}-light: hsla(var(--#{$base}-h), var(--#{$base}-s), var(--#{$base}-light-l), var(--#{$base}-a))
 
   // Dark color
   $base-l: 29%
   $luminance: colorLuminance($color)
   $luminance-delta: (0.53 - $luminance)
   $dark-l: round($base-l + ($luminance-delta * 53))
-  --#{$name}-dark-l: #{$dark-l}
-  --#{$name}-dark: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-dark-l), var(--#{$name}-a))
+  --#{$base}-dark-l: #{$dark-l}
+  --#{$base}-dark: hsla(var(--#{$base}-h), var(--#{$base}-s), var(--#{$base}-dark-l), var(--#{$base}-a))
+
+=registerCSSVarColors($colors, $prefix: '')
+  @each $name, $components in $colors
+    +registerCSSVarColor($name, $components, $prefix)
 
 @function assignCSSVar($name, $fallback)
   // +registerCSSVar($name, $fallback)
