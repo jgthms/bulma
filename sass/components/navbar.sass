@@ -8,6 +8,8 @@ $navbar-z: 30 !default
 $navbar-fixed-z: 30 !default
 $navbar-shadow-color: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.1) !default
 
+$navbar-menu-background-color: var(--scheme-main, #{$scheme-main}) !default
+
 $navbar-item-color: var(--text, #{$text}) !default
 $navbar-item-hover-color: var(--link, #{$link}) !default
 $navbar-item-hover-background-color: var(--scheme-main-bis, #{$scheme-main-bis}) !default
@@ -60,6 +62,7 @@ $navbar-colors: $colors !default
 .navbar
   --navbar-fixed-z: #{$navbar-fixed-z}
   --navbar-shadow-color: #{$navbar-shadow-color}
+  --navbar-menu-background-color: #{$navbar-menu-background-color}
   --navbar-background-color: #{$navbar-background-color}
   --navbar-box-shadow-size: #{$navbar-box-shadow-size}
   --navbar-box-shadow-color: #{$navbar-box-shadow-color}
@@ -106,19 +109,19 @@ $navbar-colors: $colors !default
     $color-invert: nth($pair, 2)
 
     &.is-#{$name}
-      --navbar-background-color: var(--#{$name}, #{$color})
-      --navbar-color: var(--#{$name}-invert, #{$color-invert})
-      --navbar-item-color: var(--#{$name}-invert, #{$color-invert})
-      --navbar-dropdown-arrow: var(--#{$name}-invert, #{$color-invert})
       --navbar-burger-color: var(--#{$name}-invert, #{$color-invert})
-      --navbar-item-hover-color: var(--#{$name}-invert, #{$color-invert})
-      --navbar-item-hover-background-delta: -5%
-      --navbar-item-hover-background-#{$name}-l: calc(#{var(--#{$name}-l)} + #{var(--navbar-item-hover-background-delta)})
-      --navbar-item-hover-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--navbar-item-hover-background-#{$name}-l), var(--#{$name}-a))
 
+      background-color: var(--#{$name}, #{$color})
+      color: var(--#{$name}-invert, #{$color-invert})
       .navbar-brand
+        & > .navbar-item,
+        .navbar-link
+          color: var(--#{$name}-invert, #{$color-invert})
         & > a.navbar-item,
         .navbar-link
+          --navbar-item-hover-background-delta: -5%
+          --navbar-item-hover-background-#{$name}-l: calc(#{var(--#{$name}-l)} + #{var(--navbar-item-hover-background-delta)})
+          --navbar-item-hover-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--navbar-item-hover-background-#{$name}-l), var(--#{$name}-a))
           &:focus,
           &:hover,
           &.is-active
@@ -278,7 +281,7 @@ a.navbar-item,
     &::after
       display: none
   .navbar-menu
-    background-color: var(--navbar-background-color)
+    background-color: var(--navbar-menu-background-color)
     box-shadow: 0 8px 16px var(--navbar-shadow-color)
     padding: 0.5rem 0
     &.is-active
