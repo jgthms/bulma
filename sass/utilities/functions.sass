@@ -79,14 +79,14 @@
 @function findColorInvert($color, $fallback: null)
   @if type-of($color) == 'color'
     @if (colorLuminance($color) > 0.55)
-      @return var(--black-70, rgba(0, 0, 0, 0.7))
+      @return rgba(0, 0, 0, 0.7)
     @else
-      @return var(--white, #fff)
+      @return #fff
   @else if type-of($fallback) == 'color'
     @if (colorLuminance($fallback) > 0.55)
-      @return var(--black-70, rgba(0, 0, 0, 0.7))
+      @return rgba(0, 0, 0, 0.7)
     @else
-      @return var(--white, #fff)
+      @return #fff
   @return $color
 
 @function findLightColor($color, $fallback: null)

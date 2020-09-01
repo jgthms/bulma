@@ -34,29 +34,13 @@ $subtitle-negative-margin: -1.25rem !default
     vertical-align: middle
 
 .title
-  // Approach A
-  // CSS Variable takes precedence, if theme is included
-  // --title-color: var(--text-strong, #{$title-color})
-  // color: var(--title-color)
-
-  // Approach B
-  // Sass Variable takes precedence
-  // Problem: --title-color is always set, so the fallback is never used
-  // --title-color: #{$title-color}
-  // color: var(--title-color, var(--text-strong))
-
-  // Approach C
-  // Sass variable references a CSS variable with fallback
-  // $title-color: var(--text-strong, #{$text-strong})
   --title-color: #{$title-color}
-  color: var(--title-color)
-
   --title-font-size: #{$title-size}
   --title-weight: #{$title-weight}
   --title-line-height: #{$title-line-height}
   --title-strong-color: #{$title-strong-color}
   --title-strong-weight: #{$title-strong-weight}
-
+  color: var(--title-color)
   font-size: var(--title-font-size)
   font-weight: var(--title-weight)
   line-height: var(--title-line-height)
@@ -84,7 +68,6 @@ $subtitle-negative-margin: -1.25rem !default
   --subtitle-line-height: #{$subtitle-line-height}
   --subtitle-strong-color: #{$subtitle-strong-color}
   --subtitle-strong-weight: #{$subtitle-strong-weight}
-
   color: var(--subtitle-color)
   font-size: var(--subtitle-font-size)
   font-weight: var(--subtitle-weight)
@@ -101,4 +84,4 @@ $subtitle-negative-margin: -1.25rem !default
   @each $size in $sizes
     $i: index($sizes, $size)
     &.is-#{$i}
-      --subtitle-font-size: $size
+      font-size: $size

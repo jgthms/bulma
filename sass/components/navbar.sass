@@ -96,9 +96,9 @@ $navbar-colors: $colors !default
   --navbar-dropdown-z: #{$navbar-dropdown-z}
   --navbar-dropdown-boxed-radius: #{$navbar-dropdown-boxed-radius}
   --navbar-dropdown-boxed-shadow: #{$navbar-dropdown-boxed-shadow}
+  --navbar-dropdown-offset: #{$navbar-dropdown-offset}
   --navbar-item-active-color: #{$navbar-item-active-color}
   --navbar-item-active-background-color: #{$navbar-item-active-background-color}
-
   background-color: var(--navbar-background-color)
   min-height: var(--navbar-height)
   position: relative
@@ -106,10 +106,8 @@ $navbar-colors: $colors !default
   @each $name, $pair in $navbar-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
-
     &.is-#{$name}
       --navbar-burger-color: var(--#{$name}-invert, #{$color-invert})
-
       background-color: var(--#{$name}, #{$color})
       color: var(--#{$name}-invert, #{$color-invert})
       .navbar-brand
@@ -128,7 +126,6 @@ $navbar-colors: $colors !default
       +from($navbar-breakpoint)
         --navbar-dropdown-item-active-background-color: var(--#{$name}, #{$color})
         --navbar-dropdown-item-active-color: var(--#{$name}-invert, #{$color-invert})
-
         .navbar-brand,
         .navbar-start,
         .navbar-end
@@ -187,7 +184,7 @@ body
 
 .navbar-burger
   color: var(--navbar-burger-color)
-  +hamburger($navbar-height)
+  +hamburger(var(--navbar-height))
   +ltr-property("margin", auto, false)
 
 .navbar-menu
@@ -421,7 +418,7 @@ a.navbar-item,
       display: block
       opacity: 0
       pointer-events: none
-      top: calc(100% + (#{$navbar-dropdown-offset}))
+      top: calc(100% + #{var(--navbar-dropdown-offset)})
       transform: translateY(-5px)
       transition-duration: var(--speed, #{$speed})
       transition-property: opacity, transform

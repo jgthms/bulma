@@ -54,7 +54,6 @@ $panel-colors: $colors !default
   --panel-block-active-icon-color: #{$panel-block-active-icon-color}
   --panel-block-hover-background-color: #{$panel-block-hover-background-color}
   --panel-icon-color: #{$panel-icon-color}
-
   border-radius: var(--panel-radius)
   box-shadow: var(--panel-shadow)
   font-size: var(--panel-font-size)
@@ -66,12 +65,12 @@ $panel-colors: $colors !default
     $color-invert: nth($components, 2)
     &.is-#{$name}
       .panel-heading
-        background-color: $color
-        color: $color-invert
+        background-color: var(--#{$name}, #{$color})
+        color: var(--#{$name}-invert, #{$color-invert})
       .panel-tabs a.is-active
-        border-bottom-color: $color
+        border-bottom-color: var(--#{$name}, #{$color})
       .panel-block.is-active .panel-icon
-        color: $color
+        color: var(--#{$name}, #{$color})
 
 .panel-tabs,
 .panel-block

@@ -1,43 +1,74 @@
-$body-background-color: $scheme-main !default
+$body-background-color: var(--scheme-main, #{$scheme-main}) !default
 $body-size: 16px !default
 $body-min-width: 300px !default
 $body-rendering: optimizeLegibility !default
-$body-family: $family-primary !default
+$body-family: var(--family-primary, #{$family-primary}) !default
 $body-overflow-x: hidden !default
 $body-overflow-y: scroll !default
 
-$body-color: $text !default
+$body-color: var(--text, #{$text}) !default
 $body-font-size: 1em !default
-$body-weight: $weight-normal !default
+$body-weight: var(--weight-normal, #{$weight-normal}) !default
 $body-line-height: 1.5 !default
 
-$code-family: $family-code !default
+$code-family: var(--family-code, #{$family-code}) !default
 $code-padding: 0.25em 0.5em 0.25em !default
 $code-weight: normal !default
 $code-size: 0.875em !default
 
 $small-font-size: 0.875em !default
 
-$hr-background-color: $background !default
+$hr-background-color: var(--background, #{$background}) !default
 $hr-height: 2px !default
 $hr-margin: 1.5rem 0 !default
 
-$strong-color: $text-strong !default
-$strong-weight: $weight-bold !default
+$strong-color: var(--text-strong, #{$text-strong}) !default
+$strong-weight: var(--weight-bold, #{$weight-bold}) !default
 
 $pre-font-size: 0.875em !default
 $pre-padding: 1.25rem 1.5rem !default
 $pre-code-font-size: 1em !default
 
 html
-  background-color: $body-background-color
-  font-size: $body-size
+  --body-background-color: #{$body-background-color}
+  --body-size: #{$body-size}
+  --body-min-width: #{$body-min-width}
+  --body-overflow-x: #{$body-overflow-x}
+  --body-overflow-y: #{$body-overflow-y}
+  --body-rendering: #{$body-rendering}
+  --body-family: #{$body-family}
+  --code-family: #{$code-family}
+  --body-color: #{$body-color}
+  --body-font-size: #{$body-font-size}
+  --body-weight: #{$body-weight}
+  --body-line-height: #{$body-line-height}
+  --link: #{$link}
+  --link-hover: #{$link-hover}
+  --code-background: #{$code-background}
+  --code: #{$code}
+  --code-size: #{$code-size}
+  --code-weight: #{$code-weight}
+  --code-padding: #{$code-padding}
+  --hr-background-color: #{$hr-background-color}
+  --hr-height: #{$hr-height}
+  --hr-margin: #{$hr-margin}
+  --small-font-size: #{$small-font-size}
+  --strong-color: #{$strong-color}
+  --strong-weight: #{$strong-weight}
+  --pre-background: #{$pre-background}
+  --pre: #{$pre}
+  --pre-font-size: #{$pre-font-size}
+  --pre-padding: #{$pre-padding}
+  --pre-code-font-size: #{$pre-code-font-size}
+  --text-strong: #{$text-strong}
+  background-color: var(--body-background-color)
+  font-size: var(--body-size)
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
-  min-width: $body-min-width
-  overflow-x: $body-overflow-x
-  overflow-y: $body-overflow-y
-  text-rendering: $body-rendering
+  min-width: var(--body-min-width)
+  overflow-x: var(--body-overflow-x)
+  overflow-y: var(--body-overflow-y)
+  text-rendering: var(--body-rendering)
   text-size-adjust: 100%
 
 article,
@@ -54,44 +85,44 @@ button,
 input,
 select,
 textarea
-  font-family: $body-family
+  font-family: var(--body-family)
 
 code,
 pre
   -moz-osx-font-smoothing: auto
   -webkit-font-smoothing: auto
-  font-family: $code-family
+  font-family: var(--code-family)
 
 body
-  color: $body-color
-  font-size: $body-font-size
-  font-weight: $body-weight
-  line-height: $body-line-height
+  color: var(--body-color)
+  font-size: var(--body-font-size)
+  font-weight: var(--body-weight)
+  line-height: var(--body-line-height)
 
 // Inline
 
 a
-  color: $link
+  color: var(--link)
   cursor: pointer
   text-decoration: none
   strong
     color: currentColor
   &:hover
-    color: $link-hover
+    color: var(--link-hover)
 
 code
-  background-color: $code-background
-  color: $code
-  font-size: $code-size
-  font-weight: $code-weight
-  padding: $code-padding
+  background-color: var(--code-background)
+  color: var(--code)
+  font-size: var(--code-size)
+  font-weight: var(--code-weight)
+  padding: var(--code-padding)
 
 hr
-  background-color: $hr-background-color
+  background-color: var(--hr-background-color)
   border: none
   display: block
-  height: $hr-height
-  margin: $hr-margin
+  height: var(--hr-height)
+  margin: var(--hr-margin)
 
 img
   height: auto
@@ -102,15 +133,15 @@ input[type="radio"]
   vertical-align: baseline
 
 small
-  font-size: $small-font-size
+  font-size: var(--small-font-size)
 
 span
   font-style: inherit
   font-weight: inherit
 
 strong
-  color: $strong-color
-  font-weight: $strong-weight
+  color: var(--strong-color)
+  font-weight: var(--strong-weight)
 
 // Block
 
@@ -119,17 +150,17 @@ fieldset
 
 pre
   +overflow-touch
-  background-color: $pre-background
-  color: $pre
-  font-size: $pre-font-size
+  background-color: var(--pre-background)
+  color: var(--pre)
+  font-size: var(--pre-font-size)
   overflow-x: auto
-  padding: $pre-padding
+  padding: var(--pre-padding)
   white-space: pre
   word-wrap: normal
   code
     background-color: transparent
     color: currentColor
-    font-size: $pre-code-font-size
+    font-size: var(--pre-code-font-size)
     padding: 0
 
 table
@@ -139,4 +170,4 @@ table
     &:not([align])
       text-align: inherit
   th
-    color: $text-strong
+    color: var(--text-strong)

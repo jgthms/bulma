@@ -24,7 +24,6 @@ $file-colors: $form-colors !default
   --file-name-border-style: #{$file-name-border-style}
   --file-name-border-width: #{$file-name-border-width}
   --file-name-max-width: #{$file-name-max-width}
-
   @extend %unselectable
   align-items: stretch
   display: flex
@@ -37,27 +36,27 @@ $file-colors: $form-colors !default
     $color-invert: nth($pair, 2)
     &.is-#{$name}
       .file-cta
-        background-color: $color
+        background-color: var(--#{$name} #{$color})
         border-color: transparent
-        color: $color-invert
+        color: var(--#{$name}-invert, #{$color-invert})
       &:hover,
       &.is-hovered
         .file-cta
           background-color: bulmaDarken($color, 2.5%)
           border-color: transparent
-          color: $color-invert
+          color: var(--#{$name}-invert, #{$color-invert})
       &:focus,
       &.is-focused
         .file-cta
           border-color: transparent
           box-shadow: 0 0 0.5em bulmaRgba($color, 0.25)
-          color: $color-invert
+          color: var(--#{$name}-invert, #{$color-invert})
       &:active,
       &.is-active
         .file-cta
           background-color: bulmaDarken($color, 5%)
           border-color: transparent
-          color: $color-invert
+          color: var(--#{$name}-invert, #{$color-invert})
   // Sizes
   &.is-small
     --file-font-size: var(--size-small, #{$size-small})

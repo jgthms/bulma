@@ -16,20 +16,23 @@
     top: calc(50% - (#{$width} / 2))
 
 =fa($size, $dimensions)
+  --fa-dimensions: #{$dimensions}
+  --fa-font-size: #{$size}
   display: inline-block
-  font-size: $size
-  height: $dimensions
-  line-height: $dimensions
+  font-size: var(--fa-font-size)
+  height: var(--fa-dimensions)
+  line-height: var(--fa-dimensions)
   text-align: center
   vertical-align: top
-  width: $dimensions
+  width: var(--fa-dimensions)
 
 =hamburger($dimensions)
+  --hamburger-dimensions: #{$dimensions}
   cursor: pointer
   display: block
-  height: $dimensions
+  height: var(--hamburger-dimensions)
   position: relative
-  width: $dimensions
+  width: var(--hamburger-dimensions)
   span
     background-color: currentColor
     display: block
@@ -37,9 +40,9 @@
     left: calc(50% - 8px)
     position: absolute
     transform-origin: center
-    transition-duration: $speed
+    transition-duration: var(--speed, #{$speed})
     transition-property: background-color, opacity, transform
-    transition-timing-function: $easing
+    transition-timing-function: var(--easing, #{$easing})
     width: 16px
     &:nth-child(1)
       top: calc(50% - 6px)
@@ -165,7 +168,8 @@
   +unselectable
 
 =arrow($color: transparent)
-  border: 3px solid $color
+  --arrow-color: #{$color}
+  border: 3px solid var(--arrow-color)
   border-radius: 2px
   border-right: 0
   border-top: 0
@@ -184,8 +188,9 @@
   +arrow
 
 =block($spacing: $block-spacing)
+  --block-spacing: #{$spacing}
   &:not(:last-child)
-    margin-bottom: $spacing
+    margin-bottom: var(--block-spacing)
 
 %block
   +block
@@ -260,9 +265,10 @@
   +delete
 
 =loader
+  --loader-border-color: var(--grey-lighter, #{$grey-lighter})
   animation: spinAround 500ms infinite linear
-  border: 2px solid $grey-lighter
-  border-radius: $radius-rounded
+  border: 2px solid var(--loader-border-color)
+  border-radius: var(--radius-rounded, #{$radius-rounded})
   border-right-color: transparent
   border-top-color: transparent
   content: ""

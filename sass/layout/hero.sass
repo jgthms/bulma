@@ -11,7 +11,6 @@ $hero-colors: $colors !default
   --hero-body-padding-small: #{$hero-body-padding-small}
   --hero-body-padding-medium: #{$hero-body-padding-medium}
   --hero-body-padding-large: #{$hero-body-padding-large}
-
   align-items: stretch
   display: flex
   flex-direction: column
@@ -26,21 +25,21 @@ $hero-colors: $colors !default
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
-      background-color: $color
-      color: $color-invert
+      background-color: var(--#{$name}, #{$color})
+      color: var(--#{$name}-invert, #{$color-invert})
       a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
       strong
         color: inherit
       .title
-        color: $color-invert
+        color: var(--#{$name}-invert, #{$color-invert})
       .subtitle
         color: bulmaRgba($color-invert, 0.9)
         a:not(.button),
         strong
-          color: $color-invert
+          color: var(--#{$name}-invert, #{$color-invert})
       .navbar-menu
         +touch
-          background-color: $color
+          background-color: var(--#{$name}, #{$color})
       .navbar-item,
       .navbar-link
         color: bulmaRgba($color-invert, 0.7)
@@ -49,10 +48,10 @@ $hero-colors: $colors !default
         &:hover,
         &.is-active
           background-color: bulmaDarken($color, 5%)
-          color: $color-invert
+          color: var(--#{$name}-invert, #{$color-invert})
       .tabs
         a
-          color: $color-invert
+          color: var(--#{$name}-invert, #{$color-invert})
           opacity: 0.9
           &:hover
             opacity: 1
@@ -62,15 +61,15 @@ $hero-colors: $colors !default
         &.is-boxed,
         &.is-toggle
           a
-            color: $color-invert
+            color: var(--#{$name}-invert, #{$color-invert})
             &:hover
               background-color: bulmaRgba($scheme-invert, 0.1)
           li.is-active a
             &,
             &:hover
-              background-color: $color-invert
-              border-color: $color-invert
-              color: $color
+              background-color: var(--#{$name}-invert, #{$color-invert})
+              border-color: var(--#{$name}-invert, #{$color-invert})
+              color: var(--#{$name}, #{$color})
       // Modifiers
       @if type-of($color) == 'color'
         &.is-bold
