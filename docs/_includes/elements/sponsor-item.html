@@ -10,9 +10,12 @@
     class="bd-sponsor-item"
     href="{{ sponsor.url }}"
     target="_blank"
-    {% unless sponsor.follow %}
+    {% unless sponsor.follow or sponsor.noopener %}
     rel="nofollow"
     {% endunless %}
+    {% if sponsor.noopener %}
+    rel="noopener"
+    {% endif %}
     title="{{ sponsor_alt }}"
     >
     {% if sponsor.textOnly %}
