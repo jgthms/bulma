@@ -43,6 +43,10 @@ function plugin() {
         if (mapName in COLOR_MAPS) {
           const colors = COLOR_MAPS[mapName].map(colorName => {
             defaultAssignments.push(`--${colorName}`);
+            defaultAssignments.push(`--${colorName}-h`);
+            defaultAssignments.push(`--${colorName}-s`);
+            defaultAssignments.push(`--${colorName}-l`);
+            defaultAssignments.push(`--${colorName}-a`);
             defaultAssignments.push(`--${colorName}-invert`);
             defaultAssignments.push(`--${colorName}-light`);
             defaultAssignments.push(`--${colorName}-dark`);

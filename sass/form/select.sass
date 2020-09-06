@@ -47,20 +47,25 @@ $select-colors: $form-colors !default
       border-color: var(--select-hover-color)
   // Colors
   @each $name, $pair in $select-colors
+    @debug $select-colors
     $color: nth($pair, 1)
     &.is-#{$name}
+      --hover-border-delta: -5%
+      --hover-border-#{$name}-l: calc(#{var(--#{$name}-l)} + #{var(--hover-border-delta)})
+      --hover-border-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--hover-border-#{$name}-l), var(--#{$name}-a))
+      --focus-box-shadow-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-l), 0.25)
       &:not(:hover)::after
         border-color: var(--#{$name}, #{$color})
       select
         border-color: var(--#{$name}, #{$color})
         &:hover,
         &.is-hovered
-          border-color: bulmaDarken($color, 5%)
+          border-color: var(--hover-border-color, #{bulmaDarken($color, 5%)})
         &:focus,
         &.is-focused,
         &:active,
         &.is-active
-          box-shadow: var(--select-focus-box-shadow-size) bulmaRgba($color, 0.25)
+          box-shadow: var(--select-focus-box-shadow-size) var(--focus-box-shadow-color, #{bulmaRgba($color, 0.25)})
   // Sizes
   &.is-small
     +control-small
