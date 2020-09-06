@@ -25,6 +25,9 @@ $hero-colors: $colors !default
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
+      --hover-background-l-delta: -5%
+      --hover-background-#{$name}-l: calc(#{var(--#{$name}-light-l)} + #{var(--hover-background-l-delta)})
+      --hover-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--hover-background-#{$name}-l), var(--#{$name}-a))
       background-color: var(--#{$name}, #{$color})
       color: var(--#{$name}-invert, #{$color-invert})
       a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
@@ -47,7 +50,7 @@ $hero-colors: $colors !default
       .navbar-link
         &:hover,
         &.is-active
-          background-color: bulmaDarken($color, 5%)
+          background-color: var(--hover-background-color, #{bulmaDarken($color, 5%)})
           color: var(--#{$name}-invert, #{$color-invert})
       .tabs
         a
@@ -63,7 +66,7 @@ $hero-colors: $colors !default
           a
             color: var(--#{$name}-invert, #{$color-invert})
             &:hover
-              background-color: bulmaRgba($scheme-invert, 0.1)
+              background-color: rgba(0, 0, 0, 0.1)
           li.is-active a
             &,
             &:hover

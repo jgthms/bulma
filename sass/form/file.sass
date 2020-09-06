@@ -1,12 +1,12 @@
 $file-border-color: var(--border, #{$border}) !default
 $file-radius: var(--radius, #{$radius}) !default
 
-$file-cta-background-color: var(--scheme-main-ter, #{$scheme-main-ter}) !default
+$file-cta-background-color: $scheme-main-ter !default
 $file-cta-color: var(--text, #{$text}) !default
 $file-cta-hover-color: var(--text-strong, #{$text-strong}) !default
 $file-cta-active-color: var(--text-strong, #{$text-strong}) !default
 
-$file-name-border-color: var(--border, #{$border}) !default
+$file-name-border-color: $border !default
 $file-name-border-style: solid !default
 $file-name-border-width: 1px 1px 1px 0 !default
 $file-name-max-width: 16em !default
@@ -35,6 +35,14 @@ $file-colors: $form-colors !default
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
+      --hover-background-l-delta: -2.5%
+      --hover-background-#{$name}-l: calc(#{var(--#{$name}-light-l)} + #{var(--hover-background-l-delta)})
+      --hover-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--hover-background-#{$name}-l), var(--#{$name}-a))
+      --focus-box-shadow-color-hsla: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-l), 0.25)
+      --focus-box-shadow-color: var(--focus-box-shadow-color-hsla, #{bulmaRgba($color, 0.25)})
+      --active-background-l-delta: -5%
+      --active-background-#{$name}-l: calc(#{var(--#{$name}-light-l)} + #{var(--active-background-l-delta)})
+      --active-background-color: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--active-background-#{$name}-l), var(--#{$name}-a))
       .file-cta
         background-color: var(--#{$name} #{$color})
         border-color: transparent
@@ -42,19 +50,19 @@ $file-colors: $form-colors !default
       &:hover,
       &.is-hovered
         .file-cta
-          background-color: bulmaDarken($color, 2.5%)
+          background-color: var(--hover-background-color, #{bulmaDarken($color, 2.5%)})
           border-color: transparent
           color: var(--#{$name}-invert, #{$color-invert})
       &:focus,
       &.is-focused
         .file-cta
           border-color: transparent
-          box-shadow: 0 0 0.5em bulmaRgba($color, 0.25)
+          box-shadow: 0 0 0.5em var(--focus-box-shadow-color)
           color: var(--#{$name}-invert, #{$color-invert})
       &:active,
       &.is-active
         .file-cta
-          background-color: bulmaDarken($color, 5%)
+          background-color: var(--active-background-color, #{bulmaDarken($color, 5%)})
           border-color: transparent
           color: var(--#{$name}-invert, #{$color-invert})
   // Sizes

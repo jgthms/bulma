@@ -15,12 +15,14 @@ $textarea-colors: $form-colors !default
   @each $name, $pair in $textarea-colors
     $color: nth($pair, 1)
     &.is-#{$name}
+      --focus-box-shadow-color-hsla: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-l), 0.25)
+      --focus-box-shadow-color: var(--focus-box-shadow-color-hsla, #{bulmaRgba($color, 0.25)})
       border-color: var(--#{$name}, #{$color})
       &:focus,
       &.is-focused,
       &:active,
       &.is-active
-        box-shadow: var(--input-focus-box-shadow-size, #{$input-focus-box-shadow-size}) bulmaRgba($color, 0.25)
+        box-shadow: var(--input-focus-box-shadow-size, #{$input-focus-box-shadow-size}) var(--focus-box-shadow-color)
   // Sizes
   &.is-small
     +control-small
