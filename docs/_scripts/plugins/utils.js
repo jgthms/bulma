@@ -53,6 +53,8 @@ let utils = {
       return 'size';
     } else if (value.includes('$')) {
       return 'compound';
+    } else if (value.endsWith('%')) {
+      return 'percent';
     } else if (value.match(regex_unitless)) {
       return 'unitless';
     }
