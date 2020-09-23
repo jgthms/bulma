@@ -1,5 +1,9 @@
 # Bulma Changelog
 
+## 0.9.1
+
+* #3084 Add an inset shadow to a card with `is-inset`
+
 ## 0.9.0
 
 ### Deprecation warning
