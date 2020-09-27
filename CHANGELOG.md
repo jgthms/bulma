@@ -1,5 +1,24 @@
 # Bulma Changelog
 
+## 0.9.1
+
+### New features
+
+* #3047 Flexbox helpers
+* #3085 Add `is-clickable` helper
+* #3086 Allow each component to have its own colors and default to global ones
+* New variables `$navbar-colors`, `$button-colors`, `$notification-colors`, `$progress-colors`, `$table-colors`, `$tag-colors`, `$file-colors`, `$textarea-colors`, `$select-colors`, `$form-colors`, `$label-colors` and `$hero-colors`
+
+### Improvements
+
+* #2630 Fixes #2598 -> Add `$card-radius` variable
+* Add `$card-overflow` variable
+* #2540 Fixes #2539 -> Fix indeterminate progress styling in IE11
+* #3057 Make the default text color of `$code` listings more accessible
+* #3088 Adds not allowed cursor to missing inputs
+* #3101 Add `$modal-breakpoint` variable for modal breakpoint
+* #3107 Add `optgroup` to `generic.sass`
+
 ## 0.9.0
 
 ### Deprecation warning
