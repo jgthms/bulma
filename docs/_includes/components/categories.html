@@ -13,11 +13,6 @@
         </a>
         <a class="bd-category-name {% if category_id == current_link_id %}is-active{% endif %}" href="{{ site.url }}{{ category_link.path }}">
           <strong>{{ category_link.name }}</strong>
-          {% if category_link.name == 'Helpers' %}
-            <span class="tag bd-mini-tag is-primary">
-              New!
-            </span>
-          {% endif %}
         </a>
       </header>
 
@@ -27,6 +22,11 @@
           <li {% if link_id == current_link_id %}class="is-current"{% endif %}>
             <a href="{{ site.url }}{{ link.path }}">
               {{ link.name }}
+              {% if link.new %}
+                <span class="ml-1 tag bd-mini-tag is-primary">
+                  New!
+                </span>
+              {% endif %}
             </a>
           </li>
         {% endfor %}
