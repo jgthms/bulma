@@ -341,6 +341,7 @@ section {
 body,
 button,
 input,
+optgroup,
 select,
 textarea {
   font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -1862,7 +1863,7 @@ fieldset[disabled] .button {
 }
 
 .container.is-fluid {
-  max-width: none;
+  max-width: none !important;
   padding-left: 32px;
   padding-right: 32px;
   width: 100%;
@@ -1875,25 +1876,25 @@ fieldset[disabled] .button {
 }
 
 @media screen and (max-width: 1215px) {
-  .container.is-widescreen {
+  .container.is-widescreen:not(.is-max-desktop) {
     max-width: 1152px;
   }
 }
 
 @media screen and (max-width: 1407px) {
-  .container.is-fullhd {
+  .container.is-fullhd:not(.is-max-desktop):not(.is-max-widescreen) {
     max-width: 1344px;
   }
 }
 
 @media screen and (min-width: 1216px) {
-  .container {
+  .container:not(.is-max-desktop) {
     max-width: 1152px;
   }
 }
 
 @media screen and (min-width: 1408px) {
-  .container {
+  .container:not(.is-max-desktop):not(.is-max-widescreen) {
     max-width: 1344px;
   }
 }
@@ -4599,12 +4600,12 @@ fieldset[disabled] .select select:hover {
 
 .card {
   background-color: white;
+  border-radius: 0.25rem;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   color: #4a4a4a;
   max-width: 100%;
-  position: relative;
-  border-radius: 0;
   overflow: hidden;
+  position: relative;
 }
 
 .card-header {
@@ -5218,7 +5219,7 @@ button.dropdown-item.is-active {
   width: 100%;
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px) {
   .modal-content,
   .modal-card {
     margin: 0 auto;
