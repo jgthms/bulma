@@ -10,6 +10,7 @@ breadcrumb:
 - overview-responsiveness
 variables_keys:
 - $gap
+- $mobile
 - $tablet
 - $desktop
 - $widescreen
@@ -40,24 +41,24 @@ $fullhd-enabled: false
 
 {% include elements/anchor.html name="Breakpoints" %}
 
-{% assign variables_file_url = "/blob/master/sass/utilities/initial-variables.sass#L56,L64" | prepend: site.data.meta.github %}
-{% assign mixins_file_url = "/blob/master/sass/utilities/mixins.sass#L81,L129" | prepend: site.data.meta.github %}
+{% assign variables_file_url = "/blob/master/sass/utilities/initial-variables.sass#L56,L65" | prepend: site.data.meta.github %}
+{% assign mixins_file_url = "/blob/master/sass/utilities/mixins.sass#L81,L137" | prepend: site.data.meta.github %}
 
 <div class="content">
-  <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">5 breakpoints</a>:</p>
+  <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">6 breakpoints</a>:</p>
   <ul>
     {% for breakpoint_hash in site.data.breakpoints %}
       {% assign breakpoint = breakpoint_hash[1] %}
-      <li><code>{{ breakpoint.id }}</code>: {% if breakpoint.id == 'mobile' %}up to <code>{{ breakpoint.to }}px</code>{% else %}from <code>{{ breakpoint.from }}px</code>{% endif %}</li>
+      <li><code>{{ breakpoint.id }}</code>: {% if breakpoint.id == 'phone' %}up to <code>{{ breakpoint.to }}px</code>{% else %}from <code>{{ breakpoint.from }}px</code>{% endif %}</li>
     {% endfor %}
   </ul>
 
-  <p>Bulma uses <a href="{{ mixins_file_url }}" target="_blank">9 responsive mixins</a>:</p>
+  <p>Bulma uses <a href="{{ mixins_file_url }}" target="_blank">11 responsive mixins</a>:</p>
   <ul>
     {% for breakpoint_hash in site.data.breakpoints %}
       {% assign breakpoint = breakpoint_hash[1] %}
       {% case breakpoint.id %}
-        {% when 'mobile' %}
+        {% when 'phone' %}
           <li>
             <code>={{ breakpoint.id }}</code><br>
             until <code>{{ breakpoint.to }}px</code>
@@ -95,7 +96,7 @@ $fullhd-enabled: false
           {% assign breakpoint = breakpoint_hash[1] %}
           <th style="width: 20%;">
             {{ breakpoint.name }}<br>
-            {% if breakpoint.id == 'mobile' %}
+            {% if breakpoint.id == 'phone' %}
               Up to <code>{{ breakpoint.to }}px</code>
             {% elsif breakpoint.id == 'fullhd' %}
               <code>{{ breakpoint.from }}px</code> and above
@@ -109,6 +110,14 @@ $fullhd-enabled: false
     <tbody>
       <tr>
         <td>
+          <p class="notification is-success">phone</p>
+        </td>
+        <td colspan="5">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
           <p class="notification is-success">mobile</p>
         </td>
         <td colspan="4">
@@ -116,7 +125,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td>
+        <td colspan="2">
           <p class="notification">-</p>
         </td>
         <td colspan="4">
@@ -124,7 +133,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="3">
           <p class="notification">-</p>
         </td>
         <td colspan="3">
@@ -132,7 +141,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="3">
+        <td colspan="4">
           <p class="notification">-</p>
         </td>
         <td colspan="2">
@@ -140,7 +149,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p class="notification">-</p>
         </td>
         <td>
@@ -152,6 +161,17 @@ $fullhd-enabled: false
           <p class="notification">-</p>
         </td>
         <td>
+          <p class="notification is-success">mobile-only</p>
+        </td>
+        <td colspan="4">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+        <td>
           <p class="notification is-success">tablet-only</p>
         </td>
         <td colspan="3">
@@ -159,7 +179,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="3">
           <p class="notification">-</p>
         </td>
         <td>
@@ -170,7 +190,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="3">
+        <td colspan="4">
           <p class="notification">-</p>
         </td>
         <td>
@@ -181,7 +201,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="3">
           <p class="notification is-success">touch</p>
         </td>
         <td colspan="3">
@@ -189,7 +209,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="3">
+        <td colspan="4">
           <p class="notification is-success">until-widescreen</p>
         </td>
         <td colspan="2">
@@ -197,7 +217,7 @@ $fullhd-enabled: false
         </td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <p class="notification is-success">until-fullhd</p>
         </td>
         <td colspan="1">

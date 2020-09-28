@@ -6,6 +6,9 @@
 
 +typography-size()
 
++phone
+  +typography-size('phone')
+
 +mobile
   +typography-size('mobile')
 
@@ -31,8 +34,14 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
     text-align: #{$text-align} !important
 
 @each $alignment, $text-align in $alignments
+  +phone
+    .has-text-#{$alignment}-phone
+      text-align: #{$text-align} !important
   +mobile
     .has-text-#{$alignment}-mobile
+      text-align: #{$text-align} !important
+  +mobile-only
+    .has-text-#{$alignment}-mobile-only
       text-align: #{$text-align} !important
   +tablet
     .has-text-#{$alignment}-tablet

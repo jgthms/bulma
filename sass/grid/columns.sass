@@ -6,6 +6,65 @@ $column-gap: 0.75rem !default
   flex-grow: 1
   flex-shrink: 1
   padding: $column-gap
+
+  .columns.is-phone > &.is-narrow
+    flex: none
+  .columns.is-phone > &.is-full
+    flex: none
+    width: 100%
+  .columns.is-phone > &.is-three-quarters
+    flex: none
+    width: 75%
+  .columns.is-phone > &.is-two-thirds
+    flex: none
+    width: 66.6666%
+  .columns.is-phone > &.is-half
+    flex: none
+    width: 50%
+  .columns.is-phone > &.is-one-third
+    flex: none
+    width: 33.3333%
+  .columns.is-phone > &.is-one-quarter
+    flex: none
+    width: 25%
+  .columns.is-phone > &.is-one-fifth
+    flex: none
+    width: 20%
+  .columns.is-phone > &.is-two-fifths
+    flex: none
+    width: 40%
+  .columns.is-phone > &.is-three-fifths
+    flex: none
+    width: 60%
+  .columns.is-phone > &.is-four-fifths
+    flex: none
+    width: 80%
+  .columns.is-phone > &.is-offset-three-quarters
+    margin-left: 75%
+  .columns.is-phone > &.is-offset-two-thirds
+    margin-left: 66.6666%
+  .columns.is-phone > &.is-offset-half
+    margin-left: 50%
+  .columns.is-phone > &.is-offset-one-third
+    margin-left: 33.3333%
+  .columns.is-phone > &.is-offset-one-quarter
+    margin-left: 25%
+  .columns.is-phone > &.is-offset-one-fifth
+    margin-left: 20%
+  .columns.is-phone > &.is-offset-two-fifths
+    margin-left: 40%
+  .columns.is-phone > &.is-offset-three-fifths
+    margin-left: 60%
+  .columns.is-phone > &.is-offset-four-fifths
+    margin-left: 80%
+
+  @for $i from 0 through 12
+    .columns.is-phone > &.is-#{$i}
+      flex: none
+      width: percentage($i / 12)
+    .columns.is-phone > &.is-offset-#{$i}
+      margin-left: percentage($i / 12)
+
   .columns.is-mobile > &.is-narrow
     flex: none
   .columns.is-mobile > &.is-full
@@ -56,12 +115,72 @@ $column-gap: 0.75rem !default
     margin-left: 60%
   .columns.is-mobile > &.is-offset-four-fifths
     margin-left: 80%
+
   @for $i from 0 through 12
     .columns.is-mobile > &.is-#{$i}
       flex: none
       width: percentage($i / 12)
     .columns.is-mobile > &.is-offset-#{$i}
       margin-left: percentage($i / 12)
+
+  +phone
+    &.is-narrow-phone
+      flex: none
+    &.is-full-phone
+      flex: none
+      width: 100%
+    &.is-three-quarters-phone
+      flex: none
+      width: 75%
+    &.is-two-thirds-phone
+      flex: none
+      width: 66.6666%
+    &.is-half-phone
+      flex: none
+      width: 50%
+    &.is-one-third-phone
+      flex: none
+      width: 33.3333%
+    &.is-one-quarter-phone
+      flex: none
+      width: 25%
+    &.is-one-fifth-phone
+      flex: none
+      width: 20%
+    &.is-two-fifths-phone
+      flex: none
+      width: 40%
+    &.is-three-fifths-phone
+      flex: none
+      width: 60%
+    &.is-four-fifths-phone
+      flex: none
+      width: 80%
+    &.is-offset-three-quarters-phone
+      margin-left: 75%
+    &.is-offset-two-thirds-phone
+      margin-left: 66.6666%
+    &.is-offset-half-phone
+      margin-left: 50%
+    &.is-offset-one-third-phone
+      margin-left: 33.3333%
+    &.is-offset-one-quarter-phone
+      margin-left: 25%
+    &.is-offset-one-fifth-phone
+      margin-left: 20%
+    &.is-offset-two-fifths-phone
+      margin-left: 40%
+    &.is-offset-three-fifths-phone
+      margin-left: 60%
+    &.is-offset-four-fifths-phone
+      margin-left: 80%
+    @for $i from 0 through 12
+      &.is-#{$i}-phone
+        flex: none
+        width: percentage($i / 12)
+      &.is-offset-#{$i}-phone
+        margin-left: percentage($i / 12)
+
   +mobile
     &.is-narrow-mobile
       flex: none
@@ -119,6 +238,7 @@ $column-gap: 0.75rem !default
         width: percentage($i / 12)
       &.is-offset-#{$i}-mobile
         margin-left: percentage($i / 12)
+
   +tablet
     &.is-narrow,
     &.is-narrow-tablet
@@ -198,6 +318,7 @@ $column-gap: 0.75rem !default
       &.is-offset-#{$i},
       &.is-offset-#{$i}-tablet
         margin-left: percentage($i / 12)
+
   +touch
     &.is-narrow-touch
       flex: none
@@ -255,6 +376,7 @@ $column-gap: 0.75rem !default
         width: percentage($i / 12)
       &.is-offset-#{$i}-touch
         margin-left: percentage($i / 12)
+
   +desktop
     &.is-narrow-desktop
       flex: none
@@ -312,6 +434,7 @@ $column-gap: 0.75rem !default
         width: percentage($i / 12)
       &.is-offset-#{$i}-desktop
         margin-left: percentage($i / 12)
+
   +widescreen
     &.is-narrow-widescreen
       flex: none
@@ -369,6 +492,7 @@ $column-gap: 0.75rem !default
         width: percentage($i / 12)
       &.is-offset-#{$i}-widescreen
         margin-left: percentage($i / 12)
+
   +fullhd
     &.is-narrow-fullhd
       flex: none
@@ -449,6 +573,8 @@ $column-gap: 0.75rem !default
       margin-bottom: 1.5rem
     &:last-child
       margin-bottom: 0
+  &.is-phone
+    display: flex
   &.is-mobile
     display: flex
   &.is-multiline
@@ -475,8 +601,14 @@ $column-gap: 0.75rem !default
     @for $i from 0 through 8
       &.is-#{$i}
         --columnGap: #{$i * 0.25rem}
+      +phone
+        &.is-#{$i}-phone
+          --columnGap: #{$i * 0.25rem}
       +mobile
         &.is-#{$i}-mobile
+          --columnGap: #{$i * 0.25rem}
+      +mobile-only
+        &.is-#{$i}-mobile-only
           --columnGap: #{$i * 0.25rem}
       +tablet
         &.is-#{$i}-tablet
