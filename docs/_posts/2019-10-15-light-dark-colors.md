@@ -23,7 +23,7 @@ More in the [Changelog](https://github.com/jgthms/bulma/releases/tag/0.8.0).
 Each main color (`"primary"`, `"info"`, `"success"`, `"warning"`, `"danger"`) now comes with a `*-light` and a `*-dark` version. They are calculated using 2 new color functions:
 
 * `findLightColor()` which finds the light version of a color
-* `findDarkolor()` which finds the dark version of a color
+* `findDarkColor()` which finds the dark version of a color
 
 The **light** colors are used by the `button` element:
 
