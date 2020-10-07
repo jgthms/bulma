@@ -109,6 +109,7 @@ This release also includes the following helpers:
 * #2740 Fixes #2739 -> Add variables size for layout `hero`
 * Fix #2741 -> Create `bulmaRgba()` function to support `inherit` value
 * #2756 Add `$button-text-decoration` variable 
+* #2861 Add `is-*-tenth` support
 
 ### Bug fixes
 
