@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.9.2
+
+### Bug fixes
+
+* #3005 Fix `column` offsets in RTL
+
 ## 0.9.1
 
 ### New features
