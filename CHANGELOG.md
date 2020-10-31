@@ -2,6 +2,10 @@
 
 ## 0.9.2
 
+### New features
+
+* Fix #1583 New `is-ghost` button that behaves / looks like a regular link
+
 ### Bug fixes
 
 * #3005 Fix `column` offsets in RTL
