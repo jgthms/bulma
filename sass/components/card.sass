@@ -3,7 +3,7 @@ $card-background-color: var(--scheme-main, #{$scheme-main}) !default
 $card-shadow-color: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.1) !default
 $card-shadow-color-bis: rgba(var(--scheme-invert-rgb, #{bulmaToRGB($black)}), 0.02) !default
 $card-shadow: 0 0.5em 1em -0.125em $card-shadow-color, 0 0px 0 1px $card-shadow-color-bis !default
-$card-radius: 0 !default
+$card-radius: 0.25rem !default
 
 $card-header-background-color: transparent !default
 $card-header-color: var(--text-strong, #{$text-strong}) !default
@@ -40,14 +40,22 @@ $card-media-margin: var(--block-spacing, #{$block-spacing}) !default
   --card-footer-padding: #{$card-footer-padding}
   --card-media-margin: #{$card-media-margin}
   background-color: var(--card-background-color)
+  border-radius: var(--card-radius)
   box-shadow: var(--card-shadow)
   color: var(--card-color)
   max-width: 100%
   position: relative
-  border-radius: var(--card-radius)
-  overflow: hidden
+
+%card-item
+  &:first-child
+    border-top-left-radius: $card-radius
+    border-top-right-radius: $card-radius
+  &:last-child
+    border-bottom-left-radius: $card-radius
+    border-bottom-right-radius: $card-radius
 
 .card-header
+  @extend %card-item
   background-color: var(--card-header-background-color)
   align-items: stretch
   box-shadow: var(--card-header-shadow)
@@ -73,12 +81,22 @@ $card-media-margin: var(--block-spacing, #{$block-spacing}) !default
 .card-image
   display: block
   position: relative
+  &:first-child
+    img
+      border-top-left-radius: $card-radius
+      border-top-right-radius: $card-radius
+  &:last-child
+    img
+      border-bottom-left-radius: $card-radius
+      border-bottom-right-radius: $card-radius
 
 .card-content
+  @extend %card-item
   background-color: var(--card-content-background-color)
   padding: var(--card-content-padding)
 
 .card-footer
+  @extend %card-item
   background-color: var(--card-footer-background-color)
   border-top: var(--card-footer-border-top)
   align-items: stretch

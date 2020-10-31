@@ -25,8 +25,15 @@ $button-text-decoration: underline !default
 $button-text-hover-background-color: $background !default
 $button-text-hover-color: var(--text-strong, #{$text-strong}) !default
 
-$button-disabled-background-color: var(--scheme-main, #{$scheme-main}) !default
-$button-disabled-border-color: var(--border, #{$border}) !default
+$button-ghost-background: none !default
+$button-ghost-border-color: transparent !default
+$button-ghost-color: $link !default
+$button-ghost-decoration: none !default
+$button-ghost-hover-color: $link !default
+$button-ghost-hover-decoration: underline !default
+
+$button-disabled-background-color: $scheme-main !default
+$button-disabled-border-color: $border !default
 $button-disabled-shadow: none !default
 $button-disabled-opacity: 0.5 !default
 
@@ -146,6 +153,15 @@ $button-colors: $colors !default
       background-color: transparent
       border-color: transparent
       box-shadow: none
+  &.is-ghost
+    background: $button-ghost-background
+    border-color: $button-ghost-border-color
+    color: $button-ghost-color
+    text-decoration: $button-ghost-decoration
+    &:hover,
+    &.is-hovered
+      color: $button-ghost-hover-color
+      text-decoration: $button-ghost-hover-decoration
   @each $name, $pair in $button-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)

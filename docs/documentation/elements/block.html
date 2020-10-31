@@ -1,0 +1,112 @@
+---
+title: Block
+layout: documentation
+doc-tab: elements
+doc-subtab: block
+breadcrumb:
+- home
+- documentation
+- elements
+- elements-block
+meta:
+  colors: false
+  sizes: false
+  variables: true
+---
+
+{% capture block_example %}
+<div class="block">
+  This text is within a <strong>block</strong>.
+</div>
+<div class="block">
+  This text is within a <strong>second block</strong>. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+</div>
+<div class="block">
+  This text is within a <strong>third block</strong>. This block has no margin at the bottom.
+</div>
+{% endcapture %}
+
+{% capture no_block_example %}
+<div>
+  This text is <em>not</em> within a <strong>block</strong>.
+</div>
+<div>
+  This text <em>isn't</em> within a <strong>block</strong> either. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+</div>
+<div>
+  This text is also <em>not</em> within a <strong>block</strong>.
+</div>
+{% endcapture %}
+
+{% capture block_css %}
+.block:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+{% endcapture %}
+
+<div class="content">
+  <p>
+    The <code>block</code> element is a simple <strong>spacer tool</strong>. It allows <strong>sibling</strong> HTML elements to have a consistent margin between them:
+  </p>
+</div>
+
+{% include elements/snippet.html content=block_example %}
+
+<div class="content">
+  <p>
+    As you can see, the first two blocks have a <code>margin-bottom</code> applied, but <strong>not the third one.</strong>. That is because Bulma applies a space on all blocks, <strong>except the last one</strong>. This means you can use as many blocks as you want, the spacing will only appear <strong>between them</strong>.
+  </p>
+  <p>
+    Without using <code>block</code>, the HTML elements would have no space between them:
+  </p>
+</div>
+
+{% include elements/snippet.html content=no_block_example %}
+
+{% include elements/anchor.html name="One line of CSS" %}
+
+<div class="content">
+  <p>
+    As you can see, the CSS of the <code>block</code> is very simple: it applies a <code>margin-bottom</code> on all siblings, <strong>except the last one</strong>.
+  </p>
+</div>
+
+{% highlight css %}{{ block_css }}{% endhighlight %}
+
+<div class="content">
+  <p>
+    This prevents the last sibling to add unnecessary space at the bottom.
+  </p>
+</div>
+
+{% include elements/anchor.html name="Already used everywhere in Bulma" %}
+<div class="content">
+  <p>
+    As a matter of fact, you're <strong>already using</strong> the <code>block</code> without knowing it. The <code>block</code> CSS properties are <strong>shared</strong> across several Bulma elements and components:
+  </p>
+
+  <ul>
+    <li><code>breadcrumb</code></li>
+    <li><code>level</code></li>
+    <li><code>message</code></li>
+    <li><code>pagination</code></li>
+    <li><code>tabs</code></li>
+    <li><code>box</code></li>
+    <li><code>content</code></li>
+    <li><code>notification</code></li>
+    <li><code>other</code></li>
+    <li><code>progress</code></li>
+    <li><code>table</code></li>
+    <li><code>title</code></li>
+  </ul>
+
+  <p>
+    This is thanks to the <code>@extend %block</code> Sass placeholder feature.
+  </p>
+
+  <p>
+    As a result, no matter which Bulma elements and components you are using, and no matter their order, they will have a <strong>consistent space</strong> between them.
+  </p>
+</div>
+
+{% include elements/variables.html type='element' %}
