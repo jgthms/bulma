@@ -8,6 +8,10 @@
 * Fix #3145 Dropdown content is bounded by a parent card
 * Fix #3089 Sub columns of a variable columns have weird gap
 
+### Improvements
+
+* Fix #3012 Add `$media-*` variables, set to `!default`
+
 ## 0.9.1
 
 ### New features
