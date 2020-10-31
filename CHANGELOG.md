@@ -6,6 +6,7 @@
 
 * #3005 Fix `column` offsets in RTL
 * Fix #3145 Dropdown content is bounded by a parent card
+* Fix #3089 Sub columns of a variable columns have weird gap
 
 ## 0.9.1
 
