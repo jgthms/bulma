@@ -1,6 +1,12 @@
-script:
- - "test/sass-compile-tester.sh"
-
-language: sass
-before_install:
- - gem install sass
+matrix:
+  include:
+    - language: sass
+      before_install:
+        - gem install sass
+      script:
+        - test/ruby-sass.sh
+    - language: node_js
+      before_install:
+        - npm i -g sass
+      script:
+        - node test/dart-sass.js
