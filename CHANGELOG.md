@@ -16,6 +16,7 @@
 ### Improvements
 
 * Fix #3012 Add `$media-*` variables, set to `!default`
+* Fix #2797 Import dependencies individually for each component
 
 ## 0.9.1
 

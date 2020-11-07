@@ -23,6 +23,16 @@ exportDartCSS('bulma-rtl', {
   file: './bulma-rtl.sass',
 });
 
+// Custom import
+
+fs.mkdir(`${DART_BASE_PATH}custom`, { recursive: true }, (err) => {
+  if (err) throw err;
+});
+
+utils.exportCSS(sass, fs, DART_BASE_PATH, 'custom/navbar', {
+  data: '@use "./sass/components/navbar.sass" with ( $scheme-main: red );',
+});
+
 // Single imports
 
 const BULMA_IMPORT_PATH = `./sass/`;
