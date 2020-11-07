@@ -121,6 +121,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Bulmil](https://github.com/gomah/bulmil)                                       | An agnostic UI components library based on Web Components, made with Bulma & Stencil.                                                |
 | [Svelte Bulma Components](https://github.com/elcobvg/svelte-bulma-components)                                       | Library of UI components to be used in [Svelte.js](https://svelte.technology/) or standalone.                                                |
 | [Bulma Nunjucks Starterkit](https://github.com/benninkcorien/nunjucks-starter-kit)                                       | Starterkit for Nunjucks with Bulma.                                                |
+| [Bulma-Social](https://github.com/aldi/bulma-social)                                 | Social Buttons and Colors for Bulma                                                    |
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
