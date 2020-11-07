@@ -4,8 +4,8 @@
 
 TEST_DIR=$(dirname $BASH_SOURCE)
 FILES=$TEST_DIR/sass/*
-CSS_DIR=$TEST_DIR/build/ruby-sass
-CSS_FILES=$TEST_DIR/build/ruby-sass/*.css
+CSS_DIR=$TEST_DIR/build
+CSS_FILES=$TEST_DIR/build/*.css
 SASS_OPTIONS=--sourcemap=none
 
 # FUNCTIONS

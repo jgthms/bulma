@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const sass = require('node-sass');
-const utils = require('./utils');
+const utils = require('../utils');
 
-const NODE_SASS_BASE_PATH = 'test/build/node-sass/';
+const NODE_SASS_BASE_PATH = 'test/node-sass/build/';
 
 fs.mkdir(NODE_SASS_BASE_PATH, { recursive: true }, (err) => {
   if (err) throw err;

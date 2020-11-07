@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const sass = require('sass');
-const utils = require('./utils');
+const utils = require('../utils');
 
-const DART_BASE_PATH = 'test/build/dart-sass/';
+const DART_BASE_PATH = 'test/dart-sass/build/';
 
 fs.mkdir(DART_BASE_PATH, { recursive: true }, (err) => {
   if (err) throw err;
