@@ -1,79 +1,40 @@
+const fs = require('fs');
+const path = require('path');
 const sass = require('sass');
+const utils = require('./utils');
 
-const sources = [
-  `base/animations.sass`,
-  `base/generic.sass`,
-  `base/minireset.sass`,
+const DART_BASE_PATH = 'test/build/dart-sass/';
 
-  `components/breadcrumb.sass`,
-  `components/card.sass`,
-  `components/dropdown.sass`,
-  `components/level.sass`,
-  `components/media.sass`,
-  `components/menu.sass`,
-  `components/message.sass`,
-  `components/modal.sass`,
-  `components/navbar.sass`,
-  `components/pagination.sass`,
-  `components/panel.sass`,
-  `components/tabs.sass`,
+fs.mkdir(DART_BASE_PATH, { recursive: true }, (err) => {
+  if (err) throw err;
+});
 
-  `elements/box.sass`,
-  `elements/button.sass`,
-  `elements/container.sass`,
-  `elements/content.sass`,
-  `elements/icon.sass`,
-  `elements/image.sass`,
-  `elements/notification.sass`,
-  `elements/other.sass`,
-  `elements/progress.sass`,
-  `elements/table.sass`,
-  `elements/tag.sass`,
-  `elements/title.sass`,
+const exportDartCSS = (filepath, options) => {
+  utils.exportCSS(sass, fs, DART_BASE_PATH, filepath, options)
+}
 
-  `form/checkbox-radio.sass`,
-  `form/file.sass`,
-  `form/input-textarea.sass`,
-  `form/select.sass`,
-  `form/tools.sass`,
+// Full import
 
-  `grid/columns.sass`,
-  `grid/tiles.sass`,
+exportDartCSS('bulma', {
+  file: './bulma.sass',
+});
 
-  `helpers/color.sass`,
-  `helpers/flexbox.sass`,
-  `helpers/float.sass`,
-  `helpers/other.sass`,
-  `helpers/overflow.sass`,
-  `helpers/position.sass`,
-  `helpers/spacing.sass`,
-  `helpers/typography.sass`,
-  `helpers/visibility.sass`,
+exportDartCSS('bulma-rtl', {
+  file: './bulma-rtl.sass',
+});
 
-  `layout/footer.sass`,
-  `layout/hero.sass`,
-  `layout/section.sass`,
+// Single imports
 
-  `utilities/controls.sass`,
-  `utilities/derived-variables.sass`,
-  `utilities/functions.sass`,
-  `utilities/initial-variables.sass`,
-  `utilities/mixins.sass`,
-];
+const BULMA_IMPORT_PATH = `./sass/`;
 
-const BULMA_SASS_PATH = `./sass/`;
+utils.SOURCES.forEach((source) => {
+  const parsed = path.parse(source);
 
-sources.forEach(source => {
-  const result = sass.renderSync({
-    data: `@use "${BULMA_SASS_PATH}${source}";`,
-    outputStyle: "expanded"
+  fs.mkdir(`${DART_BASE_PATH}${parsed.dir}`, { recursive: true }, (err) => {
+    if (err) throw err;
   });
 
-  try {
-    sass.renderSync({
-      data: `@use "${BULMA_SASS_PATH}${source}";`,
-    });
-  } catch(err) {
-    console.error(err);
-  }
+  exportDartCSS(`${parsed.dir}/${parsed.name}`, {
+    data: `@use "${BULMA_IMPORT_PATH}${source}";`,
+  });
 });
