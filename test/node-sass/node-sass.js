@@ -35,6 +35,6 @@ utils.SOURCES.forEach((source) => {
   });
 
   exportNodeSassCSS(`${parsed.dir}/${parsed.name}`, {
-    data: `@use "${BULMA_IMPORT_PATH}${source}";`,
+    data: `@import "${BULMA_IMPORT_PATH}${source}";`,
   });
 });
