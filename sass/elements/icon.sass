@@ -2,6 +2,7 @@ $icon-dimensions: 1.5rem !default
 $icon-dimensions-small: 1rem !default
 $icon-dimensions-medium: 2rem !default
 $icon-dimensions-large: 3rem !default
+$icon-text-spacing: 0.25em !default
 
 .icon
   align-items: center
@@ -19,3 +20,19 @@ $icon-dimensions-large: 3rem !default
   &.is-large
     height: $icon-dimensions-large
     width: $icon-dimensions-large
+
+.icon-text
+  align-items: flex-start
+  color: inherit
+  display: flex
+  line-height: $icon-dimensions
+  .icon
+    flex-grow: 0
+    flex-shrink: 0
+    &:first-child
+      margin-right: $icon-text-spacing
+    &:last-child
+      margin-left: $icon-text-spacing
+  span:not(.icon)
+    flex-grow: 1
+    flex-shrink: 1
