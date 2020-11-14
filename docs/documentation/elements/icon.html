@@ -25,11 +25,112 @@ meta:
 {% endcapture %}
 
 {% capture icon_text_example %}
-<div class="icon-text">
+<span class="icon-text">
   <span class="icon">
     <i class="fas fa-home"></i>
   </span>
   <span>Home</span>
+</span>
+{% endcapture %}
+
+{% capture icon_text_train_example %}
+<span class="icon-text">
+  <span class="icon">
+    <i class="fas fa-train"></i>
+  </span>
+  <span>Paris</span>
+  <span class="icon">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span>Budapest</span>
+  <span class="icon">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span>Bucharest</span>
+  <span class="icon">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span>Istanbul</span>
+  <span class="icon">
+    <i class="fas fa-flag-checkered"></i>
+  </span>
+</span>
+{% endcapture %}
+
+{% capture icon_text_in_content_example %}
+<div class="content">
+  <p>
+    An invitation to
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-utensils"></i>
+      </span>
+      <span>dinner</span>
+    </span>
+    was soon afterwards dispatched; and already had Mrs. Bennet planned the courses that were to do credit to her housekeeping, when an answer arrived which deferred it all. Mr. Bingley was obliged to be in
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-city"></i>
+      </span>
+      <span>town</span>
+    </span>
+    the following day, and, consequently, unable to accept the honour of their
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-envelope-open-text"></i>
+      </span>
+      <span>invitation</span>
+    </span>,
+    etc.
+  </p>
+
+  <p>
+    Mrs. Bennet was quite disconcerted. She could not imagine what business he could have in town so soon after his
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-flag-checkered"></i>
+      </span>
+      <span>arrival</span>
+    </span>
+    in Hertfordshire; and she began to fear that he might be always
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-plane-departure"></i>
+      </span>
+      <span>flying</span>
+    </span>
+    about from one place to another, and never settled at Netherfield as he ought to be.
+  </p>
+</div>
+{% endcapture %}
+
+{% capture icon_text_div_example %}
+<div class="icon-text">
+  <span class="icon">
+    <i class="fas fa-info-circle"></i>
+  </span>
+  <span>Information</span>
+</div>
+
+<div class="icon-text">
+  <span class="icon">
+    <i class="fas fa-check-square"></i>
+  </span>
+  <span>Success</span>
+</div>
+
+<div class="icon-text">
+  <span class="icon">
+    <i class="fas fa-exclamation-triangle"></i>
+  </span>
+  <span>Warning</span>
+</div>
+
+<div class="icon-text">
+  <span class="icon">
+    <i class="fas fa-ban"></i>
+  </span>
+  <span>Danger</span>
 </div>
 {% endcapture %}
 
@@ -45,6 +146,36 @@ meta:
 </span>
 <span class="icon has-text-danger">
   <i class="fas fa-ban"></i>
+</span>
+{% endcapture %}
+
+{% capture icon_text_color_example %}
+<span class="icon-text has-text-info">
+  <span class="icon">
+    <i class="fas fa-info-circle"></i>
+  </span>
+  <span>Info</span>
+</span>
+
+<span class="icon-text has-text-success">
+  <span class="icon">
+    <i class="fas fa-check-square"></i>
+  </span>
+  <span>Success</span>
+</span>
+
+<span class="icon-text has-text-warning">
+  <span class="icon">
+    <i class="fas fa-exclamation-triangle"></i>
+  </span>
+  <span>Warning</span>
+</span>
+
+<span class="icon-text has-text-danger">
+  <span class="icon">
+    <i class="fas fa-ban"></i>
+  </span>
+  <span>Danger</span>
 </span>
 {% endcapture %}
 
@@ -105,16 +236,44 @@ meta:
   </p>
 </div>
 
+<!--  -->
 {% include elements/anchor.html name="Icon text" %}
+
+{% include elements/new-tag.html version="0.9.2" %}
 
 <div class="content">
   <p>
-    You can combine an <code>icon</code> with text, using the <code>icon-text</code> wrapper.
+    You can combine an <code>icon</code> with <strong>text</strong>, using the <code>icon-text</code> wrapper, as long as all text is wrapped in a <code>span</code> element:
   </p>
 </div>
 
 {% include elements/snippet.html content=icon_text_example %}
 
+<div class="content">
+  <p>
+    You can combine <strong>as many</strong> <code>icon</code> elements and text elements as you want:
+  </p>
+</div>
+
+{% include elements/snippet.html content=icon_text_train_example %}
+
+<div class="content">
+  <p>
+    Since <code>icon-text</code> is an <code>inline-flex</code> element, it makes it very easy to be inserted within any paragraph of text.
+  </p>
+</div>
+
+{% include elements/snippet.html content=icon_text_in_content_example %}
+
+<div class="content">
+  <p>
+    You can however turn the <code>icon-text</code> in a Bulma <strong>block</strong> by simply using a <code>&lt;div&gt;</code> tag:
+  </p>
+</div>
+
+{% include elements/snippet.html content=icon_text_div_example %}
+
+<!--  -->
 {% include elements/anchor.html name="Colors" %}
 
 <div class="content">
@@ -125,6 +284,15 @@ meta:
 
 {% include elements/snippet.html content=icon_color_example %}
 
+<div class="content">
+  <p>
+    The same applies to the <code>icon-text</code>:
+  </p>
+</div>
+
+{% include elements/snippet.html content=icon_text_color_example %}
+
+<!--  -->
 {% include elements/anchor.html name="Sizes" %}
 
 <div class="content">
@@ -301,6 +469,7 @@ meta:
   </tbody>
 </table>
 
+<!--  -->
 {% include elements/anchor.html name="Font Awesome variations" %}
 
 <div class="content">
@@ -444,6 +613,7 @@ meta:
   </tbody>
 </table>
 
+<!--  -->
 {% include elements/anchor.html name="Material Design Icons" %}
 
 <div class="content">
@@ -768,6 +938,7 @@ meta:
   </tbody>
 </table>
 
+<!--  -->
 {% include elements/anchor.html name="Ionicons" %}
 
 <div class="content">
