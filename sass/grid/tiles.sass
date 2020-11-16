@@ -1,5 +1,6 @@
 @import "../utilities/mixins"
 
+$tile-denominator: 12 !default
 $tile-spacing: 0.75rem !default
 
 .tile
@@ -30,7 +31,7 @@ $tile-spacing: 0.75rem !default
   +tablet
     &:not(.is-child)
       display: flex
-    @for $i from 1 through 12
+    @for $i from 1 through $tile-denominator
       &.is-#{$i}
         flex: none
-        width: ($i / 12) * 100%
+        width: ($i / $tile-denominator) * 100%
