@@ -1,6 +1,7 @@
 @import "../utilities/mixins"
 
 $column-gap: 0.75rem !default
+$column-denominator: 12 !default
 
 .column
   display: block
@@ -59,12 +60,12 @@ $column-gap: 0.75rem !default
     +ltr-property("margin", 60%, false)
   .columns.is-mobile > &.is-offset-four-fifths
     +ltr-property("margin", 80%, false)
-  @for $i from 0 through 12
+  @for $i from 0 through $column-denominator
     .columns.is-mobile > &.is-#{$i}
       flex: none
-      width: percentage($i / 12)
+      width: percentage($i / $column-denominator)
     .columns.is-mobile > &.is-offset-#{$i}
-      +ltr-property("margin", percentage($i / 12), false)
+      +ltr-property("margin", percentage($i / $column-denominator), false)
   +mobile
     &.is-narrow-mobile
       flex: none
@@ -117,12 +118,12 @@ $column-gap: 0.75rem !default
       +ltr-property("margin", 60%, false)
     &.is-offset-four-fifths-mobile
       +ltr-property("margin", 80%, false)
-    @for $i from 0 through 12
+    @for $i from 0 through $column-denominator
       &.is-#{$i}-mobile
         flex: none
-        width: percentage($i / 12)
+        width: percentage($i / $column-denominator)
       &.is-offset-#{$i}-mobile
-        +ltr-property("margin", percentage($i / 12), false)
+        +ltr-property("margin", percentage($i / $column-denominator), false)
   +tablet
     &.is-narrow,
     &.is-narrow-tablet
@@ -195,14 +196,14 @@ $column-gap: 0.75rem !default
     &.is-offset-four-fifths,
     &.is-offset-four-fifths-tablet
       +ltr-property("margin", 80%, false)
-    @for $i from 0 through 12
+    @for $i from 0 through $column-denominator
       &.is-#{$i},
       &.is-#{$i}-tablet
         flex: none
-        width: percentage($i / 12)
+        width: percentage($i / $column-denominator)
       &.is-offset-#{$i},
       &.is-offset-#{$i}-tablet
-        +ltr-property("margin", percentage($i / 12), false)
+        +ltr-property("margin", percentage($i / $column-denominator), false)
   +touch
     &.is-narrow-touch
       flex: none
@@ -255,12 +256,12 @@ $column-gap: 0.75rem !default
       +ltr-property("margin", 60%, false)
     &.is-offset-four-fifths-touch
       +ltr-property("margin", 80%, false)
-    @for $i from 0 through 12
+    @for $i from 0 through $column-denominator
       &.is-#{$i}-touch
         flex: none
-        width: percentage($i / 12)
+        width: percentage($i / $column-denominator)
       &.is-offset-#{$i}-touch
-        +ltr-property("margin", percentage($i / 12), false)
+        +ltr-property("margin", percentage($i / $column-denominator), false)
   +desktop
     &.is-narrow-desktop
       flex: none
@@ -313,12 +314,12 @@ $column-gap: 0.75rem !default
       +ltr-property("margin", 60%, false)
     &.is-offset-four-fifths-desktop
       +ltr-property("margin", 80%, false)
-    @for $i from 0 through 12
+    @for $i from 0 through $column-denominator
       &.is-#{$i}-desktop
         flex: none
-        width: percentage($i / 12)
+        width: percentage($i / $column-denominator)
       &.is-offset-#{$i}-desktop
-        +ltr-property("margin", percentage($i / 12), false)
+        +ltr-property("margin", percentage($i / $column-denominator), false)
   +widescreen
     &.is-narrow-widescreen
       flex: none
@@ -371,12 +372,12 @@ $column-gap: 0.75rem !default
       +ltr-property("margin", 60%, false)
     &.is-offset-four-fifths-widescreen
       +ltr-property("margin", 80%, false)
-    @for $i from 0 through 12
+    @for $i from 0 through $column-denominator
       &.is-#{$i}-widescreen
         flex: none
-        width: percentage($i / 12)
+        width: percentage($i / $column-denominator)
       &.is-offset-#{$i}-widescreen
-        +ltr-property("margin", percentage($i / 12), false)
+        +ltr-property("margin", percentage($i / $column-denominator), false)
   +fullhd
     &.is-narrow-fullhd
       flex: none
@@ -429,12 +430,12 @@ $column-gap: 0.75rem !default
       +ltr-property("margin", 60%, false)
     &.is-offset-four-fifths-fullhd
       +ltr-property("margin", 80%, false)
-    @for $i from 0 through 12
+    @for $i from 0 through $column-denominator
       &.is-#{$i}-fullhd
         flex: none
-        width: percentage($i / 12)
+        width: percentage($i / $column-denominator)
       &.is-offset-#{$i}-fullhd
-        +ltr-property("margin", percentage($i / 12), false)
+        +ltr-property("margin", percentage($i / $column-denominator), false)
 
 .columns
   +ltr-property("margin", (-$column-gap), false)
