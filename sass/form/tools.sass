@@ -7,6 +7,8 @@ $help-size: $size-small !default
 
 $label-colors: $form-colors !default
 
+$button-borderless-colors: ('white','light','black','text','primary','link','info','succes','warning','danger') !default
+
 .label
   color: $label-color
   display: block
@@ -71,17 +73,22 @@ $label-colors: $form-colors !default
       .button,
       .input,
       .select select
+        z-index: 2
         &:not([disabled])
           &:hover,
           &.is-hovered
-            z-index: 2
+            z-index: 3
           &:focus,
           &.is-focused,
           &:active,
           &.is-active
-            z-index: 3
+            z-index: 4
             &:hover
-              z-index: 4
+              z-index: 5
+      .button
+        @each $name, $pair in $button-borderless-colors
+          &.is-#{$name}
+            z-index: 1
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
