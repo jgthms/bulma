@@ -45,6 +45,8 @@ $button-static-border-color: $border !default
 
 $button-colors: $colors !default
 
+$button-borderless-colors: ('white','light','black','text','primary','link','info','succes','warning','danger') !default
+
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
   border-radius: $radius-small
@@ -307,6 +309,10 @@ $button-colors: $colors !default
       +button-large
   &.has-addons
     .button
+      z-index: 2
+      @each $name, $pair in $button-borderless-colors
+        &.is-#{$name}
+          z-index: 1
       &:not(:first-child)
         border-bottom-left-radius: 0
         border-top-left-radius: 0
@@ -318,15 +324,15 @@ $button-colors: $colors !default
         +ltr-property("margin", 0)
       &:hover,
       &.is-hovered
-        z-index: 2
+        z-index: 3
       &:focus,
       &.is-focused,
       &:active,
       &.is-active,
       &.is-selected
-        z-index: 3
+        z-index: 4
         &:hover
-          z-index: 4
+          z-index: 5
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
