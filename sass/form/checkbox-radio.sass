@@ -1,3 +1,5 @@
+@import "shared"
+
 %checkbox-radio
   cursor: pointer
   display: inline-block
@@ -8,7 +10,8 @@
   &:hover
     color: $input-hover-color
   &[disabled],
-  fieldset[disabled] &
+  fieldset[disabled] &,
+  input[disabled]
     color: $input-disabled-color
     cursor: not-allowed
 
@@ -18,4 +21,4 @@
 .radio
   @extend %checkbox-radio
   & + .radio
-    margin-left: 0.5em
+    +ltr-property("margin", 0.5em, false)

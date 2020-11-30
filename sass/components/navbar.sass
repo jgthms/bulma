@@ -1,3 +1,5 @@
+@import "../utilities/mixins"
+
 $navbar-background-color: $scheme-main !default
 $navbar-box-shadow-size: 0 2px 0 0 !default
 $navbar-box-shadow-color: $background !default
@@ -46,6 +48,8 @@ $navbar-bottom-box-shadow-size: 0 -2px 0 0 !default
 
 $navbar-breakpoint: $desktop !default
 
+$navbar-colors: $colors !default
+
 =navbar-fixed
   left: 0
   position: fixed
@@ -57,7 +61,7 @@ $navbar-breakpoint: $desktop !default
   min-height: $navbar-height
   position: relative
   z-index: $navbar-z
-  @each $name, $pair in $colors
+  @each $name, $pair in $navbar-colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
@@ -151,7 +155,7 @@ body
 .navbar-burger
   color: $navbar-burger-color
   +hamburger($navbar-height)
-  margin-left: auto
+  +ltr-property("margin", auto, false)
 
 .navbar-menu
   display: none
@@ -209,12 +213,12 @@ a.navbar-item,
   flex-shrink: 1
 
 .navbar-link:not(.is-arrowless)
-  padding-right: 2.5em
+  +ltr-property("padding", 2.5em)
   &::after
     @extend %arrow
     border-color: $navbar-dropdown-arrow
     margin-top: -0.375em
-    right: 1.125em
+    +ltr-position(1.125em)
 
 .navbar-dropdown
   font-size: 0.875rem
@@ -347,10 +351,10 @@ a.navbar-item,
     flex-shrink: 0
   .navbar-start
     justify-content: flex-start
-    margin-right: auto
+    +ltr-property("margin", auto)
   .navbar-end
     justify-content: flex-end
-    margin-left: auto
+    +ltr-property("margin", auto, false)
   .navbar-dropdown
     background-color: $navbar-dropdown-background-color
     border-bottom-left-radius: $navbar-dropdown-radius
@@ -359,7 +363,7 @@ a.navbar-item,
     box-shadow: 0 8px 8px bulmaRgba($scheme-invert, 0.1)
     display: none
     font-size: 0.875rem
-    left: 0
+    +ltr-position(0, false)
     min-width: 100%
     position: absolute
     top: 100%
@@ -368,7 +372,7 @@ a.navbar-item,
       padding: 0.375rem 1rem
       white-space: nowrap
     a.navbar-item
-      padding-right: 3rem
+      +ltr-property("padding", 3rem)
       &:focus,
       &:hover
         background-color: $navbar-dropdown-item-hover-background-color
@@ -396,9 +400,9 @@ a.navbar-item,
   .navbar > .container,
   .container > .navbar
     .navbar-brand
-      margin-left: -.75rem
+      +ltr-property("margin", -.75rem, false)
     .navbar-menu
-      margin-right: -.75rem
+      +ltr-property("margin", -.75rem)
   // Fixed navbar
   .navbar
     &.is-fixed-bottom-desktop,

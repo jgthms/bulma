@@ -263,7 +263,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Functions
 
   function getAll(selector) {
-    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+    var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
+    return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
   }
 
   // Scrolling
@@ -345,6 +347,58 @@ document.addEventListener('DOMContentLoaded', function () {
         anchor.nav_el.className = '';
       });
     }
+  }
+
+  // Spacing table
+
+  var spacingTables = getAll('.bd-spacing-table');
+
+  spacingTables.forEach(function (spacingEl) {
+    var spacingRows = getAll('tbody tr', spacingEl);
+    var spacingCells = getAll('tbody td', spacingEl);
+    var spacingValues = getAll('tfoot th', spacingEl);
+
+    spacingEl.addEventListener('mouseleave', function () {
+      resetTable(spacingCells, spacingValues);
+    });
+
+    spacingCells.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        resetTable(spacingCells, spacingValues);
+        var row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
+        var column = Array.prototype.indexOf.call(el.parentNode.children, el);
+        highlightRowAndColumn(row, column, spacingRows, spacingValues);
+      });
+    });
+  });
+
+  function resetTable(cells, values) {
+    cells.forEach(function (el) {
+      return el.classList.remove('bd-current-row', 'bd-current-column');
+    });
+    values.forEach(function (el) {
+      return el.classList.remove('bd-current-value');
+    });
+  }
+
+  function highlightRowAndColumn(rowIndex, columnIndex, rows, values) {
+    var row = rows[rowIndex];
+    var i = columnIndex;
+
+    while (i > -1) {
+      row.children[i].classList.add('bd-current-row');
+      i--;
+    }
+
+    var nextRows = rows.slice(rowIndex);
+    nextRows.forEach(function (r) {
+      r.children[columnIndex].classList.add('bd-current-column');
+    });
+
+    if (columnIndex < 2) {
+      return;
+    }
+    values[columnIndex - 1].classList.add('bd-current-value');
   }
 
   // Scroll

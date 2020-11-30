@@ -119,4 +119,4 @@ But you can also add the `is-multiline` **modifier** on the `columns` container,
 
 ### Helpers section
 
-While modifiers are specific to each Bulma element, **helpers** are general utility classes that can be applied on almost _any_ element. Check out the new [helpers documentation](/documentation/modifiers/helpers/)!
+While modifiers are specific to each Bulma element, **helpers** are general utility classes that can be applied on almost _any_ element. Check out the new [helpers documentation](/documentation/helpers/)!

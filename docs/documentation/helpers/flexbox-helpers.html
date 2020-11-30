@@ -1,0 +1,133 @@
+---
+title: Flexbox helpers
+layout: documentation
+doc-tab: helpers
+doc-subtab: helpers-flexbox
+breadcrumb:
+- home
+- documentation
+- helpers
+- helpers-flexbox
+flex-direction-values:
+- row
+- row-reverse
+- column
+- column-reverse
+flex-wrap-values:
+- nowrap
+- wrap
+- wrap-reverse
+justify-content-values:
+- flex-start
+- flex-end
+- center
+- space-between
+- space-around
+- space-evenly
+- start
+- end
+- left
+- right
+align-content-values:
+- flex-start
+- flex-end
+- center
+- space-between
+- space-around
+- space-evenly
+- stretch
+- start
+- end
+- baseline
+align-items-values:
+- stretch
+- flex-start
+- flex-end
+- center
+- baseline
+- start
+- end
+- self-start
+- self-end
+align-self-values:
+- auto
+- flex-start
+- flex-end
+- center
+- baseline
+- stretch
+---
+
+{% include elements/new-tag.html version="0.9.1" %}
+
+<div class="content">
+  <p>
+    Combined with <code>is-flex</code>, all of the <strong>Flexbox CSS properties</strong> are available as Bulma helpers:
+  </p>
+  <ul>
+    <li><code>flex-direction</code></li>
+    <li><code>flex-wrap</code></li>
+    <li><code>justify-content</code></li>
+    <li><code>align-content</code></li>
+    <li><code>align-items</code></li>
+    <li><code>align-self</code></li>
+    <li><code>flex-grow</code></li>
+    <li><code>flex-shrink</code></li>
+  </ul>
+</div>
+
+{% include elements/anchor.html name="Flex direction" %}
+
+{% include elements/flexbox-helper-table.html property="flex-direction" values=page.flex-direction-values %}
+
+{% include elements/anchor.html name="Flex wrap" %}
+
+{% include elements/flexbox-helper-table.html property="flex-wrap" values=page.flex-wrap-values %}
+
+{% include elements/anchor.html name="Justify content" %}
+
+{% include elements/flexbox-helper-table.html property="justify-content" values=page.justify-content-values %}
+
+{% include elements/anchor.html name="Align content" %}
+
+{% include elements/flexbox-helper-table.html property="align-content" values=page.align-content-values %}
+
+{% include elements/anchor.html name="Align items" %}
+
+{% include elements/flexbox-helper-table.html property="align-items" values=page.align-items-values %}
+
+{% include elements/anchor.html name="Align self" %}
+
+{% include elements/flexbox-helper-table.html property="align-self" values=page.align-self-values %}
+
+{% include elements/anchor.html name="Flex grow and flex shrink" %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Property: Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th colspan="2">Grow</th>
+    </tr>
+    {% for i in (0..5) %}
+      <tr>
+        <td><code>is-flex-grow-{{ i }}</code></td>
+        <td><code>flex-grow: {{ i }}</code></td>
+      </tr>
+    {% endfor %}
+    <tr>
+      <th colspan="2">Shrink</th>
+    </tr>
+    {% for i in (0..5) %}
+      <tr>
+        <td><code>is-flex-shrink-{{ i }}</code></td>
+        <td><code>flex-shrink: {{ i }}</code></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
