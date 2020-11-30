@@ -1,0 +1,79 @@
+
+// ch-color-to-hsv
+@function ch-color-to-hsv($color)
+  @return ch-hsl-to-hsv($color)
+
+// ch-hsl-to-hsv
+@function ch-hsl-to-hsv($h, $ss: 0, $ll: 0)
+  @if type_of($h) == 'list'
+    $ll: nth($h, 3)
+    $ss: nth($h, 2)
+    $h: nth($h, 1)
+  @else if type_of($h) == 'color'
+    $ll: lightness($h)
+    $ss: saturation($h)
+    $h: hue($h)
+
+  @if unit($h) == 'deg'
+    $h: 3.1415 * 2 * ($h / 360deg)
+
+  @if unit($ss) == '%'
+    $ss: 0 + ($ss / 100%)
+
+  @if unit($ll) == '%'
+    $ll: 0 + ($ll / 100%)
+
+  $ll: $ll * 2
+
+  @if $ll <= 1
+    $ss: $ss * $ll
+  @else
+    $ss: $ss * (2 - $ll)
+
+  $v: ($ll + $ss) / 2
+
+  $s: 0
+  @if $ll + $ss != 0
+    $s: (2 * $ss) / ($ll + $ss)
+
+
+  @return 360deg * $h / (3.1415 * 2), percentage(max(0, min(1, $s))), percentage(max(0, min(1, $v)))
+
+// ch-hsv-to-color
+@function ch-hsv-to-color($h, $s: 0, $v: 0)
+  $hsl: ch-hsv-to-hsl($h, $s, $v)
+  //@debug hsla(nth($hsl, 1), nth($hsl, 2), nth($hsl, 3), 1);
+  @return hsla(nth($hsl, 1), nth($hsl, 2), nth($hsl, 3), 1)
+
+// ch-hsv-to-hsl
+@function ch-hsv-to-hsl($h, $s: 0, $v: 0)
+  @if type_of($h) == 'list'
+    $v: nth($h, 3)
+    $s: nth($h, 2)
+    $h: nth($h, 1)
+
+  @if unit($h) == 'deg'
+    $h: 3.1415 * 2 * ($h / 360deg)
+
+  @if unit($s) == '%'
+    $s: 0 + (round($s) / 100%)
+  @else
+    $s: $s / 100
+
+  @if unit($v) == '%'
+    $v: if($v >= 100, 1, $v / 100%)
+
+  $ss: $s * $v
+  $ll: (2 - $s) * $v
+
+  @if ($ll == 2 or $ll == 0)
+    $ss: 0
+  @else if $ll <= 1
+    $ss: $ss / $ll
+  @else
+  $ss: $ss / (2 - $ll)
+
+
+  $ll: $ll / 2
+
+  @return 360deg * $h / (3.1415 * 2), percentage(max(0, min(1, $ss))), percentage(max(0, min(1, $ll)))

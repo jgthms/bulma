@@ -1,0 +1,110 @@
+@import "initial-variables.sass"
+/**
+ * 借鉴 Ant Design
+ * delon: https://github.com/ng-alain/delon
+ *   delon\packages\theme\system\utils/_color.less
+ * 参考内容：
+ *    使用sass打造 antd色板系统：https://zhuanlan.zhihu.com/p/68646055
+ *    at-ui-angular：https://github.com/100cm/at-ui-angular/tree/master/src/assets/sass
+ */
+/**
+ * 白色背景
+ * White background
+ */
+.bg-white
+  background-color: #fff !important
+/**
+ * 透明背景
+ * Transparent background
+ */
+.bg-transparent
+  background-color: transparent !important
+
+/**
+ * 白色文本
+ * White text
+ */
+.text-white
+  color: #fff !important
+
+/**
+ * 鼠标悬停文本主颜色
+ * Mouse hover text primary color
+ */
+.text-hover
+  cursor: pointer
+  &:hover
+    color: $primary-color !important
+
+// 背景颜色。字体颜色，悬停颜色。light-默认-dark
+@each $itemList in $colors
+  $key: nth($itemList,1)
+
+  .ant-bg-#{$key}-light
+    background-color: nth($itemList, $color-light-position) !important
+
+  .ant-bg-#{$key}
+    background-color: nth($itemList, $color-basic-position) !important
+
+  .ant-bg-#{$key}-dark
+    background-color: nth($itemList, $color-dark-position) !important
+
+  .ant-bg-#{$key}-light-h
+    transition: background-color 300ms
+    &:hover
+      background-color: nth($itemList, $color-light-position) !important
+
+  .ant-bg-#{$key}-h
+    transition: background-color 300ms
+    &:hover
+      background-color: nth($itemList, $color-basic-position) !important
+
+  .ant-bg-#{$key}-dark-h
+    transition: background-color 300ms
+    &:hover
+      background-color: nth($itemList, $color-dark-position) !important
+
+  .ant-text-#{$key}-light
+    color: nth($itemList, $color-light-position) !important
+
+  .ant-text-#{$key}
+    color: nth($itemList, $color-basic-position) !important
+
+  .ant-text-#{$key}-dark
+    color: nth($itemList, $color-dark-position) !important
+
+// greyColorer  黑白两种颜色。
+@each $key, $value in $greyColorer
+  .ant-bg-grey-#{$key}
+    background-color: $value !important
+
+  .ant-bg-grey-#{$key}-h
+    &:hover
+      background-color: $value !important
+
+  .ant-text-grey-#{$key}
+    color: $value !important
+
+// 所有的颜色
+@mixin loop-no($adKey, $i: 1)
+  @if ($i <= length($color-no-list))
+    $color-name: #{$adKey}-#{$i}
+    .ant-bg-#{$color-name}
+      background-color: map-get($allColorMap, $color-name) !important
+
+    .ant-bg-#{$color-name}-h
+      transition: background-color 300ms
+      &:hover
+        background-color: map-get($allColorMap, $color-name) !important
+
+    .ant-text-#{$color-name}
+      color: map-get($allColorMap, $color-name) !important
+
+    @include loop-no($adKey, $i + 1)
+
+@mixin all-colors-minin()
+  @each $itemList in $colors
+    $key: nth($itemList,1)
+    @include loop-no($key, 1)
+
+@include all-colors-minin()
