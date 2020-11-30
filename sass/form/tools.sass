@@ -1,7 +1,11 @@
+@import "shared"
+
 $label-color: $text-strong !default
 $label-weight: $weight-bold !default
 
 $help-size: $size-small !default
+
+$label-colors: $form-colors !default
 
 .label
   color: $label-color
@@ -22,7 +26,7 @@ $help-size: $size-small !default
   display: block
   font-size: $help-size
   margin-top: 0.25rem
-  @each $name, $pair in $colors
+  @each $name, $pair in $label-colors
     $color: nth($pair, 1)
     &.is-#{$name}
       color: $color
@@ -38,7 +42,7 @@ $help-size: $size-small !default
     justify-content: flex-start
     .control
       &:not(:last-child)
-        margin-right: -1px
+        +ltr-property("margin", -1px)
       &:not(:first-child):not(:last-child)
         .button,
         .input,
@@ -48,14 +52,22 @@ $help-size: $size-small !default
         .button,
         .input,
         .select select
-          border-bottom-right-radius: 0
-          border-top-right-radius: 0
+          +ltr
+            border-bottom-right-radius: 0
+            border-top-right-radius: 0
+          +rtl
+            border-bottom-left-radius: 0
+            border-top-left-radius: 0
       &:last-child:not(:only-child)
         .button,
         .input,
         .select select
-          border-bottom-left-radius: 0
-          border-top-left-radius: 0
+          +ltr
+            border-bottom-left-radius: 0
+            border-top-left-radius: 0
+          +rtl
+            border-bottom-right-radius: 0
+            border-top-right-radius: 0
       .button,
       .input,
       .select select
@@ -88,7 +100,7 @@ $help-size: $size-small !default
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
-        margin-right: 0.75rem
+        +ltr-property("margin", 0.75rem)
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
@@ -119,7 +131,7 @@ $help-size: $size-small !default
     flex-basis: 0
     flex-grow: 1
     flex-shrink: 0
-    margin-right: 1.5rem
+    +ltr-property("margin", 1.5rem)
     text-align: right
     &.is-small
       font-size: $size-small
@@ -148,14 +160,14 @@ $help-size: $size-small !default
       &:not(.is-narrow)
         flex-grow: 1
       &:not(:last-child)
-        margin-right: 0.75rem
+        +ltr-property("margin", 0.75rem)
 
 .control
   box-sizing: border-box
   clear: both
   font-size: $size-normal
   position: relative
-  text-align: left
+  text-align: inherit
   // Modifiers
   &.has-icons-left,
   &.has-icons-right
@@ -194,7 +206,7 @@ $help-size: $size-small !default
     &::after
       @extend %loader
       position: absolute !important
-      right: 0.625em
+      +ltr-position(0.625em)
       top: 0.625em
       z-index: 4
     &.is-small:after

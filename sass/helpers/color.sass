@@ -1,0 +1,39 @@
+@import "../utilities/derived-variables"
+
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  .has-text-#{$name}
+    color: $color !important
+  a.has-text-#{$name}
+    &:hover,
+    &:focus
+      color: bulmaDarken($color, 10%) !important
+  .has-background-#{$name}
+    background-color: $color !important
+  @if length($pair) >= 4
+    $color-light: nth($pair, 3)
+    $color-dark: nth($pair, 4)
+    // Light
+    .has-text-#{$name}-light
+      color: $color-light !important
+    a.has-text-#{$name}-light
+      &:hover,
+      &:focus
+        color: bulmaDarken($color-light, 10%) !important
+    .has-background-#{$name}-light
+      background-color: $color-light !important
+    // Dark
+    .has-text-#{$name}-dark
+      color: $color-dark !important
+    a.has-text-#{$name}-dark
+      &:hover,
+      &:focus
+        color: bulmaLighten($color-dark, 10%) !important
+    .has-background-#{$name}-dark
+      background-color: $color-dark !important
+
+@each $name, $shade in $shades
+  .has-text-#{$name}
+    color: $shade !important
+  .has-background-#{$name}
+    background-color: $shade !important
