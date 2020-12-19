@@ -1,0 +1,72 @@
+$menubar-item-color: $link !default
+$menubar-item-hover-color: $link-hover !default
+$menubar-item-active-color: $text-strong !default
+
+$menubar-item-padding-vertical: 0 !default
+$menubar-item-padding-horizontal: 0.5em !default
+
+$menubar-item-separator-color: $grey-light !default
+
+.menubar
+  @extend %block
+  @extend %unselectable
+  font-size: $size-normal
+  white-space: nowrap
+  a
+    align-items: center
+    color: $menubar-item-color
+    display: flex
+    justify-content: center
+    padding: $menubar-item-padding-vertical $menubar-item-padding-horizontal
+    &:hover
+      color: $menubar-item-hover-color
+  li
+    align-items: center
+    display: flex
+    &:first-child a
+      padding-left: 0
+    &.is-active
+      a
+        color: $menubar-item-active-color
+        cursor: default
+        pointer-events: none
+    & + li::before
+      color: $menubar-item-separator-color
+      content: "\007C"
+  ul,
+  ol
+    align-items: flex-start
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+  .icon
+    &:first-child
+      margin-right: 0.5em
+    &:last-child
+      margin-left: 0.5em
+  // Alignment
+  &.is-centered
+    ol,
+    ul
+      justify-content: center
+  &.is-right
+    ol,
+    ul
+      justify-content: flex-end
+  // Sizes
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+  &.is-large
+    font-size: $size-large
+  // Styles
+  &.has-solidus-separator
+    li + li::before
+      content: "\0002f"
+  &.has-bullet-separator
+    li + li::before
+      content: "\02022"
+  &.has-dot-separator
+    li + li::before
+      content: "\000b7"
