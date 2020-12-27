@@ -2,6 +2,23 @@
 
 ## 0.9.2
 
+### Breaking change
+
+To fix duplicate imports, all Sass placeholders have moved from the `utilities/mixins` file to its own `utilities/extends` file.
+
+The Sass placeholders are:
+
+* `%control`
+* `%unselectable`
+* `%arrow`
+* `%block`
+* `%delete`
+* `%loader`
+* `%overlay`
+
+If you were importing them directly from `utilities/mixins`, you'll need to import `utilities/extends` instead.  
+If you were importing `utilities/_all` or even `bulma.sass` directly, no change is required.
+
 ### New features
 
 * Fix #1583 New `is-ghost` button that behaves / looks like a regular link
@@ -12,6 +29,9 @@
 * Fix #3145 Dropdown content is bounded by a parent card
 * Fix #3089 Sub columns of a variable columns have weird gap
 * Fix #2937 Add `width: unset` for narrow columns
+* #3208 Fix #3163 Do not override is-rounded with button-small
+* #3216 Removed duplicate `mixins` imports, created a single `extends` file
+* #3216 Removed all references to the `.sass` file extension have been removed, since they're unnecessary when there's no ambiguity between a `.sass` file or a `.scss` file
 
 ### Improvements
 

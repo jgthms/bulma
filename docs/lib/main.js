@@ -138,10 +138,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Toggles
 
-  var $burgers = getAll('.burger');
+  var $burgers = getAll('.navbar-burger');
 
   if ($burgers.length > 0) {
     $burgers.forEach(function ($el) {
+      if (!$el.dataset.target) {
+        return;
+      }
+
       $el.addEventListener('click', function () {
         var target = $el.dataset.target;
         var $target = document.getElementById(target);
