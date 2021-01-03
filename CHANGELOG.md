@@ -22,6 +22,7 @@ If you were importing `utilities/_all` or even `bulma.sass` directly, no change 
 ### New features
 
 * Fix #1583 New `is-ghost` button that behaves / looks like a regular link
+* New `icon-text` component, to combine an icon with text on its side
 
 ### Bug fixes
 
