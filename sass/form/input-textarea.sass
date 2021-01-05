@@ -4,14 +4,7 @@ $textarea-min-height: 8em !default
 
 $textarea-colors: $form-colors !default
 
-%input-textarea
-  @extend %input
-  box-shadow: $input-shadow
-  max-width: 100%
-  width: 100%
-  &[readonly]
-    box-shadow: none
-  // Colors
+@mixin input-color-border
   @each $name, $pair in $textarea-colors
     $color: nth($pair, 1)
     &.is-#{$name}
@@ -21,6 +14,15 @@ $textarea-colors: $form-colors !default
       &:active,
       &.is-active
         box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25)
+
+%input-textarea
+  @extend %input
+  @include input-color-border
+  box-shadow: $input-shadow
+  max-width: 100%
+  width: 100%
+  &[readonly]
+    box-shadow: none
   // Sizes
   &.is-small
     +control-small
@@ -64,3 +66,6 @@ $textarea-colors: $form-colors !default
   // Modifiers
   &.has-fixed-size
     resize: none
+
+[contenteditable]
+  @include input-color-border
