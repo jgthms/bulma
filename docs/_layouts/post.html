@@ -58,7 +58,7 @@ breadcrumb:
         <header class="bd-header">
           <div class="bd-header-titles">
             <h1 class="title">
-              {{ page.title }}
+              {{ page.title | markdownify }}
             </h1>
             <p class="subtitle is-4">
               {{ page.date | date_to_string }}
@@ -81,13 +81,13 @@ breadcrumb:
         <nav class="bd-prev-next-bis">
           {% if page.previous.url %}
             <a class="bd-prev-next-bis-previous" href="{{ page.previous.url }}">
-              ← {{ page.previous.title }}
+              ← {{ page.previous.name }}
             </a>
           {% endif %}
 
           {% if page.next.url %}
             <a class="bd-prev-next-bis-next" href="{{ page.next.url }}">
-              {{ page.next.title }} →
+              {{ page.next.name }} →
             </a>
           {% endif %}
         </nav>
