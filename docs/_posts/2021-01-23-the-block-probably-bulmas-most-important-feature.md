@@ -14,13 +14,13 @@ It exists as its own `.block` CSS class, but its properties are also used on **m
 For example, if you were to combine a `notification`, and a `pagination`, they would be **automatically spaced evenly**:
 
 <div class="block is-size-6" style="margin-left: auto; margin-right: auto; max-width: 80%; padding: 1.5rem;">
-  <p class="title">Newsletter</p>
+  <p class="title mb-5">Newsletter</p>
 
   <div class="notification is-success">
     451 new subscribers this month.
   </div>
 
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+  <table class="table mb-5 is-bordered is-striped is-hoverable is-fullwidth">
     <thead>
       <tr>
         <th>Name</th>
