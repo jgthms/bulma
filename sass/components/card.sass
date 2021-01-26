@@ -20,6 +20,9 @@ $card-footer-padding: 0.75rem !default
 
 $card-media-margin: $block-spacing !default
 
+$card-image-cover-text: $white
+$card-image-cover-text-shadow: 11px 2px 10px rgba($black, 1)
+
 .card
   background-color: $card-background-color
   border-radius: $card-radius
@@ -27,6 +30,30 @@ $card-media-margin: $block-spacing !default
   color: $card-color
   max-width: 100%
   position: relative
+  &.has-image-cover
+    .card-content
+      bottom: 0
+      display: flex
+      flex-direction: column
+      height: 100%
+      justify-content: flex-end
+      left: 0
+      position: absolute
+      right: 0
+      top: 0
+      *
+        color: $card-image-cover-text
+        text-shadow: $card-image-cover-text-shadow
+    .card-image
+      figure
+        height: 100%
+      img
+        height: 100%
+        object-fit: cover
+    &.is-text-top
+      .card-content
+        justify-content: flex-start
+
 
 %card-item
   &:first-child

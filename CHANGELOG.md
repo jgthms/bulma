@@ -154,6 +154,10 @@ This release also includes the following helpers:
 
 - #2664 Fixes #2671 -> Add `$panel-colors` variable
 
+### Card with image findColorInvert
+
+The `card` component now supports image covers
+
 ## 0.8.0
 
 ### Big update
