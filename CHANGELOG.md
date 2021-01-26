@@ -131,6 +131,10 @@ This release also includes the following helpers:
 
 - #2925 Center table cell content vertically with `is-vcentered`
 
+### New features
+
+* #2522 Fix #2346 -> Add `.is-title-adjacent` helper
+
 ### Bug fixes
 
 - #2955 Fix issue when there's only one `is-toggle` tag
