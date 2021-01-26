@@ -45,6 +45,10 @@ $button-static-border-color: $border !default
 
 $button-colors: $colors !default
 
+// how much to darken the buttons when they are in hover or active state
+$button-darken-half: $darken-half !default
+$button-darken-full: $darken-full !default
+
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
   &:not(.is-rounded)
@@ -121,7 +125,7 @@ $button-colors: $colors !default
       color: $button-text-hover-color
     &:active,
     &.is-active
-      background-color: bulmaDarken($button-text-hover-background-color, 5%)
+      background-color: bulmaDarken($button-text-hover-background-color, $button-darken-full)
       color: $button-text-hover-color
     &[disabled],
     fieldset[disabled] &
@@ -146,7 +150,7 @@ $button-colors: $colors !default
       color: $color-invert
       &:hover,
       &.is-hovered
-        background-color: bulmaDarken($color, 2.5%)
+        background-color: bulmaDarken($color, $button-darken-half)
         border-color: transparent
         color: $color-invert
       &:focus,
@@ -157,7 +161,7 @@ $button-colors: $colors !default
           box-shadow: $button-focus-box-shadow-size bulmaRgba($color, 0.25)
       &:active,
       &.is-active
-        background-color: bulmaDarken($color, 5%)
+        background-color: bulmaDarken($color, $button-darken-full)
         border-color: transparent
         color: $color-invert
       &[disabled],
@@ -170,7 +174,7 @@ $button-colors: $colors !default
         color: $color
         &:hover,
         &.is-hovered
-          background-color: bulmaDarken($color-invert, 5%)
+          background-color: bulmaDarken($color-invert, $button-darken-full)
         &[disabled],
         fieldset[disabled] &
           background-color: $color-invert
@@ -238,12 +242,12 @@ $button-colors: $colors !default
           color: $color-dark
           &:hover,
           &.is-hovered
-            background-color: bulmaDarken($color-light, 2.5%)
+            background-color: bulmaDarken($color-light, $button-darken-half)
             border-color: transparent
             color: $color-dark
           &:active,
           &.is-active
-            background-color: bulmaDarken($color-light, 5%)
+            background-color: bulmaDarken($color-light, $button-darken-full)
             border-color: transparent
             color: $color-dark
   // Sizes
