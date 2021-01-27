@@ -1,0 +1,135 @@
+.bd-options {
+  display: grid;
+}
+
+.bd-option {
+  .media-content {
+    overflow-x: visible;
+  }
+}
+
+.bd-option-or {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+
+  &::before {
+    background-color: $scheme-main-ter;
+    content: '';
+    position: absolute;
+  }
+
+  p {
+    @extend %center;
+
+    background-color: $scheme-main-ter;
+    border-radius: $radius-rounded;
+    font-size: 0.75em;
+    font-weight: $weight-semibold;
+    height: 3.5rem;
+    position: relative;
+    text-transform: uppercase;
+    width: 3.5rem;
+  }
+}
+
+.bd-option-item {
+  border-top: 2px solid $scheme-main-ter;
+  margin-top: $block-spacing;
+  padding-top: $block-spacing;
+
+  .bd-fat-button.is-pulled-right {
+    font-size: 0.75em;
+    pointer-events: none;
+  }
+
+  .bd-fat-button.is-primary {
+    font-size: 1em;
+  }
+
+  .highlight pre {
+    white-space: pre-wrap;
+    white-space: break-spaces;
+  }
+}
+
+@include until($widescreen) {
+  .bd-options {
+    grid-template-columns: 1fr;
+  }
+
+  .bd-option-or {
+    margin: $block-spacing 0;
+
+    &::before {
+      height: 2px;
+      left: 0;
+      right: 0;
+      top: calc(50% - 1px);
+    }
+  }
+}
+
+@include widescreen {
+  .bd-options {
+    grid-template-columns: calc(50% - 4rem) 8rem calc(50% - 4rem);
+  }
+
+  .bd-option-or {
+    &::before {
+      bottom: 0;
+      left: calc(50% - 1px);
+      top: 0;
+      width: 2px;
+    }
+  }
+}
+
+.bd-tabs {
+  @extend %block;
+}
+
+.bd-tabs-nav {
+  display: flex;
+
+  button {
+    @extend %reset;
+
+    background-color: $scheme-main-ter;
+    border-radius: 0.375em 0.375em 0 0;
+    color: $text-light;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: $family-monospace;
+    font-size: 0.75em;
+    padding: 0.5em 0.75em;
+
+    &:not(.bd-is-active) {
+      &:hover {
+        color: var(--hl-background);
+      }
+    }
+
+    &.bd-is-active {
+      background-color: var(--hl-background);
+      color: var(--hl-color);
+    }
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}
+
+.bd-tabs-item {
+  display: none;
+
+  .highlight {
+    border-top-left-radius: 0;
+  }
+
+  &.bd-is-active {
+    display: block;
+  }
+}

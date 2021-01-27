@@ -6,22 +6,24 @@
   <div class="column">4</div>
   <div class="column">5</div>
 </div>
-{% endcapture %} {% assign columns_link =
-site.data.links.by_id['columns-basics'] %}
+{% endcapture %}
 
-<section class="bd-columns section is-medium">
+{% assign columns_link = site.data.links.by_id['columns-basics'] %}
+{% assign heading_href = site.url | append: columns_link.path %}
+
+<section class="bd-index-section" style="--bd-section-h: 229deg;">
+  {%
+    include components/heading.html
+    color="link"
+    icon="fas fa-columns"
+    title="The <strong>simplest</strong> grid system"
+    subtitle="Just add columns, they will <strong>resize themselves</strong>"
+    href=heading_href
+    button_icon_after="fas fa-arrow-right"
+    button_label="See <strong>columns</strong> docs"
+  %}
+
   <div class="container">
-    <header class="bd-index-header">
-      <h3 class="title is-3">
-        <a href="{{ site.url }}{{ columns_link.path }}">
-          The <strong>simplest</strong> grid system
-        </a>
-      </h3>
-      <h4 class="subtitle is-4">
-        Just add columns, they will resize themselves
-      </h4>
-    </header>
-
     <div class="message is-warning is-hidden-tablet">
       <p class="message-header">
         Better on desktop
@@ -35,62 +37,62 @@ site.data.links.by_id['columns-basics'] %}
 
     <div id="grid" class="columns">
       <div class="column">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">1</p>
         </div>
       </div>
       <div class="column">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">2</p>
         </div>
       </div>
       <div class="column">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">3</p>
         </div>
       </div>
       <div class="column">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">4</p>
         </div>
       </div>
       <div class="column">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">5</p>
         </div>
       </div>
       <div class="column" style="display: none;">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">6</p>
         </div>
       </div>
       <div class="column" style="display: none;">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">7</p>
         </div>
       </div>
       <div class="column" style="display: none;">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">8</p>
         </div>
       </div>
       <div class="column" style="display: none;">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">9</p>
         </div>
       </div>
       <div class="column" style="display: none;">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">10</p>
         </div>
       </div>
       <div class="column" style="display: none;">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">11</p>
         </div>
       </div>
       <div class="column" style="display: none;">
-        <div class="notification is-primary has-text-centered">
+        <div class="notification is-link has-text-centered">
           <p class="title">12</p>
         </div>
       </div>
@@ -126,8 +128,5 @@ site.data.links.by_id['columns-basics'] %}
         <strong>nest</strong> columns.
       </p>
     </div>
-
-    {% include components/hero-buttons.html href=columns_link.path
-    content="<span>See <strong>Columns</strong> docs</span>" %}
   </div>
 </section>

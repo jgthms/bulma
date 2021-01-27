@@ -5,30 +5,28 @@
   {% assign sponsor_alt = sponsor.title %}
 {% endif %}
 
-<div class="{{ include.classname }}">
-  <a
-    class="bd-sponsor-item"
-    href="{{ sponsor.url }}"
-    target="_blank"
-    {% unless sponsor.follow or sponsor.noopener %}
-    rel="nofollow"
-    {% endunless %}
-    {% if sponsor.noopener %}
-    rel="noopener"
-    {% endif %}
-    title="{{ sponsor_alt }}"
-    >
-    {% if sponsor.textOnly %}
-      <strong>{{ sponsor.textOnly }}</strong>
-    {% else %}
-    {%
-        include elements/responsive-image-2x.html
-        path=sponsor_path
-        extension="png"
-        alt=sponsor_alt
-        width=sponsor.width
-        height=sponsor.height
-      %}
-    {% endif %}
-  </a>
-</div>
+<a
+class="bd-sponsor-item {{ include.classname }}"
+href="{{ sponsor.url }}"
+target="_blank"
+{% unless sponsor.follow or sponsor.noopener %}
+rel="nofollow"
+{% endunless %}
+{% if sponsor.noopener %}
+rel="noopener"
+{% endif %}
+title="{{ sponsor_alt }}"
+>
+{% if sponsor.textOnly %}
+  <strong>{{ sponsor.textOnly }}</strong>
+{% else %}
+{%
+    include elements/responsive-image-2x.html
+    path=sponsor_path
+    extension="png"
+    alt=sponsor_alt
+    width=sponsor.width
+    height=sponsor.height
+  %}
+{% endif %}
+</a>

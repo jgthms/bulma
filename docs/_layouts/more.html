@@ -26,60 +26,18 @@ route: more
   {% endif %}
 {% endfor %}
 
-<main class="bd-main">
-  <div class="bd-side-background"></div>
-  <div class="bd-main-container container">
-    <div class="bd-duo">
-      <div class="bd-lead">
-        {% include components/breadcrumb.html %}
-
-        <header class="bd-header">
-          <div class="bd-header-titles">
-            <h1 class="title">
-              {% if page.title %}
-                {{ page.title }}
-              {% else %}
-                {{ current_link.name }}
-              {% endif %}
-            </h1>
-            <p class="subtitle is-4">
-              {% if page.subtitle %}
-                {{ page.subtitle }}
-              {% else %}
-                {{ current_link.subtitle }}
-              {% endif %}
-            </p>
-          </div>
-
-          <div class="bd-header-carbon">
-            {% include elements/carbon.html %}
-          </div>
-        </header>
+{% capture hero_content %}
+{% include elements/sponsor-button.html %}
+{% endcapture %}
+{%
+  include components/hero.html
+  color="sponsor"
+  icon=page.icon
+  title=page.title
+  subtitle=page.subtitle
+  content=page.hero_content
+%}
 
         <div class="bd-content">
           {{ content }}
         </div>
-
-        <nav class="bd-prev-next-bis">
-          {% if previous_link %}
-            <a class="bd-prev-next-bis-previous" href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
-              ← {{ previous_link.name }}
-            </a>
-          {% endif %}
-
-          {% if next_link %}
-            <a class="bd-prev-next-bis-next" href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
-              {{ next_link.name }} →
-            </a>
-          {% endif %}
-        </nav>
-
-        {% include elements/improve-page.html %}
-      </div>
-
-      <aside class="bd-side">
-        {% include components/more.html %}
-      </aside>
-    </div>
-  </div>
-</main>

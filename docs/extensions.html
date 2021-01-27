@@ -1,8 +1,7 @@
 ---
 title: Extensions
-layout: more
+layout: default
 route: extensions
-route: backers
 breadcrumb:
 - home
 - more
@@ -139,39 +138,55 @@ extensions:
   slug: bulma-spacing
 ---
 
-{% for extension in page.extensions %}
-  <a class="box" href="{{ extension.url }}">
-    <div class="columns">
-      <div class="column is-one-third">
-        <h3 class="title is-4">
-          <strong>{{ extension.name }}</strong>
-        </h3>
-        <h4 class="subtitle is-6">
-          {{ extension.url | remove:'http://' | remove:'https://' | remove:'www.' }}
-        </h4>
-      </div>
-      <div class="column">
-        <img src="{{site.url}}/images/extensions/{{ extension.slug }}.png" width="{{ extension.width }}" height="{{ extension.height }}">
-      </div>
-    </div>
-  </a>
-{% endfor %}
+{% include global/navbar.html id="Extensions" %}
 
-<div class="message">
-  <div class="message-body">
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <p>Have an extension to share with the community?</p>
+{%
+  include components/hero.html
+  color="extensions"
+  icon="fas fa-plug"
+  title="Bulma **extensions**"
+  subtitle="Side projects to **enhance** your Bulma **experience**"
+%}
+
+{% capture call_button %}
+<a class="button bd-fat-button is-extensions is-medium"
+  href="https://github.com/jgthms/bulma/pulls"
+  target="_blank">
+  <span class="icon">
+    <i class="fas fa-code-branch"></i>
+  </span>
+  <span>
+    Submit a Pull Request
+  </span>
+</a>
+{% endcapture %}
+
+{%
+  include components/call.html
+  color="extensions"
+  text='Have an <strong>extension</strong> to <strong>share</strong> with the community?'
+  button=call_button
+%}
+
+<div class="bd-posts">
+  {% for extension in page.extensions %}
+    <div class="bd-post bd-is-extension">
+      <a class="bd-post-link" href="{{ extension.url }}" target="_blank" rel="nofollow">
+        <div class="bd-post-body">
+          <div class="bd-post-content">
+            <h2 class="title">
+              {{ extension.name }}
+            </h2>
+            <div class="subtitle">
+              {{ extension.url | remove:'http://' | remove:'https://' | remove:'www.' }}
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item">
-          <a class="button is-primary" href="https://github.com/jgthms/bulma/pulls">
-            Submit a Pull Request
-          </a>
-        </div>
-      </div>
+
+        <figure class="bd-post-screenshot">
+          <img src="{{site.url}}/images/extensions/{{ extension.slug }}.png" width="{{ extension.width }}" height="{{ extension.height }}">
+        </figure>
+      </a>
     </div>
-  </div>
+  {% endfor %}
 </div>

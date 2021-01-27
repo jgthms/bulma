@@ -1,0 +1,53 @@
+.bd-video {
+  --spacing: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: var(--spacing);
+
+  &:not(:last-child) {
+    border-bottom: 2px solid var(--videos-light);
+  }
+}
+
+.bd-video-figure {
+  img,
+  video {
+    max-width: 100%;
+    vertical-align: top;
+  }
+}
+
+@include mobile {
+  .bd-video {
+    grid-gap: var(--spacing);
+  }
+}
+
+@include tablet {
+  .bd-video {
+    --spacing: 3rem;
+    grid-template-columns: 1fr 24em 4em calc(var(--container-width) - 28em) 1fr;
+  }
+
+  .bd-video-info {
+    grid-column: 2;
+  }
+
+  .bd-video-figure {
+    grid-column: 4 / span 2;
+
+    img {
+      max-width: 1440px;
+    }
+
+    video {
+      max-width: 1280px;
+    }
+  }
+}
+
+@include desktop {
+  .bd-video {
+    --spacing: 4.5rem;
+  }
+}

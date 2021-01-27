@@ -1,0 +1,309 @@
+.bd-footer-title {
+  color: $text-light;
+  font-size: $size-5;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+  transition-duration: $speed;
+  transition-property: color;
+
+  strong {
+    color: currentColor;
+    font-weight: $weight-semibold;
+  }
+}
+
+.bd-footer-subtitle {
+  color: $border-hover;
+  margin-top: -0.5rem;
+  transition-duration: $speed;
+  transition-property: color;
+}
+
+.bd-footer-iframe {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -10px;
+  min-height: 30px;
+
+  iframe {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+
+  .fb-like {
+    margin-left: 10px;
+  }
+
+  &.is-github {
+    iframe {
+      width: 100%;
+    }
+  }
+}
+
+.bd-footer-tsp {
+  color: $border-hover;
+  margin-top: $block-spacing;
+}
+
+%bd-footer-box {
+  @extend %bd-box;
+
+  text-align: center;
+
+  .bd-footer-title {
+    font-size: $size-4;
+  }
+}
+
+// Support
+
+.bd-footer-support {
+  @extend %bd-footer-box;
+
+  background-color: $scheme-main-bis;
+  box-shadow: none;
+  padding: 3rem;
+
+  .bd-footer-title {
+    margin-bottom: $block-spacing;
+  }
+}
+
+.bd-footer-donations {
+  justify-content: center;
+}
+
+.bd-footer-donation {
+  flex: none;
+}
+
+.bd-footer-donation-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .bd-footer-sponsor {
+    width: 12rem;
+  }
+}
+
+.bd-footer-sponsor {
+  @extend %center;
+
+  height: 70px;
+}
+
+@include tablet {
+  .bd-footer-donation {
+    padding: 0.75rem $block-spacing;
+  }
+}
+
+@include desktop {
+  .bd-footer-support {
+    padding-bottom: 6rem;
+    padding-top: 6rem;
+  }
+}
+
+.bd-footer-donation-title {
+  color: $border-hover;
+  margin-bottom: 0.5rem;
+
+  strong {
+    color: currentColor;
+  }
+}
+
+.bd-footer-donation-action {
+  @extend %center;
+
+  height: 70px;
+
+  .bd-github-button {
+    margin-right: 0.5rem;
+  }
+
+  .bd-github-button,
+  .bd-patreon-button {
+    flex-shrink: 0;
+  }
+
+  .paypal-form {
+    height: 30px;
+
+    img {
+      display: block;
+    }
+  }
+}
+
+// Stars
+
+$star-figure-height: 156px;
+
+.bd-footer-stars {
+  margin-top: 2.5rem;
+
+  @include tablet {
+    align-items: stretch;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.bd-footer-star {
+  @extend %bd-footer-box;
+
+  transition-duration: $speed;
+  transition-property: box-shadow, transform;
+  will-change: box-shadow, transform;
+
+  @include mobile {
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @include tablet {
+    width: calc(33.3333% - 2rem);
+  }
+
+  &:hover {
+    box-shadow: 0 3rem 3rem -1.25rem rgba($scheme-invert, 0.1);
+    transform: translateY(-0.5rem);
+
+    .bd-footer-title,
+    .bd-footer-subtitle {
+      color: $link;
+    }
+  }
+
+  &.bd-is-expo,
+  &.bd-is-love {
+    padding-bottom: $star-figure-height;
+
+    .bd-footer-title {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      .icon {
+        margin-right: 0.25em;
+      }
+    }
+  }
+
+  &.bd-is-expo {
+    background-image: url('/images/footer/expo-examples.png');
+    background-repeat: repeat-x;
+    background-position: bottom center;
+    background-size: 352px $star-figure-height;
+  }
+
+  &.bd-is-love {
+    background-image: url('/images/footer/love.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 440px 180px;
+  }
+}
+
+.bd-footer-star-header {
+  padding: 1.5rem;
+}
+
+.bd-footer-star-figure {
+  @extend %center;
+
+  height: $star-figure-height;
+  margin-top: -1rem;
+}
+
+// Links
+
+.bd-footer-links {
+  margin-top: 6rem;
+  padding-bottom: 6rem;
+
+  a {
+    color: currentColor;
+
+    &:hover {
+      color: $link;
+    }
+  }
+}
+
+.bd-footer-link-title {
+  color: $text-strong;
+  font-size: 1.25rem;
+  font-weight: $weight-semibold;
+
+  &:not(:first-child) {
+    margin-top: 1.5em;
+  }
+}
+
+.bd-footer-link {
+  margin-top: 0.5rem;
+
+  &.bd-is-more {
+    font-size: 0.875rem;
+
+    a:not(:hover) {
+      color: $border-hover;
+    }
+  }
+
+  &.bd-has-subtitle {
+    a {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      strong {
+        flex-grow: 1;
+        flex-shrink: 1;
+        font-weight: unset;
+      }
+
+      em {
+        display: block;
+        font-size: 0.875rem;
+        font-style: normal;
+      }
+
+      &:not(:hover) {
+        em {
+          color: $border-hover;
+        }
+      }
+
+      @include mobile {
+        flex-wrap: wrap;
+        margin-top: 1rem;
+
+        em {
+          width: 100%;
+        }
+      }
+
+      @include tablet {
+        em {
+          margin-left: 1rem;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.bd-footer-link-icon {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 0.5em;
+  text-align: center;
+  width: 1em;
+}

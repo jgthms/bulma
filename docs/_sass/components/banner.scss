@@ -1,0 +1,60 @@
+.bd-banner {
+  --background-color: #{$primary-light};
+  --color: #{$primary-dark};
+
+  background-color: var(--background-color);
+  color: var(--color);
+  padding: 0.5em;
+
+  &.bd-is-bleeding {
+    --background-color: var(--bleeding-light);
+    --color: var(--bleeding-dark);
+  }
+
+  &.bd-is-sponsor {
+    --background-color: var(--sponsor-light);
+    --color: var(--sponsor);
+  }
+}
+
+.bd-banner-body {
+  align-items: center;
+  display: flex;
+  min-height: 2.5rem;
+}
+
+.bd-banner-title {
+  display: flex;
+  margin-right: auto;
+
+  a {
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  strong {
+    color: inherit;
+    font-weight: $weight-semibold;
+  }
+}
+
+@include tablet() {
+  .bd-banner-title {
+    font-size: 1.125rem;
+  }
+}
+
+@include desktop() {
+  .bd-banner {
+    padding: 0.5rem 2rem;
+  }
+}
+
+@include widescreen() {
+  .bd-banner {
+    padding: 0.5rem 4rem;
+  }
+}

@@ -1,0 +1,184 @@
+svg
+  max-height: 100%
+  max-width: 100%
+
+.bd-notice
+  background-color: $primary
+  color: $primary-invert
+  padding: 1em
+  text-align: center
+
+.bd-notice-body
+  align-items: center
+  display: flex
+  justify-content: center
+  a,
+  strong
+    color: currentColor
+  a
+    border-bottom: 1px solid rgba($scheme-main, 0.5)
+    padding-bottom: 2px
+    &:hover
+      border-bottom-color: $scheme-main
+  span
+    margin: 0 0.25em
+    opacity: 0.5
+
++mobile
+  .bd-notice
+    font-size: 0.75rem
+  .bd-notice-body
+    flex-wrap: wrap
+    p:first-child
+      width: 100%
+
++tablet
+  .bd-notice-body
+    p:first-child
+      margin-right: 1em
+
+$github-pink: #ea4aaa
+.bd-github-button
+  background-color: $github-pink
+  // background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%)
+  border-color: $github-pink !important
+  // color: #24292e
+  color: #fff
+  font-size: 0.875rem
+  height: auto
+  padding: calc(0.5em - 1px) 1em
+  position: relative
+  strong
+    font-weight: $weight-semibold
+    margin-top: -2px
+  .icon
+    color: inherit
+  .tag
+    font-size: 0.5rem
+    font-style: normal
+    margin: -1px -8px 0 7px
+  &:hover,
+  &:focus
+    background-color: darken($github-pink, 5%)
+  &:active
+    background-color: darken($github-pink, 10%)
+  &:hover,
+  &:focus,
+  &:active
+    color: #fff
+    // background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%)
+    // background-position: -.5em
+    // border-color: #1b1f2359
+
+.bd-patreon-button
+  display: inline-block
+  position: relative
+  vertical-align: top
+  img
+    border-radius: $radius
+    display: block
+    max-height: none !important
+  &:hover
+    &::after
+      +overlay
+      background-color: rgba(#000, 0.05)
+      border-radius: $radius
+      content: ""
+      display: block
+
+$carbon-spacing: 1rem
+$carbon-shadow-size: 0.75rem
+$carbon-image-height: 100px
+$carbon-image-width: 130px
+$carbon-poweredby-height: 20px
+
+#carboncontainer
+  align-items: center
+  display: flex
+  justify-content: center
+  margin-left: auto
+  margin-right: auto
+  max-width: $carbon-width
+  min-height: $carbon-height + $carbon-poweredby-height
+  min-width: 280px
+
+#carbon
+  flex-grow: 1
+  min-height: $carbon-height
+  padding: 0
+  position: relative
+  &:hover
+    background-color: $scheme-main
+    box-shadow: 0 0 0 $carbon-shadow-size $scheme-main
+  +tablet
+    width: $carbon-width
+
+#carbonads
+  font-size: 14px
+  text-align: left
+  a,
+  span
+    display: block
+  .carbon-wrap
+    min-height: $carbon-height
+    position: relative
+    &:hover
+      .carbon-img::after
+        background-color: rgba(#000, 0.05)
+        content: ""
+        display: block
+        height: $carbon-height
+        left: 0
+        position: absolute
+        right: $carbon-spacing
+        top: 0
+  .carbon-img
+    bottom: 0
+    float: left
+    left: 0
+    min-height: $carbon-height
+    padding: 0
+    position: absolute
+    top: 0
+    width: calc(#{$carbon-image-width} + #{$carbon-spacing})
+    img
+      display: block
+      height: $carbon-image-height
+      width: $carbon-image-width
+    &:hover
+      & + .carbon-text
+        color: $link
+    &:active
+      opacity: 0.8
+  .carbon-text
+    display: block
+    color: $text-strong
+    line-height: 20px
+    min-height: $carbon-height
+    padding: 0 0 $carbon-poweredby-height calc(#{$carbon-image-width} + #{$carbon-spacing})
+    &:hover
+      color: $link
+  .carbon-poweredby
+    bottom: 0
+    color: $border-hover
+    display: inline
+    font-size: $size-small
+    line-height: $carbon-poweredby-height
+    position: absolute
+    right: 0
+    &:hover
+      text-decoration: underline
+
++until($fullhd)
+  .bd-navbar-icon
+    display: none
+
++until($widescreen)
+  .bd-navbar .bd-navbar-item-backers
+    display: none
+
++widescreen
+  #moreDropdown
+    .navbar-item:first-child,
+    .navbar-divider:nth-child(2)
+      display: none

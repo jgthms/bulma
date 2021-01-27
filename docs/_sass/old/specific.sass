@@ -1,0 +1,343 @@
+.bd-spacing-table
+  &:hover
+    color: $border
+    code
+      background: none
+      color: $border
+  .bd-current-row
+    background-color: $background
+    &:first-child
+      background-color: $danger-light
+      color: $text-strong
+      code
+        background-color: $danger
+        color: $danger-invert
+    &.bd-current-column
+      background-color: $primary-light
+      color: $text-strong
+      code
+        background-color: $primary
+        color: $primary-invert
+  .bd-current-column
+    background-color: $background
+  .bd-current-value
+    background-color: $danger-light
+    code
+      background-color: $danger
+      color: $danger-invert
+
++selection
+  background-color: $primary
+  color: $primary-invert
+
+.bd-post-container
+  margin: 0 auto
+  max-width: 56rem
+
+.bd-post-fullwidth
+  text-align: center
+
++from(60rem)
+  .bd-post-fullwidth
+    margin-left: calc(28rem - 50vw)
+    margin-right: calc(28rem - 50vw)
+
+.bd-post
+  .table
+    font-size: 1rem
+  .bd-anchor-title
+    margin-top: 0 !important
+
+.bd-has-drawing
+  position: relative
+
+.bd-drawing
+  display: none
+  pointer-events: none
+  position: absolute
+  &.bd-is-try-it-out
+    bottom: 100%
+    right: 100%
+  &.bd-is-love-letters
+    bottom: 110%
+    right: 10%
+  &.bd-is-crazy
+    left: -10%
+    top: 110%
+  &.bd-is-customize
+    right: -10%
+    top: 105%
+  &.bd-is-opinion-free
+    right: 100%
+    top: 110%
+  &.bd-is-join-us
+    bottom: 80%
+    left: 100%
+  &.bd-is-spam-free
+    bottom: 100%
+    right: 90%
+
++tablet
+  .bd-drawing
+    display: inline
+
+.bd-links
+  counter-reset: bd-links
+
+.bd-link
+  border-radius: $radius-large
+  color: $text-light
+  display: block
+  font-size: $size-5
+  padding: 1rem 3rem 1.5rem 5rem
+  position: relative
+  transition-duration: $speed
+  transition-property: background-color, color
+  strong
+    font-weight: $weight-semibold
+  &:hover
+    background-color: $scheme-main-bis
+
+.bd-link-surtitle
+  float: right
+  font-size: 0.75em
+  margin-bottom: 1em
+  margin-left: 2em
+  opacity: 0.5
+  padding-top: 0.25em
+
+.bd-link-name
+  line-height: 1.25
+  margin-bottom: 0.25em
+  position: relative
+
+.bd-link-figure
+  position: absolute
+  right: calc(100% + 0.75em)
+  text-align: center
+  top: 0
+  min-width: 1.5em
+
+.bd-link-counter
+  color: $link
+  display: block
+  counter-increment: bd-links
+  font-weight: $weight-normal
+  &::before
+    content: counter(bd-links)
+
+.bd-link-icon
+  display: block
+  font-size: 2rem
+  width: 1.5em
+
+.bd-link-more
+  font-size: 0.75em
+  opacity: 0.5
+
++mobile
+  .bd-links
+    margin-left: -1.5rem
+    margin-right: -1.5rem
+  .bd-link
+    border-radius: 0
+    padding-right: 1.5rem
+
++desktop
+  .bd-links
+    display: flex
+    flex-wrap: wrap
+  .bd-link
+    width: 50%
+
+.bd-link-name
+  color: $text-strong
+  font-size: $size-4
+  font-weight: $weight-semibold
+
+.bd-docs
+  display: flex
+  flex-wrap: wrap
+
+.bd-doc
+  margin: 0 3rem 1.5rem 0
+  +mobile
+    min-width: calc(50% - 3rem)
+  +tablet
+    min-width: calc(33.3333% - 3rem)
+
+.bd-doc-title
+  color: $text-strong
+  a
+    color: currentColor
+    &:hover
+      color: $link
+  &:not(:last-child)
+    margin-bottom: 0.75rem
+
+.bd-boxes
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+.bd-box
+  border: 4px solid $background
+  border-radius: $radius
+
+.bd-box-header
+  text-align: center
+
+.bd-typo
+  text-align: center
+  &:not(:first-child)
+    margin-top: $main-spacing
+
+.bd-has-text-rss
+  color: $rss
+
+.has-text-star
+  color: $star
+
+// $navbar-items: ("documentation": $primary, "templates": $info, "videos": $success, "blog": $rss, "expo": $star, "love": $red)
+
+// @each $name, $color in $navbar-items
+//   .bd-navbar-item-#{$name}
+//     .icon
+//       color: $color
+//     &:hover
+//       background-color: $color !important
+//       color: #fff !important
+//       .icon
+//         color: currentColor !important
+
+// .bd-navbar-item-expo
+//   &:hover
+//     color: #8F6900 !important
+//     .icon
+//       color: #F4B300 !important
+
+.bd-special-shadow
+  background-image: linear-gradient(rgba(#000, 0.1), rgba(#000, 0))
+  height: 8px
+  left: 0
+  opacity: 0
+  position: absolute
+  right: 0
+  top: 100%
+  transform: scaleY(0)
+  transform-origin: center top
+
++touch
+  .bd-is-clipped-touch
+    overflow: hidden !important
+
+#images
+  tr
+    td:nth-child(2)
+      width: 320px
+
+.bd-color
+  border-radius: 2px
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1)
+  display: inline-block
+  float: left
+  height: 24px
+  margin-right: 8px
+  width: 24px
+
+.button.bd-is-rss
+  background-color: $rss
+  border-color: transparent
+  color: #fff
+  &:hover
+    background-color: darken($rss, 5%)
+  &:active
+    background-color: darken($rss, 10%)
+
+.bd-view-all-versions
+  color: $text-light
+  &:hover
+    text-decoration: underline
+
+.bd-feature-title
+  color: $text-light
+  a
+    border-bottom: 1px solid transparent
+    color: $text-strong
+    &:hover
+      border-bottom-color: $primary
+
+.bd-anchor-title
+  padding-top: 1.5rem
+  position: relative
+  +until($widescreen)
+    padding-left: 2rem
+
+.bd-anchor-link
+  position: absolute
+  right: calc(100% + 1rem)
+  top: 1.5rem
+  +until($widescreen)
+    left: 0
+    right: auto
+
+.has-text-orange
+  color: $orange !important
+
+.has-text-purple
+  color: $purple !important
+
+.has-text-bootstrap
+  color: $bootstrap !important
+
+.has-text-patreon
+  color: $patreon !important
+
+.bd-emoji
+  margin-right: 0.5em
+  margin-top: 2px
+
+.bd-emoji-bis
+  font-size: 1.25em
+  vertical-align: middle
+
+$notification-background-color: $background !default
+$notification-radius: $radius !default
+$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
+
+.bd-notification
+  background-color: $background
+  border-radius: $radius
+  color: $text-light
+  font-weight: $weight-semibold
+  padding: 1.25rem 0
+  position: relative
+  text-align: center
+  .title,
+  .subtitle,
+  .content,
+  strong
+    color: currentColor
+  code,
+  pre
+    background-color: rgba($scheme-invert, 0.2)
+    border-radius: $radius
+    color: $scheme-main
+  pre code
+    background-color: transparent
+  // Colors
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+
+.bd-icon-size .icon
+  background-color: $yellow
+
+.bd-mwb-table
+  td
+    vertical-align: middle
+    img
+      vertical-align: middle

@@ -2,9 +2,12 @@
 title: "Light and Dark colors, better look, larger form controls, panel colors, and more"
 layout: post
 introduction: "A big update for more colors and flexibility"
-color: "primary"
+color: "expo"
 name: "Light/Dark colors, better look, larger controls"
 icon: "sun"
+featured: true
+image: hgGplX3PFBg
+alt: "Light and dark clouds"
 ---
 
 The new version **[Bulma 0.8.0](https://github.com/jgthms/bulma/releases/tag/0.8.0)** is out! 😃 It comes with several bug fixes and a lot of nice new features:

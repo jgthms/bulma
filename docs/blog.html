@@ -8,54 +8,25 @@ breadcrumb:
 
 {% include global/navbar.html id="Blog" %}
 
+{% capture hero_content %}
+{% include elements/rss-button.html %}
+{% endcapture %}
+{%
+  include components/hero.html
+  color="primary"
+  icon="fas fa-rss"
+  title="The **official** Bulma **blog**"
+  subtitle="Stay updated about new features, bug fixes, and releases"
+  content=hero_content
+%}
+
 <main class="bd-main">
-  <div class="bd-main-container container">
-    <div class="bd-duo">
-      <div class="bd-lead">
-        {% include components/breadcrumb.html %}
-
-        <header class="bd-header">
-          <div class="bd-header-titles">
-            <h1 class="title">
-              Blog
-            </h1>
-            <p class="subtitle is-4">
-              Stay updated about new features, bug fixes, and releases
-            </p>
-            <a class="button bd-is-rss" href="{{ site.url }}/atom.xml">
-              <span class="icon">
-                <i class="fas fa-rss"></i>
-              </span>
-              <span>Subscribe</span>
-            </a>
-          </div>
-
-          <div class="bd-header-carbon">
-            {% include elements/carbon.html %}
-          </div>
-        </header>
-
-        <div class="bd-content">
-          <div class="bd-links">
-            {% for post in site.posts %}
-              {% assign date = post.date | date: "%B %-d" %}
-              {% assign name = post.title | markdownify %}
-              {% assign more = post.introduction | markdownify %}
-              {%
-                include elements/link.html
-                path=post.url
-                color=post.color
-                icon_brand=post.icon_brand
-                icon_regular=post.icon_regular
-                icon=post.icon
-                surtitle=date
-                name=name
-                subtitle=more
-              %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="bd-posts">
+    {% for post in site.posts %}
+      {%
+        include elements/post.html
+        post=post
+      %}
+    {% endfor %}
   </div>
 </main>

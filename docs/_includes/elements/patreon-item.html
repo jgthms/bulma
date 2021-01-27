@@ -1,19 +1,17 @@
-<tr>
-  <td>{{ backer.name }}</td>
+<li>
+  <p>{{ include.backer.name }}</p>
 
-  <td>
-    {% if backer.twitter != "" %}
-      <a href="https://twitter.com/{{ backer.twitter }}" target="_blank" rel="nofollow">
-        @{{ backer.twitter }}
-      </a>
-    {% endif %}
-  </td>
+  {% if include.backer.twitter != "" %}
+    <a class="icon-text bd-is-twitter" href="https://twitter.com/{{ include.backer.twitter }}" target="_blank" rel="nofollow">
+      <span class="icon"><i class="fab fa-twitter"></i></span>
+      <span>{{ include.backer.twitter }}</span>
+    </a>
+  {% endif %}
 
-  <td>
-    {% if backer.website_url %}
-      <a href="{{ backer.website_url }}" target="_blank" rel="nofollow">
-        {{ backer.website_name }}
-      </a>
-    {% endif %}
-  </td>
-</tr>
+  {% if include.backer.discord != "" %}
+    <span class="icon-text bd-is-discord">
+      <span class="icon"><i class="fab fa-discord"></i></span>
+      <span>{{ include.backer.discord }}</span>
+    </span>
+  {% endif %}
+</li>

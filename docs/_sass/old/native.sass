@@ -1,0 +1,99 @@
+.native-js
+  display: none
+  font-size: 1rem
+  opacity: 0
+  position: relative
+  visibility: hidden
+  &::before
+    +overlay
+    background-color: #000
+    bottom: 0
+    content: ""
+    display: block
+    left: 0
+    opacity: 0.02
+    pointer-events: none
+    right: 0
+    top: 0
+
+.native-show
+  display: block
+  opacity: 1
+  visibility: visible
+
+.native-flex
+  align-items: center
+  display: flex
+  justify-content: center
+  padding: 2em
+  position: relative
+  text-decoration: none
+  &:hover
+    .native-cta
+      box-shadow: 0 1rem 2rem 0 rgba($scheme-invert, 0.1)
+      transform: translateY(-0.25rem)
+
+.native-img
+  border-radius: 3px
+  flex-grow: 0
+  flex-shrink: 0
+  height: 50px
+  width: 125px
+
+.native-details
+  flex-grow: 1
+  flex-shrink: 1
+
+.native-main
+  align-items: center
+  flex-grow: 0
+  flex-shrink: 1
+  max-width: 640px
+
+.native-company
+  display: block
+  font-size: 0.625em
+  letter-spacing: 2px
+  margin-bottom: 4px
+  text-transform: uppercase
+
+.native-desc
+  display: block
+
+.native-cta
+  border: none
+  box-shadow: 0 0.5rem 1rem 0 rgba($scheme-invert, 0.2)
+  flex-grow: 0
+  flex-shrink: 0
+  font-weight: $weight-semibold
+  height: auto
+  padding: 0.5em 1em
+  transition-duration: $speed * 2
+  transition-property: box-shadow, transform
+  will-change: box-shadow, transform
+
+$native-bp: 600px
+
++until($native-bp)
+  .native-flex
+    display: block
+    text-align: center
+  .native-main
+    margin-bottom: 2em
+  .native-details
+    margin: 1em
+
++from($native-bp)
+  .native-flex
+    display: flex
+    padding: 4em
+    text-align: left
+  .native-main
+    display: flex
+    margin-right: 2em
+  .native-details
+    margin-left: 2em
+
++widescreen
+  .native-js
+    font-size: 1.25rem

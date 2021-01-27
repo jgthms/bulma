@@ -16,6 +16,32 @@ meta:
 
 {% capture box_example %}
 <div class="box">
+  I'm in a box.
+</div>
+{% endcapture %}
+
+{% capture box_form_example %}
+<form class="box">
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <input class="input" type="email" placeholder="e.g. alex@example.com">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" type="password" placeholder="********">
+    </div>
+  </div>
+
+  <button class="button is-primary">Sign in</button>
+</form>
+{% endcapture %}
+
+{% capture box_card_example %}
+<div class="box">
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
@@ -56,12 +82,26 @@ meta:
 
 <div class="content">
   <p>
-    The <code>box</code> element is simply a container with a shadow, a border, a radius, and some padding.
-    <br>
-    For example, you can include a media object:
+    The <code>box</code> element is a simple container with a white background, some padding, and a box shadow.
   </p>
 </div>
 
-{% include elements/snippet.html content=box_example more=true %}
+{% include elements/snippet.html content=box_example %}
 
-{% include elements/variables.html type='element' %}
+<div class="content">
+  <p>
+    Because it acts as a container, you can easily include other components, like <strong>form elements</strong>:
+  </p>
+</div>
+
+{% include elements/snippet.html content=box_form_example more=true %}
+
+<div class="content">
+  <p>
+    Or a  <code>media</code> object:
+  </p>
+</div>
+
+{% include elements/snippet.html content=box_card_example more=true %}
+
+{% include components/variables.html type='element' %}

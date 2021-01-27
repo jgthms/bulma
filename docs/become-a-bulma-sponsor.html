@@ -1,0 +1,80 @@
+---
+fulltitle: 'Become a Bulma sponsor'
+title: 'Sponsor Bulma and Open Source via <a href="https://www.patreon.com/jgthms" target="_blank">Patreon</a> and <a href="https://github.com/sponsors/jgthms" target="_blank">GitHub</a>'
+layout: default
+route: become-a-sponsor
+---
+
+{% include global/navbar.html id="Become a sponsor" %}
+
+{% capture hero_content %}
+{% include elements/sponsor-button.html %}
+{% endcapture %}
+
+{%
+  include elements/banner.html
+  color="sponsor"
+  title="<span>Become a Bulma <strong>sponsor</strong></span>"
+%}
+
+<header class="bd-single-header">
+  <div class="container is-max-desktop">
+    <div class="bd-single-titles">
+      <h1 class="title">
+        Become a Bulma sponsor and support open source
+      </h1>
+    </div>
+  </div>
+</header>
+
+<div class="bd-backers-platforms">
+  <div class="bd-backers-platform bd-is-patreon">
+    <div>
+      <a class="bd-backers-platform-logo" href="{{ site.data.meta.patreon_url }}" target="_blank">
+        {% include svg/patreon.svg %}
+      </a>
+
+      <a class="button bd-fat-button is-patreon" href="{{ site.data.meta.patreon_url }}" target="_blank">
+        Become a Patron
+      </a>
+    </div>
+  </div>
+
+  <div class="bd-backers-platform bd-is-github">
+    <div>
+      <a class="bd-backers-platform-logo" href="{{ site.data.meta.github }}" target="_blank">
+        {% include svg/github.svg %}
+      </a>
+
+      <a class="button bd-fat-button is-sponsor" href="{{ site.data.meta.github }}" target="_blank">
+        Sponsor on GitHub
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="bd-tiers">
+  <div class="container">
+    <div class="bd-tiers-list">
+      {% for tier in site.data.tiers %}
+        <div class="bd-tier">
+          <p class="bd-tier-amount">${{ tier.amount }}</p>
+          <p class="bd-tier-frequency">a month</p>
+          <div class="bd-tier-message">{{ tier.message | markdownify }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="bd-tiers-info">
+  <div class="bd-tiers-info-question">
+    <p>What is the difference between Patreon and Github?</p>
+  </div>
+  <div class="bd-tiers-info-answer">
+    <p>There is <strong>no difference</strong> in terms of <strong>rewards</strong>.</p>
+    <p>The main difference is that Patreon charges VAT based on your location.</p>
+    <p>If you already have a GitHub account, your sponsorship will be billed at the same time as your GitHub subscription.</p>
+    <p>In any case, <strong>choose the easiest option for you</strong>.</p>
+  </div>
+</div>
