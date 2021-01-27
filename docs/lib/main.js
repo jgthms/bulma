@@ -1,117 +1,121 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Search
+
+  var setSearchToggle = function setSearchToggle() {
+    var icon = document.getElementById('searchIcon');
+    var search = document.getElementById('search');
+    var input = document.getElementById('algoliaSearch');
+
+    if (!icon) {
+      return;
+    }
+
+    icon.addEventListener('click', function (event) {
+      search.classList.toggle('bd-is-visible');
+
+      if (search.classList.contains('bd-is-visible')) {
+        algoliaSearch.focus();
+      }
+    });
+
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        return search.classList.remove('bd-is-visible');
+      }
+    });
+  };
+
+  setSearchToggle();
+
+  // Navbar
+
+  var setNavbarVisibility = function setNavbarVisibility() {
+    var navbar = document.getElementById('navbar');
+
+    if (!navbar) {
+      return;
+    }
+
+    var cs = getComputedStyle(navbar);
+    var paddingX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    var brand = navbar.querySelector('.navbar-brand');
+    var end = navbar.querySelector('.navbar-end');
+    var search = navbar.querySelector('.bd-search');
+    var original = document.getElementById('navbarStartOriginal');
+    var clone = document.getElementById('navbarStartClone');
+
+    var rest = navbar.clientWidth - paddingX - brand.clientWidth - end.clientWidth - search.clientWidth;
+
+    var space = original.clientWidth;
+    var all = document.querySelectorAll('#navbarStartClone > .bd-navbar-item');
+    var base = document.querySelectorAll('#navbarStartClone > .bd-navbar-item-base');
+    var more = document.querySelectorAll('#navbarStartOriginal > .bd-navbar-item-more');
+    var dropdown = document.querySelectorAll('#navbarStartOriginal .bd-navbar-dropdown > .navbar-item');
+
+    var count = 0;
+    var totalWidth = 0;
+
+    var showMore = function showMore() {};
+
+    var hideMore = function hideMore() {};
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = all[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var item = _step.value;
+
+        totalWidth += item.offsetWidth;
+
+        if (totalWidth > rest) {
+          break;
+        }
+
+        count++;
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    var howManyMore = Math.max(0, count - base.length);
+
+    if (howManyMore > 0) {
+      for (var i = 0; i < howManyMore; i++) {
+        more[i].classList.add('bd-is-visible');
+        dropdown[i].classList.add('bd-is-hidden');
+      }
+    }
+
+    for (var j = howManyMore; j < more.length; j++) {
+      more[j].classList.remove('bd-is-visible');
+    }
+
+    for (var k = howManyMore; k < dropdown.length; k++) {
+      dropdown[k].classList.remove('bd-is-hidden');
+    }
+  };
+
+  setNavbarVisibility();
 
   // Cookies
 
   var cookieBookModalName = 'bulma_closed_book_modal';
   var cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
-
-  // Sidebar links
-
-  var $categories = getAll('#categories .bd-category');
-
-  if ($categories.length > 0) {
-    $categories.forEach(function (el) {
-      var toggle_el = el.querySelector('.bd-category-toggle');
-
-      toggle_el.addEventListener('click', function (event) {
-        // closeCategories(el);
-        el.classList.toggle('is-active');
-      });
-    });
-  }
-
-  function closeCategories(current_el) {
-    $categories.forEach(function (el) {
-      if (current_el == el) {
-        return;
-      }
-      el.classList.remove('is-active');
-    });
-  }
-
-  var anchors_ref_el = document.getElementById('anchorsReference');
-  var anchors_el = document.getElementById('anchors');
-  var anchor_links_el = getAll('.bd-anchor-link');
-
-  var anchors_by_id = {};
-  var anchors_order = [];
-  var anchor_nav_els = [];
-
-  if (anchors_el && anchor_links_el.length > 0) {
-    anchors_el.classList.add('is-active');
-    var anchors_el_list = anchors_el.querySelector('.bd-anchors-list');
-
-    anchor_links_el.forEach(function (el, index) {
-      var link_target = el.getAttribute('href');
-      var link_text = el.previousElementSibling.innerText;
-
-      if (link_text != '') {
-        var item_el = createAnchorLink(link_text, link_target);
-        anchors_el_list.appendChild(item_el);
-
-        var anchor_key = link_target.substring(1); // #target -> target
-        anchors_by_id[anchor_key] = {
-          id: anchor_key,
-          index: index,
-          target: link_target,
-          text: link_text,
-          nav_el: item_el
-        };
-        anchors_order.push(anchor_key);
-        anchor_nav_els.push(item_el);
-      }
-    });
-
-    var back_to_top_el = createAnchorLink('Back to top', '');
-    back_to_top_el.onclick = scrollToTop;
-    anchors_el_list.appendChild(back_to_top_el);
-  }
-
-  function scrollToTop() {
-    window.scrollTo(0, 0);
-  }
-
-  function createAnchorLink(text, target) {
-    var item_el = document.createElement('li');
-    var link_el = document.createElement('a');
-    var text_node = document.createTextNode(text);
-
-    if (target) {
-      link_el.setAttribute('href', target);
-    }
-
-    link_el.appendChild(text_node);
-    item_el.appendChild(link_el);
-
-    return item_el;
-  }
-
-  function closeCategories(current_el) {
-    $categories.forEach(function (el) {
-      if (current_el == el) {
-        return;
-      }
-      el.classList.remove('is-active');
-    });
-  }
-
-  // Meta links
-
-  var $metalinks = getAll('#meta a');
-
-  if ($metalinks.length > 0) {
-    $metalinks.forEach(function ($el) {
-      $el.addEventListener('click', function (event) {
-        event.preventDefault();
-        var target = $el.getAttribute('href');
-        var $target = document.getElementById(target.substring(1));
-        $target.scrollIntoView(true);
-        return false;
-      });
-    });
-  }
 
   // Dropdowns
 
@@ -194,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('keydown', function (event) {
     var e = event || window.event;
+
     if (e.keyCode === 27) {
       closeModals();
       closeDropdowns();
@@ -207,19 +212,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if ($highlights.length > 0) {
     $highlights.forEach(function ($el) {
-      var copyEl = '<button class="button is-small bd-copy">Copy</button>';
+      var copyEl = '<button class="button bd-copy">Copy</button>';
       var expandEl = '<button class="button is-small bd-expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copyEl);
 
       var $parent = $el.parentNode;
+
       if ($parent && $parent.classList.contains('bd-is-more')) {
-        var showEl = '<button class="bd-show"><div><span class="icon"><i class="fas fa-code"></i></span> <strong>Show code</strong></div></button>';
-        $el.insertAdjacentHTML('beforeend', showEl);
+        var showEl = '<button class="button is-small bd-show"><span class="icon"><i class="fas fa-code"></i></span><strong>Show code</strong></button>';
+        $parent.insertAdjacentHTML('afterbegin', showEl);
       } else if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
         $el.insertAdjacentHTML('beforeend', expandEl);
       }
 
       itemsProcessed++;
+
       if (itemsProcessed === $highlights.length) {
         addHighlightControls();
       }
@@ -232,14 +239,16 @@ document.addEventListener('DOMContentLoaded', function () {
     $highlightButtons.forEach(function ($el) {
       $el.addEventListener('mouseenter', function () {
         $el.parentNode.classList.add('bd-is-hovering');
+        $el.parentNode.parentNode.classList.add('bd-is-hovering');
       });
 
       $el.addEventListener('mouseleave', function () {
         $el.parentNode.classList.remove('bd-is-hovering');
+        $el.parentNode.parentNode.classList.remove('bd-is-hovering');
       });
     });
 
-    var $highlightExpands = getAll('.highlight .bd-expand');
+    var $highlightExpands = getAll('.bd-snippet .bd-expand');
 
     $highlightExpands.forEach(function ($el) {
       $el.addEventListener('click', function () {
@@ -247,11 +256,14 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    var $highlightShows = getAll('.highlight .bd-show');
+    var $highlightShows = getAll('.bd-snippet .bd-show');
 
     $highlightShows.forEach(function ($el) {
       $el.addEventListener('click', function () {
-        $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
+        var text = $el.querySelector('strong').textContent;
+        var newText = text === 'Show code' ? 'Hide code' : 'Show code';
+        $el.querySelector('strong').textContent = newText;
+        $el.parentNode.classList.toggle('bd-is-more-clipped');
       });
     });
   }
@@ -264,248 +276,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, 100);
 
-  // Functions
+  // Events
+
+  var resizeTimer = void 0;
+
+  function handleResize() {
+    window.clearTimeout(resizeTimer);
+
+    resizeTimer = window.setTimeout(function () {
+      setNavbarVisibility();
+    }, 10);
+  }
+
+  window.addEventListener('resize', handleResize);
+
+  // Utils
 
   function getAll(selector) {
     var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
 
     return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
   }
-
-  // Scrolling
-
-  var html_el = document.documentElement;
-  var navbarEl = document.getElementById('navbar');
-  var navbarBurger = document.getElementById('navbarBurger');
-  var specialShadow = document.getElementById('specialShadow');
-  var NAVBAR_HEIGHT = 52;
-  var THRESHOLD = 160;
-  var horizon = NAVBAR_HEIGHT;
-  var whereYouStoppedScrolling = 0;
-  var scrollFactor = 0;
-  var currentTranslate = 0;
-
-  // Anchors highlight
-
-  var past_anchors = [];
-  anchor_links_el.reverse();
-  var trigger_offset = 24; // In pixels
-  var typo_el = document.getElementById('typo');
-
-  function whenScrolling() {
-    if (anchors_ref_el) {
-      var bounds = anchors_ref_el.getBoundingClientRect();
-      var anchors_height = anchors_el.clientHeight;
-      var typo_bounds = typo_el.getBoundingClientRect();
-      var typo_height = typo_el.clientHeight;
-
-      if (bounds.top < 1 && typo_bounds.top - anchors_height + typo_height > 0) {
-        anchors_el.classList.add('is-pinned');
-      } else {
-        anchors_el.classList.remove('is-pinned');
-      }
-
-      anchor_links_el.some(function (el) {
-        var bounds = el.getBoundingClientRect();
-        var href = el.getAttribute('href');
-        var key = href.substring(1); // #target -> target
-
-        if (bounds.top < 1 + trigger_offset && past_anchors.indexOf(key) == -1) {
-          past_anchors.push(key);
-          highlightAnchor();
-          return;
-        } else if (bounds.top > 0 + trigger_offset && past_anchors.indexOf(key) != -1) {
-          removeFromArray(past_anchors, key);
-          highlightAnchor();
-          return;
-        }
-      });
-    }
-  }
-
-  function highlightAnchor() {
-    var future_anchors = anchors_order.diff(past_anchors);
-    var highest_index = -1;
-    var highest_anchor_key = '';
-
-    if (past_anchors.length > 0) {
-      past_anchors.forEach(function (key, index) {
-        var anchor = anchors_by_id[key];
-        anchor.nav_el.className = 'is-past';
-
-        // Keep track of the bottom most item
-        if (anchor.index > highest_index) {
-          highest_index = anchor.index;
-          highest_anchor_key = key;
-        }
-      });
-
-      if (highest_anchor_key in anchors_by_id) {
-        anchors_by_id[highest_anchor_key].nav_el.className = 'is-current';
-      }
-    }
-
-    if (future_anchors.length > 0) {
-      future_anchors.forEach(function (key, index) {
-        var anchor = anchors_by_id[key];
-        anchor.nav_el.className = '';
-      });
-    }
-  }
-
-  // Spacing table
-
-  var spacingTables = getAll('.bd-spacing-table');
-
-  spacingTables.forEach(function (spacingEl) {
-    var spacingRows = getAll('tbody tr', spacingEl);
-    var spacingCells = getAll('tbody td', spacingEl);
-    var spacingValues = getAll('tfoot th', spacingEl);
-
-    spacingEl.addEventListener('mouseleave', function () {
-      resetTable(spacingCells, spacingValues);
-    });
-
-    spacingCells.forEach(function (el) {
-      el.addEventListener('mouseenter', function () {
-        resetTable(spacingCells, spacingValues);
-        var row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
-        var column = Array.prototype.indexOf.call(el.parentNode.children, el);
-        highlightRowAndColumn(row, column, spacingRows, spacingValues);
-      });
-    });
-  });
-
-  function resetTable(cells, values) {
-    cells.forEach(function (el) {
-      return el.classList.remove('bd-current-row', 'bd-current-column');
-    });
-    values.forEach(function (el) {
-      return el.classList.remove('bd-current-value');
-    });
-  }
-
-  function highlightRowAndColumn(rowIndex, columnIndex, rows, values) {
-    var row = rows[rowIndex];
-    var i = columnIndex;
-
-    while (i > -1) {
-      row.children[i].classList.add('bd-current-row');
-      i--;
-    }
-
-    var nextRows = rows.slice(rowIndex);
-    nextRows.forEach(function (r) {
-      r.children[columnIndex].classList.add('bd-current-column');
-    });
-
-    if (columnIndex < 2) {
-      return;
-    }
-    values[columnIndex - 1].classList.add('bd-current-value');
-  }
-
-  // Scroll
-
-  function upOrDown(lastY, currentY) {
-    if (currentY >= lastY) {
-      return goingDown(currentY);
-    }
-    return goingUp(currentY);
-  }
-
-  function goingDown(currentY) {
-    var trigger = NAVBAR_HEIGHT;
-    whereYouStoppedScrolling = currentY;
-
-    if (currentY > horizon) {
-      horizon = currentY;
-    }
-
-    translateHeader(currentY, false);
-  }
-
-  function goingUp(currentY) {
-    var trigger = 0;
-
-    if (currentY < whereYouStoppedScrolling - NAVBAR_HEIGHT) {
-      horizon = currentY + NAVBAR_HEIGHT;
-    }
-
-    translateHeader(currentY, true);
-  }
-
-  function constrainDelta(delta) {
-    return Math.max(0, Math.min(delta, NAVBAR_HEIGHT));
-  }
-
-  function translateHeader(currentY, upwards) {
-    // let topTranslateValue;
-    var translateValue = void 0;
-
-    if (upwards && currentTranslate == 0) {
-      translateValue = 0;
-    } else if (currentY <= NAVBAR_HEIGHT) {
-      translateValue = currentY * -1;
-    } else {
-      var delta = constrainDelta(Math.abs(currentY - horizon));
-      translateValue = delta - NAVBAR_HEIGHT;
-    }
-
-    if (translateValue != currentTranslate) {
-      var navbarStyle = '\n        transform: translateY(' + translateValue + 'px);\n      ';
-      currentTranslate = translateValue;
-      navbarEl.setAttribute('style', navbarStyle);
-    }
-
-    if (currentY > THRESHOLD * 2) {
-      scrollFactor = 1;
-    } else if (currentY > THRESHOLD) {
-      scrollFactor = (currentY - THRESHOLD) / THRESHOLD;
-    } else {
-      scrollFactor = 0;
-    }
-
-    var translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
-
-    if (specialShadow) {
-      specialShadow.style.opacity = scrollFactor;
-      specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
-    }
-  }
-
-  var ticking = false;
-  var lastY = 0;
-
-  window.addEventListener('scroll', function () {
-    var currentY = window.scrollY;
-
-    if (!ticking) {
-      window.requestAnimationFrame(function () {
-        // upOrDown(lastY, currentY);
-        whenScrolling();
-        ticking = false;
-        lastY = currentY;
-      });
-    }
-
-    ticking = true;
-  });
-
-  // Utils
-
-  function removeFromArray(array, value) {
-    if (array.includes(value)) {
-      var value_index = array.indexOf(value);
-      array.splice(value_index, 1);
-    }
-
-    return array;
-  }
-
-  Array.prototype.diff = function (a) {
-    return this.filter(function (i) {
-      return a.indexOf(i) < 0;
-    });
-  };
 });

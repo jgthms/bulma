@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! bulma.io v0.9.1 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.9.2 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 .button, .input, .textarea, .select select, .file-cta,
 .file-name, .pagination-previous,
@@ -183,7 +183,8 @@ fieldset[disabled] .pagination-ellipsis {
 }
 
 .button.is-loading::after, .loader, .select.is-loading::after, .control.is-loading::after {
-  animation: spinAround 500ms infinite linear;
+  -webkit-animation: spinAround 500ms infinite linear;
+          animation: spinAround 500ms infinite linear;
   border: 2px solid #dbdbdb;
   border-radius: 9999px;
   border-right-color: transparent;
@@ -219,7 +220,7 @@ fieldset[disabled] .pagination-ellipsis {
   top: 0;
 }
 
-.navbar-burger, .bd-tabs-nav button, .bd-category-toggle, .bd-navbar-search-icon {
+.bd-tabs-nav button, .bd-category-toggle, .bd-navbar-search-icon {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -324,7 +325,10 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
 }
 
 article,
@@ -448,6 +452,15 @@ table th:not([align]) {
 
 table th {
   color: #363636;
+}
+
+@-webkit-keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 @keyframes spinAround {
@@ -4414,10 +4427,14 @@ div.icon-text {
 }
 
 .progress:indeterminate {
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-name: moveIndeterminate;
-  animation-timing-function: linear;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: moveIndeterminate;
+          animation-name: moveIndeterminate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
   background-color: #ededed;
   background-image: linear-gradient(to right, #4a4a4a 30%, #ededed 30%);
   background-position: top left;
@@ -4447,6 +4464,15 @@ div.icon-text {
 
 .progress.is-large {
   height: 1.5rem;
+}
+
+@-webkit-keyframes moveIndeterminate {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @keyframes moveIndeterminate {
@@ -7285,16 +7311,6 @@ fieldset[disabled] .select select:hover {
 }
 
 .card-header-icon {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background: none;
-  border: none;
-  color: currentColor;
-  font-family: inherit;
-  font-size: 1em;
-  margin: 0;
-  padding: 0;
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -9564,7 +9580,7 @@ body.has-navbar-fixed-bottom {
 }
 
 .navbar-burger {
-  color: #363636;
+  color: #4a4a4a;
   cursor: pointer;
   display: block;
   height: 3.25rem;
@@ -9620,7 +9636,7 @@ body.has-navbar-fixed-bottom {
 
 .navbar-item,
 .navbar-link {
-  color: #363636;
+  color: #4a4a4a;
   display: block;
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
@@ -10087,13 +10103,6 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     justify-content: flex-start;
     order: 1;
   }
-  .pagination-previous,
-  .pagination-next,
-  .pagination-link,
-  .pagination-ellipsis {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
   .pagination-previous {
     order: 2;
   }
@@ -10102,8 +10111,6 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   }
   .pagination {
     justify-content: space-between;
-    margin-bottom: 0;
-    margin-top: 0;
   }
   .pagination.is-centered .pagination-previous {
     order: 1;
@@ -12499,6 +12506,8 @@ label.panel-block:hover {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
   min-height: min-content;
 }
 
@@ -16768,7 +16777,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   justify-content: center;
 }
 
-.navbar-burger, .bd-tabs-nav button, .bd-category-toggle, .bd-navbar-search-icon {
+.bd-tabs-nav button, .bd-category-toggle, .bd-navbar-search-icon {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -17045,6 +17054,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 
 .bd-anchors {
   padding: var(--docs-side-padding);
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
@@ -17480,6 +17490,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 .bd-categories {
   --height: 1.25;
   padding: var(--docs-side-padding);
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
@@ -20639,7 +20650,8 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   --device-md-width: 24px;
   --device-lg-height: 40px;
   --device-lg-width: 48px;
-  animation: bdDeviceBounce 3.5s infinite;
+  -webkit-animation: bdDeviceBounce 3.5s infinite;
+          animation: bdDeviceBounce 3.5s infinite;
   border: 0 solid hsl(var(--device-deg), 100%, 53%);
   border-width: var(--device-y) var(--device-x);
   border-radius: 0.375em;
@@ -20684,6 +20696,44 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   color: #333333;
 }
 
+@-webkit-keyframes bdDeviceBounce {
+  0% {
+    --device-deg: var(--device-sm-deg);
+    height: var(--device-sm-height);
+    width: var(--device-sm-width);
+  }
+  28% {
+    --device-deg: var(--device-sm-deg);
+    height: var(--device-sm-height);
+    width: var(--device-sm-width);
+  }
+  33% {
+    --device-deg: var(--device-md-deg);
+    height: var(--device-md-height);
+    width: var(--device-md-width);
+  }
+  62% {
+    --device-deg: var(--device-md-deg);
+    height: var(--device-md-height);
+    width: var(--device-md-width);
+  }
+  67% {
+    --device-deg: var(--device-lg-deg);
+    height: var(--device-lg-height);
+    width: var(--device-lg-width);
+  }
+  95% {
+    --device-deg: var(--device-lg-deg);
+    height: var(--device-lg-height);
+    width: var(--device-lg-width);
+  }
+  100% {
+    --device-deg: var(--device-sm-deg);
+    height: var(--device-sm-height);
+    width: var(--device-sm-width);
+  }
+}
+
 @keyframes bdDeviceBounce {
   0% {
     --device-deg: var(--device-sm-deg);
@@ -20722,6 +20772,15 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   }
 }
 
+@-webkit-keyframes bdGrow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @keyframes bdGrow {
   from {
     transform: scale(0);
@@ -20731,10 +20790,32 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   }
 }
 
+@-webkit-keyframes bdSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes bdSlideDown {
   from {
     opacity: 0;
     transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes bdSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
   }
   to {
     opacity: 1;
@@ -20754,67 +20835,96 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 .bd-focus-item .title, .bd-focus-item .subtitle, .bd-focus-mobile, .bd-focus-tablet, .bd-focus-desktop, .bd-focus-cube-1, .bd-focus-cube-2, .bd-focus-cube-3, .bd-focus-css3, .bd-focus-github {
-  animation-duration: 500ms;
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.14, 0.71, 0.29, 0.86);
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-timing-function: cubic-bezier(0.14, 0.71, 0.29, 0.86);
+          animation-timing-function: cubic-bezier(0.14, 0.71, 0.29, 0.86);
   transform-origin: center center;
 }
 
 .bd-focus-item .title {
-  animation-name: bdSlideDown;
+  -webkit-animation-name: bdSlideDown;
+          animation-name: bdSlideDown;
 }
 
 .bd-focus-item .subtitle {
-  animation-name: bdSlideUp;
+  -webkit-animation-name: bdSlideUp;
+          animation-name: bdSlideUp;
 }
 
 .bd-focus-item:nth-child(1) .title {
-  animation-delay: 0;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
 }
 
 .bd-focus-item:nth-child(1) .subtitle {
-  animation-delay: 125ms;
+  -webkit-animation-delay: 125ms;
+          animation-delay: 125ms;
 }
 
 .bd-focus-item:nth-child(2) .title {
-  animation-delay: 500ms;
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
 }
 
 .bd-focus-item:nth-child(2) .subtitle {
-  animation-delay: 625ms;
+  -webkit-animation-delay: 625ms;
+          animation-delay: 625ms;
 }
 
 .bd-focus-item:nth-child(3) .title {
-  animation-delay: 1000ms;
+  -webkit-animation-delay: 1000ms;
+          animation-delay: 1000ms;
 }
 
 .bd-focus-item:nth-child(3) .subtitle {
-  animation-delay: 1125ms;
+  -webkit-animation-delay: 1125ms;
+          animation-delay: 1125ms;
 }
 
 .bd-focus-item:nth-child(4) .title {
-  animation-delay: 1500ms;
+  -webkit-animation-delay: 1500ms;
+          animation-delay: 1500ms;
 }
 
 .bd-focus-item:nth-child(4) .subtitle {
-  animation-delay: 1625ms;
+  -webkit-animation-delay: 1625ms;
+          animation-delay: 1625ms;
 }
 
 .bd-focus-mobile, .bd-focus-tablet, .bd-focus-desktop {
-  animation-name: bdGrow;
+  -webkit-animation-name: bdGrow;
+          animation-name: bdGrow;
   transform-origin: bottom center;
 }
 
 .bd-focus-mobile {
-  animation-delay: 0;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
 }
 
 .bd-focus-tablet {
-  animation-delay: 250ms;
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms;
 }
 
 .bd-focus-desktop {
-  animation-delay: 500ms;
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+
+@-webkit-keyframes bdCube1 {
+  0% {
+    transform: translate3d(0, -50px, 0);
+    opacity: 0;
+  }
+  25%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 @keyframes bdCube1 {
@@ -20829,9 +20939,33 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   }
 }
 
+@-webkit-keyframes bdCube2 {
+  0% {
+    transform: translate3d(-40px, 30px, 0);
+    opacity: 0;
+  }
+  25%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
 @keyframes bdCube2 {
   0% {
     transform: translate3d(-40px, 30px, 0);
+    opacity: 0;
+  }
+  25%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes bdCube3 {
+  0% {
+    transform: translate3d(40px, 30px, 0);
     opacity: 0;
   }
   25%,
@@ -20854,24 +20988,42 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 .bd-focus-cube-1, .bd-focus-cube-2, .bd-focus-cube-3 {
-  animation-direction: alternate;
-  animation-duration: 2000ms;
-  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-duration: 2000ms;
+          animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 .bd-focus-cube-1 {
-  animation-delay: 500ms;
-  animation-name: bdCube1;
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+  -webkit-animation-name: bdCube1;
+          animation-name: bdCube1;
 }
 
 .bd-focus-cube-2 {
-  animation-name: bdCube2;
-  animation-delay: 750ms;
+  -webkit-animation-name: bdCube2;
+          animation-name: bdCube2;
+  -webkit-animation-delay: 750ms;
+          animation-delay: 750ms;
 }
 
 .bd-focus-cube-3 {
-  animation-name: bdCube3;
-  animation-delay: 1000ms;
+  -webkit-animation-name: bdCube3;
+          animation-name: bdCube3;
+  -webkit-animation-delay: 1000ms;
+          animation-delay: 1000ms;
+}
+
+@-webkit-keyframes bdFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes bdFadeIn {
@@ -20883,10 +21035,32 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   }
 }
 
+@-webkit-keyframes bdSlowIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes bdSlowIn {
   from {
     opacity: 0;
     transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes bdScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
   }
   to {
     opacity: 1;
@@ -20906,14 +21080,103 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 .bd-focus-css3 {
-  animation-delay: 1000ms;
-  animation-name: bdScaleIn;
+  -webkit-animation-delay: 1000ms;
+          animation-delay: 1000ms;
+  -webkit-animation-name: bdScaleIn;
+          animation-name: bdScaleIn;
 }
 
 .bd-focus-github {
-  animation-delay: 1500ms;
-  animation-duration: 1500ms;
-  animation-name: bdJellyPop;
+  -webkit-animation-delay: 1500ms;
+          animation-delay: 1500ms;
+  -webkit-animation-duration: 1500ms;
+          animation-duration: 1500ms;
+  -webkit-animation-name: bdJellyPop;
+          animation-name: bdJellyPop;
+}
+
+@-webkit-keyframes bdJellyPop {
+  0% {
+    opacity: 0;
+    transform: matrix3d(0.1, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  3.4% {
+    opacity: 1;
+    transform: matrix3d(0.384, 0, 0, 0, 0, 0.466, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    transform: matrix3d(0.505, 0, 0, 0, 0, 0.639, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  6.81% {
+    transform: matrix3d(0.693, 0, 0, 0, 0, 0.904, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    transform: matrix3d(0.895, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  10.21% {
+    transform: matrix3d(0.947, 0, 0, 0, 0, 1.204, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  13.61% {
+    transform: matrix3d(1.111, 0, 0, 0, 0, 1.299, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    transform: matrix3d(1.127, 0, 0, 0, 0, 1.298, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  17.52% {
+    transform: matrix3d(1.187, 0, 0, 0, 0, 1.216, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    transform: matrix3d(1.191, 0, 0, 0, 0, 1.169, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  21.32% {
+    transform: matrix3d(1.177, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    transform: matrix3d(1.135, 0, 0, 0, 0, 0.964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  25.23% {
+    transform: matrix3d(1.121, 0, 0, 0, 0, 0.944, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.03% {
+    transform: matrix3d(1.057, 0, 0, 0, 0, 0.907, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    transform: matrix3d(1.043, 0, 0, 0, 0, 0.909, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    transform: matrix3d(0.981, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  36.74% {
+    transform: matrix3d(0.974, 0, 0, 0, 0, 0.981, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    transform: matrix3d(0.965, 0, 0, 0, 0, 1.02, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  44.44% {
+    transform: matrix3d(0.969, 0, 0, 0, 0, 1.029, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    transform: matrix3d(0.992, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  59.86% {
+    transform: matrix3d(1.005, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    transform: matrix3d(1.007, 0, 0, 0, 0, 0.993, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  75.28% {
+    transform: matrix3d(1.001, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  90.69% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
 }
 
 @keyframes bdJellyPop {
@@ -21009,18 +21272,23 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 
 .bd-best-list {
   align-items: stretch;
-  animation-duration: 93.6s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  -webkit-animation-duration: 93.6s;
+          animation-duration: 93.6s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
   display: flex;
   left: 0;
   position: absolute;
   top: 1.5rem;
-  animation-name: bdBestCarousel;
+  -webkit-animation-name: bdBestCarousel;
+          animation-name: bdBestCarousel;
 }
 
 .bd-best-list:hover {
-  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
 }
 
 .bd-best-item {
@@ -21066,6 +21334,12 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   height: auto;
   vertical-align: top;
   width: auto;
+}
+
+@-webkit-keyframes bdBestCarousel {
+  100% {
+    transform: translateX(calc(-100% + 3120px));
+  }
 }
 
 @keyframes bdBestCarousel {
@@ -21802,3 +22076,5 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
     width: 20rem;
   }
 }
+
+/*# sourceMappingURL=bulma-docs.css.map */
