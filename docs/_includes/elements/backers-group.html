@@ -1,0 +1,19 @@
+{% if site.data.backers[include.tier].size > 0 or site.data.github[include.tier].size > 0 %}
+  <div class="bd-backers-heading">
+    <h2>{{ include.title }}</h2>
+  </div>
+
+  <div class="bd-backers-group">
+    <ul class="bd-backers-list bd-is-patreon">
+      {% for pt in site.data.backers[include.tier] reversed %}
+        {% include elements/patreon-item.html backer=pt %}
+      {% endfor %}
+    </ul>
+
+    <ul class="bd-backers-list bd-is-github">
+      {% for gh in site.data.github[include.tier] reversed %}
+        {% include elements/github-item.html sponsor=gh %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

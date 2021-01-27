@@ -26,7 +26,7 @@ meta:
 </article>
 {% endcapture %}
 
-{% capture message_colors_example %}
+{% capture message_dark_example %}
 <article class="message is-dark">
   <div class="message-header">
     <p>Dark</p>
@@ -36,17 +36,6 @@ meta:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
-{% for color in site.data.colors.justColors %}
-<article class="message is-{{ color }}">
-  <div class="message-header">
-    <p>{{ color | capitalize }}</p>
-    <button class="delete" aria-label="delete"></button>
-  </div>
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-{% endfor %}
 {% endcapture %}
 
 {% capture message_small %}
@@ -103,18 +92,14 @@ meta:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
+{% endcapture %}
+
+{% capture message_body_dark_example %}
 <article class="message is-dark">
   <div class="message-body">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
   </div>
 </article>
-{% for color in site.data.colors.justColors %}
-<article class="message is-{{ color }}">
-  <div class="message-body">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-  </div>
-</article>
-{% endfor %}
 {% endcapture %}
 
 <div class="content">
@@ -144,7 +129,22 @@ meta:
   </p>
 </div>
 
-{% include elements/snippet.html content=message_colors_example %}
+{% include elements/snippet.html content=message_dark_example more=true %}
+
+{% for color in site.data.colors.justColors %}
+{% capture foobar %}
+<article class="message is-{{ color }}">
+  <div class="message-header">
+    <p>{{ color | capitalize }}</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+  </div>
+</article>
+{% endcapture %}
+{% include elements/snippet.html content=foobar more=true %}
+{% endfor %}
 
 {% include elements/anchor.html name="Message body only" %}
 
@@ -155,6 +155,19 @@ meta:
 </div>
 
 {% include elements/snippet.html content=message_body_example %}
+
+{% include elements/snippet.html content=message_body_dark_example %}
+
+{% for color in site.data.colors.justColors %}
+{% capture foobar %}
+<article class="message is-{{ color }}">
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+  </div>
+</article>
+{% endcapture %}
+{% include elements/snippet.html content=foobar %}
+{% endfor %}
 
 {% include elements/anchor.html name="Sizes" %}
 
@@ -172,4 +185,4 @@ meta:
 
 {% include elements/snippet.html content=message_large %}
 
-{% include elements/variables.html type='component' %}
+{% include components/variables.html type='component' %}

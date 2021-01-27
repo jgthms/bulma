@@ -1,0 +1,44 @@
+.bd-anchors {
+  padding: var(--docs-side-padding);
+  position: sticky;
+  top: 0;
+
+  &.bd-is-empty {
+    display: none;
+  }
+}
+
+.bd-anchors-title {
+  color: $text-light;
+  font-size: 0.75em;
+  opacity: 0.5;
+}
+
+.bd-anchors-list {
+  padding: 0.25em 0 0.75em;
+
+  li {
+    align-items: flex-start;
+    display: flex;
+    font-size: 0.875em;
+
+    &.is-past a:not(:hover) {
+      background-color: $border-light;
+      color: $text-light;
+    }
+
+    &.is-current a {
+      background-color: var(--primary);
+      color: var(--primary-invert);
+    }
+  }
+
+  a {
+    @extend %bd-category-link;
+
+    &:hover {
+      background-color: var(--primary-invert);
+      color: var(--primary);
+    }
+  }
+}
