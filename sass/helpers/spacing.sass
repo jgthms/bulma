@@ -8,24 +8,50 @@ $spacing-shortcuts: ("margin": "m", "padding": "p") !default
 $spacing-directions: ("top": "t", "right": "r", "bottom": "b", "left": "l") !default
 $spacing-horizontal: "x" !default
 $spacing-vertical: "y" !default
-$spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem) !default
+$spacing-values: ("auto": auto, "0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem) !default
 
-@each $property, $shortcut in $spacing-shortcuts
-  @each $name, $value in $spacing-values
-    // All directions
-    .#{$shortcut}-#{$name}
-      #{$property}: $value !important
-    // Cardinal directions
-    @each $direction, $suffix in $spacing-directions
-      .#{$shortcut}#{$suffix}-#{$name}
-        #{$property}-#{$direction}: $value !important
-    // Horizontal axis
-    @if $spacing-horizontal != null
-      .#{$shortcut}#{$spacing-horizontal}-#{$name}
-        #{$property}-left: $value !important
-        #{$property}-right: $value !important
-    // Vertical axis
-    @if $spacing-vertical != null
-      .#{$shortcut}#{$spacing-vertical}-#{$name}
-        #{$property}-top: $value !important
-        #{$property}-bottom: $value !important
+=get-spacing-styles($mode)
+  @each $property, $shortcut in $spacing-shortcuts
+    @each $name, $value in $spacing-values
+      .has-#{$property}-#{$name}#{$mode}
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .has-#{$property}-#{$direction}-#{$name}#{$mode}
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .has-#{$property}-horizontal-#{$name}#{$mode}
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .has-#{$property}-vertical-#{$name}#{$mode}
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
++get-spacing-styles("")
+
++mobile
+  +get-spacing-styles("-mobile")
+
++tablet
+  +get-spacing-styles("-tablet")
+
++tablet-only
+  +get-spacing-styles("-tablet-only")
+
++touch
+  +get-spacing-styles("-touch")
+
++desktop
+  +get-spacing-styles("-desktop")
+
++desktop-only
+  +get-spacing-styles("-desktop-only")
+
++widescreen
+  +get-spacing-styles("-widescreen")
+
++widescreen-only
+  +get-spacing-styles("-widescreen-only")
+
++fullhd
+  +get-spacing-styles("-fullhd")
