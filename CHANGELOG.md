@@ -66,7 +66,7 @@ If you were importing `utilities/_all` or even `bulma.sass` directly, no change 
 The `base/helpers.sass` file is **deprecated**. It has moved into its own `/helpers` folder. If you were importing `base/helpers.sass` or `base/_all.sass`, please import `sass/helpers/_all.sass` now.
 If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
 
-The `list` component is also **deprecated**: the `components/list.sass` file has been deleted. It was never officialy supported as it was too similar to `panel` component. Use that one instead.
+The `list` component is also **deprecated**: the `components/list.sass` file has been deleted. It was never officially supported as it was too similar to `panel` component. Use that one instead.
 
 ### RTL support
 
@@ -109,7 +109,7 @@ Bulma now has **spacing helpers**: https://bulma.io/documentation/helpers/spacin
 </ul>
 
 <p>
-  You need to <strong>combine</strong> a margin/padding prefix with a direciton suffix. For example:
+  You need to <strong>combine</strong> a margin/padding prefix with a direction suffix. For example:
 </p>
 
 <ul>
@@ -175,7 +175,7 @@ $button-padding-horizontal: 0.75em
 Each main color (`"primary"`, `"info"`, `"success"`, `"warning"`, `"danger"`) now has a `*-light` and `*-dark` version. They are calculated using 2 new color functions:
 
 - `findLightColor()` which finds the light version of a color
-- `findDarkolor()` which finds the dark version of a color
+- `findDarkColor()` which finds the dark version of a color
 
 The light colors are used by the `button` element, while the light and dark colors are used by the `message` component.
 
@@ -217,7 +217,7 @@ This is processed by the updated `mergeColorMaps()` Sass function.
 #### Scheme variables
 
 There are 6 new `$scheme` derived variables: `$scheme-main` `$scheme-main-bis` `$scheme-main-ter` `$scheme-invert` `$scheme-invert-bis` `$scheme-invert-ter`
-They replace the `$white` and `$black` occurences in the codebase. This makes it easy to create a "Dark mode" simply by swapping the values:
+They replace the `$white` and `$black` occurrences in the codebase. This makes it easy to create a "Dark mode" simply by swapping the values:
 
 ```sass
 $scheme-main: $black
@@ -325,7 +325,7 @@ $title-family: 'Georgia', serif;
 - #2253 Fix `$gap` variable default value
 - #2273 Fix #2258 -> Fix Indeterminate Progress Bar animation in Firefox
 - #2175 Proper aligning for `.tabs` within `.content`
-- #2476 Fix #2441 -> Correct active pagination link text colour on hero
+- #2476 Fix #2441 -> Correct active pagination link text color on hero
 
 Fix #1979 -> Correct loading spinner color when a button is:
 
@@ -1212,7 +1212,7 @@ Variable name changes (mostly appending `-color`):
 
 - Fix #26 `.textarea` element will honors `[rows]` attribute
 - Fix #887 `body` scrollbar
-- Fix #715 `.help` class behaviour in horizontal form `is-grouped` field
+- Fix #715 `.help` class behavior in horizontal form `is-grouped` field
 - Fix #842 Adding modifiers in `navbar`
 - Fix #841 `.container` as direct child of `.navbar` moves `.navbar-menu` below `.navbar-brand`
 - Fix #861 Box in hero as text and background white
