@@ -15,41 +15,38 @@ let utils = {
       return 'map';
     }
 
-    if (value.startsWith('hsl') || value.startsWith('#') || value.startsWith('rgb')) {
+    if (
+      value.startsWith('hsl') ||
+      value.startsWith('#') ||
+      value.startsWith('rgb')
+    ) {
       return 'color';
     } else if (css_keywords.includes(value)) {
       return 'keyword';
-    } else if (
-        value.startsWith('findColorInvert')
-        || value.startsWith('mergeColorMaps')
-      ) {
+    } else if (value.startsWith('mergeColorMaps')) {
+      return 'map';
+    } else if (value.startsWith('findColorInvert')) {
       return 'function';
     } else if (value.startsWith('$')) {
       return 'variable';
-    } else if (
-        value.startsWith('BlinkMacSystemFont')
-        || value == 'monospace'
-      ) {
+    } else if (value.startsWith('BlinkMacSystemFont') || value == 'monospace') {
       return 'font-family';
-    } else if (value == 'true'
-        || value == 'false'
-      ) {
+    } else if (value == 'true' || value == 'false') {
       return 'boolean';
+    } else if (name.endsWith('shadow')) {
+      return 'shadow';
     } else if (value.endsWith('ms')) {
       return 'duration';
     } else if (value.includes('+')) {
       return 'computed';
-    } else if (
-        value.endsWith('00')
-        || value == 'normal'
-      ) {
+    } else if (value.endsWith('00') || value == 'normal') {
       return 'font-weight';
     } else if (
-        value.endsWith('px')
-        || value.endsWith('em')
-        || value.includes('px ')
-        || value.includes('em ')
-      ) {
+      value.endsWith('px') ||
+      value.endsWith('em') ||
+      value.includes('px ') ||
+      value.includes('em ')
+    ) {
       return 'size';
     } else if (value.includes('$')) {
       return 'compound';
@@ -66,13 +63,15 @@ let utils = {
       const variable_name = line.substring(0, colon_index).trim();
 
       const default_index = line.indexOf('!default');
-      const variable_value = line.substring(colon_index + 1, default_index).trim();
+      let variable_value = line
+        .substring(colon_index + 1, default_index)
+        .trim();
 
-      return variable = {
+      return (variable = {
         name: variable_name,
         value: variable_value,
         type: utils.getVariableType(variable_name, variable_value),
-      };
+      });
     }
 
     return false;
@@ -87,7 +86,7 @@ let utils = {
     return {
       file_name,
       lines: file.contents.toString().split(/(?:\r\n|\r|\n)/g),
-    }
+    };
   },
 
   writeFile: (file_path, data) => {
@@ -96,7 +95,7 @@ let utils = {
 
     utils.ensureDirectoryExistence(json_file_path);
 
-    fs.writeFile(json_file_path, json_data, err => {
+    fs.writeFile(json_file_path, json_data, (err) => {
       if (err) {
         return console.log(err);
       }
@@ -109,7 +108,10 @@ let utils = {
     if (value.startsWith('$') && value in initial_variables.by_name) {
       const second_value = initial_variables.by_name[value].value;
 
-      if (second_value.startsWith('$') && second_value in initial_variables.by_name) {
+      if (
+        second_value.startsWith('$') &&
+        second_value in initial_variables.by_name
+      ) {
         const third_value = initial_variables.by_name[second_value].value;
 
         return third_value;
@@ -121,7 +123,13 @@ let utils = {
     return value;
   },
 
-  getComputedData: (name, value, type, initial_variables, derived_variables = {}) => {
+  getComputedData: (
+    name,
+    value,
+    type,
+    initial_variables,
+    derived_variables = {}
+  ) => {
     let computed_value = '';
 
     if (value.startsWith('$')) {
@@ -129,7 +137,10 @@ let utils = {
 
       if (value in initial_variables.by_name) {
         second_value = initial_variables.by_name[value].value;
-      } else if (derived_variables.by_name && value in derived_variables.by_name) {
+      } else if (
+        derived_variables.by_name &&
+        value in derived_variables.by_name
+      ) {
         second_value = derived_variables.by_name[value].value;
       }
 
@@ -138,7 +149,10 @@ let utils = {
 
         if (second_value in initial_variables.by_name) {
           third_value = initial_variables.by_name[second_value].value;
-        } else if (derived_variables.by_name && second_value in derived_variables.by_name) {
+        } else if (
+          derived_variables.by_name &&
+          second_value in derived_variables.by_name
+        ) {
           third_value = derived_variables.by_name[second_value].value;
         }
 
@@ -167,10 +181,14 @@ let utils = {
 
       const computed_type = utils.getVariableType(name, computed_value);
 
+      if (computed_value.startsWith('mergeColorMaps')) {
+        computed_value = 'Bulma colors';
+      }
+
       return {
         computed_type,
         computed_value,
-      }
+      };
     }
 
     return {};
@@ -185,8 +203,8 @@ let utils = {
 
     utils.ensureDirectoryExistence(dirname);
     fs.mkdirSync(dirname);
-  }
-}
+  },
+};
 
 utils.files = {};
 utils.files.initial_variables = `${base_path}utilities/initial-variables.json`;

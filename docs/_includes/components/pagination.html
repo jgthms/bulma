@@ -1,0 +1,82 @@
+{% assign currentLinkId = page.breadcrumb | last %}
+
+{% assign currentCategoryIndex = page.breadcrumb | size | minus: 2 %}
+{% assign currentCategoryId = page.breadcrumb[currentCategoryIndex] %}
+
+{% assign sameCategoryIds = site.data.links.categories[currentCategoryId] %}
+{% assign categorySize    = sameCategoryIds | size %}
+{% assign lastIndex       = categorySize | minus: 1 %}
+
+{% for categoryId in site.data.links.categoryIds %}
+  {% if categoryId == currentCategoryId %}
+    {% assign prevCategoryIndex = forloop.index0 | minus: 1 %}
+    {% assign nextCategoryIndex = forloop.index0 | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% for linkId in sameCategoryIds %}
+  {% if linkId == currentLinkId %}
+    {% assign prevIndex = forloop.index0 | minus: 1 %}
+    {% assign nextIndex = forloop.index0 | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<!-- Previous link -->
+<!-- If first index in list -->
+{% if prevIndex == -1 %}
+  {% assign prevCategoryId    = site.data.links.categoryIds[prevCategoryIndex] %}
+  {% assign prevCategoryLinks = site.data.links.categories[prevCategoryId] %}
+  {% assign prevCategorySize  = prevCategoryLinks | size %}
+  {% assign prevLastIndex     = prevCategorySize | minus: 1 %}
+  {% assign prevLinkId        = prevCategoryLinks[prevLastIndex] %}
+{% else %}
+  {% assign prevCategoryId = currentCategoryId %}
+  {% assign prevLinkId = sameCategoryIds[prevIndex] %}
+{% endif %}
+
+<!-- Next link -->
+<!-- If last index in list -->
+{% if nextIndex == categorySize %}
+  {% assign nextCategoryId = site.data.links.categoryIds[nextCategoryIndex] %}
+  {% assign nextCategory   = site.data.links.categories[nextCategoryId] %}
+  {% assign nextLinkId     = nextCategory[0] %}
+{% else %}
+  {% assign nextCategoryId = currentCategoryId %}
+  {% assign nextLinkId = sameCategoryIds[nextIndex] %}
+{% endif %}
+
+{% unless page.hide_pagination %}
+  {% if prevLinkId or nextLinkId %}
+    <nav class="bd-docs-pagination bd-pagination-links">
+      {% if prevLinkId %}
+        {% assign prevLink = site.data.links.by_id[prevLinkId] %}
+        <a
+          class="button bd-fat-button is-primary is-light bd-pagination-prev"
+          href="{{ site.url }}{{ prevLink.path }}"
+          title="{{ prevLink.name }}"
+        >
+          <i>←</i>
+          <span>
+            <em>{{ prevCategoryId }}:</em>
+            <strong>{{ prevLink.name }}</strong>
+          </span>
+        </a>
+      {% endif %}
+
+      {% if nextLinkId %}
+        {% assign nextLink = site.data.links.by_id[nextLinkId] %}
+        <a
+          class="button bd-fat-button is-primary is-light bd-pagination-next"
+          href="{{ site.url }}{{ nextLink.path }}"
+          title="{{ nextLink.name }}"
+        >
+          <span>
+            <em>{{ nextCategoryId }}:</em>
+            <strong>{{ nextLink.name }}</strong>
+          </span>
+          <i>→</i>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endunless %}

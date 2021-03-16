@@ -2,9 +2,12 @@
 title: "Website redesign: clearer layout, easier navigation, better content, and much more!"
 layout: post
 introduction: "A brand new look"
-color: "star"
+color: "expo"
 name: "Website redesign"
 icon: "star"
+featured: true
+image: "9-OCsKoyQlk"
+alt: "Swimming pool"
 ---
 
 The Bulma website has been widely redesigned! There's been a lot of work, to say the least:

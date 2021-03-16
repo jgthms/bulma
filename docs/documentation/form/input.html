@@ -36,57 +36,6 @@ meta:
 <input class="input" type="text" placeholder="Text input">
 {% endcapture %}
 
-{% capture colors_example %}
-<div class="field">
-  <div class="control">
-    <input class="input is-primary" type="text" placeholder="Primary input">
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <input class="input is-info" type="text" placeholder="Info input">
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <input class="input is-success" type="text" placeholder="Success input">
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <input class="input is-warning" type="text" placeholder="Warning input">
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <input class="input is-danger" type="text" placeholder="Danger input">
-  </div>
-</div>
-{% endcapture %}
-
-{% capture sizes_example %}
-<div class="field">
-  <div class="control">
-    <input class="input is-small" type="text" placeholder="Small input">
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <input class="input" type="text" placeholder="Normal input">
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <input class="input is-medium" type="text" placeholder="Medium input">
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <input class="input is-large" type="text" placeholder="Large input">
-  </div>
-</div>
-{% endcapture %}
-
 {% capture rounded_example %}
 <input class="input is-rounded" type="text" placeholder="Rounded input">
 {% endcapture %}
@@ -272,36 +221,30 @@ meta:
   <div class="column is-half">
     {{input_example}}
   </div>
-  <div class="column is-half highlight-full">
+  <div class="column is-half bd-highlight-full">
     {% highlight html %}{{input_example}}{% endhighlight %}
   </div>
 </div>
 
 {% include elements/anchor.html name="Colors" %}
 
-<div class="columns">
-  <div class="column is-half">
-    {{colors_example}}
-  </div>
-  <div class="column is-half highlight-full">
-    {% highlight html %}{{colors_example}}{% endhighlight %}
-  </div>
-</div>
+{% for color in site.data.colors.justColors %}
+{% capture foobar %}
+<input class="input is-{{ color }}" type="text" placeholder="{{ color | capitalize }} input">
+{% endcapture %}
+{% include elements/snippet.html content=foobar %}
+{% endfor %}
 
 {% include elements/anchor.html name="Sizes" %}
 
-<div class="columns">
-  <div class="column is-half">
-    {{sizes_example}}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{sizes_example}}{% endhighlight %}
-  </div>
-</div>
+{% for size in site.data.sizes %}
+{% capture foobar %}
+<input class="input is-{{ size }}" type="text" placeholder="{{ size | capitalize }} input">
+{% endcapture %}
+{% include elements/snippet.html content=foobar %}
+{% endfor %}
 
 {% include elements/anchor.html name="Styles" %}
-
-{% include elements/new-tag.html version="0.6.2" %}
 
 <div class="columns">
   <div class="column is-half">
@@ -314,7 +257,8 @@ meta:
 
 {% include elements/anchor.html name="States" %}
 
-<h4 class="subtitle">Normal</h4>
+<h4 class="title is-5">Normal</h4>
+
 <div class="columns">
   <div class="column is-half">
     {{normal_example}}
@@ -324,7 +268,8 @@ meta:
   </div>
 </div>
 
-<h4 class="subtitle">Hover</h4>
+<h4 class="title is-5">Hover</h4>
+
 <div class="columns">
   <div class="column is-half">
     {{hover_example}}
@@ -334,7 +279,8 @@ meta:
   </div>
 </div>
 
-<h4 class="subtitle">Focus</h4>
+<h4 class="title is-5">Focus</h4>
+
 <div class="columns">
   <div class="column is-half">
     {{focus_example}}
@@ -344,7 +290,8 @@ meta:
   </div>
 </div>
 
-<h4 class="subtitle">Loading</h4>
+<h4 class="title is-5">Loading</h4>
+
 <div class="columns">
   <div class="column is-half">
     {{loading_example}}
@@ -368,7 +315,9 @@ meta:
   </div>
 </div>
 
-<h4 class="subtitle">Disabled</h4>
+<h4 class="title is-5">Disabled</h4>
+
+
 <div class="columns">
   <div class="column is-half">
     {{disabled_example}}
@@ -378,8 +327,8 @@ meta:
   </div>
 </div>
 
-<h4 class="subtitle">Readonly and static inputs</h4>
-{% include elements/new-tag.html version="0.5.3" %}
+<h4 class="title is-5">Readonly and static inputs</h4>
+
 
 <div class="content">
   <p>
@@ -480,7 +429,7 @@ meta:
   </div>
 </div>
 
-{% include elements/variables.html type='element'
+{% include components/variables.html type='element'
   variables_keys=page.variables_keys
   folder='elements'
   file='form'

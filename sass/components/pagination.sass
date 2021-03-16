@@ -1,3 +1,6 @@
+@import "../utilities/controls"
+@import "../utilities/mixins"
+
 $pagination-color: $text-strong !default
 $pagination-border-color: $border !default
 $pagination-margin: -0.25rem !default
@@ -7,6 +10,9 @@ $pagination-item-font-size: 1em !default
 $pagination-item-margin: 0.25rem !default
 $pagination-item-padding-left: 0.5em !default
 $pagination-item-padding-right: 0.5em !default
+
+$pagination-nav-padding-left: 0.75em !default
+$pagination-nav-padding-right: 0.75em !default
 
 $pagination-hover-color: $link-hover !default
 $pagination-hover-border-color: $link-hover-border !default
@@ -27,7 +33,7 @@ $pagination-current-border-color: $link !default
 
 $pagination-ellipsis-color: $grey-light !default
 
-$pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
+$pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
 
 .pagination
   @extend %block
@@ -91,8 +97,8 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
 
 .pagination-previous,
 .pagination-next
-  padding-left: 0.75em
-  padding-right: 0.75em
+  padding-left: $pagination-nav-padding-left
+  padding-right: $pagination-nav-padding-right
   white-space: nowrap
 
 .pagination-link
@@ -107,6 +113,8 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
 
 .pagination-list
   flex-wrap: wrap
+  li
+    list-style: none
 
 +mobile
   .pagination
@@ -126,12 +134,20 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
     flex-shrink: 1
     justify-content: flex-start
     order: 1
+  .pagination-previous,
+  .pagination-next,
+  .pagination-link,
+  .pagination-ellipsis
+    margin-bottom: 0
+    margin-top: 0
   .pagination-previous
     order: 2
   .pagination-next
     order: 3
   .pagination
     justify-content: space-between
+    margin-bottom: 0
+    margin-top: 0
     &.is-centered
       .pagination-previous
         order: 1

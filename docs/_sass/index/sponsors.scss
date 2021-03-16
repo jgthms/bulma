@@ -1,0 +1,102 @@
+$bd-sponsor-padding: $block-spacing;
+$bd-sponsor-width: 12rem;
+
+.bd-sponsors {
+  --bd-sponsors-spacing: #{$block-spacing};
+}
+
+.bd-sponsors-body {
+  display: grid;
+  grid-gap: var(--bd-index-gap);
+}
+
+@include mobile {
+  .bd-sponsors {
+    grid-gap: var(--bd-sponsors-spacing);
+    padding: var(--bd-sponsors-spacing);
+  }
+}
+
+.bd-partner-sponsors {
+  --sponsor-width: #{$bd-sponsor-width - 1rem};
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(var(--sponsor-width), 1fr));
+  overflow: hidden;
+}
+
+.bd-partner-sponsor {
+  @extend %center;
+  @extend %link-before-background;
+
+  padding: $bd-sponsor-padding ($bd-sponsor-padding / 2);
+
+  strong,
+  img {
+    position: relative;
+  }
+}
+
+@include touch {
+  .bd-sponsors {
+    padding: var(--bd-index-vertical);
+  }
+
+  .bd-partner-sponsors {
+    margin-left: -$block-spacing;
+    margin-right: -$block-spacing;
+  }
+}
+
+@include desktop {
+  .bd-sponsors {
+    padding-bottom: var(--bd-index-vertical);
+    padding-top: var(--bd-index-vertical);
+  }
+
+  .bd-sponsors-body {
+    align-items: center;
+    grid-gap: 0;
+    grid-template-columns:
+      var(--bd-index-gap) 1fr calc(
+        calc(var(--container-width) - var(--bd-index-gap)) / 2
+      )
+      var(--bd-index-gap) calc(
+        calc(var(--container-width) - var(--bd-index-gap)) / 2
+      )
+      1fr var(--bd-index-gap);
+  }
+
+  .bd-sponsors-content {
+    font-size: 1.125rem;
+    grid-column: 3 / span 1;
+  }
+
+  .bd-sponsors-list {
+    grid-column: 4 / span 4;
+  }
+}
+
+@include widescreen {
+  .bd-sponsors {
+    --bd-sponsors-spacing: 6rem;
+  }
+
+  .bd-sponsors-content {
+    font-size: 1.25rem;
+  }
+
+  .bd-partner-sponsors {
+    --sponsor-width: #{$bd-sponsor-width};
+  }
+}
+
+@include fullhd {
+  .bd-sponsors {
+    --bd-sponsors-spacing: 9rem;
+  }
+
+  .bd-sponsors-content {
+    font-size: 1.5rem;
+  }
+}

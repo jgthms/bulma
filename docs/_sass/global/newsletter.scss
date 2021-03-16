@@ -1,0 +1,182 @@
+:root {
+  --newsletter-strip-size: 16px;
+  --newsletter-border-size: #{$block-spacing};
+}
+
+#newsletter {
+  background: $scheme-main-bis;
+  padding: var(--newsletter-border-size);
+  padding-top: 0;
+
+  .bd-drawing {
+    display: none;
+  }
+}
+
+.bd-newsletter-heading {
+  > .icon {
+    font-size: $title-size;
+    height: 1.125em;
+    width: 1.125em;
+  }
+
+  .title,
+  .subtitle {
+    font-weight: $weight-normal;
+
+    strong {
+      color: inherit;
+      font-weight: $weight-semibold;
+    }
+
+    small {
+      color: $text-light;
+      display: block;
+      font-size: 0.75em;
+    }
+  }
+
+  .subtitle {
+    color: $text-light;
+  }
+
+  .bd-fat-button {
+    font-weight: $weight-normal;
+
+    strong {
+      font-weight: $weight-semibold;
+    }
+  }
+}
+
+.bd-newsletter-fields {
+  display: grid;
+  grid-gap: $block-spacing / 2;
+  grid-template-columns: minmax(20em, 1fr) auto;
+}
+
+.bd-newsletter-box {
+  background-color: $scheme-main;
+  background-image: url('/images/hab/newsletter-strip.png');
+  background-repeat: repeat-x;
+  background-size: 96px var(--newsletter-strip-size);
+  border-radius: 1.5em;
+  box-shadow: 0 0 0 1px $scheme-main-ter;
+
+  .icon {
+    align-self: flex-start;
+  }
+
+  form .input {
+    &:not(:focus):not(:hover) {
+      border-color: $border;
+    }
+  }
+}
+
+@include mobile {
+  .bd-newsletter-box {
+    padding-top: calc(#{$block-spacing} + var(--newsletter-strip-size));
+  }
+
+  .bd-newsletter-fields {
+    grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
+  }
+}
+
+@include touch {
+  .bd-newsletter-heading {
+    margin-bottom: var(--bd-index-vertical);
+
+    .icon {
+      float: left;
+      margin-right: $block-spacing / 2;
+    }
+
+    .subtitle {
+      margin: ($block-spacing / 2) 0 !important;
+    }
+
+    form {
+      margin-top: $block-spacing;
+    }
+  }
+}
+
+@include tablet {
+  .bd-newsletter-box {
+    padding-top: calc(var(--bd-index-vertical) + var(--newsletter-strip-size));
+  }
+}
+
+@include desktop {
+  .bd-newsletter-heading {
+    display: grid;
+    // prettier-ignore
+    grid-template-columns:
+      ($block-spacing * 2)
+      ($block-spacing * 2)
+      1fr
+      1fr
+      ($block-spacing * 2)
+      ($block-spacing * 2);
+
+    > .icon {
+      grid-column: 2;
+    }
+
+    .title {
+      grid-column: 3;
+      max-width: 9em;
+    }
+
+    .subtitle {
+      grid-column: 4;
+      max-width: 10em;
+    }
+
+    form {
+      grid-column: 4;
+    }
+  }
+}
+
+@include widescreen {
+  :root {
+    --newsletter-border-size: #{$bd-edge-width / 2};
+  }
+
+  #newsletter {
+    .bd-drawing {
+      display: block;
+    }
+  }
+
+  .bd-newsletter-heading {
+    // prettier-ignore
+    grid-template-columns:
+      ($block-spacing * 3)
+      ($block-spacing * 3)
+      1fr
+      1fr
+      ($block-spacing * 3)
+      ($block-spacing * 3);
+  }
+
+  .bd-newsletter-box {
+    box-shadow: 0 1em 2em rgba(black, 0.05);
+  }
+}
+
+@include from(1780px) {
+  .bd-newsletter-heading {
+    // prettier-ignore
+    grid-template-columns:
+      minmax(#{$block-spacing * 2}, 1fr)
+      ($block-spacing * 3)
+      calc(var(--container-width) / 2)
+      calc(var(--container-width) / 2)
+      ($block-spacing * 3)
+      minmax(#{$block-spacing * 2}, 1fr);
+  }
+}

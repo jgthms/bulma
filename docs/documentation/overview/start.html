@@ -12,68 +12,179 @@ breadcrumb:
 
 <div class="content">
   <p>
-    There are several ways to <strong>get started</strong> with Bulma. You can either:
+    Bulma is a <strong>CSS library</strong>. This means it provides CSS classes to help you style your HTML code.
+    <br>
+    To use Bulma, you can either use the pre-compiled <code>.css</code> file or install the <code>.sass</code> files so you can customize it to your needs.
   </p>
-  <ol>
-    <li>
-      use <strong>npm</strong> to install the Bulma package
-    </li>
-    <li>
-      use the <strong>jsDelivr CDN</strong> to link to the Bulma stylesheet
-    </li>
-    <li>
-      use the <strong>GitHub repository</strong> to get the latest development version
-    </li>
-  </ol>
 </div>
 
-<article class="media is-large">
-  <div class="media-left">
-    <p class="title is-5">1</p>
-  </div>
-  <div class="media-content">
-    <p class="title is-5">
-      Use <strong>NPM</strong> <em>(recommended)</em>:
-    </p>
-    {% highlight bash %}npm install bulma{% endhighlight %}
-  </div>
-</article>
+<div class="bd-options">
+  <div class="bd-option">
+    <div class="block media is-align-items-center">
+      <div class="media-left">
+        <span class="icon is-flex is-large has-text-link">
+          <i class="fab fa-css3 fa-2x"></i>
+        </span>
+      </div>
 
-<article class="media is-large">
-  <div class="media-left">
-    <p class="title is-5">2</p>
-  </div>
-  <div class="media-content">
-    <p class="title is-5">
-      Use the <a href="https://www.jsdelivr.com/" target="_blank">jsDelivr</a> <strong>CDN</strong>
-      <br>
-      <a href="https://www.jsdelivr.com/package/npm/bulma">https://www.jsdelivr.com/package/npm/bulma</a>
-    </p>
-  </div>
-</article>
+      <div class="media-content">
+        <p class="title is-4">Get the Bulma <strong class="has-text-link">CSS</strong> file</p>
+        <p class="subtitle">A single <code>.css</code> file that includes all of Bulma</p>
+      </div>
+    </div>
 
-<article class="media is-large">
-  <div class="media-left">
-    <p class="title is-5">3</p>
-  </div>
-  <div class="media-content">
-    <p class="title is-5">
-      Download from the <strong>repository</strong>
-      <br>
-      <a href="https://github.com/jgthms/bulma/tree/master/css">https://github.com/jgthms/bulma/tree/master/css</a>
-    </p>
-  </div>
-</article>
+    <div class="bd-option-item">
+      <p class="bd-option-title block has-text-grey-light is-size-5">
+        <span class="button bd-fat-button is-success is-light is-pulled-right">Recommended</span>
+        Option 1. <strong>Use a CDN</strong>
+      </p>
 
-<hr>
+      <p class="block">
+        You can import the CSS file directly from <a href="{{ site.data.meta.jsdelivr }}" target="_blank">jsDelivr</a>:
+      </p>
 
-<div class="message is-info">
-  <div class="message-header">
-    Font Awesome icons
+      {% capture jsdelivr_a %}
+        {% highlight css %}@import "https://cdn.jsdelivr.net/npm/bulma@{{ site.data.meta.version }}/css/bulma.min.css"{% endhighlight %}
+      {% endcapture %}
+
+      {% capture jsdelivr_b %}
+        {% highlight html %}<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@{{ site.data.meta.version }}/css/bulma.min.css">{% endhighlight %}
+      {% endcapture %}
+
+      {%
+        include components/tabs.html
+        button_a="CSS @import"
+        button_b="HTML <link>"
+        item_a=jsdelivr_a
+        item_b=jsdelivr_b
+      %}
+
+      <p class="block">
+        The <strong>RTL version</strong> is also available:
+      </p>
+
+      {% capture jsdelivr_rtl_a %}
+        {% highlight css %}@import "https://cdn.jsdelivr.net/npm/bulma@{{ site.data.meta.version }}/css/bulma-rtl.min.css"{% endhighlight %}
+      {% endcapture %}
+
+      {% capture jsdelivr_rtl_b %}
+        {% highlight html %}<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@{{ site.data.meta.version }}/css/bulma-rtl.min.css">{% endhighlight %}
+      {% endcapture %}
+
+      {%
+        include components/tabs.html
+        button_a="CSS @import"
+        button_b="HTML <link>"
+        item_a=jsdelivr_rtl_a
+        item_b=jsdelivr_rtl_b
+      %}
+
+      <p class="block">
+        Bulma is also available via <a href="{{ site.data.meta.cdnjs }}" target="_blank">cdnjs</a>.
+      </p>
+    </div>
+
+    <div class="bd-option-item">
+      <p class="bd-option-title block has-text-grey-light is-size-5">
+        Option 2. <strong>Download the Github release</strong>
+      </p>
+
+      <div class="block">
+        You can get the latest Bulma release as a <code>.zip</code> from GitHub:
+      </div>
+
+      <a class="button bd-fat-button is-primary is-light" href="{{ site.data.meta.download }}">
+        Download v{{ site.data.meta.version }}
+      </a>
+    </div>
   </div>
-  <div class="message-body">
-    <p>If you want to use icons with Bulma, don't forget to include <a href="https://fontawesome.com">Font Awesome 5</a>:</p>
-    {% highlight html %}<script defer src="{{ site.data.icons.fontawesome5 }}"></script>{% endhighlight %}
+
+  <div class="bd-option-or">
+    <p>Or</p>
+  </div>
+
+  <div class="bd-option">
+    <div class="block media is-align-items-center">
+      <div class="media-left">
+        <span class="icon is-flex is-large has-text-sass">
+          <i class="fab fa-sass fa-2x"></i>
+        </span>
+      </div>
+
+      <div class="media-content">
+        <p class="title is-4">Get the Bulma <strong class="has-text-sass">Sass</strong> library</p>
+        <p class="subtitle">A collection of <code>.sass</code> files to build your own version of Bulma</p>
+      </div>
+    </div>
+
+    <div class="bd-option-item">
+      <p class="bd-option-title block has-text-grey-light is-size-5">
+        <span class="button bd-fat-button is-success is-light is-pulled-right">Recommended</span>
+        Option 1. <strong>Install the NPM package</strong>
+      </p>
+
+      <p class="block">
+        Bulma is available through <a href="{{ site.data.meta.npm }}" target="_blank">npm</a>:
+      </p>
+
+      {% capture npm_item %}
+        {% highlight bash %}npm install bulma{% endhighlight %}
+      {% endcapture %}
+
+      {% capture yarn_item %}
+        {% highlight bash %}yarn add bulma{% endhighlight %}
+      {% endcapture %}
+
+      {%
+        include components/tabs.html
+        button_a="npm"
+        button_b="yarn"
+        item_a=npm_item
+        item_b=yarn_item
+      %}
+
+      <p class="block">
+        Bulma is also available via <a href="{{ site.data.meta.cdnjs }}" target="_blank">cdnjs</a>.
+      </p>
+    </div>
+
+    <div class="bd-option-item">
+      <p class="bd-option-title block has-text-grey-light is-size-5">
+        Option 2. <strong>Clone the GitHub repository</strong>
+      </p>
+
+      <p class="block">
+        Bulma is available on <a href="{{ site.data.meta.github }}" target="_blank">GitHub</a>:
+      </p>
+
+      {% capture git_ssh %}
+        {% highlight bash %}{{ site.data.meta.git_ssh }}{% endhighlight %}
+      {% endcapture %}
+
+      {% capture git_https %}
+        {% highlight bash %}{{ site.data.meta.git_https }}{% endhighlight %}
+      {% endcapture %}
+
+      {% capture git_cli %}
+        {% highlight bash %}{{ site.data.meta.git_cli }}{% endhighlight %}
+      {% endcapture %}
+
+      {%
+        include components/tabs.html
+        button_a="SSH"
+        button_b="HTTPS"
+        button_c="GitHub CLI"
+        item_a=git_ssh
+        item_b=git_https
+        item_c=git_cli
+      %}
+
+      <div class="message is-warning">
+        <div class="message-body">
+          Note that the GitHub repository also includes this documentation, so it’s significantly bigger than the NPM package.
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -117,7 +228,7 @@ breadcrumb:
   </p>
 </div>
 
-<div class="bd-example highlight-full">
+<div class="bd-example bd-highlight-full">
   {% highlight html %}{% include snippets/getting-started.html %}{% endhighlight %}
 </div>
 

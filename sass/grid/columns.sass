@@ -1,3 +1,5 @@
+@import "../utilities/mixins"
+
 $column-gap: 0.75rem !default
 
 .column
@@ -8,6 +10,7 @@ $column-gap: 0.75rem !default
   padding: $column-gap
   .columns.is-mobile > &.is-narrow
     flex: none
+    width: unset
   .columns.is-mobile > &.is-full
     flex: none
     width: 100%
@@ -65,6 +68,7 @@ $column-gap: 0.75rem !default
   +mobile
     &.is-narrow-mobile
       flex: none
+      width: unset
     &.is-full-mobile
       flex: none
       width: 100%
@@ -123,6 +127,7 @@ $column-gap: 0.75rem !default
     &.is-narrow,
     &.is-narrow-tablet
       flex: none
+      width: unset
     &.is-full,
     &.is-full-tablet
       flex: none
@@ -201,6 +206,7 @@ $column-gap: 0.75rem !default
   +touch
     &.is-narrow-touch
       flex: none
+      width: unset
     &.is-full-touch
       flex: none
       width: 100%
@@ -258,6 +264,7 @@ $column-gap: 0.75rem !default
   +desktop
     &.is-narrow-desktop
       flex: none
+      width: unset
     &.is-full-desktop
       flex: none
       width: 100%
@@ -315,6 +322,7 @@ $column-gap: 0.75rem !default
   +widescreen
     &.is-narrow-widescreen
       flex: none
+      width: unset
     &.is-full-widescreen
       flex: none
       width: 100%
@@ -372,6 +380,7 @@ $column-gap: 0.75rem !default
   +fullhd
     &.is-narrow-fullhd
       flex: none
+      width: unset
     &.is-full-fullhd
       flex: none
       width: 100%
@@ -555,7 +564,7 @@ $column-gap: 0.75rem !default
     --columnGap: 0.75rem
     +ltr-property("margin", calc(-1 * var(--columnGap)), false)
     +ltr-property("margin", calc(-1 * var(--columnGap)))
-    .column
+    > .column
       padding-left: var(--columnGap)
       padding-right: var(--columnGap)
     @for $i from 0 through 8

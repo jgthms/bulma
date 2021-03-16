@@ -42,59 +42,6 @@ meta:
 </div>
 {% endcapture %}
 
-{% capture colors_example %}
-<div class="field">
-  <div class="control">
-    <div class="select is-primary">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <div class="select is-info">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <div class="select is-success">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <div class="select is-warning">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <div class="select is-danger">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-{% endcapture %}
-
 {% capture rounded_example %}
 <div class="select is-rounded">
   <select>
@@ -104,117 +51,62 @@ meta:
 </div>
 {% endcapture %}
 
-{% capture sizes_example %}
-<div class="field">
-  <div class="control">
-    <div class="select is-small">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <div class="select">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <div class="select is-medium">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <div class="control">
-    <div class="select is-large">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-{% endcapture %}
-
 {% capture normal_example %}
-<div class="control">
-  <div class="select">
-    <select>
-      <option>Select dropdown</option>
-      <option>With options</option>
-    </select>
-  </div>
+<div class="select">
+  <select>
+    <option>Select dropdown</option>
+    <option>With options</option>
+  </select>
 </div>
 {% endcapture %}
 
 {% capture hover_example %}
-<div class="control">
-  <div class="select">
-    <select class="is-hovered">
-      <option>Select dropdown</option>
-      <option>With options</option>
-    </select>
-  </div>
+<div class="select">
+  <select class="is-hovered">
+    <option>Select dropdown</option>
+    <option>With options</option>
+  </select>
 </div>
 {% endcapture %}
 
 {% capture focus_example %}
-<div class="control">
-  <div class="select">
-    <select class="is-focused">
-      <option>Select dropdown</option>
-      <option>With options</option>
-    </select>
-  </div>
+<div class="select">
+  <select class="is-focused">
+    <option>Select dropdown</option>
+    <option>With options</option>
+  </select>
 </div>
 {% endcapture %}
 
 {% capture loading_example %}
-<div class="control">
-  <div class="select is-loading">
-    <select>
-      <option>Select dropdown</option>
-      <option>With options</option>
-    </select>
-  </div>
+<div class="select is-loading">
+  <select>
+    <option>Select dropdown</option>
+    <option>With options</option>
+  </select>
 </div>
 {% endcapture %}
 
 {% capture disabled_example %}
-<div class="control">
-  <div class="select is-disabled">
-    <select disabled>
-      <option>Select dropdown</option>
-      <option>With options</option>
-    </select>
-  </div>
+<div class="select is-disabled">
+  <select disabled>
+    <option>Select dropdown</option>
+    <option>With options</option>
+  </select>
 </div>
 {% endcapture %}
 
 {% capture icons_example %}
-<div class="field">
-  <div class="control has-icons-left">
-    <div class="select">
-      <select>
-        <option selected>Country</option>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-    <div class="icon is-small is-left">
-      <i class="fas fa-globe"></i>
-    </div>
+<div class="control has-icons-left">
+  <div class="select">
+    <select>
+      <option selected>Country</option>
+      <option>Select dropdown</option>
+      <option>With options</option>
+    </select>
+  </div>
+  <div class="icon is-small is-left">
+    <i class="fas fa-globe"></i>
   </div>
 </div>
 {% endcapture %}
@@ -289,7 +181,7 @@ meta:
   <div class="column is-half">
     {{ select_example }}
   </div>
-  <div class="column is-half highlight-full">
+  <div class="column is-half bd-highlight-full">
     {% highlight html %}{{ select_example }}{% endhighlight %}
   </div>
 </div>
@@ -314,25 +206,26 @@ meta:
     </div>
     {{ select_multiple_example }}
   </div>
-  <div class="column is-half highlight-full">
+  <div class="column is-half bd-highlight-full">
     {% highlight html %}{{ select_multiple_example }}{% endhighlight %}
   </div>
 </div>
 
 {% include elements/anchor.html name="Colors" %}
 
-<div class="columns">
-  <div class="column is-half">
-    {{ colors_example }}
-  </div>
-  <div class="column is-half highlight-full">
-    {% highlight html %}{{ colors_example }}{% endhighlight %}
-  </div>
+{% for color in site.data.colors.justColors %}
+{% capture foobar %}
+<div class="select is-{{ color }}">
+  <select>
+    <option>Select dropdown</option>
+    <option>With options</option>
+  </select>
 </div>
+{% endcapture %}
+{% include elements/snippet.html content=foobar %}
+{% endfor %}
 
 {% include elements/anchor.html name="Styles" %}
-
-{% include elements/new-tag.html version="0.6.2" %}
 
 <div class="content">
   <p>
@@ -357,20 +250,23 @@ meta:
   </p>
 </div>
 
-<div class="columns">
-  <div class="column is-half">
-    {{ sizes_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ sizes_example }}{% endhighlight %}
-  </div>
+{% for size in site.data.sizes %}
+{% capture foobar %}
+<div class="select is-{{ size }}">
+  <select>
+    <option>Select dropdown</option>
+    <option>With options</option>
+  </select>
 </div>
+{% endcapture %}
+{% include elements/snippet.html content=foobar %}
+{% endfor %}
 
 {% include elements/anchor.html name="States" %}
 
 <div class="content">
   <p>
-    Bulma styles the different <strong>states</strong> of the <code>select</code> elment. Each state is available as a pseudo-class and a CSS class:
+    Bulma styles the different <strong>states</strong> of the <code>select</code> element. Each state is available as a pseudo-class and a CSS class:
   </p>
   <ul>
     <li>

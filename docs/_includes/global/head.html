@@ -4,7 +4,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.meta.description }}{% endif %}">
 
-  <title>{% if page.fulltitle %}{{ page.fulltitle | strip_html }}{% else %}{% if page.title %}{{ page.title | strip_html }} | {% endif %}{{ site.data.meta.title | strip_html }}{% endif %}</title>
+  <title>{% if page.fulltitle %}{{ page.fulltitle | markdownify | strip_html }}{% else %}{% if page.title %}{{ page.title | markdownify | strip_html }} | {% endif %}{{ site.data.meta.title | markdownify | strip_html }}{% endif %}</title>
+
+  <link rel="stylesheet" href="{{ site.url }}/vendor/fontawesome-free-5.15.2-web/css/all.min.css">
 
   {% if page.fontawesome4 %}
     <link rel="stylesheet" href="{{ site.data.icons.fontawesome4 }}">
@@ -15,6 +17,8 @@
   {% if page.mdi %}
     <link rel="stylesheet" href="{{ site.data.icons.mdi }}">
   {% endif %}
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
   <link rel="stylesheet" href="{{ site.url }}/css/{{ site.docs_file }}.css?v={{ site.time | date: "%Y%m%d%H%M" }}">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
@@ -29,7 +33,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@jgthms">
   <meta name="twitter:creator" content="@jgthms">
-
 
   <!-- Shared social media -->
   {% if page.share_title %}
@@ -82,6 +85,4 @@
   <link rel="shortcut icon" href="{{ site.url }}/favicons/favicon.ico?v=201701041855">
   <meta name="msapplication-config" content="{{ site.url }}/favicons/browserconfig.xml?v=201701041855">
   <meta name="theme-color" content="#00d1b2">
-
-  <script defer src="{{ site.data.icons.fontawesome5 }}"></script>
 </head>
