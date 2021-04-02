@@ -1,6 +1,6 @@
 @import "../utilities/mixins"
 
-$displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
+$displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex' 'hidden'
 
 @each $display in $displays
   .is-#{$display}
@@ -32,6 +32,12 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   +fullhd
     .is-#{$display}-fullhd
       display: #{$display} !important
+  +until-widescreen
+    .is-#{$display}-until-widescreen
+      display: #{$display} !important
+  +until-fullhd
+    .is-#{$display}-until-fullhd
+      display: #{$display} !important
 
 .is-hidden
   display: none !important
@@ -45,42 +51,6 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   position: absolute !important
   white-space: nowrap !important
   width: 0.01em !important
-
-+mobile
-  .is-hidden-mobile
-    display: none !important
-
-+tablet
-  .is-hidden-tablet
-    display: none !important
-
-+tablet-only
-  .is-hidden-tablet-only
-    display: none !important
-
-+touch
-  .is-hidden-touch
-    display: none !important
-
-+desktop
-  .is-hidden-desktop
-    display: none !important
-
-+desktop-only
-  .is-hidden-desktop-only
-    display: none !important
-
-+widescreen
-  .is-hidden-widescreen
-    display: none !important
-
-+widescreen-only
-  .is-hidden-widescreen-only
-    display: none !important
-
-+fullhd
-  .is-hidden-fullhd
-    display: none !important
 
 .is-invisible
   visibility: hidden !important
