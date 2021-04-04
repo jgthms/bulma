@@ -151,7 +151,7 @@ This is processed by the updated `mergeColorMaps()` Sass function.
 {% include elements/anchor.html name='Scheme variables for "Dark mode"' %}
 
 There are 6 new `$scheme` derived variables: `$scheme-main` `$scheme-main-bis` `$scheme-main-ter` `$scheme-invert` `$scheme-invert-bis` `$scheme-invert-ter`
-They replace the `$white` and `$black` occurences in the codebase.
+They replace the `$white` and `$black` occurrences in the codebase.
 
 This makes it easy to create a **"Dark mode"** simply by swapping the values:
 
