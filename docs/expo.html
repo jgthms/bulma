@@ -43,7 +43,7 @@ breadcrumb:
     {% assign website = site.data.expo.by_id[website_id] %}
     {% assign imageName = website_id | slugify %}
     {% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
-    <a class="bd-website {% if website.highlighted %}bd-is-highlighted{% endif %}" href="{{ website.url }}" target="_blank" rel="nofollow">
+    <div class="bd-website {% if website.highlighted %}bd-is-highlighted{% endif %}">
       <figure class="bd-website-image">
         {% if website.highlighted %}
           {% assign size1x = "1344x840" %}
@@ -78,7 +78,7 @@ breadcrumb:
       <p class="bd-website-date">
         {{ website.date }}
       </p>
-    </a>
+    </div>
   {% endfor %}
 </div>
 
