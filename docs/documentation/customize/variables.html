@@ -60,8 +60,32 @@ breadcrumb:
   </ol>
 
   <p>
-    To <strong>override</strong> any of these variables, just set them <em>before</em> importing Bulma.
+    To <strong>override</strong> any of these variables, just set them <em>after</em> importing Bulma related file.
   </p>
+  <p>
+    For example if you like to override $link-hover variable you have to import after all utilities 
+    or after defived-variables. 
+   </p>
+   <p>
+     Instead import all bulma css you have to import bulma/sass/utilities/_all.sass and then write your customization 
+     or you can import utilities file separately like this:
+  </p>
+  <code>
+    @import "~/bulma/sass/utilities/_all";
+    $link-hover: $light;
+    // ...
+  </code>
+  <p>
+    Or you can use:
+  </p>
+  <code>
+    @import "~/bulma/sass/utilities/initial-variables";
+    @import "~/bulma/sass/utilities/functions";
+    @import "~/bulma/sass/utilities/derived-variables";
+    $link-hover: $light;
+    @import "~/bulma/sass/utilities/mixin";
+    // ...
+  <code>
 </div>
 
 {% include elements/anchor.html name="Initial variables" %}
