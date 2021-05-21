@@ -1,5 +1,12 @@
 # Bulma Changelog
 
+## Unreleased
+
+### Breaking change
+
+Bulma is now build with [`sass` (Dart Sass)](https://sass-lang.com/dart-sass) instead of [`node-sass`](https://github.com/sass/node-sass) ([which is depreciated](https://sass-lang.com/blog/libsass-is-deprecated)).
+
+In the future, Bulma may make use of Sass syntaxes that are currently only available for the Dart Sass version, so it is advised to migrate to `sass` instead of `node-sass` if that's what you are using to compile the source sass files. This will not affect you if you are using the CSS files directly.
 ## 0.9.2
 
 ### Breaking change
