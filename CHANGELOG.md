@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.9.3
+
+### New features
+
+- New `is-underlined` class for underlined text and links
+
 ## 0.9.2
 
 ### Breaking change
