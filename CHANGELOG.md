@@ -2,13 +2,22 @@
 
 ## 0.9.3
 
-### Bugfix
-
-- #3362 Fix slash divide
-
 ### New features
 
 - New `is-underlined` class for underlined text and links
+- New `auto` value for margin and padding helper classes
+
+### Improvements
+
+- New `$section-padding-desktop` Sass variable
+- New `$hero-body-padding-tablet` Sass variable
+- New `$shadow` Sass variable (used for `.box`, `.card`, `.dropdown` and `.panel`)
+- Add `is-normal` size modifiers to `.file` and `.content`
+- New `%reset` placeholder
+
+### Bugfix
+
+- #3362 Fix slash divide
 
 ## 0.9.2
 
