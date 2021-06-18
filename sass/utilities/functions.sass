@@ -58,7 +58,7 @@
       $value: $value * $number
   @else if $exp < 0
     @for $i from 1 through -$exp
-      $value: $value / $number
+      $value: divide($value, $number)
   @return $value
 
 @function colorLuminance($color)
@@ -67,11 +67,11 @@
   $color-rgb: ('red': red($color),'green': green($color),'blue': blue($color))
   @each $name, $value in $color-rgb
     $adjusted: 0
-    $value: $value / 255
+    $value: divide($value, 255)
     @if $value < 0.03928
-      $value: $value / 12.92
+      $value: divide($value, 12.92)
     @else
-      $value: ($value + .055) / 1.055
+      $value: divide(($value + .055), 1.055)
       $value: powerNumber($value, 2)
     $color-rgb: map-merge($color-rgb, ($name: $value))
   @return (map-get($color-rgb, 'red') * .2126) + (map-get($color-rgb, 'green') * .7152) + (map-get($color-rgb, 'blue') * .0722)
@@ -113,3 +113,24 @@
   @if type-of($color) != 'color'
     @return $color
   @return lighten($color, $amount)
+
+// Custom divide function by @mdo from https://github.com/twbs/bootstrap/pull/34245
+// Replaces old slash division deprecated in Dart Sass
+@function divide($dividend, $divisor, $precision: 10)
+  $sign: if($dividend > 0 and $divisor > 0, 1, -1)
+  $dividend: abs($dividend)
+  $divisor: abs($divisor)
+  $quotient: 0
+  $remainder: $dividend
+  @if $dividend == 0
+    @return 0
+  @if $divisor == 0
+    @error "Cannot divide by 0"
+  @if $divisor == 1
+    @return $dividend
+  @while $remainder >= $divisor
+    $quotient: $quotient + 1
+    $remainder: $remainder - $divisor
+  @if $remainder > 0 and $precision > 0
+    $remainder: divide($remainder * 10, $divisor, $precision - 1) * .1
+  @return ($quotient + $remainder) * $sign
