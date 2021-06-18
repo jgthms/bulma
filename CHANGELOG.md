@@ -2,6 +2,10 @@
 
 ## 0.9.3
 
+### Bugfix
+
+- #3362 Fix slash divide
+
 ### New features
 
 - New `is-underlined` class for underlined text and links
