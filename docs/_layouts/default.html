@@ -7,9 +7,22 @@
   <body
     class="layout-{{ page.layout }}{% if page.doc-tab %} page-{{ page.doc-tab}}{% endif %}"
   >
+    <div id="survey-banner">
+      <p><strong class="has-text-weight-semibold">Quick question</strong>: which version of <a href="https://sass-lang.com/" target="_blank">Sass</a> are you using?</p>
+      <button class="button is-primary is-small modal-button" data-target="surveyModal">Answer here</button>
+    </div>
     {% include global/deprecated.html %}
     {{ content }}
     {% include global/footer.html %}
     {% include global/scripts.html %}
+    <div id="surveyModal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="modal-card-body py-6 px-0 is-flex is-justify-content-center" style="border-radius: 0.5rem;">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfnJaOck3NuWcuUT5eSk39_qEDa56DhWEU5BRsQ8u9tMfvPWg/viewform?embedded=true" width="600" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
   </body>
 </html>
