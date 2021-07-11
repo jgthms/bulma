@@ -62,6 +62,25 @@ breadcrumb:
   <p>
     To <strong>override</strong> any of these variables, just set them <em>before</em> importing Bulma.
   </p>
+  <p>
+	  Simple variable are quiete easy to change.
+	  <code>
+		  {{ initial_vars['$blue'].name }}: #00008B
+	  </code>
+	  <br />
+	  For list, you mostly need to rewrite it.
+	  <code>
+		  $size-8: 0.25rem
+		  $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 $size-8
+	  </code>
+	  <br />
+	  But some liste already have customize option, like the colors. In order to add custom colors (<i>is-orange</i>), you need to customize <i>$custom-colors</i> variable.
+	  <code>
+		  $orange: #ff8606
+		  $orange-invert: findColorInvert($orange)
+		  $custom-colors: ("orange": ($orange, $orange-invert))
+	  </code>
+  </p>
 </div>
 
 {% include elements/anchor.html name="Initial variables" %}
