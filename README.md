@@ -9,6 +9,7 @@ Bulma is a **modern CSS framework** based on [Flexbox](https://developer.mozilla
 [![Awesome][awesome-badge]][awesome-link]
 [![Join the chat at https://gitter.im/jgthms/bulma](https://badges.gitter.im/jgthms/bulma.svg)](https://gitter.im/jgthms/bulma)
 [![Build Status](https://travis-ci.org/jgthms/bulma.svg?branch=master)](https://travis-ci.org/jgthms/bulma)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/jgthms/bulma)
 
 <a href="https://bulma.io"><img src="https://raw.githubusercontent.com/jgthms/bulma/master/docs/images/bulma-banner.png" alt="Bulma: a Flexbox CSS framework" style="max-width:100%;" width="600"></a>
 
@@ -74,6 +75,20 @@ Internet Explorer (10+) is only partially supported.
 The documentation resides in the [docs](docs) directory, and is built with the Ruby-based [Jekyll](https://jekyllrb.com/) tool.
 
 Browse the [online documentation here.](https://bulma.io/documentation/overview/start/)
+
+## Contributing
+
+### Contribute online with a single click
+
+You can use Gitpod (a free online VS Code like IDE) for contributing. With a single click, it'll launch a workspace and automatically:
+
+- clone the Bulma repo.
+- install the dependencies.
+- run `yarn run build` and `yarn run start`.
+
+So that you can start straight away.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/jgthms/bulma)
 
 ## Related projects
 
