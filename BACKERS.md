@@ -1,341 +1,362 @@
 # Backers via Patreon
 
-<div class="bd-content">
-          
-
-<h2 class="title is-5">
-  Generous backers ($30+)
-</h2>
-
-<table class="table is-bordered">
-  
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Twitter</th>
-    <th>Website</th>
-  </tr>
-</thead>
-
-  <tbody>
-    
-      <tr>
-  <td>Adrian Ocneanu</td>
-
-  <td>
-    
-      <a href="https://twitter.com/aocneanu" target="_blank" rel="nofollow">
-        @aocneanu
-      </a>
-    
-  </td>
-
-  <td>
-    
-      <a href="https://www.earthlink.ro/" target="_blank" rel="nofollow">
-        Earthlink
-      </a>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Garry Newman</td>
-
-  <td>
-    
-      <a href="https://twitter.com/garrynewman" target="_blank" rel="nofollow">
-        @garrynewman
-      </a>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-    
-  </tbody>
-</table>
-
-
-
-<h2 class="title is-5">
-  Homepage sponsors ($100+)
-</h2>
-
-<table class="table is-bordered">
-  
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Twitter</th>
-    <th>Website</th>
-  </tr>
-</thead>
-
-  <tbody>
-    
-      <tr>
-  <td>Robert Bolder</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Sparheld International GmbH</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Adela Belin</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Iaroslav Baklan</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Fintan Costello</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>MonoVM </td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Raj.bet</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-    
-      <tr>
-  <td>brabusdot</td>
-  <td colspan="2"><a href="https://github.com/brabusdot" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>Pillarwm</td>
-  <td colspan="2"><a href="https://github.com/Pillarwm" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>airtract</td>
-  <td colspan="2"><a href="https://github.com/airtract" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>patrick136</td>
-  <td colspan="2"><a href="https://github.com/patrick136" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-  </tbody>
-</table>
-
-<h2 class="title is-5">
-  Bulma backers ($10+)
-</h2>
-
-<table class="table is-bordered">
-  
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Twitter</th>
-    <th>Website</th>
-  </tr>
-</thead>
-
-  <tbody>
-    
-      <tr>
-  <td>Jordan Nemrow</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Stuart Stanfield</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Jason Seminara</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Al Romano</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>xvxx</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-      <tr>
-  <td>Maurice Perry</td>
-
-  <td>
-    
-  </td>
-
-  <td>
-    
-  </td>
-</tr>
-
-    
-    
-      <tr>
-  <td>mieko</td>
-  <td colspan="2"><a href="https://github.com/mieko" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>mmmonica50</td>
-  <td colspan="2"><a href="https://github.com/mmmonica50" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>nafSadh</td>
-  <td colspan="2"><a href="https://github.com/nafSadh" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>linkdd</td>
-  <td colspan="2"><a href="https://github.com/linkdd" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>seansan</td>
-  <td colspan="2"><a href="https://github.com/seansan" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>sasmithjr</td>
-  <td colspan="2"><a href="https://github.com/sasmithjr" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-      <tr>
-  <td>Gomah</td>
-  <td colspan="2"><a href="https://github.com/Gomah" target="_blank" rel="nofollow">GitHub</a></td>
-</tr>
-
-    
-  </tbody>
-</table>
-
-        </div>
+<div class="bd-backers">
+
+<div class="bd-backers-heading">
+<h2>Generous backers ($30+)</h2>
+</div>
+
+<div class="bd-backers-group">
+<ul class="bd-backers-list bd-is-patreon">
+
+<li>
+Adrian Ocneanu
+
+<a class="icon-text bd-is-twitter" href="https://twitter.com/aocneanu" target="_blank" rel="nofollow">
+<span class="icon"><i class="fab fa-twitter"></i></span>
+<span>aocneanu</span>
+</a>
+
+</li>
+
+<li>
+
+Garry Newman
+
+<a class="icon-text bd-is-twitter" href="https://twitter.com/garrynewman" target="_blank" rel="nofollow">
+<span class="icon"><i class="fab fa-twitter"></i></span>
+<span>garrynewman</span>
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="bd-backers-heading">
+<h2>Website sponsors ($300+)</h2>
+</div>
+
+<div class="bd-backers-group">
+<ul class="bd-backers-list bd-is-patreon">
+
+<li>
+siwagorn jungpol
+
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>kevivmatrix</span>
+<a class="icon" href="https://github.com/kevivmatrix" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>stacho</span>
+<a class="icon" href="https://github.com/stacho" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>wingerdkm1</span>
+<a class="icon" href="https://github.com/wingerdkm1" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+</ul>
+
+</div>
+
+<div class="bd-backers-heading">
+<h2>Homepage sponsors ($100+)</h2>
+</div>
+
+<div class="bd-backers-group">
+<ul class="bd-backers-list bd-is-patreon">
+
+<li>
+Robert Bolder
+
+</li>
+
+<li>
+
+Adela Belin
+
+</li>
+
+<li>
+
+Fintan Costello
+
+</li>
+
+<li>
+
+Raj.bet
+
+</li>
+
+<li>
+
+Iaroslav Baklan
+
+</li>
+
+<li>
+
+Iaroslav Baklan
+
+</li>
+
+<li>
+
+123Calendars
+
+</li>
+
+<li>
+
+KasynoHEX.com
+
+</li>
+
+<li>
+
+Gianni Museeuw
+
+</li>
+
+<li>
+
+Anbefalt
+
+</li>
+
+<li>
+
+Sarah Johnson
+
+</li>
+
+<li>
+
+Harvey Walters
+
+</li>
+
+<li>
+
+DEMETRIOU ANNA
+
+</li>
+
+<li>
+
+Tuomas
+
+</li>
+
+<li>
+
+anton zlov
+
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>GilmarLangelaan</span>
+<a class="icon" href="https://github.com/GilmarLangelaan" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>aaditysony</span>
+<a class="icon" href="https://github.com/aaditysony" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>patrick136</span>
+<a class="icon" href="https://github.com/patrick136" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>GianniMuseeuw</span>
+<a class="icon" href="https://github.com/GianniMuseeuw" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>esait</span>
+<a class="icon" href="https://github.com/esait" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+</ul>
+
+</div>
+
+<div class="bd-backers-heading">
+<h2>Bulma backers ($10+)</h2>
+</div>
+
+<div class="bd-backers-group">
+<ul class="bd-backers-list bd-is-patreon">
+
+<li>
+Jordan Nemrow
+
+</li>
+
+<li>
+
+Jason Seminara
+
+</li>
+
+<li>
+
+Al Romano
+
+<span class="icon-text bd-is-discord">
+<span class="icon"><i class="fab fa-discord"></i></span>
+<span>vip3rousmango#3357</span>
+</span>
+
+</li>
+
+<li>
+
+xvxx
+
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>iDuriel</span>
+<a class="icon" href="https://github.com/iDuriel" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>chazelton331</span>
+<a class="icon" href="https://github.com/chazelton331" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>jessemarple</span>
+<a class="icon" href="https://github.com/jessemarple" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>mieko</span>
+<a class="icon" href="https://github.com/mieko" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>mmmonica50</span>
+<a class="icon" href="https://github.com/mmmonica50" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>linkdd</span>
+<a class="icon" href="https://github.com/linkdd" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>bekwam</span>
+<a class="icon" href="https://github.com/bekwam" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>seansan</span>
+<a class="icon" href="https://github.com/seansan" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+<li>
+
+<span class="icon-text">
+<span>Gomah</span>
+<a class="icon" href="https://github.com/Gomah" target="_blank" rel="nofollow">
+<i class="fab fa-github-alt"></i>
+</a>
+</span>
+</li>
+
+</ul>
+
+</div>
+
+</div>
