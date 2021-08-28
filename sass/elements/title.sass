@@ -19,6 +19,12 @@ $subtitle-strong-color: $text-strong !default
 $subtitle-strong-weight: $weight-semibold !default
 $subtitle-negative-margin: -1.25rem !default
 
+$title-color-inverted: findColorInvert($text-strong) !default
+$title-strong-color-inverted: inherit !default
+$subtitle-color-inverted: findColorInvert($text) !default
+$subtitle-strong-color-inverted: findColorInvert($text-strong) !default
+
+
 .title,
 .subtitle
   @extend %block
@@ -35,6 +41,8 @@ $subtitle-negative-margin: -1.25rem !default
 
 .title
   color: $title-color
+  +darktheme
+    color: $title-color-inverted
   @if $title-family
     font-family: $title-family
   font-size: $title-size
@@ -42,6 +50,9 @@ $subtitle-negative-margin: -1.25rem !default
   line-height: $title-line-height
   strong
     color: $title-strong-color
+    +darktheme
+      color: $title-strong-color-inverted
+
     font-weight: $title-strong-weight
   &:not(.is-spaced) + .subtitle
     margin-top: $subtitle-negative-margin
@@ -53,6 +64,9 @@ $subtitle-negative-margin: -1.25rem !default
 
 .subtitle
   color: $subtitle-color
+  +darktheme
+    color: $subtitle-color-inverted
+
   @if $subtitle-family
     font-family: $subtitle-family
   font-size: $subtitle-size
@@ -61,6 +75,9 @@ $subtitle-negative-margin: -1.25rem !default
   strong
     color: $subtitle-strong-color
     font-weight: $subtitle-strong-weight
+    +darktheme
+      color: $subtitle-strong-color-inverted
+
   &:not(.is-spaced) + .title
     margin-top: $subtitle-negative-margin
   // Sizes

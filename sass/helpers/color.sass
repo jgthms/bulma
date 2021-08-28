@@ -1,21 +1,34 @@
 @import "../utilities/derived-variables"
+@import "../utilities/mixins"
 
 @each $name, $pair in $colors
   $color: nth($pair, 1)
   .has-text-#{$name}
     color: $color !important
+    +darktheme
+      color: findColorInvert($color) !important
+
   a.has-text-#{$name}
     &:hover,
     &:focus
       color: bulmaDarken($color, 10%) !important
+      +darktheme
+        color: bulmaDarken(findColorInvert($color),10%) !important
+
   .has-background-#{$name}
     background-color: $color !important
+    +darktheme
+      background-color: findColorInvert($color) !important
+
   @if length($pair) >= 4
     $color-light: nth($pair, 3)
     $color-dark: nth($pair, 4)
     // Light
     .has-text-#{$name}-light
       color: $color-light !important
+      +darktheme
+        color: findColorInvert($color-light) !important
+        
     a.has-text-#{$name}-light
       &:hover,
       &:focus

@@ -26,31 +26,53 @@ $hero-colors: $colors !default
     &.is-#{$name}
       background-color: $color
       color: $color-invert
+      +darktheme
+        background-color: $color-invert
+        color: $color
       a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
       strong
         color: inherit
       .title
         color: $color-invert
+        +darktheme
+          color: $color
       .subtitle
         color: bulmaRgba($color-invert, 0.9)
+        +darktheme
+          color: bulmaRgba($color, 0.9)
         a:not(.button),
         strong
           color: $color-invert
+          +darktheme
+            color: $color
+
       .navbar-menu
         +touch
           background-color: $color
+          +darktheme
+            background-color: $color-invert
+
       .navbar-item,
       .navbar-link
         color: bulmaRgba($color-invert, 0.7)
+        +darktheme
+          color: bulmaRgba($color, 0.7)
+
       a.navbar-item,
       .navbar-link
         &:hover,
         &.is-active
           background-color: bulmaDarken($color, 5%)
           color: $color-invert
+          +darktheme
+            background-color: bulmaDarken($color-invert, 5%)
+            color: $color
       .tabs
         a
           color: $color-invert
+          +darktheme
+            color: $color
+
           opacity: 0.9
           &:hover
             opacity: 1
@@ -62,14 +84,23 @@ $hero-colors: $colors !default
         &.is-toggle
           a
             color: $color-invert
+            +darktheme
+              color: $color
             &:hover
               background-color: bulmaRgba($scheme-invert, 0.1)
+              +darktheme
+                background-color: bulmaRgba(findColorInvert($scheme-invert), 0.1)
+
           li.is-active a
             &,
             &:hover
               background-color: $color-invert
               border-color: $color-invert
               color: $color
+              +darktheme
+                background-color: $color
+                border-color: $color
+                color: $color-invert
       // Modifiers
       @if type-of($color) == 'color'
         &.is-bold

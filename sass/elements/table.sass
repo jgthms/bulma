@@ -27,10 +27,31 @@ $table-striped-row-even-hover-background-color: $scheme-main-ter !default
 
 $table-colors: $colors !default
 
+$table-color-invert: findColorInvert($text-strong) !default
+$table-background-color-invert: transparent !default
+$table-cell-heading-color-invert: findColorInvert($text-strong) !default
+$table-head-cell-color-invert: findColorInvert($text-strong) !default
+$table-foot-cell-color-invert: findColorInvert($text-strong) !default
+
+$table-head-background-color-invert: transparent !default
+$table-body-background-color-invert: transparent !default
+$table-foot-background-color-invert: transparent !default
+$table-row-hover-background-color-invert: transparent!default
+$table-row-active-background-color-invert: ($link) !default
+$table-row-active-color-invert: $black-ter !default
+$table-striped-row-even-background-color-invert: $black-bis !default
+$table-striped-row-even-hover-background-color-invert: findColorInvert($scheme-main-ter) !default
+
+.table-header
+  border-bottom: 1px solid $border
+
 .table
   @extend %block
   background-color: $table-background-color
   color: $table-color
+  +darktheme
+    background-color: $table-background-color-invert
+    color: $table-color-invert
   td,
   th
     border: $table-cell-border
@@ -45,6 +66,10 @@ $table-colors: $colors !default
         background-color: $color
         border-color: $color
         color: $color-invert
+        +darktheme
+          background-color: $color-invert
+          border-color: $color-invert
+          color: $color
     // Modifiers
     &.is-narrow
       white-space: nowrap
@@ -52,40 +77,65 @@ $table-colors: $colors !default
     &.is-selected
       background-color: $table-row-active-background-color
       color: $table-row-active-color
+      +darktheme
+        background-color: $table-row-active-background-color-invert
+        color: $table-row-active-color-invert
+
       a,
       strong
         color: currentColor
+        +darktheme
+          color: findColorInvert(currentColor)
+          
     &.is-vcentered
       vertical-align: middle
   th
     color: $table-cell-heading-color
+    +darktheme
+      color: $table-cell-heading-color-invert
     &:not([align])
       text-align: inherit
   tr
     &.is-selected
       background-color: $table-row-active-background-color
       color: $table-row-active-color
+      +darktheme
+        background-color: $table-row-active-background-color-invert
+        color: $table-row-active-color-invert
       a,
       strong
         color: currentColor
+        +darktheme
+          color: findColorInvert(currentColor)
       td,
       th
         border-color: $table-row-active-color
         color: currentColor
+        +darktheme
+          border-color: $table-row-active-color-invert
+          color: findColorInvert(currentColor)
+
   thead
     background-color: $table-head-background-color
     td,
     th
       border-width: $table-head-cell-border-width
       color: $table-head-cell-color
+      +darktheme
+        color: $table-head-cell-color-invert
   tfoot
     background-color: $table-foot-background-color
     td,
     th
       border-width: $table-foot-cell-border-width
       color: $table-foot-cell-color
+      +darktheme
+        color: $table-foot-cell-color-invert
+
   tbody
     background-color: $table-body-background-color
+    +darktheme
+      background-color: $table-body-background-color-invert
     tr
       &:last-child
         td,
@@ -108,13 +158,20 @@ $table-colors: $colors !default
       tr:not(.is-selected)
         &:hover
           background-color: $table-row-hover-background-color
+          +darktheme
+            background-color: $table-row-hover-background-color-invert
+
     &.is-striped
       tbody
         tr:not(.is-selected)
           &:hover
             background-color: $table-row-hover-background-color
+            +darktheme
+              background-color: $table-row-hover-background-color-invert
             &:nth-child(even)
               background-color: $table-striped-row-even-hover-background-color
+              +darktheme
+                background-color: $table-striped-row-even-hover-background-color-invert
   &.is-narrow
     td,
     th
@@ -124,6 +181,8 @@ $table-colors: $colors !default
       tr:not(.is-selected)
         &:nth-child(even)
           background-color: $table-striped-row-even-background-color
+          +darktheme
+            background-color: $table-striped-row-even-background-color-invert
 
 .table-container
   @extend %block

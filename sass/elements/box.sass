@@ -9,6 +9,13 @@ $box-padding: 1.25rem !default
 $box-link-hover-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0 0 1px $link !default
 $box-link-active-shadow: inset 0 1px 2px rgba($scheme-invert, 0.2), 0 0 0 1px $link !default
 
+
+$box-color-invert: $text-invert !default
+$box-background-color-invert: $scheme-invert !default
+$box-shadow-invert: 0 0.5em 1em -0.125em rgba($scheme-main, 0.1), 0 0px 0 1px rgba($scheme-main, 0.02) !default
+$box-link-hover-shadow-invert: 0 0.5em 1em -0.125em rgba($scheme-main-bis, 0.1), 0 0 0 1px $link-invert !default
+$box-link-active-shadow-invert: inset 0 1px 2px rgba($scheme-main, 0.2), 0 0 0 1px $link-invert !default
+
 .box
   @extend %block
   background-color: $box-background-color
@@ -17,10 +24,18 @@ $box-link-active-shadow: inset 0 1px 2px rgba($scheme-invert, 0.2), 0 0 0 1px $l
   color: $box-color
   display: block
   padding: $box-padding
+  +darktheme
+    background-color: $box-background-color-invert
+    color: $box-color-invert
+    box-shadow: $box-shadow-invert
 
 a.box
   &:hover,
   &:focus
     box-shadow: $box-link-hover-shadow
+    +darktheme
+      box-shadow: $box-link-hover-shadow-invert
   &:active
     box-shadow: $box-link-active-shadow
+    +darktheme
+      box-shadow: $box-link-active-shadow-invert

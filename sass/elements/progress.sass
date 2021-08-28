@@ -8,6 +8,10 @@ $progress-indeterminate-duration: 1.5s !default
 
 $progress-colors: $colors !default
 
+$progress-bar-background-color-inverted: findColorInvert($border-light) !default
+$progress-value-background-color-inverted: findColorInvert($text) !default
+
+
 .progress
   @extend %block
   -moz-appearance: none
@@ -21,12 +25,23 @@ $progress-colors: $colors !default
   width: 100%
   &::-webkit-progress-bar
     background-color: $progress-bar-background-color
+    +darktheme
+        background-color: $progress-bar-background-color-inverted
   &::-webkit-progress-value
     background-color: $progress-value-background-color
+    +darktheme
+        background-color: $progress-value-background-color-inverted
+
   &::-moz-progress-bar
     background-color: $progress-value-background-color
+    +darktheme
+        background-color: $progress-value-background-color-inverted
+
   &::-ms-fill
     background-color: $progress-value-background-color
+    +darktheme
+      background-color: $progress-value-background-color-inverted
+
     border: none
   // Colors
   @each $name, $pair in $progress-colors
@@ -34,12 +49,23 @@ $progress-colors: $colors !default
     &.is-#{$name}
       &::-webkit-progress-value
         background-color: $color
+        +darktheme
+          background-color: findColorInvert($color)
+
       &::-moz-progress-bar
         background-color: $color
+        +darktheme
+          background-color: findColorInvert($color)
+
       &::-ms-fill
         background-color: $color
+        +darktheme
+          background-color: findColorInvert($color)
+
       &:indeterminate
         background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%)
+        +darktheme
+          background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color-inverted 30%)
 
   &:indeterminate
     animation-duration: $progress-indeterminate-duration
@@ -51,6 +77,10 @@ $progress-colors: $colors !default
     background-position: top left
     background-repeat: no-repeat
     background-size: 150% 150%
+    +darktheme
+      background-color: $progress-bar-background-color-inverted
+      background-image: linear-gradient(to right, $text 30%, $progress-bar-background-color-inverted 30%)
+
     &::-webkit-progress-bar
       background-color: transparent
     &::-moz-progress-bar

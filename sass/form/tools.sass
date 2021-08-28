@@ -1,5 +1,11 @@
+@import "../utilities/mixins"
+@import "../utilities/derived-variables"
+@import "../utilities/derived-variables-dark"
+
 $label-color: $text-strong !default
 $label-weight: $weight-bold !default
+
+$label-color-invert: findColorInvert($text-strong) !default
 
 $help-size: $size-small !default
 
@@ -7,6 +13,8 @@ $label-colors: $form-colors !default
 
 .label
   color: $label-color
+  +darktheme
+    color: $label-color-invert
   display: block
   font-size: $size-normal
   font-weight: $label-weight
@@ -28,6 +36,8 @@ $label-colors: $form-colors !default
     $color: nth($pair, 1)
     &.is-#{$name}
       color: $color
+      +darktheme
+        color: findColorInvert($color)
 
 // Containers
 
@@ -174,6 +184,9 @@ $label-colors: $form-colors !default
       &:focus
         & ~ .icon
           color: $input-icon-active-color
+          +darktheme
+            color: $input-icon-active-color-invert
+
       &.is-small ~ .icon
         font-size: $size-small
       &.is-medium ~ .icon
@@ -182,6 +195,8 @@ $label-colors: $form-colors !default
         font-size: $size-large
     .icon
       color: $input-icon-color
+      +darktheme
+        color: $input-icon-color-invert
       height: $input-height
       pointer-events: none
       position: absolute

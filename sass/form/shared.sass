@@ -30,31 +30,69 @@ $input-icon-active-color: $text !default
 
 $input-radius: $radius !default
 
+$input-background-color: $scheme-main !default
+$input-color-invert: findColorInvert($text-strong) !default
+$input-background-color-invert: findColorInvert($scheme-main) !default
+$input-border-color-invert: findColorInvert($border) !default
+$input-placeholder-color-invert: bulmaRgba($input-color-invert, 0.3) !default
+$input-hover-border-color: $border-hover !default
+$input-hover-border-color-invert: findColorInvert($border-hover) !default
+$input-focus-border-color: $link !default
+$input-focus-border-color-invert: findColorInvert($link) !default
+$input-disabled-color-invert: findColorInvert($text-light) !default
+$input-disabled-background-color-invert: findColorInvert($background) !default
+$input-disabled-border-color-invert: findColorInvert($background) !default
+$input-disabled-placeholder-color-invert: bulmaRgba($input-disabled-color-invert, 0.3) !default
+
+$input-arrow-invert: $link !default
+$input-icon-color-invert: $border !default
+$input-icon-active-color-invert: $text !default
+
 =input
   @extend %control
   background-color: $input-background-color
   border-color: $input-border-color
   border-radius: $input-radius
   color: $input-color
+  +darktheme
+    background-color: $input-background-color-invert
+    border-color: $input-border-color-invert
+    color: $input-color-invert
   +placeholder
     color: $input-placeholder-color
+    +darktheme
+      color: $input-placeholder-color-invert
+
   &:hover,
   &.is-hovered
     border-color: $input-hover-border-color
+    +darktheme
+      border-color: $input-hover-border-color-invert
+
   &:focus,
   &.is-focused,
   &:active,
   &.is-active
     border-color: $input-focus-border-color
     box-shadow: $input-focus-box-shadow-size $input-focus-box-shadow-color
+    +darktheme
+        border-color: $input-focus-border-color-invert
+
   &[disabled],
   fieldset[disabled] &
     background-color: $input-disabled-background-color
     border-color: $input-disabled-border-color
     box-shadow: none
     color: $input-disabled-color
+    +darktheme
+      background-color: $input-disabled-background-color-invert
+      border-color: $input-disabled-border-color-invert
+      color: $input-disabled-color-invert
     +placeholder
       color: $input-disabled-placeholder-color
+      +darktheme
+        color: $input-disabled-placeholder-color-invert
+
 
 %input
   +input
