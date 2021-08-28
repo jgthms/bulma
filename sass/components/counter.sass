@@ -1,0 +1,47 @@
+$button-color: $text-strong !default
+$button-background-color: $scheme-main !default
+$button-family: false !default
+
+$button-border-color: $border !default
+$button-border-width: $control-border-width !default
+
+$button-padding-vertical: calc(0.5em - #{$button-border-width}) !default
+$button-padding-horizontal: 1em !default
+
+$button-hover-color: $link-hover !default
+$button-hover-border-color: $link-hover-border !default
+
+.counter
+    margin-bottom: 0.5rem
+    background-color: $button-background-color
+    border-color: $button-border-color
+    border-width: $button-border-width
+    color: $button-color
+    cursor: pointer
+    @if $button-family
+        font-family: $button-family
+    padding-bottom: $button-padding-vertical
+    padding-left: $button-padding-horizontal
+    padding-right: $button-padding-horizontal
+    padding-top: $button-padding-vertical
+    white-space: nowrap
+    strong
+        color: inherit
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button
+        -webkit-appearance: none
+        margin: 0  
+    input[type="number"]
+        @extend %control
+        @extend %unselectable
+        text-align: center
+        -moz-appearance: none
+        -webkit-appearance: none
+        margin: 0  
+        max-width: 3rem !important
+    .counter-button
+        padding-bottom: $button-padding-vertical
+        padding-left: $button-padding-horizontal
+        padding-right: $button-padding-horizontal
+        padding-top: $button-padding-vertical
+        @extend %control

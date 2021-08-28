@@ -19,6 +19,14 @@ $dropdown-item-active-background-color: $link !default
 
 $dropdown-divider-background-color: $border-light !default
 
+$dropdown-content-background-color-invert: $black-bis
+$dropdown-item-color-invert: findColorInvert($text) !default
+$dropdown-item-hover-color-invert: findColorInvert($scheme-invert) !default
+$dropdown-item-hover-background-color-invert: findColorInvert($background) !default
+$dropdown-item-active-color-invert: findColorInvert($link-invert) !default
+$dropdown-item-active-background-color-invert: findColorInvert($link) !default
+$dropdown-divider-background-color-invert: findColorInvert($border-light) !default
+
 .dropdown
   display: inline-flex
   position: relative
@@ -53,6 +61,9 @@ $dropdown-divider-background-color: $border-light !default
   box-shadow: $dropdown-content-shadow
   padding-bottom: $dropdown-content-padding-bottom
   padding-top: $dropdown-content-padding-top
+  +darktheme
+    background-color: $dropdown-content-background-color-invert !important
+
 
 .dropdown-item
   color: $dropdown-item-color
@@ -61,6 +72,9 @@ $dropdown-divider-background-color: $border-light !default
   line-height: 1.5
   padding: 0.375rem 1rem
   position: relative
+  +darktheme
+    color: $dropdown-item-color-invert !important
+
 
 a.dropdown-item,
 button.dropdown-item
@@ -71,9 +85,17 @@ button.dropdown-item
   &:hover
     background-color: $dropdown-item-hover-background-color
     color: $dropdown-item-hover-color
+    +darktheme
+      background-color: $dropdown-item-hover-background-color-invert !important
+      color: $dropdown-item-hover-color-invert !important
+
   &.is-active
     background-color: $dropdown-item-active-background-color
     color: $dropdown-item-active-color
+    +darktheme
+      background-color: $dropdown-item-active-background-color-invert !important
+      color: $dropdown-item-active-color-invert !important
+
 
 .dropdown-divider
   background-color: $dropdown-divider-background-color
@@ -81,3 +103,6 @@ button.dropdown-item
   display: block
   height: 1px
   margin: 0.5rem 0
+  +darktheme
+    background-color: $dropdown-divider-background-color-invert !important
+

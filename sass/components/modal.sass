@@ -32,6 +32,11 @@ $modal-card-body-padding: 20px !default
 
 $modal-breakpoint: $tablet !default
 
+$modal-background-background-color-invert: bulmaRgba( findColorInvert($light), 0.7) !default
+$modal-card-head-background-color-invert: $black !default
+$modal-card-title-color-invert: findColorInvert($text-strong) !default
+$modal-card-body-background-color-invert: $scheme-invert-bis !default
+
 .modal
   @extend %overlay
   align-items: center
@@ -48,6 +53,8 @@ $modal-breakpoint: $tablet !default
 .modal-background
   @extend %overlay
   background-color: $modal-background-background-color
+  +darktheme
+    background-color: $modal-background-background-color-invert
 
 .modal-content,
 .modal-card
@@ -87,6 +94,9 @@ $modal-breakpoint: $tablet !default
   justify-content: flex-start
   padding: $modal-card-head-padding
   position: relative
+  +darktheme
+    background-color: $modal-card-head-background-color-invert
+  
 
 .modal-card-head
   border-bottom: $modal-card-head-border-bottom
@@ -99,6 +109,9 @@ $modal-breakpoint: $tablet !default
   flex-shrink: 0
   font-size: $modal-card-title-size
   line-height: $modal-card-title-line-height
+  +darktheme
+    color: $modal-card-title-color-invert
+
 
 .modal-card-foot
   border-bottom-left-radius: $modal-card-foot-radius
@@ -115,3 +128,5 @@ $modal-breakpoint: $tablet !default
   flex-shrink: 1
   overflow: auto
   padding: $modal-card-body-padding
+  +darktheme
+    background-color: $modal-card-body-background-color-invert

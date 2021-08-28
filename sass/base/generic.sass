@@ -31,6 +31,12 @@ $pre-font-size: 0.875em !default
 $pre-padding: 1.25rem 1.5rem !default
 $pre-code-font-size: 1em !default
 
+$body-background-color-invert: $scheme-invert-bis!default
+$body-color-invert: findColorInvert($body-color) !default
+$hr-background-color-invert: findColorInvert($hr-background-color) !default
+$strong-color-invert: findColorInvert($strong-color) !default
+
+
 html
   background-color: $body-background-color
   font-size: $body-size
@@ -41,6 +47,9 @@ html
   overflow-y: $body-overflow-y
   text-rendering: $body-rendering
   text-size-adjust: 100%
+  +darktheme
+    background-color: $body-background-color-invert
+
 
 article,
 aside,
@@ -70,6 +79,8 @@ body
   font-size: $body-font-size
   font-weight: $body-weight
   line-height: $body-line-height
+  +darktheme
+    color: $body-color-invert
 
 // Inline
 
@@ -77,10 +88,17 @@ a
   color: $link
   cursor: pointer
   text-decoration: none
+  +darktheme
+    color: $link-invert
   strong
     color: currentColor
+    +darktheme
+      color: findColorInvert(currentColor)
   &:hover
     color: $link-hover
+    +darktheme
+      color: $link-hover-invert
+
 
 code
   background-color: $code-background
@@ -95,6 +113,9 @@ hr
   display: block
   height: $hr-height
   margin: $hr-margin
+  +darktheme
+    background-color: $hr-background-color-invert
+
 
 img
   height: auto
@@ -129,6 +150,10 @@ pre
   padding: $pre-padding
   white-space: pre
   word-wrap: normal
+  +darktheme
+    background-color: $pre-background-invert
+    color: $pre-invert
+
   code
     background-color: transparent
     color: currentColor
@@ -143,3 +168,6 @@ table
       text-align: inherit
   th
     color: $text-strong
+    +darktheme
+      color: $text-strong-invert
+

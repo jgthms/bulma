@@ -1,0 +1,42 @@
+$pageloader-opacity: 1 !default
+
+.barloader
+  +overlay
+  background: transparent !important
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      background: rgba( $color, $pageloader-opacity )
+      +darktheme
+        background-color: ($color-invert)
+        background: rgba( ($color-invert), $pageloader-opacity )
+      &::after
+        border-color: $color-invert
+        +darktheme
+          border-color: $color
+
+        -webkit-animation: loader-figure-#{$name} 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1)
+        -moz-animation: loader-figure-#{$name} 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1)
+        animation: loader-figure-#{$name} 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1)
+      .title
+        color: $color-invert
+        +darktheme
+          color: $color
+
+  z-index: 999998
+  .container
+    width: 50%
+    heigth: 50%
+    position: absolute
+    top: 50%
+    left: 50%
+    display: block
+    border-radius: 100%
+    content: ''
+    z-index: 9999
+    -webkit-transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)
+    box-sizing: border-box
+    border: 0 solid $white

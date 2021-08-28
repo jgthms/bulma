@@ -18,6 +18,16 @@ $menu-label-font-size: 0.75em !default
 $menu-label-letter-spacing: 0.1em !default
 $menu-label-spacing: 1em !default
 
+$menu-item-color-invert: findColorInvert($text) !default
+$menu-item-hover-color-invert: findColorInvert($text-strong) !default
+$menu-item-hover-background-color-invert: $black !default
+$menu-item-active-color-invert: $link !default
+$menu-item-active-background-color-invert: $dark !default
+$menu-label-color-invert: findColorInvert($text-light) !default
+
+.menu-container
+  border-right: 1px solid $border
+  
 .menu
   font-size: $size-normal
   // Sizes
@@ -35,13 +45,22 @@ $menu-label-spacing: 1em !default
     color: $menu-item-color
     display: block
     padding: $menu-list-link-padding
+    +darktheme
+      color: $menu-item-color-invert
+
     &:hover
       background-color: $menu-item-hover-background-color
       color: $menu-item-hover-color
+      +darktheme
+        background-color: $menu-item-hover-background-color-invert
+        color: $menu-item-hover-color-invert
     // Modifiers
     &.is-active
       background-color: $menu-item-active-background-color
       color: $menu-item-active-color
+      +darktheme
+        background-color: $menu-item-active-background-color-invert
+        color: $menu-item-active-color-invert
   li
     ul
       +ltr-property("border", $menu-list-border-left, false)
@@ -53,6 +72,8 @@ $menu-label-spacing: 1em !default
   font-size: $menu-label-font-size
   letter-spacing: $menu-label-letter-spacing
   text-transform: uppercase
+  +darktheme
+    color: $menu-label-color-invert
   &:not(:first-child)
     margin-top: $menu-label-spacing
   &:not(:last-child)

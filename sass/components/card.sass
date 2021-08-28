@@ -20,6 +20,12 @@ $card-footer-padding: 0.75rem !default
 
 $card-media-margin: $block-spacing !default
 
+$card-color-invert: findColorInvert($text) !default
+
+$card-background-color-invert: $scheme-invert !default
+$card-shadow-invert: 0 0.5em 1em -0.125em rgba($scheme-main, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
+$card-header-color-invert: findColorInvert($text-strong) !default
+
 .card
   background-color: $card-background-color
   border-radius: $card-radius
@@ -27,6 +33,10 @@ $card-media-margin: $block-spacing !default
   color: $card-color
   max-width: 100%
   position: relative
+  +darktheme
+    box-shadow: $card-shadow-invert
+    background-color: $card-background-color-invert
+    color: $card-color-invert
 
 %card-item
   &:first-child
@@ -52,6 +62,9 @@ $card-media-margin: $block-spacing !default
   padding: $card-header-padding
   &.is-centered
     justify-content: center
+  +darktheme
+    color: $card-header-color-invert
+
 
 .card-header-icon
   +reset
