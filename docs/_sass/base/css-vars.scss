@@ -1,0 +1,69 @@
+:root {
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+    --#{$name}: #{$color};
+    --#{$name}-invert: #{$color-invert};
+
+    @if length($pair) >= 4 {
+      $color-light: nth($pair, 3);
+      $color-dark: nth($pair, 4);
+      --#{$name}-light: #{$color-light};
+      --#{$name}-dark: #{$color-dark};
+    }
+  }
+
+  --bootstrap: #{$bootstrap};
+  --github: #{$github};
+  --twitter: #{$twitter};
+  --patreon: #{$patreon};
+  --patreon-blue: #{$patreon-blue};
+  --fortyfour: #{$fortyfour};
+  --amazon: #{$amazon};
+  --bleeding-green: #{$bleeding-green};
+  --bleeding-red: #{$bleeding-red};
+  --rss: #{$rss};
+  // --search: #{$algolia};
+  // --search-light: #{change-color($algolia, $lightness: 90%)};
+  --search: #{$primary};
+  --search-light: #{$primary-light};
+  --search-dark: #{$primary-dark};
+
+  --html5: #e44d26;
+  --html5-invert: #ebebeb;
+
+  --hl-green: #37e7ac;
+  --hl-cyan: #51fbde;
+  --hl-blue: #00b2ff;
+  --hl-purple: #9a89b4;
+  --hl-lavender: #9b6dff;
+  --hl-pink: #ff5cd3;
+  --hl-rose: #ff6b9d;
+  --hl-orange: #ff9970;
+  --hl-yellow: #fed604;
+  --hl-gray-01: #d9e0e8;
+  --hl-gray-02: #808182;
+  --hl-gray-09: #1f2330;
+
+  --hl-color: var(--hl-orange);
+  --hl-background: var(--hl-gray-09);
+
+  --container-width: calc(100vw - 3rem);
+  --container-width-desktop: #{$desktop - $container-offset};
+  --container-width-widescreen: #{min($widescreen, $container-max-width) -
+    $container-offset};
+  --container-width-fullhd: #{min($fullhd, $container-max-width) -
+    $container-offset};
+
+  @include desktop {
+    --container-width: var(--container-width-desktop);
+  }
+
+  @include widescreen {
+    --container-width: var(--container-width-widescreen);
+  }
+
+  @include fullhd {
+    --container-width: var(--container-width-fullhd);
+  }
+}

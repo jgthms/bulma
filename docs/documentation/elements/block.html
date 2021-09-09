@@ -44,6 +44,94 @@ meta:
 }
 {% endcapture %}
 
+{% capture no_block %}
+<p class="title mb-0">Without block</p>
+<div class="block mb-0">
+  <div class="field is-grouped">
+    <div class="control is-expanded">
+      <input class="input" type="text" placeholder="Text input">
+    </div>
+    <div class="control">
+      <button class="button is-primary">Button</button>
+    </div>
+  </div>
+</div>
+<nav class="pagination mb-0" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li>
+      <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 2">2</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 3">3</a>
+    </li>
+  </ul>
+</nav>
+<progress class="progress is-success mb-0" value="30" max="100">30%</progress>
+<div class="notification is-warning mb-0">
+  <button class="delete"></button>
+  Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor.
+</div>
+<article class="message is-danger mb-0">
+  <div class="message-header">
+    <p>Error</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+  </div>
+</article>
+{% endcapture %}
+
+{% capture with_block %}
+<p class="title">With block</p>
+<div class="block">
+  <div class="field is-grouped">
+    <div class="control is-expanded">
+      <input class="input" type="text" placeholder="Text input">
+    </div>
+    <div class="control">
+      <button class="button is-primary">Button</button>
+    </div>
+  </div>
+</div>
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li>
+      <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 2">2</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 3">3</a>
+    </li>
+  </ul>
+</nav>
+<progress class="progress is-success" value="30" max="100">30%</progress>
+<div class="notification is-warning">
+  <button class="delete"></button>
+  Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor.
+</div>
+<article class="message is-danger">
+  <div class="message-header">
+    <p>Error</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+  </div>
+</article>
+{% endcapture %}
+
+<!--  -->
+
 <div class="content">
   <p>
     The <code>block</code> element is a simple <strong>spacer tool</strong>. It allows <strong>sibling</strong> HTML elements to have a consistent margin between them:
@@ -63,26 +151,14 @@ meta:
 
 {% include elements/snippet.html content=no_block_example %}
 
-{% include elements/anchor.html name="One line of CSS" %}
+<!--  -->
+
+{% include elements/anchor.html name="You're already using it" %}
+
 
 <div class="content">
   <p>
-    As you can see, the CSS of the <code>block</code> is very simple: it applies a <code>margin-bottom</code> on all siblings, <strong>except the last one</strong>.
-  </p>
-</div>
-
-{% highlight css %}{{ block_css }}{% endhighlight %}
-
-<div class="content">
-  <p>
-    This prevents the last sibling to add unnecessary space at the bottom.
-  </p>
-</div>
-
-{% include elements/anchor.html name="Already used everywhere in Bulma" %}
-<div class="content">
-  <p>
-    As a matter of fact, you're <strong>already using</strong> the <code>block</code> without knowing it. The <code>block</code> CSS properties are <strong>shared</strong> across several Bulma elements and components:
+    As a matter of fact, you're <strong>already using</strong> the <code>block</code> without knowing it. Its CSS properties are <strong>shared</strong> across several Bulma elements and components:
   </p>
 
   <ul>
@@ -105,8 +181,41 @@ meta:
   </p>
 
   <p>
-    As a result, no matter which Bulma elements and components you are using, and no matter their order, they will have a <strong>consistent space</strong> between them.
+    Here's how it would look like in comparison:
   </p>
 </div>
 
-{% include elements/variables.html type='element' %}
+<div class="columns is-size-6">
+  <div class="column">
+    {{ no_block }}
+  </div>
+  <div class="column">
+    {{ with_block }}
+  </div>
+</div>
+
+<div class="content">
+  <p>
+    No matter which Bulma elements and components you are using, and no matter their order, they will have a <strong>consistent space</strong> between them.
+  </p>
+</div>
+
+<!--  -->
+
+{% include elements/anchor.html name="One line of CSS" %}
+
+<div class="content">
+  <p>
+    As you can see, the CSS of the <code>block</code> is very simple: it applies a <code>margin-bottom</code> on all siblings, <strong>except the last one</strong>.
+  </p>
+</div>
+
+{% highlight css %}{{ block_css }}{% endhighlight %}
+
+<div class="content">
+  <p>
+    This prevents the last sibling to add unnecessary space at the bottom.
+  </p>
+</div>
+
+{% include components/variables.html type='element' %}

@@ -1,0 +1,82 @@
+.bd-call {
+  --background-color: var(--primary-light);
+  --color: var(--primary-dark);
+  --color-dark: var(--primary-dark);
+  --margin: 1.5rem;
+  --spacing: 1em;
+
+  align-items: center;
+  display: flex;
+  font-size: var(--font-size);
+  justify-content: center;
+  margin: var(--margin);
+
+  &.bd-is-twitter {
+    --background-color: var(--twitter-light);
+    --color: var(--twitter);
+    --color-dark: var(--twitter-dark);
+  }
+
+  &.bd-is-extensions {
+    --background-color: var(--extensions-light);
+    --color: var(--extensions);
+    --color-dark: var(--extensions-dark);
+  }
+}
+
+.bd-call-body {
+  align-items: center;
+  background-color: var(--background-color);
+  border-radius: $radius-large;
+  color: var(--color);
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--container-width);
+  padding: var(--spacing);
+
+  strong {
+    color: var(--color-dark);
+    font-weight: $weight-semibold;
+  }
+}
+
+.bd-call-text {
+  margin-left: var(--spacing);
+  margin-right: calc(2 * var(--spacing));
+}
+
+.bd-call-button {
+  .button {
+    font-size: 1em;
+  }
+}
+
+@include mobile {
+  .bd-call-body {
+    text-align: center;
+  }
+
+  .bd-call-text {
+    margin-bottom: var(--spacing);
+  }
+}
+
+@include tablet {
+  .bd-call-body {
+    display: flex;
+  }
+}
+
+@include desktop {
+  .bd-call {
+    --margin: 3rem;
+  }
+}
+
+@include widescreen {
+  .bd-call {
+    --font-size: 1.125rem;
+    --margin: 3rem;
+  }
+}

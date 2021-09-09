@@ -1,0 +1,91 @@
+.bd-heading {
+  > .icon {
+    font-size: $title-size;
+    height: 1.125em;
+    width: 1.125em;
+  }
+
+  .title,
+  .subtitle {
+    font-weight: $weight-normal;
+
+    strong {
+      color: inherit;
+      font-weight: $weight-semibold;
+    }
+
+    small {
+      color: $text-light;
+      display: block;
+      font-size: 0.75em;
+    }
+  }
+
+  .subtitle {
+    color: $text-light;
+  }
+
+  .bd-fat-button {
+    font-weight: $weight-normal;
+
+    strong {
+      font-weight: $weight-semibold;
+    }
+  }
+}
+
+@include mobile {
+  .bd-heading {
+    margin-bottom: var(--bd-index-vertical);
+
+    .icon {
+      float: left;
+      margin-right: $block-spacing / 2;
+    }
+
+    .subtitle {
+      margin: ($block-spacing / 2) 0 !important;
+    }
+
+    form {
+      margin-top: $block-spacing;
+    }
+  }
+}
+
+@include tablet {
+  .bd-heading {
+    align-items: center;
+    display: grid;
+    grid-gap: 0;
+    // prettier-ignore
+    grid-template-columns:
+      1fr
+      4rem
+      calc(var(--container-width) / 3)
+      calc(var(--container-width) / 3)
+      calc(var(--container-width) / 3)
+      4rem
+      1fr;
+    margin-bottom: calc(var(--bd-index-vertical) / 2);
+
+    > .icon {
+      grid-column: 2;
+    }
+
+    .title {
+      grid-column: 3;
+      max-width: 9em;
+    }
+
+    .subtitle {
+      grid-column: 4;
+      max-width: 10em;
+    }
+
+    .button {
+      grid-column: 5 / span 1;
+      justify-self: flex-end;
+    }
+  }
+}

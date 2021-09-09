@@ -1,0 +1,185 @@
+.bd-focus {
+  // display: none;
+  padding: $block-spacing;
+
+  > .container {
+    // max-width: none !important;
+  }
+}
+
+.bd-focus-item {
+  @extend %link-before-background;
+
+  align-items: center;
+  border-radius: $radius-large;
+  display: flex;
+  padding: $block-spacing;
+  position: relative;
+
+  .title a,
+  .subtitle {
+    transition-duration: $speed * 2;
+    transition-property: color;
+  }
+
+  .title {
+    position: relative;
+    transition-duration: $speed * 2;
+    transition-property: color;
+  }
+
+  .subtitle {
+    color: $text-light;
+    position: relative;
+
+    strong {
+      color: currentColor;
+    }
+
+    .subtitle {
+      color: $text;
+    }
+  }
+
+  &:nth-child(1):hover {
+    .title {
+      color: $orange;
+    }
+  }
+
+  &:nth-child(2):hover {
+    .title {
+      color: $success;
+    }
+  }
+
+  &:nth-child(3):hover {
+    .title {
+      color: $link;
+    }
+  }
+
+  &:nth-child(4):hover {
+    .title {
+      color: $scheme-invert;
+    }
+  }
+}
+
+.bd-focus-graph {
+  align-items: center;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  margin-right: $block-spacing;
+  width: 3rem;
+}
+
+.bd-focus-icon {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  position: relative;
+}
+
+.bd-focus-device {
+  --device-y: 4px;
+  --device-x: 2px;
+
+  --device-sm-deg: 14deg;
+  --device-md-deg: -21deg;
+  --device-lg-deg: -86deg;
+  --device-deg: var(--device-sm-deg);
+
+  --device-sm-height: 24px;
+  --device-sm-width: 16px;
+
+  --device-md-height: 32px;
+  --device-md-width: 24px;
+
+  --device-lg-height: 40px;
+  --device-lg-width: 48px;
+
+  animation: bdDeviceBounce 3.5s infinite;
+  border: 0 solid hsl(var(--device-deg), 100%, 53%);
+  border-width: var(--device-y) var(--device-x);
+  border-radius: $radius;
+  display: block;
+  height: var(--device-height);
+  position: relative;
+  width: var(--device-width);
+}
+
+.bd-focus-cubes {
+  position: relative;
+  height: 3rem;
+  top: -0.5rem;
+  width: 3rem;
+}
+
+.bd-focus-cube {
+  color: $green;
+  position: absolute;
+}
+
+.bd-focus-cube-1 {
+  left: 0;
+  top: 0;
+}
+
+.bd-focus-cube-2 {
+  left: -1rem;
+  top: 23px;
+}
+
+.bd-focus-cube-3 {
+  left: 1rem;
+  top: 23px;
+}
+
+.bd-focus-css3 {
+  color: $blue;
+}
+
+.bd-focus-github {
+  color: $github;
+}
+
+@keyframes bdDeviceBounce {
+  0% {
+    --device-deg: var(--device-sm-deg);
+    height: var(--device-sm-height);
+    width: var(--device-sm-width);
+  }
+  28% {
+    --device-deg: var(--device-sm-deg);
+    height: var(--device-sm-height);
+    width: var(--device-sm-width);
+  }
+  33% {
+    --device-deg: var(--device-md-deg);
+    height: var(--device-md-height);
+    width: var(--device-md-width);
+  }
+  62% {
+    --device-deg: var(--device-md-deg);
+    height: var(--device-md-height);
+    width: var(--device-md-width);
+  }
+  67% {
+    --device-deg: var(--device-lg-deg);
+    height: var(--device-lg-height);
+    width: var(--device-lg-width);
+  }
+  95% {
+    --device-deg: var(--device-lg-deg);
+    height: var(--device-lg-height);
+    width: var(--device-lg-width);
+  }
+  100% {
+    --device-deg: var(--device-sm-deg);
+    height: var(--device-sm-height);
+    width: var(--device-sm-width);
+  }
+}

@@ -1,0 +1,39 @@
+<section class="bd-sponsors">
+  <div class="bd-sponsors-body">
+    <div class="bd-sponsors-content bd-index-content">
+      <h1 class="title has-text-black">
+        <strong>Bulma</strong> is thankful to its <a class="has-text-sponsor" href="{{ site.data.meta.patreon_url }}" target="_blank">Patreon</a> and <a class="has-text-sponsor" href="{{ site.data.meta.sponsorship_url }}" target="_blank">GitHub sponsors</a>
+        <span class="icon has-text-sponsor">
+          <i class="fas fa-thumbs-up"></i>
+        </span>
+      </h1>
+
+      <div class="content">
+        <p>
+          Their support contributes to the continuous development of Bulma and other open source software.
+        </p>
+      </div>
+
+      <a class="button bd-fat-button is-sponsor" href="{{ site.url }}{{ site.data.links.by_id.['become-sponsor'].path }}">
+        <span>
+          Become a sponsor
+        </span>
+      </a>
+    </div>
+
+    <div class="bd-sponsors-list">
+      <div class="bd-partner-sponsors">
+        {% for sponsor_id in site.data.sponsors.home %}
+          {% include elements/sponsor-item.html
+            sponsor_id=sponsor_id
+            classname="bd-partner-sponsor"
+            %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="bd-sponsors-carbon is-flex is-justify-content-center" style="margin-top: var(--bd-sponsors-spacing);">
+    {% include elements/carbon.html %}
+  </div>
+</section>

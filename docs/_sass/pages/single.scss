@@ -1,0 +1,178 @@
+.bd-single-header {
+  --font-size-title: #{$size-3};
+  --font-size-subtitle: #{$size-5};
+  --font-size-date: #{$size-6};
+  --margin: 3rem;
+  --padding: 3rem;
+
+  margin-bottom: var(--margin);
+  margin-top: var(--margin);
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  text-align: center;
+
+  code {
+    background: none;
+    padding: 0;
+  }
+
+  .title {
+    font-size: var(--font-size-title);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 16em;
+  }
+
+  .subtitle {
+    color: $text-light;
+    font-size: var(--font-size-subtitle);
+
+    &.is-date {
+      font-size: var(--font-size-date);
+      opacity: 0.5;
+    }
+  }
+}
+
+.bd-single-carbon {
+  @extend %center;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+.bd-single-body {
+  padding: 0 3rem;
+}
+
+.bd-single-content {
+  hr {
+    margin: 3rem 0;
+  }
+
+  .table {
+    font-size: 1rem;
+  }
+}
+
+.bd-single-hr {
+  &:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.bd-single-image {
+  @extend %center;
+  margin-bottom: 3rem;
+
+  div {
+    flex-grow: 1;
+    max-width: 1600px;
+    min-height: 1px;
+  }
+
+  figure {
+    background: $background;
+    padding-top: 56.25%;
+    position: relative;
+  }
+
+  img {
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+@include touch() {
+  .bd-single-body {
+    &.bd-is-last {
+      padding-bottom: 3rem;
+    }
+  }
+}
+
+@include tablet() {
+  .bd-single-image {
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    img {
+      border-radius: $radius-large;
+    }
+  }
+
+  .bd-single-content {
+    font-size: 1.125rem;
+  }
+}
+
+@include desktop() {
+  .bd-single-header {
+    --font-size-title: #{$size-2};
+    --font-size-subtitle: #{$size-4};
+    --font-size-date: #{$size-5};
+    --margin: 4.5rem;
+    --padding: 4.5rem;
+  }
+
+  .bd-single-body {
+    &.bd-is-last {
+      padding-bottom: 4.5rem;
+    }
+  }
+}
+
+@include widescreen() {
+  .bd-single-header {
+    --font-size-title: #{$size-1};
+    --font-size-subtitle: #{$size-3};
+    --font-size-date: #{$size-4};
+    --margin: 6rem;
+    --padding: 6rem;
+  }
+
+  .bd-single-content {
+    font-size: 1.25rem;
+  }
+
+  .bd-single-body {
+    &.bd-is-last {
+      padding-bottom: 6rem;
+    }
+  }
+}
+
+@include fullhd() {
+  .bd-single-header {
+    --margin: 9rem;
+  }
+
+  .bd-single-content {
+    font-size: 1.5rem;
+  }
+
+  .bd-single-body {
+    &.bd-is-last {
+      padding-bottom: 9rem;
+    }
+  }
+}
+
+// Post stuff
+
+.bd-post-fullwidth {
+  text-align: center;
+}
+
+@include from(60rem) {
+  .bd-post-fullwidth {
+    margin-left: calc(28rem - 50vw);
+    margin-right: calc(28rem - 50vw);
+  }
+}

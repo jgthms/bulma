@@ -8,110 +8,48 @@ route: documentation
 {% assign current_category = page.doc-tab %}
 {% assign current_link_id = page.breadcrumb | last %}
 {% assign current_link = site.data.links.by_id[current_link_id] %}
-{% assign category_links = site.data.links.categories[current_category] %}
 
-{% for link_id in category_links %}
-  {% if link_id == current_link_id %}
-    {% unless forloop.first %}
-      {% assign previous_index = forloop.index0 | minus: 1 %}
-      {% assign previous_link_id = category_links[previous_index] %}
-      {% assign previous_link = site.data.links.by_id[previous_link_id] %}
-    {% endunless %}
+{% assign subtitle = current_link.subtitle %}
 
-    {% unless forloop.last %}
-      {% assign next_index = forloop.index0 | plus: 1 %}
-      {% assign next_link_id = category_links[next_index] %}
-      {% assign next_link = site.data.links.by_id[next_link_id] %}
-    {% endunless %}
-  {% endif %}
-{% endfor %}
+{% if page.subtitle %}
+  {% assign subtitle = page.subtitle %}
+{% endif %}
 
-<main class="bd-main">
-  <div class="bd-side-background"></div>
-  <div class="bd-main-container container">
-    <div class="bd-duo">
-      <div class="bd-lead">
-        {% include components/breadcrumb.html %}
+<header id="docsToggles" class="bd-docs-toggles">
+  <button class="button is-primary is-light bd-fat-button is-small" id="docsNavButton">Show menu</button>
+  <button class="button is-primary is-light bd-fat-button is-small" id="docsSideButton">Show sidebar</button>
+</header>
 
-        <header class="bd-header">
-          <div class="bd-header-titles">
-            <h1 class="title">
-              {{ page.title }}
-            </h1>
-            <p class="subtitle is-4">
-              {% if page.subtitle %}
-                {{ page.subtitle }}
-              {% else %}
-                {{ current_link.subtitle }}
-              {% endif %}
-            </p>
-            {% if page.meta %}
-              {%
-                include elements/meta.html
-                colors=page.meta.colors
-                sizes=page.meta.sizes
-                variables=page.meta.variables
-                experimental=page.meta.experimental
-              %}
-            {% endif %}
-          </div>
+<div id="docs" class="bd-docs {% if page.fullwidth %}bd-is-fullwidth{% else %}bd-is-contained{% endif %}">
+  <div id="docsNavOverlay" class="bd-docs-overlay"></div>
 
-          <div class="bd-header-carbon">
-            {% include elements/carbon.html %}
-          </div>
-        </header>
+  <nav id="docsNav" class="bd-docs-nav {% if page.fullwidth %}bd-stickied{% endif %}">
+    {% include components/categories.html %}
+  </nav>
 
-        {% if page.hide_tabs %}
-          <hr style="margin: 0 0 3rem;">
-        {% else %}
-          <nav class="bd-tabs">
-            <div class="tabs">
-              <ul>
-                {% for link_id in category_links %}
-                  {% assign link = site.data.links.by_id[link_id] %}
-                  <li {% if link_id == current_link_id %}class="is-active"{% endif %}>
-                    <a href="{{ site.url }}{{ link.path }}">
-                      {{ link.name }}
-                      {% if link.new %}
-                        <span class="ml-2 tag bd-mini-tag is-primary">
-                          New!
-                        </span>
-                      {% endif %}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </nav>
-        {% endif %}
-
-        <div class="bd-content">
-          {{ content }}
-        </div>
-
-        <nav class="bd-prev-next-bis">
-          {% if previous_link %}
-            <a class="bd-prev-next-bis-previous" href="{{ site.url }}{{ previous_link.path }}" title="{{ previous_link.name }}">
-              ← {{ previous_link.name }}
-            </a>
-          {% endif %}
-
-          {% if next_link %}
-            <a class="bd-prev-next-bis-next" href="{{ site.url }}{{ next_link.path }}" title="{{ next_link.name }}">
-              {{ next_link.name }} →
-            </a>
-          {% endif %}
-        </nav>
-
-        {% include elements/improve-page.html %}
+  <main class="bd-docs-main">
+    {% if page.fullwidth %}
+      {% include components/docs-body.html %}
+    {% else %}
+      <div class="container">
+        {% include components/docs-body.html %}
       </div>
+    {% endif %}
+  </main>
 
-      <aside class="bd-side">
-        {% unless page.hide_categories %}
-          {% include components/categories.html %}
-          {% include components/anchors.html %}
-        {% endunless %}
-      </aside>
-    </div>
-  </div>
-</main>
+  <aside id="docsSide" class="bd-docs-side {% if page.fullwidth %}bd-stickied{% endif %}">
+    {% include global/fortyfour.html %}
+
+    {% if page.meta %}
+      {%
+        include elements/meta.html
+        colors=page.meta.colors
+        sizes=page.meta.sizes
+        variables=page.meta.variables
+        experimental=page.meta.experimental
+      %}
+    {% endif %}
+
+    {% include components/anchors.html %}
+  </aide>
+</div>

@@ -1,0 +1,88 @@
+$best-item-width: 520;
+$best-screenshot-width: 504;
+$best-count: 6;
+$best-more-count: 6;
+$best-total-count: $best-count + (2 * $best-more-count);
+$best-total-width: $best-item-width * $best-total-count;
+$best-speed: 100; // px per second
+$best-duration: $best-total-width / $best-speed * 1s;
+$best-padding: $block-spacing;
+$best-height: 386px;
+
+.bd-best {
+  height: calc(#{$best-height} + #{$best-padding * 2});
+  padding: $best-padding 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.bd-best-list {
+  align-items: stretch;
+  animation-duration: $best-duration;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  display: flex;
+  left: 0;
+  position: absolute;
+  top: $best-padding;
+
+  animation-name: bdBestCarousel;
+  // flex-wrap: wrap;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.bd-best-item {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: ($best-item-width - $best-screenshot-width) * 1px;
+  transition-duration: $speed * 2;
+  transition-property: box-shadow, transform;
+  width: $best-screenshot-width * 1px;
+
+  &.bd-is-medium {
+    font-size: 1.125em;
+  }
+
+  &.bd-is-large {
+    font-size: 1.25em;
+  }
+
+  &.bd-is-huge {
+    font-size: 1.5em;
+  }
+
+  &:hover {
+    box-shadow: 0 1em 1em rgba(black, 0.1);
+    transform: translateY(-0.5em);
+  }
+}
+
+.bd-screenshot {
+  align-self: flex-start;
+  display: block;
+  transition-duration: $speed * 2;
+  transition-property: box-shadow, transform;
+
+  &,
+  img {
+    border-radius: $radius-large;
+  }
+
+  img {
+    display: inline-block;
+    height: auto;
+    vertical-align: top;
+    width: auto;
+  }
+}
+
+@keyframes bdBestCarousel {
+  100% {
+    transform: translateX(
+      calc(-100% + #{$best-item-width * $best-more-count * 1px})
+    );
+  }
+}

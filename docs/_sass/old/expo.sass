@@ -1,0 +1,56 @@
+.bd-expo
+  background-color: $scheme-main
+  padding: 1.5rem
+
+.bd-website
+  display: block
+  position: relative
+  text-align: center
+  &:last-child
+    margin-bottom: 0
+
+.bd-website-image
+  align-items: center
+  display: flex
+  justify-content: center
+  margin-bottom: 1.5rem
+  position: relative
+  // &:hover
+  //   .bd-website-shadow
+  //     opacity: 0
+  //   .bd-website-overlay
+  //     opacity: 0.25
+  .b-lazy
+    opacity: 0
+    transition: opacity 500ms $easing
+  .b-loaded
+    opacity: 1
+
+.bd-website-shadow
+  border: 1px solid rgba(#000, 0.04)
+  transition: opacity 200ms $easing
+
+.bd-website-overlay
+  background-color: $scheme-invert
+  opacity: 0
+  transition: opacity 200ms $easing
+
++mobile
+  .bd-website:not(:last-child)
+    margin-bottom: 1.5rem
+
++tablet
+  .bd-expo
+    padding-bottom: 3rem
+    padding-top: 3rem
+  .bd-websites
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+  .bd-website
+    margin-bottom: 3rem
+    width: calc(50% - 3rem)
+    &.bd-is-highlighted
+      width: 100%
+  .bd-website-image
+    margin-bottom: 3rem
