@@ -10,73 +10,56 @@ $spacing-horizontal: "x" !default
 $spacing-vertical: "y" !default
 $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem, "auto": auto) !default
 
-@each $property, $shortcut in $spacing-shortcuts
-  @each $name, $value in $spacing-values
-    // All directions
-    .#{$shortcut}-#{$name}
-      #{$property}: $value !important
-    // Cardinal directions
-    @each $direction, $suffix in $spacing-directions
-      .#{$shortcut}#{$suffix}-#{$name}
-        #{$property}-#{$direction}: $value !important
-    // Horizontal axis
-    @if $spacing-horizontal != null
-      .#{$shortcut}#{$spacing-horizontal}-#{$name}
-        #{$property}-left: $value !important
-        #{$property}-right: $value !important
-    // Vertical axis
-    @if $spacing-vertical != null
-      .#{$shortcut}#{$spacing-vertical}-#{$name}
-        #{$property}-top: $value !important
-        #{$property}-bottom: $value !important
-
-@mixin spacingHelpers($suffix: "")
+=spacing-helpers($suffix: '')
+  $suffix: if($suffix == '', '', '-' + $suffix)
   @each $property, $shortcut in $spacing-shortcuts
     @each $name, $value in $spacing-values
       @if $property == 'padding' and $value == 'auto'
         // Exclude padding value auto
       @else
         // All directions
-        .#{$shortcut}-#{$name}-#{$suffix}
+        .#{$shortcut}-#{$name}#{$suffix}
           #{$property}: $value !important
         // Cardinal directions
         @each $direction, $direction-suffix in $spacing-directions
-          .#{$shortcut}#{$direction-suffix}-#{$name}-#{$suffix}
+          .#{$shortcut}#{$direction-suffix}-#{$name}#{$suffix}
             #{$property}-#{$direction}: $value !important
         // Horizontal axis
         @if $spacing-horizontal != null
-          .#{$shortcut}#{$spacing-horizontal}-#{$name}-#{$suffix}
+          .#{$shortcut}#{$spacing-horizontal}-#{$name}#{$suffix}
             #{$property}-left: $value !important
             #{$property}-right: $value !important
         // Vertical axis
         @if $spacing-vertical != null
-          .#{$shortcut}#{$spacing-vertical}-#{$name}-#{$suffix}
+          .#{$shortcut}#{$spacing-vertical}-#{$name}#{$suffix}
             #{$property}-top: $value !important
             #{$property}-bottom: $value !important
 
+@include spacing-helpers('')
+
 +mobile
-  @include spacingHelpers('mobile')
+  @include spacing-helpers('mobile')
 
 +tablet
-  @include spacingHelpers('tablet')
+  @include spacing-helpers('tablet')
 
 +tablet-only
-  @include spacingHelpers('tablet-only')
+  @include spacing-helpers('tablet-only')
 
 +touch
-  @include spacingHelpers('touch')
+  @include spacing-helpers('touch')
 
 +desktop
-  @include spacingHelpers('desktop')
+  @include spacing-helpers('desktop')
 
 +desktop-only
-  @include spacingHelpers('desktop-only')
+  @include spacing-helpers('desktop-only')
 
 +widescreen
-  @include spacingHelpers('widescreen')
+  @include spacing-helpers('widescreen')
 
 +widescreen-only
-  @include spacingHelpers('widescreen-only')
+  @include spacing-helpers('widescreen-only')
 
 +fullhd
-  @include spacingHelpers('fullhd')
+  @include spacing-helpers('fullhd')
