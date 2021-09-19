@@ -1,0 +1,119 @@
+---
+title: Mixins
+layout: documentation
+doc-tab: utilities
+doc-subtab: mixins
+breadcrumb:
+- home
+- documentation
+- utilities
+- utilities-mixins
+---
+
+<div class="content">
+  <p>
+    Throughout the codebase, Bulma uses Sass mixins to <strong>enhance</strong> and facilitate the CSS output. While these mixins are mainly used within the context of Bulma, they are of course available for you to <strong>re-use</strong> in your own projects.
+  </p>
+</div>
+
+{% include elements/anchor.html name="Element Mixins" %}
+
+<h4 class="title is-5">Arrow</h4>
+
+<div class="content">
+  <p>
+    The <code>arrow()</code> mixin creates a down-facing arrow. The <code>$color</code> parameter defines the color of the arrow.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-arrow-mixin {
+  @include arrow(purple);
+}{% endhighlight %}
+
+{% capture arrow %}
+<span class="bulma-arrow-mixin"></span>
+{% endcapture %}
+
+{% include elements/snippet.html content=arrow %}
+
+<!--  -->
+
+<h4 class="title is-5">Hamburger</h4>
+
+<div class="content">
+  <p>
+    The <code>hamburger()</code> mixin creates a 16x16px set of <strong>3 horizontal bars</strong> grouped within square. The dimensions of this square are defined by the <code>$dimensions</code> parameter.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-hamburger-mixin {
+  @include hamburger(2.5rem);
+}{% endhighlight %}
+
+{% capture hamburger %}
+<button class="bulma-hamburger-mixin">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+{% endcapture %}
+
+{% include elements/snippet.html content=hamburger %}
+
+<!--  -->
+
+<h4 class="title is-5">Delete</h4>
+
+<div class="content">
+  <p>
+    The <code>delete()</code> mixin creates a 20x20px circle containing a <strong>cross</strong>. It comes with 3 modifiers: <code>is-small</code>, <code>is-medium</code> and <code>is-large</code>.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-delete-mixin {
+  @include delete;
+}{% endhighlight %}
+
+{% capture delete %}
+<button class="bulma-delete-mixin is-small"></button>
+<button class="bulma-delete-mixin"></button>
+<button class="bulma-delete-mixin is-medium"></button>
+<button class="bulma-delete-mixin is-large"></button>
+{% endcapture %}
+
+{% include elements/snippet.html content=delete %}
+
+<!--  -->
+
+@include loader
+
+@include fa($size, $dimensions)
+
+@include block($spacing: $block-spacing)
+
+@include overlay($offset: 0)
+
+@include placeholder
+
+// Tools
+
+@include clearfix
+
+@include center($width, $height: 0)
+
+@include overflow-touch
+
+@include reset
+
+@include unselectable
+
+// RTL
+
+@include ltr
+
+@include rtl
+
+@include ltr-property($property, $spacing, $right: true)
+
+@include ltr-position($spacing, $right: true)
+
