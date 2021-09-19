@@ -44,7 +44,7 @@ $fullhd-enabled: false
 {% assign mixins_file_url = "/blob/master/sass/utilities/mixins.sass#L81,L129" | prepend: site.data.meta.github %}
 
 <div class="content">
-  <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">5 breakpoints</a>:</p>
+  <p>Bulma has <a href="{{ variables_file_url }}" target="_blank">4 breakpoints</a> which defines <strong>5 screen sizes</strong>:</p>
   <ul>
     {% for breakpoint_hash in site.data.breakpoints %}
       {% assign breakpoint = breakpoint_hash[1] %}
@@ -52,160 +52,17 @@ $fullhd-enabled: false
     {% endfor %}
   </ul>
 
-  <p>Bulma uses <a href="{{ mixins_file_url }}" target="_blank">9 responsive mixins</a>:</p>
-  <ul>
-    {% for breakpoint_hash in site.data.breakpoints %}
-      {% assign breakpoint = breakpoint_hash[1] %}
-      {% case breakpoint.id %}
-        {% when 'mobile' %}
-          <li>
-            <code>={{ breakpoint.id }}</code><br>
-            until <code>{{ breakpoint.to }}px</code>
-          </li>
-        {% when 'fullhd' %}
-          <li>
-            <code>={{ breakpoint.id }}</code><br>
-            from <code>{{ breakpoint.from }}px</code>
-          </li>
-        {% else %}
-          <li>
-            <code>={{ breakpoint.id }}</code><br>
-            from <code>{{ breakpoint.from }}px</code>
-          </li>
-          <li>
-            <code>={{ breakpoint.id }}-only</code><br>
-            from <code>{{ breakpoint.from }}px</code> and until <code>{{ breakpoint.to }}px</code>
-          </li>
-          {% if breakpoint.id == 'tablet' %}
-            <li>
-              <code>=touch</code><br>
-              until <code>{{ breakpoint.to }}px</code>
-            </li>
-          {% endif %}
-      {% endcase %}
-    {% endfor %}
-  </ul>
+  <p>To make use of these breakpoints, Bulma provides <a href="{{ site.url }}/documentation/utilities/responsive-mixins/">9 responsive mixins</a>.</p>
 </div>
 
-<div class="table-container">
-  <table class="table is-bordered">
-    <thead>
-      <tr>
-        {% for breakpoint_hash in site.data.breakpoints %}
-          {% assign breakpoint = breakpoint_hash[1] %}
-          <th style="width: 20%;">
-            {{ breakpoint.name }}<br>
-            {% if breakpoint.id == 'mobile' %}
-              Up to <code>{{ breakpoint.to }}px</code>
-            {% elsif breakpoint.id == 'fullhd' %}
-              <code>{{ breakpoint.from }}px</code> and above
-            {% else %}
-              Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
-            {% endif %}
-          </th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <p class="notification is-success">mobile</p>
-        </td>
-        <td colspan="4">
-          <p class="notification">-</p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="notification">-</p>
-        </td>
-        <td colspan="4">
-          <p class="notification is-success">tablet</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <p class="notification">-</p>
-        </td>
-        <td colspan="3">
-          <p class="notification is-success">desktop</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <p class="notification">-</p>
-        </td>
-        <td colspan="2">
-          <p class="notification is-success">widescreen</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4">
-          <p class="notification">-</p>
-        </td>
-        <td>
-          <p class="notification is-success">fullhd</p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <p class="notification">-</p>
-        </td>
-        <td>
-          <p class="notification is-success">tablet-only</p>
-        </td>
-        <td colspan="3">
-          <p class="notification">-</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <p class="notification">-</p>
-        </td>
-        <td>
-          <p class="notification is-success">desktop-only</p>
-        </td>
-        <td colspan="2">
-          <p class="notification">-</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <p class="notification">-</p>
-        </td>
-        <td>
-          <p class="notification is-success">widescreen-only</p>
-        </td>
-        <td>
-          <p class="notification">-</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <p class="notification is-success">touch</p>
-        </td>
-        <td colspan="3">
-          <p class="notification">-</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <p class="notification is-success">until-widescreen</p>
-        </td>
-        <td colspan="2">
-          <p class="notification">-</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4">
-          <p class="notification is-success">until-fullhd</p>
-        </td>
-        <td colspan="1">
-          <p class="notification">-</p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+{% include components/breakpoints-table.html %}
+
+{% assign urm_link = site.data.links.by_id['utilities-responsive-mixins'] %}
+
+<div class="content">
+  <p>
+    To simplify using these breakpoints, Bulma provides <a href="{{ site.url }}{{ urm_link.path }}">easy-to-use responsive mixins</a>.
+  </p>
 </div>
 
 {% assign vernum = site.data.meta.version | downcase | remove: "." | plus: 0 %}
