@@ -1,0 +1,120 @@
+<div class="table-container">
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        {% for breakpoint_hash in site.data.breakpoints %}
+          {% assign breakpoint = breakpoint_hash[1] %}
+          <th style="width: 20%;">
+            {{ breakpoint.name }}<br>
+            {% if breakpoint.id == 'mobile' %}
+              Up to <code>{{ breakpoint.to }}px</code>
+            {% elsif breakpoint.id == 'fullhd' %}
+              <code>{{ breakpoint.from }}px</code> and above
+            {% else %}
+              Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
+            {% endif %}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <p class="notification is-primary">mobile</p>
+        </td>
+        <td colspan="4">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="notification">-</p>
+        </td>
+        <td colspan="4">
+          <p class="notification is-primary">tablet</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+        <td colspan="3">
+          <p class="notification is-primary">desktop</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+        <td colspan="2">
+          <p class="notification is-primary">widescreen</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p class="notification">-</p>
+        </td>
+        <td>
+          <p class="notification is-primary">fullhd</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="notification">-</p>
+        </td>
+        <td>
+          <p class="notification is-primary">tablet-only</p>
+        </td>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+        <td>
+          <p class="notification is-primary">desktop-only</p>
+        </td>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+        <td>
+          <p class="notification is-primary">widescreen-only</p>
+        </td>
+        <td>
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p class="notification is-primary">touch</p>
+        </td>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <p class="notification is-primary">until-widescreen</p>
+        </td>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p class="notification is-primary">until-fullhd</p>
+        </td>
+        <td colspan="1">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
