@@ -18,7 +18,11 @@ breadcrumb:
 
 {% include elements/anchor.html name="Element Mixins" %}
 
-<h4 class="title is-5">Arrow</h4>
+<p class="block">
+  These mixins create a <strong>visual</strong> HTML element.
+</p>
+
+{% include elements/anchor-bis.html name="Arrow" %}
 
 <div class="content">
   <p>
@@ -38,7 +42,7 @@ breadcrumb:
 
 <!--  -->
 
-<h4 class="title is-5">Hamburger</h4>
+{% include elements/anchor-bis.html name="Hamburger" %}
 
 <div class="content">
   <p>
@@ -62,7 +66,7 @@ breadcrumb:
 
 <!--  -->
 
-<h4 class="title is-5">Delete</h4>
+{% include elements/anchor-bis.html name="Delete" %}
 
 <div class="content">
   <p>
@@ -85,7 +89,7 @@ breadcrumb:
 
 <!--  -->
 
-<h4 class="title is-5">Loader</h4>
+{% include elements/anchor-bis.html name="Loader" %}
 
 <div class="content">
   <p>
@@ -105,31 +109,7 @@ breadcrumb:
 
 <!--  -->
 
-<h4 class="title is-5">Block</h4>
-
-<div class="content">
-  <p>
-    The <code>block()</code> mixin adds <strong>spacing</strong> below an element, but only if it's <strong>not the last child</strong>.
-    <br>
-    The <code>$spacing</code> parameter defines the value of the <code>margin-bottom</code>.
-  </p>
-</div>
-
-{% highlight sass %}.bulma-block-mixin {
-  @include block(1rem);
-}{% endhighlight %}
-
-{% capture block %}
-<p class="bulma-block-mixin">This element has a margin-bottom.</p>
-<p class="bulma-block-mixin">This element too.</p>
-<p class="bulma-block-mixin">Not this one because it's the last child.</p>
-{% endcapture %}
-
-{% include elements/snippet.html content=block %}
-
-<!--  -->
-
-<h4 class="title is-5">Font Awesome container</h4>
+{% include elements/anchor-bis.html name="Font Awesome container" %}
 
 <div class="content">
   <p>
@@ -156,29 +136,393 @@ breadcrumb:
 
 <!--  -->
 
-@include overlay($offset: 0)
+{% include elements/anchor.html name="CSS Mixins" %}
 
-@include placeholder
+<p class="block">
+  These mixins add <strong>CSS rules</strong> to the element.
+</p>
 
-// Tools
+<!--  -->
 
-@include clearfix
+{% include elements/anchor-bis.html name="Block" %}
 
-@include center($width, $height: 0)
+<div class="content">
+  <p>
+    The <code>block()</code> mixin adds <strong>spacing</strong> below an element, but only if it's <strong>not the last child</strong>.
+    <br>
+    The <code>$spacing</code> parameter defines the value of the <code>margin-bottom</code>.
+  </p>
+</div>
 
-@include overflow-touch
+{% highlight sass %}.bulma-block-mixin {
+  @include block(1rem);
+}{% endhighlight %}
 
-@include reset
+{% capture block %}
+<p class="bulma-block-mixin">This element has a margin-bottom.</p>
+<p class="bulma-block-mixin">This element too.</p>
+<p class="bulma-block-mixin">Not this one because it's the last child.</p>
+{% endcapture %}
 
-@include unselectable
+{% include elements/snippet.html content=block %}
 
-// RTL
+<!--  -->
 
-@include ltr
+{% include elements/anchor-bis.html name="Overlay" %}
 
-@include rtl
+<div class="content">
+  <p>
+    The <code>overlay()</code> mixin makes the element <strong>cover</strong> its closest positioned ancestor.
+    <br>
+    The <code>$offset</code> parameter defines how far inside the element is positioned from each edge (top, bottom, left and right).
+  </p>
+</div>
 
-@include ltr-property($property, $spacing, $right: true)
+{% highlight sass %}.bulma-overlay-mixin {
+  @include overlay(1.5rem);
+  background-color: darkorange;
+  border-radius: 0.25em;
+  color: white;
+  opacity: 0.9;
+  padding: 1em;
+}{% endhighlight %}
 
-@include ltr-position($spacing, $right: true)
+{% capture overlay %}
+<div class="bulma-overlay-mixin-parent">
+  <div class="bulma-overlay-mixin">Overlay element</div>
+</div>
+{% endcapture %}
 
+{% include elements/snippet.html content=overlay %}
+
+<!--  -->
+
+{% include elements/anchor-bis.html name="Center" %}
+
+<div class="content">
+  <p>
+    The <code>center()</code> mixin allows you to absolutely position an element with <strong>fixed dimensions</strong> at the <strong>center</strong> of its closest positioned ancestor.
+    <br>
+    The value of the <code>$width</code> parameter should be the width of the element the mixin is applied on.
+    <br>
+    Unless the element has square dimensions, the second parameter <code>$height</code> is required and its value should be the height of the element the mixin is applied on.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-center-mixin {
+  @include center;
+}{% endhighlight %}
+
+{% capture center %}
+<div class="bulma-center-mixin-parent">
+  <img class="bulma-center-mixin" height="96" width="96" src="https://source.unsplash.com/mEZ3PoFGs_k/192x192">
+</div>
+{% endcapture %}
+
+{% include elements/snippet.html content=center %}
+
+<!--  -->
+
+{% include elements/anchor-bis.html name="Placeholder" %}
+
+<div class="content">
+  <p>
+    The <code>placeholder()</code> mixin allows you to change the style of an <strong>input's placeholder</strong>.
+    <br>
+    The <code>$offset</code> parameter defines how far inside the element is positioned from each edge (top, bottom, left and right).
+  </p>
+</div>
+
+{% highlight sass %}.bulma-placeholder-mixin {
+  @include placeholder {
+    color: lightblue;
+  }
+}{% endhighlight %}
+
+{% capture placeholder %}
+<input
+  class="input bulma-placeholder-mixin"
+  type="text"
+  placeholder="I am a styled placeholder"
+>
+{% endcapture %}
+
+{% include elements/snippet.html content=placeholder %}
+
+<!--  -->
+
+{% include elements/anchor-bis.html name="Clearfix" %}
+
+<div class="content">
+  <p>
+    The <code>clearfix()</code> mixin adds a <code>::after</code></strong> pseudo-element with a <code>clear: both</code> rule.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-clearfix-mixin {
+  @include clearfix;
+}{% endhighlight %}
+
+{% capture clearfix %}
+<div class="bulma-clearfix-mixin">
+  <img height="80" width="80" style="float: left;" src="https://source.unsplash.com/La2kOu2dmH4/160x160">
+  <p>This is a short image description.</p>
+</div>
+
+<p>This text is following the clearfix element and is correctly placed after.</p>
+{% endcapture %}
+
+{% include elements/snippet.html content=clearfix %}
+
+<!--  -->
+
+{% include elements/anchor-bis.html name="Reset" %}
+
+<div class="content">
+  <p>
+    The <code>reset()</code> mixin applies a soft style reset. This is especially useful for <code>&lt;button&gt;</code> elements.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-reset-mixin {
+  @include reset;
+}{% endhighlight %}
+
+{% capture reset %}
+<button>Default button</button>
+<button class="bulma-reset-mixin">Reset button</button>
+{% endcapture %}
+
+{% include elements/snippet.html content=reset %}
+
+<!--  -->
+
+{% include elements/anchor-bis.html name="Unselectable" %}
+
+<div class="content">
+  <p>
+    The <code>unselectable()</code> mixin makes an element not selectable. This is to prevent the text to be selected when double-clicked.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-unselectable-mixin {
+  @include unselectable;
+}{% endhighlight %}
+
+{% capture unselectable %}
+<p>This text is selectable.</p>
+<p class="bulma-unselectable-mixin">This text is not selectable.</p>
+{% endcapture %}
+
+{% include elements/snippet.html content=unselectable %}
+
+<!--  -->
+
+{% include elements/anchor-bis.html name="Overflow Touch" %}
+
+<div class="content">
+  <p>
+    The <code>overflow-touch()</code> mixin add the <code>-webkit-overflow-scrolling: touch;</code> rule to the element.
+  </p>
+</div>
+
+<!--  -->
+
+{% include elements/anchor.html name="Direction Mixins" %}
+
+{% include elements/anchor-bis.html name="Left-to-right and Right-to-left Mixins" %}
+
+<div class="content">
+  <p>
+    Bulma has a global <code>$rtl</code> flag, which allows the framework to output a Right-to-left version of the CSS. By default, this flag's value is set to <code>false</code>. This means the framework output a Left-to-right version.
+  </p>
+
+  <p>
+    The mixins <code>@mixin ltr</code> and <code>@mixin rtl</code> are here to output CSS rules based on the value of <code>$rtl</code>:
+  </p>
+
+  <ul>
+    <li>
+      if <code>$rtl: true</code>, <code>@include ltr</code> outputs nothing
+    </li>
+    <li>
+      if <code>$rtl: false</code>, <code>@include rtl</code> outputs nothing
+    </li>
+  </ul>
+
+  <p>
+    This is useful for properties that are specific to the side of an element.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-ltr-rtl-mixin {
+  background-color: lightgreen;
+  padding: 0.5em 1em;
+  border: 1px solid seagreen;
+  margin-right: -1px;
+
+  &:first-child {
+    @include ltr {
+      border-bottom-left-radius: 0.5em;
+      border-top-left-radius: 0.5em;
+    }
+
+    @include rtl {
+      border-bottom-right-radius: 0.5em;
+      border-top-right-radius: 0.5em;
+    }
+  }
+
+  &:last-child {
+    @include ltr {
+      border-bottom-right-radius: 0.5em;
+      border-top-right-radius: 0.5em;
+    }
+
+    @include rtl {
+      border-bottom-left-radius: 0.5em;
+      border-top-left-radius: 0.5em;
+    }
+  }
+}{% endhighlight %}
+
+{% capture ltr-rtl %}
+<div style="display: flex;">
+  <span class="bulma-ltr-rtl-mixin">One</span>
+  <span class="bulma-ltr-rtl-mixin">Two</span>
+  <span class="bulma-ltr-rtl-mixin">Three</span>
+</div>
+{% endcapture %}
+
+{% include elements/snippet.html content=ltr-rtl %}
+
+<!--  -->
+
+{% include elements/anchor-bis.html name="LTR Position" %}
+
+<div class="content">
+  <p>
+    The <code>ltr-position()</code> mixin is a quick way to switch between <code>left</code> and <code>right</code> CSS properties when dealing with positioned elements.
+    <br>
+    The first <code>$spacing</code> parameter defines the value of the offset, whether it's right or left.
+    <br>
+    The second <code>$right</code> parameter defines if the property outputs <code>right</code> (default) or <code>left</code>.
+  </p>
+
+  <p>
+    Here is what the output looks like with a <code>$spacing</code> parameter set to <code>1rem</code>:
+  </p>
+
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        <th>Flag →</th>
+        <th><code>$rtl: false;</code></th>
+        <th><code>$rtl: true;</code></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>@include ltr-position(1rem, true)</code></td>
+        <td><code>right: 1rem</code></td>
+        <td><code>left: 1rem</code></td>
+      </tr>
+      <tr>
+        <td><code>@include ltr-position(1rem, false)</code></td>
+        <td><code>left: 1rem</code></td>
+        <td><code>right: 1rem</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="title is-6">Sass source</p>
+
+{% highlight sass %}.bulma-ltr-position-mixin {
+  @include ltr-position(1rem, false);
+  border-radius: 0.25em;
+  position: absolute;
+  top: 1rem;
+}{% endhighlight %}
+
+<p class="title is-6">CSS output</p>
+
+{% highlight css %}.bulma-ltr-position-mixin {
+  left: 1rem;
+  border-radius: 0.25em;
+  position: absolute;
+  top: 1rem;
+}{% endhighlight %}
+
+{% capture ltr-position %}
+<div class="bulma-ltr-position-mixin-parent">
+  <img class="bulma-ltr-position-mixin" height="48" width="48" src="https://source.unsplash.com/iFgRcqHznqg/96x96">
+  <p>Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
+</div>
+{% endcapture %}
+
+{% include elements/snippet.html content=ltr-position %}
+<!--  -->
+
+{% include elements/anchor-bis.html name="LTR Property" %}
+
+<div class="content">
+  <p>
+    The <code>ltr-property()</code> mixin works like the <code>ltr-position()</code> mixin but allows you to choose <strong>which CSS property</strong> to set. The mixin will append <code>-right</code> or <code>-left</code> to that property. This is especially useful for <code>margin</code> and <code>padding</code>.
+    <br>
+    The first <code>$property</code> parameter which property you want to "flip" left and right.
+    <br>
+    The second <code>$spacing</code> parameter defines the value of the offset, whether it's right or left.
+    <br>
+    The third <code>$right</code> parameter defines if the property outputs <code>right</code> (default) or <code>left</code>.
+  </p>
+
+  <p>
+    Here is what the output looks like with a <code>$spacing</code> parameter set to <code>1rem</code>:
+  </p>
+
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        <th>Flag →</th>
+        <th><code>$rtl: false;</code></th>
+        <th><code>$rtl: true;</code></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>@include ltr-property("margin", 1rem, true)</code></td>
+        <td><code>margin-right: 1rem</code></td>
+        <td><code>margin-left: 1rem</code></td>
+      </tr>
+      <tr>
+        <td><code>@include ltr-property("margin", 1rem, false)</code></td>
+        <td><code>margin-left: 1rem</code></td>
+        <td><code>margin-right: 1rem</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="title is-6">Sass source</p>
+
+{% highlight sass %}.bulma-ltr-property-mixin {
+  @include ltr-property("margin", 1rem, false);
+  border-radius: 0.25em;
+}{% endhighlight %}
+
+<p class="title is-6">CSS output</p>
+
+{% highlight css %}.bulma-ltr-property-mixin {
+  margin-left: 1rem;
+  border-radius: 0.25em;
+}{% endhighlight %}
+
+{% capture ltr-property %}
+<div class="bulma-ltr-property-mixin-parent">
+  <p>Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
+  <img class="bulma-ltr-property-mixin" height="96" width="96" src="https://source.unsplash.com/jTSf1xnsoCs/192x192">
+</div>
+{% endcapture %}
+
+{% include elements/snippet.html content=ltr-property %}
