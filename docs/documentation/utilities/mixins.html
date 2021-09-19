@@ -85,11 +85,76 @@ breadcrumb:
 
 <!--  -->
 
-@include loader
+<h4 class="title is-5">Loader</h4>
 
-@include fa($size, $dimensions)
+<div class="content">
+  <p>
+    The <code>loader()</code> mixin creates a 1em <strong>spinning circle</strong>.
+  </p>
+</div>
 
-@include block($spacing: $block-spacing)
+{% highlight sass %}.bulma-loader-mixin {
+  @include loader;
+}{% endhighlight %}
+
+{% capture loader %}
+<span class="bulma-loader-mixin"></span>
+{% endcapture %}
+
+{% include elements/snippet.html content=loader %}
+
+<!--  -->
+
+<h4 class="title is-5">Block</h4>
+
+<div class="content">
+  <p>
+    The <code>block()</code> mixin adds <strong>spacing</strong> below an element, but only if it's <strong>not the last child</strong>.
+    <br>
+    The <code>$spacing</code> parameter defines the value of the <code>margin-bottom</code>.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-block-mixin {
+  @include block(1rem);
+}{% endhighlight %}
+
+{% capture block %}
+<p class="bulma-block-mixin">This element has a margin-bottom.</p>
+<p class="bulma-block-mixin">This element too.</p>
+<p class="bulma-block-mixin">Not this one because it's the last child.</p>
+{% endcapture %}
+
+{% include elements/snippet.html content=block %}
+
+<!--  -->
+
+<h4 class="title is-5">Font Awesome container</h4>
+
+<div class="content">
+  <p>
+    The <code>fa()</code> mixin creates a <strong>square inline-block element</strong>, ideal for containing a Font Awesome icon, or any other type of icon font.
+    <br>
+    The first <code>$size</code> parameter defines the icon font size.
+    <br>
+    The second <code>$dimensions</code> parameter defines the dimensions of the square container.
+  </p>
+</div>
+
+{% highlight sass %}.bulma-fa-mixin {
+  @include fa(1rem, 2rem);
+  background-color: lavender; // For demo purposes
+}{% endhighlight %}
+
+{% capture fa %}
+<span class="bulma-fa-mixin">
+  <i class="fas fa-thumbs-up"></i>
+</span>
+{% endcapture %}
+
+{% include elements/snippet.html content=fa %}
+
+<!--  -->
 
 @include overlay($offset: 0)
 
