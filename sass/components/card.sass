@@ -1,8 +1,9 @@
+@import "../utilities/mixins"
+
 $card-color: $text !default
 $card-background-color: $scheme-main !default
-$card-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
+$card-shadow: $shadow !default
 $card-radius: 0.25rem !default
-$card-overflow: hidden !default
 
 $card-header-background-color: transparent !default
 $card-header-color: $text-strong !default
@@ -25,10 +26,18 @@ $card-media-margin: $block-spacing !default
   box-shadow: $card-shadow
   color: $card-color
   max-width: 100%
-  overflow: $card-overflow
   position: relative
 
+%card-item
+  &:first-child
+    border-top-left-radius: $card-radius
+    border-top-right-radius: $card-radius
+  &:last-child
+    border-bottom-left-radius: $card-radius
+    border-bottom-right-radius: $card-radius
+
 .card-header
+  @extend %card-item
   background-color: $card-header-background-color
   align-items: stretch
   box-shadow: $card-header-shadow
@@ -45,6 +54,7 @@ $card-media-margin: $block-spacing !default
     justify-content: center
 
 .card-header-icon
+  +reset
   align-items: center
   cursor: pointer
   display: flex
@@ -54,12 +64,22 @@ $card-media-margin: $block-spacing !default
 .card-image
   display: block
   position: relative
+  &:first-child
+    img
+      border-top-left-radius: $card-radius
+      border-top-right-radius: $card-radius
+  &:last-child
+    img
+      border-bottom-left-radius: $card-radius
+      border-bottom-right-radius: $card-radius
 
 .card-content
+  @extend %card-item
   background-color: $card-content-background-color
   padding: $card-content-padding
 
 .card-footer
+  @extend %card-item
   background-color: $card-footer-background-color
   border-top: $card-footer-border-top
   align-items: stretch

@@ -1,32 +1,33 @@
 {% assign customize_link = site.data.links.by_id['customize'] %}
+{% assign heading_href = site.url | append: customize_link.path %}
 
-<section id="customize" class="bd-easy section is-medium">
+<section class="bd-index-section" style="--bd-section-h: 330deg;">
+  {%
+    include components/heading.html
+    color="sass"
+    icon="fab fa-sass"
+    title="So <strong>quick</strong> to customize"
+    subtitle="Simply set your own Sass variables before importing Bulma"
+    href=heading_href
+    button_icon_after="fas fa-arrow-right"
+    button_label="See <strong>customization</strong> docs"
+  %}
+
   <div class="container">
-    <header class="bd-index-header">
-      <h3 class="title is-3">
-        <a href="{{ site.url }}{{ customize_link.path }}">
-          So <strong>quick</strong> to customize
-        </a>
-      </h3>
-      <h4 class="subtitle is-4">
-        Simply set your own Sass variables before importing Bulma
-      </h4>
-      <div class="bd-index-custom-tweet">
-        {% include elements/tw.html tweet_id="1070320154452656128"
-        modifier='bd-is-grey' %}
-      </div>
+    <header class="block is-size-5-desktop mb-6">
+      {% include elements/tw.html tweet_id="1070320154452656128" %}
     </header>
 
-    <div class="columns">
-      <div class="column is-6">
-        <div class="highlight-full bd-has-drawing">
+    <div class="columns is-variable is-8">
+      <div class="column">
+        <div class="bd-highlight-full bd-has-drawing">
           {% highlight scss %}{% include snippets/customized.html %}{%
           endhighlight %} {% include elements/drawing.html id='customize'
           width=152 height=76 %}
         </div>
       </div>
 
-      <div class="column is-6">
+      <div class="column">
         <div class="bd-index-custom bd-is-before">
           <p class="bd-index-custom-title">Before</p>
           <div class="bd-index-custom-example">
@@ -96,8 +97,5 @@
         </div>
       </div>
     </div>
-
-    {% include components/hero-buttons.html href=customize_link.path
-    content="<span>Learn how to <strong>customize</strong></span>" %}
   </div>
 </section>

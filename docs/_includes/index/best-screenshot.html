@@ -1,0 +1,15 @@
+{% assign website = site.data.expo.by_id[include.website_id] %}
+{% assign imageName = include.website_id | slugify %}
+{% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
+{% assign size1x = "672x420" %}
+{% assign size2x = "1344x840" %}
+
+<a class="bd-screenshot {{ include.modifier }}" href="{{ site.url }}/expo">
+  <img
+       src="{{ imagePath }}-{{ size1x }}.jpg"
+    srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+            {{ imagePath }}-{{ size1x }}.jpg 1x"
+    width="672"
+    height="420"
+  />
+</a>

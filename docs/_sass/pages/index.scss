@@ -1,0 +1,127 @@
+:root {
+  --bd-index-vertical: #{$block-spacing};
+  --bd-index-gap: 3rem;
+}
+
+$linear-gradient: linear-gradient(
+  180deg,
+  hsla(var(--bd-section-h), 100%, 67%, 0.1),
+  transparent
+);
+
+.bd-index-section {
+  --bd-section-vertical: #{$block-spacing};
+  --bd-section-horizontal: #{$block-spacing};
+  --bd-section-h: 171deg;
+
+  background-image: linear-gradient(
+    180deg,
+    hsla(var(--bd-section-h), 100%, 67%, 0.1),
+    transparent var(--bd-index-vertical)
+  );
+  // background-image: radial-gradient(
+  //   ellipse at top,
+  //   hsla(var(--bd-section-h), 100%, 67%, 0.1),
+  //   transparent calc(4 * var(--bd-index-vertical))
+  // ), $linear-gradient;
+  background-repeat: repeat-x;
+  // background-size: 100% var(--bd-index-vertical);
+
+  .bd-tw {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28em;
+  }
+}
+
+.bd-index-content {
+  font-size: 1rem;
+
+  strong {
+    font-weight: $weight-semibold;
+  }
+
+  .title {
+    color: $text-strong;
+    font-size: 2em;
+    font-weight: $weight-normal;
+    position: relative;
+
+    .icon {
+      height: 1.125em;
+      position: absolute;
+      right: calc(100% + #{$block-spacing});
+      top: 0;
+      width: 1.125em;
+    }
+
+    a {
+      font-weight: $weight-semibold;
+    }
+  }
+
+  .subtitle {
+    strong {
+      color: inherit;
+    }
+  }
+
+  .icon-text {
+    strong {
+      color: inherit;
+    }
+  }
+
+  .highlight {
+    margin-bottom: 1em;
+  }
+}
+
+@include mobile {
+  .bd-index-section {
+    padding: ($block-spacing * 2) $block-spacing;
+
+    .bd-tws {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+@include tablet {
+  :root {
+    --bd-index-vertical: 3rem;
+  }
+
+  .bd-index-section {
+    padding-bottom: var(--bd-index-vertical);
+    padding-top: var(--bd-index-vertical);
+  }
+}
+
+@include desktop {
+  .bd-index-content {
+    font-size: 1.125rem;
+  }
+}
+
+@include widescreen {
+  :root {
+    --bd-index-vertical: 6rem;
+  }
+
+  .bd-index-content {
+    font-size: 1.25rem;
+    max-width: 23em;
+  }
+}
+
+@include fullhd {
+  :root {
+    --bd-index-vertical: 9rem;
+  }
+
+  .bd-index-content {
+    font-size: 1.5rem;
+  }
+}

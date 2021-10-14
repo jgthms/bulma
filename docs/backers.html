@@ -1,85 +1,45 @@
 ---
 fulltitle: 'Backers via Patreon and GitHub'
 title: 'Backers via <a href="https://www.patreon.com/jgthms" target="_blank">Patreon</a> and <a href="https://github.com/sponsors/jgthms" target="_blank">GitHub</a>'
-layout: more
+layout: default
 route: backers
 breadcrumb:
 - home
 - patreon-backers
 ---
 
-{% capture table_head %}
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Twitter</th>
-    <th>Website</th>
-  </tr>
-</thead>
+{% include global/navbar.html id="Backers" %}
+
+{% capture hero_content %}
+{% include elements/sponsor-button.html %}
 {% endcapture %}
 
-<h2 class="title is-5">
-  Generous backers ($30+)
-</h2>
+{%
+  include components/hero.html
+  color="sponsor"
+  icon="fas fa-thumbs-up"
+  title=page.title
+  subtitle="Everyone who is supporting Bulma and Open Source"
+  content=hero_content
+%}
 
-<table class="table is-bordered">
-  {{ table_head }}
-  <tbody>
-    {% for backer in site.data.backers["30"] reversed %}
-      {% include elements/patreon-item.html %}
-    {% endfor %}
-    {% for backer in site.data.github["30"] reversed %}
-      {% include elements/github-item.html %}
-    {% endfor %}
-  </tbody>
-</table>
+<main class="bd-backers">
+  <div class="bd-backers-platforms">
+    <div class="bd-backers-platform bd-is-patreon">
+      <a class="bd-backers-platform-logo" href="{{ site.data.meta.patreon_url }}" target="_blank">
+        {% include svg/patreon.svg %}
+      </a>
+    </div>
+    <div class="bd-backers-platform bd-is-github">
+      <a class="bd-backers-platform-logo" href="{{ site.data.meta.github }}" target="_blank">
+        {% include svg/github.svg %}
+      </a>
+    </div>
+  </div>
 
-{% if site.data.backers["500"].size > 0 or site.data.github["500"].size > 0 %}
-<h2 class="title is-5">
-  Documentation sponsors ($500+)
-</h2>
-
-<table class="table is-bordered">
-  {{ table_head }}
-  <tbody>
-    {% for backer in site.data.backers["500"] reversed %}
-      {% include elements/patreon-item.html %}
-    {% endfor %}
-    {% for backer in site.data.github["500"] reversed %}
-      {% include elements/github-item.html %}
-    {% endfor %}
-  </tbody>
-</table>
-{% endif %}
-
-<h2 class="title is-5">
-  Homepage sponsors ($100+)
-</h2>
-
-<table class="table is-bordered">
-  {{ table_head }}
-  <tbody>
-    {% for backer in site.data.backers["100"] reversed %}
-      {% include elements/patreon-item.html %}
-    {% endfor %}
-    {% for backer in site.data.github["100"] reversed %}
-      {% include elements/github-item.html %}
-    {% endfor %}
-  </tbody>
-</table>
-
-<h2 class="title is-5">
-  Bulma backers ($10+)
-</h2>
-
-<table class="table is-bordered">
-  {{ table_head }}
-  <tbody>
-    {% for backer in site.data.backers["10"] reversed %}
-      {% include elements/patreon-item.html %}
-    {% endfor %}
-    {% for backer in site.data.github["10"] reversed %}
-      {% include elements/github-item.html %}
-    {% endfor %}
-  </tbody>
-</table>
+  {% include elements/backers-group.html tier="30" title="Generous backers ($30+)" %}
+  {% include elements/backers-group.html tier="500" title="Documentation sponsors ($500+)" %}
+  {% include elements/backers-group.html tier="300" title="Website sponsors ($300+)" %}
+  {% include elements/backers-group.html tier="100" title="Homepage sponsors ($100+)" %}
+  {% include elements/backers-group.html tier="10" title="Bulma backers ($10+)" %}
+</main>

@@ -1,4 +1,4 @@
-@import "initial-variables"
+@import "derived-variables"
 
 =clearfix
   &::after
@@ -9,11 +9,11 @@
 =center($width, $height: 0)
   position: absolute
   @if $height != 0
-    left: calc(50% - (#{$width} / 2))
-    top: calc(50% - (#{$height} / 2))
+    left: calc(50% - (#{$width} * 0.5))
+    top: calc(50% - (#{$height} * 0.5))
   @else
-    left: calc(50% - (#{$width} / 2))
-    top: calc(50% - (#{$width} / 2))
+    left: calc(50% - (#{$width} * 0.5))
+    top: calc(50% - (#{$width} * 0.5))
 
 =fa($size, $dimensions)
   display: inline-block
@@ -25,6 +25,11 @@
   width: $dimensions
 
 =hamburger($dimensions)
+  -moz-appearance: none
+  -webkit-appearance: none
+  appearance: none
+  background: none
+  border: none
   cursor: pointer
   display: block
   height: $dimensions
@@ -67,6 +72,18 @@
   @each $placeholder in $placeholders
     &:#{$placeholder}-placeholder
       @content
+
+=reset
+  -moz-appearance: none
+  -webkit-appearance: none
+  appearance: none
+  background: none
+  border: none
+  color: currentColor
+  font-family: inherit
+  font-size: 1em
+  margin: 0
+  padding: 0
 
 // Responsiveness
 
@@ -161,9 +178,6 @@
   -ms-user-select: none
   user-select: none
 
-%unselectable
-  +unselectable
-
 =arrow($color: transparent)
   border: 3px solid $color
   border-radius: 2px
@@ -180,18 +194,12 @@
   transform-origin: center
   width: 0.625em
 
-%arrow
-  +arrow
-
 =block($spacing: $block-spacing)
   &:not(:last-child)
     margin-bottom: $spacing
 
-%block
-  +block
-
 =delete
-  @extend %unselectable
+  +unselectable
   -moz-appearance: none
   -webkit-appearance: none
   background-color: bulmaRgba($scheme-invert, 0.2)
@@ -256,9 +264,6 @@
     min-width: 32px
     width: 32px
 
-%delete
-  +delete
-
 =loader
   animation: spinAround 500ms infinite linear
   border: 2px solid $grey-lighter
@@ -271,15 +276,9 @@
   position: relative
   width: 1em
 
-%loader
-  +loader
-
 =overlay($offset: 0)
   bottom: $offset
   left: $offset
   position: absolute
   right: $offset
   top: $offset
-
-%overlay
-  +overlay

@@ -8,45 +8,35 @@ breadcrumb:
 
 {% include global/navbar.html id="More" %}
 
+{%
+  include components/hero.html
+  color="link"
+  icon="fas fa-ellipsis-h"
+  title="More about Bulma"
+%}
+
 <main class="bd-main">
-  <div class="bd-main-container container">
-    <div class="bd-duo">
-      <div class="bd-lead">
-        {% include components/breadcrumb.html %}
+  <div class="bd-posts">
+    {% for link_id in site.data.links.more %}
+      {% assign link = site.data.links.by_id[link_id] %}
+      <div class="bd-post">
+        <a class="bd-post-link" href="{{ site.url }}{{ link.path }}" style="--color: var(--{{ link.color }});">
+          <div class="bd-post-body">
+            <figure class="icon">
+              <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
+            </figure>
 
-        <header class="bd-header">
-          <div class="bd-header-titles">
-            <h1 class="title">
-              More
-            </h1>
-            <p class="subtitle is-4">
-              Projects and content related to Bulma
-            </p>
+            <div class="bd-post-content">
+              <h2 class="title">
+                {{ link.name }}
+              </h2>
+              <div class="subtitle">
+                {{ link.subtitle }}
+              </div>
+            </div>
           </div>
-
-          <div class="bd-header-carbon">
-            {% include elements/carbon.html %}
-          </div>
-        </header>
-
-        <div class="bd-content">
-          <div class="bd-links">
-            {% for link_id in site.data.links.more %}
-              {% assign link = site.data.links.by_id[link_id] %}
-              {%
-                include elements/link.html
-                path=link.path
-                color=link.color
-                icon_brand=link.icon_brand
-                icon_regular=link.icon_regular
-                icon=link.icon
-                name=link.name
-                subtitle=link.subtitle
-              %}
-            {% endfor %}
-          </div>
-        </div>
+        </a>
       </div>
-    </div>
+    {% endfor %}
   </div>
 </main>

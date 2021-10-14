@@ -1,0 +1,20 @@
+{% assign link = site.data.links.by_id[include.link_id] %}
+{% assign cleanpath = link.path | remove_first: "/" %}
+
+<a class="
+  navbar-item
+  bd-navbar-item
+  bd-navbar-item-{{ link_id }}
+  {{ include.class }}
+  {% if page.route == cleanpath %}is-active{% endif %}
+  {% if page.path contains '_posts' and link_id == 'blog' %}
+    is-active
+  {% endif %}
+"
+href="{{ site.url }}{{ link.path }}">
+<span class="icon has-text-{{ link.color }}">
+  <i class="{% if link.icon_brand %}fab{% elsif link.icon_regular %}far{% else %}fas{% endif %} fa-{{ link.icon }}"></i>
+</span>
+
+<span>{{ link.title }}</span>
+</a>

@@ -18,22 +18,6 @@ meta:
 <progress class="progress" value="15" max="100">15%</progress>
 {% endcapture %}
 
-{% capture progress_colors %}
-<progress class="progress is-primary" value="15" max="100">15%</progress>
-<progress class="progress is-link" value="30" max="100">30%</progress>
-<progress class="progress is-info" value="45" max="100">45%</progress>
-<progress class="progress is-success" value="60" max="100">60%</progress>
-<progress class="progress is-warning" value="75" max="100">75%</progress>
-<progress class="progress is-danger" value="90" max="100">90%</progress>
-{% endcapture %}
-
-{% capture progress_sizes %}
-<progress class="progress is-small" value="15" max="100">15%</progress>
-<progress class="progress" value="30" max="100">30%</progress>
-<progress class="progress is-medium" value="45" max="100">45%</progress>
-<progress class="progress is-large" value="60" max="100">60%</progress>
-{% endcapture %}
-
 {% capture progress_indeterminate %}
 <progress class="progress is-small is-primary" max="100">15%</progress>
 <progress class="progress is-danger" max="100">30%</progress>
@@ -57,22 +41,32 @@ meta:
   </p>
 </div>
 
-{% include elements/snippet.html content=progress_colors %}
+{% for color in site.data.colors.justColors %}
+{% capture foobar %}
+{% assign n = forloop.index | times: 15 %}
+<progress class="progress is-{{ color }}" value="{{ n }}" max="100">{{ n }}%</progress>
+{% endcapture %}
+{% include elements/snippet.html content=foobar %}
+{% endfor %}
 
 {% include elements/anchor.html name="Sizes" %}
 
-{% include elements/snippet.html content=progress_sizes %}
+{% for size in site.data.sizes %}
+{% capture foobar %}
+{% assign n = forloop.index | times: 20 %}
+<progress class="progress is-{{ size }}" value="{{ n }}" max="100">{{ n }}%</progress>
+{% endcapture %}
+{% include elements/snippet.html content=foobar %}
+{% endfor %}
 
 {% include elements/anchor.html name="Indeterminate" %}
 
-{% include elements/new-tag.html version="0.7.4" %}
-
 <div class="content">
   <p>
-    If you don't set the HTML <code>value</code> attribute, you can display an <strong>indeterminate</strong> progress bar. It's used to show that some progress is going on, but the actual duration is not yet determined.
+    If you don't set the HTML <code>value</code> attribute, you can display an <strong>indeterminate</strong> progress bar. It's used to show that some progress is going on, but the total duration is not yet determined.
   </p>
 </div>
 
 {% include elements/snippet.html content=progress_indeterminate %}
 
-{% include elements/variables.html type='element' %}
+{% include components/variables.html type='element' %}

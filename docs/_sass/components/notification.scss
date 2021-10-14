@@ -1,0 +1,37 @@
+.bd-notification {
+  background-color: $background;
+  border-radius: $radius;
+  color: $text-light;
+  font-weight: $weight-semibold;
+  padding: 1.25rem 0;
+  position: relative;
+  text-align: center;
+
+  .title,
+  .subtitle,
+  .content,
+  strong {
+    color: currentColor;
+  }
+
+  code,
+  pre {
+    background-color: rgba($scheme-invert, 0.2);
+    border-radius: $radius;
+    color: $scheme-main;
+  }
+
+  pre code {
+    background-color: transparent;
+  }
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.bd-hello-body {
+  display: grid;
+  grid-gap: var(--bd-index-gap);
+}
+
+.bd-hello-ghbtns {
+  margin-bottom: 1em;
+  min-height: 30px;
+
+  iframe,
+  a,
+  img {
+    height: 30px;
+  }
+
+  a {
+    display: inline-block;
+    min-width: 100px;
+    vertical-align: top;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.bd-hello-buttons {
+  .bd-fat-button {
+    font-size: 1.125em;
+  }
+}
+
+.bd-hello-media {
+  text-align: center;
+}
+
+.bd-hello-video {
+  padding-top: 56.25%;
+  position: relative;
+
+  > div {
+    @include overlay;
+  }
+}
+
+.bd-hello-shadow {
+  background-size: cover;
+}
+
+.bd-hello-iframe {
+  border-radius: 0.75em;
+
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.bd-hello-author {
+  color: $text-light;
+  margin-top: 1em;
+  opacity: 0.5;
+
+  a {
+    color: currentColor;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@include mobile {
+  .bd-hello {
+    grid-gap: var(--bd-index-vertical);
+    padding: var(--bd-index-vertical);
+  }
+
+  .bd-hello-content {
+    .title br {
+      display: none;
+    }
+  }
+
+  .bd-hello-buttons {
+    .button {
+      margin-right: 0 !important;
+      width: 100%;
+    }
+  }
+}
+
+@include tablet {
+  .bd-hello {
+    align-items: center;
+    padding-bottom: var(--bd-index-vertical);
+    padding-top: var(--bd-index-vertical);
+  }
+
+  .bd-hello-body {
+    align-items: center;
+    grid-gap: 0;
+    grid-template-columns:
+      var(--bd-index-gap) 1fr calc(
+        calc(var(--container-width) - var(--bd-index-gap)) / 2
+      )
+      var(--bd-index-gap) calc(
+        calc(var(--container-width) - var(--bd-index-gap)) / 2
+      )
+      1fr var(--bd-index-gap);
+  }
+
+  .bd-hello-content {
+    grid-column: 3 / span 1;
+  }
+
+  .bd-hello-buttons {
+    display: grid;
+    grid-gap: $block-spacing;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 0 !important;
+
+    .button {
+      margin: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  .bd-hello-media {
+    grid-column: 5 / span 2;
+  }
+
+  .bd-hello-sponsors {
+    grid-column: 4 / span 4;
+  }
+}

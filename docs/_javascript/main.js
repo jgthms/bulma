@@ -1,145 +1,145 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Search
+
+  const setSearchToggle = () => {
+    const icon = document.getElementById('searchIcon');
+    const search = document.getElementById('search');
+    const input = document.getElementById('algoliaSearch');
+
+    if (!icon) {
+      return;
+    }
+
+    icon.addEventListener('click', (event) => {
+      search.classList.toggle('bd-is-visible');
+
+      if (search.classList.contains('bd-is-visible')) {
+        algoliaSearch.focus();
+      }
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        return search.classList.remove('bd-is-visible');
+      }
+    });
+  };
+
+  setSearchToggle();
+
+  // Navbar
+
+  const setNavbarVisibility = () => {
+    const navbar = document.getElementById('navbar');
+
+    if (!navbar) {
+      return;
+    }
+
+    const cs = getComputedStyle(navbar);
+    const paddingX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    const brand = navbar.querySelector('.navbar-brand');
+    const end = navbar.querySelector('.navbar-end');
+    const search = navbar.querySelector('.bd-search');
+    const original = document.getElementById('navbarStartOriginal');
+    const clone = document.getElementById('navbarStartClone');
+
+    const rest =
+      navbar.clientWidth -
+      paddingX -
+      brand.clientWidth -
+      end.clientWidth -
+      search.clientWidth;
+
+    const space = original.clientWidth;
+    const all = document.querySelectorAll(
+      '#navbarStartClone > .bd-navbar-item'
+    );
+    const base = document.querySelectorAll(
+      '#navbarStartClone > .bd-navbar-item-base'
+    );
+    const more = document.querySelectorAll(
+      '#navbarStartOriginal > .bd-navbar-item-more'
+    );
+    const dropdown = document.querySelectorAll(
+      '#navbarStartOriginal .bd-navbar-dropdown > .navbar-item'
+    );
+
+    let count = 0;
+    let totalWidth = 0;
+
+    const showMore = () => {};
+
+    const hideMore = () => {};
+
+    for (const item of all) {
+      totalWidth += item.offsetWidth;
+
+      if (totalWidth > rest) {
+        break;
+      }
+
+      count++;
+    }
+
+    const howManyMore = Math.max(0, count - base.length);
+
+    if (howManyMore > 0) {
+      for (let i = 0; i < howManyMore; i++) {
+        more[i].classList.add('bd-is-visible');
+        dropdown[i].classList.add('bd-is-hidden');
+      }
+    }
+
+    for (let j = howManyMore; j < more.length; j++) {
+      more[j].classList.remove('bd-is-visible');
+    }
+
+    for (let k = howManyMore; k < dropdown.length; k++) {
+      dropdown[k].classList.remove('bd-is-hidden');
+    }
+  };
+
+  setNavbarVisibility();
 
   // Cookies
 
   const cookieBookModalName = 'bulma_closed_book_modal';
   const cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
 
-  // Sidebar links
-
-  const $categories = getAll('#categories .bd-category');
-
-  if ($categories.length > 0) {
-    $categories.forEach(el => {
-      const toggle_el = el.querySelector('.bd-category-toggle');
-
-      toggle_el.addEventListener('click', event => {
-        // closeCategories(el);
-        el.classList.toggle('is-active');
-      });
-    });
-  }
-
-  function closeCategories(current_el) {
-    $categories.forEach(el => {
-      if (current_el == el) {
-        return;
-      }
-      el.classList.remove('is-active');
-    });
-  }
-
-  const anchors_ref_el = document.getElementById('anchorsReference');
-  const anchors_el = document.getElementById('anchors');
-  const anchor_links_el = getAll('.bd-anchor-link');
-
-  let anchors_by_id = {};
-  let anchors_order = [];
-  let anchor_nav_els = [];
-
-  if (anchors_el && anchor_links_el.length > 0) {
-    anchors_el.classList.add('is-active');
-    const anchors_el_list = anchors_el.querySelector('.bd-anchors-list');
-
-    anchor_links_el.forEach((el, index) => {
-      const link_target = el.getAttribute('href');
-      const link_text = el.previousElementSibling.innerText;
-
-      if (link_text != '') {
-        const item_el = createAnchorLink(link_text, link_target);
-        anchors_el_list.appendChild(item_el);
-
-        const anchor_key = link_target.substring(1); // #target -> target
-        anchors_by_id[anchor_key] = {
-          id: anchor_key,
-          index,
-          target: link_target,
-          text: link_text,
-          nav_el: item_el,
-        };
-        anchors_order.push(anchor_key);
-        anchor_nav_els.push(item_el);
-      }
-    });
-
-    const back_to_top_el = createAnchorLink('Back to top', '');
-    back_to_top_el.onclick = scrollToTop;
-    anchors_el_list.appendChild(back_to_top_el);
-  }
-
-  function scrollToTop() {
-    window.scrollTo(0, 0);
-  }
-
-  function createAnchorLink(text, target) {
-    const item_el = document.createElement('li');
-    const link_el = document.createElement('a');
-    const text_node = document.createTextNode(text);
-
-    if (target) {
-      link_el.setAttribute('href', target);
-    }
-
-    link_el.appendChild(text_node);
-    item_el.appendChild(link_el);
-
-    return item_el;
-  }
-
-  function closeCategories(current_el) {
-    $categories.forEach(el => {
-      if (current_el == el) {
-        return;
-      }
-      el.classList.remove('is-active');
-    });
-  }
-
-  // Meta links
-
-  const $metalinks = getAll('#meta a');
-
-  if ($metalinks.length > 0) {
-    $metalinks.forEach($el => {
-      $el.addEventListener('click', event => {
-        event.preventDefault();
-        const target = $el.getAttribute('href');
-        const $target = document.getElementById(target.substring(1));
-        $target.scrollIntoView(true);
-        return false;
-      });
-    });
-  }
-
   // Dropdowns
 
   const $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
   if ($dropdowns.length > 0) {
-    $dropdowns.forEach($el => {
-      $el.addEventListener('click', event => {
+    $dropdowns.forEach(($el) => {
+      $el.addEventListener('click', (event) => {
         event.stopPropagation();
         $el.classList.toggle('is-active');
       });
     });
 
-    document.addEventListener('click', event => {
+    document.addEventListener('click', (event) => {
       closeDropdowns();
     });
   }
 
   function closeDropdowns() {
-    $dropdowns.forEach($el => {
+    $dropdowns.forEach(($el) => {
       $el.classList.remove('is-active');
     });
   }
 
   // Toggles
 
-  const $burgers = getAll('.burger');
+  const $burgers = getAll('.navbar-burger');
 
   if ($burgers.length > 0) {
-    $burgers.forEach($el => {
+    $burgers.forEach(($el) => {
+      if (!$el.dataset.target) {
+        return;
+      }
+
       $el.addEventListener('click', () => {
         const target = $el.dataset.target;
         const $target = document.getElementById(target);
@@ -154,10 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const rootEl = document.documentElement;
   const $modals = getAll('.modal');
   const $modalButtons = getAll('.modal-button');
-  const $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+  const $modalCloses = getAll(
+    '.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button'
+  );
 
   if ($modalButtons.length > 0) {
-    $modalButtons.forEach($el => {
+    $modalButtons.forEach(($el) => {
       $el.addEventListener('click', () => {
         const target = $el.dataset.target;
         openModal(target);
@@ -166,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if ($modalCloses.length > 0) {
-    $modalCloses.forEach($el => {
+    $modalCloses.forEach(($el) => {
       $el.addEventListener('click', () => {
         closeModals();
       });
@@ -181,13 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeModals() {
     rootEl.classList.remove('is-clipped');
-    $modals.forEach($el => {
+    $modals.forEach(($el) => {
       $el.classList.remove('is-active');
     });
   }
 
-  document.addEventListener('keydown', event => {
+  document.addEventListener('keydown', (event) => {
     const e = event || window.event;
+
     if (e.keyCode === 27) {
       closeModals();
       closeDropdowns();
@@ -200,20 +203,27 @@ document.addEventListener('DOMContentLoaded', () => {
   let itemsProcessed = 0;
 
   if ($highlights.length > 0) {
-    $highlights.forEach($el => {
-      const copyEl = '<button class="button is-small bd-copy">Copy</button>';
-      const expandEl = '<button class="button is-small bd-expand">Expand</button>';
+    $highlights.forEach(($el) => {
+      const copyEl = '<button class="button bd-copy">Copy</button>';
+      const expandEl =
+        '<button class="button is-small bd-expand">Expand</button>';
       $el.insertAdjacentHTML('beforeend', copyEl);
 
       const $parent = $el.parentNode;
+
       if ($parent && $parent.classList.contains('bd-is-more')) {
-        const showEl = '<button class="bd-show"><div><span class="icon"><i class="fas fa-code"></i></span> <strong>Show code</strong></div></button>';
-        $el.insertAdjacentHTML('beforeend', showEl);
-      } else if ($el.firstElementChild.scrollHeight > 480 && $el.firstElementChild.clientHeight <= 480) {
+        const showEl =
+          '<button class="button is-small bd-show"><span class="icon"><i class="fas fa-code"></i></span><strong>Show code</strong></button>';
+        $parent.insertAdjacentHTML('afterbegin', showEl);
+      } else if (
+        $el.firstElementChild.scrollHeight > 480 &&
+        $el.firstElementChild.clientHeight <= 480
+      ) {
         $el.insertAdjacentHTML('beforeend', expandEl);
       }
 
       itemsProcessed++;
+
       if (itemsProcessed === $highlights.length) {
         addHighlightControls();
       }
@@ -221,280 +231,67 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addHighlightControls() {
-    const $highlightButtons = getAll('.highlight .bd-copy, .highlight .bd-expand');
+    const $highlightButtons = getAll(
+      '.highlight .bd-copy, .highlight .bd-expand'
+    );
 
-    $highlightButtons.forEach($el => {
+    $highlightButtons.forEach(($el) => {
       $el.addEventListener('mouseenter', () => {
         $el.parentNode.classList.add('bd-is-hovering');
+        $el.parentNode.parentNode.classList.add('bd-is-hovering');
       });
 
       $el.addEventListener('mouseleave', () => {
         $el.parentNode.classList.remove('bd-is-hovering');
+        $el.parentNode.parentNode.classList.remove('bd-is-hovering');
       });
     });
 
-    const $highlightExpands = getAll('.highlight .bd-expand');
+    const $highlightExpands = getAll('.bd-snippet .bd-expand');
 
-    $highlightExpands.forEach($el => {
+    $highlightExpands.forEach(($el) => {
       $el.addEventListener('click', () => {
         $el.parentNode.firstElementChild.style.maxHeight = 'none';
       });
     });
 
-    const $highlightShows = getAll('.highlight .bd-show');
+    const $highlightShows = getAll('.bd-snippet .bd-show');
 
-    $highlightShows.forEach($el => {
+    $highlightShows.forEach(($el) => {
       $el.addEventListener('click', () => {
-        $el.parentNode.parentNode.classList.remove('bd-is-more-clipped');
+        const text = $el.querySelector('strong').textContent;
+        const newText = text === 'Show code' ? 'Hide code' : 'Show code';
+        $el.querySelector('strong').textContent = newText;
+        $el.parentNode.classList.toggle('bd-is-more-clipped');
       });
     });
   }
 
   setTimeout(() => {
     new Clipboard('.bd-copy', {
-      target: trigger => {
+      target: (trigger) => {
         return trigger.previousElementSibling.firstElementChild;
-      }
+      },
     });
   }, 100);
 
-  // Functions
+  // Events
+
+  let resizeTimer;
+
+  function handleResize() {
+    window.clearTimeout(resizeTimer);
+
+    resizeTimer = window.setTimeout(function () {
+      setNavbarVisibility();
+    }, 10);
+  }
+
+  window.addEventListener('resize', handleResize);
+
+  // Utils
 
   function getAll(selector, parent = document) {
     return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
   }
-
-  // Scrolling
-
-  const html_el = document.documentElement;
-  const navbarEl = document.getElementById('navbar');
-  const navbarBurger = document.getElementById('navbarBurger');
-  const specialShadow = document.getElementById('specialShadow');
-  const NAVBAR_HEIGHT = 52;
-  const THRESHOLD = 160;
-  let horizon = NAVBAR_HEIGHT;
-  let whereYouStoppedScrolling = 0;
-  let scrollFactor = 0;
-  let currentTranslate = 0;
-
-  // Anchors highlight
-
-  let past_anchors = [];
-  anchor_links_el.reverse();
-  const trigger_offset = 24 ; // In pixels
-  const typo_el = document.getElementById('typo');
-
-  function whenScrolling() {
-    if (anchors_ref_el) {
-      const bounds = anchors_ref_el.getBoundingClientRect();
-      const anchors_height = anchors_el.clientHeight;
-      const typo_bounds = typo_el.getBoundingClientRect();
-      const typo_height = typo_el.clientHeight;
-
-      if (bounds.top < 1 && typo_bounds.top - anchors_height + typo_height > 0) {
-        anchors_el.classList.add('is-pinned');
-      } else {
-        anchors_el.classList.remove('is-pinned');
-      }
-
-      anchor_links_el.some(el => {
-        const bounds = el.getBoundingClientRect();
-        const href = el.getAttribute('href');
-        const key = href.substring(1); // #target -> target
-
-        if (bounds.top < 1 + trigger_offset && past_anchors.indexOf(key) == -1) {
-          past_anchors.push(key);
-          highlightAnchor();
-          return;
-        } else if (bounds.top > 0 + trigger_offset && past_anchors.indexOf(key) != -1) {
-          removeFromArray(past_anchors, key);
-          highlightAnchor();
-          return;
-        }
-      });
-    }
-  }
-
-  function highlightAnchor() {
-    const future_anchors = anchors_order.diff(past_anchors);
-    let highest_index = -1;
-    let highest_anchor_key = '';
-
-    if (past_anchors.length > 0) {
-      past_anchors.forEach((key, index) => {
-        const anchor = anchors_by_id[key];
-        anchor.nav_el.className = 'is-past';
-
-        // Keep track of the bottom most item
-        if (anchor.index > highest_index) {
-          highest_index = anchor.index;
-          highest_anchor_key = key;
-        }
-      });
-
-      if (highest_anchor_key in anchors_by_id) {
-        anchors_by_id[highest_anchor_key].nav_el.className = 'is-current';
-      }
-    }
-
-    if (future_anchors.length > 0) {
-      future_anchors.forEach((key, index) => {
-        const anchor = anchors_by_id[key];
-        anchor.nav_el.className = '';
-      });
-    }
-  }
-
-  // Spacing table
-
-  const spacingTables = getAll('.bd-spacing-table');
-
-  spacingTables.forEach(spacingEl => {
-    const spacingRows = getAll('tbody tr', spacingEl);
-    const spacingCells = getAll('tbody td', spacingEl);
-    const spacingValues = getAll('tfoot th', spacingEl);
-
-    spacingEl.addEventListener('mouseleave', () => {
-      resetTable(spacingCells, spacingValues);
-    });
-
-    spacingCells.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        resetTable(spacingCells, spacingValues);
-        const row = Array.prototype.indexOf.call(el.parentNode.parentNode.children, el.parentNode);
-        const column = Array.prototype.indexOf.call(el.parentNode.children, el);
-        highlightRowAndColumn(row, column, spacingRows, spacingValues);
-      });
-    });
-  });
-
-  function resetTable(cells, values) {
-    cells.forEach(el => el.classList.remove('bd-current-row', 'bd-current-column'));
-    values.forEach(el => el.classList.remove('bd-current-value'));
-  }
-
-  function highlightRowAndColumn(rowIndex, columnIndex, rows, values) {
-    const row = rows[rowIndex];
-    let i = columnIndex;
-
-    while (i > -1) {
-      row.children[i].classList.add('bd-current-row');
-      i--;
-    }
-
-    const nextRows = rows.slice(rowIndex);
-    nextRows.forEach(r => {
-      r.children[columnIndex].classList.add('bd-current-column');
-    });
-
-    if (columnIndex < 2) {
-      return;
-    }
-    values[columnIndex - 1].classList.add('bd-current-value');
-  }
-
-  // Scroll
-
-  function upOrDown(lastY, currentY) {
-    if (currentY >= lastY) {
-      return goingDown(currentY);
-    }
-    return goingUp(currentY);
-  }
-
-  function goingDown(currentY) {
-    const trigger = NAVBAR_HEIGHT;
-    whereYouStoppedScrolling = currentY;
-
-    if (currentY > horizon) {
-      horizon = currentY;
-    }
-
-    translateHeader(currentY, false);
-  }
-
-  function goingUp(currentY) {
-    const trigger = 0;
-
-    if (currentY < (whereYouStoppedScrolling - NAVBAR_HEIGHT)) {
-      horizon = currentY + NAVBAR_HEIGHT;
-    }
-
-    translateHeader(currentY, true);
-  }
-
-  function constrainDelta(delta) {
-    return Math.max(0, Math.min(delta, NAVBAR_HEIGHT));
-  }
-
-  function translateHeader(currentY, upwards) {
-    // let topTranslateValue;
-    let translateValue;
-
-    if (upwards && currentTranslate == 0) {
-      translateValue = 0;
-    } else if (currentY <= NAVBAR_HEIGHT) {
-      translateValue = currentY * -1;
-    } else {
-      const delta = constrainDelta(Math.abs(currentY - horizon));
-      translateValue = delta - NAVBAR_HEIGHT;
-    }
-
-    if (translateValue != currentTranslate) {
-      const navbarStyle = `
-        transform: translateY(${translateValue}px);
-      `;
-      currentTranslate = translateValue;
-      navbarEl.setAttribute('style', navbarStyle);
-    }
-
-    if (currentY > THRESHOLD * 2) {
-      scrollFactor = 1;
-    } else if (currentY > THRESHOLD) {
-      scrollFactor = (currentY - THRESHOLD) / THRESHOLD;
-    } else {
-      scrollFactor = 0;
-    }
-
-    const translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
-
-    if (specialShadow) {
-      specialShadow.style.opacity = scrollFactor;
-      specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
-    }
-  }
-
-  let ticking = false;
-  let lastY = 0;
-
-  window.addEventListener('scroll', function() {
-    const currentY = window.scrollY;
-
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        // upOrDown(lastY, currentY);
-        whenScrolling();
-        ticking = false;
-        lastY = currentY;
-      });
-    }
-
-    ticking = true;
-  });
-
-  // Utils
-
-  function removeFromArray(array, value) {
-    if (array.includes(value)) {
-      const value_index = array.indexOf(value);
-      array.splice(value_index, 1);
-    }
-
-    return array;
-  }
-
-  Array.prototype.diff = function(a) {
-    return this.filter(function(i) {return a.indexOf(i) < 0;});
-  };
-
 });

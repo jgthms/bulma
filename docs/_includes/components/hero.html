@@ -1,0 +1,34 @@
+{% capture hero_body %}
+<div class="bd-hero-body">
+  <div class="bd-hero-heading">
+    <h1 class="title algolia-lvl0">
+      {% if include.icon %}
+        <span class="icon">
+          <i class="{{ include.icon }}"></i>
+        </span>
+      {% endif %}
+      {{ include.title | markdownify }}
+    </h1>
+    <div class="subtitle is-4 algolia-lvl1">
+      {{ include.subtitle | markdownify }}
+    </div>
+    {{ include.content }}
+  </div>
+
+  <div class="bd-hero-carbon">
+    {% include elements/carbon.html %}
+  </div>
+</div>
+{% endcapture %}
+
+<section class="hero bd-hero bd-is-{{ include.color }}">
+  <div class="hero-body">
+    {% if page.fullwidth %}
+      {{ hero_body }}
+    {% else %}
+      <div class="container">
+        {{ hero_body }}
+      </div>
+    {% endif %}
+  </div>
+</section>

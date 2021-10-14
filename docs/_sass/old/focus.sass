@@ -1,0 +1,249 @@
+@keyframes bdGrow
+  from
+    transform: scale(0)
+  to
+    transform: scale(1)
+
+@keyframes bdSlideDown
+  from
+    opacity: 0
+    transform: translateY(-1rem)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+@keyframes bdSlideUp
+  from
+    opacity: 0
+    transform: translateY(1rem)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+$cubic-dramatic: cubic-bezier(0, 0.75, 0.25, 1)
+$cubic-less-dramatic: cubic-bezier(0.14, 0.71, 0.29, 0.86)
+$cubic-magic: cubic-bezier(0.175, 0.885, 0.32, 1.275)
+
+$duration: 500ms
+$delay: 250ms
+$wait: 500ms
+
+$focus-delay: 1s
+
+%bd-focus-animation
+  animation-duration: $duration
+  animation-fill-mode: both
+  animation-timing-function: $cubic-less-dramatic
+  transform-origin: center center
+
+$delay-subtitle: $delay * 0.5
+
+// Intro
+.intro-title
+  @extend %bd-focus-animation
+  animation-name: bdSlideDown
+
+.intro-ghbtns,
+.intro-author
+  @extend %bd-focus-animation
+  animation-delay: $focus-delay
+  animation-duration: $duration * 2
+  animation-name: bdFadeIn
+
+.intro-npm
+  @extend %bd-focus-animation
+  animation-delay: $delay
+  animation-name: bdSlowIn
+
+.intro-buttons .button
+  @extend %bd-focus-animation
+  animation-name: bdSlowIn
+  &:first-child
+    animation-delay: $delay * 2
+  &:last-child
+    animation-delay: $delay * 3
+
+// Titles
+.bd-focus-item
+  .title
+    @extend %bd-focus-animation
+    animation-name: bdSlideDown
+  .subtitle
+    @extend %bd-focus-animation
+    animation-name: bdSlideUp
+  &:nth-child(1)
+    .title
+      animation-delay: $focus-delay
+    .subtitle
+      animation-delay: $focus-delay + $delay-subtitle
+  &:nth-child(2)
+    .title
+      animation-delay: $focus-delay + $wait
+    .subtitle
+      animation-delay: $focus-delay + $wait + $delay-subtitle
+  &:nth-child(3)
+    .title
+      animation-delay: $focus-delay + ($wait * 2)
+    .subtitle
+      animation-delay: $focus-delay + ($wait * 2) + $delay-subtitle
+  &:nth-child(4)
+    .title
+      animation-delay: $focus-delay + ($wait * 3)
+    .subtitle
+      animation-delay: $focus-delay + ($wait * 3) + $delay-subtitle
+
+// Devices
+%bd-focus-animation-device
+  @extend %bd-focus-animation
+  animation-name: bdGrow
+  transform-origin: bottom center
+
+.bd-focus-mobile
+  @extend %bd-focus-animation-device
+  animation-delay: $focus-delay
+
+.bd-focus-tablet
+  @extend %bd-focus-animation-device
+  animation-delay: $focus-delay + $delay
+
+.bd-focus-desktop
+  @extend %bd-focus-animation-device
+  animation-delay: $focus-delay + ($delay * 2)
+
+// Cubes
+$cube-factor: 10px
+
+@keyframes bdCube1
+  0%
+    transform: translate3d(0, (-5 * $cube-factor), 0)
+    opacity: 0
+  25%, 100%
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+
+@keyframes bdCube2
+  0%
+    transform: translate3d((-4 * $cube-factor), (3 * $cube-factor), 0)
+    opacity: 0
+  25%, 100%
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+
+@keyframes bdCube3
+  0%
+    transform: translate3d((4 * $cube-factor), (3 * $cube-factor), 0)
+    opacity: 0
+  25%, 100%
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+
+%bd-focus-animation-cube
+  @extend %bd-focus-animation
+  animation-direction: alternate
+  animation-duration: $duration * 4
+  animation-iteration-count: infinite
+
+.bd-focus-cube-1
+  @extend %bd-focus-animation-cube
+  animation-delay: $focus-delay + $wait
+  animation-name: bdCube1
+
+.bd-focus-cube-2
+  @extend %bd-focus-animation-cube
+  animation-name: bdCube2
+  animation-delay: $focus-delay + $wait + $delay
+
+.bd-focus-cube-3
+  @extend %bd-focus-animation-cube
+  animation-name: bdCube3
+  animation-delay: $focus-delay + $wait + ($delay * 2)
+
+@keyframes bdFadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes bdSlowIn
+  from
+    opacity: 0
+    transform: scale(0.9)
+  to
+    opacity: 1
+    transform: scale(1)
+
+@keyframes bdScaleIn
+  from
+    opacity: 0
+    transform: scale(0)
+  to
+    opacity: 1
+    transform: scale(1)
+
+.bd-focus-css3
+  @extend %bd-focus-animation
+  animation-delay: $focus-delay + ($wait * 2)
+  animation-name: bdScaleIn
+
+.bd-focus-github
+  @extend %bd-focus-animation
+  animation-delay: $focus-delay + ($wait * 3)
+  animation-duration: $duration * 3
+  animation-name: bdJellyPop
+
+@keyframes bdJellyPop
+  0%
+    opacity: 0
+    transform: matrix3d(0.1, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  3.4%
+    opacity: 1
+    transform: matrix3d(0.384, 0, 0, 0, 0, 0.466, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  4.7%
+    transform: matrix3d(0.505, 0, 0, 0, 0, 0.639, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  6.81%
+    transform: matrix3d(0.693, 0, 0, 0, 0, 0.904, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  9.41%
+    transform: matrix3d(0.895, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  10.21%
+    transform: matrix3d(0.947, 0, 0, 0, 0, 1.204, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  13.61%
+    transform: matrix3d(1.111, 0, 0, 0, 0, 1.299, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  14.11%
+    transform: matrix3d(1.127, 0, 0, 0, 0, 1.298, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  17.52%
+    transform: matrix3d(1.187, 0, 0, 0, 0, 1.216, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  18.72%
+    transform: matrix3d(1.191, 0, 0, 0, 0, 1.169, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  21.32%
+    transform: matrix3d(1.177, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  24.32%
+    transform: matrix3d(1.135, 0, 0, 0, 0, 0.964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  25.23%
+    transform: matrix3d(1.121, 0, 0, 0, 0, 0.944, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  29.03%
+    transform: matrix3d(1.057, 0, 0, 0, 0, 0.907, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  29.93%
+    transform: matrix3d(1.043, 0, 0, 0, 0, 0.909, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  35.54%
+    transform: matrix3d(0.981, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  36.74%
+    transform: matrix3d(0.974, 0, 0, 0, 0, 0.981, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  41.04%
+    transform: matrix3d(0.965, 0, 0, 0, 0, 1.02, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  44.44%
+    transform: matrix3d(0.969, 0, 0, 0, 0, 1.029, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  52.15%
+    transform: matrix3d(0.992, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  59.86%
+    transform: matrix3d(1.005, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  63.26%
+    transform: matrix3d(1.007, 0, 0, 0, 0, 0.993, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  75.28%
+    transform: matrix3d(1.001, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  85.49%
+    transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  90.69%
+    transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  100%
+    opacity: 1
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)

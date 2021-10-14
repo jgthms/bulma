@@ -1,0 +1,59 @@
+---
+title: Extends
+layout: documentation
+doc-tab: utilities
+doc-subtab: extends
+breadcrumb:
+- home
+- documentation
+- utilities
+- utilities-extends
+---
+
+<div class="content">
+  <p>
+    In Bulma, a lot of element <strong>share</strong> a set of styles. While mixins allow sharing, they repeat the CSS rules everytime they are used.
+  </p>
+
+  <p>
+    To avoid the repetition, Bulma uses the <code>@extend</code> rule to share code. This rule tells Sass that one selector should inherit the styles of another. <a href="https://sass-lang.com/documentation/at-rules/extend" target="_blank">Learn more about the extend rule</a>.
+  </p>
+
+  <p>
+    Instead of creating CSS classes that might not be used to be the <strong>source</strong> of the set of styles, Bulma uses Sass <strong>placeholders</strong>:
+  </p>
+
+  <ul>
+    <li>
+      {% include elements/snippet-inline.html content="%control" %}
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="%unselectable" %}
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="%arrow" %}
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="%block" %}
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="%delete" %}
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="%loader" %}
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="%overlay" %}
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="%reset" %}
+    </li>
+  </ul>
+
+  {% assign mixins_link = site.data.links.by_id['utilities-mixins'] %}
+  {% assign controls_link = site.data.links.by_id['utilities-control-mixins'] %}
+
+  <p>
+    Each of these placeholders are simply the <code>@extend</code> version of their <a href="{{ site.url }}{{ mixins_link.path }}">corresponding mixins</a> (here for the <a href="{{ site.url }}{{ controls_link.path }}">control mixin</a>).
+  </p>
+</div>
