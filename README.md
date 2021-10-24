@@ -124,6 +124,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Bulma Nunjucks Starterkit](https://github.com/benninkcorien/nunjucks-starter-kit)                                       | Starterkit for Nunjucks with Bulma.                                                |
 | [Bulma-Social](https://github.com/aldi/bulma-social)                                 | Social Buttons and Colors for Bulma                                                    |
 | [Divjoy](https://divjoy.com/?kit=bulma)                                 | React codebase generator with Bulma templates                                                    |
+| [Blazorise](https://github.com/Megabit/Blazorise)                                 | Blazor component library with the support for Bulma CSS framework                                                    |
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
