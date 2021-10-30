@@ -27,24 +27,23 @@ jobs:
       #     jekyll_build_options:
       #       host: 127.0.0.1
       #       port: 4000
-      - name: Set up Ruby 2.7
-        uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.x
+          ruby-version: 2.7
       - name: Install dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gem install jekyll bundler
-      - name: Launch Jekyll server
-        run: |
-          cd docs
-          JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
+      # - name: Launch Jekyll server
+      #   run: |
+      #     cd docs
+      #     JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           working-directory: docs
           install-command: npm install
           build: npm run bulma-sass
-          # start: JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
+          start: JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
           wait-on: "http://127.0.0.1:4000"
