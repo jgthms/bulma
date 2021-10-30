@@ -6,15 +6,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - uses: helaili/jekyll-action@v2
+      # Use GitHub Actions' cache to cache dependencies on servers
+      - uses: actions/cache@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          jekyll_src: "docs"
-          jekyll_build_options:
-            host: 127.0.0.1
-            port: 4000
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Build & Deploy to custom branch
+        uses: DavidS/jekyll-deploy@
+        with:
+          source-dir: docs
+        env:
+          JEKYLL_ENV: production
+          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+      # - name: Jekyll Build
+      #   uses: helaili/jekyll-action@v2
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     jekyll_src: "docs"
+      #     jekyll_build_options:
+      #       host: 127.0.0.1
+      #       port: 4000
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
