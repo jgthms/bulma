@@ -11,4 +11,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          working-directory: docs
           install-command: npm install
+          build: npm run bulma-sass
+          start: JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
+          wait-on: "http://127.0.0.1:4000"
