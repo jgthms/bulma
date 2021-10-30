@@ -1,0 +1,66 @@
+---
+layout: cypress
+title: Elements/Button
+---
+
+<div class="block">
+  <button id="button-default" class="button">
+    Button
+  </button>
+
+  <button id="button-hover" class="button is-hovered">
+    Hover
+  </button>
+
+  <button id="button-focus" class="button is-focused">
+    Focus
+  </button>
+
+  <button id="button-active" class="button is-active">
+    Active
+  </button>
+</div>
+
+{% for color in site.data.colors.justColors %}
+  <div class="block">
+    <button id="button-{{ color }}" class="button is-{{ color }}">
+      {{ color | capitalize }}
+    </button>
+
+    <button id="button-{{ color }}-hover" class="button is-hovered is-{{ color }}">
+      Hover
+    </button>
+
+    <button id="button-{{ color }}-focus" class="button is-focused is-{{ color }}">
+      Focus
+    </button>
+
+    <button id="button-{{ color }}-active" class="button is-active is-{{ color }}">
+      Active
+    </button>
+  </div>
+
+  <div class="block">
+    <button id="button-{{ color }}-outlined" class="button is-outlined is-{{ color }}">
+      Outlined
+    </button>
+
+    <button id="button-{{ color }}-outlined-hover" class="button is-outlined is-hovered is-{{ color }}">
+      Hover
+    </button>
+
+    <button id="button-{{ color }}-inverted" class="button is-inverted is-{{ color }}">
+      Inverted
+    </button>
+
+    <button id="button-{{ color }}-inverted-outlined" class="button is-inverted is-outlined is-{{ color }}">
+      Inverted Outlined
+    </button>
+  </div>
+
+  <div class="block">
+    <button id="button-{{ color }}-light" class="button is-light is-{{ color }}">
+      Light
+    </button>
+  </div>
+{% endfor %}
