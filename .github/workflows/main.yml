@@ -6,20 +6,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # Use GitHub Actions' cache to cache dependencies on servers
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - name: Build & Deploy to custom branch
-        uses: DavidS/jekyll-deploy@
-        with:
-          source-dir: docs
-        env:
-          JEKYLL_ENV: production
-          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+      # - uses: actions/cache@v2
+      #   with:
+      #     path: vendor/bundle
+      #     key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-gems-
+      # - name: Build & Deploy to custom branch
+      #   uses: DavidS/jekyll-deploy@
+      #   with:
+      #     source-dir: docs
+      #   env:
+      #     JEKYLL_ENV: production
+      #     GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
       # - name: Jekyll Build
       #   uses: helaili/jekyll-action@v2
       #   with:
@@ -28,6 +27,19 @@ jobs:
       #     jekyll_build_options:
       #       host: 127.0.0.1
       #       port: 4000
+      - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+      - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gem install jekyll bundler
+      - name: Launch Jekyll server
+        run: |
+          cd docs
+          JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
