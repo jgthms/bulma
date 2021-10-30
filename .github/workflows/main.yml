@@ -8,11 +8,18 @@ jobs:
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+      - uses: helaili/jekyll-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          jekyll_src: "docs"
+          jekyll_build_options:
+            host: 127.0.0.1
+            port: 4000
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           working-directory: docs
           install-command: npm install
           build: npm run bulma-sass
-          start: JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
+          # start: JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
           wait-on: "http://127.0.0.1:4000"
