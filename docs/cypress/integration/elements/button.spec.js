@@ -1,6 +1,6 @@
 describe("Elements/Button", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cypress/elements/button/");
+    cy.visit("http://127.0.0.1:4000/cyp/elements/button/");
   });
 
   it("has a Button", () => {

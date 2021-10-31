@@ -1,6 +1,6 @@
 describe("Elements/Container", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cypress/elements/container/");
+    cy.visit("http://127.0.0.1:4000/cyp/elements/container/");
   });
 
   it("has a Container element", () => {
