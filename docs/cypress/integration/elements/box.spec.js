@@ -9,8 +9,7 @@ describe("Elements/Box", () => {
 
   it("has a correct .box element", () => {
     cy.get(".box").then(($) => {
-      const el = $[0];
-      const cs = window.getComputedStyle(el);
+      const cs = window.getComputedStyle($[0]);
       expect(cs.backgroundColor).to.equal(Cypress.env("scheme-main"));
       expect(cs.borderRadius).to.equal("6px");
       expect(cs.boxShadow).to.equal(

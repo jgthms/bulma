@@ -6,27 +6,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # - uses: actions/cache@v2
-      #   with:
-      #     path: vendor/bundle
-      #     key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-gems-
-      # - name: Build & Deploy to custom branch
-      #   uses: DavidS/jekyll-deploy@
-      #   with:
-      #     source-dir: docs
-      #   env:
-      #     JEKYLL_ENV: production
-      #     GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
-      # - name: Jekyll Build
-      #   uses: helaili/jekyll-action@v2
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     jekyll_src: "docs"
-      #     jekyll_build_options:
-      #       host: 127.0.0.1
-      #       port: 4000
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
@@ -35,10 +14,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gem install jekyll bundler
-      # - name: Launch Jekyll server
-      #   run: |
-      #     cd docs
-      #     JEKYLL_ENV=production jekyll serve --host 127.0.0.1 --port 4000
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
@@ -47,7 +22,3 @@ jobs:
           build: npm run bulma-sass
           start: jekyll serve --host 127.0.0.1 --port 4000
           wait-on: "http://127.0.0.1:4000"
-          record: true
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
