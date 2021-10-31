@@ -3,11 +3,11 @@ describe("Elements/Box", () => {
     cy.visit("http://127.0.0.1:4000/cyp/elements/box/");
   });
 
-  it("has a .box element", () => {
+  it("has a Box element", () => {
     cy.get(".box").should("exist");
   });
 
-  it("has a correct .box element", () => {
+  it("has a correct Box", () => {
     cy.get(".box").then(($) => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.backgroundColor).to.equal(Cypress.env("scheme-main"));
