@@ -1,0 +1,46 @@
+---
+layout: cypress
+title: Components/Message
+---
+
+{% capture messageHeader %}
+  <div class="message-header">
+    <p>Hello World</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+{% endcapture %}
+
+{% capture messageBody %}
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+  </div>
+{% endcapture %}
+
+<article id="message" class="message">
+  {{ messageHeader }}
+  {{ messageBody }}
+</article>
+
+<article id="message-no-header" class="message">
+  {{ messageBody }}
+</article>
+
+{% for size in site.data.sizes %}
+  <article id="message-{{ size }}" class="message is-{{ size }}">
+    {{ messageHeader }}
+    {{ messageBody }}
+  </article>
+{% endfor %}
+
+{% for color in site.data.colors.justColors %}
+  <article id="message-{{ color }}" class="message is-{{ color }}">
+    <div class="message-header">
+      <p>{{ color | capitalize }}</p>
+      <button class="delete" aria-label="delete"></button>
+    </div>
+
+    <div class="message-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+    </div>
+  </article>
+{% endfor %}
