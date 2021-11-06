@@ -82,7 +82,7 @@
   @else
     @return #fff
 
-@function findLightColor($color)
+@function findLightColor($color, $l: 96%)
   @if type-of($color) == 'color'
     $l: 96%
     @if lightness($color) > 96%
@@ -90,9 +90,8 @@
     @return change-color($color, $lightness: $l)
   @return $background
 
-@function findDarkColor($color)
+@function findDarkColor($color, $base-l: 29%)
   @if type-of($color) == 'color'
-    $base-l: 29%
     $luminance: colorLuminance($color)
     $luminance-delta: (0.53 - $luminance)
     $target-l: round($base-l + ($luminance-delta * 53))

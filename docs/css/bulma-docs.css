@@ -1,11 +1,11 @@
 @charset "UTF-8";
-/*! bulma.io v0.9.2 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.9.3 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 .button, .input, .textarea, .select select, .file-cta,
 .file-name, .pagination-previous,
 .pagination-next,
 .pagination-link,
-.pagination-ellipsis {
+.pagination-ellipsis, .bulma-control-extend {
   -moz-appearance: none;
   -webkit-appearance: none;
   align-items: center;
@@ -29,19 +29,19 @@
 .file-name:focus, .pagination-previous:focus,
 .pagination-next:focus,
 .pagination-link:focus,
-.pagination-ellipsis:focus, .is-focused.button, .is-focused.input, .is-focused.textarea, .select select.is-focused, .is-focused.file-cta,
+.pagination-ellipsis:focus, .bulma-control-extend:focus, .is-focused.button, .is-focused.input, .is-focused.textarea, .select select.is-focused, .is-focused.file-cta,
 .is-focused.file-name, .is-focused.pagination-previous,
 .is-focused.pagination-next,
 .is-focused.pagination-link,
-.is-focused.pagination-ellipsis, .button:active, .input:active, .textarea:active, .select select:active, .file-cta:active,
+.is-focused.pagination-ellipsis, .is-focused.bulma-control-extend, .button:active, .input:active, .textarea:active, .select select:active, .file-cta:active,
 .file-name:active, .pagination-previous:active,
 .pagination-next:active,
 .pagination-link:active,
-.pagination-ellipsis:active, .is-active.button, .is-active.input, .is-active.textarea, .select select.is-active, .is-active.file-cta,
+.pagination-ellipsis:active, .bulma-control-extend:active, .is-active.button, .is-active.input, .is-active.textarea, .select select.is-active, .is-active.file-cta,
 .is-active.file-name, .is-active.pagination-previous,
 .is-active.pagination-next,
 .is-active.pagination-link,
-.is-active.pagination-ellipsis {
+.is-active.pagination-ellipsis, .is-active.bulma-control-extend {
   outline: none;
 }
 
@@ -49,7 +49,7 @@
 .file-name[disabled], .pagination-previous[disabled],
 .pagination-next[disabled],
 .pagination-link[disabled],
-.pagination-ellipsis[disabled],
+.pagination-ellipsis[disabled], .bulma-control-extend[disabled],
 fieldset[disabled] .button,
 fieldset[disabled] .input,
 fieldset[disabled] .textarea,
@@ -60,7 +60,8 @@ fieldset[disabled] .file-name,
 fieldset[disabled] .pagination-previous,
 fieldset[disabled] .pagination-next,
 fieldset[disabled] .pagination-link,
-fieldset[disabled] .pagination-ellipsis {
+fieldset[disabled] .pagination-ellipsis,
+fieldset[disabled] .bulma-control-extend {
   cursor: not-allowed;
 }
 
@@ -9590,6 +9591,11 @@ body.has-navbar-fixed-bottom {
 
 .navbar-burger {
   color: #4a4a4a;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
   cursor: pointer;
   display: block;
   height: 3.25rem;
@@ -16913,7 +16919,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   top: 0;
   background-color: #fafafa;
   border-radius: 6px;
-  content: '';
+  content: "";
   display: block;
   opacity: 0;
   pointer-events: none;
@@ -17770,6 +17776,20 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   z-index: 1;
 }
 
+.bd-snippet-inline {
+  display: inline-block;
+  margin-bottom: -0.25em;
+  vertical-align: bottom;
+}
+
+.bd-snippet-inline .highlight pre {
+  padding: 0.5em 0.75em 0.625em;
+}
+
+.bd-snippet-inline .button.bd-copy {
+  display: none;
+}
+
 .bd-snippet {
   --snippet-spacing: 1.5rem;
   font-size: 1rem;
@@ -17864,7 +17884,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 .bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight::before {
   background: linear-gradient(0deg, var(--hl-background), transparent);
   bottom: 0;
-  content: '';
+  content: "";
   display: block;
   left: 0;
   position: absolute;
@@ -17909,6 +17929,11 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 
 .bd-anchor-title.title {
   font-size: 1.5em;
+}
+
+.bd-anchor-title.title.is-5 {
+  font-size: 1.25em;
+  margin-top: 0 !important;
 }
 
 @media screen and (max-width: 1215px) {
@@ -18604,6 +18629,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   box-shadow: inset 0 -2px 0 0 var(--search);
 }
 
+.bd-navbar-mobile-download-icon,
 .bd-navbar-mobile-sponsor-icon {
   display: none !important;
 }
@@ -18626,6 +18652,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 @media screen and (min-width: 450px) and (max-width: 768px) {
+  .bd-navbar-mobile-download-icon,
   .bd-navbar-mobile-sponsor-icon {
     display: flex !important;
   }
@@ -19093,13 +19120,13 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 
 .bd-var .highlight pre {
   overflow: visible;
-  padding: 0;
+  padding: 0.25em 0.5em 0.375em;
   white-space: pre-wrap;
   white-space: break-spaces;
 }
 
 .bd-var .bd-copy {
-  font-size: 0.5em !important;
+  font-size: 0.75em !important;
   right: 0;
   top: 0;
 }
@@ -19450,6 +19477,39 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   color: #fff;
 }
 
+#survey-banner {
+  align-items: center;
+  background-color: #ebfffc;
+  color: #00947e;
+  display: flex;
+  font-size: 0.875rem;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+#survey-banner a,
+#survey-banner strong {
+  color: inherit;
+}
+
+#survey-banner a {
+  text-decoration: underline;
+}
+
+#survey-banner p {
+  margin-right: 1em;
+}
+
+.bd-color {
+  border-radius: 2px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  float: left;
+  height: 24px;
+  margin-right: 8px;
+  width: 24px;
+}
+
 :root {
   --bd-index-vertical: 1.5rem;
   --bd-index-gap: 3rem;
@@ -19681,6 +19741,12 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   .bd-docs-toggles {
     display: none;
   }
+  .bd-docs.bd-is-full-main .bd-docs-main {
+    grid-column: 2 / span 2;
+  }
+  .bd-docs.bd-is-full-main .bd-docs-side {
+    display: none;
+  }
   .bd-docs.bd-is-fullwidth {
     display: block;
   }
@@ -19724,7 +19790,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   .bd-docs.bd-is-fullwidth .bd-docs-nav:not(:hover) .bd-category a::after {
     align-items: center;
     bottom: 0;
-    content: '•';
+    content: "•";
     display: flex;
     justify-content: center;
     position: absolute;
@@ -19759,7 +19825,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   .bd-docs.bd-is-fullwidth .bd-docs-side:not(:hover) .bd-anchors-list li::after {
     align-items: center;
     bottom: 0;
-    content: '•';
+    content: "•";
     display: flex;
     justify-content: center;
     position: absolute;
@@ -22467,6 +22533,405 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
     bottom: 1em;
     right: 1em;
     width: 20rem;
+  }
+}
+
+.bulma-arrow-mixin {
+  border: 3px solid purple;
+  border-radius: 2px;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  display: block;
+  height: 0.625em;
+  margin-top: -0.4375em;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  width: 0.625em;
+}
+
+.bulma-hamburger-mixin {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  height: 2.5rem;
+  position: relative;
+  width: 2.5rem;
+}
+
+.bulma-hamburger-mixin span {
+  background-color: currentColor;
+  display: block;
+  height: 1px;
+  left: calc(50% - 8px);
+  position: absolute;
+  transform-origin: center;
+  transition-duration: 86ms;
+  transition-property: background-color, opacity, transform;
+  transition-timing-function: ease-out;
+  width: 16px;
+}
+
+.bulma-hamburger-mixin span:nth-child(1) {
+  top: calc(50% - 6px);
+}
+
+.bulma-hamburger-mixin span:nth-child(2) {
+  top: calc(50% - 1px);
+}
+
+.bulma-hamburger-mixin span:nth-child(3) {
+  top: calc(50% + 4px);
+}
+
+.bulma-hamburger-mixin:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.bulma-hamburger-mixin.is-active span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.bulma-hamburger-mixin.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.bulma-hamburger-mixin.is-active span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.bulma-delete-mixin {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(10, 10, 10, 0.2);
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 0;
+  height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+  width: 20px;
+}
+
+.bulma-delete-mixin::before, .bulma-delete-mixin::after {
+  background-color: white;
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform-origin: center center;
+}
+
+.bulma-delete-mixin::before {
+  height: 2px;
+  width: 50%;
+}
+
+.bulma-delete-mixin::after {
+  height: 50%;
+  width: 2px;
+}
+
+.bulma-delete-mixin:hover, .bulma-delete-mixin:focus {
+  background-color: rgba(10, 10, 10, 0.3);
+}
+
+.bulma-delete-mixin:active {
+  background-color: rgba(10, 10, 10, 0.4);
+}
+
+.bulma-delete-mixin.is-small {
+  height: 16px;
+  max-height: 16px;
+  max-width: 16px;
+  min-height: 16px;
+  min-width: 16px;
+  width: 16px;
+}
+
+.bulma-delete-mixin.is-medium {
+  height: 24px;
+  max-height: 24px;
+  max-width: 24px;
+  min-height: 24px;
+  min-width: 24px;
+  width: 24px;
+}
+
+.bulma-delete-mixin.is-large {
+  height: 32px;
+  max-height: 32px;
+  max-width: 32px;
+  min-height: 32px;
+  min-width: 32px;
+  width: 32px;
+}
+
+.bulma-loader-mixin {
+  -webkit-animation: spinAround 500ms infinite linear;
+          animation: spinAround 500ms infinite linear;
+  border: 2px solid #dbdbdb;
+  border-radius: 9999px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+}
+
+.bulma-block-mixin:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.bulma-fa-mixin {
+  display: inline-block;
+  font-size: 1rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  vertical-align: top;
+  width: 2rem;
+  background-color: lavender;
+}
+
+.bulma-overlay-mixin-parent {
+  background-image: url(https://source.unsplash.com/La2kOu2dmH4/640x320);
+  background-size: cover;
+  border-radius: 0.5em;
+  position: relative;
+  height: 11.25rem;
+  width: 20rem;
+}
+
+.bulma-overlay-mixin {
+  bottom: 1.5rem;
+  left: 1.5rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  background-color: darkorange;
+  border-radius: 0.25em;
+  color: white;
+  opacity: 0.9;
+  padding: 1em;
+}
+
+.bulma-placeholder-mixin {
+  border-color: lightblue;
+}
+
+.bulma-placeholder-mixin::-moz-placeholder {
+  color: lightblue;
+}
+
+.bulma-placeholder-mixin::-webkit-input-placeholder {
+  color: lightblue;
+}
+
+.bulma-placeholder-mixin:-moz-placeholder {
+  color: lightblue;
+}
+
+.bulma-placeholder-mixin:-ms-input-placeholder {
+  color: lightblue;
+}
+
+.bulma-placeholder-mixin:hover {
+  border-color: #60ccf0;
+}
+
+.bulma-placeholder-mixin:focus, .bulma-placeholder-mixin:active {
+  border-color: #1fc7ff !important;
+  box-shadow: 0 0 0 0.125em rgba(31, 199, 255, 0.25) !important;
+}
+
+.bulma-clearfix-mixin::after {
+  clear: both;
+  content: " ";
+  display: table;
+}
+
+.bulma-clearfix-mixin img {
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+}
+
+.bulma-center-mixin-parent {
+  background-image: url(https://source.unsplash.com/xo3Bd2tYeqg/640x320);
+  background-size: cover;
+  border-radius: 0.5em;
+  position: relative;
+  height: 11.25rem;
+  width: 20rem;
+}
+
+.bulma-center-mixin {
+  position: absolute;
+  left: calc(50% - (96px * 0.5));
+  top: calc(50% - (96px * 0.5));
+  border-radius: 8px;
+  height: 96px;
+  width: 96px;
+}
+
+.bulma-reset-mixin {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+.bulma-unselectable-mixin {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bulma-ltr-rtl-mixin {
+  background-color: lightgreen;
+  padding: 0.5em 1em;
+  border: 1px solid seagreen;
+  margin-right: -1px;
+}
+
+.bulma-ltr-rtl-mixin:first-child {
+  border-bottom-left-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+}
+
+.bulma-ltr-rtl-mixin:last-child {
+  border-bottom-right-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.bulma-ltr-position-mixin-parent {
+  background-color: beige;
+  border-radius: 0.5em;
+  padding: 1rem;
+  padding-left: 5rem;
+  position: relative;
+}
+
+.bulma-ltr-position-mixin-parent p {
+  margin-top: -0.25rem;
+}
+
+.bulma-ltr-position-mixin {
+  left: 1rem;
+  border-radius: 0.25em;
+  position: absolute;
+  top: 1rem;
+}
+
+.bulma-ltr-property-mixin-parent {
+  align-items: flex-start;
+  background-color: midnightblue;
+  border-radius: 0.5em;
+  color: lightskyblue;
+  display: flex;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.bulma-ltr-property-mixin-parent p {
+  margin-top: -0.25rem;
+}
+
+.bulma-ltr-property-mixin {
+  margin-left: 1rem;
+  border-radius: 0.25em;
+}
+
+.bulma-control-mixin {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 0.375em;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  padding-top: calc(0.5em - 1px);
+  position: relative;
+  vertical-align: top;
+  background: deeppink;
+  color: white;
+}
+
+.bulma-control-mixin:focus, .bulma-control-mixin.is-focused, .bulma-control-mixin:active, .bulma-control-mixin.is-active {
+  outline: none;
+}
+
+.bulma-control-mixin[disabled],
+fieldset[disabled] .bulma-control-mixin {
+  cursor: not-allowed;
+}
+
+.bulma-control-mixin.is-small {
+  border-radius: 2px;
+  font-size: 0.75rem;
+}
+
+.bulma-control-mixin.is-medium {
+  font-size: 1.25rem;
+}
+
+.bulma-control-mixin.is-large {
+  font-size: 1.5rem;
+}
+
+.bulma-control-extend {
+  background: mediumblue;
+  color: white;
+}
+
+.my-element {
+  background: red;
+}
+
+@media screen and (min-width: 1280px) {
+  .my-element {
+    background: blue;
   }
 }
 

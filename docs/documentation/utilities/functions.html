@@ -1,0 +1,329 @@
+---
+title: Functions
+layout: documentation
+doc-tab: utilities
+doc-subtab: functions
+breadcrumb:
+- home
+- documentation
+- utilities
+- utilities-functions
+---
+
+<div class="content">
+  <p>
+    Bulma has <strong>custom Sass functions</strong> to help find <strong>related colors</strong> dynamically:
+  </p>
+
+  <ul>
+    <li><code>findColorInvert($color)</code>: returns either 70% transparent black or 100% opaque white depending on the luminance of the color</li>
+    <li><code>findLightColor($color)</code>: returns the current color but with a lightness of at <em>least</em> 96%</li>
+    <li><code>findDarkColor($color)</code>: returns the current color but with a lightness of at <em>most</em> 29%</li>
+  </ul>
+
+  <p>
+    Bulma also has a few utility functions to calculate useful values:
+  </p>
+
+  <ul>
+    <li><code>powerNumber($number, $exp)</code>: calculates the value of a number exposed to another one. Returns a number</li>
+    <li><code>colorLuminance($color)</code>: defines if a color is dark or light. Return a decimal number between 0 and 1 where <= 0.5 is dark and > 0.5 is light</li>
+  </ul>
+</div>
+
+{% include elements/anchor.html name="The <code>findColorInvert()</code> function" %}
+
+<div class="content">
+  <p>The <code>findColorInvert($color)</code> function takes a <strong>color</strong> as an input, and outputs either transparent <strong>black</strong> <code>rgba(#000, 0.7)</code> or <strong>white</strong> <code>#fff</code>:</p>
+  <ul>
+    <li>if <code>colorLuminance($color) > 0.55</code>, it outputs <code>rgba(#000, 0.7)</code></li>
+    <li>otherwise, it outputs <code>#fff</code></li>
+  </ul>
+  <p>Its purpose is to guarantee a <strong>readable</strong> shade for the <em>text</em> when the input color is used as the <em>background</em>.</p>
+  <div class="table-container">
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>color</th>
+          <th>color luminance</th>
+          <th>findColorInvert()</th>
+          <th>result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: #00d1b2;"></span>
+            <code>#00d1b2</code>
+          </td>
+          <td>
+            <code>0.52831</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: #fff;"></span>
+            <code>#fff</code>
+          </td>
+          <td>
+            <a class="button" style="background: #00d1b2; border-color: #00d1b2; color: #fff;">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: #3273dc;"></span>
+            <code>#3273dc</code>
+          </td>
+          <td>
+            <code>0.23119</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: #fff;"></span>
+            <code>#fff</code>
+          </td>
+          <td>
+            <a class="button" style="background: #3273dc; border-color: #3273dc; color: #fff;">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: #23d160;"></span>
+            <code>#23d160</code>
+          </td>
+          <td>
+            <code>0.51067</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: #fff;"></span>
+            <code>#fff</code>
+          </td>
+          <td>
+            <a class="button" style="background: #23d160; border-color: #23d160; color: #fff;">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: #ffdd57;"></span>
+            <code>#ffdd57</code>
+          </td>
+          <td>
+            <code>0.76863</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: rgba(0, 0, 0, 0.7);"></span>
+            <code>rgba(0, 0, 0, 0.7)</code>
+          </td>
+          <td>
+            <a class="button" style="background: #ffdd57; border-color: #ffdd57; color: rgba(0, 0, 0, 0.7);">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: #ff3860;"></span>
+            <code>#ff3860</code>
+          </td>
+          <td>
+            <code>0.27313</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: #fff;"></span>
+            <code>#fff</code>
+          </td>
+          <td>
+            <a class="button" style="background: #ff3860; border-color: #ff3860; color: #fff;">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: #ffb3b3;"></span>
+            <code>#ffb3b3</code>
+          </td>
+          <td>
+            <code>0.61796</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: rgba(0,0,0,0.7);"></span>
+            <code>rgba(0,0,0,0.7)</code>
+          </td>
+          <td>
+            <a class="button" style="background: #ffb3b3; border-color: #ffb3b3; color: rgba(0,0,0,0.7);">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: #ffbc6b;"></span>
+            <code>#ffbc6b</code>
+          </td>
+          <td>
+            <code>0.63053</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: rgba(0,0,0,0.7);"></span>
+            <code>rgba(0,0,0,0.7)</code>
+          </td>
+          <td>
+            <a class="button" style="background: #ffbc6b; border-color: #ffbc6b; color: rgba(0,0,0,0.7);">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="bd-color" style="background: hsl(294, 71%, 79%);"></span>
+            <code>hsl(294, 71%, 79%)</code>
+          </td>
+          <td>
+            <code>0.5529</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: rgba(0,0,0,0.7);"></span>
+            <code>rgba(0,0,0,0.7)</code>
+          </td>
+          <td>
+            <a class="button" style="background: hsl(294, 71%, 79%); border-color: hsl(294, 71%, 79%); color: rgba(0,0,0,0.7);">
+              Button
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    For colors that have a luminance close to the <code>0.55</code> threshold, it can be useful to <strong>override</strong> the <code>findColorInvert()</code> function, and rather set the invert color <strong>manually.</strong>
+    <br>
+    For example, this shade of <span class="bd-color" style="background: hsl(294, 71%, 79%); float: none; height: 16px; width: 16px; margin-right: 0; vertical-align: middle;"></span> purple has a color luminance of <code>0.5529</code>. It can be preferable to set a color invert of white instead of transparent black:
+  </p>
+
+  <div class="table-container">
+    <table class="table is-bordered">
+      <tbody>
+        <tr>
+          <th>
+            with <code>findColorInvert()</code>
+          </th>
+          <td>
+            <code>$purple-invert: findColorInvert($purple)</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: rgba(0,0,0,0.7);"></span>
+            <code>rgba(0,0,0,0.7)</code>
+          </td>
+          <td>
+            <a class="button" style="background: hsl(294, 71%, 79%); border-color: hsl(294, 71%, 79%); color: rgba(0,0,0,0.7);">
+              Button
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            with manual setting
+          </th>
+          <td>
+            <code>$purple-invert: #fff</code>
+          </td>
+          <td>
+            <span class="bd-color" style="background: #fff;"></span>
+            <code>#fff</code>
+          </td>
+          <td>
+            <a class="button" style="background: hsl(294, 71%, 79%); border-color: hsl(294, 71%, 79%); color: #fff;">
+              Button
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% include elements/anchor.html name="The <code>findLightColor()</code> and <code>findDarkColor()</code> functions" %}
+
+<div class="content">
+  <p>
+    The <code>findLightColor($color)</code> and <code>findDarkColor($color)</code> functions take a <strong>color</strong> as an input, and output that color's light and dark versions respectively</code>:
+  </p>
+</div>
+
+<div class="table-container">
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        <th>color</th>
+        <th>findLightColor</th>
+        <th>findDarkColor</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          {% include elements/color-square.html value="hsl(171deg, 100%, 41%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(171deg, 100%, 96%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(171deg, 100%, 29%)" %}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          {% include elements/color-square.html value="hsl(229deg 53% 53%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(229deg 52% 96%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(229deg 53% 47%)" %}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          {% include elements/color-square.html value="hsl(153deg 53% 53%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(153deg 52% 96%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(153deg 53% 31%)" %}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          {% include elements/color-square.html value="hsl(44deg 100% 77%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(45deg 100% 96%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(44deg 100% 29%)" %}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          {% include elements/color-square.html value="hsl(348deg 86% 61%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(347deg 90% 96%)" %}
+        </td>
+        <td>
+          {% include elements/color-square.html value="hsl(348deg 86% 43%)" %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

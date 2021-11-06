@@ -11,11 +11,23 @@ breadcrumb:
 ---
 
 <div class="content">
-  <p>Bulma uses 3 custom functions to help define the values and colors dynamically:</p>
+  <p>
+    Bulma has <strong>custom Sass functions</strong> to help find <strong>related colors</strong> dynamically:
+  </p>
+
   <ul>
-    <li><code>powerNumber($number, $exp)</code>: calculates the value of a number exposed to another one. Returns a number.</li>
-    <li><code>colorLuminance($color)</code>: defines if a color is dark or light. Return a decimal number between 0 and 1 where <= 0.5 is dark and > 0.5 is light.</li>
-    <li><code>findColorInvert($color)</code>: returns either 70% transparent black or 100% opaque white depending on the luminance of the color.</li>
+    <li><code>findColorInvert($color)</code>: returns either 70% transparent black or 100% opaque white depending on the luminance of the color</li>
+    <li><code>findLightColor($color)</code>: returns the current color but with a lightness of at <em>least</em> 96%</li>
+    <li><code>findDarkColor($color)</code>: returns the current color but with a lightness of at <em>most</em> 29%</li>
+  </ul>
+
+  <p>
+    Bulma also has a few utility functions to calculate useful values:
+  </p>
+
+  <ul>
+    <li><code>powerNumber($number, $exp)</code>: calculates the value of a number exposed to another one. Returns a number</li>
+    <li><code>colorLuminance($color)</code>: defines if a color is dark or light. Return a decimal number between 0 and 1 where <= 0.5 is dark and > 0.5 is light</li>
   </ul>
 </div>
 
@@ -231,4 +243,12 @@ breadcrumb:
       </tbody>
     </table>
   </div>
+</div>
+
+{% include elements/anchor.html name="The <code>findLightColor()</code> and <code>findDarkColor()</code> functions" %}
+
+<div class="content">
+  <p>
+    The <code>findLightColor($color)</code> and <code>findDarkColor($color)</code> functions take a <strong>color</strong> as an input, and output that color's light and dark versions respectively</code>:
+  </p>
 </div>

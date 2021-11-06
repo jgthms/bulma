@@ -1,0 +1,358 @@
+---
+title: Responsive Mixins
+layout: documentation
+doc-tab: utilities
+doc-subtab: responsive-mixins
+fullmain: true
+breadcrumb:
+- home
+- documentation
+- utilities
+- utilities-responsive-mixins
+---
+
+<div class="content">
+  <p>
+    Bulma is <strong>responsive by default</strong>. <a href="{{ site.url}}/overview/responsiveness/">Learn more about Bulma's responsiveness</a>.
+  </p>
+</div>
+
+{% include elements/anchor.html name="from() and until() mixins" %}
+
+<div class="content">
+  <p>
+    Responsiveness in CSS is based on <strong>media queries</strong> (see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">MDN documentation</a>).
+  </p>
+
+  <p>
+    Bulma provides <strong>2 useful responsive mixins:</strong>
+  </p>
+
+  <ul>
+    <li>
+      {% include elements/snippet-inline.html content="@mixin from($breakpoint)" %} to target devices with a screen <em>wider</em> than or equal to the breakpoint
+    </li>
+    <li>
+      {% include elements/snippet-inline.html content="@mixin until($breakpoint)" %} to target devices with a screen <em>narrower</em> than the breakpoint
+    </li>
+  </ul>
+
+  <p>Their usage is very simple:</p>
+</div>
+
+{% include elements/anchor-bis.html name="from()" %}
+
+<div class="content">
+  <p>
+    The <code>from()</code> mixin has a single parameter which sets the <strong>screen width</strong> from which the styles it contains will be applied:
+  </p>
+</div>
+
+<p class="title is-6">Sass source</p>
+
+{% highlight sass %}.my-element {
+  background: red;
+
+  @include from(1280px) {
+    background: blue;
+  }
+}{% endhighlight %}
+
+<p class="title is-6">CSS output</p>
+
+{% highlight css %}.my-element {
+  background: red;
+}
+
+@media screen and (min-width: 1280px) {
+  .my-element {
+    background: blue;
+  }
+}{% endhighlight %}
+
+<div class="content">
+  <p>
+    For screens with a width of 1279px or less, the element's background will be <strong style="color: red;">red</strong>.
+    <br>
+    For screens 1280px-wide or more, the element's background will be <strong style="color: blue;">blue</strong>.
+  </p>
+</div>
+
+{% include elements/anchor-bis.html name="until()" %}
+
+<div class="content">
+  <p>
+    The <code>until()</code> mixin has a single parameter which sets the <strong>screen width (minus <code>1px</code>)</strong> until which the styles it contains will be applied.
+  </p>
+
+  <p>
+    This means that if you set a value of <code>1280px</code>, the styles will be applied on a screen width of <code>1279px</code> but <strong>not</strong> on a screen width of <code>1280px</code>.
+  </p>
+
+  <p>
+    The reason for this <strong>1px offset</strong> is to allow you to use both <code>from()</code> and <code>until()</code> with the <strong>same breakpoint value</strong>. This leaves <strong>no gap</strong> between the 2 sets of rules.
+  </p>
+</div>
+
+<p class="title is-6">Sass source</p>
+
+{% highlight sass %}$breakpoint: 1280px;
+
+.my-element {
+  @include until($breakpoint) {
+    background: green;
+  }
+
+  @include from($breakpoint) {
+    background: orange;
+  }
+}{% endhighlight %}
+
+<p class="title is-6">CSS output</p>
+
+{% highlight css %}@media screen and (max-width: 1279px) {
+  .my-element {
+    background: green;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .my-element {
+    background: orange;
+  }
+}{% endhighlight %}
+
+<div class="content">
+  <p>
+    For screens with a width of 1279px or less, the element's background will be <strong style="color: green;">green</strong>.
+    <br>
+    For screens 1280px-wide or more, the element's background will be <strong style="color: orange;">orange</strong>.
+  </p>
+</div>
+
+{% include elements/anchor.html name="Named mixins" %}
+
+<div class="content">
+  <p>
+    By having <strong>4 breakpoints</strong> and supporting <strong>5 screen sizes</strong>, Bulma can support a lot of different setups.
+  </p>
+</div>
+
+<div class="content">
+  While you could use the mixins {% include elements/snippet-inline.html content="@include from()" %} and {% include elements/snippet-inline.html content="@include until()" %}, Bulma provides <strong>quick shortcuts</strong> with <strong>11 named mixins</strong>.
+</div>
+
+<div class="content">
+  <p>
+      These <strong>responsive mixins</strong> are named after the screen sizes and breakpoints used in Bulma, so that you can use them to create a <strong>responsive designs</strong>:
+  </p>
+</div>
+
+{% capture inc-mobile %}
+@include mobile {
+  // Styles applied
+  // below $tablet
+}
+{% endcapture %}
+
+{% capture inc-tablet %}
+@include tablet {
+  // Styles applied
+  // above $tablet
+}
+{% endcapture %}
+
+{% capture inc-tablet-only %}
+@include tablet-only {
+  // Styles applied
+  // between $tablet
+  // and $desktop
+}
+{% endcapture %}
+
+{% capture inc-desktop-only %}
+@include desktop-only {
+  // Styles applied
+  // between $desktop
+  // and $widescreen
+}
+{% endcapture %}
+
+{% capture inc-widescreen-only %}
+@include widescreen-only {
+  // Styles applied
+  // between $widescreen
+  // and $fullhd
+}
+{% endcapture %}
+
+{% capture inc-desktop %}
+@include desktop {
+  // Styles applied
+  // above $desktop
+}
+{% endcapture %}
+
+{% capture inc-widescreen %}
+@include widescreen {
+  // Styles applied
+  // above $widescreen
+}
+{% endcapture %}
+
+{% capture inc-fullhd %}
+@include fullhd {
+  // Styles applied
+  // above $fullhd
+}
+{% endcapture %}
+
+{% capture inc-touch %}
+@include touch {
+  // Styles applied
+  // below $desktop
+}
+{% endcapture %}
+
+{% capture inc-until-widescreen %}
+@include until-widescreen {
+  // Styles applied
+  // below $widescreen
+}
+{% endcapture %}
+
+{% capture inc-until-fullhd %}
+@include until {
+  // Styles applied
+  // below $fullhd
+}
+{% endcapture %}
+
+<div class="table-container">
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        {% for breakpoint_hash in site.data.breakpoints %}
+          {% assign breakpoint = breakpoint_hash[1] %}
+          <th style="width: 20%;">
+            {{ breakpoint.name }}<br>
+            {% if breakpoint.id == 'mobile' %}
+              Up to <code>{{ breakpoint.to }}px</code>
+            {% elsif breakpoint.id == 'fullhd' %}
+              <code>{{ breakpoint.from }}px</code> and above
+            {% else %}
+              Between <code>{{ breakpoint.from }}px</code> and <code>{{ breakpoint.to }}px</code>
+            {% endif %}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          {% highlight sass %}{{ inc-mobile }}{% endhighlight %}
+        </td>
+        <td colspan="4">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="notification">-</p>
+        </td>
+        <td colspan="4">
+          {% highlight sass %}{{ inc-tablet }}{% endhighlight %}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+        <td colspan="3">
+          {% highlight sass %}{{ inc-desktop }}{% endhighlight %}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+        <td colspan="2">
+          {% highlight sass %}{{ inc-widescreen }}{% endhighlight %}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p class="notification">-</p>
+        </td>
+        <td>
+          {% highlight sass %}{{ inc-fullhd }}{% endhighlight %}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="notification">-</p>
+        </td>
+        <td>
+          {% highlight sass %}{{ inc-tablet-only }}{% endhighlight %}
+        </td>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+        <td>
+          {% highlight sass %}{{ inc-desktop-only }}{% endhighlight %}
+        </td>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+        <td>
+          {% highlight sass %}{{ inc-widescreen-only }}{% endhighlight %}
+        </td>
+        <td>
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          {% highlight sass %}{{ inc-touch }}{% endhighlight %}
+        </td>
+        <td colspan="3">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          {% highlight sass %}{{ inc-until-widescreen }}{% endhighlight %}
+        </td>
+        <td colspan="2">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          {% highlight sass %}{{ inc-until-fullhd }}{% endhighlight %}
+        </td>
+        <td colspan="1">
+          <p class="notification">-</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% assign or_link = site.data.links.by_id['overview-responsiveness'] %}
+
+<div class="content">
+  <p>
+    Learn more about <a href="{{ site.url }}{{ or_link.path }}">Bulma responsiveness</a>.
+  </p>
+</div>
