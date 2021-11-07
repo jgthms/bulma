@@ -122,7 +122,7 @@ describe("Components/Navbar", () => {
 });
 
 // Mobile
-describe("Components/NavbarMobile", () => {
+describe("Components/Navbar Mobile", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/navbar/");
     cy.viewport(
@@ -179,7 +179,7 @@ describe("Components/NavbarMobile", () => {
 });
 
 // Desktop
-describe("Components/NavbarDesktop", () => {
+describe("Components/Navbar Desktop", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/navbar/");
     cy.viewport(
