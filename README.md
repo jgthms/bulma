@@ -125,6 +125,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Bulma-Social](https://github.com/aldi/bulma-social)                                 | Social Buttons and Colors for Bulma                                                    |
 | [Divjoy](https://divjoy.com/?kit=bulma)                                 | React codebase generator with Bulma templates                                                    |
 | [Blazorise](https://github.com/Megabit/Blazorise)                                 | Blazor component library with the support for Bulma CSS framework                                                    |
+| [Oruga-Bulma](https://github.com/oruga-ui/theme-bulma)                                 | Bulma theme for [Oruga UI](https://oruga.io)                                                    |
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
