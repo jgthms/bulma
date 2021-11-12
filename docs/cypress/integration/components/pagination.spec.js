@@ -1,3 +1,5 @@
+import { setMobile, setTablet } from "../utils";
+
 describe("Components/Pagination", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/pagination/");
@@ -79,10 +81,7 @@ describe("Components/Pagination", () => {
 describe("Components/Pagination Mobile", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/pagination/");
-    cy.viewport(
-      Cypress.env("viewports").mobile[0],
-      Cypress.env("viewports").mobile[1]
-    );
+    setMobile();
   });
 
   it("has a correct Pagination", () => {
@@ -113,10 +112,7 @@ describe("Components/Pagination Mobile", () => {
 describe("Components/Navbar Tablet", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/pagination/");
-    cy.viewport(
-      Cypress.env("viewports").tablet[0],
-      Cypress.env("viewports").tablet[1]
-    );
+    setTablet();
   });
 
   it("has a correct Pagination", () => {

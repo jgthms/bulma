@@ -1,3 +1,5 @@
+import { setMobile, setDesktop } from "../utils";
+
 describe("Elements/Container", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/elements/container/");
@@ -8,10 +10,7 @@ describe("Elements/Container", () => {
   });
 
   it("has fullwidth mobile Containers", () => {
-    cy.viewport(
-      Cypress.env("viewports").mobile[0],
-      Cypress.env("viewports").mobile[1]
-    );
+    setMobile();
 
     let viewport;
 
@@ -45,10 +44,7 @@ describe("Elements/Container", () => {
   });
 
   it("has centered desktop Containers", () => {
-    cy.viewport(
-      Cypress.env("viewports").desktop[0],
-      Cypress.env("viewports").desktop[1]
-    );
+    setDesktop();
 
     let viewport;
 
@@ -77,10 +73,7 @@ describe("Elements/Container", () => {
   });
 
   it("has centered widescreen Containers", () => {
-    cy.viewport(
-      Cypress.env("viewports").widescreen[0],
-      Cypress.env("viewports").widescreen[1]
-    );
+    setWidescreen();
 
     let viewport;
 
@@ -114,10 +107,7 @@ describe("Elements/Container", () => {
   });
 
   it("has centered fullhd Containers", () => {
-    cy.viewport(
-      Cypress.env("viewports").fullhd[0],
-      Cypress.env("viewports").fullhd[1]
-    );
+    setFullHD();
 
     cy.get("#container").then(($) => {
       const cs = window.getComputedStyle($[0]);

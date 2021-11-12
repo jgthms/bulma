@@ -1,3 +1,5 @@
+import { setMobile, setDesktop } from "../utils";
+
 describe("Components/Navbar", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/navbar/");
@@ -125,10 +127,7 @@ describe("Components/Navbar", () => {
 describe("Components/Navbar Mobile", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/navbar/");
-    cy.viewport(
-      Cypress.env("viewports").mobile[0],
-      Cypress.env("viewports").mobile[1]
-    );
+    setMobile();
   });
 
   it("has a Navbar", () => {
@@ -182,10 +181,7 @@ describe("Components/Navbar Mobile", () => {
 describe("Components/Navbar Desktop", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/components/navbar/");
-    cy.viewport(
-      Cypress.env("viewports").desktop[0],
-      Cypress.env("viewports").desktop[1]
-    );
+    setDesktop();
   });
 
   it("has a Navbar", () => {
