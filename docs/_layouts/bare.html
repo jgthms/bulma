@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.meta.description }}{% endif %}">
+    <title>{% if page.fulltitle %}{{ page.fulltitle | markdownify | strip_html }}{% else %}{% if page.title %}{{ page.title | markdownify | strip_html }} | {% endif %}{{ site.data.meta.title | markdownify | strip_html }}{% endif %}</title>
+  </head>
+  <body>
+    {{ content }}
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{% if site.data.backers[include.tier].size > 0 or site.data.github[include.tier].size > 0 %}
+<h2>{{ include.title }}</h2>
+
+<ul>
+  {% for pt in site.data.backers[include.tier] reversed %}
+  <li>
+    {{ pt.name }}
+  </li>
+  {% endfor %}
+  {% for gh in site.data.github[include.tier] reversed %}
+  <li>
+    {{ gh }}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
