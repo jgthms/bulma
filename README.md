@@ -129,7 +129,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
-Code copyright 2021 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+Code copyright 2022 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
 
 [npm-link]: https://www.npmjs.com/package/bulma
 [awesome-link]:  https://github.com/awesome-css-group/awesome-css
