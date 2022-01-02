@@ -14,8 +14,8 @@ breadcrumb:
 
 {% capture scss_code %}
 // 1. Import the initial variables
-@import "../sass/utilities/initial-variables";
-@import "../sass/utilities/functions";
+@use "../sass/utilities/initial-variables";
+@use "../sass/utilities/functions";
 
 // 2. Set your own initial variables
 // Update blue
@@ -44,7 +44,7 @@ $github: #333;
 $github-invert: findColorInvert($github);
 
 // 5. Add new color variables to the color map.
-@import "../sass/utilities/derived-variables";
+@use "../sass/utilities/derived-variables";
 $addColors: (
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
@@ -53,7 +53,7 @@ $addColors: (
 $colors: map-merge($colors, $addColors);
 
 // 6. Import the rest of Bulma
-@import "../bulma";
+@use "../bulma";
 {% endcapture %}
 
 <div class="content">

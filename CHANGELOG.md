@@ -83,7 +83,7 @@ If you were importing `utilities/_all` or even `bulma.sass` directly, no change 
 ### Deprecation warning
 
 The `base/helpers.sass` file is **deprecated**. It has moved into its own `/helpers` folder. If you were importing `base/helpers.sass` or `base/_all.sass`, please import `sass/helpers/_all.sass` now.
-If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
+If you were simply importing the whole of Bulma with `@use "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
 
 The `list` component is also **deprecated**: the `components/list.sass` file has been deleted. It was never officially supported as it was too similar to `panel` component. Use that one instead.
 
@@ -309,7 +309,7 @@ That is also why most of the codebase now references **derived** variables (`$te
 ### Deprecation warning
 
 The `form.sass` file is **deprecated**. It has moved into its own `/form` folder. If you were importing `form.sass`, please import `sass/form/_all.sass` now.
-If you were simply importing the whole of Bulma with `@import "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
+If you were simply importing the whole of Bulma with `@use "~/bulma/bulma.sass"` or similar, you won't have to change anything, and everything will work as before.
 
 ### New features
 
