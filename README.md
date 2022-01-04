@@ -41,7 +41,7 @@ bower install bulma
 After installation, you can import the CSS file into your project using this snippet:
 
 ```sh
-@import 'bulma/css/bulma.css'
+@use 'bulma/css/bulma.css'
 ```
 
 ### CDN
