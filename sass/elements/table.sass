@@ -93,37 +93,40 @@ $table-colors: $colors !default
           border-bottom-width: 0
   // Modifiers
   &.is-bordered
-    td,
-    th
-      border-width: 1px
-    tr
-      &:last-child
-        td,
-        th
-          border-bottom-width: 1px
-  &.is-fullwidth
-    width: 100%
+        > tbody
+            > tr
+                > td,
+                > th
+                    border-width: 1px
+            > tr
+                &:last-child
+                    > td,
+                    > th
+                        border-bottom-width: 1px
   &.is-hoverable
-    tbody
-      tr:not(.is-selected)
-        &:hover
-          background-color: $table-row-hover-background-color
-    &.is-striped
-      tbody
-        tr:not(.is-selected)
-          &:hover
-            background-color: $table-row-hover-background-color
-            &:nth-child(even)
-              background-color: $table-striped-row-even-hover-background-color
+      > tbody
+          > tr:not(.is-selected)
+              &:hover
+                  background-color: $table-row-hover-background-color
+      &.is-striped
+          > tbody
+              > tr:not(.is-selected)
+                  &:hover
+                      background-color: $table-row-hover-background-color
+                      &:nth-child(even)
+                          background-color: $table-striped-row-even-hover-background-color
   &.is-narrow
-    td,
-    th
-      padding: 0.25em 0.5em
+      > tbody,
+          > tr
+              > td,
+              > th
+                  padding: 0.25em 0.5em
   &.is-striped
-    tbody
-      tr:not(.is-selected)
-        &:nth-child(even)
-          background-color: $table-striped-row-even-background-color
+      > tbody
+          > tr:not(.is-selected)
+              &:nth-child(even)
+                  background-color: $table-striped-row-even-background-color
+
 
 .table-container
   @extend %block
