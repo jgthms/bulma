@@ -1,0 +1,35 @@
+{% assign sizes = "default,small,normal,medium,large" | split: "," %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Fixed size</th>
+      <th>Responsive size <small class="has-text-grey has-text-weight-normal">(resize window to see in action)</small></th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for size in sizes %}
+{% capture responsive_code %}
+<button class="button {% unless size == 'default' %}is-{{ size }} {% endunless %}is-responsive">
+  {{ size | capitalize }}
+</button>
+{% endcapture %}
+      <tr>
+        <td>{{ size | capitalize }}</td>
+        <td>
+          <button class="button is-{{ size }}">
+            {{ size | capitalize }}
+          </button>
+        </td>
+        <td>
+          {{ responsive_code }}
+        </td>
+        <td>
+          {% highlight html %}{{ responsive_code }}{% endhighlight %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
