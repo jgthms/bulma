@@ -1,5 +1,14 @@
 # Bulma Changelog
 
+## 0.9.4
+
+### New features
+
+- **Responsive buttons**: the size of a button will change for each breakpoint
+- `@mixin between`: takes 2 breakpoint values, outputs a media query for the range between these 2 values
+- `$breakpoints` Sass map: a map of named breakpoints and their type (`from`, `until` or both)
+- `@mixin breakpoint`: uses the new `$breakpoints` Sass map to output a media query
+
 ## 0.9.3
 
 ### New features
