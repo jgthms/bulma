@@ -15,9 +15,12 @@ $level-item-spacing: ($block-spacing * 0.5) !default
   &.is-mobile
     display: flex
     .level-left,
-    .level-right
+    .level-right,
+    .level-start,
+    .level-end
       display: flex
-    .level-left + .level-right
+    .level-left + .level-right,
+    .level-start + .level-end
       margin-top: 0
     .level-item
       &:not(:last-child)
@@ -47,8 +50,8 @@ $level-item-spacing: ($block-spacing * 0.5) !default
     &:not(:last-child)
       margin-bottom: $level-item-spacing
 
-.level-left,
-.level-right
+.level-left,.level-start,
+.level-right, .level-end
   flex-basis: auto
   flex-grow: 0
   flex-shrink: 0
@@ -62,18 +65,28 @@ $level-item-spacing: ($block-spacing * 0.5) !default
         +ltr-property("margin", $level-item-spacing)
 
 .level-left
-  align-items: center
+  justify-content: left
+
+.level-start
   justify-content: flex-start
+  
+.level-left, .level-start
+  align-items: center
   // Responsiveness
   +mobile
-    & + .level-right
+    & + .level-right, & + .level-end
       margin-top: 1.5rem
   +tablet
     display: flex
 
-.level-right
-  align-items: center
+.level-right 
+  justify-content: right
+
+.level-end
   justify-content: flex-end
+
+.level-right, .level-end
+  align-items: center
   // Responsiveness
   +tablet
     display: flex

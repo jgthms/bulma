@@ -170,8 +170,7 @@ body
   position: relative
   .icon
     &:only-child
-      margin-left: -0.25rem
-      margin-right: -0.25rem
+      margin-inline: -0.25rem
 
 a.navbar-item,
 .navbar-link
@@ -226,8 +225,7 @@ a.navbar-item,
   padding-bottom: 0.5rem
   padding-top: 0.5rem
   .navbar-item
-    padding-left: 1.5rem
-    padding-right: 1.5rem
+    padding-inline: 1.5rem
 
 .navbar-divider
   background-color: $navbar-divider-background-color
@@ -358,8 +356,10 @@ a.navbar-item,
     +ltr-property("margin", auto, false)
   .navbar-dropdown
     background-color: $navbar-dropdown-background-color
-    border-bottom-left-radius: $navbar-dropdown-radius
-    border-bottom-right-radius: $navbar-dropdown-radius
+    // Bottom Left
+    border-end-start-radius: $navbar-dropdown-radius
+    // Bottom right
+    border-end-end-radius: $navbar-dropdown-radius
     border-top: $navbar-dropdown-border-top
     box-shadow: 0 8px 8px bulmaRgba($scheme-invert, 0.1)
     display: none
@@ -396,6 +396,9 @@ a.navbar-item,
     &.is-right
       left: auto
       right: 0
+    &.is-block-end
+      inset-inline-start: auto
+      inset-inline-end: 0
   .navbar-divider
     display: block
   .navbar > .container,

@@ -30,33 +30,35 @@ $tag-colors: $colors !default
   &.is-centered
     justify-content: center
     .tag
-      margin-right: 0.25rem
-      margin-left: 0.25rem
+      margin-inline: 0.25em
   &.is-right
+    justify-content: right
+    .tag
+      &:not(:first-child)
+        +ltr-property("margin", 0.5rem, false)
+      &:not(:last-child)
+        +ltr-property("margin", 0)
+  &.is-block-end
     justify-content: flex-end
     .tag
       &:not(:first-child)
-        margin-left: 0.5rem
+        +ltr-property("margin", 0.5rem, false)
       &:not(:last-child)
-        margin-right: 0
+        +ltr-property("margin", 0)
   &.has-addons
     .tag
       +ltr-property("margin", 0)
       &:not(:first-child)
         +ltr-property("margin", 0, false)
-        +ltr
-          border-top-left-radius: 0
-          border-bottom-left-radius: 0
-        +rtl
-          border-top-right-radius: 0
-          border-bottom-right-radius: 0
+        // Top Left
+        border-start-start-radius: 0
+        // Bottom Left
+        border-end-start-radius: 0
       &:not(:last-child)
-        +ltr
-          border-top-right-radius: 0
-          border-bottom-right-radius: 0
-        +rtl
-          border-top-left-radius: 0
-          border-bottom-left-radius: 0
+        // Top Right
+        border-start-end-radius: 0
+        // Bottom Right
+        border-end-end-radius: 0
 
 .tag:not(body)
   align-items: center
@@ -68,8 +70,7 @@ $tag-colors: $colors !default
   height: 2em
   justify-content: center
   line-height: 1.5
-  padding-left: 0.75em
-  padding-right: 0.75em
+  padding-inline: 0.75em
   white-space: nowrap
   .delete
     +ltr-property("margin", 0.25rem, false)

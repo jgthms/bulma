@@ -1,0 +1,32 @@
+
+$badge-size: 1.5em !default
+$badge-location: 0.4 !default
+$badge-colors: $colors !default
+$badge-positions: ("top-left": ("top", "left"), "top-right": ("top", "right"), "bottom-right": ("bottom", "right"), "bottom-left": ("bottom", "left"), "start-start": ("inset-block-start", "inset-inline-start"), "start-end": ("inset-block-start", "inset-inline-end"), "end-start": ("inset-block-end", "inset-inline-start"), "end-end": ("inset-block-end", "inset-inline-end")) !default
+
+.badge
+  @extend %number
+  margin: 0
+  font-weight: bold
+  font-size: $size-7
+  min-width: $badge-size
+  padding: 0.15em 0.35em
+  height: $badge-size
+  position: absolute
+  @each $position, $properties in $badge-positions
+    &.is-#{$position}
+      @each $direction in $properties
+        #{$direction}: $badge-size * $badge-location * -1
+  @each $name, $pair in $badge-colors
+    $color: nth($pair, 1)
+    $color-invert: nth($pair, 2)
+    &.is-#{$name}
+      background-color: $color
+      color: $color-invert
+      // If a light and dark colors are provided
+      @if length($pair) > 3
+        $color-light: nth($pair, 3)
+        $color-dark: nth($pair, 4)
+        &.is-light
+          background-color: $color-light
+          color: $color-dark

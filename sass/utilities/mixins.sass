@@ -164,29 +164,14 @@
       +until($until)
         @content
 
-=ltr
-  @if not $rtl
-    @content
-
-=rtl
-  @if $rtl
-    @content
 
 =ltr-property($property, $spacing, $right: true)
-  $normal: if($right, "right", "left")
-  $opposite: if($right, "left", "right")
-  @if $rtl
-    #{$property}-#{$opposite}: $spacing
-  @else
-    #{$property}-#{$normal}: $spacing
+  $normal: if($right, "inline-end", "inline-start")
+  #{$property}-#{$normal}: $spacing
 
 =ltr-position($spacing, $right: true)
-  $normal: if($right, "right", "left")
-  $opposite: if($right, "left", "right")
-  @if $rtl
-    #{$opposite}: $spacing
-  @else
-    #{$normal}: $spacing
+  $normal: if($right, "inset-inline-end", "inset-inline-start")
+  #{$normal}: $spacing
 
 // Placeholders
 
@@ -294,6 +279,20 @@
   height: 1em
   position: relative
   width: 1em
+
+=number
+  align-items: center
+  background-color: $background
+  border-radius: $radius-rounded
+  display: inline-flex
+  font-size: $size-medium
+  height: 2em
+  justify-content: center
+  margin-right: 1.5rem
+  min-width: 2.5em
+  padding: 0.25rem 0.5rem
+  text-align: center
+  vertical-align: top
 
 =overlay($offset: 0)
   bottom: $offset

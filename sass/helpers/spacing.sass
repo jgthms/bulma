@@ -5,7 +5,7 @@
   padding: 0 !important
 
 $spacing-shortcuts: ("margin": "m", "padding": "p") !default
-$spacing-directions: ("top": "t", "right": "r", "bottom": "b", "left": "l") !default
+$spacing-directions: ("top": "t", "right": "r", "bottom": "b", "left": "l", "inline-start": "start", "inline-end": "end") !default
 $spacing-horizontal: "x" !default
 $spacing-vertical: "y" !default
 $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem, "auto": auto) !default
@@ -22,10 +22,8 @@ $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5
     // Horizontal axis
     @if $spacing-horizontal != null
       .#{$shortcut}#{$spacing-horizontal}-#{$name}
-        #{$property}-left: $value !important
-        #{$property}-right: $value !important
+        #{$property}-inline: $value !important
     // Vertical axis
     @if $spacing-vertical != null
       .#{$shortcut}#{$spacing-vertical}-#{$name}
-        #{$property}-top: $value !important
-        #{$property}-bottom: $value !important
+        #{$property}-block: $value !important

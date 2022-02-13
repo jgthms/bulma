@@ -64,11 +64,15 @@ $file-colors: $form-colors !default
   // Modifiers
   &.has-name
     .file-cta
-      border-bottom-right-radius: 0
-      border-top-right-radius: 0
+      // Top Right
+      border-start-end-radius: 0
+      // Bottom Right
+      border-end-end-radius: 0
     .file-name
-      border-bottom-left-radius: 0
-      border-top-left-radius: 0
+      // Top Left
+      border-start-start-radius: 0
+      // Bottom Left
+      border-end-start-radius: 0
     &.is-empty
       .file-cta
         border-radius: $file-radius
@@ -99,9 +103,23 @@ $file-colors: $form-colors !default
         font-size: 35px
     &.has-name
       .file-cta
-        border-radius: $file-radius $file-radius 0 0
+        // Top Left
+        border-start-start-radius: $file-radius
+        // Top Right
+        border-start-end-radius: $file-radius
+        // Bottom Left
+        border-end-start-radius: 0
+        // Bottom Right
+        border-end-end-radius: 0
       .file-name
-        border-radius: 0 0 $file-radius $file-radius
+        // Top Left
+        border-start-start-radius: 0
+        // Top Right
+        border-start-end-radius: 0
+        // Bottom Left
+        border-end-start-radius: $file-radius
+        // Bottom Right
+        border-end-end-radius: $file-radius
         border-width: 0 1px 1px
   &.is-centered
     justify-content: center
@@ -112,11 +130,27 @@ $file-colors: $form-colors !default
       flex-grow: 1
       max-width: none
   &.is-right
+    justify-content: right
+    .file-cta
+      border-top-right-radius: $file-radius
+      border-bottom-right-radius: $file-radius
+    .file-name
+      border-top-left-radius: $file-radius
+      border-bottom-left-radius: $file-radius
+      border-width: 1px 0 1px 1px
+      order: -1
+  &.is-block-end
     justify-content: flex-end
     .file-cta
-      border-radius: 0 $file-radius $file-radius 0
+      // Top Right
+      border-start-end-radius: $file-radius
+      // Bottom Right
+      border-end-end-radius: $file-radius
     .file-name
-      border-radius: $file-radius 0 0 $file-radius
+      // Top Left
+      border-start-start-radius: $file-radius
+      // Bottom Left
+      border-end-start-radius: $file-radius
       border-width: 1px 0 1px 1px
       order: -1
 
@@ -155,8 +189,7 @@ $file-colors: $form-colors !default
   border-color: $file-border-color
   border-radius: $file-radius
   font-size: 1em
-  padding-left: 1em
-  padding-right: 1em
+  padding-inline: 1em
   white-space: nowrap
 
 .file-cta
