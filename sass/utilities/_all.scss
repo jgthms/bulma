@@ -11,21 +11,42 @@
 
 // Light theme (default)
 // Can be forced with data-theme="light"
+// Import your custom `light-theme` mixin in the Sass pipeline before this file to override the default theme.
 @import "../themes/light";
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  @if mixin-exists(light-theme) {
+    @include light-theme;
+  }
+  @else {
+    @include light-fallback;
+  }
+}
 
 // Dark theme (auto)
 // Automatically enabled if user has Dark mode enabled
+// Import your custom `dark-theme` mixin in the Sass pipeline before this file to override the default theme.
 @import "../themes/dark";
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    @include dark;
+    @if mixin-exists(dark-theme) {
+      @include dark-theme;
+    }
+    @else {
+      @include dark-fallback;
+    }
   }
 }
 
 // Dark theme (forced)
 // Enabled if forced with data-theme="dark"
 [data-theme="dark"] {
-  @include dark;
+  @if mixin-exists(dark-theme) {
+    @include dark-theme;
+  }
+  @else {
+    @include dark-fallback;
+  }
 }
 
 // Derived styles
