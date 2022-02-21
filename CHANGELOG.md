@@ -8,6 +8,15 @@
 - `@mixin between`: takes 2 breakpoint values, outputs a media query for the range between these 2 values
 - `$breakpoints` Sass map: a map of named breakpoints and their type (`from`, `until` or both)
 - `@mixin breakpoint`: uses the new `$breakpoints` Sass map to output a media query
+- Support for CSS logical properties! you don't need a separate rtl version anymore, bulma now works with RTL support out of the box
+
+### Bugfix
+
+- #2347 Better nomenclature for css modifiers with `is-end` instead of `is-right`
+- #3437 Fix Border radius on RTL
+- #3426 Fix loading spinner on `input` and `select`
+- #3419 Fix RTL `is-right` by providing `is-end`
+- #3409 Fix RTL `is-right` by providing `is-end`
 
 ## 0.9.3
 
