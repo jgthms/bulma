@@ -66,8 +66,8 @@ $modal-breakpoint: $tablet !default
   @extend %delete
   background: none
   height: $modal-close-dimensions
+  inset-inline-end: $modal-close-right
   position: fixed
-  +ltr-position($modal-close-right)
   top: $modal-close-top
   width: $modal-close-dimensions
 
@@ -90,10 +90,8 @@ $modal-breakpoint: $tablet !default
 
 .modal-card-head
   border-bottom: $modal-card-head-border-bottom
-  // Top Left
-  border-start-start-radius: $modal-card-head-radius
-  // Top Right
   border-start-end-radius: $modal-card-head-radius
+  border-start-start-radius: $modal-card-head-radius
 
 .modal-card-title
   color: $modal-card-title-color
@@ -103,14 +101,12 @@ $modal-breakpoint: $tablet !default
   line-height: $modal-card-title-line-height
 
 .modal-card-foot
-  // Bottom Left
-  border-end-start-radius: $modal-card-foot-radius
-  // Bottom Right
   border-end-end-radius: $modal-card-foot-radius
+  border-end-start-radius: $modal-card-foot-radius
   border-top: $modal-card-foot-border-top
   .button
     &:not(:last-child)
-      +ltr-property("margin", 0.5em)
+      margin-inline-end: 0.5em
 
 .modal-card-body
   +overflow-touch

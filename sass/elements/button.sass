@@ -69,8 +69,8 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
   @if $button-family
     font-family: $button-family
   justify-content: center
-  padding-inline: $button-padding-horizontal
   padding-block: $button-padding-vertical
+  padding-inline: $button-padding-horizontal
   text-align: center
   white-space: nowrap
   strong
@@ -83,11 +83,11 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
       height: 1.5em
       width: 1.5em
     &:first-child:not(:last-child)
-      +ltr-property("margin", calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}), false)
-      +ltr-property("margin", $button-padding-horizontal * 0.25)
+      margin-inline-end: $button-padding-horizontal * 0.25
+      margin-inline-start: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
     &:last-child:not(:first-child)
-      +ltr-property("margin", $button-padding-horizontal * 0.25, false)
-      +ltr-property("margin", calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}))
+      margin-inline-end: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
+      margin-inline-start: $button-padding-horizontal * 0.25
     &:first-child:last-child
       margin-inline: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
   // States
@@ -288,7 +288,7 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
   .button
     margin-bottom: 0.5rem
     &:not(:last-child):not(.is-fullwidth)
-      +ltr-property("margin", 0.5rem)
+      margin-inline-end: 0.5rem
   &:last-child
     margin-bottom: -0.5rem
   &:not(:last-child)
@@ -306,18 +306,14 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
   &.has-addons
     .button
       &:not(:first-child)
-        // Top Left
-        border-start-start-radius: 0
-        // Bottom Left
         border-end-start-radius: 0
+        border-start-start-radius: 0
       &:not(:last-child)
-        // Top Right
-        border-start-end-radius: 0
-        // Bottom Right
         border-end-end-radius: 0
-        +ltr-property("margin", -1px)
+        border-start-end-radius: 0
+        margin-inline-end: -1px
       &:last-child
-        +ltr-property("margin", 0)
+        margin-inline-end: 0
       &:hover,
       &.is-hovered
         z-index: 2
@@ -342,7 +338,7 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
     &:not(.has-addons)
       .button:not(.is-fullwidth)
         margin-inline: 0.25rem
-  &.is-block-end
+  &.is-end
     justify-content: flex-end
     &:not(.has-addons)
       .button:not(.is-fullwidth)

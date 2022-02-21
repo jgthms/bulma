@@ -15,7 +15,7 @@ $tag-colors: $colors !default
   .tag
     margin-bottom: 0.5rem
     &:not(:last-child)
-      +ltr-property("margin", 0.5rem)
+      margin-inline-end: 0.5rem
   &:last-child
     margin-bottom: -0.5rem
   &:not(:last-child)
@@ -35,30 +35,26 @@ $tag-colors: $colors !default
     justify-content: right
     .tag
       &:not(:first-child)
-        +ltr-property("margin", 0.5rem, false)
+        margin-inline-start: 0.5rem
       &:not(:last-child)
-        +ltr-property("margin", 0)
-  &.is-block-end
+        margin-inline-end: 0
+  &.is-end
     justify-content: flex-end
     .tag
       &:not(:first-child)
-        +ltr-property("margin", 0.5rem, false)
+        margin-inline-start: 0.5rem
       &:not(:last-child)
-        +ltr-property("margin", 0)
+        margin-inline-end: 0
   &.has-addons
     .tag
-      +ltr-property("margin", 0)
+      margin-inline-end: 0
       &:not(:first-child)
-        +ltr-property("margin", 0, false)
-        // Top Left
-        border-start-start-radius: 0
-        // Bottom Left
+        margin-inline-start: 0
         border-end-start-radius: 0
+        border-start-start-radius: 0
       &:not(:last-child)
-        // Top Right
-        border-start-end-radius: 0
-        // Bottom Right
         border-end-end-radius: 0
+        border-start-end-radius: 0
 
 .tag:not(body)
   align-items: center
@@ -73,8 +69,8 @@ $tag-colors: $colors !default
   padding-inline: 0.75em
   white-space: nowrap
   .delete
-    +ltr-property("margin", 0.25rem, false)
-    +ltr-property("margin", -0.375rem)
+    margin-inline-end: -0.375rem
+    margin-inline-start: 0.25rem
   // Colors
   @each $name, $pair in $tag-colors
     $color: nth($pair, 1)
@@ -98,17 +94,16 @@ $tag-colors: $colors !default
     font-size: $size-medium
   .icon
     &:first-child:not(:last-child)
-      +ltr-property("margin", -0.375em, false)
-      +ltr-property("margin", 0.1875em)
+      margin-inline-end: 0.1875em
+      margin-inline-start: -0.375em
     &:last-child:not(:first-child)
-      +ltr-property("margin", 0.1875em, false)
-      +ltr-property("margin", -0.375em)
+      margin-inline-end: -0.375em
+      margin-inline-start: 0.1875em
     &:first-child:last-child
-      +ltr-property("margin", -0.375em, false)
-      +ltr-property("margin", -0.375em)
+      margin-inline: -0.375em
   // Modifiers
   &.is-delete
-    +ltr-property("margin", $tag-delete-margin, false)
+    margin-inline-start: $tag-delete-margin
     padding: 0
     position: relative
     width: 2em

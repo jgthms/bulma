@@ -81,6 +81,26 @@ meta:
 </div>
 {% endcapture %}
 
+{% capture file_name_end %}
+<!-- Follows html direction property -->
+<div class="file has-name is-end">
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+    <span class="file-name">
+      {{ page.file_name }}
+    </span>
+  </label>
+</div>
+{% endcapture %}
+
 {% capture file_name_fullwidth %}
 <div class="file has-name is-fullwidth">
   <label class="file-label">
@@ -342,6 +362,22 @@ meta:
   </div>
   <div class="column is-6 bd-highlight-full">
     {% highlight html %}{{ file_name_right }}{% endhighlight %}
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-6">
+    <div class="content">
+      <p>
+        You can use <code>is-end</code> modifier to move the CTA according to the html <code>direction</code> property.
+      </p>
+    </div>
+    <div class="bd-example">
+      {{ file_name_end }}
+    </div>
+  </div>
+  <div class="column is-6 bd-highlight-full">
+    {% highlight html %}{{ file_name_end }}{% endhighlight %}
   </div>
 </div>
 
