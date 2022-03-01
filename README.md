@@ -128,6 +128,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Blazorise](https://github.com/Megabit/Blazorise)                                   | Blazor component library with the support for Bulma CSS framework                             |
 | [Oruga-Bulma](https://github.com/oruga-ui/theme-bulma)                              | Bulma theme for [Oruga UI](https://oruga.io)                                                  |
 | [@bulvar/bulma](https://github.com/daniil4udo/bulvar/tree/master/packages/bulma)    | Bulma with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) support |
+| [@angular-bulma](https://quinnjr.github.io/angular-bulma) | [Angular](https://angular.io/) directives and components to use in your Bulma projects |
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
