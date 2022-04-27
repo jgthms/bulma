@@ -295,6 +295,79 @@ meta:
 </nav>
 {% endcapture %}
 
+{% capture navbar_dropdown_end_snippet %}
+<!-- Follows html direction property -->
+<div class="navbar-dropdown is-end">
+  <!-- navbar-item, navbar-divider etc. -->
+</div>
+{% endcapture %}
+
+{% capture navbar_dropdown_end_example %}
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown is-active">
+        <a class="navbar-link">
+          Left
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            Version {{ site.data.meta.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-active">
+        <a class="navbar-link">
+          End
+        </a>
+
+        <!-- Follows html direction property -->
+        <div class="navbar-dropdown is-end">
+          <a class="navbar-item">
+            Overview
+          </a>
+          <a class="navbar-item">
+            Elements
+          </a>
+          <a class="navbar-item">
+            Components
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            Version {{ site.data.meta.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Documentation
+    </p>
+    <p class="subtitle">
+      Everything you need to <strong>create a website</strong> with Bulma
+    </p>
+  </div>
+</section>
+{% endcapture %}
+
 {% capture navbar_dropdown_right_snippet %}
 <div class="navbar-dropdown is-right">
   <!-- navbar-item, navbar-divider etc. -->
@@ -1006,6 +1079,30 @@ $(document).ready(function() {
 
   <div class="column">
     {% highlight html %}{{ navbar_dropdown_active_example }}{% endhighlight %}
+  </div>
+</div>
+
+<h4 class="title is-4">
+  End Aligned dropdown
+</h4>
+
+<div class="content">
+  <p>
+    If your parent <code>navbar-item</code> is on the end side, you can position the dropdown to align to the <strong>end</strong> with the <code>is-end</code> modifier. This modifiers will follow the html <code>direction</code> property.
+  </p>
+</div>
+
+{% highlight html %}{{ navbar_dropdown_end_snippet }}{% endhighlight %}
+
+<div class="columns">
+  <div class="column">
+    <div class="bd-example is-paddingless">
+      {{ navbar_dropdown_end_example }}
+    </div>
+  </div>
+
+  <div class="column">
+    {% highlight html %}{{ navbar_dropdown_end_example }}{% endhighlight %}
   </div>
 </div>
 

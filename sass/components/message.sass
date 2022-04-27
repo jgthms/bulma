@@ -10,7 +10,7 @@ $message-header-padding: 0.75em 1em !default
 $message-header-radius: $radius !default
 
 $message-body-border-color: $border !default
-$message-body-border-width: 0 0 0 4px !default
+$message-body-border-width: 4px !default
 $message-body-color: $text !default
 $message-body-padding: 1.25em 1.5em !default
 $message-body-radius: $radius !default
@@ -70,7 +70,8 @@ $message-colors: $colors !default
 .message-header
   align-items: center
   background-color: $message-header-background-color
-  border-radius: $message-header-radius $message-header-radius 0 0
+  border-start-end-radius: $message-header-radius
+  border-start-start-radius: $message-header-radius
   color: $message-header-color
   display: flex
   font-weight: $message-header-weight
@@ -81,17 +82,18 @@ $message-colors: $colors !default
   .delete
     flex-grow: 0
     flex-shrink: 0
-    +ltr-property("margin", 0.75em, false)
+    margin-inline-start: 0.75em
   & + .message-body
     border-width: $message-header-body-border-width
-    border-top-left-radius: 0
-    border-top-right-radius: 0
+    border-start-end-radius: 0
+    border-start-start-radius: 0
 
 .message-body
   border-color: $message-body-border-color
   border-radius: $message-body-radius
   border-style: solid
-  border-width: $message-body-border-width
+  border-width: $message-header-body-border-width
+  border-inline-start-width: $message-body-border-width
   color: $message-body-color
   padding: $message-body-padding
   code,

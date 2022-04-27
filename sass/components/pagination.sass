@@ -49,8 +49,7 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
   &.is-rounded
     .pagination-previous,
     .pagination-next
-      padding-left: 1em
-      padding-right: 1em
+      padding-inline: 1em
       border-radius: $radius-rounded
     .pagination-link
       border-radius: $radius-rounded
@@ -71,8 +70,8 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
   font-size: $pagination-item-font-size
   justify-content: center
   margin: $pagination-item-margin
-  padding-left: $pagination-item-padding-left
-  padding-right: $pagination-item-padding-right
+  padding-inline-end: $pagination-item-padding-right
+  padding-inline-start: $pagination-item-padding-left
   text-align: center
 
 .pagination-previous,
@@ -98,8 +97,8 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
 
 .pagination-previous,
 .pagination-next
-  padding-left: $pagination-nav-padding-left
-  padding-right: $pagination-nav-padding-right
+  padding-inline-end: $pagination-nav-padding-right
+  padding-inline-start: $pagination-nav-padding-left
   white-space: nowrap
 
 .pagination-link
@@ -158,6 +157,14 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
       .pagination-next
         order: 3
     &.is-right
+      .pagination-previous
+        order: 1
+      .pagination-next
+        order: 2
+      .pagination-list
+        justify-content: right
+        order: 3
+    &.is-end
       .pagination-previous
         order: 1
       .pagination-next
