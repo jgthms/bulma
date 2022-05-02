@@ -35,7 +35,7 @@ describe("Form/Input", () => {
     });
   });
 
-  it(`has correct color File`, () => {
+  it(`has correct color Input`, () => {
     for (let i = 0; i < Cypress.env("color-names").length; i++) {
       const name = Cypress.env("color-names")[i];
       const baseColor = Cypress.env(name);
@@ -50,7 +50,7 @@ describe("Form/Input", () => {
     }
   });
 
-  it("has correct File sizes", () => {
+  it("has correct Input sizes", () => {
     for (let i = 0; i < Cypress.env("just-sizes").length; i++) {
       const size = Cypress.env("just-sizes")[i];
 
