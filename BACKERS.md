@@ -2,13 +2,6 @@
 
 <ul>
 
-  <li>
-    Adrian Ocneanu
-  </li>
-
-  <li>
-    Garry Newman
-  </li>
 
   <li>
     echelon
@@ -16,9 +9,14 @@
 
 </ul>
 
+
+
+
+
 <h2>Website sponsors ($300+)</h2>
 
 <ul>
+
 
   <li>
     kevivmatrix
@@ -33,6 +31,8 @@
   </li>
 
 </ul>
+
+
 
 <h2>Homepage sponsors ($100+)</h2>
 
@@ -51,14 +51,6 @@
   </li>
 
   <li>
-    Raj.bet
-  </li>
-
-  <li>
-    Iaroslav Baklan
-  </li>
-
-  <li>
     Iaroslav Baklan
   </li>
 
@@ -72,14 +64,6 @@
 
   <li>
     Gianni Museeuw
-  </li>
-
-  <li>
-    Anbefalt
-  </li>
-
-  <li>
-    Samuel Gramstad
   </li>
 
   <li>
@@ -107,6 +91,51 @@
   </li>
 
   <li>
+    CasinosHunter
+  </li>
+
+  <li>
+    PapersOwl
+  </li>
+
+  <li>
+    List.Casino
+  </li>
+
+  <li>
+    Khayriddin Sodiqov
+  </li>
+
+  <li>
+    Amelia Cook
+  </li>
+
+  <li>
+    Iaroslav Baklan
+  </li>
+
+  <li>
+    Aamir Javeed
+  </li>
+
+  <li>
+    D-Digital
+  </li>
+
+  <li>
+    Casinozondercruks.net
+  </li>
+
+  <li>
+    Xoo
+  </li>
+
+  <li>
+    Jim
+  </li>
+
+
+  <li>
     laneadam
   </li>
 
@@ -132,25 +161,12 @@
 
 </ul>
 
+
+
 <h2>Bulma backers ($10+)</h2>
 
 <ul>
 
-  <li>
-    Jordan Nemrow
-  </li>
-
-  <li>
-    Jason Seminara
-  </li>
-
-  <li>
-    Ian Ebden
-  </li>
-
-  <li>
-    xvxx
-  </li>
 
   <li>
     chazelton331
