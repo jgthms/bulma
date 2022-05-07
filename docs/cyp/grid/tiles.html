@@ -1,0 +1,73 @@
+---
+layout: cypress
+title: Grid/Tiles
+---
+
+{% capture content %}
+  <div id="tile-vertical" class="tile is-vertical is-8">
+    <div id="tile" class="tile">
+      <div id="tile-parent" class="tile is-parent is-vertical">
+        <article id="tile-vertical-child" class="tile is-child notification is-warning">
+          <p class="title">Vertical...</p>
+          <p class="subtitle">Top tile</p>
+        </article>
+
+        <article class="tile is-child notification is-warning">
+          <p class="title">...tiles</p>
+          <p class="subtitle">Bottom tile</p>
+        </article>
+      </div>
+
+      <div class="tile is-parent">
+        <article id="tile-child" class="tile is-child notification is-info">
+          <p class="title">Middle tile</p>
+
+          <p class="subtitle">With an image</p>
+
+          <figure class="image is-4by3">
+            <img src="{{site.url}}/images/placeholders/640x480.png">
+          </figure>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <p class="title">Wide tile</p>
+        <p class="subtitle">Aligned with the right tile</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">Tall tile</p>
+        <p class="subtitle">With even more content</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </div>
+    </article>
+  </div>
+{% endcapture %}
+
+<div id="tile-ancestor" class="tile is-ancestor">
+  {{ content }}
+</div>
+
+<div>
+  <div id="tile-ancestor-last" class="tile is-ancestor">
+    {{ content }}
+  </div>
+</div>
+
+<div class="tile is-ancestor" style="width: 1000px;">
+  {% for i in (1..12) %}
+    <div id="tile-{{ i }}" class="tile is-{{ i }}">
+      Tile {{ i }}
+    </div>
+  {% endfor %}
+</div>
