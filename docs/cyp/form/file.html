@@ -1,0 +1,71 @@
+---
+layout: cypress
+title: Form/File
+---
+
+{% capture content %}
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+  </label>
+{% endcapture %}
+
+{% capture content_with_name %}
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+    <span class="file-name">
+      Screen Shot 2017-07-29 at 15.54.25.png
+    </span>
+  </label>
+{% endcapture %}
+
+<div id="file" class="file">
+  {{ content }}
+</div>
+
+{% for color in site.data.colors.justColors %}
+  <div id="file-{{ color }}" class="file is-{{ color }}">
+    {{ content }}
+  </div>
+{% endfor %}
+
+{% for size in site.data.sizes %}
+  <div id="file-{{ size }}" class="file is-{{ size }}">
+    {{ content }}
+  </div>
+{% endfor %}
+
+<div id="file-with-name" class="file has-name">
+  {{ content_with_name }}
+</div>
+
+<div id="file-boxed" class="file is-boxed">
+  {{ content_with_name }}
+</div>
+
+<div id="file-centered" class="file is-centered">
+  {{ content_with_name }}
+</div>
+
+<div id="file-right" class="file is-right">
+  {{ content_with_name }}
+</div>
+
+<div id="file-fullwidth" class="file is-fullwidth">
+  {{ content_with_name }}
+</div>

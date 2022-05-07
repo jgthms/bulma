@@ -1,4 +1,4 @@
-import { setMobile, setDesktop } from "../utils";
+import { setMobile, setDesktop, setWidescreen, setFullHD } from "../utils";
 
 describe("Elements/Container", () => {
   beforeEach(() => {
