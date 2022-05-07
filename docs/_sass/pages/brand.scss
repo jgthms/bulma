@@ -1,0 +1,135 @@
+.bd-brand {
+  padding: 3rem;
+}
+
+.bd-logos {
+  --size: 15rem;
+
+  > * {
+    align-items: center;
+    border-radius: 2em;
+    display: flex;
+  }
+}
+
+.bd-logos-label {
+  margin-bottom: 0 !important;
+}
+
+%bd-logos-tile {
+  grid-column: span 2;
+  justify-content: center;
+  height: var(--size);
+  width: var(--size);
+}
+
+.bd-logos-color {
+  @extend %bd-logos-tile;
+}
+
+.bd-logos-codes {
+  align-items: stretch !important;
+  flex-direction: column;
+  flex-grow: 1;
+  grid-column: span 4;
+}
+
+.bd-logos-code {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  grid-column: span 2;
+
+  p:first-child {
+    color: $text-light;
+  }
+
+  p:nth-child(2) {
+    flex-grow: 1;
+    margin-right: 1em;
+    text-align: right;
+  }
+
+  p:last-child {
+  }
+}
+
+.bd-logos-item {
+  @extend %bd-logos-tile;
+
+  background-size: cover;
+  position: relative;
+
+  &.is-transparent {
+    background-color: $border-light;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        hsla(0, 0%, 100%, 0.4) 0,
+        hsla(0, 0%, 100%, 0.4) 20px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 10px,
+        hsla(0, 0%, 100%, 0.4) 0,
+        hsla(0, 0%, 100%, 0.4) 20px
+      );
+    grid-column: span 2;
+  }
+
+  &:hover {
+    .bd-logos-download {
+      opacity: 1;
+    }
+  }
+}
+
+.bd-logos-download {
+  @extend %overlay;
+  @extend %center;
+
+  background-color: rgba($black, 0.8);
+  border-radius: 2em;
+  opacity: 0;
+  transition-duration: $speed * 2;
+  transition-property: opacity;
+
+  .title {
+    color: $link-invert !important;
+  }
+}
+
+@include touch {
+  .bd-logos {
+    > * {
+      justify-content: center;
+      margin-bottom: 1.5rem !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .bd-logos-label {
+    justify-content: center;
+  }
+}
+
+@include desktop {
+  .bd-logos {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(7, calc(var(--size) / 2));
+    grid-template-rows: repeat(4, var(--size));
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 936px;
+
+    > * {
+      align-items: center;
+      border-radius: 2em;
+      display: flex;
+    }
+  }
+}
