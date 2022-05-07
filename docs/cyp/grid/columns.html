@@ -1,6 +1,12 @@
 ---
 layout: cypress
 title: Grid/Columns
+screens:
+- mobile
+- tablet
+- desktop
+- widescreen
+- fullhd
 widths:
 - three-quarters
 - two-thirds
@@ -54,6 +60,12 @@ widths:
       Column {{ width }}
     </div>
   {% endfor %}
+
+  {% for i in (1..12) %}
+    <div class="column is-{{ i }}">
+      Column {{ i }}
+    </div>
+  {% endfor %}
 {% endcapture %}
 
 <div id="columns" class="columns">
@@ -105,5 +117,63 @@ widths:
 </div>
 
 <div id="columns-special" class="columns is-multiline">
- {{ special_columns }}
+  <div class="column is-narrow">
+    Column narrow
+  </div>
+
+  <div class="column is-full">
+    Column full
+  </div>
+
+  {% for width in page.widths %}
+    <div class="column is-{{ width }}">
+      Column {{ width }}
+    </div>
+
+    <div class="column is-offset-{{ width }}">
+      Column {{ width }}
+    </div>
+  {% endfor %}
+
+  {% for i in (1..12) %}
+    <div class="column is-{{ i }}">
+      Column {{ i }}
+    </div>
+
+    <div class="column is-offset-{{ i }}">
+      Column {{ i }}
+    </div>
+  {% endfor %}
 </div>
+
+{% for screen in page.screens %}
+  <div id="columns-special-{{ screen }}" class="columns is-multiline is-{{ screen }}">
+    <div class="column is-narrow-{{ screen }}">
+      Column narrow
+    </div>
+
+    <div class="column is-full-{{ screen }}">
+      Column full
+    </div>
+
+    {% for width in page.widths %}
+      <div class="column is-{{ width }}-{{ screen }}">
+        Column {{ width }}
+      </div>
+
+      <div class="column is-offset-{{ width }}-{{ screen }}">
+        Column {{ width }}
+      </div>
+    {% endfor %}
+
+    {% for i in (1..12) %}
+      <div class="column is-{{ i }}-{{ screen }}">
+        Column {{ i }}
+      </div>
+
+      <div class="column is-offset-{{ i }}-{{ screen }}">
+        Column {{ i }}
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
