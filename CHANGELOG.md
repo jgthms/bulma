@@ -9,6 +9,10 @@
 - `$breakpoints` Sass map: a map of named breakpoints and their type (`from`, `until` or both)
 - `@mixin breakpoint`: uses the new `$breakpoints` Sass map to output a media query
 
+### Bugfix
+
+- #3500 Fix hidden disabled buttons on iOS 15.4
+
 ## 0.9.3
 
 ### New features
