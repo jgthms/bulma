@@ -1,4 +1,4 @@
-import { setDesktop } from "../utils";
+import { setMobile, setDesktop } from "../utils";
 
 describe("Layout/Hero", () => {
   beforeEach(() => {
@@ -18,6 +18,22 @@ describe("Layout/Hero", () => {
       expect(cs.flexDirection).to.equal("column");
       expect(cs.justifyContent).to.equal("space-between");
     });
+  });
+
+  it("has a correct Hero colors", () => {
+    for (let i = 0; i < Cypress.env("color-names").length; i++) {
+      const name = Cypress.env("color-names")[i];
+      const baseColor = Cypress.env(name);
+      const invertColor = Cypress.env(`${name}-invert`);
+      const lightColor = Cypress.env(`${name}-light`);
+      const darkColor = Cypress.env(`${name}-dark`);
+
+      cy.get(`#hero-${name}`).then(($) => {
+        const cs = window.getComputedStyle($[0]);
+        expect(cs.backgroundColor).to.equal(baseColor);
+        expect(cs.color).to.equal(invertColor);
+      });
+    }
   });
 
   it("has a correct small Hero", () => {
@@ -72,6 +88,63 @@ describe("Layout/Hero", () => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.flexGrow).to.equal("1");
       expect(cs.flexShrink).to.equal("1");
+    });
+  });
+
+  it("has a Hero Buttons", () => {
+    cy.get(".hero-buttons").should("exist");
+  });
+
+  it("has a correct Hero Buttons", () => {
+    cy.get("#hero-buttons").then(($) => {
+      const cs = window.getComputedStyle($[0]);
+      expect(cs.display).to.equal("flex");
+      expect(cs.justifyContent).to.equal("center");
+      expect(cs.marginTop).to.equal("24px");
+    });
+  });
+
+  it("has a Hero Head", () => {
+    cy.get(".hero-head").should("exist");
+  });
+
+  it("has a correct Hero Head", () => {
+    cy.get("#hero-head").then(($) => {
+      const cs = window.getComputedStyle($[0]);
+      expect(cs.flexGrow).to.equal("0");
+      expect(cs.flexShrink).to.equal("0");
+    });
+  });
+
+  it("has a Hero Foot", () => {
+    cy.get(".hero-foot").should("exist");
+  });
+
+  it("has a correct Hero Foot", () => {
+    cy.get("#hero-foot").then(($) => {
+      const cs = window.getComputedStyle($[0]);
+      expect(cs.flexGrow).to.equal("0");
+      expect(cs.flexShrink).to.equal("0");
+    });
+  });
+
+  it("has a Hero Body", () => {
+    cy.get(".hero-body").should("exist");
+  });
+
+  it("has a correct Hero Body", () => {
+    cy.get("#hero-body").then(($) => {
+      const cs = window.getComputedStyle($[0]);
+      expect(cs.flexGrow).to.equal("1");
+      expect(cs.flexShrink).to.equal("0");
+      expect(cs.padding).to.equal("48px");
+    });
+
+    setMobile();
+
+    cy.get("#hero-body").then(($) => {
+      const cs = window.getComputedStyle($[0]);
+      expect(cs.padding).to.equal("48px 24px");
     });
   });
 });
