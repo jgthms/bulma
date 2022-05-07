@@ -1,4 +1,4 @@
-describe("Form/select", () => {
+describe("Form/Select", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/form/select/");
   });
