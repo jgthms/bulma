@@ -1,0 +1,179 @@
+---
+layout: cypress
+title: Grid/Columns
+screens:
+- mobile
+- tablet
+- desktop
+- widescreen
+- fullhd
+widths:
+- three-quarters
+- two-thirds
+- half
+- one-third
+- one-quarter
+- one-fifth
+- two-fifths
+- three-fifths
+- four-fifths
+---
+
+{% capture columns %}
+  <div class="column">
+    First column
+  </div>
+  <div class="column">
+    Second column
+  </div>
+  <div class="column">
+    Third column
+  </div>
+  <div class="column">
+    Fourth column
+  </div>
+{% endcapture %}
+
+{% capture twelve_columns %}
+  {% for i in (1..12) %}
+    <div class="column">
+      Column {{ i }}
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+{% capture special_columns %}
+  <div class="column is-narrow">
+    Column narrow
+  </div>
+
+  <div class="column is-full">
+    Column full
+  </div>
+
+  {% for width in page.widths %}
+    <div class="column is-{{ width }}">
+      Column {{ width }}
+    </div>
+
+    <div class="column is-offset-{{ width }}">
+      Column {{ width }}
+    </div>
+  {% endfor %}
+
+  {% for i in (1..12) %}
+    <div class="column is-{{ i }}">
+      Column {{ i }}
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+<div id="columns" class="columns">
+ {{ columns }}
+</div>
+
+<div>
+  <div id="columns-last" class="columns">
+    {{ columns }}
+  </div>
+</div>
+
+<!-- Styles -->
+
+<div id="columns-centered" class="columns is-centered">
+ {{ columns }}
+</div>
+
+<div id="columns-gapless" class="columns is-gapless">
+ {{ columns }}
+</div>
+
+<div>
+  <div id="columns-gapless-last" class="columns is-gapless">
+   {{ columns }}
+  </div>
+</div>
+
+<div id="columns-multiline" class="columns is-multiline">
+ {{ columns }}
+</div>
+
+<div id="columns-vcentered" class="columns is-vcentered">
+ {{ columns }}
+</div>
+
+<!-- Responsiveness -->
+
+<div id="columns-mobile" class="columns is-mobile">
+ {{ twelve_columns }}
+</div>
+
+<div id="columns-tablet" class="columns is-tablet">
+ {{ twelve_columns }}
+</div>
+
+<div id="columns-desktop" class="columns is-desktop">
+ {{ twelve_columns }}
+</div>
+
+<div id="columns-special" class="columns is-multiline">
+  <div class="column is-narrow">
+    Column narrow
+  </div>
+
+  <div class="column is-full">
+    Column full
+  </div>
+
+  {% for width in page.widths %}
+    <div class="column is-{{ width }}">
+      Column {{ width }}
+    </div>
+
+    <div class="column is-offset-{{ width }}">
+      Column {{ width }}
+    </div>
+  {% endfor %}
+
+  {% for i in (1..12) %}
+    <div class="column is-{{ i }}">
+      Column {{ i }}
+    </div>
+
+    <div class="column is-offset-{{ i }}">
+      Column {{ i }}
+    </div>
+  {% endfor %}
+</div>
+
+{% for screen in page.screens %}
+  <div id="columns-special-{{ screen }}" class="columns is-multiline is-{{ screen }}">
+    <div class="column is-narrow-{{ screen }}">
+      Column narrow
+    </div>
+
+    <div class="column is-full-{{ screen }}">
+      Column full
+    </div>
+
+    {% for width in page.widths %}
+      <div class="column is-{{ width }}-{{ screen }}">
+        Column {{ width }}
+      </div>
+
+      <div class="column is-offset-{{ width }}-{{ screen }}">
+        Column {{ width }}
+      </div>
+    {% endfor %}
+
+    {% for i in (1..12) %}
+      <div class="column is-{{ i }}-{{ screen }}">
+        Column {{ i }}
+      </div>
+
+      <div class="column is-offset-{{ i }}-{{ screen }}">
+        Column {{ i }}
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}

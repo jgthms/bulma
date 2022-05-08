@@ -1,0 +1,75 @@
+---
+layout: cypress
+title: Components/Card
+---
+
+{% capture header %}
+  <header class="card-header">
+    <p class="card-header-title">
+      Component
+    </p>
+    <button class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </header>
+{% endcapture %}
+
+{% capture content %}
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="{{site.url}}/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">John Smith</p>
+        <p class="subtitle is-6">@johnsmith</p>
+      </div>
+    </div>
+
+    <div class="content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+      <a href="#">#css</a> <a href="#">#responsive</a>
+      <br>
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+    </div>
+  </div>
+{% endcapture %}
+
+{% capture image %}
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="{{site.url}}/images/placeholders/1280x960.png" alt="Placeholder image">
+    </figure>
+  </div>
+{% endcapture %}
+
+{% capture footer %}
+<footer class="card-footer">
+  <a href="#" class="card-footer-item">Save</a>
+  <a href="#" class="card-footer-item">Edit</a>
+  <a href="#" class="card-footer-item">Delete</a>
+</footer>
+{% endcapture %}
+
+<div style="width: 480px; margin: 2rem auto;">
+  <div id="card" class="card">
+    {{ image }}
+    {{ content }}
+    {{ footer }}
+  </div>
+
+  <div id="card-only-content" class="card">
+    {{ content }}
+    {{ content }}
+  </div>
+
+  <div id="card-header-content" class="card">
+    {{ header }}
+    {{ content }}
+  </div>
+</div>

@@ -1,0 +1,57 @@
+---
+layout: cypress
+title: Elements/Image
+dimensions:
+- 16
+- 24
+- 32
+- 48
+- 64
+- 96
+- 128
+ratios:
+- square
+- 1by1
+- 5by4
+- 4by3
+- 3by2
+- 5by3
+- 16by9
+- 2by1
+- 3by1
+- 4by5
+- 3by4
+- 2by3
+- 3by5
+- 9by16
+- 1by2
+- 1by3
+---
+
+<div class="block">
+  <figure id="image" class="image is-128x128">
+    <img src="{{ site.url }}/images/placeholders/128x128.png">
+  </figure>
+</div>
+
+<div class="block">
+  <figure id="image-rounded" class="image is-128x128">
+    <img class="is-rounded" src="{{site.url}}/images/placeholders/128x128.png">
+  </figure>
+</div>
+
+{% for ratio in page.ratios %}
+  <div class="block" style="width: 100px;">
+    <figure id="image-{{ ratio }}" class="image is-{{ ratio }}">
+      <img src="{{ site.url }}/images/placeholders/1x1.png">
+    </figure>
+  </div>
+{% endfor %}
+
+{% for dimension in page.dimensions %}
+  <div class="block">
+    <figure id="image-{{ dimension }}" class="image is-{{ dimension }}x{{ dimension }}">
+      <img src="{{ site.url }}/images/placeholders/1x1.png">
+    </figure>
+  </div>
+{% endfor %}
