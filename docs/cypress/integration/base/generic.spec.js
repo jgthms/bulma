@@ -31,7 +31,11 @@ describe("Base/Generic", () => {
   it("has correct form elements", () => {
     cy.get("body, button, input, optgroup, select, textarea").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontFamily).to.equal(familyPrimary);
+      expect(cs.fontFamily).to.contains("system-ui");
+      expect(cs.fontFamily).to.contains("-apple-system");
+      expect(cs.fontFamily).to.contains("Helvetica");
+      expect(cs.fontFamily).to.contains("Arial");
+      expect(cs.fontFamily).to.contains("sans-serif");
     });
   });
 
@@ -47,7 +51,11 @@ describe("Base/Generic", () => {
     cy.get("body").then(($) => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.color).to.equal(Cypress.env("text"));
-      expect(cs.fontFamily).to.equal(familyPrimary);
+      expect(cs.fontFamily).to.contains("system-ui");
+      expect(cs.fontFamily).to.contains("-apple-system");
+      expect(cs.fontFamily).to.contains("Helvetica");
+      expect(cs.fontFamily).to.contains("Arial");
+      expect(cs.fontFamily).to.contains("sans-serif");
       expect(cs.fontSize).to.equal("16px");
       expect(cs.fontWeight).to.equal("400");
       expect(cs.lineHeight).to.equal("24px");
