@@ -1,0 +1,61 @@
+/* Bulma Utilities */
+@charset "utf-8";
+
+// Import variables first
+@import "initial-variables";
+@import "functions";
+@import "derived-variables";
+
+// Default colors
+@import "../themes/_default";
+
+// Light theme (default)
+// Can be forced with data-theme="light"
+// Import your custom `light-theme` mixin in the Sass pipeline before this file to override the default theme.
+@import "../themes/light";
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  @if mixin-exists(light-theme) {
+    @include light-theme;
+  }
+  @else {
+    @include light-fallback;
+  }
+}
+
+// Dark theme (auto)
+// Automatically enabled if user has Dark mode enabled
+// Import your custom `dark-theme` mixin in the Sass pipeline before this file to override the default theme.
+@import "../themes/dark";
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @if mixin-exists(dark-theme) {
+      @include dark-theme;
+    }
+    @else {
+      @include dark-fallback;
+    }
+  }
+}
+
+// Dark theme (forced)
+// Enabled if forced with data-theme="dark"
+[data-theme="dark"] {
+  @if mixin-exists(dark-theme) {
+    @include dark-theme;
+  }
+  @else {
+    @include dark-fallback;
+  }
+}
+
+// Derived styles
+:root {
+  // Effects
+  --shadow: 0 0.5em 1em -0.125em rgba(var(--scheme-invert), 0.1), 0 0px 0 1px rgba(var(--scheme-invert), 0.02);
+}
+
+// Import other utilities
+@import "mixins";
+@import "controls";
+@import "extends";
