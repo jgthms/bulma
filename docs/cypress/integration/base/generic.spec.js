@@ -1,3 +1,5 @@
+import { familyPrimary } from "../utils";
+
 describe("Base/Generic", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:4000/cyp/base/generic/");
@@ -29,7 +31,7 @@ describe("Base/Generic", () => {
   it("has correct form elements", () => {
     cy.get("body, button, input, optgroup, select, textarea").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontFamily).to.equal(Cypress.env("family-primary"));
+      expect(cs.fontFamily).to.equal(familyPrimary);
     });
   });
 
@@ -45,7 +47,7 @@ describe("Base/Generic", () => {
     cy.get("body").then(($) => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.color).to.equal(Cypress.env("text"));
-      expect(cs.fontFamily).to.equal(Cypress.env("family-primary"));
+      expect(cs.fontFamily).to.equal(familyPrimary);
       expect(cs.fontSize).to.equal("16px");
       expect(cs.fontWeight).to.equal("400");
       expect(cs.lineHeight).to.equal("24px");
