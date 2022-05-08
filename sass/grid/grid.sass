@@ -1,0 +1,105 @@
+$max-column-count: 16
+
+.grid
+  --grid-gap: 1.5rem
+  --column-count: 12
+  --grid-gap-count: calc(var(--column-count) - 1)
+  --grid-column-min: calc(calc(100% / var(--column-count)) - calc(var(--grid-gap-count) / var(--column-count) * var(--grid-column-gap, var(--grid-gap))))
+  --cell-column-span: 1
+  --cell-row-span: 1
+  display: grid
+  grid-gap: var(--grid-gap)
+  grid-column-gap: var(--grid-column-gap, var(--grid-gap))
+  grid-row-gap: var(--grid-row-gap, var(--grid-gap))
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-column-min), 1fr))
+  grid-template-rows: auto
+  +mobile
+    --column-count: 2
+  +tablet
+    --column-count: 4
+  +desktop
+    --column-count: 8
+  +widescreen
+    --column-count: 12
+  +fullhd
+    --column-count: 16
+
+=cell-properties($suffix: '')
+  @for $i from 1 through $max-column-count
+    $name: $i + $suffix
+    &.is-col-start-#{$name}
+      --cell-column-start: #{$i}
+    &.is-col-from-end-#{$name}
+      --cell-column-start: #{$i * -1}
+    &.is-col-span-#{$name}
+      --cell-column-span: #{$i}
+    &.is-row-start-#{$name}
+      --cell-row-start: #{$i}
+    &.is-row-from-end-#{$name}
+      --cell-row-start: #{$i * -1}
+    &.is-row-span-#{$name}
+      --cell-row-span: #{$i}
+
+.cell
+  background-color: lavender
+  border-radius: 1em
+  grid-column-end: span var(--cell-column-span)
+  grid-column-start: var(--cell-column-start)
+  grid-row-end: span var(--cell-row-span)
+  grid-row-start: var(--cell-row-start)
+  padding: 0.75em
+  // Sizes
+  &.is-col-start-end
+    --cell-column-start: -1
+  &.is-row-start-end
+    --cell-row-start: -1
+  +cell-properties
+  +mobile
+    +cell-properties('-mobile')
+  +tablet
+    +cell-properties('-tablet')
+  +tablet-only
+    +cell-properties('-tablet-only')
+  +desktop
+    +cell-properties('-desktop')
+  +desktop-only
+    +cell-properties('-desktop-only')
+  +widescreen
+    +cell-properties('-widescreen')
+  +widescreen-only
+    +cell-properties('-widescreen-only')
+  +fullhd
+    +cell-properties('-fullhd')
+
+=grid-properties($suffix: '')
+  .has-1-cols#{$suffix}
+    --column-count: 1
+  @for $i from 2 through $max-column-count
+    .has-#{$i}-cols#{$suffix}
+      --column-count: #{$i}
+
++grid-properties
+
++mobile
+  +grid-properties('-mobile')
+
++tablet
+  +grid-properties('-tablet')
+
++tablet-only
+  +grid-properties('-tablet-only')
+
++desktop
+  +grid-properties('-desktop')
+
++desktop-only
+  +grid-properties('-desktop-only')
+
++widescreen
+  +grid-properties('-widescreen')
+
++widescreen-only
+  +grid-properties('-widescreen-only')
+
++fullhd
+  +grid-properties('-fullhd')
