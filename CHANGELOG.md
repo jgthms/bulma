@@ -12,6 +12,7 @@
 ### Bugfix
 
 - #3500 Fix hidden disabled buttons on iOS 15.4
+- #3076 Fix Table headers centered aligned in Safari
 
 ## 0.9.3
 
