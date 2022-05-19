@@ -45,7 +45,45 @@ tweets:
   button=call_button
 %}
 
-<div class="bd-tws">
+<script type="text/javascript">
+  function compareTweets(key) {
+    return (a, b) => {
+      const avalue = parseInt(a.dataset[key]);
+      const bvalue = parseInt(b.dataset[key]);
+
+      if (avalue > bvalue)
+        return -1;
+
+      if (avalue < bvalue)
+        return 1;
+
+      return 0;
+    }
+  }
+
+  function sortTweets(key) {
+    const $pills = document.querySelectorAll("#bd-pills .bd-pill-button");
+    $pills.forEach($pill => $pill.classList.remove('is-active'));
+    window.event.target.classList.add('is-active');
+
+    const $tweets = document.querySelectorAll("#love-tweets .bd-tw");
+    const tweets = Array.from($tweets);
+    let sorted = tweets.sort(compareTweets(key));
+
+    sorted.forEach(e =>
+        document.querySelector("#love-tweets .bd-tws-list").appendChild(e));
+  }
+</script>
+
+<nav id="bd-pills" class="bd-pills">
+  <div class="bd-pills-body">
+    <span class="bd-pill-label">Sort by</span>
+    <button class="bd-pill-button is-active" onclick="sortTweets('id')">Date</button>
+    <button class="bd-pill-button" onclick="sortTweets('likes')">Likes</button>
+  </div>
+</nav>
+
+<div id="love-tweets" class="bd-tws">
   <div class="bd-tws-list">
     {% for tweet_pair in site.data.love.tweets_by_id reversed %}
       {% assign tweet_id = tweet_pair[0] %}

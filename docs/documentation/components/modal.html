@@ -55,6 +55,80 @@ meta:
 </div>
 {% endcapture %}
 
+{% capture modal_js_html %}
+<div id="modal-js-example" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+      <p>Modal JS example</p>
+      <!-- Your content -->
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+{% endcapture %}
+
+{% capture modal_js_trigger %}
+<button class="js-modal-trigger" data-target="modal-js-example">
+  Open JS example modal
+</button>
+{% endcapture %}
+
+{% capture modal_js_trigger_bulma %}
+<button class="js-modal-trigger button is-primary" data-target="modal-js-example">
+  Open JS example modal
+</button>
+{% endcapture %}
+
+{% capture modal_js_code %}
+document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
+{% endcapture %}
+
 <!--  -->
 
 <div class="content">
@@ -91,10 +165,10 @@ meta:
 
 <div class="message is-info">
   <div class="message-header">
-    No JavaScript
+    JavaScript implementation example
   </div>
   <div class="message-body">
-    Bulma does <strong>not</strong> include any JavaScript interaction. You will have to implement the class toggle yourself.
+    Bulma does not include any JavaScript. However, this documentation provides a <a href="#javascript-implementation-example">JS implementation example</a> that you are free to use.
   </div>
 </div>
 
@@ -120,6 +194,86 @@ meta:
 
 <div class="bd-highlight-full">
   {% highlight html %}{{ modal_card }}{% endhighlight %}
+</div>
+
+{% include elements/anchor.html name="JavaScript implementation example" %}
+
+<div class="content">
+  <p>
+    The Bulma package <strong>does not come with any JavaScript</strong>. Here is however an implementation example, which sets the <code>click</code> handlers for custom elements, in vanilla JavaScript.
+  </p>
+
+  <p>
+    There are 3 parts to this implementation:
+  </p>
+
+  <ul>
+    <li>
+      add the HTML for the <strong>modal</strong> (this modal is hidden by default)
+    </li>
+    <li>
+      add the HTML for a button to <strong>trigger</strong> the modal (you can style this button however you want)
+    </li>
+    <li>
+      add the JS code to add the <code>click</code> event on the <strong>trigger</strong> to open the <strong>modal</strong>
+    </li>
+  </ul>
+</div>
+
+<div class="content">
+  <h4>1. Add the HTML for the modal</h4>
+
+  <p>
+    At the end of your page, before the closing <code>&lt;/body&gt;</code> tag, at the following HTML snippet:
+  </p>
+</div>
+
+{% highlight html %}{{ modal_js_html }}{% endhighlight %}
+
+<div class="content">
+  <p>
+    The <code>id</code> attribute's value must be <strong>unique</strong>.
+  </p>
+</div>
+
+<div class="content">
+  <h4>2. Add the HTML for the trigger</h4>
+
+  <p>
+    Somewhere on your page, add the following HTML button:
+  </p>
+</div>
+
+<div class="block">
+  {{ modal_js_trigger }}
+</div>
+
+{% highlight html %}{{ modal_js_trigger }}{% endhighlight %}
+
+<div class="content">
+  <p>
+    You can style it however you want, as long as it has the <code>js-modal-trigger</code> CSS class and the appropriate <code>data-target</code> value. For example, you can add the <code>button is-primary</code> Bulma classes:
+  </p>
+</div>
+
+<div class="block">
+  {{ modal_js_trigger_bulma }}
+</div>
+
+<div class="content">
+  <h4>3. Add the JS for the trigger</h4>
+
+  <p>
+    In a <code>script</code> element (or in a seperate <code>.js</code> file), add the following JS code:
+  </p>
+</div>
+
+{% highlight javascript %}{{ modal_js_code }}{% endhighlight %}
+
+<div class="content">
+  <p>
+    As long as you can toggle the <code>is-active</code> modifier class on the <code>modal</code> element, you can choose how you want to implement it.
+  </p>
 </div>
 
 {% include components/variables.html type='component' %}
@@ -224,3 +378,9 @@ meta:
     </footer>
   </div>
 </div>
+
+{{ modal_js_html }}
+
+<script type="text/javascript">
+  {{ modal_js_code }}
+</script>

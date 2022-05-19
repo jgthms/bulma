@@ -1,7 +1,10 @@
 {% assign tweet = site.data.love.tweets_by_id[include.tweet_id] %}
 {% assign twUrl = "https://twitter.com/" | append: tweet.username | append: "/status/" | append: tweet.id %}
 
-<article class="bd-tw {{ include.modifier }} {% if include.drawing_id %}bd-has-drawing{% endif %}">
+<article
+  data-likes="{{ tweet.hearts }}"
+  data-id="{{ tweet.id }}"
+  class="bd-tw {{ include.modifier }} {% if include.drawing_id %}bd-has-drawing{% endif %}">
   <header class="bd-tw-header">
     <a class="bd-tw-author" href="{{ twUrl }}" target="_blank">
       <figure class="bd-tw-avatar">

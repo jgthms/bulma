@@ -1,5 +1,29 @@
 # Bulma Changelog
 
+## 0.9.4
+
+### New features
+
+- **Responsive buttons**: the size of a button will change for each breakpoint (Fix #1572)
+- `@mixin between`: takes 2 breakpoint values, outputs a media query for the range between these 2 values
+- `$breakpoints` Sass map: a map of named breakpoints and their type (`from`, `until` or both)
+- `@mixin breakpoint`: uses the new `$breakpoints` Sass map to output a media query
+
+### Improvements
+
+- Add missing variables for content customization
+- Fix #683 Modal - example javascript toggle
+- Fix #3461 Bulma logo with wordmark in SVG
+- Fix #3383 'Variables' sections on docs page (#3513)
+- Fixes #3510 The navbar overlaps with sidebars in "Fullheight hero with navbar" (#3516)
+- Setup [Cypress](https://www.cypress.io/) testing (#3436)
+
+### Bugfix
+
+- Replace disabled attr on pagination anchor elements with is-disabled
+- #3500 Fix hidden disabled buttons on iOS 15.4 (#3521)
+- #3076 Fix Table headers centered aligned in Safari
+
 ## 0.9.3
 
 ### New features

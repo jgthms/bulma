@@ -1,0 +1,50 @@
+---
+layout: cypress
+title: Elements/Table
+---
+
+{% capture table_content %}
+  <thead>
+    <tr>
+      {% for j in (1..10) %}
+        <th>{{ j }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in (1..5) %}
+      <tr>
+        {% for j in (1..10) %}
+          <td>{{ j | times: i }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    <tr class="is-selected">
+      {% for j in (1..10) %}
+        <td>{{ j  }}</td>
+      {% endfor %}
+    </tr>
+  </tbody>
+{% endcapture %}
+
+<table id="table" class="table">
+  {{ table_content }}
+</table>
+
+<table id="table-bordered" class="table is-bordered">
+  {{ table_content }}
+</table>
+
+<table id="table-striped" class="table is-striped">
+  {{ table_content }}
+</table>
+
+<table id="table-narrow" class="table is-narrow">
+  {{ table_content }}
+</table>
+
+<div style="width: 800px;">
+  <table id="table-fullwidth" class="table is-fullwidth">
+    {{ table_content }}
+  </table>
+</div>

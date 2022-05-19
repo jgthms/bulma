@@ -44,6 +44,7 @@ $button-static-background-color: $scheme-main-ter !default
 $button-static-border-color: $border !default
 
 $button-colors: $colors !default
+$button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": ($size-small * 0.875), "medium": $size-small, "large": $size-normal), "tablet-only": ("small": ($size-small * 0.875), "normal": ($size-small), "medium": $size-normal, "large": $size-medium)) !default
 
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
@@ -163,7 +164,7 @@ $button-colors: $colors !default
       &[disabled],
       fieldset[disabled] &
         background-color: $color
-        border-color: transparent
+        border-color: $color
         box-shadow: none
       &.is-inverted
         background-color: $color-invert
@@ -343,3 +344,14 @@ $button-colors: $colors !default
       .button:not(.is-fullwidth)
         margin-left: 0.25rem
         margin-right: 0.25rem
+
+@each $bp-name, $bp-sizes in $button-responsive-sizes
+  +breakpoint($bp-name)
+    @each $size, $value in $bp-sizes
+      @if $size != "normal"
+        .button.is-responsive.is-#{$size}
+          font-size: $value
+      @else
+        .button.is-responsive,
+        .button.is-responsive.is-normal
+          font-size: $value

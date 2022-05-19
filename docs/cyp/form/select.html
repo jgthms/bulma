@@ -1,0 +1,53 @@
+---
+layout: cypress
+title: Form/Select
+---
+
+{% capture options %}
+  <option value="Argentina">Argentina</option>
+  <option value="Bolivia">Bolivia</option>
+  <option value="Brazil">Brazil</option>
+  <option value="Chile">Chile</option>
+  <option value="Colombia">Colombia</option>
+  <option value="Ecuador">Ecuador</option>
+  <option value="Guyana">Guyana</option>
+  <option value="Paraguay">Paraguay</option>
+  <option value="Peru">Peru</option>
+  <option value="Suriname">Suriname</option>
+  <option value="Uruguay">Uruguay</option>
+  <option value="Venezuela">Venezuela</option>
+{% endcapture %}
+
+<div id="select" class="select">
+  <select>
+    {{ options }}
+  </select>
+</div>
+
+{% for color in site.data.colors.justColors %}
+  <div id="select-{{ color }}" class="select is-{{ color }}">
+    <select>
+      {{ options }}
+    </select>
+  </div>
+{% endfor %}
+
+{% for size in site.data.sizes %}
+  <div id="select-{{ size }}" class="select is-{{ size }}">
+    <select>
+      {{ options }}
+    </select>
+  </div>
+{% endfor %}
+
+<div id="select-multiple" class="select is-multiple">
+  <select multiple>
+    {{ options }}
+  </select>
+</div>
+
+<div id="select-disabled" class="select is-disabled">
+  <select disabled>
+    {{ options }}
+  </select>
+</div>

@@ -1,4 +1,4 @@
-/*! bulma.io v0.9.3 | MIT License | github.com/jgthms/bulma */
+/*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 .button, .input, .textarea, .select select, .file-cta,
 .file-name, .pagination-previous,
@@ -611,7 +611,7 @@ fieldset[disabled] .button.is-text {
 .button.is-white[disabled],
 fieldset[disabled] .button.is-white {
   background-color: white;
-  border-color: transparent;
+  border-color: white;
   box-shadow: none;
 }
 
@@ -717,7 +717,7 @@ fieldset[disabled] .button.is-white.is-inverted.is-outlined {
 .button.is-black[disabled],
 fieldset[disabled] .button.is-black {
   background-color: #0a0a0a;
-  border-color: transparent;
+  border-color: #0a0a0a;
   box-shadow: none;
 }
 
@@ -823,7 +823,7 @@ fieldset[disabled] .button.is-black.is-inverted.is-outlined {
 .button.is-light[disabled],
 fieldset[disabled] .button.is-light {
   background-color: whitesmoke;
-  border-color: transparent;
+  border-color: whitesmoke;
   box-shadow: none;
 }
 
@@ -929,7 +929,7 @@ fieldset[disabled] .button.is-light.is-inverted.is-outlined {
 .button.is-dark[disabled],
 fieldset[disabled] .button.is-dark {
   background-color: #363636;
-  border-color: transparent;
+  border-color: #363636;
   box-shadow: none;
 }
 
@@ -1035,7 +1035,7 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 .button.is-primary[disabled],
 fieldset[disabled] .button.is-primary {
   background-color: #00d1b2;
-  border-color: transparent;
+  border-color: #00d1b2;
   box-shadow: none;
 }
 
@@ -1158,7 +1158,7 @@ fieldset[disabled] .button.is-primary.is-inverted.is-outlined {
 .button.is-link[disabled],
 fieldset[disabled] .button.is-link {
   background-color: #485fc7;
-  border-color: transparent;
+  border-color: #485fc7;
   box-shadow: none;
 }
 
@@ -1281,7 +1281,7 @@ fieldset[disabled] .button.is-link.is-inverted.is-outlined {
 .button.is-info[disabled],
 fieldset[disabled] .button.is-info {
   background-color: #3e8ed0;
-  border-color: transparent;
+  border-color: #3e8ed0;
   box-shadow: none;
 }
 
@@ -1404,7 +1404,7 @@ fieldset[disabled] .button.is-info.is-inverted.is-outlined {
 .button.is-success[disabled],
 fieldset[disabled] .button.is-success {
   background-color: #48c78e;
-  border-color: transparent;
+  border-color: #48c78e;
   box-shadow: none;
 }
 
@@ -1527,7 +1527,7 @@ fieldset[disabled] .button.is-success.is-inverted.is-outlined {
 .button.is-warning[disabled],
 fieldset[disabled] .button.is-warning {
   background-color: #ffe08a;
-  border-color: transparent;
+  border-color: #ffe08a;
   box-shadow: none;
 }
 
@@ -1650,7 +1650,7 @@ fieldset[disabled] .button.is-warning.is-inverted.is-outlined {
 .button.is-danger[disabled],
 fieldset[disabled] .button.is-danger {
   background-color: #f14668;
-  border-color: transparent;
+  border-color: #f14668;
   box-shadow: none;
 }
 
@@ -1889,6 +1889,38 @@ fieldset[disabled] .button {
 .buttons.is-right:not(.has-addons) .button:not(.is-fullwidth) {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+  .button.is-responsive.is-small {
+    font-size: 0.5625rem;
+  }
+  .button.is-responsive,
+  .button.is-responsive.is-normal {
+    font-size: 0.65625rem;
+  }
+  .button.is-responsive.is-medium {
+    font-size: 0.75rem;
+  }
+  .button.is-responsive.is-large {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .button.is-responsive.is-small {
+    font-size: 0.65625rem;
+  }
+  .button.is-responsive,
+  .button.is-responsive.is-normal {
+    font-size: 0.75rem;
+  }
+  .button.is-responsive.is-medium {
+    font-size: 1rem;
+  }
+  .button.is-responsive.is-large {
+    font-size: 1.25rem;
+  }
 }
 
 .container {
@@ -2805,7 +2837,7 @@ div.icon-text {
 }
 
 .table th:not([align]) {
-  text-align: inherit;
+  text-align: left;
 }
 
 .table tr.is-selected {
@@ -3753,7 +3785,8 @@ fieldset[disabled] .select select:hover {
 }
 
 .select.is-disabled::after {
-  border-color: #7a7a7a;
+  border-color: #7a7a7a !important;
+  opacity: 0.5;
 }
 
 .select.is-fullwidth {
@@ -6060,6 +6093,11 @@ body.has-navbar-fixed-bottom {
 
 .navbar-burger {
   color: #4a4a4a;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
   cursor: pointer;
   display: block;
   height: 3.25rem;
@@ -6524,9 +6562,11 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
 }
 
-.pagination-previous[disabled],
+.pagination-previous[disabled], .pagination-previous.is-disabled,
 .pagination-next[disabled],
-.pagination-link[disabled] {
+.pagination-next.is-disabled,
+.pagination-link[disabled],
+.pagination-link.is-disabled {
   background-color: #dbdbdb;
   border-color: #dbdbdb;
   box-shadow: none;
