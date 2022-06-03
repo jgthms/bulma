@@ -17498,31 +17498,20 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 #carboncontainer {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  max-width: 300px;
-  min-height: 140px;
-  min-width: 280px;
+  padding: 1.5rem;
 }
 
 #carbon {
   border-radius: 0.125em;
-  flex-grow: 1;
-  min-height: 100px;
-  padding: 0;
+  margin: 0;
+  min-height: 206px;
   position: relative;
+  width: 130px;
 }
 
 #carbon:hover {
   background-color: rgba(0, 0, 0, 0.02);
   box-shadow: 0 0 0 0.75rem rgba(0, 0, 0, 0.02);
-}
-
-@media screen and (min-width: 769px), print {
-  #carbon {
-    width: 300px;
-  }
 }
 
 #carbonads {
@@ -17536,13 +17525,12 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 #carbonads .carbon-wrap {
-  min-height: 100px;
   position: relative;
 }
 
 #carbonads .carbon-wrap:hover .carbon-img::after {
   background-color: rgba(0, 0, 0, 0.05);
-  content: '';
+  content: "";
   display: block;
   height: 100px;
   left: 0;
@@ -17552,14 +17540,8 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 #carbonads .carbon-img {
-  bottom: 0;
-  float: left;
-  left: 0;
   min-height: 100px;
   padding: 0;
-  position: absolute;
-  top: 0;
-  width: calc(130px + 1rem);
 }
 
 #carbonads .carbon-img img {
@@ -17580,8 +17562,12 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   display: block;
   color: #363636;
   line-height: 20px;
-  min-height: 100px;
-  padding: 0 0 20px calc(130px + 1rem);
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 #carbonads .carbon-text:hover {
@@ -17589,13 +17575,9 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 #carbonads .carbon-poweredby {
-  bottom: 0;
   color: #b5b5b5;
-  display: inline;
   font-size: 0.75rem;
-  line-height: 20px;
-  position: absolute;
-  right: 0;
+  line-height: 1;
 }
 
 #carbonads .carbon-poweredby:hover {
@@ -19706,7 +19688,7 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 
 @media screen and (min-width: 1408px) {
   :root {
-    --bd-index-vertical: 9rem;
+    --bd-index-vertical: 6rem;
   }
   .bd-index-content {
     font-size: 1.5rem;
@@ -21932,17 +21914,12 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 
 .bd-sponsors {
   --bd-sponsors-spacing: 1.5rem;
-}
-
-.bd-sponsors-body {
-  display: grid;
-  grid-gap: var(--bd-index-gap);
+  padding: var(--bd-sponsors-spacing);
 }
 
 @media screen and (max-width: 768px) {
   .bd-sponsors {
     grid-gap: var(--bd-sponsors-spacing);
-    padding: var(--bd-sponsors-spacing);
   }
 }
 
@@ -21951,6 +21928,8 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   display: grid;
   grid-gap: 0;
   grid-template-columns: repeat(auto-fill, minmax(var(--sponsor-width), 1fr));
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
   overflow: hidden;
 }
 
@@ -21963,29 +21942,37 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
   position: relative;
 }
 
+.bd-partner-sponsor img {
+  border-radius: 0.5em;
+  max-height: 3rem;
+  width: auto;
+}
+
 @media screen and (max-width: 1023px) {
   .bd-sponsors {
     padding: var(--bd-index-vertical);
   }
-  .bd-partner-sponsors {
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-  }
 }
 
 @media screen and (min-width: 1024px) {
-  .bd-sponsors {
-    padding-bottom: var(--bd-index-vertical);
-    padding-top: var(--bd-index-vertical);
-  }
   .bd-sponsors-body {
     align-items: center;
     grid-gap: 0;
     grid-template-columns: var(--bd-index-gap) 1fr calc( calc(var(--container-width) - var(--bd-index-gap)) / 2) var(--bd-index-gap) calc( calc(var(--container-width) - var(--bd-index-gap)) / 2) 1fr var(--bd-index-gap);
   }
   .bd-sponsors-content {
+    align-items: flex-start;
+    display: flex;
     font-size: 1.125rem;
     grid-column: 3 / span 1;
+    max-width: none;
+  }
+  .bd-sponsors-content .content {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  .bd-sponsors-content .button {
+    flex-shrink: 0;
   }
   .bd-sponsors-list {
     grid-column: 4 / span 4;
@@ -22005,9 +21992,6 @@ a.has-text-bootstrap-dark:hover, a.has-text-bootstrap-dark:focus {
 }
 
 @media screen and (min-width: 1408px) {
-  .bd-sponsors {
-    --bd-sponsors-spacing: 9rem;
-  }
   .bd-sponsors-content {
     font-size: 1.5rem;
   }

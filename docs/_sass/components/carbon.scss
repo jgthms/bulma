@@ -4,28 +4,19 @@ $carbon-image-height: 100px;
 $carbon-image-width: 130px;
 
 #carboncontainer {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  max-width: $carbon-width;
-  min-height: $carbon-min-height;
-  min-width: 280px;
+  padding: 1.5rem;
 }
 
 #carbon {
   border-radius: 0.125em;
-  flex-grow: 1;
-  min-height: $carbon-height;
-  padding: 0;
+  margin: 0;
+  min-height: 206px;
   position: relative;
+  width: $carbon-image-width;
 
   &:hover {
     background-color: rgba(black, 0.02);
     box-shadow: 0 0 0 $carbon-shadow-size rgba(black, 0.02);
-  }
-
-  @include tablet() {
-    width: $carbon-width;
   }
 }
 
@@ -39,13 +30,12 @@ $carbon-image-width: 130px;
   }
 
   .carbon-wrap {
-    min-height: $carbon-height;
     position: relative;
 
     &:hover {
       .carbon-img::after {
         background-color: rgba(#000, 0.05);
-        content: '';
+        content: "";
         display: block;
         height: $carbon-height;
         left: 0;
@@ -57,14 +47,8 @@ $carbon-image-width: 130px;
   }
 
   .carbon-img {
-    bottom: 0;
-    float: left;
-    left: 0;
     min-height: $carbon-height;
     padding: 0;
-    position: absolute;
-    top: 0;
-    width: calc(#{$carbon-image-width} + #{$carbon-spacing});
 
     img {
       display: block;
@@ -87,9 +71,12 @@ $carbon-image-width: 130px;
     display: block;
     color: $text-strong;
     line-height: $carbon-line-height;
-    min-height: $carbon-height;
-    padding: 0 0 $carbon-poweredby-height
-      calc(#{$carbon-image-width} + #{$carbon-spacing});
+    margin-left: -1 * $carbon-shadow-size;
+    margin-right: -1 * $carbon-shadow-size;
+    padding-left: $carbon-shadow-size;
+    padding-right: $carbon-shadow-size;
+    padding-bottom: 5px;
+    padding-top: 5px;
 
     &:hover {
       color: $link;
@@ -97,13 +84,9 @@ $carbon-image-width: 130px;
   }
 
   .carbon-poweredby {
-    bottom: 0;
     color: $border-hover;
-    display: inline;
     font-size: $size-small;
-    line-height: $carbon-poweredby-height;
-    position: absolute;
-    right: 0;
+    line-height: 1;
 
     &:hover {
       text-decoration: underline;
