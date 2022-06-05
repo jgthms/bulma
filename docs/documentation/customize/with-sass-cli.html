@@ -119,11 +119,12 @@ sass --watch --sourcemap=none sass/mystyles.scss:css/mystyles.css
 
 <hr>
 
-{% assign bulma_path = site.data.meta.version | prepend: "../bulma-" | append: "/bulma/bulma.sass" %}
+{% assign bulma_folder_path = site.data.meta.version | prepend: "../bulma-" | append: "/bulma" %}
+{% assign bulma_sass_path = bulma_folder_path | append: "/bulma.sass" %}
 
 {% include steps/create-sass-file.html
   number="3"
-  path=bulma_path
+  path=bulma_sass_path
 %}
 
 <hr>
@@ -143,4 +144,5 @@ sass --watch --sourcemap=none sass/mystyles.scss:css/mystyles.css
 
 {% include steps/add-custom-styles.html
   number="6"
+  path=bulma_folder_path
 %}
