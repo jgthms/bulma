@@ -1,4 +1,16 @@
-{% assign imported_files = "/sass/utilities/_all.sass;/sass/base/_all.sass;/sass/elements/button.sass;/sass/elements/container.sass;/sass/elements/title.sass;/sass/form/_all.sass;/sass/components/navbar.sass;/sass/layout/hero.sass;/sass/layout/section.sass" | split: ";" %}
+{% capture imported_files_string %}
+/sass/utilities/_all.sass;
+/sass/base/_all.sass;
+/sass/elements/button.sass;
+/sass/elements/container.sass;
+/sass/elements/title.sass;
+/sass/form/_all.sass;
+/sass/components/navbar.sass;
+/sass/layout/hero.sass;
+/sass/layout/section.sass
+{% endcapture %}
+
+{% assign imported_files_array = imported_files_string | strip_newlines | split: ";" %}
 
 {% capture mystyles %}
 @charset "utf-8";
@@ -29,7 +41,7 @@ $input-border-color: transparent;
 $input-shadow: none;
 
 // Import only what you need from Bulma
-{% for file in imported_files -%}
+{% for file in imported_files_array -%}
 {{ file | prepend: include.path | prepend: '@import "' | append: '";' }}
 {% endfor -%}
 {% endcapture %}
