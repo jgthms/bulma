@@ -473,6 +473,92 @@ $column-gap: 0.75rem !default
     &.is-desktop
       display: flex
 
+  // Max number of column into a row
+  @for $i from 1 through 12
+    $col-max-width: percentage(divide(1, $i))
+    &.has-#{$i}
+      flex-wrap: wrap
+      & > .column
+        min-width: $col-max-width
+        max-width: $col-max-width
+        &.is-fullwidth
+          min-width: 100% !important
+    // Responsiveness
+    +mobile
+      &.has-#{$i}-mobile
+        flex-wrap: wrap
+        display: flex
+        & > .column
+          min-width: $col-max-width
+          max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +tablet
+      &.has-#{$i}-tablet
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          // max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +tablet-only
+      &.has-#{$i}-tablet-only
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +touch
+      &.has-#{$i}-touch
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +desktop
+      &.has-#{$i}-desktop
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          // max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +desktop-only
+      &.has-#{$i}-desktop-only
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +widescreen
+      &.has-#{$i}-widescreen
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +widescreen-only
+      &.has-#{$i}-widescreen-only
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+    +fullhd
+      &.has-#{$i}-fullhd
+        flex-wrap: wrap
+        & > .column
+          min-width: $col-max-width
+          max-width: $col-max-width
+          &.is-fullwidth
+            min-width: 100% !important
+
+
 @if $variable-columns
   .columns.is-variable
     --columnGap: 0.75rem
