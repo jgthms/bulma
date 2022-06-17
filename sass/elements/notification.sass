@@ -3,10 +3,14 @@
 $notification-background-color: $background !default
 $notification-code-background-color: $scheme-main !default
 $notification-radius: $radius !default
-$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
 $notification-padding-ltr: 1.25rem 2.5rem 1.25rem 1.5rem !default
 $notification-padding-rtl: 1.25rem 1.5rem 1.25rem 2.5rem !default
 
+$default-notification-padding: $notification-padding-ltr
+@if $rtl
+  $default-notification-padding: $notification-padding-rtl
+
+$notification-padding: $_default-notification-padding !default
 $notification-colors: $colors !default
 
 .notification
@@ -14,10 +18,7 @@ $notification-colors: $colors !default
   background-color: $notification-background-color
   border-radius: $notification-radius
   position: relative
-  +ltr
-    padding: $notification-padding-ltr
-  +rtl
-    padding: $notification-padding-rtl
+  padding: $notification-padding
   a:not(.button):not(.dropdown-item)
     color: currentColor
     text-decoration: underline
