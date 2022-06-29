@@ -84,28 +84,14 @@ meta:
 
 {% capture modal_js_code %}
 document.addEventListener('DOMContentLoaded', () => {
-  // Functions to open and close a modal
-  function openModal($el) {
-    $el.classList.add('is-active');
-  }
-
-  function closeModal($el) {
-    $el.classList.remove('is-active');
-  }
-
-  function closeAllModals() {
-    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-      closeModal($modal);
-    });
-  }
-
   // Add a click event on buttons to open a specific modal
   (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-    const modal = $trigger.dataset.target;
-    const $target = document.getElementById(modal);
+    const modalReference = $trigger.dataset.target;
+    const $modal = document.getElementById(modalReference);
 
     $trigger.addEventListener('click', () => {
-      openModal($target);
+      // Open Modal
+      $modal.classList.add('is-active');
     });
   });
 
@@ -114,7 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const $target = $close.closest('.modal');
 
     $close.addEventListener('click', () => {
-      closeModal($target);
+      // Close Modal
+      $target.classList.remove('is-active');
     });
   });
 
@@ -122,8 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (event) => {
     const e = event || window.event;
 
-    if (e.keyCode === 27) { // Escape key
-      closeAllModals();
+    // Close the modal if the 'esc' key is pressed
+    if (e.key === 'Escape') {
+      // Close the active modal if it is open
+      document.querySelector('.modal.is-active')?.classList.remove('is-active');
     }
   });
 });
