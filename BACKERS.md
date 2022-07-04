@@ -2,6 +2,18 @@
 
 <ul>
 
+  <li>
+    Adrian Ocneanu
+  </li>
+
+  <li>
+    Garry Newman
+  </li>
+
+  <li>
+    Maia!
+  </li>
+
 
   <li>
     echelon
@@ -47,14 +59,6 @@
   </li>
 
   <li>
-    Fintan Costello
-  </li>
-
-  <li>
-    Iaroslav Baklan
-  </li>
-
-  <li>
     123Calendars
   </li>
 
@@ -83,7 +87,7 @@
   </li>
 
   <li>
-    Viktor &amp; Steve Scott (NonGamStopWager.com)
+    Viktor & Steve Scott (NonGamStopWager.com)
   </li>
 
   <li>
@@ -134,6 +138,18 @@
     Jim
   </li>
 
+  <li>
+    Isabella
+  </li>
+
+  <li>
+    Mark john
+  </li>
+
+  <li>
+    Limeup
+  </li>
+
 
   <li>
     laneadam
@@ -166,6 +182,22 @@
 <h2>Bulma backers ($10+)</h2>
 
 <ul>
+
+  <li>
+    Jason Seminara
+  </li>
+
+  <li>
+    Ian Ebden
+  </li>
+
+  <li>
+    Al Romano
+  </li>
+
+  <li>
+    xvxx
+  </li>
 
 
   <li>
