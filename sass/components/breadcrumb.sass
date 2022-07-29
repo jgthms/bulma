@@ -9,6 +9,9 @@ $breadcrumb-item-padding-horizontal: 0.75em !default
 
 $breadcrumb-item-separator-color: $border-hover !default
 
+$breadcrumb-item-separator: "\0002f" !default
+$breadcrumb-item-separator-font: inherit !default
+
 .breadcrumb
   @extend %block
   @extend %unselectable
@@ -34,7 +37,8 @@ $breadcrumb-item-separator-color: $border-hover !default
         pointer-events: none
     & + li::before
       color: $breadcrumb-item-separator-color
-      content: "\0002f"
+      font-family: $breadcrumb-item-separator-font
+      content: $breadcrumb-item-separator
   ul,
   ol
     align-items: flex-start
