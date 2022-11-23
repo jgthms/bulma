@@ -1,11 +1,30 @@
 name: End-to-end tests
 on: [push]
 jobs:
-  cypress-run:
-    runs-on: ubuntu-20.04
+  # sass-build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ruby/setup-ruby@v1
+  #     - name: Install ruby dependencies
+  #       run: gem install sass
+  #     - name: Ruby sass run
+  #       run: test/ruby-sass/ruby-sass.sh
+  #     - uses: actions/setup-node@v3
+  #     - name: Install dart-sass dependencies
+  #       run: npm install sass
+  #     - name: Build sass with dart-sass
+  #       run: node test/dart-sass/dart-sass.js
+  #     - name: Install node-sass dependencies
+  #       run: npm install node-sass
+  #     - name: Build sass with node-sass
+  #       run: node test/node-sass/node-sass.js
+  sass-and-cypress-runs:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
@@ -13,7 +32,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gem install jekyll bundler
+          gem install sass jekyll bundler
+          npm install sass node-sass
+      - name: Ruby sass run
+        run: test/ruby-sass/ruby-sass.sh
+      - name: Dart sass run
+        run: node test/dart-sass/dart-sass.js
+      - name: Node sass run
+        run: node test/node-sass/node-sass.js
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
