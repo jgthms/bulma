@@ -28,7 +28,7 @@ $tabs-toggle-link-active-background-color: $link !default;
 $tabs-toggle-link-active-border-color: $link !default;
 $tabs-toggle-link-active-color: $link-invert !default;
 
-.tabs {
+.#{$class-prefix}tabs {
   @extend %block;
 
   @include overflow-touch;
@@ -99,7 +99,7 @@ $tabs-toggle-link-active-color: $link-invert !default;
     }
   }
 
-  .icon {
+  .#{$class-prefix}icon {
     &:first-child {
       @include ltr-property("margin", 0.5em);
     }
@@ -131,11 +131,9 @@ $tabs-toggle-link-active-color: $link-invert !default;
         border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0;
       }
 
-
       @include rtl {
         border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius;
       }
-
 
       &:hover {
         background-color: $tabs-boxed-link-hover-background-color;
@@ -178,7 +176,11 @@ $tabs-toggle-link-active-color: $link-invert !default;
 
     li {
       & + li {
-        @include ltr-property("margin", -#{$tabs-toggle-link-border-width}, false);
+        @include ltr-property(
+          "margin",
+          -#{$tabs-toggle-link-border-width},
+          false
+        );
       }
 
       &:first-child a {
@@ -186,7 +188,6 @@ $tabs-toggle-link-active-color: $link-invert !default;
           border-top-left-radius: $tabs-toggle-link-radius;
           border-bottom-left-radius: $tabs-toggle-link-radius;
         }
-
 
         @include rtl {
           border-top-right-radius: $tabs-toggle-link-radius;
@@ -199,7 +200,6 @@ $tabs-toggle-link-active-color: $link-invert !default;
           border-top-right-radius: $tabs-toggle-link-radius;
           border-bottom-right-radius: $tabs-toggle-link-radius;
         }
-
 
         @include rtl {
           border-top-left-radius: $tabs-toggle-link-radius;
@@ -230,7 +230,6 @@ $tabs-toggle-link-active-color: $link-invert !default;
             padding-left: 1.25em;
           }
 
-
           @include rtl {
             border-bottom-right-radius: $radius-rounded;
             border-top-right-radius: $radius-rounded;
@@ -244,7 +243,6 @@ $tabs-toggle-link-active-color: $link-invert !default;
             border-top-right-radius: $radius-rounded;
             padding-right: 1.25em;
           }
-
 
           @include rtl {
             border-bottom-left-radius: $radius-rounded;

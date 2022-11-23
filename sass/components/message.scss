@@ -21,7 +21,7 @@ $message-body-pre-code-background-color: transparent !default;
 $message-header-body-border-width: 0 !default;
 $message-colors: $colors !default;
 
-.message {
+.#{$class-prefix}message {
   @extend %block;
 
   background-color: $message-background-color;
@@ -32,7 +32,7 @@ $message-colors: $colors !default;
     color: currentColor;
   }
 
-  a:not(.button):not(.tag):not(.dropdown-item) {
+  a:not(.#{$class-prefix}button):not(.#{$class-prefix}tag):not(.#{$class-prefix}dropdown-item) {
     color: currentColor;
     text-decoration: underline;
   }
@@ -62,15 +62,16 @@ $message-colors: $colors !default;
 
       @if length($components) >= 4 {
         $color-dark: nth($components, 4);
-      }
-      @else {
+      } @else {
         $color-luminance: colorLuminance($color);
         $darken-percentage: $color-luminance * 70%;
         $desaturate-percentage: $color-luminance * 30%;
-        $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage);
+        $color-dark: desaturate(
+          darken($color, $darken-percentage),
+          $desaturate-percentage
+        );
       }
-    }
-    @else {
+    } @else {
       $color-lightning: max(100% - lightness($color) - 2%, 0%);
       $color-light: lighten($color, $color-lightning);
     }
@@ -78,12 +79,12 @@ $message-colors: $colors !default;
     &.is-#{$name} {
       background-color: $color-light;
 
-      .message-header {
+      .#{$class-prefix}message-header {
         background-color: $color;
         color: $color-invert;
       }
 
-      .message-body {
+      .#{$class-prefix}message-body {
         border-color: $color;
         color: $color-dark;
       }
@@ -91,7 +92,7 @@ $message-colors: $colors !default;
   }
 }
 
-.message-header {
+.#{$class-prefix}message-header {
   align-items: center;
   background-color: $message-header-background-color;
   border-radius: $message-header-radius $message-header-radius 0 0;
@@ -103,21 +104,21 @@ $message-colors: $colors !default;
   padding: $message-header-padding;
   position: relative;
 
-  .delete {
+  .#{$class-prefix}delete {
     flex-grow: 0;
     flex-shrink: 0;
 
     @include ltr-property("margin", 0.75em, false);
   }
 
-  & + .message-body {
+  & + .#{$class-prefix}message-body {
     border-width: $message-header-body-border-width;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
 }
 
-.message-body {
+.#{$class-prefix}message-body {
   border-color: $message-body-border-color;
   border-radius: $message-body-radius;
   border-style: solid;

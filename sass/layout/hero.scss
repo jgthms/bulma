@@ -9,17 +9,17 @@ $hero-body-padding-large: 18rem 6rem !default;
 $hero-colors: $colors !default;
 
 // Main container
-.hero {
+.#{$class-prefix}hero {
   align-items: stretch;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  .navbar {
+  .#{$class-prefix}navbar {
     background: none;
   }
 
-  .tabs {
+  .#{$class-prefix}tabs {
     ul {
       border-bottom: none;
     }
@@ -34,37 +34,37 @@ $hero-colors: $colors !default;
       background-color: $color;
       color: $color-invert;
 
-      a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+      a:not(.#{$class-prefix}button):not(.#{$class-prefix}dropdown-item):not(.tag):not(.#{$class-prefix}pagination-link.is-current),
       strong {
         color: inherit;
       }
 
-      .title {
+      .#{$class-prefix}title {
         color: $color-invert;
       }
 
-      .subtitle {
+      .#{$class-prefix}subtitle {
         color: bulmaRgba($color-invert, 0.9);
 
-        a:not(.button),
+        a:not(.#{$class-prefix}button),
         strong {
           color: $color-invert;
         }
       }
 
-      .navbar-menu {
+      .#{$class-prefix}navbar-menu {
         @include touch {
           background-color: $color;
         }
       }
 
-      .navbar-item,
-      .navbar-link {
+      .#{$class-prefix}navbar-item,
+      .#{$class-prefix}navbar-link {
         color: bulmaRgba($color-invert, 0.7);
       }
 
-      a.navbar-item,
-      .navbar-link {
+      a.#{$class-prefix}navbar-item,
+      .#{$class-prefix}navbar-link {
         &:hover,
         &.is-active {
           background-color: bulmaDarken($color, 5%);
@@ -72,7 +72,7 @@ $hero-colors: $colors !default;
         }
       }
 
-      .tabs {
+      .#{$class-prefix}tabs {
         a {
           color: $color-invert;
           opacity: 0.9;
@@ -113,14 +113,30 @@ $hero-colors: $colors !default;
       // Modifiers
       @if type-of($color) == "color" {
         &.is-bold {
-          $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%);
-          $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%);
+          $gradient-top-left: darken(
+            saturate(adjust-hue($color, -10deg), 10%),
+            10%
+          );
+          $gradient-bottom-right: lighten(
+            saturate(adjust-hue($color, 10deg), 5%),
+            5%
+          );
 
-          background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%);
+          background-image: linear-gradient(
+            141deg,
+            $gradient-top-left 0%,
+            $color 71%,
+            $gradient-bottom-right 100%
+          );
 
           @include mobile {
-            .navbar-menu {
-              background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%);
+            .#{$class-prefix}navbar-menu {
+              background-image: linear-gradient(
+                141deg,
+                $gradient-top-left 0%,
+                $color 71%,
+                $gradient-bottom-right 100%
+              );
             }
           }
         }
@@ -130,14 +146,14 @@ $hero-colors: $colors !default;
 
   // Sizes
   &.is-small {
-    .hero-body {
+    .#{$class-prefix}hero-body {
       padding: $hero-body-padding-small;
     }
   }
 
   &.is-medium {
     @include tablet {
-      .hero-body {
+      .#{$class-prefix}hero-body {
         padding: $hero-body-padding-medium;
       }
     }
@@ -145,7 +161,7 @@ $hero-colors: $colors !default;
 
   &.is-large {
     @include tablet {
-      .hero-body {
+      .#{$class-prefix}hero-body {
         padding: $hero-body-padding-large;
       }
     }
@@ -154,11 +170,11 @@ $hero-colors: $colors !default;
   &.is-halfheight,
   &.is-fullheight,
   &.is-fullheight-with-navbar {
-    .hero-body {
+    .#{$class-prefix}hero-body {
       align-items: center;
       display: flex;
 
-      & > .container {
+      & > .#{$class-prefix}container {
         flex-grow: 1;
         flex-shrink: 1;
       }
@@ -176,7 +192,7 @@ $hero-colors: $colors !default;
 
 // Components
 
-.hero-video {
+.#{$class-prefix}hero-video {
   @extend %overlay;
 
   overflow: hidden;
@@ -201,12 +217,12 @@ $hero-colors: $colors !default;
   }
 }
 
-.hero-buttons {
+.#{$class-prefix}hero-buttons {
   margin-top: 1.5rem;
 
   // Responsiveness
   @include mobile {
-    .button {
+    .#{$class-prefix}button {
       display: flex;
 
       &:not(:last-child) {
@@ -215,12 +231,11 @@ $hero-colors: $colors !default;
     }
   }
 
-
   @include tablet {
     display: flex;
     justify-content: center;
 
-    .button:not(:last-child) {
+    .#{$class-prefix}button:not(:last-child) {
       @include ltr-property("margin", 1.5rem);
     }
   }
@@ -228,13 +243,13 @@ $hero-colors: $colors !default;
 
 // Containers
 
-.hero-head,
-.hero-foot {
+.#{$class-prefix}hero-head,
+.#{$class-prefix}hero-foot {
   flex-grow: 0;
   flex-shrink: 0;
 }
 
-.hero-body {
+.#{$class-prefix}hero-body {
   flex-grow: 1;
   flex-shrink: 0;
   padding: $hero-body-padding;

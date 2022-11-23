@@ -41,11 +41,15 @@
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
     "build-sass": "node-sass --output-style expanded --source-map true bulma.scss css/bulma.css",
     "clean": "rimraf css",
+    "prefixed": "npm run prefixed-sass && npm run prefixed-autoprefix && npm run prefixed-cleancss",
+    "prefixed-sass": "node-sass --output-style expanded --source-map true bulma-prefixed.scss css/bulma-prefixed.css",
+    "prefixed-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-prefixed.css css/bulma-prefixed.css",
+    "prefixed-cleancss": "cleancss -o css/bulma-prefixed.min.css css/bulma-prefixed.css",
     "rtl": "npm run rtl-sass && npm run rtl-autoprefix && npm run rtl-cleancss",
     "rtl-sass": "node-sass --output-style expanded --source-map true bulma-rtl.scss css/bulma-rtl.css",
     "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css",
     "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
-    "deploy": "npm run clean && npm run build && npm run rtl",
+    "deploy": "npm run clean && npm run build && npm run prefixed && npm run rtl",
     "start": "npm run build-sass -- --watch"
   },
   "files": [

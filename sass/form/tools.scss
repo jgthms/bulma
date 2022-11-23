@@ -5,7 +5,7 @@ $help-size: $size-small !default;
 
 $label-colors: $form-colors !default;
 
-.label {
+.#{$class-prefix}label {
   color: $label-color;
   display: block;
   font-size: $size-normal;
@@ -29,7 +29,7 @@ $label-colors: $form-colors !default;
   }
 }
 
-.help {
+.#{$class-prefix}help {
   display: block;
   font-size: $help-size;
   margin-top: 0.25rem;
@@ -45,7 +45,7 @@ $label-colors: $form-colors !default;
 
 // Containers
 
-.field {
+.#{$class-prefix}field {
   &:not(:last-child) {
     margin-bottom: 0.75rem;
   }
@@ -55,28 +55,27 @@ $label-colors: $form-colors !default;
     display: flex;
     justify-content: flex-start;
 
-    .control {
+    .#{$class-prefix}control {
       &:not(:last-child) {
         @include ltr-property("margin", -1px);
       }
 
       &:not(:first-child):not(:last-child) {
-        .button,
-        .input,
-        .select select {
+        .#{$class-prefix}button,
+        .#{$class-prefix}input,
+        .#{$class-prefix}select select {
           border-radius: 0;
         }
       }
 
       &:first-child:not(:only-child) {
-        .button,
-        .input,
-        .select select {
+        .#{$class-prefix}button,
+        .#{$class-prefix}input,
+        .#{$class-prefix}select select {
           @include ltr {
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
           }
-
 
           @include rtl {
             border-bottom-left-radius: 0;
@@ -86,14 +85,13 @@ $label-colors: $form-colors !default;
       }
 
       &:last-child:not(:only-child) {
-        .button,
-        .input,
-        .select select {
+        .#{$class-prefix}button,
+        .#{$class-prefix}input,
+        .#{$class-prefix}select select {
           @include ltr {
             border-bottom-left-radius: 0;
             border-top-left-radius: 0;
           }
-
 
           @include rtl {
             border-bottom-right-radius: 0;
@@ -102,9 +100,9 @@ $label-colors: $form-colors !default;
         }
       }
 
-      .button,
-      .input,
-      .select select {
+      .#{$class-prefix}button,
+      .#{$class-prefix}input,
+      .#{$class-prefix}select select {
         &:not([disabled]) {
           &:hover,
           &.is-hovered {
@@ -139,7 +137,7 @@ $label-colors: $form-colors !default;
     }
 
     &.has-addons-fullwidth {
-      .control {
+      .#{$class-prefix}control {
         flex-grow: 1;
         flex-shrink: 0;
       }
@@ -150,7 +148,7 @@ $label-colors: $form-colors !default;
     display: flex;
     justify-content: flex-start;
 
-    & > .control {
+    & > .#{$class-prefix}control {
       flex-shrink: 0;
 
       &:not(:last-child) {
@@ -176,7 +174,7 @@ $label-colors: $form-colors !default;
     &.is-grouped-multiline {
       flex-wrap: wrap;
 
-      & > .control {
+      & > .#{$class-prefix}control {
         &:last-child,
         &:not(:last-child) {
           margin-bottom: 0.75rem;
@@ -200,15 +198,14 @@ $label-colors: $form-colors !default;
   }
 }
 
-.field-label {
-  .label {
+.#{$class-prefix}field-label {
+  .#{$class-prefix}label {
     font-size: inherit;
   }
 
   @include mobile {
     margin-bottom: 0.5rem;
   }
-
 
   @include tablet {
     flex-basis: 0;
@@ -240,8 +237,8 @@ $label-colors: $form-colors !default;
   }
 }
 
-.field-body {
-  .field .field {
+.#{$class-prefix}field-body {
+  .#{$class-prefix}field .#{$class-prefix}field {
     margin-bottom: 0;
   }
 
@@ -251,11 +248,11 @@ $label-colors: $form-colors !default;
     flex-grow: 5;
     flex-shrink: 1;
 
-    .field {
+    .#{$class-prefix}field {
       margin-bottom: 0;
     }
 
-    & > .field {
+    & > .#{$class-prefix}field {
       flex-shrink: 1;
 
       &:not(.is-narrow) {
@@ -269,7 +266,7 @@ $label-colors: $form-colors !default;
   }
 }
 
-.control {
+.#{$class-prefix}control {
   box-sizing: border-box;
   clear: both;
   font-size: $size-normal;
@@ -279,28 +276,28 @@ $label-colors: $form-colors !default;
   // Modifiers
   &.has-icons-left,
   &.has-icons-right {
-    .input,
-    .select {
+    .#{$class-prefix}input,
+    .#{$class-prefix}select {
       &:focus {
-        & ~ .icon {
+        & ~ .#{$class-prefix}icon {
           color: $input-icon-active-color;
         }
       }
 
-      &.is-small ~ .icon {
+      &.is-small ~ .#{$class-prefix}icon {
         font-size: $size-small;
       }
 
-      &.is-medium ~ .icon {
+      &.is-medium ~ .#{$class-prefix}icon {
         font-size: $size-medium;
       }
 
-      &.is-large ~ .icon {
+      &.is-large ~ .#{$class-prefix}icon {
         font-size: $size-large;
       }
     }
 
-    .icon {
+    .#{$class-prefix}icon {
       color: $input-icon-color;
       height: $input-height;
       pointer-events: none;
@@ -312,23 +309,23 @@ $label-colors: $form-colors !default;
   }
 
   &.has-icons-left {
-    .input,
-    .select select {
+    .#{$class-prefix}input,
+    .#{$class-prefix}select select {
       padding-left: $input-height;
     }
 
-    .icon.is-left {
+    .#{$class-prefix}icon.is-left {
       left: 0;
     }
   }
 
   &.has-icons-right {
-    .input,
-    .select select {
+    .#{$class-prefix}input,
+    .#{$class-prefix}select select {
       padding-right: $input-height;
     }
 
-    .icon.is-right {
+    .#{$class-prefix}icon.is-right {
       right: 0;
     }
   }
