@@ -1,0 +1,105 @@
+@import "../utilities/mixins";
+
+$dropdown-menu-min-width: 12rem !default;
+
+$dropdown-content-background-color: $scheme-main !default;
+$dropdown-content-arrow: $link !default;
+$dropdown-content-offset: 4px !default;
+$dropdown-content-padding-bottom: 0.5rem !default;
+$dropdown-content-padding-top: 0.5rem !default;
+$dropdown-content-radius: $radius !default;
+$dropdown-content-shadow: $shadow !default;
+$dropdown-content-z: 20 !default;
+
+$dropdown-item-color: $text !default;
+$dropdown-item-hover-color: $scheme-invert !default;
+$dropdown-item-hover-background-color: $background !default;
+$dropdown-item-active-color: $link-invert !default;
+$dropdown-item-active-background-color: $link !default;
+
+$dropdown-divider-background-color: $border-light !default;
+
+.dropdown {
+  display: inline-flex;
+  position: relative;
+  vertical-align: top;
+
+  &.is-active,
+  &.is-hoverable:hover {
+    .dropdown-menu {
+      display: block;
+    }
+  }
+
+  &.is-right {
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &.is-up {
+    .dropdown-menu {
+      bottom: 100%;
+      padding-bottom: $dropdown-content-offset;
+      padding-top: initial;
+      top: auto;
+    }
+  }
+}
+
+.dropdown-menu {
+  display: none;
+
+  @include ltr-position(0, false);
+
+  min-width: $dropdown-menu-min-width;
+  padding-top: $dropdown-content-offset;
+  position: absolute;
+  top: 100%;
+  z-index: $dropdown-content-z;
+}
+
+.dropdown-content {
+  background-color: $dropdown-content-background-color;
+  border-radius: $dropdown-content-radius;
+  box-shadow: $dropdown-content-shadow;
+  padding-bottom: $dropdown-content-padding-bottom;
+  padding-top: $dropdown-content-padding-top;
+}
+
+.dropdown-item {
+  color: $dropdown-item-color;
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0.375rem 1rem;
+  position: relative;
+}
+
+a.dropdown-item,
+button.dropdown-item {
+  @include ltr-property("padding", 3rem);
+
+  text-align: inherit;
+  white-space: nowrap;
+  width: 100%;
+
+  &:hover {
+    background-color: $dropdown-item-hover-background-color;
+    color: $dropdown-item-hover-color;
+  }
+
+  &.is-active {
+    background-color: $dropdown-item-active-background-color;
+    color: $dropdown-item-active-color;
+  }
+}
+
+.dropdown-divider {
+  background-color: $dropdown-divider-background-color;
+  border: none;
+  display: block;
+  height: 1px;
+  margin: 0.5rem 0;
+}

@@ -1,0 +1,69 @@
+$icon-dimensions: 1.5rem !default;
+$icon-dimensions-small: 1rem !default;
+$icon-dimensions-medium: 2rem !default;
+$icon-dimensions-large: 3rem !default;
+$icon-text-spacing: 0.25em !default;
+
+.icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: $icon-dimensions;
+  width: $icon-dimensions;
+
+  // Sizes
+  &.is-small {
+    height: $icon-dimensions-small;
+    width: $icon-dimensions-small;
+  }
+
+  &.is-medium {
+    height: $icon-dimensions-medium;
+    width: $icon-dimensions-medium;
+  }
+
+  &.is-large {
+    height: $icon-dimensions-large;
+    width: $icon-dimensions-large;
+  }
+}
+
+.icon-text {
+  align-items: flex-start;
+  color: inherit;
+  display: inline-flex;
+  flex-wrap: wrap;
+  line-height: $icon-dimensions;
+  vertical-align: top;
+
+  .icon {
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    &:not(:last-child) {
+      @include ltr {
+        margin-right: $icon-text-spacing;
+      }
+
+
+      @include rtl {
+        margin-left: $icon-text-spacing;
+      }
+    }
+
+    &:not(:first-child) {
+      @include ltr {
+        margin-left: $icon-text-spacing;
+      }
+
+
+      @include rtl {
+        margin-right: $icon-text-spacing;
+      }
+    }
+  }
+}
+
+div.icon-text {
+  display: flex;
+}

@@ -1,0 +1,222 @@
+@import "../utilities/mixins";
+
+$tag-background-color: $background !default;
+$tag-color: $text !default;
+$tag-radius: $radius !default;
+$tag-delete-margin: 1px !default;
+
+$tag-colors: $colors !default;
+
+.tags {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .tag {
+    margin-bottom: 0.5rem;
+
+    &:not(:last-child) {
+      @include ltr-property("margin", 0.5rem);
+    }
+  }
+
+  &:last-child {
+    margin-bottom: -0.5rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  // Sizes
+  &.are-medium {
+    .tag:not(.is-normal):not(.is-large) {
+      font-size: $size-normal;
+    }
+  }
+
+  &.are-large {
+    .tag:not(.is-normal):not(.is-medium) {
+      font-size: $size-medium;
+    }
+  }
+
+  &.is-centered {
+    justify-content: center;
+
+    .tag {
+      margin-right: 0.25rem;
+      margin-left: 0.25rem;
+    }
+  }
+
+  &.is-right {
+    justify-content: flex-end;
+
+    .tag {
+      &:not(:first-child) {
+        margin-left: 0.5rem;
+      }
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.has-addons {
+    .tag {
+      @include ltr-property("margin", 0);
+
+      &:not(:first-child) {
+        @include ltr-property("margin", 0, false);
+        @include ltr {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+
+        @include rtl {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &:not(:last-child) {
+        @include ltr {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+
+        @include rtl {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+.tag:not(body) {
+  align-items: center;
+  background-color: $tag-background-color;
+  border-radius: $tag-radius;
+  color: $tag-color;
+  display: inline-flex;
+  font-size: $size-small;
+  height: 2em;
+  justify-content: center;
+  line-height: 1.5;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  white-space: nowrap;
+
+  .delete {
+    @include ltr-property("margin", 0.25rem, false);
+    @include ltr-property("margin", -0.375rem);
+  }
+
+  // Colors
+  @each $name, $pair in $tag-colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+
+      // If a light and dark colors are provided
+      @if length($pair) > 3 {
+        $color-light: nth($pair, 3);
+        $color-dark: nth($pair, 4);
+
+        &.is-light {
+          background-color: $color-light;
+          color: $color-dark;
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &.is-normal {
+    font-size: $size-small;
+  }
+
+  &.is-medium {
+    font-size: $size-normal;
+  }
+
+  &.is-large {
+    font-size: $size-medium;
+  }
+
+  .icon {
+    &:first-child:not(:last-child) {
+      @include ltr-property("margin", -0.375em, false);
+      @include ltr-property("margin", 0.1875em);
+    }
+
+    &:last-child:not(:first-child) {
+      @include ltr-property("margin", 0.1875em, false);
+      @include ltr-property("margin", -0.375em);
+    }
+
+    &:first-child:last-child {
+      @include ltr-property("margin", -0.375em, false);
+      @include ltr-property("margin", -0.375em);
+    }
+  }
+
+  // Modifiers
+  &.is-delete {
+    @include ltr-property("margin", $tag-delete-margin, false);
+
+    padding: 0;
+    position: relative;
+    width: 2em;
+
+    &::before,
+    &::after {
+      background-color: currentColor;
+      content: "";
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      transform-origin: center center;
+    }
+
+    &::before {
+      height: 1px;
+      width: 50%;
+    }
+
+    &::after {
+      height: 50%;
+      width: 1px;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: darken($tag-background-color, 5%);
+    }
+
+    &:active {
+      background-color: darken($tag-background-color, 10%);
+    }
+  }
+
+  &.is-rounded {
+    border-radius: $radius-rounded;
+  }
+}
+
+a.tag {
+  &:hover {
+    text-decoration: underline;
+  }
+}

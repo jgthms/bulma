@@ -1,26 +1,26 @@
-const fs = require('fs');
-const path = require('path');
-const sass = require('sass');
-const utils = require('../utils');
+const fs = require("fs");
+const path = require("path");
+const sass = require("sass");
+const utils = require("../utils");
 
-const DART_BASE_PATH = 'test/dart-sass/build/';
+const DART_BASE_PATH = "test/dart-sass/build/";
 
 fs.mkdir(DART_BASE_PATH, { recursive: true }, (err) => {
   if (err) throw err;
 });
 
 const exportDartCSS = (filepath, options) => {
-  utils.exportCSS(sass, fs, DART_BASE_PATH, filepath, options)
-}
+  utils.exportCSS(sass, fs, DART_BASE_PATH, filepath, options);
+};
 
 // Full import
 
-exportDartCSS('bulma', {
-  file: './bulma.sass',
+exportDartCSS("bulma", {
+  file: "./bulma.scss",
 });
 
-exportDartCSS('bulma-rtl', {
-  file: './bulma-rtl.sass',
+exportDartCSS("bulma-rtl", {
+  file: "./bulma-rtl.scss",
 });
 
 // Custom import
@@ -29,8 +29,8 @@ fs.mkdir(`${DART_BASE_PATH}custom`, { recursive: true }, (err) => {
   if (err) throw err;
 });
 
-utils.exportCSS(sass, fs, DART_BASE_PATH, 'custom/navbar', {
-  data: '@use "./sass/components/navbar.sass" with ( $scheme-main: red );',
+utils.exportCSS(sass, fs, DART_BASE_PATH, "custom/navbar", {
+  data: '@use "./sass/components/navbar.scss" with ( $scheme-main: red );',
 });
 
 // Single imports
