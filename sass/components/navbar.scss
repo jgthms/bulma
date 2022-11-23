@@ -1,0 +1,668 @@
+@import "../utilities/mixins";
+
+$navbar-background-color: $scheme-main !default;
+$navbar-box-shadow-size: 0 2px 0 0 !default;
+$navbar-box-shadow-color: $background !default;
+$navbar-height: 3.25rem !default;
+$navbar-padding-vertical: 1rem !default;
+$navbar-padding-horizontal: 2rem !default;
+$navbar-z: 30 !default;
+$navbar-fixed-z: 30 !default;
+
+$navbar-item-color: $text !default;
+$navbar-item-hover-color: $link !default;
+$navbar-item-hover-background-color: $scheme-main-bis !default;
+$navbar-item-active-color: $scheme-invert !default;
+$navbar-item-active-background-color: transparent !default;
+$navbar-item-img-max-height: 1.75rem !default;
+
+$navbar-burger-color: $navbar-item-color !default;
+
+$navbar-tab-hover-background-color: transparent !default;
+$navbar-tab-hover-border-bottom-color: $link !default;
+$navbar-tab-active-color: $link !default;
+$navbar-tab-active-background-color: transparent !default;
+$navbar-tab-active-border-bottom-color: $link !default;
+$navbar-tab-active-border-bottom-style: solid !default;
+$navbar-tab-active-border-bottom-width: 3px !default;
+
+$navbar-dropdown-background-color: $scheme-main !default;
+$navbar-dropdown-border-top: 2px solid $border !default;
+$navbar-dropdown-offset: -4px !default;
+$navbar-dropdown-arrow: $link !default;
+$navbar-dropdown-radius: $radius-large !default;
+$navbar-dropdown-z: 20 !default;
+
+$navbar-dropdown-boxed-radius: $radius-large !default;
+$navbar-dropdown-boxed-shadow: 0 8px 8px bulmaRgba($scheme-invert, 0.1), 0 0 0 1px bulmaRgba($scheme-invert, 0.1) !default;
+
+$navbar-dropdown-item-hover-color: $scheme-invert !default;
+$navbar-dropdown-item-hover-background-color: $background !default;
+$navbar-dropdown-item-active-color: $link !default;
+$navbar-dropdown-item-active-background-color: $background !default;
+
+$navbar-divider-background-color: $background !default;
+$navbar-divider-height: 2px !default;
+
+$navbar-bottom-box-shadow-size: 0 -2px 0 0 !default;
+
+$navbar-breakpoint: $desktop !default;
+
+$navbar-colors: $colors !default;
+
+@mixin navbar-fixed {
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: $navbar-fixed-z;
+}
+
+.navbar {
+  background-color: $navbar-background-color;
+  min-height: $navbar-height;
+  position: relative;
+  z-index: $navbar-z;
+
+  @each $name, $pair in $navbar-colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+
+      .navbar-brand {
+        & > .navbar-item,
+        .navbar-link {
+          color: $color-invert;
+        }
+
+        & > a.navbar-item,
+        .navbar-link {
+          &:focus,
+          &:hover,
+          &.is-active {
+            background-color: bulmaDarken($color, 5%);
+            color: $color-invert;
+          }
+        }
+
+        .navbar-link {
+          &::after {
+            border-color: $color-invert;
+          }
+        }
+      }
+
+      .navbar-burger {
+        color: $color-invert;
+      }
+
+      @include from($navbar-breakpoint) {
+        .navbar-start,
+        .navbar-end {
+          & > .navbar-item,
+          .navbar-link {
+            color: $color-invert;
+          }
+
+          & > a.navbar-item,
+          .navbar-link {
+            &:focus,
+            &:hover,
+            &.is-active {
+              background-color: bulmaDarken($color, 5%);
+              color: $color-invert;
+            }
+          }
+
+          .navbar-link {
+            &::after {
+              border-color: $color-invert;
+            }
+          }
+        }
+
+        .navbar-item.has-dropdown:focus .navbar-link,
+        .navbar-item.has-dropdown:hover .navbar-link,
+        .navbar-item.has-dropdown.is-active .navbar-link {
+          background-color: bulmaDarken($color, 5%);
+          color: $color-invert;
+        }
+
+        .navbar-dropdown {
+          a.navbar-item {
+            &.is-active {
+              background-color: $color;
+              color: $color-invert;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & > .container {
+    align-items: stretch;
+    display: flex;
+    min-height: $navbar-height;
+    width: 100%;
+  }
+
+  &.has-shadow {
+    box-shadow: $navbar-box-shadow-size $navbar-box-shadow-color;
+  }
+
+  &.is-fixed-bottom,
+  &.is-fixed-top {
+    @include navbar-fixed;
+  }
+
+  &.is-fixed-bottom {
+    bottom: 0;
+
+    &.has-shadow {
+      box-shadow: $navbar-bottom-box-shadow-size $navbar-box-shadow-color;
+    }
+  }
+
+  &.is-fixed-top {
+    top: 0;
+  }
+}
+
+html,
+body {
+  &.has-navbar-fixed-top {
+    padding-top: $navbar-height;
+  }
+
+  &.has-navbar-fixed-bottom {
+    padding-bottom: $navbar-height;
+  }
+}
+
+.navbar-brand,
+.navbar-tabs {
+  align-items: stretch;
+  display: flex;
+  flex-shrink: 0;
+  min-height: $navbar-height;
+}
+
+.navbar-brand {
+  a.navbar-item {
+    &:focus,
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.navbar-tabs {
+  @include overflow-touch;
+
+  max-width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.navbar-burger {
+  @extend %reset;
+
+  color: $navbar-burger-color;
+
+  @include hamburger($navbar-height);
+  @include ltr-property("margin", auto, false);
+}
+
+.navbar-menu {
+  display: none;
+}
+
+.navbar-item,
+.navbar-link {
+  color: $navbar-item-color;
+  display: block;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+
+  .icon {
+    &:only-child {
+      margin-left: -0.25rem;
+      margin-right: -0.25rem;
+    }
+  }
+}
+
+a.navbar-item,
+.navbar-link {
+  cursor: pointer;
+
+  &:focus,
+  &:focus-within,
+  &:hover,
+  &.is-active {
+    background-color: $navbar-item-hover-background-color;
+    color: $navbar-item-hover-color;
+  }
+}
+
+.navbar-item {
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  img {
+    max-height: $navbar-item-img-max-height;
+  }
+
+  &.has-dropdown {
+    padding: 0;
+  }
+
+  &.is-expanded {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  &.is-tab {
+    border-bottom: 1px solid transparent;
+    min-height: $navbar-height;
+    padding-bottom: calc(0.5rem - 1px);
+
+    &:focus,
+    &:hover {
+      background-color: $navbar-tab-hover-background-color;
+      border-bottom-color: $navbar-tab-hover-border-bottom-color;
+    }
+
+    &.is-active {
+      background-color: $navbar-tab-active-background-color;
+      border-bottom-color: $navbar-tab-active-border-bottom-color;
+      border-bottom-style: $navbar-tab-active-border-bottom-style;
+      border-bottom-width: $navbar-tab-active-border-bottom-width;
+      color: $navbar-tab-active-color;
+      padding-bottom: calc(0.5rem - #{$navbar-tab-active-border-bottom-width});
+    }
+  }
+}
+
+.navbar-content {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.navbar-link:not(.is-arrowless) {
+  @include ltr-property("padding", 2.5em);
+
+  &::after {
+    @extend %arrow;
+
+    border-color: $navbar-dropdown-arrow;
+    margin-top: -0.375em;
+
+    @include ltr-position(1.125em);
+  }
+}
+
+.navbar-dropdown {
+  font-size: 0.875rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+
+  .navbar-item {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.navbar-divider {
+  background-color: $navbar-divider-background-color;
+  border: none;
+  display: none;
+  height: $navbar-divider-height;
+  margin: 0.5rem 0;
+}
+
+@include until($navbar-breakpoint) {
+  .navbar > .container {
+    display: block;
+  }
+
+  .navbar-brand,
+  .navbar-tabs {
+    .navbar-item {
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  .navbar-link {
+    &::after {
+      display: none;
+    }
+  }
+
+  .navbar-menu {
+    background-color: $navbar-background-color;
+    box-shadow: 0 8px 16px bulmaRgba($scheme-invert, 0.1);
+    padding: 0.5rem 0;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  // Fixed navbar
+  .navbar {
+    &.is-fixed-bottom-touch,
+    &.is-fixed-top-touch {
+      @include navbar-fixed;
+    }
+
+    &.is-fixed-bottom-touch {
+      bottom: 0;
+
+      &.has-shadow {
+        box-shadow: 0 -2px 3px bulmaRgba($scheme-invert, 0.1);
+      }
+    }
+
+    &.is-fixed-top-touch {
+      top: 0;
+    }
+
+    &.is-fixed-top,
+    &.is-fixed-top-touch {
+      .navbar-menu {
+        @include overflow-touch;
+
+        max-height: calc(100vh - #{$navbar-height});
+        overflow: auto;
+      }
+    }
+  }
+
+  html,
+  body {
+    &.has-navbar-fixed-top-touch {
+      padding-top: $navbar-height;
+    }
+
+    &.has-navbar-fixed-bottom-touch {
+      padding-bottom: $navbar-height;
+    }
+  }
+}
+
+
+@include from($navbar-breakpoint) {
+  .navbar,
+  .navbar-menu,
+  .navbar-start,
+  .navbar-end {
+    align-items: stretch;
+    display: flex;
+  }
+
+  .navbar {
+    min-height: $navbar-height;
+
+    &.is-spaced {
+      padding: $navbar-padding-vertical $navbar-padding-horizontal;
+
+      .navbar-start,
+      .navbar-end {
+        align-items: center;
+      }
+
+      a.navbar-item,
+      .navbar-link {
+        border-radius: $radius;
+      }
+    }
+
+    &.is-transparent {
+      a.navbar-item,
+      .navbar-link {
+        &:focus,
+        &:hover,
+        &.is-active {
+          background-color: transparent !important;
+        }
+      }
+
+      .navbar-item.has-dropdown {
+        &.is-active,
+        &.is-hoverable:focus,
+        &.is-hoverable:focus-within,
+        &.is-hoverable:hover {
+          .navbar-link {
+            background-color: transparent !important;
+          }
+        }
+      }
+
+      .navbar-dropdown {
+        a.navbar-item {
+          &:focus,
+          &:hover {
+            background-color: $navbar-dropdown-item-hover-background-color;
+            color: $navbar-dropdown-item-hover-color;
+          }
+
+          &.is-active {
+            background-color: $navbar-dropdown-item-active-background-color;
+            color: $navbar-dropdown-item-active-color;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-burger {
+    display: none;
+  }
+
+  .navbar-item,
+  .navbar-link {
+    align-items: center;
+    display: flex;
+  }
+
+  .navbar-item {
+    &.has-dropdown {
+      align-items: stretch;
+    }
+
+    &.has-dropdown-up {
+      .navbar-link::after {
+        transform: rotate(135deg) translate(0.25em, -0.25em);
+      }
+
+      .navbar-dropdown {
+        border-bottom: $navbar-dropdown-border-top;
+        border-radius: $navbar-dropdown-radius $navbar-dropdown-radius 0 0;
+        border-top: none;
+        bottom: 100%;
+        box-shadow: 0 -8px 8px bulmaRgba($scheme-invert, 0.1);
+        top: auto;
+      }
+    }
+
+    &.is-active,
+    &.is-hoverable:focus,
+    &.is-hoverable:focus-within,
+    &.is-hoverable:hover {
+      .navbar-dropdown {
+        display: block;
+
+        .navbar.is-spaced &,
+        &.is-boxed {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .navbar-menu {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  .navbar-start {
+    justify-content: flex-start;
+
+    @include ltr-property("margin", auto);
+  }
+
+  .navbar-end {
+    justify-content: flex-end;
+
+    @include ltr-property("margin", auto, false);
+  }
+
+  .navbar-dropdown {
+    background-color: $navbar-dropdown-background-color;
+    border-bottom-left-radius: $navbar-dropdown-radius;
+    border-bottom-right-radius: $navbar-dropdown-radius;
+    border-top: $navbar-dropdown-border-top;
+    box-shadow: 0 8px 8px bulmaRgba($scheme-invert, 0.1);
+    display: none;
+    font-size: 0.875rem;
+
+    @include ltr-position(0, false);
+
+    min-width: 100%;
+    position: absolute;
+    top: 100%;
+    z-index: $navbar-dropdown-z;
+
+    .navbar-item {
+      padding: 0.375rem 1rem;
+      white-space: nowrap;
+    }
+
+    a.navbar-item {
+      @include ltr-property("padding", 3rem);
+
+      &:focus,
+      &:hover {
+        background-color: $navbar-dropdown-item-hover-background-color;
+        color: $navbar-dropdown-item-hover-color;
+      }
+
+      &.is-active {
+        background-color: $navbar-dropdown-item-active-background-color;
+        color: $navbar-dropdown-item-active-color;
+      }
+    }
+
+    .navbar.is-spaced &,
+    &.is-boxed {
+      border-radius: $navbar-dropdown-boxed-radius;
+      border-top: none;
+      box-shadow: $navbar-dropdown-boxed-shadow;
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      top: calc(100% + (#{$navbar-dropdown-offset}));
+      transform: translateY(-5px);
+      transition-duration: $speed;
+      transition-property: opacity, transform;
+    }
+
+    &.is-right {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  .navbar-divider {
+    display: block;
+  }
+
+  .navbar > .container,
+  .container > .navbar {
+    .navbar-brand {
+      @include ltr-property("margin", -0.75rem, false);
+    }
+
+    .navbar-menu {
+      @include ltr-property("margin", -0.75rem);
+    }
+  }
+
+  // Fixed navbar
+  .navbar {
+    &.is-fixed-bottom-desktop,
+    &.is-fixed-top-desktop {
+      @include navbar-fixed;
+    }
+
+    &.is-fixed-bottom-desktop {
+      bottom: 0;
+
+      &.has-shadow {
+        box-shadow: 0 -2px 3px bulmaRgba($scheme-invert, 0.1);
+      }
+    }
+
+    &.is-fixed-top-desktop {
+      top: 0;
+    }
+  }
+
+  html,
+  body {
+    &.has-navbar-fixed-top-desktop {
+      padding-top: $navbar-height;
+    }
+
+    &.has-navbar-fixed-bottom-desktop {
+      padding-bottom: $navbar-height;
+    }
+
+    &.has-spaced-navbar-fixed-top {
+      padding-top: $navbar-height + $navbar-padding-vertical * 2;
+    }
+
+    &.has-spaced-navbar-fixed-bottom {
+      padding-bottom: $navbar-height + $navbar-padding-vertical * 2;
+    }
+  }
+
+  // Hover/Active states
+  a.navbar-item,
+  .navbar-link {
+    &.is-active {
+      color: $navbar-item-active-color;
+    }
+
+    &.is-active:not(:focus):not(:hover) {
+      background-color: $navbar-item-active-background-color;
+    }
+  }
+
+  .navbar-item.has-dropdown {
+    &:focus,
+    &:hover,
+    &.is-active {
+      .navbar-link {
+        background-color: $navbar-item-hover-background-color;
+      }
+    }
+  }
+}
+
+
+// Combination
+
+.hero {
+  &.is-fullheight-with-navbar {
+    min-height: calc(100vh - #{$navbar-height});
+  }
+}

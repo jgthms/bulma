@@ -1,0 +1,124 @@
+@import "../utilities/mixins";
+
+$breadcrumb-item-color: $link !default;
+$breadcrumb-item-hover-color: $link-hover !default;
+$breadcrumb-item-active-color: $text-strong !default;
+
+$breadcrumb-item-padding-vertical: 0 !default;
+$breadcrumb-item-padding-horizontal: 0.75em !default;
+
+$breadcrumb-item-separator-color: $border-hover !default;
+
+.breadcrumb {
+  @extend %block;
+
+  @extend %unselectable;
+
+  font-size: $size-normal;
+  white-space: nowrap;
+
+  a {
+    align-items: center;
+    color: $breadcrumb-item-color;
+    display: flex;
+    justify-content: center;
+    padding: $breadcrumb-item-padding-vertical $breadcrumb-item-padding-horizontal;
+
+    &:hover {
+      color: $breadcrumb-item-hover-color;
+    }
+  }
+
+  li {
+    align-items: center;
+    display: flex;
+
+    &:first-child a {
+      @include ltr-property("padding", 0, false);
+    }
+
+    &.is-active {
+      a {
+        color: $breadcrumb-item-active-color;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+
+    & + li::before {
+      color: $breadcrumb-item-separator-color;
+      content: "/";
+    }
+  }
+
+  ul,
+  ol {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .icon {
+    &:first-child {
+      @include ltr-property("margin", 0.5em);
+    }
+
+    &:last-child {
+      @include ltr-property("margin", 0.5em, false);
+    }
+  }
+
+  // Alignment
+  &.is-centered {
+    ol,
+    ul {
+      justify-content: center;
+    }
+  }
+
+  &.is-right {
+    ol,
+    ul {
+      justify-content: flex-end;
+    }
+  }
+
+  // Sizes
+  &.is-small {
+    font-size: $size-small;
+  }
+
+  &.is-medium {
+    font-size: $size-medium;
+  }
+
+  &.is-large {
+    font-size: $size-large;
+  }
+
+  // Styles
+  &.has-arrow-separator {
+    li + li::before {
+      content: "→";
+    }
+  }
+
+  &.has-bullet-separator {
+    li + li::before {
+      content: "•";
+    }
+  }
+
+  &.has-dot-separator {
+    li + li::before {
+      content: "·";
+    }
+  }
+
+  &.has-succeeds-separator {
+    li + li::before {
+      content: "≻";
+    }
+  }
+}

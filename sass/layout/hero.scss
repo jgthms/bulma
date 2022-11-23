@@ -1,0 +1,245 @@
+@import "../utilities/mixins";
+
+$hero-body-padding: 3rem 1.5rem !default;
+$hero-body-padding-tablet: 3rem 3rem !default;
+$hero-body-padding-small: 1.5rem !default;
+$hero-body-padding-medium: 9rem 4.5rem !default;
+$hero-body-padding-large: 18rem 6rem !default;
+
+$hero-colors: $colors !default;
+
+// Main container
+.hero {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .navbar {
+    background: none;
+  }
+
+  .tabs {
+    ul {
+      border-bottom: none;
+    }
+  }
+
+  // Colors
+  @each $name, $pair in $hero-colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+
+      a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
+      strong {
+        color: inherit;
+      }
+
+      .title {
+        color: $color-invert;
+      }
+
+      .subtitle {
+        color: bulmaRgba($color-invert, 0.9);
+
+        a:not(.button),
+        strong {
+          color: $color-invert;
+        }
+      }
+
+      .navbar-menu {
+        @include touch {
+          background-color: $color;
+        }
+      }
+
+      .navbar-item,
+      .navbar-link {
+        color: bulmaRgba($color-invert, 0.7);
+      }
+
+      a.navbar-item,
+      .navbar-link {
+        &:hover,
+        &.is-active {
+          background-color: bulmaDarken($color, 5%);
+          color: $color-invert;
+        }
+      }
+
+      .tabs {
+        a {
+          color: $color-invert;
+          opacity: 0.9;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+
+        li {
+          &.is-active a {
+            color: $color !important;
+            opacity: 1;
+          }
+        }
+
+        &.is-boxed,
+        &.is-toggle {
+          a {
+            color: $color-invert;
+
+            &:hover {
+              background-color: bulmaRgba($scheme-invert, 0.1);
+            }
+          }
+
+          li.is-active a {
+            &,
+            &:hover {
+              background-color: $color-invert;
+              border-color: $color-invert;
+              color: $color;
+            }
+          }
+        }
+      }
+
+      // Modifiers
+      @if type-of($color) == "color" {
+        &.is-bold {
+          $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%);
+          $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%);
+
+          background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%);
+
+          @include mobile {
+            .navbar-menu {
+              background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &.is-small {
+    .hero-body {
+      padding: $hero-body-padding-small;
+    }
+  }
+
+  &.is-medium {
+    @include tablet {
+      .hero-body {
+        padding: $hero-body-padding-medium;
+      }
+    }
+  }
+
+  &.is-large {
+    @include tablet {
+      .hero-body {
+        padding: $hero-body-padding-large;
+      }
+    }
+  }
+
+  &.is-halfheight,
+  &.is-fullheight,
+  &.is-fullheight-with-navbar {
+    .hero-body {
+      align-items: center;
+      display: flex;
+
+      & > .container {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  }
+
+  &.is-halfheight {
+    min-height: 50vh;
+  }
+
+  &.is-fullheight {
+    min-height: 100vh;
+  }
+}
+
+// Components
+
+.hero-video {
+  @extend %overlay;
+
+  overflow: hidden;
+
+  video {
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  // Modifiers
+  &.is-transparent {
+    opacity: 0.3;
+  }
+
+  // Responsiveness
+  @include mobile {
+    display: none;
+  }
+}
+
+.hero-buttons {
+  margin-top: 1.5rem;
+
+  // Responsiveness
+  @include mobile {
+    .button {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
+
+  @include tablet {
+    display: flex;
+    justify-content: center;
+
+    .button:not(:last-child) {
+      @include ltr-property("margin", 1.5rem);
+    }
+  }
+}
+
+// Containers
+
+.hero-head,
+.hero-foot {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.hero-body {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: $hero-body-padding;
+
+  @include tablet {
+    padding: $hero-body-padding-tablet;
+  }
+}

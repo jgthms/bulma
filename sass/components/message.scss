@@ -1,0 +1,136 @@
+@import "../utilities/mixins";
+
+$message-background-color: $background !default;
+$message-radius: $radius !default;
+
+$message-header-background-color: $text !default;
+$message-header-color: $text-invert !default;
+$message-header-weight: $weight-bold !default;
+$message-header-padding: 0.75em 1em !default;
+$message-header-radius: $radius !default;
+
+$message-body-border-color: $border !default;
+$message-body-border-width: 0 0 0 4px !default;
+$message-body-color: $text !default;
+$message-body-padding: 1.25em 1.5em !default;
+$message-body-radius: $radius !default;
+
+$message-body-pre-background-color: $scheme-main !default;
+$message-body-pre-code-background-color: transparent !default;
+
+$message-header-body-border-width: 0 !default;
+$message-colors: $colors !default;
+
+.message {
+  @extend %block;
+
+  background-color: $message-background-color;
+  border-radius: $message-radius;
+  font-size: $size-normal;
+
+  strong {
+    color: currentColor;
+  }
+
+  a:not(.button):not(.tag):not(.dropdown-item) {
+    color: currentColor;
+    text-decoration: underline;
+  }
+
+  // Sizes
+  &.is-small {
+    font-size: $size-small;
+  }
+
+  &.is-medium {
+    font-size: $size-medium;
+  }
+
+  &.is-large {
+    font-size: $size-large;
+  }
+
+  // Colors
+  @each $name, $components in $message-colors {
+    $color: nth($components, 1);
+    $color-invert: nth($components, 2);
+    $color-light: null;
+    $color-dark: null;
+
+    @if length($components) >= 3 {
+      $color-light: nth($components, 3);
+
+      @if length($components) >= 4 {
+        $color-dark: nth($components, 4);
+      }
+      @else {
+        $color-luminance: colorLuminance($color);
+        $darken-percentage: $color-luminance * 70%;
+        $desaturate-percentage: $color-luminance * 30%;
+        $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage);
+      }
+    }
+    @else {
+      $color-lightning: max(100% - lightness($color) - 2%, 0%);
+      $color-light: lighten($color, $color-lightning);
+    }
+
+    &.is-#{$name} {
+      background-color: $color-light;
+
+      .message-header {
+        background-color: $color;
+        color: $color-invert;
+      }
+
+      .message-body {
+        border-color: $color;
+        color: $color-dark;
+      }
+    }
+  }
+}
+
+.message-header {
+  align-items: center;
+  background-color: $message-header-background-color;
+  border-radius: $message-header-radius $message-header-radius 0 0;
+  color: $message-header-color;
+  display: flex;
+  font-weight: $message-header-weight;
+  justify-content: space-between;
+  line-height: 1.25;
+  padding: $message-header-padding;
+  position: relative;
+
+  .delete {
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    @include ltr-property("margin", 0.75em, false);
+  }
+
+  & + .message-body {
+    border-width: $message-header-body-border-width;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.message-body {
+  border-color: $message-body-border-color;
+  border-radius: $message-body-radius;
+  border-style: solid;
+  border-width: $message-body-border-width;
+  color: $message-body-color;
+  padding: $message-body-padding;
+
+  code,
+  pre {
+    background-color: $message-body-pre-background-color;
+  }
+
+  pre code {
+    background-color: $message-body-pre-code-background-color;
+  }
+}
