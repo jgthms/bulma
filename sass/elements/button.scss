@@ -44,7 +44,20 @@ $button-static-background-color: $scheme-main-ter !default;
 $button-static-border-color: $border !default;
 
 $button-colors: $colors !default;
-$button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $size-small * 0.875, "medium": $size-small, "large": $size-normal), "tablet-only": ("small": $size-small * 0.875, "normal": $size-small, "medium": $size-normal, "large": $size-medium)) !default;
+$button-responsive-sizes: (
+  "mobile": (
+    "small": $size-small * 0.75,
+    "normal": $size-small * 0.875,
+    "medium": $size-small,
+    "large": $size-normal,
+  ),
+  "tablet-only": (
+    "small": $size-small * 0.875,
+    "normal": $size-small,
+    "medium": $size-normal,
+    "large": $size-medium,
+  ),
+) !default;
 
 // The button sizes use mixins so they can be used at different breakpoints
 @mixin button-small {
@@ -67,7 +80,7 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
   font-size: $size-large;
 }
 
-.button {
+.#{$class-prefix}button {
   @extend %control;
 
   @extend %unselectable;
@@ -94,7 +107,7 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
     color: inherit;
   }
 
-  .icon {
+  .#{$class-prefix}icon {
     &,
     &.is-small,
     &.is-medium,
@@ -104,18 +117,29 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
     }
 
     &:first-child:not(:last-child) {
-      @include ltr-property("margin", calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}), false);
+      @include ltr-property(
+        "margin",
+        calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}),
+        false
+      );
       @include ltr-property("margin", $button-padding-horizontal * 0.25);
     }
 
     &:last-child:not(:first-child) {
       @include ltr-property("margin", $button-padding-horizontal * 0.25, false);
-      @include ltr-property("margin", calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}));
+      @include ltr-property(
+        "margin",
+        calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
+      );
     }
 
     &:first-child:last-child {
-      margin-left: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width});
-      margin-right: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width});
+      margin-left: calc(
+        #{-0.5 * $button-padding-horizontal} - #{$button-border-width}
+      );
+      margin-right: calc(
+        #{-0.5 * $button-padding-horizontal} - #{$button-border-width}
+      );
     }
   }
 
@@ -244,7 +268,10 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
 
       &.is-loading {
         &::after {
-          border-color: transparent transparent $color-invert $color-invert !important;
+          border-color: transparent
+            transparent
+            $color-invert
+            $color-invert !important;
         }
       }
 
@@ -272,7 +299,10 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
           &:focus,
           &.is-focused {
             &::after {
-              border-color: transparent transparent $color-invert $color-invert !important;
+              border-color: transparent
+                transparent
+                $color-invert
+                $color-invert !important;
             }
           }
         }
@@ -405,13 +435,13 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
   }
 }
 
-.buttons {
+.#{$class-prefix}buttons {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 
-  .button {
+  .#{$class-prefix}button {
     margin-bottom: 0.5rem;
 
     &:not(:last-child):not(.is-fullwidth) {
@@ -429,25 +459,25 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
 
   // Sizes
   &.are-small {
-    .button:not(.is-normal):not(.is-medium):not(.is-large) {
+    .#{$class-prefix}button:not(.is-normal):not(.is-medium):not(.is-large) {
       @include button-small;
     }
   }
 
   &.are-medium {
-    .button:not(.is-small):not(.is-normal):not(.is-large) {
+    .#{$class-prefix}button:not(.is-small):not(.is-normal):not(.is-large) {
       @include button-medium;
     }
   }
 
   &.are-large {
-    .button:not(.is-small):not(.is-normal):not(.is-medium) {
+    .#{$class-prefix}button:not(.is-small):not(.is-normal):not(.is-medium) {
       @include button-large;
     }
   }
 
   &.has-addons {
-    .button {
+    .#{$class-prefix}button {
       &:not(:first-child) {
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
@@ -492,7 +522,7 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
     justify-content: center;
 
     &:not(.has-addons) {
-      .button:not(.is-fullwidth) {
+      .#{$class-prefix}button:not(.is-fullwidth) {
         margin-left: 0.25rem;
         margin-right: 0.25rem;
       }
@@ -503,7 +533,7 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
     justify-content: flex-end;
 
     &:not(.has-addons) {
-      .button:not(.is-fullwidth) {
+      .#{$class-prefix}button:not(.is-fullwidth) {
         margin-left: 0.25rem;
         margin-right: 0.25rem;
       }
@@ -515,13 +545,12 @@ $button-responsive-sizes: ("mobile": ("small": $size-small * 0.75, "normal": $si
   @include breakpoint($bp-name) {
     @each $size, $value in $bp-sizes {
       @if $size != "normal" {
-        .button.is-responsive.is-#{$size} {
+        .#{$class-prefix}button.is-responsive.is-#{$size} {
           font-size: $value;
         }
-      }
-      @else {
-        .button.is-responsive,
-        .button.is-responsive.is-normal {
+      } @else {
+        .#{$class-prefix}button.is-responsive,
+        .#{$class-prefix}button.is-responsive.is-normal {
           font-size: $value;
         }
       }

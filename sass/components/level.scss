@@ -2,7 +2,7 @@
 
 $level-item-spacing: $block-spacing * 0.5 !default;
 
-.level {
+.#{$class-prefix}level {
   @extend %block;
 
   align-items: center;
@@ -21,16 +21,16 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   &.is-mobile {
     display: flex;
 
-    .level-left,
-    .level-right {
+    .#{$class-prefix}level-left,
+    .#{$class-prefix}level-right {
       display: flex;
     }
 
-    .level-left + .level-right {
+    .#{$class-prefix}level-left + .#{$class-prefix}level-right {
       margin-top: 0;
     }
 
-    .level-item {
+    .#{$class-prefix}level-item {
       &:not(:last-child) {
         margin-bottom: 0;
 
@@ -47,7 +47,7 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   @include tablet {
     display: flex;
 
-    & > .level-item {
+    & > .#{$class-prefix}level-item {
       &:not(.is-narrow) {
         flex-grow: 1;
       }
@@ -55,7 +55,7 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   }
 }
 
-.level-item {
+.#{$class-prefix}level-item {
   align-items: center;
   display: flex;
   flex-basis: auto;
@@ -63,8 +63,8 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   flex-shrink: 0;
   justify-content: center;
 
-  .title,
-  .subtitle {
+  .#{$class-prefix}title,
+  .#{$class-prefix}subtitle {
     margin-bottom: 0;
   }
 
@@ -76,13 +76,13 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   }
 }
 
-.level-left,
-.level-right {
+.#{$class-prefix}level-left,
+.#{$class-prefix}level-right {
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
 
-  .level-item {
+  .#{$class-prefix}level-item {
     // Modifiers
     &.is-flexible {
       flex-grow: 1;
@@ -97,24 +97,23 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   }
 }
 
-.level-left {
+.#{$class-prefix}level-left {
   align-items: center;
   justify-content: flex-start;
 
   // Responsiveness
   @include mobile {
-    & + .level-right {
+    & + .#{$class-prefix}level-right {
       margin-top: 1.5rem;
     }
   }
-
 
   @include tablet {
     display: flex;
   }
 }
 
-.level-right {
+.#{$class-prefix}level-right {
   align-items: center;
   justify-content: flex-end;
 

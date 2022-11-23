@@ -30,7 +30,7 @@ $panel-block-active-icon-color: $link !default;
 $panel-icon-color: $text-light !default;
 $panel-colors: $colors !default;
 
-.panel {
+.#{$class-prefix}panel {
   border-radius: $panel-radius;
   box-shadow: $panel-shadow;
   font-size: $size-normal;
@@ -45,30 +45,30 @@ $panel-colors: $colors !default;
     $color-invert: nth($components, 2);
 
     &.is-#{$name} {
-      .panel-heading {
+      .#{$class-prefix}panel-heading {
         background-color: $color;
         color: $color-invert;
       }
 
-      .panel-tabs a.is-active {
+      .#{$class-prefix}panel-tabs a.is-active {
         border-bottom-color: $color;
       }
 
-      .panel-block.is-active .panel-icon {
+      .#{$class-prefix}panel-block.is-active .#{$class-prefix}panel-icon {
         color: $color;
       }
     }
   }
 }
 
-.panel-tabs,
-.panel-block {
+.#{$class-prefix}panel-tabs,
+.#{$class-prefix}panel-block {
   &:not(:last-child) {
     border-bottom: $panel-item-border;
   }
 }
 
-.panel-heading {
+.#{$class-prefix}panel-heading {
   background-color: $panel-heading-background-color;
   border-radius: $panel-radius $panel-radius 0 0;
   color: $panel-heading-color;
@@ -78,7 +78,7 @@ $panel-colors: $colors !default;
   padding: $panel-heading-padding;
 }
 
-.panel-tabs {
+.#{$class-prefix}panel-tabs {
   align-items: flex-end;
   display: flex;
   font-size: $panel-tabs-font-size;
@@ -97,7 +97,7 @@ $panel-colors: $colors !default;
   }
 }
 
-.panel-list {
+.#{$class-prefix}panel-list {
   a {
     color: $panel-list-item-color;
 
@@ -107,7 +107,7 @@ $panel-colors: $colors !default;
   }
 }
 
-.panel-block {
+.#{$class-prefix}panel-block {
   align-items: center;
   color: $panel-block-color;
   display: flex;
@@ -118,7 +118,7 @@ $panel-colors: $colors !default;
     @include ltr-property("margin", 0.75em);
   }
 
-  & > .control {
+  & > .#{$class-prefix}control {
     flex-grow: 1;
     flex-shrink: 1;
     width: 100%;
@@ -132,7 +132,7 @@ $panel-colors: $colors !default;
     border-left-color: $panel-block-active-border-left-color;
     color: $panel-block-active-color;
 
-    .panel-icon {
+    .#{$class-prefix}panel-icon {
       color: $panel-block-active-icon-color;
     }
   }
@@ -143,8 +143,8 @@ $panel-colors: $colors !default;
   }
 }
 
-a.panel-block,
-label.panel-block {
+a.#{$class-prefix}panel-block,
+label.#{$class-prefix}panel-block {
   cursor: pointer;
 
   &:hover {
@@ -152,7 +152,7 @@ label.panel-block {
   }
 }
 
-.panel-icon {
+.#{$class-prefix}panel-icon {
   @include fa(14px, 1em);
 
   color: $panel-icon-color;

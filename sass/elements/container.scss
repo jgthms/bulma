@@ -3,7 +3,7 @@
 $container-offset: 2 * $gap !default;
 $container-max-width: $fullhd !default;
 
-.container {
+.#{$class-prefix}container {
   flex-grow: 1;
   margin: 0 auto;
   position: relative;
@@ -20,13 +20,11 @@ $container-max-width: $fullhd !default;
     max-width: $desktop - $container-offset;
   }
 
-
   @include until-widescreen {
     &.is-widescreen:not(.is-max-desktop) {
       max-width: min($widescreen, $container-max-width) - $container-offset;
     }
   }
-
 
   @include until-fullhd {
     &.is-fullhd:not(.is-max-desktop):not(.is-max-widescreen) {
@@ -34,13 +32,11 @@ $container-max-width: $fullhd !default;
     }
   }
 
-
   @include widescreen {
     &:not(.is-max-desktop) {
       max-width: min($widescreen, $container-max-width) - $container-offset;
     }
   }
-
 
   @include fullhd {
     &:not(.is-max-desktop):not(.is-max-widescreen) {

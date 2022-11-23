@@ -8,7 +8,7 @@ $progress-indeterminate-duration: 1.5s !default;
 
 $progress-colors: $colors !default;
 
-.progress {
+.#{$class-prefix}progress {
   @extend %block;
 
   -moz-appearance: none;
@@ -56,7 +56,11 @@ $progress-colors: $colors !default;
       }
 
       &:indeterminate {
-        background-image: linear-gradient(to right, $color 30%, $progress-bar-background-color 30%);
+        background-image: linear-gradient(
+          to right,
+          $color 30%,
+          $progress-bar-background-color 30%
+        );
       }
     }
   }
@@ -67,7 +71,11 @@ $progress-colors: $colors !default;
     animation-name: moveIndeterminate;
     animation-timing-function: linear;
     background-color: $progress-bar-background-color;
-    background-image: linear-gradient(to right, $text 30%, $progress-bar-background-color 30%);
+    background-image: linear-gradient(
+      to right,
+      $text 30%,
+      $progress-bar-background-color 30%
+    );
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 150% 150%;

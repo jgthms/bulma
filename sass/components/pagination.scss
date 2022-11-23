@@ -35,7 +35,7 @@ $pagination-ellipsis-color: $grey-light !default;
 
 $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;
 
-.pagination {
+.#{$class-prefix}pagination {
   @extend %block;
 
   font-size: $size-normal;
@@ -55,31 +55,31 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;
   }
 
   &.is-rounded {
-    .pagination-previous,
-    .pagination-next {
+    .#{$class-prefix}pagination-previous,
+    .#{$class-prefix}pagination-next {
       padding-left: 1em;
       padding-right: 1em;
       border-radius: $radius-rounded;
     }
 
-    .pagination-link {
+    .#{$class-prefix}pagination-link {
       border-radius: $radius-rounded;
     }
   }
 }
 
-.pagination,
-.pagination-list {
+.#{$class-prefix}pagination,
+.#{$class-prefix}pagination-list {
   align-items: center;
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-.pagination-previous,
-.pagination-next,
-.pagination-link,
-.pagination-ellipsis {
+.#{$class-prefix}pagination-previous,
+.#{$class-prefix}pagination-next,
+.#{$class-prefix}pagination-link,
+.#{$class-prefix}pagination-ellipsis {
   @extend %control;
 
   @extend %unselectable;
@@ -92,9 +92,9 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;
   text-align: center;
 }
 
-.pagination-previous,
-.pagination-next,
-.pagination-link {
+.#{$class-prefix}pagination-previous,
+.#{$class-prefix}pagination-next,
+.#{$class-prefix}pagination-link {
   border-color: $pagination-border-color;
   color: $pagination-color;
   min-width: $pagination-min-width;
@@ -122,14 +122,14 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;
   }
 }
 
-.pagination-previous,
-.pagination-next {
+.#{$class-prefix}pagination-previous,
+.#{$class-prefix}pagination-next {
   padding-left: $pagination-nav-padding-left;
   padding-right: $pagination-nav-padding-right;
   white-space: nowrap;
 }
 
-.pagination-link {
+.#{$class-prefix}pagination-link {
   &.is-current {
     background-color: $pagination-current-background-color;
     border-color: $pagination-current-border-color;
@@ -137,12 +137,12 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;
   }
 }
 
-.pagination-ellipsis {
+.#{$class-prefix}pagination-ellipsis {
   color: $pagination-ellipsis-color;
   pointer-events: none;
 }
 
-.pagination-list {
+.#{$class-prefix}pagination-list {
   flex-wrap: wrap;
 
   li {
@@ -151,17 +151,17 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;
 }
 
 @include mobile {
-  .pagination {
+  .#{$class-prefix}pagination {
     flex-wrap: wrap;
   }
 
-  .pagination-previous,
-  .pagination-next {
+  .#{$class-prefix}pagination-previous,
+  .#{$class-prefix}pagination-next {
     flex-grow: 1;
     flex-shrink: 1;
   }
 
-  .pagination-list {
+  .#{$class-prefix}pagination-list {
     li {
       flex-grow: 1;
       flex-shrink: 1;
@@ -169,61 +169,60 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;
   }
 }
 
-
 @include tablet {
-  .pagination-list {
+  .#{$class-prefix}pagination-list {
     flex-grow: 1;
     flex-shrink: 1;
     justify-content: flex-start;
     order: 1;
   }
 
-  .pagination-previous,
-  .pagination-next,
-  .pagination-link,
-  .pagination-ellipsis {
+  .#{$class-prefix}pagination-previous,
+  .#{$class-prefix}pagination-next,
+  .#{$class-prefix}pagination-link,
+  .#{$class-prefix}pagination-ellipsis {
     margin-bottom: 0;
     margin-top: 0;
   }
 
-  .pagination-previous {
+  .#{$class-prefix}pagination-previous {
     order: 2;
   }
 
-  .pagination-next {
+  .#{$class-prefix}pagination-next {
     order: 3;
   }
 
-  .pagination {
+  .#{$class-prefix}pagination {
     justify-content: space-between;
     margin-bottom: 0;
     margin-top: 0;
 
     &.is-centered {
-      .pagination-previous {
+      .#{$class-prefix}pagination-previous {
         order: 1;
       }
 
-      .pagination-list {
+      .#{$class-prefix}pagination-list {
         justify-content: center;
         order: 2;
       }
 
-      .pagination-next {
+      .#{$class-prefix}pagination-next {
         order: 3;
       }
     }
 
     &.is-right {
-      .pagination-previous {
+      .#{$class-prefix}pagination-previous {
         order: 1;
       }
 
-      .pagination-next {
+      .#{$class-prefix}pagination-next {
         order: 2;
       }
 
-      .pagination-list {
+      .#{$class-prefix}pagination-list {
         justify-content: flex-end;
         order: 3;
       }

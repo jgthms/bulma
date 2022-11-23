@@ -7,13 +7,13 @@ $tag-delete-margin: 1px !default;
 
 $tag-colors: $colors !default;
 
-.tags {
+.#{$class-prefix}tags {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 
-  .tag {
+  .#{$class-prefix}tag {
     margin-bottom: 0.5rem;
 
     &:not(:last-child) {
@@ -31,13 +31,13 @@ $tag-colors: $colors !default;
 
   // Sizes
   &.are-medium {
-    .tag:not(.is-normal):not(.is-large) {
+    .#{$class-prefix}tag:not(.is-normal):not(.is-large) {
       font-size: $size-normal;
     }
   }
 
   &.are-large {
-    .tag:not(.is-normal):not(.is-medium) {
+    .#{$class-prefix}tag:not(.is-normal):not(.is-medium) {
       font-size: $size-medium;
     }
   }
@@ -45,7 +45,7 @@ $tag-colors: $colors !default;
   &.is-centered {
     justify-content: center;
 
-    .tag {
+    .#{$class-prefix}tag {
       margin-right: 0.25rem;
       margin-left: 0.25rem;
     }
@@ -54,7 +54,7 @@ $tag-colors: $colors !default;
   &.is-right {
     justify-content: flex-end;
 
-    .tag {
+    .#{$class-prefix}tag {
       &:not(:first-child) {
         margin-left: 0.5rem;
       }
@@ -66,7 +66,7 @@ $tag-colors: $colors !default;
   }
 
   &.has-addons {
-    .tag {
+    .#{$class-prefix}tag {
       @include ltr-property("margin", 0);
 
       &:not(:first-child) {
@@ -75,7 +75,6 @@ $tag-colors: $colors !default;
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
         }
-
 
         @include rtl {
           border-top-right-radius: 0;
@@ -89,7 +88,6 @@ $tag-colors: $colors !default;
           border-bottom-right-radius: 0;
         }
 
-
         @include rtl {
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
@@ -99,7 +97,7 @@ $tag-colors: $colors !default;
   }
 }
 
-.tag:not(body) {
+.#{$class-prefix}tag:not(body) {
   align-items: center;
   background-color: $tag-background-color;
   border-radius: $tag-radius;
@@ -113,7 +111,7 @@ $tag-colors: $colors !default;
   padding-right: 0.75em;
   white-space: nowrap;
 
-  .delete {
+  .#{$class-prefix}delete {
     @include ltr-property("margin", 0.25rem, false);
     @include ltr-property("margin", -0.375rem);
   }
@@ -153,7 +151,7 @@ $tag-colors: $colors !default;
     font-size: $size-medium;
   }
 
-  .icon {
+  .#{$class-prefix}icon {
     &:first-child:not(:last-child) {
       @include ltr-property("margin", -0.375em, false);
       @include ltr-property("margin", 0.1875em);
@@ -215,7 +213,7 @@ $tag-colors: $colors !default;
   }
 }
 
-a.tag {
+a.#{$class-prefix}tag {
   &:hover {
     text-decoration: underline;
   }

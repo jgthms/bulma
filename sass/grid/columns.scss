@@ -2,111 +2,111 @@
 
 $column-gap: 0.75rem !default;
 
-.column {
+.#{$class-prefix}column {
   display: block;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
   padding: $column-gap;
 
-  .columns.is-mobile > &.is-narrow {
+  .#{$class-prefix}columns.is-mobile > &.is-narrow {
     flex: none;
     width: unset;
   }
 
-  .columns.is-mobile > &.is-full {
+  .#{$class-prefix}columns.is-mobile > &.is-full {
     flex: none;
     width: 100%;
   }
 
-  .columns.is-mobile > &.is-three-quarters {
+  .#{$class-prefix}columns.is-mobile > &.is-three-quarters {
     flex: none;
     width: 75%;
   }
 
-  .columns.is-mobile > &.is-two-thirds {
+  .#{$class-prefix}columns.is-mobile > &.is-two-thirds {
     flex: none;
     width: 66.6666%;
   }
 
-  .columns.is-mobile > &.is-half {
+  .#{$class-prefix}columns.is-mobile > &.is-half {
     flex: none;
     width: 50%;
   }
 
-  .columns.is-mobile > &.is-one-third {
+  .#{$class-prefix}columns.is-mobile > &.is-one-third {
     flex: none;
     width: 33.3333%;
   }
 
-  .columns.is-mobile > &.is-one-quarter {
+  .#{$class-prefix}columns.is-mobile > &.is-one-quarter {
     flex: none;
     width: 25%;
   }
 
-  .columns.is-mobile > &.is-one-fifth {
+  .#{$class-prefix}columns.is-mobile > &.is-one-fifth {
     flex: none;
     width: 20%;
   }
 
-  .columns.is-mobile > &.is-two-fifths {
+  .#{$class-prefix}columns.is-mobile > &.is-two-fifths {
     flex: none;
     width: 40%;
   }
 
-  .columns.is-mobile > &.is-three-fifths {
+  .#{$class-prefix}columns.is-mobile > &.is-three-fifths {
     flex: none;
     width: 60%;
   }
 
-  .columns.is-mobile > &.is-four-fifths {
+  .#{$class-prefix}columns.is-mobile > &.is-four-fifths {
     flex: none;
     width: 80%;
   }
 
-  .columns.is-mobile > &.is-offset-three-quarters {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-three-quarters {
     @include ltr-property("margin", 75%, false);
   }
 
-  .columns.is-mobile > &.is-offset-two-thirds {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-two-thirds {
     @include ltr-property("margin", 66.6666%, false);
   }
 
-  .columns.is-mobile > &.is-offset-half {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-half {
     @include ltr-property("margin", 50%, false);
   }
 
-  .columns.is-mobile > &.is-offset-one-third {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-one-third {
     @include ltr-property("margin", 33.3333%, false);
   }
 
-  .columns.is-mobile > &.is-offset-one-quarter {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-one-quarter {
     @include ltr-property("margin", 25%, false);
   }
 
-  .columns.is-mobile > &.is-offset-one-fifth {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-one-fifth {
     @include ltr-property("margin", 20%, false);
   }
 
-  .columns.is-mobile > &.is-offset-two-fifths {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-two-fifths {
     @include ltr-property("margin", 40%, false);
   }
 
-  .columns.is-mobile > &.is-offset-three-fifths {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-three-fifths {
     @include ltr-property("margin", 60%, false);
   }
 
-  .columns.is-mobile > &.is-offset-four-fifths {
+  .#{$class-prefix}columns.is-mobile > &.is-offset-four-fifths {
     @include ltr-property("margin", 80%, false);
   }
 
   @for $i from 0 through 12 {
-    .columns.is-mobile > &.is-#{$i} {
+    .#{$class-prefix}columns.is-mobile > &.is-#{$i} {
       flex: none;
       width: percentage(divide($i, 12));
     }
 
-    .columns.is-mobile > &.is-offset-#{$i} {
+    .#{$class-prefix}columns.is-mobile > &.is-offset-#{$i} {
       @include ltr-property("margin", percentage(divide($i, 12)), false);
     }
   }
@@ -214,7 +214,6 @@ $column-gap: 0.75rem !default;
       }
     }
   }
-
 
   @include tablet {
     &.is-narrow,
@@ -342,7 +341,6 @@ $column-gap: 0.75rem !default;
     }
   }
 
-
   @include touch {
     &.is-narrow-touch {
       flex: none;
@@ -446,7 +444,6 @@ $column-gap: 0.75rem !default;
       }
     }
   }
-
 
   @include desktop {
     &.is-narrow-desktop {
@@ -552,7 +549,6 @@ $column-gap: 0.75rem !default;
     }
   }
 
-
   @include widescreen {
     &.is-narrow-widescreen {
       flex: none;
@@ -656,7 +652,6 @@ $column-gap: 0.75rem !default;
       }
     }
   }
-
 
   @include fullhd {
     &.is-narrow-fullhd {
@@ -763,7 +758,7 @@ $column-gap: 0.75rem !default;
   }
 }
 
-.columns {
+.#{$class-prefix}columns {
   @include ltr-property("margin", -$column-gap, false);
   @include ltr-property("margin", -$column-gap);
 
@@ -788,7 +783,7 @@ $column-gap: 0.75rem !default;
 
     margin-top: 0;
 
-    & > .column {
+    & > .#{$class-prefix}column {
       margin: 0;
       padding: 0 !important;
     }
@@ -821,7 +816,6 @@ $column-gap: 0.75rem !default;
     }
   }
 
-
   @include desktop {
     // Modifiers
     &.is-desktop {
@@ -831,13 +825,13 @@ $column-gap: 0.75rem !default;
 }
 
 @if $variable-columns {
-  .columns.is-variable {
+  .#{$class-prefix}columns.is-variable {
     --columnGap: 0.75rem;
 
     @include ltr-property("margin", calc(-1 * var(--columnGap)), false);
     @include ltr-property("margin", calc(-1 * var(--columnGap)));
 
-    > .column {
+    > .#{$class-prefix}column {
       padding-left: var(--columnGap);
       padding-right: var(--columnGap);
     }
@@ -853,13 +847,11 @@ $column-gap: 0.75rem !default;
         }
       }
 
-
       @include tablet {
         &.is-#{$i}-tablet {
           --columnGap: #{$i * 0.25rem};
         }
       }
-
 
       @include tablet-only {
         &.is-#{$i}-tablet-only {
@@ -867,13 +859,11 @@ $column-gap: 0.75rem !default;
         }
       }
 
-
       @include touch {
         &.is-#{$i}-touch {
           --columnGap: #{$i * 0.25rem};
         }
       }
-
 
       @include desktop {
         &.is-#{$i}-desktop {
@@ -881,13 +871,11 @@ $column-gap: 0.75rem !default;
         }
       }
 
-
       @include desktop-only {
         &.is-#{$i}-desktop-only {
           --columnGap: #{$i * 0.25rem};
         }
       }
-
 
       @include widescreen {
         &.is-#{$i}-widescreen {
@@ -895,13 +883,11 @@ $column-gap: 0.75rem !default;
         }
       }
 
-
       @include widescreen-only {
         &.is-#{$i}-widescreen-only {
           --columnGap: #{$i * 0.25rem};
         }
       }
-
 
       @include fullhd {
         &.is-#{$i}-fullhd {
