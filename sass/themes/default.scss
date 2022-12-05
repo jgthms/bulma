@@ -1,0 +1,71 @@
+:root {
+  @include register-vars(
+    (
+      family-sans-serif: #{$family-sans-serif},
+      family-monospace: #{$family-monospace},
+      size-1: #{$size-1},
+      size-2: #{$size-2},
+      size-3: #{$size-3},
+      size-4: #{$size-4},
+      size-5: #{$size-5},
+      size-6: #{$size-6},
+      size-7: #{$size-7},
+      weight-light: #{$weight-light},
+      weight-normal: #{$weight-normal},
+      weight-medium: #{$weight-medium},
+      weight-semibold: #{$weight-semibold},
+      weight-bold: #{$weight-bold},
+      block-spacing: #{$block-spacing},
+
+      scheme-main: #{$white},
+      scheme-main-bis: #{$white-bis},
+      scheme-main-ter: #{$white-ter},
+      scheme-invert: #{$black},
+      scheme-invert-bis: #{$black-bis},
+      scheme-invert-ter: #{$black-ter},
+      background: #{$background},
+      border: #{$border},
+      border-hover: #{$border-hover},
+      border-light: #{$border-light},
+      border-light-hover: #{$border-light-hover},
+      text: #{$text},
+      text-invert: #{$text-invert},
+      text-light: #{$text-light},
+      text-strong: #{$text-strong},
+      code: #{$code},
+      code-background: #{$code-background},
+      pre: #{$pre},
+      pre-background: #{$pre-background},
+      link-light: #{$link-light},
+      link-dark: #{$link-dark},
+      link-visited: #{$link-visited},
+      link-hover: #{$link-hover},
+      link-hover-border: #{$link-hover-border},
+      link-focus: #{$link-focus},
+      link-focus-border: #{$link-focus-border},
+      link-active: #{$link-active},
+      link-active-border: #{$link-active-border},
+      family-primary: #{$family-primary},
+      family-secondary: #{$family-secondary},
+      family-code: #{$family-code},
+      size-small: #{$size-small},
+      size-normal: #{$size-normal},
+      size-medium: #{$size-medium},
+      size-large: #{$size-large},
+      shadow: #{$shadow},
+    )
+  );
+
+  @each $name, $pair in $colors {
+    $base: nth($pair, 1);
+    $invert: nth($pair, 2);
+
+    @include register-rgb($name, $base);
+    @include register-hsl($name, $base);
+    @include generate-color-palette($name, $base, $invert);
+  }
+
+  @each $name, $shade in $shades {
+    @include register-var($name, $shade);
+  }
+}

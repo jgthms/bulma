@@ -1,0 +1,77 @@
+@function buildVarName($name, $prefix: "", $suffix: "") {
+  @debug $cssvars-prefix;
+  @return "--#{$cssvars-prefix}#{$prefix}#{$name}#{$suffix}";
+}
+
+@function getVar($name, $prefix: "", $suffix: "") {
+  $varName: buildVarName($name, $prefix, $suffix);
+  @return var(#{$varName});
+}
+
+@mixin register-var($name, $value, $prefix: "", $suffix: "") {
+  $varName: buildVarName($name, $prefix, $suffix);
+  #{$varName}: #{$value};
+}
+
+@mixin register-vars($vars, $prefix: "", $suffix: "") {
+  @each $name, $value in $vars {
+    @include register-var($name, $value, $prefix, $suffix);
+  }
+}
+
+@mixin register-rgb($name, $value) {
+  @include register-var(
+    $name,
+    (red($value), green($value), blue($value)),
+    "",
+    "-rgb"
+  );
+}
+
+@mixin register-hsl($name, $value) {
+  @include register-var($name, round(hue($value)), "", "-h");
+  @include register-var($name, round(saturation($value)), "", "-s");
+  @include register-var($name, round(lightness($value)), "", "-l");
+}
+
+@mixin generate-color-palette($name, $base, $invert) {
+  $h: round(hue($base));
+  $s: round(saturation($base));
+  $l-base: round(
+    lightness($base) % 10
+  ); // get lightness second digit: 53% -> 3%
+
+  $l-0: 0%; // 5% or less
+  $l-5: 5%; // more than 5%
+
+  @if ($l-base < 5%) {
+    $l-0: $l-base;
+    $l-5: $l-base + 5%;
+  } @else {
+    $l-0: $l-base - 5%;
+    $l-5: $l-base;
+  }
+
+  @include register-var($name, $base);
+  @include register-var($name, $base, "", "-base");
+
+  @for $i from 0 through 9 {
+    $color-l-0: $l-0 +
+      $i *
+      10; // if $l-base = 3%, then we get 3%, 13%, 23%, 33% etc.
+    $color-l-5: $l-5 +
+      $i *
+      10; // if $l-base = 3%, then we get 8%, 18%, 28%, 38% etc.
+    $v-0: "hsl(#{getVar($name, '', '-h')}, #{getVar($name, '', '-s')}, #{$color-l-0})";
+    $v-5: "hsl(#{getVar($name, '', '-h')}, #{getVar($name, '', '-s')}, #{$color-l-5})";
+    @include register-var($name, $v-0, "", "-#{$i}0");
+    @include register-var($name, $v-5, "", "-#{$i}5");
+  }
+
+  @if ($l-base < 5%) {
+    $v: "hsl(#{getVar($name, '', '-h')}, #{getVar($name, '', '-s')}, #{$l-base + 95%})";
+    @include register-var($name, $v, "", "-95");
+  }
+
+  @include register-var($name, $invert, "", "-invert");
+}
