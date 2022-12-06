@@ -1,12 +1,23 @@
 @import "../utilities/mixins";
 
-$progress-bar-background-color: $border-light !default;
-$progress-value-background-color: $text !default;
-$progress-border-radius: $radius-rounded !default;
+$progress-bar-background-color: getVar("border-light") !default;
+$progress-value-background-color: getVar("text") !default;
+$progress-border-radius: getVar("radius-rounded") !default;
 
 $progress-indeterminate-duration: 1.5s !default;
 
 $progress-colors: $colors !default;
+
+:root {
+  @include register-vars(
+    (
+      progress-bar-background-color: #{$progress-bar-background-color},
+      progress-value-background-color: #{$progress-value-background-color},
+      progress-border-radius: #{$progress-border-radius},
+      progress-indeterminate-duration: #{$progress-indeterminate-duration},
+    )
+  );
+}
 
 .#{$class-prefix}progress {
   @extend %block;
@@ -14,27 +25,27 @@ $progress-colors: $colors !default;
   -moz-appearance: none;
   -webkit-appearance: none;
   border: none;
-  border-radius: $progress-border-radius;
+  border-radius: getVar("progress-border-radius");
   display: block;
-  height: $size-normal;
+  height: getVar("size-normal");
   overflow: hidden;
   padding: 0;
   width: 100%;
 
   &::-webkit-progress-bar {
-    background-color: $progress-bar-background-color;
+    background-color: getVar("progress-bar-background-color");
   }
 
   &::-webkit-progress-value {
-    background-color: $progress-value-background-color;
+    background-color: getVar("progress-value-background-color");
   }
 
   &::-moz-progress-bar {
-    background-color: $progress-value-background-color;
+    background-color: getVar("progress-value-background-color");
   }
 
   &::-ms-fill {
-    background-color: $progress-value-background-color;
+    background-color: getVar("progress-value-background-color");
     border: none;
   }
 
@@ -59,22 +70,22 @@ $progress-colors: $colors !default;
         background-image: linear-gradient(
           to right,
           $color 30%,
-          $progress-bar-background-color 30%
+          #{getVar("progress-bar-background-color")} 30%
         );
       }
     }
   }
 
   &:indeterminate {
-    animation-duration: $progress-indeterminate-duration;
+    animation-duration: getVar("progress-indeterminate-duration");
     animation-iteration-count: infinite;
     animation-name: moveIndeterminate;
     animation-timing-function: linear;
-    background-color: $progress-bar-background-color;
+    background-color: getVar("progress-bar-background-color");
     background-image: linear-gradient(
       to right,
-      $text 30%,
-      $progress-bar-background-color 30%
+      #{getVar("text")} 30%,
+      #{getVar("progress-bar-background-color")} 30%
     );
     background-position: top left;
     background-repeat: no-repeat;
@@ -95,15 +106,15 @@ $progress-colors: $colors !default;
 
   // Sizes
   &.is-small {
-    height: $size-small;
+    height: getVar("size-small");
   }
 
   &.is-medium {
-    height: $size-medium;
+    height: getVar("size-medium");
   }
 
   &.is-large {
-    height: $size-large;
+    height: getVar("size-large");
   }
 }
 

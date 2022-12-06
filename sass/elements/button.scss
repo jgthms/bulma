@@ -1,105 +1,145 @@
 @import "../utilities/controls";
 @import "../utilities/mixins";
 
-$button-color: $text-strong !default;
-$button-background-color: $scheme-main !default;
+$button-color: getVar("text-strong") !default;
+$button-background-color: getVar("scheme-main") !default;
 $button-family: false !default;
 
-$button-border-color: $border !default;
-$button-border-width: $control-border-width !default;
+$button-border-color: getVar("border") !default;
+$button-border-width: $control-border-width !default; // TODO
 
-$button-padding-vertical: calc(0.5em - #{$button-border-width}) !default;
+$button-padding-vertical: calc(
+  0.5em - #{getVar("button-border-width")}
+) !default;
 $button-padding-horizontal: 1em !default;
 
-$button-hover-color: $link-hover !default;
-$button-hover-border-color: $link-hover-border !default;
+$button-hover-color: getVar("link-hover") !default;
+$button-hover-border-color: getVar("link-hover-border") !default;
 
-$button-focus-color: $link-focus !default;
-$button-focus-border-color: $link-focus-border !default;
+$button-focus-color: getVar("link-focus") !default;
+$button-focus-border-color: getVar("link-focus-border") !default;
 $button-focus-box-shadow-size: 0 0 0 0.125em !default;
 $button-focus-box-shadow-color: bulmaRgba($link, 0.25) !default;
 
-$button-active-color: $link-active !default;
-$button-active-border-color: $link-active-border !default;
+$button-active-color: getVar("link-active") !default;
+$button-active-border-color: getVar("link-active-border") !default;
 
-$button-text-color: $text !default;
+$button-text-color: getVar("text") !default;
 $button-text-decoration: underline !default;
-$button-text-hover-background-color: $background !default;
-$button-text-hover-color: $text-strong !default;
+$button-text-hover-background-color: getVar("background") !default;
+$button-text-hover-color: getVar("text-strong") !default;
 
 $button-ghost-background: none !default;
 $button-ghost-border-color: transparent !default;
-$button-ghost-color: $link !default;
+$button-ghost-color: getVar("link") !default;
 $button-ghost-decoration: none !default;
-$button-ghost-hover-color: $link !default;
+$button-ghost-hover-color: getVar("link") !default;
 $button-ghost-hover-decoration: underline !default;
 
-$button-disabled-background-color: $scheme-main !default;
-$button-disabled-border-color: $border !default;
+$button-disabled-background-color: getVar("scheme-main") !default;
+$button-disabled-border-color: getVar("border") !default;
 $button-disabled-shadow: none !default;
 $button-disabled-opacity: 0.5 !default;
 
-$button-static-color: $text-light !default;
-$button-static-background-color: $scheme-main-ter !default;
-$button-static-border-color: $border !default;
+$button-static-color: getVar("text-light") !default;
+$button-static-background-color: getVar("scheme-main-ter") !default;
+$button-static-border-color: getVar("border") !default;
 
 $button-colors: $colors !default;
 $button-responsive-sizes: (
   "mobile": (
-    "small": $size-small * 0.75,
-    "normal": $size-small * 0.875,
-    "medium": $size-small,
-    "large": $size-normal,
+    "small": calc(#{getVar("size-small")} * 0.75),
+    "normal": calc(#{getVar("size-small")} * 0.875),
+    "medium": getVar("size-small"),
+    "large": getVar("size-normal"),
   ),
   "tablet-only": (
-    "small": $size-small * 0.875,
-    "normal": $size-small,
-    "medium": $size-normal,
-    "large": $size-medium,
+    "small": calc(#{getVar("size-small")} * 0.875),
+    "normal": getVar("size-small"),
+    "medium": getVar("size-normal"),
+    "large": getVar("size-medium"),
   ),
 ) !default;
 
 // The button sizes use mixins so they can be used at different breakpoints
 @mixin button-small {
   &:not(.is-rounded) {
-    border-radius: $radius-small;
+    border-radius: getVar("radius-small");
   }
 
-  font-size: $size-small;
+  font-size: getVar("size-small");
 }
 
 @mixin button-normal {
-  font-size: $size-normal;
+  font-size: getVar("size-normal");
 }
 
 @mixin button-medium {
-  font-size: $size-medium;
+  font-size: getVar("size-medium");
 }
 
 @mixin button-large {
-  font-size: $size-large;
+  font-size: getVar("size-large");
+}
+
+:root {
+  @include register-vars(
+    (
+      button-color: #{$button-color},
+      button-background-color: #{$button-background-color},
+      button-family: #{$button-family},
+      button-border-color: #{$button-border-color},
+      button-border-width: #{$button-border-width},
+      button-padding-vertical: #{$button-padding-vertical},
+      button-padding-horizontal: #{$button-padding-horizontal},
+      button-hover-color: #{$button-hover-color},
+      button-hover-border-color: #{$button-hover-border-color},
+      button-focus-color: #{$button-focus-color},
+      button-focus-border-color: #{$button-focus-border-color},
+      button-focus-box-shadow-size: #{$button-focus-box-shadow-size},
+      button-focus-box-shadow-color: #{$button-focus-box-shadow-color},
+      button-active-color: #{$button-active-color},
+      button-active-border-color: #{$button-active-border-color},
+      button-text-color: #{$button-text-color},
+      button-text-decoration: #{$button-text-decoration},
+      button-text-hover-background-color: #{$button-text-hover-background-color},
+      button-text-hover-color: #{$button-text-hover-color},
+      button-ghost-background: #{$button-ghost-background},
+      button-ghost-border-color: #{$button-ghost-border-color},
+      button-ghost-color: #{$button-ghost-color},
+      button-ghost-decoration: #{$button-ghost-decoration},
+      button-ghost-hover-color: #{$button-ghost-hover-color},
+      button-ghost-hover-decoration: #{$button-ghost-hover-decoration},
+      button-disabled-background-color: #{$button-disabled-background-color},
+      button-disabled-border-color: #{$button-disabled-border-color},
+      button-disabled-shadow: #{$button-disabled-shadow},
+      button-disabled-opacity: #{$button-disabled-opacity},
+      button-static-color: #{$button-static-color},
+      button-static-background-color: #{$button-static-background-color},
+      button-static-border-color: #{$button-static-border-color},
+    )
+  );
 }
 
 .#{$class-prefix}button {
   @extend %control;
-
   @extend %unselectable;
 
-  background-color: $button-background-color;
-  border-color: $button-border-color;
-  border-width: $button-border-width;
-  color: $button-color;
+  background-color: getVar("button-background-color");
+  border-color: getVar("button-border-color");
+  border-width: getVar("button-border-width");
+  color: getVar("button-color");
   cursor: pointer;
 
   @if $button-family {
-    font-family: $button-family;
+    font-family: getVar("button-family");
   }
 
   justify-content: center;
-  padding-bottom: $button-padding-vertical;
-  padding-left: $button-padding-horizontal;
-  padding-right: $button-padding-horizontal;
-  padding-top: $button-padding-vertical;
+  padding-bottom: getVar("button-padding-vertical");
+  padding-left: getVar("button-padding-horizontal");
+  padding-right: getVar("button-padding-horizontal");
+  padding-top: getVar("button-padding-vertical");
   text-align: center;
   white-space: nowrap;
 
@@ -119,26 +159,45 @@ $button-responsive-sizes: (
     &:first-child:not(:last-child) {
       @include ltr-property(
         "margin",
-        calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}),
+        calc(
+          calc(-0.5 * #{getVar("button-padding-horizontal")}) - #{getVar(
+              "button-border-width"
+            )}
+        ),
         false
       );
-      @include ltr-property("margin", $button-padding-horizontal * 0.25);
+      @include ltr-property(
+        "margin",
+        calc(#{getVar("button-padding-horizontal")} * 0.25)
+      );
     }
 
     &:last-child:not(:first-child) {
-      @include ltr-property("margin", $button-padding-horizontal * 0.25, false);
       @include ltr-property(
         "margin",
-        calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
+        calc(#{getVar("button-padding-horizontal")} * 0.25),
+        false
+      );
+      @include ltr-property(
+        "margin",
+        calc(
+          calc(-0.5 * #{getVar("button-padding-horizontal")}) - #{getVar(
+              "button-border-width"
+            )}
+        )
       );
     }
 
     &:first-child:last-child {
       margin-left: calc(
-        #{-0.5 * $button-padding-horizontal} - #{$button-border-width}
+        calc(-0.5 * #{getVar("button-padding-horizontal")}) - #{getVar(
+            "button-border-width"
+          )}
       );
       margin-right: calc(
-        #{-0.5 * $button-padding-horizontal} - #{$button-border-width}
+        calc(-0.5 * #{getVar("button-padding-horizontal")}) - #{getVar(
+            "button-border-width"
+          )}
       );
     }
   }
@@ -146,45 +205,46 @@ $button-responsive-sizes: (
   // States
   &:hover,
   &.is-hovered {
-    border-color: $button-hover-border-color;
-    color: $button-hover-color;
+    border-color: getVar("button-hover-border-color");
+    color: getVar("button-hover-color");
   }
 
   &:focus,
   &.is-focused {
-    border-color: $button-focus-border-color;
-    color: $button-focus-color;
+    border-color: getVar("button-focus-border-color");
+    color: getVar("button-focus-color");
 
     &:not(:active) {
-      box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+      box-shadow: getVar("button-focus-box-shadow-size")
+        getVar("button-focus-box-shadow-color");
     }
   }
 
   &:active,
   &.is-active {
-    border-color: $button-active-border-color;
-    color: $button-active-color;
+    border-color: getVar("button-active-border-color");
+    color: getVar("button-active-color");
   }
 
   // Colors
   &.is-text {
     background-color: transparent;
     border-color: transparent;
-    color: $button-text-color;
-    text-decoration: $button-text-decoration;
+    color: getVar("button-text-color");
+    text-decoration: getVar("button-text-decoration");
 
     &:hover,
     &.is-hovered,
     &:focus,
     &.is-focused {
-      background-color: $button-text-hover-background-color;
-      color: $button-text-hover-color;
+      background-color: getVar("button-text-hover-background-color");
+      color: getVar("button-text-hover-color");
     }
 
     &:active,
     &.is-active {
-      background-color: bulmaDarken($button-text-hover-background-color, 5%);
-      color: $button-text-hover-color;
+      // background-color: bulmaDarken($button-text-hover-background-color, 5%); // TODO
+      color: getVar("button-text-hover-color");
     }
 
     &[disabled],
@@ -196,15 +256,15 @@ $button-responsive-sizes: (
   }
 
   &.is-ghost {
-    background: $button-ghost-background;
-    border-color: $button-ghost-border-color;
-    color: $button-ghost-color;
-    text-decoration: $button-ghost-decoration;
+    background: getVar("button-ghost-background");
+    border-color: getVar("button-ghost-border-color");
+    color: getVar("button-ghost-color");
+    text-decoration: getVar("button-ghost-decoration");
 
     &:hover,
     &.is-hovered {
-      color: $button-ghost-hover-color;
-      text-decoration: $button-ghost-hover-decoration;
+      color: getVar("button-ghost-hover-color");
+      text-decoration: getVar("button-ghost-hover-decoration");
     }
   }
 
@@ -230,7 +290,8 @@ $button-responsive-sizes: (
         color: $color-invert;
 
         &:not(:active) {
-          box-shadow: $button-focus-box-shadow-size bulmaRgba($color, 0.25);
+          box-shadow: getVar("button-focus-box-shadow-size")
+            bulmaRgba($color, 0.25);
         }
       }
 
@@ -396,10 +457,10 @@ $button-responsive-sizes: (
   // Modifiers
   &[disabled],
   fieldset[disabled] & {
-    background-color: $button-disabled-background-color;
-    border-color: $button-disabled-border-color;
-    box-shadow: $button-disabled-shadow;
-    opacity: $button-disabled-opacity;
+    background-color: getVar("button-disabled-background-color");
+    border-color: getVar("button-disabled-border-color");
+    box-shadow: getVar("button-disabled-shadow");
+    opacity: getVar("button-disabled-opacity");
   }
 
   &.is-fullwidth {
@@ -413,25 +474,23 @@ $button-responsive-sizes: (
 
     &::after {
       @extend %loader;
-
       @include center(1em);
-
       position: absolute !important;
     }
   }
 
   &.is-static {
-    background-color: $button-static-background-color;
-    border-color: $button-static-border-color;
-    color: $button-static-color;
+    background-color: getVar("button-static-background-color");
+    border-color: getVar("button-static-border-color");
+    color: getVar("button-static-color");
     box-shadow: none;
     pointer-events: none;
   }
 
   &.is-rounded {
-    border-radius: $radius-rounded;
-    padding-left: calc(#{$button-padding-horizontal} + 0.25em);
-    padding-right: calc(#{$button-padding-horizontal} + 0.25em);
+    border-radius: getVar("radius-rounded");
+    padding-left: calc(#{getVar("button-padding-horizontal")} + 0.25em);
+    padding-right: calc(#{getVar("button-padding-horizontal")} + 0.25em);
   }
 }
 
@@ -546,12 +605,12 @@ $button-responsive-sizes: (
     @each $size, $value in $bp-sizes {
       @if $size != "normal" {
         .#{$class-prefix}button.is-responsive.is-#{$size} {
-          font-size: $value;
+          font-size: getVar("value");
         }
       } @else {
         .#{$class-prefix}button.is-responsive,
         .#{$class-prefix}button.is-responsive.is-normal {
-          font-size: $value;
+          font-size: getVar("value");
         }
       }
     }

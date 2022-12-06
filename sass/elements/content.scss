@@ -1,26 +1,50 @@
 @import "../utilities/mixins";
 
-$content-heading-color: $text-strong !default;
-$content-heading-weight: $weight-semibold !default;
+$content-heading-color: getVar("text-strong") !default;
+$content-heading-weight: getVar("weight-semibold") !default;
 $content-heading-line-height: 1.125 !default;
 
 $content-block-margin-bottom: 1em !default;
 
-$content-blockquote-background-color: $background !default;
-$content-blockquote-border-left: 5px solid $border !default;
+$content-blockquote-background-color: getVar("background") !default;
+$content-blockquote-border-left: 5px solid getVar("border") !default;
 $content-blockquote-padding: 1.25em 1.5em !default;
 
 $content-pre-padding: 1.25em 1.5em !default;
 
-$content-table-cell-border: 1px solid $border !default;
+$content-table-cell-border: 1px solid getVar("border") !default;
 $content-table-cell-border-width: 0 0 1px !default;
 $content-table-cell-padding: 0.5em 0.75em !default;
-$content-table-cell-heading-color: $text-strong !default;
+$content-table-cell-heading-color: getVar("text-strong") !default;
 $content-table-head-cell-border-width: 0 0 2px !default;
-$content-table-head-cell-color: $text-strong !default;
+$content-table-head-cell-color: getVar("text-strong") !default;
 $content-table-body-last-row-cell-border-bottom-width: 0 !default;
 $content-table-foot-cell-border-width: 2px 0 0 !default;
-$content-table-foot-cell-color: $text-strong !default;
+$content-table-foot-cell-color: getVar("text-strong") !default;
+
+:root {
+  @include register-vars(
+    (
+      content-heading-color: #{$content-heading-color},
+      content-heading-weight: #{$content-heading-weight},
+      content-heading-line-height: #{$content-heading-line-height},
+      content-block-margin-bottom: #{$content-block-margin-bottom},
+      content-blockquote-background-color: #{$content-blockquote-background-color},
+      content-blockquote-border-left: #{$content-blockquote-border-left},
+      content-blockquote-padding: #{$content-blockquote-padding},
+      content-pre-padding: #{$content-pre-padding},
+      content-table-cell-border: #{$content-table-cell-border},
+      content-table-cell-border-width: #{$content-table-cell-border-width},
+      content-table-cell-padding: #{$content-table-cell-padding},
+      content-table-cell-heading-color: #{$content-table-cell-heading-color},
+      content-table-head-cell-border-width: #{$content-table-head-cell-border-width},
+      content-table-head-cell-color: #{$content-table-head-cell-color},
+      content-table-body-last-row-cell-border-bottom-width: #{$content-table-body-last-row-cell-border-bottom-width},
+      content-table-foot-cell-border-width: #{$content-table-foot-cell-border-width},
+      content-table-foot-cell-color: #{$content-table-foot-cell-color},
+    )
+  );
+}
 
 .#{$class-prefix}content {
   @extend %block;
@@ -39,7 +63,7 @@ $content-table-foot-cell-color: $text-strong !default;
   pre,
   table {
     &:not(:last-child) {
-      margin-bottom: $content-block-margin-bottom;
+      margin-bottom: getVar("content-block-margin-bottom");
     }
   }
 
@@ -49,9 +73,9 @@ $content-table-foot-cell-color: $text-strong !default;
   h4,
   h5,
   h6 {
-    color: $content-heading-color;
-    font-weight: $content-heading-weight;
-    line-height: $content-heading-line-height;
+    color: getVar("content-heading-color");
+    font-weight: getVar("content-heading-weight");
+    line-height: getVar("content-heading-line-height");
   }
 
   h1 {
@@ -97,18 +121,18 @@ $content-table-foot-cell-color: $text-strong !default;
   }
 
   blockquote {
-    background-color: $content-blockquote-background-color;
-
-    @include ltr-property("border", $content-blockquote-border-left, false);
-
-    padding: $content-blockquote-padding;
+    background-color: getVar("content-blockquote-background-color");
+    @include ltr-property(
+      "border",
+      getVar("content-blockquote-border-left"),
+      false
+    );
+    padding: getVar("content-blockquote-padding");
   }
 
   ol {
     list-style-position: outside;
-
     @include ltr-property("margin", 2em, false);
-
     margin-top: 1em;
 
     &:not([type]) {
@@ -134,9 +158,7 @@ $content-table-foot-cell-color: $text-strong !default;
 
   ul {
     list-style: disc outside;
-
     @include ltr-property("margin", 2em, false);
-
     margin-top: 1em;
 
     ul {
@@ -177,9 +199,8 @@ $content-table-foot-cell-color: $text-strong !default;
 
   pre {
     @include overflow-touch;
-
     overflow-x: auto;
-    padding: $content-pre-padding;
+    padding: getVar("content-pre-padding");
     white-space: pre;
     word-wrap: normal;
   }
@@ -194,14 +215,14 @@ $content-table-foot-cell-color: $text-strong !default;
 
     td,
     th {
-      border: $content-table-cell-border;
-      border-width: $content-table-cell-border-width;
-      padding: $content-table-cell-padding;
+      border: getVar("content-table-cell-border");
+      border-width: getVar("content-table-cell-border-width");
+      padding: getVar("content-table-cell-padding");
       vertical-align: top;
     }
 
     th {
-      color: $content-table-cell-heading-color;
+      color: getVar("content-table-cell-heading-color");
 
       &:not([align]) {
         text-align: inherit;
@@ -211,16 +232,16 @@ $content-table-foot-cell-color: $text-strong !default;
     thead {
       td,
       th {
-        border-width: $content-table-head-cell-border-width;
-        color: $content-table-head-cell-color;
+        border-width: getVar("content-table-head-cell-border-width");
+        color: getVar("content-table-head-cell-color");
       }
     }
 
     tfoot {
       td,
       th {
-        border-width: $content-table-foot-cell-border-width;
-        color: $content-table-foot-cell-color;
+        border-width: getVar("content-table-foot-cell-border-width");
+        color: getVar("content-table-foot-cell-color");
       }
     }
 
@@ -229,7 +250,9 @@ $content-table-foot-cell-color: $text-strong !default;
         &:last-child {
           td,
           th {
-            border-bottom-width: $content-table-body-last-row-cell-border-bottom-width;
+            border-bottom-width: getVar(
+              "content-table-body-last-row-cell-border-bottom-width"
+            );
           }
         }
       }
@@ -244,18 +267,18 @@ $content-table-foot-cell-color: $text-strong !default;
 
   // Sizes
   &.is-small {
-    font-size: $size-small;
+    font-size: getVar("size-small");
   }
 
   &.is-normal {
-    font-size: $size-normal;
+    font-size: getVar("size-normal");
   }
 
   &.is-medium {
-    font-size: $size-medium;
+    font-size: getVar("size-medium");
   }
 
   &.is-large {
-    font-size: $size-large;
+    font-size: getVar("size-large");
   }
 }

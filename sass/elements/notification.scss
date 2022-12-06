@@ -1,27 +1,40 @@
 @import "../utilities/mixins";
 
-$notification-background-color: $background !default;
-$notification-code-background-color: $scheme-main !default;
-$notification-radius: $radius !default;
+$notification-background-color: getVar("background") !default;
+$notification-code-background-color: getVar("scheme-main") !default;
+$notification-radius: getVar("radius") !default;
 $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default;
 $notification-padding-ltr: 1.25rem 2.5rem 1.25rem 1.5rem !default;
 $notification-padding-rtl: 1.25rem 1.5rem 1.25rem 2.5rem !default;
 
 $notification-colors: $colors !default;
 
+:root {
+  @include register-vars(
+    (
+      notification-background-color: #{$notification-background-color},
+      notification-code-background-color: #{$notification-code-background-color},
+      notification-radius: #{$notification-radius},
+      notification-padding: #{$notification-padding},
+      notification-padding-ltr: #{$notification-padding-ltr},
+      notification-padding-rtl: #{$notification-padding-rtl},
+    )
+  );
+}
+
 .#{$class-prefix}notification {
   @extend %block;
 
-  background-color: $notification-background-color;
-  border-radius: $notification-radius;
+  background-color: getVar("notification-background-color");
+  border-radius: getVar("notification-radius");
   position: relative;
 
   @include ltr {
-    padding: $notification-padding-ltr;
+    padding: getVar("notification-padding-ltr");
   }
 
   @include rtl {
-    padding: $notification-padding-rtl;
+    padding: getVar("notification-padding-rtl");
   }
 
   a:not(.#{$class-prefix}button):not(.#{$class-prefix}dropdown-item) {
@@ -35,7 +48,7 @@ $notification-colors: $colors !default;
 
   code,
   pre {
-    background: $notification-code-background-color;
+    background: getVar("notification-code-background-color");
   }
 
   pre code {
@@ -44,7 +57,6 @@ $notification-colors: $colors !default;
 
   & > .#{$class-prefix}delete {
     @include ltr-position(0.5rem);
-
     position: absolute;
     top: 0.5rem;
   }

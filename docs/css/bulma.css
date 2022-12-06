@@ -486,34 +486,79 @@ table th {
 }
 
 /* Bulma Elements */
+:root {
+  --bulma-box-color: var(--bulma-text);
+  --bulma-box-background-color: var(--bulma-scheme-main);
+  --bulma-box-radius: var(--bulma-radius-large);
+  --bulma-box-shadow: var(--bulma-shadow);
+  --bulma-box-padding: 1.25rem;
+  --bulma-box-link-hover-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px var(--bulma-link);
+  --bulma-box-link-active-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px var(--bulma-link);
+}
+
 .box {
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
-  color: #4a4a4a;
+  background-color: var(--bulma-box-background-color);
+  border-radius: var(--bulma-box-radius);
+  box-shadow: var(--bulma-box-shadow);
+  color: var(--bulma-box-color);
   display: block;
-  padding: 1.25rem;
+  padding: var(--bulma-box-padding);
 }
 
 a.box:hover, a.box:focus {
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px #485fc7;
+  box-shadow: var(--bulma-box-link-hover-shadow);
 }
 
 a.box:active {
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #485fc7;
+  box-shadow: var(--bulma-box-link-active-shadow);
+}
+
+:root {
+  --bulma-button-color: var(--bulma-text-strong);
+  --bulma-button-background-color: var(--bulma-scheme-main);
+  --bulma-button-family: false;
+  --bulma-button-border-color: var(--bulma-border);
+  --bulma-button-border-width: 1px;
+  --bulma-button-padding-vertical: calc( 0.5em - var(--bulma-button-border-width));
+  --bulma-button-padding-horizontal: 1em;
+  --bulma-button-hover-color: var(--bulma-link-hover);
+  --bulma-button-hover-border-color: var(--bulma-link-hover-border);
+  --bulma-button-focus-color: var(--bulma-link-focus);
+  --bulma-button-focus-border-color: var(--bulma-link-focus-border);
+  --bulma-button-focus-box-shadow-size: 0 0 0 0.125em;
+  --bulma-button-focus-box-shadow-color: rgba(72, 95, 199, 0.25);
+  --bulma-button-active-color: var(--bulma-link-active);
+  --bulma-button-active-border-color: var(--bulma-link-active-border);
+  --bulma-button-text-color: var(--bulma-text);
+  --bulma-button-text-decoration: underline;
+  --bulma-button-text-hover-background-color: var(--bulma-background);
+  --bulma-button-text-hover-color: var(--bulma-text-strong);
+  --bulma-button-ghost-background: none;
+  --bulma-button-ghost-border-color: transparent;
+  --bulma-button-ghost-color: var(--bulma-link);
+  --bulma-button-ghost-decoration: none;
+  --bulma-button-ghost-hover-color: var(--bulma-link);
+  --bulma-button-ghost-hover-decoration: underline;
+  --bulma-button-disabled-background-color: var(--bulma-scheme-main);
+  --bulma-button-disabled-border-color: var(--bulma-border);
+  --bulma-button-disabled-shadow: none;
+  --bulma-button-disabled-opacity: 0.5;
+  --bulma-button-static-color: var(--bulma-text-light);
+  --bulma-button-static-background-color: var(--bulma-scheme-main-ter);
+  --bulma-button-static-border-color: var(--bulma-border);
 }
 
 .button {
-  background-color: white;
-  border-color: #dbdbdb;
-  border-width: 1px;
-  color: #363636;
+  background-color: var(--bulma-button-background-color);
+  border-color: var(--bulma-button-border-color);
+  border-width: var(--bulma-button-border-width);
+  color: var(--bulma-button-color);
   cursor: pointer;
   justify-content: center;
-  padding-bottom: calc(0.5em - 1px);
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: calc(0.5em - 1px);
+  padding-bottom: var(--bulma-button-padding-vertical);
+  padding-left: var(--bulma-button-padding-horizontal);
+  padding-right: var(--bulma-button-padding-horizontal);
+  padding-top: var(--bulma-button-padding-vertical);
   text-align: center;
   white-space: nowrap;
 }
@@ -528,54 +573,53 @@ a.box:active {
 }
 
 .button .icon:first-child:not(:last-child) {
-  margin-left: calc(-0.5em - 1px);
-  margin-right: 0.25em;
+  margin-left: calc( calc(-0.5 * var(--bulma-button-padding-horizontal)) - var(--bulma-button-border-width));
+  margin-right: calc(var(--bulma-button-padding-horizontal) * 0.25);
 }
 
 .button .icon:last-child:not(:first-child) {
-  margin-left: 0.25em;
-  margin-right: calc(-0.5em - 1px);
+  margin-left: calc(var(--bulma-button-padding-horizontal) * 0.25);
+  margin-right: calc( calc(-0.5 * var(--bulma-button-padding-horizontal)) - var(--bulma-button-border-width));
 }
 
 .button .icon:first-child:last-child {
-  margin-left: calc( -0.5em - 1px);
-  margin-right: calc( -0.5em - 1px);
+  margin-left: calc( calc(-0.5 * var(--bulma-button-padding-horizontal)) - var(--bulma-button-border-width));
+  margin-right: calc( calc(-0.5 * var(--bulma-button-padding-horizontal)) - var(--bulma-button-border-width));
 }
 
 .button:hover, .button.is-hovered {
-  border-color: #b5b5b5;
-  color: #363636;
+  border-color: var(--bulma-button-hover-border-color);
+  color: var(--bulma-button-hover-color);
 }
 
 .button:focus, .button.is-focused {
-  border-color: #485fc7;
-  color: #363636;
+  border-color: var(--bulma-button-focus-border-color);
+  color: var(--bulma-button-focus-color);
 }
 
 .button:focus:not(:active), .button.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) var(--bulma-button-focus-box-shadow-color);
 }
 
 .button:active, .button.is-active {
-  border-color: #4a4a4a;
-  color: #363636;
+  border-color: var(--bulma-button-active-border-color);
+  color: var(--bulma-button-active-color);
 }
 
 .button.is-text {
   background-color: transparent;
   border-color: transparent;
-  color: #4a4a4a;
-  text-decoration: underline;
+  color: var(--bulma-button-text-color);
+  text-decoration: var(--bulma-button-text-decoration);
 }
 
 .button.is-text:hover, .button.is-text.is-hovered, .button.is-text:focus, .button.is-text.is-focused {
-  background-color: whitesmoke;
-  color: #363636;
+  background-color: var(--bulma-button-text-hover-background-color);
+  color: var(--bulma-button-text-hover-color);
 }
 
 .button.is-text:active, .button.is-text.is-active {
-  background-color: #e8e8e8;
-  color: #363636;
+  color: var(--bulma-button-text-hover-color);
 }
 
 .button.is-text[disabled],
@@ -586,15 +630,15 @@ fieldset[disabled] .button.is-text {
 }
 
 .button.is-ghost {
-  background: none;
-  border-color: transparent;
-  color: #485fc7;
-  text-decoration: none;
+  background: var(--bulma-button-ghost-background);
+  border-color: var(--bulma-button-ghost-border-color);
+  color: var(--bulma-button-ghost-color);
+  text-decoration: var(--bulma-button-ghost-decoration);
 }
 
 .button.is-ghost:hover, .button.is-ghost.is-hovered {
-  color: #485fc7;
-  text-decoration: underline;
+  color: var(--bulma-button-ghost-hover-color);
+  text-decoration: var(--bulma-button-ghost-hover-decoration);
 }
 
 .button.is-white {
@@ -615,7 +659,7 @@ fieldset[disabled] .button.is-text {
 }
 
 .button.is-white:focus:not(:active), .button.is-white.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(255, 255, 255, 0.25);
 }
 
 .button.is-white:active, .button.is-white.is-active {
@@ -721,7 +765,7 @@ fieldset[disabled] .button.is-white.is-inverted.is-outlined {
 }
 
 .button.is-black:focus:not(:active), .button.is-black.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(10, 10, 10, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(10, 10, 10, 0.25);
 }
 
 .button.is-black:active, .button.is-black.is-active {
@@ -827,7 +871,7 @@ fieldset[disabled] .button.is-black.is-inverted.is-outlined {
 }
 
 .button.is-light:focus:not(:active), .button.is-light.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(245, 245, 245, 0.25);
 }
 
 .button.is-light:active, .button.is-light.is-active {
@@ -933,7 +977,7 @@ fieldset[disabled] .button.is-light.is-inverted.is-outlined {
 }
 
 .button.is-dark:focus:not(:active), .button.is-dark.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(54, 54, 54, 0.25);
 }
 
 .button.is-dark:active, .button.is-dark.is-active {
@@ -1039,7 +1083,7 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 }
 
 .button.is-primary:focus:not(:active), .button.is-primary.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(0, 209, 178, 0.25);
 }
 
 .button.is-primary:active, .button.is-primary.is-active {
@@ -1162,7 +1206,7 @@ fieldset[disabled] .button.is-primary.is-inverted.is-outlined {
 }
 
 .button.is-link:focus:not(:active), .button.is-link.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(72, 95, 199, 0.25);
 }
 
 .button.is-link:active, .button.is-link.is-active {
@@ -1285,7 +1329,7 @@ fieldset[disabled] .button.is-link.is-inverted.is-outlined {
 }
 
 .button.is-info:focus:not(:active), .button.is-info.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(62, 142, 208, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(62, 142, 208, 0.25);
 }
 
 .button.is-info:active, .button.is-info.is-active {
@@ -1408,7 +1452,7 @@ fieldset[disabled] .button.is-info.is-inverted.is-outlined {
 }
 
 .button.is-success:focus:not(:active), .button.is-success.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(72, 199, 142, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(72, 199, 142, 0.25);
 }
 
 .button.is-success:active, .button.is-success.is-active {
@@ -1531,7 +1575,7 @@ fieldset[disabled] .button.is-success.is-inverted.is-outlined {
 }
 
 .button.is-warning:focus:not(:active), .button.is-warning.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(255, 224, 138, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(255, 224, 138, 0.25);
 }
 
 .button.is-warning:active, .button.is-warning.is-active {
@@ -1654,7 +1698,7 @@ fieldset[disabled] .button.is-warning.is-inverted.is-outlined {
 }
 
 .button.is-danger:focus:not(:active), .button.is-danger.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(241, 70, 104, 0.25);
+  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(241, 70, 104, 0.25);
 }
 
 .button.is-danger:active, .button.is-danger.is-active {
@@ -1760,31 +1804,31 @@ fieldset[disabled] .button.is-danger.is-inverted.is-outlined {
 }
 
 .button.is-small {
-  font-size: 0.75rem;
+  font-size: var(--bulma-size-small);
 }
 
 .button.is-small:not(.is-rounded) {
-  border-radius: 2px;
+  border-radius: var(--bulma-radius-small);
 }
 
 .button.is-normal {
-  font-size: 1rem;
+  font-size: var(--bulma-size-normal);
 }
 
 .button.is-medium {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
 }
 
 .button.is-large {
-  font-size: 1.5rem;
+  font-size: var(--bulma-size-large);
 }
 
 .button[disabled],
 fieldset[disabled] .button {
-  background-color: white;
-  border-color: #dbdbdb;
-  box-shadow: none;
-  opacity: 0.5;
+  background-color: var(--bulma-button-disabled-background-color);
+  border-color: var(--bulma-button-disabled-border-color);
+  box-shadow: var(--bulma-button-disabled-shadow);
+  opacity: var(--bulma-button-disabled-opacity);
 }
 
 .button.is-fullwidth {
@@ -1805,17 +1849,17 @@ fieldset[disabled] .button {
 }
 
 .button.is-static {
-  background-color: whitesmoke;
-  border-color: #dbdbdb;
-  color: #7a7a7a;
+  background-color: var(--bulma-button-static-background-color);
+  border-color: var(--bulma-button-static-border-color);
+  color: var(--bulma-button-static-color);
   box-shadow: none;
   pointer-events: none;
 }
 
 .button.is-rounded {
-  border-radius: 9999px;
-  padding-left: calc(1em + 0.25em);
-  padding-right: calc(1em + 0.25em);
+  border-radius: var(--bulma-radius-rounded);
+  padding-left: calc(var(--bulma-button-padding-horizontal) + 0.25em);
+  padding-right: calc(var(--bulma-button-padding-horizontal) + 0.25em);
 }
 
 .buttons {
@@ -1842,19 +1886,19 @@ fieldset[disabled] .button {
 }
 
 .buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large) {
-  font-size: 0.75rem;
+  font-size: var(--bulma-size-small);
 }
 
 .buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large):not(.is-rounded) {
-  border-radius: 2px;
+  border-radius: var(--bulma-radius-small);
 }
 
 .buttons.are-medium .button:not(.is-small):not(.is-normal):not(.is-large) {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
 }
 
 .buttons.are-large .button:not(.is-small):not(.is-normal):not(.is-medium) {
-  font-size: 1.5rem;
+  font-size: var(--bulma-size-large);
 }
 
 .buttons.has-addons .button:not(:first-child) {
@@ -1909,34 +1953,38 @@ fieldset[disabled] .button {
 
 @media screen and (max-width: 768px) {
   .button.is-responsive.is-small {
-    font-size: 0.5625rem;
+    font-size: var(--bulma-value);
   }
   .button.is-responsive,
   .button.is-responsive.is-normal {
-    font-size: 0.65625rem;
+    font-size: var(--bulma-value);
   }
   .button.is-responsive.is-medium {
-    font-size: 0.75rem;
+    font-size: var(--bulma-value);
   }
   .button.is-responsive.is-large {
-    font-size: 1rem;
+    font-size: var(--bulma-value);
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .button.is-responsive.is-small {
-    font-size: 0.65625rem;
+    font-size: var(--bulma-value);
   }
   .button.is-responsive,
   .button.is-responsive.is-normal {
-    font-size: 0.75rem;
+    font-size: var(--bulma-value);
   }
   .button.is-responsive.is-medium {
-    font-size: 1rem;
+    font-size: var(--bulma-value);
   }
   .button.is-responsive.is-large {
-    font-size: 1.25rem;
+    font-size: var(--bulma-value);
   }
+}
+
+:root {
+  --bulma-container-offset: calc(2 * var(--bulma-gap));
 }
 
 .container {
@@ -1948,39 +1996,59 @@ fieldset[disabled] .button {
 
 .container.is-fluid {
   max-width: none !important;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: var(--bulma-gap);
+  padding-right: var(--bulma-gap);
   width: 100%;
 }
 
 @media screen and (min-width: 1024px) {
   .container {
-    max-width: 960px;
+    max-width: calc(1024px - var(--bulma-container-offset));
   }
 }
 
 @media screen and (max-width: 1215px) {
   .container.is-widescreen:not(.is-max-desktop) {
-    max-width: 1152px;
+    max-width: calc( 1216px - var(--bulma-container-offset));
   }
 }
 
 @media screen and (max-width: 1407px) {
   .container.is-fullhd:not(.is-max-desktop):not(.is-max-widescreen) {
-    max-width: 1344px;
+    max-width: calc( 1408px - var(--bulma-container-offset));
   }
 }
 
 @media screen and (min-width: 1216px) {
   .container:not(.is-max-desktop) {
-    max-width: 1152px;
+    max-width: calc( 1216px - var(--bulma-container-offset));
   }
 }
 
 @media screen and (min-width: 1408px) {
   .container:not(.is-max-desktop):not(.is-max-widescreen) {
-    max-width: 1344px;
+    max-width: calc( 1408px - var(--bulma-container-offset));
   }
+}
+
+:root {
+  --bulma-content-heading-color: var(--bulma-text-strong);
+  --bulma-content-heading-weight: var(--bulma-weight-semibold);
+  --bulma-content-heading-line-height: 1.125;
+  --bulma-content-block-margin-bottom: 1em;
+  --bulma-content-blockquote-background-color: var(--bulma-background);
+  --bulma-content-blockquote-border-left: 5px solid var(--bulma-border);
+  --bulma-content-blockquote-padding: 1.25em 1.5em;
+  --bulma-content-pre-padding: 1.25em 1.5em;
+  --bulma-content-table-cell-border: 1px solid var(--bulma-border);
+  --bulma-content-table-cell-border-width: 0 0 1px;
+  --bulma-content-table-cell-padding: 0.5em 0.75em;
+  --bulma-content-table-cell-heading-color: var(--bulma-text-strong);
+  --bulma-content-table-head-cell-border-width: 0 0 2px;
+  --bulma-content-table-head-cell-color: var(--bulma-text-strong);
+  --bulma-content-table-body-last-row-cell-border-bottom-width: 0;
+  --bulma-content-table-foot-cell-border-width: 2px 0 0;
+  --bulma-content-table-foot-cell-color: var(--bulma-text-strong);
 }
 
 .content li + li {
@@ -1994,7 +2062,7 @@ fieldset[disabled] .button {
 .content blockquote:not(:last-child),
 .content pre:not(:last-child),
 .content table:not(:last-child) {
-  margin-bottom: 1em;
+  margin-bottom: var(--bulma-content-block-margin-bottom);
 }
 
 .content h1,
@@ -2003,9 +2071,9 @@ fieldset[disabled] .button {
 .content h4,
 .content h5,
 .content h6 {
-  color: #363636;
-  font-weight: 600;
-  line-height: 1.125;
+  color: var(--bulma-content-heading-color);
+  font-weight: var(--bulma-content-heading-weight);
+  line-height: var(--bulma-content-heading-line-height);
 }
 
 .content h1 {
@@ -2051,9 +2119,9 @@ fieldset[disabled] .button {
 }
 
 .content blockquote {
-  background-color: whitesmoke;
-  border-left: 5px solid #dbdbdb;
-  padding: 1.25em 1.5em;
+  background-color: var(--bulma-content-blockquote-background-color);
+  border-left: var(--bulma-content-blockquote-border-left);
+  padding: var(--bulma-content-blockquote-padding);
 }
 
 .content ol {
@@ -2126,7 +2194,7 @@ fieldset[disabled] .button {
 .content pre {
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
-  padding: 1.25em 1.5em;
+  padding: var(--bulma-content-pre-padding);
   white-space: pre;
   word-wrap: normal;
 }
@@ -2142,14 +2210,14 @@ fieldset[disabled] .button {
 
 .content table td,
 .content table th {
-  border: 1px solid #dbdbdb;
-  border-width: 0 0 1px;
-  padding: 0.5em 0.75em;
+  border: var(--bulma-content-table-cell-border);
+  border-width: var(--bulma-content-table-cell-border-width);
+  padding: var(--bulma-content-table-cell-padding);
   vertical-align: top;
 }
 
 .content table th {
-  color: #363636;
+  color: var(--bulma-content-table-cell-heading-color);
 }
 
 .content table th:not([align]) {
@@ -2158,19 +2226,19 @@ fieldset[disabled] .button {
 
 .content table thead td,
 .content table thead th {
-  border-width: 0 0 2px;
-  color: #363636;
+  border-width: var(--bulma-content-table-head-cell-border-width);
+  color: var(--bulma-content-table-head-cell-color);
 }
 
 .content table tfoot td,
 .content table tfoot th {
-  border-width: 2px 0 0;
-  color: #363636;
+  border-width: var(--bulma-content-table-foot-cell-border-width);
+  color: var(--bulma-content-table-foot-cell-color);
 }
 
 .content table tbody tr:last-child td,
 .content table tbody tr:last-child th {
-  border-bottom-width: 0;
+  border-bottom-width: var(--bulma-content-table-body-last-row-cell-border-bottom-width);
 }
 
 .content .tabs li + li {
@@ -2178,42 +2246,50 @@ fieldset[disabled] .button {
 }
 
 .content.is-small {
-  font-size: 0.75rem;
+  font-size: var(--bulma-size-small);
 }
 
 .content.is-normal {
-  font-size: 1rem;
+  font-size: var(--bulma-size-normal);
 }
 
 .content.is-medium {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
 }
 
 .content.is-large {
-  font-size: 1.5rem;
+  font-size: var(--bulma-size-large);
+}
+
+:root {
+  --bulma-icon-dimensions: 1.5rem;
+  --bulma-icon-dimensions-small: 1rem;
+  --bulma-icon-dimensions-medium: 2rem;
+  --bulma-icon-dimensions-large: 3rem;
+  --bulma-icon-text-spacing: 0.25em;
 }
 
 .icon {
   align-items: center;
   display: inline-flex;
   justify-content: center;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: var(--bulma-icon-dimensions);
+  width: var(--bulma-icon-dimensions);
 }
 
 .icon.is-small {
-  height: 1rem;
-  width: 1rem;
+  height: var(--bulma-icon-dimensions-small);
+  width: var(--bulma-icon-dimensions-small);
 }
 
 .icon.is-medium {
-  height: 2rem;
-  width: 2rem;
+  height: var(--bulma-icon-dimensions-medium);
+  width: var(--bulma-icon-dimensions-medium);
 }
 
 .icon.is-large {
-  height: 3rem;
-  width: 3rem;
+  height: var(--bulma-icon-dimensions-large);
+  width: var(--bulma-icon-dimensions-large);
 }
 
 .icon-text {
@@ -2221,7 +2297,7 @@ fieldset[disabled] .button {
   color: inherit;
   display: inline-flex;
   flex-wrap: wrap;
-  line-height: 1.5rem;
+  line-height: var(--bulma-icon-dimensions);
   vertical-align: top;
 }
 
@@ -2231,11 +2307,11 @@ fieldset[disabled] .button {
 }
 
 .icon-text .icon:not(:last-child) {
-  margin-right: 0.25em;
+  margin-right: var(--bulma-icon-text-spacing);
 }
 
 .icon-text .icon:not(:first-child) {
-  margin-left: 0.25em;
+  margin-left: var(--bulma-icon-text-spacing);
 }
 
 div.icon-text {
@@ -2254,7 +2330,7 @@ div.icon-text {
 }
 
 .image img.is-rounded {
-  border-radius: 9999px;
+  border-radius: var(--bulma-radius-rounded);
 }
 
 .image.is-fullwidth {
@@ -2377,11 +2453,20 @@ div.icon-text {
   width: 128px;
 }
 
+:root {
+  --bulma-notification-background-color: var(--bulma-background);
+  --bulma-notification-code-background-color: var(--bulma-scheme-main);
+  --bulma-notification-radius: var(--bulma-radius);
+  --bulma-notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  --bulma-notification-padding-ltr: 1.25rem 2.5rem 1.25rem 1.5rem;
+  --bulma-notification-padding-rtl: 1.25rem 1.5rem 1.25rem 2.5rem;
+}
+
 .notification {
-  background-color: whitesmoke;
-  border-radius: 4px;
+  background-color: var(--bulma-notification-background-color);
+  border-radius: var(--bulma-notification-radius);
   position: relative;
-  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  padding: var(--bulma-notification-padding-ltr);
 }
 
 .notification a:not(.button):not(.dropdown-item) {
@@ -2395,7 +2480,7 @@ div.icon-text {
 
 .notification code,
 .notification pre {
-  background: white;
+  background: var(--bulma-notification-code-background-color);
 }
 
 .notification pre code {
@@ -2494,32 +2579,39 @@ div.icon-text {
   color: #cc0f35;
 }
 
+:root {
+  --bulma-progress-bar-background-color: var(--bulma-border-light);
+  --bulma-progress-value-background-color: var(--bulma-text);
+  --bulma-progress-border-radius: var(--bulma-radius-rounded);
+  --bulma-progress-indeterminate-duration: 1.5s;
+}
+
 .progress {
   -moz-appearance: none;
   -webkit-appearance: none;
   border: none;
-  border-radius: 9999px;
+  border-radius: var(--bulma-progress-border-radius);
   display: block;
-  height: 1rem;
+  height: var(--bulma-size-normal);
   overflow: hidden;
   padding: 0;
   width: 100%;
 }
 
 .progress::-webkit-progress-bar {
-  background-color: #ededed;
+  background-color: var(--bulma-progress-bar-background-color);
 }
 
 .progress::-webkit-progress-value {
-  background-color: #4a4a4a;
+  background-color: var(--bulma-progress-value-background-color);
 }
 
 .progress::-moz-progress-bar {
-  background-color: #4a4a4a;
+  background-color: var(--bulma-progress-value-background-color);
 }
 
 .progress::-ms-fill {
-  background-color: #4a4a4a;
+  background-color: var(--bulma-progress-value-background-color);
   border: none;
 }
 
@@ -2536,7 +2628,7 @@ div.icon-text {
 }
 
 .progress.is-white:indeterminate {
-  background-image: linear-gradient(to right, white 30%, #ededed 30%);
+  background-image: linear-gradient(to right, white 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-black::-webkit-progress-value {
@@ -2552,7 +2644,7 @@ div.icon-text {
 }
 
 .progress.is-black:indeterminate {
-  background-image: linear-gradient(to right, #0a0a0a 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #0a0a0a 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-light::-webkit-progress-value {
@@ -2568,7 +2660,7 @@ div.icon-text {
 }
 
 .progress.is-light:indeterminate {
-  background-image: linear-gradient(to right, whitesmoke 30%, #ededed 30%);
+  background-image: linear-gradient(to right, whitesmoke 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-dark::-webkit-progress-value {
@@ -2584,7 +2676,7 @@ div.icon-text {
 }
 
 .progress.is-dark:indeterminate {
-  background-image: linear-gradient(to right, #363636 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #363636 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-primary::-webkit-progress-value {
@@ -2600,7 +2692,7 @@ div.icon-text {
 }
 
 .progress.is-primary:indeterminate {
-  background-image: linear-gradient(to right, #00d1b2 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #00d1b2 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-link::-webkit-progress-value {
@@ -2616,7 +2708,7 @@ div.icon-text {
 }
 
 .progress.is-link:indeterminate {
-  background-image: linear-gradient(to right, #485fc7 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #485fc7 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-info::-webkit-progress-value {
@@ -2632,7 +2724,7 @@ div.icon-text {
 }
 
 .progress.is-info:indeterminate {
-  background-image: linear-gradient(to right, #3e8ed0 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #3e8ed0 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-success::-webkit-progress-value {
@@ -2648,7 +2740,7 @@ div.icon-text {
 }
 
 .progress.is-success:indeterminate {
-  background-image: linear-gradient(to right, #48c78e 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #48c78e 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-warning::-webkit-progress-value {
@@ -2664,7 +2756,7 @@ div.icon-text {
 }
 
 .progress.is-warning:indeterminate {
-  background-image: linear-gradient(to right, #ffe08a 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #ffe08a 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress.is-danger::-webkit-progress-value {
@@ -2680,16 +2772,16 @@ div.icon-text {
 }
 
 .progress.is-danger:indeterminate {
-  background-image: linear-gradient(to right, #f14668 30%, #ededed 30%);
+  background-image: linear-gradient(to right, #f14668 30%, var(--bulma-progress-bar-background-color) 30%);
 }
 
 .progress:indeterminate {
-  animation-duration: 1.5s;
+  animation-duration: var(--bulma-progress-indeterminate-duration);
   animation-iteration-count: infinite;
   animation-name: moveIndeterminate;
   animation-timing-function: linear;
-  background-color: #ededed;
-  background-image: linear-gradient(to right, #4a4a4a 30%, #ededed 30%);
+  background-color: var(--bulma-progress-bar-background-color);
+  background-image: linear-gradient(to right, var(--bulma-text) 30%, var(--bulma-progress-bar-background-color) 30%);
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 150% 150%;
@@ -2708,15 +2800,15 @@ div.icon-text {
 }
 
 .progress.is-small {
-  height: 0.75rem;
+  height: var(--bulma-size-small);
 }
 
 .progress.is-medium {
-  height: 1.25rem;
+  height: var(--bulma-size-medium);
 }
 
 .progress.is-large {
-  height: 1.5rem;
+  height: var(--bulma-size-large);
 }
 
 @keyframes moveIndeterminate {
@@ -2728,16 +2820,38 @@ div.icon-text {
   }
 }
 
+:root {
+  --bulma-table-color: var(--bulma-text-strong);
+  --bulma-table-background-color: var(--bulma-scheme-main);
+  --bulma-table-cell-border: 1px solid var(--bulma-border);
+  --bulma-table-cell-border-width: 0 0 1px;
+  --bulma-table-cell-padding: 0.5em 0.75em;
+  --bulma-table-cell-heading-color: var(--bulma-text-strong);
+  --bulma-table-cell-text-align: left;
+  --bulma-table-head-cell-border-width: 0 0 2px;
+  --bulma-table-head-cell-color: var(--bulma-text-strong);
+  --bulma-table-foot-cell-border-width: 2px 0 0;
+  --bulma-table-foot-cell-color: var(--bulma-text-strong);
+  --bulma-table-head-background-color: transparent;
+  --bulma-table-body-background-color: transparent;
+  --bulma-table-foot-background-color: transparent;
+  --bulma-table-row-hover-background-color: var(--bulma-scheme-main-bis);
+  --bulma-table-row-active-background-color: var(--bulma-primary);
+  --bulma-table-row-active-color: var(--bulma-primary-invert);
+  --bulma-table-striped-row-even-background-color: var(--bulma-scheme-main-bis);
+  --bulma-table-striped-row-even-hover-background-color: var(--bulma-scheme-main-ter);
+}
+
 .table {
-  background-color: white;
-  color: #363636;
+  background-color: var(--bulma-table-background-color);
+  color: var(--bulma-table-color);
 }
 
 .table td,
 .table th {
-  border: 1px solid #dbdbdb;
-  border-width: 0 0 1px;
-  padding: 0.5em 0.75em;
+  border: var(--bulma-table-cell-border);
+  border-width: var(--bulma-table-cell-border-width);
+  padding: var(--bulma-table-cell-padding);
   vertical-align: top;
 }
 
@@ -2819,8 +2933,8 @@ div.icon-text {
 
 .table td.is-selected,
 .table th.is-selected {
-  background-color: #00d1b2;
-  color: #fff;
+  background-color: var(--bulma-table-row-active-background-color);
+  color: var(--bulma-table-row-active-color);
 }
 
 .table td.is-selected a,
@@ -2836,16 +2950,16 @@ div.icon-text {
 }
 
 .table th {
-  color: #363636;
+  color: var(--bulma-table-cell-heading-color);
 }
 
 .table th:not([align]) {
-  text-align: left;
+  text-align: var(--bulma-table-cell-text-align);
 }
 
 .table tr.is-selected {
-  background-color: #00d1b2;
-  color: #fff;
+  background-color: var(--bulma-table-row-active-background-color);
+  color: var(--bulma-table-row-active-color);
 }
 
 .table tr.is-selected a,
@@ -2855,32 +2969,32 @@ div.icon-text {
 
 .table tr.is-selected td,
 .table tr.is-selected th {
-  border-color: #fff;
+  border-color: var(--bulma-table-row-active-color);
   color: currentColor;
 }
 
 .table thead {
-  background-color: transparent;
+  background-color: var(--bulma-table-head-background-color);
 }
 
 .table thead td,
 .table thead th {
-  border-width: 0 0 2px;
-  color: #363636;
+  border-width: var(--bulma-table-head-cell-border-width);
+  color: var(--bulma-table-head-cell-color);
 }
 
 .table tfoot {
-  background-color: transparent;
+  background-color: var(--bulma-table-foot-background-color);
 }
 
 .table tfoot td,
 .table tfoot th {
-  border-width: 2px 0 0;
-  color: #363636;
+  border-width: var(--bulma-table-foot-cell-border-width);
+  color: var(--bulma-table-foot-cell-color);
 }
 
 .table tbody {
-  background-color: transparent;
+  background-color: var(--bulma-table-body-background-color);
 }
 
 .table tbody tr:last-child td,
@@ -2903,15 +3017,15 @@ div.icon-text {
 }
 
 .table.is-hoverable tbody tr:not(.is-selected):hover {
-  background-color: #fafafa;
+  background-color: var(--bulma-table-row-hover-background-color);
 }
 
 .table.is-hoverable.is-striped tbody tr:not(.is-selected):hover {
-  background-color: #fafafa;
+  background-color: var(--bulma-table-row-hover-background-color);
 }
 
 .table.is-hoverable.is-striped tbody tr:not(.is-selected):hover:nth-child(even) {
-  background-color: whitesmoke;
+  background-color: var(--bulma-table-striped-row-even-hover-background-color);
 }
 
 .table.is-narrow td,
@@ -2920,7 +3034,7 @@ div.icon-text {
 }
 
 .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
-  background-color: #fafafa;
+  background-color: var(--bulma-table-striped-row-even-background-color);
 }
 
 .table-container {
@@ -2928,6 +3042,13 @@ div.icon-text {
   overflow: auto;
   overflow-y: hidden;
   max-width: 100%;
+}
+
+:root {
+  --bulma-tag-background-color: var(--bulma-background);
+  --bulma-tag-color: var(--bulma-text);
+  --bulma-tag-radius: var(--bulma-radius);
+  --bulma-tag-delete-margin: 1px;
 }
 
 .tags {
@@ -2954,11 +3075,11 @@ div.icon-text {
 }
 
 .tags.are-medium .tag:not(.is-normal):not(.is-large) {
-  font-size: 1rem;
+  font-size: var(--bulma-size-normal);
 }
 
 .tags.are-large .tag:not(.is-normal):not(.is-medium) {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
 }
 
 .tags.is-centered {
@@ -2999,11 +3120,11 @@ div.icon-text {
 
 .tag:not(body) {
   align-items: center;
-  background-color: whitesmoke;
-  border-radius: 4px;
-  color: #4a4a4a;
+  background-color: var(--bulma-tag-background-color);
+  border-radius: var(--bulma-tag-radius);
+  color: var(--bulma-tag-color);
   display: inline-flex;
-  font-size: 0.75rem;
+  font-size: var(--bulma-size-small);
   height: 2em;
   justify-content: center;
   line-height: 1.5;
@@ -3098,15 +3219,15 @@ div.icon-text {
 }
 
 .tag:not(body).is-normal {
-  font-size: 0.75rem;
+  font-size: var(--bulma-size-small);
 }
 
 .tag:not(body).is-medium {
-  font-size: 1rem;
+  font-size: var(--bulma-size-normal);
 }
 
 .tag:not(body).is-large {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
 }
 
 .tag:not(body) .icon:first-child:not(:last-child) {
@@ -3125,7 +3246,7 @@ div.icon-text {
 }
 
 .tag:not(body).is-delete {
-  margin-left: 1px;
+  margin-left: var(--bulma-tag-delete-margin);
   padding: 0;
   position: relative;
   width: 2em;
@@ -3152,20 +3273,32 @@ div.icon-text {
   width: 1px;
 }
 
-.tag:not(body).is-delete:hover, .tag:not(body).is-delete:focus {
-  background-color: #e8e8e8;
-}
-
-.tag:not(body).is-delete:active {
-  background-color: #dbdbdb;
-}
-
 .tag:not(body).is-rounded {
-  border-radius: 9999px;
+  border-radius: var(--bulma-radius-rounded);
 }
 
 a.tag:hover {
   text-decoration: underline;
+}
+
+:root {
+  --bulma-title-color: var(--bulma-text-strong);
+  --bulma-title-family: false;
+  --bulma-title-size: var(--bulma-size-3);
+  --bulma-title-weight: var(--bulma-weight-semibold);
+  --bulma-title-line-height: 1.125;
+  --bulma-title-strong-color: inherit;
+  --bulma-title-strong-weight: inherit;
+  --bulma-title-sub-size: 0.75em;
+  --bulma-title-sup-size: 0.75em;
+  --bulma-subtitle-color: var(--bulma-text);
+  --bulma-subtitle-family: false;
+  --bulma-subtitle-size: var(--bulma-size-5);
+  --bulma-subtitle-weight: var(--bulma-weight-normal);
+  --bulma-subtitle-line-height: 1.25;
+  --bulma-subtitle-strong-color: var(--bulma-text-strong);
+  --bulma-subtitle-strong-weight: var(--bulma-weight-semibold);
+  --bulma-subtitle-negative-margin: -1.25rem;
 }
 
 .title,
@@ -3182,12 +3315,12 @@ a.tag:hover {
 
 .title sub,
 .subtitle sub {
-  font-size: 0.75em;
+  font-size: var(--bulma-title-sub-size);
 }
 
 .title sup,
 .subtitle sup {
-  font-size: 0.75em;
+  font-size: var(--bulma-title-sup-size);
 }
 
 .title .tag,
@@ -3196,91 +3329,91 @@ a.tag:hover {
 }
 
 .title {
-  color: #363636;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.125;
+  color: var(--bulma-title-color);
+  font-size: var(--bulma-title-size);
+  font-weight: var(--bulma-title-weight);
+  line-height: var(--bulma-title-line-height);
 }
 
 .title strong {
-  color: inherit;
-  font-weight: inherit;
+  color: var(--bulma-title-strong-color);
+  font-weight: var(--bulma-title-strong-weight);
 }
 
 .title:not(.is-spaced) + .subtitle {
-  margin-top: -1.25rem;
+  margin-top: var(--bulma-subtitle-negative-margin);
 }
 
 .title.is-1 {
-  font-size: 3rem;
+  font-size: var(--bulma-size-1);
 }
 
 .title.is-2 {
-  font-size: 2.5rem;
+  font-size: var(--bulma-size-2);
 }
 
 .title.is-3 {
-  font-size: 2rem;
+  font-size: var(--bulma-size-3);
 }
 
 .title.is-4 {
-  font-size: 1.5rem;
+  font-size: var(--bulma-size-4);
 }
 
 .title.is-5 {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-5);
 }
 
 .title.is-6 {
-  font-size: 1rem;
+  font-size: var(--bulma-size-6);
 }
 
 .title.is-7 {
-  font-size: 0.75rem;
+  font-size: var(--bulma-size-7);
 }
 
 .subtitle {
-  color: #4a4a4a;
-  font-size: 1.25rem;
-  font-weight: 400;
-  line-height: 1.25;
+  color: var(--bulma-subtitle-color);
+  font-size: var(--bulma-subtitle-size);
+  font-weight: var(--bulma-subtitle-weight);
+  line-height: var(--bulma-subtitle-line-height);
 }
 
 .subtitle strong {
-  color: #363636;
-  font-weight: 600;
+  color: var(--bulma-subtitle-strong-color);
+  font-weight: var(--bulma-subtitle-strong-weight);
 }
 
 .subtitle:not(.is-spaced) + .title {
-  margin-top: -1.25rem;
+  margin-top: var(--bulma-subtitle-negative-margin);
 }
 
 .subtitle.is-1 {
-  font-size: 3rem;
+  font-size: var(--bulma-size-1);
 }
 
 .subtitle.is-2 {
-  font-size: 2.5rem;
+  font-size: var(--bulma-size-2);
 }
 
 .subtitle.is-3 {
-  font-size: 2rem;
+  font-size: var(--bulma-size-3);
 }
 
 .subtitle.is-4 {
-  font-size: 1.5rem;
+  font-size: var(--bulma-size-4);
 }
 
 .subtitle.is-5 {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-5);
 }
 
 .subtitle.is-6 {
-  font-size: 1rem;
+  font-size: var(--bulma-size-6);
 }
 
 .subtitle.is-7 {
-  font-size: 0.75rem;
+  font-size: var(--bulma-size-7);
 }
 
 .heading {
@@ -3293,10 +3426,10 @@ a.tag:hover {
 
 .number {
   align-items: center;
-  background-color: whitesmoke;
-  border-radius: 9999px;
+  background-color: var(--bulma-background);
+  border-radius: var(--bulma-radius-rounded);
   display: inline-flex;
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
   height: 2em;
   justify-content: center;
   margin-right: 1.5rem;
@@ -12106,6 +12239,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   --bulma-weight-semibold: 600;
   --bulma-weight-bold: 700;
   --bulma-block-spacing: 1.5rem;
+  --bulma-gap: 32px;
   --bulma-easing: ease-out;
   --bulma-radius-small: 2px;
   --bulma-radius: 4px;

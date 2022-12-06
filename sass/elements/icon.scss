@@ -4,27 +4,39 @@ $icon-dimensions-medium: 2rem !default;
 $icon-dimensions-large: 3rem !default;
 $icon-text-spacing: 0.25em !default;
 
+:root {
+  @include register-vars(
+    (
+      icon-dimensions: #{$icon-dimensions},
+      icon-dimensions-small: #{$icon-dimensions-small},
+      icon-dimensions-medium: #{$icon-dimensions-medium},
+      icon-dimensions-large: #{$icon-dimensions-large},
+      icon-text-spacing: #{$icon-text-spacing},
+    )
+  );
+}
+
 .#{$class-prefix}icon {
   align-items: center;
   display: inline-flex;
   justify-content: center;
-  height: $icon-dimensions;
-  width: $icon-dimensions;
+  height: getVar("icon-dimensions");
+  width: getVar("icon-dimensions");
 
   // Sizes
   &.is-small {
-    height: $icon-dimensions-small;
-    width: $icon-dimensions-small;
+    height: getVar("icon-dimensions-small");
+    width: getVar("icon-dimensions-small");
   }
 
   &.is-medium {
-    height: $icon-dimensions-medium;
-    width: $icon-dimensions-medium;
+    height: getVar("icon-dimensions-medium");
+    width: getVar("icon-dimensions-medium");
   }
 
   &.is-large {
-    height: $icon-dimensions-large;
-    width: $icon-dimensions-large;
+    height: getVar("icon-dimensions-large");
+    width: getVar("icon-dimensions-large");
   }
 }
 
@@ -33,7 +45,7 @@ $icon-text-spacing: 0.25em !default;
   color: inherit;
   display: inline-flex;
   flex-wrap: wrap;
-  line-height: $icon-dimensions;
+  line-height: getVar("icon-dimensions");
   vertical-align: top;
 
   .#{$class-prefix}icon {
@@ -42,21 +54,21 @@ $icon-text-spacing: 0.25em !default;
 
     &:not(:last-child) {
       @include ltr {
-        margin-right: $icon-text-spacing;
+        margin-right: getVar("icon-text-spacing");
       }
 
       @include rtl {
-        margin-left: $icon-text-spacing;
+        margin-left: getVar("icon-text-spacing");
       }
     }
 
     &:not(:first-child) {
       @include ltr {
-        margin-left: $icon-text-spacing;
+        margin-left: getVar("icon-text-spacing");
       }
 
       @include rtl {
-        margin-right: $icon-text-spacing;
+        margin-right: getVar("icon-text-spacing");
       }
     }
   }

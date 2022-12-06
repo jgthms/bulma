@@ -1,11 +1,22 @@
 @import "../utilities/mixins";
 
-$tag-background-color: $background !default;
-$tag-color: $text !default;
-$tag-radius: $radius !default;
+$tag-background-color: getVar("background") !default;
+$tag-color: getVar("text") !default;
+$tag-radius: getVar("radius") !default;
 $tag-delete-margin: 1px !default;
 
 $tag-colors: $colors !default;
+
+:root {
+  @include register-vars(
+    (
+      tag-background-color: #{$tag-background-color},
+      tag-color: #{$tag-color},
+      tag-radius: #{$tag-radius},
+      tag-delete-margin: #{$tag-delete-margin},
+    )
+  );
+}
 
 .#{$class-prefix}tags {
   align-items: center;
@@ -32,13 +43,13 @@ $tag-colors: $colors !default;
   // Sizes
   &.are-medium {
     .#{$class-prefix}tag:not(.is-normal):not(.is-large) {
-      font-size: $size-normal;
+      font-size: getVar("size-normal");
     }
   }
 
   &.are-large {
     .#{$class-prefix}tag:not(.is-normal):not(.is-medium) {
-      font-size: $size-medium;
+      font-size: getVar("size-medium");
     }
   }
 
@@ -99,11 +110,11 @@ $tag-colors: $colors !default;
 
 .#{$class-prefix}tag:not(body) {
   align-items: center;
-  background-color: $tag-background-color;
-  border-radius: $tag-radius;
-  color: $tag-color;
+  background-color: getVar("tag-background-color");
+  border-radius: getVar("tag-radius");
+  color: getVar("tag-color");
   display: inline-flex;
-  font-size: $size-small;
+  font-size: getVar("size-small");
   height: 2em;
   justify-content: center;
   line-height: 1.5;
@@ -140,15 +151,15 @@ $tag-colors: $colors !default;
 
   // Sizes
   &.is-normal {
-    font-size: $size-small;
+    font-size: getVar("size-small");
   }
 
   &.is-medium {
-    font-size: $size-normal;
+    font-size: getVar("size-normal");
   }
 
   &.is-large {
-    font-size: $size-medium;
+    font-size: getVar("size-medium");
   }
 
   .#{$class-prefix}icon {
@@ -170,8 +181,7 @@ $tag-colors: $colors !default;
 
   // Modifiers
   &.is-delete {
-    @include ltr-property("margin", $tag-delete-margin, false);
-
+    @include ltr-property("margin", getVar("tag-delete-margin"), false);
     padding: 0;
     position: relative;
     width: 2em;
@@ -200,16 +210,16 @@ $tag-colors: $colors !default;
 
     &:hover,
     &:focus {
-      background-color: darken($tag-background-color, 5%);
+      // background-color: darken($tag-background-color, 5%); // TODO
     }
 
     &:active {
-      background-color: darken($tag-background-color, 10%);
+      // background-color: darken($tag-background-color, 10%); // TODO
     }
   }
 
   &.is-rounded {
-    border-radius: $radius-rounded;
+    border-radius: getVar("radius-rounded");
   }
 }
 

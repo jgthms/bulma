@@ -1,44 +1,72 @@
 @import "../utilities/mixins";
 
-$table-color: $text-strong !default;
-$table-background-color: $scheme-main !default;
+$table-color: getVar("text-strong") !default;
+$table-background-color: getVar("scheme-main") !default;
 
-$table-cell-border: 1px solid $border !default;
+$table-cell-border: 1px solid getVar("border") !default;
 $table-cell-border-width: 0 0 1px !default;
 $table-cell-padding: 0.5em 0.75em !default;
-$table-cell-heading-color: $text-strong !default;
+$table-cell-heading-color: getVar("text-strong") !default;
 $table-cell-text-align: left !default;
 
 $table-head-cell-border-width: 0 0 2px !default;
-$table-head-cell-color: $text-strong !default;
+$table-head-cell-color: getVar("text-strong") !default;
 $table-foot-cell-border-width: 2px 0 0 !default;
-$table-foot-cell-color: $text-strong !default;
+$table-foot-cell-color: getVar("text-strong") !default;
 
 $table-head-background-color: transparent !default;
 $table-body-background-color: transparent !default;
 $table-foot-background-color: transparent !default;
 
-$table-row-hover-background-color: $scheme-main-bis !default;
+$table-row-hover-background-color: getVar("scheme-main-bis") !default;
 
-$table-row-active-background-color: $primary !default;
-$table-row-active-color: $primary-invert !default;
+$table-row-active-background-color: getVar("primary") !default;
+$table-row-active-color: getVar("primary-invert") !default;
 
-$table-striped-row-even-background-color: $scheme-main-bis !default;
-$table-striped-row-even-hover-background-color: $scheme-main-ter !default;
+$table-striped-row-even-background-color: getVar("scheme-main-bis") !default;
+$table-striped-row-even-hover-background-color: getVar(
+  "scheme-main-ter"
+) !default;
 
 $table-colors: $colors !default;
+
+:root {
+  @include register-vars(
+    (
+      table-color: #{$table-color},
+      table-background-color: #{$table-background-color},
+      table-cell-border: #{$table-cell-border},
+      table-cell-border-width: #{$table-cell-border-width},
+      table-cell-padding: #{$table-cell-padding},
+      table-cell-heading-color: #{$table-cell-heading-color},
+      table-cell-text-align: #{$table-cell-text-align},
+      table-head-cell-border-width: #{$table-head-cell-border-width},
+      table-head-cell-color: #{$table-head-cell-color},
+      table-foot-cell-border-width: #{$table-foot-cell-border-width},
+      table-foot-cell-color: #{$table-foot-cell-color},
+      table-head-background-color: #{$table-head-background-color},
+      table-body-background-color: #{$table-body-background-color},
+      table-foot-background-color: #{$table-foot-background-color},
+      table-row-hover-background-color: #{$table-row-hover-background-color},
+      table-row-active-background-color: #{$table-row-active-background-color},
+      table-row-active-color: #{$table-row-active-color},
+      table-striped-row-even-background-color: #{$table-striped-row-even-background-color},
+      table-striped-row-even-hover-background-color: #{$table-striped-row-even-hover-background-color},
+    )
+  );
+}
 
 .#{$class-prefix}table {
   @extend %block;
 
-  background-color: $table-background-color;
-  color: $table-color;
+  background-color: getVar("table-background-color");
+  color: getVar("table-color");
 
   td,
   th {
-    border: $table-cell-border;
-    border-width: $table-cell-border-width;
-    padding: $table-cell-padding;
+    border: getVar("table-cell-border");
+    border-width: getVar("table-cell-border-width");
+    padding: getVar("table-cell-padding");
     vertical-align: top;
 
     // Colors
@@ -60,8 +88,8 @@ $table-colors: $colors !default;
     }
 
     &.is-selected {
-      background-color: $table-row-active-background-color;
-      color: $table-row-active-color;
+      background-color: getVar("table-row-active-background-color");
+      color: getVar("table-row-active-color");
 
       a,
       strong {
@@ -75,17 +103,17 @@ $table-colors: $colors !default;
   }
 
   th {
-    color: $table-cell-heading-color;
+    color: getVar("table-cell-heading-color");
 
     &:not([align]) {
-      text-align: $table-cell-text-align;
+      text-align: getVar("table-cell-text-align");
     }
   }
 
   tr {
     &.is-selected {
-      background-color: $table-row-active-background-color;
-      color: $table-row-active-color;
+      background-color: getVar("table-row-active-background-color");
+      color: getVar("table-row-active-color");
 
       a,
       strong {
@@ -94,34 +122,34 @@ $table-colors: $colors !default;
 
       td,
       th {
-        border-color: $table-row-active-color;
+        border-color: getVar("table-row-active-color");
         color: currentColor;
       }
     }
   }
 
   thead {
-    background-color: $table-head-background-color;
+    background-color: getVar("table-head-background-color");
 
     td,
     th {
-      border-width: $table-head-cell-border-width;
-      color: $table-head-cell-color;
+      border-width: getVar("table-head-cell-border-width");
+      color: getVar("table-head-cell-color");
     }
   }
 
   tfoot {
-    background-color: $table-foot-background-color;
+    background-color: getVar("table-foot-background-color");
 
     td,
     th {
-      border-width: $table-foot-cell-border-width;
-      color: $table-foot-cell-color;
+      border-width: getVar("table-foot-cell-border-width");
+      color: getVar("table-foot-cell-color");
     }
   }
 
   tbody {
-    background-color: $table-body-background-color;
+    background-color: getVar("table-body-background-color");
 
     tr {
       &:last-child {
@@ -158,7 +186,7 @@ $table-colors: $colors !default;
     tbody {
       tr:not(.is-selected) {
         &:hover {
-          background-color: $table-row-hover-background-color;
+          background-color: getVar("table-row-hover-background-color");
         }
       }
     }
@@ -167,10 +195,12 @@ $table-colors: $colors !default;
       tbody {
         tr:not(.is-selected) {
           &:hover {
-            background-color: $table-row-hover-background-color;
+            background-color: getVar("table-row-hover-background-color");
 
             &:nth-child(even) {
-              background-color: $table-striped-row-even-hover-background-color;
+              background-color: getVar(
+                "table-striped-row-even-hover-background-color"
+              );
             }
           }
         }
@@ -189,7 +219,7 @@ $table-colors: $colors !default;
     tbody {
       tr:not(.is-selected) {
         &:nth-child(even) {
-          background-color: $table-striped-row-even-background-color;
+          background-color: getVar("table-striped-row-even-background-color");
         }
       }
     }
@@ -198,9 +228,7 @@ $table-colors: $colors !default;
 
 .#{$class-prefix}table-container {
   @extend %block;
-
   @include overflow-touch;
-
   overflow: auto;
   overflow-y: hidden;
   max-width: 100%;

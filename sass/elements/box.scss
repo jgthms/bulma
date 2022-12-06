@@ -1,34 +1,48 @@
 @import "../utilities/mixins";
 
-$box-color: $text !default;
-$box-background-color: $scheme-main !default;
-$box-radius: $radius-large !default;
-$box-shadow: $shadow !default;
+$box-color: getVar("text") !default;
+$box-background-color: getVar("scheme-main") !default;
+$box-radius: getVar("radius-large") !default;
+$box-shadow: getVar("shadow") !default;
 $box-padding: 1.25rem !default;
 
 $box-link-hover-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1),
-  0 0 0 1px $link !default;
+  0 0 0 1px getVar("link") !default;
 $box-link-active-shadow: inset 0 1px 2px rgba($scheme-invert, 0.2),
-  0 0 0 1px $link !default;
+  0 0 0 1px getVar("link") !default;
+
+:root {
+  @include register-vars(
+    (
+      box-color: #{$box-color},
+      box-background-color: #{$box-background-color},
+      box-radius: #{$box-radius},
+      box-shadow: #{$box-shadow},
+      box-padding: #{$box-padding},
+      box-link-hover-shadow: #{$box-link-hover-shadow},
+      box-link-active-shadow: #{$box-link-active-shadow},
+    )
+  );
+}
 
 .#{$class-prefix}box {
   @extend %block;
 
-  background-color: $box-background-color;
-  border-radius: $box-radius;
-  box-shadow: $box-shadow;
-  color: $box-color;
+  background-color: getVar("box-background-color");
+  border-radius: getVar("box-radius");
+  box-shadow: getVar("box-shadow");
+  color: getVar("box-color");
   display: block;
-  padding: $box-padding;
+  padding: getVar("box-padding");
 }
 
 a.#{$class-prefix}box {
   &:hover,
   &:focus {
-    box-shadow: $box-link-hover-shadow;
+    box-shadow: getVar("box-link-hover-shadow");
   }
 
   &:active {
-    box-shadow: $box-link-active-shadow;
+    box-shadow: getVar("box-link-active-shadow");
   }
 }
