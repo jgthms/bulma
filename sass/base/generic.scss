@@ -31,15 +31,46 @@ $pre-font-size: 0.875em !default;
 $pre-padding: 1.25rem 1.5rem !default;
 $pre-code-font-size: 1em !default;
 
+:root {
+  @include register-vars(
+    (
+      body-background-color: #{$body-background-color},
+      body-size: #{$body-size},
+      body-min-width: #{$body-min-width},
+      body-rendering: #{$body-rendering},
+      body-family: #{$body-family},
+      body-overflow-x: #{$body-overflow-x},
+      body-overflow-y: #{$body-overflow-y},
+      body-color: #{$body-color},
+      body-font-size: #{$body-font-size},
+      body-weight: #{$body-weight},
+      body-line-height: #{$body-line-height},
+      code-family: #{$code-family},
+      code-padding: #{$code-padding},
+      code-weight: #{$code-weight},
+      code-size: #{$code-size},
+      small-font-size: #{$small-font-size},
+      hr-background-color: #{$hr-background-color},
+      hr-height: #{$hr-height},
+      hr-margin: #{$hr-margin},
+      strong-color: #{$strong-color},
+      strong-weight: #{$strong-weight},
+      pre-font-size: #{$pre-font-size},
+      pre-padding: #{$pre-padding},
+      pre-code-font-size: #{$pre-code-font-size},
+    )
+  );
+}
+
 html {
-  background-color: $body-background-color;
-  font-size: $body-size;
+  background-color: getVar("body-background-color");
+  font-size: getVar("body-size");
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  min-width: $body-min-width;
-  overflow-x: $body-overflow-x;
-  overflow-y: $body-overflow-y;
-  text-rendering: $body-rendering;
+  min-width: getVar("body-min-width");
+  overflow-x: getVar("body-overflow-x");
+  overflow-y: getVar("body-overflow-y");
+  text-rendering: getVar("body-rendering");
   text-size-adjust: 100%;
 }
 
@@ -59,27 +90,27 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: $body-family;
+  font-family: getVar("body-family");
 }
 
 code,
 pre {
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
-  font-family: $code-family;
+  font-family: getVar("code-family");
 }
 
 body {
-  color: $body-color;
-  font-size: $body-font-size;
-  font-weight: $body-weight;
-  line-height: $body-line-height;
+  color: getVar("body-color");
+  font-size: getVar("body-font-size");
+  font-weight: getVar("body-weight");
+  line-height: getVar("body-line-height");
 }
 
 // Inline
 
 a {
-  color: $link;
+  color: getVar("link");
   cursor: pointer;
   text-decoration: none;
 
@@ -88,24 +119,24 @@ a {
   }
 
   &:hover {
-    color: $link-hover;
+    color: getVar("link-hover");
   }
 }
 
 code {
-  background-color: $code-background;
-  color: $code;
-  font-size: $code-size;
-  font-weight: $code-weight;
-  padding: $code-padding;
+  background-color: getVar("code-background");
+  color: getVar("code");
+  font-size: getVar("code-size");
+  font-weight: getVar("code-weight");
+  padding: getVar("code-padding");
 }
 
 hr {
-  background-color: $hr-background-color;
+  background-color: getVar("hr-background-color");
   border: none;
   display: block;
-  height: $hr-height;
-  margin: $hr-margin;
+  height: getVar("hr-height");
+  margin: getVar("hr-margin");
 }
 
 img {
@@ -119,7 +150,7 @@ input[type="radio"] {
 }
 
 small {
-  font-size: $small-font-size;
+  font-size: getVar("small-font-size");
 }
 
 span {
@@ -128,8 +159,8 @@ span {
 }
 
 strong {
-  color: $strong-color;
-  font-weight: $strong-weight;
+  color: getVar("strong-color");
+  font-weight: getVar("strong-weight");
 }
 
 // Block
@@ -141,18 +172,18 @@ fieldset {
 pre {
   @include overflow-touch;
 
-  background-color: $pre-background;
-  color: $pre;
-  font-size: $pre-font-size;
+  background-color: getVar("pre-background");
+  color: getVar("pre");
+  font-size: getVar("pre-font-size");
   overflow-x: auto;
-  padding: $pre-padding;
+  padding: getVar("pre-padding");
   white-space: pre;
   word-wrap: normal;
 
   code {
     background-color: transparent;
     color: currentColor;
-    font-size: $pre-code-font-size;
+    font-size: getVar("pre-code-font-size");
     padding: 0;
   }
 }
@@ -168,6 +199,6 @@ table {
   }
 
   th {
-    color: $text-strong;
+    color: getVar("text-strong");
   }
 }

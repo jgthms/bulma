@@ -15,22 +15,50 @@ $modal-close-top: 20px !default;
 
 $modal-card-spacing: 40px !default;
 
-$modal-card-head-background-color: $background !default;
-$modal-card-head-border-bottom: 1px solid $border !default;
+$modal-card-head-background-color: getVar("background") !default;
+$modal-card-head-border-bottom: 1px solid getVar("border") !default;
 $modal-card-head-padding: 20px !default;
-$modal-card-head-radius: $radius-large !default;
+$modal-card-head-radius: getVar("radius-large") !default;
 
-$modal-card-title-color: $text-strong !default;
+$modal-card-title-color: getVar("text-strong") !default;
 $modal-card-title-line-height: 1 !default;
-$modal-card-title-size: $size-4 !default;
+$modal-card-title-size: getVar("size-4") !default;
 
-$modal-card-foot-radius: $radius-large !default;
-$modal-card-foot-border-top: 1px solid $border !default;
+$modal-card-foot-radius: getVar("radius-large") !default;
+$modal-card-foot-border-top: 1px solid getVar("border") !default;
 
-$modal-card-body-background-color: $scheme-main !default;
+$modal-card-body-background-color: getVar("scheme-main") !default;
 $modal-card-body-padding: 20px !default;
 
 $modal-breakpoint: $tablet !default;
+
+:root {
+  @include register-vars(
+    (
+      modal-z: #{$modal-z},
+      modal-background-background-color: #{$modal-background-background-color},
+      modal-content-width: #{$modal-content-width},
+      modal-content-margin-mobile: #{$modal-content-margin-mobile},
+      modal-content-spacing-mobile: #{$modal-content-spacing-mobile},
+      modal-content-spacing-tablet: #{$modal-content-spacing-tablet},
+      modal-close-dimensions: #{$modal-close-dimensions},
+      modal-close-right: #{$modal-close-right},
+      modal-close-top: #{$modal-close-top},
+      modal-card-spacing: #{$modal-card-spacing},
+      modal-card-head-background-color: #{$modal-card-head-background-color},
+      modal-card-head-border-bottom: #{$modal-card-head-border-bottom},
+      modal-card-head-padding: #{$modal-card-head-padding},
+      modal-card-head-radius: #{$modal-card-head-radius},
+      modal-card-title-color: #{$modal-card-title-color},
+      modal-card-title-line-height: #{$modal-card-title-line-height},
+      modal-card-title-size: #{$modal-card-title-size},
+      modal-card-foot-radius: #{$modal-card-foot-radius},
+      modal-card-foot-border-top: #{$modal-card-foot-border-top},
+      modal-card-body-background-color: #{$modal-card-body-background-color},
+      modal-card-body-padding: #{$modal-card-body-padding},
+    )
+  );
+}
 
 .#{$class-prefix}modal {
   @extend %overlay;
@@ -41,7 +69,7 @@ $modal-breakpoint: $tablet !default;
   justify-content: center;
   overflow: hidden;
   position: fixed;
-  z-index: $modal-z;
+  z-index: getVar("modal-z");
 
   // Modifiers
   &.is-active {
@@ -52,13 +80,13 @@ $modal-breakpoint: $tablet !default;
 .#{$class-prefix}modal-background {
   @extend %overlay;
 
-  background-color: $modal-background-background-color;
+  background-color: getVar("modal-background-background-color");
 }
 
 .#{$class-prefix}modal-content,
 .#{$class-prefix}modal-card {
-  margin: 0 $modal-content-margin-mobile;
-  max-height: calc(100vh - #{$modal-content-spacing-mobile});
+  margin: 0 getVar("modal-content-margin-mobile");
+  max-height: calc(100vh - #{getVar("modal-content-spacing-mobile")});
   overflow: auto;
   position: relative;
   width: 100%;
@@ -66,8 +94,8 @@ $modal-breakpoint: $tablet !default;
   // Responsiveness
   @include from($modal-breakpoint) {
     margin: 0 auto;
-    max-height: calc(100vh - #{$modal-content-spacing-tablet});
-    width: $modal-content-width;
+    max-height: calc(100vh - #{getVar("modal-content-spacing-tablet")});
+    width: getVar("modal-content-width");
   }
 }
 
@@ -75,19 +103,17 @@ $modal-breakpoint: $tablet !default;
   @extend %delete;
 
   background: none;
-  height: $modal-close-dimensions;
+  height: getVar("modal-close-dimensions");
   position: fixed;
-
-  @include ltr-position($modal-close-right);
-
-  top: $modal-close-top;
-  width: $modal-close-dimensions;
+  @include ltr-position(getVar("modal-close-right"));
+  top: getVar("modal-close-top");
+  width: getVar("modal-close-dimensions");
 }
 
 .#{$class-prefix}modal-card {
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - #{$modal-card-spacing});
+  max-height: calc(100vh - #{getVar("modal-card-spacing")});
   overflow: hidden;
   -ms-overflow-y: visible;
 }
@@ -95,32 +121,32 @@ $modal-breakpoint: $tablet !default;
 .#{$class-prefix}modal-card-head,
 .#{$class-prefix}modal-card-foot {
   align-items: center;
-  background-color: $modal-card-head-background-color;
+  background-color: getVar("modal-card-head-background-color");
   display: flex;
   flex-shrink: 0;
   justify-content: flex-start;
-  padding: $modal-card-head-padding;
+  padding: getVar("modal-card-head-padding");
   position: relative;
 }
 
 .#{$class-prefix}modal-card-head {
-  border-bottom: $modal-card-head-border-bottom;
-  border-top-left-radius: $modal-card-head-radius;
-  border-top-right-radius: $modal-card-head-radius;
+  border-bottom: getVar("modal-card-head-border-bottom");
+  border-top-left-radius: getVar("modal-card-head-radius");
+  border-top-right-radius: getVar("modal-card-head-radius");
 }
 
 .#{$class-prefix}modal-card-title {
-  color: $modal-card-title-color;
+  color: getVar("modal-card-title-color");
   flex-grow: 1;
   flex-shrink: 0;
-  font-size: $modal-card-title-size;
-  line-height: $modal-card-title-line-height;
+  font-size: getVar("modal-card-title-size");
+  line-height: getVar("modal-card-title-line-height");
 }
 
 .#{$class-prefix}modal-card-foot {
-  border-bottom-left-radius: $modal-card-foot-radius;
-  border-bottom-right-radius: $modal-card-foot-radius;
-  border-top: $modal-card-foot-border-top;
+  border-bottom-left-radius: getVar("modal-card-foot-radius");
+  border-bottom-right-radius: getVar("modal-card-foot-radius");
+  border-top: getVar("modal-card-foot-border-top");
 
   .#{$class-prefix}button {
     &:not(:last-child) {
@@ -132,9 +158,9 @@ $modal-breakpoint: $tablet !default;
 .#{$class-prefix}modal-card-body {
   @include overflow-touch;
 
-  background-color: $modal-card-body-background-color;
+  background-color: getVar("modal-card-body-background-color");
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
-  padding: $modal-card-body-padding;
+  padding: getVar("modal-card-body-padding");
 }

@@ -1,62 +1,84 @@
 @import "../utilities/mixins";
 
-$card-color: $text !default;
-$card-background-color: $scheme-main !default;
-$card-shadow: $shadow !default;
+$card-color: getVar("text") !default;
+$card-background-color: getVar("scheme-main") !default;
+$card-shadow: getVar("shadow") !default;
 $card-radius: 0.25rem !default;
 
 $card-header-background-color: transparent !default;
-$card-header-color: $text-strong !default;
+$card-header-color: getVar("text-strong") !default;
 $card-header-padding: 0.75rem 1rem !default;
-$card-header-shadow: 0 0.125em 0.25em rgba($scheme-invert, 0.1) !default;
-$card-header-weight: $weight-bold !default;
+$card-header-shadow: 0 0.125em 0.25em rgba($scheme-invert, 0.1) !default; // TODO
+$card-header-weight: getVar("weight-bold") !default;
 
 $card-content-background-color: transparent !default;
 $card-content-padding: 1.5rem !default;
 
 $card-footer-background-color: transparent !default;
-$card-footer-border-top: 1px solid $border-light !default;
+$card-footer-border-top: 1px solid getVar("border-light") !default;
 $card-footer-padding: 0.75rem !default;
 
-$card-media-margin: $block-spacing !default;
+$card-media-margin: getVar("block-spacing") !default;
+
+:root {
+  @include register-vars(
+    (
+      card-color: #{$card-color},
+      card-background-color: #{$card-background-color},
+      card-shadow: #{$card-shadow},
+      card-radius: #{$card-radius},
+      card-header-background-color: #{$card-header-background-color},
+      card-header-color: #{$card-header-color},
+      card-header-padding: #{$card-header-padding},
+      card-header-shadow: #{$card-header-shadow},
+      card-header-weight: #{$card-header-weight},
+      card-content-background-color: #{$card-content-background-color},
+      card-content-padding: #{$card-content-padding},
+      card-footer-background-color: #{$card-footer-background-color},
+      card-footer-border-top: #{$card-footer-border-top},
+      card-footer-padding: #{$card-footer-padding},
+      card-media-margin: #{$card-media-margin},
+    )
+  );
+}
 
 .#{$class-prefix}card {
-  background-color: $card-background-color;
-  border-radius: $card-radius;
-  box-shadow: $card-shadow;
-  color: $card-color;
+  background-color: getVar("card-background-color");
+  border-radius: getVar("card-radius");
+  box-shadow: getVar("card-shadow");
+  color: getVar("card-color");
   max-width: 100%;
   position: relative;
 }
 
 %card-item {
   &:first-child {
-    border-top-left-radius: $card-radius;
-    border-top-right-radius: $card-radius;
+    border-top-left-radius: getVar("card-radius");
+    border-top-right-radius: getVar("card-radius");
   }
 
   &:last-child {
-    border-bottom-left-radius: $card-radius;
-    border-bottom-right-radius: $card-radius;
+    border-bottom-left-radius: getVar("card-radius");
+    border-bottom-right-radius: getVar("card-radius");
   }
 }
 
 .#{$class-prefix}card-header {
   @extend %card-item;
 
-  background-color: $card-header-background-color;
+  background-color: getVar("card-header-background-color");
   align-items: stretch;
-  box-shadow: $card-header-shadow;
+  box-shadow: getVar("card-header-shadow");
   display: flex;
 }
 
 .#{$class-prefix}card-header-title {
   align-items: center;
-  color: $card-header-color;
+  color: getVar("card-header-color");
   display: flex;
   flex-grow: 1;
-  font-weight: $card-header-weight;
-  padding: $card-header-padding;
+  font-weight: getVar("card-header-weight");
+  padding: getVar("card-header-padding");
 
   &.is-centered {
     justify-content: center;
@@ -70,7 +92,7 @@ $card-media-margin: $block-spacing !default;
   cursor: pointer;
   display: flex;
   justify-content: center;
-  padding: $card-header-padding;
+  padding: getVar("card-header-padding");
 }
 
 .#{$class-prefix}card-image {
@@ -79,15 +101,15 @@ $card-media-margin: $block-spacing !default;
 
   &:first-child {
     img {
-      border-top-left-radius: $card-radius;
-      border-top-right-radius: $card-radius;
+      border-top-left-radius: getVar("card-radius");
+      border-top-right-radius: getVar("card-radius");
     }
   }
 
   &:last-child {
     img {
-      border-bottom-left-radius: $card-radius;
-      border-bottom-right-radius: $card-radius;
+      border-bottom-left-radius: getVar("card-radius");
+      border-bottom-right-radius: getVar("card-radius");
     }
   }
 }
@@ -95,15 +117,15 @@ $card-media-margin: $block-spacing !default;
 .#{$class-prefix}card-content {
   @extend %card-item;
 
-  background-color: $card-content-background-color;
-  padding: $card-content-padding;
+  background-color: getVar("card-content-background-color");
+  padding: getVar("card-content-padding");
 }
 
 .#{$class-prefix}card-footer {
   @extend %card-item;
 
-  background-color: $card-footer-background-color;
-  border-top: $card-footer-border-top;
+  background-color: getVar("card-footer-background-color");
+  border-top: getVar("card-footer-border-top");
   align-items: stretch;
   display: flex;
 }
@@ -115,10 +137,10 @@ $card-media-margin: $block-spacing !default;
   flex-grow: 1;
   flex-shrink: 0;
   justify-content: center;
-  padding: $card-footer-padding;
+  padding: getVar("card-footer-padding");
 
   &:not(:last-child) {
-    @include ltr-property("border", $card-footer-border-top);
+    @include ltr-property("border", getVar("card-footer-border-top"));
   }
 }
 
@@ -126,6 +148,6 @@ $card-media-margin: $block-spacing !default;
 
 .#{$class-prefix}card {
   .#{$class-prefix}media:not(:last-child) {
-    margin-bottom: $card-media-margin;
+    margin-bottom: getVar("card-media-margin");
   }
 }

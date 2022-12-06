@@ -1,83 +1,107 @@
 @import "../utilities/mixins";
 
-$menu-item-color: $text !default;
-$menu-item-radius: $radius-small !default;
-$menu-item-hover-color: $text-strong !default;
-$menu-item-hover-background-color: $background !default;
-$menu-item-active-color: $link-invert !default;
-$menu-item-active-background-color: $link !default;
+$menu-item-color: getVar("text") !default;
+$menu-item-radius: getVar("radius-small") !default;
+$menu-item-hover-color: getVar("text-strong") !default;
+$menu-item-hover-background-color: getVar("background") !default;
+$menu-item-active-color: getVar("link-invert") !default;
+$menu-item-active-background-color: getVar("link") !default;
 
-$menu-list-border-left: 1px solid $border !default;
+$menu-list-border-left: 1px solid getVar("border") !default;
 $menu-list-line-height: 1.25 !default;
 $menu-list-link-padding: 0.5em 0.75em !default;
 $menu-nested-list-margin: 0.75em !default;
 $menu-nested-list-padding-left: 0.75em !default;
 
-$menu-label-color: $text-light !default;
+$menu-label-color: getVar("text-light") !default;
 $menu-label-font-size: 0.75em !default;
 $menu-label-letter-spacing: 0.1em !default;
 $menu-label-spacing: 1em !default;
 
+:root {
+  @include register-vars(
+    (
+      menu-item-color: #{$menu-item-color},
+      menu-item-radius: #{$menu-item-radius},
+      menu-item-hover-color: #{$menu-item-hover-color},
+      menu-item-hover-background-color: #{$menu-item-hover-background-color},
+      menu-item-active-color: #{$menu-item-active-color},
+      menu-item-active-background-color: #{$menu-item-active-background-color},
+      menu-list-border-left: #{$menu-list-border-left},
+      menu-list-line-height: #{$menu-list-line-height},
+      menu-list-link-padding: #{$menu-list-link-padding},
+      menu-nested-list-margin: #{$menu-nested-list-margin},
+      menu-nested-list-padding-left: #{$menu-nested-list-padding-left},
+      menu-label-color: #{$menu-label-color},
+      menu-label-font-size: #{$menu-label-font-size},
+      menu-label-letter-spacing: #{$menu-label-letter-spacing},
+      menu-label-spacing: #{$menu-label-spacing},
+    )
+  );
+}
+
 .#{$class-prefix}menu {
-  font-size: $size-normal;
+  font-size: getVar("size-normal");
 
   // Sizes
   &.is-small {
-    font-size: $size-small;
+    font-size: getVar("size-small");
   }
 
   &.is-medium {
-    font-size: $size-medium;
+    font-size: getVar("size-medium");
   }
 
   &.is-large {
-    font-size: $size-large;
+    font-size: getVar("size-large");
   }
 }
 
 .#{$class-prefix}menu-list {
-  line-height: $menu-list-line-height;
+  line-height: getVar("menu-list-line-height");
 
   a {
-    border-radius: $menu-item-radius;
-    color: $menu-item-color;
+    border-radius: getVar("menu-item-radius");
+    color: getVar("menu-item-color");
     display: block;
-    padding: $menu-list-link-padding;
+    padding: getVar("menu-list-link-padding");
 
     &:hover {
-      background-color: $menu-item-hover-background-color;
-      color: $menu-item-hover-color;
+      background-color: getVar("menu-item-hover-background-color");
+      color: getVar("menu-item-hover-color");
     }
 
     // Modifiers
     &.is-active {
-      background-color: $menu-item-active-background-color;
-      color: $menu-item-active-color;
+      background-color: getVar("menu-item-active-background-color");
+      color: getVar("menu-item-active-color");
     }
   }
 
   li {
     ul {
-      @include ltr-property("border", $menu-list-border-left, false);
-
-      margin: $menu-nested-list-margin;
-
-      @include ltr-property("padding", $menu-nested-list-padding-left, false);
+      @include ltr-property("border", getVar("menu-list-border-left"), false);
+      margin: getVar("menu-nested-list-margin");
+      @include ltr-property(
+        "padding",
+        getVar("menu-nested-list-padding-left"),
+        false
+      );
     }
   }
 }
 
 .#{$class-prefix}menu-label {
-  color: $menu-label-color;
-  font-size: $menu-label-font-size;
-  letter-spacing: $menu-label-letter-spacing;
+  color: getVar("menu-label-color");
+  font-size: getVar("menu-label-font-size");
+  letter-spacing: getVar("menu-label-letter-spacing");
   text-transform: uppercase;
 
   &:not(:first-child) {
-    margin-top: $menu-label-spacing;
+    margin-top: getVar("menu-label-spacing");
   }
 
   &:not(:last-child) {
-    margin-bottom: $menu-label-spacing;
+    margin-bottom: getVar("menu-label-spacing");
   }
 }

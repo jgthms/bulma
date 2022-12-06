@@ -1,43 +1,72 @@
 @import "../utilities/mixins";
 
-$tabs-border-bottom-color: $border !default;
+$tabs-border-bottom-color: getVar("border") !default;
 $tabs-border-bottom-style: solid !default;
 $tabs-border-bottom-width: 1px !default;
-$tabs-link-color: $text !default;
-$tabs-link-hover-border-bottom-color: $text-strong !default;
-$tabs-link-hover-color: $text-strong !default;
-$tabs-link-active-border-bottom-color: $link !default;
-$tabs-link-active-color: $link !default;
+$tabs-link-color: getVar("text") !default;
+$tabs-link-hover-border-bottom-color: getVar("text-strong") !default;
+$tabs-link-hover-color: getVar("text-strong") !default;
+$tabs-link-active-border-bottom-color: getVar("link") !default;
+$tabs-link-active-color: getVar("link") !default;
 $tabs-link-padding: 0.5em 1em !default;
 
-$tabs-boxed-link-radius: $radius !default;
-$tabs-boxed-link-hover-background-color: $background !default;
-$tabs-boxed-link-hover-border-bottom-color: $border !default;
+$tabs-boxed-link-radius: getVar("radius") !default;
+$tabs-boxed-link-hover-background-color: getVar("background") !default;
+$tabs-boxed-link-hover-border-bottom-color: getVar("border") !default;
 
-$tabs-boxed-link-active-background-color: $scheme-main !default;
-$tabs-boxed-link-active-border-color: $border !default;
+$tabs-boxed-link-active-background-color: getVar("scheme-main") !default;
+$tabs-boxed-link-active-border-color: getVar("border") !default;
 $tabs-boxed-link-active-border-bottom-color: transparent !default;
 
-$tabs-toggle-link-border-color: $border !default;
+$tabs-toggle-link-border-color: getVar("border") !default;
 $tabs-toggle-link-border-style: solid !default;
 $tabs-toggle-link-border-width: 1px !default;
-$tabs-toggle-link-hover-background-color: $background !default;
-$tabs-toggle-link-hover-border-color: $border-hover !default;
-$tabs-toggle-link-radius: $radius !default;
-$tabs-toggle-link-active-background-color: $link !default;
-$tabs-toggle-link-active-border-color: $link !default;
-$tabs-toggle-link-active-color: $link-invert !default;
+$tabs-toggle-link-hover-background-color: getVar("background") !default;
+$tabs-toggle-link-hover-border-color: getVar("border-hover") !default;
+$tabs-toggle-link-radius: getVar("radius") !default;
+$tabs-toggle-link-active-background-color: getVar("link") !default;
+$tabs-toggle-link-active-border-color: getVar("link") !default;
+$tabs-toggle-link-active-color: getVar("link-invert") !default;
+
+:root {
+  @include register-vars(
+    (
+      tabs-border-bottom-color: #{$tabs-border-bottom-color},
+      tabs-border-bottom-style: #{$tabs-border-bottom-style},
+      tabs-border-bottom-width: #{$tabs-border-bottom-width},
+      tabs-link-color: #{$tabs-link-color},
+      tabs-link-hover-border-bottom-color: #{$tabs-link-hover-border-bottom-color},
+      tabs-link-hover-color: #{$tabs-link-hover-color},
+      tabs-link-active-border-bottom-color: #{$tabs-link-active-border-bottom-color},
+      tabs-link-active-color: #{$tabs-link-active-color},
+      tabs-link-padding: #{$tabs-link-padding},
+      tabs-boxed-link-radius: #{$tabs-boxed-link-radius},
+      tabs-boxed-link-hover-background-color: #{$tabs-boxed-link-hover-background-color},
+      tabs-boxed-link-hover-border-bottom-color: #{$tabs-boxed-link-hover-border-bottom-color},
+      tabs-boxed-link-active-background-color: #{$tabs-boxed-link-active-background-color},
+      tabs-boxed-link-active-border-color: #{$tabs-boxed-link-active-border-color},
+      tabs-boxed-link-active-border-bottom-color: #{$tabs-boxed-link-active-border-bottom-color},
+      tabs-toggle-link-border-color: #{$tabs-toggle-link-border-color},
+      tabs-toggle-link-border-style: #{$tabs-toggle-link-border-style},
+      tabs-toggle-link-border-width: #{$tabs-toggle-link-border-width},
+      tabs-toggle-link-hover-background-color: #{$tabs-toggle-link-hover-background-color},
+      tabs-toggle-link-hover-border-color: #{$tabs-toggle-link-hover-border-color},
+      tabs-toggle-link-radius: #{$tabs-toggle-link-radius},
+      tabs-toggle-link-active-background-color: #{$tabs-toggle-link-active-background-color},
+      tabs-toggle-link-active-border-color: #{$tabs-toggle-link-active-border-color},
+      tabs-toggle-link-active-color: #{$tabs-toggle-link-active-color},
+    )
+  );
+}
 
 .#{$class-prefix}tabs {
   @extend %block;
-
   @include overflow-touch;
-
   @extend %unselectable;
 
   align-items: stretch;
   display: flex;
-  font-size: $size-normal;
+  font-size: getVar("size-normal");
   justify-content: space-between;
   overflow: hidden;
   overflow-x: auto;
@@ -45,19 +74,19 @@ $tabs-toggle-link-active-color: $link-invert !default;
 
   a {
     align-items: center;
-    border-bottom-color: $tabs-border-bottom-color;
-    border-bottom-style: $tabs-border-bottom-style;
-    border-bottom-width: $tabs-border-bottom-width;
-    color: $tabs-link-color;
+    border-bottom-color: getVar("tabs-border-bottom-color");
+    border-bottom-style: getVar("tabs-border-bottom-style");
+    border-bottom-width: getVar("tabs-border-bottom-width");
+    color: getVar("tabs-link-color");
     display: flex;
     justify-content: center;
-    margin-bottom: -#{$tabs-border-bottom-width};
-    padding: $tabs-link-padding;
+    margin-bottom: calc(-1 * #{getVar("tabs-border-bottom-width")});
+    padding: getVar("tabs-link-padding");
     vertical-align: top;
 
     &:hover {
-      border-bottom-color: $tabs-link-hover-border-bottom-color;
-      color: $tabs-link-hover-color;
+      border-bottom-color: getVar("tabs-link-hover-border-bottom-color");
+      color: getVar("tabs-link-hover-color");
     }
   }
 
@@ -66,17 +95,17 @@ $tabs-toggle-link-active-color: $link-invert !default;
 
     &.is-active {
       a {
-        border-bottom-color: $tabs-link-active-border-bottom-color;
-        color: $tabs-link-active-color;
+        border-bottom-color: getVar("tabs-link-active-border-bottom-color");
+        color: getVar("tabs-link-active-color");
       }
     }
   }
 
   ul {
     align-items: center;
-    border-bottom-color: $tabs-border-bottom-color;
-    border-bottom-style: $tabs-border-bottom-style;
-    border-bottom-width: $tabs-border-bottom-width;
+    border-bottom-color: getVar("tabs-border-bottom-color");
+    border-bottom-style: getVar("tabs-border-bottom-style");
+    border-bottom-width: getVar("tabs-border-bottom-width");
     display: flex;
     flex-grow: 1;
     flex-shrink: 0;
@@ -128,25 +157,31 @@ $tabs-toggle-link-active-color: $link-invert !default;
       border: 1px solid transparent;
 
       @include ltr {
-        border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0;
+        border-radius: getVar("tabs-boxed-link-radius")
+          getVar("tabs-boxed-link-radius") 0 0;
       }
 
       @include rtl {
-        border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius;
+        border-radius: 0 0 getVar("tabs-boxed-link-radius")
+          getVar("tabs-boxed-link-radius");
       }
 
       &:hover {
-        background-color: $tabs-boxed-link-hover-background-color;
-        border-bottom-color: $tabs-boxed-link-hover-border-bottom-color;
+        background-color: getVar("tabs-boxed-link-hover-background-color");
+        border-bottom-color: getVar(
+          "tabs-boxed-link-hover-border-bottom-color"
+        );
       }
     }
 
     li {
       &.is-active {
         a {
-          background-color: $tabs-boxed-link-active-background-color;
-          border-color: $tabs-boxed-link-active-border-color;
-          border-bottom-color: $tabs-boxed-link-active-border-bottom-color !important;
+          background-color: getVar("tabs-boxed-link-active-background-color");
+          border-color: getVar("tabs-boxed-link-active-border-color");
+          border-bottom-color: getVar(
+            "tabs-boxed-link-active-border-bottom-color"
+          ) !important;
         }
       }
     }
@@ -161,15 +196,15 @@ $tabs-toggle-link-active-color: $link-invert !default;
 
   &.is-toggle {
     a {
-      border-color: $tabs-toggle-link-border-color;
-      border-style: $tabs-toggle-link-border-style;
-      border-width: $tabs-toggle-link-border-width;
+      border-color: getVar("tabs-toggle-link-border-color");
+      border-style: getVar("tabs-toggle-link-border-style");
+      border-width: getVar("tabs-toggle-link-border-width");
       margin-bottom: 0;
       position: relative;
 
       &:hover {
-        background-color: $tabs-toggle-link-hover-background-color;
-        border-color: $tabs-toggle-link-hover-border-color;
+        background-color: getVar("tabs-toggle-link-hover-background-color");
+        border-color: getVar("tabs-toggle-link-hover-border-color");
         z-index: 2;
       }
     }
@@ -178,40 +213,40 @@ $tabs-toggle-link-active-color: $link-invert !default;
       & + li {
         @include ltr-property(
           "margin",
-          -#{$tabs-toggle-link-border-width},
+          calc(-1 * #{getVar("tabs-toggle-link-border-width")}),
           false
         );
       }
 
       &:first-child a {
         @include ltr {
-          border-top-left-radius: $tabs-toggle-link-radius;
-          border-bottom-left-radius: $tabs-toggle-link-radius;
+          border-top-left-radius: getVar("tabs-toggle-link-radius");
+          border-bottom-left-radius: getVar("tabs-toggle-link-radius");
         }
 
         @include rtl {
-          border-top-right-radius: $tabs-toggle-link-radius;
-          border-bottom-right-radius: $tabs-toggle-link-radius;
+          border-top-right-radius: getVar("tabs-toggle-link-radius");
+          border-bottom-right-radius: getVar("tabs-toggle-link-radius");
         }
       }
 
       &:last-child a {
         @include ltr {
-          border-top-right-radius: $tabs-toggle-link-radius;
-          border-bottom-right-radius: $tabs-toggle-link-radius;
+          border-top-right-radius: getVar("tabs-toggle-link-radius");
+          border-bottom-right-radius: getVar("tabs-toggle-link-radius");
         }
 
         @include rtl {
-          border-top-left-radius: $tabs-toggle-link-radius;
-          border-bottom-left-radius: $tabs-toggle-link-radius;
+          border-top-left-radius: getVar("tabs-toggle-link-radius");
+          border-bottom-left-radius: getVar("tabs-toggle-link-radius");
         }
       }
 
       &.is-active {
         a {
-          background-color: $tabs-toggle-link-active-background-color;
-          border-color: $tabs-toggle-link-active-border-color;
-          color: $tabs-toggle-link-active-color;
+          background-color: getVar("tabs-toggle-link-active-background-color");
+          border-color: getVar("tabs-toggle-link-active-border-color");
+          color: getVar("tabs-toggle-link-active-color");
           z-index: 1;
         }
       }
@@ -225,28 +260,28 @@ $tabs-toggle-link-active-color: $link-invert !default;
       li {
         &:first-child a {
           @include ltr {
-            border-bottom-left-radius: $radius-rounded;
-            border-top-left-radius: $radius-rounded;
+            border-bottom-left-radius: getVar("radius-rounded");
+            border-top-left-radius: getVar("radius-rounded");
             padding-left: 1.25em;
           }
 
           @include rtl {
-            border-bottom-right-radius: $radius-rounded;
-            border-top-right-radius: $radius-rounded;
+            border-bottom-right-radius: getVar("radius-rounded");
+            border-top-right-radius: getVar("radius-rounded");
             padding-right: 1.25em;
           }
         }
 
         &:last-child a {
           @include ltr {
-            border-bottom-right-radius: $radius-rounded;
-            border-top-right-radius: $radius-rounded;
+            border-bottom-right-radius: getVar("radius-rounded");
+            border-top-right-radius: getVar("radius-rounded");
             padding-right: 1.25em;
           }
 
           @include rtl {
-            border-bottom-left-radius: $radius-rounded;
-            border-top-left-radius: $radius-rounded;
+            border-bottom-left-radius: getVar("radius-rounded");
+            border-top-left-radius: getVar("radius-rounded");
             padding-left: 1.25em;
           }
         }
@@ -256,14 +291,14 @@ $tabs-toggle-link-active-color: $link-invert !default;
 
   // Sizes
   &.is-small {
-    font-size: $size-small;
+    font-size: getVar("size-small");
   }
 
   &.is-medium {
-    font-size: $size-medium;
+    font-size: getVar("size-medium");
   }
 
   &.is-large {
-    font-size: $size-large;
+    font-size: getVar("size-large");
   }
 }

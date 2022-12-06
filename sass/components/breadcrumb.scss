@@ -1,31 +1,44 @@
 @import "../utilities/mixins";
 
-$breadcrumb-item-color: $link !default;
-$breadcrumb-item-hover-color: $link-hover !default;
-$breadcrumb-item-active-color: $text-strong !default;
+$breadcrumb-item-color: getVar("link") !default;
+$breadcrumb-item-hover-color: getVar("link-hover") !default;
+$breadcrumb-item-active-color: getVar("text-strong") !default;
 
 $breadcrumb-item-padding-vertical: 0 !default;
 $breadcrumb-item-padding-horizontal: 0.75em !default;
 
-$breadcrumb-item-separator-color: $border-hover !default;
+$breadcrumb-item-separator-color: getVar("border-hover") !default;
+
+:root {
+  @include register-vars(
+    (
+      breadcrumb-item-color: #{$breadcrumb-item-color},
+      breadcrumb-item-hover-color: #{$breadcrumb-item-hover-color},
+      breadcrumb-item-active-color: #{$breadcrumb-item-active-color},
+      breadcrumb-item-padding-vertical: #{$breadcrumb-item-padding-vertical},
+      breadcrumb-item-padding-horizontal: #{$breadcrumb-item-padding-horizontal},
+      breadcrumb-item-separator-color: #{$breadcrumb-item-separator-color},
+    )
+  );
+}
 
 .#{$class-prefix}breadcrumb {
   @extend %block;
   @extend %unselectable;
 
-  font-size: $size-normal;
+  font-size: getVar("size-normal");
   white-space: nowrap;
 
   a {
     align-items: center;
-    color: $breadcrumb-item-color;
+    color: getVar("breadcrumb-item-color");
     display: flex;
     justify-content: center;
-    padding: $breadcrumb-item-padding-vertical
-      $breadcrumb-item-padding-horizontal;
+    padding: getVar("breadcrumb-item-padding-vertical")
+      getVar("breadcrumb-item-padding-horizontal");
 
     &:hover {
-      color: $breadcrumb-item-hover-color;
+      color: getVar("breadcrumb-item-hover-color");
     }
   }
 
@@ -39,14 +52,14 @@ $breadcrumb-item-separator-color: $border-hover !default;
 
     &.is-active {
       a {
-        color: $breadcrumb-item-active-color;
+        color: getVar("breadcrumb-item-active-color");
         cursor: default;
         pointer-events: none;
       }
     }
 
     & + li::before {
-      color: $breadcrumb-item-separator-color;
+      color: getVar("breadcrumb-item-separator-color");
       content: "/";
     }
   }
@@ -86,15 +99,15 @@ $breadcrumb-item-separator-color: $border-hover !default;
 
   // Sizes
   &.is-small {
-    font-size: $size-small;
+    font-size: getVar("size-small");
   }
 
   &.is-medium {
-    font-size: $size-medium;
+    font-size: getVar("size-medium");
   }
 
   &.is-large {
-    font-size: $size-large;
+    font-size: getVar("size-large");
   }
 
   // Styles

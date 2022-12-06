@@ -2,22 +2,44 @@
 
 $dropdown-menu-min-width: 12rem !default;
 
-$dropdown-content-background-color: $scheme-main !default;
-$dropdown-content-arrow: $link !default;
+$dropdown-content-background-color: getVar("scheme-main") !default;
+$dropdown-content-arrow: getVar("link") !default;
 $dropdown-content-offset: 4px !default;
 $dropdown-content-padding-bottom: 0.5rem !default;
 $dropdown-content-padding-top: 0.5rem !default;
-$dropdown-content-radius: $radius !default;
-$dropdown-content-shadow: $shadow !default;
+$dropdown-content-radius: getVar("radius") !default;
+$dropdown-content-shadow: getVar("shadow") !default;
 $dropdown-content-z: 20 !default;
 
-$dropdown-item-color: $text !default;
-$dropdown-item-hover-color: $scheme-invert !default;
-$dropdown-item-hover-background-color: $background !default;
-$dropdown-item-active-color: $link-invert !default;
-$dropdown-item-active-background-color: $link !default;
+$dropdown-item-color: getVar("text") !default;
+$dropdown-item-hover-color: getVar("scheme-invert") !default;
+$dropdown-item-hover-background-color: getVar("background") !default;
+$dropdown-item-active-color: getVar("link-invert") !default;
+$dropdown-item-active-background-color: getVar("link") !default;
 
-$dropdown-divider-background-color: $border-light !default;
+$dropdown-divider-background-color: getVar("border-light") !default;
+
+:root {
+  @include register-vars(
+    (
+      dropdown-menu-min-width: #{$dropdown-menu-min-width},
+      dropdown-content-background-color: #{$dropdown-content-background-color},
+      dropdown-content-arrow: #{$dropdown-content-arrow},
+      dropdown-content-offset: #{$dropdown-content-offset},
+      dropdown-content-padding-bottom: #{$dropdown-content-padding-bottom},
+      dropdown-content-padding-top: #{$dropdown-content-padding-top},
+      dropdown-content-radius: #{$dropdown-content-radius},
+      dropdown-content-shadow: #{$dropdown-content-shadow},
+      dropdown-content-z: #{$dropdown-content-z},
+      dropdown-item-color: #{$dropdown-item-color},
+      dropdown-item-hover-color: #{$dropdown-item-hover-color},
+      dropdown-item-hover-background-color: #{$dropdown-item-hover-background-color},
+      dropdown-item-active-color: #{$dropdown-item-active-color},
+      dropdown-item-active-background-color: #{$dropdown-item-active-background-color},
+      dropdown-divider-background-color: #{$dropdown-divider-background-color},
+    )
+  );
+}
 
 .#{$class-prefix}dropdown {
   display: inline-flex;
@@ -41,7 +63,7 @@ $dropdown-divider-background-color: $border-light !default;
   &.is-up {
     .#{$class-prefix}dropdown-menu {
       bottom: 100%;
-      padding-bottom: $dropdown-content-offset;
+      padding-bottom: getVar("dropdown-content-offset");
       padding-top: initial;
       top: auto;
     }
@@ -53,23 +75,23 @@ $dropdown-divider-background-color: $border-light !default;
 
   @include ltr-position(0, false);
 
-  min-width: $dropdown-menu-min-width;
-  padding-top: $dropdown-content-offset;
+  min-width: getVar("dropdown-menu-min-width");
+  padding-top: getVar("dropdown-content-offset");
   position: absolute;
   top: 100%;
-  z-index: $dropdown-content-z;
+  z-index: getVar("dropdown-content-z");
 }
 
 .#{$class-prefix}dropdown-content {
-  background-color: $dropdown-content-background-color;
-  border-radius: $dropdown-content-radius;
-  box-shadow: $dropdown-content-shadow;
-  padding-bottom: $dropdown-content-padding-bottom;
-  padding-top: $dropdown-content-padding-top;
+  background-color: getVar("dropdown-content-background-color");
+  border-radius: getVar("dropdown-content-radius");
+  box-shadow: getVar("dropdown-content-shadow");
+  padding-bottom: getVar("dropdown-content-padding-bottom");
+  padding-top: getVar("dropdown-content-padding-top");
 }
 
 .#{$class-prefix}dropdown-item {
-  color: $dropdown-item-color;
+  color: getVar("dropdown-item-color");
   display: block;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -86,18 +108,18 @@ button.#{$class-prefix}dropdown-item {
   width: 100%;
 
   &:hover {
-    background-color: $dropdown-item-hover-background-color;
-    color: $dropdown-item-hover-color;
+    background-color: getVar("dropdown-item-hover-background-color");
+    color: getVar("dropdown-item-hover-color");
   }
 
   &.is-active {
-    background-color: $dropdown-item-active-background-color;
-    color: $dropdown-item-active-color;
+    background-color: getVar("dropdown-item-active-background-color");
+    color: getVar("dropdown-item-active-color");
   }
 }
 
 .#{$class-prefix}dropdown-divider {
-  background-color: $dropdown-divider-background-color;
+  background-color: getVar("dropdown-divider-background-color");
   border: none;
   display: block;
   height: 1px;

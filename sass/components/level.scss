@@ -1,7 +1,5 @@
 @import "../utilities/mixins";
 
-$level-item-spacing: $block-spacing * 0.5 !default;
-
 .#{$class-prefix}level {
   @extend %block;
 
@@ -9,7 +7,7 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   justify-content: space-between;
 
   code {
-    border-radius: $radius;
+    border-radius: getVar("radius");
   }
 
   img {
@@ -34,7 +32,7 @@ $level-item-spacing: $block-spacing * 0.5 !default;
       &:not(:last-child) {
         margin-bottom: 0;
 
-        @include ltr-property("margin", $level-item-spacing);
+        @include ltr-property("margin", getVar("level-item-spacing"));
       }
 
       &:not(.is-narrow) {
@@ -71,7 +69,7 @@ $level-item-spacing: $block-spacing * 0.5 !default;
   // Responsiveness
   @include mobile {
     &:not(:last-child) {
-      margin-bottom: $level-item-spacing;
+      margin-bottom: getVar("level-item-spacing");
     }
   }
 }
@@ -91,7 +89,7 @@ $level-item-spacing: $block-spacing * 0.5 !default;
     // Responsiveness
     @include tablet {
       &:not(:last-child) {
-        @include ltr-property("margin", $level-item-spacing);
+        @include ltr-property("margin", getVar("level-item-spacing"));
       }
     }
   }
