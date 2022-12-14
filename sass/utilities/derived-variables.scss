@@ -1,5 +1,6 @@
 @import "initial-variables";
 @import "functions";
+@import "css-variables";
 
 $primary: $turquoise !default;
 
@@ -31,7 +32,7 @@ $info-dark: findDarkColor($info) !default;
 $success-invert: findColorInvert($success) !default;
 $success-light: findLightColor($success) !default;
 $success-dark: findDarkColor($success) !default;
-$warning-invert: findColorInvert($warning) !default;
+$warning-invert: #{getVar("white")} !default;
 $warning-light: findLightColor($warning) !default;
 $warning-dark: findDarkColor($warning) !default;
 $danger-invert: findColorInvert($danger) !default;
@@ -42,51 +43,49 @@ $dark-invert: findColorInvert($dark) !default;
 
 // General colors
 
-$scheme-main: $white !default;
-$scheme-main-bis: $white-bis !default;
-$scheme-main-ter: $white-ter !default;
-$scheme-invert: $black !default;
-$scheme-invert-bis: $black-bis !default;
-$scheme-invert-ter: $black-ter !default;
+$scheme-main: #{getVar("white")} !default;
+$scheme-main-bis: #{getVar("white-bis")} !default;
+$scheme-main-ter: #{getVar("white-ter")} !default;
+$scheme-invert: #{getVar("text-00")} !default;
+$scheme-invert-bis: #{getVar("text-05")} !default;
+$scheme-invert-ter: #{getVar("text-10")} !default;
 
-$background: $white-ter !default;
+$background: #{getVar("text-90")} !default;
 
-$border: $grey-lighter !default;
-$border-hover: $grey-light !default;
-$border-light: $grey-lightest !default;
-$border-light-hover: $grey-light !default;
+$border: #{getVar("text-85")} !default;
+$border-hover: #{getVar("text-80")} !default;
+$border-light: #{getVar("text-90")} !default;
+$border-light-hover: #{getVar("text-85")} !default;
 
 // Text colors
 
-$text: $grey-dark !default;
-$text-invert: findColorInvert($text) !default;
-$text-light: $grey !default;
-$text-strong: $grey-darker !default;
+$text: #{getVar("text-25")} !default;
+$text-invert: #{getVar("white")} !default;
+$text-light: #{getVar("text-55")} !default;
+$text-strong: #{getVar("text-10")} !default;
 
 // Code colors
 
-$code: darken($red, 15%) !default;
-$code-background: $background !default;
+$code: #{getVar("danger-60")} !default;
+$code-background: #{getVar("text-90")} !default;
 
-$pre: $text !default;
-$pre-background: $background !default;
+$pre: #{getVar("text-40")} !default;
+$pre-background: #{getVar("text-90")} !default;
 
 // Link colors
 
 $link: $blue !default;
 $link-invert: findColorInvert($link) !default;
-$link-light: findLightColor($link) !default;
-$link-dark: findDarkColor($link) !default;
 $link-visited: $purple !default;
 
-$link-hover: $grey-darker !default;
-$link-hover-border: $grey-light !default;
+$link-hover: #{getVar("text-20")} !default;
+$link-hover-border: #{getVar("text-70")} !default;
 
-$link-focus: $grey-darker !default;
-$link-focus-border: $blue !default;
+$link-focus: #{getVar("text-20")} !default;
+$link-focus-border: #{getVar("link")} !default;
 
-$link-active: $grey-darker !default;
-$link-active-border: $grey-dark !default;
+$link-active: #{getVar("text-20")} !default;
+$link-active-border: #{getVar("text-30")} !default;
 
 // Typography
 
@@ -101,8 +100,9 @@ $size-large: $size-4 !default;
 
 // Effects
 
-$shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1),
-  0 0px 0 1px rgba($scheme-invert, 0.02) !default;
+$shadow-color: $black !default;
+$shadow: 0 0.5em 1em -0.125em rgba(var(--bulma-shadow-color-rgb), 0.1),
+  0 0px 0 1px rgba(var(--bulma-shadow-color-rgb), 0.02) !default;
 
 // Lists and maps
 $custom-colors: null !default;
@@ -135,8 +135,6 @@ $colors: mergeColorMaps(
     "link": (
       $link,
       $link-invert,
-      $link-light,
-      $link-dark
     ),
     "info": (
       $info,
@@ -161,6 +159,10 @@ $colors: mergeColorMaps(
       $danger-invert,
       $danger-light,
       $danger-dark
+    ),
+    "text": (
+      hsl(221, 14%, 29%),
+      #fff
     )
   ),
   $custom-colors

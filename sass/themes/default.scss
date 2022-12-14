@@ -1,6 +1,31 @@
 :root {
   @include register-vars(
     (
+      scheme-main: #{$scheme-main},
+      scheme-main-bis: #{$scheme-main-bis},
+      scheme-main-ter: #{$scheme-main-ter},
+      scheme-invert: #{$scheme-invert},
+      scheme-invert-bis: #{$scheme-invert-bis},
+      scheme-invert-ter: #{$scheme-invert-ter},
+      text: #{$text},
+      text-invert: #{$text-invert},
+      text-light: #{$text-light},
+      text-strong: #{$text-strong},
+      background: #{$background},
+      border: #{$border},
+      border-hover: #{$border-hover},
+      border-light: #{$border-light},
+      border-light-hover: #{$border-light-hover},
+      code: #{$code},
+      code-background: #{$code-background},
+      pre: #{$pre},
+      pre-background: #{$pre-background},
+      link-hover: #{$link-hover},
+      link-hover-border: #{$link-hover-border},
+      link-focus: #{$link-focus},
+      link-focus-border: #{$link-focus-border},
+      link-active: #{$link-active},
+      link-active-border: #{$link-active-border},
       family-sans-serif: #{$family-sans-serif},
       family-monospace: #{$family-monospace},
       size-1: #{$size-1},
@@ -23,35 +48,6 @@
       radius-large: #{$radius-large},
       radius-rounded: #{$radius-rounded},
       speed: #{$speed},
-
-      scheme-main: #{$white},
-      scheme-main-bis: #{$white-bis},
-      scheme-main-ter: #{$white-ter},
-      scheme-invert: #{$black},
-      scheme-invert-bis: #{$black-bis},
-      scheme-invert-ter: #{$black-ter},
-      background: #{$background},
-      border: #{$border},
-      border-hover: #{$border-hover},
-      border-light: #{$border-light},
-      border-light-hover: #{$border-light-hover},
-      text: #{$text},
-      text-invert: #{$text-invert},
-      text-light: #{$text-light},
-      text-strong: #{$text-strong},
-      code: #{$code},
-      code-background: #{$code-background},
-      pre: #{$pre},
-      pre-background: #{$pre-background},
-      link-light: #{$link-light},
-      link-dark: #{$link-dark},
-      link-visited: #{$link-visited},
-      link-hover: #{$link-hover},
-      link-hover-border: #{$link-hover-border},
-      link-focus: #{$link-focus},
-      link-focus-border: #{$link-focus-border},
-      link-active: #{$link-active},
-      link-active-border: #{$link-active-border},
       family-primary: #{$family-primary},
       family-secondary: #{$family-secondary},
       family-code: #{$family-code},
@@ -62,6 +58,8 @@
       shadow: #{$shadow},
     )
   );
+
+  @include register-rgb("shadow-color", $shadow-color);
 
   @each $name, $pair in $colors {
     $base: nth($pair, 1);
@@ -75,4 +73,39 @@
   @each $name, $shade in $shades {
     @include register-var($name, $shade);
   }
+
+  /*@include register-vars(
+    (
+      scheme-main: #{getVar("white")},
+      scheme-main-bis: #{getVar("white-bis")},
+      scheme-main-ter: #{getVar("white-ter")},
+      scheme-invert: #{getVar("text-00")},
+      scheme-invert-bis: #{getVar("text-05")},
+      scheme-invert-ter: #{getVar("text-10")},
+
+      text: #{getVar("text-25")},
+      text-invert: #{getVar("white")},
+      text-light: #{getVar("text-55")},
+      text-strong: #{getVar("text-10")},
+
+      background: #{getVar("text-90")},
+      border: #{getVar("text-85")},
+      border-hover: #{getVar("text-80")},
+      border-light: #{getVar("text-90")},
+      border-light-hover: #{getVar("text-85")},
+
+      code: #{getVar("danger-60")},
+      code-background: #{getVar("text-90")},
+      pre: #{getVar("text-40")},
+      pre-background: #{getVar("text-90")},
+
+      link-visited: #{$link-visited},
+      link-hover: #{$link-hover},
+      link-hover-border: #{$link-hover-border},
+      link-focus: #{$link-focus},
+      link-focus-border: #{$link-focus-border},
+      link-active: #{$link-active},
+      link-active-border: #{$link-active-border},
+    )
+  );*/
 }

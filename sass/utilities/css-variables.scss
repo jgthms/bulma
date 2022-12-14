@@ -1,11 +1,15 @@
 @function buildVarName($name, $prefix: "", $suffix: "") {
-  @debug $cssvars-prefix;
   @return "--#{$cssvars-prefix}#{$prefix}#{$name}#{$suffix}";
 }
 
 @function getVar($name, $prefix: "", $suffix: "") {
   $varName: buildVarName($name, $prefix, $suffix);
   @return var(#{$varName});
+}
+
+@function getRgbaVar($name, $alpha, $prefix: "", $suffix: "") {
+  $varName: buildVarName($name, $prefix, $suffix);
+  @return unquote("rgba(var(#{$varName}), #{$alpha})");
 }
 
 @mixin register-var($name, $value, $prefix: "", $suffix: "") {
@@ -74,4 +78,23 @@
   }
 
   @include register-var($name, $invert, "", "-invert");
+}
+
+@mixin bulma-theme($name, $scope: "") {
+  @if ($scope == "parent") {
+    [data-#{$class-prefix}theme="#{$name}"] &,
+    .#{$class-prefix}theme-#{$name} & {
+      @content;
+    }
+  } @else if ($scope == "self") {
+    &[data-#{$class-prefix}theme="#{$name}"],
+    &.#{$class-prefix}theme-#{$name} {
+      @content;
+    }
+  } @else {
+    [data-#{$class-prefix}theme="#{$name}"],
+    .#{$class-prefix}theme-#{$name} {
+      @content;
+    }
+  }
 }
