@@ -1,6 +1,16 @@
 @charset "UTF-8";
 /*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
+:root {
+  --bulma-control-radius: var(--bulma-radius);
+  --bulma-control-radius-small: var(--bulma-radius-small);
+  --bulma-control-border-width: 1px;
+  --bulma-control-height: 2.5em;
+  --bulma-control-line-height: 1.5;
+  --bulma-control-padding-vertical: calc( 0.5em - var(--bulma-control-border-width));
+  --bulma-control-padding-horizontal: calc( 0.75em - var(--bulma-control-border-width));
+}
+
 .button, .input, .textarea, .select select, .file-cta,
 .file-name, .pagination-previous,
 .pagination-next,
@@ -9,18 +19,20 @@
   -moz-appearance: none;
   -webkit-appearance: none;
   align-items: center;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  border-color: transparent;
+  border-radius: var(--bulma-control-radius);
+  border-style: solid;
+  border-width: var(--bulma-control-border-width);
   box-shadow: none;
   display: inline-flex;
-  font-size: 1rem;
-  height: 2.5em;
+  font-size: var(--bulma-size-normal);
+  height: var(--bulma-control-height);
   justify-content: flex-start;
-  line-height: 1.5;
-  padding-bottom: calc(0.5em - 1px);
-  padding-left: calc(0.75em - 1px);
-  padding-right: calc(0.75em - 1px);
-  padding-top: calc(0.5em - 1px);
+  line-height: var(--bulma-control-line-height);
+  padding-bottom: var(--bulma-control-padding-vertical);
+  padding-left: var(--bulma-control-padding-horizontal);
+  padding-right: var(--bulma-control-padding-horizontal);
+  padding-top: var(--bulma-control-padding-vertical);
   position: relative;
   vertical-align: top;
 }
@@ -105,7 +117,7 @@ fieldset[disabled] .pagination-ellipsis {
   user-select: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.2);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.2);
   border: none;
   border-radius: 9999px;
   cursor: pointer;
@@ -147,11 +159,11 @@ fieldset[disabled] .pagination-ellipsis {
 }
 
 .delete:hover, .modal-close:hover, .delete:focus, .modal-close:focus {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.3);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.3);
 }
 
 .delete:active, .modal-close:active {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.4);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.4);
 }
 
 .is-small.delete, .is-small.modal-close {
@@ -514,11 +526,21 @@ a.box:active {
 }
 
 :root {
+  --bulma-control-radius: var(--bulma-radius);
+  --bulma-control-radius-small: var(--bulma-radius-small);
+  --bulma-control-border-width: 1px;
+  --bulma-control-height: 2.5em;
+  --bulma-control-line-height: 1.5;
+  --bulma-control-padding-vertical: calc( 0.5em - var(--bulma-control-border-width));
+  --bulma-control-padding-horizontal: calc( 0.75em - var(--bulma-control-border-width));
+}
+
+:root {
   --bulma-button-color: var(--bulma-text-strong);
   --bulma-button-background-color: var(--bulma-scheme-main);
   --bulma-button-family: false;
   --bulma-button-border-color: var(--bulma-border);
-  --bulma-button-border-width: 1px;
+  --bulma-button-border-width: var(--bulma-control-border-width);
   --bulma-button-padding-vertical: calc( 0.5em - var(--bulma-button-border-width));
   --bulma-button-padding-horizontal: 1em;
   --bulma-button-hover-color: var(--bulma-link-hover);
@@ -546,6 +568,14 @@ a.box:active {
   --bulma-button-static-color: var(--bulma-text-light);
   --bulma-button-static-background-color: var(--bulma-scheme-main-ter);
   --bulma-button-static-border-color: var(--bulma-border);
+  --bulma-button-hover-s: 10%;
+  --bulma-button-hover-l: -10%;
+  --bulma-button-active-s: 20%;
+  --bulma-button-active-l: -20%;
+  --bulma-dark-shade: 20;
+  --bulma-dark-invert-shade: 90;
+  --bulma-light-shade: 90;
+  --bulma-light-invert-shade: 50;
 }
 
 .button {
@@ -592,12 +622,12 @@ a.box:active {
   color: var(--bulma-button-hover-color);
 }
 
-.button:focus, .button.is-focused {
+.button:focus-visible, .button.is-focused {
   border-color: var(--bulma-button-focus-border-color);
   color: var(--bulma-button-focus-color);
 }
 
-.button:focus:not(:active), .button.is-focused:not(:active) {
+.button:focus-visible:not(:active), .button.is-focused:not(:active) {
   box-shadow: var(--bulma-button-focus-box-shadow-size) var(--bulma-button-focus-box-shadow-color);
 }
 
@@ -613,7 +643,7 @@ a.box:active {
   text-decoration: var(--bulma-button-text-decoration);
 }
 
-.button.is-text:hover, .button.is-text.is-hovered, .button.is-text:focus, .button.is-text.is-focused {
+.button.is-text:hover, .button.is-text.is-hovered, .button.is-text:focus-visible, .button.is-text.is-focused {
   background-color: var(--bulma-button-text-hover-background-color);
   color: var(--bulma-button-text-hover-color);
 }
@@ -642,1254 +672,1356 @@ fieldset[disabled] .button.is-text {
 }
 
 .button.is-white {
-  background-color: white;
+  --base-s: var(--bulma-white-s);
+  --base-l: var(--bulma-white-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #0a0a0a;
+  color: var(--bulma-white-invert);
 }
 
 .button.is-white:hover, .button.is-white.is-hovered {
-  background-color: #f9f9f9;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #0a0a0a;
+  color: var(--bulma-white-invert);
 }
 
-.button.is-white:focus, .button.is-white.is-focused {
+.button.is-white:focus-visible, .button.is-white.is-focused {
   border-color: transparent;
-  color: #0a0a0a;
+  color: var(--bulma-white-invert);
 }
 
-.button.is-white:focus:not(:active), .button.is-white.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(255, 255, 255, 0.25);
+.button.is-white:focus-visible:not(:active), .button.is-white.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-white-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-white:active, .button.is-white.is-active {
-  background-color: #f2f2f2;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #0a0a0a;
+  color: var(--bulma-white-invert);
 }
 
 .button.is-white[disabled],
 fieldset[disabled] .button.is-white {
-  background-color: white;
-  border-color: white;
+  background-color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-white.is-inverted {
-  background-color: #0a0a0a;
-  color: white;
-}
-
-.button.is-white.is-inverted:hover, .button.is-white.is-inverted.is-hovered {
-  background-color: black;
+  background-color: var(--bulma-white-invert);
+  color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
 }
 
 .button.is-white.is-inverted[disabled],
 fieldset[disabled] .button.is-white.is-inverted {
-  background-color: #0a0a0a;
+  background-color: var(--bulma-white-invert);
   border-color: transparent;
   box-shadow: none;
-  color: white;
+  color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
 }
 
 .button.is-white.is-loading::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+  border-color: transparent transparent var(--bulma-white-invert) var(--bulma-white-invert) !important;
 }
 
 .button.is-white.is-outlined {
   background-color: transparent;
-  border-color: white;
-  color: white;
+  border-color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
 }
 
-.button.is-white.is-outlined:hover, .button.is-white.is-outlined.is-hovered, .button.is-white.is-outlined:focus, .button.is-white.is-outlined.is-focused {
-  background-color: white;
-  border-color: white;
-  color: #0a0a0a;
+.button.is-white.is-outlined:hover, .button.is-white.is-outlined.is-hovered, .button.is-white.is-outlined:focus-visible, .button.is-white.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
+  color: var(--bulma-white-invert);
 }
 
 .button.is-white.is-outlined.is-loading::after {
-  border-color: transparent transparent white white !important;
+  border-color: transparent transparent hsla(var(--bulma-white-h), var(--s), var(--l), 1) hsla(var(--bulma-white-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-white.is-outlined.is-loading:hover::after, .button.is-white.is-outlined.is-loading.is-hovered::after, .button.is-white.is-outlined.is-loading:focus::after, .button.is-white.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+.button.is-white.is-outlined.is-loading:hover::after, .button.is-white.is-outlined.is-loading.is-hovered::after, .button.is-white.is-outlined.is-loading:focus-visible::after, .button.is-white.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-white-invert) var(--bulma-white-invert) !important;
 }
 
 .button.is-white.is-outlined[disabled],
 fieldset[disabled] .button.is-white.is-outlined {
   background-color: transparent;
-  border-color: white;
+  border-color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: white;
+  color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
 }
 
 .button.is-white.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
-  color: #0a0a0a;
+  border-color: var(--bulma-white-invert);
+  color: var(--bulma-white-invert);
 }
 
-.button.is-white.is-inverted.is-outlined:hover, .button.is-white.is-inverted.is-outlined.is-hovered, .button.is-white.is-inverted.is-outlined:focus, .button.is-white.is-inverted.is-outlined.is-focused {
-  background-color: #0a0a0a;
-  color: white;
+.button.is-white.is-inverted.is-outlined:hover, .button.is-white.is-inverted.is-outlined.is-hovered, .button.is-white.is-inverted.is-outlined:focus-visible, .button.is-white.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-white-invert);
+  color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
 }
 
-.button.is-white.is-inverted.is-outlined.is-loading:hover::after, .button.is-white.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-white.is-inverted.is-outlined.is-loading:focus::after, .button.is-white.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent white white !important;
+.button.is-white.is-inverted.is-outlined.is-loading:hover::after, .button.is-white.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-white.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-white.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-white-h), var(--s), var(--l), 1) hsla(var(--bulma-white-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-white.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-white.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
+  border-color: var(--bulma-white-invert);
   box-shadow: none;
-  color: #0a0a0a;
+  color: var(--bulma-white-invert);
+}
+
+.button.is-white.is-light {
+  background-color: var(--bulma-white-90);
+  color: hsla(var(--bulma-white-h), var(--s), var(--l), 1);
+}
+
+.button.is-white.is-light:hover, .button.is-white.is-light.is-hovered {
+  background-color: var(--bulma-white-85);
+  border-color: transparent;
+}
+
+.button.is-white.is-light:active, .button.is-white.is-light.is-active {
+  background-color: var(--bulma-white-80);
+  border-color: transparent;
 }
 
 .button.is-black {
-  background-color: #0a0a0a;
+  --base-s: var(--bulma-black-s);
+  --base-l: var(--bulma-black-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: white;
+  color: var(--bulma-black-invert);
 }
 
 .button.is-black:hover, .button.is-black.is-hovered {
-  background-color: #040404;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: white;
+  color: var(--bulma-black-invert);
 }
 
-.button.is-black:focus, .button.is-black.is-focused {
+.button.is-black:focus-visible, .button.is-black.is-focused {
   border-color: transparent;
-  color: white;
+  color: var(--bulma-black-invert);
 }
 
-.button.is-black:focus:not(:active), .button.is-black.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(10, 10, 10, 0.25);
+.button.is-black:focus-visible:not(:active), .button.is-black.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-black-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-black:active, .button.is-black.is-active {
-  background-color: black;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: white;
+  color: var(--bulma-black-invert);
 }
 
 .button.is-black[disabled],
 fieldset[disabled] .button.is-black {
-  background-color: #0a0a0a;
-  border-color: #0a0a0a;
+  background-color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-black.is-inverted {
-  background-color: white;
-  color: #0a0a0a;
-}
-
-.button.is-black.is-inverted:hover, .button.is-black.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-black-invert);
+  color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
 }
 
 .button.is-black.is-inverted[disabled],
 fieldset[disabled] .button.is-black.is-inverted {
-  background-color: white;
+  background-color: var(--bulma-black-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #0a0a0a;
+  color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
 }
 
 .button.is-black.is-loading::after {
-  border-color: transparent transparent white white !important;
+  border-color: transparent transparent var(--bulma-black-invert) var(--bulma-black-invert) !important;
 }
 
 .button.is-black.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
-  color: #0a0a0a;
+  border-color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
 }
 
-.button.is-black.is-outlined:hover, .button.is-black.is-outlined.is-hovered, .button.is-black.is-outlined:focus, .button.is-black.is-outlined.is-focused {
-  background-color: #0a0a0a;
-  border-color: #0a0a0a;
-  color: white;
+.button.is-black.is-outlined:hover, .button.is-black.is-outlined.is-hovered, .button.is-black.is-outlined:focus-visible, .button.is-black.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
+  color: var(--bulma-black-invert);
 }
 
 .button.is-black.is-outlined.is-loading::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+  border-color: transparent transparent hsla(var(--bulma-black-h), var(--s), var(--l), 1) hsla(var(--bulma-black-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-black.is-outlined.is-loading:hover::after, .button.is-black.is-outlined.is-loading.is-hovered::after, .button.is-black.is-outlined.is-loading:focus::after, .button.is-black.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent white white !important;
+.button.is-black.is-outlined.is-loading:hover::after, .button.is-black.is-outlined.is-loading.is-hovered::after, .button.is-black.is-outlined.is-loading:focus-visible::after, .button.is-black.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-black-invert) var(--bulma-black-invert) !important;
 }
 
 .button.is-black.is-outlined[disabled],
 fieldset[disabled] .button.is-black.is-outlined {
   background-color: transparent;
-  border-color: #0a0a0a;
+  border-color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #0a0a0a;
+  color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
 }
 
 .button.is-black.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: white;
-  color: white;
+  border-color: var(--bulma-black-invert);
+  color: var(--bulma-black-invert);
 }
 
-.button.is-black.is-inverted.is-outlined:hover, .button.is-black.is-inverted.is-outlined.is-hovered, .button.is-black.is-inverted.is-outlined:focus, .button.is-black.is-inverted.is-outlined.is-focused {
-  background-color: white;
-  color: #0a0a0a;
+.button.is-black.is-inverted.is-outlined:hover, .button.is-black.is-inverted.is-outlined.is-hovered, .button.is-black.is-inverted.is-outlined:focus-visible, .button.is-black.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-black-invert);
+  color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
 }
 
-.button.is-black.is-inverted.is-outlined.is-loading:hover::after, .button.is-black.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-black.is-inverted.is-outlined.is-loading:focus::after, .button.is-black.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #0a0a0a #0a0a0a !important;
+.button.is-black.is-inverted.is-outlined.is-loading:hover::after, .button.is-black.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-black.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-black.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-black-h), var(--s), var(--l), 1) hsla(var(--bulma-black-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-black.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-black.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: white;
+  border-color: var(--bulma-black-invert);
   box-shadow: none;
-  color: white;
+  color: var(--bulma-black-invert);
+}
+
+.button.is-black.is-light {
+  background-color: var(--bulma-black-90);
+  color: hsla(var(--bulma-black-h), var(--s), var(--l), 1);
+}
+
+.button.is-black.is-light:hover, .button.is-black.is-light.is-hovered {
+  background-color: var(--bulma-black-85);
+  border-color: transparent;
+}
+
+.button.is-black.is-light:active, .button.is-black.is-light.is-active {
+  background-color: var(--bulma-black-80);
+  border-color: transparent;
 }
 
 .button.is-light {
-  background-color: whitesmoke;
+  --base-s: var(--bulma-light-s);
+  --base-l: var(--bulma-light-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--bulma-light-invert);
 }
 
 .button.is-light:hover, .button.is-light.is-hovered {
-  background-color: #eeeeee;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--bulma-light-invert);
 }
 
-.button.is-light:focus, .button.is-light.is-focused {
+.button.is-light:focus-visible, .button.is-light.is-focused {
   border-color: transparent;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--bulma-light-invert);
 }
 
-.button.is-light:focus:not(:active), .button.is-light.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(245, 245, 245, 0.25);
+.button.is-light:focus-visible:not(:active), .button.is-light.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-light-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-light:active, .button.is-light.is-active {
-  background-color: #e8e8e8;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--bulma-light-invert);
 }
 
 .button.is-light[disabled],
 fieldset[disabled] .button.is-light {
-  background-color: whitesmoke;
-  border-color: whitesmoke;
+  background-color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-light.is-inverted {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: whitesmoke;
-}
-
-.button.is-light.is-inverted:hover, .button.is-light.is-inverted.is-hovered {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--bulma-light-invert);
+  color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
 }
 
 .button.is-light.is-inverted[disabled],
 fieldset[disabled] .button.is-light.is-inverted {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--bulma-light-invert);
   border-color: transparent;
   box-shadow: none;
-  color: whitesmoke;
+  color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
 }
 
 .button.is-light.is-loading::after {
-  border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
+  border-color: transparent transparent var(--bulma-light-invert) var(--bulma-light-invert) !important;
 }
 
 .button.is-light.is-outlined {
   background-color: transparent;
-  border-color: whitesmoke;
-  color: whitesmoke;
+  border-color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
 }
 
-.button.is-light.is-outlined:hover, .button.is-light.is-outlined.is-hovered, .button.is-light.is-outlined:focus, .button.is-light.is-outlined.is-focused {
-  background-color: whitesmoke;
-  border-color: whitesmoke;
-  color: rgba(0, 0, 0, 0.7);
+.button.is-light.is-outlined:hover, .button.is-light.is-outlined.is-hovered, .button.is-light.is-outlined:focus-visible, .button.is-light.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
+  color: var(--bulma-light-invert);
 }
 
 .button.is-light.is-outlined.is-loading::after {
-  border-color: transparent transparent whitesmoke whitesmoke !important;
+  border-color: transparent transparent hsla(var(--bulma-light-h), var(--s), var(--l), 1) hsla(var(--bulma-light-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-light.is-outlined.is-loading:hover::after, .button.is-light.is-outlined.is-loading.is-hovered::after, .button.is-light.is-outlined.is-loading:focus::after, .button.is-light.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.7) !important;
+.button.is-light.is-outlined.is-loading:hover::after, .button.is-light.is-outlined.is-loading.is-hovered::after, .button.is-light.is-outlined.is-loading:focus-visible::after, .button.is-light.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-light-invert) var(--bulma-light-invert) !important;
 }
 
 .button.is-light.is-outlined[disabled],
 fieldset[disabled] .button.is-light.is-outlined {
   background-color: transparent;
-  border-color: whitesmoke;
+  border-color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: whitesmoke;
+  color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
 }
 
 .button.is-light.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: rgba(0, 0, 0, 0.7);
-  color: rgba(0, 0, 0, 0.7);
+  border-color: var(--bulma-light-invert);
+  color: var(--bulma-light-invert);
 }
 
-.button.is-light.is-inverted.is-outlined:hover, .button.is-light.is-inverted.is-outlined.is-hovered, .button.is-light.is-inverted.is-outlined:focus, .button.is-light.is-inverted.is-outlined.is-focused {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: whitesmoke;
+.button.is-light.is-inverted.is-outlined:hover, .button.is-light.is-inverted.is-outlined.is-hovered, .button.is-light.is-inverted.is-outlined:focus-visible, .button.is-light.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-light-invert);
+  color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
 }
 
-.button.is-light.is-inverted.is-outlined.is-loading:hover::after, .button.is-light.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-light.is-inverted.is-outlined.is-loading:focus::after, .button.is-light.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent whitesmoke whitesmoke !important;
+.button.is-light.is-inverted.is-outlined.is-loading:hover::after, .button.is-light.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-light.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-light.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-light-h), var(--s), var(--l), 1) hsla(var(--bulma-light-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-light.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-light.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: rgba(0, 0, 0, 0.7);
+  border-color: var(--bulma-light-invert);
   box-shadow: none;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--bulma-light-invert);
+}
+
+.button.is-light.is-light {
+  background-color: var(--bulma-light-90);
+  color: hsla(var(--bulma-light-h), var(--s), var(--l), 1);
+}
+
+.button.is-light.is-light:hover, .button.is-light.is-light.is-hovered {
+  background-color: var(--bulma-light-85);
+  border-color: transparent;
+}
+
+.button.is-light.is-light:active, .button.is-light.is-light.is-active {
+  background-color: var(--bulma-light-80);
+  border-color: transparent;
 }
 
 .button.is-dark {
-  background-color: #363636;
+  --base-s: var(--bulma-dark-s);
+  --base-l: var(--bulma-dark-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-dark-invert);
 }
 
 .button.is-dark:hover, .button.is-dark.is-hovered {
-  background-color: #2f2f2f;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-dark-invert);
 }
 
-.button.is-dark:focus, .button.is-dark.is-focused {
+.button.is-dark:focus-visible, .button.is-dark.is-focused {
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-dark-invert);
 }
 
-.button.is-dark:focus:not(:active), .button.is-dark.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(54, 54, 54, 0.25);
+.button.is-dark:focus-visible:not(:active), .button.is-dark.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-dark-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-dark:active, .button.is-dark.is-active {
-  background-color: #292929;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-dark-invert);
 }
 
 .button.is-dark[disabled],
 fieldset[disabled] .button.is-dark {
-  background-color: #363636;
-  border-color: #363636;
+  background-color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-dark.is-inverted {
-  background-color: #fff;
-  color: #363636;
-}
-
-.button.is-dark.is-inverted:hover, .button.is-dark.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-dark-invert);
+  color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
 }
 
 .button.is-dark.is-inverted[disabled],
 fieldset[disabled] .button.is-dark.is-inverted {
-  background-color: #fff;
+  background-color: var(--bulma-dark-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #363636;
+  color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
 }
 
 .button.is-dark.is-loading::after {
-  border-color: transparent transparent #fff #fff !important;
+  border-color: transparent transparent var(--bulma-dark-invert) var(--bulma-dark-invert) !important;
 }
 
 .button.is-dark.is-outlined {
   background-color: transparent;
-  border-color: #363636;
-  color: #363636;
+  border-color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
 }
 
-.button.is-dark.is-outlined:hover, .button.is-dark.is-outlined.is-hovered, .button.is-dark.is-outlined:focus, .button.is-dark.is-outlined.is-focused {
-  background-color: #363636;
-  border-color: #363636;
-  color: #fff;
+.button.is-dark.is-outlined:hover, .button.is-dark.is-outlined.is-hovered, .button.is-dark.is-outlined:focus-visible, .button.is-dark.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
+  color: var(--bulma-dark-invert);
 }
 
 .button.is-dark.is-outlined.is-loading::after {
-  border-color: transparent transparent #363636 #363636 !important;
+  border-color: transparent transparent hsla(var(--bulma-dark-h), var(--s), var(--l), 1) hsla(var(--bulma-dark-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-dark.is-outlined.is-loading:hover::after, .button.is-dark.is-outlined.is-loading.is-hovered::after, .button.is-dark.is-outlined.is-loading:focus::after, .button.is-dark.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #fff #fff !important;
+.button.is-dark.is-outlined.is-loading:hover::after, .button.is-dark.is-outlined.is-loading.is-hovered::after, .button.is-dark.is-outlined.is-loading:focus-visible::after, .button.is-dark.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-dark-invert) var(--bulma-dark-invert) !important;
 }
 
 .button.is-dark.is-outlined[disabled],
 fieldset[disabled] .button.is-dark.is-outlined {
   background-color: transparent;
-  border-color: #363636;
+  border-color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #363636;
+  color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
 }
 
 .button.is-dark.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--bulma-dark-invert);
+  color: var(--bulma-dark-invert);
 }
 
-.button.is-dark.is-inverted.is-outlined:hover, .button.is-dark.is-inverted.is-outlined.is-hovered, .button.is-dark.is-inverted.is-outlined:focus, .button.is-dark.is-inverted.is-outlined.is-focused {
-  background-color: #fff;
-  color: #363636;
+.button.is-dark.is-inverted.is-outlined:hover, .button.is-dark.is-inverted.is-outlined.is-hovered, .button.is-dark.is-inverted.is-outlined:focus-visible, .button.is-dark.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-dark-invert);
+  color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
 }
 
-.button.is-dark.is-inverted.is-outlined.is-loading:hover::after, .button.is-dark.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-dark.is-inverted.is-outlined.is-loading:focus::after, .button.is-dark.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #363636 #363636 !important;
+.button.is-dark.is-inverted.is-outlined.is-loading:hover::after, .button.is-dark.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-dark.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-dark.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-dark-h), var(--s), var(--l), 1) hsla(var(--bulma-dark-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-dark.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--bulma-dark-invert);
   box-shadow: none;
-  color: #fff;
+  color: var(--bulma-dark-invert);
+}
+
+.button.is-dark.is-light {
+  background-color: var(--bulma-dark-90);
+  color: hsla(var(--bulma-dark-h), var(--s), var(--l), 1);
+}
+
+.button.is-dark.is-light:hover, .button.is-dark.is-light.is-hovered {
+  background-color: var(--bulma-dark-85);
+  border-color: transparent;
+}
+
+.button.is-dark.is-light:active, .button.is-dark.is-light.is-active {
+  background-color: var(--bulma-dark-80);
+  border-color: transparent;
 }
 
 .button.is-primary {
-  background-color: #00d1b2;
+  --base-s: var(--bulma-primary-s);
+  --base-l: var(--bulma-primary-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-primary-invert);
 }
 
 .button.is-primary:hover, .button.is-primary.is-hovered {
-  background-color: #00c4a7;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-primary-invert);
 }
 
-.button.is-primary:focus, .button.is-primary.is-focused {
+.button.is-primary:focus-visible, .button.is-primary.is-focused {
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-primary-invert);
 }
 
-.button.is-primary:focus:not(:active), .button.is-primary.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(0, 209, 178, 0.25);
+.button.is-primary:focus-visible:not(:active), .button.is-primary.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-primary-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-primary:active, .button.is-primary.is-active {
-  background-color: #00b89c;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-primary-invert);
 }
 
 .button.is-primary[disabled],
 fieldset[disabled] .button.is-primary {
-  background-color: #00d1b2;
-  border-color: #00d1b2;
+  background-color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-primary.is-inverted {
-  background-color: #fff;
-  color: #00d1b2;
-}
-
-.button.is-primary.is-inverted:hover, .button.is-primary.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-primary-invert);
+  color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
 }
 
 .button.is-primary.is-inverted[disabled],
 fieldset[disabled] .button.is-primary.is-inverted {
-  background-color: #fff;
+  background-color: var(--bulma-primary-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #00d1b2;
+  color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
 }
 
 .button.is-primary.is-loading::after {
-  border-color: transparent transparent #fff #fff !important;
+  border-color: transparent transparent var(--bulma-primary-invert) var(--bulma-primary-invert) !important;
 }
 
 .button.is-primary.is-outlined {
   background-color: transparent;
-  border-color: #00d1b2;
-  color: #00d1b2;
+  border-color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
 }
 
-.button.is-primary.is-outlined:hover, .button.is-primary.is-outlined.is-hovered, .button.is-primary.is-outlined:focus, .button.is-primary.is-outlined.is-focused {
-  background-color: #00d1b2;
-  border-color: #00d1b2;
-  color: #fff;
+.button.is-primary.is-outlined:hover, .button.is-primary.is-outlined.is-hovered, .button.is-primary.is-outlined:focus-visible, .button.is-primary.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
+  color: var(--bulma-primary-invert);
 }
 
 .button.is-primary.is-outlined.is-loading::after {
-  border-color: transparent transparent #00d1b2 #00d1b2 !important;
+  border-color: transparent transparent hsla(var(--bulma-primary-h), var(--s), var(--l), 1) hsla(var(--bulma-primary-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-primary.is-outlined.is-loading:hover::after, .button.is-primary.is-outlined.is-loading.is-hovered::after, .button.is-primary.is-outlined.is-loading:focus::after, .button.is-primary.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #fff #fff !important;
+.button.is-primary.is-outlined.is-loading:hover::after, .button.is-primary.is-outlined.is-loading.is-hovered::after, .button.is-primary.is-outlined.is-loading:focus-visible::after, .button.is-primary.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-primary-invert) var(--bulma-primary-invert) !important;
 }
 
 .button.is-primary.is-outlined[disabled],
 fieldset[disabled] .button.is-primary.is-outlined {
   background-color: transparent;
-  border-color: #00d1b2;
+  border-color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #00d1b2;
+  color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
 }
 
 .button.is-primary.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--bulma-primary-invert);
+  color: var(--bulma-primary-invert);
 }
 
-.button.is-primary.is-inverted.is-outlined:hover, .button.is-primary.is-inverted.is-outlined.is-hovered, .button.is-primary.is-inverted.is-outlined:focus, .button.is-primary.is-inverted.is-outlined.is-focused {
-  background-color: #fff;
-  color: #00d1b2;
+.button.is-primary.is-inverted.is-outlined:hover, .button.is-primary.is-inverted.is-outlined.is-hovered, .button.is-primary.is-inverted.is-outlined:focus-visible, .button.is-primary.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-primary-invert);
+  color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
 }
 
-.button.is-primary.is-inverted.is-outlined.is-loading:hover::after, .button.is-primary.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-primary.is-inverted.is-outlined.is-loading:focus::after, .button.is-primary.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #00d1b2 #00d1b2 !important;
+.button.is-primary.is-inverted.is-outlined.is-loading:hover::after, .button.is-primary.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-primary.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-primary.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-primary-h), var(--s), var(--l), 1) hsla(var(--bulma-primary-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-primary.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-primary.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--bulma-primary-invert);
   box-shadow: none;
-  color: #fff;
+  color: var(--bulma-primary-invert);
 }
 
 .button.is-primary.is-light {
-  background-color: #ebfffc;
-  color: #00947e;
+  background-color: var(--bulma-primary-90);
+  color: hsla(var(--bulma-primary-h), var(--s), var(--l), 1);
 }
 
 .button.is-primary.is-light:hover, .button.is-primary.is-light.is-hovered {
-  background-color: #defffa;
+  background-color: var(--bulma-primary-85);
   border-color: transparent;
-  color: #00947e;
 }
 
 .button.is-primary.is-light:active, .button.is-primary.is-light.is-active {
-  background-color: #d1fff8;
+  background-color: var(--bulma-primary-80);
   border-color: transparent;
-  color: #00947e;
 }
 
 .button.is-link {
-  background-color: #3c57d3;
+  --base-s: var(--bulma-link-s);
+  --base-l: var(--bulma-link-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-link-invert);
 }
 
 .button.is-link:hover, .button.is-link.is-hovered {
-  background-color: #314ed0;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-link-invert);
 }
 
-.button.is-link:focus, .button.is-link.is-focused {
+.button.is-link:focus-visible, .button.is-link.is-focused {
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-link-invert);
 }
 
-.button.is-link:focus:not(:active), .button.is-link.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(60, 87, 211, 0.25);
+.button.is-link:focus-visible:not(:active), .button.is-link.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-link-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-link:active, .button.is-link.is-active {
-  background-color: #2d4ac8;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-link-invert);
 }
 
 .button.is-link[disabled],
 fieldset[disabled] .button.is-link {
-  background-color: #3c57d3;
-  border-color: #3c57d3;
+  background-color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-link.is-inverted {
-  background-color: #fff;
-  color: #3c57d3;
-}
-
-.button.is-link.is-inverted:hover, .button.is-link.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-link-invert);
+  color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
 }
 
 .button.is-link.is-inverted[disabled],
 fieldset[disabled] .button.is-link.is-inverted {
-  background-color: #fff;
+  background-color: var(--bulma-link-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #3c57d3;
+  color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
 }
 
 .button.is-link.is-loading::after {
-  border-color: transparent transparent #fff #fff !important;
+  border-color: transparent transparent var(--bulma-link-invert) var(--bulma-link-invert) !important;
 }
 
 .button.is-link.is-outlined {
   background-color: transparent;
-  border-color: #3c57d3;
-  color: #3c57d3;
+  border-color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
 }
 
-.button.is-link.is-outlined:hover, .button.is-link.is-outlined.is-hovered, .button.is-link.is-outlined:focus, .button.is-link.is-outlined.is-focused {
-  background-color: #3c57d3;
-  border-color: #3c57d3;
-  color: #fff;
+.button.is-link.is-outlined:hover, .button.is-link.is-outlined.is-hovered, .button.is-link.is-outlined:focus-visible, .button.is-link.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
+  color: var(--bulma-link-invert);
 }
 
 .button.is-link.is-outlined.is-loading::after {
-  border-color: transparent transparent #3c57d3 #3c57d3 !important;
+  border-color: transparent transparent hsla(var(--bulma-link-h), var(--s), var(--l), 1) hsla(var(--bulma-link-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-link.is-outlined.is-loading:hover::after, .button.is-link.is-outlined.is-loading.is-hovered::after, .button.is-link.is-outlined.is-loading:focus::after, .button.is-link.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #fff #fff !important;
+.button.is-link.is-outlined.is-loading:hover::after, .button.is-link.is-outlined.is-loading.is-hovered::after, .button.is-link.is-outlined.is-loading:focus-visible::after, .button.is-link.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-link-invert) var(--bulma-link-invert) !important;
 }
 
 .button.is-link.is-outlined[disabled],
 fieldset[disabled] .button.is-link.is-outlined {
   background-color: transparent;
-  border-color: #3c57d3;
+  border-color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #3c57d3;
+  color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
 }
 
 .button.is-link.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--bulma-link-invert);
+  color: var(--bulma-link-invert);
 }
 
-.button.is-link.is-inverted.is-outlined:hover, .button.is-link.is-inverted.is-outlined.is-hovered, .button.is-link.is-inverted.is-outlined:focus, .button.is-link.is-inverted.is-outlined.is-focused {
-  background-color: #fff;
-  color: #3c57d3;
+.button.is-link.is-inverted.is-outlined:hover, .button.is-link.is-inverted.is-outlined.is-hovered, .button.is-link.is-inverted.is-outlined:focus-visible, .button.is-link.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-link-invert);
+  color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
 }
 
-.button.is-link.is-inverted.is-outlined.is-loading:hover::after, .button.is-link.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-link.is-inverted.is-outlined.is-loading:focus::after, .button.is-link.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #3c57d3 #3c57d3 !important;
+.button.is-link.is-inverted.is-outlined.is-loading:hover::after, .button.is-link.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-link.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-link.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-link-h), var(--s), var(--l), 1) hsla(var(--bulma-link-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-link.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-link.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--bulma-link-invert);
   box-shadow: none;
-  color: #fff;
+  color: var(--bulma-link-invert);
+}
+
+.button.is-link.is-light {
+  background-color: var(--bulma-link-90);
+  color: hsla(var(--bulma-link-h), var(--s), var(--l), 1);
+}
+
+.button.is-link.is-light:hover, .button.is-link.is-light.is-hovered {
+  background-color: var(--bulma-link-85);
+  border-color: transparent;
+}
+
+.button.is-link.is-light:active, .button.is-link.is-light.is-active {
+  background-color: var(--bulma-link-80);
+  border-color: transparent;
 }
 
 .button.is-info {
-  background-color: #18b4f7;
+  --base-s: var(--bulma-info-s);
+  --base-l: var(--bulma-info-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-info-invert);
 }
 
 .button.is-info:hover, .button.is-info.is-hovered {
-  background-color: #0bb0f6;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-info-invert);
 }
 
-.button.is-info:focus, .button.is-info.is-focused {
+.button.is-info:focus-visible, .button.is-info.is-focused {
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-info-invert);
 }
 
-.button.is-info:focus:not(:active), .button.is-info.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(24, 180, 247, 0.25);
+.button.is-info:focus-visible:not(:active), .button.is-info.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-info-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-info:active, .button.is-info.is-active {
-  background-color: #09a8ec;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-info-invert);
 }
 
 .button.is-info[disabled],
 fieldset[disabled] .button.is-info {
-  background-color: #18b4f7;
-  border-color: #18b4f7;
+  background-color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-info.is-inverted {
-  background-color: #fff;
-  color: #18b4f7;
-}
-
-.button.is-info.is-inverted:hover, .button.is-info.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-info-invert);
+  color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
 }
 
 .button.is-info.is-inverted[disabled],
 fieldset[disabled] .button.is-info.is-inverted {
-  background-color: #fff;
+  background-color: var(--bulma-info-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #18b4f7;
+  color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
 }
 
 .button.is-info.is-loading::after {
-  border-color: transparent transparent #fff #fff !important;
+  border-color: transparent transparent var(--bulma-info-invert) var(--bulma-info-invert) !important;
 }
 
 .button.is-info.is-outlined {
   background-color: transparent;
-  border-color: #18b4f7;
-  color: #18b4f7;
+  border-color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
 }
 
-.button.is-info.is-outlined:hover, .button.is-info.is-outlined.is-hovered, .button.is-info.is-outlined:focus, .button.is-info.is-outlined.is-focused {
-  background-color: #18b4f7;
-  border-color: #18b4f7;
-  color: #fff;
+.button.is-info.is-outlined:hover, .button.is-info.is-outlined.is-hovered, .button.is-info.is-outlined:focus-visible, .button.is-info.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
+  color: var(--bulma-info-invert);
 }
 
 .button.is-info.is-outlined.is-loading::after {
-  border-color: transparent transparent #18b4f7 #18b4f7 !important;
+  border-color: transparent transparent hsla(var(--bulma-info-h), var(--s), var(--l), 1) hsla(var(--bulma-info-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-info.is-outlined.is-loading:hover::after, .button.is-info.is-outlined.is-loading.is-hovered::after, .button.is-info.is-outlined.is-loading:focus::after, .button.is-info.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #fff #fff !important;
+.button.is-info.is-outlined.is-loading:hover::after, .button.is-info.is-outlined.is-loading.is-hovered::after, .button.is-info.is-outlined.is-loading:focus-visible::after, .button.is-info.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-info-invert) var(--bulma-info-invert) !important;
 }
 
 .button.is-info.is-outlined[disabled],
 fieldset[disabled] .button.is-info.is-outlined {
   background-color: transparent;
-  border-color: #18b4f7;
+  border-color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #18b4f7;
+  color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
 }
 
 .button.is-info.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--bulma-info-invert);
+  color: var(--bulma-info-invert);
 }
 
-.button.is-info.is-inverted.is-outlined:hover, .button.is-info.is-inverted.is-outlined.is-hovered, .button.is-info.is-inverted.is-outlined:focus, .button.is-info.is-inverted.is-outlined.is-focused {
-  background-color: #fff;
-  color: #18b4f7;
+.button.is-info.is-inverted.is-outlined:hover, .button.is-info.is-inverted.is-outlined.is-hovered, .button.is-info.is-inverted.is-outlined:focus-visible, .button.is-info.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-info-invert);
+  color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
 }
 
-.button.is-info.is-inverted.is-outlined.is-loading:hover::after, .button.is-info.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-info.is-inverted.is-outlined.is-loading:focus::after, .button.is-info.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #18b4f7 #18b4f7 !important;
+.button.is-info.is-inverted.is-outlined.is-loading:hover::after, .button.is-info.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-info.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-info.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-info-h), var(--s), var(--l), 1) hsla(var(--bulma-info-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-info.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-info.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--bulma-info-invert);
   box-shadow: none;
-  color: #fff;
+  color: var(--bulma-info-invert);
 }
 
 .button.is-info.is-light {
-  background-color: #ebf9fe;
-  color: #0677a7;
+  background-color: var(--bulma-info-90);
+  color: hsla(var(--bulma-info-h), var(--s), var(--l), 1);
 }
 
 .button.is-info.is-light:hover, .button.is-info.is-light.is-hovered {
-  background-color: #dff5fe;
+  background-color: var(--bulma-info-85);
   border-color: transparent;
-  color: #0677a7;
 }
 
 .button.is-info.is-light:active, .button.is-info.is-light.is-active {
-  background-color: #d3f1fd;
+  background-color: var(--bulma-info-80);
   border-color: transparent;
-  color: #0677a7;
 }
 
 .button.is-success {
-  background-color: #3fcf82;
+  --base-s: var(--bulma-success-s);
+  --base-l: var(--bulma-success-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-success-invert);
 }
 
 .button.is-success:hover, .button.is-success.is-hovered {
-  background-color: #35cd7c;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-success-invert);
 }
 
-.button.is-success:focus, .button.is-success.is-focused {
+.button.is-success:focus-visible, .button.is-success.is-focused {
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-success-invert);
 }
 
-.button.is-success:focus:not(:active), .button.is-success.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(63, 207, 130, 0.25);
+.button.is-success:focus-visible:not(:active), .button.is-success.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-success-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-success:active, .button.is-success.is-active {
-  background-color: #31c476;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-success-invert);
 }
 
 .button.is-success[disabled],
 fieldset[disabled] .button.is-success {
-  background-color: #3fcf82;
-  border-color: #3fcf82;
+  background-color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-success.is-inverted {
-  background-color: #fff;
-  color: #3fcf82;
-}
-
-.button.is-success.is-inverted:hover, .button.is-success.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-success-invert);
+  color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
 }
 
 .button.is-success.is-inverted[disabled],
 fieldset[disabled] .button.is-success.is-inverted {
-  background-color: #fff;
+  background-color: var(--bulma-success-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #3fcf82;
+  color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
 }
 
 .button.is-success.is-loading::after {
-  border-color: transparent transparent #fff #fff !important;
+  border-color: transparent transparent var(--bulma-success-invert) var(--bulma-success-invert) !important;
 }
 
 .button.is-success.is-outlined {
   background-color: transparent;
-  border-color: #3fcf82;
-  color: #3fcf82;
+  border-color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
 }
 
-.button.is-success.is-outlined:hover, .button.is-success.is-outlined.is-hovered, .button.is-success.is-outlined:focus, .button.is-success.is-outlined.is-focused {
-  background-color: #3fcf82;
-  border-color: #3fcf82;
-  color: #fff;
+.button.is-success.is-outlined:hover, .button.is-success.is-outlined.is-hovered, .button.is-success.is-outlined:focus-visible, .button.is-success.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
+  color: var(--bulma-success-invert);
 }
 
 .button.is-success.is-outlined.is-loading::after {
-  border-color: transparent transparent #3fcf82 #3fcf82 !important;
+  border-color: transparent transparent hsla(var(--bulma-success-h), var(--s), var(--l), 1) hsla(var(--bulma-success-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-success.is-outlined.is-loading:hover::after, .button.is-success.is-outlined.is-loading.is-hovered::after, .button.is-success.is-outlined.is-loading:focus::after, .button.is-success.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #fff #fff !important;
+.button.is-success.is-outlined.is-loading:hover::after, .button.is-success.is-outlined.is-loading.is-hovered::after, .button.is-success.is-outlined.is-loading:focus-visible::after, .button.is-success.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-success-invert) var(--bulma-success-invert) !important;
 }
 
 .button.is-success.is-outlined[disabled],
 fieldset[disabled] .button.is-success.is-outlined {
   background-color: transparent;
-  border-color: #3fcf82;
+  border-color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #3fcf82;
+  color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
 }
 
 .button.is-success.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--bulma-success-invert);
+  color: var(--bulma-success-invert);
 }
 
-.button.is-success.is-inverted.is-outlined:hover, .button.is-success.is-inverted.is-outlined.is-hovered, .button.is-success.is-inverted.is-outlined:focus, .button.is-success.is-inverted.is-outlined.is-focused {
-  background-color: #fff;
-  color: #3fcf82;
+.button.is-success.is-inverted.is-outlined:hover, .button.is-success.is-inverted.is-outlined.is-hovered, .button.is-success.is-inverted.is-outlined:focus-visible, .button.is-success.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-success-invert);
+  color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
 }
 
-.button.is-success.is-inverted.is-outlined.is-loading:hover::after, .button.is-success.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-success.is-inverted.is-outlined.is-loading:focus::after, .button.is-success.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #3fcf82 #3fcf82 !important;
+.button.is-success.is-inverted.is-outlined.is-loading:hover::after, .button.is-success.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-success.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-success.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-success-h), var(--s), var(--l), 1) hsla(var(--bulma-success-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-success.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-success.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--bulma-success-invert);
   box-shadow: none;
-  color: #fff;
+  color: var(--bulma-success-invert);
 }
 
 .button.is-success.is-light {
-  background-color: #effbf4;
-  color: #1e7647;
+  background-color: var(--bulma-success-90);
+  color: hsla(var(--bulma-success-h), var(--s), var(--l), 1);
 }
 
 .button.is-success.is-light:hover, .button.is-success.is-light.is-hovered {
-  background-color: #e4f8ee;
+  background-color: var(--bulma-success-85);
   border-color: transparent;
-  color: #1e7647;
 }
 
 .button.is-success.is-light:active, .button.is-success.is-light.is-active {
-  background-color: #daf6e7;
+  background-color: var(--bulma-success-80);
   border-color: transparent;
-  color: #1e7647;
 }
 
 .button.is-warning {
-  background-color: #ffb60a;
+  --base-s: var(--bulma-warning-s);
+  --base-l: var(--bulma-warning-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: var(--bulma-white);
+  color: var(--bulma-warning-invert);
 }
 
 .button.is-warning:hover, .button.is-warning.is-hovered {
-  background-color: #fcb100;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: var(--bulma-white);
+  color: var(--bulma-warning-invert);
 }
 
-.button.is-warning:focus, .button.is-warning.is-focused {
+.button.is-warning:focus-visible, .button.is-warning.is-focused {
   border-color: transparent;
-  color: var(--bulma-white);
+  color: var(--bulma-warning-invert);
 }
 
-.button.is-warning:focus:not(:active), .button.is-warning.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(255, 182, 10, 0.25);
+.button.is-warning:focus-visible:not(:active), .button.is-warning.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-warning-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-warning:active, .button.is-warning.is-active {
-  background-color: #f0a800;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: var(--bulma-white);
+  color: var(--bulma-warning-invert);
 }
 
 .button.is-warning[disabled],
 fieldset[disabled] .button.is-warning {
-  background-color: #ffb60a;
-  border-color: #ffb60a;
+  background-color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-warning.is-inverted {
-  background-color: var(--bulma-white);
-  color: #ffb60a;
-}
-
-.button.is-warning.is-inverted:hover, .button.is-warning.is-inverted.is-hovered {
-  background-color: var(--bulma-white);
+  background-color: var(--bulma-warning-invert);
+  color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
 }
 
 .button.is-warning.is-inverted[disabled],
 fieldset[disabled] .button.is-warning.is-inverted {
-  background-color: var(--bulma-white);
+  background-color: var(--bulma-warning-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #ffb60a;
+  color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
 }
 
 .button.is-warning.is-loading::after {
-  border-color: transparent transparent var(--bulma-white) var(--bulma-white) !important;
+  border-color: transparent transparent var(--bulma-warning-invert) var(--bulma-warning-invert) !important;
 }
 
 .button.is-warning.is-outlined {
   background-color: transparent;
-  border-color: #ffb60a;
-  color: #ffb60a;
+  border-color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
 }
 
-.button.is-warning.is-outlined:hover, .button.is-warning.is-outlined.is-hovered, .button.is-warning.is-outlined:focus, .button.is-warning.is-outlined.is-focused {
-  background-color: #ffb60a;
-  border-color: #ffb60a;
-  color: var(--bulma-white);
+.button.is-warning.is-outlined:hover, .button.is-warning.is-outlined.is-hovered, .button.is-warning.is-outlined:focus-visible, .button.is-warning.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
+  color: var(--bulma-warning-invert);
 }
 
 .button.is-warning.is-outlined.is-loading::after {
-  border-color: transparent transparent #ffb60a #ffb60a !important;
+  border-color: transparent transparent hsla(var(--bulma-warning-h), var(--s), var(--l), 1) hsla(var(--bulma-warning-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-warning.is-outlined.is-loading:hover::after, .button.is-warning.is-outlined.is-loading.is-hovered::after, .button.is-warning.is-outlined.is-loading:focus::after, .button.is-warning.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent var(--bulma-white) var(--bulma-white) !important;
+.button.is-warning.is-outlined.is-loading:hover::after, .button.is-warning.is-outlined.is-loading.is-hovered::after, .button.is-warning.is-outlined.is-loading:focus-visible::after, .button.is-warning.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-warning-invert) var(--bulma-warning-invert) !important;
 }
 
 .button.is-warning.is-outlined[disabled],
 fieldset[disabled] .button.is-warning.is-outlined {
   background-color: transparent;
-  border-color: #ffb60a;
+  border-color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #ffb60a;
+  color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
 }
 
 .button.is-warning.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: var(--bulma-white);
-  color: var(--bulma-white);
+  border-color: var(--bulma-warning-invert);
+  color: var(--bulma-warning-invert);
 }
 
-.button.is-warning.is-inverted.is-outlined:hover, .button.is-warning.is-inverted.is-outlined.is-hovered, .button.is-warning.is-inverted.is-outlined:focus, .button.is-warning.is-inverted.is-outlined.is-focused {
-  background-color: var(--bulma-white);
-  color: #ffb60a;
+.button.is-warning.is-inverted.is-outlined:hover, .button.is-warning.is-inverted.is-outlined.is-hovered, .button.is-warning.is-inverted.is-outlined:focus-visible, .button.is-warning.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-warning-invert);
+  color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
 }
 
-.button.is-warning.is-inverted.is-outlined.is-loading:hover::after, .button.is-warning.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-warning.is-inverted.is-outlined.is-loading:focus::after, .button.is-warning.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #ffb60a #ffb60a !important;
+.button.is-warning.is-inverted.is-outlined.is-loading:hover::after, .button.is-warning.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-warning.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-warning.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-warning-h), var(--s), var(--l), 1) hsla(var(--bulma-warning-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-warning.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-warning.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: var(--bulma-white);
+  border-color: var(--bulma-warning-invert);
   box-shadow: none;
-  color: var(--bulma-white);
+  color: var(--bulma-warning-invert);
 }
 
 .button.is-warning.is-light {
-  background-color: #fff9eb;
-  color: #946800;
+  background-color: var(--bulma-warning-90);
+  color: hsla(var(--bulma-warning-h), var(--s), var(--l), 1);
 }
 
 .button.is-warning.is-light:hover, .button.is-warning.is-light.is-hovered {
-  background-color: #fff5de;
+  background-color: var(--bulma-warning-85);
   border-color: transparent;
-  color: #946800;
 }
 
 .button.is-warning.is-light:active, .button.is-warning.is-light.is-active {
-  background-color: #fff1d1;
+  background-color: var(--bulma-warning-80);
   border-color: transparent;
-  color: #946800;
 }
 
 .button.is-danger {
-  background-color: #f15146;
+  --base-s: var(--bulma-danger-s);
+  --base-l: var(--bulma-danger-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-danger-invert);
 }
 
 .button.is-danger:hover, .button.is-danger.is-hovered {
-  background-color: #f0463a;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-danger-invert);
 }
 
-.button.is-danger:focus, .button.is-danger.is-focused {
+.button.is-danger:focus-visible, .button.is-danger.is-focused {
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-danger-invert);
 }
 
-.button.is-danger:focus:not(:active), .button.is-danger.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(241, 81, 70, 0.25);
+.button.is-danger:focus-visible:not(:active), .button.is-danger.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-danger-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-danger:active, .button.is-danger.is-active {
-  background-color: #ef3b2e;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-danger-invert);
 }
 
 .button.is-danger[disabled],
 fieldset[disabled] .button.is-danger {
-  background-color: #f15146;
-  border-color: #f15146;
+  background-color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-danger.is-inverted {
-  background-color: #fff;
-  color: #f15146;
-}
-
-.button.is-danger.is-inverted:hover, .button.is-danger.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-danger-invert);
+  color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
 }
 
 .button.is-danger.is-inverted[disabled],
 fieldset[disabled] .button.is-danger.is-inverted {
-  background-color: #fff;
+  background-color: var(--bulma-danger-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #f15146;
+  color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
 }
 
 .button.is-danger.is-loading::after {
-  border-color: transparent transparent #fff #fff !important;
+  border-color: transparent transparent var(--bulma-danger-invert) var(--bulma-danger-invert) !important;
 }
 
 .button.is-danger.is-outlined {
   background-color: transparent;
-  border-color: #f15146;
-  color: #f15146;
+  border-color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
 }
 
-.button.is-danger.is-outlined:hover, .button.is-danger.is-outlined.is-hovered, .button.is-danger.is-outlined:focus, .button.is-danger.is-outlined.is-focused {
-  background-color: #f15146;
-  border-color: #f15146;
-  color: #fff;
+.button.is-danger.is-outlined:hover, .button.is-danger.is-outlined.is-hovered, .button.is-danger.is-outlined:focus-visible, .button.is-danger.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
+  color: var(--bulma-danger-invert);
 }
 
 .button.is-danger.is-outlined.is-loading::after {
-  border-color: transparent transparent #f15146 #f15146 !important;
+  border-color: transparent transparent hsla(var(--bulma-danger-h), var(--s), var(--l), 1) hsla(var(--bulma-danger-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-danger.is-outlined.is-loading:hover::after, .button.is-danger.is-outlined.is-loading.is-hovered::after, .button.is-danger.is-outlined.is-loading:focus::after, .button.is-danger.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #fff #fff !important;
+.button.is-danger.is-outlined.is-loading:hover::after, .button.is-danger.is-outlined.is-loading.is-hovered::after, .button.is-danger.is-outlined.is-loading:focus-visible::after, .button.is-danger.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-danger-invert) var(--bulma-danger-invert) !important;
 }
 
 .button.is-danger.is-outlined[disabled],
 fieldset[disabled] .button.is-danger.is-outlined {
   background-color: transparent;
-  border-color: #f15146;
+  border-color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #f15146;
+  color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
 }
 
 .button.is-danger.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--bulma-danger-invert);
+  color: var(--bulma-danger-invert);
 }
 
-.button.is-danger.is-inverted.is-outlined:hover, .button.is-danger.is-inverted.is-outlined.is-hovered, .button.is-danger.is-inverted.is-outlined:focus, .button.is-danger.is-inverted.is-outlined.is-focused {
-  background-color: #fff;
-  color: #f15146;
+.button.is-danger.is-inverted.is-outlined:hover, .button.is-danger.is-inverted.is-outlined.is-hovered, .button.is-danger.is-inverted.is-outlined:focus-visible, .button.is-danger.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-danger-invert);
+  color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
 }
 
-.button.is-danger.is-inverted.is-outlined.is-loading:hover::after, .button.is-danger.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-danger.is-inverted.is-outlined.is-loading:focus::after, .button.is-danger.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #f15146 #f15146 !important;
+.button.is-danger.is-inverted.is-outlined.is-loading:hover::after, .button.is-danger.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-danger.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-danger.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-danger-h), var(--s), var(--l), 1) hsla(var(--bulma-danger-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-danger.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-danger.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--bulma-danger-invert);
   box-shadow: none;
-  color: #fff;
+  color: var(--bulma-danger-invert);
 }
 
 .button.is-danger.is-light {
-  background-color: #feedec;
-  color: #c71b0f;
+  background-color: var(--bulma-danger-90);
+  color: hsla(var(--bulma-danger-h), var(--s), var(--l), 1);
 }
 
 .button.is-danger.is-light:hover, .button.is-danger.is-light.is-hovered {
-  background-color: #fde2e0;
+  background-color: var(--bulma-danger-85);
   border-color: transparent;
-  color: #c71b0f;
 }
 
 .button.is-danger.is-light:active, .button.is-danger.is-light.is-active {
-  background-color: #fcd7d4;
+  background-color: var(--bulma-danger-80);
   border-color: transparent;
-  color: #c71b0f;
 }
 
 .button.is-text {
-  background-color: #404654;
+  --base-s: var(--bulma-text-s);
+  --base-l: var(--bulma-text-l);
+  --s: var(--base-s);
+  --l: var(--base-l);
+  background-color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-text-invert);
 }
 
 .button.is-text:hover, .button.is-text.is-hovered {
-  background-color: #3a404d;
+  --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+  --l: calc(var(--base-l) + var(--bulma-button-hover-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-text-invert);
 }
 
-.button.is-text:focus, .button.is-text.is-focused {
+.button.is-text:focus-visible, .button.is-text.is-focused {
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-text-invert);
 }
 
-.button.is-text:focus:not(:active), .button.is-text.is-focused:not(:active) {
-  box-shadow: var(--bulma-button-focus-box-shadow-size) rgba(64, 70, 84, 0.25);
+.button.is-text:focus-visible:not(:active), .button.is-text.is-focused:not(:active) {
+  box-shadow: var(--bulma-button-focus-box-shadow-size) hsla(var(--bulma-text-h), var(--s), var(--l), 0.5);
 }
 
 .button.is-text:active, .button.is-text.is-active {
-  background-color: #353a46;
+  --s: calc(var(--base-s) + var(--bulma-button-active-s));
+  --l: calc(var(--base-l) + var(--bulma-button-active-l));
   border-color: transparent;
-  color: #fff;
+  color: var(--bulma-text-invert);
 }
 
 .button.is-text[disabled],
 fieldset[disabled] .button.is-text {
-  background-color: #404654;
-  border-color: #404654;
+  background-color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
   box-shadow: none;
 }
 
 .button.is-text.is-inverted {
-  background-color: #fff;
-  color: #404654;
-}
-
-.button.is-text.is-inverted:hover, .button.is-text.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: var(--bulma-text-invert);
+  color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
 }
 
 .button.is-text.is-inverted[disabled],
 fieldset[disabled] .button.is-text.is-inverted {
-  background-color: #fff;
+  background-color: var(--bulma-text-invert);
   border-color: transparent;
   box-shadow: none;
-  color: #404654;
+  color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
 }
 
 .button.is-text.is-loading::after {
-  border-color: transparent transparent #fff #fff !important;
+  border-color: transparent transparent var(--bulma-text-invert) var(--bulma-text-invert) !important;
 }
 
 .button.is-text.is-outlined {
   background-color: transparent;
-  border-color: #404654;
-  color: #404654;
+  border-color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
+  color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
 }
 
-.button.is-text.is-outlined:hover, .button.is-text.is-outlined.is-hovered, .button.is-text.is-outlined:focus, .button.is-text.is-outlined.is-focused {
-  background-color: #404654;
-  border-color: #404654;
-  color: #fff;
+.button.is-text.is-outlined:hover, .button.is-text.is-outlined.is-hovered, .button.is-text.is-outlined:focus-visible, .button.is-text.is-outlined.is-focused {
+  background-color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
+  border-color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
+  color: var(--bulma-text-invert);
 }
 
 .button.is-text.is-outlined.is-loading::after {
-  border-color: transparent transparent #404654 #404654 !important;
+  border-color: transparent transparent hsla(var(--bulma-text-h), var(--s), var(--l), 1) hsla(var(--bulma-text-h), var(--s), var(--l), 1) !important;
 }
 
-.button.is-text.is-outlined.is-loading:hover::after, .button.is-text.is-outlined.is-loading.is-hovered::after, .button.is-text.is-outlined.is-loading:focus::after, .button.is-text.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #fff #fff !important;
+.button.is-text.is-outlined.is-loading:hover::after, .button.is-text.is-outlined.is-loading.is-hovered::after, .button.is-text.is-outlined.is-loading:focus-visible::after, .button.is-text.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent var(--bulma-text-invert) var(--bulma-text-invert) !important;
 }
 
 .button.is-text.is-outlined[disabled],
 fieldset[disabled] .button.is-text.is-outlined {
   background-color: transparent;
-  border-color: #404654;
+  border-color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
   box-shadow: none;
-  color: #404654;
+  color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
 }
 
 .button.is-text.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--bulma-text-invert);
+  color: var(--bulma-text-invert);
 }
 
-.button.is-text.is-inverted.is-outlined:hover, .button.is-text.is-inverted.is-outlined.is-hovered, .button.is-text.is-inverted.is-outlined:focus, .button.is-text.is-inverted.is-outlined.is-focused {
-  background-color: #fff;
-  color: #404654;
+.button.is-text.is-inverted.is-outlined:hover, .button.is-text.is-inverted.is-outlined.is-hovered, .button.is-text.is-inverted.is-outlined:focus-visible, .button.is-text.is-inverted.is-outlined.is-focused {
+  background-color: var(--bulma-text-invert);
+  color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
 }
 
-.button.is-text.is-inverted.is-outlined.is-loading:hover::after, .button.is-text.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-text.is-inverted.is-outlined.is-loading:focus::after, .button.is-text.is-inverted.is-outlined.is-loading.is-focused::after {
-  border-color: transparent transparent #404654 #404654 !important;
+.button.is-text.is-inverted.is-outlined.is-loading:hover::after, .button.is-text.is-inverted.is-outlined.is-loading.is-hovered::after, .button.is-text.is-inverted.is-outlined.is-loading:focus-visible::after, .button.is-text.is-inverted.is-outlined.is-loading.is-focused::after {
+  border-color: transparent transparent hsla(var(--bulma-text-h), var(--s), var(--l), 1) hsla(var(--bulma-text-h), var(--s), var(--l), 1) !important;
 }
 
 .button.is-text.is-inverted.is-outlined[disabled],
 fieldset[disabled] .button.is-text.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: #fff;
+  border-color: var(--bulma-text-invert);
   box-shadow: none;
-  color: #fff;
+  color: var(--bulma-text-invert);
+}
+
+.button.is-text.is-light {
+  background-color: var(--bulma-text-90);
+  color: hsla(var(--bulma-text-h), var(--s), var(--l), 1);
+}
+
+.button.is-text.is-light:hover, .button.is-text.is-light.is-hovered {
+  background-color: var(--bulma-text-85);
+  border-color: transparent;
+}
+
+.button.is-text.is-light:active, .button.is-text.is-light.is-active {
+  background-color: var(--bulma-text-80);
+  border-color: transparent;
 }
 
 .button.is-small {
@@ -2009,11 +2141,11 @@ fieldset[disabled] .button {
   z-index: 2;
 }
 
-.buttons.has-addons .button:focus, .buttons.has-addons .button.is-focused, .buttons.has-addons .button:active, .buttons.has-addons .button.is-active, .buttons.has-addons .button.is-selected {
+.buttons.has-addons .button:focus-visible, .buttons.has-addons .button.is-focused, .buttons.has-addons .button:active, .buttons.has-addons .button.is-active, .buttons.has-addons .button.is-selected {
   z-index: 3;
 }
 
-.buttons.has-addons .button:focus:hover, .buttons.has-addons .button.is-focused:hover, .buttons.has-addons .button:active:hover, .buttons.has-addons .button.is-active:hover, .buttons.has-addons .button.is-selected:hover {
+.buttons.has-addons .button:focus-visible:hover, .buttons.has-addons .button.is-focused:hover, .buttons.has-addons .button:active:hover, .buttons.has-addons .button.is-active:hover, .buttons.has-addons .button.is-selected:hover {
   z-index: 4;
 }
 
@@ -3552,6 +3684,16 @@ a.tag:hover {
 }
 
 /* Bulma Form */
+:root {
+  --bulma-control-radius: var(--bulma-radius);
+  --bulma-control-radius-small: var(--bulma-radius-small);
+  --bulma-control-border-width: 1px;
+  --bulma-control-height: 2.5em;
+  --bulma-control-line-height: 1.5;
+  --bulma-control-padding-vertical: calc( 0.5em - var(--bulma-control-border-width));
+  --bulma-control-padding-horizontal: calc( 0.75em - var(--bulma-control-border-width));
+}
+
 .input, .textarea, .select select {
   background-color: var(--bulma-white);
   border-color: var(--bulma-text-85);
@@ -3560,19 +3702,19 @@ a.tag:hover {
 }
 
 .input::-moz-placeholder, .textarea::-moz-placeholder, .select select::-moz-placeholder {
-  color: var(--bulma-text-10);
+  color: rgba(var(--bulma-text-10), 0.3);
 }
 
 .input::-webkit-input-placeholder, .textarea::-webkit-input-placeholder, .select select::-webkit-input-placeholder {
-  color: var(--bulma-text-10);
+  color: rgba(var(--bulma-text-10), 0.3);
 }
 
 .input:-moz-placeholder, .textarea:-moz-placeholder, .select select:-moz-placeholder {
-  color: var(--bulma-text-10);
+  color: rgba(var(--bulma-text-10), 0.3);
 }
 
 .input:-ms-input-placeholder, .textarea:-ms-input-placeholder, .select select:-ms-input-placeholder {
-  color: var(--bulma-text-10);
+  color: rgba(var(--bulma-text-10), 0.3);
 }
 
 .input:hover, .textarea:hover, .select select:hover, .is-hovered.input, .is-hovered.textarea, .select select.is-hovered {
@@ -3600,7 +3742,7 @@ fieldset[disabled] .input::-moz-placeholder,
 fieldset[disabled] .textarea::-moz-placeholder,
 fieldset[disabled] .select select::-moz-placeholder,
 .select fieldset[disabled] select::-moz-placeholder {
-  color: var(--bulma-text-55);
+  color: rgba(var(--bulma-text-55), 0.3);
 }
 
 .input[disabled]::-webkit-input-placeholder, .textarea[disabled]::-webkit-input-placeholder, .select select[disabled]::-webkit-input-placeholder,
@@ -3608,7 +3750,7 @@ fieldset[disabled] .input::-webkit-input-placeholder,
 fieldset[disabled] .textarea::-webkit-input-placeholder,
 fieldset[disabled] .select select::-webkit-input-placeholder,
 .select fieldset[disabled] select::-webkit-input-placeholder {
-  color: var(--bulma-text-55);
+  color: rgba(var(--bulma-text-55), 0.3);
 }
 
 .input[disabled]:-moz-placeholder, .textarea[disabled]:-moz-placeholder, .select select[disabled]:-moz-placeholder,
@@ -3616,7 +3758,7 @@ fieldset[disabled] .input:-moz-placeholder,
 fieldset[disabled] .textarea:-moz-placeholder,
 fieldset[disabled] .select select:-moz-placeholder,
 .select fieldset[disabled] select:-moz-placeholder {
-  color: var(--bulma-text-55);
+  color: rgba(var(--bulma-text-55), 0.3);
 }
 
 .input[disabled]:-ms-input-placeholder, .textarea[disabled]:-ms-input-placeholder, .select select[disabled]:-ms-input-placeholder,
@@ -3624,7 +3766,7 @@ fieldset[disabled] .input:-ms-input-placeholder,
 fieldset[disabled] .textarea:-ms-input-placeholder,
 fieldset[disabled] .select select:-ms-input-placeholder,
 .select fieldset[disabled] select:-ms-input-placeholder {
-  color: var(--bulma-text-55);
+  color: rgba(var(--bulma-text-55), 0.3);
 }
 
 .input, .textarea {
@@ -3726,16 +3868,16 @@ fieldset[disabled] .select select:-ms-input-placeholder,
 }
 
 .is-small.input, .is-small.textarea {
-  border-radius: 2px;
-  font-size: 0.75rem;
+  border-radius: var(--bulma-control-radius-small);
+  font-size: var(--bulma-size-small);
 }
 
 .is-medium.input, .is-medium.textarea {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
 }
 
 .is-large.input, .is-large.textarea {
-  font-size: 1.5rem;
+  font-size: var(--bulma-size-large);
 }
 
 .is-fullwidth.input, .is-fullwidth.textarea {
@@ -3750,8 +3892,8 @@ fieldset[disabled] .select select:-ms-input-placeholder,
 
 .input.is-rounded {
   border-radius: 9999px;
-  padding-left: calc(calc(0.75em - 1px) + 0.375em);
-  padding-right: calc(calc(0.75em - 1px) + 0.375em);
+  padding-left: calc(calc( 0.75em - var(--bulma-control-border-width)) + 0.375em);
+  padding-right: calc(calc( 0.75em - var(--bulma-control-border-width)) + 0.375em);
 }
 
 .input.is-static {
@@ -3766,7 +3908,7 @@ fieldset[disabled] .select select:-ms-input-placeholder,
   display: block;
   max-width: 100%;
   min-width: 100%;
-  padding: calc(0.75em - 1px);
+  padding: calc( 0.75em - var(--bulma-control-border-width));
   resize: vertical;
 }
 
@@ -4044,16 +4186,16 @@ fieldset[disabled] .select select:hover {
 }
 
 .select.is-small {
-  border-radius: 2px;
-  font-size: 0.75rem;
+  border-radius: var(--bulma-control-radius-small);
+  font-size: var(--bulma-size-small);
 }
 
 .select.is-medium {
-  font-size: 1.25rem;
+  font-size: var(--bulma-size-medium);
 }
 
 .select.is-large {
-  font-size: 1.5rem;
+  font-size: var(--bulma-size-large);
 }
 
 .select.is-disabled::after {
@@ -5322,7 +5464,7 @@ button.dropdown-item.is-active {
 }
 
 :root {
-  --bulma-media-border-color: var(--bulma-text-85);
+  --bulma-media-border-color: rgba(var(--bulma-text-85), 0.5);
   --bulma-media-border-size: 1px;
   --bulma-media-spacing: 1rem;
   --bulma-media-spacing-large: 1.5rem;
@@ -5718,7 +5860,7 @@ button.dropdown-item.is-active {
 
 :root {
   --bulma-modal-z: 40;
-  --bulma-modal-background-background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.86);
+  --bulma-modal-background-background-color: rgba(var(--bulma-shadow-color-rgb), 0.86);
   --bulma-modal-content-width: 640px;
   --bulma-modal-content-margin-mobile: 20px;
   --bulma-modal-content-spacing-mobile: 160px;
@@ -5867,7 +6009,7 @@ button.dropdown-item.is-active {
   --bulma-navbar-dropdown-radius: var(--bulma-radius-large);
   --bulma-navbar-dropdown-z: 20;
   --bulma-navbar-dropdown-boxed-radius: var(--bulma-radius-large);
-  --bulma-navbar-dropdown-boxed-shadow: 0 8px 8px bulmargba(var(--bulma-shadow-color-rgb), 0.1), 0 0 0 1px bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  --bulma-navbar-dropdown-boxed-shadow: 0 8px 8px rgba(var(--bulma-shadow-color-rgb), 0.1), 0 0 0 1px rgba(var(--bulma-shadow-color-rgb), 0.1);
   --bulma-navbar-dropdown-item-hover-color: var(--bulma-scheme-invert);
   --bulma-navbar-dropdown-item-hover-background-color: var(--bulma-background);
   --bulma-navbar-dropdown-item-active-color: var(--bulma-link);
@@ -6800,7 +6942,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   }
   .navbar-menu {
     background-color: var(--bulma-navbar-background-color);
-    box-shadow: 0 8px 16px bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+    box-shadow: 0 8px 16px rgba(var(--bulma-shadow-color-rgb), 0.1);
     padding: 0.5rem 0;
   }
   .navbar-menu.is-active {
@@ -6816,7 +6958,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     bottom: 0;
   }
   .navbar.is-fixed-bottom-touch.has-shadow {
-    box-shadow: 0 -2px 3px bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+    box-shadow: 0 -2px 3px rgba(var(--bulma-shadow-color-rgb), 0.1);
   }
   .navbar.is-fixed-top-touch {
     top: 0;
@@ -6894,7 +7036,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     border-radius: var(--bulma-navbar-dropdown-radius) var(--bulma-navbar-dropdown-radius) 0 0;
     border-top: none;
     bottom: 100%;
-    box-shadow: 0 -8px 8px bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+    box-shadow: 0 -8px 8px rgba(var(--bulma-shadow-color-rgb), 0.1);
     top: auto;
   }
   .navbar-item.is-active .navbar-dropdown, .navbar-item.is-hoverable:focus .navbar-dropdown, .navbar-item.is-hoverable:focus-within .navbar-dropdown, .navbar-item.is-hoverable:hover .navbar-dropdown {
@@ -6922,7 +7064,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     border-bottom-left-radius: var(--bulma-navbar-dropdown-radius);
     border-bottom-right-radius: var(--bulma-navbar-dropdown-radius);
     border-top: var(--bulma-navbar-dropdown-border-top);
-    box-shadow: 0 8px 8px bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+    box-shadow: 0 8px 8px rgba(var(--bulma-shadow-color-rgb), 0.1);
     display: none;
     font-size: 0.875rem;
     left: 0;
@@ -6983,7 +7125,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     bottom: 0;
   }
   .navbar.is-fixed-bottom-desktop.has-shadow {
-    box-shadow: 0 -2px 3px bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+    box-shadow: 0 -2px 3px rgba(var(--bulma-shadow-color-rgb), 0.1);
   }
   .navbar.is-fixed-top-desktop {
     top: 0;
@@ -7019,6 +7161,16 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 
 .hero.is-fullheight-with-navbar {
   min-height: calc(100vh - var(--bulma-navbar-height));
+}
+
+:root {
+  --bulma-control-radius: var(--bulma-radius);
+  --bulma-control-radius-small: var(--bulma-radius-small);
+  --bulma-control-border-width: 1px;
+  --bulma-control-height: 2.5em;
+  --bulma-control-line-height: 1.5;
+  --bulma-control-padding-vertical: calc( 0.5em - var(--bulma-control-border-width));
+  --bulma-control-padding-horizontal: calc( 0.75em - var(--bulma-control-border-width));
 }
 
 :root {
@@ -11613,7 +11765,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-white .tabs.is-boxed a:hover, .hero.is-white .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-white .tabs.is-boxed li.is-active a, .hero.is-white .tabs.is-boxed li.is-active a:hover, .hero.is-white .tabs.is-toggle li.is-active a, .hero.is-white .tabs.is-toggle li.is-active a:hover {
@@ -11692,7 +11844,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-black .tabs.is-boxed a:hover, .hero.is-black .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-black .tabs.is-boxed li.is-active a, .hero.is-black .tabs.is-boxed li.is-active a:hover, .hero.is-black .tabs.is-toggle li.is-active a, .hero.is-black .tabs.is-toggle li.is-active a:hover {
@@ -11771,7 +11923,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-light .tabs.is-boxed a:hover, .hero.is-light .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-light .tabs.is-boxed li.is-active a, .hero.is-light .tabs.is-boxed li.is-active a:hover, .hero.is-light .tabs.is-toggle li.is-active a, .hero.is-light .tabs.is-toggle li.is-active a:hover {
@@ -11850,7 +12002,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-dark .tabs.is-boxed a:hover, .hero.is-dark .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-dark .tabs.is-boxed li.is-active a, .hero.is-dark .tabs.is-boxed li.is-active a:hover, .hero.is-dark .tabs.is-toggle li.is-active a, .hero.is-dark .tabs.is-toggle li.is-active a:hover {
@@ -11929,7 +12081,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-primary .tabs.is-boxed a:hover, .hero.is-primary .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-primary .tabs.is-boxed li.is-active a, .hero.is-primary .tabs.is-boxed li.is-active a:hover, .hero.is-primary .tabs.is-toggle li.is-active a, .hero.is-primary .tabs.is-toggle li.is-active a:hover {
@@ -12008,7 +12160,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-link .tabs.is-boxed a:hover, .hero.is-link .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-link .tabs.is-boxed li.is-active a, .hero.is-link .tabs.is-boxed li.is-active a:hover, .hero.is-link .tabs.is-toggle li.is-active a, .hero.is-link .tabs.is-toggle li.is-active a:hover {
@@ -12087,7 +12239,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-info .tabs.is-boxed a:hover, .hero.is-info .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-info .tabs.is-boxed li.is-active a, .hero.is-info .tabs.is-boxed li.is-active a:hover, .hero.is-info .tabs.is-toggle li.is-active a, .hero.is-info .tabs.is-toggle li.is-active a:hover {
@@ -12166,7 +12318,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-success .tabs.is-boxed a:hover, .hero.is-success .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-success .tabs.is-boxed li.is-active a, .hero.is-success .tabs.is-boxed li.is-active a:hover, .hero.is-success .tabs.is-toggle li.is-active a, .hero.is-success .tabs.is-toggle li.is-active a:hover {
@@ -12200,7 +12352,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-warning .subtitle {
-  color: var(--bulma-white);
+  color: rgba(var(--bulma-white), 0.9);
 }
 
 .hero.is-warning .subtitle a:not(.button),
@@ -12216,7 +12368,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 
 .hero.is-warning .navbar-item,
 .hero.is-warning .navbar-link {
-  color: var(--bulma-white);
+  color: rgba(var(--bulma-white), 0.7);
 }
 
 .hero.is-warning a.navbar-item:hover, .hero.is-warning a.navbar-item.is-active,
@@ -12245,7 +12397,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-warning .tabs.is-boxed a:hover, .hero.is-warning .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-warning .tabs.is-boxed li.is-active a, .hero.is-warning .tabs.is-boxed li.is-active a:hover, .hero.is-warning .tabs.is-toggle li.is-active a, .hero.is-warning .tabs.is-toggle li.is-active a:hover {
@@ -12324,7 +12476,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-danger .tabs.is-boxed a:hover, .hero.is-danger .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-danger .tabs.is-boxed li.is-active a, .hero.is-danger .tabs.is-boxed li.is-active a:hover, .hero.is-danger .tabs.is-toggle li.is-active a, .hero.is-danger .tabs.is-toggle li.is-active a:hover {
@@ -12403,7 +12555,7 @@ a.has-text-text:hover, a.has-text-text:focus {
 }
 
 .hero.is-text .tabs.is-boxed a:hover, .hero.is-text .tabs.is-toggle a:hover {
-  background-color: bulmargba(var(--bulma-shadow-color-rgb), 0.1);
+  background-color: rgba(var(--bulma-shadow-color-rgb), 0.1);
 }
 
 .hero.is-text .tabs.is-boxed li.is-active a, .hero.is-text .tabs.is-boxed li.is-active a:hover, .hero.is-text .tabs.is-toggle li.is-active a, .hero.is-text .tabs.is-toggle li.is-active a:hover {

@@ -8,7 +8,12 @@
       // The color name should be a string
       // and the components either a single color
       // or a colors list with at least one element
-      @if type-of($name) == "string" and (type-of($components) == "list" or type-of($components) == "color") and length($components) >= 1 {
+      @if type-of($name) ==
+        "string" and
+        (type-of($components) == "list" or type-of($components) == "color") and
+        length($components) >=
+        1
+      {
         $color-base: null;
         $color-invert: null;
         $color-light: null;
@@ -22,8 +27,7 @@
           $color-invert: findColorInvert($color-base);
           $color-light: findLightColor($color-base);
           $color-dark: findDarkColor($color-base);
-        }
-        @else if type-of($components) == "list" {
+        } @else if type-of($components) == "list" {
           $color-base: nth($components, 1);
 
           // If Invert, Light and Dark are provided
@@ -33,15 +37,13 @@
             $color-dark: nth($components, 4);
 
             // If only Invert and Light are provided
-          }
-          @else if length($components) > 2 {
+          } @else if length($components) > 2 {
             $color-invert: nth($components, 2);
             $color-light: nth($components, 3);
             $color-dark: findDarkColor($color-base);
 
             // If only Invert is provided
-          }
-          @else {
+          } @else {
             $color-invert: nth($components, 2);
             $color-light: findLightColor($color-base);
             $color-dark: findDarkColor($color-base);
@@ -55,7 +57,12 @@
           // We merge this colors elements as map with Bulma's colors map
           // (we can override them this way, no multiple definition for the same name)
           // $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert, $color-light, $color-dark)))
-          $merged-colors: map_merge($merged-colors, ($name: $value));
+          $merged-colors: map_merge(
+            $merged-colors,
+            (
+              $name: $value,
+            )
+          );
         }
       }
     }
@@ -71,8 +78,7 @@
     @for $i from 1 through $exp {
       $value: $value * $number;
     }
-  }
-  @else if $exp < 0 {
+  } @else if $exp < 0 {
     @for $i from 1 through -$exp {
       $value: divide($value, $number);
     }
@@ -86,7 +92,11 @@
     @return 0.55;
   }
 
-  $color-rgb: ("red": red($color), "green": green($color), "blue": blue($color));
+  $color-rgb: (
+    "red": red($color),
+    "green": green($color),
+    "blue": blue($color),
+  );
 
   @each $name, $value in $color-rgb {
     $adjusted: 0;
@@ -94,23 +104,27 @@
 
     @if $value < 0.03928 {
       $value: divide($value, 12.92);
-    }
-    @else {
+    } @else {
       $value: divide($value + 0.055, 1.055);
       $value: powerNumber($value, 2);
     }
 
-    $color-rgb: map-merge($color-rgb, ($name: $value));
+    $color-rgb: map-merge(
+      $color-rgb,
+      (
+        $name: $value,
+      )
+    );
   }
 
-  @return map-get($color-rgb, "red") * 0.2126 + map-get($color-rgb, "green") * 0.7152 + map-get($color-rgb, "blue") * 0.0722;
+  @return map-get($color-rgb, "red") * 0.2126 + map-get($color-rgb, "green") *
+    0.7152 + map-get($color-rgb, "blue") * 0.0722;
 }
 
 @function findColorInvert($color) {
   @if colorLuminance($color) > 0.55 {
     @return rgba(#000, 0.7);
-  }
-  @else {
+  } @else {
     @return #fff;
   }
 }
@@ -142,10 +156,6 @@
 }
 
 @function bulmaRgba($color, $alpha) {
-  @if type-of($color) != "color" {
-    @return $color;
-  }
-
   @return rgba($color, $alpha);
 }
 

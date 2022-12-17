@@ -6,7 +6,7 @@ $button-background-color: getVar("scheme-main") !default;
 $button-family: false !default;
 
 $button-border-color: getVar("border") !default;
-$button-border-width: $control-border-width !default; // TODO
+$button-border-width: getVar("control-border-width") !default;
 
 $button-padding-vertical: calc(
   0.5em - #{getVar("button-border-width")}
@@ -44,6 +44,15 @@ $button-disabled-opacity: 0.5 !default;
 $button-static-color: getVar("text-light") !default;
 $button-static-background-color: getVar("scheme-main-ter") !default;
 $button-static-border-color: getVar("border") !default;
+
+$dark-shade: 20 !default;
+$dark-invert-shade: 90 !default;
+$light-shade: 90 !default;
+$light-invert-shade: 50 !default;
+$button-hover-s: 10% !default;
+$button-hover-l: -10% !default;
+$button-active-s: 20% !default;
+$button-active-l: -20% !default;
 
 $button-colors: $colors !default;
 $button-responsive-sizes: (
@@ -117,6 +126,14 @@ $button-responsive-sizes: (
       button-static-color: #{$button-static-color},
       button-static-background-color: #{$button-static-background-color},
       button-static-border-color: #{$button-static-border-color},
+      button-hover-s: #{$button-hover-s},
+      button-hover-l: #{$button-hover-l},
+      button-active-s: #{$button-active-s},
+      button-active-l: #{$button-active-l},
+      dark-shade: #{$dark-shade},
+      dark-invert-shade: #{$dark-invert-shade},
+      light-shade: #{$light-shade},
+      light-invert-shade: #{$light-invert-shade},
     )
   );
 }
@@ -209,7 +226,7 @@ $button-responsive-sizes: (
     color: getVar("button-hover-color");
   }
 
-  &:focus,
+  &:focus-visible,
   &.is-focused {
     border-color: getVar("button-focus-border-color");
     color: getVar("button-focus-color");
@@ -235,7 +252,7 @@ $button-responsive-sizes: (
 
     &:hover,
     &.is-hovered,
-    &:focus,
+    &:focus-visible,
     &.is-focused {
       background-color: getVar("button-text-hover-background-color");
       color: getVar("button-text-hover-color");
@@ -269,101 +286,104 @@ $button-responsive-sizes: (
   }
 
   @each $name, $pair in $button-colors {
-    $color: nth($pair, 1);
-    $color-invert: nth($pair, 2);
+    $base-h: getVar($name, "", "-h");
+    $base-s: getVar($name, "", "-s");
+    $base-l: getVar($name, "", "-l");
+    $invert: getVar($name, "", "-invert");
+    $base: hsla($base-h, var(--s), var(--l), 1);
+    $button-shadow: hsla($base-h, var(--s), var(--l), 0.5);
 
     &.is-#{$name} {
-      background-color: $color;
+      --base-s: #{$base-s};
+      --base-l: #{$base-l};
+      --s: var(--base-s);
+      --l: var(--base-l);
+      background-color: $base;
       border-color: transparent;
-      color: $color-invert;
+      color: $invert;
 
       &:hover,
       &.is-hovered {
-        background-color: bulmaDarken($color, 2.5%);
+        --s: calc(var(--base-s) + var(--bulma-button-hover-s));
+        --l: calc(var(--base-l) + var(--bulma-button-hover-l));
         border-color: transparent;
-        color: $color-invert;
+        color: $invert;
       }
 
-      &:focus,
+      &:focus-visible,
       &.is-focused {
         border-color: transparent;
-        color: $color-invert;
+        color: $invert;
 
         &:not(:active) {
-          box-shadow: getVar("button-focus-box-shadow-size")
-            bulmaRgba($color, 0.25);
+          box-shadow: getVar("button-focus-box-shadow-size") $button-shadow;
         }
       }
 
       &:active,
       &.is-active {
-        background-color: bulmaDarken($color, 5%);
+        --s: calc(var(--base-s) + var(--bulma-button-active-s));
+        --l: calc(var(--base-l) + var(--bulma-button-active-l));
         border-color: transparent;
-        color: $color-invert;
+        color: $invert;
       }
 
       &[disabled],
       fieldset[disabled] & {
-        background-color: $color;
-        border-color: $color;
+        background-color: $base;
+        border-color: $base;
         box-shadow: none;
       }
 
       &.is-inverted {
-        background-color: $color-invert;
-        color: $color;
+        background-color: $invert;
+        color: $base;
 
         &:hover,
         &.is-hovered {
-          background-color: bulmaDarken($color-invert, 5%);
+          // background-color: bulmaDarken($color-invert, 5%);
         }
 
         &[disabled],
         fieldset[disabled] & {
-          background-color: $color-invert;
+          background-color: $invert;
           border-color: transparent;
           box-shadow: none;
-          color: $color;
+          color: $base;
         }
       }
 
       &.is-loading {
         &::after {
-          border-color: transparent
-            transparent
-            $color-invert
-            $color-invert !important;
+          border-color: transparent transparent $invert $invert !important;
         }
       }
 
       &.is-outlined {
         background-color: transparent;
-        border-color: $color;
-        color: $color;
+        border-color: $base;
+        color: $base;
 
         &:hover,
         &.is-hovered,
-        &:focus,
+        &:focus-visible,
         &.is-focused {
-          background-color: $color;
-          border-color: $color;
-          color: $color-invert;
+          background-color: $base;
+          border-color: $base;
+          color: $invert;
         }
 
         &.is-loading {
           &::after {
-            border-color: transparent transparent $color $color !important;
+            border-color: transparent transparent $base $base !important;
           }
 
           &:hover,
           &.is-hovered,
-          &:focus,
+          &:focus-visible,
           &.is-focused {
             &::after {
-              border-color: transparent
-                transparent
-                $color-invert
-                $color-invert !important;
+              border-color: transparent transparent $invert $invert !important;
             }
           }
         }
@@ -371,32 +391,32 @@ $button-responsive-sizes: (
         &[disabled],
         fieldset[disabled] & {
           background-color: transparent;
-          border-color: $color;
+          border-color: $base;
           box-shadow: none;
-          color: $color;
+          color: $base;
         }
       }
 
       &.is-inverted.is-outlined {
         background-color: transparent;
-        border-color: $color-invert;
-        color: $color-invert;
+        border-color: $invert;
+        color: $invert;
 
         &:hover,
         &.is-hovered,
-        &:focus,
+        &:focus-visible,
         &.is-focused {
-          background-color: $color-invert;
-          color: $color;
+          background-color: $invert;
+          color: $base;
         }
 
         &.is-loading {
           &:hover,
           &.is-hovered,
-          &:focus,
+          &:focus-visible,
           &.is-focused {
             &::after {
-              border-color: transparent transparent $color $color !important;
+              border-color: transparent transparent $base $base !important;
             }
           }
         }
@@ -404,36 +424,55 @@ $button-responsive-sizes: (
         &[disabled],
         fieldset[disabled] & {
           background-color: transparent;
-          border-color: $color-invert;
+          border-color: $invert;
           box-shadow: none;
-          color: $color-invert;
+          color: $invert;
+        }
+      }
+
+      &.is-light {
+        // --l: var(--bulma-dark-shade);
+        background-color: getVar($name, "", "-#{$light-shade}");
+        color: $base;
+
+        &:hover,
+        &.is-hovered {
+          background-color: getVar($name, "", "-#{$light-shade - 5}");
+          border-color: transparent;
+        }
+
+        &:active,
+        &.is-active {
+          background-color: getVar($name, "", "-#{$light-shade - 10}");
+          border-color: transparent;
+          // color: $color-dark;
         }
       }
 
       // If light and dark colors are provided
-      @if length($pair) >= 4 {
-        $color-light: nth($pair, 3);
-        $color-dark: nth($pair, 4);
+      // @if length($pair) >= 4 {
+      //   $color-light: nth($pair, 3);
+      //   $color-dark: nth($pair, 4);
 
-        &.is-light {
-          background-color: $color-light;
-          color: $color-dark;
+      //   &.is-light {
+      //     background-color: $color-light;
+      //     color: $color-dark;
 
-          &:hover,
-          &.is-hovered {
-            background-color: bulmaDarken($color-light, 2.5%);
-            border-color: transparent;
-            color: $color-dark;
-          }
+      //     &:hover,
+      //     &.is-hovered {
+      //       background-color: bulmaDarken($color-light, 2.5%);
+      //       border-color: transparent;
+      //       color: $color-dark;
+      //     }
 
-          &:active,
-          &.is-active {
-            background-color: bulmaDarken($color-light, 5%);
-            border-color: transparent;
-            color: $color-dark;
-          }
-        }
-      }
+      //     &:active,
+      //     &.is-active {
+      //       background-color: bulmaDarken($color-light, 5%);
+      //       border-color: transparent;
+      //       color: $color-dark;
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -558,7 +597,7 @@ $button-responsive-sizes: (
         z-index: 2;
       }
 
-      &:focus,
+      &:focus-visible,
       &.is-focused,
       &:active,
       &.is-active,

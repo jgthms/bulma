@@ -14,8 +14,7 @@
   @if $height != 0 {
     left: calc(50% - (#{$width} * 0.5));
     top: calc(50% - (#{$height} * 0.5));
-  }
-  @else {
+  } @else {
     left: calc(50% - (#{$width} * 0.5));
     top: calc(50% - (#{$width} * 0.5));
   }
@@ -226,13 +225,11 @@
       @include between($from, $until) {
         @content;
       }
-    }
-    @else if $from {
+    } @else if $from {
       @include from($from) {
         @content;
       }
-    }
-    @else if $until {
+    } @else if $until {
       @include until($until) {
         @content;
       }
@@ -258,8 +255,7 @@
 
   @if $rtl {
     #{$property}-#{$opposite}: $spacing;
-  }
-  @else {
+  } @else {
     #{$property}-#{$normal}: $spacing;
   }
 }
@@ -270,8 +266,7 @@
 
   @if $rtl {
     #{$opposite}: $spacing;
-  }
-  @else {
+  } @else {
     #{$normal}: $spacing;
   }
 }
@@ -314,7 +309,7 @@
 
   -moz-appearance: none;
   -webkit-appearance: none;
-  background-color: bulmargba(getVar("shadow-color-rgb"), 0.2);
+  background-color: bulmaRgba(getVar("shadow-color-rgb"), 0.2);
   border: none;
   border-radius: $radius-rounded;
   cursor: pointer;
@@ -357,11 +352,11 @@
 
   &:hover,
   &:focus {
-    background-color: bulmargba(getVar("shadow-color-rgb"), 0.3);
+    background-color: bulmaRgba(getVar("shadow-color-rgb"), 0.3);
   }
 
   &:active {
-    background-color: bulmargba(getVar("shadow-color-rgb"), 0.4);
+    background-color: bulmaRgba(getVar("shadow-color-rgb"), 0.4);
   }
 
   // Sizes
