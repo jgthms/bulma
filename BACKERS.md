@@ -14,37 +14,21 @@
     Maia!
   </li>
 
-
   <li>
     echelon
   </li>
 
 </ul>
 
-
-
-
-
 <h2>Website sponsors ($300+)</h2>
 
 <ul>
-
-
-  <li>
-    kevivmatrix
-  </li>
 
   <li>
     stacho
   </li>
 
-  <li>
-    wingerdkm1
-  </li>
-
 </ul>
-
-
 
 <h2>Homepage sponsors ($100+)</h2>
 
@@ -59,19 +43,19 @@
   </li>
 
   <li>
+    BacklinksRocket
+  </li>
+
+  <li>
     123Calendars
   </li>
 
   <li>
-    KasynoHEX.com
+    PolskieKasynoHEX.org
   </li>
 
   <li>
     Gianni Museeuw
-  </li>
-
-  <li>
-    Sarah Johnson
   </li>
 
   <li>
@@ -83,15 +67,11 @@
   </li>
 
   <li>
+    Tuomas
+  </li>
+
+  <li>
     Joe Kizlauskas
-  </li>
-
-  <li>
-    Viktor & Steve Scott (NonGamStopWager.com)
-  </li>
-
-  <li>
-    seo pmi
   </li>
 
   <li>
@@ -103,23 +83,11 @@
   </li>
 
   <li>
-    List.Casino
-  </li>
-
-  <li>
-    Khayriddin Sodiqov
-  </li>
-
-  <li>
     Amelia Cook
   </li>
 
   <li>
     Iaroslav Baklan
-  </li>
-
-  <li>
-    Aamir Javeed
   </li>
 
   <li>
@@ -131,10 +99,6 @@
   </li>
 
   <li>
-    Xoo
-  </li>
-
-  <li>
     Jim
   </li>
 
@@ -143,28 +107,75 @@
   </li>
 
   <li>
-    Mark john
+    CellTrackingApps
   </li>
 
   <li>
-    Limeup
-  </li>
-
-
-  <li>
-    laneadam
+    Aktug Dogan
   </li>
 
   <li>
-    aaditysoni
+    KingCasinoBonus
   </li>
 
   <li>
-    toolshomdconsulting
+    Iaroslav
   </li>
 
   <li>
-    Fredspeler
+    Genesis
+  </li>
+
+  <li>
+    TradingWolf
+  </li>
+
+  <li>
+    Codeless.co
+  </li>
+
+  <li>
+    Viktoria Johansson
+  </li>
+
+  <li>
+    Mark Taylor
+  </li>
+
+  <li>
+    Sportonlinebetting.net
+  </li>
+
+  <li>
+    haitham ashoo
+  </li>
+
+  <li>
+    Qiang Lin
+  </li>
+
+  <li>
+    Fora Fora24
+  </li>
+
+  <li>
+    Tom Eriksson
+  </li>
+
+  <li>
+    Casinos zonder Cruks
+  </li>
+
+  <li>
+    Casino Zonder
+  </li>
+
+  <li>
+    Viktoria Poddubetska
+  </li>
+
+  <li>
+    wingerdkm1
   </li>
 
   <li>
@@ -172,12 +183,18 @@
   </li>
 
   <li>
-    patrick136
+    toolshomdconsulting
+  </li>
+
+  <li>
+    qbtoolhub
+  </li>
+
+  <li>
+    surebettor
   </li>
 
 </ul>
-
-
 
 <h2>Bulma backers ($10+)</h2>
 
@@ -192,32 +209,11 @@
   </li>
 
   <li>
-    Al Romano
-  </li>
-
-  <li>
     xvxx
   </li>
 
-
   <li>
-    chazelton331
-  </li>
-
-  <li>
-    jessemarple
-  </li>
-
-  <li>
-    mieko
-  </li>
-
-  <li>
-    mmmonica50
-  </li>
-
-  <li>
-    linkdd
+    Gomah
   </li>
 
   <li>
@@ -225,7 +221,23 @@
   </li>
 
   <li>
-    Gomah
+    linkdd
+  </li>
+
+  <li>
+    jessemarple
+  </li>
+
+  <li>
+    chazelton331
+  </li>
+
+  <li>
+    Windsooon
+  </li>
+
+  <li>
+    mware
   </li>
 
 </ul>
