@@ -53,6 +53,10 @@ $button-hover-s: 10% !default;
 $button-hover-l: -10% !default;
 $button-active-s: 20% !default;
 $button-active-l: -20% !default;
+$button-light-l: 95% !default;
+$button-light-text-l: 33% !default;
+$button-light-hover-l: 93% !default;
+$button-light-active-l: 91% !default;
 
 $button-colors: $colors !default;
 $button-responsive-sizes: (
@@ -130,6 +134,8 @@ $button-responsive-sizes: (
       button-hover-l: #{$button-hover-l},
       button-active-s: #{$button-active-s},
       button-active-l: #{$button-active-l},
+      button-light-l: #{$button-light-l},
+      button-light-text-l: #{$button-light-text-l},
       dark-shade: #{$dark-shade},
       dark-invert-shade: #{$dark-invert-shade},
       light-shade: #{$light-shade},
@@ -431,9 +437,12 @@ $button-responsive-sizes: (
       }
 
       &.is-light {
+        --l: var(--bulma-button-light-l);
+        --text-l: var(--bulma-button-light-text-l);
         // --l: var(--bulma-dark-shade);
-        background-color: getVar($name, "", "-#{$light-shade}");
-        color: $base;
+        // background-color: getVar($name, "", "-#{$light-shade}");
+        // color: $base;
+        color: hsla($base-h, var(--s), var(--text-l), 1);
 
         &:hover,
         &.is-hovered {
