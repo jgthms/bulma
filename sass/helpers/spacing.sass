@@ -10,22 +10,53 @@ $spacing-horizontal: "x" !default
 $spacing-vertical: "y" !default
 $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem, "auto": auto) !default
 
-@each $property, $shortcut in $spacing-shortcuts
-  @each $name, $value in $spacing-values
-    // All directions
-    .#{$shortcut}-#{$name}
-      #{$property}: $value !important
-    // Cardinal directions
-    @each $direction, $suffix in $spacing-directions
-      .#{$shortcut}#{$suffix}-#{$name}
-        #{$property}-#{$direction}: $value !important
-    // Horizontal axis
-    @if $spacing-horizontal != null
-      .#{$shortcut}#{$spacing-horizontal}-#{$name}
-        #{$property}-left: $value !important
-        #{$property}-right: $value !important
-    // Vertical axis
-    @if $spacing-vertical != null
-      .#{$shortcut}#{$spacing-vertical}-#{$name}
-        #{$property}-top: $value !important
-        #{$property}-bottom: $value !important
+=spacing-helpers($target: "")
+  $target-name: if($target == '', '', '-' + $target)
+  @each $property, $shortcut in $spacing-shortcuts
+    @each $name, $value in $spacing-values
+      // All directions
+      .#{$shortcut}#{$target-name}-#{$name}
+        #{$property}: $value !important
+      // Cardinal directions
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}#{$target-name}-#{$name}
+          #{$property}-#{$direction}: $value !important
+      // Horizontal axis
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}#{$target-name}-#{$name}
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      // Vertical axis
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}#{$target-name}-#{$name}
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
++spacing-helpers()
+
++mobile
+  +spacing-helpers('mobile')
+
++tablet
+  +spacing-helpers('tablet')
+
++tablet-only
+  +spacing-helpers('tablet-only')
+
++touch
+  +spacing-helpers('touch')
+
++desktop
+  +spacing-helpers('desktop')
+
++desktop-only
+  +spacing-helpers('desktop-only')
+
++widescreen
+  +spacing-helpers('widescreen')
+
++widescreen-only
+  +spacing-helpers('widescreen-only')
+
++fullhd
+  +spacing-helpers('fullhd')
