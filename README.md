@@ -129,11 +129,12 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [Oruga-Bulma](https://github.com/oruga-ui/theme-bulma)                              | Bulma theme for [Oruga UI](https://oruga.io)                                                  |
 | [@bulvar/bulma](https://github.com/daniil4udo/bulvar/tree/master/packages/bulma)    | Bulma with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) support |
 | [@angular-bulma](https://quinnjr.github.io/angular-bulma) | [Angular](https://angular.io/) directives and components to use in your Bulma projects |
-| [Bulma CSS Class Completion](https://github.com/eliutdev/bulma-css-class-completion) | CSS class name completion for the HTML class attribute based on Bulma CSS classes. |
+| [Bulma CSS Class Completion](https://github.com/eliutdev/bulma-css-class-completion) | CSS class name completion for the HTML class attribute based on Bulma CSS classes.           |
+| [Crispy-Bulma](https://github.com/ckrybus/crispy-bulma)                             | Bulma template pack for django-crispy-forms                                                   |
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
-Code copyright 2022 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+Code copyright 2023 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
 
 [npm-link]: https://www.npmjs.com/package/bulma
 [awesome-link]: https://github.com/awesome-css-group/awesome-css
