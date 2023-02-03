@@ -39,6 +39,9 @@ $message-colors: $colors !default;
       message-body-pre-background-color: #{$message-body-pre-background-color},
       message-body-pre-code-background-color: #{$message-body-pre-code-background-color},
       message-header-body-border-width: #{$message-header-body-border-width},
+      message-status-background-l: 8%,
+      message-status-color-l: 70%,
+      message-status-header-background-l: 20%,
     )
   );
 }
@@ -75,44 +78,76 @@ $message-colors: $colors !default;
   // Colors
   // TODO
   @each $name, $components in $message-colors {
-    $color: nth($components, 1);
-    $color-invert: nth($components, 2);
-    $color-light: null;
-    $color-dark: null;
-
-    @if length($components) >= 3 {
-      $color-light: nth($components, 3);
-
-      @if length($components) >= 4 {
-        $color-dark: nth($components, 4);
-      } @else {
-        $color-luminance: colorLuminance($color);
-        $darken-percentage: $color-luminance * 70%;
-        $desaturate-percentage: $color-luminance * 30%;
-        $color-dark: desaturate(
-          darken($color, $darken-percentage),
-          $desaturate-percentage
-        );
-      }
-    } @else {
-      $color-lightning: max(100% - lightness($color) - 2%, 0%);
-      $color-light: lighten($color, $color-lightning);
-    }
+    $base-h: getVar($name, "", "-h");
+    $base-s: getVar($name, "", "-s");
+    $base-l: getVar($name, "", "-l");
+    $invert: getVar($name, "", "-invert");
+    $base: hsl($base-h, var(--s), var(--l));
 
     &.is-#{$name} {
-      background-color: $color-light;
+      --base-s: #{$base-s};
+      --base-l: #{$base-l};
+      background: none;
 
       .#{$class-prefix}message-header {
-        background-color: $color;
-        color: $color-invert;
+        background-color: hsl(
+          $base-h,
+          var(--base-s),
+          var(--bulma-message-status-header-background-l)
+        );
+        color: $invert;
       }
 
       .#{$class-prefix}message-body {
-        border-color: $color;
-        color: $color-dark;
+        background-color: hsl(
+          $base-h,
+          var(--base-s),
+          var(--bulma-message-status-background-l)
+        );
+        color: hsl($base-h, var(--base-s), var(--bulma-message-status-color-l));
       }
     }
   }
+
+  // @each $name, $components in $message-colors {
+  //   $color: nth($components, 1);
+  //   $color-invert: nth($components, 2);
+  //   $color-light: null;
+  //   $color-dark: null;
+
+  //   @if length($components) >= 3 {
+  //     $color-light: nth($components, 3);
+
+  //     @if length($components) >= 4 {
+  //       $color-dark: nth($components, 4);
+  //     } @else {
+  //       $color-luminance: colorLuminance($color);
+  //       $darken-percentage: $color-luminance * 70%;
+  //       $desaturate-percentage: $color-luminance * 30%;
+  //       $color-dark: desaturate(
+  //         darken($color, $darken-percentage),
+  //         $desaturate-percentage
+  //       );
+  //     }
+  //   } @else {
+  //     $color-lightning: max(100% - lightness($color) - 2%, 0%);
+  //     $color-light: lighten($color, $color-lightning);
+  //   }
+
+  //   &.is-#{$name} {
+  //     background-color: $color-light;
+
+  //     .#{$class-prefix}message-header {
+  //       background-color: $color;
+  //       color: $color-invert;
+  //     }
+
+  //     .#{$class-prefix}message-body {
+  //       border-color: $color;
+  //       color: $color-dark;
+  //     }
+  //   }
+  // }
 }
 
 .#{$class-prefix}message-header {

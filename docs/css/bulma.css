@@ -539,6 +539,7 @@ a.box:active {
   --bulma-button-color: var(--bulma-text-strong);
   --bulma-button-background-color: var(--bulma-scheme-main);
   --bulma-button-family: false;
+  --bulma-button-weight: var(--bulma-weight-medium);
   --bulma-button-border-color: var(--bulma-border);
   --bulma-button-border-width: var(--bulma-control-border-width);
   --bulma-button-padding-vertical: calc( 0.5em - var(--bulma-button-border-width));
@@ -586,6 +587,7 @@ a.box:active {
   border-width: var(--bulma-button-border-width);
   color: var(--bulma-button-color);
   cursor: pointer;
+  font-weight: var(--bulma-button-weight);
   justify-content: center;
   padding-bottom: var(--bulma-button-padding-vertical);
   padding-left: var(--bulma-button-padding-horizontal);
@@ -5651,6 +5653,9 @@ button.dropdown-item.is-active {
   --bulma-message-body-pre-background-color: var(--bulma-scheme-main);
   --bulma-message-body-pre-code-background-color: transparent;
   --bulma-message-header-body-border-width: 0;
+  --bulma-message-status-background-l: 8%;
+  --bulma-message-status-color-l: 70%;
+  --bulma-message-status-header-background-l: 20%;
 }
 
 .message {
@@ -5681,151 +5686,179 @@ button.dropdown-item.is-active {
 }
 
 .message.is-white {
-  background-color: white;
+  --base-s: var(--bulma-white-s);
+  --base-l: var(--bulma-white-l);
+  background: none;
 }
 
 .message.is-white .message-header {
-  background-color: white;
-  color: #0a0a0a;
+  background-color: hsl(var(--bulma-white-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-white-invert);
 }
 
 .message.is-white .message-body {
-  border-color: white;
+  background-color: hsl(var(--bulma-white-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-white-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-black {
-  background-color: #fafafa;
+  --base-s: var(--bulma-black-s);
+  --base-l: var(--bulma-black-l);
+  background: none;
 }
 
 .message.is-black .message-header {
-  background-color: #0a0a0a;
-  color: white;
+  background-color: hsl(var(--bulma-black-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-black-invert);
 }
 
 .message.is-black .message-body {
-  border-color: #0a0a0a;
+  background-color: hsl(var(--bulma-black-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-black-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-light {
-  background-color: #fafafa;
+  --base-s: var(--bulma-light-s);
+  --base-l: var(--bulma-light-l);
+  background: none;
 }
 
 .message.is-light .message-header {
-  background-color: whitesmoke;
-  color: rgba(0, 0, 0, 0.7);
+  background-color: hsl(var(--bulma-light-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-light-invert);
 }
 
 .message.is-light .message-body {
-  border-color: whitesmoke;
+  background-color: hsl(var(--bulma-light-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-light-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-dark {
-  background-color: #fafafa;
+  --base-s: var(--bulma-dark-s);
+  --base-l: var(--bulma-dark-l);
+  background: none;
 }
 
 .message.is-dark .message-header {
-  background-color: #363636;
-  color: #fff;
+  background-color: hsl(var(--bulma-dark-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-dark-invert);
 }
 
 .message.is-dark .message-body {
-  border-color: #363636;
+  background-color: hsl(var(--bulma-dark-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-dark-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-primary {
-  background-color: #ebfffc;
+  --base-s: var(--bulma-primary-s);
+  --base-l: var(--bulma-primary-l);
+  background: none;
 }
 
 .message.is-primary .message-header {
-  background-color: #00d1b2;
-  color: #fff;
+  background-color: hsl(var(--bulma-primary-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-primary-invert);
 }
 
 .message.is-primary .message-body {
-  border-color: #00d1b2;
-  color: #00947e;
+  background-color: hsl(var(--bulma-primary-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-primary-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-link {
-  background-color: #f7f8fd;
+  --base-s: var(--bulma-link-s);
+  --base-l: var(--bulma-link-l);
+  background: none;
 }
 
 .message.is-link .message-header {
-  background-color: #3c57d3;
-  color: #fff;
+  background-color: hsl(var(--bulma-link-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-link-invert);
 }
 
 .message.is-link .message-body {
-  border-color: #3c57d3;
+  background-color: hsl(var(--bulma-link-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-link-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-info {
-  background-color: #ebf9fe;
+  --base-s: var(--bulma-info-s);
+  --base-l: var(--bulma-info-l);
+  background: none;
 }
 
 .message.is-info .message-header {
-  background-color: #18b4f7;
-  color: #fff;
+  background-color: hsl(var(--bulma-info-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-info-invert);
 }
 
 .message.is-info .message-body {
-  border-color: #18b4f7;
-  color: #0677a7;
+  background-color: hsl(var(--bulma-info-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-info-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-success {
-  background-color: #effbf4;
+  --base-s: var(--bulma-success-s);
+  --base-l: var(--bulma-success-l);
+  background: none;
 }
 
 .message.is-success .message-header {
-  background-color: #3fcf82;
-  color: #fff;
+  background-color: hsl(var(--bulma-success-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-success-invert);
 }
 
 .message.is-success .message-body {
-  border-color: #3fcf82;
-  color: #1e7647;
+  background-color: hsl(var(--bulma-success-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-success-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-warning {
-  background-color: #fff9eb;
+  --base-s: var(--bulma-warning-s);
+  --base-l: var(--bulma-warning-l);
+  background: none;
 }
 
 .message.is-warning .message-header {
-  background-color: #ffb60a;
-  color: var(--bulma-white);
+  background-color: hsl(var(--bulma-warning-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-warning-invert);
 }
 
 .message.is-warning .message-body {
-  border-color: #ffb60a;
-  color: #946800;
+  background-color: hsl(var(--bulma-warning-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-warning-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-danger {
-  background-color: #feedec;
+  --base-s: var(--bulma-danger-s);
+  --base-l: var(--bulma-danger-l);
+  background: none;
 }
 
 .message.is-danger .message-header {
-  background-color: #f15146;
-  color: #fff;
+  background-color: hsl(var(--bulma-danger-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-danger-invert);
 }
 
 .message.is-danger .message-body {
-  border-color: #f15146;
-  color: #c71b0f;
+  background-color: hsl(var(--bulma-danger-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-danger-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message.is-text {
-  background-color: #f9fafb;
+  --base-s: var(--bulma-text-s);
+  --base-l: var(--bulma-text-l);
+  background: none;
 }
 
 .message.is-text .message-header {
-  background-color: #404654;
-  color: #fff;
+  background-color: hsl(var(--bulma-text-h), var(--base-s), var(--bulma-message-status-header-background-l));
+  color: var(--bulma-text-invert);
 }
 
 .message.is-text .message-body {
-  border-color: #404654;
+  background-color: hsl(var(--bulma-text-h), var(--base-s), var(--bulma-message-status-background-l));
+  color: hsl(var(--bulma-text-h), var(--base-s), var(--bulma-message-status-color-l));
 }
 
 .message-header {
@@ -13112,4 +13145,30 @@ a.has-text-text:hover, a.has-text-text:focus {
       link-active-border: var(--bulma-text-30),
     )
   );*/
+}
+
+[data-theme="dark"],
+.theme-dark {
+  --bulma-scheme-main: #121212;
+  --bulma-scheme-main-bis: #242424;
+  --bulma-scheme-main-ter: #363636;
+  --bulma-scheme-invert: white;
+  --bulma-scheme-invert-bis: #fafafa;
+  --bulma-scheme-invert-ter: whitesmoke;
+  --bulma-background: #242424;
+  --bulma-border: #363636;
+  --bulma-border-hover: #4a4a4a;
+  --bulma-border-light: #363636;
+  --bulma-border-light-hover: #4a4a4a;
+  --bulma-text: #b5b5b5;
+  --bulma-text-invert: #363636;
+  --bulma-text-light: #7a7a7a;
+  --bulma-text-strong: white;
+  --bulma-link-hover: white;
+  --bulma-link-hover-border: #4a4a4a;
+  --bulma-link-focus: white;
+  --bulma-link-focus-border: #3c57d3;
+  --bulma-link-active: white;
+  --bulma-link-active-border: #b5b5b5;
+  --bulma-shadow: 0 0.5em 1em -0.125em rgba(255, 255, 255, 0.2), 0 0px 0 1px rgba(255, 255, 255, 0.04);
 }

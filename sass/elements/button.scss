@@ -4,6 +4,7 @@
 $button-color: getVar("text-strong") !default;
 $button-background-color: getVar("scheme-main") !default;
 $button-family: false !default;
+$button-weight: getVar("weight-medium") !default;
 
 $button-border-color: getVar("border") !default;
 $button-border-width: getVar("control-border-width") !default;
@@ -101,6 +102,7 @@ $button-responsive-sizes: (
       button-color: #{$button-color},
       button-background-color: #{$button-background-color},
       button-family: #{$button-family},
+      button-weight: #{$button-weight},
       button-border-color: #{$button-border-color},
       button-border-width: #{$button-border-width},
       button-padding-vertical: #{$button-padding-vertical},
@@ -153,11 +155,7 @@ $button-responsive-sizes: (
   border-width: getVar("button-border-width");
   color: getVar("button-color");
   cursor: pointer;
-
-  @if $button-family {
-    font-family: getVar("button-family");
-  }
-
+  font-weight: getVar("button-weight");
   justify-content: center;
   padding-bottom: getVar("button-padding-vertical");
   padding-left: getVar("button-padding-horizontal");
@@ -165,6 +163,10 @@ $button-responsive-sizes: (
   padding-top: getVar("button-padding-vertical");
   text-align: center;
   white-space: nowrap;
+
+  @if $button-family {
+    font-family: getVar("button-family");
+  }
 
   strong {
     color: inherit;
