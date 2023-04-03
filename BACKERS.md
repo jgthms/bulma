@@ -3,18 +3,6 @@
 <ul>
 
   <li>
-    Adrian Ocneanu
-  </li>
-
-  <li>
-    Garry Newman
-  </li>
-
-  <li>
-    Maia!
-  </li>
-
-  <li>
     echelon
   </li>
 
@@ -35,10 +23,6 @@
 <ul>
 
   <li>
-    Robert Bolder
-  </li>
-
-  <li>
     Adela Belin
   </li>
 
@@ -47,15 +31,15 @@
   </li>
 
   <li>
-    123Calendars
-  </li>
-
-  <li>
     PolskieKasynoHEX.org
   </li>
 
   <li>
     Gianni Museeuw
+  </li>
+
+  <li>
+    Starwarscasinos.com
   </li>
 
   <li>
@@ -72,6 +56,14 @@
 
   <li>
     Joe Kizlauskas
+  </li>
+
+  <li>
+    Viktor &amp; Steve Scott (NonGamStopWager.com)
+  </li>
+
+  <li>
+    seo pmi
   </li>
 
   <li>
@@ -107,15 +99,15 @@
   </li>
 
   <li>
+    Limeup
+  </li>
+
+  <li>
     CellTrackingApps
   </li>
 
   <li>
     Aktug Dogan
-  </li>
-
-  <li>
-    KingCasinoBonus
   </li>
 
   <li>
@@ -127,7 +119,7 @@
   </li>
 
   <li>
-    TradingWolf
+    Тимур Юхименко
   </li>
 
   <li>
@@ -136,18 +128,6 @@
 
   <li>
     Viktoria Johansson
-  </li>
-
-  <li>
-    Mark Taylor
-  </li>
-
-  <li>
-    Sportonlinebetting.net
-  </li>
-
-  <li>
-    haitham ashoo
   </li>
 
   <li>
@@ -175,6 +155,14 @@
   </li>
 
   <li>
+    David Matthews
+  </li>
+
+  <li>
+    Richard Olsson
+  </li>
+
+  <li>
     wingerdkm1
   </li>
 
@@ -199,18 +187,6 @@
 <h2>Bulma backers ($10+)</h2>
 
 <ul>
-
-  <li>
-    Jason Seminara
-  </li>
-
-  <li>
-    Ian Ebden
-  </li>
-
-  <li>
-    xvxx
-  </li>
 
   <li>
     Gomah
