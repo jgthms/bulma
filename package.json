@@ -29,7 +29,6 @@
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "clean-css-cli": "^5.6.2",
-    "node-sass": "^8.0.0",
     "postcss-cli": "^10.1.0",
     "rimraf": "^4.4.1"
   },
@@ -37,10 +36,10 @@
     "build": "npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
     "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
     "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
-    "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
+    "build-sass": "sass --style=expanded --source-map bulma.sass css/bulma.css",
     "clean": "rimraf css",
     "rtl": "npm run rtl-sass && npm run rtl-autoprefix && npm run rtl-cleancss",
-    "rtl-sass": "node-sass --output-style expanded --source-map true bulma-rtl.sass css/bulma-rtl.css",
+    "rtl-sass": "sass --style=expanded --source-map bulma-rtl.sass css/bulma-rtl.css",
     "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css",
     "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
     "deploy": "npm run clean && npm run build && npm run rtl",
@@ -52,5 +51,8 @@
     "bulma.sass",
     "LICENSE",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "sass": "^1.62.1"
+  }
 }
