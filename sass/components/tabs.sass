@@ -80,9 +80,9 @@ $tabs-toggle-link-active-color: $link-invert !default
       padding-left: 0.75em
   .icon
     &:first-child
-      +ltr-property("margin", 0.5em)
+      margin-inline-end: 0.5em
     &:last-child
-      +ltr-property("margin", 0.5em, false)
+      margin-inline-start: 0.5em
   // Alignment
   &.is-centered
     ul
@@ -94,10 +94,8 @@ $tabs-toggle-link-active-color: $link-invert !default
   &.is-boxed
     a
       border: 1px solid transparent
-      +ltr
-        border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0
-      +rtl
-        border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius
+      border-start-start-radius: $tabs-boxed-link-radius
+      border-start-end-radius: $tabs-boxed-link-radius
       &:hover
         background-color: $tabs-boxed-link-hover-background-color
         border-bottom-color: $tabs-boxed-link-hover-border-bottom-color
@@ -124,21 +122,13 @@ $tabs-toggle-link-active-color: $link-invert !default
         z-index: 2
     li
       & + li
-        +ltr-property("margin", -#{$tabs-toggle-link-border-width}, false)
+        margin-inline-start: -#{$tabs-toggle-link-border-width}
       &:first-child a
-        +ltr
-          border-top-left-radius: $tabs-toggle-link-radius
-          border-bottom-left-radius: $tabs-toggle-link-radius
-        +rtl
-          border-top-right-radius: $tabs-toggle-link-radius
-          border-bottom-right-radius: $tabs-toggle-link-radius
+        border-start-start-radius: $tabs-toggle-link-radius
+        border-end-start-radius: $tabs-toggle-link-radius
       &:last-child a
-        +ltr
-          border-top-right-radius: $tabs-toggle-link-radius
-          border-bottom-right-radius: $tabs-toggle-link-radius
-        +rtl
-          border-top-left-radius: $tabs-toggle-link-radius
-          border-bottom-left-radius: $tabs-toggle-link-radius
+        border-start-end-radius: $tabs-toggle-link-radius
+        border-end-end-radius: $tabs-toggle-link-radius
       &.is-active
         a
           background-color: $tabs-toggle-link-active-background-color
@@ -150,23 +140,13 @@ $tabs-toggle-link-active-color: $link-invert !default
     &.is-toggle-rounded
       li
         &:first-child a
-          +ltr
-            border-bottom-left-radius: $radius-rounded
-            border-top-left-radius: $radius-rounded
-            padding-left: 1.25em
-          +rtl
-            border-bottom-right-radius: $radius-rounded
-            border-top-right-radius: $radius-rounded
-            padding-right: 1.25em
+          border-end-start-radius: $radius-rounded
+          border-start-start-radius: $radius-rounded
+          padding-start: 1.25em
         &:last-child a
-          +ltr
-            border-bottom-right-radius: $radius-rounded
-            border-top-right-radius: $radius-rounded
-            padding-right: 1.25em
-          +rtl
-            border-bottom-left-radius: $radius-rounded
-            border-top-left-radius: $radius-rounded
-            padding-left: 1.25em
+          border-end-end-radius: $radius-rounded
+          border-start-end-radius: $radius-rounded
+          padding-end: 1.25em
   // Sizes
   &.is-small
     font-size: $size-small
