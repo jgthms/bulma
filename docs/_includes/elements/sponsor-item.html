@@ -16,6 +16,15 @@ title="{{ sponsor_alt }}"
 >
 {% if sponsor.textOnly %}
   <strong>{{ sponsor.textOnly }}</strong>
+{% elsif sponsor.svg %}
+{%
+    include elements/responsive-image-2x.html
+    path=sponsor_path
+    extension="svg"
+    alt=sponsor_alt
+    width=sponsor.width
+    height=sponsor.height
+  %}
 {% else %}
 {%
     include elements/responsive-image-2x.html
