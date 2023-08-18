@@ -6,85 +6,66 @@ share_description: "Get inspired! The Bulma Expo is a curated collection of the 
 layout: default
 route: expo
 breadcrumb:
-- home
-- expo
+  - home
+  - expo
 ---
 
-{% include global/navbar.html id="Expo" %}
-
-{%
-  include components/hero.html
-  color="expo"
-  icon="fas fa-star"
-  title="The Bulma **Expo**"
-  subtitle="How everyone is designing gorgeous websites using Bulma"
-%}
-
-{% assign encoded_url = 'Here is my lovely website!' | urlencode %}
-{% assign tweet_href = 'https://twitter.com/intent/tweet?text=' | append: encoded_url | append: '&hashtags=madewithbulma' %}
-
-{% capture call_button %}
-  {% include
-    elements/tw-button.html
-    label="#madewithbulma"
-    href=tweet_href
-  %}
-{% endcapture %}
-
-{%
-  include components/call.html
-  color="twitter"
-  text='Did you design a gorgeous website with Bulma too? <strong>Tell us about it!</strong> <span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px;">🤗</span>'
-  button=call_button
-%}
+{% include global/navbar.html id="Expo" %} {% include components/hero.html
+color="expo" icon="fas fa-star" title="The Bulma **Expo**" subtitle="How
+everyone is designing gorgeous websites using Bulma" %} {% assign encoded_url =
+'Here is my lovely website!' | urlencode %} {% assign tweet_href =
+'https://twitter.com/intent/tweet?text=' | append: encoded_url | append:
+'&hashtags=madewithbulma' %} {% capture call_button %} {% include
+elements/tw-button.html label="#madewithbulma" href=tweet_href %} {% endcapture
+%} {% include components/call.html color="twitter" text='Did you design a
+gorgeous website with Bulma too? <strong>Tell us about it!</strong>
+<span style="font-size: 20px; margin-left: 2px; position: relative; top: 1px"
+  >🤗</span
+>' button=call_button %}
 
 <div class="bd-websites">
-  {% for website_id in site.data.expo.lists.expo %}
-    {% assign website = site.data.expo.by_id[website_id] %}
-    {% assign imageName = website_id | slugify %}
-    {% assign imagePath = "/images/expo/" | prepend: site.url | append: imageName %}
-    <div class="bd-website {% if website.highlighted %}bd-is-highlighted{% endif %}">
-      <figure class="bd-website-image">
-        {% if website.highlighted %}
-          {% assign size1x = "1344x840" %}
-          {% assign size2x = "2688x1680" %}
-          <img
-            class="lazyload"
-            src="{{ site.url }}/images/placeholders/empty.png"
-            data-src="{{ imagePath }}-{{ size1x }}.jpg"
-            data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+  {% for website_id in site.data.expo.lists.expo %} {% assign website =
+  site.data.expo.by_id[website_id] %} {% assign imageName = website_id | slugify
+  %} {% assign imagePath = "/images/expo/" | prepend: site.url | append:
+  imageName %}
+  <div
+    class="bd-website {% if website.highlighted %}bd-is-highlighted{% endif %}"
+  >
+    <figure class="bd-website-image">
+      {% if website.highlighted %} {% assign size1x = "1344x840" %} {% assign
+      size2x = "2688x1680" %}
+      <img
+        class="lazyload"
+        src="{{ site.url }}/images/placeholders/empty.png"
+        data-src="{{ imagePath }}-{{ size1x }}.jpg"
+        data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
                          {{ imagePath }}-{{ size1x }}.jpg 1x"
-            width="1344"
-            height="840">
-        {% else %}
-          {% assign size1x = "672x420" %}
-          {% assign size2x = "1344x840" %}
-          <img
-            class="lazyload"
-            src="{{ site.url }}/images/placeholders/empty.png"
-            data-src="{{ imagePath }}-{{ size1x }}.jpg"
-            data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
+        width="1344"
+        height="840"
+      />
+      {% else %} {% assign size1x = "672x420" %} {% assign size2x = "1344x840"
+      %}
+      <img
+        class="lazyload"
+        src="{{ site.url }}/images/placeholders/empty.png"
+        data-src="{{ imagePath }}-{{ size1x }}.jpg"
+        data-srcset="{{ imagePath }}-{{ size2x }}.jpg 2x,
                          {{ imagePath }}-{{ size1x }}.jpg 1x"
-            width="672"
-            height="420">
-        {% endif %}
-        <span class="bd-website-overlay is-overlay"></span>
-      </figure>
+        width="672"
+        height="420"
+      />
+      {% endif %}
+      <span class="bd-website-overlay is-overlay"></span>
+    </figure>
 
-      <h2 class="title is-5 bd-website-name is-marginless">
-        {{ website.name }}
-      </h2>
-
-      <p class="bd-website-date">
-        {{ website.date }}
-      </p>
-    </div>
+    <h2 class="title is-5 bd-website-name is-marginless">{{ website.name }}</h2>
+  </div>
   {% endfor %}
 </div>
 
 <script src="{{ site.url }}/vendor/lazyload-2.0.0-beta.2.min.js"></script>
 <script type="text/javascript">
-  ;(function() {
+  (function () {
     lazyload();
   })();
 </script>
