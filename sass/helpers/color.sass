@@ -33,6 +33,8 @@
       background-color: $color-dark !important
 
 @each $name, $shade in $shades
+  @if type-of($shade) == "list"
+     $shade: nth($shade, 1)
   .has-text-#{$name}
     color: $shade !important
   .has-background-#{$name}
