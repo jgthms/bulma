@@ -30,8 +30,10 @@
     "autoprefixer": "^10.4.14",
     "clean-css-cli": "^5.6.2",
     "node-sass": "^8.0.0",
+    "npm-run-all": "^4.1.5",
     "postcss-cli": "^10.1.0",
-    "rimraf": "^4.4.1"
+    "rimraf": "^4.4.1",
+    "wrangler": "^3.6.0"
   },
   "scripts": {
     "build": "npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
@@ -44,7 +46,10 @@
     "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css",
     "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
     "deploy": "npm run clean && npm run build && npm run rtl",
-    "start": "npm run build-sass -- --watch"
+    "start": "npm run build-sass -- --watch",
+    "dev:cloud": "wrangler pages dev --compatibility-date=2023-01-01 ./css",
+    "dev:build": "npm run start",
+    "dev": "run-s dev:*"
   },
   "files": [
     "css",
