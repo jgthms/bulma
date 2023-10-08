@@ -1,8 +1,15 @@
 @import "../utilities/mixins"
 
-$tabs-border-bottom-color: $border !default
-$tabs-border-bottom-style: solid !default
-$tabs-border-bottom-width: 1px !default
+$tabs-border-color: $border !default
+$tabs-border-style: solid !default
+$tabs-border-width: 1px !default
+$tabs-border-bottom-color: $tabs-border-color !default
+$tabs-border-bottom-style: $tabs-border-style !default
+$tabs-border-bottom-width: $tabs-border-width !default
+$tabs-box-background-color: $scheme-main !default
+$tabs-box-border-color: $tabs-border-color !default
+$tabs-box-border-style: $tabs-border-style !default
+$tabs-box-border-width: $tabs-border-width !default
 $tabs-link-color: $text !default
 $tabs-link-hover-border-bottom-color: $text-strong !default
 $tabs-link-hover-color: $text-strong !default
@@ -174,3 +181,23 @@ $tabs-toggle-link-active-color: $link-invert !default
     font-size: $size-medium
   &.is-large
     font-size: $size-large
+
+.tabs-box
+  @extend %block
+  display: flex
+  flex-direction: column
+  .tabs
+    margin-bottom: 0
+  .tabs-content
+    border-color: $tabs-box-border-color
+    border-style: $tabs-box-border-style
+    border-width: $tabs-box-border-width
+    border-top: none
+    background-color: $tabs-box-background-color
+    padding: 0.75em
+    margin: 0
+    border-collapse: collapse
+    .tabs-page
+      display: none
+      &.is-active
+        display: block
