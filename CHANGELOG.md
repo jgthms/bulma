@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 0.9.5
+
+### New features
+
+- `is-gap`: can add gap betwen item in an `is-flex` container with `is-gap-(size)`, with sizes 1-7
+
 ## 0.9.4
 
 ### New features
@@ -126,7 +132,7 @@ The Bulma package now also comes with a `bulma-rtl.css` and `bulma-rtl.min.css` 
 
 ### Spacing helpers
 
-Bulma now has **spacing helpers**: https://bulma.io/documentation/helpers/spacing-helpers/
+Bulma now has **spacing helpers**: <https://bulma.io/documentation/helpers/spacing-helpers/>
 
 <p>Bulma provides <strong>margin</strong> <code>m*</code> and <strong>padding</strong> <code>p*</code> helpers in all <strong>directions</strong>:</p>
 
@@ -1513,7 +1519,7 @@ Variable name changes (mostly appending `-color`):
 
 ## 0.0.19
 
-### NEW!!!
+### NEW
 
 - `.tile`
 
