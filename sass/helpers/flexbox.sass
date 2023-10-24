@@ -30,13 +30,13 @@ $align-self-values: auto, flex-start, flex-end, center, baseline, stretch
   .is-align-self-#{$value}
     align-self: $value !important
 
-@each $size in $sizes
-  $i: index($sizes, $size)
-  .is-gap-#{$i}
-    gap: calc($size / 3) !important
-
 $flex-operators: grow, shrink
 @each $operator in $flex-operators
   @for $i from 0 through 5
     .is-flex-#{$operator}-#{$i}
       flex-#{$operator}: $i !important
+
+@each $size in $sizes
+  $i: index($sizes, $size)
+  .is-gap-#{$i}
+    gap: calc($size / 3) !important
