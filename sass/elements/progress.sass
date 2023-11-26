@@ -1,12 +1,15 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
 
-$progress-bar-background-color: $border-light !default
-$progress-value-background-color: $text !default
-$progress-border-radius: $radius-rounded !default
+$progress-bar-background-color: derived-variables.$border-light !default
+$progress-value-background-color: derived-variables.$text !default
+$progress-border-radius: initial-variables.$radius-rounded !default
 
 $progress-indeterminate-duration: 1.5s !default
 
-$progress-colors: $colors !default
+$progress-colors: derived-variables.$colors !default
 
 .progress
   @extend %block
@@ -15,7 +18,7 @@ $progress-colors: $colors !default
   border: none
   border-radius: $progress-border-radius
   display: block
-  height: $size-normal
+  height: derived-variables.$size-normal
   overflow: hidden
   padding: 0
   width: 100%
@@ -47,7 +50,7 @@ $progress-colors: $colors !default
     animation-name: moveIndeterminate
     animation-timing-function: linear
     background-color: $progress-bar-background-color
-    background-image: linear-gradient(to right, $text 30%, $progress-bar-background-color 30%)
+    background-image: linear-gradient(to right, derived-variables.$text 30%, $progress-bar-background-color 30%)
     background-position: top left
     background-repeat: no-repeat
     background-size: 150% 150%
@@ -60,11 +63,11 @@ $progress-colors: $colors !default
 
   // Sizes
   &.is-small
-    height: $size-small
+    height: derived-variables.$size-small
   &.is-medium
-    height: $size-medium
+    height: derived-variables.$size-medium
   &.is-large
-    height: $size-large
+    height: derived-variables.$size-large
 
 @keyframes moveIndeterminate
   from

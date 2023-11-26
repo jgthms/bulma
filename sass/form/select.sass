@@ -1,4 +1,12 @@
-$select-colors: $form-colors !default
+@use "shared"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/controls"
+@use "../utilities/mixins"
+@use "../utilities/extends"
+@use "../utilities/functions"
+
+$select-colors: shared.$form-colors !default
 
 .select
   display: inline-block
@@ -6,17 +14,17 @@ $select-colors: $form-colors !default
   position: relative
   vertical-align: top
   &:not(.is-multiple)
-    height: $input-height
+    height: shared.$input-height
   &:not(.is-multiple):not(.is-loading)
     &::after
       @extend %arrow
-      border-color: $input-arrow
-      +ltr-position(1.125em)
+      border-color: shared.$input-arrow
+      +mixins.ltr-position(1.125em)
       z-index: 4
   &.is-rounded
     select
-      border-radius: $radius-rounded
-      +ltr-property("padding", 1em, false)
+      border-radius: initial-variables.$radius-rounded
+      +mixins.ltr-property("padding", 1em, false)
   select
     @extend %input
     cursor: pointer
@@ -28,9 +36,9 @@ $select-colors: $form-colors !default
       display: none
     &[disabled]:hover,
     fieldset[disabled] &:hover
-      border-color: $input-disabled-border-color
+      border-color: shared.$input-disabled-border-color
     &:not([multiple])
-      +ltr-property("padding", 2.5em)
+      +mixins.ltr-property("padding", 2.5em)
     &[multiple]
       height: auto
       padding: 0
@@ -39,7 +47,7 @@ $select-colors: $form-colors !default
   // States
   &:not(.is-multiple):not(.is-loading):hover
     &::after
-      border-color: $input-hover-color
+      border-color: shared.$input-hover-color
   // Colors
   @each $name, $pair in $select-colors
     $color: nth($pair, 1)
@@ -50,23 +58,23 @@ $select-colors: $form-colors !default
         border-color: $color
         &:hover,
         &.is-hovered
-          border-color: bulmaDarken($color, 5%)
+          border-color: functions.bulmaDarken($color, 5%)
         &:focus,
         &.is-focused,
         &:active,
         &.is-active
-          box-shadow: $input-focus-box-shadow-size bulmaRgba($color, 0.25)
+          box-shadow: shared.$input-focus-box-shadow-size functions.bulmaRgba($color, 0.25)
   // Sizes
   &.is-small
-    +control-small
+    +controls.control-small
   &.is-medium
-    +control-medium
+    +controls.control-medium
   &.is-large
-    +control-large
+    +controls.control-large
   // Modifiers
   &.is-disabled
     &::after
-      border-color: $input-disabled-color !important
+      border-color: shared.$input-disabled-color !important
       opacity: 0.5
   &.is-fullwidth
     width: 100%
@@ -77,12 +85,12 @@ $select-colors: $form-colors !default
       @extend %loader
       margin-top: 0
       position: absolute
-      +ltr-position(0.625em)
+      +mixins.ltr-position(0.625em)
       top: 0.625em
       transform: none
     &.is-small:after
-      font-size: $size-small
+      font-size: derived-variables.$size-small
     &.is-medium:after
-      font-size: $size-medium
+      font-size: derived-variables.$size-medium
     &.is-large:after
-      font-size: $size-large
+      font-size: derived-variables.$size-large

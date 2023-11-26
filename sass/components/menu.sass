@@ -1,32 +1,34 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
 
-$menu-item-color: $text !default
-$menu-item-radius: $radius-small !default
-$menu-item-hover-color: $text-strong !default
-$menu-item-hover-background-color: $background !default
-$menu-item-active-color: $link-invert !default
-$menu-item-active-background-color: $link !default
+$menu-item-color: derived-variables.$text !default
+$menu-item-radius: initial-variables.$radius-small !default
+$menu-item-hover-color: derived-variables.$text-strong !default
+$menu-item-hover-background-color: derived-variables.$background !default
+$menu-item-active-color: derived-variables.$link-invert !default
+$menu-item-active-background-color: derived-variables.$link !default
 
-$menu-list-border-left: 1px solid $border !default
+$menu-list-border-left: 1px solid derived-variables.$border !default
 $menu-list-line-height: 1.25 !default
 $menu-list-link-padding: 0.5em 0.75em !default
 $menu-nested-list-margin: 0.75em !default
 $menu-nested-list-padding-left: 0.75em !default
 
-$menu-label-color: $text-light !default
+$menu-label-color: derived-variables.$text-light !default
 $menu-label-font-size: 0.75em !default
 $menu-label-letter-spacing: 0.1em !default
 $menu-label-spacing: 1em !default
 
 .menu
-  font-size: $size-normal
+  font-size: derived-variables.$size-normal
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-medium
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
   &.is-large
-    font-size: $size-large
+    font-size: derived-variables.$size-large
 
 .menu-list
   line-height: $menu-list-line-height
@@ -44,9 +46,9 @@ $menu-label-spacing: 1em !default
       color: $menu-item-active-color
   li
     ul
-      +ltr-property("border", $menu-list-border-left, false)
+      +mixins.ltr-property("border", $menu-list-border-left, false)
       margin: $menu-nested-list-margin
-      +ltr-property("padding", $menu-nested-list-padding-left, false)
+      +mixins.ltr-property("padding", $menu-nested-list-padding-left, false)
 
 .menu-label
   color: $menu-label-color

@@ -1,24 +1,26 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
 
-$card-color: $text !default
-$card-background-color: $scheme-main !default
-$card-shadow: $shadow !default
+$card-color: derived-variables.$text !default
+$card-background-color: derived-variables.$scheme-main !default
+$card-shadow: derived-variables.$shadow !default
 $card-radius: 0.25rem !default
 
 $card-header-background-color: transparent !default
-$card-header-color: $text-strong !default
+$card-header-color: derived-variables.$text-strong !default
 $card-header-padding: 0.75rem 1rem !default
-$card-header-shadow: 0 0.125em 0.25em rgba($scheme-invert, 0.1) !default
-$card-header-weight: $weight-bold !default
+$card-header-shadow: 0 0.125em 0.25em rgba(derived-variables.$scheme-invert, 0.1) !default
+$card-header-weight: initial-variables.$weight-bold !default
 
 $card-content-background-color: transparent !default
 $card-content-padding: 1.5rem !default
 
 $card-footer-background-color: transparent !default
-$card-footer-border-top: 1px solid $border-light !default
+$card-footer-border-top: 1px solid derived-variables.$border-light !default
 $card-footer-padding: 0.75rem !default
 
-$card-media-margin: $block-spacing !default
+$card-media-margin: initial-variables.$block-spacing !default
 
 .card
   background-color: $card-background-color
@@ -54,7 +56,7 @@ $card-media-margin: $block-spacing !default
     justify-content: center
 
 .card-header-icon
-  +reset
+  +mixins.reset
   align-items: center
   cursor: pointer
   display: flex
@@ -94,7 +96,7 @@ $card-media-margin: $block-spacing !default
   justify-content: center
   padding: $card-footer-padding
   &:not(:last-child)
-    +ltr-property("border", $card-footer-border-top)
+    +mixins.ltr-property("border", $card-footer-border-top)
 
 // Combinations
 

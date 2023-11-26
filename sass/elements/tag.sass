@@ -1,11 +1,13 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
 
-$tag-background-color: $background !default
-$tag-color: $text !default
-$tag-radius: $radius !default
+$tag-background-color: derived-variables.$background !default
+$tag-color: derived-variables.$text !default
+$tag-radius: initial-variables.$radius !default
 $tag-delete-margin: 1px !default
 
-$tag-colors: $colors !default
+$tag-colors: derived-variables.$colors !default
 
 .tags
   align-items: center
@@ -15,7 +17,7 @@ $tag-colors: $colors !default
   .tag
     margin-bottom: 0.5rem
     &:not(:last-child)
-      +ltr-property("margin", 0.5rem)
+      +mixins.ltr-property("margin", 0.5rem)
   &:last-child
     margin-bottom: -0.5rem
   &:not(:last-child)
@@ -23,10 +25,10 @@ $tag-colors: $colors !default
   // Sizes
   &.are-medium
     .tag:not(.is-normal):not(.is-large)
-      font-size: $size-normal
+      font-size: derived-variables.$size-normal
   &.are-large
     .tag:not(.is-normal):not(.is-medium)
-      font-size: $size-medium
+      font-size: derived-variables.$size-medium
   &.is-centered
     justify-content: center
     .tag
@@ -41,20 +43,20 @@ $tag-colors: $colors !default
         margin-right: 0
   &.has-addons
     .tag
-      +ltr-property("margin", 0)
+      +mixins.ltr-property("margin", 0)
       &:not(:first-child)
-        +ltr-property("margin", 0, false)
-        +ltr
+        +mixins.ltr-property("margin", 0, false)
+        +mixins.ltr
           border-top-left-radius: 0
           border-bottom-left-radius: 0
-        +rtl
+        +mixins.rtl
           border-top-right-radius: 0
           border-bottom-right-radius: 0
       &:not(:last-child)
-        +ltr
+        +mixins.ltr
           border-top-right-radius: 0
           border-bottom-right-radius: 0
-        +rtl
+        +mixins.rtl
           border-top-left-radius: 0
           border-bottom-left-radius: 0
 
@@ -64,7 +66,7 @@ $tag-colors: $colors !default
   border-radius: $tag-radius
   color: $tag-color
   display: inline-flex
-  font-size: $size-small
+  font-size: derived-variables.$size-small
   height: 2em
   justify-content: center
   line-height: 1.5
@@ -72,8 +74,8 @@ $tag-colors: $colors !default
   padding-right: 0.75em
   white-space: nowrap
   .delete
-    +ltr-property("margin", 0.25rem, false)
-    +ltr-property("margin", -0.375rem)
+    +mixins.ltr-property("margin", 0.25rem, false)
+    +mixins.ltr-property("margin", -0.375rem)
   // Colors
   @each $name, $pair in $tag-colors
     $color: nth($pair, 1)
@@ -90,24 +92,24 @@ $tag-colors: $colors !default
           color: $color-dark
   // Sizes
   &.is-normal
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-medium
-    font-size: $size-normal
+    font-size: derived-variables.$size-normal
   &.is-large
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
   .icon
     &:first-child:not(:last-child)
-      +ltr-property("margin", -0.375em, false)
-      +ltr-property("margin", 0.1875em)
+      +mixins.ltr-property("margin", -0.375em, false)
+      +mixins.ltr-property("margin", 0.1875em)
     &:last-child:not(:first-child)
-      +ltr-property("margin", 0.1875em, false)
-      +ltr-property("margin", -0.375em)
+      +mixins.ltr-property("margin", 0.1875em, false)
+      +mixins.ltr-property("margin", -0.375em)
     &:first-child:last-child
-      +ltr-property("margin", -0.375em, false)
-      +ltr-property("margin", -0.375em)
+      +mixins.ltr-property("margin", -0.375em, false)
+      +mixins.ltr-property("margin", -0.375em)
   // Modifiers
   &.is-delete
-    +ltr-property("margin", $tag-delete-margin, false)
+    +mixins.ltr-property("margin", $tag-delete-margin, false)
     padding: 0
     position: relative
     width: 2em
@@ -133,7 +135,7 @@ $tag-colors: $colors !default
     &:active
       background-color: darken($tag-background-color, 10%)
   &.is-rounded
-    border-radius: $radius-rounded
+    border-radius: initial-variables.$radius-rounded
 
 a.tag
   &:hover

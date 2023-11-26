@@ -1,17 +1,24 @@
-$file-border-color: $border !default
-$file-radius: $radius !default
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
+@use "../utilities/functions"
+@use "shared"
 
-$file-cta-background-color: $scheme-main-ter !default
-$file-cta-color: $text !default
-$file-cta-hover-color: $text-strong !default
-$file-cta-active-color: $text-strong !default
+$file-border-color: derived-variables.$border !default
+$file-radius: initial-variables.$radius !default
 
-$file-name-border-color: $border !default
+$file-cta-background-color: derived-variables.$scheme-main-ter !default
+$file-cta-color: derived-variables.$text !default
+$file-cta-hover-color: derived-variables.$text-strong !default
+$file-cta-active-color: derived-variables.$text-strong !default
+
+$file-name-border-color: derived-variables.$border !default
 $file-name-border-style: solid !default
 $file-name-border-width: 1px 1px 1px 0 !default
 $file-name-max-width: 16em !default
 
-$file-colors: $form-colors !default
+$file-colors: shared.$form-colors !default
 
 .file
   @extend %unselectable
@@ -31,33 +38,33 @@ $file-colors: $form-colors !default
       &:hover,
       &.is-hovered
         .file-cta
-          background-color: bulmaDarken($color, 2.5%)
+          background-color: functions.bulmaDarken($color, 2.5%)
           border-color: transparent
           color: $color-invert
       &:focus,
       &.is-focused
         .file-cta
           border-color: transparent
-          box-shadow: 0 0 0.5em bulmaRgba($color, 0.25)
+          box-shadow: 0 0 0.5em functions.bulmaRgba($color, 0.25)
           color: $color-invert
       &:active,
       &.is-active
         .file-cta
-          background-color: bulmaDarken($color, 5%)
+          background-color: functions.bulmaDarken($color, 5%)
           border-color: transparent
           color: $color-invert
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-normal
-    font-size: $size-normal
+    font-size: derived-variables.$size-normal
   &.is-medium
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
     .file-icon
       .fa
         font-size: 21px
   &.is-large
-    font-size: $size-large
+    font-size: derived-variables.$size-large
     .file-icon
       .fa
         font-size: 28px
@@ -129,16 +136,16 @@ $file-colors: $form-colors !default
   position: relative
   &:hover
     .file-cta
-      background-color: bulmaDarken($file-cta-background-color, 2.5%)
+      background-color: functions.bulmaDarken($file-cta-background-color, 2.5%)
       color: $file-cta-hover-color
     .file-name
-      border-color: bulmaDarken($file-name-border-color, 2.5%)
+      border-color: functions.bulmaDarken($file-name-border-color, 2.5%)
   &:active
     .file-cta
-      background-color: bulmaDarken($file-cta-background-color, 5%)
+      background-color: functions.bulmaDarken($file-cta-background-color, 5%)
       color: $file-cta-active-color
     .file-name
-      border-color: bulmaDarken($file-name-border-color, 5%)
+      border-color: functions.bulmaDarken($file-name-border-color, 5%)
 
 .file-input
   height: 100%
@@ -178,7 +185,7 @@ $file-colors: $form-colors !default
   display: flex
   height: 1em
   justify-content: center
-  +ltr-property("margin", 0.5em)
+  +mixins.ltr-property("margin", 0.5em)
   width: 1em
   .fa
     font-size: 14px

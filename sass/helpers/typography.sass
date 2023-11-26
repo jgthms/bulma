@@ -1,29 +1,31 @@
-@import "../utilities/mixins"
+@use "../utilities/derived-variables"
+@use "../utilities/initial-variables"
+@use "../utilities/mixins"
 
 =typography-size($target:'')
-  @each $size in $sizes
-    $i: index($sizes, $size)
+  @each $size in derived-variables.$sizes
+    $i: index(derived-variables.$sizes, $size)
     .is-size-#{$i}#{if($target == '', '', '-' + $target)}
       font-size: $size !important
 
 +typography-size()
 
-+mobile
++mixins.mobile
   +typography-size('mobile')
 
-+tablet
++mixins.tablet
   +typography-size('tablet')
 
-+touch
++mixins.touch
   +typography-size('touch')
 
-+desktop
++mixins.desktop
   +typography-size('desktop')
 
-+widescreen
++mixins.widescreen
   +typography-size('widescreen')
 
-+fullhd
++mixins.fullhd
   +typography-size('fullhd')
 
 $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'right': 'right')
@@ -33,31 +35,31 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
     text-align: #{$text-align} !important
 
 @each $alignment, $text-align in $alignments
-  +mobile
+  +mixins.mobile
     .has-text-#{$alignment}-mobile
       text-align: #{$text-align} !important
-  +tablet
+  +mixins.tablet
     .has-text-#{$alignment}-tablet
       text-align: #{$text-align} !important
-  +tablet-only
+  +mixins.tablet-only
     .has-text-#{$alignment}-tablet-only
       text-align: #{$text-align} !important
-  +touch
+  +mixins.touch
     .has-text-#{$alignment}-touch
       text-align: #{$text-align} !important
-  +desktop
+  +mixins.desktop
     .has-text-#{$alignment}-desktop
       text-align: #{$text-align} !important
-  +desktop-only
+  +mixins.desktop-only
     .has-text-#{$alignment}-desktop-only
       text-align: #{$text-align} !important
-  +widescreen
+  +mixins.widescreen
     .has-text-#{$alignment}-widescreen
       text-align: #{$text-align} !important
-  +widescreen-only
+  +mixins.widescreen-only
     .has-text-#{$alignment}-widescreen-only
       text-align: #{$text-align} !important
-  +fullhd
+  +mixins.fullhd
     .has-text-#{$alignment}-fullhd
       text-align: #{$text-align} !important
 
@@ -77,27 +79,27 @@ $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'rig
   text-decoration: underline !important
 
 .has-text-weight-light
-  font-weight: $weight-light !important
+  font-weight: initial-variables.$weight-light !important
 .has-text-weight-normal
-  font-weight: $weight-normal !important
+  font-weight: initial-variables.$weight-normal !important
 .has-text-weight-medium
-  font-weight: $weight-medium !important
+  font-weight: initial-variables.$weight-medium !important
 .has-text-weight-semibold
-  font-weight: $weight-semibold !important
+  font-weight: initial-variables.$weight-semibold !important
 .has-text-weight-bold
-  font-weight: $weight-bold !important
+  font-weight: initial-variables.$weight-bold !important
 
 .is-family-primary
-  font-family: $family-primary !important
+  font-family: derived-variables.$family-primary !important
 
 .is-family-secondary
-  font-family: $family-secondary !important
+  font-family: derived-variables.$family-secondary !important
 
 .is-family-sans-serif
-  font-family: $family-sans-serif !important
+  font-family: initial-variables.$family-sans-serif !important
 
 .is-family-monospace
-  font-family: $family-monospace !important
+  font-family: initial-variables.$family-monospace !important
 
 .is-family-code
-  font-family: $family-code !important
+  font-family: derived-variables.$family-code !important

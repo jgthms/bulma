@@ -1,34 +1,38 @@
-@import "../utilities/controls"
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/controls"
+@use "../utilities/mixins"
+@use "../utilities/extends"
+@use "../utilities/functions"
 
-$form-colors: $colors !default
+$form-colors: derived-variables.$colors !default
 
-$input-color: $text-strong !default
-$input-background-color: $scheme-main !default
-$input-border-color: $border !default
-$input-height: $control-height !default
-$input-shadow: inset 0 0.0625em 0.125em rgba($scheme-invert, 0.05) !default
-$input-placeholder-color: bulmaRgba($input-color, 0.3) !default
+$input-color: derived-variables.$text-strong !default
+$input-background-color: derived-variables.$scheme-main !default
+$input-border-color: derived-variables.$border !default
+$input-height: controls.$control-height !default
+$input-shadow: inset 0 0.0625em 0.125em rgba(derived-variables.$scheme-invert, 0.05) !default
+$input-placeholder-color: functions.bulmaRgba($input-color, 0.3) !default
 
-$input-hover-color: $text-strong !default
-$input-hover-border-color: $border-hover !default
+$input-hover-color: derived-variables.$text-strong !default
+$input-hover-border-color: derived-variables.$border-hover !default
 
-$input-focus-color: $text-strong !default
-$input-focus-border-color: $link !default
+$input-focus-color: derived-variables.$text-strong !default
+$input-focus-border-color: derived-variables.$link !default
 $input-focus-box-shadow-size: 0 0 0 0.125em !default
-$input-focus-box-shadow-color: bulmaRgba($link, 0.25) !default
+$input-focus-box-shadow-color: functions.bulmaRgba(derived-variables.$link, 0.25) !default
 
-$input-disabled-color: $text-light !default
-$input-disabled-background-color: $background !default
-$input-disabled-border-color: $background !default
-$input-disabled-placeholder-color: bulmaRgba($input-disabled-color, 0.3) !default
+$input-disabled-color: derived-variables.$text-light !default
+$input-disabled-background-color: derived-variables.$background !default
+$input-disabled-border-color: derived-variables.$background !default
+$input-disabled-placeholder-color: functions.bulmaRgba($input-disabled-color, 0.3) !default
 
-$input-arrow: $link !default
+$input-arrow: derived-variables.$link !default
 
-$input-icon-color: $border !default
-$input-icon-active-color: $text !default
+$input-icon-color: derived-variables.$border !default
+$input-icon-active-color: derived-variables.$text !default
 
-$input-radius: $radius !default
+$input-radius: initial-variables.$radius !default
 
 =input
   @extend %control
@@ -36,7 +40,7 @@ $input-radius: $radius !default
   border-color: $input-border-color
   border-radius: $input-radius
   color: $input-color
-  +placeholder
+  +mixins.placeholder
     color: $input-placeholder-color
   &:hover,
   &.is-hovered
@@ -53,7 +57,7 @@ $input-radius: $radius !default
     border-color: $input-disabled-border-color
     box-shadow: none
     color: $input-disabled-color
-    +placeholder
+    +mixins.placeholder
       color: $input-disabled-placeholder-color
 
 %input

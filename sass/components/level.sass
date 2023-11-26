@@ -1,13 +1,16 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
 
-$level-item-spacing: ($block-spacing * 0.5) !default
+$level-item-spacing: (initial-variables.$block-spacing * 0.5) !default
 
 .level
   @extend %block
   align-items: center
   justify-content: space-between
   code
-    border-radius: $radius
+    border-radius: initial-variables.$radius
   img
     display: inline-block
     vertical-align: top
@@ -22,11 +25,11 @@ $level-item-spacing: ($block-spacing * 0.5) !default
     .level-item
       &:not(:last-child)
         margin-bottom: 0
-        +ltr-property("margin", $level-item-spacing)
+        +mixins.ltr-property("margin", $level-item-spacing)
       &:not(.is-narrow)
         flex-grow: 1
   // Responsiveness
-  +tablet
+  +mixins.tablet
     display: flex
     & > .level-item
       &:not(.is-narrow)
@@ -43,7 +46,7 @@ $level-item-spacing: ($block-spacing * 0.5) !default
   .subtitle
     margin-bottom: 0
   // Responsiveness
-  +mobile
+  +mixins.mobile
     &:not(:last-child)
       margin-bottom: $level-item-spacing
 
@@ -57,23 +60,23 @@ $level-item-spacing: ($block-spacing * 0.5) !default
     &.is-flexible
       flex-grow: 1
     // Responsiveness
-    +tablet
+    +mixins.tablet
       &:not(:last-child)
-        +ltr-property("margin", $level-item-spacing)
+        +mixins.ltr-property("margin", $level-item-spacing)
 
 .level-left
   align-items: center
   justify-content: flex-start
   // Responsiveness
-  +mobile
+  +mixins.mobile
     & + .level-right
       margin-top: 1.5rem
-  +tablet
+  +mixins.tablet
     display: flex
 
 .level-right
   align-items: center
   justify-content: flex-end
   // Responsiveness
-  +tablet
+  +mixins.tablet
     display: flex
