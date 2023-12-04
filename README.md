@@ -131,7 +131,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 | [@angular-bulma](https://quinnjr.github.io/angular-bulma)                            | [Angular](https://angular.io/) directives and components to use in your Bulma projects                           |
 | [Bulma CSS Class Completion](https://github.com/eliutdev/bulma-css-class-completion) | CSS class name completion for the HTML class attribute based on Bulma CSS classes.                               |
 | [Crispy-Bulma](https://github.com/ckrybus/crispy-bulma)                              | Bulma template pack for django-crispy-forms                                                                      |
-| [CASE](https://case.app)                                                             | CASE is a TypeScript framework that allows to build custom web apps as dashboards, admin panels or ERPs.         |
+| [CASE](https://case.app)                                                             | CASE is Lightweight Backend-as-a-Service with essential features: DB, Admin panel, API, JS SDK         |
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
