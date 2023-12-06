@@ -1,0 +1,104 @@
+@charset "utf-8"
+/* Bulma Dark theme */
+
+$rtl: false !default
+@use "../utilities/initial-variables" as initial-variables with ($rtl: $rtl)
+@use "../utilities/functions" as functions
+@use "../utilities/theme-functions" as theme-functions
+
+// -----
+// Override derived variables
+// -----
+
+$primary: rgb(191, 87, 102)  // theme-functions.getInvertedColor(initial-variables.$turquoise)
+
+// info/success/warning/danger are the same colors as Original
+$info: initial-variables.$cyan
+$success: initial-variables.$green
+$warning: initial-variables.$yellow
+$danger: initial-variables.$red
+
+$light: rgb(69, 69, 69)  // theme-functions.getInvertedColor(initial-variables.$white-ter)
+$dark: rgb(164, 164, 164)  // theme-functions.getInvertedColor(initial-variables.$grey-darker)
+
+$primary-invert: theme-functions.getInvertedColor($primary)
+$primary-light: theme-functions.getLighterColor($primary)
+$primary-dark: theme-functions.getDarkerColor($primary)
+$info-invert: theme-functions.getInvertedColor($info)
+$info-light: theme-functions.getLighterColor($info)
+$info-dark: theme-functions.getDarkerColor($info)
+$success-invert: theme-functions.getInvertedColor($success)
+$success-light: theme-functions.getLighterColor($success)
+$success-dark: theme-functions.getDarkerColor($success)
+$warning-invert: theme-functions.getInvertedColor($warning)
+$warning-light: theme-functions.getLighterColor($warning)
+$warning-dark: theme-functions.getDarkerColor($warning)
+$danger-invert: theme-functions.getInvertedColor($danger)
+$danger-light: theme-functions.getLighterColor($danger)
+$danger-dark: theme-functions.getDarkerColor($danger)
+$light-invert: theme-functions.getInvertedColor($light)
+$dark-invert: theme-functions.getInvertedColor($dark)
+
+// General colors
+$scheme-main: rgb(64, 64, 64)  // theme-functions.getInvertedColor(initial-variables.$white)
+$scheme-main-bis: rgb(66, 66, 66)  // theme-functions.getInvertedColor(initial-variables.$white-bis)
+$scheme-main-ter: rgb(69, 69, 69)  // theme-functions.getInvertedColor(initial-variables.$white-ter)
+$scheme-invert: rgb(186, 186, 186)  // theme-functions.getInvertedColor(initial-variables.$black)
+$scheme-invert-bis: rgb(182, 182, 182)  // theme-functions.getInvertedColor(initial-variables.$black-bis)
+$scheme-invert-ter: rgb(173, 173, 173)  // theme-functions.getInvertedColor(initial-variables.$black-ter)
+
+$background: $scheme-main-ter
+$border: rgb(82, 82, 82)  // theme-functions.getInvertedColor(initial-variables.$grey-lighter)
+$border-hover: rgb(101, 101, 101)  // theme-functions.getInvertedColor(initial-variables.$grey-light)
+$border-light: rgb(73, 73, 73)  // theme-functions.getInvertedColor(initial-variables.$grey-lightest)
+$border-light-hover: rgb(101, 101, 101)  // theme-functions.getInvertedColor(initial-variables.$grey-light)
+
+// Text colors
+
+$text: rgb(154, 154, 154)  // theme-functions.getInvertedColor(initial-variables.$grey-dark)
+$text-invert: rgb(64, 64, 64)  // theme-functions.getInvertedColor(functions.findColorInvert(initial-variables.$grey-dark))
+$text-light: rgb(130, 130, 130)  // theme-functions.getInvertedColor(initial-variables.$grey)
+$text-strong: rgb(164, 164, 164)  // theme-functions.getInvertedColor(initial-variables.$grey-darker)
+
+// Code colors
+
+$code: rgb(82, 183, 163)  // theme-functions.getInvertedColor(darken(initial-variables.$red, 15%))
+$code-background: $background
+$pre: $text
+$pre-background: $background
+
+// Link colors
+
+$link: rgb(155, 144, 92)  // theme-functions.getInvertedColor(initial-variables.$blue)
+$link-invert: theme-functions.getInvertedColor($link)
+$link-light: theme-functions.getLighterColor($link)
+$link-dark: theme-functions.getDarkerColor($link)
+$link-visited: rgb(99, 138, 64)  // theme-functions.getInvertedColor(initial-variables.$purple)
+$link-hover: rgb(164, 164, 164)  // theme-functions.getInvertedColor(initial-variables.$grey-darker)
+$link-hover-border: rgb(101, 101, 101)  // theme-functions.getInvertedColor(initial-variables.$grey-light)
+$link-focus: rgb(164, 164, 164)  // theme-functions.getInvertedColor(initial-variables.$grey-darker)
+$link-focus-border: rgb(155, 144, 92)  // theme-functions.getInvertedColor(initial-variables.$blue)
+$link-active: rgb(164, 164, 164)  // theme-functions.getInvertedColor(initial-variables.$grey-darker)
+$link-active-border: rgb(154, 154, 154)  // theme-functions.getInvertedColor(initial-variables.$grey-dark)
+
+$custom-colors: null
+$custom-shades: null
+
+// Lists and maps
+$colors: functions.mergeColorMaps(("white": (rgb(64, 64, 64), rgb(186, 186, 186)), "black": (rgb(186, 186, 186), rgb(64, 64, 64)), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark), "link": ($link, $link-invert, $link-light, $link-dark), "info": ($info, $info-invert, $info-light, $info-dark), "success": ($success, $success-invert, $success-light, $success-dark), "warning": ($warning, $warning-invert, $warning-light, $warning-dark), "danger": ($danger, $danger-invert, $danger-light, $danger-dark)), $custom-colors)
+// $colors: functions.mergeColorMaps(("white": (theme-functions.getInvertedColor(initial-variables.$white), theme-functions.getInvertedColor(initial-variables.$black)), "black": (theme-functions.getInvertedColor(initial-variables.$black), theme-functions.getInvertedColor(initial-variables.$white)), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark), "link": ($link, $link-invert, $link-light, $link-dark), "info": ($info, $info-invert, $info-light, $info-dark), "success": ($success, $success-invert, $success-light, $success-dark), "warning": ($warning, $warning-invert, $warning-light, $warning-dark), "danger": ($danger, $danger-invert, $danger-light, $danger-dark)), $custom-colors)
+
+$shades: functions.mergeColorMaps(("black-bis": rgb(182, 182, 182), "black-ter": rgb(173, 173, 173), "grey-darker": rgb(164, 164, 164), "grey-dark": rgb(154, 154, 154), "grey": rgb(130, 130, 130), "grey-light": rgb(101, 101, 101), "grey-lighter": rgb(82, 82, 82), "white-ter": rgb(69, 69, 69), "white-bis": rgb(66, 66, 66)), $custom-shades)
+// $shades: functions.mergeColorMaps(("black-bis": theme-functions.getInvertedColor(initial-variables.$black-bis), "black-ter": theme-functions.getInvertedColor(initial-variables.$black-ter), "grey-darker": theme-functions.getInvertedColor(initial-variables.$grey-darker), "grey-dark": theme-functions.getInvertedColor(initial-variables.$grey-dark), "grey": theme-functions.getInvertedColor(initial-variables.$grey), "grey-light": theme-functions.getInvertedColor(initial-variables.$grey-light), "grey-lighter": theme-functions.getInvertedColor(initial-variables.$grey-lighter), "white-ter": theme-functions.getInvertedColor(initial-variables.$white-ter), "white-bis": theme-functions.getInvertedColor(initial-variables.$white-bis)), $custom-shades)
+
+@use "../utilities/derived-variables" with ($primary: $primary, $primary-invert: $primary-invert, $primary-light: $primary-light, $primary-dark: $primary-dark, $light: $light, $dark: $dark, $light-invert: $light-invert, $dark-invert: $dark-invert, $scheme-main: $scheme-main, $scheme-main-bis: $scheme-main-bis, $scheme-main-ter: $scheme-main-ter, $scheme-invert: $scheme-invert, $scheme-invert-bis: $scheme-invert-bis, $scheme-invert-ter: $scheme-invert-ter, $background: $background, $border: $border, $border-hover: $border-hover, $border-light: $border-light, $border-light-hover: $border-light-hover, $text: $text, $text-invert: $text-invert, $text-light: $text-light, $text-strong: $text-strong, $code: $code, $code-background: $code-background, $pre: $pre, $pre-background: $pre-background, $link: $link, $link-invert: $link-invert, $link-light: $link-light, $link-dark: $link-dark, $link-visited: $link-visited, $link-hover: $link-hover, $link-hover-border: $link-hover-border, $link-focus: $link-focus, $link-focus-border: $link-focus-border, $link-active: $link-active, $link-active-border: $link-active-border, $colors: $colors, $shades: $shades)
+@forward "../utilities/mixins"
+@forward "../utilities/controls"
+@forward "../utilities/extends"
+@forward "../base"
+@forward "../elements"
+@forward "../form"
+@forward "../components"
+@forward "../grid"
+@forward "../helpers"
+@forward "../layout"
