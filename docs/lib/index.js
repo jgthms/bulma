@@ -86,37 +86,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var $amis = document.getElementById("amis");
 
-  fetch("https://jgthms.com/amis.json").then(function (response) {
-    if (!response.ok) {
-      throw new Error("HTTP error! Status: " + response.status);
-    }
+  if ($amis) {
+    fetch("https://jgthms.com/amis.json").then(function (response) {
+      if (!response.ok) {
+        throw new Error("HTTP error! Status: " + response.status);
+      }
 
-    return response.json();
-  }).then(function (response) {
-    var by_id = response.by_id,
-        home = response.home;
+      return response.json();
+    }).then(function (response) {
+      var by_id = response.by_id,
+          home = response.home;
 
 
-    home.forEach(function (id) {
-      var ami = by_id[id];
-      var url = ami.url,
-          _ami$alt = ami.alt,
-          alt = _ami$alt === undefined ? "" : _ami$alt,
-          width = ami.width,
-          height = ami.height;
+      home.forEach(function (id) {
+        var ami = by_id[id];
+        var url = ami.url,
+            _ami$alt = ami.alt,
+            alt = _ami$alt === undefined ? "" : _ami$alt,
+            width = ami.width,
+            height = ami.height;
 
-      var el = document.createElement("a");
-      el.className = "bd-sponsor-item bd-partner-sponsor";
-      el.href = "url";
-      el.target = "_blank";
-      el.title = alt;
-      var extension = ami.svg ? ".svg" : ".png";
-      var img = document.createElement("img");
-      img.src = "/images/amis/" + id + extension;
-      img.height = height;
-      img.width = width;
-      el.appendChild(img);
-      $amis.appendChild(el);
+        var el = document.createElement("a");
+        el.className = "bd-sponsor-item bd-partner-sponsor";
+        el.href = url;
+        el.target = "_blank";
+        el.title = alt;
+        var extension = ami.svg ? ".svg" : ".png";
+        var img = document.createElement("img");
+        img.src = "/images/amis/" + id + extension;
+        img.height = height;
+        img.width = width;
+        el.appendChild(img);
+        $amis.appendChild(el);
+      });
     });
-  });
+  }
 });

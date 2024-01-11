@@ -97,32 +97,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const $amis = document.getElementById("amis");
 
-  fetch("https://jgthms.com/amis.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
+  if ($amis) {
+    fetch("https://jgthms.com/amis.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-      return response.json();
-    })
-    .then((response) => {
-      const { by_id, home } = response;
+        return response.json();
+      })
+      .then((response) => {
+        const { by_id, home } = response;
 
-      home.forEach((id) => {
-        const ami = by_id[id];
-        const { url, alt = "", width, height } = ami;
-        const el = document.createElement("a");
-        el.className = "bd-sponsor-item bd-partner-sponsor";
-        el.href = "url";
-        el.target = "_blank";
-        el.title = alt;
-        const extension = ami.svg ? ".svg" : ".png";
-        const img = document.createElement("img");
-        img.src = `/images/amis/${id}${extension}`;
-        img.height = height;
-        img.width = width;
-        el.appendChild(img);
-        $amis.appendChild(el);
+        home.forEach((id) => {
+          const ami = by_id[id];
+          const { url, alt = "", width, height } = ami;
+          const el = document.createElement("a");
+          el.className = "bd-sponsor-item bd-partner-sponsor";
+          el.href = url;
+          el.target = "_blank";
+          el.title = alt;
+          const extension = ami.svg ? ".svg" : ".png";
+          const img = document.createElement("img");
+          img.src = `/images/amis/${id}${extension}`;
+          img.height = height;
+          img.width = width;
+          el.appendChild(img);
+          $amis.appendChild(el);
+        });
       });
-    });
+  }
 });
