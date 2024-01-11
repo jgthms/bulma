@@ -1,85 +1,122 @@
-'use strict';
+"use strict";
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener("DOMContentLoaded", function () {
   // Intro
 
-  var introVideo = document.getElementById('introVideo');
-  var introIframe = document.getElementById('introIframe');
-  var npmClipboard = new Clipboard('#npmCopy');
+  var introVideo = document.getElementById("introVideo");
+  var introIframe = document.getElementById("introIframe");
+  var npmClipboard = new Clipboard("#npmCopy");
 
   if (window.Vimeo) {
     var introPlayer = new Vimeo.Player(introIframe);
     introPlayer.ready().then(function () {
-      introVideo.classList.add('has-loaded');
+      introVideo.classList.add("has-loaded");
     });
   }
 
-  npmClipboard.on('success', function (e) {
-    e.trigger.innerText = 'copied!';
-    e.trigger.classList.add('is-success');
+  npmClipboard.on("success", function (e) {
+    e.trigger.innerText = "copied!";
+    e.trigger.classList.add("is-success");
     setTimeout(function () {
-      e.trigger.innerText = 'copy';
-      e.trigger.classList.remove('is-success');
+      e.trigger.innerText = "copy";
+      e.trigger.classList.remove("is-success");
     }, 500);
     e.clearSelection();
   });
 
-  npmClipboard.on('error', function (e) {
-    e.trigger.innerText = 'error!';
-    e.trigger.classList.add('is-error');
+  npmClipboard.on("error", function (e) {
+    e.trigger.innerText = "error!";
+    e.trigger.classList.add("is-error");
     setTimeout(function () {
-      e.trigger.innerText = 'copy';
-      e.trigger.classList.remove('is-error');
+      e.trigger.innerText = "copy";
+      e.trigger.classList.remove("is-error");
     }, 500);
   });
 
   // Grid
 
-  var $grid = document.getElementById('grid');
-  var $columns = Array.prototype.slice.call(document.querySelectorAll('#grid > .column'), 0);
-  var $markup = document.querySelector('#markup code');
-  var $message = document.getElementById('message');
-  var $add = document.getElementById('add');
-  var $remove = document.getElementById('remove');
+  var $grid = document.getElementById("grid");
+  var $columns = Array.prototype.slice.call(document.querySelectorAll("#grid > .column"), 0);
+  var $markup = document.querySelector("#markup code");
+  var $message = document.getElementById("message");
+  var $add = document.getElementById("add");
+  var $remove = document.getElementById("remove");
   var showing = 5;
 
   function showColumns() {
     if (showing === 13) {
-      $message.style.display = 'block';
+      $message.style.display = "block";
     } else {
-      $message.style.display = 'none';
+      $message.style.display = "none";
     }
 
     showing = Math.min(Math.max(parseInt(showing), 1), 12);
 
     $columns.forEach(function ($el) {
-      $el.style.display = 'none';
+      $el.style.display = "none";
     });
     $columns.slice(0, showing).forEach(function ($el) {
-      $el.style.display = 'block';
+      $el.style.display = "block";
     });
 
     $markup.innerHTML = '<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;columns&quot;</span><span class="nt">&gt;</span>';
-    $markup.insertAdjacentHTML('beforeend', '\n');
+    $markup.insertAdjacentHTML("beforeend", "\n");
 
     for (var i = 0; i < showing; i++) {
-      $markup.insertAdjacentHTML('beforeend', '  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;column&quot;</span><span class="nt">&gt;</span>');
-      $markup.insertAdjacentHTML('beforeend', i + 1);
-      $markup.insertAdjacentHTML('beforeend', '<span class="nt">&lt;/div&gt;</span>');
-      $markup.insertAdjacentHTML('beforeend', '\n');
+      $markup.insertAdjacentHTML("beforeend", '  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;column&quot;</span><span class="nt">&gt;</span>');
+      $markup.insertAdjacentHTML("beforeend", i + 1);
+      $markup.insertAdjacentHTML("beforeend", '<span class="nt">&lt;/div&gt;</span>');
+      $markup.insertAdjacentHTML("beforeend", "\n");
     }
 
-    $markup.insertAdjacentHTML('beforeend', '<span class="nt">&lt;/div&gt;</span>');
+    $markup.insertAdjacentHTML("beforeend", '<span class="nt">&lt;/div&gt;</span>');
   }
 
-  $add.addEventListener('click', function () {
+  $add.addEventListener("click", function () {
     showing++;
     showColumns();
   });
 
-  $remove.addEventListener('click', function () {
+  $remove.addEventListener("click", function () {
     showing--;
     showColumns();
+  });
+
+  // Amis
+
+  var $amis = document.getElementById("amis");
+
+  fetch("https://jgthms.com/amis.json").then(function (response) {
+    if (!response.ok) {
+      throw new Error("HTTP error! Status: " + response.status);
+    }
+
+    return response.json();
+  }).then(function (response) {
+    var by_id = response.by_id,
+        home = response.home;
+
+
+    home.forEach(function (id) {
+      var ami = by_id[id];
+      var url = ami.url,
+          _ami$alt = ami.alt,
+          alt = _ami$alt === undefined ? "" : _ami$alt,
+          width = ami.width,
+          height = ami.height;
+
+      var el = document.createElement("a");
+      el.className = "bd-sponsor-item bd-partner-sponsor";
+      el.href = "url";
+      el.target = "_blank";
+      el.title = alt;
+      var extension = ami.svg ? ".svg" : ".png";
+      var img = document.createElement("img");
+      img.src = "/images/amis/" + id + extension;
+      img.height = height;
+      img.width = width;
+      el.appendChild(img);
+      $amis.appendChild(el);
+    });
   });
 });
