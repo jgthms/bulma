@@ -97,28 +97,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const $amis = document.getElementById("amis");
 
-  fetch("https://jgthms.com/amis/new.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
+  if ($amis) {
+    fetch("https://jgthms.com/amis/new.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-      return response.json();
-    })
-    .then((response) => {
-      response.forEach((item) => {
-        const el = document.createElement("a");
-        el.className = "bd-sponsor-item bd-partner-sponsor";
-        el.href = "url";
-        el.target = "_blank";
-        el.title = item.title || item.id;
+        return response.json();
+      })
+      .then((response) => {
+        response.forEach((item) => {
+          const el = document.createElement("a");
+          el.className = "bd-sponsor-item bd-partner-sponsor";
+          el.href = "url";
+          el.target = "_blank";
+          el.title = item.title || item.id;
 
-        const extension = item.svg ? ".svg" : ".png";
-        const img = document.createElement("img");
-        img.src = `https://jgthms.com/amis/images/${item.id}${extension}`;
+          const extension = item.svg ? ".svg" : ".png";
+          const img = document.createElement("img");
+          img.src = `https://jgthms.com/amis/images/${item.id}${extension}`;
 
-        el.appendChild(img);
-        $amis.appendChild(el);
+          el.appendChild(img);
+          $amis.appendChild(el);
+        });
       });
   }
 });

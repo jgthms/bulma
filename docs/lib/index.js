@@ -86,26 +86,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var $amis = document.getElementById("amis");
 
-  fetch("https://jgthms.com/amis/new.json").then(function (response) {
-    if (!response.ok) {
-      throw new Error("HTTP error! Status: " + response.status);
-    }
+  if ($amis) {
+    fetch("https://jgthms.com/amis/new.json").then(function (response) {
+      if (!response.ok) {
+        throw new Error("HTTP error! Status: " + response.status);
+      }
 
-    return response.json();
-  }).then(function (response) {
-    response.forEach(function (item) {
-      var el = document.createElement("a");
-      el.className = "bd-sponsor-item bd-partner-sponsor";
-      el.href = "url";
-      el.target = "_blank";
-      el.title = item.title || item.id;
+      return response.json();
+    }).then(function (response) {
+      response.forEach(function (item) {
+        var el = document.createElement("a");
+        el.className = "bd-sponsor-item bd-partner-sponsor";
+        el.href = "url";
+        el.target = "_blank";
+        el.title = item.title || item.id;
 
-      var extension = item.svg ? ".svg" : ".png";
-      var img = document.createElement("img");
-      img.src = "https://jgthms.com/amis/images/" + item.id + extension;
+        var extension = item.svg ? ".svg" : ".png";
+        var img = document.createElement("img");
+        img.src = "https://jgthms.com/amis/images/" + item.id + extension;
 
-      el.appendChild(img);
-      $amis.appendChild(el);
+        el.appendChild(img);
+        $amis.appendChild(el);
+      });
     });
   }
 });
