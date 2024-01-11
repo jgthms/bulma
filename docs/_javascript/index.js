@@ -120,5 +120,5 @@ document.addEventListener("DOMContentLoaded", () => {
         el.appendChild(img);
         $amis.appendChild(el);
       });
-    });
+  }
 });
