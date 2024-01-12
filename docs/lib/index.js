@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       response.forEach(function (item) {
         var el = document.createElement("a");
         el.className = "bd-sponsor-item bd-partner-sponsor";
-        el.href = "url";
+        el.href = item.url;
         el.target = "_blank";
         el.title = item.title || item.id;
 
