@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Amis
 
   var $amis = document.getElementById("amis");
+  var $pied = document.getElementById("pied");
 
   if ($amis) {
     fetch("https://jgthms.com/amis/new.json").then(function (response) {
@@ -107,6 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.appendChild(img);
         $amis.appendChild(el);
+
+        if (item.pied && $pied) {
+          el.className = "bd-sponsor-item bd-footer-sponsor";
+          $pied.appendChild(el);
+        }
       });
     });
   }

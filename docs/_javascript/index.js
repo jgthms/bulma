@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Amis
 
   const $amis = document.getElementById("amis");
+  const $pied = document.getElementById("pied");
 
   if ($amis) {
     fetch("https://jgthms.com/amis/new.json")
@@ -110,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
         response.forEach((item) => {
           const el = document.createElement("a");
           el.className = "bd-sponsor-item bd-partner-sponsor";
-          el.href = "url";
+          el.href = item.url;
           el.target = "_blank";
           el.title = item.title || item.id;
 
@@ -120,6 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
           el.appendChild(img);
           $amis.appendChild(el);
+
+          if (item.pied && $pied) {
+            el.className = "bd-sponsor-item bd-footer-sponsor";
+            $pied.appendChild(el);
+          }
         });
       });
   }
