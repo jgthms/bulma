@@ -2,10 +2,9 @@
 layout: default
 route: documentation
 ---
-
 {% include global/navbar.html id="Documentation" %}
 
-{% assign current_category = page.doc-tab %}
+{% assign current_category = page['doc-tab'] %}
 {% assign current_link_id = page.breadcrumb | last %}
 {% assign current_link = site.data.links.by_id[current_link_id] %}
 
@@ -23,14 +22,15 @@ route: documentation
 <div
   id="docs"
   class="
-  bd-docs
+      bd-docs
     {% if page.fullwidth %}
       bd-is-fullwidth
     {% else %}
       bd-is-contained
     {% endif %}
     {% if page.fullmain %}bd-is-full-main{% endif %}
-  ">
+  "
+>
   <div id="docsNavOverlay" class="bd-docs-overlay"></div>
 
   <nav id="docsNav" class="bd-docs-nav {% if page.fullwidth %}bd-stickied{% endif %}">
@@ -49,6 +49,8 @@ route: documentation
 
   <aside id="docsSide" class="bd-docs-side {% if page.fullwidth %}bd-stickied{% endif %}">
     {% include elements/carbon.html %}
+
+    {% include global/side-sponsor.html %}
 
     {% include global/fortyfour.html %}
 
