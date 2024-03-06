@@ -1,3 +1,5 @@
+@import "../utilities/derived-variables"
+
 $flex-direction-values: row, row-reverse, column, column-reverse
 @each $value in $flex-direction-values
   .is-flex-direction-#{$value}
@@ -33,3 +35,8 @@ $flex-operators: grow, shrink
   @for $i from 0 through 5
     .is-flex-#{$operator}-#{$i}
       flex-#{$operator}: $i !important
+
+@each $size in $sizes
+  $i: index($sizes, $size)
+  .is-gap-#{$i}
+    gap: calc($size / 3) !important
