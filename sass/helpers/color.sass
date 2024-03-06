@@ -1,13 +1,14 @@
-@import "../utilities/derived-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/functions"
 
-@each $name, $pair in $colors
+@each $name, $pair in derived-variables.$colors
   $color: nth($pair, 1)
   .has-text-#{$name}
     color: $color !important
   a.has-text-#{$name}
     &:hover,
     &:focus
-      color: bulmaDarken($color, 10%) !important
+      color: functions.bulmaDarken($color, 10%) !important
   .has-background-#{$name}
     background-color: $color !important
   @if length($pair) >= 4
@@ -19,7 +20,7 @@
     a.has-text-#{$name}-light
       &:hover,
       &:focus
-        color: bulmaDarken($color-light, 10%) !important
+        color: functions.bulmaDarken($color-light, 10%) !important
     .has-background-#{$name}-light
       background-color: $color-light !important
     // Dark
@@ -28,11 +29,11 @@
     a.has-text-#{$name}-dark
       &:hover,
       &:focus
-        color: bulmaLighten($color-dark, 10%) !important
+        color: functions.bulmaDarken($color-dark, 10%) !important
     .has-background-#{$name}-dark
       background-color: $color-dark !important
 
-@each $name, $shade in $shades
+@each $name, $shade in derived-variables.$shades
   .has-text-#{$name}
     color: $shade !important
   .has-background-#{$name}

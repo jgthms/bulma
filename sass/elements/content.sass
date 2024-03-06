@@ -1,26 +1,29 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
 
-$content-heading-color: $text-strong !default
-$content-heading-weight: $weight-semibold !default
+$content-heading-color: derived-variables.$text-strong !default
+$content-heading-weight: initial-variables.$weight-semibold !default
 $content-heading-line-height: 1.125 !default
 
 $content-block-margin-bottom: 1em !default
 
-$content-blockquote-background-color: $background !default
-$content-blockquote-border-left: 5px solid $border !default
+$content-blockquote-background-color: derived-variables.$background !default
+$content-blockquote-border-left: 5px solid derived-variables.$border !default
 $content-blockquote-padding: 1.25em 1.5em !default
 
 $content-pre-padding: 1.25em 1.5em !default
 
-$content-table-cell-border: 1px solid $border !default
+$content-table-cell-border: 1px solid derived-variables.$border !default
 $content-table-cell-border-width: 0 0 1px !default
 $content-table-cell-padding: 0.5em 0.75em !default
-$content-table-cell-heading-color: $text-strong !default
+$content-table-cell-heading-color: derived-variables.$text-strong !default
 $content-table-head-cell-border-width: 0 0 2px !default
-$content-table-head-cell-color: $text-strong !default
+$content-table-head-cell-color: derived-variables.$text-strong !default
 $content-table-body-last-row-cell-border-bottom-width: 0 !default
 $content-table-foot-cell-border-width: 2px 0 0 !default
-$content-table-foot-cell-color: $text-strong !default
+$content-table-foot-cell-color: derived-variables.$text-strong !default
 
 .content
   @extend %block
@@ -72,11 +75,11 @@ $content-table-foot-cell-color: $text-strong !default
     margin-bottom: 1em
   blockquote
     background-color: $content-blockquote-background-color
-    +ltr-property("border", $content-blockquote-border-left, false)
+    +mixins.ltr-property("border", $content-blockquote-border-left, false)
     padding: $content-blockquote-padding
   ol
     list-style-position: outside
-    +ltr-property("margin", 2em, false)
+    +mixins.ltr-property("margin", 2em, false)
     margin-top: 1em
     &:not([type])
       list-style-type: decimal
@@ -90,7 +93,7 @@ $content-table-foot-cell-color: $text-strong !default
         list-style-type: upper-roman
   ul
     list-style: disc outside
-    +ltr-property("margin", 2em, false)
+    +mixins.ltr-property("margin", 2em, false)
     margin-top: 1em
     ul
       list-style-type: circle
@@ -98,7 +101,7 @@ $content-table-foot-cell-color: $text-strong !default
       ul
         list-style-type: square
   dd
-    +ltr-property("margin", 2em, false)
+    +mixins.ltr-property("margin", 2em, false)
   figure
     margin-left: 2em
     margin-right: 2em
@@ -112,7 +115,7 @@ $content-table-foot-cell-color: $text-strong !default
     figcaption
       font-style: italic
   pre
-    +overflow-touch
+    +mixins.overflow-touch
     overflow-x: auto
     padding: $content-pre-padding
     white-space: pre
@@ -153,10 +156,10 @@ $content-table-foot-cell-color: $text-strong !default
       margin-top: 0
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-normal
-    font-size: $size-normal
+    font-size: derived-variables.$size-normal
   &.is-medium
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
   &.is-large
-    font-size: $size-large
+    font-size: derived-variables.$size-large

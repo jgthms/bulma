@@ -1,0 +1,41 @@
+// get Invert Value for value of either RGB.
+// @param integer value of either RGB
+// @return integer inverted value
+@function invertValue($value)
+  @return 0.25 * $value + 0.75 * (255 - $value)
+
+// get Darker Value for value of either RGB.
+// @param integer value of either RGB
+// @return integer Darker value
+@function darkerValue($value)
+  @return 0.9 * $value
+
+// get Darker Value for value of either RGB.
+// @param integer value of either RGB
+// @return integer Darker value
+@function lighterValue($value)
+  @if 1.2 * $value < 255
+    @return 1.2 * $value
+  @else
+    @return 255
+
+// get Inverted Color
+// @param string Color you'd like to get inverted color
+// @return color inverted color
+@function getInvertedColor($color)
+  $color-rgb: ('red': red($color), 'green': green($color), 'blue': blue($color))
+  @return rgb(invertValue(map-get($color-rgb, 'red')), invertValue(map-get($color-rgb, 'green')), invertValue(map-get($color-rgb, 'blue')))
+
+// get Darker Color
+// @param string Color you'd like to get darker color
+// @return color darker color
+@function getDarkerColor($color)
+  $color-rgb: ('red': red($color), 'green': green($color), 'blue': blue($color))
+  @return rgb(darkerValue(map-get($color-rgb, 'red')), darkerValue(map-get($color-rgb, 'green')), darkerValue(map-get($color-rgb, 'blue')))
+
+// get Lighter Color
+// @param string Color you'd like to get lighter color
+// @return color lighter color
+@function getLighterColor($color)
+  $color-rgb: ('red': red($color), 'green': green($color), 'blue': blue($color))
+  @return rgb(lighterValue(map-get($color-rgb, 'red')), lighterValue(map-get($color-rgb, 'green')), lighterValue(map-get($color-rgb, 'blue')))

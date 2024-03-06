@@ -1,6 +1,8 @@
-@import "../utilities/mixins"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/functions"
 
-$media-border-color: bulmaRgba($border, 0.5) !default
+$media-border-color: functions.bulmaRgba(derived-variables.$border, 0.5) !default
 $media-border-size: 1px !default
 $media-spacing: 1rem !default
 $media-spacing-large: 1.5rem !default
@@ -43,10 +45,10 @@ $media-level-2-spacing: 0.5rem !default
   flex-shrink: 0
 
 .media-left
-  +ltr-property("margin", $media-spacing)
+  +mixins.ltr-property("margin", $media-spacing)
 
 .media-right
-  +ltr-property("margin", $media-spacing, false)
+  +mixins.ltr-property("margin", $media-spacing, false)
 
 .media-content
   flex-basis: auto
@@ -54,6 +56,6 @@ $media-level-2-spacing: 0.5rem !default
   flex-shrink: 1
   text-align: inherit
 
-+mobile
++mixins.mobile
   .media-content
     overflow-x: auto

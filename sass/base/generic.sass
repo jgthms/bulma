@@ -1,31 +1,33 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
 
-$body-background-color: $scheme-main !default
+$body-background-color: derived-variables.$scheme-main !default
 $body-size: 16px !default
 $body-min-width: 300px !default
 $body-rendering: optimizeLegibility !default
-$body-family: $family-primary !default
+$body-family: derived-variables.$family-primary !default
 $body-overflow-x: hidden !default
 $body-overflow-y: scroll !default
 
-$body-color: $text !default
+$body-color: derived-variables.$text !default
 $body-font-size: 1em !default
-$body-weight: $weight-normal !default
+$body-weight: initial-variables.$weight-normal !default
 $body-line-height: 1.5 !default
 
-$code-family: $family-code !default
+$code-family: derived-variables.$family-code !default
 $code-padding: 0.25em 0.5em 0.25em !default
 $code-weight: normal !default
 $code-size: 0.875em !default
 
 $small-font-size: 0.875em !default
 
-$hr-background-color: $background !default
+$hr-background-color: derived-variables.$background !default
 $hr-height: 2px !default
 $hr-margin: 1.5rem 0 !default
 
-$strong-color: $text-strong !default
-$strong-weight: $weight-bold !default
+$strong-color: derived-variables.$text-strong !default
+$strong-weight: initial-variables.$weight-bold !default
 
 $pre-font-size: 0.875em !default
 $pre-padding: 1.25rem 1.5rem !default
@@ -74,17 +76,17 @@ body
 // Inline
 
 a
-  color: $link
+  color: derived-variables.$link
   cursor: pointer
   text-decoration: none
   strong
     color: currentColor
   &:hover
-    color: $link-hover
+    color: derived-variables.$link-hover
 
 code
-  background-color: $code-background
-  color: $code
+  background-color: derived-variables.$code-background
+  color: derived-variables.$code
   font-size: $code-size
   font-weight: $code-weight
   padding: $code-padding
@@ -121,9 +123,9 @@ fieldset
   border: none
 
 pre
-  +overflow-touch
-  background-color: $pre-background
-  color: $pre
+  +mixins.overflow-touch
+  background-color: derived-variables.$pre-background
+  color: derived-variables.$pre
   font-size: $pre-font-size
   overflow-x: auto
   padding: $pre-padding
@@ -142,4 +144,4 @@ table
     &:not([align])
       text-align: inherit
   th
-    color: $text-strong
+    color: derived-variables.$text-strong
