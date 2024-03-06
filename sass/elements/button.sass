@@ -85,11 +85,11 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
       height: 1.5em
       width: 1.5em
     &:first-child:not(:last-child)
-      +ltr-property("margin", calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}), false)
-      +ltr-property("margin", $button-padding-horizontal * 0.25)
+      margin-inline-start: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
+      margin-inline-end: $button-padding-horizontal * 0.25
     &:last-child:not(:first-child)
-      +ltr-property("margin", $button-padding-horizontal * 0.25, false)
-      +ltr-property("margin", calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width}))
+      margin-inline-start: $button-padding-horizontal * 0.25
+      margin-inline-end: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
     &:first-child:last-child
       margin-left: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
       margin-right: calc(#{-0.5 * $button-padding-horizontal} - #{$button-border-width})
@@ -292,7 +292,7 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
   .button
     margin-bottom: 0.5rem
     &:not(:last-child):not(.is-fullwidth)
-      +ltr-property("margin", 0.5rem)
+      margin-inline-end: 0.5rem
   &:last-child
     margin-bottom: -0.5rem
   &:not(:last-child)
@@ -315,9 +315,9 @@ $button-responsive-sizes: ("mobile": ("small": ($size-small * 0.75), "normal": (
       &:not(:last-child)
         border-bottom-right-radius: 0
         border-top-right-radius: 0
-        +ltr-property("margin", -1px)
+        margin-inline-end: -1px
       &:last-child
-        +ltr-property("margin", 0)
+        margin-inline-end: 0
       &:hover,
       &.is-hovered
         z-index: 2
