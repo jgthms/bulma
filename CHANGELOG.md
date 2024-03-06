@@ -1,5 +1,17 @@
 # Bulma Changelog
 
+## 0.9.5
+
+### New features
+
+- **Tab pages**: elements to add dynamically displayed pages below tabs.
+  - New `tabs-box`: container for tabs and the content, adding a frame around the content.
+  - New `tabs-content`: a container for the individual pages.
+  - New `tabs-page`: a page that can made visible using `is-active`.
+  - New `$tabs-border-color`, `$tabs-border-style`, `$tabs-border-width`: defines the base border style for the tabs and its contents.
+  - New `$tabs-box-background-color`: defines the background color of the content box under the tabs.
+  - New `$tabs-box-border-color`, `$tabs-box-border-style`, `$tabs-box-border-width`: derived settings to style the border of the content box.
+
 ## 0.9.4
 
 ### New features

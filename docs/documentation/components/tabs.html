@@ -449,4 +449,79 @@ meta:
 
 {% include elements/snippet.html content=tabs_toggle_fullwidth_large_example horizontal=true more=true %}
 
+{% include elements/anchor.html name="Pages" %}
+
+<div class="content">
+  If you want display pages below the tabs inside a box, enclose them in the <code>tabs-box</code> element.
+</div>
+
+{% capture tabs_box_example %}
+<div class="tabs-box">
+    <div class="tabs">
+        <ul>
+            <li class="is-active"><a>First Tab</a></li>
+            <li><a>Second Tab</a></li>
+            <li><a>Third Tab</a></li>
+        </ul>
+    </div>
+    <div class="tabs-content">
+        <div class="tabs-page is-active">
+            <div class="content">
+                <h2>The first tabs page</h2>
+                <p>This is the content of the first tabs page.</p>
+            </div>
+        </div>
+        <div class="tabs-page">
+            <div class="content">
+                <h2>The second tabs page</h2>
+                <p>This is the content of the second tabs page.</p>
+            </div>
+        </div>
+        <div class="tabs-page">
+            <div class="content">
+                <h2>The third tabs page</h2>
+                <p>This is the content of the third tabs page.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endcapture %}
+
+{% capture tabs_box_script_example %}
+document.addEventListener('DOMContentLoaded', () => {
+    const $tabBoxes = document.querySelectorAll(".tabs-box");
+    for (const $tabBox of $tabBoxes) {
+        const $tabs = $tabBox.querySelectorAll(".tabs a");
+        for (let i = 0; i < $tabs.length; ++i) {
+            const $tab = $tabs[i];
+            $tab.addEventListener("click", (event) => {
+                event.preventDefault();
+                for (let $eventTab of $tabs) {
+                    $eventTab.classList.remove('is-active');
+                }
+                event.target.classList.add('is-active');
+                const $pages = $tabBox.querySelectorAll(".tabs-page");
+                for (let $page of $pages) {
+                    $page.classList.remove('is-active');
+                }
+                $pages[i].classList.add('is-active');
+            });
+        }
+    }
+});
+{% endcapture %}
+
+{% include elements/snippet.html content=tabs_box_example horizontal=true more=true %}
+
+<div class="content">
+  <p>Create your <code>tabs-page</code> pages in the <code>tabs-content</code> container. Use <code>is-active</code> to select the page that is currently visible.</p>
+  <p>Use javascript as shown below to switch between the pages if a tab is clicked.</p>
+</div>
+
+{% highlight javascript %}{{ tabs_box_script_example }}{% endhighlight %}
+
 {% include components/variables.html type='component' %}
+
+<script>
+{{ tabs_box_script_example }}
+</script>
