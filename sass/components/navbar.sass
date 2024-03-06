@@ -1,54 +1,58 @@
-@import "../utilities/mixins"
+@use "../utilities/derived-variables"
+@use "../utilities/initial-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
+@use "../utilities/functions"
 
-$navbar-background-color: $scheme-main !default
+$navbar-background-color: derived-variables.$scheme-main !default
 $navbar-box-shadow-size: 0 2px 0 0 !default
-$navbar-box-shadow-color: $background !default
+$navbar-box-shadow-color: derived-variables.$background !default
 $navbar-height: 3.25rem !default
 $navbar-padding-vertical: 1rem !default
 $navbar-padding-horizontal: 2rem !default
 $navbar-z: 30 !default
 $navbar-fixed-z: 30 !default
 
-$navbar-item-color: $text !default
-$navbar-item-hover-color: $link !default
-$navbar-item-hover-background-color: $scheme-main-bis !default
-$navbar-item-active-color: $scheme-invert !default
+$navbar-item-color: derived-variables.$text !default
+$navbar-item-hover-color: derived-variables.$link !default
+$navbar-item-hover-background-color: derived-variables.$scheme-main-bis !default
+$navbar-item-active-color: derived-variables.$scheme-invert !default
 $navbar-item-active-background-color: transparent !default
 $navbar-item-img-max-height: 1.75rem !default
 
 $navbar-burger-color: $navbar-item-color !default
 
 $navbar-tab-hover-background-color: transparent !default
-$navbar-tab-hover-border-bottom-color: $link !default
-$navbar-tab-active-color: $link !default
+$navbar-tab-hover-border-bottom-color: derived-variables.$link !default
+$navbar-tab-active-color: derived-variables.$link !default
 $navbar-tab-active-background-color: transparent !default
-$navbar-tab-active-border-bottom-color: $link !default
+$navbar-tab-active-border-bottom-color: derived-variables.$link !default
 $navbar-tab-active-border-bottom-style: solid !default
 $navbar-tab-active-border-bottom-width: 3px !default
 
-$navbar-dropdown-background-color: $scheme-main !default
-$navbar-dropdown-border-top: 2px solid $border !default
+$navbar-dropdown-background-color: derived-variables.$scheme-main !default
+$navbar-dropdown-border-top: 2px solid derived-variables.$border !default
 $navbar-dropdown-offset: -4px !default
-$navbar-dropdown-arrow: $link !default
-$navbar-dropdown-radius: $radius-large !default
+$navbar-dropdown-arrow: derived-variables.$link !default
+$navbar-dropdown-radius: initial-variables.$radius-large !default
 $navbar-dropdown-z: 20 !default
 
-$navbar-dropdown-boxed-radius: $radius-large !default
-$navbar-dropdown-boxed-shadow: 0 8px 8px bulmaRgba($scheme-invert, 0.1), 0 0 0 1px bulmaRgba($scheme-invert, 0.1) !default
+$navbar-dropdown-boxed-radius: initial-variables.$radius-large !default
+$navbar-dropdown-boxed-shadow: 0 8px 8px functions.bulmaRgba(derived-variables.$scheme-invert, 0.1), 0 0 0 1px functions.bulmaRgba(derived-variables.$scheme-invert, 0.1) !default
 
-$navbar-dropdown-item-hover-color: $scheme-invert !default
-$navbar-dropdown-item-hover-background-color: $background !default
-$navbar-dropdown-item-active-color: $link !default
-$navbar-dropdown-item-active-background-color: $background !default
+$navbar-dropdown-item-hover-color: derived-variables.$scheme-invert !default
+$navbar-dropdown-item-hover-background-color: derived-variables.$background !default
+$navbar-dropdown-item-active-color: derived-variables.$link !default
+$navbar-dropdown-item-active-background-color: derived-variables.$background !default
 
-$navbar-divider-background-color: $background !default
+$navbar-divider-background-color: derived-variables.$background !default
 $navbar-divider-height: 2px !default
 
 $navbar-bottom-box-shadow-size: 0 -2px 0 0 !default
 
-$navbar-breakpoint: $desktop !default
+$navbar-breakpoint: initial-variables.$desktop !default
 
-$navbar-colors: $colors !default
+$navbar-colors: derived-variables.$colors !default
 
 =navbar-fixed
   left: 0
@@ -76,14 +80,14 @@ $navbar-colors: $colors !default
           &:focus,
           &:hover,
           &.is-active
-            background-color: bulmaDarken($color, 5%)
+            background-color: functions.bulmaDarken($color, 5%)
             color: $color-invert
         .navbar-link
           &::after
             border-color: $color-invert
       .navbar-burger
         color: $color-invert
-      +from($navbar-breakpoint)
+      +mixins.from($navbar-breakpoint)
         .navbar-start,
         .navbar-end
           & > .navbar-item,
@@ -94,7 +98,7 @@ $navbar-colors: $colors !default
             &:focus,
             &:hover,
             &.is-active
-              background-color: bulmaDarken($color, 5%)
+              background-color: functions.bulmaDarken($color, 5%)
               color: $color-invert
           .navbar-link
             &::after
@@ -102,7 +106,7 @@ $navbar-colors: $colors !default
         .navbar-item.has-dropdown:focus .navbar-link,
         .navbar-item.has-dropdown:hover .navbar-link,
         .navbar-item.has-dropdown.is-active .navbar-link
-          background-color: bulmaDarken($color, 5%)
+          background-color: functions.bulmaDarken($color, 5%)
           color: $color-invert
         .navbar-dropdown
           a.navbar-item
@@ -147,7 +151,7 @@ body
       background-color: transparent
 
 .navbar-tabs
-  +overflow-touch
+  +mixins.overflow-touch
   max-width: 100vw
   overflow-x: auto
   overflow-y: hidden
@@ -155,8 +159,8 @@ body
 .navbar-burger
   @extend %reset
   color: $navbar-burger-color
-  +hamburger($navbar-height)
-  +ltr-property("margin", auto, false)
+  +mixins.hamburger($navbar-height)
+  +mixins.ltr-property("margin", auto, false)
 
 .navbar-menu
   display: none
@@ -214,12 +218,12 @@ a.navbar-item,
   flex-shrink: 1
 
 .navbar-link:not(.is-arrowless)
-  +ltr-property("padding", 2.5em)
+  +mixins.ltr-property("padding", 2.5em)
   &::after
     @extend %arrow
     border-color: $navbar-dropdown-arrow
     margin-top: -0.375em
-    +ltr-position(1.125em)
+    +mixins.ltr-position(1.125em)
 
 .navbar-dropdown
   font-size: 0.875rem
@@ -236,7 +240,7 @@ a.navbar-item,
   height: $navbar-divider-height
   margin: 0.5rem 0
 
-+until($navbar-breakpoint)
++mixins.until($navbar-breakpoint)
   .navbar > .container
     display: block
   .navbar-brand,
@@ -249,7 +253,7 @@ a.navbar-item,
       display: none
   .navbar-menu
     background-color: $navbar-background-color
-    box-shadow: 0 8px 16px bulmaRgba($scheme-invert, 0.1)
+    box-shadow: 0 8px 16px functions.bulmaRgba(derived-variables.$scheme-invert, 0.1)
     padding: 0.5rem 0
     &.is-active
       display: block
@@ -261,13 +265,13 @@ a.navbar-item,
     &.is-fixed-bottom-touch
       bottom: 0
       &.has-shadow
-        box-shadow: 0 -2px 3px bulmaRgba($scheme-invert, 0.1)
+        box-shadow: 0 -2px 3px functions.bulmaRgba(derived-variables.$scheme-invert, 0.1)
     &.is-fixed-top-touch
       top: 0
     &.is-fixed-top,
     &.is-fixed-top-touch
       .navbar-menu
-        +overflow-touch
+        +mixins.overflow-touch
         max-height: calc(100vh - #{$navbar-height})
         overflow: auto
   html,
@@ -277,7 +281,7 @@ a.navbar-item,
     &.has-navbar-fixed-bottom-touch
       padding-bottom: $navbar-height
 
-+from($navbar-breakpoint)
++mixins.from($navbar-breakpoint)
   .navbar,
   .navbar-menu,
   .navbar-start,
@@ -293,7 +297,7 @@ a.navbar-item,
         align-items: center
       a.navbar-item,
       .navbar-link
-        border-radius: $radius
+        border-radius: initial-variables.$radius
     &.is-transparent
       a.navbar-item,
       .navbar-link
@@ -334,7 +338,7 @@ a.navbar-item,
         border-radius: $navbar-dropdown-radius $navbar-dropdown-radius 0 0
         border-top: none
         bottom: 100%
-        box-shadow: 0 -8px 8px bulmaRgba($scheme-invert, 0.1)
+        box-shadow: 0 -8px 8px functions.bulmaRgba(derived-variables.$scheme-invert, 0.1)
         top: auto
     &.is-active,
     &.is-hoverable:focus,
@@ -352,19 +356,19 @@ a.navbar-item,
     flex-shrink: 0
   .navbar-start
     justify-content: flex-start
-    +ltr-property("margin", auto)
+    +mixins.ltr-property("margin", auto)
   .navbar-end
     justify-content: flex-end
-    +ltr-property("margin", auto, false)
+    +mixins.ltr-property("margin", auto, false)
   .navbar-dropdown
     background-color: $navbar-dropdown-background-color
     border-bottom-left-radius: $navbar-dropdown-radius
     border-bottom-right-radius: $navbar-dropdown-radius
     border-top: $navbar-dropdown-border-top
-    box-shadow: 0 8px 8px bulmaRgba($scheme-invert, 0.1)
+    box-shadow: 0 8px 8px functions.bulmaRgba(derived-variables.$scheme-invert, 0.1)
     display: none
     font-size: 0.875rem
-    +ltr-position(0, false)
+    +mixins.ltr-position(0, false)
     min-width: 100%
     position: absolute
     top: 100%
@@ -373,7 +377,7 @@ a.navbar-item,
       padding: 0.375rem 1rem
       white-space: nowrap
     a.navbar-item
-      +ltr-property("padding", 3rem)
+      +mixins.ltr-property("padding", 3rem)
       &:focus,
       &:hover
         background-color: $navbar-dropdown-item-hover-background-color
@@ -391,7 +395,7 @@ a.navbar-item,
       pointer-events: none
       top: calc(100% + (#{$navbar-dropdown-offset}))
       transform: translateY(-5px)
-      transition-duration: $speed
+      transition-duration: initial-variables.$speed
       transition-property: opacity, transform
     &.is-right
       left: auto
@@ -401,9 +405,9 @@ a.navbar-item,
   .navbar > .container,
   .container > .navbar
     .navbar-brand
-      +ltr-property("margin", -.75rem, false)
+      +mixins.ltr-property("margin", -.75rem, false)
     .navbar-menu
-      +ltr-property("margin", -.75rem)
+      +mixins.ltr-property("margin", -.75rem)
   // Fixed navbar
   .navbar
     &.is-fixed-bottom-desktop,
@@ -412,7 +416,7 @@ a.navbar-item,
     &.is-fixed-bottom-desktop
       bottom: 0
       &.has-shadow
-        box-shadow: 0 -2px 3px bulmaRgba($scheme-invert, 0.1)
+        box-shadow: 0 -2px 3px functions.bulmaRgba(derived-variables.$scheme-invert, 0.1)
     &.is-fixed-top-desktop
       top: 0
   html,

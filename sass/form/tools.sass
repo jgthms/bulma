@@ -1,24 +1,30 @@
-$label-color: $text-strong !default
-$label-weight: $weight-bold !default
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
+@use "shared"
 
-$help-size: $size-small !default
+$label-color: derived-variables.$text-strong !default
+$label-weight: initial-variables.$weight-bold !default
 
-$label-colors: $form-colors !default
+$help-size: derived-variables.$size-small !default
+
+$label-colors: shared.$form-colors !default
 
 .label
   color: $label-color
   display: block
-  font-size: $size-normal
+  font-size: derived-variables.$size-normal
   font-weight: $label-weight
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-medium
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
   &.is-large
-    font-size: $size-large
+    font-size: derived-variables.$size-large
 
 .help
   display: block
@@ -40,7 +46,7 @@ $label-colors: $form-colors !default
     justify-content: flex-start
     .control
       &:not(:last-child)
-        +ltr-property("margin", -1px)
+        +mixins.ltr-property("margin", -1px)
       &:not(:first-child):not(:last-child)
         .button,
         .input,
@@ -50,20 +56,20 @@ $label-colors: $form-colors !default
         .button,
         .input,
         .select select
-          +ltr
+          +mixins.ltr
             border-bottom-right-radius: 0
             border-top-right-radius: 0
-          +rtl
+          +mixins.rtl
             border-bottom-left-radius: 0
             border-top-left-radius: 0
       &:last-child:not(:only-child)
         .button,
         .input,
         .select select
-          +ltr
+          +mixins.ltr
             border-bottom-left-radius: 0
             border-top-left-radius: 0
-          +rtl
+          +mixins.rtl
             border-bottom-right-radius: 0
             border-top-right-radius: 0
       .button,
@@ -98,7 +104,7 @@ $label-colors: $form-colors !default
       flex-shrink: 0
       &:not(:last-child)
         margin-bottom: 0
-        +ltr-property("margin", 0.75rem)
+        +mixins.ltr-property("margin", 0.75rem)
       &.is-expanded
         flex-grow: 1
         flex-shrink: 1
@@ -117,36 +123,36 @@ $label-colors: $form-colors !default
       &:not(:last-child)
         margin-bottom: 0
   &.is-horizontal
-    +tablet
+    +mixins.tablet
       display: flex
 
 .field-label
   .label
     font-size: inherit
-  +mobile
+  +mixins.mobile
     margin-bottom: 0.5rem
-  +tablet
+  +mixins.tablet
     flex-basis: 0
     flex-grow: 1
     flex-shrink: 0
-    +ltr-property("margin", 1.5rem)
+    +mixins.ltr-property("margin", 1.5rem)
     text-align: right
     &.is-small
-      font-size: $size-small
+      font-size: derived-variables.$size-small
       padding-top: 0.375em
     &.is-normal
       padding-top: 0.375em
     &.is-medium
-      font-size: $size-medium
+      font-size: derived-variables.$size-medium
       padding-top: 0.375em
     &.is-large
-      font-size: $size-large
+      font-size: derived-variables.$size-large
       padding-top: 0.375em
 
 .field-body
   .field .field
     margin-bottom: 0
-  +tablet
+  +mixins.tablet
     display: flex
     flex-basis: 0
     flex-grow: 5
@@ -158,12 +164,12 @@ $label-colors: $form-colors !default
       &:not(.is-narrow)
         flex-grow: 1
       &:not(:last-child)
-        +ltr-property("margin", 0.75rem)
+        +mixins.ltr-property("margin", 0.75rem)
 
 .control
   box-sizing: border-box
   clear: both
-  font-size: $size-normal
+  font-size: derived-variables.$size-normal
   position: relative
   text-align: inherit
   // Modifiers
@@ -173,43 +179,43 @@ $label-colors: $form-colors !default
     .select
       &:focus
         & ~ .icon
-          color: $input-icon-active-color
+          color: shared.$input-icon-active-color
       &.is-small ~ .icon
-        font-size: $size-small
+        font-size: derived-variables.$size-small
       &.is-medium ~ .icon
-        font-size: $size-medium
+        font-size: derived-variables.$size-medium
       &.is-large ~ .icon
-        font-size: $size-large
+        font-size: derived-variables.$size-large
     .icon
-      color: $input-icon-color
-      height: $input-height
+      color: shared.$input-icon-color
+      height: shared.$input-height
       pointer-events: none
       position: absolute
       top: 0
-      width: $input-height
+      width: shared.$input-height
       z-index: 4
   &.has-icons-left
     .input,
     .select select
-      padding-left: $input-height
+      padding-left: shared.$input-height
     .icon.is-left
       left: 0
   &.has-icons-right
     .input,
     .select select
-      padding-right: $input-height
+      padding-right: shared.$input-height
     .icon.is-right
       right: 0
   &.is-loading
     &::after
       @extend %loader
       position: absolute !important
-      +ltr-position(0.625em)
+      +mixins.ltr-position(0.625em)
       top: 0.625em
       z-index: 4
     &.is-small:after
-      font-size: $size-small
+      font-size: derived-variables.$size-small
     &.is-medium:after
-      font-size: $size-medium
+      font-size: derived-variables.$size-medium
     &.is-large:after
-      font-size: $size-large
+      font-size: derived-variables.$size-large

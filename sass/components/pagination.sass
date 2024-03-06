@@ -1,10 +1,13 @@
-@import "../utilities/controls"
-@import "../utilities/mixins"
+@use "../utilities/derived-variables"
+@use "../utilities/initial-variables"
+@use "../utilities/controls"
+@use "../utilities/mixins"
+@use "../utilities/extends"
 
-$pagination-color: $text-strong !default
-$pagination-border-color: $border !default
+$pagination-color: derived-variables.$text-strong !default
+$pagination-border-color: derived-variables.$border !default
 $pagination-margin: -0.25rem !default
-$pagination-min-width: $control-height !default
+$pagination-min-width: controls.$control-height !default
 
 $pagination-item-font-size: 1em !default
 $pagination-item-margin: 0.25rem !default
@@ -14,46 +17,46 @@ $pagination-item-padding-right: 0.5em !default
 $pagination-nav-padding-left: 0.75em !default
 $pagination-nav-padding-right: 0.75em !default
 
-$pagination-hover-color: $link-hover !default
-$pagination-hover-border-color: $link-hover-border !default
+$pagination-hover-color: derived-variables.$link-hover !default
+$pagination-hover-border-color: derived-variables.$link-hover-border !default
 
-$pagination-focus-color: $link-focus !default
-$pagination-focus-border-color: $link-focus-border !default
+$pagination-focus-color: derived-variables.$link-focus !default
+$pagination-focus-border-color: derived-variables.$link-focus-border !default
 
-$pagination-active-color: $link-active !default
-$pagination-active-border-color: $link-active-border !default
+$pagination-active-color: derived-variables.$link-active !default
+$pagination-active-border-color: derived-variables.$link-active-border !default
 
-$pagination-disabled-color: $text-light !default
-$pagination-disabled-background-color: $border !default
-$pagination-disabled-border-color: $border !default
+$pagination-disabled-color: derived-variables.$text-light !default
+$pagination-disabled-background-color: derived-variables.$border !default
+$pagination-disabled-border-color: derived-variables.$border !default
 
-$pagination-current-color: $link-invert !default
-$pagination-current-background-color: $link !default
-$pagination-current-border-color: $link !default
+$pagination-current-color: derived-variables.$link-invert !default
+$pagination-current-background-color: derived-variables.$link !default
+$pagination-current-border-color: derived-variables.$link !default
 
-$pagination-ellipsis-color: $grey-light !default
+$pagination-ellipsis-color: initial-variables.$grey-light !default
 
-$pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
+$pagination-shadow-inset: inset 0 1px 2px rgba(derived-variables.$scheme-invert, 0.2) !default
 
 .pagination
   @extend %block
-  font-size: $size-normal
+  font-size: derived-variables.$size-normal
   margin: $pagination-margin
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-medium
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
   &.is-large
-    font-size: $size-large
+    font-size: derived-variables.$size-large
   &.is-rounded
     .pagination-previous,
     .pagination-next
       padding-left: 1em
       padding-right: 1em
-      border-radius: $radius-rounded
+      border-radius: initial-variables.$radius-rounded
     .pagination-link
-      border-radius: $radius-rounded
+      border-radius: initial-variables.$radius-rounded
 
 .pagination,
 .pagination-list
@@ -117,7 +120,7 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
   li
     list-style: none
 
-+mobile
++mixins.mobile
   .pagination
     flex-wrap: wrap
   .pagination-previous,
@@ -129,7 +132,7 @@ $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default
       flex-grow: 1
       flex-shrink: 1
 
-+tablet
++mixins.tablet
   .pagination-list
     flex-grow: 1
     flex-shrink: 1

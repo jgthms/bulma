@@ -1,32 +1,34 @@
-@import "../utilities/mixins"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
 
-$table-color: $text-strong !default
-$table-background-color: $scheme-main !default
+$table-color: derived-variables.$text-strong !default
+$table-background-color: derived-variables.$scheme-main !default
 
-$table-cell-border: 1px solid $border !default
+$table-cell-border: 1px solid derived-variables.$border !default
 $table-cell-border-width: 0 0 1px !default
 $table-cell-padding: 0.5em 0.75em !default
-$table-cell-heading-color: $text-strong !default
+$table-cell-heading-color: derived-variables.$text-strong !default
 $table-cell-text-align: left !default
 
 $table-head-cell-border-width: 0 0 2px !default
-$table-head-cell-color: $text-strong !default
+$table-head-cell-color: derived-variables.$text-strong !default
 $table-foot-cell-border-width: 2px 0 0 !default
-$table-foot-cell-color: $text-strong !default
+$table-foot-cell-color: derived-variables.$text-strong !default
 
 $table-head-background-color: transparent !default
 $table-body-background-color: transparent !default
 $table-foot-background-color: transparent !default
 
-$table-row-hover-background-color: $scheme-main-bis !default
+$table-row-hover-background-color: derived-variables.$scheme-main-bis !default
 
-$table-row-active-background-color: $primary !default
-$table-row-active-color: $primary-invert !default
+$table-row-active-background-color: derived-variables.$primary !default
+$table-row-active-color: derived-variables.$primary-invert !default
 
-$table-striped-row-even-background-color: $scheme-main-bis !default
-$table-striped-row-even-hover-background-color: $scheme-main-ter !default
+$table-striped-row-even-background-color: derived-variables.$scheme-main-bis !default
+$table-striped-row-even-hover-background-color: derived-variables.$scheme-main-ter !default
 
-$table-colors: $colors !default
+$table-colors: derived-variables.$colors !default
 
 .table
   @extend %block
@@ -128,7 +130,7 @@ $table-colors: $colors !default
 
 .table-container
   @extend %block
-  +overflow-touch
+  +mixins.overflow-touch
   overflow: auto
   overflow-y: hidden
   max-width: 100%

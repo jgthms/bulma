@@ -1,4 +1,7 @@
-@import "../utilities/mixins"
+@use "../utilities/mixins"
+@use "../utilities/derived-variables"
+@use "../utilities/extends"
+@use "../utilities/functions"
 
 $hero-body-padding: 3rem 1.5rem !default
 $hero-body-padding-tablet: 3rem 3rem !default
@@ -6,7 +9,7 @@ $hero-body-padding-small: 1.5rem !default
 $hero-body-padding-medium: 9rem 4.5rem !default
 $hero-body-padding-large: 18rem 6rem !default
 
-$hero-colors: $colors !default
+$hero-colors: derived-variables.$colors !default
 
 // Main container
 .hero
@@ -32,21 +35,21 @@ $hero-colors: $colors !default
       .title
         color: $color-invert
       .subtitle
-        color: bulmaRgba($color-invert, 0.9)
+        color: functions.bulmaRgba($color-invert, 0.9)
         a:not(.button),
         strong
           color: $color-invert
       .navbar-menu
-        +touch
+        +mixins.touch
           background-color: $color
       .navbar-item,
       .navbar-link
-        color: bulmaRgba($color-invert, 0.7)
+        color: functions.bulmaRgba($color-invert, 0.7)
       a.navbar-item,
       .navbar-link
         &:hover,
         &.is-active
-          background-color: bulmaDarken($color, 5%)
+          background-color: functions.bulmaDarken($color, 5%)
           color: $color-invert
       .tabs
         a
@@ -63,7 +66,7 @@ $hero-colors: $colors !default
           a
             color: $color-invert
             &:hover
-              background-color: bulmaRgba($scheme-invert, 0.1)
+              background-color: functions.bulmaRgba(derived-variables.$scheme-invert, 0.1)
           li.is-active a
             &,
             &:hover
@@ -76,7 +79,7 @@ $hero-colors: $colors !default
           $gradient-top-left: darken(saturate(adjust-hue($color, -10deg), 10%), 10%)
           $gradient-bottom-right: lighten(saturate(adjust-hue($color, 10deg), 5%), 5%)
           background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
-          +mobile
+          +mixins.mobile
             .navbar-menu
               background-image: linear-gradient(141deg, $gradient-top-left 0%, $color 71%, $gradient-bottom-right 100%)
   // Sizes
@@ -84,11 +87,11 @@ $hero-colors: $colors !default
     .hero-body
       padding: $hero-body-padding-small
   &.is-medium
-    +tablet
+    +mixins.tablet
       .hero-body
         padding: $hero-body-padding-medium
   &.is-large
-    +tablet
+    +mixins.tablet
       .hero-body
         padding: $hero-body-padding-large
   &.is-halfheight,
@@ -121,22 +124,22 @@ $hero-colors: $colors !default
   &.is-transparent
     opacity: 0.3
   // Responsiveness
-  +mobile
+  +mixins.mobile
     display: none
 
 .hero-buttons
   margin-top: 1.5rem
   // Responsiveness
-  +mobile
+  +mixins.mobile
     .button
       display: flex
       &:not(:last-child)
         margin-bottom: 0.75rem
-  +tablet
+  +mixins.tablet
     display: flex
     justify-content: center
     .button:not(:last-child)
-      +ltr-property("margin", 1.5rem)
+      +mixins.ltr-property("margin", 1.5rem)
 
 // Containers
 
@@ -149,5 +152,5 @@ $hero-colors: $colors !default
   flex-grow: 1
   flex-shrink: 0
   padding: $hero-body-padding
-  +tablet
+  +mixins.tablet
     padding: $hero-body-padding-tablet

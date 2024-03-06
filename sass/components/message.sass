@@ -1,31 +1,34 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
 
-$message-background-color: $background !default
-$message-radius: $radius !default
+$message-background-color: derived-variables.$background !default
+$message-radius: initial-variables.$radius !default
 
-$message-header-background-color: $text !default
-$message-header-color: $text-invert !default
-$message-header-weight: $weight-bold !default
+$message-header-background-color: derived-variables.$text !default
+$message-header-color: derived-variables.$text-invert !default
+$message-header-weight: initial-variables.$weight-bold !default
 $message-header-padding: 0.75em 1em !default
-$message-header-radius: $radius !default
+$message-header-radius: initial-variables.$radius !default
 
-$message-body-border-color: $border !default
+$message-body-border-color: derived-variables.$border !default
 $message-body-border-width: 0 0 0 4px !default
-$message-body-color: $text !default
+$message-body-color: derived-variables.$text !default
 $message-body-padding: 1.25em 1.5em !default
-$message-body-radius: $radius !default
+$message-body-radius: initial-variables.$radius !default
 
-$message-body-pre-background-color: $scheme-main !default
+$message-body-pre-background-color: derived-variables.$scheme-main !default
 $message-body-pre-code-background-color: transparent !default
 
 $message-header-body-border-width: 0 !default
-$message-colors: $colors !default
+$message-colors: derived-variables.$colors !default
 
 .message
   @extend %block
   background-color: $message-background-color
   border-radius: $message-radius
-  font-size: $size-normal
+  font-size: derived-variables.$size-normal
   strong
     color: currentColor
   a:not(.button):not(.tag):not(.dropdown-item)
@@ -33,11 +36,11 @@ $message-colors: $colors !default
     text-decoration: underline
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-medium
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
   &.is-large
-    font-size: $size-large
+    font-size: derived-variables.$size-large
   // Colors
   @each $name, $components in $message-colors
     $color: nth($components, 1)
@@ -81,7 +84,7 @@ $message-colors: $colors !default
   .delete
     flex-grow: 0
     flex-shrink: 0
-    +ltr-property("margin", 0.75em, false)
+    +mixins.ltr-property("margin", 0.75em, false)
   & + .message-body
     border-width: $message-header-body-border-width
     border-top-left-radius: 0

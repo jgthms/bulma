@@ -1,8 +1,12 @@
-@import "../utilities/mixins"
+@use "../utilities/derived-variables"
+@use "../utilities/initial-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
+@use "../utilities/functions"
 
 $modal-z: 40 !default
 
-$modal-background-background-color: bulmaRgba($scheme-invert, 0.86) !default
+$modal-background-background-color: functions.bulmaRgba(derived-variables.$scheme-invert, 0.86) !default
 
 $modal-content-width: 640px !default
 $modal-content-margin-mobile: 20px !default
@@ -15,22 +19,22 @@ $modal-close-top: 20px !default
 
 $modal-card-spacing: 40px !default
 
-$modal-card-head-background-color: $background !default
-$modal-card-head-border-bottom: 1px solid $border !default
+$modal-card-head-background-color: derived-variables.$background !default
+$modal-card-head-border-bottom: 1px solid derived-variables.$border !default
 $modal-card-head-padding: 20px !default
-$modal-card-head-radius: $radius-large !default
+$modal-card-head-radius: initial-variables.$radius-large !default
 
-$modal-card-title-color: $text-strong !default
+$modal-card-title-color: derived-variables.$text-strong !default
 $modal-card-title-line-height: 1 !default
-$modal-card-title-size: $size-4 !default
+$modal-card-title-size: initial-variables.$size-4 !default
 
-$modal-card-foot-radius: $radius-large !default
-$modal-card-foot-border-top: 1px solid $border !default
+$modal-card-foot-radius: initial-variables.$radius-large !default
+$modal-card-foot-border-top: 1px solid derived-variables.$border !default
 
-$modal-card-body-background-color: $scheme-main !default
+$modal-card-body-background-color: derived-variables.$scheme-main !default
 $modal-card-body-padding: 20px !default
 
-$modal-breakpoint: $tablet !default
+$modal-breakpoint: initial-variables.$tablet !default
 
 .modal
   @extend %overlay
@@ -57,7 +61,7 @@ $modal-breakpoint: $tablet !default
   position: relative
   width: 100%
   // Responsiveness
-  +from($modal-breakpoint)
+  +mixins.from($modal-breakpoint)
     margin: 0 auto
     max-height: calc(100vh - #{$modal-content-spacing-tablet})
     width: $modal-content-width
@@ -67,7 +71,7 @@ $modal-breakpoint: $tablet !default
   background: none
   height: $modal-close-dimensions
   position: fixed
-  +ltr-position($modal-close-right)
+  +mixins.ltr-position($modal-close-right)
   top: $modal-close-top
   width: $modal-close-dimensions
 
@@ -106,10 +110,10 @@ $modal-breakpoint: $tablet !default
   border-top: $modal-card-foot-border-top
   .button
     &:not(:last-child)
-      +ltr-property("margin", 0.5em)
+      +mixins.ltr-property("margin", 0.5em)
 
 .modal-card-body
-  +overflow-touch
+  +mixins.overflow-touch
   background-color: $modal-card-body-background-color
   flex-grow: 1
   flex-shrink: 1

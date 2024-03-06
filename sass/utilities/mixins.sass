@@ -1,4 +1,6 @@
-@import "derived-variables"
+@use "initial-variables"
+@use "derived-variables"
+@use "functions"
 
 =clearfix
   &::after
@@ -42,9 +44,9 @@
     left: calc(50% - 8px)
     position: absolute
     transform-origin: center
-    transition-duration: $speed
+    transition-duration: initial-variables.$speed
     transition-property: background-color, opacity, transform
-    transition-timing-function: $easing
+    transition-timing-function: initial-variables.$easing
     width: 16px
     &:nth-child(1)
       top: calc(50% - 6px)
@@ -53,7 +55,7 @@
     &:nth-child(3)
       top: calc(50% + 4px)
   &:hover
-    background-color: bulmaRgba(black, 0.05)
+    background-color: functions.bulmaRgba(black, 0.05)
   // Modifers
   &.is-active
     span
@@ -100,57 +102,57 @@
     @content
 
 =mobile
-  @media screen and (max-width: $tablet - 1px)
+  @media screen and (max-width: initial-variables.$tablet - 1px)
     @content
 
 =tablet
-  @media screen and (min-width: $tablet), print
+  @media screen and (min-width: initial-variables.$tablet), print
     @content
 
 =tablet-only
-  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px)
+  @media screen and (min-width: initial-variables.$tablet) and (max-width: initial-variables.$desktop - 1px)
     @content
 
 =touch
-  @media screen and (max-width: $desktop - 1px)
+  @media screen and (max-width: initial-variables.$desktop - 1px)
     @content
 
 =desktop
-  @media screen and (min-width: $desktop)
+  @media screen and (min-width: initial-variables.$desktop)
     @content
 
 =desktop-only
-  @if $widescreen-enabled
-    @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+  @if initial-variables.$widescreen-enabled
+    @media screen and (min-width: initial-variables.$desktop) and (max-width: initial-variables.$widescreen - 1px)
       @content
 
 =until-widescreen
-  @if $widescreen-enabled
-    @media screen and (max-width: $widescreen - 1px)
+  @if initial-variables.$widescreen-enabled
+    @media screen and (max-width: initial-variables.$widescreen - 1px)
       @content
 
 =widescreen
-  @if $widescreen-enabled
-    @media screen and (min-width: $widescreen)
+  @if initial-variables.$widescreen-enabled
+    @media screen and (min-width: initial-variables.$widescreen)
       @content
 
 =widescreen-only
-  @if $widescreen-enabled and $fullhd-enabled
-    @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+  @if initial-variables.$widescreen-enabled and initial-variables.$fullhd-enabled
+    @media screen and (min-width: initial-variables.$widescreen) and (max-width: initial-variables.$fullhd - 1px)
       @content
 
 =until-fullhd
-  @if $fullhd-enabled
-    @media screen and (max-width: $fullhd - 1px)
+  @if initial-variables.$fullhd-enabled
+    @media screen and (max-width: initial-variables.$fullhd - 1px)
       @content
 
 =fullhd
-  @if $fullhd-enabled
-    @media screen and (min-width: $fullhd)
+  @if initial-variables.$fullhd-enabled
+    @media screen and (min-width: initial-variables.$fullhd)
       @content
 
 =breakpoint($name)
-  $breakpoint: map-get($breakpoints, $name)
+  $breakpoint: map-get(initial-variables.$breakpoints, $name)
   @if $breakpoint
     $from: map-get($breakpoint, "from")
     $until: map-get($breakpoint, "until")
@@ -165,17 +167,17 @@
         @content
 
 =ltr
-  @if not $rtl
+  @if not initial-variables.$rtl
     @content
 
 =rtl
-  @if $rtl
+  @if initial-variables.$rtl
     @content
 
 =ltr-property($property, $spacing, $right: true)
   $normal: if($right, "right", "left")
   $opposite: if($right, "left", "right")
-  @if $rtl
+  @if initial-variables.$rtl
     #{$property}-#{$opposite}: $spacing
   @else
     #{$property}-#{$normal}: $spacing
@@ -183,7 +185,7 @@
 =ltr-position($spacing, $right: true)
   $normal: if($right, "right", "left")
   $opposite: if($right, "left", "right")
-  @if $rtl
+  @if initial-variables.$rtl
     #{$opposite}: $spacing
   @else
     #{$normal}: $spacing
@@ -213,7 +215,7 @@
   transform-origin: center
   width: 0.625em
 
-=block($spacing: $block-spacing)
+=block($spacing: initial-variables.$block-spacing)
   &:not(:last-child)
     margin-bottom: $spacing
 
@@ -221,9 +223,9 @@
   +unselectable
   -moz-appearance: none
   -webkit-appearance: none
-  background-color: bulmaRgba($scheme-invert, 0.2)
+  background-color: functions.bulmaRgba(derived-variables.$scheme-invert, 0.2)
   border: none
-  border-radius: $radius-rounded
+  border-radius: initial-variables.$radius-rounded
   cursor: pointer
   pointer-events: auto
   display: inline-block
@@ -241,7 +243,7 @@
   width: 20px
   &::before,
   &::after
-    background-color: $scheme-main
+    background-color: derived-variables.$scheme-main
     content: ""
     display: block
     left: 50%
@@ -257,9 +259,9 @@
     width: 2px
   &:hover,
   &:focus
-    background-color: bulmaRgba($scheme-invert, 0.3)
+    background-color: functions.bulmaRgba(derived-variables.$scheme-invert, 0.3)
   &:active
-    background-color: bulmaRgba($scheme-invert, 0.4)
+    background-color: functions.bulmaRgba(derived-variables.$scheme-invert, 0.4)
   // Sizes
   &.is-small
     height: 16px
@@ -285,8 +287,8 @@
 
 =loader
   animation: spinAround 500ms infinite linear
-  border: 2px solid $grey-lighter
-  border-radius: $radius-rounded
+  border: 2px solid initial-variables.$grey-lighter
+  border-radius: initial-variables.$radius-rounded
   border-right-color: transparent
   border-top-color: transparent
   content: ""

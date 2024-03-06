@@ -1,18 +1,21 @@
-@import "../utilities/mixins"
+@use "../utilities/initial-variables"
+@use "../utilities/derived-variables"
+@use "../utilities/mixins"
+@use "../utilities/extends"
 
-$breadcrumb-item-color: $link !default
-$breadcrumb-item-hover-color: $link-hover !default
-$breadcrumb-item-active-color: $text-strong !default
+$breadcrumb-item-color: derived-variables.$link !default
+$breadcrumb-item-hover-color: derived-variables.$link-hover !default
+$breadcrumb-item-active-color: derived-variables.$text-strong !default
 
 $breadcrumb-item-padding-vertical: 0 !default
 $breadcrumb-item-padding-horizontal: 0.75em !default
 
-$breadcrumb-item-separator-color: $border-hover !default
+$breadcrumb-item-separator-color: derived-variables.$border-hover !default
 
 .breadcrumb
   @extend %block
   @extend %unselectable
-  font-size: $size-normal
+  font-size: derived-variables.$size-normal
   white-space: nowrap
   a
     align-items: center
@@ -26,7 +29,7 @@ $breadcrumb-item-separator-color: $border-hover !default
     align-items: center
     display: flex
     &:first-child a
-      +ltr-property("padding", 0, false)
+      +mixins.ltr-property("padding", 0, false)
     &.is-active
       a
         color: $breadcrumb-item-active-color
@@ -43,9 +46,9 @@ $breadcrumb-item-separator-color: $border-hover !default
     justify-content: flex-start
   .icon
     &:first-child
-      +ltr-property("margin", 0.5em)
+      +mixins.ltr-property("margin", 0.5em)
     &:last-child
-      +ltr-property("margin", 0.5em, false)
+      +mixins.ltr-property("margin", 0.5em, false)
   // Alignment
   &.is-centered
     ol,
@@ -57,11 +60,11 @@ $breadcrumb-item-separator-color: $border-hover !default
       justify-content: flex-end
   // Sizes
   &.is-small
-    font-size: $size-small
+    font-size: derived-variables.$size-small
   &.is-medium
-    font-size: $size-medium
+    font-size: derived-variables.$size-medium
   &.is-large
-    font-size: $size-large
+    font-size: derived-variables.$size-large
   // Styles
   &.has-arrow-separator
     li + li::before
