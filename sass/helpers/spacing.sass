@@ -1,3 +1,5 @@
+@import "../utilities/mixins"
+
 .is-marginless
   margin: 0 !important
 
@@ -9,6 +11,7 @@ $spacing-directions: ("top": "t", "right": "r", "bottom": "b", "left": "l") !def
 $spacing-horizontal: "x" !default
 $spacing-vertical: "y" !default
 $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem, "auto": auto) !default
+
 
 @each $property, $shortcut in $spacing-shortcuts
   @each $name, $value in $spacing-values
@@ -29,3 +32,213 @@ $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5
       .#{$shortcut}#{$spacing-vertical}-#{$name}
         #{$property}-top: $value !important
         #{$property}-bottom: $value !important
+
+
+    +mobile
+      .is-marginless-mobile
+        margin: 0 !important
+      .is-paddingless-mobile
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-mobile
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-mobile
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-mobile
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-mobile
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +tablet
+      .is-marginless-tablet
+        margin: 0 !important
+      .is-paddingless-tablet
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-tablet
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-tablet
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-tablet
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-tablet
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +tablet-only
+      .is-marginless-tablet-only
+        margin: 0 !important
+      .is-paddingless-tablet-only
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-tablet-only
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-tablet-only
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-tablet-only
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-tablet-only
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +touch
+      .is-marginless-touch
+        margin: 0 !important
+      .is-paddingless-touch
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-touch
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-touch
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-touch
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-touch
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +desktop
+      .is-marginless-desktop
+        margin: 0 !important
+      .is-paddingless-desktop
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-desktop
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-desktop
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-desktop
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-desktop
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +desktop-only
+      .is-marginless-desktop-only
+        margin: 0 !important
+      .is-paddingless-desktop-only
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-desktop-only
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-desktop-only
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-desktop-only
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-desktop-only
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +until-widescreen
+      .is-marginless-until-widescreen
+        margin: 0 !important
+      .is-paddingless-until-widescreen
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-until-widescreen
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-until-widescreen
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-until-widescreen
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-until-widescreen
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +widescreen
+      .is-marginless-widescreen
+        margin: 0 !important
+      .is-paddingless-widescreen
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-widescreen
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-widescreen
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-widescreen
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-widescreen
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +widescreen-only
+      .is-marginless-widescreen-only
+        margin: 0 !important
+      .is-paddingless-widescreen-only
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-widescreen-only
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-widescreen-only
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-widescreen-only
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-widescreen-only
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +until-fullhd
+      .is-marginless-until-fullhd
+        margin: 0 !important
+      .is-paddingless-until-fullhd
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-until-fullhd
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-until-fullhd
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-until-fullhd
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-until-fullhd
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+
+    +fullhd
+      .is-marginless-fullhd
+        margin: 0 !important
+      .is-paddingless-fullhd
+        padding: 0 !important
+      .#{$shortcut}-#{$name}-fullhd
+        #{$property}: $value !important
+      @each $direction, $suffix in $spacing-directions
+        .#{$shortcut}#{$suffix}-#{$name}-fullhd
+          #{$property}-#{$direction}: $value !important
+      @if $spacing-horizontal != null
+        .#{$shortcut}#{$spacing-horizontal}-#{$name}-fullhd
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+      @if $spacing-vertical != null
+        .#{$shortcut}#{$spacing-vertical}-#{$name}-fullhd
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
