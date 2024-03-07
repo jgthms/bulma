@@ -31,9 +31,12 @@
         color: bulmaLighten($color-dark, 10%) !important
     .has-background-#{$name}-dark
       background-color: $color-dark !important
-
 @each $name, $shade in $shades
+  $value: $shade
+  @if type-of($custom-colors) == 'map'
+   $value: nth($shade, 1)
+  @debug $value
   .has-text-#{$name}
-    color: $shade !important
+    color: $value !important
   .has-background-#{$name}
-    background-color: $shade !important
+    background-color: $value !important
