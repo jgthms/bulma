@@ -24,6 +24,18 @@ $file-colors: $form-colors !default
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
     &.is-#{$name}
+      .file-input[disabled] ~
+        .file-cta
+          &:active,
+          &:focus,
+          &:hover,
+          &.is-active,
+          &.is-focused,
+          &.is-hovered
+            background-color: whitesmoke
+            border-color: whitesmoke
+            color: #7a7a7a
+
       .file-cta
         background-color: $color
         border-color: transparent
@@ -148,6 +160,17 @@ $file-colors: $form-colors !default
   position: absolute
   top: 0
   width: 100%
+  &[disabled] ~
+    .file-cta,
+    .file-name
+      background-color: whitesmoke
+      border-color: whitesmoke
+      color: #7a7a7a
+
+    .file-cta,
+    .file-cta .file-label,
+    .file-name
+      cursor: not-allowed
 
 .file-cta,
 .file-name
