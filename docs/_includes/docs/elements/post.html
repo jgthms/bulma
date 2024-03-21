@@ -1,0 +1,34 @@
+{% assign date = post.date | date: "%B %-d" %}
+{% assign title = post.title | markdownify %}
+{% assign introduction = post.introduction | markdownify %}
+
+<div class="bd-post {% if post.featured %}is-featured{% endif %}">
+  <a class="bd-post-link" href="{{ site.url }}{{ post.url }}" style="--color: var(--{{ post.color }});">
+    <div class="bd-post-body">
+      <figure class="icon">
+        <i class="{% if post.icon_brand %}fab{% elsif post.icon_regular %}far{% else %}fas{% endif %} fa-{{ post.icon }}"></i>
+      </figure>
+
+      <div class="bd-post-content">
+        <h2 class="title">
+          {{ title }}
+        </h2>
+        <div class="subtitle">
+          {{ introduction }}
+        </div>
+      </div>
+    </div>
+
+    {% if post.image %}
+      <figure class="bd-post-image">
+        <img
+             src="https://source.unsplash.com/{{ post.image }}/400x240"
+          srcset="https://source.unsplash.com/{{ post.image }}/400x240 1x,
+                  https://source.unsplash.com/{{ post.image }}/800x480 2x"
+          alt="{{ post.alt }}"
+          width="400"
+          height="240">
+      </figure>
+    {% endif %}
+  </a>
+</div>

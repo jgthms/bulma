@@ -1,0 +1,97 @@
+<nav id="navbar" class="bd-navbar navbar">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ site.url }}">
+      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
+    </a>
+
+    <a class="navbar-item bd-navbar-mobile-icon" href="{{ site.data.meta.github }}" target="_blank">
+      <span class="icon" style="color: var(--github);">
+        <i class="fab fa-lg fa-github-alt"></i>
+      </span>
+    </a>
+
+    <a class="navbar-item bd-navbar-mobile-icon" href="{{ site.data.meta.twitter }}" target="_blank">
+      <span class="icon" style="color: var(--twitter);">
+        <i class="fab fa-lg fa-twitter"></i>
+      </span>
+    </a>
+
+    <div class="navbar-item bd-navbar-mobile-sponsor-icon">
+      <a href="{{ site.url }}{{ site.data.links.by_id.become-sponsor.path }}" class="button is-sponsor is-outlined is-small">
+        <span class="icon">
+          <i class="fas fa-thumbs-up"></i>
+        </span>
+        <span>Sponsor</span>
+      </a>
+    </div>
+
+    <button id="searchIcon" class="navbar-item bd-navbar-search-icon bd-navbar-search-mobile-icon">
+      <span class="icon">
+        <i class="fas fa-lg fa-search"></i>
+      </span>
+    </button>
+
+    <button id="navbarBurger" class="navbar-burger" data-target="navMenu{{ include.id }}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div id="navMenu{{ include.id }}" class="navbar-menu">
+    {% include global/navbar-start.html id="navbarStartOriginal" version="original" %}
+
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item" href="{{ site.data.meta.github }}" target="_blank">
+        <span class="icon" style="color: var(--github);">
+          <i class="fab fa-lg fa-github-alt"></i>
+        </span>
+      </a>
+
+      <a class="bd-navbar-icon navbar-item" href="{{ site.data.meta.twitter }}" target="_blank">
+        <span class="icon" style="color: var(--twitter);">
+          <i class="fab fa-lg fa-twitter"></i>
+        </span>
+      </a>
+
+      <div class="navbar-item bd-navbar-sponsor-button is-hidden-desktop">
+        <a class="button is-sponsor is-light">
+          <span class="icon is-small">
+            <i class="fas fa-thumbs-up"></i>
+          </span>
+        </a>
+      </div>
+
+      <div class="navbar-item bd-navbar-download-button is-hidden-touch">
+        <a class="button is-primary mr-3" href="{{ site.data.meta.download }}">
+          <span class="icon is-hidden-touch is-hidden-desktop-only">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+
+        <a href="{{ site.url }}{{ site.data.links.by_id.become-sponsor.path }}" class="button is-sponsor is-light">
+          <span class="icon is-small is-hidden-touch is-hidden-desktop-only">
+            <i class="fas fa-thumbs-up"></i>
+          </span>
+          <span>
+            Sponsor
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="search" class="bd-search">
+    <p class="control has-icons-left">
+      <input id="algoliaSearch" class="input is-rounded" type="text" placeholder="Search the docs">
+      <span class="icon is-small is-left">
+        <i class="fas fa-search"></i>
+      </span>
+    </p>
+  </div>
+</nav>
+
+<div class="bd-navbar bd-is-clone">
+  {% include global/navbar-start.html id="navbarStartClone" version="clone" %}
+</div>

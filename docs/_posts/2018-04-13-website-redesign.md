@@ -35,7 +35,7 @@ Just see for yourself!
   </div>
 </div>
 
-{% include elements/anchor.html name="Navbar" %}
+{% include docs/elements/anchor.html name="Navbar" %}
 
 The **navbar** has been updated with a lighter markup and cleaner design:
 
@@ -47,7 +47,7 @@ The **navbar** has been updated with a lighter markup and cleaner design:
 
 This doesn't affect the current navbars. There's actually a new modifier called `is-spaced` that was created for this new navbar. Documentation coming soon!
 
-{% include elements/anchor.html name="Customize example" %}
+{% include docs/elements/anchor.html name="Customize example" %}
 
 On the homepage, there's a new [**customization** section with a live example](/#customize):
 
@@ -57,7 +57,7 @@ On the homepage, there's a new [**customization** section with a live example](/
   </a>
 </figure>
 
-{% include elements/anchor.html name="Breadcrumb" %}
+{% include docs/elements/anchor.html name="Breadcrumb" %}
 
 <figure>
   <a href="{{ site.url }}/images/blog/v7/breadcrumb.png">
@@ -69,16 +69,16 @@ A **breadcrumb** is now visible at the top of each page, to easily navigate up a
 
 This has led to the creation of new **intermediate pages**:
 
-* [documentation](/documentation)
-* [documentation/modifiers](/documentation/modifiers)
-* [documentation/columns](/documentation/columns)
-* [documentation/layout](/documentation/layout)
-* [documentation/form](/documentation/form)
-* [documentation/elements](/documentation/elements)
-* [documentation/components](/documentation/components)
-* [more](/more)
+- [documentation](/documentation)
+- [documentation/modifiers](/documentation/modifiers)
+- [documentation/columns](/documentation/columns)
+- [documentation/layout](/documentation/layout)
+- [documentation/form](/documentation/form)
+- [documentation/elements](/documentation/elements)
+- [documentation/components](/documentation/components)
+- [more](/more)
 
-{% include elements/anchor.html name="Links" %}
+{% include docs/elements/anchor.html name="Links" %}
 
 These intermediate pages have new **link boxes** that help dive into each sub-category:
 
@@ -88,7 +88,7 @@ These intermediate pages have new **link boxes** that help dive into each sub-ca
   </a>
 </figure>
 
-{% include elements/anchor.html name="Previous/Next" %}
+{% include docs/elements/anchor.html name="Previous/Next" %}
 
 Next to the breadcrumb, you can easily navigate to the **sibling** pages with the **previous** and **next** links:
 
@@ -106,7 +106,7 @@ These links are also available at the bottom:
   </a>
 </figure>
 
-{% include elements/anchor.html name="Categories" %}
+{% include docs/elements/anchor.html name="Categories" %}
 
 There's a new **sidebar** including a navigation menu with all the categories and sub-categories:
 
@@ -116,7 +116,7 @@ There's a new **sidebar** including a navigation menu with all the categories an
   </a>
 </figure>
 
-{% include elements/anchor.html name="Scroll spy" %}
+{% include docs/elements/anchor.html name="Scroll spy" %}
 
 On some pages below the categories, you'll find a new menu called "On this page" which is actually a **scroll spy**:
 
@@ -126,7 +126,7 @@ On some pages below the categories, you'll find a new menu called "On this page"
   </a>
 </figure>
 
-{% include elements/anchor.html name="Footer" %}
+{% include docs/elements/anchor.html name="Footer" %}
 
 The footer has been redesigned as well. Among other things, there's a **sitemap** available:
 
@@ -136,7 +136,7 @@ The footer has been redesigned as well. Among other things, there's a **sitemap*
   </a>
 </figure>
 
-{% include elements/anchor.html name="Code" %}
+{% include docs/elements/anchor.html name="Code" %}
 
 The Bulma website is built with **Jekyll**. In the process of this redesign, the underlying code that helps maintain this website has been optimized and cleaned up as well.
 

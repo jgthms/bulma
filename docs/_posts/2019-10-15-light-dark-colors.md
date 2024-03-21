@@ -12,21 +12,21 @@ alt: "Light and dark clouds"
 
 The new version **[Bulma 0.8.0](https://github.com/jgthms/bulma/releases/tag/0.8.0)** is out! 😃 It comes with several bug fixes and a lot of nice new features:
 
-* [Light/Dark colors](#light-dark-colors)
-* [Better visual look](#better-visual-look)
-* [Panel colors](#panel-colors)
-* [Larger form controls](#larger-form-controls)
-* [4-value color map](#4-value-color-map)
-* [Scheme variables for "Dark mode"](#scheme-variables-for-dark-mode)
+- [Light/Dark colors](#light-dark-colors)
+- [Better visual look](#better-visual-look)
+- [Panel colors](#panel-colors)
+- [Larger form controls](#larger-form-controls)
+- [4-value color map](#4-value-color-map)
+- [Scheme variables for "Dark mode"](#scheme-variables-for-dark-mode)
 
 More in the [Changelog](https://github.com/jgthms/bulma/releases/tag/0.8.0).
 
-{% include elements/anchor.html name="Light/Dark colors" %}
+{% include docs/elements/anchor.html name="Light/Dark colors" %}
 
 Each main color (`"primary"`, `"info"`, `"success"`, `"warning"`, `"danger"`) now comes with a `*-light` and a `*-dark` version. They are calculated using 2 new color functions:
 
-* `findLightColor()` which finds the light version of a color
-* `findDarkColor()` which finds the dark version of a color
+- `findLightColor()` which finds the light version of a color
+- `findDarkColor()` which finds the dark version of a color
 
 The **light** colors are used by the `button` element:
 
@@ -45,7 +45,7 @@ The **light** and **dark** colors are used by the `message` component, which gen
   </a>
 </div>
 
-{% include elements/anchor.html name="Better visual look" %}
+{% include docs/elements/anchor.html name="Better visual look" %}
 
 Some of the Bulma colors have been updated:
 
@@ -60,10 +60,10 @@ Some of the Bulma colors have been updated:
       <code>$green</code>
     </th>
     <td>
-      {% include elements/color-square.html value="hsl(141, 71%, 48%)" %}
+      {% include docs/elements/color-swatch.html background="hsl(141, 71%, 48%)" %}
     </td>
     <td>
-      {% include elements/color-square.html value="hsl(141, 53%, 53%)" %}
+      {% include docs/elements/color-swatch.html background="hsl(141, 53%, 53%)" %}
     </td>
   </tr>
   <tr>
@@ -71,10 +71,10 @@ Some of the Bulma colors have been updated:
       <code>$cyan</code>
     </th>
     <td>
-      {% include elements/color-square.html value="hsl(204, 86%, 53%)" %}
+      {% include docs/elements/color-swatch.html background="hsl(204, 86%, 53%)" %}
     </td>
     <td>
-      {% include elements/color-square.html value="hsl(204, 71%, 53%)" %}
+      {% include docs/elements/color-swatch.html background="hsl(204, 71%, 53%)" %}
     </td>
   </tr>
   <tr>
@@ -82,10 +82,10 @@ Some of the Bulma colors have been updated:
       <code>$red</code>
     </th>
     <td>
-      {% include elements/color-square.html value="hsl(348, 100%, 61%)" %}
+      {% include docs/elements/color-swatch.html background="hsl(348, 100%, 61%)" %}
     </td>
     <td>
-      {% include elements/color-square.html value="hsl(348, 86%, 61%)" %}
+      {% include docs/elements/color-swatch.html background="hsl(348, 86%, 61%)" %}
     </td>
   </tr>
 </table>
@@ -106,7 +106,7 @@ The <strong>shadows</strong> of the <code>box</code> and <code>card</code> have 
   </a>
 </div>
 
-{% include elements/anchor.html name="Panel colors" %}
+{% include docs/elements/anchor.html name="Panel colors" %}
 
 <p>
   The <a href="{{ site.data.links.by_id.components-panel.path }}">panel component</a> is now available in all <strong>colors</strong>:
@@ -118,7 +118,7 @@ The <strong>shadows</strong> of the <code>box</code> and <code>card</code> have 
   </a>
 </div>
 
-{% include elements/anchor.html name="Larger form controls" %}
+{% include docs/elements/anchor.html name="Larger form controls" %}
 
 Form controls and buttons are now `2.5em` high. You can revert this resizing by setting these previous values:
 
@@ -131,7 +131,7 @@ $button-padding-vertical: calc(0.375em - #{$button-border-width})
 $button-padding-horizontal: 0.75em
 ```
 
-{% include elements/anchor.html name="4-value color map" %}
+{% include docs/elements/anchor.html name="4-value color map" %}
 
 The `$colors` Sass map now accepts, for each of its values, a map of up to **4** values. For example: the key `"info"` now has the `($info, $info-invert, $info-light, $info-dark)` map.
 
@@ -139,16 +139,30 @@ If you provide a `$custom-colors` map, you can decide to provide a map of 1, 2, 
 
 ```scss
 $custom-colors: (
-  "lime": (lime),
-  "tomato": (tomato, white),
-  "orange": ($orange, $orange-invert, $orange-light),
-  "lavender": ($lavender, $lavender-invert, $lavender-light, $lavender-dark)
+  "lime": (
+    lime,
+  ),
+  "tomato": (
+    tomato,
+    white,
+  ),
+  "orange": (
+    $orange,
+    $orange-invert,
+    $orange-light,
+  ),
+  "lavender": (
+    $lavender,
+    $lavender-invert,
+    $lavender-light,
+    $lavender-dark,
+  ),
 );
 ```
 
 This is processed by the updated `mergeColorMaps()` Sass function.
 
-{% include elements/anchor.html name='Scheme variables for "Dark mode"' %}
+{% include docs/elements/anchor.html name='Scheme variables for "Dark mode"' %}
 
 There are 6 new `$scheme` derived variables: `$scheme-main` `$scheme-main-bis` `$scheme-main-ter` `$scheme-invert` `$scheme-invert-bis` `$scheme-invert-ter`
 They replace the `$white` and `$black` occurrences in the codebase.
