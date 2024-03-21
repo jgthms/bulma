@@ -6,6 +6,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const $animateds = document.querySelectorAll(".js-animated");
   $animateds.forEach((el) => el.classList.add("is-animated"));
 
+  // Backers
+
+  const $backers = document.getElementById("js-backers");
+
+  if ($backers) {
+    fetch("https://jgthms.com/amis/backers.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        return response.json();
+      })
+      .then((response) => {
+        const values = response.values;
+
+        values.forEach((value) => {
+          const el = document.createElement("div");
+          el.className = "bd-tier";
+
+          const amount = document.createElement("div");
+          amount.className = "bd-tier-amount";
+          amount.textContent = `$${value}`;
+
+          const frequency = document.createElement("div");
+          frequency.className = "bd-tier-frequency";
+          frequency.textContent = "a month";
+
+          const list = response.tiers[value];
+          const message = document.createElement("div");
+          message.className = "bd-tier-message";
+          message.textContent = list.join(", ");
+
+          el.appendChild(amount);
+          el.appendChild(frequency);
+          el.appendChild(message);
+
+          $backers.appendChild(el);
+        });
+      });
+  }
+
   // Amis
 
   const $amis = document.getElementById("amis");

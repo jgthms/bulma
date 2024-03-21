@@ -1,35 +1,42 @@
 ---
-fulltitle: 'Backers via Patreon and GitHub'
+fulltitle: "Backers via Patreon and GitHub"
 title: 'Backers via <a href="https://www.patreon.com/jgthms" target="_blank">Patreon</a> and <a href="https://github.com/sponsors/jgthms" target="_blank">GitHub</a>'
 layout: default
 route: backers
 theme: sponsor
 breadcrumb:
-- home
-- patreon-backers
+  - home
+  - patreon-backers
 ---
 
-{% include global/header.html %}
-{%
-  include docs/hero.html
-  title=page.title
-  subtitle="Everyone who is supporting Bulma and Open Source."
-%}
+{% include global/header.html %} {% include docs/hero.html title=page.title
+subtitle="Everyone who is supporting Bulma and Open Source." %}
 
 <main class="bd-backers">
   <div class="bd-backers-platforms">
     <div class="bd-backers-platform bd-is-patreon">
-      <a class="bd-backers-platform-logo" href="{{ site.data.meta.patreon_url }}" target="_blank">
+      <a
+        class="bd-backers-platform-logo"
+        href="{{ site.data.meta.patreon_url }}"
+        target="_blank"
+      >
         {% include svg/patreon.svg %}
       </a>
     </div>
     <div class="bd-backers-platform bd-is-github">
-      <a class="bd-backers-platform-logo" href="{{ site.data.meta.github }}" target="_blank">
+      <a
+        class="bd-backers-platform-logo"
+        href="{{ site.data.meta.github }}"
+        target="_blank"
+      >
         {% include svg/github.svg %}
       </a>
     </div>
   </div>
 
-  {% include docs/elements/backers-group.html tier="30" title="Generous backers ($30+)" %}
-  {% include docs/elements/backers-group.html tier="10" title="Bulma backers ($10+)" %}
+  <div class="bd-tiers">
+    <div class="container">
+      <div id="js-backers" class="bd-tiers-list"></div>
+    </div>
+  </div>
 </main>
