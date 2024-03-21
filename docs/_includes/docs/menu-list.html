@@ -1,0 +1,7 @@
+{% assign category_size = site.data.links.categories[include.category_id] | size %}
+
+<ul class="bd-menu-list js-menu-list" style="--size: {{ category_size }}">
+  {% for link_id in site.data.links.categories[include.category_id] %}
+    {% include docs/menu-item.html link_id=link_id %}
+  {% endfor %}
+</ul>

@@ -1,0 +1,162 @@
+---
+title: Modularity in Bulma
+layout: docs
+theme: start
+doc-tab: start
+doc-subtab: modular
+breadcrumb:
+  - home
+  - documentation
+  - start
+  - start-modular
+---
+
+{% capture import %}
+// Only load the columns
+@use "bulma/sass/grid/columns";
+{% endcapture %}
+
+{% capture columns %}
+<div class="columns">
+  <div class="column">1</div>
+  <div class="column">2</div>
+  <div class="column">3</div>
+  <div class="column">4</div>
+  <div class="column">5</div>
+</div>
+{% endcapture %}
+
+{% capture only_button %}
+// Load Bulma's base styles and themes (including the minireset)
+@use "bulma/sass/base";
+@use "bulma/sass/themes";
+
+// Load the button and title elements and compnents
+@use "bulma/sass/elements/button";
+@use "bulma/sass/elements/title";
+@use "bulma/sass/components/message";
+{% endcapture %}
+
+{% capture buttons %}
+<button class="button">Button</button>
+<button class="button is-primary">Primary button</button>
+<button class="button is-large">Large button</button>
+<button class="button is-loading">Loading button</button>
+{% endcapture %}
+
+{% capture use_rule %}
+@use "path/to/file.scss";
+{% endcapture %}
+
+{% capture base_loads %}
+// Load Bulma's base styles and themes (including the minireset)
+@use "bulma/sass/base";
+@use "bulma/sass/themes";
+
+// Load other Bulma components
+@use "bulma/sass/elements/button";
+@use "bulma/sass/components/message";
+{% endcapture %}
+
+<div class="content">
+  <p>
+    Bulma consists of elements and components defined in dozens of <code>.scss</code> files, that you can <a href="https://sass-lang.com/documentation/at-rules/use/">load individually with the <code>@use</code> keyword</a>.
+  </p>
+
+  {% highlight sass %}{{ use_rule }}{% endhighlight %}
+
+  <p>
+    While this will correctly load the target file's styles, most Bulma components rely on <strong>base styles</strong> and <strong>CSS variables</strong> defined by the default themes.
+  </p>
+
+  <p>
+    That is why it's preferable to <em>also</em> load the <code>sass/base</code> folder and the <code>sass/themes</code> folder:
+  </p>
+
+  {% highlight sass %}{{ base_loads }}{% endhighlight %}
+</div>
+
+{% include docs/elements/anchor.html name="Importing columns" %}
+
+<div class="content">
+  <p>
+    Layout features like Bulma's columns don't rely on CSS variables defined by Bulma themes. As a result, you can load them directly without requiring any additional file.
+  </p>
+
+  <p>
+    For example, importing Bulma <strong>columns</strong> only requires to load the file located in the <code>bulma/sass/grid</code> folder.
+  </p>
+
+  <p>
+    Simply <strong>load</strong> the <code>columns.scss</code> file with the <code>@use</code> keyword
+  </p>
+  {% highlight sass %}{{ import }}{% endhighlight %}
+  <p>
+    Now you can use the classes <code>.columns</code> (for the container) and
+    <code>.column</code> directly:
+  </p>
+  {% highlight html %}{{ columns }}{% endhighlight %}
+</div>
+
+{% include docs/elements/anchor.html name="Importing Bulma elements and components" %}
+
+<div class="content">
+  <p>
+    To load Bulma elements like the <code>.button</code> and components like the <code>.message</code>, it's preferable to also load the base styles and default themes.
+  </p>
+
+  {% highlight sass %}{{ only_button }}{% endhighlight %}
+
+  <p>You can now use the <code>.button</code> class, and all its modifiers:</p>
+  <ul>
+    <li>
+      <code>.is-active</code>
+    </li>
+    <li>
+      <code>.is-primary</code>, <code>.is-info</code>,
+      <code>.is-success</code>...
+    </li>
+    <li>
+      <code>.is-small</code>, <code>.is-medium</code>,
+      <code>.is-large</code>
+    </li>
+    <li>
+      <code>.is-outlined</code>, <code>.is-inverted</code>,
+      <code>.is-link</code>
+    </li>
+    <li>
+      <code>.is-loading</code>,
+      <code>[disabled]</code>
+    </li>
+  </ul>
+
+  {% highlight html %}{{ buttons }}{% endhighlight %}
+</div>
+
+{% capture configuration %}
+$section-padding: 3rem 1.5rem !default;
+$section-padding-desktop: 3rem 3rem !default;
+$section-padding-medium: 9rem 4.5rem !default;
+$section-padding-large: 18rem 6rem !default;
+{% endcapture %}
+
+{% capture custom_section %}
+// Load the section component with custom variables
+@use "bulma/sass/layout/section" with (
+  $section-padding: 3rem,
+  $section-padding-desktop: 4.5rem
+);
+{% endcapture %}
+
+{% include docs/elements/anchor.html name="Importing with custom Sass variables" %}
+
+<div class="content">
+  <p>
+    Most Bulma components are configured with Sass variables. For example, the <code>.section</code> layout component uses 4 variables to define its padding:
+  </p>
+  {% highlight sass %}{{ configuration }}{% endhighlight %}
+  <p>
+    The <code>@use</code> keyword allows use to configure a module when loading it with our own variables:
+  </p>
+  {% highlight sass %}{{ custom_section }}{% endhighlight %}
+</div>

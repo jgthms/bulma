@@ -1,0 +1,123 @@
+---
+layout: default
+title: Grid/Grid
+breakpoints:
+- name: mobile
+  visibility: mobile
+  count: 2
+  suffix: 'mobile'
+- name: tablet
+  visibility: tablet-only
+  count: 4
+  suffix: 'tablet'
+- name: desktop
+  visibility: desktop-only
+  count: 8
+  suffix: 'desktop'
+- name: widescreen
+  visibility: widescreen-only
+  count: 12
+  suffix: 'widescreen'
+- name: fullhd
+  visibility: fullhd
+  count: 16
+  suffix: 'fullhd'
+---
+<section style="padding: 3rem;">
+  {% for breakpoint in page.breakpoints %}
+    <p style="display: none;" class="block is-block-{{ breakpoint.visibility }}">
+      Current breakpoint: <strong>{{ breakpoint.name }}</strong>
+    </p>
+  {% endfor %}
+
+  <div style="display: flex; flex-wrap: wrap;">
+    {% for breakpoint in page.breakpoints %}
+      <div style="margin: 0 1.5em 1.5em 0; position: relative; width: 180px;">
+        <p
+          style="border: 2px solid hsl(153, 53%,  53%); border-radius: 1em; pointer-events: none; display: none; position: absolute; left: -1em; right: -1em; top: -1em; bottom: -1em;"
+          class="has-background-success-light is-block-{{ breakpoint.visibility }}"
+        ></p>
+        <div style="position: relative;">
+          <p style="font-size: 0.75em">
+            <strong>{{ breakpoint.count }}</strong> columns on {{ breakpoint.name }}
+          </p>
+          <input
+            id="columns"
+            class="jsColumns"
+            type="range"
+            min="1"
+            max="16"
+            value="{{ breakpoint.count }}"
+            data-suffix="{{ breakpoint.suffix }}"
+          >
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="grid" class="grid">
+    <div class="cell">#1</div>
+    <div class="cell">#2</div>
+    <div class="cell">#3</div>
+    <div class="cell">#4</div>
+    <div class="cell">#5</div>
+    <div class="cell">#6</div>
+    <div class="cell">#7</div>
+    <div class="cell">#8</div>
+    <div class="cell">#9</div>
+    <div class="cell">#10</div>
+    <div class="cell">#11</div>
+    <div class="cell">#12</div>
+    <div class="cell">#13</div>
+    <div class="cell">#14</div>
+    <div class="cell">#15</div>
+    <div class="cell">#16</div>
+    <div class="cell">#17</div>
+    <div class="cell">#18</div>
+    <div class="cell">#19</div>
+    <div class="cell">#20</div>
+  </div>
+</section>
+
+<script
+  type="text/javascript"
+>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $grid = document.getElementById('grid');
+    const $columns = document.querySelectorAll('.jsColumns');
+    const columns = {
+      mobile: 2,
+      tablet: 4,
+      desktop: 8,
+      widescreen: 12,
+      fullhd: 16,
+    };
+
+    function updateUI() {
+      let cn = 'grid';
+
+      for (const [column, count] of Object.entries(columns)) {
+        cn += ` has-${count}-cols-${column}`;
+      }
+
+      $grid.className = cn;
+    }
+
+    $columns.forEach((el) =>
+      el.addEventListener(
+        'input',
+        (event) => {
+          const count = event.target.valueAsNumber;
+          const suffix = event.target.dataset.suffix;
+          columns[suffix] = count;
+          updateUI();
+        },
+        false
+      )
+    );
+
+    function getAll(selector, parent = document) {
+      return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
+    }
+  });
+</script>

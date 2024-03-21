@@ -1,82 +1,189 @@
 ---
-title: Concepts
-layout: documentation
+title: Bulma Customization Concepts
+layout: docs
+theme: customize
 doc-tab: customize
 doc-subtab: concepts
 breadcrumb:
-- home
-- documentation
-- customize
-- customize-concepts
+  - home
+  - documentation
+  - customize
+  - customize-concepts
 ---
 
-{% assign variables_link = site.data.links.by_id['customize-variables'] %}
+{% capture markdown %}
+Bulma is a **highly customizable CSS framework**. From colors to typography, spacing and sizes, forms and layouts, all parts of Bulma can be customized by the user.
 
-<div class="content">
-  <p>
-    Bulma is highly customizable thanks to <strong>419 Sass variables</strong> living across <strong>28 files</strong>.
-  </p>
+Bulma's styles and variables are defined at several levels:
 
-  <p>
-    These variables exist at 4 levels:
-  </p>
+* Global Sass variables
+* Component Sass variables
+* Global CSS variables
+* Component CSS variables
+* Helper classes
 
-  <ul>
-    <li>
-      <strong><a href="{{ site.url }}{{ variables_link.path }}#initial-variables">initial variables</a></strong>: global variables with <strong>literal</strong> values
-    </li>
-    <li>
-      <strong><a href="{{ site.url }}{{ variables_link.path }}#derived-variables">derived variables</a></strong>: global variables with values that reference other variables, or are computed
-    </li>
-    <li>
-      <strong><a href="{{ site.url }}{{ variables_link.path }}#generic-variables">generic variables</a></strong>: for the HTML elements which carry no CSS class
-    </li>
-    <li>
-      <strong>element/component variables</strong>: variables that are specific to a Bulma element/component
-    </li>
-  </ul>
+All Bulma components are styled using **Sass variables** and **CSS Variables** (which are also called CSS custom properties). Read more about them:
+* [on the Sass website](https://sass-lang.com/documentation/variables/)
+* [on the MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+{% endcapture %}
 
-  <p>
-    Since these variables carry the <code>!default</code> flag, they can be assigned a <strong>new value</strong> either before or after having been imported.
-  </p>
-</div>
+{% include markdown.html content=markdown %}
 
-{% include elements/anchor.html name="Strategy" %}
+{% include docs/elements/anchor.html name="Global Sass Variables" %}
 
-{% assign node_sass_link = site.data.links.by_id['customize-node-sass'] %}
-{% assign sass_cli_link = site.data.links.by_id['customize-sass-cli'] %}
-{% assign webpack_link = site.data.links.by_id['customize-webpack'] %}
+{% capture markdown %}
+Bulma uses Sass variables globally defines in 2 files located in the `utilities` folder:
 
-<div class="content">
-  <p>
-    To customize Bulma, you will need to:
-  </p>
+* `initial-variables.scss` where you define variables by literal value
+  * **colors** like `$blue: hsl(229, 53%, 53%)`
+  * **font sizes** like `$size-1: 3rem`
+  * **dimensions** like `$block-spacing: 1.5rem`
+  * **breakpoints** like `$tablet: 769px`
+  * **other values** like `$easing: ease-out` or `$radius-large: 0.75rem`
+* `derived-variables.scss` where variables are calculated from the values set in the previous file
+  * **primary colors**:
+    * `$primary`
+    * `$link`
+    * `$success`
+    * `$info`
+    * `$warning`
+    * `$dark`
+  * **utility colors**:
+    * `$background`
+    * `$border`
+    * `$code` and `$pre`
+    * `$shadow-color`
+  * **typography**:
+    * `$family-primary`
+    * `$family-secondary`
+    * `$family-code`
+    * `$size-small`
+    * `$size-normal`
+    * `$size-medium`
+    * `$size-large`
+  * color maps:
+    * `$colors`
+    * `$shades`
+    * `$sizes`
+{% endcapture %}
 
-  <ul>
-    <li>
-      <strong>install</strong> (or download) Bulma
-    </li>
-    <li>
-      have a working <strong>Sass setup</strong>
-    </li>
-    <li>
-      create your own <code>.scss</code> or <code>.sass</code> file
-    </li>
-  </ul>
+{% include markdown.html content=markdown %}
 
-  <p>
-    This can be achieved with any of the following:
-  </p>
+{% include docs/elements/anchor.html name="Component Sass variables" %}
 
-  <ul>
-    <li>
-     <a href="{{ site.url }}{{ node_sass_link.path }}">node-sass</a>
-    </li>
-    <li>
-      the <a href="{{ site.url }}{{ sass_cli_link.path }}">Sass CLI</a>
-    </li>
-    <li>
-      <a href="{{ site.url }}{{ webpack_link.path }}">webpack</a>
-    </li>
-  </ul>
-</div>
+{% capture markdown %}
+All Bulma components define its own Sass variables. For example, `components/breadcrumb.scss` define the following:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{%
+  include docs/components/variables.html
+  tab="components"
+  subtab="breadcrumb"
+  hide_css_vars=true
+%}
+
+{% include docs/elements/anchor.html name="Global CSS Variables" %}
+
+{% capture markdown %}
+Bulma uses global CSS variables defined at the `:root` level. They are all prefixed with `bulma-`:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% highlight css %}
+:root {
+  /* Colors and Lightness values */
+  --bulma-scheme-h: 221;
+  --bulma-scheme-s: 14%;
+  --bulma-light-l: 90%;
+  --bulma-light-invert-l: 20%;
+  --bulma-dark-l: 20%;
+  --bulma-dark-invert-l: 90%;
+  --bulma-soft-l: 90%;
+  --bulma-bold-l: 20%;
+  --bulma-soft-invert-l: 20%;
+  --bulma-bold-invert-l: 90%;
+  /* etc. */
+
+  /* Color Palettes */
+  --bulma-primary: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l), 1);
+  --bulma-primary-base: hsla(var(--bulma-primary-h), var(--bulma-primary-s), var(--bulma-primary-l), 1);
+  --bulma-primary-rgb: 0, 209, 178;
+  --bulma-primary-h: 171deg;
+  --bulma-primary-s: 100%;
+  --bulma-primary-l: 41%;
+  --bulma-primary-00-l: 1%;
+  --bulma-primary-05-l: 6%;
+  --bulma-primary-10-l: 11%;
+  --bulma-primary-15-l: 16%;
+  --bulma-primary-20-l: 21%;
+  /* etc. */
+
+  /* Typography */
+  --bulma-family-primary: Inter, SF Pro, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --bulma-family-secondary: Inter, SF Pro, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --bulma-family-code: Inconsolata, Hack, SF Mono, Roboto Mono, Source Code Pro, Ubuntu Mono, monospace;
+  --bulma-size-small: 0.75rem;
+  --bulma-size-normal: 1rem;
+  --bulma-size-medium: 1.25rem;
+  --bulma-size-large: 1.5rem;
+  /* etc. */
+}
+{% endhighlight %}
+
+{% capture markdown %}
+You can **overwrite** them simply by setting a new value at the same scope (or even a more specific one):
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+{% highlight css %}
+:root {
+  /* Set new values */
+  --bulma-scheme-h: 35;
+  --bulma-scheme-s: 20%;
+}
+{% endhighlight %}
+
+{% include docs/elements/anchor.html name="Components CSS Variables" %}
+
+{% capture markdown %}
+Bulma is also styled at the **component** level. For example, here is how the `.title` element is styled:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% highlight css %}
+.title {
+  --bulma-title-color: var(--bulma-text-strong);
+  --bulma-title-family: false;
+  --bulma-title-size: var(--bulma-size-3);
+  --bulma-title-weight: var(--bulma-weight-extrabold);
+  --bulma-title-line-height: 1.125;
+  --bulma-title-strong-color: inherit;
+  --bulma-title-strong-weight: inherit;
+  --bulma-title-sub-size: 0.75em;
+  --bulma-title-sup-size: 0.75em;
+}
+
+.title {
+  color: var(--bulma-title-color);
+  font-size: var(--bulma-title-size);
+  font-weight: var(--bulma-title-weight);
+  line-height: var(--bulma-title-line-height);
+}
+{% endhighlight %}
+
+{% capture markdown %}
+You can overwrite this simply by setting new values under the same scope:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% highlight css %}
+.title {
+  --bulma-title-color: #fff;
+  --bulma-title-line-height: 1.6;
+}
+{% endhighlight %}

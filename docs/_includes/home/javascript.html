@@ -1,0 +1,34 @@
+{% assign css_only_link = site.data.links.by_id['start-overview'] %}
+{% assign heading_href = site.url | append: css_only_link.path %}
+
+<section class="bd-home-section bd-theme-docs">
+  {%
+    include docs/components/heading.html
+    color="success"
+    icon="fas fa-check"
+    title="No <strong>JavaScript</strong> required"
+    subtitle="CSS only, so it integrates in <strong>any JS</strong> environment"
+    href=heading_href
+    button_icon_after="fas fa-arrow-right"
+    button_label="See <strong>installation</strong> docs"
+  %}
+
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <img src="{{ site.url }}/assets/images/home/js-frameworks.png" width="568" height="91">
+      </div>
+
+      <div class="column is-size-5-desktop">
+        {% include
+          docs/elements/tw.html
+          tweet_id="860885116909998080"
+          modifier='bd-is-grey'
+          drawing_id='opinion-free'
+          drawing_width=152
+          drawing_height=52
+        %}
+      </div>
+    </div>
+  </div>
+</section>

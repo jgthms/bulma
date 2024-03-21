@@ -1,0 +1,65 @@
+<div class="bd-menu">
+  <div class="bd-menu-section is-start">
+    {% include docs/menu-heading.html icon="fa-solid fa-arrow-right" label="Start Here" %}
+    {% include docs/menu-list.html category_id="start" %}
+  </div>
+
+  <div class="bd-menu-section is-features">
+    {% include docs/menu-heading.html icon="fa-solid fa-medal" label="Features" %}
+    {% include docs/menu-list.html category_id="features" %}
+  </div>
+
+  <div class="bd-menu-section is-sass">
+    {% include docs/menu-heading.html icon="fa-brands fa-sass" label="Sass Tools" %}
+    {% include docs/menu-list.html category_id="sass" %}
+  </div>
+
+  <div class="bd-menu-section is-custom">
+    {% include docs/menu-heading.html icon="fa-solid fa-palette" label="Customization" %}
+    {% include docs/menu-list.html category_id="customize" %}
+  </div>
+
+  <div class="bd-menu-section is-library">
+    {% include docs/menu-heading.html icon="fa-solid fa-code" label="CSS Library" %}
+
+    {% assign columns_size = site.data.links.categories.columns | size %}
+    {% assign grid_size = site.data.links.categories.grid | size %}
+    {% assign layout_size = site.data.links.categories.layout | size %}
+    {% assign form_size = site.data.links.categories.form | size %}
+    {% assign elements_size = site.data.links.categories.elements | size %}
+    {% assign components_size = site.data.links.categories.components | size %}
+
+    <ul
+      id="js-library-menu"
+      class="bd-menu-list bd-menu-library-list js-menu-list {% if page.doc-library %}is-open{% endif %}"
+      style="
+        --size: 5;
+        {% if page.doc-tab == "columns" %}
+          --sublist-size: {{ columns_size }}
+        {% elsif page.doc-tab == "grid" %}
+          --sublist-size: {{ grid_size }}
+        {% elsif page.doc-tab == "layout" %}
+          --sublist-size: {{ layout_size }}
+        {% elsif page.doc-tab == "form" %}
+          --sublist-size: {{ form_size }}
+        {% elsif page.doc-tab == "elements" %}
+          --sublist-size: {{ elements_size }}
+        {% elsif page.doc-tab == "components" %}
+          --sublist-size: {{ components_size }}
+        {% endif %}
+      "
+    >
+      {% include docs/menu-item.html link_id="elements" sublist_id="elements" %}
+      {% include docs/menu-item.html link_id="components" sublist_id="components" %}
+      {% include docs/menu-item.html link_id="form" sublist_id="form" %}
+      {% include docs/menu-item.html link_id="columns" sublist_id="columns" %}
+      {% include docs/menu-item.html link_id="grid" sublist_id="grid" %}
+      {% include docs/menu-item.html link_id="layout" sublist_id="layout" %}
+    </ul>
+  </div>
+
+  <div class="bd-menu-section is-utilities">
+    {% include docs/menu-heading.html icon="fa-brands fa-css3" label="CSS Helpers" %}
+    {% include docs/menu-list.html category_id="helpers" %}
+  </div>
+</div>

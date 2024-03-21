@@ -1,0 +1,143 @@
+@use "shared";
+@use "../utilities/controls";
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+
+$select-colors: shared.$form-colors !default;
+
+.#{iv.$class-prefix}select {
+  @include cv.register-vars(
+    (
+      "input-h": #{cv.getVar("scheme-h")},
+      "input-s": #{cv.getVar("scheme-s")},
+      "input-border-style": solid,
+      "input-border-width": 1px,
+      "input-border-l": #{cv.getVar("border-l")},
+    )
+  );
+
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+  vertical-align: top;
+
+  &:not(.#{iv.$class-prefix}is-multiple) {
+    height: shared.$input-height;
+  }
+
+  &:not(.#{iv.$class-prefix}is-multiple):not(.#{iv.$class-prefix}is-loading) {
+    &::after {
+      @extend %arrow;
+      inset-inline-end: 1.125em;
+      z-index: 4;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-rounded {
+    select {
+      border-radius: cv.getVar("radius-rounded");
+      padding-inline-start: 1em;
+    }
+  }
+
+  select {
+    @extend %input;
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    max-width: 100%;
+    outline: none;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &[disabled]:hover,
+    fieldset[disabled] &:hover {
+      border-color: shared.$input-disabled-border-color;
+    }
+
+    &:not([multiple]) {
+      padding-inline-end: 2.5em;
+    }
+
+    &[multiple] {
+      height: auto;
+      padding: 0;
+
+      option {
+        padding: 0.5em 1em;
+      }
+    }
+  }
+
+  // Colors
+  @each $name, $pair in $select-colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "input-h": #{cv.getVar($name, "", "-h")},
+          "input-s": #{cv.getVar($name, "", "-s")},
+          "input-l": #{cv.getVar($name, "", "-l")},
+          "input-focus-h": #{cv.getVar($name, "", "-h")},
+          "input-focus-s": #{cv.getVar($name, "", "-s")},
+          "input-focus-l": #{cv.getVar($name, "", "-l")},
+          "input-border-l": #{cv.getVar($name, "", "-l")},
+        )
+      );
+    }
+  }
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    @include controls.control-small;
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    @include controls.control-medium;
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    @include controls.control-large;
+  }
+
+  // Modifiers
+  &.#{iv.$class-prefix}is-disabled {
+    &::after {
+      border-color: shared.$input-disabled-color !important;
+      opacity: 0.5;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-fullwidth {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-loading {
+    &::after {
+      @extend %loader;
+      inset-inline-end: 0.625em;
+      margin-top: 0;
+      position: absolute;
+      top: 0.625em;
+      transform: none;
+    }
+
+    &.#{iv.$class-prefix}is-small:after {
+      font-size: cv.getVar("size-small");
+    }
+
+    &.#{iv.$class-prefix}is-medium:after {
+      font-size: cv.getVar("size-medium");
+    }
+
+    &.#{iv.$class-prefix}is-large:after {
+      font-size: cv.getVar("size-large");
+    }
+  }
+}

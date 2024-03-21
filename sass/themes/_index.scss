@@ -1,0 +1,35 @@
+/* Bulma Themes */
+@charset "utf-8";
+
+@use "../utilities/css-variables" as cv;
+
+@use "light";
+@use "dark";
+@use "setup";
+
+:root {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}
+
+// prefers-color-scheme: light
+@include cv.system-theme($name: "light") {
+  @include light.light-theme;
+}
+
+// prefers-color-scheme: dark
+@include cv.system-theme($name: "dark") {
+  @include dark.dark-theme;
+}
+
+// :root, [data-theme=light], .theme-light
+@include cv.bulma-theme($name: "light") {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}
+
+// [data-theme=dark], .theme-dark
+@include cv.bulma-theme($name: "dark") {
+  @include dark.dark-theme;
+  @include setup.setup-theme;
+}

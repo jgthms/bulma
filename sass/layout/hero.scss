@@ -1,0 +1,270 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/extends";
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/mixins" as mx;
+
+$hero-body-padding: 3rem 1.5rem !default;
+$hero-body-padding-tablet: 3rem 3rem !default;
+$hero-body-padding-small: 1.5rem !default;
+$hero-body-padding-medium: 9rem 4.5rem !default;
+$hero-body-padding-large: 18rem 6rem !default;
+
+$hero-gradient-h-offset: 5deg;
+$hero-gradient-s-offset: 10%;
+$hero-gradient-l-offset: 5%;
+
+$hero-colors: dv.$colors !default;
+
+// Main container
+.#{iv.$class-prefix}hero {
+  @include cv.register-vars(
+    (
+      "hero-body-padding": #{$hero-body-padding},
+      "hero-body-padding-tablet": #{$hero-body-padding-tablet},
+      "hero-body-padding-small": #{$hero-body-padding-small},
+      "hero-body-padding-medium": #{$hero-body-padding-medium},
+      "hero-body-padding-large": #{$hero-body-padding-large},
+    )
+  );
+}
+
+.#{iv.$class-prefix}hero {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .#{iv.$class-prefix}navbar {
+    background: none;
+  }
+
+  .#{iv.$class-prefix}tabs {
+    ul {
+      border-bottom: none;
+    }
+  }
+
+  // Colors
+  @each $name, $pair in $hero-colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "hero-h": #{cv.getVar($name, "", "-h")},
+          "hero-s": #{cv.getVar($name, "", "-s")},
+          "hero-background-l": #{cv.getVar($name, "", "-l")},
+          "hero-color-l": #{cv.getVar($name, "", "-invert-l")},
+        )
+      );
+
+      $background-color: hsl(
+        #{cv.getVar("hero-h")},
+        #{cv.getVar("hero-s")},
+        #{cv.getVar("hero-background-l")}
+      );
+      $color: hsl(
+        #{cv.getVar("hero-h")},
+        #{cv.getVar("hero-s")},
+        #{cv.getVar("hero-color-l")}
+      );
+
+      background-color: hsl(
+        #{cv.getVar("hero-h")},
+        #{cv.getVar("hero-s")},
+        #{cv.getVar("hero-background-l")}
+      );
+      color: $color;
+
+      .#{iv.$class-prefix}navbar {
+        @include cv.register-vars(
+          (
+            "navbar-item-color": $color,
+            "navbar-item-hover-background-color": $color,
+            "navbar-item-hover-color": $background-color,
+            "navbar-item-active-background-color": $color,
+            "navbar-item-active-color": $background-color,
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}tabs {
+        @include cv.register-vars(
+          (
+            "tabs-link-color": $color,
+            "tabs-boxed-link-active-background-color": $color,
+            "tabs-boxed-link-active-border-color": $background-color,
+            "tabs-link-active-color": $background-color,
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}subtitle {
+        @include cv.register-vars(
+          (
+            "subtitle-color": $color,
+            "subtitle-strong-color": $color,
+          )
+        );
+      }
+
+      .#{iv.$class-prefix}title {
+        @include cv.register-vars(
+          (
+            "title-color": $color,
+            "title-strong-color": $color,
+          )
+        );
+      }
+
+      // Modifiers
+      &.#{iv.$class-prefix}is-bold {
+        $gradient-top-left: hsl(
+          calc(#{cv.getVar("hero-h")} - $hero-gradient-h-offset),
+          calc(#{cv.getVar("hero-s")} + $hero-gradient-s-offset),
+          calc(#{cv.getVar("hero-background-l")} + $hero-gradient-l-offset)
+        );
+        $gradient-middle: hsl(
+          #{cv.getVar("hero-h")},
+          #{cv.getVar("hero-s")},
+          #{cv.getVar("hero-background-l")}
+        );
+        $gradient-bottom-right: hsl(
+          calc(#{cv.getVar("hero-h")} + $hero-gradient-h-offset),
+          calc(#{cv.getVar("hero-s")} - $hero-gradient-s-offset),
+          calc(#{cv.getVar("hero-background-l")} - $hero-gradient-l-offset)
+        );
+
+        background-image: linear-gradient(
+          141deg,
+          $gradient-top-left 0%,
+          $gradient-middle 71%,
+          $gradient-bottom-right 100%
+        );
+
+        @include mx.mobile {
+          .#{iv.$class-prefix}navbar-menu {
+            background-image: linear-gradient(
+              141deg,
+              $gradient-top-left 0%,
+              $color 71%,
+              $gradient-bottom-right 100%
+            );
+          }
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    .#{iv.$class-prefix}hero-body {
+      padding: cv.getVar("hero-body-padding-small");
+    }
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    @include mx.tablet {
+      .#{iv.$class-prefix}hero-body {
+        padding: cv.getVar("hero-body-padding-medium");
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    @include mx.tablet {
+      .#{iv.$class-prefix}hero-body {
+        padding: cv.getVar("hero-body-padding-large");
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-halfheight,
+  &.#{iv.$class-prefix}is-fullheight,
+  &.#{iv.$class-prefix}is-fullheight-with-navbar {
+    .#{iv.$class-prefix}hero-body {
+      align-items: center;
+      display: flex;
+
+      & > .#{iv.$class-prefix}container {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-halfheight {
+    min-height: 50vh;
+  }
+
+  &.#{iv.$class-prefix}is-fullheight {
+    min-height: 100vh;
+  }
+}
+
+// Components
+
+.#{iv.$class-prefix}hero-video {
+  @extend %overlay;
+  overflow: hidden;
+
+  video {
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  // Modifiers
+  &.#{iv.$class-prefix}is-transparent {
+    opacity: 0.3;
+  }
+
+  // Responsiveness
+  @include mx.mobile {
+    display: none;
+  }
+}
+
+.#{iv.$class-prefix}hero-buttons {
+  margin-top: 1.5rem;
+
+  // Responsiveness
+  @include mx.mobile {
+    .#{iv.$class-prefix}button {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
+  @include mx.tablet {
+    display: flex;
+    justify-content: center;
+
+    .#{iv.$class-prefix}button:not(:last-child) {
+      margin-inline-end: 1.5rem;
+    }
+  }
+}
+
+// Containers
+
+.#{iv.$class-prefix}hero-head,
+.#{iv.$class-prefix}hero-foot {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.#{iv.$class-prefix}hero-body {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: cv.getVar("hero-body-padding");
+
+  @include mx.tablet {
+    padding: cv.getVar("hero-body-padding-tablet");
+  }
+}

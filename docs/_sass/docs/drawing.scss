@@ -1,0 +1,61 @@
+@use "sass/utilities/mixins" as mx;
+
+.bd-has-drawing {
+  position: relative;
+}
+
+.bd-drawing {
+  --base: 1.25px;
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+  height: calc(var(--base) * var(--height));
+  width: calc(var(--base) * var(--width));
+
+  svg {
+    height: calc(var(--base) * var(--height));
+    width: calc(var(--base) * var(--width));
+  }
+
+  &.bd-is-try-it-out {
+    bottom: 100%;
+    right: 100%;
+  }
+
+  &.bd-is-love-letters {
+    bottom: 110%;
+    right: 10%;
+  }
+
+  &.bd-is-crazy {
+    right: 40%;
+    top: 110%;
+  }
+
+  &.bd-is-customize {
+    right: -10%;
+    top: 105%;
+  }
+
+  &.bd-is-opinion-free {
+    right: 100%;
+    top: 110%;
+  }
+
+  &.bd-is-join-us {
+    left: 120%;
+    top: 0;
+  }
+
+  &.bd-is-spam-free {
+    bottom: 100%;
+    right: 95%;
+  }
+}
+
+@include mx.tablet {
+  .bd-drawing {
+    display: inline;
+  }
+}

@@ -1,0 +1,151 @@
+@use "sass/utilities/css-variables" as cv;
+@use "sass/utilities/extends";
+@use "sass/utilities/initial-variables" as iv;
+@use "sass/utilities/mixins" as mx;
+
+.bd-options {
+  @extend %block;
+  display: grid;
+}
+
+.bd-option {
+  --bulma-link-text: var(--theme-color);
+
+  .media-content {
+    overflow-x: visible;
+  }
+
+  .icon {
+    color: var(--theme-color);
+  }
+}
+
+.bd-option-or {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+
+  &::before {
+    background-color: cv.getVar("scheme-main-ter");
+    content: "";
+    position: absolute;
+  }
+
+  p {
+    align-items: center;
+    background-color: cv.getVar("scheme-main-ter");
+    border-radius: cv.getVar("radius-rounded");
+    display: flex;
+    font-size: 0.75em;
+    font-weight: cv.getVar("weight-semibold");
+    height: 3.5rem;
+    justify-content: center;
+    position: relative;
+    text-transform: uppercase;
+    width: 3.5rem;
+  }
+}
+
+.bd-option-item {
+  border-top: 2px solid cv.getVar("scheme-main-ter");
+  margin-top: cv.getVar("block-spacing");
+  padding-top: cv.getVar("block-spacing");
+
+  .bd-fat-button.is-pulled-right {
+    font-size: 0.75em;
+    pointer-events: none;
+  }
+
+  .bd-fat-button.is-primary {
+    font-size: 1em;
+  }
+
+  .highlight pre {
+    white-space: pre-wrap;
+    white-space: break-spaces;
+  }
+}
+
+@include mx.until(iv.$widescreen) {
+  .bd-options {
+    grid-template-columns: 1fr;
+  }
+
+  .bd-option-or {
+    margin: cv.getVar("block-spacing") 0;
+
+    &::before {
+      height: 2px;
+      left: 0;
+      right: 0;
+      top: calc(50% - 1px);
+    }
+  }
+}
+
+@include mx.widescreen {
+  .bd-options {
+    grid-template-columns: calc(50% - 4rem) 8rem calc(50% - 4rem);
+  }
+
+  .bd-option-or {
+    &::before {
+      bottom: 0;
+      left: calc(50% - 1px);
+      top: 0;
+      width: 2px;
+    }
+  }
+}
+
+.bd-tabs {
+  @extend %block;
+
+  .highlight pre {
+    white-space: pre;
+  }
+}
+
+.bd-tabs-nav {
+  display: flex;
+
+  button {
+    @extend %reset;
+    background-color: cv.getVar("scheme-main-ter");
+    border-radius: 0.375em 0.375em 0 0;
+    color: cv.getVar("text-weak");
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: cv.getVar("family-monospace");
+    font-size: 0.75em;
+    padding: 0.5em 0.75em;
+
+    &:not(.bd-is-active) {
+      &:hover {
+        color: var(--hl-background);
+      }
+    }
+
+    &.bd-is-active {
+      background-color: var(--hl-background);
+      color: var(--hl-color);
+    }
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}
+
+.bd-tabs-item {
+  display: none;
+
+  .highlight {
+    border-top-left-radius: 0;
+  }
+
+  &.bd-is-active {
+    display: block;
+  }
+}

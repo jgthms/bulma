@@ -1,24 +1,23 @@
 ---
 title: Title and Subtitle
-layout: documentation
+layout: docs
+theme: library
 doc-tab: elements
 doc-subtab: title
 breadcrumb:
-- home
-- documentation
-- elements
-- elements-title
+  - home
+  - documentation
+  - elements
+  - elements-title
 meta:
   colors: false
   sizes: true
   variables: true
 ---
-
 {% capture default %}
 <h1 class="title">Title</h1>
 <h2 class="subtitle">Subtitle</h2>
 {% endcapture %}
-
 {% capture title_sizes %}
 <h1 class="title is-1">Title 1</h1>
 <h2 class="title is-2">Title 2</h2>
@@ -27,7 +26,6 @@ meta:
 <h5 class="title is-5">Title 5</h5>
 <h6 class="title is-6">Title 6</h6>
 {% endcapture %}
-
 {% capture subtitle_sizes %}
 <h1 class="subtitle is-1">Subtitle 1</h1>
 <h2 class="subtitle is-2">Subtitle 2</h2>
@@ -36,7 +34,6 @@ meta:
 <h5 class="subtitle is-5">Subtitle 5</h5>
 <h6 class="subtitle is-6">Subtitle 6</h6>
 {% endcapture %}
-
 {% capture combine %}
 <p class="title is-1">Title 1</p>
 <p class="subtitle is-3">Subtitle 3</p>
@@ -47,7 +44,6 @@ meta:
 <p class="title is-3">Title 3</p>
 <p class="subtitle is-5">Subtitle 5</p>
 {% endcapture %}
-
 {% capture spaced %}
 <p class="title is-1 is-spaced">Title 1</p>
 <p class="subtitle is-3">Subtitle 3</p>
@@ -78,11 +74,13 @@ meta:
     <p class="subtitle">Subtitle</p>
   </div>
   <div class="column is-5">
-    {% highlight html %}{{ default }}{% endhighlight %}
+    {% highlight html -%}
+    {{- default -}}
+    {%- endhighlight %}
   </div>
 </div>
 
-{% include elements/anchor.html name="Sizes" %}
+{% include docs/elements/anchor.html name="Sizes" %}
 
 <div class="columns">
   <div class="column is-3">
@@ -97,7 +95,9 @@ meta:
     <p class="title is-6">Title 6</p>
   </div>
   <div class="column is-5">
-    {% highlight html %}{{ title_sizes }}{% endhighlight %}
+    {% highlight html -%}
+    {{- title_sizes -}}
+    {%- endhighlight %}
   </div>
 </div>
 
@@ -112,7 +112,9 @@ meta:
     <p class="subtitle is-6">Subtitle 6</p>
   </div>
   <div class="column is-5">
-    {% highlight html %}{{ subtitle_sizes }}{% endhighlight %}
+    {% highlight html -%}
+    {{- subtitle_sizes -}}
+    {%- endhighlight %}
   </div>
 </div>
 
@@ -122,7 +124,10 @@ meta:
   <div class="column is-3">
     <div class="content">
       <p>When you <strong>combine</strong> a title and a subtitle, they move closer together.</p>
-      <p>As a rule of thumb, it is recommended to use a size difference of <strong>two</strong>. So if you use a <code>title is-1</code>, combine it with a <code>subtitle is-3</code>.</p>
+      <p>
+        As a rule of thumb, it is recommended to use a size difference of
+        <strong>two</strong>. So if you use a <code>title is-1</code>, combine it with a <code>subtitle is-3</code>.
+      </p>
     </div>
   </div>
   <div class="column is-4">
@@ -140,7 +145,9 @@ meta:
     </div>
   </div>
   <div class="column is-5">
-    {% highlight html %}{{ combine }}{% endhighlight %}
+    {% highlight html -%}
+    {{- combine -}}
+    {%- endhighlight %}
   </div>
 </div>
 
@@ -150,9 +157,9 @@ meta:
   <div class="column is-3">
     <div class="content">
       <p>
-        <span class="tag is-success">New!</span>
+        You can maintain the normal spacing between titles and subtitles if you use the <code>is-spaced</code> modifier
+        on the first element.
       </p>
-      <p>You can maintain the normal spacing between titles and subtitles if you use the <code>is-spaced</code> modifier on the first element.</p>
     </div>
   </div>
   <div class="column is-4">
@@ -170,8 +177,10 @@ meta:
     </div>
   </div>
   <div class="column is-5">
-    {% highlight html %}{{ spaced }}{% endhighlight %}
+    {% highlight html -%}
+    {{- spaced -}}
+    {%- endhighlight %}
   </div>
 </div>
 
-{% include components/variables.html type='element' %}
+

@@ -1,0 +1,113 @@
+---
+title: Bulma Grid Playground
+layout: docs
+theme: library
+doc-library: true
+doc-tab: grid
+breadcrumb:
+  - home
+  - documentation
+  - grid
+  - grid-playground
+---
+
+{% include docs/elements/anchor.html name="Smart Grid" %}
+
+<div class="content">You can use this example to try out the Smart Grid with different column widths and different gap values.</div>
+
+<div class="block js-modifier" data-target="js-grid" data-output="js-output-grid" data-property="is-col-min">
+  <div class="buttons are-small has-addons">
+    <span class="button is-static">
+      Minimum Column Width
+    </span>
+    <button class="js-modifier-property dn" data-property="is-col-min"></button>
+    <button class="button js-modifier-value is-link">Default</button>
+    {% for i in (1..12) %}
+      <button class="button js-modifier-value" data-value="{{ i }}">{{ i }}</button>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="block js-modifier" data-target="js-grid" data-output="js-output-grid">
+  <div class="buttons are-small has-addons">
+    <span class="button is-static">
+      Property
+    </span>
+    <button class="button is-link js-modifier-property" data-property="is-gap">Gap</button>
+    <button class="button js-modifier-property" data-property="is-column-gap">Column Gap</button>
+    <button class="button js-modifier-property" data-property="is-row-gap">Row Gap</button>
+    <span class="button is-static">
+      Value
+    </span>
+    <button class="button js-modifier-value is-link">Default</button>
+    {% for i in (0..7) %}
+      <button class="button js-modifier-value" data-value="{{ i }}">{{ i }}</button>
+      <button class="button js-modifier-value" data-value="{{ i }}.5">{{ i }}.5</button>
+    {% endfor %}
+    <button class="button js-modifier-value" data-value="8">8</button>
+  </div>
+</div>
+
+<div class="block flex has-text-small">
+  <strong>
+    HTML
+  </strong>
+  <code>&lt;div class="<span id="js-output-grid">grid</span>"&gt;</code>
+</div>
+
+{% capture auto_grid %}
+<div id="js-grid" class="grid">
+  {% for i in (1..24) %}
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal">
+      Cell {{ i }}
+    </div>
+  {% endfor %}
+</div>
+{% endcapture %}
+
+{{ auto_grid }}
+
+{% include docs/elements/anchor.html name="Fixed Grid" %}
+
+<div class="content">You can use these controls to try out the Fixed Grid with different columns counts.</div>
+
+<div class="block js-modifier" data-target="js-fixed-grid" data-output="js-output-fixed-grid" data-property-start="has" data-property-end="cols">
+  <div class="buttons are-small has-addons">
+    <span class="button is-static">
+      Column Count
+    </span>
+    <button class="js-modifier-property dn"  data-property-start="has" data-property-end="cols"></button>
+    <button class="button js-modifier-value is-link">Default</button>
+    {% for i in (1..12) %}
+      <button class="button js-modifier-value" data-value="{{ i }}">{{ i }}</button>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="block flex has-text-small">
+  <strong>
+    HTML
+  </strong>
+  <code>&lt;div class="<span id="js-output-fixed-grid">fixed-grid</span>"&gt;</code>
+</div>
+
+{% capture fixed_grid_playground %}
+<div id="js-fixed-grid" class="fixed-grid js-resizable" data-target="js-resize-value">
+  <button class="js-resizable-handle"><div></div><div></div></button>
+  <div class="grid">
+    {% for i in (1..24) %}
+      <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal">
+        Cell {{ i }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endcapture %}
+
+<div class="content">
+  Use the <strong>handle</strong> on the right side to change the container's width: <code id="js-resize-value">1200</code>
+</div>
+
+{{ fixed_grid_playground }}
+
+<div style="padding-top: 50vh;"><em>Space intentionally left blank to prevent layout jumps</em></div>

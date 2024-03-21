@@ -1,0 +1,209 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$max-column-count: 12;
+$grip-gap: 0.75rem;
+$column-min-base: 1.5rem;
+
+@mixin fixed-grid-properties($suffix: "") {
+  @for $i from 1 through $max-column-count {
+    &.#{iv.$class-prefix}has-#{$i}-cols#{$suffix} {
+      .#{iv.$class-prefix}grid {
+        @include cv.register-var("grid-column-count", #{$i});
+      }
+    }
+  }
+}
+
+$grid-container-name: bulma-fixed-grid;
+
+.#{iv.$class-prefix}fixed-grid {
+  @extend %block;
+  container-name: $grid-container-name;
+  container-type: inline-size;
+
+  .#{iv.$class-prefix}grid {
+    @include cv.register-vars(
+      (
+        "grid-gap-count": calc(#{cv.getVar("grid-column-count")} - 1),
+        "grid-column-count": 2,
+      )
+    );
+
+    grid-template-columns: repeat(cv.getVar("grid-column-count"), 1fr);
+  }
+
+  @include fixed-grid-properties;
+
+  @include mx.container-until($grid-container-name, iv.$tablet) {
+    @include fixed-grid-properties("-mobile");
+  }
+
+  @include mx.container-from($grid-container-name, iv.$tablet) {
+    @include fixed-grid-properties("-tablet");
+  }
+
+  @include mx.container-from($grid-container-name, iv.$desktop) {
+    @include fixed-grid-properties("-desktop");
+  }
+
+  @include mx.container-from($grid-container-name, iv.$widescreen) {
+    @include fixed-grid-properties("-widescreen");
+  }
+
+  @include mx.container-from($grid-container-name, iv.$fullhd) {
+    @include fixed-grid-properties("-fullhd");
+  }
+
+  &.#{iv.$class-prefix}has-auto-count {
+    .#{iv.$class-prefix}grid {
+      @include mx.container-until($grid-container-name, iv.$tablet) {
+        @include cv.register-var("grid-column-count", 2);
+      }
+
+      @include mx.container-from($grid-container-name, iv.$tablet) {
+        @include cv.register-var("grid-column-count", 4);
+      }
+
+      @include mx.container-from($grid-container-name, iv.$desktop) {
+        @include cv.register-var("grid-column-count", 8);
+      }
+
+      @include mx.container-from($grid-container-name, iv.$widescreen) {
+        @include cv.register-var("grid-column-count", 12);
+      }
+
+      @include mx.container-from($grid-container-name, iv.$fullhd) {
+        @include cv.register-var("grid-column-count", 16);
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}grid {
+  @include cv.register-vars(
+    (
+      "grid-gap": $grip-gap,
+      "grid-column-min": 9rem,
+      "grid-cell-column-span": 1,
+      "grid-cell-row-span": 1,
+    )
+  );
+
+  @extend %block;
+  display: grid;
+  gap: cv.getVar("grid-gap");
+  column-gap: #{cv.getVarWithBackup("grid-column-gap", "grid-gap")};
+  row-gap: #{cv.getVarWithBackup("grid-row-gap", "grid-gap")};
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(#{cv.getVar("grid-column-min")}, 1fr)
+  );
+  grid-template-rows: auto;
+
+  &.is-auto-fill {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(#{cv.getVar("grid-column-min")}, 1fr)
+    );
+  }
+
+  @for $i from 1 through 12 {
+    &.#{iv.$class-prefix}is-col-min-#{$i} {
+      @include cv.register-vars(
+        (
+          "grid-column-min": #{$column-min-base * $i},
+        )
+      );
+    }
+  }
+}
+
+@mixin cell-properties($suffix: "") {
+  @for $i from 1 through $max-column-count {
+    $name: $i + $suffix;
+
+    &.#{iv.$class-prefix}is-col-start-#{$name} {
+      @include cv.register-var("grid-cell-column-start", #{$i});
+    }
+
+    &.#{iv.$class-prefix}is-col-end-#{$name} {
+      @include cv.register-var("grid-cell-column-end", #{$i});
+    }
+
+    &.#{iv.$class-prefix}is-col-from-end-#{$name} {
+      @include cv.register-var("grid-cell-column-start", #{$i * -1});
+    }
+
+    &.#{iv.$class-prefix}is-col-span-#{$name} {
+      @include cv.register-var("grid-cell-column-span", #{$i});
+    }
+
+    &.#{iv.$class-prefix}is-row-start-#{$name} {
+      @include cv.register-var("grid-cell-row-start", #{$i});
+    }
+
+    &.#{iv.$class-prefix}is-row-end-#{$name} {
+      @include cv.register-var("grid-cell-row-end", #{$i});
+    }
+
+    &.#{iv.$class-prefix}is-row-from-end-#{$name} {
+      @include cv.register-var("grid-cell-row-start", #{$i * -1});
+    }
+
+    &.#{iv.$class-prefix}is-row-span-#{$name} {
+      @include cv.register-var("grid-cell-row-span", #{$i});
+    }
+  }
+}
+
+.#{iv.$class-prefix}cell {
+  grid-column-end: span cv.getVar("grid-cell-column-span");
+  grid-column-start: cv.getVar("grid-cell-column-start");
+  grid-row-end: span cv.getVar("grid-cell-row-span");
+  grid-row-start: cv.getVar("grid-cell-row-start");
+
+  // Sizes
+  &.#{iv.$class-prefix}is-col-start-end {
+    @include cv.register-var("grid-cell-column-start", -1);
+  }
+
+  &.#{iv.$class-prefix}is-row-start-end {
+    @include cv.register-var("grid-cell-row-start", -1);
+  }
+
+  @include cell-properties;
+  @include mx.mobile {
+    @include cell-properties("-mobile");
+  }
+
+  @include mx.tablet {
+    @include cell-properties("-tablet");
+  }
+
+  @include mx.tablet-only {
+    @include cell-properties("-tablet-only");
+  }
+
+  @include mx.desktop {
+    @include cell-properties("-desktop");
+  }
+
+  @include mx.desktop-only {
+    @include cell-properties("-desktop-only");
+  }
+
+  @include mx.widescreen {
+    @include cell-properties("-widescreen");
+  }
+
+  @include mx.widescreen-only {
+    @include cell-properties("-widescreen-only");
+  }
+
+  @include mx.fullhd {
+    @include cell-properties("-fullhd");
+  }
+}

@@ -1,0 +1,273 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$tabs-border-bottom-color: cv.getVar("border") !default;
+$tabs-border-bottom-style: solid !default;
+$tabs-border-bottom-width: 1px !default;
+$tabs-link-color: cv.getVar("text") !default;
+$tabs-link-hover-border-bottom-color: cv.getVar("text-strong") !default;
+$tabs-link-hover-color: cv.getVar("text-strong") !default;
+$tabs-link-active-border-bottom-color: cv.getVar("link-text") !default;
+$tabs-link-active-color: cv.getVar("link-text") !default;
+$tabs-link-padding: 0.5em 1em !default;
+
+$tabs-boxed-link-radius: cv.getVar("radius") !default;
+$tabs-boxed-link-hover-background-color: cv.getVar("background") !default;
+$tabs-boxed-link-hover-border-bottom-color: cv.getVar("border") !default;
+
+$tabs-boxed-link-active-background-color: cv.getVar("scheme-main") !default;
+$tabs-boxed-link-active-border-color: cv.getVar("border") !default;
+$tabs-boxed-link-active-border-bottom-color: transparent !default;
+
+$tabs-toggle-link-border-color: cv.getVar("border") !default;
+$tabs-toggle-link-border-style: solid !default;
+$tabs-toggle-link-border-width: 1px !default;
+$tabs-toggle-link-hover-background-color: cv.getVar("background") !default;
+$tabs-toggle-link-hover-border-color: cv.getVar("border-hover") !default;
+$tabs-toggle-link-radius: cv.getVar("radius") !default;
+$tabs-toggle-link-active-background-color: cv.getVar("link") !default;
+$tabs-toggle-link-active-border-color: cv.getVar("link") !default;
+$tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
+
+.#{iv.$class-prefix}tabs {
+  @include cv.register-vars(
+    (
+      "tabs-border-bottom-color": #{$tabs-border-bottom-color},
+      "tabs-border-bottom-style": #{$tabs-border-bottom-style},
+      "tabs-border-bottom-width": #{$tabs-border-bottom-width},
+      "tabs-link-color": #{$tabs-link-color},
+      "tabs-link-hover-border-bottom-color": #{$tabs-link-hover-border-bottom-color},
+      "tabs-link-hover-color": #{$tabs-link-hover-color},
+      "tabs-link-active-border-bottom-color": #{$tabs-link-active-border-bottom-color},
+      "tabs-link-active-color": #{$tabs-link-active-color},
+      "tabs-link-padding": #{$tabs-link-padding},
+      "tabs-boxed-link-radius": #{$tabs-boxed-link-radius},
+      "tabs-boxed-link-hover-background-color": #{$tabs-boxed-link-hover-background-color},
+      "tabs-boxed-link-hover-border-bottom-color": #{$tabs-boxed-link-hover-border-bottom-color},
+      "tabs-boxed-link-active-background-color": #{$tabs-boxed-link-active-background-color},
+      "tabs-boxed-link-active-border-color": #{$tabs-boxed-link-active-border-color},
+      "tabs-boxed-link-active-border-bottom-color": #{$tabs-boxed-link-active-border-bottom-color},
+      "tabs-toggle-link-border-color": #{$tabs-toggle-link-border-color},
+      "tabs-toggle-link-border-style": #{$tabs-toggle-link-border-style},
+      "tabs-toggle-link-border-width": #{$tabs-toggle-link-border-width},
+      "tabs-toggle-link-hover-background-color": #{$tabs-toggle-link-hover-background-color},
+      "tabs-toggle-link-hover-border-color": #{$tabs-toggle-link-hover-border-color},
+      "tabs-toggle-link-radius": #{$tabs-toggle-link-radius},
+      "tabs-toggle-link-active-background-color": #{$tabs-toggle-link-active-background-color},
+      "tabs-toggle-link-active-border-color": #{$tabs-toggle-link-active-border-color},
+      "tabs-toggle-link-active-color": #{$tabs-toggle-link-active-color},
+    )
+  );
+}
+
+.#{iv.$class-prefix}tabs {
+  @extend %block;
+  @extend %unselectable;
+  @include mx.overflow-touch;
+  align-items: stretch;
+  display: flex;
+  font-size: cv.getVar("size-normal");
+  justify-content: space-between;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  a {
+    align-items: center;
+    border-bottom-color: cv.getVar("tabs-border-bottom-color");
+    border-bottom-style: cv.getVar("tabs-border-bottom-style");
+    border-bottom-width: cv.getVar("tabs-border-bottom-width");
+    color: cv.getVar("tabs-link-color");
+    display: flex;
+    justify-content: center;
+    margin-bottom: calc(-1 * #{cv.getVar("tabs-border-bottom-width")});
+    padding: cv.getVar("tabs-link-padding");
+    transition-duration: cv.getVar("duration");
+    transition-property: background-color, border-color, color;
+    vertical-align: top;
+
+    &:hover {
+      border-bottom-color: cv.getVar("tabs-link-hover-border-bottom-color");
+      color: cv.getVar("tabs-link-hover-color");
+    }
+  }
+
+  li {
+    display: block;
+
+    &.#{iv.$class-prefix}is-active {
+      a {
+        border-bottom-color: cv.getVar("tabs-link-active-border-bottom-color");
+        color: cv.getVar("tabs-link-active-color");
+      }
+    }
+  }
+
+  ul {
+    align-items: center;
+    border-bottom-color: cv.getVar("tabs-border-bottom-color");
+    border-bottom-style: cv.getVar("tabs-border-bottom-style");
+    border-bottom-width: cv.getVar("tabs-border-bottom-width");
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: flex-start;
+
+    &.#{iv.$class-prefix}is-left {
+      padding-right: 0.75em;
+    }
+
+    &.#{iv.$class-prefix}is-center {
+      flex: none;
+      justify-content: center;
+      padding-left: 0.75em;
+      padding-right: 0.75em;
+    }
+
+    &.#{iv.$class-prefix}is-right {
+      justify-content: flex-end;
+      padding-left: 0.75em;
+    }
+  }
+
+  .#{iv.$class-prefix}icon {
+    &:first-child {
+      margin-inline-end: 0.5em;
+    }
+
+    &:last-child {
+      margin-inline-start: 0.5em;
+    }
+  }
+
+  // Alignment
+  &.#{iv.$class-prefix}is-centered {
+    ul {
+      justify-content: center;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-right {
+    ul {
+      justify-content: flex-end;
+    }
+  }
+
+  // Styles
+  &.#{iv.$class-prefix}is-boxed {
+    a {
+      border: 1px solid transparent;
+      border-start-start-radius: cv.getVar("tabs-boxed-link-radius");
+      border-start-end-radius: cv.getVar("tabs-boxed-link-radius");
+
+      &:hover {
+        background-color: cv.getVar("tabs-boxed-link-hover-background-color");
+        border-bottom-color: cv.getVar(
+          "tabs-boxed-link-hover-border-bottom-color"
+        );
+      }
+    }
+
+    li {
+      &.#{iv.$class-prefix}is-active {
+        a {
+          background-color: cv.getVar(
+            "tabs-boxed-link-active-background-color"
+          );
+          border-color: cv.getVar("tabs-boxed-link-active-border-color");
+          border-bottom-color: cv.getVar(
+            "tabs-boxed-link-active-border-bottom-color"
+          ) !important;
+        }
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-fullwidth {
+    li {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-toggle {
+    a {
+      border-color: cv.getVar("tabs-toggle-link-border-color");
+      border-style: cv.getVar("tabs-toggle-link-border-style");
+      border-width: cv.getVar("tabs-toggle-link-border-width");
+      margin-bottom: 0;
+      position: relative;
+
+      &:hover {
+        background-color: cv.getVar("tabs-toggle-link-hover-background-color");
+        border-color: cv.getVar("tabs-toggle-link-hover-border-color");
+        z-index: 2;
+      }
+    }
+
+    li {
+      & + li {
+        margin-inline-start: calc(
+          -1 * #{cv.getVar("tabs-toggle-link-border-width")}
+        );
+      }
+
+      &:first-child a {
+        border-start-start-radius: cv.getVar("tabs-toggle-link-radius");
+        border-end-start-radius: cv.getVar("tabs-toggle-link-radius");
+      }
+
+      &:last-child a {
+        border-start-end-radius: cv.getVar("tabs-toggle-link-radius");
+        border-end-end-radius: cv.getVar("tabs-toggle-link-radius");
+      }
+
+      &.#{iv.$class-prefix}is-active {
+        a {
+          background-color: cv.getVar(
+            "tabs-toggle-link-active-background-color"
+          );
+          border-color: cv.getVar("tabs-toggle-link-active-border-color");
+          color: cv.getVar("tabs-toggle-link-active-color");
+          z-index: 1;
+        }
+      }
+    }
+
+    ul {
+      border-bottom: none;
+    }
+
+    &.#{iv.$class-prefix}is-toggle-rounded {
+      li {
+        &:first-child a {
+          border-start-start-radius: cv.getVar("radius-rounded");
+          border-end-start-radius: cv.getVar("radius-rounded");
+          padding-inline-start: 1.25em;
+        }
+
+        &:last-child a {
+          border-start-end-radius: cv.getVar("radius-rounded");
+          border-end-end-radius: cv.getVar("radius-rounded");
+          padding-inline-end: 1.25em;
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    font-size: cv.getVar("size-small");
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    font-size: cv.getVar("size-medium");
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    font-size: cv.getVar("size-large");
+  }
+}

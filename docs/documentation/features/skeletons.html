@@ -1,0 +1,416 @@
+---
+title: Skeletons in Bulma
+layout: docs
+markdown: true
+theme: features
+doc-tab: features
+doc-subtab: skeletons
+breadcrumb:
+  - home
+  - documentation
+  - features
+  - features-skeletons
+---
+
+{% capture title_is_skeleton %}
+<h1 class="title is-skeleton">
+  Title
+</h1>
+{% endcapture %}
+
+{% capture title_has_skeleton %}
+<h1 class="title has-skeleton">
+  Title
+</h1>
+{% endcapture %}
+
+{% capture subtitle_is_skeleton %}
+<h2 class="subtitle is-skeleton">
+  Subtitle
+</h2>
+{% endcapture %}
+
+{% capture subtitle_has_skeleton %}
+<h2 class="subtitle has-skeleton">
+  Subtitle
+</h2>
+{% endcapture %}
+
+{% capture title_and_subtitle_is_skeleton %}
+<h1 class="title is-skeleton">
+  Title
+</h1>
+<h2 class="subtitle is-skeleton">
+  Subtitle
+</h2>
+{% endcapture %}
+
+{% capture title_and_subtitle_has_skeleton %}
+<h1 class="title has-skeleton">
+  Title
+</h1>
+<h2 class="subtitle has-skeleton">
+  Subtitle
+</h2>
+{% endcapture %}
+
+{% capture skeleton_block %}
+<div class="skeleton-block"></div>
+{% endcapture %}
+
+{% capture skeleton_block_with_text %}
+<div class="skeleton-block">
+  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+  Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+  ut fermentum massa justo sit amet risus. Donec sed odio dui.
+  Nullam quis risus eget urna mollis ornare vel eu leo.
+  Cum sociis natoque penatibus et magnis dis parturient montes,
+  nascetur ridiculus mus. Nullam id dolor id
+  nibh ultricies vehicula ut id elit.
+</div>
+{% endcapture %}
+
+{% capture skeleton_lines %}
+<div class="skeleton-lines">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+{% endcapture %}
+
+{% capture markdown %}
+A skeleton loader is a loading state that acts as a **placeholder** for content in an interface.
+Bulma v1 ships with 2 skeleton elements, and skeleton variants for most Bulma components.
+
+All skeleton loaders share these CSS variables:
+
+```css
+:root {
+  --bulma-skeleton-background: var(--bulma-border);
+  --bulma-skeleton-radius: var(--bulma-radius-small);
+  --bulma-skeleton-block-min-height: 4.5em;
+  --bulma-skeleton-lines-gap: 0.75em;
+  --bulma-skeleton-line-height: 0.75em;
+}
+```
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% include docs/elements/anchor.html name="Skeleton Block" %}
+
+{% capture markdown %}
+The skeleton block is a simple block element with a pulsating background. It has a minimum height of `4.5em`.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% include docs/elements/snippet.html content=skeleton_block %}
+
+{% capture markdown %}
+If you insert text inside this block, you can make its height responsive:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% include docs/elements/snippet.html content=skeleton_block_with_text %}
+
+{% include docs/elements/anchor.html name="Skeleton Lines" %}
+
+{% capture markdown %}
+The skeleton lines element is a loading element which resembles a **paragraph**. Each `<div></div>` will render as a separate loading line.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% include docs/elements/snippet.html content=skeleton_lines %}
+
+{% include docs/elements/anchor.html name="Bulma components with skeletons" %}
+
+{% capture markdown %}
+Most Bulma elements and components have a skeleton variant, which can be enabled by adding either the `is-skeleton` or `has-skeleton` modifier.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% include docs/elements/anchor-bis.html name="Button" %}
+
+{% capture button_skeleton %}
+<div class="buttons">
+  <button class="button is-skeleton">Button</button>
+  <button class="button is-link is-skeleton">Link</button>
+  <button class="button is-primary is-skeleton">Primary</button>
+  <button class="button is-success is-skeleton">Success</button>
+  <button class="button is-info is-skeleton">Info</button>
+  <button class="button is-warning is-skeleton">Warning</button>
+  <button class="button is-danger is-skeleton">Danger</button>
+</div>
+{% endcapture %}
+{% include docs/elements/snippet.html content=button_skeleton %}
+
+{% include docs/elements/anchor-bis.html name="Icon" %}
+
+{% capture icon_skeleton %}
+<span class="icon is-skeleton">
+  <i class="fas fa-reply"></i>
+</span>
+{% endcapture %}
+
+{% include docs/elements/snippet.html content=icon_skeleton %}
+
+{% include docs/elements/anchor-bis.html name="Image" %}
+
+{% capture image_skeleton %}
+<figure class="image is-16x16 is-skeleton">
+  <img alt="Placeholder" src="https://placehold.co/16x16">
+</figure>
+
+<figure class="image is-32x32 is-skeleton">
+  <img alt="Placeholder" src="https://placehold.co/32x32">
+</figure>
+
+<figure class="image is-64x64 is-skeleton">
+  <img alt="Placeholder" src="https://placehold.co/64x64">
+</figure>
+
+<figure class="image is-128x128 is-skeleton">
+  <img alt="Placeholder" src="https://placehold.co/128x128">
+</figure>
+{% endcapture %}
+
+{% include docs/elements/snippet.html content=image_skeleton %}
+
+{% include docs/elements/anchor-bis.html name="Media Object" %}
+
+{% capture media_skeleton %}
+
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64 is-skeleton">
+      <img src="https://placehold.co/128x128" alt="Placeholder image">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content is-skeleton">
+      <p>
+        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
+        sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus est non commodo luctus,
+        nisi erat porttitor ligula, eget lacinia odio sem nec elit
+        vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item"><span class="icon is-small is-skeleton"><i class="fas fa-reply"></i></span></a>
+        <a class="level-item"><span class="icon is-small is-skeleton"><i class="fas fa-retweet"></i></span></a>
+        <a class="level-item"><span class="icon is-small is-skeleton"><i class="fas fa-heart"></i></span></a>
+      </div>
+    </nav>
+  </div>
+  <div class="media-right">
+    <button aria-label="delete" class="delete is-skeleton"></button>
+  </div>
+</article>
+{% endcapture %}
+
+{% capture media_skeleton_bis %}
+
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64 is-skeleton">
+      <img src="https://placehold.co/128x128" alt="Placeholder image">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea is-skeleton" placeholder="Add a comment..."></textarea>
+      </p>
+    </div>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <a class="button is-info is-skeleton">Submit</a>
+        </div>
+      </div>
+      <div class="level-right">
+        <div class="level-item">
+          <label class="checkbox is-skeleton"> <input type="checkbox"> Press enter to submit </label>
+        </div>
+      </div>
+    </nav>
+  </div>
+</article>
+{% endcapture %}
+
+{% include docs/elements/snippet.html content=media_skeleton %}
+{% include docs/elements/snippet.html content=media_skeleton_bis %}
+
+{% include docs/elements/anchor-bis.html name="Notification" %}
+
+{% capture notification_skeleton %}
+<div class="notification is-skeleton">
+  Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+</div>
+{% endcapture %}
+
+{% include docs/elements/snippet.html content=notification_skeleton %}
+
+{% include docs/elements/anchor-bis.html name="Tag" %}
+
+{% capture tag_skeleton %}
+<span class="tag is-skeleton">Tag</span>{% for color in site.data.colors.justColors %}
+<span class="tag is-{{ color }} is-skeleton">{{ color | capitalize }}</span>{% endfor %}
+{% endcapture %}
+
+{% include docs/elements/snippet.html content=tag_skeleton %}
+
+{% include docs/elements/anchor-bis.html name="Title and Subtitle" %}
+
+The `.title` and `.subtitle` elements have both an `is-skeleton` and `has-skeleton` variant:
+
+* `is-skeleton` will turn the whole block into a loading skeleton
+* `has-skeleton` will turn only a small part of its content into a loading skeleton, to simulate loading only the inner text rather than the whole block
+
+{% include docs/elements/snippet.html content=title_is_skeleton %}
+{% include docs/elements/snippet.html content=title_has_skeleton %}
+{% include docs/elements/snippet.html content=subtitle_is_skeleton %}
+{% include docs/elements/snippet.html content=subtitle_has_skeleton %}
+{% include docs/elements/snippet.html content=title_and_subtitle_is_skeleton %}
+{% include docs/elements/snippet.html content=title_and_subtitle_has_skeleton %}
+
+{% include docs/elements/anchor-bis.html name="Form Controls" %}
+
+{% capture input_skeleton %}
+<input class="input is-skeleton">
+{% endcapture %}
+
+{% capture textarea_skeleton %}
+<textarea class="textarea is-skeleton"></textarea>
+{% endcapture %}
+
+{% include docs/elements/snippet.html content=input_skeleton %}
+{% include docs/elements/snippet.html content=textarea_skeleton %}
+
+<div class="skeleton-toggler display-flex align-items-center gap-2">
+  <button id="js-toggle-skeleton" class="button">
+    <div id="js-timer" class="timer is-active">
+      <div class="timer-mask"></div>
+    </div>
+    <span class="mr-2">Toggle Skeleton Animations</span>
+    <span class="tag is-success" style="margin-right: -0.5rem;">Active</span>
+  </button>
+</div>
+
+<style type="text/css">
+.timer {
+  --duration: 2;
+  --size: 1.5;
+  --background: var(--bulma-border-weak);
+  --foreground: var(--bulma-danger);
+  animation-duration: calc(var(--duration) * 1s);
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(1000, start);
+  background: linear-gradient(90deg, var(--foreground) 50%, var(--background) 50%);
+  border-radius: 100%;
+  height: calc(var(--size) * 1em);
+  margin: 0 0.5rem 0 -0.5rem;
+  mask: radial-gradient(transparent 0%, transparent 29%, #000 30%, #000 100%);
+  position: relative;
+  width: calc(var(--size) * 1em);
+}
+
+.timer.is-active {
+  --foreground: var(--bulma-success);
+  animation-name: anim-timer;
+}
+
+.timer.is-active .timer-mask {
+  animation-name: anim-timer-mask;
+}
+
+.timer-mask {
+  animation-duration: calc(var(--duration) * 1s);
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(500, start);
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform-origin: 100% 50%;
+  width: 50%;
+}
+
+@keyframes anim-timer {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anim-timer-mask {
+  0% {
+    background: var(--background);
+    transform: rotate(0deg);
+  }
+  50% {
+    background: var(--background);
+    transform: rotate(-180deg);
+  }
+  50.01% {
+    background: var(--foreground);
+    transform: rotate(0deg);
+  }
+  100% {
+    background: var(--foreground);
+    transform: rotate(-180deg);
+  }
+}
+
+</style>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    const hasSkeletons = document.querySelectorAll('.has-skeleton');
+    const isSkeletons = document.querySelectorAll('.is-skeleton');
+    const timer = document.getElementById('js-timer');
+    const toggleSkeleton = document.getElementById('js-toggle-skeleton');
+    const toggleSkeletonTag = toggleSkeleton.querySelector('.tag');
+
+    let skeletonInterval = setInterval(toggleSkeletons, 2000);
+
+    function toggleSkeletonInterval() {
+      if (skeletonInterval) {
+        clearInterval(skeletonInterval);
+        skeletonInterval = null;
+        toggleSkeletonTag.className = "tag is-danger is-light";
+        toggleSkeletonTag.textContent = "Inactive";
+        timer.classList.remove("is-active");
+        return;
+      } else {
+        skeletonInterval = setInterval(toggleSkeletons, 2000);
+        toggleSkeletonTag.className = "tag is-success";
+        toggleSkeletonTag.textContent = "Active";
+        timer.classList.add("is-active");
+      }
+    }
+
+    function toggleSkeletons() {
+      hasSkeletons.forEach((el) => {
+        el.classList.toggle("has-skeleton");
+      });
+
+      isSkeletons.forEach((el) => {
+        el.classList.toggle("is-skeleton");
+      });
+    }
+
+    toggleSkeleton.addEventListener("click", () => {
+      toggleSkeletonInterval();
+    });
+  });
+</script>

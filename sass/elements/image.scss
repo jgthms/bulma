@@ -1,0 +1,62 @@
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/css-variables" as cv;
+@use "../utilities/mixins" as mx;
+
+$dimensions: 16 24 32 48 64 96 128 !default;
+
+.#{iv.$class-prefix}image {
+  display: block;
+  position: relative;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+
+    &.#{iv.$class-prefix}is-rounded {
+      border-radius: cv.getVar("radius-rounded");
+    }
+  }
+
+  &.#{iv.$class-prefix}is-fullwidth {
+    width: 100%;
+  }
+
+  // Ratio
+  &.#{iv.$class-prefix}is-square {
+    img,
+    .#{iv.$class-prefix}has-ratio {
+      @include mx.overlay;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-square {
+    aspect-ratio: 1;
+  }
+
+  @each $pair in iv.$aspect-ratios {
+    $w: nth($pair, 1);
+    $h: nth($pair, 2);
+
+    &.#{iv.$class-prefix}is-#{$w}by#{$h} {
+      aspect-ratio: #{$w} / #{$h};
+
+      img,
+      .#{iv.$class-prefix}has-ratio {
+        @include mx.overlay;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  // Sizes
+  @each $dimension in $dimensions {
+    &.#{iv.$class-prefix}is-#{$dimension}x#{$dimension} {
+      height: $dimension * 1px;
+      width: $dimension * 1px;
+    }
+  }
+}

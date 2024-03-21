@@ -1,0 +1,66 @@
+@use "sass/utilities/css-variables" as cv;
+@use "sass/utilities/derived-variables" as dv;
+
+.bd-notification {
+  @include cv.register-vars(
+    (
+      "notification-h": #{cv.getVar("scheme-h")},
+      "notification-s": #{cv.getVar("scheme-s")},
+      "notification-background-l": #{cv.getVar("background-l")},
+      "notification-color-l": #{cv.getVar("text-l")},
+    )
+  );
+
+  background-color: hsl(
+    cv.getVar("notification-h"),
+    cv.getVar("notification-s"),
+    cv.getVar("notification-background-l")
+  );
+  border-radius: cv.getVar("radius");
+  color: hsl(
+    cv.getVar("notification-h"),
+    cv.getVar("notification-s"),
+    cv.getVar("notification-color-l")
+  );
+  font-weight: cv.getVar("weight-semibold");
+  padding: 1.25rem 0;
+  position: relative;
+  text-align: center;
+
+  .title,
+  .subtitle,
+  .content,
+  strong {
+    color: currentColor;
+  }
+
+  code,
+  pre {
+    background-color: hsla(
+      cv.getVar("scheme-h"),
+      cv.getVar("scheme-s"),
+      cv.getVar("scheme-invert-l"),
+      0.2
+    );
+    border-radius: cv.getVar("radius");
+    color: cv.getVar("scheme-main");
+  }
+
+  pre code {
+    background-color: transparent;
+  }
+
+  // Colors
+  @each $name, $pair in dv.$colors {
+    &.is-#{$name} {
+      @include cv.register-vars(
+        (
+          "notification-h": #{cv.getVar($name, "", "-h")},
+          "notification-s": #{cv.getVar($name, "", "-s")},
+          "notification-background-l": #{cv.getVar($name, "", "-l")},
+          "notification-color-l": #{cv.getVar($name, "", "-invert-l")},
+        )
+      );
+    }
+  }
+}

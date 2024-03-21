@@ -1,0 +1,364 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/initial-variables" as iv;
+
+$digits: (
+  "00",
+  "05",
+  "10",
+  "15",
+  "20",
+  "25",
+  "30",
+  "35",
+  "40",
+  "45",
+  "50",
+  "55",
+  "60",
+  "65",
+  "70",
+  "75",
+  "80",
+  "85",
+  "90",
+  "95",
+  "100"
+);
+
+.#{iv.$helpers-has-prefix}background {
+  background-color: cv.getVar("background");
+}
+
+@each $name, $color in dv.$colors {
+  $background: hsl(
+    #{cv.getVar($name, "", "-h")},
+    #{cv.getVar($name, "", "-s")},
+    calc(#{cv.getVar("background-l")} + #{cv.getVar("background-l-delta")})
+  );
+
+  $color: hsl(
+    #{cv.getVar($name, "", "-h")},
+    #{cv.getVar($name, "", "-s")},
+    calc(#{cv.getVar("color-l")} + #{cv.getVar("color-l-delta")})
+  );
+
+  [class*="#{iv.$helpers-prefix}color-#{$name}"],
+  [class*="#{iv.$helpers-has-prefix}text-#{$name}"] {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar($name, "", "-l")},
+        "color-l-delta": 0%,
+      )
+    );
+    color: $color !important;
+  }
+
+  [class*="#{iv.$helpers-prefix}background-#{$name}"],
+  [class*="#{iv.$helpers-has-prefix}background-#{$name}"] {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar($name, "", "-l")},
+        "background-l-delta": 0%,
+      )
+    );
+    background-color: $background !important;
+  }
+
+  // Invert
+  .#{iv.$helpers-prefix}color-#{$name}-invert,
+  .#{iv.$helpers-has-prefix}text-#{$name}-invert {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar($name, "", "-invert-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-invert,
+  .#{iv.$helpers-has-prefix}background-#{$name}-invert {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar($name, "", "-invert-l")},
+      )
+    );
+  }
+
+  // On Scheme
+  .#{iv.$helpers-prefix}color-#{$name}-on-scheme,
+  .#{iv.$helpers-has-prefix}text-#{$name}-on-scheme {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar($name, "", "-on-scheme-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-on-scheme,
+  .#{iv.$helpers-has-prefix}background-#{$name}-on-scheme {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar($name, "", "-on-scheme-l")},
+      )
+    );
+  }
+
+  // Light
+  .#{iv.$helpers-prefix}color-#{$name}-light,
+  .#{iv.$helpers-has-prefix}text-#{$name}-light {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar($name, "", "-light-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-light,
+  .#{iv.$helpers-has-prefix}background-#{$name}-light {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar($name, "", "-light-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}color-#{$name}-light-invert,
+  .#{iv.$helpers-has-prefix}text-#{$name}-light-invert {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar($name, "", "-light-invert-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-light-invert,
+  .#{iv.$helpers-has-prefix}background-#{$name}-light-invert {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar($name, "", "-light-invert-l")},
+      )
+    );
+  }
+
+  // Dark
+  .#{iv.$helpers-prefix}color-#{$name}-dark,
+  .#{iv.$helpers-has-prefix}text-#{$name}-dark {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar($name, "", "-dark-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-dark,
+  .#{iv.$helpers-has-prefix}background-#{$name}-dark {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar($name, "", "-dark-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}color-#{$name}-dark-invert,
+  .#{iv.$helpers-has-prefix}text-#{$name}-dark-invert {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar($name, "", "-dark-invert-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-dark-invert,
+  .#{iv.$helpers-has-prefix}background-#{$name}-dark-invert {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar($name, "", "-dark-invert-l")},
+      )
+    );
+  }
+
+  // Soft/Bold
+  .#{iv.$helpers-prefix}color-#{$name}-soft,
+  .#{iv.$helpers-has-prefix}text-#{$name}-soft {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar("soft-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-soft,
+  .#{iv.$helpers-has-prefix}background-#{$name}-soft {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar("soft-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}color-#{$name}-bold,
+  .#{iv.$helpers-has-prefix}text-#{$name}-bold {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar("bold-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-bold,
+  .#{iv.$helpers-has-prefix}background-#{$name}-bold {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar("bold-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}color-#{$name}-soft-invert,
+  .#{iv.$helpers-has-prefix}text-#{$name}-soft-invert {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar("soft-invert-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-soft-invert,
+  .#{iv.$helpers-has-prefix}background-#{$name}-soft-invert {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar("soft-invert-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}color-#{$name}-bold-invert,
+  .#{iv.$helpers-has-prefix}text-#{$name}-bold-invert {
+    @include cv.register-vars(
+      (
+        "color-l": #{cv.getVar("bold-invert-l")},
+      )
+    );
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name}-bold-invert,
+  .#{iv.$helpers-has-prefix}background-#{$name}-bold-invert {
+    @include cv.register-vars(
+      (
+        "background-l": #{cv.getVar("bold-invert-l")},
+      )
+    );
+  }
+
+  @each $digit in $digits {
+    .#{iv.$helpers-prefix}color-#{$name}-#{$digit},
+    .#{iv.$helpers-has-prefix}text-#{$name}-#{$digit} {
+      @include cv.register-vars(
+        (
+          "color-l": #{cv.getVar($name, "", "-#{$digit}-l")},
+        )
+      );
+    }
+
+    .#{iv.$helpers-prefix}background-#{$name}-#{$digit},
+    .#{iv.$helpers-has-prefix}background-#{$name}-#{$digit} {
+      @include cv.register-vars(
+        (
+          "background-l": #{cv.getVar($name, "", "-#{$digit}-l")},
+        )
+      );
+    }
+
+    .#{iv.$helpers-prefix}color-#{$name}-#{$digit}-invert,
+    .#{iv.$helpers-has-prefix}text-#{$name}-#{$digit}-invert {
+      @include cv.register-vars(
+        (
+          "color-l": #{cv.getVar($name, "", "-#{$digit}-invert-l")},
+        )
+      );
+    }
+
+    .#{iv.$helpers-prefix}background-#{$name}-#{$digit}-invert,
+    .#{iv.$helpers-has-prefix}background-#{$name}-#{$digit}-invert {
+      @include cv.register-vars(
+        (
+          "background-l": #{cv.getVar($name, "", "-#{$digit}-invert-l")},
+        )
+      );
+    }
+  }
+
+  // Hover
+  a.#{iv.$helpers-prefix}color-#{$name},
+  button.#{iv.$helpers-prefix}color-#{$name},
+  #{iv.$helpers-prefix}color-#{$name}.is-hoverable,
+  a.#{iv.$helpers-has-prefix}text-#{$name},
+  button.#{iv.$helpers-has-prefix}text-#{$name},
+  #{iv.$helpers-has-prefix}text-#{$name}.is-hoverable {
+    &:hover,
+    &:focus-visible {
+      @include cv.register-vars(
+        (
+          "color-l-delta": #{cv.getVar("hover-color-l-delta")},
+        )
+      );
+    }
+
+    &:active {
+      @include cv.register-vars(
+        (
+          "color-l-delta": #{cv.getVar("active-color-l-delta")},
+        )
+      );
+    }
+  }
+
+  a.#{iv.$helpers-prefix}background-#{$name},
+  button.#{iv.$helpers-prefix}background-#{$name},
+  #{iv.$helpers-prefix}background-#{$name}.is-hoverable,
+  a.#{iv.$helpers-has-prefix}background-#{$name},
+  button.#{iv.$helpers-has-prefix}background-#{$name},
+  #{iv.$helpers-has-prefix}background-#{$name}.is-hoverable {
+    &:hover,
+    &:focus-visible {
+      @include cv.register-vars(
+        (
+          "background-l-delta": #{cv.getVar("hover-background-l-delta")},
+        )
+      );
+    }
+
+    &:active {
+      @include cv.register-vars(
+        (
+          "background-l-delta": #{cv.getVar("active-background-l-delta")},
+        )
+      );
+    }
+  }
+
+  // Palettes
+  .#{iv.$helpers-prefix}palette-#{$name} {
+    --h: #{cv.getVar($name, "", "-h")};
+    --s: #{cv.getVar($name, "", "-s")};
+    --l: #{cv.getVar($name, "", "-l")};
+    --color: hsl(var(--h), var(--s), var(--l));
+
+    @each $digit in $digits {
+      --#{$digit}-l: #{cv.getVar($name, "", "-#{$digit}-l")};
+      --color-#{$digit}: hsl(var(--h), var(--s), var(--#{$digit}-l));
+    }
+  }
+}
+
+@each $name, $shade in dv.$shades {
+  .#{iv.$helpers-prefix}color-#{$name},
+  .#{iv.$helpers-has-prefix}text-#{$name} {
+    color: $shade !important;
+  }
+
+  .#{iv.$helpers-prefix}background-#{$name},
+  .#{iv.$helpers-has-prefix}background-#{$name} {
+    background-color: $shade !important;
+  }
+}

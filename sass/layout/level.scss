@@ -1,0 +1,107 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$level-item-spacing: calc(#{cv.getVar("block-spacing")} * 0.5) !default;
+
+.#{iv.$class-prefix}level {
+  @extend %block;
+  @include cv.register-var("level-item-spacing", #{$level-item-spacing});
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: cv.getVar("level-item-spacing");
+
+  code {
+    border-radius: cv.getVar("radius");
+  }
+
+  img {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  // Modifiers
+  &.#{iv.$class-prefix}is-mobile {
+    display: flex;
+    flex-direction: row;
+
+    .#{iv.$class-prefix}level-left,
+    .#{iv.$class-prefix}level-right {
+      display: flex;
+    }
+
+    .#{iv.$class-prefix}level-item {
+      &:not(.#{iv.$class-prefix}is-narrow) {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  // Responsiveness
+  @include mx.tablet {
+    display: flex;
+    flex-direction: row;
+
+    & > .#{iv.$class-prefix}level-item {
+      &:not(.#{iv.$class-prefix}is-narrow) {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}level-item {
+  align-items: center;
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+
+  .#{iv.$class-prefix}title,
+  .#{iv.$class-prefix}subtitle {
+    margin-bottom: 0;
+  }
+}
+
+.#{iv.$class-prefix}level-left,
+.#{iv.$class-prefix}level-right {
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: $level-item-spacing;
+
+  .#{iv.$class-prefix}level-item {
+    // Modifiers
+    &.#{iv.$class-prefix}is-flexible {
+      flex-grow: 1;
+    }
+  }
+}
+
+.#{iv.$class-prefix}level-left {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  // Responsiveness
+  @include mx.tablet {
+    flex-direction: row;
+  }
+}
+
+.#{iv.$class-prefix}level-right {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  // Responsiveness
+  @include mx.tablet {
+    flex-direction: row;
+  }
+}

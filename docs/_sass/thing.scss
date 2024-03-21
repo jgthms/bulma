@@ -1,0 +1,112 @@
+@use "sass/utilities/css-variables" as cv;
+
+.things {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: center;
+}
+
+.thing {
+  --h: #{cv.getVar("text-h")};
+  --s: #{cv.getVar("text-s")};
+  --bg-l: #{cv.getVar("light-l")};
+  --color-l: #{cv.getVar("text-l")};
+  --bd-width: 0px;
+  --bg: hsl(var(--h), var(--s), var(--bg-l));
+  --color: hsl(var(--h), var(--s), var(--color-l));
+
+  align-items: center;
+  background-color: var(--bg);
+  border-color: var(--bd-color);
+  border-radius: 0.5em;
+  border-style: solid;
+  border-width: var(--bd-width);
+  color: var(--color);
+  display: inline-flex;
+  font-weight: cv.getVar("weight-medium");
+  gap: 0.5em;
+  line-height: 1.25;
+  justify-content: center;
+  padding: calc(0.375em - var(--bd-width)) calc(0.75em - var(--bd-width));
+  text-align: center;
+  transition-duration: cv.getVar("duration");
+  transition-property: background-color, color;
+  vertical-align: top;
+
+  strong {
+    color: inherit;
+  }
+
+  .icon {
+    height: 1.25em;
+    width: 1.25em;
+  }
+}
+
+$combos: (
+  "autocolor": "rss",
+  "opensource": "danger",
+  "responsive": "rss",
+  "cssvars": "warning",
+  "free": "success",
+  "flexbox": "primary",
+  "themes": "primary",
+  "modular": "info",
+  "smartgrid": "link",
+  "dartsass": "sass",
+  "skeletons": "success",
+);
+
+@each $name, $color in $combos {
+  .thing.is-#{$name} {
+    --h: #{cv.getVar("#{$color}-h")};
+    --s: #{cv.getVar("#{$color}-s")};
+  }
+}
+
+.bd-darkmode {
+  --h: #{cv.getVar("text-h")};
+  --s: #{cv.getVar("text-s")};
+  --bg-l: #{cv.getVar("dark-l")};
+  --color-l: #{cv.getVar("light-l")};
+  z-index: 1;
+
+  .icon {
+    margin: 0 -0.25rem;
+  }
+}
+
+@include cv.system-theme($name: "dark") {
+  .thing {
+    --bg-l: #{cv.getVar("dark-l")};
+  }
+
+  .bd-darkmode {
+    --bg-l: 100%;
+    --color-l: #{cv.getVar("dark-l")};
+  }
+}
+
+@include cv.bulma-theme($name: "light") {
+  .thing {
+    --bg-l: #{cv.getVar("light-l")};
+  }
+
+  .bd-darkmode {
+    --bg-l: #{cv.getVar("dark-l")};
+    --color-l: #{cv.getVar("light-l")};
+  }
+}
+
+@include cv.bulma-theme($name: "dark") {
+  .thing {
+    --bg-l: #{cv.getVar("dark-l")};
+  }
+
+  .bd-darkmode {
+    --bg-l: 100%;
+    --color-l: #{cv.getVar("dark-l")};
+  }
+}

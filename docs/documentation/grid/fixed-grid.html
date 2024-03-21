@@ -1,0 +1,153 @@
+---
+title: Fixed Grid
+layout: docs
+theme: library
+doc-library: true
+doc-tab: grid
+breakpoints:
+- mobile
+- tablet
+- desktop
+- widescreen
+- fullhd
+breadcrumb:
+  - home
+  - documentation
+  - grid
+  - grid-fixed
+---
+
+{% capture markdown %}
+If instead of having a minimum column width you want a **fixed** number of columns, wrap your grid in a `fixed-grid` container.
+
+By default, this fixed grid has **2 columns**:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% capture fixed_count_code %}
+<div class="fixed-grid">
+  <div class="grid">
+    {% for i in (1..11) %}<div class="cell">Cell {{ i }}</div>
+    {% endfor %}<div class="cell">Cell 12</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture fixed_count %}
+<div class="fixed-grid">
+  <div class="grid">
+    {% for i in (1..12) %}
+      <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal">
+        Cell {{ i }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endcapture %}
+
+{{ fixed_count }}
+
+{% include docs/elements/snippet.html content=fixed_count_code no_example=true more=true fullwidth=true horizontal=true %}
+
+{% include docs/elements/anchor.html name="Applying fixed grid modifiers" %}
+
+{% capture markdown %}
+You can change the **column count** by adding the `has-$n-cols` modifier class with a value ranging from `1` to `12`:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Column Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in (0..12) %}
+      <tr>
+        <td><code>has-{{ i }}-cols</code></td>
+        <td><code>{{ i }}</code></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% include docs/elements/anchor.html name="Container breakpoints" %}
+
+{% capture markdown %}
+You can specify a different column count **per breakpoint**:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th rowspan="2">Column Count</th>
+      <th>Mobile</th>
+      <th>Tablet</th>
+      <th>Desktop</th>
+      <th>Widescreen</th>
+      <th>Full HD</th>
+    </tr>
+    <tr>
+      <td>Until <code>{{ site.data.breakpoints.mobile.to }}px</code></td>
+      <td>From <code>{{ site.data.breakpoints.tablet.from }}px</code></td>
+      <td>From <code>{{ site.data.breakpoints.desktop.from }}px</code></td>
+      <td>From <code>{{ site.data.breakpoints.widescreen.from }}px</code></td>
+      <td>From <code>{{ site.data.breakpoints.fullhd.from }}px</code></td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in (1..12) %}
+      <tr>
+        <th>{{ i }}</th>
+        {% for bp in page.breakpoints %}
+          <td><code>has-cols-{{ i }}-{{ bp }}</code></td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% include docs/elements/anchor.html name="Auto Count Fixed Grid" %}
+
+{% capture markdown %}
+By adding the `has-auto-count` modifier, the fixed grid will **automatically** change its count for each **breakpoint**:
+
+* 2 on mobile
+* 4 on tablet
+* 8 on desktop
+* 12 on widescreen
+* 16 on fullhd
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% capture auto_count %}
+<div class="fixed-grid has-auto-count">
+  <div class="grid">
+    {% for i in (1..16) %}
+      <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal">
+        Cell {{ i }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endcapture %}
+
+{% capture auto_count_code %}
+<div class="fixed-grid has-auto-count">
+  <div class="grid">
+    {% for i in (1..15) %}<div class="cell">Cell {{ i }}</div>
+    {% endfor %}<div class="cell">Cell 16</div>
+  </div>
+</div>
+{% endcapture %}
+
+{{ auto_count }}
+
+{% include docs/elements/snippet.html content=auto_count_code no_example=true more=true fullwidth=true horizontal=true %}

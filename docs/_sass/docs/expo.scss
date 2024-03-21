@@ -1,0 +1,46 @@
+$website-gap: 0px;
+$website-width: 672px;
+
+.bd-websites {
+  --gap: #{$website-gap};
+  --width: #{$website-width};
+  --spacing: 1.5rem;
+  display: grid;
+  grid-gap: var(--gap);
+  grid-template-columns: 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(
+    calc(2 * calc(var(--width) + var(--spacing)) + calc(3 * var(--gap)))
+  );
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
+}
+
+.bd-website {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(2 * var(--width));
+  padding-bottom: var(--spacing);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    background-color: var(--expo-light);
+
+    .title {
+      color: var(--expo-dark);
+    }
+
+    .bd-website-date {
+      color: var(--bulma-text-strong);
+    }
+  }
+
+  &.bd-is-highlighted {
+    grid-column: span 2;
+  }
+}

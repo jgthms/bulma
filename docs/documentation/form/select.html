@@ -1,19 +1,19 @@
 ---
 title: Select
-layout: documentation
+layout: docs
+theme: library
 doc-tab: form
 doc-subtab: select
 breadcrumb:
-- home
-- documentation
-- form
-- form-select
+  - home
+  - documentation
+  - form
+  - form-select
 meta:
   colors: true
   sizes: true
   variables: false
 ---
-
 {% capture select_example %}
 <div class="select">
   <select>
@@ -22,7 +22,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture select_multiple_example %}
 <div class="select is-multiple">
   <select multiple size="8">
@@ -41,7 +40,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture rounded_example %}
 <div class="select is-rounded">
   <select>
@@ -50,7 +48,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture normal_example %}
 <div class="select">
   <select>
@@ -59,7 +56,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture hover_example %}
 <div class="select">
   <select class="is-hovered">
@@ -68,7 +64,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture focus_example %}
 <div class="select">
   <select class="is-focused">
@@ -77,7 +72,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture loading_example %}
 <div class="select is-loading">
   <select>
@@ -86,7 +80,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture disabled_example %}
 <div class="select is-disabled">
   <select disabled>
@@ -95,7 +88,6 @@ meta:
   </select>
 </div>
 {% endcapture %}
-
 {% capture icons_example %}
 <div class="control has-icons-left">
   <div class="select">
@@ -110,7 +102,6 @@ meta:
   </div>
 </div>
 {% endcapture %}
-
 {% capture has_icons_small_example %}
 <div class="control has-icons-left">
   <div class="select is-small">
@@ -125,7 +116,6 @@ meta:
   </span>
 </div>
 {% endcapture %}
-
 {% capture has_icons_normal_example %}
 <div class="control has-icons-left">
   <div class="select">
@@ -140,7 +130,6 @@ meta:
   </span>
 </div>
 {% endcapture %}
-
 {% capture has_icons_medium_example %}
 <div class="control has-icons-left">
   <div class="select is-medium">
@@ -155,7 +144,6 @@ meta:
   </span>
 </div>
 {% endcapture %}
-
 {% capture has_icons_large_example %}
 <div class="control has-icons-left">
   <div class="select is-large">
@@ -173,48 +161,57 @@ meta:
 
 <div class="content">
   <p>
-    The <code>select</code> class is a simple wrapper around the <code>&lt;select&gt;</code> HTML element, which gives the styling more flexibility and support for icons.
+    The <code>select</code> class is a simple wrapper around the <code>&lt;select&gt;</code> HTML element, which gives
+    the styling more flexibility and support for icons.
   </p>
 </div>
 
 <div class="columns">
-  <div class="column is-half">
-    {{ select_example }}
-  </div>
+  <div class="column is-half">{{ select_example }}</div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html %}{{ select_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- select_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
 <div class="content">
   <p>Several <strong>modifiers</strong> are supported which affect:</p>
   <ul>
-    <li>the <strong><a href="#colors">color</a></strong></li>
-    <li>the <strong><a href="#sizes">size</a></strong></li>
-    <li>the <strong><a href="#states">state</a></strong></li>
+    <li>
+      the <strong><a href="#colors">color</a></strong>
+    </li>
+    <li>
+      the <strong><a href="#sizes">size</a></strong>
+    </li>
+    <li>
+      the <strong><a href="#states">state</a></strong>
+    </li>
   </ul>
 </div>
 
-{% include elements/anchor.html name="Multiple select" %}
+{% include docs/elements/anchor.html name="Multiple select" %}
 
 <div class="columns">
   <div class="column is-half">
     <div class="content">
       <p>
-        You can style a <strong>multiple select</strong> dropdown, by using the <code>is-multiple</code> modifier, and by using the <code>multiple</code> HTML attribute.
+        You can style a <strong>multiple select</strong> dropdown, by using the <code>is-multiple</code> modifier, and
+        by using the <code>multiple</code> HTML attribute.
       </p>
     </div>
     {{ select_multiple_example }}
   </div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html %}{{ select_multiple_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- select_multiple_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
-{% include elements/anchor.html name="Colors" %}
-
+{% include docs/elements/anchor.html name="Colors" %}
 {% for color in site.data.colors.justColors %}
-{% capture foobar %}
+  {% capture foobar %}
 <div class="select is-{{ color }}">
   <select>
     <option>Select dropdown</option>
@@ -222,36 +219,31 @@ meta:
   </select>
 </div>
 {% endcapture %}
-{% include elements/snippet.html content=foobar %}
+  {% include docs/elements/snippet.html content=foobar %}
 {% endfor %}
-
-{% include elements/anchor.html name="Styles" %}
+{% include docs/elements/anchor.html name="Styles" %}
 
 <div class="content">
-  <p>
-    You can create a <strong>rounded dropdown</strong> by appending the <code>is-rounded</code> modifier:
-  </p>
+  <p>You can create a <strong>rounded dropdown</strong> by appending the <code>is-rounded</code> modifier:</p>
 </div>
 
 <div class="columns">
+  <div class="column is-half">{{ rounded_example }}</div>
   <div class="column is-half">
-    {{ rounded_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ rounded_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- rounded_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
-{% include elements/anchor.html name="Sizes" %}
+{% include docs/elements/anchor.html name="Sizes" %}
 
 <div class="content">
-  <p>
-    The <code>select</code> element comes in <strong>4</strong> different sizes:
-  </p>
+  <p>The <code>select</code> element comes in <strong>4</strong> different sizes:</p>
 </div>
 
 {% for size in site.data.sizes %}
-{% capture foobar %}
+  {% capture foobar %}
 <div class="select is-{{ size }}">
   <select>
     <option>Select dropdown</option>
@@ -259,73 +251,65 @@ meta:
   </select>
 </div>
 {% endcapture %}
-{% include elements/snippet.html content=foobar %}
+  {% include docs/elements/snippet.html content=foobar %}
 {% endfor %}
-
-{% include elements/anchor.html name="States" %}
+{% include docs/elements/anchor.html name="States" %}
 
 <div class="content">
   <p>
-    Bulma styles the different <strong>states</strong> of the <code>select</code> element. Each state is available as a pseudo-class and a CSS class:
+    Bulma styles the different <strong>states</strong> of the <code>select</code> element. Each state is available as a
+    pseudo-class and a CSS class:
   </p>
   <ul>
-    <li>
-      <code>:hover</code> and <code>is-hovered</code>
-    </li>
-    <li>
-      <code>:focus</code> and <code>is-focused</code>
-    </li>
-    <li>
-      <code>:active</code> and <code>is-active</code>
-    </li>
+    <li><code>:hover</code> and <code>is-hovered</code></li>
+    <li><code>:focus</code> and <code>is-focused</code></li>
+    <li><code>:active</code> and <code>is-active</code></li>
   </ul>
-  <p>
-    This allows you to obtain the style of a certain state without having to trigger it.
-  </p>
+  <p>This allows you to obtain the style of a certain state without having to trigger it.</p>
 </div>
 
 <h4 class="subtitle">Normal</h4>
 
 <div class="columns">
+  <div class="column is-half">{{ normal_example }}</div>
   <div class="column is-half">
-    {{ normal_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ normal_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- normal_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
 <h4 class="subtitle">Hover</h4>
 <div class="columns">
+  <div class="column is-half">{{ hover_example }}</div>
   <div class="column is-half">
-    {{ hover_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ hover_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- hover_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
 <h4 class="subtitle">Focus</h4>
 <div class="columns">
+  <div class="column is-half">{{ focus_example }}</div>
   <div class="column is-half">
-    {{ focus_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ focus_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- focus_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
 <h4 class="subtitle">Loading</h4>
 <div class="columns">
+  <div class="column is-half">{{ loading_example }}</div>
   <div class="column is-half">
-    {{ loading_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ loading_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- loading_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
-{% include elements/anchor.html name="With icons" %}
+{% include docs/elements/anchor.html name="With icons" %}
 
 <div class="content">
   <p>You can append the <strong>modifier</strong> on a control:</p>
@@ -336,18 +320,16 @@ meta:
   </ul>
   <p>You also need to add a modifier on the <strong>icon</strong>:</p>
   <ul>
-    <li>
-      <code>icon is-left</code> since <code>has-icons-left</code> is used
-    </li>
+    <li><code>icon is-left</code> since <code>has-icons-left</code> is used</li>
   </ul>
   <p>The size of the <strong>select</strong> will define the size of the icon container.</p>
 </div>
 <div class="columns">
+  <div class="column is-half">{{ icons_example }}</div>
   <div class="column is-half">
-    {{ icons_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ icons_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- icons_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
@@ -355,39 +337,42 @@ meta:
   <div class="column is-half">
     <div class="content">
       <p>
-        If the control contains an icon, Bulma will make sure the icon remains <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
+        If the control contains an icon, Bulma will make sure the icon remains
+        <strong>centered</strong>, no matter the size of the input <em>or</em> of the icon.
       </p>
     </div>
     {{ has_icons_small_example }}
   </div>
   <div class="column is-half">
-    {% highlight html %}{{ has_icons_small_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- has_icons_small_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
 <div class="columns">
+  <div class="column is-half">{{ has_icons_normal_example }}</div>
   <div class="column is-half">
-    {{ has_icons_normal_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ has_icons_normal_example }}{% endhighlight %}
-  </div>
-</div>
-
-<div class="columns">
-  <div class="column is-half">
-    {{ has_icons_medium_example }}
-  </div>
-  <div class="column is-half">
-    {% highlight html %}{{ has_icons_medium_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- has_icons_normal_example -}}
+    {%- endhighlight %}
   </div>
 </div>
 
 <div class="columns">
+  <div class="column is-half">{{ has_icons_medium_example }}</div>
   <div class="column is-half">
-    {{ has_icons_large_example }}
+    {% highlight html -%}
+    {{- has_icons_medium_example -}}
+    {%- endhighlight %}
   </div>
+</div>
+
+<div class="columns">
+  <div class="column is-half">{{ has_icons_large_example }}</div>
   <div class="column is-half">
-    {% highlight html %}{{ has_icons_large_example }}{% endhighlight %}
+    {% highlight html -%}
+    {{- has_icons_large_example -}}
+    {%- endhighlight %}
   </div>
 </div>

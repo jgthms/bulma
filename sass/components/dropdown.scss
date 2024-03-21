@@ -1,0 +1,188 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$dropdown-menu-min-width: 12rem !default;
+
+$dropdown-content-background-color: cv.getVar("scheme-main") !default;
+$dropdown-content-offset: 0.25rem !default;
+$dropdown-content-padding-bottom: 0.5rem !default;
+$dropdown-content-padding-top: 0.5rem !default;
+$dropdown-content-radius: cv.getVar("radius") !default;
+$dropdown-content-shadow: cv.getVar("shadow") !default;
+$dropdown-content-z: 20 !default;
+
+$dropdown-item-h: cv.getVar("scheme-h");
+$dropdown-item-s: cv.getVar("scheme-s");
+$dropdown-item-l: cv.getVar("scheme-main-l");
+$dropdown-item-background-l: cv.getVar("scheme-main-l");
+$dropdown-item-background-l-delta: 0%;
+$dropdown-item-hover-background-l-delta: cv.getVar("hover-background-l-delta");
+$dropdown-item-active-background-l-delta: cv.getVar(
+  "active-background-l-delta"
+);
+$dropdown-item-color-l: cv.getVar("text-strong-l");
+$dropdown-item-selected-h: cv.getVar("link-h");
+$dropdown-item-selected-s: cv.getVar("link-s");
+$dropdown-item-selected-l: cv.getVar("link-l");
+$dropdown-item-selected-background-l: cv.getVar("link-l");
+$dropdown-item-selected-color-l: cv.getVar("link-invert-l");
+
+$dropdown-divider-background-color: cv.getVar("border-weak") !default;
+
+.#{iv.$class-prefix}dropdown {
+  // prettier-ignore-start
+  @include cv.register-vars(
+    (
+      "dropdown-menu-min-width": #{$dropdown-menu-min-width},
+      "dropdown-content-background-color": #{$dropdown-content-background-color},
+      "dropdown-content-offset": #{$dropdown-content-offset},
+      "dropdown-content-padding-bottom": #{$dropdown-content-padding-bottom},
+      "dropdown-content-padding-top": #{$dropdown-content-padding-top},
+      "dropdown-content-radius": #{$dropdown-content-radius},
+      "dropdown-content-shadow": #{$dropdown-content-shadow},
+      "dropdown-content-z": #{$dropdown-content-z},
+      "dropdown-item-h": #{$dropdown-item-h},
+      "dropdown-item-s": #{$dropdown-item-s},
+      "dropdown-item-l": #{$dropdown-item-l},
+      "dropdown-item-background-l": #{$dropdown-item-background-l},
+      "dropdown-item-background-l-delta": #{$dropdown-item-background-l-delta},
+      "dropdown-item-hover-background-l-delta": #{$dropdown-item-hover-background-l-delta},
+      "dropdown-item-active-background-l-delta": #{$dropdown-item-active-background-l-delta},
+      "dropdown-item-color-l": #{$dropdown-item-color-l},
+      "dropdown-item-selected-h": #{$dropdown-item-selected-h},
+      "dropdown-item-selected-s": #{$dropdown-item-selected-s},
+      "dropdown-item-selected-l": #{$dropdown-item-selected-l},
+      "dropdown-item-selected-background-l": #{$dropdown-item-selected-background-l},
+      "dropdown-item-selected-color-l": #{$dropdown-item-selected-color-l},
+      "dropdown-divider-background-color": #{$dropdown-divider-background-color},
+    )
+  );
+  // prettier-ignore-end
+}
+
+.#{iv.$class-prefix}dropdown {
+  display: inline-flex;
+  position: relative;
+  vertical-align: top;
+
+  &.#{iv.$class-prefix}is-active,
+  &.#{iv.$class-prefix}is-hoverable:hover {
+    .#{iv.$class-prefix}dropdown-menu {
+      display: block;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-right {
+    .#{iv.$class-prefix}dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-up {
+    .#{iv.$class-prefix}dropdown-menu {
+      bottom: 100%;
+      padding-bottom: cv.getVar("dropdown-content-offset");
+      padding-top: initial;
+      top: auto;
+    }
+  }
+}
+
+.#{iv.$class-prefix}dropdown-menu {
+  display: none;
+  @include mx.ltr-position(0, false);
+  min-width: cv.getVar("dropdown-menu-min-width");
+  padding-top: cv.getVar("dropdown-content-offset");
+  position: absolute;
+  top: 100%;
+  z-index: cv.getVar("dropdown-content-z");
+}
+
+.#{iv.$class-prefix}dropdown-content {
+  background-color: cv.getVar("dropdown-content-background-color");
+  border-radius: cv.getVar("dropdown-content-radius");
+  box-shadow: cv.getVar("dropdown-content-shadow");
+  padding-bottom: cv.getVar("dropdown-content-padding-bottom");
+  padding-top: cv.getVar("dropdown-content-padding-top");
+}
+
+.#{iv.$class-prefix}dropdown-item {
+  color: hsl(
+    #{cv.getVar("dropdown-item-h")},
+    #{cv.getVar("dropdown-item-s")},
+    #{cv.getVar("dropdown-item-color-l")}
+  );
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0.375rem 1rem;
+}
+
+a.#{iv.$class-prefix}dropdown-item,
+button.#{iv.$class-prefix}dropdown-item {
+  background-color: hsl(
+    #{cv.getVar("dropdown-item-h")},
+    #{cv.getVar("dropdown-item-s")},
+    calc(
+      #{cv.getVar("dropdown-item-background-l")} + #{cv.getVar(
+          "dropdown-item-background-l-delta"
+        )}
+    )
+  );
+  padding-inline-end: 3rem;
+  text-align: inherit;
+  white-space: nowrap;
+  width: 100%;
+
+  &:hover {
+    @include cv.register-vars(
+      (
+        "dropdown-item-background-l-delta": #{cv.getVar(
+            "dropdown-item-hover-background-l-delta"
+          )},
+        "dropdown-item-border-l-delta": #{cv.getVar(
+            "dropdown-item-hover-border-l-delta"
+          )},
+      )
+    );
+  }
+
+  &:active {
+    @include cv.register-vars(
+      (
+        "dropdown-item-background-l-delta": #{cv.getVar(
+            "dropdown-item-active-background-l-delta"
+          )},
+        "dropdown-item-border-l-delta": #{cv.getVar(
+            "dropdown-item-active-border-l-delta"
+          )},
+      )
+    );
+  }
+
+  &.#{iv.$class-prefix}is-active,
+  &.#{iv.$class-prefix}is-selected {
+    @include cv.register-vars(
+      (
+        "dropdown-item-h": #{cv.getVar("dropdown-item-selected-h")},
+        "dropdown-item-s": #{cv.getVar("dropdown-item-selected-s")},
+        "dropdown-item-l": #{cv.getVar("dropdown-item-selected-l")},
+        "dropdown-item-background-l": #{cv.getVar(
+            "dropdown-item-selected-background-l"
+          )},
+        "dropdown-item-color-l": #{cv.getVar("dropdown-item-selected-color-l")},
+      )
+    );
+  }
+}
+
+.#{iv.$class-prefix}dropdown-divider {
+  background-color: cv.getVar("dropdown-divider-background-color");
+  border: none;
+  display: block;
+  height: 1px;
+  margin: 0.5rem 0;
+}

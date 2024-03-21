@@ -1,0 +1,24 @@
+$header-bp: 1000px;
+
+%bd-animated {
+  animation-duration: var(--animation-duration);
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0, 0, 0, 1);
+  transform-origin: center;
+  transform-style: preserve-3d;
+}
+
+%anim-3d {
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0, 0, 0, 1);
+  backface-visibility: hidden;
+}
+
+@mixin bd-animate($name) {
+  @extend %bd-animated;
+
+  &.is-animated {
+    animation-name: $name;
+  }
+}

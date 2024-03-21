@@ -1,0 +1,30 @@
+<section class="bd-hero is-{{ include.variant }}">
+  <div class="bd-hero-body">
+    <h1 class="bd-hero-title">
+      {{ include.title }}
+    </h1>
+
+    <hr class="bd-hr">
+
+    <h2 class="bd-hero-subtitle">
+      {{ include.subtitle }}
+    </h2>
+
+    {% if include.prints %}
+      <div class="bd-hero-prints">
+        {% for print in include.prints %}
+          <a class="bd-hero-print icon-text">
+            <span class="icon">
+              <i class="{{ print.icon }}"></i>
+            </span>
+            <span>{{ print.label }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="bd-hero-carbon">
+    {% include website/carbon.html %}
+  </div>
+</section>

@@ -1,0 +1,95 @@
+{% assign current_link_id = page.breadcrumb | last %}
+
+{% assign current_category_index = page.breadcrumb | size | minus: 2 %}
+{% assign current_category_id = page.breadcrumb[current_category_index] %}
+
+{% assign same_category_ids = site.data.links.categories[current_category_id] %}
+{% assign category_size = same_category_ids | size %}
+{% assign last_index = category_size | minus: 1 %}
+
+{% for category_id in site.data.links.pagination_category_ids %}
+  {% if category_id == current_category_id %}
+    {% assign prev_category_index = forloop.index0 | minus: 1 %}
+    {% assign next_category_index = forloop.index0 | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% for link_id in same_category_ids %}
+  {% if link_id == current_link_id %}
+    {% assign prev_index = forloop.index0 | minus: 1 %}
+    {% assign next_index = forloop.index0 | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<!-- Previous link -->
+<!-- If first index in list -->
+{% if prev_index == -1 %}
+  {% assign prev_category_id = site.data.links.pagination_category_ids[prev_category_index] %}
+  {% assign prev_category_links = site.data.links.categories[prev_category_id] %}
+  {% assign prev_category_size = prev_category_links | size %}
+  {% assign prev_last_index = prev_category_size | minus: 1 %}
+  {% assign prev_link_id = prev_category_links[prev_last_index] %}
+{% else %}
+  {% assign prev_category_id = current_category_id %}
+  {% assign prev_link_id = same_category_ids[prev_index] %}
+{% endif %}
+
+<!-- Next link -->
+<!-- If last index in list -->
+{% if next_index == category_size %}
+  {% assign next_category_id = site.data.links.pagination_category_ids[next_category_index] %}
+  {% assign next_category_ = site.data.links.categories[next_category_id] %}
+  {% assign next_link_id = next_category_[0] %}
+{% else %}
+  {% assign next_category_id = current_category_id %}
+  {% assign next_link_id = same_category_ids[next_index] %}
+{% endif %}
+
+{% assign prev_theme = prev_category_id %}
+{% assign next_theme = next_category_id %}
+
+{% assign library_category_ids = 'columns,components,elements,form,layout' | split: ',' %}
+
+{% if library_category_ids contains prev_category_id %}
+  {% assign prev_theme = 'library' %}
+{% endif %}
+
+{% if library_category_ids contains next_category_id %}
+  {% assign next_theme = 'library' %}
+{% endif %}
+
+{% unless page.hide_pagination %}
+  {% if prev_link_id or next_link_id %}
+    <nav class="bd-docs-pagination bd-pagination-links">
+      {% if prev_link_id %}
+        {% assign prev_link = site.data.links.by_id[prev_link_id] %}
+        <a
+          class="bd-pagination-button bd-pagination-prev bd-theme-{{ prev_theme }}"
+          href="{{ site.url }}{{ prev_link.path }}"
+          title="{{ prev_link.name }}"
+        >
+          <i>←</i>
+          <span>
+            <em>{{ prev_category_id }}:</em>
+            <strong>{{ prev_link.name }}</strong>
+          </span>
+        </a>
+      {% endif %}
+
+      {% if next_link_id %}
+        {% assign next_link = site.data.links.by_id[next_link_id] %}
+        <a
+          class="bd-pagination-button bd-pagination-next bd-theme-{{ next_theme }}"
+          href="{{ site.url }}{{ next_link.path }}"
+          title="{{ next_link.name }}"
+        >
+          <span>
+            <em>{{ next_category_id }}:</em>
+            <strong>{{ next_link.name }}</strong>
+          </span>
+          <i>→</i>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endunless %}

@@ -1,0 +1,198 @@
+---
+title: Customize with Sass
+layout: docs
+theme: customize
+doc-tab: customize
+doc-subtab: with-sass
+breadcrumb:
+  - home
+  - documentation
+  - customize
+  - customize-with-sass
+---
+
+{% capture content %}
+Bulma is built using [Sass](https://sass-lang.com/). It uses **Sass variables** to define colors, sizes, spacing, and other aspects of the framework.
+{% endcapture %}
+
+{% include markdown.html content=content %}
+
+{% include docs/elements/anchor.html name="Install the dependencies" %}
+
+{% capture content %}
+To customize Bulma with Sass, you first need to [install Sass](https://sass-lang.com/install/). The recommended approach is to use the `sass` npm package.
+{% endcapture %}
+
+{% include markdown.html content=content %}
+
+{% capture content %}
+{% highlight bash %}
+npm install sass
+npm install bulma
+{% endhighlight %}
+
+In your `package.json`, add one script to build Bulma, one to build and watch for changes:
+
+{% highlight json %}
+"build-bulma": "sass --load-path=node_modules my-bulma-project.scss my-bulma-project.css",
+"start": "npm run build-bulma -- --watch"
+{% endhighlight %}
+
+Your whole `package.json` should look like this:
+
+{% highlight json %}
+{
+  "dependencies": {
+    "bulma": "^1.0.0",
+    "sass": "^1.72.0"
+  },
+  "scripts": {
+    "build-bulma": "sass --load-path=node_modules my-bulma-project.scss my-bulma-project.css",
+    "start": "npm run build-bulma -- --watch"
+  }
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include markdown.html content=content %}
+
+{% include docs/elements/anchor.html name="Create your Sass file" %}
+
+{% capture content %}
+Next to your `package.json`, create a `my-bulma-project.scss` file.
+
+To overwrite Bulma's Sass variables with your own value, write `@use` and the `with` keyword, which takes a Sass map:
+
+{% highlight sass %}
+@use "sass:color";
+
+// Set your brand colors
+$purple: #8a4d76;
+$pink: #fa7c91;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+
+// Path to Bulma's sass folder
+@use "bulma/sass" with (
+  $family-primary: '"Nunito", sans-serif',
+  $grey-dark: $brown,
+  $grey-light: $beige-light,
+  $primary: $purple,
+  $link: $pink,
+  $control-border-width: 2px,
+  $input-shadow: none
+);
+
+// Import the Google Font
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+{% endhighlight %}
+{% endcapture %}
+
+{% include markdown.html content=content %}
+
+{% capture content %}
+Test out your setup by running the following command:
+
+{% highlight bash %}
+npm run build-bulma
+{% endhighlight %}
+
+You should see **2 files** appearing next to the other ones:
+
+* `my-bulma-project.css`, your CSS output file
+* `my-bulma-project.css.map`, an optional source map
+{% endcapture %}
+
+{% include markdown.html content=content %}
+
+{% include docs/elements/anchor.html name="Add an HTML page" %}
+
+{% capture content %}
+To view your Bulma project come to life, create an `index.html` page with the following content:
+{% endcapture %}
+
+{% include markdown.html content=content %}
+
+<div class="bd-example bd-highlight-full">
+  {% highlight html -%}
+  {%- include docs/snippets/custom-page.html -%}
+  {%- endhighlight %}
+</div>
+
+{% include docs/elements/anchor.html name="Final result" %}
+
+{% capture content %}
+Your project folder should look like this:
+{% endcapture %}
+
+{% include markdown.html content=content %}
+
+<table class="table is-bordered">
+  <tr>
+    <td>
+      <div class="icon-text has-text-html">
+        <span class="icon">
+          <i class="fa-brands fa-html5"></i>
+        </span>
+      </div>
+    </td>
+    <td><code>index.html</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="icon-text has-text-css">
+        <span class="icon">
+          <i class="fa-brands fa-css3"></i>
+        </span>
+      </div>
+    </td>
+    <td><code>my-bulma-project.css</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="icon-text has-text-success">
+        <span class="icon">
+          <i class="fa-solid fa-code"></i>
+        </span>
+      </div>
+    </td>
+    <td><code>my-bulma-project.css.map</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="icon-text has-text-sass">
+        <span class="icon">
+          <i class="fa-brands fa-sass"></i>
+        </span>
+      </div>
+    </td>
+    <td><code>my-bulma-project.scss</code></td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="icon-text has-text-js">
+        <span class="icon">
+          <i class="fa-brands fa-js"></i>
+        </span>
+      </div>
+    </td>
+    <td><code>package.json</code></td>
+  </tr>
+</table>
+
+<div class="content">
+  <p>And your final page will look like this:</p>
+</div>
+
+{% include
+  screenshot.html
+  path="screenshots/custom-page.png"
+  width=640
+  height=330
+  caption="Your final Bulma page"
+%}

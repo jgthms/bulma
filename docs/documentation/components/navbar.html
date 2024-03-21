@@ -1,6 +1,8 @@
 ---
 title: Navbar
-layout: documentation
+layout: docs
+theme: library
+fullwidth: true
 doc-tab: components
 doc-subtab: navbar
 breadcrumb:
@@ -12,16 +14,19 @@ meta:
   colors: true
   sizes: false
   variables: true
+modals:
+- docs/examples/navbar-bottom.html
 ---
 
 {% capture navbar_basic_example %}
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
-      <img src="{{ site.url }}/images/bulma-logo.png" width="112" height="28">
+      {% include svg/bulma-logo.html %}
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -47,7 +52,7 @@ meta:
           <a class="navbar-item">
             About
           </a>
-          <a class="navbar-item">
+          <a class="navbar-item is-selected">
             Jobs
           </a>
           <a class="navbar-item">
@@ -78,7 +83,7 @@ meta:
 {% endcapture %}
 
 {% capture navbar_example %}
-{% include examples/navbar.html id="Default" %}
+{% include docs/examples/navbar.html id="Default" %}
 {% endcapture %}
 
 {% capture navbar_brand_example %}
@@ -90,7 +95,17 @@ meta:
 {% endcapture %}
 
 {% capture navbar_burger_example %}
-<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+<a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</a>
+{% endcapture %}
+
+{% capture navbar_burger_active_example %}
+<a class="navbar-burger is-active" role="button" aria-label="menu" aria-expanded="false">
+  <span aria-hidden="true"></span>
   <span aria-hidden="true"></span>
   <span aria-hidden="true"></span>
   <span aria-hidden="true"></span>
@@ -101,10 +116,11 @@ meta:
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ site.url }}">
-      <img src="{{ site.url }}/images/bulma-logo.png" alt="{{ site.data.meta.title }}" width="112" height="28">
+      {% include svg/bulma-logo.html %}
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -154,7 +170,7 @@ meta:
 
 {% capture navbar_item_brand_example %}
 <a class="navbar-item">
-  <img src="{{ site.url }}/images/bulma-logo.png" width="112" height="28" alt="Bulma">
+  {% include svg/bulma-logo.html %}
 </a>
 {% endcapture %}
 
@@ -202,7 +218,7 @@ meta:
 {% endcapture %}
 
 {% capture navbar_transparent_example %}
-{% include examples/navbar.html transparent=true boxed=true id="TransparentExample" %}
+{% include docs/examples/navbar.html transparent=true boxed=true id="TransparentExample" %}
 {% endcapture %}
 
 {% capture navbar_dropdown_example %}
@@ -423,9 +439,7 @@ meta:
 {% capture navbar_dropdown_default_example %}
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
-    <img src="{{ site.url }}/images/bulma-logo.png"
-      alt="{{ site.data.meta.title }}"
-      width="112" height="28">
+    {% include svg/bulma-logo.html %}
   </a>
 
   <div class="navbar-item has-dropdown is-active">
@@ -466,9 +480,7 @@ meta:
 {% capture navbar_dropdown_boxed_example %}
 <nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
-    <img src="{{ site.url }}/images/bulma-logo.png"
-      alt="{{ site.data.meta.title }}"
-      width="112" height="28">
+    {% include svg/bulma-logo.html %}
   </a>
 
   <div class="navbar-item has-dropdown is-active">
@@ -509,9 +521,7 @@ meta:
 {% capture navbar_dropdown_item_active_example %}
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
   <a class="navbar-item">
-    <img src="{{ site.url }}/images/bulma-logo.png"
-      alt="{{ site.data.meta.title }}"
-      width="112" height="28">
+    {% include svg/bulma-logo.html %}
   </a>
 
   <div class="navbar-item has-dropdown is-active">
@@ -523,7 +533,7 @@ meta:
       <a class="navbar-item">
         Overview
       </a>
-      <a class="navbar-item is-active">
+      <a class="navbar-item is-selected">
         Elements
       </a>
       <a class="navbar-item">
@@ -555,6 +565,7 @@ meta:
 
 {% capture navbar_js_html %}
 <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+  <span aria-hidden="true"></span>
   <span aria-hidden="true"></span>
   <span aria-hidden="true"></span>
   <span aria-hidden="true"></span>
@@ -659,7 +670,7 @@ $(document).ready(function() {
   </ul>
 </div>
 
-{% include elements/anchor.html name="Basic Navbar" %}
+{% include docs/elements/anchor.html name="Basic Navbar" %}
 
 <div class="content">
   <p>
@@ -673,7 +684,7 @@ $(document).ready(function() {
 
 {% highlight html %}{{ navbar_basic_example }}{% endhighlight %}
 
-{% include elements/anchor.html name="Navbar brand" %}
+{% include docs/elements/anchor.html name="Navbar brand" %}
 
 <div class="content">
   <p>
@@ -693,7 +704,7 @@ $(document).ready(function() {
 
 <div class="content">
   <p>
-    The navbar brand is <strong>always visible</strong>: on both touch devices {% include bp/touch.html %} and desktop {% include bp/desktop.html %}. As a result, it is recommended to only use a few navbar items to avoid <strong>overflowing</strong> horizontally on small devices.
+    The navbar brand is <strong>always visible</strong>: on both touch devices {% include docs/bp/touch.html %} and desktop {% include docs/bp/desktop.html %}. As a result, it is recommended to only use a few navbar items to avoid <strong>overflowing</strong> horizontally on small devices.
   </p>
 </div>
 
@@ -705,11 +716,11 @@ $(document).ready(function() {
 
 <div class="content">
   <p>
-    On desktop {% include bp/desktop.html %}, the navbar brand will only take up the space it needs.
+    On desktop {% include docs/bp/desktop.html %}, the navbar brand will only take up the space it needs.
   </p>
 </div>
 
-{% include elements/anchor.html name="Navbar burger" %}
+{% include docs/elements/anchor.html name="Navbar burger" %}
 
 <div class="content">
   <p>
@@ -717,15 +728,22 @@ $(document).ready(function() {
   </p>
 </div>
 
-<div class="example is-paddingless">
-  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" style="display: flex;">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-  </a>
-</div>
+<div class="columns">
+  <div class="column is-one-quarter">
+    <div class="example is-paddingless" style="margin-bottom: 1.5rem; width: 2.5rem;">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" style="display: flex;">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
 
-{% highlight html %}{{ navbar_burger_example }}{% endhighlight %}
+  <div class="column">
+    {% highlight html %}{{ navbar_burger_example }}{% endhighlight %}
+  </div>
+</div>
 
 <div class="content">
   <p>
@@ -733,15 +751,24 @@ $(document).ready(function() {
   </p>
 </div>
 
-<div class="example is-paddingless">
-  <a role="button" class="navbar-burger is-active" aria-label="menu" aria-expanded="false" style="display: flex;">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-  </a>
+<div class="columns">
+  <div class="column is-one-quarter">
+    <div class="example is-paddingless" style="width: 2.5rem;">
+      <a role="button" class="navbar-burger is-active" aria-label="menu" aria-expanded="false" style="display: flex;">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="column">
+    {% highlight html %}{{ navbar_burger_active_example }}{% endhighlight %}
+  </div>
 </div>
 
-{% include elements/anchor.html name="Navbar menu" %}
+{% include docs/elements/anchor.html name="Navbar menu" %}
 
 <div class="content">
   <p>
@@ -753,7 +780,7 @@ $(document).ready(function() {
 
 <div class="content">
   <p>
-    The <code>navbar-menu</code> is <strong>hidden on touch devices</strong> {% include bp/touch.html %}. You need to add the modifier class <code>is-active</code> to display it.
+    The <code>navbar-menu</code> is <strong>hidden on touch devices</strong> {% include docs/bp/touch.html %}. You need to add the modifier class <code>is-active</code> to display it.
   </p>
 </div>
 
@@ -761,7 +788,7 @@ $(document).ready(function() {
 
 <div class="content">
   <p>
-    On desktop {% include bp/desktop.html %}, the <code>navbar-menu</code> will <strong>fill up the space</strong> available in the navbar, leaving the navbar brand just the space it needs. It needs, however, two elements as direct children:
+    On desktop {% include docs/bp/desktop.html %}, the <code>navbar-menu</code> will <strong>fill up the space</strong> available in the navbar, leaving the navbar brand just the space it needs. It needs, however, two elements as direct children:
   </p>
   <ul>
     <li>
@@ -802,14 +829,14 @@ $(document).ready(function() {
   </div>
 </div>
 
-{% include elements/anchor.html name="Navbar start and navbar end" %}
+{% include docs/elements/anchor.html name="Navbar start and navbar end" %}
 
 <div class="content">
   <p>
     The <code>navbar-start</code> and <code>navbar-end</code> are the two direct and only children of the <code>navbar-menu</code>.
   </p>
   <p>
-    On desktop {% include bp/desktop.html %}:
+    On desktop {% include docs/bp/desktop.html %}:
   </p>
   <ul>
     <li>
@@ -826,7 +853,7 @@ $(document).ready(function() {
 
 {% highlight html %}{{navbar_start_end_example}}{% endhighlight %}
 
-{% include elements/anchor.html name="Navbar item" %}
+{% include docs/elements/anchor.html name="Navbar item" %}
 
 <div class="content">
   <p>
@@ -889,7 +916,7 @@ $(document).ready(function() {
   </ul>
 </div>
 
-{% include elements/anchor.html name="Transparent navbar" %}
+{% include docs/elements/anchor.html name="Transparent navbar" %}
 
 <div class="content">
   <p>
@@ -897,9 +924,9 @@ $(document).ready(function() {
   </p>
 </div>
 
-{% include elements/snippet.html content=navbar_transparent_example paddingless=true horizontal=true more=true %}
+{% include docs/elements/snippet.html content=navbar_transparent_example paddingless=true horizontal=true more=true %}
 
-{% include elements/anchor.html name="Fixed navbar" %}
+{% include docs/elements/anchor.html name="Fixed navbar" %}
 
 <div class="content">
   <p>
@@ -925,7 +952,35 @@ $(document).ready(function() {
   </a>
 </div>
 
-{% include elements/anchor.html name="Dropdown menu" %}
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const rootEl = document.documentElement;
+    const navbarBottomEl = document.getElementById('navbarBottom');
+    const fixBottomEl = document.getElementById('navbarFixBottom');
+    const fixBottomElText = document.getElementById('navbarFixBottomText');
+    let fixedBottom = false;
+
+    fixBottomEl.addEventListener('click', event => {
+      fixedBottom = !fixedBottom;
+
+      if (fixedBottom) {
+        fixBottomEl.className = 'button is-success';
+        fixBottomElText.innerHTML = 'Hide';
+        rootEl.classList.add('has-navbar-fixed-bottom');
+        navbarBottomEl.classList.remove('is-hidden');
+      } else {
+        fixBottomEl.className = 'button is-link';
+        fixBottomElText.innerHTML = 'Show';
+        rootEl.classList.remove('has-navbar-fixed-bottom');
+        navbarBottomEl.classList.add('is-hidden');
+      }
+    });
+
+  });
+</script>
+
+{% include docs/elements/anchor.html name="Dropdown menu" %}
 
 <div class="content">
   <p>
@@ -962,7 +1017,7 @@ $(document).ready(function() {
 
 <div class="content">
   <p>
-    The <code>navbar-dropdown</code> is visible on touch devices {% include bp/touch.html %} but hidden on desktop {% include bp/desktop.html %}. <em>How</em> the dropdown is displayed on desktop depends on the parent's class.
+    The <code>navbar-dropdown</code> is visible on touch devices {% include docs/bp/touch.html %} but hidden on desktop {% include docs/bp/desktop.html %}. <em>How</em> the dropdown is displayed on desktop depends on the parent's class.
   </p>
   <p>
     The <code>navbar-item</code> with the <code>has-dropdown</code> modifier, has <strong>2 additional modifiers</strong>
@@ -1211,12 +1266,7 @@ $(document).ready(function() {
 
 {% highlight html %}{{ navbar_divider_example }}{% endhighlight %}
 
-{% include elements/anchor.html name="Colors" %}
-
-<div class="tags has-addons">
-  <span class="tag">New!</span>
-  <span class="tag is-info">0.5.2</span>
-</div>
+{% include docs/elements/anchor.html name="Colors" %}
 
 <div class="content">
   <p>
@@ -1238,47 +1288,51 @@ $(document).ready(function() {
 
 {% highlight html %}{{ navbar_color_markup }}{% endhighlight %}
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="primary" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar.html %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="link" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="primary" %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="info" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="link" %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="success" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="info" %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="warning" light=true %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="success" %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="danger" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="warning" light=true %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="black" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="danger" %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="dark" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="black" %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="light" light=true %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="dark" %}
 </div>
 
-<div class="bd-example is-paddingless">
-  {% include examples/navbar-color.html color="white" light=true %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="light" light=true %}
 </div>
 
-{% include elements/anchor.html name="Navbar Helper Classes" %}
+<div class="bd-example is-paddingless" style="height: 30rem;">
+  {% include docs/examples/navbar-color.html color="white" light=true %}
+</div>
+
+{% include docs/elements/anchor.html name="Navbar Helper Classes" %}
 
 <table class="table is-bordered">
   <tbody>
@@ -1303,4 +1357,4 @@ $(document).ready(function() {
 </table>
 
 
-{% include components/variables.html type='component' %}
+

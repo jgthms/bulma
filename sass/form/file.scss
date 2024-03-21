@@ -1,0 +1,330 @@
+@use "shared";
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/controls";
+@use "../utilities/extends";
+
+$file-radius: cv.getVar("radius") !default;
+
+$file-h: cv.getVar("scheme-h");
+$file-s: cv.getVar("scheme-s");
+$file-background-l: cv.getVar("scheme-main-ter-l");
+$file-background-l-delta: 0%;
+$file-hover-background-l-delta: -5%;
+$file-active-background-l-delta: -10%;
+$file-border-l: cv.getVar("border-l");
+$file-border-l-delta: 0%;
+$file-hover-border-l-delta: -10%;
+$file-active-border-l-delta: -20%;
+$file-cta-color-l: cv.getVar("text-strong-l");
+$file-name-color-l: cv.getVar("text-strong-l");
+$file-color-l-delta: 0%;
+$file-hover-color-l-delta: -5%;
+$file-active-color-l-delta: -10%;
+
+$file-cta-color: cv.getVar("text") !default;
+$file-cta-hover-color: cv.getVar("text-strong") !default;
+$file-cta-active-color: cv.getVar("text-strong") !default;
+
+$file-name-border-color: cv.getVar("border") !default;
+$file-name-border-style: solid !default;
+$file-name-border-width: 1px 1px 1px 0 !default;
+$file-name-max-width: 16em !default;
+
+$file-colors: shared.$form-colors !default;
+
+.#{iv.$class-prefix}file {
+  @extend %block;
+  @extend %unselectable;
+
+  @include cv.register-vars(
+    (
+      "file-radius": #{$file-radius},
+      "file-name-border-color": #{$file-name-border-color},
+      "file-name-border-style": #{$file-name-border-style},
+      "file-name-border-width": #{$file-name-border-width},
+      "file-name-max-width": #{$file-name-max-width},
+      "file-h": #{$file-h},
+      "file-s": #{$file-s},
+      "file-background-l": #{$file-background-l},
+      "file-background-l-delta": #{$file-background-l-delta},
+      "file-hover-background-l-delta": #{$file-hover-background-l-delta},
+      "file-active-background-l-delta": #{$file-active-background-l-delta},
+      "file-border-l": #{$file-border-l},
+      "file-border-l-delta": #{$file-border-l-delta},
+      "file-hover-border-l-delta": #{$file-hover-border-l-delta},
+      "file-active-border-l-delta": #{$file-active-border-l-delta},
+      "file-cta-color-l": #{$file-cta-color-l},
+      "file-name-color-l": #{$file-name-color-l},
+      "file-color-l-delta": #{$file-color-l-delta},
+      "file-hover-color-l-delta": #{$file-hover-color-l-delta},
+      "file-active-color-l-delta": #{$file-active-color-l-delta},
+    )
+  );
+
+  align-items: stretch;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+
+  // Colors
+  @each $name, $pair in $file-colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "file-h": #{cv.getVar($name, "", "-h")},
+          "file-s": #{cv.getVar($name, "", "-s")},
+          "file-background-l": #{cv.getVar($name, "", "-l")},
+          "file-border-l": #{cv.getVar($name, "", "-l")},
+          "file-cta-color-l": #{cv.getVar($name, "", "-invert-l")},
+          "file-name-color-l": #{cv.getVar($name, "", "-on-scheme-l")},
+        )
+      );
+    }
+  }
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    font-size: cv.getVar("size-small");
+  }
+
+  &.#{iv.$class-prefix}is-normal {
+    font-size: cv.getVar("size-normal");
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    font-size: cv.getVar("size-medium");
+
+    .#{iv.$class-prefix}file-icon {
+      .#{iv.$class-prefix}fa {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    font-size: cv.getVar("size-large");
+
+    .#{iv.$class-prefix}file-icon {
+      .#{iv.$class-prefix}fa {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  // Modifiers
+  &.#{iv.$class-prefix}has-name {
+    .#{iv.$class-prefix}file-cta {
+      border-end-end-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    .#{iv.$class-prefix}file-name {
+      border-end-start-radius: 0;
+      border-start-start-radius: 0;
+    }
+
+    &.#{iv.$class-prefix}is-empty {
+      .#{iv.$class-prefix}file-cta {
+        border-radius: cv.getVar("file-radius");
+      }
+
+      .#{iv.$class-prefix}file-name {
+        display: none;
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-boxed {
+    .#{iv.$class-prefix}file-label {
+      flex-direction: column;
+    }
+
+    .#{iv.$class-prefix}file-cta {
+      flex-direction: column;
+      height: auto;
+      padding: 1em 3em;
+    }
+
+    .#{iv.$class-prefix}file-name {
+      border-width: 0 1px 1px;
+    }
+
+    .#{iv.$class-prefix}file-icon {
+      height: 1.5em;
+      width: 1.5em;
+
+      .#{iv.$class-prefix}fa {
+        font-size: 1.5rem;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-small {
+      .#{iv.$class-prefix}file-icon .#{iv.$class-prefix}fa {
+        font-size: 1rem;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-medium {
+      .#{iv.$class-prefix}file-icon .#{iv.$class-prefix}fa {
+        font-size: 2rem;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-large {
+      .#{iv.$class-prefix}file-icon .#{iv.$class-prefix}fa {
+        font-size: 2.5rem;
+      }
+    }
+
+    &.#{iv.$class-prefix}has-name {
+      .#{iv.$class-prefix}file-cta {
+        border-end-end-radius: 0;
+        border-end-start-radius: 0;
+        border-start-end-radius: cv.getVar("file-radius");
+        border-start-start-radius: cv.getVar("file-radius");
+      }
+
+      .#{iv.$class-prefix}file-name {
+        border-end-end-radius: cv.getVar("file-radius");
+        border-end-start-radius: cv.getVar("file-radius");
+        border-start-end-radius: 0;
+        border-start-start-radius: 0;
+        border-width: 0 1px 1px;
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-centered {
+    justify-content: center;
+  }
+
+  &.#{iv.$class-prefix}is-fullwidth {
+    .#{iv.$class-prefix}file-label {
+      width: 100%;
+    }
+
+    .#{iv.$class-prefix}file-name {
+      flex-grow: 1;
+      max-width: none;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-right {
+    justify-content: flex-end;
+
+    .#{iv.$class-prefix}file-cta {
+      border-radius: 0 cv.getVar("file-radius") cv.getVar("file-radius") 0;
+    }
+
+    .#{iv.$class-prefix}file-name {
+      border-radius: cv.getVar("file-radius") 0 0 cv.getVar("file-radius");
+      border-width: 1px 0 1px 1px;
+      order: -1;
+    }
+  }
+}
+
+.#{iv.$class-prefix}file-label {
+  align-items: stretch;
+  display: flex;
+  cursor: pointer;
+  justify-content: flex-start;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    @include cv.register-vars(
+      (
+        "file-background-l-delta": #{cv.getVar("file-hover-background-l-delta")},
+        "file-border-l-delta": #{cv.getVar("file-hover-border-l-delta")},
+        "file-color-l-delta": #{cv.getVar("file-hover-color-l-delta")},
+      )
+    );
+  }
+
+  &:active {
+    @include cv.register-vars(
+      (
+        "file-background-l-delta": #{cv.getVar("file-active-background-l-delta")},
+        "file-border-l-delta": #{cv.getVar("file-active-border-l-delta")},
+        "file-color-l-delta": #{cv.getVar("file-active-color-l-delta")},
+      )
+    );
+  }
+}
+
+.#{iv.$class-prefix}file-input {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  outline: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.#{iv.$class-prefix}file-cta,
+.#{iv.$class-prefix}file-name {
+  @extend %control;
+  border-color: hsl(
+    cv.getVar("file-h"),
+    cv.getVar("file-s"),
+    calc(#{cv.getVar("file-border-l")} + #{cv.getVar("file-border-l-delta")})
+  );
+  border-radius: cv.getVar("file-radius");
+  font-size: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  white-space: nowrap;
+}
+
+.#{iv.$class-prefix}file-cta {
+  background-color: hsl(
+    cv.getVar("file-h"),
+    cv.getVar("file-s"),
+    calc(
+      #{cv.getVar("file-background-l")} + #{cv.getVar(
+          "file-background-l-delta"
+        )}
+    )
+  );
+  color: hsl(
+    cv.getVar("file-h"),
+    cv.getVar("file-s"),
+    calc(#{cv.getVar("file-cta-color-l")} + #{cv.getVar("file-color-l-delta")})
+  );
+}
+
+.#{iv.$class-prefix}file-name {
+  border-color: hsl(
+    cv.getVar("file-h"),
+    cv.getVar("file-s"),
+    calc(#{cv.getVar("file-border-l")} + #{cv.getVar("file-color-l-delta")})
+  );
+  border-style: cv.getVar("file-name-border-style");
+  border-width: cv.getVar("file-name-border-width");
+  color: hsl(
+    cv.getVar("file-h"),
+    cv.getVar("file-s"),
+    calc(#{cv.getVar("file-name-color-l")} + #{cv.getVar("file-color-l-delta")})
+  );
+  display: block;
+  max-width: cv.getVar("file-name-max-width");
+  overflow: hidden;
+  text-align: inherit;
+  text-overflow: ellipsis;
+}
+
+.#{iv.$class-prefix}file-icon {
+  align-items: center;
+  display: flex;
+  height: 1em;
+  justify-content: center;
+  margin-inline-end: 0.5em;
+  width: 1em;
+
+  .#{iv.$class-prefix}fa {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,30 @@
+{% if include.color %}
+  {% assign name = include.color | prepend: '-' %}
+{% else %}
+  {% assign name = '' %}
+{% endif %}
+
+<tr>
+  <td>
+    <strong>Background</strong>
+  </td>
+  <td>
+    <code>--bulma-primary{{ name }}</code>
+  </td>
+  <td rowspan="2" style="vertical-align: middle;">
+    <span
+      class="bd-color-swatch"
+      style="--background: var(--bulma-primary{{ name }}); --color: var(--bulma-primary{{ name }}-invert);"
+    >
+      bulma-primary{{ name }}-invert <strong>on</strong> bulma-primary{{ name }}
+    </span>
+  </td>
+</tr>
+<tr>
+  <td>
+    <strong>Foreground</strong>
+  </td>
+  <td>
+    <code>--bulma-primary{{ name }}-invert</code>
+  </td>
+</tr>

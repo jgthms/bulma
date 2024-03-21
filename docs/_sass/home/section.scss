@@ -1,0 +1,129 @@
+@use "sass/utilities/mixins" as mx;
+
+.bd-home-section {
+  --spacing: 3rem;
+  --bd-section-vertical: var(--bulma-block-spacing);
+  --bd-section-horizontal: var(--bulma-block-spacing);
+
+  background-color: var(--bulma-body-background-color);
+  background-image: linear-gradient(
+    180deg,
+    hsla(var(--theme-h), var(--theme-s), var(--theme-l), 0.1),
+    transparent calc(var(--spacing) * 3)
+  );
+  background-repeat: repeat-x;
+  padding: calc(3 * var(--spacing)) var(--spacing) calc(3 * var(--spacing));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  align-items: stretch;
+  z-index: 1;
+
+  .bd-tw {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28em;
+  }
+
+  &.is-support {
+    background: var(--bulma-background);
+    padding: 4.5rem 3rem;
+    gap: 1.5rem;
+
+    .title,
+    strong {
+      color: inherit;
+    }
+  }
+
+  &.theme-dark {
+    background-color: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), 9%);
+    min-height: 70vh;
+    justify-content: center;
+
+    .container {
+      flex-grow: 0;
+    }
+
+    .bd-nav-item {
+      padding: 0.5em 0.75em;
+    }
+  }
+}
+
+.bd-heading {
+  --side-width: 13.5em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  font-size: 1.25em;
+  text-align: center;
+  column-gap: var(--spacing);
+  row-gap: calc(0.5 * var(--spacing));
+  grid-template-columns: 14rem 1fr 14rem;
+
+  .bd-heading-icon,
+  .bd-heading-button {
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--side-width);
+  }
+
+  .bd-heading-icon .icon {
+    color: var(--theme-color);
+    font-size: 1.25em;
+  }
+
+  .title {
+    font-size: 2em;
+  }
+
+  .subtitle {
+    color: var(--theme-color);
+    font-size: 1.25em;
+
+    strong {
+      color: inherit;
+    }
+  }
+
+  .button {
+    font-size: 0.875em;
+  }
+}
+
+.bd-home-themes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25em;
+}
+
+.bd-home-theme-preview {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+
+  > * {
+    flex-basis: auto;
+    flex-grow: 1;
+  }
+}
+
+@include mx.desktop {
+  .bd-heading {
+    flex-wrap: nowrap;
+  }
+}
+
+@include mx.widescreen {
+  .bd-heading {
+    font-size: 1.5em;
+  }
+}

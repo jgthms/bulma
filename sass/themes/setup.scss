@@ -1,0 +1,174 @@
+@use "../utilities/css-variables" as cv;
+
+@mixin setup-theme() {
+  @include cv.register-vars(
+    (
+      // Computed
+      "scheme-main":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("scheme-main-l")}
+        ),
+      "scheme-main-bis":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("scheme-main-bis-l")}
+        ),
+      "scheme-main-ter":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("scheme-main-ter-l")}
+        ),
+      "background":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("background-l")}
+        ),
+      "background-hover":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          calc(
+            #{cv.getVar("background-l")} + #{cv.getVar(
+                "hover-background-l-delta"
+              )}
+          )
+        ),
+      "background-active":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          calc(
+            #{cv.getVar("background-l")} + #{cv.getVar(
+                "active-background-l-delta"
+              )}
+          )
+        ),
+      "border-weak":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("border-weak-l")}
+        ),
+      "border":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("border-l")}
+        ),
+      "border-hover":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          calc(#{cv.getVar("border-l")} + #{cv.getVar("hover-border-l-delta")})
+        ),
+      "border-active":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          calc(#{cv.getVar("border-l")} + #{cv.getVar("active-border-l-delta")})
+        ),
+      "text-weak":
+        hsl(
+          #{cv.getVar("text-h")},
+          #{cv.getVar("text-s")},
+          #{cv.getVar("text-weak-l")}
+        ),
+      "text":
+        hsl(
+          #{cv.getVar("text-h")},
+          #{cv.getVar("text-s")},
+          #{cv.getVar("text-l")}
+        ),
+      "text-strong":
+        hsl(
+          #{cv.getVar("text-h")},
+          #{cv.getVar("text-s")},
+          #{cv.getVar("text-strong-l")}
+        ),
+      "scheme-invert-ter":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("scheme-invert-ter-l")}
+        ),
+      "scheme-invert-bis":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("scheme-invert-bis-l")}
+        ),
+      "scheme-invert":
+        hsl(
+          #{cv.getVar("scheme-h")},
+          #{cv.getVar("scheme-s")},
+          #{cv.getVar("scheme-invert-l")}
+        ),
+      "link":
+        hsl(
+          #{cv.getVar("link-h")},
+          #{cv.getVar("link-s")},
+          #{cv.getVar("link-l")}
+        ),
+      "link-text":
+        hsl(
+          #{cv.getVar("link-h")},
+          #{cv.getVar("link-s")},
+          #{cv.getVar("link-on-scheme-l")}
+        ),
+      "link-text-hover":
+        hsl(
+          #{cv.getVar("link-h")},
+          #{cv.getVar("link-s")},
+          calc(
+            #{cv.getVar("link-on-scheme-l")} + #{cv.getVar(
+                "hover-color-l-delta"
+              )}
+          )
+        ),
+      "link-text-active":
+        hsl(
+          #{cv.getVar("link-h")},
+          #{cv.getVar("link-s")},
+          calc(
+            #{cv.getVar("link-on-scheme-l")} + #{cv.getVar(
+                "active-color-l-delta"
+              )}
+          )
+        ),
+      "focus-h": #{cv.getVar("link-h")},
+      "focus-s": #{cv.getVar("link-s")},
+      "focus-l": #{cv.getVar("link-l")},
+      "focus-offset": 1px,
+      "focus-style": solid,
+      "focus-width": 2px,
+      "focus-shadow-size": 0 0 0 0.1875em,
+      "focus-shadow-alpha": 0.25,
+      "code":
+        hsl(
+          #{cv.getVar("danger-h")},
+          #{cv.getVar("danger-s")},
+          #{cv.getVar("danger-on-scheme-l")}
+        ),
+      "code-background": #{cv.getVar("background")},
+      "pre": #{cv.getVar("text")},
+      "pre-background": #{cv.getVar("background")},
+      "shadow": (
+        0 0.5em 1em -0.125em hsla(#{cv.getVar("shadow-h")}, #{cv.getVar(
+                "shadow-s"
+              )}, #{cv.getVar("shadow-l")}, 0.1),
+        0 0px 0 1px
+          hsla(
+            #{cv.getVar("shadow-h")},
+            #{cv.getVar("shadow-s")},
+            #{cv.getVar("shadow-l")},
+            0.02
+          )
+      )
+    )
+  );
+}

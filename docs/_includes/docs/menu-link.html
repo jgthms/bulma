@@ -1,0 +1,26 @@
+{% assign current_link_id = page.breadcrumb | last %}
+
+<a
+  class="
+    bd-menu-link
+    {% if include.has_sublist %}
+      js-sublist-link
+      has-sublist
+    {% endif %}
+    {% if include.link_id != nil and current_link_id == include.link_id %}
+      is-active
+    {% endif %}
+  "
+  href="{{ site.url }}{{ include.link.path }}"
+  data-current-link-id="{{ current_link_id }}"
+  data-name="{{ include.link.name }}"
+  data-size="{{ include.sublist_size }}"
+>
+  <span class="bd-menu-link-name">{{ include.link.name }}</span>
+
+  {% if include.has_sublist %}
+    <span class="icon is-small">
+      <i class="fa-solid fa-angle-right"></i>
+    </span>
+  {% endif %}
+</a>

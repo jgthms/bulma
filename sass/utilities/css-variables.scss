@@ -1,0 +1,425 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+
+@use "initial-variables" as iv;
+@use "functions" as fn;
+
+@function buildVarName($name, $prefix: "", $suffix: "") {
+  @return "--#{iv.$cssvars-prefix}#{$prefix}#{$name}#{$suffix}";
+}
+
+@function buildHslaString($name, $l, $a: 1) {
+  $lightness: getVar($name, "", "-l");
+  @if ($l) {
+    $lightness: $l;
+  }
+  @return "hsla(#{getVar($name, '', '-h')}, #{getVar($name, '', '-s')}, #{$lightness}, #{$a})";
+}
+
+@function getVar($name, $prefix: "", $suffix: "") {
+  $varName: buildVarName($name, $prefix, $suffix);
+  @return var(#{$varName});
+}
+
+@function getVarWithBackup($name, $backup, $prefix: "", $suffix: "") {
+  $varName: buildVarName($name, $prefix, $suffix);
+  $backupName: buildVarName($backup, $prefix, $suffix);
+  @return var(#{$varName}, var(#{$backupName}));
+}
+
+@function getRgbaVar($name, $alpha, $prefix: "", $suffix: "") {
+  $varName: buildVarName($name, $prefix, $suffix);
+  @return unquote("rgba(var(#{$varName}), #{$alpha})");
+}
+
+@mixin register-var($name, $value, $prefix: "", $suffix: "") {
+  $varName: buildVarName($name, $prefix, $suffix);
+  #{$varName}: #{$value};
+}
+
+@mixin register-vars($vars, $prefix: "", $suffix: "") {
+  @each $name, $value in $vars {
+    @include register-var($name, $value, $prefix, $suffix);
+  }
+}
+
+@mixin register-rgb($name, $value) {
+  @include register-var(
+    $name,
+    (red($value), green($value), blue($value)),
+    "",
+    "-rgb"
+  );
+}
+
+@mixin register-hsl($name, $value) {
+  @include register-var($name, round(hue($value)), "", "-h");
+  @include register-var($name, round(saturation($value)), "", "-s");
+  @include register-var($name, round(lightness($value)), "", "-l");
+}
+
+@mixin generate-on-scheme-colors($name, $base, $scheme-main) {
+  // Accessibility Contrast System
+  $scheme-main-brightness: fn.bulmaColorBrightness($scheme-main);
+  $on-scheme-color: $base;
+  $fg-lum: fn.bulmaColorLuminance($on-scheme-color);
+  $bg-lum: fn.bulmaColorLuminance($scheme-main);
+  $ratio: 0;
+  $found-decent-color: false;
+
+  @if ($fg-lum > $bg-lum) {
+    @for $i from 0 through 20 {
+      $ratio: math.div(($fg-lum + 0.05), ($bg-lum + 0.05));
+
+      @if $ratio > 5 {
+        $found-decent-color: true;
+      } @else {
+        $on-scheme-color: lighten($on-scheme-color, 5%);
+        $fg-lum: fn.bulmaColorLuminance($on-scheme-color);
+      }
+    }
+  } @else {
+    @for $i from 0 through 20 {
+      $ratio: math.div(($bg-lum + 0.05), ($fg-lum + 0.05));
+
+      @if $ratio > 5 {
+        $found-decent-color: true;
+      } @else {
+        $on-scheme-color: darken($on-scheme-color, 5%);
+        $fg-lum: fn.bulmaColorLuminance($on-scheme-color);
+      }
+    }
+  }
+
+  $on-scheme-lightness: lightness($on-scheme-color);
+  @include register-var($name, $on-scheme-lightness, "", "-on-scheme-l");
+  $on-scheme-l: getVar($name, "", "-on-scheme-l");
+  @include register-var(
+    "#{$name}-on-scheme",
+    buildHslaString($name, $on-scheme-l)
+  );
+}
+
+@mixin v1-generate-on-scheme-colors($name, $base, $scheme-main) {
+  // Accessibility Contrast System
+  $scheme-main-brightness: fn.bulmaColorBrightness($scheme-main);
+  $on-scheme-color: $base;
+
+  @if ($scheme-main-brightness == "bright") {
+    @while (fn.bulmaEnoughContrast($on-scheme-color, #fff) == false) {
+      // We're on a light background, so we'll darken the test color step by step.
+      $on-scheme-color: darken($on-scheme-color, 5%);
+    }
+  } @else {
+    @while (fn.bulmaEnoughContrast($on-scheme-color, #000) == false) {
+      // We're on a dark background, so we'll lighten the test color step by step.
+      $on-scheme-color: lighten($on-scheme-color, 5%);
+    }
+  }
+
+  $on-scheme-lightness: lightness($on-scheme-color);
+  @include register-var($name, $on-scheme-lightness, "", "-on-scheme-l");
+}
+
+@mixin register-base-color($name, $base) {
+  $hsla: buildHslaString($name, getVar($name, "", "-l"));
+  @include register-var($name, $hsla);
+  @include register-var($name, $hsla, "", "-base"); // Just for reference
+  @include register-rgb($name, $base);
+  @include register-hsl($name, $base);
+}
+
+@mixin generate-basic-palette($name, $base, $invert: null) {
+  @include register-base-color($name, $base);
+
+  @if $invert {
+    @include register-var($name, lightness($invert), "", "-invert-l");
+    @include register-var("#{$name}-invert", $invert);
+  }
+}
+
+@mixin generate-color-palette(
+  $name,
+  $base,
+  $scheme-main-l: 100%,
+  $invert: null,
+  $light: null,
+  $dark: null
+) {
+  $h: round(hue($base)); // Hue
+  $s: round(saturation($base)); // Saturation
+  $l: round(lightness($base)); // Lightness
+  $base-lum: fn.bulmaColorLuminance($base);
+  $l-base: round($l % 10); // Get lightness second digit: 53% -> 3%
+  $l-0: 0%; // 5% or less
+  $l-5: 5%; // More than 5%
+  $a: 1; // Alpha
+  $base-digits: "00";
+
+  // Calculate digits like "40" for the scheme-main
+  $scheme-l-0: 0%;
+  $scheme-l-base: round($scheme-main-l % 10);
+  $closest-5: math.round(math.div($scheme-main-l, 5)) * 5;
+  $pct-to-int: math.div($closest-5, 100%) * 100;
+  $scheme-main-digits: #{$pct-to-int};
+
+  // === STEP 1 ===
+  // Register the base colors
+  @include register-base-color($name, $base);
+
+  // === STEP 2 ===
+  // Generating 20 shades of the color
+
+  // 00: 0%, 1%, 2%
+  // 05: 3%, 4%, 5%, 6%, 7%
+  // 10: 8%, 9%
+
+  @if ($l-base < 3%) {
+    $l-0: $l-base;
+    $l-5: $l-base + 5%;
+  } @else if ($l-base < 8%) {
+    // $l-0: math.max($l-base - 5%, 0%);
+    $l-0: $l-base - 5%;
+    $l-5: $l-base;
+  } @else {
+    // $l-0: math.max($l-base - 10%, 0%);
+    $l-0: $l-base - 10%;
+    $l-5: $l-base - 5%;
+  }
+
+  $shades: ();
+
+  @for $i from 0 through 9 {
+    // if $l-base = 3%, then we get 3%, 13%, 23%, 33% etc.
+    $color-l-0: math.max($l-0 + $i * 10, 0%);
+
+    // if $l-base = 3%, then we get 8%, 18%, 28%, 38% etc.
+    $color-l-5: $l-5 + $i * 10;
+
+    $shades: map.set($shades, "#{$i}0", $color-l-0);
+    $shades: map.set($shades, "#{$i}5", $color-l-5);
+
+    @include register-var($name, $color-l-0, "", "-#{$i}0-l");
+    @include register-var($name, $color-l-5, "", "-#{$i}5-l");
+
+    @if $color-l-0 == $l {
+      $base-digits: "#{$i}0";
+    } @else if $color-l-5 == $l {
+      $base-digits: "#{$i}5";
+    }
+  }
+
+  $shades: map.set($shades, "100", 100%);
+  @include register-var($name, 100%, "", "-100-l");
+
+  // === STEP 3 ===
+  // Find accessible color combinations
+
+  $combos: ();
+
+  @each $digits-bg, $bg-l in $shades {
+    $background: hsl($h, $s, $bg-l);
+    $bg-lum: fn.bulmaColorLuminance($background);
+    $bg-is-light: $bg-lum > 0.55;
+    $candidates: ();
+    $found: false;
+
+    // If the background color is the base color
+    @if $bg-l == $l {
+      $base-digits: $digits-bg;
+
+      // Even if the base color as a background
+      // doesn't have an appropriate foreground,
+      // we still add to the list of "valid" contrast combos for now.
+      @if $bg-is-light {
+        $combos: map.set($combos, $base-digits, "10");
+      } @else {
+        $combos: map.set($combos, $base-digits, "100");
+      }
+    }
+
+    // We capture all contrast ratios for any given background
+    // using all foreground options
+    $current-best-digits: "00";
+    $current-best-ratio: 0;
+
+    @each $digits-fg, $fg-l in $shades {
+      $foreground: hsl($h, $s, $fg-l);
+      $ratio: 0;
+      $is-light-fg: false;
+
+      // Source: https://www.w3.org/TR/WCAG20-TECHS/G17.html
+      $fg-lum: fn.bulmaColorLuminance($foreground);
+
+      @if (lightness($foreground) > lightness($background)) {
+        $is-light-fg: true;
+        $ratio: math.div(($fg-lum + 0.05), ($bg-lum + 0.05));
+      } @else {
+        $ratio: math.div(($bg-lum + 0.05), ($fg-lum + 0.05));
+      }
+
+      @if $ratio > 7 {
+        $candidates: list.append(
+          $candidates,
+          fn.bulmaStringToNumber($digits-fg)
+        );
+
+        @if ($is-light-fg) {
+          @if (not $found) {
+            // Store the background/foreground combination
+            $combos: map.set($combos, $digits-bg, $digits-fg);
+            $current-best-digits: $digits-fg;
+            $current-best-ratio: $ratio;
+            $found: true;
+          }
+        } @else {
+          $combos: map.set($combos, $digits-bg, $digits-fg);
+          $current-best-digits: $digits-fg;
+          $current-best-ratio: $ratio;
+        }
+      }
+    }
+
+    // We haven't found a decent ratio
+    @each $digits-fg, $fg-l in $shades {
+      @if (map.has-key($combos, $digits-bg) == false) {
+        @if ($bg-is-light) {
+          // Light background so we set a dark foreground
+          $combos: map.set($combos, $digits-bg, "00");
+        } @else {
+          // Dark background so we set a light foreground
+          $combos: map.set($combos, $digits-bg, "100");
+        }
+      }
+    }
+  }
+
+  // The output needs to be:
+  // --bulma-primary-invert-l: var(--bulma-primary-100-l);
+
+  @each $bg, $fg in $combos {
+    // Just using this loop to register all 20 digits
+    $bg-l: getVar($name, "", "-#{$bg}-l");
+    @include register-var("#{$name}-#{$bg}", buildHslaString($name, $bg-l));
+
+    // Register the lightness
+    @include register-var(
+      $name,
+      getVar($name, "", "-#{$fg}-l"),
+      "",
+      "-#{$bg}-invert-l"
+    );
+
+    // Resiter the color using that lightness
+    $bg-invert-l: getVar($name, "", "-#{$bg}-invert-l");
+    @include register-var(
+      "#{$name}-#{$bg}-invert",
+      buildHslaString($name, $bg-invert-l)
+    );
+  }
+
+  // If an invert color is provided by the user
+  @if $invert {
+    @include register-var($name, lightness($invert), "", "-invert-l");
+    @include register-var("#{$name}-invert", $invert);
+  } @else {
+    $base-invert-l-digits: map.get($combos, $base-digits);
+    @include register-var(
+      $name,
+      getVar($name, "", "-#{$base-invert-l-digits}-l"),
+      "",
+      "-invert-l"
+    );
+
+    $base-invert-l: getVar($name, "", "-invert-l");
+    @include register-var(
+      "#{$name}-invert",
+      buildHslaString($name, $base-invert-l)
+    );
+  }
+
+  // Good color on light background (90% lightness)
+  @if $light and $dark {
+    @include register-var($name, lightness($light), "", "-light-l");
+    @include register-var($name, lightness($light), "", "-dark-invert-l");
+    @include register-var("#{$name}-light", $light);
+    @include register-var("#{$name}-dark-invert", $light);
+
+    @include register-var($name, lightness($dark), "", "-dark-l");
+    @include register-var($name, lightness($dark), "", "-light-invert-l");
+    @include register-var("#{$name}-dark", $dark);
+    @include register-var("#{$name}-light-invert", $dark);
+  } @else {
+    @include register-var($name, getVar($name, "", "-90-l"), "", "-light-l");
+
+    $light-l: getVar($name, "", "-light-l");
+    @include register-var("#{$name}-light", buildHslaString($name, $light-l));
+
+    $light-invert-l-digits: map.get($combos, "90");
+    @include register-var(
+      $name,
+      getVar($name, "", "-#{$light-invert-l-digits}-l"),
+      "",
+      "-light-invert-l"
+    );
+
+    $light-invert-l: getVar($name, "", "-light-invert-l");
+    @include register-var(
+      "#{$name}-light-invert",
+      buildHslaString($name, $light-invert-l)
+    );
+
+    // Good color on dark background (10% lightness)
+    @include register-var($name, getVar($name, "", "-10-l"), "", "-dark-l");
+
+    $dark-l: getVar($name, "", "-dark-l");
+    @include register-var("#{$name}-dark", buildHslaString($name, $dark-l));
+
+    $dark-invert-l-digits: map.get($combos, "10");
+    @include register-var(
+      $name,
+      getVar($name, "", "-#{$dark-invert-l-digits}-l"),
+      "",
+      "-dark-invert-l"
+    );
+
+    $dark-invert-l: getVar($name, "", "-dark-invert-l");
+    @include register-var(
+      "#{$name}-dark-invert",
+      buildHslaString($name, $dark-invert-l)
+    );
+
+    // Soft and Bold colors
+    $soft-l: getVar("soft-l");
+    $soft-invert-l: getVar("soft-invert-l");
+    $bold-l: getVar("bold-l");
+    $bold-invert-l: getVar("bold-invert-l");
+    @include register-var("#{$name}-soft", buildHslaString($name, $soft-l));
+    @include register-var("#{$name}-bold", buildHslaString($name, $bold-l));
+    @include register-var(
+      "#{$name}-soft-invert",
+      buildHslaString($name, $soft-invert-l)
+    );
+    @include register-var(
+      "#{$name}-bold-invert",
+      buildHslaString($name, $bold-invert-l)
+    );
+  }
+}
+
+@mixin bulma-theme($name) {
+  [data-#{iv.$class-prefix}theme="#{$name}"],
+  .#{iv.$class-prefix}theme-#{$name} {
+    @content;
+  }
+}
+
+@mixin system-theme($name) {
+  @media (prefers-color-scheme: #{$name}) {
+    :root {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,877 @@
+@use "sass:math";
+@use "../utilities/css-variables" as cv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$column-gap: 0.75rem !default;
+
+:root {
+  @include cv.register-vars(
+    (
+      "column-gap": #{$column-gap},
+    )
+  );
+}
+
+.#{iv.$class-prefix}column {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: $column-gap;
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-narrow {
+    flex: none;
+    width: unset;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-full {
+    flex: none;
+    width: 100%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-three-quarters {
+    flex: none;
+    width: 75%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-two-thirds {
+    flex: none;
+    width: 66.6666%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-half {
+    flex: none;
+    width: 50%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-one-third {
+    flex: none;
+    width: 33.3333%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-one-quarter {
+    flex: none;
+    width: 25%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-one-fifth {
+    flex: none;
+    width: 20%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-two-fifths {
+    flex: none;
+    width: 40%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-three-fifths {
+    flex: none;
+    width: 60%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-four-fifths {
+    flex: none;
+    width: 80%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-three-quarters {
+    margin-inline-start: 75%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-two-thirds {
+    margin-inline-start: 66.6666%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-half {
+    margin-inline-start: 50%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-one-third {
+    margin-inline-start: 0.3333%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-one-quarter {
+    margin-inline-start: 25%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-one-fifth {
+    margin-inline-start: 20%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-two-fifths {
+    margin-inline-start: 40%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-three-fifths {
+    margin-inline-start: 60%;
+  }
+
+  .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+    > &.#{iv.$class-prefix}is-offset-four-fifths {
+    margin-inline-start: 80%;
+  }
+
+  @for $i from 0 through 12 {
+    .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+      > &.#{iv.$class-prefix}is-#{$i} {
+      flex: none;
+      width: calc(
+        math.percentage(math.div($i, 12)) - calc(#{cv.getVar("column-gap")} / 2)
+      );
+    }
+
+    .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
+      > &.#{iv.$class-prefix}is-offset-#{$i} {
+      margin-inline-start: math.percentage(math.div($i, 12));
+    }
+  }
+
+  @include mx.mobile {
+    &.#{iv.$class-prefix}is-narrow-mobile {
+      flex: none;
+      width: unset;
+    }
+
+    &.#{iv.$class-prefix}is-full-mobile {
+      flex: none;
+      width: 100%;
+    }
+
+    &.#{iv.$class-prefix}is-three-quarters-mobile {
+      flex: none;
+      width: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-two-thirds-mobile {
+      flex: none;
+      width: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-half-mobile {
+      flex: none;
+      width: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-one-third-mobile {
+      flex: none;
+      width: 33.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-one-quarter-mobile {
+      flex: none;
+      width: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-one-fifth-mobile {
+      flex: none;
+      width: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-two-fifths-mobile {
+      flex: none;
+      width: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-three-fifths-mobile {
+      flex: none;
+      width: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-four-fifths-mobile {
+      flex: none;
+      width: 80%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-quarters-mobile {
+      margin-inline-start: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-thirds-mobile {
+      margin-inline-start: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-half-mobile {
+      margin-inline-start: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-third-mobile {
+      margin-inline-start: 0.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-quarter-mobile {
+      margin-inline-start: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-fifth-mobile {
+      margin-inline-start: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-fifths-mobile {
+      margin-inline-start: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-fifths-mobile {
+      margin-inline-start: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-four-fifths-mobile {
+      margin-inline-start: 80%;
+    }
+
+    @for $i from 0 through 12 {
+      &.#{iv.$class-prefix}is-#{$i}-mobile {
+        flex: none;
+        width: calc(
+          math.percentage(math.div($i, 12)) - calc(
+              #{cv.getVar("column-gap")} / 2
+            )
+        );
+      }
+
+      &.#{iv.$class-prefix}is-offset-#{$i}-mobile {
+        margin-inline-start: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+
+  @include mx.tablet {
+    &.#{iv.$class-prefix}is-narrow,
+    &.#{iv.$class-prefix}is-narrow-tablet {
+      flex: none;
+      width: unset;
+    }
+
+    &.#{iv.$class-prefix}is-full,
+    &.#{iv.$class-prefix}is-full-tablet {
+      flex: none;
+      width: 100%;
+    }
+
+    &.#{iv.$class-prefix}is-three-quarters,
+    &.#{iv.$class-prefix}is-three-quarters-tablet {
+      flex: none;
+      width: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-two-thirds,
+    &.#{iv.$class-prefix}is-two-thirds-tablet {
+      flex: none;
+      width: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-half,
+    &.#{iv.$class-prefix}is-half-tablet {
+      flex: none;
+      width: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-one-third,
+    &.#{iv.$class-prefix}is-one-third-tablet {
+      flex: none;
+      width: 33.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-one-quarter,
+    &.#{iv.$class-prefix}is-one-quarter-tablet {
+      flex: none;
+      width: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-one-fifth,
+    &.#{iv.$class-prefix}is-one-fifth-tablet {
+      flex: none;
+      width: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-two-fifths,
+    &.#{iv.$class-prefix}is-two-fifths-tablet {
+      flex: none;
+      width: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-three-fifths,
+    &.#{iv.$class-prefix}is-three-fifths-tablet {
+      flex: none;
+      width: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-four-fifths,
+    &.#{iv.$class-prefix}is-four-fifths-tablet {
+      flex: none;
+      width: 80%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-quarters,
+    &.#{iv.$class-prefix}is-offset-three-quarters-tablet {
+      margin-inline-start: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-thirds,
+    &.#{iv.$class-prefix}is-offset-two-thirds-tablet {
+      margin-inline-start: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-half,
+    &.#{iv.$class-prefix}is-offset-half-tablet {
+      margin-inline-start: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-third,
+    &.#{iv.$class-prefix}is-offset-one-third-tablet {
+      margin-inline-start: 0.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-quarter,
+    &.#{iv.$class-prefix}is-offset-one-quarter-tablet {
+      margin-inline-start: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-fifth,
+    &.#{iv.$class-prefix}is-offset-one-fifth-tablet {
+      margin-inline-start: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-fifths,
+    &.#{iv.$class-prefix}is-offset-two-fifths-tablet {
+      margin-inline-start: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-fifths,
+    &.#{iv.$class-prefix}is-offset-three-fifths-tablet {
+      margin-inline-start: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-four-fifths,
+    &.#{iv.$class-prefix}is-offset-four-fifths-tablet {
+      margin-inline-start: 80%;
+    }
+
+    @for $i from 0 through 12 {
+      &.#{iv.$class-prefix}is-#{$i},
+      &.#{iv.$class-prefix}is-#{$i}-tablet {
+        flex: none;
+        width: calc(
+          math.percentage(math.div($i, 12)) - calc(
+              #{cv.getVar("column-gap")} / 2
+            )
+        );
+      }
+
+      &.#{iv.$class-prefix}is-offset-#{$i},
+      &.#{iv.$class-prefix}is-offset-#{$i}-tablet {
+        margin-inline-start: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+
+  @include mx.touch {
+    &.#{iv.$class-prefix}is-narrow-touch {
+      flex: none;
+      width: unset;
+    }
+
+    &.#{iv.$class-prefix}is-full-touch {
+      flex: none;
+      width: 100%;
+    }
+
+    &.#{iv.$class-prefix}is-three-quarters-touch {
+      flex: none;
+      width: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-two-thirds-touch {
+      flex: none;
+      width: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-half-touch {
+      flex: none;
+      width: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-one-third-touch {
+      flex: none;
+      width: 33.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-one-quarter-touch {
+      flex: none;
+      width: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-one-fifth-touch {
+      flex: none;
+      width: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-two-fifths-touch {
+      flex: none;
+      width: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-three-fifths-touch {
+      flex: none;
+      width: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-four-fifths-touch {
+      flex: none;
+      width: 80%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-quarters-touch {
+      margin-inline-start: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-thirds-touch {
+      margin-inline-start: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-half-touch {
+      margin-inline-start: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-third-touch {
+      margin-inline-start: 0.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-quarter-touch {
+      margin-inline-start: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-fifth-touch {
+      margin-inline-start: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-fifths-touch {
+      margin-inline-start: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-fifths-touch {
+      margin-inline-start: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-four-fifths-touch {
+      margin-inline-start: 80%;
+    }
+
+    @for $i from 0 through 12 {
+      &.#{iv.$class-prefix}is-#{$i}-touch {
+        flex: none;
+        width: math.percentage(math.div($i, 12));
+      }
+
+      &.#{iv.$class-prefix}is-offset-#{$i}-touch {
+        margin-inline-start: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+
+  @include mx.desktop {
+    &.#{iv.$class-prefix}is-narrow-desktop {
+      flex: none;
+      width: unset;
+    }
+
+    &.#{iv.$class-prefix}is-full-desktop {
+      flex: none;
+      width: 100%;
+    }
+
+    &.#{iv.$class-prefix}is-three-quarters-desktop {
+      flex: none;
+      width: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-two-thirds-desktop {
+      flex: none;
+      width: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-half-desktop {
+      flex: none;
+      width: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-one-third-desktop {
+      flex: none;
+      width: 33.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-one-quarter-desktop {
+      flex: none;
+      width: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-one-fifth-desktop {
+      flex: none;
+      width: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-two-fifths-desktop {
+      flex: none;
+      width: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-three-fifths-desktop {
+      flex: none;
+      width: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-four-fifths-desktop {
+      flex: none;
+      width: 80%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-quarters-desktop {
+      margin-inline-start: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-thirds-desktop {
+      margin-inline-start: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-half-desktop {
+      margin-inline-start: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-third-desktop {
+      margin-inline-start: 0.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-quarter-desktop {
+      margin-inline-start: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-fifth-desktop {
+      margin-inline-start: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-fifths-desktop {
+      margin-inline-start: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-fifths-desktop {
+      margin-inline-start: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-four-fifths-desktop {
+      margin-inline-start: 80%;
+    }
+
+    @for $i from 0 through 12 {
+      &.#{iv.$class-prefix}is-#{$i}-desktop {
+        flex: none;
+        width: calc(
+          math.percentage(math.div($i, 12)) - calc(
+              #{cv.getVar("column-gap")} / 2
+            )
+        );
+      }
+
+      &.#{iv.$class-prefix}is-offset-#{$i}-desktop {
+        margin-inline-start: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+
+  @include mx.widescreen {
+    &.#{iv.$class-prefix}is-narrow-widescreen {
+      flex: none;
+      width: unset;
+    }
+
+    &.#{iv.$class-prefix}is-full-widescreen {
+      flex: none;
+      width: 100%;
+    }
+
+    &.#{iv.$class-prefix}is-three-quarters-widescreen {
+      flex: none;
+      width: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-two-thirds-widescreen {
+      flex: none;
+      width: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-half-widescreen {
+      flex: none;
+      width: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-one-third-widescreen {
+      flex: none;
+      width: 33.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-one-quarter-widescreen {
+      flex: none;
+      width: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-one-fifth-widescreen {
+      flex: none;
+      width: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-two-fifths-widescreen {
+      flex: none;
+      width: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-three-fifths-widescreen {
+      flex: none;
+      width: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-four-fifths-widescreen {
+      flex: none;
+      width: 80%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-quarters-widescreen {
+      margin-inline-start: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-thirds-widescreen {
+      margin-inline-start: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-half-widescreen {
+      margin-inline-start: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-third-widescreen {
+      margin-inline-start: 0.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-quarter-widescreen {
+      margin-inline-start: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-fifth-widescreen {
+      margin-inline-start: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-fifths-widescreen {
+      margin-inline-start: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-fifths-widescreen {
+      margin-inline-start: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-four-fifths-widescreen {
+      margin-inline-start: 80%;
+    }
+
+    @for $i from 0 through 12 {
+      &.#{iv.$class-prefix}is-#{$i}-widescreen {
+        flex: none;
+        width: calc(
+          math.percentage(math.div($i, 12)) - calc(
+              #{cv.getVar("column-gap")} / 2
+            )
+        );
+      }
+
+      &.#{iv.$class-prefix}is-offset-#{$i}-widescreen {
+        margin-inline-start: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+
+  @include mx.fullhd {
+    &.#{iv.$class-prefix}is-narrow-fullhd {
+      flex: none;
+      width: unset;
+    }
+
+    &.#{iv.$class-prefix}is-full-fullhd {
+      flex: none;
+      width: 100%;
+    }
+
+    &.#{iv.$class-prefix}is-three-quarters-fullhd {
+      flex: none;
+      width: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-two-thirds-fullhd {
+      flex: none;
+      width: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-half-fullhd {
+      flex: none;
+      width: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-one-third-fullhd {
+      flex: none;
+      width: 33.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-one-quarter-fullhd {
+      flex: none;
+      width: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-one-fifth-fullhd {
+      flex: none;
+      width: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-two-fifths-fullhd {
+      flex: none;
+      width: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-three-fifths-fullhd {
+      flex: none;
+      width: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-four-fifths-fullhd {
+      flex: none;
+      width: 80%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-quarters-fullhd {
+      margin-inline-start: 75%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-thirds-fullhd {
+      margin-inline-start: 66.6666%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-half-fullhd {
+      margin-inline-start: 50%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-third-fullhd {
+      margin-inline-start: 33.3333%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-quarter-fullhd {
+      margin-inline-start: 25%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-one-fifth-fullhd {
+      margin-inline-start: 20%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-two-fifths-fullhd {
+      margin-inline-start: 40%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-three-fifths-fullhd {
+      margin-inline-start: 60%;
+    }
+
+    &.#{iv.$class-prefix}is-offset-four-fifths-fullhd {
+      margin-inline-start: 80%;
+    }
+
+    @for $i from 0 through 12 {
+      &.#{iv.$class-prefix}is-#{$i}-fullhd {
+        flex: none;
+        width: math.percentage(math.div($i, 12));
+      }
+
+      &.#{iv.$class-prefix}is-offset-#{$i}-fullhd {
+        margin-inline-start: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}columns {
+  margin-inline-start: calc(-1 * #{cv.getVar("column-gap")});
+  margin-inline-end: calc(-1 * #{cv.getVar("column-gap")});
+  margin-top: calc(-1 * #{cv.getVar("column-gap")});
+
+  &:last-child {
+    margin-bottom: calc(-1 * #{cv.getVar("column-gap")});
+  }
+
+  &:not(:last-child) {
+    margin-bottom: calc(1.5rem - #{$column-gap});
+  }
+
+  // Modifiers
+  &.#{iv.$class-prefix}is-centered {
+    justify-content: center;
+  }
+
+  &.#{iv.$class-prefix}is-gapless {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+
+    margin-top: 0;
+
+    & > .#{iv.$class-prefix}column {
+      margin: 0;
+      padding: 0 !important;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-mobile {
+    display: flex;
+  }
+
+  &.#{iv.$class-prefix}is-multiline {
+    flex-wrap: wrap;
+  }
+
+  &.#{iv.$class-prefix}is-vcentered {
+    align-items: center;
+  }
+
+  // Responsiveness
+  @include mx.tablet {
+    &:not(.#{iv.$class-prefix}is-desktop) {
+      display: flex;
+    }
+  }
+
+  @include mx.desktop {
+    // Modifiers
+    &.#{iv.$class-prefix}is-desktop {
+      display: flex;
+    }
+  }
+}

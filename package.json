@@ -1,6 +1,6 @@
 {
   "name": "bulma",
-  "version": "0.9.4",
+  "version": "1.0.0",
   "homepage": "https://bulma.io",
   "author": {
     "name": "Jeremy Thomas",
@@ -8,7 +8,7 @@
     "url": "https://jgthms.com"
   },
   "description": "Modern CSS framework based on Flexbox",
-  "main": "bulma.sass",
+  "main": "bulma.scss",
   "unpkg": "css/bulma.css",
   "style": "css/bulma.min.css",
   "repository": {
@@ -19,37 +19,41 @@
   "keywords": [
     "css",
     "sass",
+    "scss",
     "flexbox",
+    "grid",
     "responsive",
     "framework"
   ],
   "bugs": {
     "url": "https://github.com/jgthms/bulma/issues"
   },
+  "dependencies": {
+    "sass": "^1.71.1"
+  },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "clean-css-cli": "^5.6.2",
-    "node-sass": "^9.0.0",
-    "postcss-cli": "^10.1.0",
-    "rimraf": "^5.0.5"
+    "cssnano": "^6.1.0",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.2.5"
   },
   "scripts": {
-    "build": "npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
-    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
-    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
-    "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
-    "clean": "rimraf css",
-    "rtl": "npm run rtl-sass && npm run rtl-autoprefix && npm run rtl-cleancss",
-    "rtl-sass": "node-sass --output-style expanded --source-map true bulma-rtl.sass css/bulma-rtl.css",
-    "rtl-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-rtl.css css/bulma-rtl.css",
-    "rtl-cleancss": "cleancss -o css/bulma-rtl.min.css css/bulma-rtl.css",
-    "deploy": "npm run clean && npm run build && npm run rtl",
-    "start": "npm run build-sass -- --watch"
+    "build-bulma": "sass --style=expanded --source-map bulma.scss css/bulma.css",
+    "minify-bulma": "postcss css/bulma.css --no-map --use cssnano --output css/bulma.min.css",
+    "version-no-dark-mode": "sass --style=expanded --source-map versions/bulma-no-dark-mode.scss css/versions/bulma-no-dark-mode.min.css",
+    "version-no-helpers": "sass --style=expanded --source-map versions/bulma-no-helpers.scss css/versions/bulma-no-helpers.min.css",
+    "version-no-helpers-prefixed": "sass --style=expanded --source-map versions/bulma-no-helpers-prefixed.scss css/versions/bulma-no-helpers-prefixed.min.css",
+    "version-prefixed": "sass --style=expanded --source-map versions/bulma-prefixed.scss css/versions/bulma-prefixed.min.css",
+    "build-versions": "npm run version-no-dark-mode && npm run version-no-helpers && npm run version-no-helpers-prefixed && npm run version-prefixed",
+    "minify-versions": "postcss css/versions/*.min.css --no-map --replace --use cssnano",
+    "build-all": "npm run build-bulma && npm run build-versions",
+    "minify-all": "npm run minify-bulma && npm run minify-versions",
+    "deploy": "npm run build-all && npm run minify-all",
+    "start": "npm run build-bulma -- --watch"
   },
   "files": [
     "css",
     "sass",
-    "bulma.sass",
+    "bulma.scss",
     "LICENSE",
     "README.md"
   ]

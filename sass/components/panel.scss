@@ -1,0 +1,218 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$panel-margin: cv.getVar("block-spacing") !default;
+$panel-item-border: 1px solid cv.getVar("border-weak") !default;
+$panel-radius: cv.getVar("radius-large") !default;
+$panel-shadow: cv.getVar("shadow") !default;
+
+$panel-heading-line-height: 1.25 !default;
+$panel-heading-padding: 1em 1.25em !default;
+$panel-heading-radius: cv.getVar("radius") !default;
+$panel-heading-size: 1.25em !default;
+$panel-heading-weight: cv.getVar("weight-bold") !default;
+
+$panel-tabs-font-size: 1em !default;
+$panel-tab-border-bottom-color: cv.getVar("border") !default;
+$panel-tab-border-bottom-style: solid !default;
+$panel-tab-border-bottom-width: 1px !default;
+$panel-tab-active-color: cv.getVar("link-active") !default;
+
+$panel-list-item-color: cv.getVar("text") !default;
+$panel-list-item-hover-color: cv.getVar("link") !default;
+
+$panel-block-color: cv.getVar("text-strong") !default;
+$panel-block-hover-background-color: cv.getVar("background") !default;
+$panel-block-active-border-left-color: cv.getVar("link") !default;
+$panel-block-active-color: cv.getVar("link-active") !default;
+$panel-block-active-icon-color: cv.getVar("link") !default;
+
+$panel-icon-color: cv.getVar("text-weak") !default;
+$panel-colors: dv.$colors !default;
+
+.#{iv.$class-prefix}panel {
+  @include cv.register-vars(
+    (
+      "panel-margin": #{$panel-margin},
+      "panel-item-border": #{$panel-item-border},
+      "panel-radius": #{$panel-radius},
+      "panel-shadow": #{$panel-shadow},
+      "panel-heading-line-height": #{$panel-heading-line-height},
+      "panel-heading-padding": #{$panel-heading-padding},
+      "panel-heading-radius": #{$panel-heading-radius},
+      "panel-heading-size": #{$panel-heading-size},
+      "panel-heading-weight": #{$panel-heading-weight},
+      "panel-tabs-font-size": #{$panel-tabs-font-size},
+      "panel-tab-border-bottom-color": #{$panel-tab-border-bottom-color},
+      "panel-tab-border-bottom-style": #{$panel-tab-border-bottom-style},
+      "panel-tab-border-bottom-width": #{$panel-tab-border-bottom-width},
+      "panel-tab-active-color": #{$panel-tab-active-color},
+      "panel-list-item-color": #{$panel-list-item-color},
+      "panel-list-item-hover-color": #{$panel-list-item-hover-color},
+      "panel-block-color": #{$panel-block-color},
+      "panel-block-hover-background-color": #{$panel-block-hover-background-color},
+      "panel-block-active-border-left-color": #{$panel-block-active-border-left-color},
+      "panel-block-active-color": #{$panel-block-active-color},
+      "panel-block-active-icon-color": #{$panel-block-active-icon-color},
+      "panel-icon-color": #{$panel-icon-color},
+    )
+  );
+}
+
+.#{iv.$class-prefix}panel {
+  @include cv.register-vars(
+    (
+      "panel-h": #{cv.getVar("scheme-h")},
+      "panel-s": #{cv.getVar("scheme-s")},
+      "panel-color-l": #{cv.getVar("text-l")},
+      "panel-heading-background-l": #{cv.getVar("text-l")},
+      "panel-heading-color-l": #{cv.getVar("text-invert-l")},
+    )
+  );
+
+  border-radius: cv.getVar("panel-radius");
+  box-shadow: cv.getVar("panel-shadow");
+  font-size: cv.getVar("size-normal");
+
+  &:not(:last-child) {
+    margin-bottom: cv.getVar("panel-margin");
+  }
+
+  // Colors
+  @each $name, $components in $panel-colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "panel-h": #{cv.getVar($name, "", "-h")},
+          "panel-s": #{cv.getVar($name, "", "-s")},
+          "panel-color-l": #{cv.getVar($name, "", "-l")},
+          "panel-heading-background-l": #{cv.getVar($name, "", "-l")},
+          "panel-heading-color-l": #{cv.getVar($name, "", "-invert-l")},
+        )
+      );
+    }
+  }
+}
+
+.#{iv.$class-prefix}panel-tabs,
+.#{iv.$class-prefix}panel-block {
+  &:not(:last-child) {
+    border-bottom: cv.getVar("panel-item-border");
+  }
+}
+
+.#{iv.$class-prefix}panel-heading {
+  background-color: hsl(
+    cv.getVar("panel-h"),
+    cv.getVar("panel-s"),
+    cv.getVar("panel-heading-background-l")
+  );
+  border-radius: cv.getVar("panel-radius") cv.getVar("panel-radius") 0 0;
+  color: hsl(
+    cv.getVar("panel-h"),
+    cv.getVar("panel-s"),
+    cv.getVar("panel-heading-color-l")
+  );
+  font-size: cv.getVar("panel-heading-size");
+  font-weight: cv.getVar("panel-heading-weight");
+  line-height: cv.getVar("panel-heading-line-height");
+  padding: cv.getVar("panel-heading-padding");
+}
+
+.#{iv.$class-prefix}panel-tabs {
+  align-items: flex-end;
+  display: flex;
+  font-size: cv.getVar("panel-tabs-font-size");
+  justify-content: center;
+
+  a {
+    border-bottom-color: cv.getVar("panel-tab-border-bottom-color");
+    border-bottom-style: cv.getVar("panel-tab-border-bottom-style");
+    border-bottom-width: cv.getVar("panel-tab-border-bottom-width");
+    margin-bottom: calc(-1 * #{$panel-tab-border-bottom-width});
+    padding: 0.75em;
+
+    // Modifiers
+    &.#{iv.$class-prefix}is-active {
+      border-bottom-color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        cv.getVar("panel-color-l")
+      );
+      color: cv.getVar("panel-tab-active-color");
+    }
+  }
+}
+
+.#{iv.$class-prefix}panel-list {
+  a {
+    color: cv.getVar("panel-list-item-color");
+
+    &:hover {
+      color: cv.getVar("panel-list-item-hover-color");
+    }
+  }
+}
+
+.#{iv.$class-prefix}panel-block {
+  align-items: center;
+  color: cv.getVar("panel-block-color");
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.75em 1em;
+
+  input[type="checkbox"] {
+    margin-inline-end: 0.75em;
+  }
+
+  & > .#{iv.$class-prefix}control {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+  }
+
+  &.#{iv.$class-prefix}is-wrapped {
+    flex-wrap: wrap;
+  }
+
+  &.#{iv.$class-prefix}is-active {
+    border-left-color: cv.getVar("panel-block-active-border-left-color");
+    color: cv.getVar("panel-block-active-color");
+
+    .#{iv.$class-prefix}panel-icon {
+      color: hsl(
+        cv.getVar("panel-h"),
+        cv.getVar("panel-s"),
+        cv.getVar("panel-color-l")
+      );
+    }
+  }
+
+  &:last-child {
+    border-bottom-left-radius: cv.getVar("panel-radius");
+    border-bottom-right-radius: cv.getVar("panel-radius");
+  }
+}
+
+a.#{iv.$class-prefix}panel-block,
+label.#{iv.$class-prefix}panel-block {
+  cursor: pointer;
+
+  &:hover {
+    background-color: cv.getVar("panel-block-hover-background-color");
+  }
+}
+
+.#{iv.$class-prefix}panel-icon {
+  @include mx.fa(1em, 1em);
+  color: cv.getVar("panel-icon-color");
+  margin-inline-end: 0.75em;
+
+  .#{iv.$class-prefix}fa {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}

@@ -1,0 +1,48 @@
+{% assign tab = include.tab | default: page.doc-tab %}
+{% assign subtab = include.subtab | default: page.doc-subtab %}
+{% assign data = include.data | default: site.data.variables[tab][subtab] %}
+{% assign sass_vars = include.data | default: data["sass-vars"] %}
+{% assign css_vars = include.data | default: data["css-vars"] %}
+
+<div class="bd-vars-table block table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <div class="icon-text">
+            <span class="icon has-text-sass"><i class="fa-brands fa-sass"></i></span>
+            <span>Sass Variable</span>
+          </div>
+        </th>
+        {% unless include.hide_css_vars %}
+          <th>
+            <div class="icon-text">
+              <span class="icon has-text-link"><i class="fa-brands fa-css3"></i></span>
+              <span>CSS Variable</span>
+            </div>
+          </th>
+        {% endunless %}
+        <th>
+          <div class="icon-text">
+            <span class="icon has-text-success"><i class="fa-solid fa-code"></i></span>
+            <span>Value</span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for sass_var in sass_vars %}
+        {% unless sass_var["value"] == "dv.$colors" %}
+        <tr>
+          <td class="bd-theme-sass">{% highlight sass %}${{ sass_var["name"] }}{% endhighlight %}</td>
+          {% unless include.hide_css_vars %}
+            <td class="bd-theme-code">{% highlight css %}var(--bulma-{{ sass_var["css-var"] }}){% endhighlight %}</td>
+          {% endunless %}
+          <td class="bd-theme-docs">{% highlight css %}{{ sass_var["value"] }}{% endhighlight %}</td>
+        </tr>
+        {% endunless %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

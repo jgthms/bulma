@@ -1,0 +1,172 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$form-colors: dv.$colors !default;
+
+$input-h: #{cv.getVar("scheme-h")} !default;
+$input-s: #{cv.getVar("scheme-s")} !default;
+$input-l: #{cv.getVar("scheme-main-l")} !default;
+$input-border-l: cv.getVar("border-l") !default;
+$input-border-l-delta: 0% !default;
+$input-hover-border-l-delta: #{cv.getVar("hover-border-l-delta")} !default;
+$input-active-border-l-delta: #{cv.getVar("active-border-l-delta")} !default;
+$input-color-l: cv.getVar("text-strong-l") !default;
+$input-background-l: cv.getVar("scheme-main-l") !default;
+$input-background-l-delta: 0% !default;
+$input-height: cv.getVar("control-height") !default;
+$input-shadow: inset 0 0.0625em 0.125em
+  hsla(
+    #{cv.getVar("scheme-h")},
+    #{cv.getVar("scheme-s")},
+    #{cv.getVar("scheme-invert-l")},
+    0.05
+  ) !default;
+$input-placeholder-color: hsla(
+  #{cv.getVar("text-h")},
+  #{cv.getVar("text-s")},
+  #{cv.getVar("text-strong-l")},
+  0.3
+) !default;
+
+$input-focus-h: cv.getVar("focus-h") !default;
+$input-focus-s: cv.getVar("focus-s") !default;
+$input-focus-l: cv.getVar("focus-l") !default;
+$input-focus-shadow-size: cv.getVar("focus-shadow-size") !default;
+$input-focus-shadow-alpha: cv.getVar("focus-shadow-alpha") !default;
+
+$input-disabled-color: cv.getVar("text-weak") !default;
+$input-disabled-background-color: cv.getVar("background") !default;
+$input-disabled-border-color: cv.getVar("background") !default;
+$input-disabled-placeholder-color: hsla(
+  #{cv.getVar("text-h")},
+  #{cv.getVar("text-s")},
+  #{cv.getVar("text-weak-l")},
+  0.3
+) !default;
+
+$input-arrow: cv.getVar("link") !default;
+
+$input-icon-color: cv.getVar("text-light") !default;
+$input-icon-hover-color: cv.getVar("text-weak") !default;
+$input-icon-focus-color: cv.getVar("link") !default;
+
+$input-radius: cv.getVar("radius") !default;
+
+.#{iv.$class-prefix}control,
+.#{iv.$class-prefix}input,
+.#{iv.$class-prefix}textarea,
+.#{iv.$class-prefix}select select {
+  @include cv.register-vars(
+    (
+      "input-h": #{$input-h},
+      "input-s": #{$input-s},
+      "input-l": #{$input-l},
+      "input-border-l": #{$input-border-l},
+      "input-border-l-delta": #{$input-border-l-delta},
+      "input-hover-border-l-delta": #{$input-hover-border-l-delta},
+      "input-active-border-l-delta": #{$input-active-border-l-delta},
+      "input-focus-h": #{$input-focus-h},
+      "input-focus-s": #{$input-focus-s},
+      "input-focus-l": #{$input-focus-l},
+      "input-focus-shadow-size": #{$input-focus-shadow-size},
+      "input-focus-shadow-alpha": #{$input-focus-shadow-alpha},
+      "input-color-l": #{$input-color-l},
+      "input-background-l": #{$input-background-l},
+      "input-background-l-delta": #{$input-background-l-delta},
+      "input-height": #{$input-height},
+      "input-shadow": #{$input-shadow},
+      "input-placeholder-color": #{$input-placeholder-color},
+      "input-disabled-color": #{$input-disabled-color},
+      "input-disabled-background-color": #{$input-disabled-background-color},
+      "input-disabled-border-color": #{$input-disabled-border-color},
+      "input-disabled-placeholder-color": #{$input-disabled-placeholder-color},
+      "input-arrow": #{$input-arrow},
+      "input-icon-color": #{$input-icon-color},
+      "input-icon-hover-color": #{$input-icon-hover-color},
+      "input-icon-focus-color": #{$input-icon-focus-color},
+      "input-radius": #{$input-radius},
+    )
+  );
+}
+
+@mixin input {
+  @extend %control;
+  background-color: hsl(
+    #{cv.getVar("input-h")},
+    #{cv.getVar("input-s")},
+    calc(
+      #{cv.getVar("input-background-l")} + #{cv.getVar(
+          "input-background-l-delta"
+        )}
+    )
+  );
+  border-color: hsl(
+    cv.getVar("input-h"),
+    cv.getVar("input-s"),
+    calc(#{cv.getVar("input-border-l")} + #{cv.getVar("input-border-l-delta")})
+  );
+  border-radius: cv.getVar("input-radius");
+  color: hsl(
+    #{cv.getVar("input-h")},
+    #{cv.getVar("input-s")},
+    #{cv.getVar("input-color-l")}
+  );
+
+  @include mx.placeholder {
+    color: cv.getVar("input-placeholder-color");
+  }
+
+  &:hover,
+  &.#{iv.$class-prefix}is-hovered {
+    @include cv.register-vars(
+      (
+        "input-border-l-delta": #{cv.getVar("input-hover-border-l-delta")},
+      )
+    );
+  }
+
+  &:active,
+  &.#{iv.$class-prefix}is-active {
+    @include cv.register-vars(
+      (
+        "input-border-l-delta": #{cv.getVar("input-active-border-l-delta")},
+      )
+    );
+  }
+
+  &:focus,
+  &:focus-within,
+  &.#{iv.$class-prefix}is-focused {
+    border-color: hsl(
+      cv.getVar("input-focus-h"),
+      cv.getVar("input-focus-s"),
+      cv.getVar("input-focus-l")
+    );
+    box-shadow: cv.getVar("input-focus-shadow-size")
+      hsla(
+        cv.getVar("input-focus-h"),
+        cv.getVar("input-focus-s"),
+        cv.getVar("input-focus-l"),
+        cv.getVar("input-focus-shadow-alpha")
+      );
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: cv.getVar("input-disabled-background-color");
+    border-color: cv.getVar("input-disabled-border-color");
+    box-shadow: none;
+    color: cv.getVar("input-disabled-color");
+
+    @include mx.placeholder {
+      color: cv.getVar("input-disabled-placeholder-color");
+    }
+  }
+}
+
+%input {
+  @include input;
+}

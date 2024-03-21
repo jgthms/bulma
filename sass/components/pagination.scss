@@ -1,0 +1,379 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$pagination-margin: -0.25rem !default;
+$pagination-min-width: cv.getVar("control-height") !default;
+
+$pagination-item-h: cv.getVar("scheme-h");
+$pagination-item-s: cv.getVar("scheme-s");
+$pagination-item-l: cv.getVar("scheme-main-l");
+$pagination-item-background-l-delta: 0%;
+$pagination-item-hover-background-l-delta: cv.getVar(
+  "hover-background-l-delta"
+);
+$pagination-item-active-background-l-delta: cv.getVar(
+  "active-background-l-delta"
+);
+$pagination-item-border-l: cv.getVar("border-l");
+$pagination-item-border-l-delta: 0%;
+$pagination-item-border-style: solid !default;
+$pagination-item-border-width: cv.getVar("control-border-width") !default;
+$pagination-item-hover-border-l-delta: cv.getVar("hover-border-l-delta");
+$pagination-item-active-border-l-delta: cv.getVar("active-border-l-delta");
+$pagination-item-focus-border-l-delta: cv.getVar("focus-border-l-delta");
+$pagination-item-color-l: cv.getVar("text-strong-l");
+$pagination-item-font-size: 1em !default;
+$pagination-item-margin: 0.25rem !default;
+$pagination-item-padding-left: 0.5em !default;
+$pagination-item-padding-right: 0.5em !default;
+$pagination-item-outer-shadow-h: 0;
+$pagination-item-outer-shadow-s: 0%;
+$pagination-item-outer-shadow-l: 20%;
+$pagination-item-outer-shadow-a: 0.05;
+
+$pagination-selected-item-h: cv.getVar("link-h");
+$pagination-selected-item-s: cv.getVar("link-s");
+$pagination-selected-item-l: cv.getVar("link-l");
+$pagination-selected-item-background-l: cv.getVar("link-l");
+$pagination-selected-item-border-l: cv.getVar("link-l");
+$pagination-selected-item-color-l: cv.getVar("link-invert-l");
+
+$pagination-nav-padding-left: 0.75em !default;
+$pagination-nav-padding-right: 0.75em !default;
+
+$pagination-disabled-color: cv.getVar("text-weak") !default;
+$pagination-disabled-background-color: cv.getVar("border") !default;
+$pagination-disabled-border-color: cv.getVar("border") !default;
+
+$pagination-current-color: cv.getVar("link-invert") !default;
+$pagination-current-background-color: cv.getVar("link") !default;
+$pagination-current-border-color: cv.getVar("link") !default;
+
+$pagination-ellipsis-color: cv.getVar("text-weak") !default;
+
+$pagination-shadow-inset: inset 0 0.0625em 0.125em
+  hsla(
+    #{cv.getVar("scheme-h")},
+    #{cv.getVar("scheme-s")},
+    #{cv.getVar("scheme-invert-l")},
+    0.2
+  ) !default;
+
+.#{iv.$class-prefix}pagination {
+  @include cv.register-vars(
+    (
+      "pagination-margin": #{$pagination-margin},
+      "pagination-min-width": #{$pagination-min-width},
+      "pagination-item-h": #{$pagination-item-h},
+      "pagination-item-s": #{$pagination-item-s},
+      "pagination-item-l": #{$pagination-item-l},
+      "pagination-item-background-l-delta": #{$pagination-item-background-l-delta},
+      "pagination-item-hover-background-l-delta": #{$pagination-item-hover-background-l-delta},
+      "pagination-item-active-background-l-delta": #{$pagination-item-active-background-l-delta},
+      "pagination-item-border-style": #{$pagination-item-border-style},
+      "pagination-item-border-width": #{$pagination-item-border-width},
+      "pagination-item-border-l": #{$pagination-item-border-l},
+      "pagination-item-border-l-delta": #{$pagination-item-border-l-delta},
+      "pagination-item-hover-border-l-delta": #{$pagination-item-hover-border-l-delta},
+      "pagination-item-active-border-l-delta": #{$pagination-item-active-border-l-delta},
+      "pagination-item-focus-border-l-delta": #{$pagination-item-focus-border-l-delta},
+      "pagination-item-color-l": #{$pagination-item-color-l},
+      "pagination-item-font-size": #{$pagination-item-font-size},
+      "pagination-item-margin": #{$pagination-item-margin},
+      "pagination-item-padding-left": #{$pagination-item-padding-left},
+      "pagination-item-padding-right": #{$pagination-item-padding-right},
+      "pagination-item-outer-shadow-h": #{$pagination-item-outer-shadow-h},
+      "pagination-item-outer-shadow-s": #{$pagination-item-outer-shadow-s},
+      "pagination-item-outer-shadow-l": #{$pagination-item-outer-shadow-l},
+      "pagination-item-outer-shadow-a": #{$pagination-item-outer-shadow-a},
+      "pagination-nav-padding-left": #{$pagination-nav-padding-left},
+      "pagination-nav-padding-right": #{$pagination-nav-padding-right},
+      "pagination-disabled-color": #{$pagination-disabled-color},
+      "pagination-disabled-background-color": #{$pagination-disabled-background-color},
+      "pagination-disabled-border-color": #{$pagination-disabled-border-color},
+      "pagination-current-color": #{$pagination-current-color},
+      "pagination-current-background-color": #{$pagination-current-background-color},
+      "pagination-current-border-color": #{$pagination-current-border-color},
+      "pagination-ellipsis-color": #{$pagination-ellipsis-color},
+      "pagination-shadow-inset": #{$pagination-shadow-inset},
+      "pagination-selected-item-h": #{$pagination-selected-item-h},
+      "pagination-selected-item-s": #{$pagination-selected-item-s},
+      "pagination-selected-item-l": #{$pagination-selected-item-l},
+      "pagination-selected-item-background-l": #{$pagination-selected-item-background-l},
+      "pagination-selected-item-border-l": #{$pagination-selected-item-border-l},
+      "pagination-selected-item-color-l": #{$pagination-selected-item-color-l},
+    )
+  );
+}
+
+.#{iv.$class-prefix}pagination {
+  @extend %block;
+
+  font-size: cv.getVar("size-normal");
+  margin: cv.getVar("pagination-margin");
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    font-size: cv.getVar("size-small");
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    font-size: cv.getVar("size-medium");
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    font-size: cv.getVar("size-large");
+  }
+
+  &.#{iv.$class-prefix}is-rounded {
+    .#{iv.$class-prefix}pagination-previous,
+    .#{iv.$class-prefix}pagination-next {
+      padding-left: 1em;
+      padding-right: 1em;
+      border-radius: cv.getVar("radius-rounded");
+    }
+
+    .#{iv.$class-prefix}pagination-link {
+      border-radius: cv.getVar("radius-rounded");
+    }
+  }
+}
+
+.#{iv.$class-prefix}pagination,
+.#{iv.$class-prefix}pagination-list {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link,
+.#{iv.$class-prefix}pagination-ellipsis {
+  @extend %control;
+  @extend %unselectable;
+  color: hsl(
+    #{cv.getVar("pagination-item-h")},
+    #{cv.getVar("pagination-item-s")},
+    #{cv.getVar("pagination-item-color-l")}
+  );
+  font-size: cv.getVar("pagination-item-font-size");
+  justify-content: center;
+  margin: cv.getVar("pagination-item-margin");
+  padding-left: cv.getVar("pagination-item-padding-left");
+  padding-right: cv.getVar("pagination-item-padding-right");
+  text-align: center;
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next,
+.#{iv.$class-prefix}pagination-link {
+  background-color: hsl(
+    #{cv.getVar("pagination-item-h")},
+    #{cv.getVar("pagination-item-s")},
+    calc(
+      #{cv.getVar("pagination-item-background-l")} + #{cv.getVar(
+          "pagination-item-background-l-delta"
+        )}
+    )
+  );
+  border-color: hsl(
+    #{cv.getVar("pagination-item-h")},
+    #{cv.getVar("pagination-item-s")},
+    calc(
+      #{cv.getVar("pagination-item-border-l")} + #{cv.getVar(
+          "pagination-item-border-l-delta"
+        )}
+    )
+  );
+  border-style: cv.getVar("pagination-item-border-style");
+  border-width: cv.getVar("pagination-item-border-width");
+  box-shadow:
+    0px 0.0625em 0.125em
+      hsla(
+        cv.getVar("pagination-item-outer-shadow-h"),
+        cv.getVar("pagination-item-outer-shadow-s"),
+        cv.getVar("pagination-item-outer-shadow-l"),
+        cv.getVar("pagination-item-outer-shadow-a")
+      ),
+    0px 0.125em 0.25em
+      hsla(
+        cv.getVar("pagination-item-outer-shadow-h"),
+        cv.getVar("pagination-item-outer-shadow-s"),
+        cv.getVar("pagination-item-outer-shadow-l"),
+        cv.getVar("pagination-item-outer-shadow-a")
+      );
+  color: hsl(
+    #{cv.getVar("pagination-item-h")},
+    #{cv.getVar("pagination-item-s")},
+    #{cv.getVar("pagination-item-color-l")}
+  );
+  min-width: cv.getVar("pagination-min-width");
+  transition-duration: cv.getVar("duration");
+  transition-property: background-color, border-color, box-shadow, color;
+
+  &:hover {
+    @include cv.register-vars(
+      (
+        "pagination-item-background-l-delta": #{cv.getVar(
+            "pagination-item-hover-background-l-delta"
+          )},
+        "pagination-item-border-l-delta": #{cv.getVar(
+            "pagination-item-hover-border-l-delta"
+          )},
+      )
+    );
+  }
+
+  &:focus {
+    @include cv.register-vars(
+      (
+        "pagination-item-background-l-delta": #{cv.getVar(
+            "pagination-item-hover-background-l-delta"
+          )},
+        "pagination-item-border-l-delta": #{cv.getVar(
+            "pagination-item-hover-border-l-delta"
+          )},
+      )
+    );
+  }
+
+  &:active {
+    box-shadow: cv.getVar("pagination-shadow-inset");
+  }
+
+  &[disabled],
+  &.#{iv.$class-prefix}is-disabled {
+    background-color: cv.getVar("pagination-disabled-background-color");
+    border-color: cv.getVar("pagination-disabled-border-color");
+    box-shadow: none;
+    color: cv.getVar("pagination-disabled-color");
+    opacity: 0.5;
+  }
+}
+
+.#{iv.$class-prefix}pagination-previous,
+.#{iv.$class-prefix}pagination-next {
+  padding-left: cv.getVar("pagination-nav-padding-left");
+  padding-right: cv.getVar("pagination-nav-padding-right");
+  white-space: nowrap;
+}
+
+.#{iv.$class-prefix}pagination-link {
+  &.#{iv.$class-prefix}is-current,
+  &.#{iv.$class-prefix}is-selected {
+    @include cv.register-vars(
+      (
+        "pagination-item-h": #{cv.getVar("pagination-selected-item-h")},
+        "pagination-item-s": #{cv.getVar("pagination-selected-item-s")},
+        "pagination-item-l": #{cv.getVar("pagination-selected-item-l")},
+        "pagination-item-background-l": #{cv.getVar(
+            "pagination-selected-item-background-l"
+          )},
+        "pagination-item-border-l": #{cv.getVar(
+            "pagination-selected-item-border-l"
+          )},
+        "pagination-item-color-l": #{cv.getVar(
+            "pagination-selected-item-color-l"
+          )},
+      )
+    );
+  }
+}
+
+.#{iv.$class-prefix}pagination-ellipsis {
+  color: cv.getVar("pagination-ellipsis-color");
+  pointer-events: none;
+}
+
+.#{iv.$class-prefix}pagination-list {
+  flex-wrap: wrap;
+
+  li {
+    list-style: none;
+  }
+}
+
+@include mx.mobile {
+  .#{iv.$class-prefix}pagination {
+    flex-wrap: wrap;
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  .#{iv.$class-prefix}pagination-list {
+    li {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+}
+
+@include mx.tablet {
+  .#{iv.$class-prefix}pagination-list {
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: flex-start;
+    order: 1;
+  }
+
+  .#{iv.$class-prefix}pagination-previous,
+  .#{iv.$class-prefix}pagination-next,
+  .#{iv.$class-prefix}pagination-link,
+  .#{iv.$class-prefix}pagination-ellipsis {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .#{iv.$class-prefix}pagination-previous {
+    order: 2;
+  }
+
+  .#{iv.$class-prefix}pagination-next {
+    order: 3;
+  }
+
+  .#{iv.$class-prefix}pagination {
+    justify-content: space-between;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    &.#{iv.$class-prefix}is-centered {
+      .#{iv.$class-prefix}pagination-previous {
+        order: 1;
+      }
+
+      .#{iv.$class-prefix}pagination-list {
+        justify-content: center;
+        order: 2;
+      }
+
+      .#{iv.$class-prefix}pagination-next {
+        order: 3;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-right {
+      .#{iv.$class-prefix}pagination-previous {
+        order: 1;
+      }
+
+      .#{iv.$class-prefix}pagination-next {
+        order: 2;
+      }
+
+      .#{iv.$class-prefix}pagination-list {
+        justify-content: flex-end;
+        order: 3;
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+---
+title: Smart Grid
+layout: docs
+theme: library
+doc-library: true
+doc-tab: grid
+breadcrumb:
+  - home
+  - documentation
+  - grid
+  - grid-smart
+---
+
+{% capture markdown %}
+Bulma v1 comes with a new **Smart Grid**. This grid is a 2 dimensional layout component that features **flexible columns**: Bulma will _fit_ as many columns as possible, given a minimum column width and a column and row gap.
+
+By default, the Smart Grid has:
+
+* a minimum column width of `9rem`
+* a gap of `0.75rem`
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% capture basic_grid_code %}
+<div class="grid">
+  {% for i in (1..23) %}<div class="cell">Cell {{ i }}</div>
+  {% endfor %}<div class="cell">Cell 24</div>
+</div>
+{% endcapture %}
+
+{% capture basic_grid %}
+<div class="grid">
+  {% for i in (1..24) %}<div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal">Cell {{ i }}</div>
+  {% endfor %}
+</div>
+{% endcapture %}
+
+{{ basic_grid }}
+
+{% include docs/elements/snippet.html content=basic_grid_code no_example=true more=true fullwidth=true horizontal=true %}
+
+{% include docs/elements/anchor.html name="Smart Grid modifiers" %}
+
+{% capture markdown %}
+You can change the minimum column width by increments of `1.5rem`, by adding the `is-col-min` modifier class with a value ranging from `0` to `12`:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in (1..12) %}
+      <tr>
+        <td><code>is-col-min-{{ i }}</code></td>
+        <td><code>{{ i | times: 1.5 }}rem</code></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% capture markdown %}
+You can also change the `gap`, `column-gap` and/or `row-gap` by increments of `0.5rem`:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Gap Class</th>
+      <th>Column Gap</th>
+      <th>Row Gap</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in (0..8) %}
+      <tr>
+        <td><code>gap-{{ i }}</code></td>
+        <td><code>column-gap-{{ i }}</code></td>
+        <td><code>row-gap-{{ i }}</code></td>
+        <td><code>{{ i | times: 0.5 }}rem</code></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% capture auto_grid_code %}
+<div class="grid">
+  {% for i in (1..23) %}<div class="cell">Cell {{ i }}</div>
+  {% endfor %}<div class="cell">Cell 24</div>
+</div>
+{% endcapture %}
+
+{% capture auto_grid %}
+<div id="js-grid" class="grid">
+  {% for i in (1..24) %}
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal">
+      Cell {{ i }}
+    </div>
+  {% endfor %}
+</div>
+{% endcapture %}

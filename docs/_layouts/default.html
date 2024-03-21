@@ -1,13 +1,23 @@
-<!DOCTYPE html>
-<html
-  lang="en"
-  class="{% if page.route %}route-{{page.route}}{% elsif page.layout %}route-{{page.layout}}{% endif %}"
->
-  {% include global/head.html %}
-  <body
-    class="layout-{{ page.layout }}{% if page.doc-tab %} page-{{ page.doc-tab}}{% endif %}"
-  >
-    {% include global/v1.html %} {% include global/deprecated.html %} {{ content
-    }} {% include global/footer.html %} {% include global/scripts.html %}
+<!doctype html>
+<html lang="en" class="bd-theme-{% if page.theme %}{{ page.theme }}{% else %}{{ page.layout }}{% endif %}">
+  <head>
+    {% include global/head.html %}
+  </head>
+  <body>
+    {{ content }}
+
+    {% if page.modals %}
+      {% for modal in page.modals %}
+        {% include {{ modal }} %}
+      {% endfor %}
+    {% endif %}
+
+    {% include global/support.html %}
+    {% include global/native.html %}
+    {% include global/about.html %}
+
+    <script src="https://kit.fontawesome.com/418563224c.js" crossorigin="anonymous"></script>
+    <script src="{{ site.url }}/assets/vendor/clipboard-2.0.11.min.js"></script>
+    <script src="{{ site.url }}/assets/javascript/main.js"></script>
   </body>
 </html>

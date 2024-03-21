@@ -1,0 +1,210 @@
+@use "sass/utilities/css-variables" as cv;
+@use "sass/utilities/mixins" as mx;
+@use "../utils";
+
+$delay: 0.2s;
+
+.bd-home-intro {
+  --scale: 1;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.bd-home-intro-body {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 5rem 2.5rem;
+  text-align: center;
+}
+
+.bd-home-intro-content {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 35rem;
+  perspective: 200px;
+  position: relative;
+}
+
+.bd-home-title {
+  @extend %anim-3d;
+  animation-name: anim-slow-intro;
+  color: hsl(
+    cv.getVar("text-h"),
+    cv.getVar("text-s"),
+    cv.getVar("text-title-l")
+  );
+  font-size: calc(var(--scale) * 4rem);
+  font-weight: 800;
+  line-height: 1.125;
+  transform-origin: bottom center;
+}
+
+.bd-home-tagline {
+  @extend %anim-3d;
+  animation-delay: $delay;
+  animation-name: anim-slow-intro;
+  font-size: calc(var(--scale) * 1.25em);
+  transform-origin: top center;
+}
+
+.bd-home-knowledge {
+  --bd-width: 0.0625em;
+  @extend %anim-3d;
+  animation-delay: $delay * 2;
+  animation-name: anim-slow-intro;
+  align-self: center;
+  background-color: cv.getVar("scheme-main");
+  border-color: cv.getVar("success-80");
+  box-shadow: 0px 0.25em 0.5em 0px
+    hsla(
+      cv.getVar("success-h"),
+      cv.getVar("success-s"),
+      cv.getVar("success-l"),
+      0.08
+    );
+  color: cv.getVar("success-40");
+  font-size: calc(var(--scale) * 1.25em);
+  transform-origin: center;
+
+  .icon {
+    color: cv.getVar("success-base");
+  }
+}
+
+.bd-home-buttons {
+  gap: calc(var(--scale) * 1.5rem);
+
+  .button {
+    @extend %anim-3d;
+    animation-delay: $delay * 4;
+    animation-name: anim-slow-intro;
+    font-size: 1.25em;
+
+    strong {
+      font-weight: cv.getVar("weight-medium");
+    }
+
+    &.is-primary {
+      animation-delay: $delay * 3;
+      // color: white;
+    }
+  }
+}
+
+@include mx.desktop {
+  .bd-home-intro-content {
+    // padding-bottom: 6rem;
+  }
+
+  .bd-home-buttons {
+    .button {
+      @include cv.register-vars(
+        (
+          "button-padding-vertical": 0.8125em,
+        )
+      );
+
+      flex-basis: 0;
+      flex-grow: 1;
+    }
+  }
+}
+
+.bd-home-circles {
+  left: 0;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.bd-circles {
+  --d: 1360px;
+  height: var(--d);
+  left: calc(calc(100% - var(--d)) / 2);
+  position: absolute;
+  top: calc(calc(100% - var(--d)) / 2);
+  width: var(--d);
+}
+
+.bd-dot {
+  // background-color: purple;
+  border-radius: 9999px;
+  height: 1.5rem;
+  left: calc(50% - 0.75rem);
+  position: absolute;
+  top: calc(50% - 0.75rem);
+  width: 1.5rem;
+
+  .thing {
+    // opacity: 0.5;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -10%, 0);
+    white-space: nowrap;
+  }
+}
+
+.bd-circle {
+  --h: 121;
+  --s: 0%;
+  --l: 90%;
+  --a: 0.2;
+  @extend %bd-animated;
+  animation-name: anim-grow;
+  animation-duration: 1s;
+  border: 1px dashed cv.getVar("border");
+  // box-shadow:
+  //   0 0 4em hsla(var(--h), var(--s), var(--l), var(--a)),
+  //   inset 0 0 4em hsla(var(--h), var(--s), var(--l), var(--a));
+  border-radius: 9999px;
+  left: calc(calc(100% - var(--d)) / 2);
+  height: var(--d);
+  position: absolute;
+  top: calc(calc(100% - var(--d)) / 2);
+  width: var(--d);
+
+  &.is-one {
+    --d: 800px;
+  }
+
+  &.is-two {
+    --h: 171;
+    --d: 1080px;
+    animation-delay: var(--circle-delay-b);
+  }
+
+  &.is-three {
+    --h: 191;
+    --d: 1360px;
+    animation-delay: var(--circle-delay-c);
+  }
+}
+
+@include mx.mobile {
+  .bd-home-intro {
+    --scale: 0.75;
+  }
+
+  .bd-circles {
+    display: none;
+  }
+}
+
+@include mx.tablet {
+  .bd-home-features {
+    display: none;
+  }
+}

@@ -1,0 +1,162 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$card-color: cv.getVar("text") !default;
+$card-background-color: cv.getVar("scheme-main") !default;
+$card-shadow: cv.getVar("shadow") !default;
+$card-radius: 0.75rem !default;
+
+$card-header-background-color: transparent !default;
+$card-header-color: cv.getVar("text-strong") !default;
+$card-header-padding: 0.75rem 1rem !default;
+$card-header-shadow: 0 0.125em 0.25em
+  hsla(
+    #{cv.getVar("scheme-h")},
+    #{cv.getVar("scheme-s")},
+    #{cv.getVar("scheme-invert-l")},
+    0.1
+  ) !default;
+$card-header-weight: cv.getVar("weight-bold") !default;
+
+$card-content-background-color: transparent !default;
+$card-content-padding: 1.5rem !default;
+
+$card-footer-background-color: transparent !default;
+$card-footer-border-top: 1px solid cv.getVar("border-weak") !default;
+$card-footer-padding: 0.75rem !default;
+
+$card-media-margin: cv.getVar("block-spacing") !default;
+
+.#{iv.$class-prefix}card {
+  @include cv.register-vars(
+    (
+      "card-color": #{$card-color},
+      "card-background-color": #{$card-background-color},
+      "card-shadow": #{$card-shadow},
+      "card-radius": #{$card-radius},
+      "card-header-background-color": #{$card-header-background-color},
+      "card-header-color": #{$card-header-color},
+      "card-header-padding": #{$card-header-padding},
+      "card-header-shadow": #{$card-header-shadow},
+      "card-header-weight": #{$card-header-weight},
+      "card-content-background-color": #{$card-content-background-color},
+      "card-content-padding": #{$card-content-padding},
+      "card-footer-background-color": #{$card-footer-background-color},
+      "card-footer-border-top": #{$card-footer-border-top},
+      "card-footer-padding": #{$card-footer-padding},
+      "card-media-margin": #{$card-media-margin},
+    )
+  );
+}
+
+.#{iv.$class-prefix}card {
+  @extend %block;
+  background-color: cv.getVar("card-background-color");
+  border-radius: cv.getVar("card-radius");
+  box-shadow: cv.getVar("card-shadow");
+  color: cv.getVar("card-color");
+  max-width: 100%;
+  position: relative;
+}
+
+%card-item {
+  &:first-child {
+    border-start-start-radius: cv.getVar("card-radius");
+    border-start-end-radius: cv.getVar("card-radius");
+  }
+
+  &:last-child {
+    border-end-start-radius: cv.getVar("card-radius");
+    border-end-end-radius: cv.getVar("card-radius");
+  }
+}
+
+.#{iv.$class-prefix}card-header {
+  @extend %card-item;
+  background-color: cv.getVar("card-header-background-color");
+  align-items: stretch;
+  box-shadow: cv.getVar("card-header-shadow");
+  display: flex;
+}
+
+.#{iv.$class-prefix}card-header-title {
+  align-items: center;
+  color: cv.getVar("card-header-color");
+  display: flex;
+  flex-grow: 1;
+  font-weight: cv.getVar("card-header-weight");
+  padding: cv.getVar("card-header-padding");
+
+  &.#{iv.$class-prefix}is-centered {
+    justify-content: center;
+  }
+}
+
+.#{iv.$class-prefix}card-header-icon {
+  @include mx.reset;
+
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: cv.getVar("card-header-padding");
+}
+
+.#{iv.$class-prefix}card-image {
+  display: block;
+  position: relative;
+
+  &:first-child {
+    img {
+      border-start-start-radius: cv.getVar("card-radius");
+      border-start-end-radius: cv.getVar("card-radius");
+    }
+  }
+
+  &:last-child {
+    img {
+      border-end-start-radius: cv.getVar("card-radius");
+      border-end-end-radius: cv.getVar("card-radius");
+    }
+  }
+}
+
+.#{iv.$class-prefix}card-content {
+  @extend %card-item;
+
+  background-color: cv.getVar("card-content-background-color");
+  padding: cv.getVar("card-content-padding");
+}
+
+.#{iv.$class-prefix}card-footer {
+  @extend %card-item;
+
+  background-color: cv.getVar("card-footer-background-color");
+  border-top: cv.getVar("card-footer-border-top");
+  align-items: stretch;
+  display: flex;
+}
+
+.#{iv.$class-prefix}card-footer-item {
+  align-items: center;
+  display: flex;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: cv.getVar("card-footer-padding");
+
+  &:not(:last-child) {
+    border-inline-end: cv.getVar("card-footer-border-top");
+  }
+}
+
+// Combinations
+
+.#{iv.$class-prefix}card {
+  .#{iv.$class-prefix}media:not(:last-child) {
+    margin-bottom: cv.getVar("card-media-margin");
+  }
+}

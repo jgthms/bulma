@@ -1,0 +1,13 @@
+<progress class="progress" value="15" max="100">15%</progress>
+
+<progress class="progress is-small" value="15" max="100">15%</progress>
+<progress class="progress is-normal" value="15" max="100">15%</progress>
+<progress class="progress is-medium" value="15" max="100">15%</progress>
+<progress class="progress is-large" value="15" max="100">15%</progress>
+
+{% for status in site.data.colors.status %}
+  <progress class="progress is-{{ status }}" value="{{ forloop.index | times: 10 }}" max="100">
+    {{ forloop.index | times: 10 }}%
+  </progress>
+  <progress class="progress is-{{ status }}" max="100">{{ forloop.index | times: 10 }}%</progress>
+{% endfor %}

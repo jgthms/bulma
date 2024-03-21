@@ -1,15 +1,16 @@
 ---
 title: Columns responsiveness
-layout: documentation
+layout: docs
+theme: library
+doc-library: true
 doc-tab: columns
 doc-subtab: responsiveness
 breadcrumb:
-- home
-- documentation
-- columns
-- columns-responsiveness
+  - home
+  - documentation
+  - columns
+  - columns-responsiveness
 ---
-
 {% capture columns_mobile %}
 <div class="columns is-mobile">
   <div class="column">1</div>
@@ -18,7 +19,6 @@ breadcrumb:
   <div class="column">4</div>
 </div>
 {% endcapture %}
-
 {% capture columns_desktop %}
 <div class="columns is-desktop">
   <div class="column">1</div>
@@ -27,14 +27,22 @@ breadcrumb:
   <div class="column">4</div>
 </div>
 {% endcapture %}
-
 {% capture columns_multiple_breakpoints %}
 <div class="columns is-mobile">
-  <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
-    <code>is-three-quarters-mobile</code><br>
-    <code>is-two-thirds-tablet</code><br>
-    <code>is-half-desktop</code><br>
-    <code>is-one-third-widescreen</code><br>
+  <div
+    class="
+      column
+      is-three-quarters-mobile
+      is-two-thirds-tablet
+      is-half-desktop
+      is-one-third-widescreen
+      is-one-quarter-fullhd
+    "
+  >
+    <code>is-three-quarters-mobile</code><br />
+    <code>is-two-thirds-tablet</code><br />
+    <code>is-half-desktop</code><br />
+    <code>is-one-third-widescreen</code><br />
     <code>is-one-quarter-fullhd</code>
   </div>
   <div class="column">2</div>
@@ -43,14 +51,15 @@ breadcrumb:
   <div class="column">5</div>
 </div>
 {% endcapture %}
-
-{% include elements/anchor.html name="Mobile columns" %}
+{% include docs/elements/anchor.html name="Mobile columns" %}
 
 <div class="content">
   <p>
-    By default, columns are only activated from <strong>tablet</strong> onwards. This means columns are stacked on top of each other on <strong>mobile</strong>.
+    By default, columns are only activated from <strong>tablet</strong> onwards. This means columns are stacked on top
+    of each other on <strong>mobile</strong>.
     <br>
-    If you want columns to work on <strong>mobile too</strong>, just add the <code>is-mobile</code> modifier on the <code>columns</code> container:
+    If you want columns to work on <strong>mobile too</strong>, just add the <code>is-mobile</code> modifier on the
+    <code>columns</code> container:
   </p>
 </div>
 
@@ -69,20 +78,22 @@ breadcrumb:
   </div>
 </div>
 
-{% highlight html %}{{ columns_mobile }}{% endhighlight %}
+{% highlight html -%}
+{{- columns_mobile -}}
+{%- endhighlight %}
 
 <div class="message is-info">
-  <p class="message-header">
-    Resize
-  </p>
+  <p class="message-header">Resize</p>
   <p class="message-body">
-    If you want to see the difference, resize your browser and see <em>when</em> the columns are stacked and when they are horizontally distributed.
+    If you want to see the difference, resize your browser and see
+    <em>when</em> the columns are stacked and when they are horizontally distributed.
   </p>
 </div>
 
 <div class="content">
   <p>
-    If you <em>only</em> want columns on <strong>desktop</strong> upwards, just use the <code>is-desktop</code> modifier on the <code>columns</code> container:
+    If you <em>only</em> want columns on <strong>desktop</strong> upwards, just use the <code>is-desktop</code> modifier
+    on the <code>columns</code> container:
   </p>
 </div>
 
@@ -101,16 +112,26 @@ breadcrumb:
   </div>
 </div>
 
-{% highlight html %}{{ columns_desktop }}{% endhighlight %}
-
-{% include elements/anchor.html name="Different column sizes per breakpoint" %}
+{% highlight html -%}
+{{- columns_desktop -}}
+{%- endhighlight %}
+{% include docs/elements/anchor.html name="Different column sizes per breakpoint" %}
 
 <div class="content">
   <p>You can define a <strong>column size</strong> for <em>each</em> viewport size: mobile, tablet, and desktop.</p>
 </div>
 
 <div class="columns is-mobile">
-  <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+  <div
+    class="
+      column
+      is-three-quarters-mobile
+      is-two-thirds-tablet
+      is-half-desktop
+      is-one-third-widescreen
+      is-one-quarter-fullhd
+    "
+  >
     <p class="bd-notification is-primary">
       <code>is-three-quarters-mobile</code><br>
       <code>is-two-thirds-tablet</code><br>
@@ -135,7 +156,14 @@ breadcrumb:
 
 <div class="message is-info">
   <p class="message-header">Resize</p>
-  <p class="message-body">If you want to see these classes in action, resize your browser window and see how the same column varies in width at each breakpoint.</p>
+  <p class="message-body">
+    If you want to see these classes in action, resize your browser window and see how the same column varies in width
+    at each breakpoint.
+  </p>
 </div>
 
-{% highlight html %}{{ columns_multiple_breakpoints }}{% endhighlight %}
+<div class="bd-highlight-full">
+  {% highlight html -%}
+  {{- columns_multiple_breakpoints -}}
+  {%- endhighlight %}
+</div>

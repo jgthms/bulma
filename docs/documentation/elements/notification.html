@@ -1,34 +1,34 @@
 ---
 title: Notification
-layout: documentation
+layout: docs
+theme: library
 doc-tab: elements
 doc-subtab: notification
 breadcrumb:
-- home
-- documentation
-- elements
-- elements-notification
+  - home
+  - documentation
+  - elements
+  - elements-notification
 meta:
   colors: true
   sizes: false
   variables: true
 ---
-
 {% capture notification %}
 <div class="notification">
   <button class="delete"></button>
-  Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor.
+  <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec
+  nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam,
+  et dictum <a>felis venenatis</a> efficitur.
 </div>
 {% endcapture %}
-
 {% capture notification_js_html %}
 <div class="notification">
   <button class="delete"></button>
   Lorem ipsum
 </div>
 {% endcapture %}
-
 {% capture notification_js_code %}
 document.addEventListener('DOMContentLoaded', () => {
   (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
@@ -43,58 +43,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <div class="content">
   <p>
-    The notification is a simple colored block meant to draw the attention to the user about something. As such, it can be used as a pinned notification in the corner of the viewport. That's why it supports the use of the <code>delete</code> element.
+    The notification is a simple colored block meant to draw the attention to the user about something. As such, it can
+    be used as a pinned notification in the corner of the viewport. That's why it supports the use of the
+    <code>delete</code> element.
   </p>
 </div>
 
-{% include elements/snippet.html content=notification %}
-
-{% include elements/anchor.html name="Colors" %}
+{% include docs/elements/snippet.html content=notification %}
+{% include docs/elements/anchor.html name="Colors" %}
 
 <div class="content">
   <p>
-    The notification element is available in all the <strong>different colors</strong> defined by the <a href="{{ site.data.links.by_id.customize-variables.path }}"><code>$colors</code> Sass map</a>.
+    The notification element is available in all the
+    <strong>different colors</strong> defined by the
+    <a href="{{ site.data.links.by_id.customize-variables.path }}"><code>$colors</code> Sass map</a>.
   </p>
 </div>
 
 {% for color in site.data.colors.justColors %}
-{% capture foobar %}
+  {% capture foobar %}
 <div class="notification is-{{ color }}">
   <button class="delete"></button>
-  Primar lorem ipsum dolor sit amet, consectetur
-  adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+  Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum
+  dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta
+  nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
+  diam, et dictum <a>felis venenatis</a> efficitur.
 </div>
 {% endcapture %}
-{% include elements/snippet.html content=foobar %}
+  {% include docs/elements/snippet.html content=foobar %}
 {% endfor %}
-
-{% include elements/anchor.html name="Light colors" %}
+{% include docs/elements/anchor.html name="Light colors" %}
 
 <div class="content">
-  Each color also comes in its <strong>light</strong> version. Simply append the <code>is-light</code> modifier to obtain the light version of the notification.
+  Each color also comes in its <strong>light</strong> version. Simply append the <code>is-light</code> modifier to
+  obtain the light version of the notification.
 </div>
 
 {% for color in site.data.colors.justColors %}
-{% capture foobar %}
+  {% capture foobar %}
 <div class="notification is-{{ color }} is-light">
   <button class="delete"></button>
-  Primar lorem ipsum dolor sit amet, consectetur
-  adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+  Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum
+  dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta
+  nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
+  diam, et dictum <a>felis venenatis</a> efficitur.
 </div>
 {% endcapture %}
-{% include elements/snippet.html content=foobar %}
+  {% include docs/elements/snippet.html content=foobar %}
 {% endfor %}
-
-{% include elements/anchor.html name="JavaScript example" %}
+{% include docs/elements/anchor.html name="JavaScript example" %}
 
 <div class="content">
   <p>
-    The Bulma package <strong>does not come with any JavaScript</strong>. Here is however an implementation example, which sets the <code>click</code> handler for Bulma <code>delete</code> elements, anywhere on the page, in vanilla JavaScript.
+    The Bulma package <strong>does not come with any JavaScript</strong>. Here is however an implementation example,
+    which sets the <code>click</code> handler for Bulma <code>delete</code> elements, anywhere on the page, in vanilla
+    JavaScript.
   </p>
 
-  {% highlight html %}{{ notification_js_html }}{% endhighlight %}
-
-  {% highlight javascript %}{{ notification_js_code }}{% endhighlight %}
+  {% highlight html -%}
+  {{- notification_js_html -}}
+  {%- endhighlight %}
+  {% highlight javascript -%}
+  {{- notification_js_code -}}
+  {%- endhighlight %}
 </div>
 
-{% include components/variables.html type='element' %}
+

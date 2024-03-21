@@ -1,0 +1,152 @@
+@use "sass/utilities/css-variables" as cv;
+@use "../utils";
+
+@mixin anim-bounce-jelly {
+  animation-duration: 1000ms;
+  animation-fill-mode: both;
+  animation-name: anim-bounce-jelly;
+  animation-timing-function: linear;
+}
+
+%anim-bounce-jelly {
+  @include anim-bounce-jelly;
+}
+
+.bd-dot-bounce {
+  --factor: 1;
+  @include anim-bounce-jelly;
+  animation-delay: calc(var(--factor) * 0.1s);
+}
+
+@for $index from 1 through 20 {
+  .bd-dot-bounce.is-#{$index} {
+    --factor: #{$index};
+  }
+}
+
+.bd-bubble {
+  --s: 75%;
+  --bg-l: 90%;
+  --fg-l: 30%;
+  --bg: hsl(var(--h), var(--s), var(--bg-l));
+  --fg: hsl(var(--h), var(--s), var(--fg-l));
+  --scale: 1.125;
+  display: flex;
+  flex-direction: column;
+  width: 17rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  perspective: 200px;
+  transform-style: preserve-3d;
+
+  &.is-bruhandle {
+    --scale: 0.875;
+  }
+
+  &.is-jesseschoff {
+    --scale: 1.25;
+  }
+
+  &.is-ale_codes {
+    --scale: 1.25;
+  }
+}
+
+.bd-bubble-content {
+  @extend %anim-3d;
+  animation-name: anim-rise-up;
+  transform-origin: bottom center;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-size: calc(var(--scale, 1) * 1em);
+  font-weight: cv.getVar("weight-medium");
+  line-height: 1.25;
+  padding: 0.875em 1em;
+  position: relative;
+  border-radius: 0.75em;
+  margin-left: -1.5rem;
+}
+
+.bd-bubble-arrow {
+  @extend %anim-3d;
+  animation-name: anim-slide-down;
+  border-width: 0.5rem 0.75rem;
+  border-color: transparent;
+  border-style: solid;
+  border-top-color: var(--bg);
+  height: 1rem;
+  margin-top: -1px;
+  width: 1.5rem;
+}
+
+.bd-bubble-author {
+  @extend %anim-3d;
+  animation-name: anim-pivot-up;
+  align-items: center;
+  gap: 0.5rem;
+  display: flex;
+  transform-origin: top center;
+
+  img {
+    border-radius: 40%;
+    height: 1.5em;
+    width: 1.5em;
+    flex-shrink: 0;
+  }
+
+  strong {
+    color: cv.getVar("text-strong");
+    font-size: 0.875em;
+  }
+}
+
+@include cv.system-theme($name: "dark") {
+  .bd-bubble {
+    --s: 100%;
+    --fg-l: 70%;
+    --bg-l: 10%;
+  }
+}
+
+@include cv.bulma-theme($name: "light") {
+  .bd-bubble {
+    --s: 75%;
+    --bg-l: 90%;
+    --fg-l: 30%;
+  }
+}
+
+@include cv.bulma-theme($name: "dark") {
+  .bd-bubble {
+    --s: 100%;
+    --fg-l: 70%;
+    --bg-l: 10%;
+  }
+}
+
+$bubble-order: ("axbom", "jesseschoff", "ale_codes", "MyTopSecretName");
+$delay-factor: 0.3s;
+
+@for $index from 1 through length($bubble-order) {
+  $name: nth($bubble-order, $index);
+
+  .js-bubble-#{$name} {
+    .bd-bubble-content {
+      animation-delay: calc(
+        var(--animation-delay) + #{($index - 1) * $delay-factor}
+      );
+    }
+    .bd-bubble-arrow {
+      animation-delay: calc(
+        var(--animation-delay) + #{($index - 1) * $delay-factor + 0.5s}
+      );
+    }
+
+    .bd-bubble-author {
+      animation-delay: calc(
+        var(--animation-delay) + #{($index - 1) * $delay-factor + 0.7s}
+      );
+    }
+  }
+}

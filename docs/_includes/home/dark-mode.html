@@ -1,0 +1,95 @@
+{% assign customize_link = site.data.links.by_id['features-dark-mode'] %}
+{% assign heading_href = site.url | append: customize_link.path %}
+
+{% capture bulma_theme %}
+<div>
+  <h1 class="title">Bulma Theme</h1>
+  <h2 class="subtitle">
+    System Theme with <code>prefers-color-scheme</code>
+  </h2>
+</div>
+{% endcapture %}
+
+{% capture dark_theme %}
+<div data-theme="dark">
+  <h1 class="title">Bulma</h1>
+
+  <p class="subtitle">
+    Modern CSS framework based on <a href="https://bulma.io">Flexbox</a>
+  </p>
+
+  <div class="message is-success">
+    <div class="message-body">
+      Changes successfully saved
+    </div>
+  </div>
+
+  <div class="field">
+    <input class="input" type="text" placeholder="Your Name">
+  </div>
+
+  <div class="field">
+    <div class="select">
+      <select><option>Select dropdown</option></select>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <a class="button is-link is-soft">Save Changes</a>
+    <a class="button is-danger is-soft">Cancel</a>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture light_theme %}
+<div data-theme="light">
+  <h1 class="title">Light Theme</h1>
+  <h2 class="subtitle">
+    Light Theme with <code>[data-theme=light]</code>
+  </h2>
+</div>
+{% endcapture %}
+
+<section class="bd-home-section bd-theme-moon theme-dark" data-theme="dark">
+  {%
+    include docs/components/heading.html
+    color="moon"
+    icon="fas fa-moon"
+    title="Dark Mode"
+    subtitle="Choose a dark theme automatically or by user preference"
+    href=heading_href
+    button_icon_after="fas fa-arrow-right"
+    button_label="See <strong>Dark Mode</strong> docs"
+  %}
+
+  <!--div class="bd-home-themes js-themes">
+    <button data-scheme="light" class="bd-nav-item is-sun" aria-label="Light mode">
+      <span class="icon">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+      </span>
+      <span>Light</span>
+    </button>
+
+    <button data-scheme="dark" class="bd-nav-item is-moon" aria-label="Dark mode">
+      <span class="icon">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </span>
+      <span>Dark</span>
+    </button>
+
+    <button data-scheme="system" class="bd-nav-item is-system" aria-label="System mode">
+      <span class="icon">
+        <i class="fas fa-display" aria-hidden="true"></i>
+      </span>
+      <span>System</span>
+    </button>
+  </div-->
+
+  <div class="bd-home-theme-preview columns" style="align-items: stretch;">
+    <div class="has-radius-large is-align-items-center is-flex" style="padding: 2.5em 3em;">
+      {{ dark_theme }}
+    </div>
+
+    {% highlight html %}{{ dark_theme }}{% endhighlight %}
+  </div>
+</section>

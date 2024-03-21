@@ -1,0 +1,111 @@
+@use "sass/utilities/css-variables" as cv;
+
+.bd-links {
+  display: grid;
+  gap: cv.getVar("block-spacing");
+  grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+}
+
+.bd-link-heading,
+.bd-links {
+  --h: var(--theme-h);
+  --s: var(--theme-s);
+  --l: 60%;
+  --a: 0.1;
+  --color: var(--theme-color);
+
+  &.is-start {
+    --h: #{cv.getVar("start-h")};
+    --s: #{cv.getVar("start-s")};
+  }
+
+  &.is-features,
+  &.is-special {
+    --h: #{cv.getVar("danger-h")};
+    --s: #{cv.getVar("danger-s")};
+  }
+
+  &.is-sass {
+    --h: #{cv.getVar("sass-h")};
+    --s: #{cv.getVar("sass-s")};
+  }
+
+  &.is-customize {
+    --h: #{cv.getVar("info-h")};
+    --s: #{cv.getVar("info-s")};
+  }
+
+  &.is-helpers {
+    --h: #{cv.getVar("success-h")};
+    --s: #{cv.getVar("success-s")};
+  }
+}
+
+.bd-link {
+  background-color: cv.getVar("scheme-main");
+  box-shadow: cv.getVar("shadow");
+  border-radius: cv.getVar("radius-large");
+  border-style: solid;
+  border-width: 1px;
+  border-color: cv.getVar("border");
+  color: cv.getVar("text-weak");
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1.125em 1.5em 1.5em;
+  box-shadow: 0px 0.25em 0.5em 0px hsla(var(--h), var(--s), var(--l), var(--a));
+  transition-duration: cv.getVar("duration");
+  transition-property: border-color, box-shadow, transform;
+
+  &:hover {
+    --a: 0.05;
+    border-color: var(--color);
+    box-shadow:
+      0px 1em 2em 0px hsla(var(--h), var(--s), var(--l), var(--a)),
+      0px 2em 4em 0px hsla(var(--h), var(--s), var(--l), var(--a));
+    transform: translateY(-0.5em);
+  }
+
+  &:active {
+    box-shadow:
+      0px 0.5em 1em 0px hsla(var(--h), var(--s), var(--l), var(--a)),
+      0px 1em 2em 0px hsla(var(--h), var(--s), var(--l), var(--a));
+    transform: translateY(-0.25em);
+  }
+}
+
+.bd-link-heading {
+  align-items: center;
+  color: var(--color);
+  display: flex;
+  font-size: 1.25em;
+  gap: 0.5em;
+}
+
+.bd-link-header {
+  align-items: center;
+  display: flex;
+  gap: 0.25em;
+}
+
+.bd-link-icon {
+  color: var(--color);
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 1.5em;
+  margin-right: 0.5em;
+  width: 1.5em;
+}
+
+.bd-link-title {
+  color: cv.getVar("text-strong");
+  display: block;
+  font-size: 1.125em;
+  font-weight: cv.getVar("weight-semibold");
+  line-height: 1.5;
+}
+
+.bd-link-subtitle {
+  min-height: 4.5em;
+  padding-right: 3em;
+}

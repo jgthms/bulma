@@ -1,0 +1,341 @@
+@use "shared";
+@use "../utilities/controls";
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$label-color: cv.getVar("text-strong") !default;
+$label-weight: cv.getVar("weight-semibold") !default;
+
+$help-size: cv.getVar("size-small") !default;
+
+$label-colors: shared.$form-colors !default;
+
+.#{iv.$class-prefix}label {
+  color: $label-color;
+  display: block;
+  font-size: cv.getVar("size-normal");
+  font-weight: $label-weight;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    font-size: cv.getVar("size-small");
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    font-size: cv.getVar("size-medium");
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    font-size: cv.getVar("size-large");
+  }
+}
+
+.#{iv.$class-prefix}help {
+  display: block;
+  font-size: $help-size;
+  margin-top: 0.25rem;
+
+  @each $name, $pair in $label-colors {
+    &.#{iv.$class-prefix}is-#{$name} {
+      color: hsl(
+        #{cv.getVar($name, "", "-h")},
+        #{cv.getVar($name, "", "-s")},
+        #{cv.getVar($name, "", "-on-scheme-l")}
+      );
+    }
+  }
+}
+
+// Containers
+
+.#{iv.$class-prefix}field {
+  @include cv.register-vars(
+    (
+      "block-spacing": 0.75rem,
+    )
+  );
+
+  @extend %block;
+
+  // Modifiers
+  &.#{iv.$class-prefix}has-addons {
+    display: flex;
+    justify-content: flex-start;
+
+    .#{iv.$class-prefix}control {
+      &:not(:last-child) {
+        margin-inline-end: -1px;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        .#{iv.$class-prefix}button,
+        .#{iv.$class-prefix}input,
+        .#{iv.$class-prefix}select select {
+          border-radius: 0;
+        }
+      }
+
+      &:first-child:not(:only-child) {
+        .#{iv.$class-prefix}button,
+        .#{iv.$class-prefix}input,
+        .#{iv.$class-prefix}select select {
+          // @include ltr {
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+          // }
+        }
+      }
+
+      &:last-child:not(:only-child) {
+        .#{iv.$class-prefix}button,
+        .#{iv.$class-prefix}input,
+        .#{iv.$class-prefix}select select {
+          // @include ltr {
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+          // }
+        }
+      }
+
+      .#{iv.$class-prefix}button,
+      .#{iv.$class-prefix}input,
+      .#{iv.$class-prefix}select select {
+        &:not([disabled]) {
+          &:hover,
+          &.#{iv.$class-prefix}is-hovered {
+            z-index: 2;
+          }
+
+          &:focus,
+          &.#{iv.$class-prefix}is-focused,
+          &:active,
+          &.#{iv.$class-prefix}is-active {
+            z-index: 3;
+
+            &:hover {
+              z-index: 4;
+            }
+          }
+        }
+      }
+
+      &.#{iv.$class-prefix}is-expanded {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+
+    &.#{iv.$class-prefix}has-addons-centered {
+      justify-content: center;
+    }
+
+    &.#{iv.$class-prefix}has-addons-right {
+      justify-content: flex-end;
+    }
+
+    &.#{iv.$class-prefix}has-addons-fullwidth {
+      .#{iv.$class-prefix}control {
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &.#{iv.$class-prefix}is-grouped {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-start;
+
+    & > .#{iv.$class-prefix}control {
+      flex-shrink: 0;
+
+      &.#{iv.$class-prefix}is-expanded {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+
+    &.#{iv.$class-prefix}is-grouped-centered {
+      justify-content: center;
+    }
+
+    &.#{iv.$class-prefix}is-grouped-right {
+      justify-content: flex-end;
+    }
+
+    &.#{iv.$class-prefix}is-grouped-multiline {
+      flex-wrap: wrap;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-horizontal {
+    @include mx.tablet {
+      display: flex;
+    }
+  }
+}
+
+.#{iv.$class-prefix}field-label {
+  .#{iv.$class-prefix}label {
+    font-size: inherit;
+  }
+
+  @include mx.mobile {
+    margin-bottom: 0.5rem;
+  }
+
+  @include mx.tablet {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-inline-end: 1.5rem;
+    text-align: right;
+
+    &.#{iv.$class-prefix}is-small {
+      font-size: cv.getVar("size-small");
+      padding-top: 0.375em;
+    }
+
+    &.#{iv.$class-prefix}is-normal {
+      padding-top: 0.375em;
+    }
+
+    &.#{iv.$class-prefix}is-medium {
+      font-size: cv.getVar("size-medium");
+      padding-top: 0.375em;
+    }
+
+    &.#{iv.$class-prefix}is-large {
+      font-size: cv.getVar("size-large");
+      padding-top: 0.375em;
+    }
+  }
+}
+
+.#{iv.$class-prefix}field-body {
+  .#{iv.$class-prefix}field .#{iv.$class-prefix}field {
+    margin-bottom: 0;
+  }
+
+  @include mx.tablet {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 5;
+    flex-shrink: 1;
+
+    .#{iv.$class-prefix}field {
+      margin-bottom: 0;
+    }
+
+    & > .#{iv.$class-prefix}field {
+      flex-shrink: 1;
+
+      &:not(.#{iv.$class-prefix}is-narrow) {
+        flex-grow: 1;
+      }
+
+      &:not(:last-child) {
+        margin-inline-end: 0.75rem;
+      }
+    }
+  }
+}
+
+.#{iv.$class-prefix}control {
+  box-sizing: border-box;
+  clear: both;
+  font-size: cv.getVar("size-normal");
+  position: relative;
+  text-align: inherit;
+
+  // Modifiers
+  &.#{iv.$class-prefix}has-icons-left,
+  &.#{iv.$class-prefix}has-icons-right {
+    .#{iv.$class-prefix}input,
+    .#{iv.$class-prefix}select {
+      &:hover {
+        & ~ .#{iv.$class-prefix}icon {
+          color: cv.getVar("input-icon-hover-color");
+        }
+      }
+
+      &:focus {
+        & ~ .#{iv.$class-prefix}icon {
+          color: cv.getVar("input-icon-focus-color");
+        }
+      }
+
+      &.#{iv.$class-prefix}is-small ~ .#{iv.$class-prefix}icon {
+        font-size: cv.getVar("size-small");
+      }
+
+      &.#{iv.$class-prefix}is-medium ~ .#{iv.$class-prefix}icon {
+        font-size: cv.getVar("size-medium");
+      }
+
+      &.#{iv.$class-prefix}is-large ~ .#{iv.$class-prefix}icon {
+        font-size: cv.getVar("size-large");
+      }
+    }
+
+    .#{iv.$class-prefix}icon {
+      color: cv.getVar("input-icon-color");
+      height: cv.getVar("input-height");
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: cv.getVar("input-height");
+      z-index: 4;
+    }
+  }
+
+  &.#{iv.$class-prefix}has-icons-left {
+    .#{iv.$class-prefix}input,
+    .#{iv.$class-prefix}select select {
+      padding-left: cv.getVar("input-height");
+    }
+
+    .#{iv.$class-prefix}icon.#{iv.$class-prefix}is-left {
+      left: 0;
+    }
+  }
+
+  &.#{iv.$class-prefix}has-icons-right {
+    .#{iv.$class-prefix}input,
+    .#{iv.$class-prefix}select select {
+      padding-right: cv.getVar("input-height");
+    }
+
+    .#{iv.$class-prefix}icon.#{iv.$class-prefix}is-right {
+      right: 0;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-loading {
+    &::after {
+      @extend %loader;
+      inset-inline-end: 0.75em;
+      position: absolute !important;
+      top: 0.75em;
+      z-index: 4;
+    }
+
+    &.#{iv.$class-prefix}is-small:after {
+      font-size: cv.getVar("size-small");
+    }
+
+    &.#{iv.$class-prefix}is-medium:after {
+      font-size: cv.getVar("size-medium");
+    }
+
+    &.#{iv.$class-prefix}is-large:after {
+      font-size: cv.getVar("size-large");
+    }
+  }
+}

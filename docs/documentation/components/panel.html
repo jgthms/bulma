@@ -1,13 +1,14 @@
 ---
 title: Panel
-layout: documentation
+layout: docs
+theme: library
 doc-tab: components
 doc-subtab: panel
 breadcrumb:
-- home
-- documentation
-- components
-- components-panel
+  - home
+  - documentation
+  - components
+  - components-panel
 meta:
   colors: true
   sizes: false
@@ -16,12 +17,10 @@ meta:
 
 {% capture panel_example %}
 <nav class="panel">
-  <p class="panel-heading">
-    Repositories
-  </p>
+  <p class="panel-heading">Repositories</p>
   <div class="panel-block">
     <p class="control has-icons-left">
-      <input class="input" type="text" placeholder="Search">
+      <input class="input" type="text" placeholder="Search" />
       <span class="icon is-left">
         <i class="fas fa-search" aria-hidden="true"></i>
       </span>
@@ -71,7 +70,7 @@ meta:
     mojs
   </a>
   <label class="panel-block">
-    <input type="checkbox">
+    <input type="checkbox" />
     remember me
   </label>
   <div class="panel-block">
@@ -83,16 +82,10 @@ meta:
 {% endcapture %}
 
 <div class="content">
-  <p>
-    The <code>panel</code> is a container for several types:
-  </p>
+  <p>The <code>panel</code> is a container for several types:</p>
   <ul>
-    <li>
-      <code>panel-heading</code> as the first child
-    </li>
-    <li>
-      <code>panel-tabs</code> for navigation
-    </li>
+    <li><code>panel-heading</code> as the first child</li>
+    <li><code>panel-tabs</code> for navigation</li>
     <li>
       <code>panel-block</code> which can contain other elements, like:
       <ul>
@@ -104,29 +97,31 @@ meta:
     </li>
   </ul>
   <p>
-    The <code>panel-block</code> can be an anchor tag <code>&lt;a&gt;</code> or a label <code>&lt;label&gt;</code> with a checkbox inside.
+    The <code>panel-block</code> can be an anchor tag <code>&lt;a&gt;</code> or
+    a label <code>&lt;label&gt;</code> with a checkbox inside.
   </p>
 </div>
 
-{% include elements/snippet.html content=panel_example more=true %}
-
-{% include elements/anchor.html name="Colors" %}
+{% include docs/elements/snippet.html content=panel_example more=true %} {%
+include docs/elements/anchor.html name="Colors" %}
 
 <div class="content">
   <p>
-    The panel component is available in all the <strong>different colors</strong> defined by the <a href="{{ site.data.links.by_id.customize-variables.path }}"><code>$colors</code> Sass map</a>.     Simply append one of the color modifiers.
+    The panel component is available in all the
+    <strong>different colors</strong> defined by the
+    <a href="{{ site.data.links.by_id.customize-variables.path }}"
+      ><code>$colors</code> Sass map</a
+    >. Simply append one of the color modifiers.
   </p>
   <p>
-    For example, to use your primary color, use <code>"panel is-primary"</code> as a class.
+    For example, to use your primary color, use
+    <code>"panel is-primary"</code> as a class.
   </p>
 </div>
 
-{% for color in site.data.colors.justColors %}
-{% capture foobar %}
+{% for color in site.data.colors.justColors %} {% capture foobar %}
 <article class="panel is-{{ color }}">
-  <p class="panel-heading">
-    {{ color | capitalize }}
-  </p>
+  <p class="panel-heading">{{ color | capitalize }}</p>
   <p class="panel-tabs">
     <a class="is-active">All</a>
     <a>Public</a>
@@ -136,7 +131,7 @@ meta:
   </p>
   <div class="panel-block">
     <p class="control has-icons-left">
-      <input class="input is-{{ color }}" type="text" placeholder="Search">
+      <input class="input is-{{ color }}" type="text" placeholder="Search" />
       <span class="icon is-left">
         <i class="fas fa-search" aria-hidden="true"></i>
       </span>
@@ -167,8 +162,5 @@ meta:
     jgthms.github.io
   </a>
 </article>
-{% endcapture %}
-{% include elements/snippet.html content=foobar more=true %}
-{% endfor %}
-
-{% include components/variables.html type='component' %}
+{% endcapture %} {% include docs/elements/snippet.html content=foobar more=true
+%} {% endfor %}

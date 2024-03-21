@@ -1,0 +1,123 @@
+@use "shared";
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/controls";
+
+$textarea-padding: cv.getVar("control-padding-horizontal") !default;
+$textarea-max-height: 40em !default;
+$textarea-min-height: 8em !default;
+
+$textarea-colors: shared.$form-colors !default;
+
+%input-textarea {
+  @extend %input;
+
+  @include cv.register-vars(
+    (
+      "input-h": #{cv.getVar("scheme-h")},
+      "input-s": #{cv.getVar("scheme-s")},
+      "input-border-style": solid,
+      "input-border-width": 1px,
+      "input-border-l": #{cv.getVar("border-l")},
+    )
+  );
+
+  box-shadow: shared.$input-shadow;
+  max-width: 100%;
+  width: 100%;
+
+  &[readonly] {
+    box-shadow: none;
+  }
+
+  // Colors
+  @each $name, $pair in $textarea-colors {
+    $color: nth($pair, 1);
+
+    &.#{iv.$class-prefix}is-#{$name} {
+      @include cv.register-vars(
+        (
+          "input-h": #{cv.getVar($name, "", "-h")},
+          "input-s": #{cv.getVar($name, "", "-s")},
+          "input-l": #{cv.getVar($name, "", "-l")},
+          "input-focus-h": #{cv.getVar($name, "", "-h")},
+          "input-focus-s": #{cv.getVar($name, "", "-s")},
+          "input-focus-l": #{cv.getVar($name, "", "-l")},
+          "input-border-l": #{cv.getVar($name, "", "-l")},
+        )
+      );
+    }
+  }
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    @include controls.control-small;
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    @include controls.control-medium;
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    @include controls.control-large;
+  }
+
+  // Modifiers
+  &.#{iv.$class-prefix}is-fullwidth {
+    display: block;
+    width: 100%;
+  }
+
+  &.#{iv.$class-prefix}is-inline {
+    display: inline;
+    width: auto;
+  }
+}
+
+.#{iv.$class-prefix}input {
+  @extend %input-textarea;
+
+  &.#{iv.$class-prefix}is-rounded {
+    border-radius: cv.getVar("radius-rounded");
+    padding-left: calc(#{controls.$control-padding-horizontal} + 0.375em);
+    padding-right: calc(#{controls.$control-padding-horizontal} + 0.375em);
+  }
+
+  &.#{iv.$class-prefix}is-static {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.#{iv.$class-prefix}textarea {
+  @extend %input-textarea;
+  @include cv.register-vars(
+    (
+      "textarea-padding": #{$textarea-padding},
+      "textarea-max-height": #{$textarea-max-height},
+      "textarea-min-height": #{$textarea-min-height},
+    )
+  );
+  display: block;
+  max-width: 100%;
+  min-width: 100%;
+  padding: cv.getVar("textarea-padding");
+  resize: vertical;
+
+  &:not([rows]) {
+    max-height: cv.getVar("textarea-max-height");
+    min-height: cv.getVar("textarea-min-height");
+  }
+
+  &[rows] {
+    height: initial;
+  }
+
+  // Modifiers
+  &.#{iv.$class-prefix}has-fixed-size {
+    resize: none;
+  }
+}

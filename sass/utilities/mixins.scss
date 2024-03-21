@@ -1,0 +1,460 @@
+@use "initial-variables" as iv;
+@use "css-variables" as cv;
+
+@mixin arrow($color: #{cv.getVar("link")}) {
+  border: 0.125em solid $color;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  display: block;
+  height: 0.625em;
+  margin-top: -0.4375em;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  transition-duration: cv.getVar("duration");
+  transition-property: border-color;
+  width: 0.625em;
+}
+
+@mixin block($spacing: cv.getVar("block-spacing")) {
+  &:not(:last-child) {
+    margin-bottom: $spacing;
+  }
+}
+
+@mixin center($width, $height: 0) {
+  position: absolute;
+  @if $height != 0 {
+    left: calc(50% - (#{$width} * 0.5));
+    top: calc(50% - (#{$height} * 0.5));
+  } @else {
+    left: calc(50% - (#{$width} * 0.5));
+    top: calc(50% - (#{$width} * 0.5));
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+@mixin delete {
+  @include cv.register-vars(
+    (
+      "delete-dimensions": 1.25rem,
+      "delete-background-l": 0%,
+      "delete-background-alpha": 0.5,
+      "delete-color": #{cv.getVar("white")},
+    )
+  );
+
+  appearance: none;
+  background-color: hsla(
+    #{cv.getVar("scheme-h")},
+    #{cv.getVar("scheme-s")},
+    #{cv.getVar("delete-background-l")},
+    #{cv.getVar("delete-background-alpha")}
+  );
+  border: none;
+  border-radius: cv.getVar("radius-rounded");
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 1em;
+  height: cv.getVar("delete-dimensions");
+  max-height: cv.getVar("delete-dimensions");
+  max-width: cv.getVar("delete-dimensions");
+  min-height: cv.getVar("delete-dimensions");
+  min-width: cv.getVar("delete-dimensions");
+  outline: none;
+  position: relative;
+  vertical-align: top;
+  width: cv.getVar("delete-dimensions");
+
+  &::before,
+  &::after {
+    background-color: cv.getVar("delete-color");
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform-origin: center center;
+  }
+
+  &::before {
+    height: 2px;
+    width: 50%;
+  }
+
+  &::after {
+    height: 50%;
+    width: 2px;
+  }
+
+  &:hover,
+  &:focus {
+    @include cv.register-var("delete-background-alpha", 0.4);
+  }
+
+  &:active {
+    @include cv.register-var("delete-background-alpha", 0.5);
+  }
+
+  // Sizes
+  &.#{iv.$class-prefix}is-small {
+    @include cv.register-var("delete-dimensions", 1rem);
+  }
+
+  &.#{iv.$class-prefix}is-medium {
+    @include cv.register-var("delete-dimensions", 1.5rem);
+  }
+
+  &.#{iv.$class-prefix}is-large {
+    @include cv.register-var("delete-dimensions", 2rem);
+  }
+}
+
+@mixin fa($size, $dimensions) {
+  display: inline-block;
+  font-size: $size;
+  height: $dimensions;
+  line-height: $dimensions;
+  text-align: center;
+  vertical-align: top;
+  width: $dimensions;
+}
+
+@mixin burger($dimensions) {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: none;
+  border-radius: cv.getVar("burger-border-radius");
+  color: hsl(
+    cv.getVar("burger-h"),
+    cv.getVar("burger-s"),
+    cv.getVar("burger-l")
+  );
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: $dimensions;
+  justify-content: center;
+  position: relative;
+  vertical-align: top;
+  width: $dimensions;
+
+  span {
+    background-color: currentColor;
+    display: block;
+    height: cv.getVar("burger-item-height");
+    left: calc(50% - calc(#{cv.getVar("burger-item-width")}) / 2);
+    position: absolute;
+    transform-origin: center;
+    transition-duration: cv.getVar("duration");
+    transition-property: background-color, color, opacity, transform;
+    transition-timing-function: cv.getVar("easing");
+    width: cv.getVar("burger-item-width");
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      top: calc(50% - calc(#{cv.getVar("burger-item-height")}) / 2);
+    }
+
+    &:nth-child(3) {
+      bottom: calc(50% + #{cv.getVar("burger-gap")});
+    }
+
+    &:nth-child(4) {
+      top: calc(50% + #{cv.getVar("burger-gap")});
+    }
+  }
+
+  &:hover {
+    background-color: hsla(
+      cv.getVar("burger-h"),
+      cv.getVar("burger-s"),
+      cv.getVar("burger-l"),
+      0.1
+    );
+  }
+
+  &:active {
+    background-color: hsla(
+      cv.getVar("burger-h"),
+      cv.getVar("burger-s"),
+      cv.getVar("burger-l"),
+      0.2
+    );
+  }
+
+  // Modifers
+  &.#{iv.$class-prefix}is-active {
+    span {
+      &:nth-child(1) {
+        transform: rotate(-45deg);
+      }
+
+      &:nth-child(2) {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@mixin overflow-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin placeholder {
+  $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
+
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
+@mixin reset {
+  appearance: none;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin selection($current-selector: false) {
+  @if $current-selector {
+    &::-moz-selection {
+      @content;
+    }
+    &::selection {
+      @content;
+    }
+  } @else {
+    ::-moz-selection {
+      @content;
+    }
+    ::selection {
+      @content;
+    }
+  }
+}
+
+// Responsiveness
+
+@mixin from($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}
+
+@mixin until($device) {
+  @media screen and (max-width: ($device - 1px)) {
+    @content;
+  }
+}
+
+@mixin between($from, $until) {
+  @media screen and (min-width: $from) and (max-width: ($until - 1px)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: (iv.$tablet - 1px)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: iv.$tablet), print {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media screen and (min-width: iv.$tablet) and (max-width: (iv.$desktop - 1px)) {
+    @content;
+  }
+}
+
+@mixin touch {
+  @media screen and (max-width: (iv.$desktop - 1px)) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: iv.$desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @if iv.$widescreen-enabled {
+    @media screen and (min-width: iv.$desktop) and (max-width: (iv.$widescreen - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin until-widescreen {
+  @if iv.$widescreen-enabled {
+    @media screen and (max-width: (iv.$widescreen - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin widescreen {
+  @if iv.$widescreen-enabled {
+    @media screen and (min-width: iv.$widescreen) {
+      @content;
+    }
+  }
+}
+
+@mixin widescreen-only {
+  @if iv.$widescreen-enabled and iv.$fullhd-enabled {
+    @media screen and (min-width: iv.$widescreen) and (max-width: (iv.$fullhd - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin until-fullhd {
+  @if iv.$fullhd-enabled {
+    @media screen and (max-width: (iv.$fullhd - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin fullhd {
+  @if iv.$fullhd-enabled {
+    @media screen and (min-width: iv.$fullhd) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoint($name) {
+  $breakpoint: map-get(iv.$breakpoints, $name);
+
+  @if $breakpoint {
+    $from: map-get($breakpoint, "from");
+    $until: map-get($breakpoint, "until");
+
+    @if $from and $until {
+      @include between($from, $until) {
+        @content;
+      }
+    } @else if $from {
+      @include from($from) {
+        @content;
+      }
+    } @else if $until {
+      @include until($until) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin container-from($name, $width) {
+  @container #{$name} (min-width: #{$width}) {
+    @content;
+  }
+}
+
+@mixin container-until($name, $width) {
+  @container #{$name} (max-width: #{$width - 1px}) {
+    @content;
+  }
+}
+
+@mixin ltr {
+  @if not iv.$rtl {
+    @content;
+  }
+}
+
+@mixin rtl {
+  @if iv.$rtl {
+    @content;
+  }
+}
+
+@mixin ltr-property($property, $spacing, $right: true) {
+  $normal: if($right, "right", "left");
+  $opposite: if($right, "left", "right");
+
+  @if iv.$rtl {
+    #{$property}-#{$opposite}: $spacing;
+  } @else {
+    #{$property}-#{$normal}: $spacing;
+  }
+}
+
+@mixin ltr-position($spacing, $right: true) {
+  $normal: if($right, "right", "left");
+  $opposite: if($right, "left", "right");
+
+  @if iv.$rtl {
+    #{$opposite}: $spacing;
+  } @else {
+    #{$normal}: $spacing;
+  }
+}
+
+// Placeholders
+
+@mixin unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin loader {
+  animation: spinAround 500ms infinite linear;
+  border: 2px solid cv.getVar("loading-color");
+  border-radius: cv.getVar("radius-rounded");
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+}
+
+@mixin overlay($offset: 0) {
+  bottom: $offset;
+  left: $offset;
+  position: absolute;
+  right: $offset;
+  top: $offset;
+}

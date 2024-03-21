@@ -1,13 +1,15 @@
 ---
 title: Column options
-layout: documentation
+layout: docs
+theme: library
+doc-library: true
 doc-tab: columns
 doc-subtab: options
 breadcrumb:
-- home
-- documentation
-- columns
-- columns-options
+  - home
+  - documentation
+  - columns
+  - columns-options
 ---
 
 {% capture columns_vcentered %}
@@ -16,12 +18,13 @@ breadcrumb:
     <p class="bd-notification is-primary">First column</p>
   </div>
   <div class="column">
-    <p class="bd-notification is-primary">Second column with more content. This is so you can see the vertical alignment.</p>
+    <p class="bd-notification is-primary">
+      Second column with more content. This is so you can see the vertical
+      alignment.
+    </p>
   </div>
 </div>
-{% endcapture %}
-
-{% capture columns_multiline %}
+{% endcapture %} {% capture columns_multiline %}
 <div class="columns is-multiline is-mobile">
   <div class="column is-one-quarter">
     <code>is-one-quarter</code>
@@ -47,61 +50,57 @@ breadcrumb:
   <div class="column is-one-quarter">
     <code>is-one-quarter</code>
   </div>
-  <div class="column">
-    Auto
-  </div>
+  <div class="column">Auto</div>
 </div>
-{% endcapture %}
-
-{% capture columns_mobile_centered %}
+{% endcapture %} {% capture columns_mobile_centered %}
 <div class="columns is-mobile is-centered">
   <div class="column is-half">
     <p class="bd-notification is-primary">
-      <code class="html">is-half</code><br>
+      <code class="html">is-half</code><br />
     </p>
   </div>
 </div>
-{% endcapture %}
-
-{% capture columns_mobile_multiline_centered %}
+{% endcapture %} {% capture columns_mobile_multiline_centered %}
 <div class="columns is-mobile is-multiline is-centered">
   <div class="column is-narrow">
     <p class="bd-notification is-primary">
-      <code class="html">is-narrow</code><br>
+      <code class="html">is-narrow</code><br />
       First Column
     </p>
   </div>
   <div class="column is-narrow">
     <p class="bd-notification is-primary">
-      <code class="html">is-narrow</code><br>
+      <code class="html">is-narrow</code><br />
       Our Second Column
     </p>
   </div>
   <div class="column is-narrow">
     <p class="bd-notification is-primary">
-      <code class="html">is-narrow</code><br>
+      <code class="html">is-narrow</code><br />
       Third Column
     </p>
   </div>
   <div class="column is-narrow">
     <p class="bd-notification is-primary">
-      <code class="html">is-narrow</code><br>
+      <code class="html">is-narrow</code><br />
       The Fourth Column
     </p>
   </div>
   <div class="column is-narrow">
     <p class="bd-notification is-primary">
-      <code class="html">is-narrow</code><br>
+      <code class="html">is-narrow</code><br />
       Fifth Column
     </p>
   </div>
 </div>
-{% endcapture %}
-
-{% include elements/anchor.html name="Vertical alignment" %}
+{% endcapture %} {% include docs/elements/anchor.html name="Vertical alignment"
+%}
 
 <div class="content">
-  <p>To align your columns vertically, add the <code>is-vcentered</code> modifier to the <code>columns</code> container.</p>
+  <p>
+    To align your columns vertically, add the <code>is-vcentered</code> modifier
+    to the <code>columns</code> container.
+  </p>
 </div>
 
 <div class="columns is-vcentered">
@@ -109,16 +108,23 @@ breadcrumb:
     <p class="bd-notification is-primary">First column</p>
   </div>
   <div class="column">
-    <p class="bd-notification is-primary">Second column with more content. This is so you can see the vertical alignment.</p>
+    <p class="bd-notification is-primary">
+      Second column with more content. This is so you can see the vertical
+      alignment.
+    </p>
   </div>
 </div>
 
-{% highlight html %}{{ columns_vcentered }}{% endhighlight %}
-
-{% include elements/anchor.html name="Multiline" %}
+{% highlight html -%} {{- columns_vcentered -}} {%- endhighlight %} {% include
+docs/elements/anchor.html name="Multiline" %}
 
 <div class="content">
-  <p>Whenever you want to start a new line, you can close a <code>columns</code> container and start a new one. But you can also add the <code>is-multiline</code> modifier and add <strong>more</strong> column elements than would fit in a single row.</p>
+  <p>
+    Whenever you want to start a new line, you can close a
+    <code>columns</code> container and start a new one. But you can also add the
+    <code>is-multiline</code> modifier and add <strong>more</strong> column
+    elements than would fit in a single row.
+  </p>
 </div>
 
 <div class="columns is-multiline is-mobile">
@@ -151,63 +157,67 @@ breadcrumb:
   </div>
 </div>
 
-{% highlight html %}{{ columns_multiline }}{% endhighlight %}
-
-{% include elements/anchor.html name="Centering columns" %}
+{% highlight html -%} {{- columns_multiline -}} {%- endhighlight %} {% include
+docs/elements/anchor.html name="Centering columns" %}
 
 <div class="content">
   <p>
-    While you can use <em>empty columns</em> (like <code>&lt;div class="column"&gt;&lt;/div&gt;</code>) to create horizontal space around <code>.column</code> elements, you can also use <code>.is-centered</code> on the parent <code>.columns</code> element:
+    While you can use <em>empty columns</em> (like
+    <code>&lt;div class="column"&gt;&lt;/div&gt;</code>) to create horizontal
+    space around <code>.column</code> elements, you can also use
+    <code>.is-centered</code> on the parent <code>.columns</code> element:
   </p>
 </div>
 
 <div class="columns is-mobile is-centered">
   <div class="column is-half">
     <p class="bd-notification is-primary">
-      <code class="html">is-half</code><br>
+      <code class="html">is-half</code><br />
     </p>
   </div>
 </div>
 
-{% highlight html %}{{ columns_mobile_centered }}{% endhighlight %}
+{% highlight html -%} {{- columns_mobile_centered -}} {%- endhighlight %}
 
 <div class="content">
   <p>
-    Use with <code>.is-multiline</code> to create a flexible, centered list (try resizing to see centering in different viewport sizes):
+    Use with <code>.is-multiline</code> to create a flexible, centered list (try
+    resizing to see centering in different viewport sizes):
   </p>
 </div>
 
 <div class="columns is-mobile is-multiline is-centered">
   <div class="column is-narrow">
-    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem;">
-      <code class="html">is-narrow</code><br>
+    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem">
+      <code class="html">is-narrow</code><br />
       First Column
     </p>
   </div>
   <div class="column is-narrow">
-    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem;">
-      <code class="html">is-narrow</code><br>
+    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem">
+      <code class="html">is-narrow</code><br />
       Our Second Column
     </p>
   </div>
   <div class="column is-narrow">
-    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem;">
-      <code class="html">is-narrow</code><br>
+    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem">
+      <code class="html">is-narrow</code><br />
       Third Column
     </p>
   </div>
   <div class="column is-narrow">
-    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem;">
-      <code class="html">is-narrow</code><br>
+    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem">
+      <code class="html">is-narrow</code><br />
       The Fourth Column
     </p>
   </div>
   <div class="column is-narrow">
-    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem;">
-      <code class="html">is-narrow</code><br>
+    <p class="bd-notification is-primary" style="padding: 1.25rem 1.5rem">
+      <code class="html">is-narrow</code><br />
       Fifth Column
     </p>
   </div>
 </div>
 
-{% highlight html %}{{ columns_mobile_multiline_centered }}{% endhighlight %}
+{% highlight html -%} {{- columns_mobile_multiline_centered -}} {%- endhighlight
+%}

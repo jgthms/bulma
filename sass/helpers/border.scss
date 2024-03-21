@@ -1,0 +1,15 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+
+$radii: (
+  "small": "radius-small",
+  "normal": "radius",
+  "large": "radius-large",
+  "rounded": "radius-rounded",
+);
+
+@each $name, $var in $radii {
+  .#{iv.$helpers-has-prefix}radius-#{$name} {
+    border-radius: cv.getVar($var);
+  }
+}

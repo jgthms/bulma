@@ -1,0 +1,112 @@
+@use "initial-variables" as iv;
+@use "functions" as fn;
+
+// Scheme colors
+
+$scheme-main: iv.$white !default;
+$scheme-main-bis: iv.$white-bis !default;
+$scheme-main-ter: iv.$white-ter !default;
+$scheme-invert: iv.$black !default;
+$scheme-invert-bis: iv.$black-bis !default;
+$scheme-invert-ter: iv.$black-ter !default;
+
+// Text colors
+
+$text: iv.$grey-dark !default;
+$text-invert: fn.bulmaFindColorInvert($text) !default;
+$text-weak: iv.$grey !default;
+$text-strong: iv.$grey-darker !default;
+
+// Status colors
+
+$primary: iv.$turquoise !default;
+$info: iv.$cyan !default;
+$success: iv.$green !default;
+$warning: iv.$yellow !default;
+$danger: iv.$red !default;
+$light: iv.$white-ter !default;
+$dark: iv.$grey-darker !default;
+
+// Link colors
+
+$link: iv.$blue !default;
+
+// Decorative colors
+
+$background: iv.$white-ter !default;
+$border: iv.$grey-lighter !default;
+$border-weak: iv.$grey-lightest !default;
+
+// Code colors
+
+$code: iv.$red !default;
+$code-background: $background !default;
+
+$pre: $text !default;
+$pre-background: $background !default;
+
+// Typography
+
+$family-primary: iv.$family-sans-serif !default;
+$family-secondary: iv.$family-sans-serif !default;
+$family-code: iv.$family-monospace !default;
+
+$size-small: iv.$size-7 !default;
+$size-normal: iv.$size-6 !default;
+$size-medium: iv.$size-5 !default;
+$size-large: iv.$size-4 !default;
+
+// Effects
+
+$shadow-color: iv.$black !default;
+
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+$colors: fn.mergeColorMaps(
+  (
+    "white": (
+      iv.$white,
+      iv.$black,
+    ),
+    "black": (
+      iv.$black,
+      iv.$white,
+    ),
+    "light": (
+      $light,
+      $dark,
+    ),
+    "dark": (
+      $dark,
+      $light,
+    ),
+    "text": $text,
+    "primary": $primary,
+    "link": $link,
+    "info": $info,
+    "success": $success,
+    "warning": $warning,
+    "danger": $danger,
+  ),
+  $custom-colors
+) !default;
+
+$shades: fn.mergeColorMaps(
+  (
+    "black-bis": iv.$black-bis,
+    "black-ter": iv.$black-ter,
+    "grey-darker": iv.$grey-darker,
+    "grey-dark": iv.$grey-dark,
+    "grey": iv.$grey,
+    "grey-light": iv.$grey-light,
+    "grey-lighter": iv.$grey-lighter,
+    "white-ter": iv.$white-ter,
+    "white-bis": iv.$white-bis,
+  ),
+  $custom-shades
+) !default;
+
+$sizes: iv.$size-1 iv.$size-2 iv.$size-3 iv.$size-4 iv.$size-5 iv.$size-6
+  iv.$size-7 !default;

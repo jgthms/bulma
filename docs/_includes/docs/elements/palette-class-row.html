@@ -1,0 +1,30 @@
+{% assign name = include.color %}
+
+<tr>
+  <td rowspan="2">
+    <span class="bd-color-swatch" style="--background: var(--bulma-{{ name }})"></span>
+  </td>
+  <td rowspan="2">
+    <code>--bulma-{{ name }}</code>
+  </td>
+  <td>
+    <code>has-text-{{ name }}</code>
+  </td>
+  <td>
+    <span class="has-text-{{ name }}">Hello World</span>
+  </td>
+  <td>
+    <code>has-background-{{ name }}</code>
+  </td>
+  <td class="has-background-{{ name }} has-text-{{ name }}-invert">
+    Hello World
+  </td>
+</tr>
+<tr>
+  <td colspan="4" style="padding: 0; --hl-radius: 0; width: 10em; overflow: hidden;">
+    {% highlight html -%}
+<span class="has-text-{{ name }}">Color</span>
+<span class="has-background-{{ name }}">Background</span>
+    {%- endhighlight %}
+  </td>
+</tr>

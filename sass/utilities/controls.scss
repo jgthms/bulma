@@ -1,0 +1,85 @@
+@use "css-variables" as cv;
+@use "derived-variables" as dv;
+@use "initial-variables" as iv;
+
+$control-radius: cv.getVar("radius") !default;
+$control-radius-small: cv.getVar("radius-small") !default;
+
+$control-border-width: 1px !default;
+$control-size: cv.getVar("size-normal") !default;
+
+$control-height: 2.5em !default;
+$control-line-height: 1.5 !default;
+
+$control-padding-vertical: calc(0.5em - #{$control-border-width}) !default;
+$control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default;
+
+$control-focus-shadow-l: 50% !default;
+
+:root {
+  @include cv.register-vars(
+    (
+      "control-radius": #{$control-radius},
+      "control-radius-small": #{$control-radius-small},
+      "control-border-width": #{$control-border-width},
+      "control-height": #{$control-height},
+      "control-line-height": #{$control-line-height},
+      "control-padding-vertical": #{$control-padding-vertical},
+      "control-padding-horizontal": #{$control-padding-horizontal},
+      "control-size": #{$control-size},
+      "control-focus-shadow-l": #{$control-focus-shadow-l},
+    )
+  );
+}
+
+@mixin control {
+  align-items: center;
+  appearance: none;
+  border-color: transparent;
+  border-style: solid;
+  border-width: cv.getVar("control-border-width");
+  border-radius: cv.getVar("control-radius");
+  box-shadow: none;
+  display: inline-flex;
+  font-size: cv.getVar("control-size");
+  height: cv.getVar("control-height");
+  justify-content: flex-start;
+  line-height: cv.getVar("control-line-height");
+  padding-bottom: cv.getVar("control-padding-vertical");
+  padding-left: cv.getVar("control-padding-horizontal");
+  padding-right: cv.getVar("control-padding-horizontal");
+  padding-top: cv.getVar("control-padding-vertical");
+  position: relative;
+  transition-duration: cv.getVar("duration");
+  transition-property: background-color, border-color, box-shadow, color;
+  vertical-align: top;
+
+  // States
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &.#{iv.$class-prefix}is-focused,
+  &:active,
+  &.#{iv.$class-prefix}is-active {
+    outline: none;
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+
+// The controls sizes use mixins so they can be used at different breakpoints
+@mixin control-small {
+  border-radius: $control-radius-small;
+  font-size: cv.getVar("size-small");
+}
+
+@mixin control-medium {
+  font-size: cv.getVar("size-medium");
+}
+
+@mixin control-large {
+  font-size: cv.getVar("size-large");
+}

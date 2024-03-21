@@ -1,0 +1,128 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins" as mx;
+
+$title-color: cv.getVar("text-strong") !default;
+$title-family: false !default;
+$title-size: cv.getVar("size-3") !default;
+$title-weight: cv.getVar("weight-extrabold") !default;
+$title-line-height: 1.125 !default;
+$title-strong-color: inherit !default;
+$title-strong-weight: inherit !default;
+$title-sub-size: 0.75em !default;
+$title-sup-size: 0.75em !default;
+
+$subtitle-color: cv.getVar("text") !default;
+$subtitle-family: false !default;
+$subtitle-size: cv.getVar("size-5") !default;
+$subtitle-weight: cv.getVar("weight-normal") !default;
+$subtitle-line-height: 1.25 !default;
+$subtitle-strong-color: cv.getVar("text-strong") !default;
+$subtitle-strong-weight: cv.getVar("weight-semibold") !default;
+
+.#{iv.$class-prefix}title,
+.#{iv.$class-prefix}subtitle {
+  @include cv.register-vars(
+    (
+      "title-color": #{$title-color},
+      "title-family": #{$title-family},
+      "title-size": #{$title-size},
+      "title-weight": #{$title-weight},
+      "title-line-height": #{$title-line-height},
+      "title-strong-color": #{$title-strong-color},
+      "title-strong-weight": #{$title-strong-weight},
+      "title-sub-size": #{$title-sub-size},
+      "title-sup-size": #{$title-sup-size},
+      "subtitle-color": #{$subtitle-color},
+      "subtitle-family": #{$subtitle-family},
+      "subtitle-size": #{$subtitle-size},
+      "subtitle-weight": #{$subtitle-weight},
+      "subtitle-line-height": #{$subtitle-line-height},
+      "subtitle-strong-color": #{$subtitle-strong-color},
+      "subtitle-strong-weight": #{$subtitle-strong-weight},
+    )
+  );
+}
+
+.#{iv.$class-prefix}title,
+.#{iv.$class-prefix}subtitle {
+  @extend %block;
+  word-break: break-word;
+
+  em,
+  span {
+    font-weight: inherit;
+  }
+
+  sub {
+    font-size: cv.getVar("title-sub-size");
+  }
+
+  sup {
+    font-size: cv.getVar("title-sup-size");
+  }
+
+  .#{iv.$class-prefix}tag {
+    vertical-align: middle;
+  }
+}
+
+.#{iv.$class-prefix}title {
+  color: cv.getVar("title-color");
+  font-size: cv.getVar("title-size");
+  font-weight: cv.getVar("title-weight");
+  line-height: cv.getVar("title-line-height");
+
+  @if $title-family {
+    font-family: cv.getVar("title-family");
+  }
+
+  strong {
+    color: cv.getVar("title-strong-color");
+    font-weight: cv.getVar("title-strong-weight");
+  }
+
+  &:not(.#{iv.$class-prefix}is-spaced):has(+ .#{iv.$class-prefix}subtitle) {
+    margin-bottom: 0;
+  }
+
+  // Sizes
+  @each $size in dv.$sizes {
+    $i: index(dv.$sizes, $size);
+
+    &.#{iv.$class-prefix}is-#{$i} {
+      font-size: $size;
+    }
+  }
+}
+
+.#{iv.$class-prefix}subtitle {
+  color: cv.getVar("subtitle-color");
+  font-size: cv.getVar("subtitle-size");
+  font-weight: cv.getVar("subtitle-weight");
+  line-height: cv.getVar("subtitle-line-height");
+
+  @if $subtitle-family {
+    font-family: cv.getVar("subtitle-family");
+  }
+
+  strong {
+    color: cv.getVar("subtitle-strong-color");
+    font-weight: cv.getVar("subtitle-strong-weight");
+  }
+
+  &:not(.#{iv.$class-prefix}is-spaced):has(+ .#{iv.$class-prefix}title) {
+    margin-bottom: 0;
+  }
+
+  // Sizes
+  @each $size in dv.$sizes {
+    $i: index(dv.$sizes, $size);
+
+    &.#{iv.$class-prefix}is-#{$i} {
+      font-size: $size;
+    }
+  }
+}

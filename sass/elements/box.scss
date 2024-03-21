@@ -1,0 +1,59 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+
+$box-background-color: cv.getVar("scheme-main") !default;
+$box-color: cv.getVar("text") !default;
+$box-radius: cv.getVar("radius-large") !default;
+$box-shadow: cv.getVar("shadow") !default;
+$box-padding: 1.25rem !default;
+
+$box-link-hover-shadow:
+  0 0.5em 1em -0.125em hsla(#{cv.getVar("scheme-h")}, #{cv.getVar("scheme-s")}, #{cv.getVar(
+          "scheme-invert-l"
+        )}, 0.1),
+  0 0 0 1px cv.getVar("link") !default;
+$box-link-active-shadow:
+  inset 0 1px 2px
+    hsla(
+      #{cv.getVar("scheme-h")},
+      #{cv.getVar("scheme-s")},
+      #{cv.getVar("scheme-invert-l")},
+      0.2
+    ),
+  0 0 0 1px cv.getVar("link") !default;
+
+.#{iv.$class-prefix}box {
+  @include cv.register-vars(
+    (
+      "box-background-color": #{$box-background-color},
+      "box-color": #{$box-color},
+      "box-radius": #{$box-radius},
+      "box-shadow": #{$box-shadow},
+      "box-padding": #{$box-padding},
+      "box-link-hover-shadow": #{$box-link-hover-shadow},
+      "box-link-active-shadow": #{$box-link-active-shadow},
+    )
+  );
+}
+
+.#{iv.$class-prefix}box {
+  @extend %block;
+  background-color: cv.getVar("box-background-color");
+  border-radius: cv.getVar("box-radius");
+  box-shadow: cv.getVar("box-shadow");
+  color: cv.getVar("box-color");
+  display: block;
+  padding: cv.getVar("box-padding");
+}
+
+a.#{iv.$class-prefix}box {
+  &:hover,
+  &:focus {
+    box-shadow: cv.getVar("box-link-hover-shadow");
+  }
+
+  &:active {
+    box-shadow: cv.getVar("box-link-active-shadow");
+  }
+}

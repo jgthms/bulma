@@ -1,0 +1,62 @@
+@use "../utilities/initial-variables" as iv;
+
+$flex-direction-values: row, row-reverse, column, column-reverse;
+
+@each $value in $flex-direction-values {
+  .#{iv.$helpers-prefix}flex-direction-#{$value} {
+    flex-direction: $value !important;
+  }
+}
+
+$flex-wrap-values: nowrap, wrap, wrap-reverse;
+
+@each $value in $flex-wrap-values {
+  .#{iv.$helpers-prefix}flex-wrap-#{$value} {
+    flex-wrap: $value !important;
+  }
+}
+
+$justify-content-values: flex-start, flex-end, center, space-between,
+  space-around, space-evenly, start, end, left, right;
+
+@each $value in $justify-content-values {
+  .#{iv.$helpers-prefix}justify-content-#{$value} {
+    justify-content: $value !important;
+  }
+}
+
+$align-content-values: flex-start, flex-end, center, space-between, space-around,
+  space-evenly, stretch, start, end, baseline;
+
+@each $value in $align-content-values {
+  .#{iv.$helpers-prefix}align-content-#{$value} {
+    align-content: $value !important;
+  }
+}
+
+$align-items-values: stretch, flex-start, flex-end, center, baseline, start, end,
+  self-start, self-end;
+
+@each $value in $align-items-values {
+  .#{iv.$helpers-prefix}align-items-#{$value} {
+    align-items: $value !important;
+  }
+}
+
+$align-self-values: auto, flex-start, flex-end, center, baseline, stretch;
+
+@each $value in $align-self-values {
+  .#{iv.$helpers-prefix}align-self-#{$value} {
+    align-self: $value !important;
+  }
+}
+
+$flex-operators: grow, shrink;
+
+@each $operator in $flex-operators {
+  @for $i from 0 through 5 {
+    .#{iv.$helpers-prefix}flex-#{$operator}-#{$i} {
+      flex-#{$operator}: $i !important;
+    }
+  }
+}

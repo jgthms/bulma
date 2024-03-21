@@ -1,0 +1,102 @@
+@use "sass/utilities/css-variables" as cv;
+@use "sass/utilities/mixins" as mx;
+
+.bd-hero {
+  --scale: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: calc(var(--scale) * 1.5rem);
+  padding: calc(var(--scale) * 3rem);
+  text-align: center;
+
+  &.is-docs {
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0;
+    text-align: left;
+
+    .bd-hero-body {
+      flex-basis: 20em;
+      flex-grow: 1;
+    }
+
+    .bd-hr {
+      margin-left: 0;
+    }
+
+    .bd-hero-title {
+      max-width: 80%;
+    }
+
+    .bd-hero-prints {
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .bd-hero.is-docs {
+    flex-wrap: nowrap;
+  }
+}
+
+.bd-hero-title {
+  color: hsl(
+    cv.getVar("text-h"),
+    cv.getVar("text-s"),
+    cv.getVar("text-title-l")
+  );
+  font-size: calc(var(--scale) * 3rem);
+  font-weight: cv.getVar("weight-extrabold");
+  line-height: 1.125;
+  word-break: break-word;
+
+  a {
+    color: var(--theme-color);
+  }
+}
+
+.bd-hero-subtitle {
+  color: cv.getVar("text-weak");
+  font-size: calc(var(--scale) * 1.25em);
+}
+
+.bd-hero-prints {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.bd-hero-print {
+  opacity: 0.5;
+  transition-duration: cv.getVar("duration");
+  transition-property: opacity;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@include mx.mobile {
+  .bd-hero {
+    --scale: 0.75;
+  }
+}
+
+.bd-carbon {
+  &,
+  & > div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  > div {
+    height: 280px;
+    width: 400px;
+  }
+}

@@ -1,0 +1,126 @@
+@use "../utilities/css-variables" as cv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/mixins" as mx;
+@use "../utilities/extends";
+
+$skeleton-background: cv.getVar("border") !default;
+$skeleton-radius: cv.getVar("radius-small") !default;
+$skeleton-block-min-height: 4.5em !default;
+$skeleton-lines-gap: 0.75em !default;
+$skeleton-line-height: 0.75em !default;
+
+:root {
+  @include cv.register-vars(
+    (
+      "skeleton-background": #{$skeleton-background},
+      "skeleton-radius": #{$skeleton-radius},
+      "skeleton-block-min-height": #{$skeleton-block-min-height},
+      "skeleton-lines-gap": #{$skeleton-lines-gap},
+      "skeleton-line-height": #{$skeleton-line-height},
+    )
+  );
+}
+
+%skeleton-pulsation {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: pulsate;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  background-color: cv.getVar("skeleton-background");
+  border-radius: cv.getVar("skeleton-radius");
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.#{iv.$class-prefix}is-skeleton {
+  @extend %skeleton-pulsation;
+  color: transparent !important;
+
+  em,
+  strong {
+    color: inherit;
+  }
+
+  img {
+    visibility: hidden;
+  }
+
+  &.#{iv.$class-prefix}checkbox {
+    input {
+      opacity: 0;
+    }
+  }
+
+  &.#{iv.$class-prefix}delete {
+    border-radius: cv.getVar("radius-rounded");
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+input.#{iv.$class-prefix}is-skeleton,
+textarea.#{iv.$class-prefix}is-skeleton {
+  resize: none;
+
+  @include mx.placeholder {
+    color: transparent !important;
+  }
+}
+
+.#{iv.$class-prefix}has-skeleton {
+  color: transparent !important;
+  position: relative;
+
+  &::after {
+    @extend %skeleton-pulsation;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    max-width: 100%;
+    min-width: 10%;
+    position: absolute;
+    top: 0;
+    width: 7em;
+  }
+}
+
+.#{iv.$class-prefix}skeleton-block {
+  @extend %block;
+  @extend %skeleton-pulsation;
+  color: transparent !important;
+  min-height: cv.getVar("skeleton-block-min-height");
+}
+
+.#{iv.$class-prefix}skeleton-lines {
+  color: transparent !important;
+  display: flex;
+  flex-direction: column;
+  gap: cv.getVar("skeleton-lines-gap");
+  position: relative;
+
+  > div {
+    @extend %skeleton-pulsation;
+    height: cv.getVar("skeleton-line-height");
+
+    &:last-child {
+      min-width: 4em;
+      width: 30%;
+    }
+  }
+}
+
+.#{iv.$class-prefix}skeleton {
+  background-image: linear-gradient(
+    0deg,
+    transparent 0%,
+    transparent 50%,
+    #f60 50%,
+    #f60 100%
+  );
+  background-position: top left;
+  background-size: 1.5em;
+}

@@ -1,0 +1,239 @@
+@use "../utilities/css-variables.scss" as cv;
+@use "../utilities/mixins" as mx;
+
+$body-background-color: cv.getVar("scheme-main") !default;
+$body-size: 1em !default;
+$body-min-width: 300px !default;
+$body-rendering: optimizeLegibility !default;
+$body-family: cv.getVar("family-primary") !default;
+$body-overflow-x: hidden !default;
+$body-overflow-y: scroll !default;
+
+$body-color: cv.getVar("text") !default;
+$body-font-size: 1em !default;
+$body-weight: cv.getVar("weight-normal") !default;
+$body-line-height: 1.5 !default;
+
+$code-family: cv.getVar("family-code") !default;
+$code-padding: 0.25em 0.5em 0.25em !default;
+$code-weight: normal !default;
+$code-size: 0.875em !default;
+
+$small-font-size: 0.875em !default;
+
+$hr-background-color: cv.getVar("background") !default;
+$hr-height: 2px !default;
+$hr-margin: 1.5rem 0 !default;
+
+$strong-color: cv.getVar("text-strong") !default;
+$strong-weight: cv.getVar("weight-semibold") !default;
+
+$pre-font-size: 0.875em !default;
+$pre-padding: 1.25rem 1.5rem !default;
+$pre-code-font-size: 1em !default;
+
+:root {
+  @include cv.register-vars(
+    (
+      "body-background-color": #{$body-background-color},
+      "body-size": #{$body-size},
+      "body-min-width": #{$body-min-width},
+      "body-rendering": #{$body-rendering},
+      "body-family": #{$body-family},
+      "body-overflow-x": #{$body-overflow-x},
+      "body-overflow-y": #{$body-overflow-y},
+      "body-color": #{$body-color},
+      "body-font-size": #{$body-font-size},
+      "body-weight": #{$body-weight},
+      "body-line-height": #{$body-line-height},
+      "code-family": #{$code-family},
+      "code-padding": #{$code-padding},
+      "code-weight": #{$code-weight},
+      "code-size": #{$code-size},
+      "small-font-size": #{$small-font-size},
+      "hr-background-color": #{$hr-background-color},
+      "hr-height": #{$hr-height},
+      "hr-margin": #{$hr-margin},
+      "strong-color": #{$strong-color},
+      "strong-weight": #{$strong-weight},
+      "pre-font-size": #{$pre-font-size},
+      "pre-padding": #{$pre-padding},
+      "pre-code-font-size": #{$pre-code-font-size},
+    )
+  );
+}
+
+html {
+  background-color: cv.getVar("body-background-color");
+  font-size: cv.getVar("body-size");
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  min-width: cv.getVar("body-min-width");
+  overflow-x: cv.getVar("body-overflow-x");
+  overflow-y: cv.getVar("body-overflow-y");
+  text-rendering: cv.getVar("body-rendering");
+  text-size-adjust: 100%;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: cv.getVar("body-family");
+}
+
+code,
+pre {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+  font-family: cv.getVar("code-family");
+}
+
+body {
+  color: cv.getVar("body-color");
+  font-size: cv.getVar("body-font-size");
+  font-weight: cv.getVar("body-weight");
+  line-height: cv.getVar("body-line-height");
+}
+
+// Inline
+
+a,
+button {
+  cursor: pointer;
+
+  &:focus-visible {
+    outline-color: hsl(
+      cv.getVar("focus-h"),
+      cv.getVar("focus-s"),
+      cv.getVar("focus-l")
+    );
+    outline-offset: cv.getVar("focus-offset");
+    outline-style: cv.getVar("focus-style");
+    outline-width: cv.getVar("focus-width");
+
+    &:active {
+      outline-width: 1px;
+    }
+  }
+
+  &:active {
+    outline-width: 1px;
+  }
+}
+
+a {
+  color: cv.getVar("link-text");
+  cursor: pointer;
+  text-decoration: none;
+  transition-duration: cv.getVar("duration");
+  transition-property: background-color, border-color, color;
+
+  strong {
+    color: currentColor;
+  }
+}
+
+button {
+  @include mx.reset;
+  transition-duration: cv.getVar("duration");
+  transition-property: background-color, border-color, color;
+}
+
+code {
+  background-color: cv.getVar("code-background");
+  border-radius: 0.5em;
+  color: cv.getVar("code");
+  font-size: cv.getVar("code-size");
+  font-weight: cv.getVar("code-weight");
+  padding: cv.getVar("code-padding");
+}
+
+hr {
+  background-color: cv.getVar("hr-background-color");
+  border: none;
+  display: block;
+  height: cv.getVar("hr-height");
+  margin: cv.getVar("hr-margin");
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  vertical-align: baseline;
+}
+
+small {
+  font-size: cv.getVar("small-font-size");
+}
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+strong {
+  color: cv.getVar("strong-color");
+  font-weight: cv.getVar("strong-weight");
+}
+
+svg {
+  height: auto;
+  width: auto;
+}
+
+// Block
+
+fieldset {
+  border: none;
+}
+
+pre {
+  @include mx.overflow-touch;
+
+  background-color: cv.getVar("pre-background");
+  color: cv.getVar("pre");
+  font-size: cv.getVar("pre-font-size");
+  overflow-x: auto;
+  padding: cv.getVar("pre-padding");
+  white-space: pre;
+  word-wrap: normal;
+
+  code {
+    background-color: transparent;
+    color: currentColor;
+    font-size: cv.getVar("pre-code-font-size");
+    padding: 0;
+  }
+}
+
+table {
+  td,
+  th {
+    vertical-align: top;
+
+    &:not([align]) {
+      text-align: inherit;
+    }
+  }
+
+  th {
+    color: cv.getVar("text-strong");
+  }
+}

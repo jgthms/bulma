@@ -4,34 +4,18 @@
   "main": "index.html",
   "author": "Jeremy Thomas <bbxdesign@gmail.com> (https://jgthms.com)",
   "license": "MIT",
-  "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015-ie": "^6.7.0",
-    "clean-css-cli": "^5.6.2",
-    "cypress": "^13.6.0",
-    "metalsmith": "^2.6.2",
-    "metalsmith-filter": "^1.0.2",
-    "sass": "^1.69.5",
-    "postcss-cli": "^11.0.0"
+  "dependencies": {
+    "sass": "^1.71.1"
   },
   "scripts": {
-    "bulma-sass": "sass --style expanded bulma.scss css/bulma.css",
-    "bulma-watch": "npm run bulma-sass -- --watch",
-    "css-build": "npm run css-sass && npm run css-autoprefix && npm run css-cleancss",
-    "css-autoprefix": "postcss --use autoprefixer --map false --output css/bulma-docs.css css/bulma-docs.css",
-    "css-cleancss": "cleancss -o css/bulma-docs.min.css css/bulma-docs.css",
-    "css-sass": "sass --style expanded bulma-docs.scss css/bulma-docs.css",
-    "css-watch": "npm run css-sass -- --watch",
-    "cypress-open": "./node_modules/.bin/cypress open",
-    "cypress-run": "./node_modules/.bin/cypress run",
-    "deploy": "npm run css-build && npm run js-build",
-    "js-build": "babel _javascript --out-dir lib",
-    "js-watch": "npm run js-build -- --watch",
-    "start": "npm run css-watch | npm run js-watch",
-    "start-test": "npm run test-scss -- --watch",
-    "test-scss": "sass --style expanded bulma-test.scss css/bulma-test.css",
-    "test-watch": "npm run test-scss -- --watch"
+    "custom-sass": "sass --style=expanded --load-path=.. --no-source-map _sass/examples/custom.scss assets/css/custom.css",
+    "website-sass": "sass --style=expanded --load-path=.. --no-source-map website.scss assets/css/website.css",
+    "minify-sass": "postcss assets/css/website.css --no-map --use cssnano --output assets/css/website.min.css",
+    "deploy": "npm run website-sass && npm run minify-sass",
+    "start": "npm run website-sass -- --watch"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.4.4",
+    "prettier": "^3.2.4"
   }
 }

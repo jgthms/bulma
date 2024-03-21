@@ -1,0 +1,156 @@
+@use "sass/utilities/css-variables" as cv;
+@use "sass/utilities/mixins" as mx;
+@use "../utils";
+
+.bd-header {
+  --px: 2rem;
+  --py: 2rem;
+  align-items: center;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 0;
+  padding: var(--py) var(--px);
+  position: relative;
+  transition-duration: cv.getVar("duration");
+  transition-property: background-image;
+}
+
+$d: 2.5rem;
+
+.bd-header-control {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.bd-cycle {
+  --h: #{cv.getVar("sun-h")};
+  --s: #{cv.getVar("sun-s")};
+  --l: #{cv.getVar("sun-l")};
+
+  border-radius: 0.5em;
+  color: hsl(var(--h), var(--s), var(--l));
+  display: flex;
+  flex-shrink: 0;
+  height: $d;
+  overflow: hidden;
+  position: relative;
+  transition-property: background-color;
+  width: $d;
+
+  &:hover {
+    background-color: hsla(var(--h), var(--s), var(--l), 0.1);
+  }
+
+  &.is-moon {
+    --h: #{cv.getVar("moon-h")};
+    --s: #{cv.getVar("moon-s")};
+    --l: #{cv.getVar("moon-l")};
+
+    .bd-cycles {
+      transform: translate3d(0, -1 * $d, 0);
+    }
+  }
+}
+
+.bd-cycles {
+  display: flex;
+  height: $d * 2;
+  flex-shrink: 0;
+  flex-direction: column;
+  transition-duration: cv.getVar("duration");
+  transition-property: transform;
+  width: $d;
+}
+
+.bd-cycle-sun,
+.bd-cycle-moon {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  flex-shrink: 0;
+  height: $d;
+  justify-content: center;
+  transition: none;
+  width: $d;
+
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+.bd-cycle-sun {
+  &.is-active {
+    color: var(--sun);
+  }
+}
+
+.bd-cycle-moon {
+  &.is-active {
+    color: var(--moon);
+  }
+}
+
+.bd-header-search {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  position: relative;
+
+  .input {
+    background: none;
+  }
+
+  .bd-nav-item {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+@include mx.until(utils.$header-bp) {
+  .bd-header {
+    justify-content: center;
+
+    .bd-nav-themes {
+      margin-inline-end: auto;
+      order: -1;
+    }
+
+    .bulma-logo {
+      margin-inline-end: auto;
+      margin-inline-start: auto;
+    }
+  }
+
+  .bd-header-control {
+    display: none;
+  }
+}
+
+@include mx.from(utils.$header-bp) {
+  .bd-header {
+    gap: 0.75rem;
+  }
+
+  .bd-nav-item.is-love {
+    display: none;
+  }
+}
+
+@include mx.from(utils.$header-bp + 150px) {
+  .bd-header {
+    gap: 1rem;
+  }
+
+  .bd-nav-item.is-love {
+    display: flex;
+  }
+}
+
+@include mx.from(utils.$header-bp + 300px) {
+  .bd-header {
+    gap: 1.25rem;
+  }
+}

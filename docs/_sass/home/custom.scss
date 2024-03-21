@@ -1,0 +1,101 @@
+@use "sass/utilities/mixins" as mx;
+@use "sass/themes/light";
+
+$mauve: #8a4d76;
+$pink: #fa7c91;
+$rose: #ea4aaa;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+$sass: #bf4080;
+
+// Customize
+
+.bd-index-custom-title {
+  color: var(--bulma-border-hover);
+}
+
+.bd-index-custom-example {
+  padding: 1rem;
+
+  .subtitle {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.bd-index-custom.bd-is-after {
+  color: $brown;
+  font-family: "Nunito", serif;
+  margin-top: 0.5rem;
+
+  a {
+    color: $pink;
+
+    &:hover {
+      color: #363636;
+    }
+  }
+
+  .subtitle {
+    color: $brown;
+  }
+
+  .input,
+  .select select {
+    background-color: $beige-lighter;
+    border-color: transparent;
+    border-width: 2px;
+    box-shadow: none;
+    font-family: "Nunito", serif;
+
+    &:hover {
+      border-color: $beige-light;
+    }
+
+    &:focus {
+      border-color: $pink;
+      box-shadow: 0 0 0 0.125em rgba($pink, 0.25);
+    }
+  }
+
+  .select {
+    &:not(.is-multiple):not(:hover) {
+      &::after {
+        border-color: $pink;
+      }
+    }
+  }
+
+  .button {
+    &.is-primary {
+      background-color: $mauve;
+      color: light.$scheme-main;
+
+      &:hover {
+        background-color: darken($mauve, 2.5%);
+      }
+
+      &:active {
+        background-color: darken($mauve, 5%);
+      }
+    }
+
+    &.is-link {
+      background-color: $pink;
+      color: light.$scheme-main;
+
+      &:hover {
+        background-color: darken($pink, 2.5%);
+      }
+
+      &:active {
+        background-color: darken($pink, 5%);
+      }
+    }
+  }
+
+  @include mx.selection {
+    background-color: $pink;
+    color: light.$scheme-main;
+  }
+}

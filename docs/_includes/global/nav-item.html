@@ -1,0 +1,41 @@
+{% assign link = site.data.links.by_id[include.link_id] %}
+{% assign cleanpath = link.path | remove: '/' %}
+
+<a
+  class="
+    bd-nav-item
+    bd-theme-{{ include.link_id }}
+    is-{{ include.link_id }}
+    {% if link.icon_only %}
+      is-icon
+    {% endif %}
+    {% if page.route == cleanpath %}
+      is-active
+    {% endif %}
+    {% if page.path contains '_posts' and include.link_id == 'blog' %}
+      is-active
+    {% endif %}
+  "
+  title="{{ link.subtitle | strip_html }}"
+  {% if link.href %}
+    href="{{ link.href }}"
+    target="_blank"
+  {% else %}
+    href="{{ site.url }}{{ link.path }}"
+  {% endif %}
+>
+  <span class="icon">
+    <i class="{{ link.icon }}"></i>
+  </span>
+
+  {% unless link.icon_only %}
+    <span class="bd-nav-item-name">
+      {% if link.long_name %}
+        <span class="is-hidden-fullhd">{{ link.name }}</span>
+        <span class="is-hidden is-block-fullhd">{{ link.long_name }}</span>
+      {% else %}
+        {{ link.name }}
+      {% endif %}
+    </span>
+  {% endunless %}
+</a>

@@ -1,0 +1,59 @@
+@use "sass/utilities/extends";
+
+.bd-pills {
+  @extend %block;
+  align-items: center;
+  color: var(--bulma-text-weak);
+  display: flex;
+  justify-content: center;
+}
+
+.bd-pill-label {
+  padding: 0 0.5em;
+}
+
+.bd-pills-body {
+  background: var(--bulma-background);
+  align-items: center;
+  border-radius: 0.5em;
+  display: flex;
+  padding: 0.25em;
+}
+
+.bd-pill-button {
+  @extend %reset;
+  border-radius: 0.25em;
+  color: var(--bulma-text);
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.5em 0.75em;
+  position: relative;
+  transition-duration: 0.5s;
+  transition-property: color, background-color;
+
+  &:hover {
+    background-color: var(--bulma-scheme-main);
+    color: var(--bulma-text-strong);
+  }
+
+  &.is-active {
+    background-color: var(--bulma-scheme-main);
+    box-shadow:
+      0 0 0 1px
+        hsla(
+          var(--bulma-shadow-h),
+          var(--bulma-shadow-s),
+          var(--bulma-shadow-l),
+          0.02
+        ),
+      0 0.125em 0.25em
+        hsla(
+          var(--bulma-shadow-h),
+          var(--bulma-shadow-s),
+          var(--bulma-shadow-l),
+          0.1
+        );
+    color: var(--bulma-text-strong);
+    z-index: 1;
+  }
+}

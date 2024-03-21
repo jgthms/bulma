@@ -1,0 +1,21 @@
+@use "../utilities/initial-variables" as iv;
+
+.#{iv.$helpers-prefix}clipped {
+  overflow: hidden !important;
+}
+
+$overflows: auto clip hidden scroll visible;
+
+@each $overflow in $overflows {
+  .#{iv.$helpers-prefix}overflow-#{$overflow} {
+    overflow: $overflow !important;
+  }
+
+  .#{iv.$helpers-prefix}overflow-x-#{$overflow} {
+    overflow-x: $overflow !important;
+  }
+
+  .#{iv.$helpers-prefix}overflow-y-#{$overflow} {
+    overflow-y: $overflow !important;
+  }
+}

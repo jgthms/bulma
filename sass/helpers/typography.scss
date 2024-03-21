@@ -1,0 +1,168 @@
+@use "../utilities/derived-variables" as dv;
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/mixins" as mx;
+
+@mixin typography-size($target: "") {
+  @each $size in dv.$sizes {
+    $i: index(dv.$sizes, $size);
+
+    .#{iv.$helpers-prefix}size-#{$i}#{if($target == "", "", "-" + $target)} {
+      font-size: $size !important;
+    }
+  }
+}
+
+@include typography-size;
+
+@include mx.mobile {
+  @include typography-size("mobile");
+}
+
+@include mx.tablet {
+  @include typography-size("tablet");
+}
+
+@include mx.touch {
+  @include typography-size("touch");
+}
+
+@include mx.desktop {
+  @include typography-size("desktop");
+}
+
+@include mx.widescreen {
+  @include typography-size("widescreen");
+}
+
+@include mx.fullhd {
+  @include typography-size("fullhd");
+}
+
+$alignments: (
+  "centered": "center",
+  "justified": "justify",
+  "left": "left",
+  "right": "right",
+);
+
+@each $alignment, $text-align in $alignments {
+  .#{iv.$helpers-has-prefix}text-#{$alignment} {
+    text-align: #{$text-align} !important;
+  }
+}
+
+@each $alignment, $text-align in $alignments {
+  @include mx.mobile {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-mobile {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.tablet {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-tablet {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.tablet-only {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-tablet-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.touch {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-touch {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.desktop {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-desktop {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.desktop-only {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-desktop-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.widescreen {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-widescreen {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.widescreen-only {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-widescreen-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.fullhd {
+    .#{iv.$helpers-has-prefix}text-#{$alignment}-fullhd {
+      text-align: #{$text-align} !important;
+    }
+  }
+}
+
+.#{iv.$helpers-prefix}capitalized {
+  text-transform: capitalize !important;
+}
+
+.#{iv.$helpers-prefix}lowercase {
+  text-transform: lowercase !important;
+}
+
+.#{iv.$helpers-prefix}uppercase {
+  text-transform: uppercase !important;
+}
+
+.#{iv.$helpers-prefix}italic {
+  font-style: italic !important;
+}
+
+.#{iv.$helpers-prefix}underlined {
+  text-decoration: underline !important;
+}
+
+.#{iv.$helpers-has-prefix}text-weight-light {
+  font-weight: iv.$weight-light !important;
+}
+
+.#{iv.$helpers-has-prefix}text-weight-normal {
+  font-weight: iv.$weight-normal !important;
+}
+
+.#{iv.$helpers-has-prefix}text-weight-medium {
+  font-weight: iv.$weight-medium !important;
+}
+
+.#{iv.$helpers-has-prefix}text-weight-semibold {
+  font-weight: iv.$weight-semibold !important;
+}
+
+.#{iv.$helpers-has-prefix}text-weight-bold {
+  font-weight: iv.$weight-bold !important;
+}
+
+.#{iv.$helpers-prefix}family-primary {
+  font-family: dv.$family-primary !important;
+}
+
+.#{iv.$helpers-prefix}family-secondary {
+  font-family: dv.$family-secondary !important;
+}
+
+.#{iv.$helpers-prefix}family-sans-serif {
+  font-family: iv.$family-sans-serif !important;
+}
+
+.#{iv.$helpers-prefix}family-monospace {
+  font-family: iv.$family-monospace !important;
+}
+
+.#{iv.$helpers-prefix}family-code {
+  font-family: dv.$family-code !important;
+}

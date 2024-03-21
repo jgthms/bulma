@@ -1,0 +1,30 @@
+{% assign link = site.data.links.by_id[include.link_id] %}
+{% assign has_sublist = include.sublist_id != nil %}
+{% assign sublist_size = site.data.links.categories[include.sublist_id] | size %}
+{% assign current_category = page['doc-tab'] %}
+{% assign is_current = current_category == include.sublist_id %}
+
+<li>
+  {%
+    include docs/menu-link.html
+    link=link
+    link_id=include.link_id
+    has_sublist=has_sublist
+    sublist_size=sublist_size
+    is_current=is_current
+  %}
+
+  {% if has_sublist %}
+    <ul
+      class="bd-menu-sublist {% if current_category == include.sublist_id %}is-open{% endif %}"
+      style="--subsize: {{ sublist_size }}"
+    >
+      {% for sublink_id in site.data.links.categories[include.sublist_id] %}
+        {% assign sublink = site.data.links.by_id[sublink_id] %}
+        <li>
+          {% include docs/menu-link.html link=sublink link_id=sublink_id %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</li>

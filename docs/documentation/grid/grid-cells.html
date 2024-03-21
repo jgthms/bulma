@@ -1,0 +1,304 @@
+---
+title: Grid Cells
+layout: docs
+theme: library
+doc-library: true
+doc-tab: grid
+breadcrumb:
+  - home
+  - documentation
+  - grid
+  - grid-cells
+---
+
+{% capture markdown %}
+Each Bulma grid is comprised of several **cells**. You can adjust the width and height of each of these cells individually, and for each separate breakpoint.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Class</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Which column the cell <strong>starts</strong> at</td>
+      <td><code>is-col-start</code></td>
+      <td class="p-0" style="--hl-radius: 0;">{% highlight html %}<div class="is-col-start-2"></div>{% endhighlight %}</td>
+    </tr>
+    <tr>
+      <td>Which column the cell <strong>ends</strong> at, counting <em>from the end</em></td>
+      <td><code>is-col-from-end</code></td>
+      <td class="p-0" style="--hl-radius: 0;">{% highlight html %}<div class="is-col-from-end-1"></div>{% endhighlight %}</td>
+    </tr>
+    <tr>
+      <td><strong>How many columns</strong> the cell will span</td>
+      <td><code>is-col-span</code></td>
+      <td class="p-0" style="--hl-radius: 0;">{% highlight html %}<div class="is-col-span-3"></div>{% endhighlight %}</td>
+    </tr>
+    <tr>
+      <td>Which row the cell <strong>starts</strong> at</td>
+      <td><code>is-row-start</code></td>
+      <td class="p-0" style="--hl-radius: 0;">{% highlight html %}<div class="is-row-start-2"></div>{% endhighlight %}</td>
+    </tr>
+    <tr>
+      <td>Which row the cell <strong>ends</strong> at, counting <em>from the end</em></td>
+      <td><code>is-row-from-end</code></td>
+      <td class="p-0" style="--hl-radius: 0;">{% highlight html %}<div class="is-row-from-end-1"></div>{% endhighlight %}</td>
+    </tr>
+    <tr>
+      <td><strong>How many rows</strong> the cell will span</td>
+      <td><code>is-row-span</code></td>
+      <td class="p-0" style="--hl-radius: 0;">{% highlight html %}<div class="is-row-span-3"></div>{% endhighlight %}</td>
+    </tr>
+  </tbody>
+</table>
+
+{% comment %} -- {% endcomment %}
+
+{% include docs/elements/anchor.html name="Column Start" %}
+
+{% capture col_start_code %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell">Cell 1</div>
+    <div class="cell is-col-start-3">Cell 2</div>
+    <div class="cell">Cell 3</div>
+    <div class="cell">Cell 4</div>
+    <div class="cell">Cell 5</div>
+    <div class="cell">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture col_start %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 1</div>
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal is-col-start-3">Cell 2</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 3</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 4</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 5</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture markdown %}
+Change which column a cell ends at, counting from the end.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{{ col_start }}
+
+{% include docs/elements/snippet.html content=col_start_code no_example=true more=true fullwidth=true horizontal=true %}
+
+{% comment %} -- {% endcomment %}
+
+{% include docs/elements/anchor.html name="Column From End" %}
+
+{% capture col_end_code %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell">Cell 1</div>
+    <div class="cell is-col-from-end-2">Cell 2</div>
+    <div class="cell">Cell 3</div>
+    <div class="cell">Cell 4</div>
+    <div class="cell">Cell 5</div>
+    <div class="cell">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture col_end %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 1</div>
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal is-col-from-end-2">Cell 2</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 3</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 4</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 5</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture markdown %}
+Change which column a cell starts at.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{{ col_end }}
+
+{% include docs/elements/snippet.html content=col_end_code no_example=true more=true fullwidth=true horizontal=true %}
+
+{% comment %} -- {% endcomment %}
+
+{% include docs/elements/anchor.html name="Column Span" %}
+
+{% capture col_span_code %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell">Cell 1</div>
+    <div class="cell is-col-span-2">Cell 2</div>
+    <div class="cell">Cell 3</div>
+    <div class="cell">Cell 4</div>
+    <div class="cell">Cell 5</div>
+    <div class="cell">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture col_span %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 1</div>
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal is-col-span-2">Cell 2</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 3</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 4</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 5</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture markdown %}
+Change how many columns a cell spans.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{{ col_span }}
+
+{% include docs/elements/snippet.html content=col_span_code no_example=true more=true fullwidth=true horizontal=true %}
+
+
+
+{% comment %} -- {% endcomment %}
+
+{% include docs/elements/anchor.html name="Row Start" %}
+
+{% capture row_start_code %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell">Cell 1</div>
+    <div class="cell is-row-start-3">Cell 2</div>
+    <div class="cell">Cell 3</div>
+    <div class="cell">Cell 4</div>
+    <div class="cell">Cell 5</div>
+    <div class="cell">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture row_start %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 1</div>
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal is-row-start-3">Cell 2</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 3</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 4</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 5</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture markdown %}
+Change which row a cell ends at, counting from the end.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{{ row_start }}
+
+{% include docs/elements/snippet.html content=row_start_code no_example=true more=true fullwidth=true horizontal=true %}
+
+{% comment %} -- {% endcomment %}
+
+{% include docs/elements/anchor.html name="Row From End" %}
+
+{% capture row_end_code %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell">Cell 1</div>
+    <div class="cell is-row-from-end-1">Cell 2</div>
+    <div class="cell">Cell 3</div>
+    <div class="cell">Cell 4</div>
+    <div class="cell">Cell 5</div>
+    <div class="cell">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture row_end %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 1</div>
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal is-row-from-end-1">Cell 2</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 3</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 4</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 5</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture markdown %}
+Change which row a cell starts at.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{{ row_end }}
+
+{% include docs/elements/snippet.html content=row_end_code no_example=true more=true fullwidth=true horizontal=true %}
+
+{% comment %} -- {% endcomment %}
+
+{% include docs/elements/anchor.html name="Row Span" %}
+
+{% capture row_span_code %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell">Cell 1</div>
+    <div class="cell is-row-span-2">Cell 2</div>
+    <div class="cell">Cell 3</div>
+    <div class="cell">Cell 4</div>
+    <div class="cell">Cell 5</div>
+    <div class="cell">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture row_span %}
+<div class="fixed-grid has-4-cols">
+  <div class="grid">
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 1</div>
+    <div class="cell py-3 px-4 has-background-primary has-text-primary-invert has-radius-normal is-row-span-2">Cell 2</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 3</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 4</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 5</div>
+    <div class="cell py-3 px-4 has-background-primary-light has-text-primary-light-invert has-radius-normal">Cell 6</div>
+  </div>
+</div>
+{% endcapture %}
+
+{% capture markdown %}
+Change how many rows a cell spans.
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{{ row_span }}
+
+{% include docs/elements/snippet.html content=row_span_code no_example=true more=true fullwidth=true horizontal=true %}
+
+

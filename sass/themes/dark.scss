@@ -1,0 +1,56 @@
+@use "sass:list";
+
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/css-variables" as cv;
+@use "../utilities/derived-variables" as dv;
+@use "setup";
+
+// The main lightness of this theme
+$scheme-main-l: 9%;
+$background-l: 14%;
+$text-l: 71%;
+
+// The main scheme color, used to make calculations
+$scheme-main: hsl(iv.$scheme-h, iv.$scheme-s, $scheme-main-l);
+$background: hsl(iv.$scheme-h, iv.$scheme-s, $background-l);
+$text: hsl(iv.$scheme-h, iv.$scheme-s, $text-l);
+
+@mixin dark-theme {
+  @each $name, $color in dv.$colors {
+    $base: $color;
+
+    @if type-of($color == "list") {
+      $base: list.nth($color, 1);
+    }
+
+    @include cv.generate-on-scheme-colors($name, $base, $scheme-main);
+  }
+
+  @include cv.register-vars(
+    (
+      "scheme-brightness": "dark",
+      "scheme-main-l": $scheme-main-l,
+      "scheme-main-bis-l": $scheme-main-l + 2%,
+      "scheme-main-ter-l": $scheme-main-l + 4%,
+      "soft-l": iv.$dark-l,
+      "bold-l": iv.$light-l,
+      "soft-invert-l": iv.$light-l,
+      "bold-invert-l": iv.$dark-l,
+      "background-l": $background-l,
+      "border-weak-l": 21%,
+      "border-l": 24%,
+      "text-weak-l": 53%,
+      "text-l": $text-l,
+      "text-strong-l": 93%,
+      "text-title-l": 100%,
+      "hover-background-l-delta": 5%,
+      "active-background-l-delta": 10%,
+      "hover-border-l-delta": 10%,
+      "active-border-l-delta": 20%,
+      "hover-color-l-delta": 5%,
+      "active-color-l-delta": 10%,
+    )
+  );
+
+  @include cv.register-hsl("shadow", white);
+}

@@ -1,0 +1,89 @@
+---
+title: Color Palette helpers
+layout: docs
+theme: helpers
+doc-tab: helpers
+doc-subtab: helpers-palette
+breadcrumb:
+  - home
+  - documentation
+  - helpers
+  - helpers-palette
+---
+
+<p class="block">Bulma comes with 7 primary colors:</p>
+
+<table class="table is-bordered">
+<tr><td><code>text</code></td><td><span class="bd-color-swatch" style="--background: var(--bulma-text);"></span></td></tr>
+<tr><td><code>link</code></td><td><span class="bd-color-swatch" style="--background: var(--bulma-link);"></span></td></tr>
+<tr><td><code>primary</code></td><td><span class="bd-color-swatch" style="--background: var(--bulma-primary);"></span></td></tr>
+<tr><td><code>info</code></td><td><span class="bd-color-swatch" style="--background: var(--bulma-info);"></span></td></tr>
+<tr><td><code>success</code></td><td><span class="bd-color-swatch" style="--background: var(--bulma-success);"></span></td></tr>
+<tr><td><code>warning</code></td><td><span class="bd-color-swatch" style="--background: var(--bulma-warning);"></span></td></tr>
+<tr><td><code>danger</code></td><td><span class="bd-color-swatch" style="--background: var(--bulma-danger);"></span></td></tr>
+</table>
+
+<p class="block">Bulma will automatically <strong>generate a collection of shades</strong> for each of those colors. These act as a <strong>color palette</strong> you can use to play with different variants of a same color.</p>
+
+{% include docs/elements/anchor.html name="Text color" %}
+
+<div class="content">
+  Bulma comes with CSS classes for <strong>27 shades</strong> of each color. Each shade also comes with an <strong>invert</strong> equivalent, that is useful to combine in a foreground/background combination.
+</div>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Code</th>
+      <th>Example</th>
+      <th>Swatch</th>
+      <th>Invert</th>
+      <th>Swatch</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for shade in site.data.palette %}
+      {% assign background = "var(--bulma-primary" | append: shade | append: ")" %}
+      {% assign invert = "var(--bulma-primary" | append: shade | append: "-invert)" %}
+      <tr>
+        <td style="vertical-align: middle;"><code>has-text-primary{{ shade }}</code></td>
+        <td class="p-0" style="--hl-radius: 0;">{% highlight html %}<p class="has-text-primary{{ shade }}">Hello Bulma</p>{% endhighlight %}</td>
+        <td style="vertical-align: middle;"><span class="has-text-primary{{ shade }}">Hello&nbsp;Bulma</span></td>
+        <td class="has-text-centered" style="vertical-align: middle;">{% include docs/elements/color-swatch.html background=background %}</td>
+        <td style="vertical-align: middle;"><span class="has-text-primary{{ shade }}-invert">Hello&nbsp;Bulma</span></td>
+        <td class="has-text-centered" style="vertical-align: middle;">{% include docs/elements/color-swatch.html background=invert %}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% include docs/elements/anchor.html name="Background color" %}
+
+<div class="content">
+  All 27 shades are also available as <strong>background helpers</strong>. Combined with the invert color as foreground, it's easy to make readable elements with just 2 classes.
+</div>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Code</th>
+      <th>Example</th>
+      <th>Swatch</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for shade in site.data.palette %}
+      {% assign background = "var(--bulma-primary" | append: shade | append: ")" %}
+      <tr>
+        <td style="vertical-align: middle;"><code>has-background-primary{{ shade }}</code></td>
+        <td class="p-0" style="--hl-radius: 0;"><div style="max-width: 40rem; overflow: hidden;">{% highlight html %}<p class="has-background-primary{{ shade }} has-text-primary{{ shade }}-invert">
+Hello Bulma
+</p>{% endhighlight %}</div></td>
+        <td style="vertical-align: middle;" class="has-background-primary{{ shade }} has-text-primary{{ shade }}-invert">Hello Bulma</td>
+        <td class="has-text-centered" style="vertical-align: middle;">{% include docs/elements/color-swatch.html background=background %}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
