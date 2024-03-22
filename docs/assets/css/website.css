@@ -34425,23 +34425,31 @@ has-background-moon.is-hoverable:active {
 }
 
 .bd-amis {
+  --color: #fff;
   background-color: var(--bulma-scheme-main);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  row-gap: 0.5rem;
   position: relative;
   margin: 0 -1rem;
   justify-content: center;
 }
 
 .bd-ami {
-  background-color: var(--color);
   display: inline-flex;
   align-items: center;
+  border-radius: 0.25rem;
   justify-content: center;
   padding: 0.75rem;
-  max-width: 10.5rem;
-  height: 4rem;
+  height: 5rem;
   vertical-align: top;
+  mix-blend-mode: luminosity;
+  transition-duration: var(--bulma-duration);
+  transition-property: background-color, mix-blend-mode;
+}
+.bd-ami:hover {
+  background-color: var(--color);
+  mix-blend-mode: normal;
 }
 
 .bd-ami img {
@@ -34453,6 +34461,8 @@ has-background-moon.is-hoverable:active {
 
 .bd-ami-footer {
   border-radius: 0.25rem;
+  height: 4rem;
+  mix-blend-mode: normal;
 }
 
 .bd-ami-footer img {
