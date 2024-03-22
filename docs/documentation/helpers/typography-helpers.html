@@ -11,41 +11,48 @@ breadcrumb:
   - helpers-typography
 ---
 
-{% assign initial_vars =
-site.data.variables.utilities['initial-variables'].by_name %} {% assign sizes =
-site.data.variables.utilities['derived-variables'].by_name['$sizes'].value |
-split: ' ' %} {% capture thead %}
+{% assign sizes = site.data['sizes-list'] %}
+
+{% capture thead %}
 <thead>
   <tr>
     <th>Class</th>
-    {% for breakpoint_hash in site.data.breakpoints %} {% assign breakpoint =
-    breakpoint_hash[1] %}
-    <th>
-      {{ breakpoint.name }}<br />
-      {% if breakpoint.id == 'mobile' %} Up to
-      <code>{{ breakpoint.to }}px</code>
-      {% elsif breakpoint.id == 'fullhd' %}
-      <code>{{ breakpoint.from }}px</code> and above {% else %} Between
-      <code>{{ breakpoint.from }}px</code> and
-      <code>{{ breakpoint.to }}px</code>
-      {% endif %}
-    </th>
+    {% for breakpoint_hash in site.data.breakpoints %}
+      {% assign breakpoint = breakpoint_hash[1] %}
+      <th>
+        {{ breakpoint.name }}<br />
+        {% if breakpoint.id == 'mobile' %} Up to
+        <code>{{ breakpoint.to }}px</code>
+        {% elsif breakpoint.id == 'fullhd' %}
+        <code>{{ breakpoint.from }}px</code> and above {% else %} Between
+        <code>{{ breakpoint.from }}px</code> and
+        <code>{{ breakpoint.to }}px</code>
+        {% endif %}
+      </th>
     {% endfor %}
   </tr>
 </thead>
-{% endcapture %} {% capture size1 %}
+{% endcapture %}
+
+{% capture size1 %}
 <td class="is-narrow has-background-danger-light">
   <code class="has-background-danger-light"
     >{{ initial_vars['$size-1'].value }}</code
   >
 </td>
-{% endcapture %} {% capture unchanged %}
+{% endcapture %}
+
+{% capture unchanged %}
 <td class="is-narrow has-text-grey-light">unchanged</td>
-{% endcapture %} {% capture left %}
+{% endcapture %}
+
+{% capture left %}
 <td class="is-narrow has-background-primary-light has-text-primary">
   left-aligned
 </td>
-{% endcapture %} {% include docs/elements/anchor.html name="Size" %}
+{% endcapture %}
+
+{% include docs/elements/anchor.html name="Size" %}
 
 <div class="content">
   <p>There are <strong>{{ sizes | size }} sizes</strong> to choose from:</p>
@@ -62,14 +69,13 @@ split: ' ' %} {% capture thead %}
   <tbody>
     {% for size in sizes %}
     <tr>
-      {% assign key = '$size-' | append: forloop.index %}
       <td>
-        <code>is-size-{{ forloop.index }}</code>
+        <code>is-{{ size.name }}</code>
       </td>
       <td>
-        <code>{{ initial_vars[key].value }}</code>
+        <code>{{ size.value }}</code>
       </td>
-      <td><span class="is-size-{{ forloop.index }}">Example</span></td>
+      <td><span class="is-{{ size.name }}">Example</span></td>
     </tr>
     {% endfor %}
   </tbody>
