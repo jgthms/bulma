@@ -74,7 +74,7 @@ Internet Explorer (10+) is only partially supported.
 
 The documentation resides in the [docs](docs) directory, and is built with the Ruby-based [Jekyll](https://jekyllrb.com/) tool.
 
-Browse the [online documentation here.](https://bulma.io/documentation/overview/start/)
+Browse the [online documentation here.](https://bulma.io/documentation/start/overview/)
 
 ## Related projects
 
