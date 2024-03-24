@@ -1,0 +1,87 @@
+---
+title: Customize with Modular Sass
+layout: docs
+theme: customize
+doc-tab: customize
+doc-subtab: with-modular-sass
+breadcrumb:
+  - home
+  - documentation
+  - customize
+  - customize-with-modular-sass
+---
+
+{% capture markdown %}
+You can import only **what you need** from Bulma, and **customize** it with your own Sass values.
+
+To achieve this:
+
+* set your own Sass variables
+* import `bulma/sass/utilities`
+* override Bulma's variables by providing the `with` keyword with your own Sass map
+* if you need to, do the same for the `bulma/sass/form` folder
+* import the Bulma components you need with either `@use` or `@forward`
+* finally, import the Bulma themes from `bulma/sass/themes`
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% highlight sass %}
+// Set your brand colors
+$purple: #8a4d76;
+$pink: #fa7c91;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+
+// Override global Sass variables from the /utilities folder
+@use "bulma/sass/utilities" with (
+  $family-primary: '"Nunito", sans-serif',
+  $grey-dark: $brown,
+  $grey-light: $beige-light,
+  $primary: $purple,
+  $link: $pink,
+  $control-border-width: 2px
+);
+
+// Override Sass variables from the /form folder
+@use "bulma/sass/form" with (
+  $input-shadow: none
+);
+
+// Import the components you need
+@forward "bulma/sass/base";
+@forward "bulma/sass/components/card";
+@forward "bulma/sass/components/modal";
+@forward "bulma/sass/components/navbar";
+@forward "bulma/sass/elements/button";
+@forward "bulma/sass/elements/icon";
+@forward "bulma/sass/elements/content";
+@forward "bulma/sass/elements/notification";
+@forward "bulma/sass/elements/progress";
+@forward "bulma/sass/elements/tag";
+@forward "bulma/sass/layout/footer";
+
+// Import the themes so that all CSS variables have a value
+@forward "bulma/sass/themes";
+
+// Import the Google Font
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+{% endhighlight %}
+
+{% capture markdown %}
+This allows you to override Bulma's:
+
+* global variables from the `utilities` folder
+* form variables from the `form` folder
+
+If you wanted to import a component **and** customize it, do the same when importing it:
+{% endcapture %}
+
+{% include markdown.html content=markdown %}
+
+{% highlight sass %}
+@use "bulma/sass/elements/image" with (
+  $dimensions: 20 40 80 160;
+);
+{% endhighlight %}
