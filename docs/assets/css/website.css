@@ -34429,27 +34429,34 @@ has-background-moon.is-hoverable:active {
   background-color: var(--bulma-scheme-main);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  row-gap: 0.5rem;
+  gap: 0;
   position: relative;
   margin: 0 -1rem;
   justify-content: center;
 }
 
 .bd-ami {
+  background-color: var(--color);
   display: inline-flex;
   align-items: center;
-  border-radius: 0.25rem;
   justify-content: center;
   padding: 0.75rem;
   height: 5rem;
+  position: relative;
   vertical-align: top;
-  mix-blend-mode: luminosity;
   transition-duration: var(--bulma-duration);
-  transition-property: background-color, mix-blend-mode;
+  transition-property: background-color, transform;
+  transform-origin: center;
 }
 .bd-ami:hover {
-  background-color: var(--color);
-  mix-blend-mode: normal;
+  border-radius: 0.5rem;
+  transform: scale(1.2);
+  z-index: 1;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+.bd-ami:active {
+  transform: scale(1.15);
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.5);
 }
 
 .bd-ami img {
@@ -34462,7 +34469,6 @@ has-background-moon.is-hoverable:active {
 .bd-ami-footer {
   border-radius: 0.25rem;
   height: 4rem;
-  mix-blend-mode: normal;
 }
 
 .bd-ami-footer img {

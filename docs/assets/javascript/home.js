@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       circle: "b",
     },
     skeletons: {
-      startAngle: 0,
+      startAngle: -300,
       circle: "b",
     },
     dark: {
@@ -112,12 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const $dots = document.querySelectorAll(".js-dot");
+  const reducedMotion =
+    window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+    window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
   $dots.forEach(($dot) => {
     const id = $dot.dataset.id;
-    setInterval(() => {
+
+    if (reducedMotion) {
       animate($dot, id);
-    }, 10);
+    } else {
+      setInterval(() => {
+        animate($dot, id);
+      }, 10);
+    }
   });
 
   // Grid
