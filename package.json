@@ -28,13 +28,12 @@
   "bugs": {
     "url": "https://github.com/jgthms/bulma/issues"
   },
-  "dependencies": {
-    "sass": "^1.71.1"
-  },
   "devDependencies": {
     "cssnano": "^6.1.0",
     "postcss-cli": "^11.0.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "sass": "^1.71.1"
   },
   "scripts": {
     "build-bulma": "sass --style=expanded --source-map bulma.scss css/bulma.css",
@@ -47,7 +46,8 @@
     "minify-versions": "postcss css/versions/*.css --dir css/versions --ext min.css --no-map --use cssnano",
     "build-all": "npm run build-bulma && npm run build-versions",
     "minify-all": "npm run minify-bulma && npm run minify-versions",
-    "deploy": "npm run build-all && npm run minify-all",
+    "clean": "rimraf css",
+    "deploy": "npm run clean && npm run build-all && npm run minify-all",
     "start": "npm run build-bulma -- --watch"
   },
   "files": [

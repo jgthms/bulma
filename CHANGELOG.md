@@ -8,6 +8,7 @@
 - Fix #3736: include helpers in "No Dark Mode" version
 - Fix #3744: build non-minified versions
 - Fix #3747: ability to nest fixed grids
+- Fix #3759: remove unused `.skeleton` class
 
 ### Documentation fixes
 
@@ -18,6 +19,7 @@
 - Fix #3735
 - Fix #3729: explain how to use Bulma in a modular way
 - Fix #3785: make use of the `@prefers-reduced-motion` setting
+- Fix #3758: broken links for `0.9.4` version
  
 ### Improvements
 
