@@ -5,7 +5,8 @@
 ### Bug fixes
 
 - Fix #3755: `.select` colors
-- 
+- Fix #3736: include helpers in "No Dark Mode" version
+
 ### Documentation fixes
 
 - Fix #3725
