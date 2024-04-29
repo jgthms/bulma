@@ -10,7 +10,7 @@ $column-min-base: 1.5rem;
 @mixin fixed-grid-properties($suffix: "") {
   @for $i from 1 through $max-column-count {
     &.#{iv.$class-prefix}has-#{$i}-cols#{$suffix} {
-      .#{iv.$class-prefix}grid {
+      > .#{iv.$class-prefix}grid {
         @include cv.register-var("grid-column-count", #{$i});
       }
     }
@@ -24,7 +24,7 @@ $grid-container-name: bulma-fixed-grid;
   container-name: $grid-container-name;
   container-type: inline-size;
 
-  .#{iv.$class-prefix}grid {
+  > .#{iv.$class-prefix}grid {
     @include cv.register-vars(
       (
         "grid-gap-count": calc(#{cv.getVar("grid-column-count")} - 1),
