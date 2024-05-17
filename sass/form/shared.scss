@@ -169,4 +169,31 @@ $input-radius: cv.getVar("radius") !default;
 
 %input {
   @include input;
+
+  &[type=color] {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background: none !important;
+  }
+  
+  &[type="color"] {
+    width: var(--bulma-control-height);
+    min-width: var(--bulma-control-height);
+    max-width: var(--bulma-control-height);
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  &[type="color"]::-webkit-color-swatch-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  &[type="color"]::-webkit-color-swatch {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none;
+  }
 }
