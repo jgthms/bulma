@@ -33,6 +33,7 @@ $button-border-width: cv.getVar("control-border-width") !default;
 
 $button-padding-vertical: 0.5em !default;
 $button-padding-horizontal: 1em !default;
+$button-rounded-padding-horizontal-offset: 0.25em !default;
 
 $button-focus-border-color: cv.getVar("link-focus-border") !default;
 $button-focus-box-shadow-size: 0 0 0 0.125em !default;
@@ -533,8 +534,14 @@ $no-palette: ("white", "black", "light", "dark");
 
   &.#{iv.$class-prefix}is-rounded {
     border-radius: cv.getVar("radius-rounded");
-    padding-left: calc(#{cv.getVar("button-padding-horizontal")} + 0.25em);
-    padding-right: calc(#{cv.getVar("button-padding-horizontal")} + 0.25em);
+    padding-left: calc(
+      #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
+        #{cv.getVar("button-border-width")}
+    );
+    padding-right: calc(
+      #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
+        #{cv.getVar("button-border-width")}
+    );
   }
 }
 

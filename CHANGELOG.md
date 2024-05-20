@@ -9,6 +9,7 @@
 - Fix #3744: build non-minified versions
 - Fix #3747: ability to nest fixed grids
 - Fix #3759: remove unused `.skeleton` class
+- Fix #3786: fix horizontal padding of rounded buttons
 
 ### Documentation fixes
 
