@@ -54,7 +54,7 @@ Feel free to raise an issue or submit a pull request.
 
 Bulma is a **CSS** framework. As such, the sole output is a single CSS file: [bulma.css](https://github.com/jgthms/bulma/blob/master/css/bulma.css)
 
-You can either use that file, "out of the box", or download the Sass source files to customize the [variables](https://bulma.io/documentation/overview/variables/).
+You can either use that file, "out of the box", or download the Sass source files to customize the [variables](https://bulma.io/documentation/customize/#docsNav).
 
 There is **no** JavaScript included. People generally want to use their own JS implementation (and usually already have one). Bulma can be considered "environment agnostic": it's just the style layer on top of the logic.
 
