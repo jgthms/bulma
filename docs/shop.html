@@ -1,0 +1,396 @@
+---
+title: "The Bulma Shop"
+layout: default
+theme: primary
+route: shop
+hide_footer: true
+breadcrumb:
+  - home
+  - shop
+---
+
+<style type="text/css">
+  :root {
+    --shop-duration: 500ms;
+  }
+
+  .shop-open-cart {
+    margin-top: 1.5rem;
+  }
+
+  @media screen and (min-width: 800px) {
+    .shop-open-cart {
+      margin-top: 0;
+      position: absolute;
+      right: 3rem;
+      top: calc(50% - 1rem);
+    }
+  }
+
+  .shop-product-heading {
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+    display: flex;
+    font-size: 1.25em;
+    margin-bottom: 0.25em;
+  }
+
+  .shop-product-title {
+    color: var(--bulma-text-strong);
+    font-weight: 700;
+  }
+
+  .shop-product-price {
+    color: var(--bulma-text-strong);
+    font-size: 0.875em;
+  }
+
+  .shop-cart,
+  .shop-cart-overlay {
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition-duration: var(--shop-duration);
+    transition-property: opacity;
+  }
+
+  .shop-cart {
+    opacity: 0;
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .shop-cart-overlay {
+    position: absolute;
+    background-color: rgb(0 0 0 / 80%);
+  }
+
+  .shop-cart-menu {
+    bottom: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: var(--bulma-background);
+    max-width: 22rem;
+    padding: 2rem;
+    position: absolute;
+    z-index: 20;
+    transform: translateX(100%);
+    transition-duration: var(--shop-duration);
+    transition-property: transform;
+    overflow-y: auto;
+  }
+
+  .shop-empty-cart .notification {
+    padding: 1.25em 1.5em;
+  }
+
+  .shop-empty-cart .notification p {
+    color: var(--bulma-text-strong);
+    margin-bottom: 0.25rem;
+  }
+
+  .shop-cart.is-active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .shop-cart.is-active .shop-cart-overlay {
+    opacity: 1;
+  }
+
+  .shop-cart.is-active .shop-cart-menu {
+    transform: none;
+  }
+
+  .shop-item-image {
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .shop-item-title {
+    color: var(--bulma-text-strong);
+    font-weight: 600;
+  }
+
+  .shop-item-price {
+    float: right;
+    font-size: 0.875em;
+    margin-top: 0.125em;
+  }
+
+  .shop-item-remove {
+    float: right;
+  }
+
+  .shop-item-variant {
+    pointer-events: none;
+    padding: 0.125em 0.5em;
+  }
+
+  .shop-item-title {
+    margin-bottom: 0.25em;
+  }
+
+  .shop-item-buttons {
+    margin-top: 0.375em;
+  }
+
+  .shop-item-quantity {
+    color: var(--bulma-text-strong) !important;
+  }
+
+  .shop-total {
+    border-top: 1px solid
+      hsla(
+        var(--bulma-scheme-h),
+        var(--bulma-scheme-s),
+        var(--bulma-border-l),
+        0.5
+      );
+    padding: 1em 0;
+    display: flex;
+    gap: 1em;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .shop-total-disclaimer {
+    font-size: 0.75em;
+    opacity: 0.5;
+  }
+
+  .shop-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 3rem;
+  }
+
+  .shop-products.has-loaded .shop-product.is-placeholder {
+    display: none;
+  }
+
+  .shop-product {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shop-product .variants {
+    margin-top: 1em;
+  }
+
+  .shop-product-description {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+
+  .shop-product-image {
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+    overflow: hidden;
+  }
+
+  .shop-product-image img {
+    transition-duration: var(--shop-duration);
+    transition-property: transform;
+    transform-origin: center;
+  }
+
+  .shop-product-image:hover img {
+    transform: scale(1.1);
+  }
+
+  .shop-product-heading {
+    font-size: 1.5em;
+  }
+
+  .shop-product-tagline {
+    font-size: 1.125em;
+  }
+
+  .shop-product-rest {
+    display: none;
+  }
+
+  .shop-product-rest p:not(:first-child) {
+    margin-top: var(--bulma-content-block-margin-bottom);
+  }
+
+  .shop-product-description details,
+  .shop-product-description .table-responsive {
+    margin-top: var(--bulma-content-block-margin-bottom);
+  }
+
+  .shop-product-description details {
+    cursor: pointer;
+  }
+
+  .shop-product-description .table-responsive table {
+    background-color: var(--bulma-scheme-main);
+  }
+
+  .shop-product-description .table-responsive td {
+    border-width: 1px !important;
+  }
+
+  .shop-product-buttons {
+    justify-content: space-between;
+  }
+
+  .shop-modal {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition-property: opacity;
+    transition-duration: var(--shop-duration);
+  }
+
+  .shop-modal-content {
+    border-radius: var(--bulma-radius-large);
+    background-color: var(--bulma-background);
+    padding: 3rem;
+    opacity: 0;
+    transform: translateY(3rem);
+    transition-property: opacity, transform;
+    transition-duration: var(--shop-duration);
+  }
+
+  .shop-modal-content .shop-product-tagline {
+    color: var(--bulma-text-strong);
+  }
+
+  .shop-modal-content .shop-product-rest {
+    display: block;
+  }
+
+  .shop-modal-buttons {
+    justify-content: space-between;
+  }
+
+  .shop-modal-close {
+    order: 2;
+  }
+
+  .shop-modal.is-active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .shop-modal.is-active .shop-modal-content {
+    opacity: 1;
+    transform: none;
+  }
+
+  #empty-cart,
+  #full-cart {
+    display: none;
+  }
+</style>
+
+{% include global/header.html %}
+
+{% capture shop_placeholder %}
+<div class="shop-product is-placeholder">
+  <figure class="shop-product-image image is-square is-skeleton">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0837/0451/2860/files/unisex-basic-softstyle-t-shirt-white-front-6665a0551b5c8.jpg?v=1717936223"
+    />
+  </figure>
+
+  <div class="shop-product-heading">
+    <h3 class="shop-product-title is-skeleton">The Bulma T-Shirt</h3>
+    <div class="shop-product-price">
+      <span class="shop-price is-skeleton">$15</span>
+    </div>
+  </div>
+  <div class="shop-product-description content">
+    <div class="shop-product-tagline content is-skeleton">
+      Show your CSS skills and add a little extra motivation with the
+      official Bulma sticker. A perfect reminder that design can be easy
+      with your favorite framework.
+    </div>
+  </div>
+  <div class="shop-product-buttons buttons">
+    <button class="button is-medium is-skeleton">Add to cart</button
+    ><button class="button is-text is-skeleton">Learn more</button>
+  </div>
+</div>
+{% endcapture %}
+
+<div style="min-height: calc(100vh - 6.5rem);">
+  <section class="bd-hero" style="position: relative;">
+    <div class="bd-hero-body">
+      <h1 class="bd-hero-title algolia-lvl0">
+        The Bulma Shop
+      </h1>
+
+      <hr class="bd-hr">
+
+      <h2 class="bd-hero-subtitle algolia-lvl1">
+        Get yourself some Bulma swag.
+      </h2>
+
+      <button id="open-cart" class="shop-open-cart button">
+        <span class="icon">
+          <i class="fa-solid fa-basket-shopping"></i>
+        </span>
+        <span>Open Cart</span>
+      </button>
+    </div>
+  </section>
+
+  <div id="shop" class="section">
+    <div id="cart" class="shop-cart">
+      <div id="cart-overlay" class="shop-cart-overlay shop-cart-close"></div>
+
+      <div class="shop-cart-menu">
+        <p class="title is-4">Cart</p>
+
+        <div id="empty-cart" class="shop-empty-cart">
+          <div class="notification is-dark">
+            <p>Your cart is empty!</p>
+            <button class="button is-primary shop-cart-close">
+              Get Shopping
+            </button>
+          </div>
+        </div>
+
+        <div id="full-cart">
+          <div id="cart-items"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="products" class="shop-products">
+      {{ shop_placeholder }}
+      {{ shop_placeholder }}
+      {{ shop_placeholder }}
+      {{ shop_placeholder }}
+    </div>
+  </div>
+</div>
+
+<div id="shop-modal" class="shop-modal modal">
+  <div class="shop-modal-close modal-background"></div>
+
+  <div class="shop-modal-content modal-content">
+    <div class="modal-title"></div>
+
+    <div class="modal-body block"></div>
+
+    <div class="shop-modal-buttons buttons"></div>
+  </div>
+
+  <button
+    class="shop-modal-close modal-close is-large"
+    aria-label="close"
+  ></button>
+</div>
+
+<script src="https://unpkg.com/@shopify/storefront-api-client@1.0.0/dist/umd/storefront-api-client.min.js"></script>
+<script type="text/javascript" src="{{ site.url }}/assets/javascript/shop.js"></script>
