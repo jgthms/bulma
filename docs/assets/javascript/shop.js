@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   };
 
+  const THEME_COLOR = "success";
   const STORAGE_CART_ID = "bulma-shop-cart-id";
 
   const CURRENCIES = {
@@ -264,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currencyCode
       }
     }
-    lines(first: 20) {
+    lines(first: 24) {
       edges {
         node {
           id
@@ -326,6 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const $cart = document.getElementById("cart");
   const $cartClose = document.querySelectorAll(".shop-cart-close");
   const $openCart = document.getElementById("open-cart");
+  const $cartCount = document.getElementById("cart-count");
   const $emptyCart = document.getElementById("empty-cart");
   const $fullCart = document.getElementById("full-cart");
   const $cartItems = document.getElementById("cart-items");
@@ -450,7 +452,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const buildOptions = (el, product) => {
     const { variants } = product;
 
-    const $options = El("buttons has-addons are-small variants");
+    const $options = El(
+      "shop-product-variants buttons has-addons are-small variants",
+    );
     $options.className += variants.length > 1 ? " multiple" : " single";
 
     if (variants.length > 1) {
@@ -475,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const buildAddButton = (el, product) => {
-    const $buy = El("button is-primary is-medium", "button");
+    const $buy = El(`button is-${THEME_COLOR}`, "button");
     $buy.innerText = "Add to cart";
 
     $buy.addEventListener("click", async (event) => {
@@ -493,7 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
       $products.classList.add("has-loaded");
     }
 
-    if ($products.childElementCount > 4) {
+    if ($products.childElementCount > Number($products.dataset.count)) {
       return;
     }
 
@@ -504,14 +508,16 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const el = El(`shop-product shop-product-${getId(product.id)}`);
-      el.dataset.id = id;
+      const $card = El(`card shop-product shop-product-${getId(product.id)}`);
+      $card.dataset.id = id;
+
+      const el = El("card-content");
 
       const $figure = El("shop-product-image image is-square", "figure");
       const $img = document.createElement("img");
       $img.src = featuredImage.url;
       $figure.appendChild($img);
-      el.appendChild($figure);
+      $card.appendChild($figure);
 
       $figure.addEventListener("click", async (event) => {
         event.preventDefault();
@@ -536,8 +542,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       el.appendChild($buttons);
-
-      $products.appendChild(el);
+      $card.appendChild(el);
+      $products.appendChild($card);
     });
   };
 
@@ -549,11 +555,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const { checkoutUrl, cost, lines } = state.cart;
 
     if (lines.length > 0) {
-      $openCart.classList.add("is-primary");
+      $openCart.classList.add(`is-${THEME_COLOR}`);
       $cartItems.replaceChildren();
 
       $emptyCart.style.display = "none";
       $fullCart.style.display = "block";
+      $cartCount.style.display = "inline-flex";
+
+      let totalCount = 0;
 
       lines.forEach((line) => {
         const variantId = line.merchandise.id;
@@ -585,7 +594,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (variant.title !== "Default Title") {
           const $tag = El(
-            "shop-item-variant button is-primary is-small is-outlined",
+            `shop-item-variant button is-${THEME_COLOR} is-small is-outlined`,
             "span",
           );
           $tag.innerText = `${variant.title}`;
@@ -595,6 +604,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const $quantity = El("shop-item-quantity button is-static", "span");
         $quantity.innerText = `${line.quantity}`;
         $right.appendChild($quantity);
+        totalCount += line.quantity;
 
         const $buttons = El("shop-item-actions");
 
@@ -671,14 +681,17 @@ document.addEventListener("DOMContentLoaded", () => {
       $total.appendChild($totalRight);
       $cartItems.appendChild($total);
 
-      const $checkout = El("button is-primary is-fullwidth", "a");
+      const $checkout = El(`button is-${THEME_COLOR} is-fullwidth`, "a");
       $checkout.innerText = "Checkout";
       $checkout.href = checkoutUrl;
       $cartItems.appendChild($checkout);
+
+      $cartCount.innerText = totalCount;
     } else {
-      $openCart.classList.remove("is-primary");
+      $openCart.classList.remove(`is-${THEME_COLOR}`);
       $emptyCart.style.display = "block";
       $fullCart.style.display = "none";
+      $cartCount.style.display = "none";
     }
   };
 
@@ -707,9 +720,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         $variants.forEach(($el) => {
           if ($el.dataset.id === product.selectedVariant) {
-            $el.classList.add("is-primary");
+            $el.classList.add(`is-${THEME_COLOR}`);
           } else {
-            $el.classList.remove("is-primary");
+            $el.classList.remove(`is-${THEME_COLOR}`);
           }
         });
       });
@@ -771,7 +784,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const query = `
       query allProducts ${context} {
-        products(first: 10) {
+        products(first: 12) {
           edges {
             node {
               id
@@ -784,7 +797,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 width
               }
               handle
-              images(first: 10) {
+              images(first: 6) {
                 edges {
                   node {
                     height
@@ -804,7 +817,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               }
               title
-              variants(first: 10) {
+              variants(first: 12) {
                 edges {
                   node {
                     availableForSale
