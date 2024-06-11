@@ -452,29 +452,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const buildOptions = (el, product) => {
     const { variants } = product;
 
-    const $options = El(
-      "shop-product-variants buttons has-addons are-small variants",
-    );
-    $options.className += variants.length > 1 ? " multiple" : " single";
+    const $select = El("shop-product-variants select is-success");
+    const $options = El("shop-product-select", "select");
 
     if (variants.length > 1) {
       variants.forEach((variant) => {
         const { id, title } = variant;
 
-        const $option = El("button", "button");
+        const $option = El("", "option");
         $option.dataset.id = id;
         $option.innerText = title;
 
-        $option.addEventListener("click", (event) => {
-          event.preventDefault();
-          product.selectedVariant = id;
-          update();
-        });
+        // $option.addEventListener("click", (event) => {
+        //   event.preventDefault();
+        //   product.selectedVariant = id;
+        //   update();
+        // });
 
         $options.appendChild($option);
       });
 
-      el.appendChild($options);
+      $select.addEventListener("change", (event) => {
+        event.preventDefault();
+        product.selectedVariant = id;
+        update();
+      });
+
+      $select.appendChild($options);
+      el.appendChild($select);
     }
   };
 
@@ -715,17 +720,17 @@ document.addEventListener("DOMContentLoaded", () => {
         `.shop-product-${getId(product.id)}`,
       );
 
-      $blocs.forEach(($bloc) => {
-        const $variants = $bloc.querySelectorAll(`.variants .button`);
+      // $blocs.forEach(($bloc) => {
+      //   const $variants = $bloc.querySelectorAll(`.variants .button`);
 
-        $variants.forEach(($el) => {
-          if ($el.dataset.id === product.selectedVariant) {
-            $el.classList.add(`is-${THEME_COLOR}`);
-          } else {
-            $el.classList.remove(`is-${THEME_COLOR}`);
-          }
-        });
-      });
+      //   $variants.forEach(($el) => {
+      //     if ($el.dataset.id === product.selectedVariant) {
+      //       $el.classList.add(`is-${THEME_COLOR}`);
+      //     } else {
+      //       $el.classList.remove(`is-${THEME_COLOR}`);
+      //     }
+      //   });
+      // });
     });
   };
 
