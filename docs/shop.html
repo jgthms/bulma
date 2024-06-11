@@ -1,0 +1,578 @@
+---
+title: "The Official Bulma Shop"
+layout: default
+theme: shop
+route: shop
+hide_footer: true
+breadcrumb:
+  - home
+  - shop
+---
+
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.css">
+
+<style type="text/css">
+  :root {
+    --shop-duration: 500ms;
+  }
+
+  .shop-hero {
+    min-height: calc(100vh - 6.5rem);
+  }
+
+  .shop-hero .bd-hero {
+    position: relative;
+  }
+
+  .shop-hero .bd-hero-body {
+    position: relative;
+    margin: 0 auto;
+    max-width: 110rem;
+    width: 100%;
+  }
+
+  .shop-open-cart {
+    margin-top: 1.5rem;
+    min-width: 10em;
+  }
+
+  .shop-open-cart .tag {
+    margin: 0 -0.625em 0 0.625em;
+    padding: 0 0.5em;
+    min-width: 2em;
+    background-color: transparent;
+    color: currentColor;
+    border: 1px solid currentColor;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .shop-open-cart {
+      margin-top: 0;
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 30;
+    }
+  }
+
+  .shop-cart-count {
+    background-color: var(--bulma-success-50);
+  }
+
+  .shop-cart,
+  .shop-cart-overlay {
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition-duration: var(--shop-duration);
+    transition-property: opacity;
+  }
+
+  .shop-cart {
+    opacity: 0;
+    position: fixed;
+    z-index: 40;
+    pointer-events: none;
+  }
+
+  .shop-cart-overlay {
+    position: absolute;
+    background-color: rgb(0 0 0 / 80%);
+  }
+
+  .shop-cart-menu {
+    bottom: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: var(--bulma-background);
+    max-width: 22rem;
+    position: absolute;
+    z-index: 50;
+    transform: translateX(100%);
+    transition-duration: var(--shop-duration);
+    transition-property: transform;
+    overflow-y: auto;
+  }
+
+  .shop-cart-title {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+  }
+
+  .shop-empty-cart {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .shop-empty-cart .notification {
+    padding: 1.25em 1.5em;
+  }
+
+  .shop-empty-cart .notification p {
+    color: var(--bulma-text-strong);
+    margin-bottom: 0.25rem;
+  }
+
+  .shop-cart.is-active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .shop-cart.is-active .shop-cart-overlay {
+    opacity: 1;
+  }
+
+  .shop-cart.is-active .shop-cart-menu {
+    transform: none;
+  }
+
+  .shop-cart-items {
+    padding: 2rem;
+    padding-top: 0;
+  }
+
+  .shop-item-image {
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .shop-item-title {
+    color: var(--bulma-text-strong);
+    font-weight: 600;
+  }
+
+  .shop-item-price {
+    float: right;
+    font-size: 0.875em;
+    margin-top: 0.125em;
+  }
+
+  .shop-item-remove {
+    float: right;
+  }
+
+  .shop-item-variant {
+    pointer-events: none;
+    padding: 0.125em 0.5em;
+  }
+
+  .shop-item-title {
+    margin-bottom: 0.25em;
+  }
+
+  .shop-item-buttons {
+    margin-top: 0.375em;
+  }
+
+  .shop-item-quantity {
+    color: var(--bulma-text-strong) !important;
+  }
+
+  .shop-cart-checkout {
+    background: var(--bulma-background);
+    border-top: 1px solid
+      hsla(
+        var(--bulma-scheme-h),
+        var(--bulma-scheme-s),
+        var(--bulma-border-l),
+        0.5
+      );
+    padding: 2rem;
+    position: sticky;
+    bottom: 0;
+  }
+
+  .shop-cart-checkout .shop-cart-close {
+    margin: -0.5em 0 0.5em;
+  }
+
+  @media screen and (min-width: 600px) {
+    .shop-cart-checkout .shop-cart-close {
+      display: none;
+    }
+  }
+
+  .shop-total {
+    margin-bottom: 1em;
+    display: flex;
+    gap: 1em;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .shop-total-disclaimer {
+    font-size: 0.75em;
+    opacity: 0.5;
+  }
+
+  .shop-discount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 1.5rem;
+  }
+
+  .shop-discount .notification {
+    padding: 1em 2em;
+  }
+
+  .shop-discount code {
+    color: var(--bulma-success);
+    font-family: var(--bulma-family-primary);
+    padding: 0.25em 0.5em;
+  }
+
+  .shop-discount p {
+    opacity: 0.5;
+    font-size: 0.875em;
+  }
+
+  @media screen and (min-width: 800px) {
+    .shop-discount {
+      margin: 0 3rem;
+    }
+  }
+
+  .shop-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 3rem;
+    max-width: 110rem;
+    margin: 0 auto;
+  }
+
+  .shop-products.has-loaded .shop-product.is-placeholder {
+    display: none;
+  }
+
+  .shop-product {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+  }
+
+  .shop-product .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .shop-product-heading {
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+    display: flex;
+    font-size: 1.25em;
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
+  }
+
+  .shop-product-title {
+    color: var(--bulma-text-strong);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .shop-product-price {
+    color: var(--bulma-text-strong);
+    font-size: 0.875em;
+  }
+
+  .shop-product-variants {
+    margin-bottom: 0 !important;
+    margin-top: 1em;
+  }
+
+  .shop-product-select {
+    width: 100%;
+  }
+
+  .shop-product-description {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+
+  .shop-product-images {
+    position: relative;
+  }
+
+  .shop-product-images:hover .shop-product-arrow {
+    opacity: 1;
+  }
+
+  .shop-product-arrow {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+  }
+
+  .shop-product-arrow .icon {
+    background-color: rgb(0 0 0 / 10%);
+    border-radius: 9999px;
+    transition-duration: var(--shop-duration);
+    transition-property: background-color, color, opacity;
+  }
+
+  .shop-product-arrow:hover .icon {
+    background-color: rgb(0 0 0 / 50%);
+    color: white;
+  }
+
+  .shop-product-arrow:active .icon {
+    background-color: rgb(0 0 0 / 70%);
+    color: white;
+  }
+
+  .shop-product-prev {
+    left: 0;
+  }
+
+  .shop-product-next {
+    right: 0;
+  }
+
+  .shop-product-carousel {
+    display: flex;
+    transition-duration: 300ms;
+    transition-property: transform;
+  }
+
+  .shop-product-image {
+    flex-shrink: 0;
+    cursor: zoom-in;
+    overflow: hidden;
+    outline: none !important;
+  }
+
+  .shop-product-image img {
+    transition-duration: var(--shop-duration);
+    transition-property: transform;
+    transform-origin: center;
+  }
+
+  .shop-product-images:hover img {
+    transform: scale(1.04);
+  }
+
+  .shop-product-image:active img {
+    transform: scale(1);
+  }
+
+  .shop-product-heading {
+    font-size: 1.5em;
+  }
+
+  .shop-product-tagline {
+    font-size: 1.125em;
+  }
+
+  .shop-product-rest {
+    display: none;
+  }
+
+  .shop-product-rest p:not(:first-child) {
+    margin-top: var(--bulma-content-block-margin-bottom);
+  }
+
+  .shop-product-description details,
+  .shop-product-description .table-responsive {
+    margin-top: var(--bulma-content-block-margin-bottom);
+  }
+
+  .shop-product-description details {
+    cursor: pointer;
+  }
+
+  .shop-product-description .table-responsive table {
+    background-color: var(--bulma-scheme-main);
+  }
+
+  .shop-product-description .table-responsive td {
+    border-width: 1px !important;
+  }
+
+  .shop-product-buttons {
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+
+  .shop-modal {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition-property: opacity;
+    transition-duration: var(--shop-duration);
+  }
+
+  .shop-modal-content {
+    border-radius: var(--bulma-radius-large);
+    background-color: var(--bulma-background);
+    padding: 3rem;
+    opacity: 0;
+    transform: translateY(3rem);
+    transition-property: opacity, transform;
+    transition-duration: var(--shop-duration);
+  }
+
+  .shop-modal-content .shop-product-tagline {
+    color: var(--bulma-text-strong);
+    margin-bottom: 1em;
+  }
+
+  .shop-modal-content .shop-product-rest {
+    display: block;
+  }
+
+  .shop-modal-buttons {
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+
+  .shop-modal-close {
+    order: 2;
+  }
+
+  .shop-modal.is-active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .shop-modal.is-active .shop-modal-content {
+    opacity: 1;
+    transform: none;
+  }
+
+  #empty-cart,
+  #full-cart {
+    display: none;
+  }
+</style>
+
+{% include global/header.html %}
+
+{% capture shop_placeholder %}
+<div class="card shop-product is-placeholder">
+  <figure class="shop-product-image image is-square is-skeleton">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0837/0451/2860/files/unisex-basic-softstyle-t-shirt-white-front-6665a0551b5c8.jpg?v=1717936223"
+    />
+  </figure>
+
+  <div class="card-content">
+    <div class="shop-product-heading">
+      <h3 class="shop-product-title is-skeleton">The Bulma T-Shirt</h3>
+      <div class="shop-product-price">
+        <span class="shop-price is-skeleton">$15</span>
+      </div>
+    </div>
+
+    <div class="shop-product-description content">
+      <div class="shop-product-tagline content is-skeleton">
+        Show your CSS skills and add a little extra motivation with the
+        official Bulma sticker. A perfect reminder that design can be easy
+        with your favorite framework.
+      </div>
+    </div>
+
+    <div class="shop-product-buttons buttons">
+      <button class="button is-skeleton">Add to cart</button
+      ><button class="button is-text is-skeleton">Learn more</button>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+
+<div class="shop-hero">
+  <section class="bd-hero">
+    <div class="bd-hero-body">
+      <h1 class="bd-hero-title algolia-lvl0">
+        The Official Bulma Shop
+      </h1>
+
+      <hr class="bd-hr">
+
+      <h2 class="bd-hero-subtitle algolia-lvl1">
+        Get yourself some Bulma swag.
+      </h2>
+
+      <button id="open-cart" class="shop-open-cart button">
+        <span class="icon">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </span>
+        <span>Open Cart</span>
+        <span id="cart-count" class="shop-cart-count tag" style="display: none;">8</span>
+      </button>
+    </div>
+  </section>
+
+  <div class="shop-discount">
+    <div class="notification is-success">
+      Get <strong>20% off</strong> with code <code>FLEXBOX</code>
+      <p>Enter at checkout. Only available until the end of the month!</p>
+    </div>
+  </div>
+
+  <div id="shop" class="section">
+    <div id="cart" class="shop-cart">
+      <div id="cart-overlay" class="shop-cart-overlay shop-cart-close"></div>
+
+      <div class="shop-cart-menu">
+        <p class="shop-cart-title title is-4">Cart</p>
+
+        <div id="empty-cart" class="shop-empty-cart">
+          <div class="notification is-dark">
+            <p>Your cart is empty!</p>
+            <button class="button is-success shop-cart-close">
+              Get Shopping
+            </button>
+          </div>
+        </div>
+
+        <div id="full-cart">
+          <div id="cart-items" class="shop-cart-items"></div>
+          <div id="cart-checkout" class="shop-cart-checkout"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="products" data-count="8" class="shop-products">
+      {% for i in (1..8) %}
+        {{ shop_placeholder }}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div id="shop-modal" class="shop-modal modal">
+  <div class="shop-modal-close modal-background"></div>
+
+  <div class="shop-modal-content modal-content">
+    <div class="modal-title"></div>
+
+    <div class="modal-body block"></div>
+
+    <div class="shop-modal-buttons buttons"></div>
+  </div>
+
+  <button
+    class="shop-modal-close modal-close is-large"
+    aria-label="close"
+  ></button>
+</div>
+
+<script src="https://unpkg.com/@shopify/storefront-api-client@1.0.0/dist/umd/storefront-api-client.min.js"></script>
+<script src="https://unpkg.com/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
+<script src="https://unpkg.com/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
+{% include global/cupcake.html %}
+<script type="text/javascript" src="{{ site.url }}/assets/javascript/shop.js"></script>
