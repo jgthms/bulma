@@ -1,0 +1,74 @@
+@use "sass/utilities/css-variables" as cv;
+@use "sass/utilities/extends";
+@use "sass/utilities/mixins" as mx;
+
+.cpck-window {
+  background-color: var(--bulma-background);
+  box-shadow: 0 0 1em rgba(black, 0.1);
+  padding: 1em 1.5em;
+  position: fixed;
+  z-index: 60;
+}
+
+.cpck-invisible {
+  display: none !important;
+}
+
+.cpck-link {
+  border-bottom: 1px solid var(--bulma-link);
+  padding-bottom: 2px;
+
+  &:hover {
+    border-bottom-width: 2px;
+  }
+
+  &:active {
+    background-color: var(--bulma-link-light);
+  }
+}
+
+.cpck-compliance {
+  margin-top: 1em;
+}
+
+.cpck-btn {
+  border: 2px solid var(--bulma-success);
+  border-radius: var(--bulma-radius);
+  color: var(--bulma-success);
+  display: inline-block;
+  font-weight: var(--bulma-weight-bold);
+  padding: 0.5em 1em;
+  vertical-align: top;
+
+  span {
+    margin-left: -0.125em;
+    margin-right: 0.5em;
+  }
+
+  &:hover {
+    background-color: var(--bulma-success-light);
+    color: var(--bulma-success-dark);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+@include mx.mobile {
+  .cpck-window {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+@include mx.tablet {
+  .cpck-window {
+    border-radius: var(--bulma-radius);
+    bottom: 1em;
+    right: 1em;
+    width: 20rem;
+  }
+}
