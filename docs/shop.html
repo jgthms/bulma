@@ -235,7 +235,58 @@ breadcrumb:
     flex-direction: column;
   }
 
+  .shop-product-images {
+    position: relative;
+  }
+
+  .shop-product-images:hover .shop-product-arrow {
+    opacity: 1;
+  }
+
+  .shop-product-arrow {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+  }
+
+  .shop-product-arrow .icon {
+    background-color: rgb(0 0 0 / 10%);
+    border-radius: 9999px;
+    transition-duration: var(--shop-duration);
+    transition-property: background-color, color, opacity;
+  }
+
+  .shop-product-arrow:hover .icon {
+    background-color: rgb(0 0 0 / 50%);
+    color: white;
+  }
+
+  .shop-product-arrow:active .icon {
+    background-color: rgb(0 0 0 / 70%);
+    color: white;
+  }
+
+  .shop-product-prev {
+    left: 0;
+  }
+
+  .shop-product-next {
+    right: 0;
+  }
+
+  .shop-product-carousel {
+    display: flex;
+    transition-duration: 300ms;
+    transition-property: transform;
+  }
+
   .shop-product-image {
+    flex-shrink: 0;
     cursor: pointer;
     overflow: hidden;
   }
@@ -246,7 +297,7 @@ breadcrumb:
     transform-origin: center;
   }
 
-  .shop-product-image:hover img {
+  .shop-product-images:hover img {
     transform: scale(1.1);
   }
 
@@ -343,29 +394,33 @@ breadcrumb:
 {% include global/header.html %}
 
 {% capture shop_placeholder %}
-<div class="shop-product is-placeholder">
+<div class="card shop-product is-placeholder">
   <figure class="shop-product-image image is-square is-skeleton">
     <img
       src="https://cdn.shopify.com/s/files/1/0837/0451/2860/files/unisex-basic-softstyle-t-shirt-white-front-6665a0551b5c8.jpg?v=1717936223"
     />
   </figure>
 
-  <div class="shop-product-heading">
-    <h3 class="shop-product-title is-skeleton">The Bulma T-Shirt</h3>
-    <div class="shop-product-price">
-      <span class="shop-price is-skeleton">$15</span>
+  <div class="card-content">
+    <div class="shop-product-heading">
+      <h3 class="shop-product-title is-skeleton">The Bulma T-Shirt</h3>
+      <div class="shop-product-price">
+        <span class="shop-price is-skeleton">$15</span>
+      </div>
     </div>
-  </div>
-  <div class="shop-product-description content">
-    <div class="shop-product-tagline content is-skeleton">
-      Show your CSS skills and add a little extra motivation with the
-      official Bulma sticker. A perfect reminder that design can be easy
-      with your favorite framework.
+
+    <div class="shop-product-description content">
+      <div class="shop-product-tagline content is-skeleton">
+        Show your CSS skills and add a little extra motivation with the
+        official Bulma sticker. A perfect reminder that design can be easy
+        with your favorite framework.
+      </div>
     </div>
-  </div>
-  <div class="shop-product-buttons buttons">
-    <button class="button is-medium is-skeleton">Add to cart</button
-    ><button class="button is-text is-skeleton">Learn more</button>
+
+    <div class="shop-product-buttons buttons">
+      <button class="button is-skeleton">Add to cart</button
+      ><button class="button is-text is-skeleton">Learn more</button>
+    </div>
   </div>
 </div>
 {% endcapture %}

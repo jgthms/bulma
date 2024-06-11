@@ -58,6 +58,22 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   };
 
+  const getPreviousIndex = (list, current) => {
+    if (current === 0) {
+      return list.length - 1;
+    }
+
+    return current - 1;
+  }
+
+  const getNextIndex = (list, current) => {
+    if (current === list.length - 1) {
+      return 0;
+    }
+
+    return current + 1;
+  }
+
   const THEME_COLOR = "success";
   const STORAGE_CART_ID = "bulma-shop-cart-id";
 
@@ -366,10 +382,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const openModal = (product) => {
-    $title = $modal.querySelector(".modal-title");
-    $body = $modal.querySelector(".modal-body");
-    $buttons = $modal.querySelector(".modal .buttons");
-    $close = $modal.querySelector(".modal .buttons .button.is-close");
+    const $title = $modal.querySelector(".modal-title");
+    const $body = $modal.querySelector(".modal-body");
+    const $buttons = $modal.querySelector(".modal .buttons");
 
     $title.replaceChildren();
     buildHeading($title, product);
@@ -462,19 +477,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const $option = El("", "option");
         $option.dataset.id = id;
         $option.innerText = title;
-
-        // $option.addEventListener("click", (event) => {
-        //   event.preventDefault();
-        //   product.selectedVariant = id;
-        //   update();
-        // });
+        $option.value = id;
 
         $options.appendChild($option);
       });
 
       $select.addEventListener("change", (event) => {
         event.preventDefault();
-        product.selectedVariant = id;
+        product.selectedVariant = event.target.value;
         update();
       });
 
@@ -507,7 +517,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     state.products.forEach((product) => {
-      const { id, availableForSale, featuredImage } = product;
+      const { id, availableForSale, images } = product;
 
       if (!availableForSale) {
         return;
@@ -518,16 +528,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const el = El("card-content");
 
-      const $figure = El("shop-product-image image is-square", "figure");
-      const $img = document.createElement("img");
-      $img.src = featuredImage.url;
-      $figure.appendChild($img);
-      $card.appendChild($figure);
+      const $images = El("shop-product-images image is-square");
+      const $carousel = El("shop-product-carousel image is-square");
 
-      $figure.addEventListener("click", async (event) => {
-        event.preventDefault();
-        openModal(product);
-      });
+      if (images) {
+        images.forEach(img => {
+          const $figure = El("shop-product-image image is-square", "figure");
+          const $img = document.createElement("img");
+          $img.src = img.url;
+          $figure.appendChild($img);
+          $carousel.appendChild($figure);
+        });
+
+        $images.appendChild($carousel);
+
+        if (images.length > 1) {
+          const $prev = El("shop-product-arrow shop-product-prev", "button");
+          const $prevArrow = El("icon", "button");
+          const $prevIcon = El("fa-solid fa-arrow-left", "i");
+          $prevArrow.appendChild($prevIcon);
+          $prev.appendChild($prevArrow);
+
+          $prev.addEventListener("click", event => {
+            event.preventDefault();
+            product.selectedImage = getPreviousIndex(images, product.selectedImage);
+            update();
+          });
+
+          const $next = El("shop-product-arrow shop-product-next", "button");
+          const $nextArrow = El("icon", "button");
+          const $nextIcon = El("fa-solid fa-arrow-right", "i");
+          $nextArrow.appendChild($nextIcon);
+          $next.appendChild($nextArrow);
+
+          $next.addEventListener("click", event => {
+            event.preventDefault();
+            product.selectedImage = getNextIndex(images, product.selectedImage);
+            update();
+          });
+
+          $images.appendChild($prev);
+          $images.appendChild($next);
+        }
+      }
+
+      $card.appendChild($images);
 
       buildHeading(el, product);
       buildDescription(el, product);
@@ -551,6 +596,20 @@ document.addEventListener("DOMContentLoaded", () => {
       $products.appendChild($card);
     });
   };
+
+  const updateImages = () => {
+    state.products.forEach((product) => {
+      const $blocs = document.querySelectorAll(
+        `.shop-product-${getId(product.id)}`,
+      );
+
+      $blocs.forEach(($bloc) => {
+        const $carousel = $bloc.querySelector(`.shop-product-carousel`);
+        const offset = product.selectedImage * 100;
+        $carousel.style.transform = `translateX(-${offset}%`;
+      });
+    });
+  }
 
   const updateCart = () => {
     if (isEmpty(state.cart)) {
@@ -577,12 +636,22 @@ document.addEventListener("DOMContentLoaded", () => {
         $item.dataset.id = line.id;
 
         const $left = El("media-left");
+        // const $images = El("shop-item-images");
         const $image = El("shop-item-image image is-64x64");
         const $img = El("", "img");
-
         if (product.featuredImage) {
           $img.src = product.featuredImage.url;
         }
+
+        // if (product.images) {
+        //   product.images.forEach(img => {
+        //     const $image = El("shop-item-image image is-64x64");
+        //     const $img = El("", "img");
+        //     $img.src = img.url;
+        //     $image.appendChild($img);
+        //     $images.appendChild($image);
+        //   });
+        // }
 
         $image.appendChild($img);
         $left.appendChild($image);
@@ -720,17 +789,17 @@ document.addEventListener("DOMContentLoaded", () => {
         `.shop-product-${getId(product.id)}`,
       );
 
-      // $blocs.forEach(($bloc) => {
-      //   const $variants = $bloc.querySelectorAll(`.variants .button`);
+      $blocs.forEach(($bloc) => {
+        const $variants = $bloc.querySelectorAll(`.shop-product-select option`);
 
-      //   $variants.forEach(($el) => {
-      //     if ($el.dataset.id === product.selectedVariant) {
-      //       $el.classList.add(`is-${THEME_COLOR}`);
-      //     } else {
-      //       $el.classList.remove(`is-${THEME_COLOR}`);
-      //     }
-      //   });
-      // });
+        $variants.forEach(($el) => {
+          if ($el.dataset.id === product.selectedVariant) {
+            $el.setAttribute("selected", "");
+            } else {
+            $el.removeAttribute("selected");
+          }
+        });
+      });
     });
   };
 
@@ -739,6 +808,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCart();
     updateButtons();
     updateVariants();
+    updateImages();
   };
 
   // HTML Elements
@@ -855,6 +925,7 @@ document.addEventListener("DOMContentLoaded", () => {
       state.products = clean.products.map((product) => {
         return {
           ...product,
+          selectedImage: 0,
           selectedVariant: product.variants[0].id,
         };
       });
