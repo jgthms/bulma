@@ -347,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const $emptyCart = document.getElementById("empty-cart");
   const $fullCart = document.getElementById("full-cart");
   const $cartItems = document.getElementById("cart-items");
+  const $cartCheckout = document.getElementById("cart-checkout");
   const $products = document.getElementById("products");
   const $modal = document.getElementById("shop-modal");
   const $modalClose = document.querySelectorAll(".shop-modal-close");
@@ -354,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $cartClose.forEach((el) => {
     el.addEventListener("click", (event) => {
       event.preventDefault();
-      $cart.classList.remove("is-active");
+      closeCart();
     });
   });
 
@@ -372,10 +373,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      $cart.classList.remove("is-active");
+      closeCart();
       closeModal();
     }
   });
+
+  const closeCart = () => {
+    $cart.classList.remove("is-active");
+  }
 
   const closeModal = () => {
     $modal.classList.remove("is-active");
@@ -616,8 +621,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       $blocs.forEach(($bloc) => {
         const $carousel = $bloc.querySelector(`.shop-product-carousel`);
-        const offset = product.selectedImage * 100;
-        $carousel.style.transform = `translateX(-${offset}%`;
+
+        if ($carousel) {
+          const offset = product.selectedImage * 100;
+          $carousel.style.transform = `translateX(-${offset}%`;
+        }
       });
     });
   }
@@ -632,6 +640,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lines.length > 0) {
       $openCart.classList.add(`is-${THEME_COLOR}`);
       $cartItems.replaceChildren();
+      $cartCheckout.replaceChildren();
 
       $emptyCart.style.display = "none";
       $fullCart.style.display = "block";
@@ -764,12 +773,21 @@ document.addEventListener("DOMContentLoaded", () => {
       $totalLeft.appendChild($disclaimer);
       $total.appendChild($totalLeft);
       $total.appendChild($totalRight);
-      $cartItems.appendChild($total);
+      $cartCheckout.appendChild($total);
+
+      const $close = El(`shop-cart-close button is-fullwidth`, "button");
+      $close.innerText = "Close";
+      $cartCheckout.appendChild($close);
+
+      $close.addEventListener("click", event => {
+        event.preventDefault();
+        closeCart();
+      });
 
       const $checkout = El(`button is-${THEME_COLOR} is-fullwidth`, "a");
       $checkout.innerText = "Checkout";
       $checkout.href = checkoutUrl;
-      $cartItems.appendChild($checkout);
+      $cartCheckout.appendChild($checkout);
 
       $cartCount.innerText = totalCount;
     } else {
@@ -883,7 +901,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 width
               }
               handle
-              images(first: 6) {
+              images(first: 24) {
                 edges {
                   node {
                     height
@@ -903,7 +921,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               }
               title
-              variants(first: 12) {
+              variants(first: 24) {
                 edges {
                   node {
                     availableForSale

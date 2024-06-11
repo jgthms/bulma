@@ -56,7 +56,7 @@ breadcrumb:
   }
 
   .shop-cart-count {
-    background-color: var(--bulma-primary-50);
+    background-color: var(--bulma-success-50);
   }
 
   .shop-cart,
@@ -88,13 +88,23 @@ breadcrumb:
     width: 100%;
     background: var(--bulma-background);
     max-width: 22rem;
-    padding: 2rem;
     position: absolute;
     z-index: 50;
     transform: translateX(100%);
     transition-duration: var(--shop-duration);
     transition-property: transform;
     overflow-y: auto;
+  }
+
+  .shop-cart-title {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+  }
+
+  .shop-empty-cart {
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .shop-empty-cart .notification {
@@ -117,6 +127,11 @@ breadcrumb:
 
   .shop-cart.is-active .shop-cart-menu {
     transform: none;
+  }
+
+  .shop-cart-items {
+    padding: 2rem;
+    padding-top: 0;
   }
 
   .shop-item-image {
@@ -156,7 +171,8 @@ breadcrumb:
     color: var(--bulma-text-strong) !important;
   }
 
-  .shop-total {
+  .shop-cart-checkout {
+    background: var(--bulma-background);
     border-top: 1px solid
       hsla(
         var(--bulma-scheme-h),
@@ -164,7 +180,23 @@ breadcrumb:
         var(--bulma-border-l),
         0.5
       );
-    padding: 1em 0;
+    padding: 2rem;
+    position: sticky;
+    bottom: 0;
+  }
+
+  .shop-cart-checkout .shop-cart-close {
+    margin: -0.5em 0 0.5em;
+  }
+
+  @media screen and (min-width: 600px) {
+    .shop-cart-checkout .shop-cart-close {
+      display: none;
+    }
+  }
+
+  .shop-total {
+    margin-bottom: 1em;
     display: flex;
     gap: 1em;
     align-items: start;
@@ -174,6 +206,35 @@ breadcrumb:
   .shop-total-disclaimer {
     font-size: 0.75em;
     opacity: 0.5;
+  }
+
+  .shop-discount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 1.5rem;
+  }
+
+  .shop-discount .notification {
+    padding: 1em 2em;
+  }
+
+  .shop-discount code {
+    color: var(--bulma-success);
+    font-family: var(--bulma-family-primary);
+    padding: 0.25em 0.5em;
+  }
+
+  .shop-discount p {
+    opacity: 0.5;
+    font-size: 0.875em;
+  }
+
+  @media screen and (min-width: 800px) {
+    .shop-discount {
+      margin: 0 3rem;
+    }
   }
 
   .shop-products {
@@ -302,6 +363,10 @@ breadcrumb:
 
   .shop-product-images:hover img {
     transform: scale(1.04);
+  }
+
+  .shop-product-image:active img {
+    transform: scale(1);
   }
 
   .shop-product-heading {
@@ -451,24 +516,32 @@ breadcrumb:
     </div>
   </section>
 
+  <div class="shop-discount">
+    <div class="notification is-success">
+      Get <strong>20% off</strong> with code <code>FLEXBOX</code>
+      <p>Enter at checkout. Only available until the end of the month!</p>
+    </div>
+  </div>
+
   <div id="shop" class="section">
     <div id="cart" class="shop-cart">
       <div id="cart-overlay" class="shop-cart-overlay shop-cart-close"></div>
 
       <div class="shop-cart-menu">
-        <p class="title is-4">Cart</p>
+        <p class="shop-cart-title title is-4">Cart</p>
 
         <div id="empty-cart" class="shop-empty-cart">
           <div class="notification is-dark">
             <p>Your cart is empty!</p>
-            <button class="button is-primary shop-cart-close">
+            <button class="button is-success shop-cart-close">
               Get Shopping
             </button>
           </div>
         </div>
 
         <div id="full-cart">
-          <div id="cart-items"></div>
+          <div id="cart-items" class="shop-cart-items"></div>
+          <div id="cart-checkout" class="shop-cart-checkout"></div>
         </div>
       </div>
     </div>
