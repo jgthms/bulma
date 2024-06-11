@@ -533,11 +533,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (images) {
         images.forEach(img => {
-          const $figure = El("shop-product-image image is-square", "figure");
+          const $figure = El("shop-product-image image is-square", "a");
+          $figure.href = img.url;
+          $figure.dataset.pswpHeight = img.height;
+          $figure.dataset.pswpWidth = img.width;
+          $figure.target = "_blank";
           const $img = document.createElement("img");
           $img.src = img.url;
           $figure.appendChild($img);
           $carousel.appendChild($figure);
+
+          const lightbox = new window.PhotoSwipeLightbox({
+            gallery: '.shop-product-image',
+            pswpModule: window.PhotoSwipe
+          });
+
+          lightbox.init();
         });
 
         $images.appendChild($carousel);
