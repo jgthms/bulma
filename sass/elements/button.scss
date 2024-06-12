@@ -534,14 +534,28 @@ $no-palette: ("white", "black", "light", "dark");
 
   &.#{iv.$class-prefix}is-rounded {
     border-radius: cv.getVar("radius-rounded");
-    padding-left: calc(
-      #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
-        #{cv.getVar("button-border-width")}
-    );
-    padding-right: calc(
-      #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
-        #{cv.getVar("button-border-width")}
-    );
+
+    &:not(:has(.icon:only-child)) {
+      padding-left: calc(
+        #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
+          #{cv.getVar("button-border-width")}
+      );
+      padding-right: calc(
+        #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
+          #{cv.getVar("button-border-width")}
+      );
+    }
+
+    @supports not selector(:has(a, b)) {
+      padding-left: calc(
+        #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
+          #{cv.getVar("button-border-width")}
+      );
+      padding-right: calc(
+        #{cv.getVar("button-padding-horizontal")} + #{$button-rounded-padding-horizontal-offset} -
+          #{cv.getVar("button-border-width")}
+      );
+    }
   }
 }
 
