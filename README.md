@@ -78,62 +78,65 @@ Browse the [online documentation here.](https://bulma.io/documentation/overview/
 
 ## Related projects
 
-| Project                                                                             | Description                                                                                   |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [Bulma with Attribute Modules](https://github.com/j5bot/bulma-attribute-selectors)  | Adds support for attribute-based selectors                                                    |
-| [Bulma with Rails](https://github.com/joshuajansen/bulma-rails)                     | Integrates Bulma with the rails asset pipeline                                                |
-| [BulmaRazor](https://github.com/loogn/bulmarazor)                                   | A lightweight component library based on Bulma and Blazor.                                    |
-| [Vue Admin (dead)](https://github.com/vue-bulma/vue-admin)                          | Vue Admin framework powered by Bulma                                                          |
-| [Bulmaswatch](https://github.com/jenil/bulmaswatch)                                 | Free themes for Bulma                                                                         |
-| [Goldfish (read-only)](https://github.com/Caiyeon/goldfish)                         | Vault UI with Bulma, Golang, and Vue Admin                                                    |
-| [ember-bulma](https://github.com/open-tux/ember-bulma)                              | Ember addon providing a collection of UI components for Bulma                                 |
-| [Bloomer](https://bloomer.js.org)                                                   | A set of React components for Bulma                                                           |
-| [React-bulma](https://github.com/kulakowka/react-bulma)                             | React.js components for Bulma                                                                 |
-| [Buefy](https://buefy.org/)                                                         | Lightweight UI components for Vue.js based on Bulma                                           |
-| [vue-bulma-components](https://github.com/vouill/vue-bulma-components)              | Bulma components for Vue.js with straightforward syntax                                       |
-| [BulmaJS](https://github.com/VizuaaLOG/BulmaJS)                                     | Javascript integration for Bulma. Written in ES6 with a data-\* API                           |
-| [Bulma-modal-fx](https://github.com/postare/bulma-modal-fx)                         | A set of modal window effects with CSS transitions and animations for Bulma                   |
-| [Bulma Stylus](https://github.com/groenroos/bulma-stylus)                           | Up-to-date 1:1 translation to Stylus                                                          |
-| [Bulma.styl (read-only)](https://github.com/log1x/bulma.styl)                       | 1:1 Stylus translation of Bulma 0.6.11                                                        |
-| [elm-bulma](https://github.com/surprisetalk/elm-bulma)                              | Bulma + Elm                                                                                   |
-| [elm-bulma-classes](https://github.com/ahstro/elm-bulma-classes)                    | Bulma classes prepared for usage with Elm                                                     |
-| [Bulma Customizer](https://bulma-customizer.bstash.io/)                             | Bulma Customizer &#8211; Create your own **bespoke** Bulma build                              |
-| [Fulma](https://fulma.github.io/Fulma/)                                             | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)         |
-| [Laravel Enso](https://github.com/laravel-enso/enso)                                | SPA Admin Panel built with Bulma, VueJS and Laravel                                           |
-| [Django Bulma](https://github.com/timonweb/django-bulma)                            | Integrates Bulma with Django                                                                  |
-| [Bulma Templates](https://github.com/dansup/bulma-templates)                        | Free Templates for Bulma                                                                      |
-| [React Bulma Components](https://github.com/couds/react-bulma-components)           | Another React wrap on React for Bulma.io                                                      |
-| [purescript-bulma](https://github.com/sectore/purescript-bulma)                     | PureScript bindings for Bulma                                                                 |
-| [Vue Datatable](https://github.com/laravel-enso/vuedatatable)                       | Bulma themed datatable based on Vue, Laravel & JSON templates                                 |
-| [bulma-fluent](https://mubaidr.github.io/bulma-fluent/)                             | Fluent Design Theme for Bulma inspired by Microsoft’s Fluent Design System                    |
-| [csskrt-csskrt](https://github.com/4d11/csskrt-csskrt)                              | Automatically add Bulma classes to HTML files                                                 |
-| [bulma-pagination-react](https://github.com/hipstersmoothie/bulma-pagination-react) | Bulma pagination as a react component                                                         |
-| [bulma-helpers](https://github.com/jmaczan/bulma-helpers)                           | Functional / Atomic CSS classes for Bulma                                                     |
-| [bulma-swatch-hook](https://github.com/hipstersmoothie/bulma-swatch-hook)           | Bulma swatches as a react hook and a component                                                |
-| [BulmaWP (read-only)](https://github.com/tomhrtly/BulmaWP)                          | Starter WordPress theme for Bulma                                                             |
-| [Ralma](https://github.com/aldi/ralma)                                              | Stateless Ractive.js Components for Bulma                                                     |
-| [Django Simple Bulma](https://github.com/python-discord/django-simple-bulma)        | Lightweight integration of Bulma and Bulma-Extensions for your Django app                     |
-| [rbx](https://dfee.github.io/rbx)                                                   | Comprehensive React UI Framework written in TypeScript                                        |
-| [Awesome Bulma Templates](https://github.com/aldi/awesome-bulma-templates)          | Free real-world Templates built with Bulma                                                    |
-| [Trunx](http://g14n.info/trunx)                                                     | Super Saiyan React components, son of awesome Bulma, implemented in TypeScript                |
-| [@aybolit/bulma](https://github.com/web-padawan/aybolit/tree/master/packages/bulma) | Web Components library inspired by Bulma and Bulma-extensions                                 |
-| [Drulma](https://www.drupal.org/project/drulma)                                     | Drupal theme for Bulma.                                                                       |
-| [Bulrush](https://github.com/textbook/bulrush)                                      | A Bulma-based Python Pelican blog theme                                                       |
-| [Bulma Variable Export](https://github.com/service-paradis/bulma-variables-export)  | Access Bulma Variables in Javascript/Typescript in project using Webpack                      |
-| [Bulmil](https://github.com/gomah/bulmil)                                           | An agnostic UI components library based on Web Components, made with Bulma & Stencil.         |
-| [Svelte Bulma Components](https://github.com/elcobvg/svelte-bulma-components)       | Library of UI components to be used in [Svelte.js](https://svelte.technology/) or standalone. |
-| [Bulma Nunjucks Starterkit](https://github.com/benninkcorien/nunjucks-starter-kit)  | Starterkit for Nunjucks with Bulma.                                                           |
-| [Bulma-Social](https://github.com/aldi/bulma-social)                                | Social Buttons and Colors for Bulma                                                           |
-| [Divjoy](https://divjoy.com/?kit=bulma)                                             | React codebase generator with Bulma templates                                                 |
-| [Blazorise](https://github.com/Megabit/Blazorise)                                   | Blazor component library with the support for Bulma CSS framework                             |
-| [Oruga-Bulma](https://github.com/oruga-ui/theme-bulma)                              | Bulma theme for [Oruga UI](https://oruga.io)                                                  |
-| [@bulvar/bulma](https://github.com/daniil4udo/bulvar/tree/master/packages/bulma)    | Bulma with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) support |
-| [@angular-bulma](https://quinnjr.github.io/angular-bulma) | [Angular](https://angular.io/) directives and components to use in your Bulma projects |
-| [Bulma CSS Class Completion](https://github.com/eliutdev/bulma-css-class-completion) | CSS class name completion for the HTML class attribute based on Bulma CSS classes. |
+| Project                                                                              | Description                                                                                                      |
+| ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| [Bulma with Attribute Modules](https://github.com/j5bot/bulma-attribute-selectors)   | Adds support for attribute-based selectors                                                                       |
+| [Bulma with Rails](https://github.com/joshuajansen/bulma-rails)                      | Integrates Bulma with the rails asset pipeline                                                                   |
+| [BulmaRazor](https://github.com/loogn/bulmarazor)                                    | A lightweight component library based on Bulma and Blazor.                                                       |
+| [Vue Admin (dead)](https://github.com/vue-bulma/vue-admin)                           | Vue Admin framework powered by Bulma                                                                             |
+| [Bulmaswatch](https://github.com/jenil/bulmaswatch)                                  | Free themes for Bulma                                                                                            |
+| [Goldfish (read-only)](https://github.com/Caiyeon/goldfish)                          | Vault UI with Bulma, Golang, and Vue Admin                                                                       |
+| [ember-bulma](https://github.com/open-tux/ember-bulma)                               | Ember addon providing a collection of UI components for Bulma                                                    |
+| [Bloomer](https://bloomer.js.org)                                                    | A set of React components for Bulma                                                                              |
+| [React-bulma](https://github.com/kulakowka/react-bulma)                              | React.js components for Bulma                                                                                    |
+| [Buefy](https://buefy.org/)                                                          | Lightweight UI components for Vue.js based on Bulma                                                              |
+| [vue-bulma-components](https://github.com/vouill/vue-bulma-components)               | Bulma components for Vue.js with straightforward syntax                                                          |
+| [BulmaJS](https://github.com/VizuaaLOG/BulmaJS)                                      | Javascript integration for Bulma. Written in ES6 with a data-\* API                                              |
+| [Bulma-modal-fx](https://github.com/postare/bulma-modal-fx)                          | A set of modal window effects with CSS transitions and animations for Bulma                                      |
+| [Bulma Stylus](https://github.com/groenroos/bulma-stylus)                            | Up-to-date 1:1 translation to Stylus                                                                             |
+| [Bulma.styl (read-only)](https://github.com/log1x/bulma.styl)                        | 1:1 Stylus translation of Bulma 0.6.11                                                                           |
+| [elm-bulma](https://github.com/surprisetalk/elm-bulma)                               | Bulma + Elm                                                                                                      |
+| [elm-bulma-classes](https://github.com/ahstro/elm-bulma-classes)                     | Bulma classes prepared for usage with Elm                                                                        |
+| [Bulma Customizer](https://bulma-customizer.bstash.io/)                              | Bulma Customizer &#8211; Create your own **bespoke** Bulma build                                                 |
+| [Fulma](https://fulma.github.io/Fulma/)                                              | Wrapper around Bulma for [fable-react](https://github.com/fable-compiler/fable-react)                            |
+| [Laravel Enso](https://github.com/laravel-enso/enso)                                 | SPA Admin Panel built with Bulma, VueJS and Laravel                                                              |
+| [Django Bulma](https://github.com/timonweb/django-bulma)                             | Integrates Bulma with Django                                                                                     |
+| [Bulma Templates](https://github.com/dansup/bulma-templates)                         | Free Templates for Bulma                                                                                         |
+| [React Bulma Components](https://github.com/couds/react-bulma-components)            | Another React wrap on React for Bulma.io                                                                         |
+| [purescript-bulma](https://github.com/sectore/purescript-bulma)                      | PureScript bindings for Bulma                                                                                    |
+| [Vue Datatable](https://github.com/laravel-enso/vuedatatable)                        | Bulma themed datatable based on Vue, Laravel & JSON templates                                                    |
+| [bulma-fluent](https://mubaidr.github.io/bulma-fluent/)                              | Fluent Design Theme for Bulma inspired by Microsoft’s Fluent Design System                                       |
+| [csskrt-csskrt](https://github.com/4d11/csskrt-csskrt)                               | Automatically add Bulma classes to HTML files                                                                    |
+| [bulma-pagination-react](https://github.com/hipstersmoothie/bulma-pagination-react)  | Bulma pagination as a react component                                                                            |
+| [bulma-helpers](https://github.com/jmaczan/bulma-helpers)                            | Functional / Atomic CSS classes for Bulma                                                                        |
+| [bulma-swatch-hook](https://github.com/hipstersmoothie/bulma-swatch-hook)            | Bulma swatches as a react hook and a component                                                                   |
+| [BulmaWP (read-only)](https://github.com/tomhrtly/BulmaWP)                           | Starter WordPress theme for Bulma                                                                                |
+| [Ralma](https://github.com/aldi/ralma)                                               | Stateless Ractive.js Components for Bulma                                                                        |
+| [Django Simple Bulma](https://github.com/python-discord/django-simple-bulma)         | Lightweight integration of Bulma and Bulma-Extensions for your Django app                                        |
+| [rbx](https://dfee.github.io/rbx)                                                    | Comprehensive React UI Framework written in TypeScript                                                           |
+| [Awesome Bulma Templates](https://github.com/aldi/awesome-bulma-templates)           | Free real-world Templates built with Bulma                                                                       |
+| [Trunx](https://github.com/fibo/trunx)                                               | Super Saiyan React components, son of awesome Bulma |
+| [@aybolit/bulma](https://github.com/web-padawan/aybolit/tree/master/packages/bulma)  | Web Components library inspired by Bulma and Bulma-extensions                                                    |
+| [Drulma](https://www.drupal.org/project/drulma)                                      | Drupal theme for Bulma.                                                                                          |
+| [Bulrush](https://github.com/textbook/bulrush)                                       | A Bulma-based Python Pelican blog theme                                                                          |
+| [Bulma Variable Export](https://github.com/service-paradis/bulma-variables-export)   | Access Bulma Variables in Javascript/Typescript in project using Webpack                                         |
+| [Bulmil](https://github.com/gomah/bulmil)                                            | An agnostic UI components library based on Web Components, made with Bulma & Stencil.                            |
+| [Svelte Bulma Components](https://github.com/elcobvg/svelte-bulma-components)        | Library of UI components to be used in [Svelte.js](https://svelte.technology/) or standalone.                    |
+| [Bulma Nunjucks Starterkit](https://github.com/benninkcorien/nunjucks-starter-kit)   | Starterkit for Nunjucks with Bulma.                                                                              |
+| [Bulma-Social](https://github.com/aldi/bulma-social)                                 | Social Buttons and Colors for Bulma                                                                              |
+| [Divjoy](https://divjoy.com/?kit=bulma)                                              | React codebase generator with Bulma templates                                                                    |
+| [Blazorise](https://github.com/Megabit/Blazorise)                                    | Blazor component library with the support for Bulma CSS framework                                                |
+| [Oruga-Bulma](https://github.com/oruga-ui/theme-bulma)                               | Bulma theme for [Oruga UI](https://oruga.io)                                                                     |
+| [@bulvar/bulma](https://github.com/daniil4udo/bulvar/tree/master/packages/bulma)     | Bulma with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) support |
+| [@angular-bulma](https://quinnjr.github.io/angular-bulma)                            | [Angular](https://angular.io/) directives and components to use in your Bulma projects                           |
+| [Bulma CSS Class Completion](https://github.com/eliutdev/bulma-css-class-completion) | CSS class name completion for the HTML class attribute based on Bulma CSS classes.                               |
+| [Crispy-Bulma](https://github.com/ckrybus/crispy-bulma)                              | Bulma template pack for django-crispy-forms                                                                      |
+| [CASE](https://case.app)                                                             | CASE is Lightweight Backend-as-a-Service with essential features: DB, Admin panel, API, JS SDK         |
+| [Reactive Bulma](https://github.com/NicolasOmar/reactive-bulma)                                                             | A component library based on React, Bulma, Typescript and Rollup         |
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
-Code copyright 2022 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+Code copyright 2023 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
 
 [npm-link]: https://www.npmjs.com/package/bulma
 [awesome-link]: https://github.com/awesome-css-group/awesome-css

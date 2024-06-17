@@ -2,64 +2,36 @@
 
 <ul>
 
-
   <li>
     echelon
   </li>
 
 </ul>
 
-
-
-
-
 <h2>Website sponsors ($300+)</h2>
 
 <ul>
-
-
-  <li>
-    kevivmatrix
-  </li>
 
   <li>
     stacho
   </li>
 
-  <li>
-    wingerdkm1
-  </li>
-
 </ul>
-
-
 
 <h2>Homepage sponsors ($100+)</h2>
 
 <ul>
 
   <li>
-    Robert Bolder
-  </li>
-
-  <li>
     Adela Belin
   </li>
 
   <li>
-    Fintan Costello
+    BacklinksRocket
   </li>
 
   <li>
-    Iaroslav Baklan
-  </li>
-
-  <li>
-    123Calendars
-  </li>
-
-  <li>
-    KasynoHEX.com
+    PolskieKasynoHEX.org
   </li>
 
   <li>
@@ -67,7 +39,7 @@
   </li>
 
   <li>
-    Sarah Johnson
+    Starwarscasinos.com
   </li>
 
   <li>
@@ -76,6 +48,10 @@
 
   <li>
     DEMETRIOU ANNA
+  </li>
+
+  <li>
+    Tuomas
   </li>
 
   <li>
@@ -99,23 +75,11 @@
   </li>
 
   <li>
-    List.Casino
-  </li>
-
-  <li>
-    Khayriddin Sodiqov
-  </li>
-
-  <li>
     Amelia Cook
   </li>
 
   <li>
     Iaroslav Baklan
-  </li>
-
-  <li>
-    Aamir Javeed
   </li>
 
   <li>
@@ -127,28 +91,79 @@
   </li>
 
   <li>
-    Xoo
-  </li>
-
-  <li>
     Jim
   </li>
 
-
   <li>
-    laneadam
+    Isabella
   </li>
 
   <li>
-    aaditysoni
+    Limeup
   </li>
 
   <li>
-    toolshomdconsulting
+    CellTrackingApps
   </li>
 
   <li>
-    Fredspeler
+    Aktug Dogan
+  </li>
+
+  <li>
+    Iaroslav
+  </li>
+
+  <li>
+    Genesis
+  </li>
+
+  <li>
+    Тимур Юхименко
+  </li>
+
+  <li>
+    Codeless.co
+  </li>
+
+  <li>
+    Viktoria Johansson
+  </li>
+
+  <li>
+    Qiang Lin
+  </li>
+
+  <li>
+    Fora Fora24
+  </li>
+
+  <li>
+    Tom Eriksson
+  </li>
+
+  <li>
+    Casinos zonder Cruks
+  </li>
+
+  <li>
+    Casino Zonder
+  </li>
+
+  <li>
+    Viktoria Poddubetska
+  </li>
+
+  <li>
+    David Matthews
+  </li>
+
+  <li>
+    Richard Olsson
+  </li>
+
+  <li>
+    wingerdkm1
   </li>
 
   <li>
@@ -156,36 +171,25 @@
   </li>
 
   <li>
-    patrick136
+    toolshomdconsulting
+  </li>
+
+  <li>
+    qbtoolhub
+  </li>
+
+  <li>
+    surebettor
   </li>
 
 </ul>
-
-
 
 <h2>Bulma backers ($10+)</h2>
 
 <ul>
 
-
   <li>
-    chazelton331
-  </li>
-
-  <li>
-    jessemarple
-  </li>
-
-  <li>
-    mieko
-  </li>
-
-  <li>
-    mmmonica50
-  </li>
-
-  <li>
-    linkdd
+    Gomah
   </li>
 
   <li>
@@ -193,7 +197,23 @@
   </li>
 
   <li>
-    Gomah
+    linkdd
+  </li>
+
+  <li>
+    jessemarple
+  </li>
+
+  <li>
+    chazelton331
+  </li>
+
+  <li>
+    Windsooon
+  </li>
+
+  <li>
+    mware
   </li>
 
 </ul>

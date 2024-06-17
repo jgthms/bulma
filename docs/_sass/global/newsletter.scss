@@ -1,3 +1,5 @@
+@use "sass:math";
+
 :root {
   --newsletter-strip-size: 16px;
   --newsletter-border-size: #{$block-spacing};
@@ -51,13 +53,13 @@
 
 .bd-newsletter-fields {
   display: grid;
-  grid-gap: $block-spacing / 2;
+  grid-gap: math.div($block-spacing, 2);
   grid-template-columns: minmax(20em, 1fr) auto;
 }
 
 .bd-newsletter-box {
   background-color: $scheme-main;
-  background-image: url('/images/hab/newsletter-strip.png');
+  background-image: url("/images/hab/newsletter-strip.png");
   background-repeat: repeat-x;
   background-size: 96px var(--newsletter-strip-size);
   border-radius: 1.5em;
@@ -90,11 +92,11 @@
 
     .icon {
       float: left;
-      margin-right: $block-spacing / 2;
+      margin-right: math.div($block-spacing, 2);
     }
 
     .subtitle {
-      margin: ($block-spacing / 2) 0 !important;
+      margin: (math.div($block-spacing, 2)) 0 !important;
     }
 
     form {
@@ -143,7 +145,7 @@
 
 @include widescreen {
   :root {
-    --newsletter-border-size: #{$bd-edge-width / 2};
+    --newsletter-border-size: #{math.div($bd-edge-width, 2)};
   }
 
   #newsletter {

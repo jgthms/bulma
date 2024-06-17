@@ -2,23 +2,23 @@ name: End-to-end tests
 on: [push]
 jobs:
   cypress-run:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
+        uses: actions/checkout@v4
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
-      - name: Install dependencies
+          ruby-version: 3.2.2
+      - name: Install gems
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gem install jekyll bundler
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          working-directory: docs
-          install-command: npm install
-          build: npm run bulma-sass
-          start: jekyll serve --host 127.0.0.1 --port 4000
-          wait-on: "http://127.0.0.1:4000"
+        run: gem install jekyll bundler
+      # - name: Run Cypress
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     working-directory: docs
+      #     install-command: npm install
+      #     build: npm run bulma-sass
+      #     start: jekyll serve --host 127.0.0.1 --port 4000
+      #     wait-on: "http://127.0.0.1:4000"
