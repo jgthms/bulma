@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 1.0.2
+
+### Bug fixes
+
+- Fix #3824: ability to override `$scheme-h`, `$scheme-s`, `$dark-l` and `$light-l` Sass variables
+
 ## 1.0.1
 
 ### Bug fixes
