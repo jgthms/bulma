@@ -5,6 +5,7 @@
 ### Bug fixes
 
 - Fix #3824: ability to override `$scheme-h`, `$scheme-s`, `$dark-l` and `$light-l` Sass variables
+- Fix #3830: add remaining logical properties
 
 ## 1.0.1
 
