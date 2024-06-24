@@ -3,8 +3,22 @@ import "../../../../css/bulma.css";
 import "./App.css";
 import Slider from "./components/Slider";
 
-const KEYS = ["scheme-h", "primary-h", "primary-s", "primary-l"];
+// const COLORS = ["primary", "link", "info", "success", "warning", "danger"];
+
+const KEYS = [
+  "scheme-h",
+  "primary-h",
+  "primary-s",
+  "primary-l",
+  "skeleton-lines-gap",
+];
 const UNITS = ["deg", "rem", "em", "%"];
+const SUFFIX_TO_KIND = {
+  "-h": "hue",
+  "-s": "saturation",
+  "-l": "lightness",
+  "-gap": "gap",
+};
 
 function App() {
   const [vars, setVars] = useState([]);
@@ -14,11 +28,15 @@ function App() {
 
     const cssvars = KEYS.map((key) => {
       const original = rootStyle.getPropertyValue(`--bulma-${key}`);
+      const suffix = Object.keys(SUFFIX_TO_KIND).find((kind) =>
+        key.endsWith(kind),
+      );
       const unit = UNITS.find((unit) => original.endsWith(unit)) || "";
       const value = unit !== "" ? original.split(unit)[0] : original;
 
       return {
         id: key,
+        kind: SUFFIX_TO_KIND[suffix] || "any",
         original,
         unit,
         start: Number(value),
@@ -35,11 +53,18 @@ function App() {
       <div className="card">
         <div className="card-content">
           {vars.map((v) => {
-            const { id, original, unit, start } = v;
+            const { id, kind, original, unit, start } = v;
 
             return (
               <div key={id} className="block">
-                <Slider id={id} original={original} start={start} unit={unit} />
+                <code>{id}</code>
+                <Slider
+                  id={id}
+                  kind={kind}
+                  original={original}
+                  start={start}
+                  unit={unit}
+                />
               </div>
             );
           })}

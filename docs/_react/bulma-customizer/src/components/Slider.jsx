@@ -1,28 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
+
+import cn from "./Slider.module.css";
 
 const RANGES = {
-  deg: [0, 360, 1],
-  "%": [0, 100, 1],
+  hue: [0, 360, 1],
+  saturation: [0, 100, 1],
+  lightness: [0, 100, 1],
+  gap: [0, 100, 1],
+  any: [0, 100, 1],
 };
 
-function Slider({ id, start, unit }) {
+function Slider({ id, kind, start, unit }) {
   const [value, setValue] = useState(start);
+  const [isMoving, setMoving] = useState(false);
+  const [x, setX] = useState(0);
+  const sliderRef = useRef(null);
+  const handleRef = useRef(null);
 
-  let min = 0;
-  let max = 360;
-  let step = 1;
+  const [min, max, step] = RANGES[kind];
 
-  if (unit in RANGES) {
-    [min, max, step] = RANGES[unit];
-  }
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleMouseDown = (event) => {
+    setMoving(true);
+    const slider = sliderRef.current;
+    const sliderRect = slider.getBoundingClientRect();
+    const target = event.clientX - sliderRect.left;
+    setX(target);
   };
 
-  const handleReset = () => {
-    setValue(start);
+  const docMouseLeave = () => {
+    setMoving(false);
+  };
+
+  const docMouseUp = () => {
+    setMoving(false);
   };
 
   useEffect(() => {
@@ -38,30 +50,74 @@ function Slider({ id, start, unit }) {
     }
   }, [id, start, unit, value]);
 
+  useEffect(() => {
+    const docMouseMove = (event) => {
+      if (!isMoving || !sliderRef.current || !handleRef.current) {
+        return;
+      }
+
+      const slider = sliderRef.current;
+      const sliderRect = slider.getBoundingClientRect();
+      let target = event.clientX - sliderRect.left;
+
+      if (target < 0) {
+        target = 0;
+      } else if (target > sliderRect.width) {
+        target = sliderRect.width;
+      }
+
+      setX(target);
+    };
+
+    window.addEventListener("mousemove", docMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", docMouseMove);
+    };
+  }, [isMoving, min, max, x]);
+
+  useEffect(() => {
+    window.addEventListener("mouseleave", docMouseLeave);
+
+    return () => {
+      window.removeEventListener("mouseleave", docMouseLeave);
+    };
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("mouseup", docMouseUp);
+
+    return () => {
+      window.removeEventListener("mouseup", docMouseUp);
+    };
+  }, []);
+
+  const mainCN = classNames({
+    [cn.main]: true,
+    [cn.moving]: isMoving,
+  });
+
+  const backgroundCN = classNames({
+    [cn.background]: true,
+    [cn[kind]]: true,
+  });
+
+  const handleStyle = {
+    transform: `translateX(${x}px)`,
+  };
+
   return (
-    <div>
-      <code>{id}</code>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={handleChange}
-      />
-      <code>
-        {value}
-        {unit}
-      </code>
-      <button className="button is-small" onClick={handleReset}>
-        Reset
-      </button>
+    <div className={mainCN} ref={sliderRef} onMouseDown={handleMouseDown}>
+      <div className={backgroundCN}>
+        <span ref={handleRef} className={cn.handle} style={handleStyle} />
+      </div>
     </div>
   );
 }
 
 Slider.propTypes = {
   id: PropTypes.string,
+  kind: PropTypes.string,
   original: PropTypes.string,
   start: PropTypes.number,
   unit: PropTypes.string,
