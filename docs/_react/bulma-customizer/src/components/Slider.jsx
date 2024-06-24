@@ -12,14 +12,26 @@ const RANGES = {
   any: [0, 100, 1],
 };
 
+const xToValue = (x, width, min, max) => {
+  const decimal = x / width;
+  const newValue = decimal * (max - min);
+  return Math.round(newValue);
+};
+
+const valueToX = (value, width, min, max) => {
+  const decimal = value / (max - min);
+  const newValue = decimal * width;
+  return Math.round(newValue);
+};
+
 function Slider({ id, kind, start, unit }) {
+  const [min, max] = RANGES[kind];
+
   const [value, setValue] = useState(start);
   const [isMoving, setMoving] = useState(false);
-  const [x, setX] = useState(0);
+  const [x, setX] = useState(valueToX(start, 240, min, max));
   const sliderRef = useRef(null);
   const handleRef = useRef(null);
-
-  const [min, max, step] = RANGES[kind];
 
   const handleMouseDown = (event) => {
     setMoving(true);
@@ -49,6 +61,13 @@ function Slider({ id, kind, start, unit }) {
       );
     }
   }, [id, start, unit, value]);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    const sliderRect = slider.getBoundingClientRect();
+    const final = xToValue(x, sliderRect.width, min, max);
+    setValue(final);
+  }, [min, max, unit, x]);
 
   useEffect(() => {
     const docMouseMove = (event) => {
