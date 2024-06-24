@@ -24,14 +24,15 @@ const valueToX = (value, width, min, max) => {
   return Math.round(newValue);
 };
 
-function Slider({ id, kind, start, unit }) {
+function Slider({ id, color, kind, start, unit }) {
   const [min, max] = RANGES[kind];
+
+  const sliderRef = useRef(null);
+  const handleRef = useRef(null);
 
   const [value, setValue] = useState(start);
   const [isMoving, setMoving] = useState(false);
   const [x, setX] = useState(valueToX(start, 240, min, max));
-  const sliderRef = useRef(null);
-  const handleRef = useRef(null);
 
   const handleMouseDown = (event) => {
     setMoving(true);
@@ -121,12 +122,23 @@ function Slider({ id, kind, start, unit }) {
     [cn[kind]]: true,
   });
 
+  const mainStyle = {
+    "--h": `var(--bulma-${color}-h)`,
+    "--s": `var(--bulma-${color}-s)`,
+    "--l": `var(--bulma-${color}-l)`,
+  };
+
   const handleStyle = {
     transform: `translateX(${x}px)`,
   };
 
   return (
-    <div className={mainCN} ref={sliderRef} onMouseDown={handleMouseDown}>
+    <div
+      className={mainCN}
+      ref={sliderRef}
+      style={mainStyle}
+      onMouseDown={handleMouseDown}
+    >
       <div className={backgroundCN}>
         <span ref={handleRef} className={cn.handle} style={handleStyle} />
       </div>
@@ -137,6 +149,7 @@ function Slider({ id, kind, start, unit }) {
 Slider.propTypes = {
   id: PropTypes.string,
   kind: PropTypes.string,
+  color: PropTypes.string,
   original: PropTypes.string,
   start: PropTypes.number,
   unit: PropTypes.string,
