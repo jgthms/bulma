@@ -1,11 +1,3 @@
-export const SUFFIX_TO_KIND = {
-  "-h": "hue",
-  "-s": "saturation",
-  "-l": "lightness",
-  "-gap": "gap",
-  "-delta": "delta",
-};
-
 export const CSSVAR_KEYS = {
   scheme: [
     {
@@ -118,6 +110,97 @@ export const CSSVAR_KEYS = {
     {
       id: "weight-extrabold",
       description: "Defines the Extrabold font weight",
+    },
+  ],
+  other: [
+    {
+      id: "block-spacing",
+      description: "Defines the space below Block elements",
+    },
+    {
+      id: "duration",
+      description: "Defines the duration of Transitions and Animations",
+    },
+    {
+      id: "easing",
+      description: "Defines the timing function of Transitions and Animations",
+    },
+    { id: "radius-small", description: "Defines the Small border radius" },
+    { id: "radius", description: "Defines the Normal border radius" },
+    { id: "radius-medium", description: "Defines the Medium border radius" },
+    { id: "radius-large", description: "Defines the Large border radius" },
+    { id: "radius-rounded", description: "Defines the Rounded border radius" },
+    { id: "speed", description: "" },
+    {
+      id: "arrow-color",
+      description: "Defines the arrow color use for Select dropdowns",
+    },
+    {
+      id: "loading-color",
+      description: "Defines the color of the loading spinner",
+    },
+    {
+      id: "burger-h",
+      description: "Defines the Hue of the burger element lines",
+    },
+    {
+      id: "burger-s",
+      description: "Defines the Saturation of the burger element lines",
+    },
+    {
+      id: "burger-l",
+      description: "Defines the Lightness of the burger element lines",
+    },
+    {
+      id: "burger-border-radius",
+      description: "Defines the border radius of the burger element",
+    },
+    { id: "burger-gap", description: "Defines the gap of the burger element" },
+    {
+      id: "burger-item-height",
+      description: "Defines the height of the burger element",
+    },
+    {
+      id: "burger-item-width",
+      description: "Defines the width of the burger element",
+    },
+  ],
+  generic: [
+    { id: "body-background-color", description: "The page's background color" },
+    { id: "body-size", description: "The page's font size" },
+    { id: "body-min-width", description: "The page's minimum width" },
+    { id: "body-rendering", description: "The page's text rendering type" },
+    { id: "body-family", description: "The page's font family" },
+    {
+      id: "body-overflow-x",
+      description: "The page's horizontal overflow behavior",
+    },
+    {
+      id: "body-overflow-y",
+      description: "The page's vertical overflow behavior",
+    },
+    { id: "body-color", description: "The page's text color" },
+    { id: "body-font-size", description: "The body's font size" },
+    { id: "body-weight", description: "The body's font weight" },
+    { id: "body-line-height", description: "The body's line height" },
+    { id: "code-family", description: "The code elements font family" },
+    { id: "code-padding", description: "The code elements padding" },
+    { id: "code-weight", description: "The code elements font weight" },
+    { id: "code-size", description: "The code elements font size" },
+    { id: "small-font-size", description: "The small elements font size" },
+    {
+      id: "hr-background-color",
+      description: "The horizontal rules background color",
+    },
+    { id: "hr-height", description: "The horizontal rules height" },
+    { id: "hr-margin", description: "The horizontal rules margin" },
+    { id: "strong-color", description: "The strong elements text color" },
+    { id: "strong-weight", description: "The strong elements font weight" },
+    { id: "pre-font-size", description: "The pre elements font size" },
+    { id: "pre-padding", description: "The pre elements padding" },
+    {
+      id: "pre-code-font-size",
+      description: "The code elements inside pre ones font size",
     },
   ],
 };

@@ -42,7 +42,7 @@ function Slider({ id, color }) {
     const slider = sliderRef.current;
     const sliderRect = slider.getBoundingClientRect();
     const target = event.clientX - sliderRect.left;
-    setX(target);
+    setX(Math.round(target));
   };
 
   const docMouseLeave = () => {
@@ -75,7 +75,7 @@ function Slider({ id, color }) {
 
   useEffect(() => {
     const newX = valueToX(current, 360, min, max);
-    setX(newX);
+    setX(Math.round(newX));
   }, [min, max, current]);
 
   useEffect(() => {
@@ -94,7 +94,7 @@ function Slider({ id, color }) {
         target = sliderRect.width;
       }
 
-      setX(target);
+      setX(Math.round(target));
     };
 
     window.addEventListener("mousemove", docMouseMove);

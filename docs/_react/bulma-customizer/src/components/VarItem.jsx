@@ -27,6 +27,42 @@ function VarItem({ id }) {
 
   const isDisabled = cssvar.current == cssvar.start;
 
+  let control;
+
+  switch (cssvar.kind) {
+    case "hue":
+    case "saturation":
+    case "lightness":
+    case "delta":
+      control = (
+        <>
+          <Slider id={cssvar.id} />
+
+          <p className={cn.form}>
+            <input
+              type="text"
+              className="input"
+              value={cssvar.current}
+              onChange={(e) => handleInputChange(e, cssvar)}
+              size="3"
+            />
+            <span>{cssvar.unit}</span>
+          </p>
+        </>
+      );
+      break;
+    default:
+      control = (
+        <input
+          className="input"
+          type="text"
+          value={cssvar.current}
+          onChange={(e) => handleInputChange(e, cssvar)}
+        />
+      );
+      break;
+  }
+
   return (
     <div className={cn.main}>
       <div className={cn.side}>
@@ -45,31 +81,7 @@ function VarItem({ id }) {
         </div>
       </div>
 
-      <div className={cn.slider}>
-        {cssvar.kind === "any" ? (
-          <input
-            className="input"
-            type="text"
-            value={cssvar.current}
-            onChange={(e) => handleInputChange(e, cssvar)}
-          />
-        ) : (
-          <>
-            <Slider id={cssvar.id} />
-
-            <p className={cn.form}>
-              <input
-                type="text"
-                className="input"
-                value={cssvar.current}
-                onChange={(e) => handleInputChange(e, cssvar)}
-                size="3"
-              />
-              <span>{cssvar.unit}</span>
-            </p>
-          </>
-        )}
-      </div>
+      <div className={cn.slider}>{control}</div>
 
       <div className={cn.description}>{cssvar.description}</div>
     </div>

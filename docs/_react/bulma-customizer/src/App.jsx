@@ -2,20 +2,31 @@ import { createContext, useEffect, useState } from "react";
 import classNames from "classnames";
 import "../../../../css/bulma.css";
 
-import { CSSVAR_KEYS, SUFFIX_TO_KIND } from "./constants";
+import { CSSVAR_KEYS } from "./constants";
 import { unslug } from "./utils";
 
 import Colors from "./pages/Colors";
 import Scheme from "./pages/Scheme";
 import Typography from "./pages/Typography";
+import Other from "./pages/Other";
+import Generic from "./pages/Generic";
 
-const UNITS = ["deg", "rem", "em", "%"];
+const SUFFIX_TO_KIND = {
+  "-h": "hue",
+  "-s": "saturation",
+  "-l": "lightness",
+  "-delta": "delta",
+  "-color": "color",
+};
+const UNITS = ["deg", "%"];
 const PAGE_TO_COMPONENT = {
   colors: <Colors />,
   scheme: <Scheme />,
   typography: <Typography />,
+  other: <Other />,
+  generic: <Generic />,
 };
-const PAGE_IDS = ["colors", "scheme", "typography"];
+const PAGE_IDS = ["colors", "scheme", "typography", "other", "generic"];
 
 export const CustomizerContext = createContext({
   cssvars: {},
@@ -28,7 +39,7 @@ export const CustomizerContext = createContext({
 function App() {
   const initialContext = {
     cssvars: {},
-    currentPage: "typography",
+    currentPage: "generic",
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -109,8 +120,6 @@ function App() {
       };
     });
   }, []);
-
-  console.log("ZLOG context.cssvars", context.cssvars);
 
   return (
     <CustomizerContext.Provider value={context}>
