@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+
 import "../../../../css/bulma.css";
-import "./App.css";
-import Slider from "./components/Slider";
+import cn from "./App.module.css";
+
+import Color from "./components/Color";
 
 const COLORS = ["primary", "link", "info", "success", "warning", "danger"];
 
@@ -35,8 +37,36 @@ const SUFFIX_TO_KIND = {
   "-gap": "gap",
 };
 
+export const CustomizerContext = createContext({
+  cssvars: {},
+  getVar: () => {},
+  updateVar: () => {},
+});
+
 function App() {
-  const [vars, setVars] = useState({});
+  const initialContext = {
+    cssvars: {},
+    getVar: (id) => {
+      return context.cssvars[id];
+    },
+    updateVar: (id, newValue) => {
+      setContext((context) => {
+        return {
+          ...context,
+          cssvars: {
+            ...context.cssvars,
+            [id]: {
+              ...context.cssvars[id],
+              value: newValue,
+            },
+          },
+        };
+      });
+    },
+  };
+  const [context, setContext] = useState(initialContext);
+
+  console.log("ZLOG context", context);
 
   useEffect(() => {
     const rootStyle = window.getComputedStyle(document.documentElement);
@@ -56,90 +86,58 @@ function App() {
         kind: SUFFIX_TO_KIND[suffix] || "any",
         original,
         unit,
+        current: Number(value),
         start: Number(value),
       };
     });
 
-    setVars(cssvars);
+    setContext((context) => {
+      return {
+        ...context,
+        cssvars,
+      };
+    });
   }, []);
 
+  // useEffect(() => {
+  //   Object.values(context.cssvars).forEach((cssvar) => {
+  //     const { id, current, unit } = cssvar;
+  //     const computedValue = `${current}${unit}`;
+
+  //     document.documentElement.style.setProperty(
+  //       `--bulma-${id}`,
+  //       computedValue,
+  //     );
+  //   });
+  // }, [context.cssvars]);
+
+  // useEffect(() => {
+  //   const computedValue = `${current}${unit}`;
+
+  //   if (current === start) {
+  //     document.documentElement.style.removeProperty(`--bulma-${id}`);
+  //   } else {
+  //     document.documentElement.style.setProperty(
+  //       `--bulma-${id}`,
+  //       computedValue,
+  //     );
+  //   }
+  // }, [id, start, unit, value]);
+
   return (
-    <section className="section">
-      <div className="card">
-        <div className="card-content">
-          {COLORS.map((color) => {
-            const h = `${color}-h`;
-
-            if (!(h in vars)) {
-              return;
-            }
-
-            const s = `${color}-s`;
-            const l = `${color}-l`;
-
-            return (
-              <div key={color} className="block">
-                <code>{color}</code>
-
-                <Slider
-                  id={h}
-                  kind="hue"
-                  color={color}
-                  original={vars[h].original}
-                  start={vars[h].start}
-                  unit={vars[h].unit}
-                />
-
-                <Slider
-                  id={s}
-                  kind="saturation"
-                  color={color}
-                  original={vars[s].original}
-                  start={vars[s].start}
-                  unit={vars[s].unit}
-                />
-
-                <Slider
-                  id={l}
-                  kind="lightness"
-                  color={color}
-                  original={vars[l].original}
-                  start={vars[l].start}
-                  unit={vars[l].unit}
-                />
-              </div>
-            );
-          })}
-
-          {/* {vars.map((v) => {
-            const { id, kind, original, unit, start } = v;
-
-            return (
-              <div key={id} className="block">
-                <code>{id}</code>
-                <Slider
-                  id={id}
-                  kind={kind}
-                  original={original}
-                  start={start}
-                  unit={unit}
-                />
-              </div>
-            );
-          })} */}
-
-          <div className="buttons">
-            <button className="button">Button</button>
-            <button className="button is-primary">Primary</button>
-            <button className="button is-link">Link</button>
-            <button className="button is-info">Info</button>
-            <button className="button is-success">Success</button>
-            <button className="button is-warning">Warning</button>
-            <button className="button is-danger">Danger</button>
+    <CustomizerContext.Provider value={context}>
+      <section className="section">
+        <div className="card">
+          <div className="card-content">
+            <div className={cn.colors}>
+              {COLORS.map((color) => {
+                return <Color key={color} color={color} />;
+              })}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </CustomizerContext.Provider>
   );
 }
 

@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import cn from "./Slider.module.css";
+import { CustomizerContext } from "../App";
 
 const RANGES = {
   hue: [0, 360, 1],
@@ -24,13 +25,14 @@ const valueToX = (value, width, min, max) => {
   return Math.round(newValue);
 };
 
-function Slider({ id, color, kind, start, unit }) {
+function Slider({ id, color, kind }) {
+  const { cssvars, updateVar } = useContext(CustomizerContext);
+  const { start, current, unit } = cssvars[id];
   const [min, max] = RANGES[kind];
 
   const sliderRef = useRef(null);
   const handleRef = useRef(null);
 
-  const [value, setValue] = useState(start);
   const [isMoving, setMoving] = useState(false);
   const [x, setX] = useState(valueToX(start, 240, min, max));
 
@@ -51,9 +53,9 @@ function Slider({ id, color, kind, start, unit }) {
   };
 
   useEffect(() => {
-    const computedValue = `${value}${unit}`;
+    const computedValue = `${current}${unit}`;
 
-    if (value === start) {
+    if (current === start) {
       document.documentElement.style.removeProperty(`--bulma-${id}`);
     } else {
       document.documentElement.style.setProperty(
@@ -61,14 +63,14 @@ function Slider({ id, color, kind, start, unit }) {
         computedValue,
       );
     }
-  }, [id, start, unit, value]);
+  }, [current, id, start, unit]);
 
   useEffect(() => {
     const slider = sliderRef.current;
     const sliderRect = slider.getBoundingClientRect();
     const final = xToValue(x, sliderRect.width, min, max);
-    setValue(final);
-  }, [min, max, unit, x]);
+    updateVar(id, final);
+  }, [id, min, max, updateVar, unit, x]);
 
   useEffect(() => {
     const docMouseMove = (event) => {
@@ -153,6 +155,7 @@ Slider.propTypes = {
   original: PropTypes.string,
   start: PropTypes.number,
   unit: PropTypes.string,
+  getValue: PropTypes.func,
 };
 
 export default Slider;
