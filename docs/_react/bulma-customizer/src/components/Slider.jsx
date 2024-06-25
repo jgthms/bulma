@@ -10,6 +10,7 @@ const RANGES = {
   saturation: [0, 100, 1],
   lightness: [0, 100, 1],
   gap: [0, 100, 1],
+  delta: [0, 100, 1],
   any: [0, 100, 1],
 };
 
@@ -28,7 +29,7 @@ const valueToX = (value, width, min, max) => {
 function Slider({ id, color, kind }) {
   const { cssvars, updateVar } = useContext(CustomizerContext);
   const { start, current } = cssvars[id];
-  const [min, max] = RANGES[kind];
+  const [min, max] = kind ? RANGES[kind] : RANGES.any;
 
   const sliderRef = useRef(null);
   const handleRef = useRef(null);
@@ -129,11 +130,13 @@ function Slider({ id, color, kind }) {
     [cn[kind]]: true,
   });
 
-  const mainStyle = {
-    "--h": `var(--bulma-${color}-h)`,
-    "--s": `var(--bulma-${color}-s)`,
-    "--l": `var(--bulma-${color}-l)`,
-  };
+  const mainStyle = color
+    ? {
+        "--h": `var(--bulma-${color}-h)`,
+        "--s": `var(--bulma-${color}-s)`,
+        "--l": `var(--bulma-${color}-l)`,
+      }
+    : {};
 
   const handleStyle = {
     transform: `translateX(${x}px)`,

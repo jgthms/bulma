@@ -1,53 +1,43 @@
 import { createContext, useEffect, useState } from "react";
+import classNames from "classnames";
+
+import Colors from "./pages/Colors";
+
+import { CSSVAR_KEYS, SUFFIX_TO_KIND } from "./constants";
+import { unslug } from "./utils";
 
 import "../../../../css/bulma.css";
-import cn from "./App.module.css";
+import Scheme from "./pages/Scheme";
 
-import Color from "./components/Color";
-
-const COLORS = ["primary", "link", "info", "success", "warning", "danger"];
-
-const KEYS = [
-  "scheme-h",
-  "primary-h",
-  "primary-s",
-  "primary-l",
-  "link-h",
-  "link-s",
-  "link-l",
-  "info-h",
-  "info-s",
-  "info-l",
-  "success-h",
-  "success-s",
-  "success-l",
-  "warning-h",
-  "warning-s",
-  "warning-l",
-  "danger-h",
-  "danger-s",
-  "danger-l",
-  "skeleton-lines-gap",
-];
 const UNITS = ["deg", "rem", "em", "%"];
-const SUFFIX_TO_KIND = {
-  "-h": "hue",
-  "-s": "saturation",
-  "-l": "lightness",
-  "-gap": "gap",
+const PAGE_TO_COMPONENT = {
+  colors: <Colors />,
+  scheme: <Scheme />,
 };
+const PAGE_IDS = ["scheme", "colors"];
 
 export const CustomizerContext = createContext({
   cssvars: {},
+  currentPage: "",
   getVar: () => {},
+  changeTab: () => {},
   updateVar: () => {},
 });
 
 function App() {
   const initialContext = {
     cssvars: {},
+    currentPage: "colors",
     getVar: (id) => {
       return context.cssvars[id];
+    },
+    changeTab: (pageId) => {
+      setContext((context) => {
+        return {
+          ...context,
+          currentPage: pageId,
+        };
+      });
     },
     updateVar: (id, newValue) => {
       setContext((context) => {
@@ -78,12 +68,18 @@ function App() {
   };
   const [context, setContext] = useState(initialContext);
 
+  const handleTabChange = (event, pageId) => {
+    event.preventDefault();
+    context.changeTab(pageId);
+  };
+
   useEffect(() => {
     const rootStyle = window.getComputedStyle(document.documentElement);
 
     const cssvars = {};
+    const allKeys = PAGE_IDS.map((pageId) => CSSVAR_KEYS[pageId]).flat();
 
-    KEYS.map((key) => {
+    allKeys.map((key) => {
       const original = rootStyle.getPropertyValue(`--bulma-${key}`);
       const suffix = Object.keys(SUFFIX_TO_KIND).find((kind) =>
         key.endsWith(kind),
@@ -109,43 +105,28 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   Object.values(context.cssvars).forEach((cssvar) => {
-  //     const { id, current, unit } = cssvar;
-  //     const computedValue = `${current}${unit}`;
-
-  //     document.documentElement.style.setProperty(
-  //       `--bulma-${id}`,
-  //       computedValue,
-  //     );
-  //   });
-  // }, [context.cssvars]);
-
-  // useEffect(() => {
-  //   const computedValue = `${current}${unit}`;
-
-  //   if (current === start) {
-  //     document.documentElement.style.removeProperty(`--bulma-${id}`);
-  //   } else {
-  //     document.documentElement.style.setProperty(
-  //       `--bulma-${id}`,
-  //       computedValue,
-  //     );
-  //   }
-  // }, [id, start, unit, value]);
-
   return (
     <CustomizerContext.Provider value={context}>
       <section className="section">
-        <div className="card">
-          <div className="card-content">
-            <div className={cn.colors}>
-              {COLORS.map((color) => {
-                return <Color key={color} color={color} />;
-              })}
-            </div>
-          </div>
+        <div className="buttons">
+          {PAGE_IDS.map((pageId) => {
+            const buttonClass = classNames({
+              button: true,
+            });
+
+            return (
+              <button
+                className={buttonClass}
+                key={pageId}
+                onClick={(e) => handleTabChange(e, pageId)}
+              >
+                {unslug(pageId)}
+              </button>
+            );
+          })}
         </div>
+
+        {PAGE_TO_COMPONENT[context.currentPage]}
       </section>
     </CustomizerContext.Provider>
   );

@@ -202,9 +202,19 @@ function Color({ color }) {
           <p>{name}</p>
         </div>
 
-        <button className="button is-small" onClick={handleHexInput}>
-          Enter a Hex code
-        </button>
+        <div className="buttons are-small">
+          <button className="button" onClick={handleHexInput}>
+            Enter a Hex code
+          </button>
+
+          <button
+            className="button"
+            onClick={handleReset}
+            disabled={isDisabled}
+          >
+            Reset
+          </button>
+        </div>
 
         <div className="is-hidden field has-addons">
           <p className="control">
@@ -273,9 +283,6 @@ function Color({ color }) {
 
       <div className={cn.side}>
         <button className={`button is-${color}`}>{name}</button>
-        <button className="button" onClick={handleReset} disabled={isDisabled}>
-          Reset
-        </button>
       </div>
     </div>
   );
