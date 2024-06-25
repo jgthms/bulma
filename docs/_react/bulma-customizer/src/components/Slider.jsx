@@ -27,14 +27,14 @@ const valueToX = (value, width, min, max) => {
 
 function Slider({ id, color, kind }) {
   const { cssvars, updateVar } = useContext(CustomizerContext);
-  const { start, unit, current } = cssvars[id];
+  const { start, current } = cssvars[id];
   const [min, max] = RANGES[kind];
 
   const sliderRef = useRef(null);
   const handleRef = useRef(null);
 
   const [isMoving, setMoving] = useState(false);
-  const [x, setX] = useState(valueToX(start, 240, min, max));
+  const [x, setX] = useState(valueToX(start, 360, min, max));
 
   const handleMouseDown = (event) => {
     setMoving(true);
@@ -69,11 +69,11 @@ function Slider({ id, color, kind }) {
     const slider = sliderRef.current;
     const sliderRect = slider.getBoundingClientRect();
     const final = xToValue(x, sliderRect.width, min, max);
-    updateVar(id, final, unit);
-  }, [id, min, max, updateVar, unit, x]);
+    updateVar(id, final);
+  }, [id, min, max, updateVar, x]);
 
   useEffect(() => {
-    const newX = valueToX(current, 240, min, max);
+    const newX = valueToX(current, 360, min, max);
     setX(newX);
   }, [min, max, current]);
 

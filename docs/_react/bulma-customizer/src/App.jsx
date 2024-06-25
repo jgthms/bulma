@@ -49,15 +49,20 @@ function App() {
     getVar: (id) => {
       return context.cssvars[id];
     },
-    updateVar: (id, newValue, unit) => {
-      const computedValue = `${newValue}${unit}`;
-
-      document.documentElement.style.setProperty(
-        `--bulma-${id}`,
-        computedValue,
-      );
-
+    updateVar: (id, newValue) => {
       setContext((context) => {
+        const { start, unit } = context.cssvars[id];
+        const computedValue = `${newValue}${unit}`;
+
+        if (start === newValue) {
+          document.documentElement.style.removeProperty(`--bulma-${id}`);
+        } else {
+          document.documentElement.style.setProperty(
+            `--bulma-${id}`,
+            computedValue,
+          );
+        }
+
         return {
           ...context,
           cssvars: {
