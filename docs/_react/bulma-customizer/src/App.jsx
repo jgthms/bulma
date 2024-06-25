@@ -1,20 +1,21 @@
 import { createContext, useEffect, useState } from "react";
 import classNames from "classnames";
-
-import Colors from "./pages/Colors";
+import "../../../../css/bulma.css";
 
 import { CSSVAR_KEYS, SUFFIX_TO_KIND } from "./constants";
 import { unslug } from "./utils";
 
-import "../../../../css/bulma.css";
+import Colors from "./pages/Colors";
 import Scheme from "./pages/Scheme";
+import Typography from "./pages/Typography";
 
 const UNITS = ["deg", "rem", "em", "%"];
 const PAGE_TO_COMPONENT = {
   colors: <Colors />,
   scheme: <Scheme />,
+  typography: <Typography />,
 };
-const PAGE_IDS = ["scheme", "colors"];
+const PAGE_IDS = ["colors", "scheme", "typography"];
 
 export const CustomizerContext = createContext({
   cssvars: {},
@@ -27,7 +28,7 @@ export const CustomizerContext = createContext({
 function App() {
   const initialContext = {
     cssvars: {},
-    currentPage: "scheme",
+    currentPage: "typography",
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -95,8 +96,8 @@ function App() {
         kind: SUFFIX_TO_KIND[suffix] || "any",
         original,
         unit,
-        current: Number(value),
-        start: Number(value),
+        current: value,
+        start: value,
         description,
       };
     });
@@ -118,6 +119,7 @@ function App() {
           {PAGE_IDS.map((pageId) => {
             const buttonClass = classNames({
               button: true,
+              "is-link": pageId === context.currentPage,
             });
 
             return (

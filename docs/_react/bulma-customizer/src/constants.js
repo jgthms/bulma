@@ -99,4 +99,25 @@ export const CSSVAR_KEYS = {
     { id: "danger-s", description: "Defines the Danger color's saturation" },
     { id: "danger-l", description: "Defines the Danger color's lightness" },
   ],
+  typography: [
+    { id: "family-primary", description: "Defines the Primary font family" },
+    {
+      id: "family-secondary",
+      description: "Defines the Secondary font family",
+    },
+    { id: "family-code", description: "Defines the Code font family" },
+    { id: "size-small", description: "Defines the Small font size" },
+    { id: "size-normal", description: "Defines the Normal font size" },
+    { id: "size-medium", description: "Defines the Medium font size" },
+    { id: "size-large", description: "Defines the Large font size" },
+    { id: "weight-light", description: "Defines the Light font weight" },
+    { id: "weight-normal", description: "Defines the Normal font weight" },
+    { id: "weight-medium", description: "Defines the Medium font weight" },
+    { id: "weight-semibold", description: "Defines the Semibold font weight" },
+    { id: "weight-bold", description: "Defines the Bold font weight" },
+    {
+      id: "weight-extrabold",
+      description: "Defines the Extrabold font weight",
+    },
+  ],
 };

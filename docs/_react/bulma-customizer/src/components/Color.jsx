@@ -192,7 +192,9 @@ function Color({ color }) {
   }
 
   const isDisabled =
-    h.current === h.start && s.current === s.start && l.current === l.start;
+    Number(h.current) === Number(h.start) &&
+    Number(s.current) === Number(s.start) &&
+    Number(l.current) === Number(l.start);
 
   return (
     <div className={cn.main} style={mainStyle}>
@@ -242,7 +244,7 @@ function Color({ color }) {
             <input
               type="text"
               className="input"
-              value={h.current}
+              value={Number(h.current)}
               onChange={(e) => handleInputChange(e, h)}
               size="3"
             />
@@ -257,7 +259,7 @@ function Color({ color }) {
             <input
               type="text"
               className="input"
-              value={s.current}
+              value={Number(s.current)}
               onChange={(e) => handleInputChange(e, s)}
               size="3"
             />
@@ -272,7 +274,7 @@ function Color({ color }) {
             <input
               type="text"
               className="input"
-              value={l.current}
+              value={Number(l.current)}
               onChange={(e) => handleInputChange(e, l)}
               size="3"
             />

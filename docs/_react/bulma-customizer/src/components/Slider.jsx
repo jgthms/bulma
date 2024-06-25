@@ -21,7 +21,7 @@ const xToValue = (x, width, min, max) => {
 };
 
 const valueToX = (value, width, min, max) => {
-  const decimal = value / (max - min);
+  const decimal = Number(value) / (max - min);
   const newValue = decimal * width;
   return Math.round(newValue);
 };
@@ -158,12 +158,7 @@ function Slider({ id, color }) {
 
 Slider.propTypes = {
   id: PropTypes.string,
-  kind: PropTypes.string,
   color: PropTypes.string,
-  original: PropTypes.string,
-  start: PropTypes.number,
-  unit: PropTypes.string,
-  getValue: PropTypes.func,
 };
 
 export default Slider;

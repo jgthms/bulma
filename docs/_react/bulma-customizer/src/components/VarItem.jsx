@@ -25,7 +25,7 @@ function VarItem({ id }) {
     updateVar(cssvar.id, value);
   };
 
-  const isDisabled = cssvar.current === cssvar.start;
+  const isDisabled = cssvar.current == cssvar.start;
 
   return (
     <div className={cn.main}>
@@ -46,17 +46,29 @@ function VarItem({ id }) {
       </div>
 
       <div className={cn.slider}>
-        <Slider id={cssvar.id} />
-        <p className={cn.form}>
+        {cssvar.kind === "any" ? (
           <input
-            type="text"
             className="input"
+            type="text"
             value={cssvar.current}
             onChange={(e) => handleInputChange(e, cssvar)}
-            size="3"
           />
-          <span>{cssvar.unit}</span>
-        </p>
+        ) : (
+          <>
+            <Slider id={cssvar.id} />
+
+            <p className={cn.form}>
+              <input
+                type="text"
+                className="input"
+                value={cssvar.current}
+                onChange={(e) => handleInputChange(e, cssvar)}
+                size="3"
+              />
+              <span>{cssvar.unit}</span>
+            </p>
+          </>
+        )}
       </div>
 
       <div className={cn.description}>{cssvar.description}</div>
