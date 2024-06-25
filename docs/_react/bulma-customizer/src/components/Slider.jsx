@@ -26,9 +26,9 @@ const valueToX = (value, width, min, max) => {
   return Math.round(newValue);
 };
 
-function Slider({ id, color, kind }) {
+function Slider({ id, color }) {
   const { cssvars, updateVar } = useContext(CustomizerContext);
-  const { start, current } = cssvars[id];
+  const { start, current, kind } = cssvars[id];
   const [min, max] = kind ? RANGES[kind] : RANGES.any;
 
   const sliderRef = useRef(null);

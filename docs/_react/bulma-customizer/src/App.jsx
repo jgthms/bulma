@@ -27,7 +27,7 @@ export const CustomizerContext = createContext({
 function App() {
   const initialContext = {
     cssvars: {},
-    currentPage: "colors",
+    currentPage: "scheme",
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -78,14 +78,17 @@ function App() {
 
     const cssvars = {};
     const allKeys = PAGE_IDS.map((pageId) => CSSVAR_KEYS[pageId]).flat();
+    const allKeyIds = allKeys.map((i) => i.id);
 
-    allKeys.map((key) => {
+    allKeyIds.map((key) => {
       const original = rootStyle.getPropertyValue(`--bulma-${key}`);
       const suffix = Object.keys(SUFFIX_TO_KIND).find((kind) =>
         key.endsWith(kind),
       );
       const unit = UNITS.find((unit) => original.endsWith(unit)) || "";
       const value = unit !== "" ? original.split(unit)[0] : original;
+      const description =
+        allKeys.find((el) => el.id === key)?.description || "None";
 
       cssvars[key] = {
         id: key,
@@ -94,6 +97,7 @@ function App() {
         unit,
         current: Number(value),
         start: Number(value),
+        description,
       };
     });
 
@@ -104,6 +108,8 @@ function App() {
       };
     });
   }, []);
+
+  console.log("ZLOG context.cssvars", context.cssvars);
 
   return (
     <CustomizerContext.Provider value={context}>
