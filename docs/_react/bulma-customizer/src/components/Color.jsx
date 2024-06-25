@@ -11,7 +11,7 @@ function Color({ color }) {
   // const [saturation, setSaturation] = useState(s.start);
   // const [lightness, setLightness] = useState(l.start);
 
-  const { cssvars } = useContext(CustomizerContext);
+  const { cssvars, updateVar } = useContext(CustomizerContext);
   const hName = `${color}-h`;
   const sName = `${color}-s`;
   const lName = `${color}-l`;
@@ -28,14 +28,20 @@ function Color({ color }) {
 
   const handleReset = (event) => {
     event.preventDefault();
-    document.documentElement.style.removeProperty(`--bulma-${hName}`);
-    document.documentElement.style.removeProperty(`--bulma-${sName}`);
-    document.documentElement.style.removeProperty(`--bulma-${lName}`);
+    updateVar(h.id, h.start, h.unit);
+    updateVar(s.id, s.start, s.unit);
+    updateVar(l.id, l.start, l.unit);
+    // document.documentElement.style.removeProperty(`--bulma-${hName}`);
+    // document.documentElement.style.removeProperty(`--bulma-${sName}`);
+    // document.documentElement.style.removeProperty(`--bulma-${lName}`);
   };
 
   if (!h) {
     return;
   }
+
+  const isDisabled =
+    h.current === h.start && s.current === s.start && l.current === l.start;
 
   return (
     <div className={cn.main} style={mainStyle}>
@@ -45,7 +51,11 @@ function Color({ color }) {
           <p>{name}</p>
         </div>
 
-        <button className="button is-small" onClick={handleReset}>
+        <button
+          className="button is-small"
+          onClick={handleReset}
+          disabled={isDisabled}
+        >
           Reset
         </button>
       </div>

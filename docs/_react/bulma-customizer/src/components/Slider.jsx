@@ -27,7 +27,7 @@ const valueToX = (value, width, min, max) => {
 
 function Slider({ id, color, kind }) {
   const { cssvars, updateVar } = useContext(CustomizerContext);
-  const { start, current, unit } = cssvars[id];
+  const { start, unit, current } = cssvars[id];
   const [min, max] = RANGES[kind];
 
   const sliderRef = useRef(null);
@@ -52,25 +52,30 @@ function Slider({ id, color, kind }) {
     setMoving(false);
   };
 
-  useEffect(() => {
-    const computedValue = `${current}${unit}`;
+  // useEffect(() => {
+  //   const computedValue = `${current}${unit}`;
 
-    if (current === start) {
-      document.documentElement.style.removeProperty(`--bulma-${id}`);
-    } else {
-      document.documentElement.style.setProperty(
-        `--bulma-${id}`,
-        computedValue,
-      );
-    }
-  }, [current, id, start, unit]);
+  //   if (current === start) {
+  //     document.documentElement.style.removeProperty(`--bulma-${id}`);
+  //   } else {
+  //     document.documentElement.style.setProperty(
+  //       `--bulma-${id}`,
+  //       computedValue,
+  //     );
+  //   }
+  // }, [current, id, start, unit]);
 
   useEffect(() => {
     const slider = sliderRef.current;
     const sliderRect = slider.getBoundingClientRect();
     const final = xToValue(x, sliderRect.width, min, max);
-    updateVar(id, final);
+    updateVar(id, final, unit);
   }, [id, min, max, updateVar, unit, x]);
+
+  useEffect(() => {
+    const newX = valueToX(current, 240, min, max);
+    setX(newX);
+  }, [min, max, current]);
 
   useEffect(() => {
     const docMouseMove = (event) => {

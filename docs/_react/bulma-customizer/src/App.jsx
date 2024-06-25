@@ -49,7 +49,14 @@ function App() {
     getVar: (id) => {
       return context.cssvars[id];
     },
-    updateVar: (id, newValue) => {
+    updateVar: (id, newValue, unit) => {
+      const computedValue = `${newValue}${unit}`;
+
+      document.documentElement.style.setProperty(
+        `--bulma-${id}`,
+        computedValue,
+      );
+
       setContext((context) => {
         return {
           ...context,
@@ -57,7 +64,7 @@ function App() {
             ...context.cssvars,
             [id]: {
               ...context.cssvars[id],
-              value: newValue,
+              current: newValue,
             },
           },
         };
@@ -65,8 +72,6 @@ function App() {
     },
   };
   const [context, setContext] = useState(initialContext);
-
-  console.log("ZLOG context", context);
 
   useEffect(() => {
     const rootStyle = window.getComputedStyle(document.documentElement);
