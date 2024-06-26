@@ -20,7 +20,7 @@ $column-gap: 0.75rem !default;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
-  padding: $column-gap;
+  padding: cv.getVar("column-gap");
 
   .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
     > &.#{iv.$class-prefix}is-narrow {
@@ -137,9 +137,7 @@ $column-gap: 0.75rem !default;
     .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
       > &.#{iv.$class-prefix}is-#{$i} {
       flex: none;
-      width: calc(
-        math.percentage(math.div($i, 12)) - calc(#{cv.getVar("column-gap")} / 2)
-      );
+      width: math.percentage(math.div($i, 12));
     }
 
     .#{iv.$class-prefix}columns.#{iv.$class-prefix}is-mobile
@@ -243,11 +241,7 @@ $column-gap: 0.75rem !default;
     @for $i from 0 through 12 {
       &.#{iv.$class-prefix}is-#{$i}-mobile {
         flex: none;
-        width: calc(
-          math.percentage(math.div($i, 12)) - calc(
-              #{cv.getVar("column-gap")} / 2
-            )
-        );
+        width: math.percentage(math.div($i, 12));
       }
 
       &.#{iv.$class-prefix}is-offset-#{$i}-mobile {
@@ -372,11 +366,7 @@ $column-gap: 0.75rem !default;
       &.#{iv.$class-prefix}is-#{$i},
       &.#{iv.$class-prefix}is-#{$i}-tablet {
         flex: none;
-        width: calc(
-          math.percentage(math.div($i, 12)) - calc(
-              #{cv.getVar("column-gap")} / 2
-            )
-        );
+        width: math.percentage(math.div($i, 12));
       }
 
       &.#{iv.$class-prefix}is-offset-#{$i},
@@ -585,11 +575,7 @@ $column-gap: 0.75rem !default;
     @for $i from 0 through 12 {
       &.#{iv.$class-prefix}is-#{$i}-desktop {
         flex: none;
-        width: calc(
-          math.percentage(math.div($i, 12)) - calc(
-              #{cv.getVar("column-gap")} / 2
-            )
-        );
+        width: math.percentage(math.div($i, 12));
       }
 
       &.#{iv.$class-prefix}is-offset-#{$i}-desktop {
@@ -693,11 +679,7 @@ $column-gap: 0.75rem !default;
     @for $i from 0 through 12 {
       &.#{iv.$class-prefix}is-#{$i}-widescreen {
         flex: none;
-        width: calc(
-          math.percentage(math.div($i, 12)) - calc(
-              #{cv.getVar("column-gap")} / 2
-            )
-        );
+        width: math.percentage(math.div($i, 12));
       }
 
       &.#{iv.$class-prefix}is-offset-#{$i}-widescreen {
@@ -821,7 +803,9 @@ $column-gap: 0.75rem !default;
   }
 
   &:not(:last-child) {
-    margin-bottom: calc(1.5rem - #{$column-gap});
+    margin-bottom: calc(
+      #{cv.getVar("block-spacing")} - #{cv.getVar("column-gap")}
+    );
   }
 
   // Modifiers
@@ -872,6 +856,108 @@ $column-gap: 0.75rem !default;
     // Modifiers
     &.#{iv.$class-prefix}is-desktop {
       display: flex;
+    }
+  }
+
+  &.#{iv.$class-prefix}is-variable {
+    @for $i from 0 through 8 {
+      &.#{iv.$class-prefix}is-#{$i} {
+        @include cv.register-vars(
+          (
+            "column-gap": #{$i * 0.25rem},
+          )
+        );
+      }
+
+      @include mx.mobile {
+        &.#{iv.$class-prefix}is-#{$i}-mobile {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.tablet {
+        &.#{iv.$class-prefix}is-#{$i}-tablet {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.tablet-only {
+        &.#{iv.$class-prefix}is-#{$i}-tablet-only {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.touch {
+        &.#{iv.$class-prefix}is-#{$i}-touch {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.desktop {
+        &.#{iv.$class-prefix}is-#{$i}-desktop {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.desktop-only {
+        &.#{iv.$class-prefix}is-#{$i}-desktop-only {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.widescreen {
+        &.#{iv.$class-prefix}is-#{$i}-widescreen {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.widescreen-only {
+        &.#{iv.$class-prefix}is-#{$i}-widescreen-only {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
+
+      @include mx.fullhd {
+        &.#{iv.$class-prefix}is-#{$i}-fullhd {
+          @include cv.register-vars(
+            (
+              "column-gap": #{$i * 0.25rem},
+            )
+          );
+        }
+      }
     }
   }
 }
