@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import "../../../../css/bulma.css";
 
@@ -21,6 +21,15 @@ import Progress from "./pages/elements/Progress";
 import Table from "./pages/elements/Table";
 import Tag from "./pages/elements/Tag";
 import Title from "./pages/elements/Title";
+import Control from "./pages/form/Control";
+import Input from "./pages/form/Input";
+import File from "./pages/form/File";
+import Columns from "./pages/grid/Columns";
+import Grid from "./pages/grid/Grid";
+import Footer from "./pages/layout/Footer";
+import Hero from "./pages/layout/Hero";
+import Media from "./pages/layout/Media";
+import Section from "./pages/layout/Section";
 
 const SUFFIX_TO_KIND = {
   "-h": "hue",
@@ -37,6 +46,7 @@ const PAGE_TO_COMPONENT = {
   other: <Other />,
   generic: <Generic />,
   skeleton: <Skeleton />,
+  // Elements
   box: <Box />,
   content: <Content />,
   delete: <Delete />,
@@ -46,6 +56,18 @@ const PAGE_TO_COMPONENT = {
   table: <Table />,
   tag: <Tag />,
   title: <Title />,
+  // Form
+  control: <Control />,
+  input: <Input />,
+  file: <File />,
+  // Grid
+  columns: <Columns />,
+  grid: <Grid />,
+  // Layout
+  footer: <Footer />,
+  hero: <Hero />,
+  media: <Media />,
+  section: <Section />,
 };
 const PAGE_IDS = [
   "colors",
@@ -63,6 +85,15 @@ const PAGE_IDS = [
   "table",
   "tag",
   "title",
+  "control",
+  "input",
+  "file",
+  "columns",
+  "grid",
+  "footer",
+  "hero",
+  "media",
+  "section",
 ];
 
 export const CustomizerContext = createContext({
@@ -74,6 +105,7 @@ export const CustomizerContext = createContext({
 });
 
 function App() {
+  const styleRef = useRef();
   const initialContext = {
     cssvars: {},
     currentPage: "delete",
@@ -90,15 +122,15 @@ function App() {
     },
     updateVar: (id, newValue) => {
       setContext((context) => {
-        const { start, unit, scope } = context.cssvars[id];
-        const computedValue = `${newValue}${unit}`;
-        const el = document.querySelector(scope);
+        // const { start, unit, scope } = context.cssvars[id];
+        // const computedValue = `${newValue}${unit}`;
+        // const el = document.querySelector(`#scope ${scope}`);
 
-        if (start === newValue) {
-          el.style.removeProperty(`--bulma-${id}`);
-        } else {
-          el.style.setProperty(`--bulma-${id}`, computedValue);
-        }
+        // if (start === newValue) {
+        //   el.style.removeProperty(`--bulma-${id}`);
+        // } else {
+        //   el.style.setProperty(`--bulma-${id}`, computedValue);
+        // }
 
         return {
           ...context,
@@ -134,6 +166,14 @@ function App() {
       table: window.getComputedStyle(document.querySelector(".table")),
       tag: window.getComputedStyle(document.querySelector(".tag")),
       title: window.getComputedStyle(document.querySelector(".title")),
+      file: window.getComputedStyle(document.querySelector(".file")),
+      input: window.getComputedStyle(document.querySelector(".input")),
+      columns: window.getComputedStyle(document.querySelector(".columns")),
+      grid: window.getComputedStyle(document.querySelector(".grid")),
+      footer: window.getComputedStyle(document.querySelector(".footer")),
+      hero: window.getComputedStyle(document.querySelector(".hero")),
+      media: window.getComputedStyle(document.querySelector(".media")),
+      section: window.getComputedStyle(document.querySelector(".section")),
     };
 
     const cssvars = {};
@@ -171,6 +211,30 @@ function App() {
       } else if (key.startsWith("title")) {
         scope = ".title";
         original = styles.title.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("file")) {
+        scope = ".file";
+        original = styles.file.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("input")) {
+        scope = ".input";
+        original = styles.input.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("columns")) {
+        scope = ".columns";
+        original = styles.columns.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("grid")) {
+        scope = ".grid";
+        original = styles.grid.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("footer")) {
+        scope = ".footer";
+        original = styles.footer.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("hero")) {
+        scope = ".hero";
+        original = styles.hero.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("media")) {
+        scope = ".media";
+        original = styles.media.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("section")) {
+        scope = ".section";
+        original = styles.section.getPropertyValue(`--bulma-${key}`);
       } else {
         original = styles.root.getPropertyValue(`--bulma-${key}`);
       }
@@ -203,8 +267,42 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const rules = {};
+
+    Object.values(context.cssvars).forEach((cssvar) => {
+      const { id, current, start, scope, unit } = cssvar;
+
+      if (current == start) {
+        return;
+      }
+
+      const computedValue = `${current}${unit}`;
+      const declaration = `--bulma-${id}: ${computedValue};`;
+
+      if (scope in rules) {
+        rules[scope].push(declaration);
+      } else {
+        rules[scope] = [declaration];
+      }
+    });
+
+    let content = "";
+
+    for (const [key, arr] of Object.entries(rules)) {
+      content += `${key} {`;
+      arr.forEach((item) => (content += item));
+      content += `}`;
+    }
+
+    if (styleRef) {
+      styleRef.current.innerHTML = content;
+    }
+  }, [context.cssvars]);
+
   return (
     <CustomizerContext.Provider value={context}>
+      <style ref={styleRef} />
       <section className="section">
         <div className="buttons">
           {PAGE_IDS.map((pageId) => {

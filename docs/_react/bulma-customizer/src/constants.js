@@ -522,6 +522,35 @@ export const CSSVAR_KEYS = {
       description: "The subtitle strong elements font weight",
     },
   ],
+  control: [
+    { id: "control-radius", description: "The control elements border radius" },
+    {
+      id: "control-radius-small",
+      description: "The control elements small border radius",
+    },
+    {
+      id: "control-border-width",
+      description: "The control elements border width",
+    },
+    { id: "control-height", description: "The control elements height" },
+    {
+      id: "control-line-height",
+      description: "The control elements line height",
+    },
+    {
+      id: "control-padding-vertical",
+      description: "The control elements vertical padding",
+    },
+    {
+      id: "control-padding-horizontal",
+      description: "The control elements horizontal padding",
+    },
+    { id: "control-size", description: "The control elements font size" },
+    {
+      id: "control-focus-shadow-l",
+      description: "The control elements shadow Lightness when focused",
+    },
+  ],
   file: [
     { id: "file-radius", description: "The file element border radius" },
     {
@@ -593,10 +622,6 @@ export const CSSVAR_KEYS = {
     {
       id: "input-border-style",
       description: "The input element main border style",
-    },
-    {
-      id: "input-border-width",
-      description: "The input element main border width",
     },
     {
       id: "input-border-l",
