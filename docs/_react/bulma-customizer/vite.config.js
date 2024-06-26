@@ -14,4 +14,10 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  resolve: {
+    alias: {
+      root: "/src",
+      components: "/src/components",
+    },
+  },
 });

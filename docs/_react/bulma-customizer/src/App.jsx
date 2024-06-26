@@ -11,7 +11,16 @@ import Typography from "./pages/Typography";
 import Other from "./pages/Other";
 import Generic from "./pages/Generic";
 import Skeleton from "./pages/Skeleton";
-import Box from "./pages/Box";
+
+import Box from "./pages/elements/Box";
+import Content from "./pages/elements/Content";
+import Delete from "./pages/elements/Delete";
+import Icon from "./pages/elements/Icon";
+import Notification from "./pages/elements/Notification";
+import Progress from "./pages/elements/Progress";
+import Table from "./pages/elements/Table";
+import Tag from "./pages/elements/Tag";
+import Title from "./pages/elements/Title";
 
 const SUFFIX_TO_KIND = {
   "-h": "hue",
@@ -29,6 +38,14 @@ const PAGE_TO_COMPONENT = {
   generic: <Generic />,
   skeleton: <Skeleton />,
   box: <Box />,
+  content: <Content />,
+  delete: <Delete />,
+  icon: <Icon />,
+  notification: <Notification />,
+  progress: <Progress />,
+  table: <Table />,
+  tag: <Tag />,
+  title: <Title />,
 };
 const PAGE_IDS = [
   "colors",
@@ -38,6 +55,14 @@ const PAGE_IDS = [
   "generic",
   "skeleton",
   "box",
+  "content",
+  "delete",
+  "icon",
+  "notification",
+  "progress",
+  "table",
+  "tag",
+  "title",
 ];
 
 export const CustomizerContext = createContext({
@@ -51,7 +76,7 @@ export const CustomizerContext = createContext({
 function App() {
   const initialContext = {
     cssvars: {},
-    currentPage: "box",
+    currentPage: "delete",
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -96,14 +121,19 @@ function App() {
   };
 
   useEffect(() => {
-    // const elements = document.querySelectorAll("html, .box");
-    // const allStyles = Array.from(elements).map((element) =>
-    //   getComputedStyle(element),
-    // );
-
     const styles = {
       root: window.getComputedStyle(document.documentElement),
       box: window.getComputedStyle(document.querySelector(".box")),
+      content: window.getComputedStyle(document.querySelector(".content")),
+      delete: window.getComputedStyle(document.querySelector(".delete")),
+      icon: window.getComputedStyle(document.querySelector(".icon")),
+      notification: window.getComputedStyle(
+        document.querySelector(".notification"),
+      ),
+      progress: window.getComputedStyle(document.querySelector(".progress")),
+      table: window.getComputedStyle(document.querySelector(".table")),
+      tag: window.getComputedStyle(document.querySelector(".tag")),
+      title: window.getComputedStyle(document.querySelector(".title")),
     };
 
     const cssvars = {};
@@ -117,6 +147,30 @@ function App() {
       if (key.startsWith("box")) {
         scope = ".box";
         original = styles.box.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("content")) {
+        scope = ".content";
+        original = styles.content.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("delete")) {
+        scope = ".delete";
+        original = styles.delete.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("icon")) {
+        scope = ".icon";
+        original = styles.icon.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("notification")) {
+        scope = ".notification";
+        original = styles.notification.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("progress")) {
+        scope = ".progress";
+        original = styles.progress.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("table")) {
+        scope = ".table";
+        original = styles.table.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("tag")) {
+        scope = ".tag";
+        original = styles.tag.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("title")) {
+        scope = ".title";
+        original = styles.title.getPropertyValue(`--bulma-${key}`);
       } else {
         original = styles.root.getPropertyValue(`--bulma-${key}`);
       }

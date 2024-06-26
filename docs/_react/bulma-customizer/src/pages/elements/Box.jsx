@@ -1,5 +1,5 @@
-import VarItem from "../components/VarItem";
-import { CSSVAR_KEYS } from "../constants";
+import VarItem from "components/VarItem";
+import { CSSVAR_KEYS } from "root/constants";
 
 function Box() {
   const ids = CSSVAR_KEYS.box.map((i) => i.id);

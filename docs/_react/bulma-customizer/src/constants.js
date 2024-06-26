@@ -261,4 +261,265 @@ export const CSSVAR_KEYS = {
       description: "The box link shadow when active",
     },
   ],
+  content: [
+    { id: "content-heading-color", description: "The content headings color" },
+    {
+      id: "content-heading-weight",
+      description: "The content headings font weight",
+    },
+    {
+      id: "content-heading-line-height",
+      description: "The content headings line height",
+    },
+    {
+      id: "content-block-margin-bottom",
+      description: "The content blocks margin bottom",
+    },
+    {
+      id: "content-blockquote-background-color",
+      description: "The content blockquotes background color",
+    },
+    {
+      id: "content-blockquote-border-left",
+      description: "The content blockquotes left border",
+    },
+    {
+      id: "content-blockquote-padding",
+      description: "The content blockquotes padding",
+    },
+    { id: "content-pre-padding", description: "The content pres padding" },
+    {
+      id: "content-table-cell-border",
+      description: "The content table cells border",
+    },
+    {
+      id: "content-table-cell-border-width",
+      description: "The content table cells border width",
+    },
+    {
+      id: "content-table-cell-padding",
+      description: "The content table cells heading color",
+    },
+    {
+      id: "content-table-cell-heading-color",
+      description: "The content table cells heading color",
+    },
+    {
+      id: "content-table-head-cell-border-width",
+      description: "The content table head cells border width",
+    },
+    {
+      id: "content-table-head-cell-color",
+      description: "The content table head cells color",
+    },
+    {
+      id: "content-table-body-last-row-cell-border-bottom-width",
+      description: "The content table last rows bottom border width",
+    },
+    {
+      id: "content-table-foot-cell-border-width",
+      description: "The content table foot cells border width",
+    },
+    {
+      id: "content-table-foot-cell-color",
+      description: "The content table foot cells heading color",
+    },
+  ],
+  delete: [
+    { id: "delete-dimensions", description: "The delete element dimensions" },
+    {
+      id: "delete-background-l",
+      description: "The delete element background lightness",
+    },
+    {
+      id: "delete-background-alpha",
+      description: "The delete element background transparency",
+    },
+    { id: "delete-color", description: "The delete element color" },
+  ],
+  icon: [
+    { id: "icon-dimensions", description: "The icon element dimensions" },
+    {
+      id: "icon-dimensions-small",
+      description: "The Small icon element dimensions",
+    },
+    {
+      id: "icon-dimensions-medium",
+      description: "The Medium icon element dimensions",
+    },
+    {
+      id: "icon-dimensions-large",
+      description: "The Large icon element dimensions",
+    },
+    { id: "icon-text-spacing", description: "The icon element text spacing" },
+  ],
+  notification: [
+    { id: "notification-h", description: "The notification main Hue" },
+    { id: "notification-s", description: "The notification main Saturation" },
+    {
+      id: "notification-background-l",
+      description: "The notification background Lightness",
+    },
+    {
+      id: "notification-color-l",
+      description: "The notification main text color Lightness",
+    },
+    {
+      id: "notification-code-background-color",
+      description: "The notification code background color",
+    },
+    {
+      id: "notification-radius",
+      description: "The notification border radius",
+    },
+    { id: "notification-padding", description: "The notification padding" },
+  ],
+  progress: [
+    {
+      id: "progress-border-radius",
+      description: "The progress bar border radius",
+    },
+    {
+      id: "progress-bar-background-color",
+      description: "The progress bar background color",
+    },
+    {
+      id: "progress-value-background-color",
+      description: "The progress value background color",
+    },
+    {
+      id: "progress-indeterminate-duration",
+      description: "The progress bar loading animation speed",
+    },
+  ],
+  table: [
+    { id: "table-color", description: "The table text color" },
+    { id: "table-background-color", description: "The table background color" },
+    {
+      id: "table-cell-border-color",
+      description: "The table cells border color",
+    },
+    {
+      id: "table-cell-border-style",
+      description: "The table cells border style",
+    },
+    {
+      id: "table-cell-border-width",
+      description: "The table cells border width",
+    },
+    { id: "table-cell-padding", description: "The table cells padding" },
+    {
+      id: "table-cell-heading-color",
+      description: "The table heading cells text color",
+    },
+    {
+      id: "table-cell-text-align",
+      description: "The table cells text alignment",
+    },
+    {
+      id: "table-head-cell-border-width",
+      description: "The table head cells border width",
+    },
+    {
+      id: "table-head-cell-color",
+      description: "The table head cells text color",
+    },
+    {
+      id: "table-foot-cell-border-width",
+      description: "The table foot cells border width",
+    },
+    {
+      id: "table-foot-cell-color",
+      description: "The table foot cells text color",
+    },
+    {
+      id: "table-head-background-color",
+      description: "The table head background color",
+    },
+    {
+      id: "table-body-background-color",
+      description: "The table body background color",
+    },
+    {
+      id: "table-foot-background-color",
+      description: "The table foot background color",
+    },
+    {
+      id: "table-row-hover-background-color",
+      description: "The table rows hover background color",
+    },
+    {
+      id: "table-row-active-background-color",
+      description: "The table rows active background color",
+    },
+    {
+      id: "table-row-active-color",
+      description: "The table rows active text color",
+    },
+    {
+      id: "table-striped-row-even-background-color",
+      description: "The striped tables alternate rows background color",
+    },
+    {
+      id: "table-striped-row-even-hover-background-color",
+      description:
+        "The striped tables alternate rows background color when hovered",
+    },
+  ],
+  tag: [
+    { id: "tag-h", description: "The tag elements Hue" },
+    { id: "tag-s", description: "The tag elements Saturation" },
+    {
+      id: "tag-background-l",
+      description: "The tag elements background Lightness",
+    },
+    {
+      id: "tag-background-l-delta",
+      description: "The tag elements background Lightness delta",
+    },
+    {
+      id: "tag-hover-background-l-delta",
+      description: "The tag elements background Lightness when hovered",
+    },
+    {
+      id: "tag-active-background-l-delta",
+      description: "The tag elements background Lightness when active",
+    },
+    { id: "tag-color-l", description: "The tag elements text color Lightness" },
+    { id: "tag-radius", description: "The tag elements border radius" },
+    { id: "tag-delete-margin", description: "The tag delete elements margin" },
+  ],
+  title: [
+    { id: "title-color", description: "The title elements text color" },
+    { id: "title-family", description: "The title elements font family" },
+    { id: "title-size", description: "The title elements font size" },
+    { id: "title-weight", description: "The title elements font weight" },
+    { id: "title-line-height", description: "The title elements line height" },
+    {
+      id: "title-strong-color",
+      description: "The title strong elements text color",
+    },
+    {
+      id: "title-strong-weight",
+      description: "The title strong elements font weight",
+    },
+    { id: "title-sub-size", description: "The title sub elements font size" },
+    { id: "title-sup-size", description: "The title sup elements font size" },
+    { id: "subtitle-color", description: "The subtitle elements text color" },
+    { id: "subtitle-family", description: "The subtitle elements font family" },
+    { id: "subtitle-size", description: "The subtitle elements font size" },
+    { id: "subtitle-weight", description: "The subtitle elements font weight" },
+    {
+      id: "subtitle-line-height",
+      description: "The subtitle elements line height",
+    },
+    {
+      id: "subtitle-strong-color",
+      description: "The subtitle strong elements text color",
+    },
+    {
+      id: "subtitle-strong-weight",
+      description: "The subtitle strong elements font weight",
+    },
+  ],
 };
