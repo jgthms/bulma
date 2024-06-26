@@ -522,4 +522,163 @@ export const CSSVAR_KEYS = {
       description: "The subtitle strong elements font weight",
     },
   ],
+  file: [
+    { id: "file-radius", description: "The file element border radius" },
+    {
+      id: "file-name-border-color",
+      description: "The file name element border color",
+    },
+    {
+      id: "file-name-border-style",
+      description: "The file name element border style",
+    },
+    {
+      id: "file-name-border-width",
+      description: "The file name element border width",
+    },
+    {
+      id: "file-name-max-width",
+      description: "The file name element maximum width",
+    },
+    { id: "file-h", description: "The file element main Hue" },
+    { id: "file-s", description: "The file element main Saturation" },
+    {
+      id: "file-background-l",
+      description: "The file element background Lightness",
+    },
+    {
+      id: "file-background-l-delta",
+      description: "The file element background Lightness delta",
+    },
+    {
+      id: "file-hover-background-l-delta",
+      description: "The file element background Lightness delta when hovered",
+    },
+    {
+      id: "file-active-background-l-delta",
+      description: "The file element background Lightness delta when active",
+    },
+    { id: "file-border-l", description: "The file element border Lightness" },
+    {
+      id: "file-border-l-delta",
+      description: "The file element border Lightness delta",
+    },
+    {
+      id: "file-hover-border-l-delta",
+      description: "The file element border Lightness delta when hovered",
+    },
+    {
+      id: "file-active-border-l-delta",
+      description: "The file element border Lightness delta when active",
+    },
+    { id: "file-cta-color-l", description: "The file CTA element Lightness" },
+    { id: "file-name-color-l", description: "The file name element Lightness" },
+    {
+      id: "file-color-l-delta",
+      description: "The file element Lightness delta",
+    },
+    {
+      id: "file-hover-color-l-delta",
+      description: "The file element Lightness delta when hovered",
+    },
+    {
+      id: "file-active-color-l-delta",
+      description: "The file element Lightness delta when active",
+    },
+  ],
+  input: [
+    { id: "input-h", description: "The input element main Hue" },
+    { id: "input-s", description: "The input element main Saturation" },
+    { id: "input-l", description: "The input element main Lightness" },
+    {
+      id: "input-border-style",
+      description: "The input element main border style",
+    },
+    {
+      id: "input-border-width",
+      description: "The input element main border width",
+    },
+    {
+      id: "input-border-l",
+      description: "The input element main border Lightness",
+    },
+
+    {
+      id: "input-border-l-delta",
+      description: "The input element border Lightness delta",
+    },
+    {
+      id: "input-hover-border-l-delta",
+      description: "The input element border Lightness delta when hovered",
+    },
+    {
+      id: "input-active-border-l-delta",
+      description: "The input element border Lightness delta when active",
+    },
+    {
+      id: "input-focus-h",
+      description: "The input element main Hue when focused",
+    },
+    {
+      id: "input-focus-s",
+      description: "The input element main Saturation when focused",
+    },
+    {
+      id: "input-focus-l",
+      description: "The input element main Lightness when focused",
+    },
+    {
+      id: "input-focus-shadow-size",
+      description: "The input element box shadow size when focused",
+    },
+    {
+      id: "input-focus-shadow-alpha",
+      description: "The input element box shadow transparency when focused",
+    },
+    {
+      id: "input-color-l",
+      description: "The input element text color Lightness",
+    },
+    {
+      id: "input-background-l",
+      description: "The input element background Lightness",
+    },
+    {
+      id: "input-background-l-delta",
+      description: "The input element background Lightness delta when hovered",
+    },
+    { id: "input-height", description: "The input element height" },
+    { id: "input-shadow", description: "The input element box shadow" },
+    {
+      id: "input-placeholder-color",
+      description: "The input placeholder text color",
+    },
+    {
+      id: "input-disabled-color",
+      description: "The input element text color when disabled",
+    },
+    {
+      id: "input-disabled-background-color",
+      description: "The input element background when disabled",
+    },
+    {
+      id: "input-disabled-border-color",
+      description: "The input element border color when disabled",
+    },
+    {
+      id: "input-disabled-placeholder-color",
+      description: "The input placeholder color when disabled",
+    },
+    { id: "input-arrow", description: "The input arrow element color" },
+    { id: "input-icon-color", description: "The input icon element color" },
+    {
+      id: "input-icon-hover-color",
+      description: "The input icon element color when hovered",
+    },
+    {
+      id: "input-icon-focus-color",
+      description: "The input icon element color when focused",
+    },
+    { id: "input-radius", description: "The input element border radius" },
+  ],
 };
