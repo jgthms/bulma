@@ -8,8 +8,6 @@ function Box() {
 
   return (
     <div className={cn.items}>
-      <div className="box">I am in a box</div>
-
       {ids.map((id) => {
         return <VarItem key={id} id={id} />;
       })}

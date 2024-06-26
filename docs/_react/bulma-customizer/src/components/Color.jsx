@@ -5,6 +5,7 @@ import Slider from "./Slider";
 
 import cn from "./Color.module.css";
 import { CustomizerContext } from "../App";
+import classNames from "classnames";
 
 function hslToHex(h, s, l) {
   s /= 100;
@@ -195,6 +196,11 @@ function Color({ color }) {
     Number(h.current) === Number(h.start) &&
     Number(s.current) === Number(s.start) &&
     Number(l.current) === Number(l.start);
+  const resetClass = classNames({
+    button: true,
+    "is-danger is-outlined": !isDisabled,
+  });
+  const resetStyle = isDisabled ? { opacity: 0.1 } : {};
 
   return (
     <div className={cn.main} style={mainStyle}>
@@ -210,7 +216,8 @@ function Color({ color }) {
           </button>
 
           <button
-            className="button"
+            className={resetClass}
+            style={resetStyle}
             onClick={handleReset}
             disabled={isDisabled}
           >

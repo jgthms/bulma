@@ -28,7 +28,9 @@ function VarItem({ id }) {
 
   const isDisabled = cssvar.current == cssvar.start;
   const resetClass = classNames({
-    button: true,
+    "button is-small": true,
+    "is-float-right": true,
+    "ml-2": true,
     "is-danger is-outlined": !isDisabled,
   });
   const resetStyle = isDisabled ? { opacity: 0.1 } : {};
@@ -72,22 +74,20 @@ function VarItem({ id }) {
   return (
     <div className={cn.main}>
       <div className={cn.side}>
+        <button
+          className={resetClass}
+          onClick={handleReset}
+          disabled={isDisabled}
+          style={resetStyle}
+        >
+          Reset
+        </button>
+
         <div className={cn.name}>
           <code>{cssvar.id}</code>
         </div>
 
         <div className={cn.description}>{cssvar.description}</div>
-
-        <div className="buttons are-small">
-          <button
-            className={resetClass}
-            onClick={handleReset}
-            disabled={isDisabled}
-            style={resetStyle}
-          >
-            Reset
-          </button>
-        </div>
       </div>
 
       <div className={cn.slider}>{control}</div>

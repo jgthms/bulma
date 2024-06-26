@@ -189,8 +189,9 @@ function App() {
   };
   const [context, setContext] = useState(initialContext);
 
-  const handleTabChange = (event, tabId) => {
+  const handleTabChange = (event) => {
     event.preventDefault();
+    const tabId = event.target.value;
     context.changeTab(tabId);
     context.changePage(PAGE_IDS[tabId][0]);
   };
@@ -373,7 +374,7 @@ function App() {
       }
 
       const computedValue = `${current}${unit}`;
-      const declaration = `--bulma-${id}: ${computedValue};`;
+      const declaration = `--bulma-${id}: ${computedValue} !important;`;
 
       if (scope in rules) {
         rules[scope].push(declaration);
@@ -403,28 +404,19 @@ function App() {
     <CustomizerContext.Provider value={context}>
       <style ref={styleRef} />
       <div className={cn.app}>
-        <div className="tabs is-primary is-boxed is-centered" style={tabsStyle}>
-          <ul>
-            {TAB_IDS.map((tabId) => {
-              const buttonClass = classNames({
-                // button: true,
-                "is-active": tabId === context.currentTab,
-              });
+        <div className={cn.controls}>
+          <div className="select" style={tabsStyle}>
+            <select onChange={handleTabChange} value={context.currentTab}>
+              {TAB_IDS.map((tabId) => {
+                return (
+                  <option key={tabId} value={tabId}>
+                    <a>{unslug(tabId)}</a>
+                  </option>
+                );
+              })}
+            </select>
+          </div>
 
-              return (
-                <li
-                  className={buttonClass}
-                  key={tabId}
-                  onClick={(e) => handleTabChange(e, tabId)}
-                >
-                  <a>{unslug(tabId)}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <div className="buttons are-small has-addons is-centered">
           {PAGE_IDS[context.currentTab].map((pageId) => {
             const buttonClass = classNames({
               button: true,
