@@ -6,6 +6,9 @@
 
 - Fix #3824: ability to override `$scheme-h`, `$scheme-s`, `$dark-l` and `$light-l` Sass variables
 - Fix #3830: add remaining logical properties
+- Fix #3743: make sure 12 columns system take up whole width
+- Fix #3799: restore variable columns
+- Fix #3846: restore `--bulma-column-gap` CSS variable
 
 ## 1.0.1
 
