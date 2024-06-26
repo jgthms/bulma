@@ -15,7 +15,10 @@ export const CSSVAR_KEYS = {
       id: "light-invert-l",
       description: "Defines the lightness of backgrounds' invert color",
     },
-    { id: "dark-l", description: "Defines the lightness of dark backgrounds" },
+    {
+      id: "dark-l",
+      description: "Defines the lightness of dark backgrounds",
+    },
     {
       id: "dark-invert-l",
       description: "Defines the lightness of dark backgrounds' invert color",
@@ -73,7 +76,10 @@ export const CSSVAR_KEYS = {
   ],
   colors: [
     { id: "primary-h", description: "Defines the Primary color's hue" },
-    { id: "primary-s", description: "Defines the Primary color's saturation" },
+    {
+      id: "primary-s",
+      description: "Defines the Primary color's saturation",
+    },
     { id: "primary-l", description: "Defines the Primary color's lightness" },
     { id: "link-h", description: "Defines the Link color's hue" },
     { id: "link-s", description: "Defines the Link color's saturation" },
@@ -82,10 +88,16 @@ export const CSSVAR_KEYS = {
     { id: "info-s", description: "Defines the Info color's saturation" },
     { id: "info-l", description: "Defines the Info color's lightness" },
     { id: "success-h", description: "Defines the Success color's hue" },
-    { id: "success-s", description: "Defines the Success color's saturation" },
+    {
+      id: "success-s",
+      description: "Defines the Success color's saturation",
+    },
     { id: "success-l", description: "Defines the Success color's lightness" },
     { id: "warning-h", description: "Defines the Warning color's hue" },
-    { id: "warning-s", description: "Defines the Warning color's saturation" },
+    {
+      id: "warning-s",
+      description: "Defines the Warning color's saturation",
+    },
     { id: "warning-l", description: "Defines the Warning color's lightness" },
     { id: "danger-h", description: "Defines the Danger color's hue" },
     { id: "danger-s", description: "Defines the Danger color's saturation" },
@@ -105,7 +117,10 @@ export const CSSVAR_KEYS = {
     { id: "weight-light", description: "Defines the Light font weight" },
     { id: "weight-normal", description: "Defines the Normal font weight" },
     { id: "weight-medium", description: "Defines the Medium font weight" },
-    { id: "weight-semibold", description: "Defines the Semibold font weight" },
+    {
+      id: "weight-semibold",
+      description: "Defines the Semibold font weight",
+    },
     { id: "weight-bold", description: "Defines the Bold font weight" },
     {
       id: "weight-extrabold",
@@ -129,7 +144,10 @@ export const CSSVAR_KEYS = {
     { id: "radius", description: "Defines the Normal border radius" },
     { id: "radius-medium", description: "Defines the Medium border radius" },
     { id: "radius-large", description: "Defines the Large border radius" },
-    { id: "radius-rounded", description: "Defines the Rounded border radius" },
+    {
+      id: "radius-rounded",
+      description: "Defines the Rounded border radius",
+    },
     { id: "speed", description: "" },
     {
       id: "arrow-color",
@@ -155,7 +173,10 @@ export const CSSVAR_KEYS = {
       id: "burger-border-radius",
       description: "Defines the border radius of the burger element",
     },
-    { id: "burger-gap", description: "Defines the gap of the burger element" },
+    {
+      id: "burger-gap",
+      description: "Defines the gap of the burger element",
+    },
     {
       id: "burger-item-height",
       description: "Defines the height of the burger element",
@@ -166,7 +187,10 @@ export const CSSVAR_KEYS = {
     },
   ],
   generic: [
-    { id: "body-background-color", description: "The page's background color" },
+    {
+      id: "body-background-color",
+      description: "The page's background color",
+    },
     { id: "body-size", description: "The page's font size" },
     { id: "body-min-width", description: "The page's minimum width" },
     { id: "body-rendering", description: "The page's text rendering type" },
@@ -201,6 +225,40 @@ export const CSSVAR_KEYS = {
     {
       id: "pre-code-font-size",
       description: "The code elements inside pre ones font size",
+    },
+  ],
+  skeleton: [
+    {
+      id: "skeleton-background",
+      description: "The skeleton background color",
+    },
+    { id: "skeleton-radius", description: "The skeleton border radius" },
+    {
+      id: "skeleton-block-min-height",
+      description: "The minimum height of skeleton blocks",
+    },
+    {
+      id: "skeleton-lines-gap",
+      description: "The gap between skeleton lines",
+    },
+    {
+      id: "skeleton-line-height",
+      description: "The height of each skeleton line",
+    },
+  ],
+  box: [
+    { id: "box-background-color", description: "The box background color" },
+    { id: "box-color", description: "The box text color" },
+    { id: "box-radius", description: "The box border radius" },
+    { id: "box-shadow", description: "The box box shadow" },
+    { id: "box-padding", description: "The box padding" },
+    {
+      id: "box-link-hover-shadow",
+      description: "The box link shadow when hovered",
+    },
+    {
+      id: "box-link-active-shadow",
+      description: "The box link shadow when active",
     },
   ],
 };

@@ -10,6 +10,8 @@ import Scheme from "./pages/Scheme";
 import Typography from "./pages/Typography";
 import Other from "./pages/Other";
 import Generic from "./pages/Generic";
+import Skeleton from "./pages/Skeleton";
+import Box from "./pages/Box";
 
 const SUFFIX_TO_KIND = {
   "-h": "hue",
@@ -25,8 +27,18 @@ const PAGE_TO_COMPONENT = {
   typography: <Typography />,
   other: <Other />,
   generic: <Generic />,
+  skeleton: <Skeleton />,
+  box: <Box />,
 };
-const PAGE_IDS = ["colors", "scheme", "typography", "other", "generic"];
+const PAGE_IDS = [
+  "colors",
+  "scheme",
+  "typography",
+  "other",
+  "generic",
+  "skeleton",
+  "box",
+];
 
 export const CustomizerContext = createContext({
   cssvars: {},
@@ -39,7 +51,7 @@ export const CustomizerContext = createContext({
 function App() {
   const initialContext = {
     cssvars: {},
-    currentPage: "generic",
+    currentPage: "box",
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -53,16 +65,14 @@ function App() {
     },
     updateVar: (id, newValue) => {
       setContext((context) => {
-        const { start, unit } = context.cssvars[id];
+        const { start, unit, scope } = context.cssvars[id];
         const computedValue = `${newValue}${unit}`;
+        const el = document.querySelector(scope);
 
         if (start === newValue) {
-          document.documentElement.style.removeProperty(`--bulma-${id}`);
+          el.style.removeProperty(`--bulma-${id}`);
         } else {
-          document.documentElement.style.setProperty(
-            `--bulma-${id}`,
-            computedValue,
-          );
+          el.style.setProperty(`--bulma-${id}`, computedValue);
         }
 
         return {
@@ -86,14 +96,31 @@ function App() {
   };
 
   useEffect(() => {
-    const rootStyle = window.getComputedStyle(document.documentElement);
+    // const elements = document.querySelectorAll("html, .box");
+    // const allStyles = Array.from(elements).map((element) =>
+    //   getComputedStyle(element),
+    // );
+
+    const styles = {
+      root: window.getComputedStyle(document.documentElement),
+      box: window.getComputedStyle(document.querySelector(".box")),
+    };
 
     const cssvars = {};
     const allKeys = PAGE_IDS.map((pageId) => CSSVAR_KEYS[pageId]).flat();
     const allKeyIds = allKeys.map((i) => i.id);
 
     allKeyIds.map((key) => {
-      const original = rootStyle.getPropertyValue(`--bulma-${key}`);
+      let original;
+      let scope = ":root";
+
+      if (key.startsWith("box")) {
+        scope = ".box";
+        original = styles.box.getPropertyValue(`--bulma-${key}`);
+      } else {
+        original = styles.root.getPropertyValue(`--bulma-${key}`);
+      }
+
       const suffix = Object.keys(SUFFIX_TO_KIND).find((kind) =>
         key.endsWith(kind),
       );
@@ -110,6 +137,7 @@ function App() {
         current: value,
         start: value,
         description,
+        scope,
       };
     });
 
