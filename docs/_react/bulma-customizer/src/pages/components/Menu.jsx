@@ -3,8 +3,8 @@ import { CSSVAR_KEYS } from "root/constants";
 
 import cn from "root/App.module.css";
 
-function Control() {
-  const ids = CSSVAR_KEYS.control.map((i) => i.id);
+function Menu() {
+  const ids = CSSVAR_KEYS.menu.map((i) => i.id);
 
   return (
     <div className={cn.items}>
@@ -15,4 +15,4 @@ function Control() {
   );
 }
 
-export default Control;
+export default Menu;

@@ -1,6 +1,7 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import "../../../../css/bulma.css";
+import cn from "./App.module.css";
 
 import { CSSVAR_KEYS } from "./constants";
 import { unslug } from "./utils";
@@ -11,6 +12,17 @@ import Typography from "./pages/Typography";
 import Other from "./pages/Other";
 import Generic from "./pages/Generic";
 import Skeleton from "./pages/Skeleton";
+
+import Breadcrumb from "./pages/components/Breadcrumb";
+import Card from "./pages/components/Card";
+import Dropdown from "./pages/components/Dropdown";
+import Menu from "./pages/components/Menu";
+import Message from "./pages/components/Message";
+import Modal from "./pages/components/Modal";
+import Navbar from "./pages/components/Navbar";
+import Pagination from "./pages/components/Pagination";
+import Panel from "./pages/components/Panel";
+import Tabs from "./pages/components/Tabs";
 
 import Box from "./pages/elements/Box";
 import Content from "./pages/elements/Content";
@@ -46,6 +58,17 @@ const PAGE_TO_COMPONENT = {
   other: <Other />,
   generic: <Generic />,
   skeleton: <Skeleton />,
+  // Components
+  breadcrumb: <Breadcrumb />,
+  card: <Card />,
+  dropdown: <Dropdown />,
+  menu: <Menu />,
+  message: <Message />,
+  modal: <Modal />,
+  navbar: <Navbar />,
+  pagination: <Pagination />,
+  panel: <Panel />,
+  tabs: <Tabs />,
   // Elements
   box: <Box />,
   content: <Content />,
@@ -69,38 +92,58 @@ const PAGE_TO_COMPONENT = {
   media: <Media />,
   section: <Section />,
 };
-const PAGE_IDS = [
-  "colors",
-  "scheme",
-  "typography",
-  "other",
-  "generic",
-  "skeleton",
-  "box",
-  "content",
-  "delete",
-  "icon",
-  "notification",
-  "progress",
-  "table",
-  "tag",
-  "title",
-  "control",
-  "input",
-  "file",
-  "columns",
-  "grid",
-  "footer",
-  "hero",
-  "media",
-  "section",
+const TAB_IDS = [
+  "Global Variables",
+  "Components",
+  "Elements",
+  "Form",
+  "Grid",
+  "Layout",
 ];
+const PAGE_IDS = {
+  "Global Variables": [
+    "colors",
+    "scheme",
+    "typography",
+    "other",
+    "generic",
+    "skeleton",
+  ],
+  Components: [
+    "breadcrumb",
+    "card",
+    "dropdown",
+    "menu",
+    "message",
+    "modal",
+    "navbar",
+    "pagination",
+    "panel",
+    "tabs",
+  ],
+  Elements: [
+    "box",
+    "content",
+    "delete",
+    "icon",
+    "notification",
+    "progress",
+    "table",
+    "tag",
+    "title",
+  ],
+  Form: ["control", "input", "file"],
+  Grid: ["columns", "grid"],
+  Layout: ["footer", "hero", "media", "section"],
+};
 
 export const CustomizerContext = createContext({
   cssvars: {},
+  currentTab: "",
   currentPage: "",
   getVar: () => {},
   changeTab: () => {},
+  changePage: () => {},
   updateVar: () => {},
 });
 
@@ -108,11 +151,20 @@ function App() {
   const styleRef = useRef();
   const initialContext = {
     cssvars: {},
+    currentTab: "Global Variables",
     currentPage: "delete",
     getVar: (id) => {
       return context.cssvars[id];
     },
-    changeTab: (pageId) => {
+    changeTab: (tabId) => {
+      setContext((context) => {
+        return {
+          ...context,
+          currentTab: tabId,
+        };
+      });
+    },
+    changePage: (pageId) => {
       setContext((context) => {
         return {
           ...context,
@@ -122,16 +174,6 @@ function App() {
     },
     updateVar: (id, newValue) => {
       setContext((context) => {
-        // const { start, unit, scope } = context.cssvars[id];
-        // const computedValue = `${newValue}${unit}`;
-        // const el = document.querySelector(`#scope ${scope}`);
-
-        // if (start === newValue) {
-        //   el.style.removeProperty(`--bulma-${id}`);
-        // } else {
-        //   el.style.setProperty(`--bulma-${id}`, computedValue);
-        // }
-
         return {
           ...context,
           cssvars: {
@@ -147,14 +189,34 @@ function App() {
   };
   const [context, setContext] = useState(initialContext);
 
-  const handleTabChange = (event, pageId) => {
+  const handleTabChange = (event, tabId) => {
     event.preventDefault();
-    context.changeTab(pageId);
+    context.changeTab(tabId);
+    context.changePage(PAGE_IDS[tabId][0]);
+  };
+
+  const handlePageChange = (event, pageId) => {
+    event.preventDefault();
+    context.changePage(pageId);
   };
 
   useEffect(() => {
     const styles = {
       root: window.getComputedStyle(document.documentElement),
+      breadcrumb: window.getComputedStyle(
+        document.querySelector(".breadcrumb"),
+      ),
+      card: window.getComputedStyle(document.querySelector(".card")),
+      dropdown: window.getComputedStyle(document.querySelector(".dropdown")),
+      menu: window.getComputedStyle(document.querySelector(".menu")),
+      message: window.getComputedStyle(document.querySelector(".message")),
+      modal: window.getComputedStyle(document.querySelector(".modal")),
+      navbar: window.getComputedStyle(document.querySelector(".navbar")),
+      pagination: window.getComputedStyle(
+        document.querySelector(".pagination"),
+      ),
+      panel: window.getComputedStyle(document.querySelector(".panel")),
+      tabs: window.getComputedStyle(document.querySelector(".tabs")),
       box: window.getComputedStyle(document.querySelector(".box")),
       content: window.getComputedStyle(document.querySelector(".content")),
       delete: window.getComputedStyle(document.querySelector(".delete")),
@@ -177,14 +239,47 @@ function App() {
     };
 
     const cssvars = {};
-    const allKeys = PAGE_IDS.map((pageId) => CSSVAR_KEYS[pageId]).flat();
+    const allKeys = Object.values(PAGE_IDS)
+      .flat()
+      .map((pageId) => CSSVAR_KEYS[pageId])
+      .flat();
     const allKeyIds = allKeys.map((i) => i.id);
 
     allKeyIds.map((key) => {
       let original;
       let scope = ":root";
 
-      if (key.startsWith("box")) {
+      if (key.startsWith("breadcrumb")) {
+        scope = ".breadcrumb";
+        original = styles.breadcrumb.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("card")) {
+        scope = ".card";
+        original = styles.card.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("dropdown")) {
+        scope = ".dropdown";
+        original = styles.dropdown.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("menu")) {
+        scope = ".menu";
+        original = styles.menu.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("message")) {
+        scope = ".message";
+        original = styles.message.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("modal")) {
+        scope = ".modal";
+        original = styles.modal.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("navbar")) {
+        scope = ".navbar";
+        original = styles.navbar.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("pagination")) {
+        scope = ".pagination";
+        original = styles.pagination.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("panel")) {
+        scope = ".panel";
+        original = styles.panel.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("tabs")) {
+        scope = ".tabs";
+        original = styles.tabs.getPropertyValue(`--bulma-${key}`);
+      } else if (key.startsWith("box")) {
         scope = ".box";
         original = styles.box.getPropertyValue(`--bulma-${key}`);
       } else if (key.startsWith("content")) {
@@ -300,22 +395,47 @@ function App() {
     }
   }, [context.cssvars]);
 
+  const tabsStyle = {
+    "--bulma-tabs-link-active-color": "var(--bulma-primary)",
+  };
+
   return (
     <CustomizerContext.Provider value={context}>
       <style ref={styleRef} />
-      <section className="section">
-        <div className="buttons">
-          {PAGE_IDS.map((pageId) => {
+      <div className={cn.app}>
+        <div className="tabs is-primary is-boxed is-centered" style={tabsStyle}>
+          <ul>
+            {TAB_IDS.map((tabId) => {
+              const buttonClass = classNames({
+                // button: true,
+                "is-active": tabId === context.currentTab,
+              });
+
+              return (
+                <li
+                  className={buttonClass}
+                  key={tabId}
+                  onClick={(e) => handleTabChange(e, tabId)}
+                >
+                  <a>{unslug(tabId)}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <div className="buttons are-small has-addons is-centered">
+          {PAGE_IDS[context.currentTab].map((pageId) => {
             const buttonClass = classNames({
               button: true,
-              "is-link": pageId === context.currentPage,
+              "is-primary": pageId === context.currentPage,
             });
 
             return (
               <button
                 className={buttonClass}
                 key={pageId}
-                onClick={(e) => handleTabChange(e, pageId)}
+                onClick={(e) => handlePageChange(e, pageId)}
               >
                 {unslug(pageId)}
               </button>
@@ -324,7 +444,7 @@ function App() {
         </div>
 
         {PAGE_TO_COMPONENT[context.currentPage]}
-      </section>
+      </div>
     </CustomizerContext.Provider>
   );
 }

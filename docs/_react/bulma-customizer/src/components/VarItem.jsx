@@ -5,6 +5,7 @@ import Slider from "./Slider";
 import { CustomizerContext } from "../App";
 
 import cn from "./VarItem.module.css";
+import classNames from "classnames";
 
 function VarItem({ id }) {
   const { cssvars, updateVar } = useContext(CustomizerContext);
@@ -26,6 +27,11 @@ function VarItem({ id }) {
   };
 
   const isDisabled = cssvar.current == cssvar.start;
+  const resetClass = classNames({
+    button: true,
+    "is-danger is-outlined": !isDisabled,
+  });
+  const resetStyle = isDisabled ? { opacity: 0.1 } : {};
 
   let control;
 
@@ -70,11 +76,14 @@ function VarItem({ id }) {
           <code>{cssvar.id}</code>
         </div>
 
+        <div className={cn.description}>{cssvar.description}</div>
+
         <div className="buttons are-small">
           <button
-            className="button"
+            className={resetClass}
             onClick={handleReset}
             disabled={isDisabled}
+            style={resetStyle}
           >
             Reset
           </button>
@@ -82,8 +91,6 @@ function VarItem({ id }) {
       </div>
 
       <div className={cn.slider}>{control}</div>
-
-      <div className={cn.description}>{cssvar.description}</div>
     </div>
   );
 }

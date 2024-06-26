@@ -246,6 +246,778 @@ export const CSSVAR_KEYS = {
       description: "The height of each skeleton line",
     },
   ],
+  breadcrumb: [
+    {
+      id: "breadcrumb-item-color",
+      description: "The breadcrumb items text color",
+    },
+    {
+      id: "breadcrumb-item-hover-color",
+      description: "The breadcrumb items text color when hovered",
+    },
+    {
+      id: "breadcrumb-item-active-color",
+      description: "The breadcrumb items text color when active",
+    },
+    {
+      id: "breadcrumb-item-padding-vertical",
+      description: "The breadcrumb items vertical padding",
+    },
+    {
+      id: "breadcrumb-item-padding-horizontal",
+      description: "The breadcrumb items horizontal padding",
+    },
+    {
+      id: "breadcrumb-item-separator-color",
+      description: "The breadcrumb items separator color",
+    },
+  ],
+  card: [
+    { id: "card-color", description: "The card text color" },
+    { id: "card-background-color", description: "The card background color" },
+    { id: "card-shadow", description: "The card box shadow" },
+    { id: "card-radius", description: "The card border radius" },
+    {
+      id: "card-header-background-color",
+      description: "The card header background color",
+    },
+    { id: "card-header-color", description: "The card header text color" },
+    { id: "card-header-padding", description: "The card header padding" },
+    { id: "card-header-shadow", description: "The card header box shadow" },
+    { id: "card-header-weight", description: "The card header font weight" },
+    {
+      id: "card-content-background-color",
+      description: "The card content background color",
+    },
+    { id: "card-content-padding", description: "The card content padding" },
+    {
+      id: "card-footer-background-color",
+      description: "The card footer background color",
+    },
+    { id: "card-footer-border-top", description: "The card footer top border" },
+    { id: "card-footer-padding", description: "The card footer padding" },
+    { id: "card-media-margin", description: "The card media margin" },
+  ],
+  dropdown: [
+    {
+      id: "dropdown-menu-min-width",
+      description: "The dropdown menu minimum width",
+    },
+    {
+      id: "dropdown-content-background-color",
+      description: "The dropdown content background color",
+    },
+    {
+      id: "dropdown-content-offset",
+      description: "The dropdown content offset",
+    },
+    {
+      id: "dropdown-content-padding-bottom",
+      description: "The dropdown content bottom padding",
+    },
+    {
+      id: "dropdown-content-padding-top",
+      description: "The dropdown content top padding",
+    },
+    {
+      id: "dropdown-content-radius",
+      description: "The dropdown content border radius",
+    },
+    {
+      id: "dropdown-content-shadow",
+      description: "The dropdown content box shadow",
+    },
+    { id: "dropdown-content-z", description: "The dropdown content z index" },
+    { id: "dropdown-item-h", description: "The dropdown item main Hue" },
+    { id: "dropdown-item-s", description: "The dropdown item main Saturation" },
+    { id: "dropdown-item-l", description: "The dropdown item main Lightness" },
+    {
+      id: "dropdown-item-background-l",
+      description: "The dropdown item background Lightness",
+    },
+    {
+      id: "dropdown-item-background-l-delta",
+      description: "The dropdown item background Lightness delta",
+    },
+    {
+      id: "dropdown-item-hover-background-l-delta",
+      description: "The dropdown item background Lightness delta when hovered",
+    },
+    {
+      id: "dropdown-item-active-background-l-delta",
+      description: "The dropdown item background Lightness delta when active",
+    },
+    {
+      id: "dropdown-item-color-l",
+      description: "The dropdown item color Lightness",
+    },
+    {
+      id: "dropdown-item-selected-h",
+      description: "The dropdown item main Hue when selected",
+    },
+    {
+      id: "dropdown-item-selected-s",
+      description: "The dropdown item main Saturation when selected",
+    },
+    {
+      id: "dropdown-item-selected-l",
+      description: "The dropdown item main Lightness when selected",
+    },
+    {
+      id: "dropdown-item-selected-background-l",
+      description: "The dropdown item background Lightness when selected",
+    },
+    {
+      id: "dropdown-item-selected-color-l",
+      description: "The dropdown item color Lightness when selected",
+    },
+    {
+      id: "dropdown-divider-background-color",
+      description: "The dropdown divider background color",
+    },
+  ],
+  menu: [
+    { id: "menu-item-h", description: "The menu item main Hue" },
+    { id: "menu-item-s", description: "The menu item main Saturation" },
+    { id: "menu-item-l", description: "The menu item main Lightness" },
+    {
+      id: "menu-item-background-l",
+      description: "The menu item background Lightness",
+    },
+    {
+      id: "menu-item-background-l-delta",
+      description: "The menu item background Lightness delta",
+    },
+    {
+      id: "menu-item-hover-background-l-delta",
+      description: "The menu item background Lightness when hovered",
+    },
+    {
+      id: "menu-item-active-background-l-delta",
+      description: "The menu item background Lightness when active",
+    },
+    { id: "menu-item-color-l", description: "The menu item color Lightness" },
+    { id: "menu-item-radius", description: "The menu item border radius" },
+    {
+      id: "menu-item-selected-h",
+      description: "The menu item main Hue when selected",
+    },
+    {
+      id: "menu-item-selected-s",
+      description: "The menu item main Saturation when selected",
+    },
+    {
+      id: "menu-item-selected-l",
+      description: "The menu item main Lightness when selected",
+    },
+    {
+      id: "menu-item-selected-background-l",
+      description: "The menu item background Lightness when selected",
+    },
+    {
+      id: "menu-item-selected-color-l",
+      description: "The menu item color Lightness when selected",
+    },
+    { id: "menu-list-border-left", description: "The menu list left border" },
+    { id: "menu-list-line-height", description: "The menu list line height" },
+    { id: "menu-list-link-padding", description: "The menu list link padding" },
+    {
+      id: "menu-nested-list-margin",
+      description: "The menu list margin when nested",
+    },
+    {
+      id: "menu-nested-list-padding-left",
+      description: "The menu list left padding when nested",
+    },
+    { id: "menu-label-color", description: "The menu label text color" },
+    { id: "menu-label-font-size", description: "The menu label font size" },
+    {
+      id: "menu-label-letter-spacing",
+      description: "The menu label letter spacing",
+    },
+    { id: "menu-label-spacing", description: "The menu label spacing" },
+  ],
+  message: [
+    { id: "message-h", description: "The message main Hue" },
+    { id: "message-s", description: "The message main Saturation" },
+    {
+      id: "message-background-l",
+      description: "The message background Lightness",
+    },
+    { id: "message-border-l", description: "The message border Lightness" },
+    {
+      id: "message-border-l-delta",
+      description: "The message border Lightness delta",
+    },
+    { id: "message-border-style", description: "The message border style" },
+    { id: "message-border-width", description: "The message border width" },
+    { id: "message-color-l", description: "The message color Lightness" },
+    { id: "message-radius", description: "The message border radius" },
+    {
+      id: "message-header-weight",
+      description: "The message header font weight",
+    },
+    { id: "message-header-padding", description: "The message header padding" },
+    {
+      id: "message-header-radius",
+      description: "The message header border radius",
+    },
+    {
+      id: "message-header-body-border-width",
+      description: "The message header body border width",
+    },
+    {
+      id: "message-header-background-l",
+      description: "The message header background Lightness",
+    },
+    {
+      id: "message-header-color-l",
+      description: "The message header color Lightness",
+    },
+    {
+      id: "message-body-border-width",
+      description: "The message body border width",
+    },
+    { id: "message-body-color", description: "The message body color" },
+    { id: "message-body-padding", description: "The message body padding" },
+    {
+      id: "message-body-radius",
+      description: "The message body border radius",
+    },
+    {
+      id: "message-body-pre-code-background-color",
+      description: "The message body code element background color",
+    },
+  ],
+  modal: [
+    { id: "modal-z", description: "The modal z index" },
+    {
+      id: "modal-background-background-color",
+      description: "The modal background background color",
+    },
+    { id: "modal-content-width", description: "The modal content width" },
+    {
+      id: "modal-content-margin-mobile",
+      description: "The modal content margin on Mobile viewports",
+    },
+    {
+      id: "modal-content-spacing-mobile",
+      description: "The modal content spacing on Mobile viewports",
+    },
+    {
+      id: "modal-content-spacing-tablet",
+      description: "The modal content spacing on Tablet viewports and wider",
+    },
+    { id: "modal-close-dimensions", description: "The modal close dimensions" },
+    { id: "modal-close-right", description: "The modal close right offset" },
+    { id: "modal-close-top", description: "The modal close top offset" },
+    { id: "modal-card-spacing", description: "The modal card spacing" },
+    {
+      id: "modal-card-head-background-color",
+      description: "The modal card head background color",
+    },
+    {
+      id: "modal-card-head-padding",
+      description: "The modal card head padding",
+    },
+    {
+      id: "modal-card-head-radius",
+      description: "The modal card head border radius",
+    },
+    { id: "modal-card-title-color", description: "The modal card title color" },
+    {
+      id: "modal-card-title-line-height",
+      description: "The modal card title line height",
+    },
+    {
+      id: "modal-card-title-size",
+      description: "The modal card title font size",
+    },
+    {
+      id: "modal-card-foot-background-color",
+      description: "The modal card foot background color",
+    },
+    {
+      id: "modal-card-foot-radius",
+      description: "The modal card foot border radius",
+    },
+    {
+      id: "modal-card-body-background-color",
+      description: "The modal card body background color",
+    },
+    {
+      id: "modal-card-body-padding",
+      description: "The modal card body padding",
+    },
+  ],
+  navbar: [
+    { id: "navbar-h", description: "The navbar main Hue" },
+    { id: "navbar-s", description: "The navbar main Saturation" },
+    { id: "navbar-l", description: "The navbar main Lightness" },
+    {
+      id: "navbar-background-color",
+      description: "The navbar background color",
+    },
+    { id: "navbar-box-shadow-size", description: "The navbar box shadow size" },
+    {
+      id: "navbar-box-shadow-color",
+      description: "The navbar box shadow color",
+    },
+    {
+      id: "navbar-padding-vertical",
+      description: "The navbar vertical padidng",
+    },
+    {
+      id: "navbar-padding-horizontal",
+      description: "The navbar horizontal padidng",
+    },
+    { id: "navbar-z", description: "The navbar z index" },
+    { id: "navbar-fixed-z", description: "The navbar z index" },
+    {
+      id: "navbar-item-background-a",
+      description: "The navbar item background transparency",
+    },
+    {
+      id: "navbar-item-background-l",
+      description: "The navbar item Lightness",
+    },
+    {
+      id: "navbar-item-background-l-delta",
+      description: "The navbar item Lightness delta",
+    },
+    {
+      id: "navbar-item-hover-background-l-delta",
+      description: "The navbar item Lightness delta when hovered",
+    },
+    {
+      id: "navbar-item-active-background-l-delta",
+      description: "The navbar item Lightness delta when active",
+    },
+    { id: "navbar-item-color-l", description: "The navbar item Lightness" },
+    {
+      id: "navbar-item-selected-h",
+      description: "The navbar item main Hue when selected",
+    },
+    {
+      id: "navbar-item-selected-s",
+      description: "The navbar item main Saturation when selected",
+    },
+    {
+      id: "navbar-item-selected-l",
+      description: "The navbar item main Lightness when selected",
+    },
+    {
+      id: "navbar-item-selected-background-l",
+      description: "The navbar item background Lightness when selected",
+    },
+    {
+      id: "navbar-item-selected-color-l",
+      description: "The navbar item color Lightness when selected",
+    },
+    {
+      id: "navbar-item-img-max-height",
+      description: "The navbar item image maximum height",
+    },
+    { id: "navbar-burger-color", description: "The navbar burder color" },
+    {
+      id: "navbar-tab-hover-background-color",
+      description: "The navbar tab background color when hovered",
+    },
+    {
+      id: "navbar-tab-hover-border-bottom-color",
+      description: "The navbar tab bottom border color when hovered",
+    },
+    {
+      id: "navbar-tab-active-color",
+      description: "The navbar tab color when active",
+    },
+    {
+      id: "navbar-tab-active-background-color",
+      description: "The navbar tab background color when active",
+    },
+    {
+      id: "navbar-tab-active-border-bottom-color",
+      description: "The navbar tab bottom border color when active",
+    },
+    {
+      id: "navbar-tab-active-border-bottom-style",
+      description: "The navbar tab bottom border style when active",
+    },
+    {
+      id: "navbar-tab-active-border-bottom-width",
+      description: "The navbar tab bottom border width when active",
+    },
+    {
+      id: "navbar-dropdown-background-color",
+      description: "The navbar dropdown background color",
+    },
+    {
+      id: "navbar-dropdown-border-l",
+      description: "The navbar dropdown border Lightness",
+    },
+    {
+      id: "navbar-dropdown-border-color",
+      description: "The navbar dropdown border color",
+    },
+    {
+      id: "navbar-dropdown-border-style",
+      description: "The navbar dropdown border style",
+    },
+    {
+      id: "navbar-dropdown-border-width",
+      description: "The navbar dropdown border width",
+    },
+    { id: "navbar-dropdown-offset", description: "The navbar dropdown offset" },
+    {
+      id: "navbar-dropdown-arrow",
+      description: "The navbar dropdown arrow color",
+    },
+    {
+      id: "navbar-dropdown-radius",
+      description: "The navbar dropdown border radius",
+    },
+    { id: "navbar-dropdown-z", description: "The navbar dropdown z index" },
+    {
+      id: "navbar-dropdown-boxed-radius",
+      description: "The navbar boxed dropdown border radius",
+    },
+    {
+      id: "navbar-dropdown-boxed-shadow",
+      description: "The navbarboxed dropdown box shadow",
+    },
+    {
+      id: "navbar-dropdown-item-h",
+      description: "The navbar dropdown main Hue",
+    },
+    {
+      id: "navbar-dropdown-item-s",
+      description: "The navbar dropdown main Saturation",
+    },
+    {
+      id: "navbar-dropdown-item-l",
+      description: "The navbar dropdown main Lightness",
+    },
+    {
+      id: "navbar-dropdown-item-background-l",
+      description: "The navbar dropdown item background Lightness",
+    },
+    {
+      id: "navbar-dropdown-item-color-l",
+      description: "The navbar dropdown item color Lightness",
+    },
+    {
+      id: "navbar-divider-background-l",
+      description: "The navbar divider background Lightness",
+    },
+    { id: "navbar-divider-height", description: "The navbar divider height" },
+    {
+      id: "navbar-bottom-box-shadow-size",
+      description: "The bottom navbar box shadow size",
+    },
+  ],
+  pagination: [
+    { id: "pagination-margin", description: "The pagination margin" },
+    { id: "pagination-min-width", description: "The pagination minimum width" },
+    { id: "pagination-item-h", description: "The pagination item main Hue" },
+    {
+      id: "pagination-item-s",
+      description: "The pagination item main Saturation",
+    },
+    {
+      id: "pagination-item-l",
+      description: "The pagination item main Lightness",
+    },
+    {
+      id: "pagination-item-background-l-delta",
+      description: "The pagination item background Lightness delta",
+    },
+    {
+      id: "pagination-item-hover-background-l-delta",
+      description:
+        "The pagination item background Lightness delta when hovered",
+    },
+    {
+      id: "pagination-item-active-background-l-delta",
+      description: "The pagination item background Lightness delta when active",
+    },
+    {
+      id: "pagination-item-border-style",
+      description: "The pagination item border style",
+    },
+    {
+      id: "pagination-item-border-width",
+      description: "The pagination item border width",
+    },
+    {
+      id: "pagination-item-border-l",
+      description: "The pagination item border Lightness",
+    },
+    {
+      id: "pagination-item-border-l-delta",
+      description: "The pagination item border Lightness delta",
+    },
+    {
+      id: "pagination-item-hover-border-l-delta",
+      description: "The pagination item border Lightness delta when hovered",
+    },
+    {
+      id: "pagination-item-active-border-l-delta",
+      description: "The pagination item border Lightness delta when active",
+    },
+    {
+      id: "pagination-item-focus-border-l-delta",
+      description: "The pagination item border Lightness delta when focused",
+    },
+    {
+      id: "pagination-item-color-l",
+      description: "The pagination item color Lightness",
+    },
+    {
+      id: "pagination-item-font-size",
+      description: "The pagination item font size",
+    },
+    { id: "pagination-item-margin", description: "The pagination item margin" },
+    {
+      id: "pagination-item-padding-left",
+      description: "The pagination item left padding",
+    },
+    {
+      id: "pagination-item-padding-right",
+      description: "The pagination item right padding",
+    },
+    {
+      id: "pagination-item-outer-shadow-h",
+      description: "The pagination item outer shadow main Hue",
+    },
+    {
+      id: "pagination-item-outer-shadow-s",
+      description: "The pagination item outer shadow main Saturation",
+    },
+    {
+      id: "pagination-item-outer-shadow-l",
+      description: "The pagination item outer shadow main Lightness",
+    },
+    {
+      id: "pagination-item-outer-shadow-a",
+      description: "The pagination item outer shadow main transparency",
+    },
+    {
+      id: "pagination-nav-padding-left",
+      description: "The pagination nav left padding",
+    },
+    {
+      id: "pagination-nav-padding-right",
+      description: "The pagination nav right padding",
+    },
+    {
+      id: "pagination-disabled-color",
+      description: "The pagination item color when disabled",
+    },
+    {
+      id: "pagination-disabled-background-color",
+      description: "The pagination item background color when disabled",
+    },
+    {
+      id: "pagination-disabled-border-color",
+      description: "The pagination item border color when disabled",
+    },
+    {
+      id: "pagination-current-color",
+      description: "The current pagination color",
+    },
+    {
+      id: "pagination-current-background-color",
+      description: "The current pagination background color",
+    },
+    {
+      id: "pagination-current-border-color",
+      description: "The current pagination border color",
+    },
+    {
+      id: "pagination-ellipsis-color",
+      description: "The pagination ellipsis color",
+    },
+    {
+      id: "pagination-shadow-inset",
+      description: "The pagination item inset shadow",
+    },
+    {
+      id: "pagination-selected-item-h",
+      description: "The pagination item main Hue when selected",
+    },
+    {
+      id: "pagination-selected-item-s",
+      description: "The pagination item main Saturation when selected",
+    },
+    {
+      id: "pagination-selected-item-l",
+      description: "The pagination item main Lightness when selected",
+    },
+    {
+      id: "pagination-selected-item-background-l",
+      description: "The pagination item background Lightness when selected",
+    },
+    {
+      id: "pagination-selected-item-border-l",
+      description: "The pagination item border Lightness when selected",
+    },
+    {
+      id: "pagination-selected-item-color-l",
+      description: "The pagination item color Lightness when selected",
+    },
+  ],
+  panel: [
+    { id: "panel-margin", description: "The panel margin" },
+    { id: "panel-item-border", description: "The panel item border" },
+    { id: "panel-radius", description: "The panel border radius" },
+    { id: "panel-shadow", description: "The panel box shadow" },
+    {
+      id: "panel-heading-line-height",
+      description: "The panel heading line height",
+    },
+    { id: "panel-heading-padding", description: "The panel heading padding" },
+    {
+      id: "panel-heading-radius",
+      description: "The panel heading border radius",
+    },
+    { id: "panel-heading-size", description: "The panel heading font size" },
+    {
+      id: "panel-heading-weight",
+      description: "The panel heading font weight",
+    },
+    { id: "panel-tabs-font-size", description: "The panel font size" },
+    {
+      id: "panel-tab-border-bottom-color",
+      description: "The panel bottom border color",
+    },
+    {
+      id: "panel-tab-border-bottom-style",
+      description: "The panel bottom border style",
+    },
+    {
+      id: "panel-tab-border-bottom-width",
+      description: "The panel bottom border width",
+    },
+    {
+      id: "panel-tab-active-color",
+      description: "The panel tab color when active",
+    },
+    { id: "panel-list-item-color", description: "The panel list item color" },
+    {
+      id: "panel-list-item-hover-color",
+      description: "The panel list item color when hovered",
+    },
+    { id: "panel-block-color", description: "The panel block color" },
+    {
+      id: "panel-block-hover-background-color",
+      description: "The panel block background color when hovered",
+    },
+    {
+      id: "panel-block-active-border-left-color",
+      description: "The panel block left border color when active",
+    },
+    {
+      id: "panel-block-active-color",
+      description: "The panel block color when active",
+    },
+    {
+      id: "panel-block-active-icon-color",
+      description: "The panel block icon color when active",
+    },
+    { id: "panel-icon-color", description: "The panel icon color" },
+  ],
+  tabs: [
+    {
+      id: "tabs-border-bottom-color",
+      description: "The tabs bottom border color",
+    },
+    {
+      id: "tabs-border-bottom-style",
+      description: "The tabs bottom border style",
+    },
+    {
+      id: "tabs-border-bottom-width",
+      description: "The tabs bottom border width",
+    },
+    { id: "tabs-link-color", description: "The tabs link color" },
+    {
+      id: "tabs-link-hover-border-bottom-color",
+      description: "The tabs link bottom border color when hovered",
+    },
+    {
+      id: "tabs-link-hover-color",
+      description: "The tabs link color when hovered",
+    },
+    {
+      id: "tabs-link-active-border-bottom-color",
+      description: "The tabs link bottom border color when active",
+    },
+    {
+      id: "tabs-link-active-color",
+      description: "The tabs link color when active",
+    },
+    { id: "tabs-link-padding", description: "The tabs link padding" },
+    {
+      id: "tabs-boxed-link-radius",
+      description: "The boxed tabs link border radius",
+    },
+    {
+      id: "tabs-boxed-link-hover-background-color",
+      description: "The boxed tabs link background color when hovered",
+    },
+    {
+      id: "tabs-boxed-link-hover-border-bottom-color",
+      description: "The boxed tabs link bottom border color when hovered",
+    },
+    {
+      id: "tabs-boxed-link-active-background-color",
+      description: "The boxed tabs link background color when active",
+    },
+    {
+      id: "tabs-boxed-link-active-border-color",
+      description: "The boxed tabs link border color when active",
+    },
+    {
+      id: "tabs-boxed-link-active-border-bottom-color",
+      description: "The boxed tabs link bototm border color when active",
+    },
+    {
+      id: "tabs-toggle-link-border-color",
+      description: "The toggle tabs link border color",
+    },
+    {
+      id: "tabs-toggle-link-border-style",
+      description: "The toggle tabs link border style",
+    },
+    {
+      id: "tabs-toggle-link-border-width",
+      description: "The toggle tabs link border width",
+    },
+    {
+      id: "tabs-toggle-link-hover-background-color",
+      description: "The toggle tabs link background color when hovered",
+    },
+    {
+      id: "tabs-toggle-link-hover-border-color",
+      description: "The toggle tabs link border color when hovered",
+    },
+    {
+      id: "tabs-toggle-link-radius",
+      description: "The toggle tabs link border radius",
+    },
+    {
+      id: "tabs-toggle-link-active-background-color",
+      description: "The toggle tabs link background color when active",
+    },
+    {
+      id: "tabs-toggle-link-active-border-color",
+      description: "The toggle tabs link border color when active",
+    },
+    {
+      id: "tabs-toggle-link-active-color",
+      description: "The toggle tabs link color when active",
+    },
+  ],
   box: [
     { id: "box-background-color", description: "The box background color" },
     { id: "box-color", description: "The box text color" },

@@ -1,11 +1,13 @@
 import VarItem from "components/VarItem";
 import { CSSVAR_KEYS } from "root/constants";
 
+import cn from "root/App.module.css";
+
 function Box() {
   const ids = CSSVAR_KEYS.box.map((i) => i.id);
 
   return (
-    <div>
+    <div className={cn.items}>
       <div className="box">I am in a box</div>
 
       {ids.map((id) => {
