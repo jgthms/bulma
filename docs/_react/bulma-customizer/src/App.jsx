@@ -142,30 +142,31 @@ const PAGE_IDS = {
   Layout: ["footer", "hero", "media", "section"],
   Export: ["export"],
 };
-const LOCAL_STORAGE_KEY = "bulma-customizer-vars"
+const LOCAL_STORAGE_KEY = "bulma-customizer-vars";
 
 export const CustomizerContext = createContext({
   isOpen: false,
+  showExport: false,
   cssvars: {},
   saved: {},
   currentTab: "",
   currentPage: "",
-  showExport: false,
   getVar: () => {},
   changeTab: () => {},
   changePage: () => {},
   updateVar: () => {},
+  hideExport: () => {},
 });
 
 function App() {
   const styleRef = useRef();
   const initialContext = {
-    isOpen: true,
+    isOpen: false,
+    showExport: false,
     cssvars: {},
     saved: {},
     currentTab: "Global Variables",
     currentPage: "colors",
-    showExport: true,
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -196,6 +197,29 @@ function App() {
               current: newValue,
             },
           },
+        };
+      });
+    },
+    resetVars: () => {
+      setContext((context) => {
+        const cssvars = {};
+
+        for (const [key, value] of Object.entries(context.cssvars)) {
+          const item = { ...value, current: value.start };
+          cssvars[key] = item;
+        }
+
+        return {
+          ...context,
+          cssvars,
+        };
+      });
+    },
+    hideExport: () => {
+      setContext((context) => {
+        return {
+          ...context,
+          showExport: false,
         };
       });
     },
@@ -243,7 +267,7 @@ function App() {
         showExport: !context.showExport,
       };
     });
-  }
+  };
 
   // Get the computed styles of all cssvars
   useEffect(() => {
@@ -433,7 +457,7 @@ function App() {
   // Update the styling when the cssvars change
   useEffect(() => {
     const rules = {};
-    const storedVars = {}
+    const storedVars = {};
 
     Object.values(context.cssvars).forEach((cssvar) => {
       const { id, current, start, scope, unit } = cssvar;
@@ -470,7 +494,9 @@ function App() {
   }, [context.cssvars]);
 
   // Computed values
-  const isExportAvailable = Object.values(context.cssvars).some(item => item.current != item.start);
+  // const isExportAvailable = Object.values(context.cssvars).some(
+  //   (item) => item.current != item.start,
+  // );
 
   // Styles
   const tabsStyle = {
@@ -488,12 +514,15 @@ function App() {
 
   const exportClass = classNames({
     [cn.button]: true,
-    "button is-primary is-outlined": true,
+    "is-hidden": !context.isOpen,
+    "button is-primary is-outlined": !context.showExport,
+    "button is-primary": context.showExport,
   });
 
   const buttonClass = classNames({
     [cn.button]: true,
-    "button is-primary": true,
+    "button is-primary": !context.isOpen,
+    "button is-danger is-outlined": context.isOpen,
   });
 
   return (
@@ -502,44 +531,50 @@ function App() {
         <style ref={styleRef} />
 
         <div className={customizerClass}>
-          {context.showExport ? PAGE_TO_COMPONENT.export : <> <div className={controlsClass}>
-            <div className="select" style={tabsStyle}>
-              <select onChange={handleTabChange} value={context.currentTab}>
-                {TAB_IDS.map((tabId) => {
+          {context.showExport ? (
+            PAGE_TO_COMPONENT.export
+          ) : (
+            <>
+              {" "}
+              <div className={controlsClass}>
+                <div className="select" style={tabsStyle}>
+                  <select onChange={handleTabChange} value={context.currentTab}>
+                    {TAB_IDS.map((tabId) => {
+                      return (
+                        <option key={tabId} value={tabId}>
+                          {unslug(tabId)}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+
+                {PAGE_IDS[context.currentTab].map((pageId) => {
+                  const buttonClass = classNames({
+                    button: true,
+                    "is-primary": pageId === context.currentPage,
+                  });
+
                   return (
-                    <option key={tabId} value={tabId}>
-                      {unslug(tabId)}
-                    </option>
+                    <button
+                      className={buttonClass}
+                      key={pageId}
+                      onClick={(e) => handlePageChange(e, pageId)}
+                    >
+                      {unslug(pageId)}
+                    </button>
                   );
                 })}
-              </select>
-            </div>
-
-            {PAGE_IDS[context.currentTab].map((pageId) => {
-              const buttonClass = classNames({
-                button: true,
-                "is-primary": pageId === context.currentPage,
-              });
-
-              return (
-                <button
-                  className={buttonClass}
-                  key={pageId}
-                  onClick={(e) => handlePageChange(e, pageId)}
-                >
-                  {unslug(pageId)}
-                </button>
-              );
-            })}
-          </div>
-
-          {PAGE_TO_COMPONENT[context.currentPage]}</>}
+              </div>
+              {PAGE_TO_COMPONENT[context.currentPage]}
+            </>
+          )}
         </div>
 
         <div className={cn.buttons}>
-          {isExportAvailable && <button className={exportClass} onClick={handleExport}>
+          <button className={exportClass} onClick={handleExport}>
             Export
-          </button>}
+          </button>
 
           <button className={buttonClass} onClick={handleOpening}>
             {context.isOpen ? "Close Customizer" : "Open Customizer"}

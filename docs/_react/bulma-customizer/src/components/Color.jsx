@@ -156,7 +156,7 @@ function Color({ color }) {
     updateVar(cssvar.id, value);
   };
 
-  if (!h) {
+  if (!h || !s || !l) {
     return;
   }
 
