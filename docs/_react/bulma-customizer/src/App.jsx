@@ -142,12 +142,15 @@ const PAGE_IDS = {
   Layout: ["footer", "hero", "media", "section"],
   Export: ["export"],
 };
+const LOCAL_STORAGE_KEY = "bulma-customizer-vars"
 
 export const CustomizerContext = createContext({
   isOpen: false,
   cssvars: {},
+  saved: {},
   currentTab: "",
   currentPage: "",
+  showExport: false,
   getVar: () => {},
   changeTab: () => {},
   changePage: () => {},
@@ -159,8 +162,10 @@ function App() {
   const initialContext = {
     isOpen: true,
     cssvars: {},
-    currentTab: "Export",
-    currentPage: "export",
+    saved: {},
+    currentTab: "Global Variables",
+    currentPage: "colors",
+    showExport: true,
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -195,7 +200,17 @@ function App() {
       });
     },
   };
-  const [context, setContext] = useState(initialContext);
+  const [context, setContext] = useState(() => {
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+    if (saved) {
+      const initialValue = JSON.parse(saved);
+      initialContext.cssvars = initialValue;
+      initialContext.saved = initialValue;
+    }
+
+    return initialContext;
+  });
 
   const handleTabChange = (event) => {
     event.preventDefault();
@@ -220,6 +235,17 @@ function App() {
     });
   };
 
+  const handleExport = (event) => {
+    event.preventDefault();
+    setContext((context) => {
+      return {
+        ...context,
+        showExport: !context.showExport,
+      };
+    });
+  }
+
+  // Get the computed styles of all cssvars
   useEffect(() => {
     const styles = {
       root: window.getComputedStyle(document.documentElement),
@@ -279,6 +305,12 @@ function App() {
 
     allKeyIds.map((key) => {
       if (!key) {
+        return;
+      }
+
+      // Keep the value saved in localStorage
+      if (key in context.saved) {
+        cssvars[key] = context.saved[key];
         return;
       }
 
@@ -396,10 +428,12 @@ function App() {
         cssvars,
       };
     });
-  }, []);
+  }, [context.saved]);
 
+  // Update the styling when the cssvars change
   useEffect(() => {
     const rules = {};
+    const storedVars = {}
 
     Object.values(context.cssvars).forEach((cssvar) => {
       const { id, current, start, scope, unit } = cssvar;
@@ -407,6 +441,8 @@ function App() {
       if (current == start) {
         return;
       }
+
+      storedVars[id] = cssvar;
 
       const computedValue = `${current}${unit}`;
       const declaration = `--bulma-${id}: ${computedValue} !important;`;
@@ -429,8 +465,14 @@ function App() {
     if (styleRef) {
       styleRef.current.innerHTML = content;
     }
+
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(storedVars));
   }, [context.cssvars]);
 
+  // Computed values
+  const isExportAvailable = Object.values(context.cssvars).some(item => item.current != item.start);
+
+  // Styles
   const tabsStyle = {
     "--bulma-tabs-link-active-color": "var(--bulma-primary)",
   };
@@ -438,6 +480,15 @@ function App() {
   const customizerClass = classNames({
     [cn.customizer]: true,
     [cn.open]: context.isOpen,
+  });
+
+  const controlsClass = classNames({
+    [cn.controls]: true,
+  });
+
+  const exportClass = classNames({
+    [cn.button]: true,
+    "button is-primary is-outlined": true,
   });
 
   const buttonClass = classNames({
@@ -451,7 +502,7 @@ function App() {
         <style ref={styleRef} />
 
         <div className={customizerClass}>
-          <div className={cn.controls}>
+          {context.showExport ? PAGE_TO_COMPONENT.export : <> <div className={controlsClass}>
             <div className="select" style={tabsStyle}>
               <select onChange={handleTabChange} value={context.currentTab}>
                 {TAB_IDS.map((tabId) => {
@@ -482,12 +533,18 @@ function App() {
             })}
           </div>
 
-          {PAGE_TO_COMPONENT[context.currentPage]}
+          {PAGE_TO_COMPONENT[context.currentPage]}</>}
         </div>
 
-        <button className={buttonClass} onClick={handleOpening}>
-          {context.isOpen ? "Close Customizer" : "Open Customizer"}
-        </button>
+        <div className={cn.buttons}>
+          {isExportAvailable && <button className={exportClass} onClick={handleExport}>
+            Export
+          </button>}
+
+          <button className={buttonClass} onClick={handleOpening}>
+            {context.isOpen ? "Close Customizer" : "Open Customizer"}
+          </button>
+        </div>
       </div>
     </CustomizerContext.Provider>
   );

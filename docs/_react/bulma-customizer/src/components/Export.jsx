@@ -45,8 +45,17 @@ function Export() {
     <div className={cn.main}>
       {css ? (
         <>
-          <div className={cn.explanation}>
-            Insert this CSS <em>after</em> importing Bulma.
+          <div className={cn.body}>
+            <p className="title is-5">Export</p>
+
+            <div className={cn.explanation}>
+              <p>Insert this CSS <em>after</em> importing Bulma.</p>
+
+              <div className="buttons are-small">
+                <button className="button is-primary">Copy</button>
+                <button className="button is-danger is-outlined">Reset</button>
+              </div>
+            </div>
           </div>
 
           <Highlighter PreTag="div" language="css">
