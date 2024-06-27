@@ -1,0 +1,68 @@
+.main {
+  position: relative;
+  width: 360px;
+  flex-shrink: 0;
+  padding: 0.375rem 0;
+  cursor: grab;
+}
+
+.moving {
+  cursor: grabbing;
+}
+
+.handle {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    rgba(0, 0, 0, 0.15) 0 0 0 1px,
+    rgba(0, 0, 0, 0.05) 0 10px 10px -5px;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 9999px;
+  position: absolute;
+  top: 0rem;
+  cursor: grab;
+  border: 0.25rem solid white;
+  left: -0.625rem;
+}
+
+.moving .handle,
+.handle:active {
+  cursor: grabbing;
+}
+
+.background {
+  border-radius: 0.25rem;
+  background-color: var(--bulma-border);
+  height: 0.5rem;
+}
+
+.hue {
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 0, 0),
+    rgb(255, 255, 0),
+    rgb(0, 255, 0),
+    rgb(0, 255, 255),
+    rgb(0, 0, 255),
+    rgb(255, 0, 255),
+    rgb(255, 0, 0)
+  );
+}
+
+.saturation {
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--h), 0%, var(--l)),
+    hsl(var(--h), var(--s), var(--l)),
+    hsl(var(--h), 100%, var(--l))
+  );
+}
+
+.lightness {
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--h), var(--s), 0%),
+    hsl(var(--h), var(--s), 50%),
+    hsl(var(--h), var(--s), 100%)
+  );
+}

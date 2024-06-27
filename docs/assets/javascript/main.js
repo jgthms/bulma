@@ -155,6 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if ($clickableDropdowns.length > 0) {
     $clickableDropdowns.forEach(($dropdown) => {
+      if (!$dropdown.querySelector("button")) {
+        return;
+      }
+
       $dropdown.querySelector("button").addEventListener("click", (event) => {
         event.stopPropagation();
         $dropdown.classList.toggle("is-active");
