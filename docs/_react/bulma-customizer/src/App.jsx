@@ -138,6 +138,7 @@ const PAGE_IDS = {
 };
 
 export const CustomizerContext = createContext({
+  isOpen: false,
   cssvars: {},
   currentTab: "",
   currentPage: "",
@@ -150,6 +151,7 @@ export const CustomizerContext = createContext({
 function App() {
   const styleRef = useRef();
   const initialContext = {
+    isOpen: true,
     cssvars: {},
     currentTab: "Global Variables",
     currentPage: "delete",
@@ -199,6 +201,17 @@ function App() {
   const handlePageChange = (event, pageId) => {
     event.preventDefault();
     context.changePage(pageId);
+  };
+
+  const handleOpening = (event) => {
+    event.preventDefault();
+
+    setContext((context) => {
+      return {
+        ...context,
+        isOpen: !context.isOpen,
+      };
+    });
   };
 
   useEffect(() => {
@@ -400,10 +413,21 @@ function App() {
     "--bulma-tabs-link-active-color": "var(--bulma-primary)",
   };
 
+  const appClass = classNames({
+    [cn.app]: true,
+    [cn.open]: context.isOpen,
+  });
+
+  const buttonClass = classNames({
+    [cn.button]: true,
+    "button is-primary": true,
+  });
+
   return (
     <CustomizerContext.Provider value={context}>
       <style ref={styleRef} />
-      <div className={cn.app}>
+
+      <div className={appClass}>
         <div className={cn.controls}>
           <div className="select" style={tabsStyle}>
             <select onChange={handleTabChange} value={context.currentTab}>
@@ -437,6 +461,10 @@ function App() {
 
         {PAGE_TO_COMPONENT[context.currentPage]}
       </div>
+
+      <button className={buttonClass} onClick={handleOpening}>
+        {context.isOpen ? "Close Customizer" : "Open Customizer"}
+      </button>
     </CustomizerContext.Provider>
   );
 }
