@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { CustomizerContext } from "../App";
 
-import Highlighter from "components/Highlighter";
-
 import cn from "./Export.module.css";
 
 function Export() {
@@ -114,11 +112,7 @@ function Export() {
         )}
       </div>
 
-      {css && (
-        <Highlighter PreTag="div" language="css">
-          {css.trim()}
-        </Highlighter>
-      )}
+      {css && <pre className={cn.pre}>{css.trim()}</pre>}
     </div>
   );
 }
