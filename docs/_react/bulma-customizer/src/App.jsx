@@ -413,8 +413,8 @@ function App() {
     "--bulma-tabs-link-active-color": "var(--bulma-primary)",
   };
 
-  const appClass = classNames({
-    [cn.app]: true,
+  const customizerClass = classNames({
+    [cn.customizer]: true,
     [cn.open]: context.isOpen,
   });
 
@@ -425,46 +425,48 @@ function App() {
 
   return (
     <CustomizerContext.Provider value={context}>
-      <style ref={styleRef} />
+      <div className={cn.app}>
+        <style ref={styleRef} />
 
-      <div className={appClass}>
-        <div className={cn.controls}>
-          <div className="select" style={tabsStyle}>
-            <select onChange={handleTabChange} value={context.currentTab}>
-              {TAB_IDS.map((tabId) => {
-                return (
-                  <option key={tabId} value={tabId}>
-                    <a>{unslug(tabId)}</a>
-                  </option>
-                );
-              })}
-            </select>
+        <div className={customizerClass}>
+          <div className={cn.controls}>
+            <div className="select" style={tabsStyle}>
+              <select onChange={handleTabChange} value={context.currentTab}>
+                {TAB_IDS.map((tabId) => {
+                  return (
+                    <option key={tabId} value={tabId}>
+                      {unslug(tabId)}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            {PAGE_IDS[context.currentTab].map((pageId) => {
+              const buttonClass = classNames({
+                button: true,
+                "is-primary": pageId === context.currentPage,
+              });
+
+              return (
+                <button
+                  className={buttonClass}
+                  key={pageId}
+                  onClick={(e) => handlePageChange(e, pageId)}
+                >
+                  {unslug(pageId)}
+                </button>
+              );
+            })}
           </div>
 
-          {PAGE_IDS[context.currentTab].map((pageId) => {
-            const buttonClass = classNames({
-              button: true,
-              "is-primary": pageId === context.currentPage,
-            });
-
-            return (
-              <button
-                className={buttonClass}
-                key={pageId}
-                onClick={(e) => handlePageChange(e, pageId)}
-              >
-                {unslug(pageId)}
-              </button>
-            );
-          })}
+          {PAGE_TO_COMPONENT[context.currentPage]}
         </div>
 
-        {PAGE_TO_COMPONENT[context.currentPage]}
+        <button className={buttonClass} onClick={handleOpening}>
+          {context.isOpen ? "Close Customizer" : "Open Customizer"}
+        </button>
       </div>
-
-      <button className={buttonClass} onClick={handleOpening}>
-        {context.isOpen ? "Close Customizer" : "Open Customizer"}
-      </button>
     </CustomizerContext.Provider>
   );
 }

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 
 import Slider from "./Slider";
@@ -7,7 +7,7 @@ import cn from "./Color.module.css";
 import { CustomizerContext } from "../App";
 import classNames from "classnames";
 
-function hslToHex(h, s, l) {
+export function hslToHex(h, s, l) {
   s /= 100;
   l /= 100;
 
@@ -102,7 +102,6 @@ function hexToHsl(hex) {
 
 function Color({ color }) {
   const { cssvars, updateVar } = useContext(CustomizerContext);
-  const [hexValue, setHexValue] = useState("");
 
   const hName = `${color}-h`;
   const sName = `${color}-s`;
@@ -152,41 +151,10 @@ function Color({ color }) {
     updateVar(l.id, lightness);
   };
 
-  const handleHexChange = (event) => {
-    let value = event.target.value;
-
-    if (value.startsWith("#")) {
-      value = value.replace(/^#/, "");
-    }
-
-    setHexValue(value);
-
-    const hexPattern = /^([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/;
-
-    if (!hexPattern.test(value) || value.length < 6) {
-      return;
-    }
-
-    const { hue, saturation, lightness } = hexToHsl(value);
-
-    updateVar(h.id, hue);
-    updateVar(s.id, saturation);
-    updateVar(l.id, lightness);
-  };
-
   const handleInputChange = (event, cssvar) => {
     let value = event.target.value;
     updateVar(cssvar.id, value);
   };
-
-  useEffect(() => {
-    if (!h) {
-      return;
-    }
-
-    const hex = hslToHex(h.current, s.current, l.current);
-    setHexValue(hex);
-  }, [h, s, l]);
 
   if (!h) {
     return;
@@ -205,12 +173,7 @@ function Color({ color }) {
   return (
     <div className={cn.main} style={mainStyle}>
       <div className={cn.side}>
-        <div className={cn.name}>
-          <div className={cn.swatch} />
-          <p>{name}</p>
-        </div>
-
-        <div className="buttons are-small">
+        <div className="buttons are-small is-float-right ml-2">
           <button className="button" onClick={handleHexInput}>
             Enter a Hex code
           </button>
@@ -225,72 +188,66 @@ function Color({ color }) {
           </button>
         </div>
 
-        <div className="is-hidden field has-addons">
-          <p className="control">
-            <span className="button is-static">#</span>
-          </p>
-          <p className="control">
-            <input
-              className="input"
-              type="text"
-              value={hexValue}
-              onChange={handleHexChange}
-            />
-          </p>
-          <p className="control">
-            <span className="button is-icon">Copy</span>
-          </p>
+        <div className={cn.name}>
+          <div className={cn.swatch} />
+          <p>{name}</p>
         </div>
       </div>
 
       <div className={cn.lines}>
         <div className={cn.line}>
-          <p>Hue</p>
-          <Slider id={hName} kind="hue" color={color} />
-          <p className={cn.form}>
-            <input
-              type="text"
-              className="input"
-              value={Number(h.current)}
-              onChange={(e) => handleInputChange(e, h)}
-              size="3"
-            />
-            <span>{h.unit}</span>
-          </p>
+          <p className={cn.label}>Hue</p>
+          <div className={cn.slider}>
+            <Slider id={hName} kind="hue" color={color} />
+            <p className={cn.form}>
+              <input
+                type="text"
+                className="input"
+                value={Number(h.current)}
+                onChange={(e) => handleInputChange(e, h)}
+                size="3"
+              />
+              <span>{h.unit}</span>
+            </p>
+          </div>
         </div>
 
         <div className={cn.line}>
-          <p>Saturation</p>
-          <Slider id={sName} kind="saturation" color={color} />
-          <p className={cn.form}>
-            <input
-              type="text"
-              className="input"
-              value={Number(s.current)}
-              onChange={(e) => handleInputChange(e, s)}
-              size="3"
-            />
-            <span>{s.unit}</span>
-          </p>
+          <p className={cn.label}>Saturation</p>
+          <div className={cn.slider}>
+            <Slider id={sName} kind="saturation" color={color} />
+            <p className={cn.form}>
+              <input
+                type="text"
+                className="input"
+                value={Number(s.current)}
+                onChange={(e) => handleInputChange(e, s)}
+                size="3"
+              />
+              <span>{s.unit}</span>
+            </p>
+          </div>
         </div>
 
         <div className={cn.line}>
-          <p>Lightness</p>
-          <Slider id={lName} kind="lightness" color={color} />
-          <p className={cn.form}>
-            <input
-              type="text"
-              className="input"
-              value={Number(l.current)}
-              onChange={(e) => handleInputChange(e, l)}
-              size="3"
-            />
-            <span>{l.unit}</span>
-          </p>
+          <p className={cn.label}>Lightness</p>
+          <div className={cn.slider}>
+            <Slider id={lName} kind="lightness" color={color} />
+            <p className={cn.form}>
+              <input
+                type="text"
+                className="input"
+                value={Number(l.current)}
+                onChange={(e) => handleInputChange(e, l)}
+                size="3"
+              />
+              <span>{l.unit}</span>
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className={cn.side}>
+      <div className={cn.example}>
         <button className={`button is-${color}`}>{name}</button>
       </div>
     </div>

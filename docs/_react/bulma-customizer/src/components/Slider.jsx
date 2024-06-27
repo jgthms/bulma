@@ -67,11 +67,14 @@ function Slider({ id, color }) {
   // }, [current, id, start, unit]);
 
   useEffect(() => {
+    if (!isMoving) {
+      return;
+    }
     const slider = sliderRef.current;
     const sliderRect = slider.getBoundingClientRect();
     const final = xToValue(x, sliderRect.width, min, max);
     updateVar(id, final);
-  }, [id, min, max, updateVar, x]);
+  }, [id, isMoving, min, max, updateVar, x]);
 
   useEffect(() => {
     const newX = valueToX(current, 360, min, max);
