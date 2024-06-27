@@ -1,6 +1,7 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import "../../../../css/bulma.css";
+import "./App.css";
 import cn from "./App.module.css";
 
 import { CSSVAR_KEYS } from "./constants";
@@ -42,6 +43,7 @@ import Footer from "./pages/layout/Footer";
 import Hero from "./pages/layout/Hero";
 import Media from "./pages/layout/Media";
 import Section from "./pages/layout/Section";
+import Export from "./components/Export";
 
 const SUFFIX_TO_KIND = {
   "-h": "hue",
@@ -91,6 +93,8 @@ const PAGE_TO_COMPONENT = {
   hero: <Hero />,
   media: <Media />,
   section: <Section />,
+  // Export
+  export: <Export />,
 };
 const TAB_IDS = [
   "Global Variables",
@@ -99,6 +103,7 @@ const TAB_IDS = [
   "Form",
   "Grid",
   "Layout",
+  "Export",
 ];
 const PAGE_IDS = {
   "Global Variables": [
@@ -135,6 +140,7 @@ const PAGE_IDS = {
   Form: ["control", "input", "file"],
   Grid: ["columns", "grid"],
   Layout: ["footer", "hero", "media", "section"],
+  Export: ["export"],
 };
 
 export const CustomizerContext = createContext({
@@ -153,8 +159,8 @@ function App() {
   const initialContext = {
     isOpen: true,
     cssvars: {},
-    currentTab: "Global Variables",
-    currentPage: "delete",
+    currentTab: "Export",
+    currentPage: "export",
     getVar: (id) => {
       return context.cssvars[id];
     },
@@ -255,11 +261,27 @@ function App() {
     const cssvars = {};
     const allKeys = Object.values(PAGE_IDS)
       .flat()
-      .map((pageId) => CSSVAR_KEYS[pageId])
+      .map((pageId) => {
+        if (!(pageId in CSSVAR_KEYS)) {
+          return;
+        }
+
+        return CSSVAR_KEYS[pageId];
+      })
       .flat();
-    const allKeyIds = allKeys.map((i) => i.id);
+    const allKeyIds = allKeys.map((i) => {
+      if (!i) {
+        return;
+      }
+
+      return i.id;
+    });
 
     allKeyIds.map((key) => {
+      if (!key) {
+        return;
+      }
+
       let original;
       let scope = ":root";
 
