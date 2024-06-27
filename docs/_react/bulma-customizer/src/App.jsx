@@ -1,6 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import "../../../../css/bulma.css";
+// import "../../../../css/bulma.css";
 import "./App.css";
 import cn from "./App.module.css";
 
@@ -515,14 +515,14 @@ function App() {
   const exportClass = classNames({
     [cn.button]: true,
     "is-hidden": !context.isOpen,
-    "button is-primary is-outlined": !context.showExport,
+    button: !context.showExport,
     "button is-primary": context.showExport,
   });
 
   const buttonClass = classNames({
     [cn.button]: true,
     "button is-primary": !context.isOpen,
-    "button is-danger is-outlined": context.isOpen,
+    button: context.isOpen,
   });
 
   return (
@@ -573,11 +573,15 @@ function App() {
 
         <div className={cn.buttons}>
           <button className={exportClass} onClick={handleExport}>
-            Export
+            <i className="fa-solid fa-code"></i>
+            <span>Export</span>
           </button>
 
           <button className={buttonClass} onClick={handleOpening}>
-            {context.isOpen ? "Close Customizer" : "Open Customizer"}
+            <i className="fa-solid fa-palette"></i>
+            <span>
+              {context.isOpen ? "Close Customizer" : "Open Customizer"}
+            </span>
           </button>
         </div>
       </div>
