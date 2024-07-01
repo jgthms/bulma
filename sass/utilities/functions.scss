@@ -184,10 +184,10 @@
 
 @function bulmaColorBrightness($n) {
   $color-brightness: round(
-    (red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000
+   math.div((red($n) * 299) + (green($n) * 587) + (blue($n) * 114), 1000)
   );
   $light-color: round(
-    (red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000
+    math.div((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114), 1000)
   );
 
   @if abs($color-brightness) < math.div($light-color, 2) {
