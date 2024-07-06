@@ -35,6 +35,14 @@ breadcrumb:
   <div class="column">No gap</div>
 </div>
 {% endcapture %}
+{% capture columns_variable_gap %}
+<div class="columns is-8">
+  <div class="column">Column</div>
+  <div class="column">Column</div>
+  <div class="column">Column</div>
+  <div class="column">Column</div>
+</div>
+{% endcapture %}
 {% capture columns_gapless_multiline %}
 <div class="columns is-gapless is-multiline is-mobile">
   <div class="column is-one-quarter">is-one-quarter</div>
@@ -49,9 +57,7 @@ breadcrumb:
 </div>
 {% endcapture %}
 {% capture columns_variable_responsive_gaps %}
-<div
-  class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd"
->
+<div class="columns is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
   <div class="column">Column</div>
   <div class="column">Column</div>
   <div class="column">Column</div>
@@ -155,28 +161,20 @@ breadcrumb:
     <li><code>is-3</code> is the <strong>default value</strong>, equivalent to the <code>0.75rem</code> value</li>
     <li><code>is-8</code> is the maximum gap of <code>2rem</code></li>
   </ul>
-  <p>Additionally, <code>.is-variable</code> should be added on the <code>.columns</code> container.</p>
+</div>
+
+<div class="bd-highlight-full">
+  {% highlight html -%}
+  {{- columns_variable_gap -}}
+  {%- endhighlight %}
 </div>
 
 {% include docs/content/klmn.html %}
 
-<div class="message is-warning">
-  <div class="message-body">
-    <p>
-      This feature is only available in browsers that support
-      <a
-        href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables"
-        >CSS Variables</a
-      >.
-    </p>
-  </div>
-</div>
-
 {% assign vernum = site.data.meta.version | downcase | remove: '.' | plus: 0 %}
 {% if vernum >= 72 %}
   {%
-    include docs/elements/anchor.html name="Breakpoint
-    based column gaps"
+    include docs/elements/anchor.html name="Breakpoint based column gaps"
   %}
 
   <div class="content">
@@ -184,19 +182,17 @@ breadcrumb:
 
     <p>
       For example, here's how it looks with the following modifiers:
-      <code>is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd</code>
+      <code>is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd</code>
     </p>
   </div>
 
   <div class="bd-highlight-full">
-    {% highlight html -%}
+    {%- highlight html -%}
     {{- columns_variable_responsive_gaps -}}
-    {%- endhighlight %}
+    {%- endhighlight -%}
   </div>
 
-  <div
-    class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd"
-  >
+  <div class="columns is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
     <div class="column">
       <p class="bd-notification is-primary">Column</p>
     </div>

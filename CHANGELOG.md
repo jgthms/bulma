@@ -2,6 +2,11 @@
 
 ## 1.0.2
 
+### Improvements
+
+- Smart Grid `is-col-min` now goes up to `32` (Fixes #3829)
+- Remove need for `is-variable` modifier for Column gaps
+
 ### Bug fixes
 
 - Fix #3824: ability to override `$scheme-h`, `$scheme-s`, `$dark-l` and `$light-l` Sass variables
@@ -9,6 +14,7 @@
 - Fix #3743: make sure 12 columns system take up whole width
 - Fix #3799: restore variable columns
 - Fix #3846: restore `--bulma-column-gap` CSS variable
+- Fix #3775: `has-background` helpers should only affect element it's applied to
 
 ## 1.0.1
 
