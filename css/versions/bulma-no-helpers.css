@@ -1222,6 +1222,8 @@ a.box:active {
 .content ol {
   list-style-position: outside;
   margin-inline-start: 2em;
+}
+.content ol:not(:first-child) {
   margin-top: 1em;
 }
 .content ol:not([type]) {
@@ -1242,6 +1244,8 @@ a.box:active {
 .content ul {
   list-style: disc outside;
   margin-inline-start: 2em;
+}
+.content ul:not(:first-child) {
   margin-top: 1em;
 }
 .content ul ul {
@@ -2630,6 +2634,8 @@ button.tag:active,
   --bulma-input-h: var(--bulma-scheme-h);
   --bulma-input-s: var(--bulma-scheme-s);
   --bulma-input-l: var(--bulma-scheme-main-l);
+  --bulma-input-border-style: solid;
+  --bulma-input-border-width: var(--bulma-control-border-width);
   --bulma-input-border-l: var(--bulma-border-l);
   --bulma-input-border-l-delta: 0%;
   --bulma-input-hover-border-l-delta: var(--bulma-hover-border-l-delta);
@@ -2705,11 +2711,6 @@ button.tag:active,
 
 /* Bulma Form */
 .textarea, .input {
-  --bulma-input-h: var(--bulma-scheme-h);
-  --bulma-input-s: var(--bulma-scheme-s);
-  --bulma-input-border-style: solid;
-  --bulma-input-border-width: 1px;
-  --bulma-input-border-l: var(--bulma-border-l);
   box-shadow: inset 0 0.0625em 0.125em hsla(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-invert-l), 0.05);
   max-width: 100%;
   width: 100%;
@@ -3365,14 +3366,22 @@ button.tag:active,
 }
 
 /* Bulma Form */
+:root {
+  --bulma-label-color: var(--bulma-text-strong);
+  --bulma-label-spacing: 0.5em;
+  --bulma-label-weight: var(--bulma-weight-semibold);
+  --bulma-help-size: var(--bulma-size-small);
+  --bulma-field-block-spacing: 0.75rem;
+}
+
 .label {
-  color: var(--bulma-text-strong);
+  color: var(--bulma-label-color);
   display: block;
   font-size: var(--bulma-size-normal);
   font-weight: var(--bulma-weight-semibold);
 }
 .label:not(:last-child) {
-  margin-bottom: 0.5em;
+  margin-bottom: var(--bulma-label-spacing);
 }
 .label.is-small {
   font-size: var(--bulma-size-small);
@@ -3386,7 +3395,7 @@ button.tag:active,
 
 .help {
   display: block;
-  font-size: var(--bulma-size-small);
+  font-size: var(--bulma-help-size);
   margin-top: 0.25rem;
 }
 .help.is-white {
@@ -3424,7 +3433,7 @@ button.tag:active,
 }
 
 .field {
-  --bulma-block-spacing: 0.75rem;
+  --bulma-block-spacing: var(--bulma-field-block-spacing);
 }
 .field.has-addons {
   display: flex;

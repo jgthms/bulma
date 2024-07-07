@@ -10,6 +10,19 @@
 - Add `is-max-tablet` modifier to the Container element
 - Add `currentColor` and `inherit` as possible values for the color and background helpers
 - The Section can now have a minimum height of `100vh` with the `is-fullheight` modifier
+- Add more SCSS variables:
+  - `$input-border-style`
+  - `$input-border-width`
+  - `$label-spacing`
+  - `$field-block-spacing`
+- Add more CSS variables:
+  - `--bulma-input-border-style`
+  - `--bulma-input-border-width`
+  - `--bulma-label-color`
+  - `--bulma-label-spacing`
+  - `--bulma-label-weight` 
+  - `--bulma-help-size`
+  - `--bulma-field-block-spacing`
 
 ### Bug fixes
 
