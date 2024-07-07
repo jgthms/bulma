@@ -14,59 +14,106 @@ meta:
   sizes: false
   variables: false
 ---
+
 {% capture checkbox_example %}
 <label class="checkbox">
   <input type="checkbox" />
   Remember me
 </label>
-{% endcapture %}
-{% capture checkbox_link_example %}
+{% endcapture %} {% capture checkbox_link_example %}
 <label class="checkbox">
   <input type="checkbox" />
   I agree to the <a href="#">terms and conditions</a>
 </label>
-{% endcapture %}
-{% capture checkbox_disabled_example %}
+{% endcapture %} {% capture checkbox_disabled_example %}
 <label class="checkbox" disabled>
   <input type="checkbox" disabled />
   Save my preferences
 </label>
+{% endcapture %} {% capture list_of_checkboxes %}
+<div class="checkboxes">
+  <label class="checkbox">
+    <input type="checkbox" />
+    Monday
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" />
+    Tuesday
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" />
+    Wednesday
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" />
+    Thursday
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" />
+    Friday
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" checked />
+    Saturday
+  </label>
+
+  <label class="checkbox">
+    <input type="checkbox" checked />
+    Sunday
+  </label>
+</div>
 {% endcapture %}
 
 <div class="content">
   <p>
-    The <code>checkbox</code> class is a simple wrapper around the <code>&lt;input type="checkbox"&gt;</code> HTML
-    element. It is intentionally not styled, to preserve cross-browser compatibility and the user experience.
+    The <code>checkbox</code> class is a simple wrapper around the
+    <code>&lt;input type="checkbox"&gt;</code> HTML element. It is intentionally
+    not styled, to preserve cross-browser compatibility and the user experience.
   </p>
 </div>
 
 <div class="columns">
   <div class="column is-half">{{ checkbox_example }}</div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html -%}
-    {{- checkbox_example -}}
-    {%- endhighlight %}
+    {% highlight html -%} {{- checkbox_example -}} {%- endhighlight %}
   </div>
 </div>
 
 <div class="content">
-  <p>You can add <strong>links</strong> to your checkbox, or even <strong>disable</strong> it.</p>
+  <p>
+    You can add <strong>links</strong> to your checkbox, or even
+    <strong>disable</strong> it.
+  </p>
 </div>
 
 <div class="columns">
   <div class="column is-half">{{ checkbox_link_example }}</div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html -%}
-    {{- checkbox_link_example -}}
-    {%- endhighlight %}
+    {% highlight html -%} {{- checkbox_link_example -}} {%- endhighlight %}
   </div>
 </div>
 
 <div class="columns">
   <div class="column is-half">{{ checkbox_disabled_example }}</div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html -%}
-    {{- checkbox_disabled_example -}}
-    {%- endhighlight %}
+    {% highlight html -%} {{- checkbox_disabled_example -}} {%- endhighlight %}
   </div>
 </div>
+
+{% include docs/elements/anchor.html name="List of Checkboxes" %}
+
+<div class="content">
+  <p>
+    If you want to list several checkbox elements, wrap them in a
+    <code>&lt;div class="checkboxes"&gt;</code> element:
+  </p>
+</div>
+
+<div class="block">{{- list_of_checkboxes -}}</div>
+
+{% highlight html -%} {{- list_of_checkboxes -}} {%- endhighlight %}

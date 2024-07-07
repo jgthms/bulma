@@ -14,6 +14,7 @@ meta:
   sizes: false
   variables: false
 ---
+
 {% capture radio_example %}
 <div class="control">
   <label class="radio">
@@ -25,8 +26,7 @@ meta:
     No
   </label>
 </div>
-{% endcapture %}
-{% capture radio_default_example %}
+{% endcapture %} {% capture radio_default_example %}
 <div class="control">
   <label class="radio">
     <input type="radio" name="foobar" />
@@ -37,9 +37,23 @@ meta:
     Bar
   </label>
 </div>
-{% endcapture %}
-{% capture radio_disabled_example %}
+{% endcapture %} {% capture radio_disabled_example %}
 <div class="control">
+  <label class="radio">
+    <input type="radio" name="rsvp" />
+    Going
+  </label>
+  <label class="radio">
+    <input type="radio" name="rsvp" />
+    Not going
+  </label>
+  <label class="radio" disabled>
+    <input type="radio" name="rsvp" disabled />
+    Maybe
+  </label>
+</div>
+{% endcapture %} {% capture list_of_radios %}
+<div class="radios">
   <label class="radio">
     <input type="radio" name="rsvp" />
     Going
@@ -57,26 +71,27 @@ meta:
 
 <div class="content">
   <p>
-    The <code>radio</code> class is a simple wrapper around the <code>&lt;input type="radio"&gt;</code> HTML elements.
-    It is intentionally not styled, to preserve cross-browser compatibility and the user experience.
+    The <code>radio</code> class is a simple wrapper around the
+    <code>&lt;input type="radio"&gt;</code> HTML elements. It is intentionally
+    not styled, to preserve cross-browser compatibility and the user experience.
   </p>
   <p>
-    Make sure the linked radio buttons have the <strong>same value</strong> for their <code>name</code> HTML attribute.
+    Make sure the linked radio buttons have the <strong>same value</strong> for
+    their <code>name</code> HTML attribute.
   </p>
 </div>
 
 <div class="columns">
   <div class="column is-half">{{ radio_example }}</div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html -%}
-    {{- radio_example -}}
-    {%- endhighlight %}
+    {% highlight html -%} {{- radio_example -}} {%- endhighlight %}
   </div>
 </div>
 
 <div class="content">
   <p>
-    You can check a radio button by <strong>default</strong> by adding the <code>checked</code> HTML attribute to the
+    You can check a radio button by <strong>default</strong> by adding the
+    <code>checked</code> HTML attribute to the
     <code>&lt;input&gt;</code> element.
   </p>
 </div>
@@ -84,15 +99,14 @@ meta:
 <div class="columns">
   <div class="column is-half">{{ radio_default_example }}</div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html -%}
-    {{- radio_default_example -}}
-    {%- endhighlight %}
+    {% highlight html -%} {{- radio_default_example -}} {%- endhighlight %}
   </div>
 </div>
 
 <div class="content">
   <p>
-    You can <strong>disable</strong> a radio button by adding the <code>disabled</code> HTML attribute to both the
+    You can <strong>disable</strong> a radio button by adding the
+    <code>disabled</code> HTML attribute to both the
     <code>&lt;label&gt;</code> and the <code>&lt;input&gt;</code>.
   </p>
 </div>
@@ -100,8 +114,19 @@ meta:
 <div class="columns">
   <div class="column is-half">{{ radio_disabled_example }}</div>
   <div class="column is-half bd-highlight-full">
-    {% highlight html -%}
-    {{- radio_disabled_example -}}
-    {%- endhighlight %}
+    {% highlight html -%} {{- radio_disabled_example -}} {%- endhighlight %}
   </div>
 </div>
+
+{% include docs/elements/anchor.html name="List of Radio Buttons" %}
+
+<div class="content">
+  <p>
+    If you want to list several radio buttons, wrap them in a
+    <code>&lt;div class="radios"&gt;</code> element:
+  </p>
+</div>
+
+<div class="block">{{- list_of_radios -}}</div>
+
+{% highlight html -%} {{- list_of_radios -}} {%- endhighlight %}

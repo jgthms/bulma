@@ -2886,8 +2886,12 @@ button.bulma-tag:active,
   cursor: not-allowed;
 }
 
-.bulma-radio + .bulma-radio {
-  margin-inline-start: 0.5em;
+.bulma-checkboxes,
+.bulma-radios {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1em;
+  row-gap: 0.5em;
 }
 
 /* Bulma Form */
@@ -10291,28 +10295,31 @@ label.bulma-panel-block:hover {
   padding-right: 32px;
   width: 100%;
 }
+.bulma-container.bulma-is-max-tablet {
+  max-width: 705px;
+}
 @media screen and (min-width: 1024px) {
   .bulma-container {
     max-width: 960px;
   }
 }
 @media screen and (max-width: 1215px) {
-  .bulma-container.bulma-is-widescreen:not(.bulma-is-max-desktop) {
+  .bulma-container.bulma-is-widescreen:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop) {
     max-width: 1152px;
   }
 }
 @media screen and (max-width: 1407px) {
-  .bulma-container.bulma-is-fullhd:not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
+  .bulma-container.bulma-is-fullhd:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
     max-width: 1344px;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-container:not(.bulma-is-max-desktop) {
+  .bulma-container:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop) {
     max-width: 1152px;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-container:not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
+  .bulma-container:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
     max-width: 1344px;
   }
 }
@@ -11012,6 +11019,9 @@ label.bulma-panel-block:hover {
   .bulma-section.bulma-is-large {
     padding: var(--bulma-section-padding-large);
   }
+}
+.bulma-section.bulma-is-fullheight {
+  min-height: 100vh;
 }
 
 :root {

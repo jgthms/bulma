@@ -6,6 +6,10 @@
 
 - Smart Grid `is-col-min` now goes up to `32` (Fixes #3829)
 - Remove need for `is-variable` modifier for Column gaps
+- You can have a list of radio buttons or checkboxes with the `radios` and `checkboxes` classes respectively
+- Add `is-max-tablet` modifier to the Container element
+- Add `currentColor` and `inherit` as possible values for the color and background helpers
+- The Section can now have a minimum height of `100vh` with the `is-fullheight` modifier
 
 ### Bug fixes
 

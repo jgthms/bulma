@@ -17,34 +17,42 @@ $container-max-width: iv.$fullhd !default;
     width: 100%;
   }
 
+  &.#{iv.$class-prefix}is-max-tablet {
+    max-width: iv.$tablet - $container-offset;
+  }
+
   @include mx.desktop {
     max-width: iv.$desktop - $container-offset;
   }
 
   @include mx.until-widescreen {
-    &.#{iv.$class-prefix}is-widescreen:not(.#{iv.$class-prefix}is-max-desktop) {
+    &.#{iv.$class-prefix}is-widescreen:not(
+        .#{iv.$class-prefix}is-max-tablet
+      ):not(.#{iv.$class-prefix}is-max-desktop) {
       max-width: min(iv.$widescreen, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.until-fullhd {
-    &.#{iv.$class-prefix}is-fullhd:not(.#{iv.$class-prefix}is-max-desktop):not(
-        .#{iv.$class-prefix}is-max-widescreen
-      ) {
+    &.#{iv.$class-prefix}is-fullhd:not(.#{iv.$class-prefix}is-max-tablet):not(
+        .#{iv.$class-prefix}is-max-desktop
+      ):not(.#{iv.$class-prefix}is-max-widescreen) {
       max-width: min(iv.$fullhd, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.widescreen {
-    &:not(.#{iv.$class-prefix}is-max-desktop) {
+    &:not(.#{iv.$class-prefix}is-max-tablet):not(
+        .#{iv.$class-prefix}is-max-desktop
+      ) {
       max-width: min(iv.$widescreen, $container-max-width) - $container-offset;
     }
   }
 
   @include mx.fullhd {
-    &:not(.#{iv.$class-prefix}is-max-desktop):not(
-        .#{iv.$class-prefix}is-max-widescreen
-      ) {
+    &:not(.#{iv.$class-prefix}is-max-tablet):not(
+        .#{iv.$class-prefix}is-max-desktop
+      ):not(.#{iv.$class-prefix}is-max-widescreen) {
       max-width: min(iv.$fullhd, $container-max-width) - $container-offset;
     }
   }
