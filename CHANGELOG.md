@@ -32,6 +32,7 @@
 - Fix #3799: restore variable columns
 - Fix #3846: restore `--bulma-column-gap` CSS variable
 - Fix #3775: `has-background` helpers should only affect element it's applied to
+- Fix #3856: Sass nested rule deprecation warning
 
 ## 1.0.1
 
