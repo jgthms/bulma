@@ -33,6 +33,7 @@
 - Fix #3846: restore `--bulma-column-gap` CSS variable
 - Fix #3775: `has-background` helpers should only affect element it's applied to
 - Fix #3856: Sass nested rule deprecation warning
+- Fix #3757: restore use of `$navbar-burger-color`
 
 ## 1.0.1
 
