@@ -6,20 +6,35 @@
 @use "../utilities/mixins" as mx;
 
 $label-color: cv.getVar("text-strong") !default;
+$label-spacing: 0.5em !default;
 $label-weight: cv.getVar("weight-semibold") !default;
 
 $help-size: cv.getVar("size-small") !default;
 
 $label-colors: shared.$form-colors !default;
 
+$field-block-spacing: 0.75rem !default;
+
+:root {
+  @include cv.register-vars(
+    (
+      "label-color": #{$label-color},
+      "label-spacing": #{$label-spacing},
+      "label-weight": #{$label-weight},
+      "help-size": #{$help-size},
+      "field-block-spacing": #{$field-block-spacing},
+    )
+  );
+}
+
 .#{iv.$class-prefix}label {
-  color: $label-color;
+  color: cv.getVar("label-color");
   display: block;
   font-size: cv.getVar("size-normal");
   font-weight: $label-weight;
 
   &:not(:last-child) {
-    margin-bottom: 0.5em;
+    margin-bottom: cv.getVar("label-spacing");
   }
 
   // Sizes
@@ -38,7 +53,7 @@ $label-colors: shared.$form-colors !default;
 
 .#{iv.$class-prefix}help {
   display: block;
-  font-size: $help-size;
+  font-size: cv.getVar("help-size");
   margin-top: 0.25rem;
 
   @each $name, $pair in $label-colors {
@@ -57,7 +72,7 @@ $label-colors: shared.$form-colors !default;
 .#{iv.$class-prefix}field {
   @include cv.register-vars(
     (
-      "block-spacing": 0.75rem,
+      "block-spacing": #{cv.getVar("field-block-spacing")},
     )
   );
 

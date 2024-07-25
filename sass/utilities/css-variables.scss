@@ -211,8 +211,9 @@
     }
   }
 
-  $shades: map.set($shades, "100", 100%);
-  @include register-var($name, 100%, "", "-100-l");
+  $l-100: math.min($l-0 + 100%, 100%);
+  $shades: map.set($shades, "100", $l-100);
+  @include register-var($name, $l-100, "", "-100-l");
 
   // === STEP 3 ===
   // Find accessible color combinations

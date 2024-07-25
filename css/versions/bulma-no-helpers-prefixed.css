@@ -1222,6 +1222,8 @@ a.bulma-box:active {
 .bulma-content ol {
   list-style-position: outside;
   margin-inline-start: 2em;
+}
+.bulma-content ol:not(:first-child) {
   margin-top: 1em;
 }
 .bulma-content ol:not([type]) {
@@ -1242,6 +1244,8 @@ a.bulma-box:active {
 .bulma-content ul {
   list-style: disc outside;
   margin-inline-start: 2em;
+}
+.bulma-content ul:not(:first-child) {
   margin-top: 1em;
 }
 .bulma-content ul ul {
@@ -2630,6 +2634,8 @@ button.bulma-tag:active,
   --bulma-input-h: var(--bulma-scheme-h);
   --bulma-input-s: var(--bulma-scheme-s);
   --bulma-input-l: var(--bulma-scheme-main-l);
+  --bulma-input-border-style: solid;
+  --bulma-input-border-width: var(--bulma-control-border-width);
   --bulma-input-border-l: var(--bulma-border-l);
   --bulma-input-border-l-delta: 0%;
   --bulma-input-hover-border-l-delta: var(--bulma-hover-border-l-delta);
@@ -2705,11 +2711,6 @@ button.bulma-tag:active,
 
 /* Bulma Form */
 .bulma-textarea, .bulma-input {
-  --bulma-input-h: var(--bulma-scheme-h);
-  --bulma-input-s: var(--bulma-scheme-s);
-  --bulma-input-border-style: solid;
-  --bulma-input-border-width: 1px;
-  --bulma-input-border-l: var(--bulma-border-l);
   box-shadow: inset 0 0.0625em 0.125em hsla(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-invert-l), 0.05);
   max-width: 100%;
   width: 100%;
@@ -2886,8 +2887,12 @@ button.bulma-tag:active,
   cursor: not-allowed;
 }
 
-.bulma-radio + .bulma-radio {
-  margin-inline-start: 0.5em;
+.bulma-checkboxes,
+.bulma-radios {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1em;
+  row-gap: 0.5em;
 }
 
 /* Bulma Form */
@@ -3361,14 +3366,22 @@ button.bulma-tag:active,
 }
 
 /* Bulma Form */
+:root {
+  --bulma-label-color: var(--bulma-text-strong);
+  --bulma-label-spacing: 0.5em;
+  --bulma-label-weight: var(--bulma-weight-semibold);
+  --bulma-help-size: var(--bulma-size-small);
+  --bulma-field-block-spacing: 0.75rem;
+}
+
 .bulma-label {
-  color: var(--bulma-text-strong);
+  color: var(--bulma-label-color);
   display: block;
   font-size: var(--bulma-size-normal);
   font-weight: var(--bulma-weight-semibold);
 }
 .bulma-label:not(:last-child) {
-  margin-bottom: 0.5em;
+  margin-bottom: var(--bulma-label-spacing);
 }
 .bulma-label.bulma-is-small {
   font-size: var(--bulma-size-small);
@@ -3382,7 +3395,7 @@ button.bulma-tag:active,
 
 .bulma-help {
   display: block;
-  font-size: var(--bulma-size-small);
+  font-size: var(--bulma-help-size);
   margin-top: 0.25rem;
 }
 .bulma-help.bulma-is-white {
@@ -3420,7 +3433,7 @@ button.bulma-tag:active,
 }
 
 .bulma-field {
-  --bulma-block-spacing: 0.75rem;
+  --bulma-block-spacing: var(--bulma-field-block-spacing);
 }
 .bulma-field.bulma-has-addons {
   display: flex;
@@ -4348,13 +4361,14 @@ button.bulma-dropdown-item.bulma-is-selected {
   --bulma-navbar-item-hover-background-l-delta: var(--bulma-hover-background-l-delta);
   --bulma-navbar-item-active-background-l-delta: var(--bulma-active-background-l-delta);
   --bulma-navbar-item-color-l: var(--bulma-text-l);
+  --bulma-navbar-item-color: hsl(var(--bulma-navbar-h), var(--bulma-navbar-s), var(--bulma-navbar-item-color-l));
   --bulma-navbar-item-selected-h: var(--bulma-link-h);
   --bulma-navbar-item-selected-s: var(--bulma-link-s);
   --bulma-navbar-item-selected-l: var(--bulma-link-l);
   --bulma-navbar-item-selected-background-l: var(--bulma-link-l);
   --bulma-navbar-item-selected-color-l: var(--bulma-link-invert-l);
   --bulma-navbar-item-img-max-height: 1.75rem;
-  --bulma-navbar-burger-color: var(--bulma-navbar-item-color);
+  --bulma-navbar-burger-color: var(--bulma-link);
   --bulma-navbar-tab-hover-background-color: transparent;
   --bulma-navbar-tab-hover-border-bottom-color: var(--bulma-link);
   --bulma-navbar-tab-active-color: var(--bulma-link);
@@ -4674,9 +4688,6 @@ body.bulma-has-navbar-fixed-bottom {
   position: relative;
   vertical-align: top;
   width: 2.5rem;
-  align-self: center;
-  margin-inline-start: auto;
-  margin-inline-end: 0.375rem;
 }
 .bulma-navbar-burger span {
   background-color: currentColor;
@@ -4714,6 +4725,12 @@ body.bulma-has-navbar-fixed-bottom {
 .bulma-navbar-burger.bulma-is-active span:nth-child(3), .bulma-navbar-burger.bulma-is-active span:nth-child(4) {
   opacity: 0;
 }
+.bulma-navbar-burger {
+  align-self: center;
+  color: var(--bulma-navbar-burger-color);
+  margin-inline-start: auto;
+  margin-inline-end: 0.375rem;
+}
 
 .bulma-navbar-menu {
   display: none;
@@ -4721,8 +4738,9 @@ body.bulma-has-navbar-fixed-bottom {
 
 .bulma-navbar-item,
 .bulma-navbar-link {
-  color: hsl(var(--bulma-navbar-h), var(--bulma-navbar-s), var(--bulma-navbar-item-color-l));
+  color: var(--bulma-navbar-item-color);
   display: block;
+  gap: 0.75rem;
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   position: relative;
@@ -6850,435 +6868,435 @@ label.bulma-panel-block:hover {
     display: flex;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-0 {
+.bulma-columns.bulma-is-0 {
   --bulma-column-gap: 0rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-mobile {
+  .bulma-columns.bulma-is-0-mobile {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-0-tablet {
+  .bulma-columns.bulma-is-0-tablet {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-tablet-only {
+  .bulma-columns.bulma-is-0-tablet-only {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-touch {
+  .bulma-columns.bulma-is-0-touch {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-desktop {
+  .bulma-columns.bulma-is-0-desktop {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-desktop-only {
+  .bulma-columns.bulma-is-0-desktop-only {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-widescreen {
+  .bulma-columns.bulma-is-0-widescreen {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-widescreen-only {
+  .bulma-columns.bulma-is-0-widescreen-only {
     --bulma-column-gap: 0rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-0-fullhd {
+  .bulma-columns.bulma-is-0-fullhd {
     --bulma-column-gap: 0rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-1 {
+.bulma-columns.bulma-is-1 {
   --bulma-column-gap: 0.25rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-mobile {
+  .bulma-columns.bulma-is-1-mobile {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-1-tablet {
+  .bulma-columns.bulma-is-1-tablet {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-tablet-only {
+  .bulma-columns.bulma-is-1-tablet-only {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-touch {
+  .bulma-columns.bulma-is-1-touch {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-desktop {
+  .bulma-columns.bulma-is-1-desktop {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-desktop-only {
+  .bulma-columns.bulma-is-1-desktop-only {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-widescreen {
+  .bulma-columns.bulma-is-1-widescreen {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-widescreen-only {
+  .bulma-columns.bulma-is-1-widescreen-only {
     --bulma-column-gap: 0.25rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-1-fullhd {
+  .bulma-columns.bulma-is-1-fullhd {
     --bulma-column-gap: 0.25rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-2 {
+.bulma-columns.bulma-is-2 {
   --bulma-column-gap: 0.5rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-mobile {
+  .bulma-columns.bulma-is-2-mobile {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-2-tablet {
+  .bulma-columns.bulma-is-2-tablet {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-tablet-only {
+  .bulma-columns.bulma-is-2-tablet-only {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-touch {
+  .bulma-columns.bulma-is-2-touch {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-desktop {
+  .bulma-columns.bulma-is-2-desktop {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-desktop-only {
+  .bulma-columns.bulma-is-2-desktop-only {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-widescreen {
+  .bulma-columns.bulma-is-2-widescreen {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-widescreen-only {
+  .bulma-columns.bulma-is-2-widescreen-only {
     --bulma-column-gap: 0.5rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-2-fullhd {
+  .bulma-columns.bulma-is-2-fullhd {
     --bulma-column-gap: 0.5rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-3 {
+.bulma-columns.bulma-is-3 {
   --bulma-column-gap: 0.75rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-mobile {
+  .bulma-columns.bulma-is-3-mobile {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-3-tablet {
+  .bulma-columns.bulma-is-3-tablet {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-tablet-only {
+  .bulma-columns.bulma-is-3-tablet-only {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-touch {
+  .bulma-columns.bulma-is-3-touch {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-desktop {
+  .bulma-columns.bulma-is-3-desktop {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-desktop-only {
+  .bulma-columns.bulma-is-3-desktop-only {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-widescreen {
+  .bulma-columns.bulma-is-3-widescreen {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-widescreen-only {
+  .bulma-columns.bulma-is-3-widescreen-only {
     --bulma-column-gap: 0.75rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-3-fullhd {
+  .bulma-columns.bulma-is-3-fullhd {
     --bulma-column-gap: 0.75rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-4 {
+.bulma-columns.bulma-is-4 {
   --bulma-column-gap: 1rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-mobile {
+  .bulma-columns.bulma-is-4-mobile {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-4-tablet {
+  .bulma-columns.bulma-is-4-tablet {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-tablet-only {
+  .bulma-columns.bulma-is-4-tablet-only {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-touch {
+  .bulma-columns.bulma-is-4-touch {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-desktop {
+  .bulma-columns.bulma-is-4-desktop {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-desktop-only {
+  .bulma-columns.bulma-is-4-desktop-only {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-widescreen {
+  .bulma-columns.bulma-is-4-widescreen {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-widescreen-only {
+  .bulma-columns.bulma-is-4-widescreen-only {
     --bulma-column-gap: 1rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-4-fullhd {
+  .bulma-columns.bulma-is-4-fullhd {
     --bulma-column-gap: 1rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-5 {
+.bulma-columns.bulma-is-5 {
   --bulma-column-gap: 1.25rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-mobile {
+  .bulma-columns.bulma-is-5-mobile {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-5-tablet {
+  .bulma-columns.bulma-is-5-tablet {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-tablet-only {
+  .bulma-columns.bulma-is-5-tablet-only {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-touch {
+  .bulma-columns.bulma-is-5-touch {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-desktop {
+  .bulma-columns.bulma-is-5-desktop {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-desktop-only {
+  .bulma-columns.bulma-is-5-desktop-only {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-widescreen {
+  .bulma-columns.bulma-is-5-widescreen {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-widescreen-only {
+  .bulma-columns.bulma-is-5-widescreen-only {
     --bulma-column-gap: 1.25rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-5-fullhd {
+  .bulma-columns.bulma-is-5-fullhd {
     --bulma-column-gap: 1.25rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-6 {
+.bulma-columns.bulma-is-6 {
   --bulma-column-gap: 1.5rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-mobile {
+  .bulma-columns.bulma-is-6-mobile {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-6-tablet {
+  .bulma-columns.bulma-is-6-tablet {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-tablet-only {
+  .bulma-columns.bulma-is-6-tablet-only {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-touch {
+  .bulma-columns.bulma-is-6-touch {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-desktop {
+  .bulma-columns.bulma-is-6-desktop {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-desktop-only {
+  .bulma-columns.bulma-is-6-desktop-only {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-widescreen {
+  .bulma-columns.bulma-is-6-widescreen {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-widescreen-only {
+  .bulma-columns.bulma-is-6-widescreen-only {
     --bulma-column-gap: 1.5rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-6-fullhd {
+  .bulma-columns.bulma-is-6-fullhd {
     --bulma-column-gap: 1.5rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-7 {
+.bulma-columns.bulma-is-7 {
   --bulma-column-gap: 1.75rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-mobile {
+  .bulma-columns.bulma-is-7-mobile {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-7-tablet {
+  .bulma-columns.bulma-is-7-tablet {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-tablet-only {
+  .bulma-columns.bulma-is-7-tablet-only {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-touch {
+  .bulma-columns.bulma-is-7-touch {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-desktop {
+  .bulma-columns.bulma-is-7-desktop {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-desktop-only {
+  .bulma-columns.bulma-is-7-desktop-only {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-widescreen {
+  .bulma-columns.bulma-is-7-widescreen {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-widescreen-only {
+  .bulma-columns.bulma-is-7-widescreen-only {
     --bulma-column-gap: 1.75rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-7-fullhd {
+  .bulma-columns.bulma-is-7-fullhd {
     --bulma-column-gap: 1.75rem;
   }
 }
-.bulma-columns.bulma-is-variable.bulma-is-8 {
+.bulma-columns.bulma-is-8 {
   --bulma-column-gap: 2rem;
 }
 @media screen and (max-width: 768px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-mobile {
+  .bulma-columns.bulma-is-8-mobile {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (min-width: 769px), print {
-  .bulma-columns.bulma-is-variable.bulma-is-8-tablet {
+  .bulma-columns.bulma-is-8-tablet {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-tablet-only {
+  .bulma-columns.bulma-is-8-tablet-only {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (max-width: 1023px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-touch {
+  .bulma-columns.bulma-is-8-touch {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-desktop {
+  .bulma-columns.bulma-is-8-desktop {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-desktop-only {
+  .bulma-columns.bulma-is-8-desktop-only {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-widescreen {
+  .bulma-columns.bulma-is-8-widescreen {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-widescreen-only {
+  .bulma-columns.bulma-is-8-widescreen-only {
     --bulma-column-gap: 2rem;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-columns.bulma-is-variable.bulma-is-8-fullhd {
+  .bulma-columns.bulma-is-8-fullhd {
     --bulma-column-gap: 2rem;
   }
 }
@@ -7594,6 +7612,66 @@ label.bulma-panel-block:hover {
 }
 .bulma-grid.bulma-is-col-min-12 {
   --bulma-grid-column-min: 18rem;
+}
+.bulma-grid.bulma-is-col-min-13 {
+  --bulma-grid-column-min: 19.5rem;
+}
+.bulma-grid.bulma-is-col-min-14 {
+  --bulma-grid-column-min: 21rem;
+}
+.bulma-grid.bulma-is-col-min-15 {
+  --bulma-grid-column-min: 22.5rem;
+}
+.bulma-grid.bulma-is-col-min-16 {
+  --bulma-grid-column-min: 24rem;
+}
+.bulma-grid.bulma-is-col-min-17 {
+  --bulma-grid-column-min: 25.5rem;
+}
+.bulma-grid.bulma-is-col-min-18 {
+  --bulma-grid-column-min: 27rem;
+}
+.bulma-grid.bulma-is-col-min-19 {
+  --bulma-grid-column-min: 28.5rem;
+}
+.bulma-grid.bulma-is-col-min-20 {
+  --bulma-grid-column-min: 30rem;
+}
+.bulma-grid.bulma-is-col-min-21 {
+  --bulma-grid-column-min: 31.5rem;
+}
+.bulma-grid.bulma-is-col-min-22 {
+  --bulma-grid-column-min: 33rem;
+}
+.bulma-grid.bulma-is-col-min-23 {
+  --bulma-grid-column-min: 34.5rem;
+}
+.bulma-grid.bulma-is-col-min-24 {
+  --bulma-grid-column-min: 36rem;
+}
+.bulma-grid.bulma-is-col-min-25 {
+  --bulma-grid-column-min: 37.5rem;
+}
+.bulma-grid.bulma-is-col-min-26 {
+  --bulma-grid-column-min: 39rem;
+}
+.bulma-grid.bulma-is-col-min-27 {
+  --bulma-grid-column-min: 40.5rem;
+}
+.bulma-grid.bulma-is-col-min-28 {
+  --bulma-grid-column-min: 42rem;
+}
+.bulma-grid.bulma-is-col-min-29 {
+  --bulma-grid-column-min: 43.5rem;
+}
+.bulma-grid.bulma-is-col-min-30 {
+  --bulma-grid-column-min: 45rem;
+}
+.bulma-grid.bulma-is-col-min-31 {
+  --bulma-grid-column-min: 46.5rem;
+}
+.bulma-grid.bulma-is-col-min-32 {
+  --bulma-grid-column-min: 48rem;
 }
 
 .bulma-cell {
@@ -10230,28 +10308,31 @@ label.bulma-panel-block:hover {
   padding-right: 32px;
   width: 100%;
 }
+.bulma-container.bulma-is-max-tablet {
+  max-width: 705px;
+}
 @media screen and (min-width: 1024px) {
   .bulma-container {
     max-width: 960px;
   }
 }
 @media screen and (max-width: 1215px) {
-  .bulma-container.bulma-is-widescreen:not(.bulma-is-max-desktop) {
+  .bulma-container.bulma-is-widescreen:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop) {
     max-width: 1152px;
   }
 }
 @media screen and (max-width: 1407px) {
-  .bulma-container.bulma-is-fullhd:not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
+  .bulma-container.bulma-is-fullhd:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
     max-width: 1344px;
   }
 }
 @media screen and (min-width: 1216px) {
-  .bulma-container:not(.bulma-is-max-desktop) {
+  .bulma-container:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop) {
     max-width: 1152px;
   }
 }
 @media screen and (min-width: 1408px) {
-  .bulma-container:not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
+  .bulma-container:not(.bulma-is-max-tablet):not(.bulma-is-max-desktop):not(.bulma-is-max-widescreen) {
     max-width: 1344px;
   }
 }
@@ -10951,6 +11032,9 @@ label.bulma-panel-block:hover {
   .bulma-section.bulma-is-large {
     padding: var(--bulma-section-padding-large);
   }
+}
+.bulma-section.bulma-is-fullheight {
+  min-height: 100vh;
 }
 
 :root {
