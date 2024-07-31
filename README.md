@@ -131,7 +131,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/start/ove
 | [@angular-bulma](https://quinnjr.github.io/angular-bulma)                            | [Angular](https://angular.io/) directives and components to use in your Bulma projects                           |
 | [Bulma CSS Class Completion](https://github.com/eliutdev/bulma-css-class-completion) | CSS class name completion for the HTML class attribute based on Bulma CSS classes.                               |
 | [Crispy-Bulma](https://github.com/ckrybus/crispy-bulma)                              | Bulma template pack for django-crispy-forms                                                                      |
-| [CASE](https://case.app)                                                             | CASE is Lightweight Backend-as-a-Service with essential features: DB, Admin panel, API, JS SDK         |
+| [Manifest](https://manifest.build)                                                   | Manifest is a lightweight Backend-as-a-Service with essential features: DB, Admin panel, API, JS SDK             |
 | [Reactive Bulma](https://github.com/NicolasOmar/reactive-bulma)                                                             | A component library based on React, Bulma, Typescript and Rollup         |
 
 <p>Browser testing via <a href="https://www.lambdatest.com/" target="_blank"><img src="https://www.lambdatest.com/resources/images/logo-white.svg" style="vertical-align: middle;margin-left:5px" width="147" height="26" /></a></p>
