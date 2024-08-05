@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 1.0.3
+
+### Improvements
+
+- Add `is-dark`, `is-light`, `is-soft` and `is-bold` modifiers to the panel component
+
 ## 1.0.2
 
 ### Improvements
