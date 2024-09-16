@@ -6,6 +6,8 @@
 @use "initial-variables" as iv;
 @use "functions" as fn;
 
+$variables-host: iv.$variables-host;
+
 @function buildVarName($name, $prefix: "", $suffix: "") {
   @return "--#{iv.$cssvars-prefix}#{$prefix}#{$name}#{$suffix}";
 }
@@ -419,7 +421,7 @@
 
 @mixin system-theme($name) {
   @media (prefers-color-scheme: #{$name}) {
-    :root {
+    #{$variables-host} {
       @content;
     }
   }
