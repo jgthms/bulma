@@ -2,6 +2,10 @@
 
 ## 1.0.3
 
+### Bug Fixes
+
+- Fix #3842: restore use of `$easing`, `$radius-rounded` and `$speed` Sass variables
+
 ### Documentation Fixes
 
 - Fix #3904, #3884: fix website horizontal overflow
