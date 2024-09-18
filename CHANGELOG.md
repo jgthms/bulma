@@ -2,9 +2,10 @@
 
 ## 1.0.3
 
-### Bug fixes
+### Documentation Fixes
 
 - Fix #3904, #3884: fix website horizontal overflow
+- Fix #3849: fix Light Mode color swatches in Dark Mode
 
 ## 1.0.2
 
