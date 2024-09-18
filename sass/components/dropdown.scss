@@ -13,21 +13,30 @@ $dropdown-content-radius: cv.getVar("radius") !default;
 $dropdown-content-shadow: cv.getVar("shadow") !default;
 $dropdown-content-z: 20 !default;
 
-$dropdown-item-h: cv.getVar("scheme-h");
-$dropdown-item-s: cv.getVar("scheme-s");
-$dropdown-item-l: cv.getVar("scheme-main-l");
-$dropdown-item-background-l: cv.getVar("scheme-main-l");
-$dropdown-item-background-l-delta: 0%;
-$dropdown-item-hover-background-l-delta: cv.getVar("hover-background-l-delta");
-$dropdown-item-active-background-l-delta: cv.getVar(
-  "active-background-l-delta"
-);
-$dropdown-item-color-l: cv.getVar("text-strong-l");
-$dropdown-item-selected-h: cv.getVar("link-h");
-$dropdown-item-selected-s: cv.getVar("link-s");
-$dropdown-item-selected-l: cv.getVar("link-l");
-$dropdown-item-selected-background-l: cv.getVar("link-l");
-$dropdown-item-selected-color-l: cv.getVar("link-invert-l");
+$dropdown-item-background-color: cv.getVar("scheme-main") !default;
+$dropdown-item-color: cv.getVar("text-strong") !default;
+$dropdown-item-hover-background-color: hsl(
+  from #{cv.getVar("dropdown-item-background-color")} h s calc(l + #{cv.getVar(
+          "hover-background-l-delta"
+        )})
+) !default;
+$dropdown-item-active-background-color: hsl(
+  from #{cv.getVar("dropdown-item-background-color")} h s calc(l + #{cv.getVar(
+          "active-background-l-delta"
+        )})
+) !default;
+$dropdown-item-selected-background-color: cv.getVar("link") !default;
+$dropdown-item-selected-color: cv.getVar("link-invert") !default;
+$dropdown-item-selected-hover-background-color: hsl(
+  from #{cv.getVar("dropdown-item-selected-background-color")} h s calc(l + #{cv.getVar(
+          "hover-background-l-delta"
+        )})
+) !default;
+$dropdown-item-selected-active-background-color: hsl(
+  from #{cv.getVar("dropdown-item-selected-background-color")} h s calc(l + #{cv.getVar(
+          "active-background-l-delta"
+        )})
+) !default;
 
 $dropdown-divider-background-color: cv.getVar("border-weak") !default;
 
@@ -43,19 +52,6 @@ $dropdown-divider-background-color: cv.getVar("border-weak") !default;
       "dropdown-content-radius": #{$dropdown-content-radius},
       "dropdown-content-shadow": #{$dropdown-content-shadow},
       "dropdown-content-z": #{$dropdown-content-z},
-      "dropdown-item-h": #{$dropdown-item-h},
-      "dropdown-item-s": #{$dropdown-item-s},
-      "dropdown-item-l": #{$dropdown-item-l},
-      "dropdown-item-background-l": #{$dropdown-item-background-l},
-      "dropdown-item-background-l-delta": #{$dropdown-item-background-l-delta},
-      "dropdown-item-hover-background-l-delta": #{$dropdown-item-hover-background-l-delta},
-      "dropdown-item-active-background-l-delta": #{$dropdown-item-active-background-l-delta},
-      "dropdown-item-color-l": #{$dropdown-item-color-l},
-      "dropdown-item-selected-h": #{$dropdown-item-selected-h},
-      "dropdown-item-selected-s": #{$dropdown-item-selected-s},
-      "dropdown-item-selected-l": #{$dropdown-item-selected-l},
-      "dropdown-item-selected-background-l": #{$dropdown-item-selected-background-l},
-      "dropdown-item-selected-color-l": #{$dropdown-item-selected-color-l},
       "dropdown-divider-background-color": #{$dropdown-divider-background-color},
     )
   );
@@ -110,11 +106,12 @@ $dropdown-divider-background-color: cv.getVar("border-weak") !default;
 }
 
 .#{iv.$class-prefix}dropdown-item {
-  color: hsl(
-    #{cv.getVar("dropdown-item-h")},
-    #{cv.getVar("dropdown-item-s")},
-    #{cv.getVar("dropdown-item-color-l")}
+  @include cv.register-vars(
+    (
+      "dropdown-item-color": #{$dropdown-item-color},
+    )
   );
+  color: cv.getVar("dropdown-item-color");
   display: block;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -123,59 +120,47 @@ $dropdown-divider-background-color: cv.getVar("border-weak") !default;
 
 a.#{iv.$class-prefix}dropdown-item,
 button.#{iv.$class-prefix}dropdown-item {
-  background-color: hsl(
-    #{cv.getVar("dropdown-item-h")},
-    #{cv.getVar("dropdown-item-s")},
-    calc(
-      #{cv.getVar("dropdown-item-background-l")} + #{cv.getVar(
-          "dropdown-item-background-l-delta"
-        )}
+  @include cv.register-vars(
+    (
+      "dropdown-item-background-color": #{$dropdown-item-background-color},
+      "dropdown-item-hover-background-color": #{$dropdown-item-hover-background-color},
+      "dropdown-item-active-background-color": #{$dropdown-item-active-background-color},
+      "dropdown-item-selected-background-color": #{$dropdown-item-selected-background-color},
+      "dropdown-item-selected-color": #{$dropdown-item-selected-color},
+      "dropdown-item-selected-hover-background-color": #{$dropdown-item-selected-hover-background-color},
+      "dropdown-item-selected-active-background-color": #{$dropdown-item-selected-active-background-color},
     )
   );
+  background-color: cv.getVar("dropdown-item-background-color");
   padding-inline-end: 3rem;
   text-align: inherit;
   white-space: nowrap;
   width: 100%;
 
   &:hover {
-    @include cv.register-vars(
-      (
-        "dropdown-item-background-l-delta": #{cv.getVar(
-            "dropdown-item-hover-background-l-delta"
-          )},
-        "dropdown-item-border-l-delta": #{cv.getVar(
-            "dropdown-item-hover-border-l-delta"
-          )},
-      )
-    );
+    background-color: cv.getVar("dropdown-item-hover-background-color");
   }
 
   &:active {
-    @include cv.register-vars(
-      (
-        "dropdown-item-background-l-delta": #{cv.getVar(
-            "dropdown-item-active-background-l-delta"
-          )},
-        "dropdown-item-border-l-delta": #{cv.getVar(
-            "dropdown-item-active-border-l-delta"
-          )},
-      )
-    );
+    background-color: cv.getVar("dropdown-item-active-background-color");
   }
 
   &.#{iv.$class-prefix}is-active,
   &.#{iv.$class-prefix}is-selected {
-    @include cv.register-vars(
-      (
-        "dropdown-item-h": #{cv.getVar("dropdown-item-selected-h")},
-        "dropdown-item-s": #{cv.getVar("dropdown-item-selected-s")},
-        "dropdown-item-l": #{cv.getVar("dropdown-item-selected-l")},
-        "dropdown-item-background-l": #{cv.getVar(
-            "dropdown-item-selected-background-l"
-          )},
-        "dropdown-item-color-l": #{cv.getVar("dropdown-item-selected-color-l")},
-      )
-    );
+    background-color: cv.getVar("dropdown-item-selected-background-color");
+    color: cv.getVar("dropdown-item-selected-color");
+
+    &:hover {
+      background-color: cv.getVar(
+        "dropdown-item-selected-hover-background-color"
+      );
+    }
+
+    &:active {
+      background-color: cv.getVar(
+        "dropdown-item-selected-active-background-color"
+      );
+    }
   }
 }
 

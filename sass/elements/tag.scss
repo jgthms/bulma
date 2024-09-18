@@ -4,13 +4,10 @@
 @use "../utilities/extends";
 @use "../utilities/mixins" as mx;
 
-$tag-h: cv.getVar("scheme-h");
-$tag-s: cv.getVar("scheme-s");
-$tag-background-l: cv.getVar("background-l");
-$tag-background-l-delta: 0%;
 $tag-hover-background-l-delta: cv.getVar("hover-background-l-delta");
 $tag-active-background-l-delta: cv.getVar("active-background-l-delta");
-$tag-color-l: cv.getVar("text-l");
+$tag-color: cv.getVar("text");
+$tag-background-color: cv.getVar("background");
 $tag-radius: cv.getVar("radius") !default;
 $tag-delete-margin: 1px !default;
 
@@ -20,7 +17,7 @@ $tag-colors: dv.$colors !default;
   @extend %block;
 
   align-items: center;
-  color: hsl(cv.getVar("tag-h"), cv.getVar("tag-s"), cv.getVar("tag-color-l"));
+  color: cv.getVar("tag-color");
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -72,28 +69,17 @@ $tag-colors: dv.$colors !default;
 .#{iv.$class-prefix}tag {
   @include cv.register-vars(
     (
-      "tag-h": #{$tag-h},
-      "tag-s": #{$tag-s},
-      "tag-background-l": #{$tag-background-l},
-      "tag-background-l-delta": #{$tag-background-l-delta},
-      "tag-hover-background-l-delta": #{$tag-hover-background-l-delta},
-      "tag-active-background-l-delta": #{$tag-active-background-l-delta},
-      "tag-color-l": #{$tag-color-l},
+      "tag-background-color": #{$tag-background-color},
+      "tag-color": #{$tag-color},
       "tag-radius": #{$tag-radius},
       "tag-delete-margin": #{$tag-delete-margin},
     )
   );
 
   align-items: center;
-  background-color: hsl(
-    cv.getVar("tag-h"),
-    cv.getVar("tag-s"),
-    calc(
-      #{cv.getVar("tag-background-l")} + #{cv.getVar("tag-background-l-delta")}
-    )
-  );
+  background-color: cv.getVar("tag-background-color");
   border-radius: $tag-radius;
-  color: hsl(cv.getVar("tag-h"), cv.getVar("tag-s"), cv.getVar("tag-color-l"));
+  color: cv.getVar("tag-color");
   display: inline-flex;
   font-size: cv.getVar("size-small");
   height: 2em;
@@ -113,18 +99,16 @@ $tag-colors: dv.$colors !default;
     &.#{iv.$class-prefix}is-#{$name} {
       @include cv.register-vars(
         (
-          "tag-h": #{cv.getVar($name, "", "-h")},
-          "tag-s": #{cv.getVar($name, "", "-s")},
-          "tag-background-l": #{cv.getVar($name, "", "-l")},
-          "tag-color-l": #{cv.getVar($name, "", "-invert-l")},
+          "tag-background-color": cv.getVar($name),
+          "tag-color": #{cv.getVar($name, "", "-invert")},
         )
       );
 
       &.#{iv.$class-prefix}is-light {
         @include cv.register-vars(
           (
-            "tag-background-l": #{cv.getVar("light-l")},
-            "tag-color-l": #{cv.getVar($name, "", "-light-invert-l")},
+            "tag-background-color": #{cv.getVar($name, "", "-light")},
+            "tag-color": #{cv.getVar($name, "", "-light-invert")},
           )
         );
       }

@@ -10,12 +10,12 @@
   @return "--#{iv.$cssvars-prefix}#{$prefix}#{$name}#{$suffix}";
 }
 
-@function buildHslaString($name, $l, $a: 1) {
+@function buildHslaString($name, $l) {
   $lightness: getVar($name, "", "-l");
   @if ($l) {
     $lightness: $l;
   }
-  @return "hsla(#{getVar($name, '', '-h')}, #{getVar($name, '', '-s')}, #{$lightness}, #{$a})";
+  @return "hsl(from #{getVar($name)} h s #{$lightness})";
 }
 
 @function getVar($name, $prefix: "", $suffix: "") {
@@ -124,9 +124,8 @@
 }
 
 @mixin register-base-color($name, $base) {
-  $hsla: buildHslaString($name, getVar($name, "", "-l"));
-  @include register-var($name, $hsla);
-  @include register-var($name, $hsla, "", "-base"); // Just for reference
+  @include register-var($name, $base);
+  @include register-var($name, $base, "", "-base"); // Just for reference
   @include register-rgb($name, $base);
   @include register-hsl($name, $base);
 }
