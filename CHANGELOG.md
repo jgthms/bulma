@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 1.0.3
+
+### Bug fixes
+
+- Fix #3904, #3884: fix website horizontal overflow
+
 ## 1.0.2
 
 ### Improvements
