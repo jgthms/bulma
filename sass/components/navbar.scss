@@ -4,9 +4,6 @@
 @use "../utilities/extends";
 @use "../utilities/mixins" as mx;
 
-$navbar-h: cv.getVar("scheme-h") !default;
-$navbar-s: cv.getVar("scheme-s") !default;
-$navbar-l: cv.getVar("scheme-main-l") !default;
 $navbar-background-color: cv.getVar("scheme-main") !default;
 $navbar-box-shadow-size: 0 0.125em 0 0 !default;
 $navbar-box-shadow-color: cv.getVar("background") !default;
@@ -16,33 +13,34 @@ $navbar-padding-horizontal: 2rem !default;
 $navbar-z: 30 !default;
 $navbar-fixed-z: 30 !default;
 
+$navbar-item-background-color: cv.getVar("scheme-main") !default;
 $navbar-item-background-a: 0 !default;
-$navbar-item-background-l: cv.getVar("scheme-main-l") !default;
-$navbar-item-background-l-delta: 0% !default;
-$navbar-item-hover-background-l-delta: cv.getVar(
-  "hover-background-l-delta"
+$navbar-item-color: cv.getVar("text") !default;
+$navbar-item-hover-background-color: hsl(
+  from #{cv.getVar("navbar-item-background-color")} h s calc(l + #{cv.getVar(
+          "hover-background-l-delta"
+        )})
 ) !default;
-$navbar-item-active-background-l-delta: cv.getVar(
-  "active-background-l-delta"
+$navbar-item-hover-color: cv.getVar("text-strong") !default;
+$navbar-item-active-background-color: hsl(
+  from #{cv.getVar("navbar-item-background-color")} h s calc(l + #{cv.getVar(
+          "active-background-l-delta"
+        )})
 ) !default;
-$navbar-item-color-l: cv.getVar("text-l") !default;
-$navbar-item-color: hsl(
-  #{cv.getVar("navbar-h")},
-  #{cv.getVar("navbar-s")},
-  #{cv.getVar("navbar-item-color-l")}
+$navbar-item-active-color: cv.getVar("text-strong") !default;
+$navbar-item-selected-background-color: cv.getVar("link") !default;
+$navbar-item-selected-color: cv.getVar("link-invert") !default;
+$navbar-item-selected-hover-background-color: hsl(
+  from #{cv.getVar("navbar-item-selected-background-color")} h s calc(l + #{cv.getVar(
+          "hover-background-l-delta"
+        )})
 ) !default;
-$navbar-item-selected-h: cv.getVar("link-h") !default;
-$navbar-item-selected-s: cv.getVar("link-s") !default;
-$navbar-item-selected-l: cv.getVar("link-l") !default;
-$navbar-item-selected-background-l: cv.getVar("link-l") !default;
-$navbar-item-selected-color-l: cv.getVar("link-invert-l") !default;
+$navbar-item-selected-active-background-color: hsl(
+  from #{cv.getVar("navbar-item-selected-background-color")} h s calc(l + #{cv.getVar(
+          "active-background-l-delta"
+        )})
+) !default;
 $navbar-item-img-max-height: 1.75rem !default;
-
-$navbar-dropdown-item-h: cv.getVar("scheme-h") !default;
-$navbar-dropdown-item-s: cv.getVar("scheme-s") !default;
-$navbar-dropdown-item-l: cv.getVar("scheme-main-l") !default;
-$navbar-dropdown-item-background-l: cv.getVar("scheme-main-l") !default;
-$navbar-dropdown-item-color-l: cv.getVar("text-l") !default;
 
 $navbar-burger-color: cv.getVar("link") !default;
 
@@ -55,18 +53,26 @@ $navbar-tab-active-border-bottom-style: solid !default;
 $navbar-tab-active-border-bottom-width: 0.1875em !default;
 
 $navbar-dropdown-background-color: cv.getVar("scheme-main") !default;
-$navbar-dropdown-border-l: cv.getVar("border-l") !default;
-$navbar-dropdown-border-color: hsl(
-  cv.getVar("navbar-h"),
-  cv.getVar("navbar-s"),
-  cv.getVar("navbar-dropdown-border-l")
-) !default;
+$navbar-dropdown-border-color: cv.getVar("border") !default;
 $navbar-dropdown-border-style: solid !default;
 $navbar-dropdown-border-width: 0.125em !default;
 $navbar-dropdown-offset: -0.25em !default;
 $navbar-dropdown-arrow: cv.getVar("link") !default;
 $navbar-dropdown-radius: cv.getVar("radius-large") !default;
 $navbar-dropdown-z: 20 !default;
+
+$navbar-dropdown-item-background-color: cv.getVar("scheme-main") !default;
+$navbar-dropdown-item-color: cv.getVar("text") !default;
+$navbar-dropdown-item-hover-background-color: hsl(
+  from #{cv.getVar("navbar-dropdown-item-background-color")} h s calc(l + #{cv.getVar(
+          "hover-background-l-delta"
+        )})
+) !default;
+$navbar-dropdown-item-active-background-color: hsl(
+  from #{cv.getVar("navbar-dropdown-item-background-color")} h s calc(l + #{cv.getVar(
+          "active-background-l-delta"
+        )})
+) !default;
 
 $navbar-dropdown-boxed-radius: cv.getVar("radius-large") !default;
 $navbar-dropdown-boxed-shadow:
@@ -85,7 +91,7 @@ $navbar-dropdown-boxed-shadow:
       0.1
     ) !default;
 
-$navbar-divider-background-l: cv.getVar("background-l") !default;
+$navbar-divider-background-color: cv.getVar("background") !default;
 $navbar-divider-height: 0.125em !default;
 
 $navbar-bottom-box-shadow-size: 0 -0.125em 0 0 !default;
@@ -112,9 +118,6 @@ $navbar-colors: dv.$colors !default;
 .#{iv.$class-prefix}navbar {
   @include cv.register-vars(
     (
-      "navbar-h": #{$navbar-h},
-      "navbar-s": #{$navbar-s},
-      "navbar-l": #{$navbar-l},
       "navbar-background-color": #{$navbar-background-color},
       "navbar-box-shadow-size": #{$navbar-box-shadow-size},
       "navbar-box-shadow-color": #{$navbar-box-shadow-color},
@@ -122,18 +125,17 @@ $navbar-colors: dv.$colors !default;
       "navbar-padding-horizontal": #{$navbar-padding-horizontal},
       "navbar-z": #{$navbar-z},
       "navbar-fixed-z": #{$navbar-fixed-z},
+      "navbar-item-background-color": #{$navbar-item-background-color},
       "navbar-item-background-a": #{$navbar-item-background-a},
-      "navbar-item-background-l": #{$navbar-item-background-l},
-      "navbar-item-background-l-delta": #{$navbar-item-background-l-delta},
-      "navbar-item-hover-background-l-delta": #{$navbar-item-hover-background-l-delta},
-      "navbar-item-active-background-l-delta": #{$navbar-item-active-background-l-delta},
-      "navbar-item-color-l": #{$navbar-item-color-l},
       "navbar-item-color": #{$navbar-item-color},
-      "navbar-item-selected-h": #{$navbar-item-selected-h},
-      "navbar-item-selected-s": #{$navbar-item-selected-s},
-      "navbar-item-selected-l": #{$navbar-item-selected-l},
-      "navbar-item-selected-background-l": #{$navbar-item-selected-background-l},
-      "navbar-item-selected-color-l": #{$navbar-item-selected-color-l},
+      "navbar-item-hover-background-color": #{$navbar-item-hover-background-color},
+      "navbar-item-hover-color": #{$navbar-item-hover-color},
+      "navbar-item-active-background-color": #{$navbar-item-active-background-color},
+      "navbar-item-active-color": #{$navbar-item-active-color},
+      "navbar-item-selected-background-color": #{$navbar-item-selected-background-color},
+      "navbar-item-selected-color": #{$navbar-item-selected-color},
+      "navbar-item-selected-hover-background-color": #{$navbar-item-selected-hover-background-color},
+      "navbar-item-selected-active-background-color": #{$navbar-item-selected-active-background-color},
       "navbar-item-img-max-height": #{$navbar-item-img-max-height},
       "navbar-burger-color": #{$navbar-burger-color},
       "navbar-tab-hover-background-color": #{$navbar-tab-hover-background-color},
@@ -144,7 +146,6 @@ $navbar-colors: dv.$colors !default;
       "navbar-tab-active-border-bottom-style": #{$navbar-tab-active-border-bottom-style},
       "navbar-tab-active-border-bottom-width": #{$navbar-tab-active-border-bottom-width},
       "navbar-dropdown-background-color": #{$navbar-dropdown-background-color},
-      "navbar-dropdown-border-l": #{$navbar-dropdown-border-l},
       "navbar-dropdown-border-color": #{$navbar-dropdown-border-color},
       "navbar-dropdown-border-style": #{$navbar-dropdown-border-style},
       "navbar-dropdown-border-width": #{$navbar-dropdown-border-width},
@@ -152,14 +153,13 @@ $navbar-colors: dv.$colors !default;
       "navbar-dropdown-arrow": #{$navbar-dropdown-arrow},
       "navbar-dropdown-radius": #{$navbar-dropdown-radius},
       "navbar-dropdown-z": #{$navbar-dropdown-z},
+      "navbar-dropdown-item-background-color": #{$navbar-dropdown-item-background-color},
+      "navbar-dropdown-item-color": #{$navbar-dropdown-item-color},
+      "navbar-dropdown-item-hover-background-color": #{$navbar-dropdown-item-hover-background-color},
+      "navbar-dropdown-item-active-background-color": #{$navbar-dropdown-item-active-background-color},
       "navbar-dropdown-boxed-radius": #{$navbar-dropdown-boxed-radius},
       "navbar-dropdown-boxed-shadow": #{$navbar-dropdown-boxed-shadow},
-      "navbar-dropdown-item-h": #{$navbar-dropdown-item-h},
-      "navbar-dropdown-item-s": #{$navbar-dropdown-item-s},
-      "navbar-dropdown-item-l": #{$navbar-dropdown-item-l},
-      "navbar-dropdown-item-background-l": #{$navbar-dropdown-item-background-l},
-      "navbar-dropdown-item-color-l": #{$navbar-dropdown-item-color-l},
-      "navbar-divider-background-l": #{$navbar-divider-background-l},
+      "navbar-divider-background-color": #{$navbar-divider-background-color},
       "navbar-divider-height": #{$navbar-divider-height},
       "navbar-bottom-box-shadow-size": #{$navbar-bottom-box-shadow-size},
     )
@@ -176,31 +176,47 @@ $navbar-colors: dv.$colors !default;
     &.#{iv.$class-prefix}is-#{$name} {
       @include cv.register-vars(
         (
-          "navbar-h": #{cv.getVar($name, "", "-h")},
-          "navbar-s": #{cv.getVar($name, "", "-s")},
-          "navbar-l": #{cv.getVar($name, "", "-l")},
-          "burger-h": #{cv.getVar($name, "", "-h")},
-          "burger-s": #{cv.getVar($name, "", "-s")},
-          "burger-l": #{cv.getVar($name, "", "-invert-l")},
           "navbar-background-color": #{cv.getVar($name)},
-          "navbar-item-background-l": #{cv.getVar($name, "", "-l")},
-          "navbar-item-color-l": #{cv.getVar($name, "", "-invert-l")},
-          "navbar-item-selected-h": #{cv.getVar($name, "", "-h")},
-          "navbar-item-selected-s": #{cv.getVar($name, "", "-s")},
-          "navbar-item-selected-l": #{cv.getVar($name, "", "-l")},
-          "navbar-item-selected-background-l": #{cv.getVar($name, "", "-l")},
-          "navbar-item-selected-color-l": #{cv.getVar($name, "", "-invert-l")},
-          "navbar-dropdown-arrow": #{cv.getVar($name, "", "-invert-l")},
-          "navbar-dropdown-background-color":
-            hsl(
-              #{cv.getVar($name, "", "-h")},
-              #{cv.getVar($name, "", "-s")},
-              #{cv.getVar("navbar-dropdown-item-background-l")}
-            ),
-          "navbar-dropdown-item-h": #{cv.getVar($name, "", "-h")},
-          "navbar-dropdown-item-s": #{cv.getVar($name, "", "-s")},
+          "navbar-item-background-color": #{cv.getVar($name)},
+          "navbar-item-color": #{cv.getVar($name, "", "-invert")},
+          "navbar-item-hover-color": #{cv.getVar($name, "", "-invert")},
+          "navbar-item-active-color": #{cv.getVar($name, "", "-invert")},
+          "navbar-item-selected-background-color": #{cv.getVar($name)},
+          "navbar-dropdown-arrow": #{cv.getVar($name, "", "-invert")},
+          "navbar-dropdown-item-color": #{cv.getVar($name, "", "-on-scheme")},
         )
       );
+
+      .#{iv.$class-prefix}navbar-dropdown {
+        .#{iv.$class-prefix}navbar-item {
+          &:not(.is-active, .is-selected) {
+            background-color: hsl(
+              from cv.getVar("navbar-dropdown-item-background-color")
+                cv.getVar($name, "", "-h")
+                cv.getVar($name, "", "-s")
+                l
+            );
+
+            &:hover {
+              background-color: hsl(
+                from cv.getVar("navbar-dropdown-item-hover-background-color")
+                  cv.getVar($name, "", "-h")
+                  cv.getVar($name, "", "-s")
+                  l
+              );
+            }
+
+            &:active {
+              background-color: hsl(
+                from cv.getVar("navbar-dropdown-item-active-background-color")
+                  cv.getVar($name, "", "-h")
+                  cv.getVar($name, "", "-s")
+                  l
+              );
+            }
+          }
+        }
+      }
     }
   }
 
@@ -296,56 +312,37 @@ body {
 
 a.#{iv.$class-prefix}navbar-item,
 .#{iv.$class-prefix}navbar-link {
-  background-color: hsla(
-    #{cv.getVar("navbar-h")},
-    #{cv.getVar("navbar-s")},
-    calc(
-      #{cv.getVar("navbar-item-background-l")} + #{cv.getVar(
-          "navbar-item-background-l-delta"
-        )}
-    ),
-    #{cv.getVar("navbar-item-background-a")}
-  );
+  background-color: cv.getVar("navbar-item-background-color");
   cursor: pointer;
 
   &:focus,
   &:focus-within,
   &:hover {
-    @include cv.register-vars(
-      (
-        "navbar-item-background-l-delta": #{cv.getVar(
-            "navbar-item-hover-background-l-delta"
-          )},
-        "navbar-item-background-a": 1,
-      )
-    );
+    background-color: cv.getVar("navbar-item-hover-background-color");
+    color: cv.getVar("navbar-item-hover-color");
   }
 
   &:active {
-    @include cv.register-vars(
-      (
-        "navbar-item-background-l-delta": #{cv.getVar(
-            "navbar-item-active-background-l-delta"
-          )},
-        "navbar-item-background-a": 1,
-      )
-    );
+    background-color: cv.getVar("navbar-item-active-background-color");
+    color: cv.getVar("navbar-item-active-color");
   }
 
   &.#{iv.$class-prefix}is-active,
   &.#{iv.$class-prefix}is-selected {
-    @include cv.register-vars(
-      (
-        "navbar-h": #{cv.getVar("navbar-item-selected-h")},
-        "navbar-s": #{cv.getVar("navbar-item-selected-s")},
-        "navbar-l": #{cv.getVar("navbar-item-selected-l")},
-        "navbar-item-background-l": #{cv.getVar(
-            "navbar-item-selected-background-l"
-          )},
-        "navbar-item-background-a": 1,
-        "navbar-item-color-l": #{cv.getVar("navbar-item-selected-color-l")},
-      )
-    );
+    background-color: cv.getVar("navbar-item-selected-background-color");
+    color: cv.getVar("navbar-item-selected-color");
+
+    &:hover {
+      background-color: cv.getVar(
+        "navbar-item-selected-hover-background-color"
+      );
+    }
+
+    &:active {
+      background-color: cv.getVar(
+        "navbar-item-selected-active-background-color"
+      );
+    }
   }
 }
 
@@ -417,30 +414,26 @@ a.#{iv.$class-prefix}navbar-item,
     padding-right: 1.5rem;
 
     &:not(.is-active, .is-selected) {
-      background-color: hsl(
-        #{cv.getVar("navbar-dropdown-item-h")},
-        #{cv.getVar("navbar-dropdown-item-s")},
-        calc(
-          #{cv.getVar("navbar-dropdown-item-background-l")} + #{cv.getVar(
-              "navbar-item-background-l-delta"
-            )}
-        )
-      );
-      color: hsl(
-        #{cv.getVar("navbar-dropdown-item-h")},
-        #{cv.getVar("navbar-dropdown-item-s")},
-        #{cv.getVar("navbar-dropdown-item-color-l")}
-      );
+      background-color: cv.getVar("navbar-dropdown-item-background-color");
+      color: cv.getVar("navbar-dropdown-item-color");
+
+      &:hover {
+        background-color: cv.getVar(
+          "navbar-dropdown-item-hover-background-color"
+        );
+      }
+
+      &:active {
+        background-color: cv.getVar(
+          "navbar-dropdown-item-active-background-color"
+        );
+      }
     }
   }
 }
 
 .#{iv.$class-prefix}navbar-divider {
-  background-color: hsl(
-    #{cv.getVar("navbar-h")},
-    #{cv.getVar("navbar-s")},
-    #{cv.getVar("navbar-divider-background-l")}
-  );
+  background-color: cv.getVar("navbar-divider-background-color");
   border: none;
   display: none;
   height: cv.getVar("navbar-divider-height");
@@ -561,31 +554,31 @@ a.#{iv.$class-prefix}navbar-item,
 
       .#{iv.$class-prefix}navbar-dropdown {
         a.#{iv.$class-prefix}navbar-item {
-          background-color: hsl(
-            #{cv.getVar("navbar-h")},
-            #{cv.getVar("navbar-s")},
-            calc(
-              #{cv.getVar("navbar-item-background-l")} + #{cv.getVar(
-                  "navbar-item-background-l-delta"
-                )}
-            )
-          );
+          // background-color: hsl(
+          //   #{cv.getVar("navbar-h")},
+          //   #{cv.getVar("navbar-s")},
+          //   calc(
+          //     #{cv.getVar("navbar-item-background-l")} + #{cv.getVar(
+          //         "navbar-item-background-l-delta"
+          //       )}
+          //   )
+          // );
 
           &.#{iv.$class-prefix}is-active,
           &.#{iv.$class-prefix}is-selected {
-            @include cv.register-vars(
-              (
-                "navbar-h": #{cv.getVar("navbar-item-selected-h")},
-                "navbar-s": #{cv.getVar("navbar-item-selected-s")},
-                "navbar-l": #{cv.getVar("navbar-item-selected-l")},
-                "navbar-item-background-l": #{cv.getVar(
-                    "navbar-item-selected-background-l"
-                  )},
-                "navbar-item-color-l": #{cv.getVar(
-                    "navbar-item-selected-color-l"
-                  )},
-              )
-            );
+            // @include cv.register-vars(
+            //   (
+            //     "navbar-h": #{cv.getVar("navbar-item-selected-h")},
+            //     "navbar-s": #{cv.getVar("navbar-item-selected-s")},
+            //     "navbar-l": #{cv.getVar("navbar-item-selected-l")},
+            //     "navbar-item-background-l": #{cv.getVar(
+            //         "navbar-item-selected-background-l"
+            //       )},
+            //     "navbar-item-color-l": #{cv.getVar(
+            //         "navbar-item-selected-color-l"
+            //       )},
+            //   )
+            // );
           }
         }
       }
@@ -688,23 +681,6 @@ a.#{iv.$class-prefix}navbar-item,
 
     a.#{iv.$class-prefix}navbar-item {
       padding-inline-end: 3rem;
-
-      &:not(.is-active, .is-selected) {
-        background-color: hsl(
-          #{cv.getVar("navbar-dropdown-item-h")},
-          #{cv.getVar("navbar-dropdown-item-s")},
-          calc(
-            #{cv.getVar("navbar-dropdown-item-background-l")} + #{cv.getVar(
-                "navbar-item-background-l-delta"
-              )}
-          )
-        );
-        color: hsl(
-          #{cv.getVar("navbar-dropdown-item-h")},
-          #{cv.getVar("navbar-dropdown-item-s")},
-          #{cv.getVar("navbar-dropdown-item-color-l")}
-        );
-      }
     }
 
     .#{iv.$class-prefix}navbar.#{iv.$class-prefix}is-spaced &,
