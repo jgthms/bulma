@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## Upcoming Release
+
+### Improvements
+
+- Add `$navbar-breakpoint` as a CSS variable
+
 ## 1.0.3
 
 ### Bug Fixes
