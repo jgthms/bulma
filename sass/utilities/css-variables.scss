@@ -142,7 +142,7 @@
 @mixin generate-color-palette(
   $name,
   $base,
-  $scheme-main-l: 100%,
+  $scheme-main-l: 100,
   $invert: null,
   $light: null,
   $dark: null
@@ -159,8 +159,9 @@
 
   // Calculate digits like "40" for the scheme-main
   $scheme-l-0: 0%;
-  $scheme-l-base: round($scheme-main-l % 10);
-  $closest-5: math.round(math.div($scheme-main-l, 5)) * 5;
+  $scheme-l-base: round(($scheme-main-l * 1%) % 10);
+  @debug $scheme-l-base;
+  $closest-5: math.round(math.div(($scheme-main-l * 1%), 5)) * 5;
   $pct-to-int: math.div($closest-5, 100%) * 100;
   $scheme-main-digits: #{$pct-to-int};
 

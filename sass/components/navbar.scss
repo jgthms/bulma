@@ -14,7 +14,6 @@ $navbar-z: 30 !default;
 $navbar-fixed-z: 30 !default;
 
 $navbar-item-background-color: cv.getVar("scheme-main") !default;
-$navbar-item-background-a: 0 !default;
 $navbar-item-color: cv.getVar("text") !default;
 $navbar-item-hover-background-color: hsl(
   from #{cv.getVar("navbar-item-background-color")} h s calc(l + #{cv.getVar(
@@ -61,6 +60,7 @@ $navbar-dropdown-arrow: cv.getVar("link") !default;
 $navbar-dropdown-radius: cv.getVar("radius-large") !default;
 $navbar-dropdown-z: 20 !default;
 
+$navbar-dropdown-item-background-l: cv.getVar("scheme-main-l") !default;
 $navbar-dropdown-item-background-color: cv.getVar("scheme-main") !default;
 $navbar-dropdown-item-color: cv.getVar("text") !default;
 $navbar-dropdown-item-hover-background-color: hsl(
@@ -91,6 +91,7 @@ $navbar-dropdown-boxed-shadow:
       0.1
     ) !default;
 
+$navbar-divider-background-l: cv.getVar("background-l") !default;
 $navbar-divider-background-color: cv.getVar("background") !default;
 $navbar-divider-height: 0.125em !default;
 
@@ -126,7 +127,6 @@ $navbar-colors: dv.$colors !default;
       "navbar-z": #{$navbar-z},
       "navbar-fixed-z": #{$navbar-fixed-z},
       "navbar-item-background-color": #{$navbar-item-background-color},
-      "navbar-item-background-a": #{$navbar-item-background-a},
       "navbar-item-color": #{$navbar-item-color},
       "navbar-item-hover-background-color": #{$navbar-item-hover-background-color},
       "navbar-item-hover-color": #{$navbar-item-hover-color},
@@ -153,12 +153,14 @@ $navbar-colors: dv.$colors !default;
       "navbar-dropdown-arrow": #{$navbar-dropdown-arrow},
       "navbar-dropdown-radius": #{$navbar-dropdown-radius},
       "navbar-dropdown-z": #{$navbar-dropdown-z},
+      "navbar-dropdown-item-background-l": #{$navbar-dropdown-item-background-l},
       "navbar-dropdown-item-background-color": #{$navbar-dropdown-item-background-color},
       "navbar-dropdown-item-color": #{$navbar-dropdown-item-color},
       "navbar-dropdown-item-hover-background-color": #{$navbar-dropdown-item-hover-background-color},
       "navbar-dropdown-item-active-background-color": #{$navbar-dropdown-item-active-background-color},
       "navbar-dropdown-boxed-radius": #{$navbar-dropdown-boxed-radius},
       "navbar-dropdown-boxed-shadow": #{$navbar-dropdown-boxed-shadow},
+      "navbar-divider-background-l": #{$navbar-divider-background-l},
       "navbar-divider-background-color": #{$navbar-divider-background-color},
       "navbar-divider-height": #{$navbar-divider-height},
       "navbar-bottom-box-shadow-size": #{$navbar-bottom-box-shadow-size},
@@ -182,7 +184,9 @@ $navbar-colors: dv.$colors !default;
           "navbar-item-hover-color": #{cv.getVar($name, "", "-invert")},
           "navbar-item-active-color": #{cv.getVar($name, "", "-invert")},
           "navbar-item-selected-background-color": #{cv.getVar($name)},
+          "navbar-item-selected-color": #{cv.getVar($name, "", "-invert")},
           "navbar-dropdown-arrow": #{cv.getVar($name, "", "-invert")},
+          "navbar-dropdown-border-color": #{cv.getVar($name, "", "-on-scheme")},
           "navbar-dropdown-item-color": #{cv.getVar($name, "", "-on-scheme")},
         )
       );
@@ -191,31 +195,43 @@ $navbar-colors: dv.$colors !default;
         .#{iv.$class-prefix}navbar-item {
           &:not(.is-active, .is-selected) {
             background-color: hsl(
-              from cv.getVar("navbar-dropdown-item-background-color")
-                cv.getVar($name, "", "-h")
-                cv.getVar($name, "", "-s")
-                l
+              from cv.getVar($name)
+                h
+                s
+                cv.getVar("navbar-dropdown-item-background-l")
             );
 
             &:hover {
               background-color: hsl(
-                from cv.getVar("navbar-dropdown-item-hover-background-color")
-                  cv.getVar($name, "", "-h")
-                  cv.getVar($name, "", "-s")
-                  l
+                from cv.getVar($name)
+                  h
+                  s
+                  calc(
+                    #{cv.getVar("navbar-dropdown-item-background-l")} +
+                      #{cv.getVar("hover-background-l-delta")}
+                  )
               );
             }
 
             &:active {
               background-color: hsl(
-                from cv.getVar("navbar-dropdown-item-active-background-color")
-                  cv.getVar($name, "", "-h")
-                  cv.getVar($name, "", "-s")
-                  l
+                from cv.getVar($name)
+                  h
+                  s
+                  calc(
+                    cv.getVar("navbar-dropdown-item-background-l") +
+                      cv.getVar("active-background-l-delta")
+                  )
               );
             }
           }
         }
+      }
+
+      .#{iv.$class-prefix}navbar-divider {
+        background-color: hsl(
+          from cv.getVar($name) h s cv.getVar("navbar-divider-background-l")
+        );
       }
     }
   }
