@@ -52,7 +52,7 @@ Feel free to raise an issue or submit a pull request.
 
 ## CSS only
 
-Bulma is a **CSS** framework. As such, the sole output is a single CSS file: [bulma.css](https://github.com/jgthms/bulma/blob/master/css/bulma.css)
+Bulma is a **CSS** framework. As such, the sole output is a single CSS file: [bulma.css](https://github.com/jgthms/bulma/blob/main/css/bulma.css)
 
 You can either use that file, "out of the box", or download the Sass source files to customize the [variables](https://bulma.io/documentation/customize/#docsNav).
 
@@ -138,7 +138,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/start/ove
 
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
-Code copyright 2023 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/master/LICENSE).
+Code copyright 2023 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/main/LICENSE).
 
 [npm-link]: https://www.npmjs.com/package/bulma
 [awesome-link]: https://github.com/awesome-css-group/awesome-css
