@@ -37064,6 +37064,13 @@ svg {
   --shine-fg: #fff;
   --shine-highlight: #0fdb80;
   --shine-highlight-subtle: #03b565;
+  --brand: #0fdb80;
+  --brand-h: 153;
+  --brand-s: 87%;
+  --brand-l: 46%;
+  --brand-hsl: 153, 87%, 46%;
+  --brand-l-dark: 6%;
+  --brand-bg: hsl(var(--brand-h), var(--brand-s), var(--brand-l-dark));
 }
 
 @property --gradient-angle {
@@ -37278,5 +37285,96 @@ div.shine {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+.launch-code {
+  animation-name: anim-fade-in;
+  animation-duration: 1s;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/images/coding-background.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  z-index: 4;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  top: 0;
+  gap: 0.5rem 1rem;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.launch-code h3,
+.launch-code small {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  max-width: 20rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1019607843);
+}
+.launch-code h3 {
+  animation-delay: 0.5s;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.launch-code small {
+  animation-delay: 1.5s;
+  font-size: 1em;
+  display: block;
+  opacity: 1;
+  font-weight: 400;
+}
+.launch-code .launch-shine {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+  max-width: 32rem;
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  border-radius: 12px;
+}
+.launch-code .shine {
+  padding: 0.75em;
+  font-size: 1em;
+  width: 100%;
+}
+.launch-code code {
+  background-color: var(--brand);
+  color: var(--brand-bg);
+  font-size: 1.25em;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+.launch-code strong {
+  color: var(--brand);
+}
+
+@media screen and (min-width: 1200px) {
+  .launch-code {
+    flex-direction: row;
+    padding: 0.5rem;
+  }
+  .launch-code h3,
+  .launch-code small {
+    flex-grow: 1;
+    width: auto;
+    text-align: center;
+    max-width: none;
+    flex-basis: 20rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .launch-code {
+    animation-name: anim-slide-down;
+    position: sticky;
+    top: 0;
+    z-index: 40;
   }
 }
