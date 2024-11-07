@@ -9280,6 +9280,7 @@ button.tag:active,
   --bulma-input-border-width: var(--bulma-control-border-width);
   --bulma-input-border-l: var(--bulma-border-l);
   --bulma-input-border-l-delta: 0%;
+  --bulma-input-border-color: hsl(var(--bulma-input-h), var(--bulma-input-s), calc(var(--bulma-input-border-l) + var(--bulma-input-border-l-delta)));
   --bulma-input-hover-border-l-delta: var(--bulma-hover-border-l-delta);
   --bulma-input-active-border-l-delta: var(--bulma-active-border-l-delta);
   --bulma-input-focus-h: var(--bulma-focus-h);
@@ -9306,7 +9307,7 @@ button.tag:active,
 
 .select select, .input, .textarea {
   background-color: hsl(var(--bulma-input-h), var(--bulma-input-s), calc(var(--bulma-input-background-l) + var(--bulma-input-background-l-delta)));
-  border-color: hsl(var(--bulma-input-h), var(--bulma-input-s), calc(var(--bulma-input-border-l) + var(--bulma-input-border-l-delta)));
+  border-color: var(--bulma-input-border-color);
   border-radius: var(--bulma-input-radius);
   color: hsl(var(--bulma-input-h), var(--bulma-input-s), var(--bulma-input-color-l));
 }
@@ -17643,6 +17644,9 @@ label.panel-block:hover {
   --bulma-hero-body-padding-small: 1.5rem;
   --bulma-hero-body-padding-medium: 9rem 4.5rem;
   --bulma-hero-body-padding-large: 18rem 6rem;
+  --bulma-hero-gradient-h-offset: 5deg;
+  --bulma-hero-gradient-s-offset: 10%;
+  --bulma-hero-gradient-l-offset: 5%;
 }
 
 .hero {
@@ -37050,4 +37054,229 @@ svg {
 .message-body .highlight {
   background-color: hsl(var(--bulma-message-h), var(--bulma-message-s), var(--bulma-message-header-color-l));
   color: hsl(var(--bulma-message-h), var(--bulma-message-s), var(--bulma-message-header-background-l));
+}
+
+:root {
+  --shine-bg: #131416;
+  --shine-bg-subtle: #17191c;
+  --shine-bg: #0e1917;
+  --shine-bg-subtle: #0e231c;
+  --shine-fg: #fff;
+  --shine-highlight: #0fdb80;
+  --shine-highlight-subtle: #03b565;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotate-gradient {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 5%;
+  inherits: false;
+}
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: white;
+  inherits: false;
+}
+@keyframes rotate-gradient {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+.shine {
+  --animation: gradient-angle linear infinite;
+  --duration: 3s;
+  --shadow-size: 2px;
+  border-radius: 0.5em;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 500;
+  isolation: isolate;
+  line-height: 1;
+  outline-offset: 4px;
+  overflow: hidden;
+  padding: 1em 2em;
+  color: white;
+  position: relative;
+  background: linear-gradient(var(--shine-bg), var(--shine-bg)) padding-box, conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)), transparent, var(--shine-highlight) var(--gradient-percent), var(--gradient-shine) calc(var(--gradient-percent) * 2), var(--shine-highlight) calc(var(--gradient-percent) * 3), transparent calc(var(--gradient-percent) * 4)) border-box;
+  box-shadow: inset 0 0 0 1px var(--shine-bg-subtle);
+  color: var(--shine-fg);
+}
+.shine::before, .shine::after,
+.shine span::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+.shine:active {
+  translate: 0 1px;
+}
+
+/* Inner shimmer */
+.shine::after {
+  --animation: shimmer linear infinite;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, var(--shine-highlight), transparent);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.2;
+}
+
+.shine span {
+  z-index: 1;
+}
+.shine span::before {
+  --size: calc(100% + 1rem);
+  width: var(--size);
+  height: var(--size);
+  box-shadow: inset 0 -1ex 2rem 4px var(--shine-highlight);
+  opacity: 0;
+}
+
+/* Animate */
+.shine {
+  --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  transition: var(--transition);
+  transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+}
+.shine, .shine::before, .shine::after {
+  animation: var(--animation) var(--duration), var(--animation) calc(var(--duration) / 0.4) reverse paused;
+  animation-composition: add;
+}
+.shine span::before {
+  transition: opacity var(--transition);
+  animation: calc(var(--duration) * 1.5) breathe linear infinite;
+}
+
+.shine:is(:hover, :focus-visible) {
+  --gradient-percent: 20%;
+  --gradient-angle-offset: 95deg;
+  --gradient-shine: var(--shine-highlight-subtle);
+}
+.shine:is(:hover, :focus-visible), .shine:is(:hover, :focus-visible)::before, .shine:is(:hover, :focus-visible)::after {
+  animation-play-state: running;
+}
+.shine:is(:hover, :focus-visible) span::before {
+  opacity: 1;
+}
+
+@keyframes gradient-angle {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+@keyframes shimmer {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes breathe {
+  from, to {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+}
+.masterclass {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.masterclass.is-open {
+  display: flex;
+}
+.masterclass .modal-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.masterclass-background {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  inset: 0;
+  animation-name: anim-fade-in;
+  animation-duration: 1000ms;
+  animation-fill-mode: both;
+}
+
+.masterclass-body {
+  background-color: #333;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/assets/images/coding-background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: calc(100% - 2rem);
+  box-shadow: 0px 0px 64px 0px rgba(15, 219, 128, 0.2);
+  border: 2px solid rgba(15, 219, 128, 0.2);
+  overflow: hidden;
+  max-width: 400px;
+  animation-name: anim-slide-up;
+  animation-duration: 1000ms;
+  animation-fill-mode: both;
+}
+
+.masterclass-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+div.shine {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+  .masterclass-body {
+    max-width: 820px;
+  }
+}
+@keyframes anim-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes anim-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

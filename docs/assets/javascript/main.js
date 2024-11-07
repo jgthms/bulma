@@ -108,10 +108,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // MODALS
   // Functions to open and close a modal
   function openModal($el) {
+    if (!$el) {
+      return;
+    }
+
     $el.classList.add("is-active");
   }
 
   function closeModal($el) {
+    if (!$el) {
+      return;
+    }
+
     $el.classList.remove("is-active");
   }
 
@@ -416,4 +424,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     new window.ClipboardJS(".bd-clipboard");
   }, 100);
+
+  // MASTERCLASS
+  const MASTERCLASS_KEY = "cssmasterclass";
+  const $masterclass = document.getElementById("masterclass");
+  const $masterclassBackground = document.getElementById(
+    "masterclass-background",
+  );
+  const $masterclassClose = document.getElementById("masterclass-close");
+  const masterclassStorage = window.localStorage.getItem(MASTERCLASS_KEY);
+
+  if (masterclassStorage !== "seen") {
+    window.setTimeout(() => {
+      openMasterclass();
+    }, 3000);
+  }
+
+  const openMasterclass = () => {
+    $masterclass.classList.add("is-open");
+  };
+
+  const closeMasterclass = () => {
+    window.localStorage.setItem(MASTERCLASS_KEY, "seen");
+    $masterclass.classList.remove("is-open");
+  };
+
+  $masterclassBackground.addEventListener("click", (event) => {
+    event.preventDefault();
+    closeMasterclass();
+  });
+
+  $masterclassClose.addEventListener("click", (event) => {
+    event.preventDefault();
+    closeMasterclass();
+  });
 });
