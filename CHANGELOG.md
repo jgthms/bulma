@@ -10,6 +10,7 @@
 
 - Fix #3904, #3884: fix website horizontal overflow
 - Fix #3849: fix Light Mode color swatches in Dark Mode
+- Fix #3918: broken placeholder images
 
 ## 1.0.2
 
