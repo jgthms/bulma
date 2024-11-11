@@ -5,6 +5,7 @@
 ### Bug Fixes
 
 - Fix #3842: restore use of `$easing`, `$radius-rounded` and `$speed` Sass variables
+- Fix #3920: migrate code to avoid Sass 1.80 deprecation warning of global built-in functions
 
 ### Documentation Fixes
 

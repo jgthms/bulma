@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:meta";
 
 @use "../utilities/css-variables" as cv;
 @use "../utilities/derived-variables" as dv;
@@ -103,7 +104,7 @@ $scheme-main: hsl(iv.$scheme-h, iv.$scheme-s, $scheme-main-l);
     $light: null;
     $dark: null;
 
-    @if type-of($color == "list") {
+    @if meta.type-of($color == "list") {
       $base: list.nth($color, 1);
 
       @if list.length($color) > 3 {
@@ -139,7 +140,7 @@ $scheme-main: hsl(iv.$scheme-h, iv.$scheme-s, $scheme-main-l);
   @include cv.register-hsl("shadow", dv.$shadow-color);
 
   @each $size in dv.$sizes {
-    $i: index(dv.$sizes, $size);
+    $i: list.index(dv.$sizes, $size);
     $name: "size-#{$i}";
     @include cv.register-var($name, $size);
   }
