@@ -18,9 +18,12 @@
       @if meta.type-of($name) ==
         "string" and
         (
-          type-of($components) == "list" or meta.type-of($components) == "color"
+          meta.type-of($components) ==
+            "list" or
+            meta.type-of($components) ==
+            "color"
         ) and
-        length($components) >=
+        list.length($components) >=
         1
       {
         $color-base: null;
@@ -40,13 +43,13 @@
           $color-base: list.nth($components, 1);
 
           // If Invert, Light and Dark are provided
-          @if length($components) > 3 {
+          @if list.length($components) > 3 {
             $color-invert: list.nth($components, 2);
             $color-light: list.nth($components, 3);
             $color-dark: list.nth($components, 4);
 
             // If only Invert and Light are provided
-          } @else if length($components) > 2 {
+          } @else if list.length($components) > 2 {
             $color-invert: list.nth($components, 2);
             $color-light: list.nth($components, 3);
             $color-dark: bulmaFindDarkColor($color-base);
@@ -66,7 +69,7 @@
           // We merge this colors elements as map with Bulma's colors map
           // (we can override them this way, no multiple definition for the same name)
           // $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert, $color-light, $color-dark)))
-          $merged-colors: map_merge(
+          $merged-colors: map.merge(
             $merged-colors,
             (
               $name: $value,
@@ -146,7 +149,7 @@
       $l: color.channel($color, "lightness", $space: hsl);
     }
 
-    @return change-color($color, $lightness: $l);
+    @return color.change($color, $lightness: $l);
   }
 
   @return $background;
@@ -158,7 +161,7 @@
     $luminance-delta: 0.53 - $luminance;
     $target-l: round($base-l + $luminance-delta * 53);
 
-    @return change-color($color, $lightness: max($base-l, $target-l));
+    @return color.change($color, $lightness: max($base-l, $target-l));
   }
 
   @return $text-strong;
