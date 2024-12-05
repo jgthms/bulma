@@ -1,5 +1,9 @@
 # Bulma Changelog
 
+## Unreleased
+
+- Add .has-text-weight-extrabold as a typography class.
+
 ## 1.0.3
 
 ### Bug Fixes
