@@ -1,5 +1,21 @@
 # Bulma Changelog
 
+## 1.0.3
+
+### Bug Fixes
+
+- Fix #3842: restore use of `$easing`, `$radius-rounded` and `$speed` Sass variables
+- Fix #3920: migrate code to avoid Sass 1.80 deprecation warning of global built-in functions
+- Fix #3822: Non-minified version of bulma-prefixed was missing
+- Fix #3805: helper classes were missing prefix
+
+### Documentation Fixes
+
+- Fix #3904, #3884: fix website horizontal overflow
+- Fix #3849: fix Light Mode color swatches in Dark Mode
+- Fix #3918: broken placeholder images
+- Fix #3926: broken documentation hero
+
 ## 1.0.2
 
 ### Improvements

@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:meta";
 
 @use "../utilities/css-variables" as cv;
 @use "../utilities/derived-variables" as dv;
@@ -73,13 +74,13 @@ $scheme-main: hsl(iv.$scheme-h, iv.$scheme-s, $scheme-main-l);
       // Other
       "block-spacing": iv.$block-spacing,
       "duration": 294ms,
-      "easing": ease-out,
+      "easing": iv.$easing,
       "radius-small": iv.$radius-small,
       "radius": iv.$radius,
       "radius-medium": iv.$radius-medium,
       "radius-large": iv.$radius-large,
-      "radius-rounded": 9999px,
-      "speed": 86ms,
+      "radius-rounded": iv.$radius-rounded,
+      "speed": iv.$speed,
 
       "arrow-color": #{cv.getVar("link")},
       "loading-color": #{cv.getVar("border")},
@@ -103,7 +104,7 @@ $scheme-main: hsl(iv.$scheme-h, iv.$scheme-s, $scheme-main-l);
     $light: null;
     $dark: null;
 
-    @if type-of($color == "list") {
+    @if meta.type-of($color == "list") {
       $base: list.nth($color, 1);
 
       @if list.length($color) > 3 {
@@ -139,7 +140,7 @@ $scheme-main: hsl(iv.$scheme-h, iv.$scheme-s, $scheme-main-l);
   @include cv.register-hsl("shadow", dv.$shadow-color);
 
   @each $size in dv.$sizes {
-    $i: index(dv.$sizes, $size);
+    $i: list.index(dv.$sizes, $size);
     $name: "size-#{$i}";
     @include cv.register-var($name, $size);
   }

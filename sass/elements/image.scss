@@ -1,3 +1,5 @@
+@use "sass:list";
+
 @use "../utilities/initial-variables" as iv;
 @use "../utilities/css-variables" as cv;
 @use "../utilities/mixins" as mx;
@@ -37,8 +39,8 @@ $dimensions: 16 24 32 48 64 96 128 !default;
   }
 
   @each $pair in iv.$aspect-ratios {
-    $w: nth($pair, 1);
-    $h: nth($pair, 2);
+    $w: list.nth($pair, 1);
+    $h: list.nth($pair, 2);
 
     &.#{iv.$class-prefix}is-#{$w}by#{$h} {
       aspect-ratio: #{$w} / #{$h};

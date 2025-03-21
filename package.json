@@ -1,6 +1,6 @@
 {
   "name": "bulma",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://bulma.io",
   "author": {
     "name": "Jeremy Thomas",
@@ -29,11 +29,11 @@
     "url": "https://github.com/jgthms/bulma/issues"
   },
   "devDependencies": {
-    "cssnano": "^7.0.4",
+    "cssnano": "^7.0.6",
     "postcss-cli": "^11.0.0",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.2",
     "rimraf": "^6.0.1",
-    "sass": "^1.77.8"
+    "sass": "^1.83.0"
   },
   "scripts": {
     "build-bulma": "sass --style=expanded --source-map bulma.scss css/bulma.css",
@@ -41,14 +41,14 @@
     "version-no-dark-mode": "sass --style=expanded --source-map versions/bulma-no-dark-mode.scss css/versions/bulma-no-dark-mode.css",
     "version-no-helpers": "sass --style=expanded --source-map versions/bulma-no-helpers.scss css/versions/bulma-no-helpers.css",
     "version-no-helpers-prefixed": "sass --style=expanded --source-map versions/bulma-no-helpers-prefixed.scss css/versions/bulma-no-helpers-prefixed.css",
-    "version-prefixed": "sass --style=expanded --source-map versions/bulma-prefixed.scss css/versions/bulma-prefixed.min.css",
+    "version-prefixed": "sass --style=expanded --source-map versions/bulma-prefixed.scss css/versions/bulma-prefixed.css",
     "build-versions": "npm run version-no-dark-mode && npm run version-no-helpers && npm run version-no-helpers-prefixed && npm run version-prefixed",
     "minify-versions": "postcss css/versions/*.css --dir css/versions --ext min.css --no-map --use cssnano",
     "build-all": "npm run build-bulma && npm run build-versions",
     "minify-all": "npm run minify-bulma && npm run minify-versions",
     "clean": "rimraf css",
     "deploy": "npm run clean && npm run build-all && npm run minify-all",
-    "test": "sass --style=expanded --source-map --watch test.scss css/test.css",
+    "test": "sass --style=expanded --source-map --watch test.scss test.css",
     "start": "npm run build-bulma -- --watch"
   },
   "files": [
