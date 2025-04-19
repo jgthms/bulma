@@ -2,6 +2,10 @@
 
 ## 1.0.4
 
+### New Features
+
+- #3937: Add .has-text-weight-extrabold as a typography class.
+
 ### Bug Fixes
 
 - #3963: Improve colour loading versions of outlined buttons
