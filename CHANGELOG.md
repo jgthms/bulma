@@ -7,6 +7,10 @@
 - #3963: Improve colour loading versions of outlined buttons
 - #3950: Correct the syntax in hero is-bold colour variants
 
+### Documentation Fixes
+
+- #3916 Fixed .skeleton-toggler issues 
+
 ## 1.0.3
 
 ### Bug Fixes
