@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 1.0.4
+
+### Bug Fixes
+
+- #3963: Improve colour loading versions of outlined buttons
+
 ## 1.0.3
 
 ### Bug Fixes
