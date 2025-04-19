@@ -21,6 +21,7 @@
 
 - Fix #3842: restore use of `$easing`, `$radius-rounded` and `$speed` Sass variables
 - Fix #3920: migrate code to avoid Sass 1.80 deprecation warning of global built-in functions
+- Fix #3945: add `$duration` Sass variable
 - Fix #3822: Non-minified version of bulma-prefixed was missing
 - Fix #3805: helper classes were missing prefix
 
@@ -51,7 +52,7 @@
   - `--bulma-input-border-width`
   - `--bulma-label-color`
   - `--bulma-label-spacing`
-  - `--bulma-label-weight` 
+  - `--bulma-label-weight`
   - `--bulma-help-size`
   - `--bulma-field-block-spacing`
 
@@ -88,7 +89,7 @@
 - Fix #3785: make use of the `@prefers-reduced-motion` setting
 - Fix #3758: broken links for `0.9.4` version
 - Fix #3760: fix form controls typo
- 
+
 ### Improvements
 
 - Fix #3737: Move `sass` to `devDependencies`
@@ -178,7 +179,7 @@ The Sass placeholders are:
 - `%loader`
 - `%overlay`
 
-If you were importing them directly from `utilities/mixins`, you'll need to import `utilities/extends` instead.  
+If you were importing them directly from `utilities/mixins`, you'll need to import `utilities/extends` instead.
 If you were importing `utilities/_all` or even `bulma.sass` directly, no change is required.
 
 ### New features
