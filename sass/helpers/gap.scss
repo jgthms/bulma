@@ -2,7 +2,7 @@
 @use "sass:string";
 @use "../utilities/initial-variables" as iv;
 
-.#{iv.$helpers-prefix}gapless {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}gapless {
   gap: 0 !important;
 }
 
@@ -11,12 +11,12 @@ $gap-base: 0.5rem;
 
 @each $gap in $gaps {
   @for $i from 0 through 8 {
-    .#{iv.$helpers-prefix}#{$gap}-#{$i} {
+    .#{iv.$class-prefix}#{iv.$helpers-prefix}#{$gap}-#{$i} {
       #{$gap}: ($gap-base * $i) !important;
     }
 
     @if $i < 8 {
-      .#{iv.$helpers-prefix}#{$gap}-#{$i}\.5 {
+      .#{iv.$class-prefix}#{iv.$helpers-prefix}#{$gap}-#{$i}\.5 {
         #{$gap}: ($gap-base * $i + math.div($gap-base, 2)) !important;
       }
     }

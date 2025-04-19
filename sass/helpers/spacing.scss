@@ -1,10 +1,10 @@
 @use "../utilities/initial-variables" as iv;
 
-.marginless {
+.#{iv.$class-prefix}marginless {
   margin: 0 !important;
 }
 
-.paddingless {
+.#{iv.$class-prefix}paddingless {
   padding: 0 !important;
 }
 
@@ -34,20 +34,20 @@ $spacing-values: (
 @each $property, $shortcut in $spacing-shortcuts {
   @each $name, $value in $spacing-values {
     // All directions
-    .#{$shortcut}-#{$name} {
+    .#{iv.$class-prefix}#{$shortcut}-#{$name} {
       #{$property}: $value !important;
     }
 
     // Cardinal directions
     @each $direction, $suffix in $spacing-directions {
-      .#{$shortcut}#{$suffix}-#{$name} {
+      .#{iv.$class-prefix}#{$shortcut}#{$suffix}-#{$name} {
         #{$property}-#{$direction}: $value !important;
       }
     }
 
     // Horizontal axis
     @if $spacing-horizontal != null {
-      .#{$shortcut}#{$spacing-horizontal}-#{$name} {
+      .#{iv.$class-prefix}#{$shortcut}#{$spacing-horizontal}-#{$name} {
         #{$property}-left: $value !important;
         #{$property}-right: $value !important;
       }
@@ -55,7 +55,7 @@ $spacing-values: (
 
     // Vertical axis
     @if $spacing-vertical != null {
-      .#{$shortcut}#{$spacing-vertical}-#{$name} {
+      .#{iv.$class-prefix}#{$shortcut}#{$spacing-vertical}-#{$name} {
         #{$property}-top: $value !important;
         #{$property}-bottom: $value !important;
       }
