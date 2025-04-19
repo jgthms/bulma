@@ -159,7 +159,7 @@
   @if meta.type-of($color) == "color" {
     $luminance: bulmaColorLuminance($color);
     $luminance-delta: 0.53 - $luminance;
-    $target-l: round($base-l + $luminance-delta * 53);
+    $target-l: math.round($base-l + $luminance-delta * 53);
 
     @return color.change($color, $lightness: max($base-l, $target-l));
   }
@@ -192,7 +192,7 @@
 }
 
 @function bulmaColorBrightness($n) {
-  $color-brightness: round(
+  $color-brightness: math.round(
     math.div(
       (color.channel($n, "red", $space: rgb) * 299) +
         (color.channel($n, "green", $space: rgb) * 587) +
@@ -200,7 +200,7 @@
       1000
     )
   );
-  $light-color: round(
+  $light-color: math.round(
     math.div(
       (color.channel(#ffffff, "red", $space: rgb) * 299) +
         (color.channel(#ffffff, "green", $space: rgb) * 587) +

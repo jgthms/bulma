@@ -383,6 +383,12 @@ $no-palette: ("white", "black", "light", "dark");
     @include cv.register-vars(
       (
         "button-border-width": max(1px, 0.0625em),
+        "loading-color":
+        hsl(
+          #{cv.getVar("button-h")},
+          #{cv.getVar("button-s")},
+          #{cv.getVar("button-l")}
+        ),
       )
     );
 
@@ -409,6 +415,12 @@ $no-palette: ("white", "black", "light", "dark");
 
     &:active {
       @include cv.register-vars(());
+    }
+
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: transparent;
+      box-shadow: none;
     }
   }
 
