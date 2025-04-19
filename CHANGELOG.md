@@ -5,6 +5,7 @@
 ### Bug Fixes
 
 - #3963: Improve colour loading versions of outlined buttons
+- #3950: Correct the syntax in hero is-bold colour variants
 
 ## 1.0.3
 
