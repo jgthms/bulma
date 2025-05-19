@@ -6,7 +6,7 @@
 
 - #3937: Add .has-text-weight-extrabold as a typography class.
 - #3906 fixes #3895: Make variables root configurable
-- 
+
 ### Bug Fixes
 
 - #3963: Improve colour loading versions of outlined buttons
@@ -14,7 +14,7 @@
 
 ### Documentation Fixes
 
-- #3916 Fixed .skeleton-toggler issues 
+- #3916 Fixed .skeleton-toggler issues
 
 ## 1.0.3
 
