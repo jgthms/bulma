@@ -85,8 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           if (item.pied && $pied) {
-            el.className = "bd-ami bd-ami-footer";
-            $pied.appendChild(el);
+            const clone = el.cloneNode(true);
+            clone.className = "bd-ami bd-ami-footer";
+            $pied.appendChild(clone);
           }
         });
       });
