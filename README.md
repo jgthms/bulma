@@ -133,6 +133,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/start/ove
 | [Crispy-Bulma](https://github.com/ckrybus/crispy-bulma)                              | Bulma template pack for django-crispy-forms                                                                      |
 | [Manifest](https://manifest.build)                                                   | Manifest is a lightweight Backend-as-a-Service with essential features: DB, Admin panel, API, JS SDK             |
 | [Reactive Bulma](https://github.com/NicolasOmar/reactive-bulma)                                                             | A component library based on React, Bulma, Typescript and Rollup         |
+| [Bestax-Bulma](https://bestax.io)                                            | ReactJS component library with full TypeScript support and complete Bulma implementation                |
 
 <p>Browser testing via<br /><a href="https://www.lambdatest.com/" target="_blank"><img src="https://bulma.io/assets/images/amis/lambdatest-logo.png" width="168" height="40" /></a></p>
 
