@@ -5,6 +5,7 @@
 
 ## Generous backers ($10+)
 
+* Alex Smith
 * Jason Seminara
 * Jordan Nemrow
 * Ian Ebden
