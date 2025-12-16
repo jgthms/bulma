@@ -224,16 +224,6 @@
   -webkit-overflow-scrolling: touch;
 }
 
-@mixin placeholder {
-  $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
-
-  @each $placeholder in $placeholders {
-    &:#{$placeholder}-placeholder {
-      @content;
-    }
-  }
-}
-
 @mixin reset {
   appearance: none;
   background: none;
@@ -247,16 +237,10 @@
 
 @mixin selection($current-selector: false) {
   @if $current-selector {
-    &::-moz-selection {
-      @content;
-    }
     &::selection {
       @content;
     }
   } @else {
-    ::-moz-selection {
-      @content;
-    }
     ::selection {
       @content;
     }
@@ -434,9 +418,6 @@
 
 @mixin unselectable {
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
