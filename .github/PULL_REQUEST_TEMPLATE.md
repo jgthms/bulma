@@ -22,10 +22,10 @@ This is a **new feature | improvement | bugfix | documentation fix**.
 None.
 
 <!-- BEFORE SUBMITTING YOUR PR, MAKE SURE TO FOLLOW THESE STEPS: -->
-<!-- 1. Pull the latest `master` branch -->
-<!-- 2. Make sure your Sass code is compliant with the [Bulma Sass styleguide](https://github.com/jgthms/bulma/blob/master/.github/CONTRIBUTING.md#bulma-sass-styleguide) -->
+<!-- 1. Pull the latest `main` branch -->
+<!-- 2. Make sure your Sass code is compliant with the [Bulma Sass styleguide](https://github.com/jgthms/bulma/blob/main/.github/CONTRIBUTING.md#bulma-sass-styleguide) -->
 <!-- 3. Make sure your PR only affects `.sass` or documentation files -->
-<!-- 4. [Try your changes](https://github.com/jgthms/bulma/blob/master/.github/CONTRIBUTING.md#try-your-changes). -->
+<!-- 4. [Try your changes](https://github.com/jgthms/bulma/blob/main/.github/CONTRIBUTING.md#try-your-changes). -->
 
 <!-- How have you confirmed this feature works? -->
 <!-- Please explain more than "Yes". -->

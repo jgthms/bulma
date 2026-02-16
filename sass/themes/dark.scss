@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:meta";
 
 @use "../utilities/initial-variables" as iv;
 @use "../utilities/css-variables" as cv;
@@ -19,7 +20,7 @@ $text: hsl(iv.$scheme-h, iv.$scheme-s, $text-l);
   @each $name, $color in dv.$colors {
     $base: $color;
 
-    @if type-of($color == "list") {
+    @if meta.type-of($color == "list") {
       $base: list.nth($color, 1);
     }
 

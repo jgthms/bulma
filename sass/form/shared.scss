@@ -13,6 +13,11 @@ $input-border-style: solid !default;
 $input-border-width: cv.getVar("control-border-width") !default;
 $input-border-l: cv.getVar("border-l") !default;
 $input-border-l-delta: 0% !default;
+$input-border-color: hsl(
+  cv.getVar("input-h"),
+  cv.getVar("input-s"),
+  calc(#{cv.getVar("input-border-l")} + #{cv.getVar("input-border-l-delta")})
+) !default;
 $input-hover-border-l-delta: #{cv.getVar("hover-border-l-delta")} !default;
 $input-active-border-l-delta: #{cv.getVar("active-border-l-delta")} !default;
 $input-color-l: cv.getVar("text-strong-l") !default;
@@ -70,6 +75,7 @@ $input-radius: cv.getVar("radius") !default;
       "input-border-width": #{$input-border-width},
       "input-border-l": #{$input-border-l},
       "input-border-l-delta": #{$input-border-l-delta},
+      "input-border-color": #{$input-border-color},
       "input-hover-border-l-delta": #{$input-hover-border-l-delta},
       "input-active-border-l-delta": #{$input-active-border-l-delta},
       "input-focus-h": #{$input-focus-h},
@@ -107,11 +113,7 @@ $input-radius: cv.getVar("radius") !default;
         )}
     )
   );
-  border-color: hsl(
-    cv.getVar("input-h"),
-    cv.getVar("input-s"),
-    calc(#{cv.getVar("input-border-l")} + #{cv.getVar("input-border-l-delta")})
-  );
+  border-color: cv.getVar("input-border-color");
   border-radius: cv.getVar("input-radius");
   color: hsl(
     #{cv.getVar("input-h")},

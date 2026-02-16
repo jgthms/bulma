@@ -48,16 +48,35 @@
 @mixin register-rgb($name, $value) {
   @include register-var(
     $name,
-    (red($value), green($value), blue($value)),
+    (
+      color.channel($value, "red", $space: rgb),
+      color.channel($value, "green", $space: rgb),
+      color.channel($value, "blue", $space: rgb)
+    ),
     "",
     "-rgb"
   );
 }
 
 @mixin register-hsl($name, $value) {
-  @include register-var($name, round(hue($value)), "", "-h");
-  @include register-var($name, round(saturation($value)), "", "-s");
-  @include register-var($name, round(lightness($value)), "", "-l");
+  @include register-var(
+    $name,
+    math.round(color.channel($value, "hue", $space: hsl)),
+    "",
+    "-h"
+  );
+  @include register-var(
+    $name,
+    math.round(color.channel($value, "saturation", $space: hsl)),
+    "",
+    "-s"
+  );
+  @include register-var(
+    $name,
+    math.round(color.channel($value, "lightness", $space: hsl)),
+    "",
+    "-l"
+  );
 }
 
 @mixin generate-on-scheme-colors($name, $base, $scheme-main) {
@@ -76,7 +95,11 @@
       @if $ratio > 5 {
         $found-decent-color: true;
       } @else {
-        $on-scheme-color: lighten($on-scheme-color, 5%);
+        $on-scheme-color: color.adjust(
+          $on-scheme-color,
+          $lightness: 5%,
+          $space: hsl
+        );
         $fg-lum: fn.bulmaColorLuminance($on-scheme-color);
       }
     }
@@ -87,13 +110,21 @@
       @if $ratio > 5 {
         $found-decent-color: true;
       } @else {
-        $on-scheme-color: darken($on-scheme-color, 5%);
+        $on-scheme-color: color.adjust(
+          $on-scheme-color,
+          $lightness: -5%,
+          $space: hsl
+        );
         $fg-lum: fn.bulmaColorLuminance($on-scheme-color);
       }
     }
   }
 
-  $on-scheme-lightness: lightness($on-scheme-color);
+  $on-scheme-lightness: color.channel(
+    $on-scheme-color,
+    "lightness",
+    $space: hsl
+  );
   @include register-var($name, $on-scheme-lightness, "", "-on-scheme-l");
   $on-scheme-l: getVar($name, "", "-on-scheme-l");
   @include register-var(
@@ -110,16 +141,28 @@
   @if ($scheme-main-brightness == "bright") {
     @while (fn.bulmaEnoughContrast($on-scheme-color, #fff) == false) {
       // We're on a light background, so we'll darken the test color step by step.
-      $on-scheme-color: darken($on-scheme-color, 5%);
+      $on-scheme-color: color.adjust(
+        $on-scheme-color,
+        $lightness: -5%,
+        $space: hsl
+      );
     }
   } @else {
     @while (fn.bulmaEnoughContrast($on-scheme-color, #000) == false) {
       // We're on a dark background, so we'll lighten the test color step by step.
-      $on-scheme-color: lighten($on-scheme-color, 5%);
+      $on-scheme-color: color.adjust(
+        $on-scheme-color,
+        $lightness: 5%,
+        $space: hsl
+      );
     }
   }
 
-  $on-scheme-lightness: lightness($on-scheme-color);
+  $on-scheme-lightness: color.channel(
+    $on-scheme-color,
+    "lightness",
+    $space: hsl
+  );
   @include register-var($name, $on-scheme-lightness, "", "-on-scheme-l");
 }
 
@@ -135,7 +178,12 @@
   @include register-base-color($name, $base);
 
   @if $invert {
-    @include register-var($name, lightness($invert), "", "-invert-l");
+    @include register-var(
+      $name,
+      color.channel($invert, "lightness", $space: hsl),
+      "",
+      "-invert-l"
+    );
     @include register-var("#{$name}-invert", $invert);
   }
 }
@@ -148,11 +196,11 @@
   $light: null,
   $dark: null
 ) {
-  $h: round(hue($base)); // Hue
-  $s: round(saturation($base)); // Saturation
-  $l: round(lightness($base)); // Lightness
+  $h:math.round(color.channel($base, "hue", $space: hsl)); // Hue
+  $s:math.round(color.channel($base, "saturation", $space: hsl)); // Saturation
+  $l:math.round(color.channel($base, "lightness", $space: hsl)); // Lightness
   $base-lum: fn.bulmaColorLuminance($base);
-  $l-base: round($l % 10); // Get lightness second digit: 53% -> 3%
+  $l-base: math.round($l % 10); // Get lightness second digit: 53% -> 3%
   $l-0: 0%; // 5% or less
   $l-5: 5%; // More than 5%
   $a: 1; // Alpha
@@ -160,7 +208,7 @@
 
   // Calculate digits like "40" for the scheme-main
   $scheme-l-0: 0%;
-  $scheme-l-base: round($scheme-main-l % 10);
+  $scheme-l-base: math.round($scheme-main-l % 10);
   $closest-5: math.round(math.div($scheme-main-l, 5)) * 5;
   $pct-to-int: math.div($closest-5, 100%) * 100;
   $scheme-main-digits: #{$pct-to-int};
@@ -254,7 +302,10 @@
       // Source: https://www.w3.org/TR/WCAG20-TECHS/G17.html
       $fg-lum: fn.bulmaColorLuminance($foreground);
 
-      @if (lightness($foreground) > lightness($background)) {
+      @if (
+        color.channel($foreground, "lightness", $space: hsl) >
+          color.channel($background, "lightness", $space: hsl)
+      ) {
         $is-light-fg: true;
         $ratio: math.div(($fg-lum + 0.05), ($bg-lum + 0.05));
       } @else {
@@ -323,7 +374,12 @@
 
   // If an invert color is provided by the user
   @if $invert {
-    @include register-var($name, lightness($invert), "", "-invert-l");
+    @include register-var(
+      $name,
+      color.channel($invert, "lightness", $space: hsl),
+      "",
+      "-invert-l"
+    );
     @include register-var("#{$name}-invert", $invert);
   } @else {
     $base-invert-l-digits: map.get($combos, $base-digits);
@@ -343,13 +399,33 @@
 
   // Good color on light background (90% lightness)
   @if $light and $dark {
-    @include register-var($name, lightness($light), "", "-light-l");
-    @include register-var($name, lightness($light), "", "-dark-invert-l");
+    @include register-var(
+      $name,
+      color.channel($light, "lightness", $space: hsl),
+      "",
+      "-light-l"
+    );
+    @include register-var(
+      $name,
+      color.channel($light, "lightness", $space: hsl),
+      "",
+      "-dark-invert-l"
+    );
     @include register-var("#{$name}-light", $light);
     @include register-var("#{$name}-dark-invert", $light);
 
-    @include register-var($name, lightness($dark), "", "-dark-l");
-    @include register-var($name, lightness($dark), "", "-light-invert-l");
+    @include register-var(
+      $name,
+      color.channel($dark, "lightness", $space: hsl),
+      "",
+      "-dark-l"
+    );
+    @include register-var(
+      $name,
+      color.channel($dark, "lightness", $space: hsl),
+      "",
+      "-light-invert-l"
+    );
     @include register-var("#{$name}-dark", $dark);
     @include register-var("#{$name}-light-invert", $dark);
   } @else {
@@ -419,7 +495,7 @@
 
 @mixin system-theme($name) {
   @media (prefers-color-scheme: #{$name}) {
-    :root {
+    #{iv.$variables-host} {
       @content;
     }
   }

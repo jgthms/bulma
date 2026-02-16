@@ -1,5 +1,5 @@
-{% assign link = site.data.links.by_id[include.link_id] %}
-{% assign cleanpath = link.path | remove: '/' %}
+{% assign link = site.data.links.by_id[include.link_id] %} {% assign cleanpath =
+link.path | remove: '/' %}
 
 <a
   class="
@@ -17,28 +17,30 @@
     {% endif %}
   "
   title="{{ link.subtitle | strip_html }}"
-  {% if link.href %}
-    href="{{ link.href }}"
-    target="_blank"
-  {% else %}
-    href="{{ site.url }}{{ link.path }}"
-  {% endif %}
+  {%
+  if
+  link.href
+  %}
+  href="{{ link.href }}"
+  target="_blank"
+  {%
+  else
+  %}
+  href="{{ site.url }}{{ link.path }}"
+  {%
+  endif
+  %}
 >
   <span class="icon">
     <i class="{{ link.icon }}"></i>
   </span>
 
   {% unless link.icon_only %}
-    <span class="bd-nav-item-name">
-      {% if link.long_name %}
-        <span class="is-hidden-fullhd">{{ link.name }}</span>
-        <span class="is-hidden is-block-fullhd">{{ link.long_name }}</span>
-      {% else %}
-        {{ link.name }}
-      {% endif %}
-      {% if include.link_id == "shop" %}
-        <span class="tag is-success ml-1">New!</span>
-      {% endif %}
-    </span>
+  <span class="bd-nav-item-name">
+    {% if link.long_name %}
+    <span class="is-hidden-fullhd">{{ link.name }}</span>
+    <span class="is-hidden is-block-fullhd">{{ link.long_name }}</span>
+    {% else %} {{ link.name }} {% endif %}
+  </span>
   {% endunless %}
 </a>

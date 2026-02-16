@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @use "initial-variables" as iv;
 @use "css-variables" as cv;
 
@@ -360,11 +362,11 @@
 }
 
 @mixin breakpoint($name) {
-  $breakpoint: map-get(iv.$breakpoints, $name);
+  $breakpoint: map.get(iv.$breakpoints, $name);
 
   @if $breakpoint {
-    $from: map-get($breakpoint, "from");
-    $until: map-get($breakpoint, "until");
+    $from: map.get($breakpoint, "from");
+    $until: map.get($breakpoint, "until");
 
     @if $from and $until {
       @include between($from, $until) {

@@ -10,9 +10,9 @@ $hero-body-padding-small: 1.5rem !default;
 $hero-body-padding-medium: 9rem 4.5rem !default;
 $hero-body-padding-large: 18rem 6rem !default;
 
-$hero-gradient-h-offset: 5deg;
-$hero-gradient-s-offset: 10%;
-$hero-gradient-l-offset: 5%;
+$hero-gradient-h-offset: 5deg !default;
+$hero-gradient-s-offset: 10% !default;
+$hero-gradient-l-offset: 5% !default;
 
 $hero-colors: dv.$colors !default;
 
@@ -25,6 +25,9 @@ $hero-colors: dv.$colors !default;
       "hero-body-padding-small": #{$hero-body-padding-small},
       "hero-body-padding-medium": #{$hero-body-padding-medium},
       "hero-body-padding-large": #{$hero-body-padding-large},
+      "hero-gradient-h-offset": #{$hero-gradient-h-offset},
+      "hero-gradient-s-offset": #{$hero-gradient-s-offset},
+      "hero-gradient-l-offset": #{$hero-gradient-l-offset},
     )
   );
 }
@@ -119,9 +122,9 @@ $hero-colors: dv.$colors !default;
       // Modifiers
       &.#{iv.$class-prefix}is-bold {
         $gradient-top-left: hsl(
-          calc(#{cv.getVar("hero-h")} - $hero-gradient-h-offset),
-          calc(#{cv.getVar("hero-s")} + $hero-gradient-s-offset),
-          calc(#{cv.getVar("hero-background-l")} + $hero-gradient-l-offset)
+          calc(#{cv.getVar("hero-h")} - #{$hero-gradient-h-offset}),
+          calc(#{cv.getVar("hero-s")} + #{$hero-gradient-s-offset}),
+          calc(#{cv.getVar("hero-background-l")} + #{$hero-gradient-l-offset})
         );
         $gradient-middle: hsl(
           #{cv.getVar("hero-h")},
@@ -129,9 +132,9 @@ $hero-colors: dv.$colors !default;
           #{cv.getVar("hero-background-l")}
         );
         $gradient-bottom-right: hsl(
-          calc(#{cv.getVar("hero-h")} + $hero-gradient-h-offset),
-          calc(#{cv.getVar("hero-s")} - $hero-gradient-s-offset),
-          calc(#{cv.getVar("hero-background-l")} - $hero-gradient-l-offset)
+          calc(#{cv.getVar("hero-h")} + #{$hero-gradient-h-offset}),
+          calc(#{cv.getVar("hero-s")} - #{$hero-gradient-s-offset}),
+          calc(#{cv.getVar("hero-background-l")} - #{$hero-gradient-l-offset})
         );
 
         background-image: linear-gradient(

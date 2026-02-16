@@ -1,3 +1,5 @@
+@use "sass:list";
+
 @use "../utilities/css-variables" as cv;
 @use "../utilities/derived-variables" as dv;
 @use "../utilities/initial-variables" as iv;
@@ -90,7 +92,7 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
 
   // Sizes
   @each $size in dv.$sizes {
-    $i: index(dv.$sizes, $size);
+    $i: list.index(dv.$sizes, $size);
 
     &.#{iv.$class-prefix}is-#{$i} {
       font-size: $size;
@@ -119,7 +121,7 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
 
   // Sizes
   @each $size in dv.$sizes {
-    $i: index(dv.$sizes, $size);
+    $i: list.index(dv.$sizes, $size);
 
     &.#{iv.$class-prefix}is-#{$i} {
       font-size: $size;

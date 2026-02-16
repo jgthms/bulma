@@ -1,20 +1,29 @@
+@use "sass:color";
 @use "sass:list";
+@use "sass:map";
 @use "sass:math";
+@use "sass:meta";
+@use "sass:string";
 
 @function mergeColorMaps($bulma-colors, $custom-colors) {
   // We return at least Bulma's hard-coded colors
   $merged-colors: $bulma-colors;
 
   // We want a map as input
-  @if type-of($custom-colors) == "map" {
+  @if meta.type-of($custom-colors) == "map" {
     @each $name, $components in $custom-colors {
       // The color name should be a string
       // and the components either a single color
       // or a colors list with at least one element
-      @if type-of($name) ==
+      @if meta.type-of($name) ==
         "string" and
-        (type-of($components) == "list" or type-of($components) == "color") and
-        length($components) >=
+        (
+          meta.type-of($components) ==
+            "list" or
+            meta.type-of($components) ==
+            "color"
+        ) and
+        list.length($components) >=
         1
       {
         $color-base: null;
@@ -25,22 +34,22 @@
 
         // The param can either be a single color
         // or a list of 2 colors
-        @if type-of($components) == "color" {
+        @if meta.type-of($components) == "color" {
           $color-base: $components;
           $color-invert: bulmaFindColorInvert($color-base);
           $color-light: bulmaFindLightColor($color-base);
           $color-dark: bulmaFindDarkColor($color-base);
-        } @else if type-of($components) == "list" {
+        } @else if meta.type-of($components) == "list" {
           $color-base: list.nth($components, 1);
 
           // If Invert, Light and Dark are provided
-          @if length($components) > 3 {
+          @if list.length($components) > 3 {
             $color-invert: list.nth($components, 2);
             $color-light: list.nth($components, 3);
             $color-dark: list.nth($components, 4);
 
             // If only Invert and Light are provided
-          } @else if length($components) > 2 {
+          } @else if list.length($components) > 2 {
             $color-invert: list.nth($components, 2);
             $color-light: list.nth($components, 3);
             $color-dark: bulmaFindDarkColor($color-base);
@@ -56,11 +65,11 @@
         $value: $color-base, $color-invert, $color-light, $color-dark;
 
         // We only want to merge the map if the color base is an actual color
-        @if type-of($color-base) == "color" {
+        @if meta.type-of($color-base) == "color" {
           // We merge this colors elements as map with Bulma's colors map
           // (we can override them this way, no multiple definition for the same name)
           // $merged-colors: map_merge($merged-colors, ($name: ($color-base, $color-invert, $color-light, $color-dark)))
-          $merged-colors: map_merge(
+          $merged-colors: map.merge(
             $merged-colors,
             (
               $name: $value,
@@ -91,14 +100,14 @@
 }
 
 @function bulmaColorLuminance($color) {
-  @if type-of($color) != "color" {
+  @if meta.type-of($color) != "color" {
     @return 0.55;
   }
 
   $color-rgb: (
-    "red": red($color),
-    "green": green($color),
-    "blue": blue($color),
+    "red": color.channel($color, "red", $space: rgb),
+    "green": color.channel($color, "green", $space: rgb),
+    "blue": color.channel($color, "blue", $space: rgb),
   );
 
   @each $name, $value in $color-rgb {
@@ -112,7 +121,7 @@
       $value: powerNumber($value, 2);
     }
 
-    $color-rgb: map-merge(
+    $color-rgb: map.merge(
       $color-rgb,
       (
         $name: $value,
@@ -120,8 +129,8 @@
     );
   }
 
-  @return map-get($color-rgb, "red") * 0.2126 + map-get($color-rgb, "green") *
-    0.7152 + map-get($color-rgb, "blue") * 0.0722;
+  @return map.get($color-rgb, "red") * 0.2126 + map.get($color-rgb, "green") *
+    0.7152 + map.get($color-rgb, "blue") * 0.0722;
 }
 
 @function bulmaFindColorInvert($color) {
@@ -133,33 +142,33 @@
 }
 
 @function bulmaFindLightColor($color, $l: 96%) {
-  @if type-of($color) == "color" {
+  @if meta.type-of($color) == "color" {
     $l: 96%;
 
-    @if lightness($color) > 96% {
-      $l: lightness($color);
+    @if color.channel($color, "lightness", $space: hsl) > 96% {
+      $l: color.channel($color, "lightness", $space: hsl);
     }
 
-    @return change-color($color, $lightness: $l);
+    @return color.change($color, $lightness: $l);
   }
 
   @return $background;
 }
 
 @function bulmaFindDarkColor($color, $base-l: 29%) {
-  @if type-of($color) == "color" {
+  @if meta.type-of($color) == "color" {
     $luminance: bulmaColorLuminance($color);
     $luminance-delta: 0.53 - $luminance;
-    $target-l: round($base-l + $luminance-delta * 53);
+    $target-l: math.round($base-l + $luminance-delta * 53);
 
-    @return change-color($color, $lightness: max($base-l, $target-l));
+    @return color.change($color, $lightness: max($base-l, $target-l));
   }
 
   @return $text-strong;
 }
 
 @function bulmaRgba($color, $alpha) {
-  @if type-of($color) != "color" {
+  @if meta.type-of($color) != "color" {
     @return $color;
   }
 
@@ -167,27 +176,37 @@
 }
 
 @function bulmaDarken($color, $amount) {
-  @if type-of($color) != "color" {
+  @if meta.type-of($color) != "color" {
     @return $color;
   }
 
-  @return darken($color, $amount);
+  @return color.adjust($color, $lightness: -$amount, $space: hsl);
 }
 
 @function bulmaLighten($color, $amount) {
-  @if type-of($color) != "color" {
+  @if meta.type-of($color) != "color" {
     @return $color;
   }
 
-  @return lighten($color, $amount);
+  @return color.adjust($color, $lightness: $amount, $space: hsl);
 }
 
 @function bulmaColorBrightness($n) {
-  $color-brightness: round(
-   math.div((red($n) * 299) + (green($n) * 587) + (blue($n) * 114), 1000)
+  $color-brightness: math.round(
+    math.div(
+      (color.channel($n, "red", $space: rgb) * 299) +
+        (color.channel($n, "green", $space: rgb) * 587) +
+        (color.channel($n, "blue", $space: rgb) * 114),
+      1000
+    )
   );
-  $light-color: round(
-    math.div((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114), 1000)
+  $light-color: math.round(
+    math.div(
+      (color.channel(#ffffff, "red", $space: rgb) * 299) +
+        (color.channel(#ffffff, "green", $space: rgb) * 587) +
+        (color.channel(#ffffff, "blue", $space: rgb) * 114),
+      1000
+    )
   );
 
   @if abs($color-brightness) < math.div($light-color, 2) {
@@ -198,12 +217,42 @@
 }
 
 @function bulmaEnoughContrast($foreground, $background) {
-  $r: (max(red($foreground), red($background))) -
-    (min(red($foreground), red($background)));
-  $g: (max(green($foreground), green($background))) -
-    (min(green($foreground), green($background)));
-  $b: (max(blue($foreground), blue($background))) -
-    (min(blue($foreground), blue($background)));
+  $r: (
+      max(
+        color.channel($foreground, "red", $space: rgb),
+        color.channel($background, "red", $space: rgb)
+      )
+    ) -
+    (
+      min(
+        color.channel($foreground, "red", $space: rgb),
+        color.channel($background, "red", $space: rgb)
+      )
+    );
+  $g: (
+      max(
+        color.channel($foreground, "green", $space: rgb),
+        color.channel($background, "green", $space: rgb)
+      )
+    ) -
+    (
+      min(
+        color.channel($foreground, "green", $space: rgb),
+        color.channel($background, "green", $space: rgb)
+      )
+    );
+  $b: (
+      max(
+        color.channel($foreground, "blue", $space: rgb),
+        color.channel($background, "blue", $space: rgb)
+      )
+    ) -
+    (
+      min(
+        color.channel($foreground, "blue", $space: rgb),
+        color.channel($background, "blue", $space: rgb)
+      )
+    );
   $sum-rgb: $r + $g + $b;
 
   @if $sum-rgb < 500 {
@@ -215,15 +264,15 @@
 
 // By Cory Simmons https://corysimmons.com/
 @function bulmaStringToNumber($value) {
-  @if type-of($value) == "number" {
+  @if meta.type-of($value) == "number" {
     @return $value;
-  } @else if type-of($value) != "string" {
+  } @else if meta.type-of($value) != "string" {
     $_: log("Value for `to-number` should be a number or a string.");
   }
 
   $result: 0;
   $digits: 0;
-  $minus: str-slice($value, 1, 1) == "-";
+  $minus: string.slice($value, 1, 1) == "-";
   $numbers: (
     "0": 0,
     "1": 1,
@@ -237,20 +286,23 @@
     "9": 9,
   );
 
-  @for $i from if($minus, 2, 1) through str-length($value) {
-    $character: str-slice($value, $i, $i);
+  @for $i from if($minus, 2, 1) through string.length($value) {
+    $character: string.slice($value, $i, $i);
 
-    @if not(index(map-keys($numbers), $character) or $character == ".") {
-      @return to-length(if($minus, -$result, $result), str-slice($value, $i));
+    @if not(list.index(map.keys($numbers), $character) or $character == ".") {
+      @return to-length(
+        if($minus, -$result, $result),
+        string.slice($value, $i)
+      );
     }
 
     @if $character == "." {
       $digits: 1;
     } @else if $digits == 0 {
-      $result: $result * 10 + map-get($numbers, $character);
+      $result: $result * 10 + map.get($numbers, $character);
     } @else {
       $digits: $digits * 10;
-      $result: $result + map-get($numbers, $character) / $digits;
+      $result: $result + map.get($numbers, $character) / $digits;
     }
   }
 

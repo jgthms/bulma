@@ -259,70 +259,70 @@ For Dark Mode, Bulma will keep the same hue and saturation of the main scheme co
     <tr>
       <th><code>--bulma-scheme-main-l</code></th>
       <td><code>100%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-l));"></span></td>
       <td><code>11%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-scheme-main-bis-l</code></th>
       <td><code>98%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-bis-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-bis-l));"></span></td>
       <td><code>13%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-bis-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-scheme-main-ter-l</code></th>
       <td><code>98%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-ter-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-ter-l));"></span></td>
       <td><code>15%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-main-ter-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-background-l</code></th>
       <td><code>96%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-background-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-background-l));"></span></td>
       <td><code>14%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-background-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-border-weak-l</code></th>
       <td><code>93%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-border-weak-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-border-weak-l));"></span></td>
       <td><code>21%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-border-weak-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-border-l</code></th>
       <td><code>86%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-border-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-border-l));"></span></td>
       <td><code>24%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-border-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-text-weak-l</code></th>
       <td><code>48%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-weak-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-weak-l));"></span></td>
       <td><code>53%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-weak-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-text-l</code></th>
       <td><code>29%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-l));"></span></td>
       <td><code>71%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-text-strong-l</code></th>
       <td><code>21%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-strong-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-strong-l));"></span></td>
       <td><code>93%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-strong-l));"></span></td>
     </tr>
     <tr>
       <th><code>--bulma-text-title-l</code></th>
       <td><code>14%</code></td>
-      <td><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-title-l));"></span></td>
+      <td class="theme-light"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-title-l));"></span></td>
       <td><code>100%</code></td>
       <td class="theme-dark"><span class="bd-color-swatch" style="--background: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-text-title-l));"></span></td>
     </tr>

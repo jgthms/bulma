@@ -1,12 +1,14 @@
+@use "sass:list";
+
 @use "../utilities/derived-variables" as dv;
 @use "../utilities/initial-variables" as iv;
 @use "../utilities/mixins" as mx;
 
 @mixin typography-size($target: "") {
   @each $size in dv.$sizes {
-    $i: index(dv.$sizes, $size);
+    $i: list.index(dv.$sizes, $size);
 
-    .#{iv.$helpers-prefix}size-#{$i}#{if($target == "", "", "-" + $target)} {
+    .#{iv.$class-prefix}#{iv.$helpers-prefix}size-#{$i}#{if($target == "", "", "-" + $target)} {
       font-size: $size !important;
     }
   }
@@ -46,123 +48,127 @@ $alignments: (
 );
 
 @each $alignment, $text-align in $alignments {
-  .#{iv.$helpers-has-prefix}text-#{$alignment} {
+  .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment} {
     text-align: #{$text-align} !important;
   }
 }
 
 @each $alignment, $text-align in $alignments {
   @include mx.mobile {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-mobile {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-mobile {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.tablet {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-tablet {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-tablet {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.tablet-only {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-tablet-only {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-tablet-only {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.touch {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-touch {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-touch {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.desktop {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-desktop {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-desktop {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.desktop-only {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-desktop-only {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-desktop-only {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.widescreen {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-widescreen {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-widescreen {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.widescreen-only {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-widescreen-only {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-widescreen-only {
       text-align: #{$text-align} !important;
     }
   }
 
   @include mx.fullhd {
-    .#{iv.$helpers-has-prefix}text-#{$alignment}-fullhd {
+    .#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-#{$alignment}-fullhd {
       text-align: #{$text-align} !important;
     }
   }
 }
 
-.#{iv.$helpers-prefix}capitalized {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}capitalized {
   text-transform: capitalize !important;
 }
 
-.#{iv.$helpers-prefix}lowercase {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}lowercase {
   text-transform: lowercase !important;
 }
 
-.#{iv.$helpers-prefix}uppercase {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}uppercase {
   text-transform: uppercase !important;
 }
 
-.#{iv.$helpers-prefix}italic {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}italic {
   font-style: italic !important;
 }
 
-.#{iv.$helpers-prefix}underlined {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}underlined {
   text-decoration: underline !important;
 }
 
-.#{iv.$helpers-has-prefix}text-weight-light {
+.#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-weight-light {
   font-weight: iv.$weight-light !important;
 }
 
-.#{iv.$helpers-has-prefix}text-weight-normal {
+.#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-weight-normal {
   font-weight: iv.$weight-normal !important;
 }
 
-.#{iv.$helpers-has-prefix}text-weight-medium {
+.#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-weight-medium {
   font-weight: iv.$weight-medium !important;
 }
 
-.#{iv.$helpers-has-prefix}text-weight-semibold {
+.#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-weight-semibold {
   font-weight: iv.$weight-semibold !important;
 }
 
-.#{iv.$helpers-has-prefix}text-weight-bold {
+.#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-weight-bold {
   font-weight: iv.$weight-bold !important;
 }
 
-.#{iv.$helpers-prefix}family-primary {
+.#{iv.$class-prefix}#{iv.$helpers-has-prefix}text-weight-extrabold {
+  font-weight: iv.$weight-extrabold !important;
+}
+
+.#{iv.$class-prefix}#{iv.$helpers-prefix}family-primary {
   font-family: dv.$family-primary !important;
 }
 
-.#{iv.$helpers-prefix}family-secondary {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}family-secondary {
   font-family: dv.$family-secondary !important;
 }
 
-.#{iv.$helpers-prefix}family-sans-serif {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}family-sans-serif {
   font-family: iv.$family-sans-serif !important;
 }
 
-.#{iv.$helpers-prefix}family-monospace {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}family-monospace {
   font-family: iv.$family-monospace !important;
 }
 
-.#{iv.$helpers-prefix}family-code {
+.#{iv.$class-prefix}#{iv.$helpers-prefix}family-code {
   font-family: dv.$family-code !important;
 }

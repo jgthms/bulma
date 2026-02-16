@@ -2,8 +2,14 @@
 {% assign subtab = include.subtab | default: page.doc-subtab %}
 {% assign data = include.data | default: site.data.variables[tab][subtab] %}
 {% assign sass_vars = include.data | default: data["sass-vars"] %}
+{% assign sass_vars_size = sass_vars | size %}
 {% assign css_vars = include.data | default: data["css-vars"] %}
+{% assign css_vars_size = css_vars | size %}
 
+{% if sass_vars_size > 0 or css_vars_size > 0 %}
+{% include docs/elements/anchor.html name="Sass and CSS variables" %}
+
+{% if sass_vars_size > 0 %}
 <div class="bd-vars-table block table-container">
   <table>
     <thead>
@@ -14,7 +20,7 @@
             <span>Sass Variable</span>
           </div>
         </th>
-        {% unless include.hide_css_vars %}
+        {% unless include.hide_css_vars or page.meta.hide_css_vars %}
           <th>
             <div class="icon-text">
               <span class="icon has-text-link"><i class="fab fa-css3"></i></span>
@@ -36,7 +42,7 @@
         {% unless sass_var["value"] == "dv.$colors" %}
         <tr>
           <td class="bd-theme-sass">{% highlight sass %}${{ sass_var["name"] }}{% endhighlight %}</td>
-          {% unless include.hide_css_vars %}
+          {% unless include.hide_css_vars or page.meta.hide_css_vars %}
             <td class="bd-theme-code">{% highlight css %}var(--bulma-{{ sass_var["css-var"] }}){% endhighlight %}</td>
           {% endunless %}
           <td class="bd-theme-docs">{% highlight css %}{{ sass_var["value"] }}{% endhighlight %}</td>
@@ -46,3 +52,35 @@
     </tbody>
   </table>
 </div>
+{% elsif css_vars_size > 0 %}
+<div class="bd-vars-table block table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <div class="icon-text">
+            <span class="icon has-text-link"><i class="fab fa-css3"></i></span>
+            <span>CSS Variable</span>
+          </div>
+        </th>
+        <th>
+          <div class="icon-text">
+            <span class="icon has-text-success"><i class="fas fa-code"></i></span>
+            <span>Value</span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for css_var in css_vars %}
+        <tr>
+          <td class="bd-theme-sass">{% highlight sass %}var(--bulma-{{ css_var["name"] }}){% endhighlight %}</td>
+          <td class="bd-theme-docs">{% highlight css %}{{ css_var["value"] }}{% endhighlight %}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+{% endif %}
