@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+# 1.0.5
+
+### Bug Fixes
+
+- Fix #4006: (fixes #4009) Use String.unquote for Dart compatibility
+
 ## 1.0.4
 
 ### New Features
