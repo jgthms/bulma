@@ -97,7 +97,7 @@
 
 ## 1.0.0
 
-Bulma v1 is a **full rewrite** of the framework using [**Dart Sass**](https://sass-lang.com/dart-sass/), which is the the primary implementation of Sass. While this affects a few development details, everything has been done to make the transition **as easy as possible**.
+Bulma v1 is a **full rewrite** of the framework using [**Dart Sass**](https://sass-lang.com/dart-sass/), which is the primary implementation of Sass. While this affects a few development details, everything has been done to make the transition **as easy as possible**.
 
 ## What remains the same
 
