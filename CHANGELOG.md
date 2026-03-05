@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## Unreleased
+
+### Enhancements
+
+- Use CSS custom properties (`var(--bulma-weight-*)`) in `has-text-weight-*` helper classes for runtime theming support
+
 ## 1.0.4
 
 ### New Features
