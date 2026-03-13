@@ -1,3 +1,5 @@
+@use "sass:list";
+
 @use "../utilities/css-variables" as cv;
 @use "../utilities/initial-variables" as iv;
 @use "../utilities/derived-variables" as dv;
@@ -32,6 +34,8 @@ $panel-block-active-icon-color: cv.getVar("link") !default;
 
 $panel-icon-color: cv.getVar("text-weak") !default;
 $panel-colors: dv.$colors !default;
+
+$panel-no-palette: ("white", "black", "light", "dark");
 
 .#{iv.$class-prefix}panel {
   @include cv.register-vars(
@@ -93,6 +97,48 @@ $panel-colors: dv.$colors !default;
           "panel-heading-color-l": #{cv.getVar($name, "", "-invert-l")},
         )
       );
+
+      @if not list.index($panel-no-palette, $name) {
+        &.#{iv.$class-prefix}is-light {
+          @include cv.register-vars(
+            (
+              "panel-color-l": #{cv.getVar($name, "", "-light-l")},
+              "panel-heading-background-l": #{cv.getVar("light-l")},
+              "panel-heading-color-l": #{cv.getVar($name, "", "-light-invert-l")},
+            )
+          );
+        }
+
+        &.#{iv.$class-prefix}is-dark {
+          @include cv.register-vars(
+            (
+              "panel-color-l": #{cv.getVar($name, "", "-dark-l")},
+              "panel-heading-background-l": #{cv.getVar("dark-l")},
+              "panel-heading-color-l": #{cv.getVar($name, "", "-dark-invert-l")},
+            )
+          );
+        }
+      }
+
+      &.#{iv.$class-prefix}is-soft {
+        @include cv.register-vars(
+          (
+            "panel-color-l": #{cv.getVar("soft-l")},
+            "panel-heading-background-l": #{cv.getVar("soft-l")},
+            "panel-heading-color-l": #{cv.getVar("soft-invert-l")},
+          )
+        );
+      }
+
+      &.#{iv.$class-prefix}is-bold {
+        @include cv.register-vars(
+          (
+            "panel-color-l": #{cv.getVar("bold-l")},
+            "panel-heading-background-l": #{cv.getVar("bold-l")},
+            "panel-heading-color-l": #{cv.getVar("bold-invert-l")},
+          )
+        );
+      }
     }
   }
 }

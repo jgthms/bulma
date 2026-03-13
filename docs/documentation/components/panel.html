@@ -164,3 +164,32 @@ include docs/elements/anchor.html name="Colors" %}
 </article>
 {% endcapture %} {% include docs/elements/snippet.html content=foobar more=true
 %} {% endfor %}
+
+<div class="content">
+  <p>
+    You can also use the <strong>dark, light, soft and bold shades</strong>. 
+    Simply append one of the color shade modifiers.
+  </p>
+  <p>
+    For example, to use a darker shade of your primary color, use
+    <code>"is-dark"</code> as a class.
+  </p>
+</div>
+
+{% assign shades =  "dark, light, soft, bold" | split: ", " %}
+{% for variant in shades %} {% capture panel_shades %}
+<article class="panel is-medium is-primary is-{{ variant }}">
+  <p class="panel-heading mb-0">
+    <span class="icon is-small">
+      <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </span>
+    &nbsp;&nbsp;{{ variant | capitalize }}
+  </p>
+  <div class="panel-block content is-medium">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Molestias, quod quidem animi dignissimos incidunt magni accusantium saepe, 
+    nobis ipsam amet facere error commodi mollitia rem ipsum in ipsa illum nesciunt!
+  </div>
+</article>
+{% endcapture %} {% include docs/elements/snippet.html content=panel_shades more=true
+%} {% endfor %}
