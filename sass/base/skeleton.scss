@@ -93,6 +93,13 @@ textarea.#{iv.$class-prefix}is-skeleton {
   @extend %skeleton-pulsation;
   color: transparent !important;
   min-height: cv.getVar("skeleton-block-min-height");
+
+  // Ensure child elements (links, buttons, etc.) also become invisible.
+  // `color: transparent` on the parent does not cascade to elements
+  // with their own color (e.g. <a> defaults to -webkit-link).
+  * {
+    color: inherit !important;
+  }
 }
 
 .#{iv.$class-prefix}skeleton-lines {
