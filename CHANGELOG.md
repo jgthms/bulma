@@ -1,5 +1,11 @@
 # Bulma Changelog
 
+## 1.1.0
+
+### Bug Fixes
+
+- Fix #3814, #3932, #4044: correct the `is-offset-one-third` value from `0.3333%` to `33.3333%` in all responsive variants
+
 ## 1.0.4
 
 ### New Features
