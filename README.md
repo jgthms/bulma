@@ -80,6 +80,7 @@ Browse the [online documentation here.](https://bulma.io/documentation/start/ove
 
 | Project                                                                              | Description                                                                                                      |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| [Bestax](https://bestax.io)                                                          | A full-featured React library for Bulma, built for AI-powered development                                        |
 | [Bulma with Attribute Modules](https://github.com/j5bot/bulma-attribute-selectors)   | Adds support for attribute-based selectors                                                                       |
 | [Bulma with Rails](https://github.com/joshuajansen/bulma-rails)                      | Integrates Bulma with the rails asset pipeline                                                                   |
 | [BulmaRazor](https://github.com/loogn/bulmarazor)                                    | A lightweight component library based on Bulma and Blazor.                                                       |
