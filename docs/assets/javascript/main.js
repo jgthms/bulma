@@ -460,3 +460,38 @@ document.addEventListener("DOMContentLoaded", () => {
     closeMasterclass();
   });
 });
+
+
+document.addEventListener("keydown", function (event) {
+  const isCtrlOrCmd = event.ctrlKey || event.metaKey
+  if (!isCtrlOrCmd || event.key.toLowerCase() !== "k") return
+
+  const active = document.activeElement
+  const isTyping =
+    active &&
+    (active.tagName === "INPUT" ||
+      active.tagName === "TEXTAREA" ||
+      active.isContentEditable)
+
+  if (isTyping) return
+
+  event.preventDefault()
+
+  const searchButton = document.querySelector(
+    ".bd-nav-item.is-search-desktop"
+  )
+  const searchMenu = document.getElementById("js-search")
+  const searchInput = document.getElementById("algoliaSearch")
+
+  if (!searchButton || !searchMenu || !searchInput) return
+
+  // Open search menu if closed
+  if (!searchMenu.classList.contains("is-active")) {
+    searchButton.click()
+  }
+
+  // Focus after menu is visible
+  setTimeout(() => {
+    searchInput.focus()
+  }, 0)
+})
