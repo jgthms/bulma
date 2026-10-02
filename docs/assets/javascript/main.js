@@ -459,4 +459,13 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     closeMasterclass();
   });
+
+  document.querySelectorAll('[data-target="js-search"]').forEach((el) => {
+    el.addEventListener("click", () => {
+      const searchInput = document.querySelector("#js-search input");
+      if (searchInput) {
+        searchInput.focus();
+      }
+    });
+  });
 });
