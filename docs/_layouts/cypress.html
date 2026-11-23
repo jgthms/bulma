@@ -9,6 +9,20 @@
 
     <link rel="stylesheet" href="/vendor/fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="stylesheet" href="/css/bulma.css?v={{ site.time | date: "%Y%m%d%H%M" }}">
+    <style>
+      /* Headless Chromium on Linux starts with the pointer at 0,0, which hovers
+         whichever element sits in the top-left corner of the page. This covers
+         that pixel without affecting the layout, so no tested element is hovered. */
+      html::before {
+        content: "";
+        height: 1px;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 1px;
+        z-index: 9999;
+      }
+    </style>
   </head>
   <body>
     {{ content }}
