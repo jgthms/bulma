@@ -2,7 +2,7 @@ import { setMobile, setDesktop, setWidescreen, setFullHD } from "../utils";
 
 describe("Elements/Container", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/elements/container/");
+    cy.visit("/cyp/elements/container/");
   });
 
   it("has a Container element", () => {
@@ -137,8 +137,8 @@ describe("Elements/Container", () => {
 
   it("has a fullwidth fluid Container", () => {
     cy.viewport(
-      Cypress.env("viewports").fullhd[0],
-      Cypress.env("viewports").fullhd[1]
+      Cypress.expose("viewports").fullhd[0],
+      Cypress.expose("viewports").fullhd[1]
     );
 
     let viewport;

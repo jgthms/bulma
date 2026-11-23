@@ -2,7 +2,7 @@ import { setMobile, setDesktop } from "../utils";
 
 describe("Layout/Section", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/layout/section/");
+    cy.visit("/cyp/layout/section/");
     setDesktop();
   });
 

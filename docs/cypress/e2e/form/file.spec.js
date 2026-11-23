@@ -1,6 +1,6 @@
 describe("Form/File", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/form/file/");
+    cy.visit("/cyp/form/file/");
   });
 
   it("has a File", () => {
@@ -23,14 +23,14 @@ describe("Form/File", () => {
 
     cy.get("#file .file-cta, #file .file-name").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderColor).to.equal(Cypress.env("border"));
-      expect(cs.borderRadius).to.equal("4px");
+      expect(cs.borderColor).to.equal(Cypress.expose("border"));
+      expect(cs.borderRadius).to.equal(Cypress.expose("radius"));
     });
 
     cy.get("#file .file-cta").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("scheme-main-ter"));
-      expect(cs.color).to.equal(Cypress.env("text"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("scheme-main-ter"));
+      expect(cs.color).to.equal(Cypress.expose("text-strong"));
     });
 
     cy.get("#file .file-icon").then(($) => {
@@ -44,12 +44,12 @@ describe("Form/File", () => {
   });
 
   it(`has correct color File`, () => {
-    for (let i = 0; i < Cypress.env("color-names").length; i++) {
-      const name = Cypress.env("color-names")[i];
-      const baseColor = Cypress.env(name);
-      const invertColor = Cypress.env(`${name}-invert`);
-      const lightColor = Cypress.env(`${name}-light`);
-      const darkColor = Cypress.env(`${name}-dark`);
+    for (let i = 0; i < Cypress.expose("color-names").length; i++) {
+      const name = Cypress.expose("color-names")[i];
+      const baseColor = Cypress.expose(name);
+      const invertColor = Cypress.expose(`${name}-invert`);
+      const lightColor = Cypress.expose(`${name}-light`);
+      const darkColor = Cypress.expose(`${name}-dark`);
 
       cy.get(`#file-${name} .file-cta`).then(($) => {
         const cs = window.getComputedStyle($[0]);
@@ -62,22 +62,22 @@ describe("Form/File", () => {
   it("has correct File sizes", () => {
     cy.get("#file-small").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").small}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").small}px`);
     });
 
     cy.get("#file-normal").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").normal}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").normal}px`);
     });
 
     cy.get("#file-medium").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").medium}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").medium}px`);
     });
 
     cy.get("#file-large").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").large}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").large}px`);
     });
   });
 
@@ -90,7 +90,7 @@ describe("Form/File", () => {
 
     cy.get("#file-with-name .file-name").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderColor).to.equal(Cypress.env("border"));
+      expect(cs.borderColor).to.equal(Cypress.expose("border"));
       expect(cs.borderStyle).to.equal("solid");
       expect(cs.borderWidth).to.equal("1px 1px 1px 0px");
       expect(cs.borderBottomLeftRadius).to.equal("0px");

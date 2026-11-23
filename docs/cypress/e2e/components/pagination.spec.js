@@ -2,7 +2,7 @@ import { setMobile, setTablet } from "../utils";
 
 describe("Components/Pagination", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/pagination/");
+    cy.visit("/cyp/components/pagination/");
   });
 
   it("has a Pagination", () => {
@@ -34,25 +34,25 @@ describe("Components/Pagination", () => {
       "#pagination .pagination-previous:not(.is-disabled),#pagination .pagination-next:not(.is-disabled),#pagination .pagination-link:not(.is-current)"
     ).then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderColor).to.equal(Cypress.env("border"));
-      expect(cs.color).to.equal(Cypress.env("text-strong"));
+      expect(cs.borderColor).to.equal(Cypress.expose("border"));
+      expect(cs.color).to.equal(Cypress.expose("text-strong"));
       expect(cs.minWidth).to.equal("40px");
     });
 
     cy.get("#pagination .pagination-previous.is-disabled").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("border"));
-      expect(cs.borderColor).to.equal(Cypress.env("border"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("border"));
+      expect(cs.borderColor).to.equal(Cypress.expose("border"));
       expect(cs.boxShadow).to.equal("none");
-      expect(cs.color).to.equal(Cypress.env("text-light"));
+      expect(cs.color).to.equal(Cypress.expose("text-light"));
       expect(cs.opacity).to.equal("0.5");
     });
 
     cy.get("#pagination .pagination-link.is-current").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("link"));
-      expect(cs.borderColor).to.equal(Cypress.env("link"));
-      expect(cs.color).to.equal(Cypress.env("link-invert"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("link"));
+      expect(cs.borderColor).to.equal(Cypress.expose("link"));
+      expect(cs.color).to.equal(Cypress.expose("link-invert"));
     });
 
     cy.get(
@@ -66,7 +66,7 @@ describe("Components/Pagination", () => {
 
     cy.get("#pagination .pagination-ellipsis").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("grey-light"));
+      expect(cs.color).to.equal(Cypress.expose("text-light"));
       expect(cs.pointerEvents).to.equal("none");
     });
 
@@ -80,7 +80,7 @@ describe("Components/Pagination", () => {
 // Mobile
 describe("Components/Pagination Mobile", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/pagination/");
+    cy.visit("/cyp/components/pagination/");
     setMobile();
   });
 
@@ -111,7 +111,7 @@ describe("Components/Pagination Mobile", () => {
 // Tablet
 describe("Components/Navbar Tablet", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/pagination/");
+    cy.visit("/cyp/components/pagination/");
     setTablet();
   });
 

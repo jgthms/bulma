@@ -1,6 +1,6 @@
 describe("Elements/Content", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/elements/content/");
+    cy.visit("/cyp/elements/content/");
   });
 
   it("has a Content element", () => {
@@ -42,7 +42,7 @@ describe("Elements/Content", () => {
   it("has a correct blockquote", () => {
     cy.get(".content blockquote").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white-ter"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white-ter"));
       expect(cs.padding).to.equal("20px 24px");
     });
   });

@@ -1,6 +1,6 @@
 describe("Elements/Icon", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/elements/icon/");
+    cy.visit("/cyp/elements/icon/");
   });
 
   it("has a .icon element", () => {
@@ -45,11 +45,8 @@ describe("Elements/Icon", () => {
     cy.get("#icon-text").then(($) => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.display).to.equal("inline-flex");
-    });
-
-    cy.get("#icon-text > .icon").then(($) => {
-      const cs = window.getComputedStyle($[0]);
-      expect(cs.marginRight).to.equal("4px");
+      expect(cs.columnGap).to.equal("4px");
+      expect(cs.rowGap).to.equal("4px");
     });
 
     cy.get("#icon-text-div").then(($) => {

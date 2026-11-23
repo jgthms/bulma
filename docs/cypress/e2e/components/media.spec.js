@@ -1,6 +1,6 @@
 describe("Components/Media", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/layout/media/");
+    cy.visit("/cyp/layout/media/");
   });
 
   it("has a Media", () => {
@@ -18,7 +18,7 @@ describe("Components/Media", () => {
   it("has a correct nested Media", () => {
     cy.get("#media-nested .media-content .media + .media").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderTopColor).to.equal("rgba(219, 219, 219, 0.5)");
+      expect(cs.borderTopColor).to.equal("rgba(214, 217, 224, 0.5)");
       expect(cs.borderTopStyle).to.equal("solid");
       expect(cs.borderTopWidth).to.equal("1px");
       expect(cs.marginTop).to.equal("8px");

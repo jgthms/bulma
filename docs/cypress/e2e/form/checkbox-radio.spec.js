@@ -1,6 +1,6 @@
 describe("Form/Checkbox", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/form/checkbox-radio/");
+    cy.visit("/cyp/form/checkbox-radio/");
   });
 
   it("has a Checkbox", () => {
@@ -25,7 +25,7 @@ describe("Form/Checkbox", () => {
   it("has a correct disabled Checkbox", () => {
     cy.get("#checkbox-disabled").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("text-light"));
+      expect(cs.color).to.equal(Cypress.expose("text-light"));
       expect(cs.cursor).to.equal("not-allowed");
     });
 
@@ -38,7 +38,7 @@ describe("Form/Checkbox", () => {
 
 describe("Form/Radio", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/form/checkbox-radio/");
+    cy.visit("/cyp/form/checkbox-radio/");
   });
 
   it("has a Radio", () => {
@@ -63,15 +63,16 @@ describe("Form/Radio", () => {
   it("has a correct disabled Radio", () => {
     cy.get("#radio .radio[disabled]").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("text-light"));
+      expect(cs.color).to.equal(Cypress.expose("text-light"));
       expect(cs.cursor).to.equal("not-allowed");
     });
   });
 
   it("has correct Radio spacing", () => {
-    cy.get("#radio .radio + .radio").then(($) => {
+    cy.get("#radios").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.marginLeft).to.equal("8px");
+      expect(cs.columnGap).to.equal("16px");
+      expect(cs.rowGap).to.equal("8px");
     });
   });
 });

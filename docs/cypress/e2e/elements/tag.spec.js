@@ -1,6 +1,6 @@
 describe("Elements/Tag", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/elements/tag/");
+    cy.visit("/cyp/elements/tag/");
   });
 
   it("has a Tag", () => {
@@ -10,9 +10,9 @@ describe("Elements/Tag", () => {
   it("has a correct Tag", () => {
     cy.get("#tag").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white-ter"));
-      expect(cs.borderRadius).to.equal("4px");
-      expect(cs.color).to.equal(Cypress.env("grey-dark"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white-ter"));
+      expect(cs.borderRadius).to.equal(Cypress.expose("radius"));
+      expect(cs.color).to.equal(Cypress.expose("grey-dark"));
       expect(cs.fontSize).to.equal("12px");
       expect(cs.height).to.equal("24px");
       expect(cs.padding).to.equal("0px 9px");
@@ -46,12 +46,12 @@ describe("Elements/Tag", () => {
 
   // Colors
   it(`has correct color Tags`, () => {
-    for (let i = 0; i < Cypress.env("color-names").length; i++) {
-      const name = Cypress.env("color-names")[i];
-      const baseColor = Cypress.env(name);
-      const invertColor = Cypress.env(`${name}-invert`);
-      const lightColor = Cypress.env(`${name}-light`);
-      const darkColor = Cypress.env(`${name}-dark`);
+    for (let i = 0; i < Cypress.expose("color-names").length; i++) {
+      const name = Cypress.expose("color-names")[i];
+      const baseColor = Cypress.expose(name);
+      const invertColor = Cypress.expose(`${name}-invert`);
+      const lightColor = Cypress.expose(`${name}-96`);
+      const darkColor = Cypress.expose(`${name}-light-invert`);
 
       cy.get(`#tag-${name}`).then(($) => {
         const cs = window.getComputedStyle($[0]);
@@ -71,11 +71,8 @@ describe("Elements/Tag", () => {
     cy.get("#tags").then(($) => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.display).to.equal("flex");
-    });
-
-    cy.get("#tags .tag").then(($) => {
-      const cs = window.getComputedStyle($[0]);
-      expect(cs.marginBottom).to.equal("8px");
+      expect(cs.columnGap).to.equal("8px");
+      expect(cs.rowGap).to.equal("8px");
     });
 
     cy.get("#tags-medium .tag").then(($) => {

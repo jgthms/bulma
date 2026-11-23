@@ -2,13 +2,13 @@ import { familyPrimary } from "../utils";
 
 describe("Base/Generic", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/base/generic/");
+    cy.visit("/cyp/base/generic/");
   });
 
   it("has a correct html", () => {
     cy.get("html").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("scheme-main"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("scheme-main"));
       expect(cs.fontSize).to.equal("16px");
       expect(cs.minWidth).to.equal("300px");
       expect(cs.overflowX).to.equal("hidden");
@@ -31,7 +31,7 @@ describe("Base/Generic", () => {
   it("has correct form elements", () => {
     cy.get("body, button, input, optgroup, select, textarea").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontFamily).to.contains("-apple-system");
+      expect(cs.fontFamily).to.contains("Inter");
       expect(cs.fontFamily).to.contains("Helvetica");
       expect(cs.fontFamily).to.contains("Arial");
       expect(cs.fontFamily).to.contains("sans-serif");
@@ -41,7 +41,7 @@ describe("Base/Generic", () => {
   it("has correct monospace elements", () => {
     cy.get("pre, code").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontFamily).to.equal(Cypress.env("family-code"));
+      expect(cs.fontFamily).to.equal(Cypress.expose("family-code"));
       expect(cs.webkitFontSmoothing).to.equal("auto");
     });
   });
@@ -49,8 +49,8 @@ describe("Base/Generic", () => {
   it("has a correct body", () => {
     cy.get("body").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("text"));
-      expect(cs.fontFamily).to.contains("-apple-system");
+      expect(cs.color).to.equal(Cypress.expose("text"));
+      expect(cs.fontFamily).to.contains("Inter");
       expect(cs.fontFamily).to.contains("Helvetica");
       expect(cs.fontFamily).to.contains("Arial");
       expect(cs.fontFamily).to.contains("sans-serif");
@@ -63,7 +63,7 @@ describe("Base/Generic", () => {
   it("has a correct a", () => {
     cy.get("a").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("link"));
+      expect(cs.color).to.equal(Cypress.expose("link-text"));
       expect(cs.cursor).to.equal("pointer");
       expect(cs.textDecorationLine).to.equal("none");
     });
@@ -72,15 +72,15 @@ describe("Base/Generic", () => {
   it("has a correct code", () => {
     cy.get("code").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white-ter"));
-      expect(cs.color).to.equal(Cypress.env("code"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white-ter"));
+      expect(cs.color).to.equal(Cypress.expose("code"));
     });
   });
 
   it("has a correct hr", () => {
     cy.get("hr").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white-ter"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white-ter"));
       expect(cs.borderStyle).to.equal("none");
       expect(cs.display).to.equal("block");
       expect(cs.height).to.equal("2px");
@@ -127,8 +127,8 @@ describe("Base/Generic", () => {
   it("has a correct pre", () => {
     cy.get("pre").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white-ter"));
-      expect(cs.color).to.equal(Cypress.env("text"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white-ter"));
+      expect(cs.color).to.equal(Cypress.expose("text"));
       expect(cs.fontSize).to.equal("14px");
       expect(cs.overflowX).to.equal("auto");
       expect(cs.padding).to.equal("20px 24px");
@@ -138,8 +138,8 @@ describe("Base/Generic", () => {
 
     cy.get("pre code").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("transparent"));
-      expect(cs.color).to.equal(Cypress.env("text"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("transparent"));
+      expect(cs.color).to.equal(Cypress.expose("text"));
       expect(cs.fontSize).to.equal("14px");
       expect(cs.padding).to.equal("0px");
     });

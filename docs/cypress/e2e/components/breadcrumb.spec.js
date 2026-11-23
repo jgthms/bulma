@@ -1,6 +1,6 @@
 describe("Components/Breadcrumb", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/breadcrumb/");
+    cy.visit("/cyp/components/breadcrumb/");
   });
 
   it("has a Breadcrumb", () => {
@@ -14,13 +14,13 @@ describe("Components/Breadcrumb", () => {
 
     cy.get("#breadcrumb li:nth-child(2) a").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("link"));
+      expect(cs.color).to.equal(Cypress.expose("link-text"));
       expect(cs.padding).to.equal("0px 12px");
     });
 
     cy.get("#breadcrumb li.is-active a").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("text-strong"));
+      expect(cs.color).to.equal(Cypress.expose("link-text-active"));
       expect(cs.padding).to.equal("0px 12px");
     });
   });
@@ -40,22 +40,22 @@ describe("Components/Breadcrumb", () => {
   it("has correct Breadcrumb sizes", () => {
     cy.get("#breadcrumb-small").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").small}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").small}px`);
     });
 
     cy.get("#breadcrumb-normal").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").normal}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").normal}px`);
     });
 
     cy.get("#breadcrumb-medium").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").medium}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").medium}px`);
     });
 
     cy.get("#breadcrumb-large").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.fontSize).to.equal(`${Cypress.env("sizes").large}px`);
+      expect(cs.fontSize).to.equal(`${Cypress.expose("sizes").large}px`);
     });
   });
 

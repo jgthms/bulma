@@ -1,6 +1,6 @@
 describe("Elements/Other", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/elements/other/");
+    cy.visit("/cyp/elements/other/");
   });
 
   it("has a Block element", () => {
@@ -21,31 +21,30 @@ describe("Elements/Other", () => {
   it("has a correct Delete", () => {
     cy.get("#delete").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal("rgba(10, 10, 10, 0.2)");
-      expect(cs.borderColor).to.equal(Cypress.env("grey-dark"));
+      expect(cs.backgroundColor).to.equal("rgba(0, 0, 0, 0.5)");
+      expect(cs.borderColor).to.equal(Cypress.expose("grey-dark"));
       expect(cs.borderStyle).to.equal("none");
       expect(cs.borderRadius).to.equal("9999px");
       expect(cs.borderWidth).to.equal("0px");
       expect(cs.cursor).to.equal("pointer");
-      expect(cs.display).to.equal("inline-block");
+      expect(cs.display).to.equal("inline-flex");
       expect(cs.flexGrow).to.equal("0");
       expect(cs.flexShrink).to.equal("0");
-      expect(cs.fontSize).to.equal("0px");
+      expect(cs.fontSize).to.equal("16px");
       expect(cs.height).to.equal("20px");
       expect(cs.maxHeight).to.equal("20px");
       expect(cs.maxWidth).to.equal("20px");
       expect(cs.minHeight).to.equal("20px");
       expect(cs.minWidth).to.equal("20px");
-      expect(cs.outlineColor).to.equal(Cypress.env("grey-dark"));
+      expect(cs.outlineColor).to.equal(Cypress.expose("grey-dark"));
       expect(cs.outlineStyle).to.equal("none");
-      expect(cs.outlineWidth).to.equal("0px");
       expect(cs.pointerEvents).to.equal("auto");
       expect(cs.position).to.equal("relative");
       expect(cs.verticalAlign).to.equal("top");
       expect(cs.width).to.equal("20px");
 
       const before = window.getComputedStyle($[0], "before");
-      expect(before.backgroundColor).to.equal(Cypress.env("scheme-main"));
+      expect(before.backgroundColor).to.equal(Cypress.expose("scheme-main"));
       expect(before.content).to.equal('""');
       expect(before.display).to.equal("block");
       expect(before.height).to.equal("2px");
@@ -55,7 +54,7 @@ describe("Elements/Other", () => {
       expect(before.width).to.equal("10px");
 
       const after = window.getComputedStyle($[0], "after");
-      expect(after.backgroundColor).to.equal(Cypress.env("scheme-main"));
+      expect(after.backgroundColor).to.equal(Cypress.expose("scheme-main"));
       expect(after.content).to.equal('""');
       expect(after.display).to.equal("block");
       expect(after.height).to.equal("10px");
@@ -109,10 +108,10 @@ describe("Elements/Other", () => {
       expect(cs.animationIterationCount).to.equal("infinite");
       expect(cs.animationName).to.equal("spinAround");
       expect(cs.animationTimingFunction).to.equal("linear");
-      expect(cs.borderBottomColor).to.equal(Cypress.env("grey-lighter"));
-      expect(cs.borderLeftColor).to.equal(Cypress.env("grey-lighter"));
-      expect(cs.borderRightColor).to.equal(Cypress.env("transparent"));
-      expect(cs.borderTopColor).to.equal(Cypress.env("transparent"));
+      expect(cs.borderBottomColor).to.equal(Cypress.expose("grey-lighter"));
+      expect(cs.borderLeftColor).to.equal(Cypress.expose("grey-lighter"));
+      expect(cs.borderRightColor).to.equal(Cypress.expose("transparent"));
+      expect(cs.borderTopColor).to.equal(Cypress.expose("transparent"));
       expect(cs.borderRadius).to.equal("9999px");
       expect(cs.borderStyle).to.equal("solid");
       expect(cs.borderWidth).to.equal("2px");

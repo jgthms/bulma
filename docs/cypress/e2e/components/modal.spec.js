@@ -1,6 +1,6 @@
 describe("Components/Modal", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/modal/");
+    cy.visit("/cyp/components/modal/");
   });
 
   it("has a Modal", () => {
@@ -26,7 +26,7 @@ describe("Components/Modal", () => {
   it("has a correct Modal Background", () => {
     cy.get("#modal .modal-background").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal("rgba(10, 10, 10, 0.86)");
+      expect(cs.backgroundColor).to.equal("rgba(9, 10, 12, 0.86)");
       expect(cs.position).to.equal("absolute");
     });
   });
@@ -48,35 +48,32 @@ describe("Components/Modal", () => {
     cy.get("#modal-card .modal-card-head, #modal-card .modal-card-foot").then(
       ($) => {
         const cs = window.getComputedStyle($[0]);
-        expect(cs.backgroundColor).to.equal(Cypress.env("white-ter"));
         expect(cs.display).to.equal("flex");
         expect(cs.flexShrink).to.equal("0");
-        expect(cs.padding).to.equal("20px");
+        expect(cs.padding).to.equal("32px");
         expect(cs.position).to.equal("relative");
       }
     );
 
     cy.get("#modal-card .modal-card-head").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderBottomColor).to.equal(Cypress.env("border"));
-      expect(cs.borderBottomStyle).to.equal("solid");
-      expect(cs.borderBottomWidth).to.equal("1px");
-      expect(cs.borderTopLeftRadius).to.equal("6px");
-      expect(cs.borderTopRightRadius).to.equal("6px");
+      expect(cs.backgroundColor).to.equal(Cypress.expose("scheme-main"));
+      expect(cs.borderBottomStyle).to.equal("none");
+      expect(cs.borderTopLeftRadius).to.equal(Cypress.expose("radius-large"));
+      expect(cs.borderTopRightRadius).to.equal(Cypress.expose("radius-large"));
     });
 
     cy.get("#modal-card .modal-card-foot").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderTopColor).to.equal(Cypress.env("border"));
-      expect(cs.borderTopStyle).to.equal("solid");
-      expect(cs.borderTopWidth).to.equal("1px");
-      expect(cs.borderBottomLeftRadius).to.equal("6px");
-      expect(cs.borderBottomRightRadius).to.equal("6px");
+      expect(cs.backgroundColor).to.equal(Cypress.expose("scheme-main-bis"));
+      expect(cs.borderTopStyle).to.equal("none");
+      expect(cs.borderBottomLeftRadius).to.equal(Cypress.expose("radius-large"));
+      expect(cs.borderBottomRightRadius).to.equal(Cypress.expose("radius-large"));
     });
 
     cy.get("#modal-card .modal-card-title").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("text-strong"));
+      expect(cs.color).to.equal(Cypress.expose("text-strong"));
       expect(cs.flexGrow).to.equal("1");
       expect(cs.flexShrink).to.equal("0");
       expect(cs.fontSize).to.equal("24px");
@@ -85,11 +82,11 @@ describe("Components/Modal", () => {
 
     cy.get("#modal-card .modal-card-body").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white"));
       expect(cs.flexGrow).to.equal("1");
       expect(cs.flexShrink).to.equal("1");
       expect(cs.overflow).to.equal("auto");
-      expect(cs.padding).to.equal("20px");
+      expect(cs.padding).to.equal("32px");
     });
   });
 });

@@ -1,6 +1,6 @@
 describe("Layout/Footer", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/layout/footer/");
+    cy.visit("/cyp/layout/footer/");
   });
 
   it("has a Footer", () => {
@@ -10,7 +10,7 @@ describe("Layout/Footer", () => {
   it("has a correct Footer", () => {
     cy.get("#footer").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("scheme-main-bis"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("scheme-main-bis"));
       expect(cs.padding).to.equal("48px 24px 96px");
     });
   });

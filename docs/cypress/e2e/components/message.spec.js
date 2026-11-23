@@ -1,6 +1,6 @@
 describe("Components/Message", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/message/");
+    cy.visit("/cyp/components/message/");
   });
 
   it("has a Message", () => {
@@ -10,8 +10,8 @@ describe("Components/Message", () => {
   it("has a correct Message", () => {
     cy.get("#message").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white-ter"));
-      expect(cs.borderRadius).to.equal("4px");
+      expect(cs.backgroundColor).to.equal(Cypress.expose("transparent"));
+      expect(cs.borderRadius).to.equal(Cypress.expose("radius"));
       expect(cs.fontSize).to.equal("16px");
     });
   });
@@ -19,21 +19,22 @@ describe("Components/Message", () => {
   it(`has a correct Message Header`, () => {
     cy.get("#message .message-header").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("text"));
-      expect(cs.color).to.equal(Cypress.env("text-invert"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("text-strong"));
+      expect(cs.color).to.equal("rgb(165, 172, 187)");
       expect(cs.display).to.equal("flex");
-      expect(cs.fontWeight).to.equal("700");
-      expect(cs.padding).to.equal("12px 16px");
+      expect(cs.fontWeight).to.equal(Cypress.expose("weight-semibold"));
+      expect(cs.padding).to.equal("16px 20px");
     });
   });
 
   it(`has a correct Message Body`, () => {
     cy.get("#message-no-header .message-body").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderColor).to.equal(Cypress.env("border"));
-      expect(cs.borderRadius).to.equal("4px");
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white-ter"));
+      expect(cs.borderLeftColor).to.equal(Cypress.expose("border"));
+      expect(cs.borderRadius).to.equal(Cypress.expose("radius-small"));
       expect(cs.borderWidth).to.equal("0px 0px 0px 4px");
-      expect(cs.color).to.equal(Cypress.env("text"));
+      expect(cs.color).to.equal(Cypress.expose("text"));
       expect(cs.padding).to.equal("20px 24px");
     });
 
@@ -46,16 +47,17 @@ describe("Components/Message", () => {
   });
 
   it(`has correct color Messages`, () => {
-    for (let i = 0; i < Cypress.env("color-names").length; i++) {
-      const name = Cypress.env("color-names")[i];
-      const baseColor = Cypress.env(name);
-      const invertColor = Cypress.env(`${name}-invert`);
-      const lightColor = Cypress.env(`${name}-light`);
-      const darkColor = Cypress.env(`${name}-dark`);
+    for (let i = 0; i < Cypress.expose("color-names").length; i++) {
+      const name = Cypress.expose("color-names")[i];
+      const baseColor = Cypress.expose(name);
+      const invertColor = Cypress.expose(`${name}-invert`);
+      const lightColor = Cypress.expose(`${name}-96`);
+      const darkColor = Cypress.expose(`${name}-on-scheme`);
+      const borderColor = Cypress.expose(`${name}-message-border`);
 
       cy.get(`#message-${name}`).then(($) => {
         const cs = window.getComputedStyle($[0]);
-        expect(cs.backgroundColor).to.equal(lightColor);
+        expect(cs.color).to.equal(darkColor);
       });
 
       cy.get(`#message-${name} .message-header`).then(($) => {
@@ -66,7 +68,8 @@ describe("Components/Message", () => {
 
       cy.get(`#message-${name} .message-body`).then(($) => {
         const cs = window.getComputedStyle($[0]);
-        expect(cs.borderColor).to.equal(baseColor);
+        expect(cs.backgroundColor).to.equal(lightColor);
+        expect(cs.borderLeftColor).to.equal(borderColor);
         expect(cs.color).to.equal(darkColor);
       });
     }

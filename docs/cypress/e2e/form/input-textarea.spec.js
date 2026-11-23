@@ -1,6 +1,6 @@
 describe("Form/Input", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/form/input-textarea/");
+    cy.visit("/cyp/form/input-textarea/");
   });
 
   it("has a Input", () => {
@@ -13,35 +13,35 @@ describe("Form/Input", () => {
       expect(cs.alignItems).to.equal("center");
       expect(cs.borderStyle).to.equal("solid");
       expect(cs.borderWidth).to.equal("1px");
-      expect(cs.borderRadius).to.equal(Cypress.env("control-radius"));
-      expect(cs.boxShadow).to.equal(Cypress.env("input-shadow"));
+      expect(cs.borderRadius).to.equal(Cypress.expose("control-radius"));
+      expect(cs.boxShadow).to.equal(Cypress.expose("input-shadow"));
       expect(cs.display).to.equal("inline-flex");
-      expect(cs.fontSize).to.equal(Cypress.env("size-normal"));
-      expect(cs.height).to.equal(Cypress.env("control-height"));
+      expect(cs.fontSize).to.equal(Cypress.expose("size-normal"));
+      expect(cs.height).to.equal(Cypress.expose("control-height"));
       expect(cs.justifyContent).to.equal("flex-start");
-      expect(cs.lineHeight).to.equal(Cypress.env("control-line-height"));
+      expect(cs.lineHeight).to.equal(Cypress.expose("control-line-height"));
       expect(cs.paddingBottom).to.equal(
-        Cypress.env("control-padding-vertical")
+        Cypress.expose("control-padding-vertical")
       );
       expect(cs.paddingLeft).to.equal(
-        Cypress.env("control-padding-horizontal")
+        Cypress.expose("control-padding-horizontal")
       );
       expect(cs.paddingRight).to.equal(
-        Cypress.env("control-padding-horizontal")
+        Cypress.expose("control-padding-horizontal")
       );
-      expect(cs.paddingTop).to.equal(Cypress.env("control-padding-vertical"));
+      expect(cs.paddingTop).to.equal(Cypress.expose("control-padding-vertical"));
       expect(cs.position).to.equal("relative");
       expect(cs.verticalAlign).to.equal("top");
     });
   });
 
   it(`has correct color Input`, () => {
-    for (let i = 0; i < Cypress.env("color-names").length; i++) {
-      const name = Cypress.env("color-names")[i];
-      const baseColor = Cypress.env(name);
-      const invertColor = Cypress.env(`${name}-invert`);
-      const lightColor = Cypress.env(`${name}-light`);
-      const darkColor = Cypress.env(`${name}-dark`);
+    for (let i = 0; i < Cypress.expose("color-names").length; i++) {
+      const name = Cypress.expose("color-names")[i];
+      const baseColor = Cypress.expose(name);
+      const invertColor = Cypress.expose(`${name}-invert`);
+      const lightColor = Cypress.expose(`${name}-light`);
+      const darkColor = Cypress.expose(`${name}-dark`);
 
       cy.get(`#input-${name}`).then(($) => {
         const cs = window.getComputedStyle($[0]);
@@ -51,12 +51,12 @@ describe("Form/Input", () => {
   });
 
   it("has correct Input sizes", () => {
-    for (let i = 0; i < Cypress.env("just-sizes").length; i++) {
-      const size = Cypress.env("just-sizes")[i];
+    for (let i = 0; i < Cypress.expose("just-sizes").length; i++) {
+      const size = Cypress.expose("just-sizes")[i];
 
       cy.get(`#input-${size}`).then(($) => {
         const cs = window.getComputedStyle($[0]);
-        expect(cs.fontSize).to.equal(`${Cypress.env("sizes")[size]}px`);
+        expect(cs.fontSize).to.equal(`${Cypress.expose("sizes")[size]}px`);
       });
     }
   });
@@ -98,8 +98,8 @@ describe("Form/Input", () => {
   it("has a correct static Input", () => {
     cy.get("#input-static").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("transparent"));
-      expect(cs.borderColor).to.equal(Cypress.env("transparent"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("transparent"));
+      expect(cs.borderColor).to.equal(Cypress.expose("transparent"));
       expect(cs.boxShadow).to.equal("none");
       expect(cs.paddingLeft).to.equal("0px");
       expect(cs.paddingRight).to.equal("0px");
@@ -109,7 +109,7 @@ describe("Form/Input", () => {
 
 describe("Form/Textarea", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/form/input-textarea/");
+    cy.visit("/cyp/form/input-textarea/");
   });
 
   it("has a Textarea", () => {
@@ -122,22 +122,22 @@ describe("Form/Textarea", () => {
       expect(cs.alignItems).to.equal("center");
       expect(cs.borderStyle).to.equal("solid");
       expect(cs.borderWidth).to.equal("1px");
-      expect(cs.borderRadius).to.equal(Cypress.env("control-radius"));
-      expect(cs.boxShadow).to.equal(Cypress.env("input-shadow"));
+      expect(cs.borderRadius).to.equal(Cypress.expose("control-radius"));
+      expect(cs.boxShadow).to.equal(Cypress.expose("input-shadow"));
       expect(cs.display).to.equal("block");
-      expect(cs.fontSize).to.equal(Cypress.env("size-normal"));
+      expect(cs.fontSize).to.equal(Cypress.expose("size-normal"));
       expect(cs.justifyContent).to.equal("flex-start");
-      expect(cs.lineHeight).to.equal(Cypress.env("control-line-height"));
+      expect(cs.lineHeight).to.equal(Cypress.expose("control-line-height"));
       expect(cs.paddingBottom).to.equal(
-        Cypress.env("control-padding-horizontal")
+        Cypress.expose("control-padding-horizontal")
       );
       expect(cs.paddingLeft).to.equal(
-        Cypress.env("control-padding-horizontal")
+        Cypress.expose("control-padding-horizontal")
       );
       expect(cs.paddingRight).to.equal(
-        Cypress.env("control-padding-horizontal")
+        Cypress.expose("control-padding-horizontal")
       );
-      expect(cs.paddingTop).to.equal(Cypress.env("control-padding-horizontal"));
+      expect(cs.paddingTop).to.equal(Cypress.expose("control-padding-horizontal"));
       expect(cs.position).to.equal("relative");
       expect(cs.resize).to.equal("vertical");
       expect(cs.verticalAlign).to.equal("top");

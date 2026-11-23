@@ -1,6 +1,6 @@
 describe("Elements/Table", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/elements/table/");
+    cy.visit("/cyp/elements/table/");
   });
 
   it("has a Table element", () => {
@@ -10,14 +10,14 @@ describe("Elements/Table", () => {
   it("has a correct Table", () => {
     cy.get("#table").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white"));
-      expect(cs.color).to.equal(Cypress.env("text-strong"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white"));
+      expect(cs.color).to.equal(Cypress.expose("text-strong"));
     });
 
     cy.get("#table tr.is-selected").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("primary"));
-      expect(cs.color).to.equal(Cypress.env("primary-invert"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("primary"));
+      expect(cs.color).to.equal(Cypress.expose("primary-invert"));
     });
   });
 
@@ -32,7 +32,7 @@ describe("Elements/Table", () => {
     cy.get("#table-striped tbody tr:not(.is-selected):nth-child(even)").then(
       ($) => {
         const cs = window.getComputedStyle($[0]);
-        expect(cs.backgroundColor).to.equal(Cypress.env("white-bis"));
+        expect(cs.backgroundColor).to.equal(Cypress.expose("white-bis"));
       }
     );
   });

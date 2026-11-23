@@ -14,11 +14,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gem install jekyll bundler
-      # - name: Run Cypress
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     working-directory: docs
-      #     install-command: npm install
-      #     build: npm run bulma-sass
-      #     start: jekyll serve --host 127.0.0.1 --port 4000
-      #     wait-on: "http://127.0.0.1:4000"
+      - name: Setup node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Run Cypress
+        uses: cypress-io/github-action@v7
+        with:
+          working-directory: docs
+          build: npm run bulma-sass
+          start: jekyll serve --host 127.0.0.1 --port 4000
+          wait-on: "http://127.0.0.1:4000"

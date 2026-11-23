@@ -28,7 +28,7 @@ const WIDTHS = [
 
 describe("Grid/Columns", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/grid/columns/");
+    cy.visit("/cyp/grid/columns/");
     setDesktop();
   });
 
@@ -142,7 +142,7 @@ describe("Grid/Columns", () => {
 
 describe("Grid/Column", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/grid/columns/");
+    cy.visit("/cyp/grid/columns/");
     setTablet();
   });
 

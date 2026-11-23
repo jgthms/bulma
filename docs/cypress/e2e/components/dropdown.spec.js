@@ -1,6 +1,6 @@
 describe("Components/Dropdown", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/dropdown/");
+    cy.visit("/cyp/components/dropdown/");
   });
 
   it("has a Dropdown", () => {
@@ -10,11 +10,9 @@ describe("Components/Dropdown", () => {
   it("has a correct Dropdown Content", () => {
     cy.get("#dropdown .dropdown-content").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("white"));
-      expect(cs.borderRadius).to.equal("4px");
-      expect(cs.boxShadow).to.equal(
-        "rgba(10, 10, 10, 0.1) 0px 8px 16px -2px, rgba(10, 10, 10, 0.02) 0px 0px 0px 1px"
-      );
+      expect(cs.backgroundColor).to.equal(Cypress.expose("white"));
+      expect(cs.borderRadius).to.equal(Cypress.expose("radius"));
+      expect(cs.boxShadow).to.equal(Cypress.expose("shadow"));
       expect(cs.paddingBottom).to.equal("8px");
       expect(cs.paddingTop).to.equal("8px");
     });
@@ -38,7 +36,7 @@ describe("Components/Dropdown", () => {
   it("has a correct Dropdown Item", () => {
     cy.get("#dropdown .dropdown-item").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.color).to.equal(Cypress.env("text"));
+      expect(cs.color).to.equal(Cypress.expose("text-strong"));
       expect(cs.display).to.equal("block");
     });
 
@@ -49,15 +47,15 @@ describe("Components/Dropdown", () => {
 
     cy.get("#dropdown a.dropdown-item.is-active").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("link"));
-      expect(cs.color).to.equal(Cypress.env("link-invert"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("link"));
+      expect(cs.color).to.equal(Cypress.expose("link-invert"));
     });
   });
 
   it("has a correct Dropdown Divider", () => {
     cy.get("#dropdown .dropdown-divider").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("grey-lightest"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("grey-lightest"));
       expect(cs.height).to.equal("1px");
     });
   });

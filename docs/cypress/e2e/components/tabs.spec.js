@@ -1,6 +1,6 @@
 describe("Components/Tabs", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:4000/cyp/components/tabs/");
+    cy.visit("/cyp/components/tabs/");
   });
 
   it("has a Tabs", () => {
@@ -20,10 +20,10 @@ describe("Components/Tabs", () => {
     cy.get("#tabs li:not(.is-active) a").then(($) => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.alignItems).to.equal("center");
-      expect(cs.borderBottomColor).to.equal(Cypress.env("border"));
+      expect(cs.borderBottomColor).to.equal(Cypress.expose("border"));
       expect(cs.borderBottomStyle).to.equal("solid");
       expect(cs.borderBottomWidth).to.equal("1px");
-      expect(cs.color).to.equal(Cypress.env("text"));
+      expect(cs.color).to.equal(Cypress.expose("text"));
       expect(cs.display).to.equal("flex");
       expect(cs.justifyContent).to.equal("center");
       expect(cs.marginBottom).to.equal("-1px");
@@ -33,14 +33,14 @@ describe("Components/Tabs", () => {
 
     cy.get("#tabs li.is-active a").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderBottomColor).to.equal(Cypress.env("link"));
-      expect(cs.color).to.equal(Cypress.env("link"));
+      expect(cs.borderBottomColor).to.equal(Cypress.expose("link-text"));
+      expect(cs.color).to.equal(Cypress.expose("link-text"));
     });
 
     cy.get("#tabs ul").then(($) => {
       const cs = window.getComputedStyle($[0]);
       expect(cs.alignItems).to.equal("center");
-      expect(cs.borderBottomColor).to.equal(Cypress.env("border"));
+      expect(cs.borderBottomColor).to.equal(Cypress.expose("border"));
       expect(cs.borderBottomStyle).to.equal("solid");
       expect(cs.borderBottomWidth).to.equal("1px");
       expect(cs.display).to.equal("flex");
@@ -86,15 +86,15 @@ describe("Components/Tabs", () => {
   it("has a correct boxed Tabs", () => {
     cy.get("#tabs-boxed li:not(.is-active) a").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.borderColor).to.equal(Cypress.env("transparent"));
-      expect(cs.borderRadius).to.equal("4px 4px 0px 0px");
+      expect(cs.borderColor).to.equal(Cypress.expose("transparent"));
+      expect(cs.borderRadius).to.equal("6px 6px 0px 0px");
     });
 
     cy.get("#tabs-boxed li.is-active a").then(($) => {
       const cs = window.getComputedStyle($[0]);
-      expect(cs.backgroundColor).to.equal(Cypress.env("scheme-main"));
+      expect(cs.backgroundColor).to.equal(Cypress.expose("scheme-main"));
       expect(cs.borderColor).to.equal(
-        `${Cypress.env("border")} ${Cypress.env("border")} ${Cypress.env(
+        `${Cypress.expose("border")} ${Cypress.expose("border")} ${Cypress.expose(
           "transparent"
         )}`
       );
