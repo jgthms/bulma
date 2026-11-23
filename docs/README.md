@@ -30,11 +30,10 @@ In your main shell session where you develop, if you change anything in `docs/` 
 
 ## Running the end-to-end tests
 
-The Cypress tests in `docs/cypress/e2e/` check the computed styles of the pages in `docs/cyp/`.
+The Playwright tests in `docs/e2e/` check the computed styles of the pages in `docs/cyp/`. The expected values live in `docs/e2e/values.js`.
 
 1. `cd` into the `docs/` directory and run `npm install`
-1. Build the Bulma CSS used by the test pages: `npm run bulma-sass`
-1. In a separate shell session, serve the docs: `jekyll serve --host 127.0.0.1 --port 4000`
-1. Run the tests with `npm run cypress-run`, or open the Cypress app with `npm run cypress-open`
+1. Install the browser used by the tests: `npx playwright install chromium`
+1. Run the tests with `npm run test:e2e`, or explore them with `npm run test:e2e:ui`
 
-If you change anything in the Bulma Sass, run `npm run bulma-sass` again before re-running the tests.
+Playwright builds the Bulma CSS used by the test pages and starts `jekyll serve` on `http://127.0.0.1:4000` by itself, so Jekyll needs to be installed. If a server is already running on that port it is reused: in that case, run `npm run bulma-sass` yourself after changing the Bulma Sass.
