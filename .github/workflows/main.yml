@@ -1,7 +1,7 @@
 name: End-to-end tests
 on: [push]
 jobs:
-  cypress-run:
+  e2e:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -9,16 +9,28 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2.2
+          ruby-version: "3.2"
       - name: Install gems
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gem install jekyll bundler
-      # - name: Run Cypress
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     working-directory: docs
-      #     install-command: npm install
-      #     build: npm run bulma-sass
-      #     start: jekyll serve --host 127.0.0.1 --port 4000
-      #     wait-on: "http://127.0.0.1:4000"
+      - name: Setup node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Install dependencies
+        working-directory: docs
+        run: npm ci
+      - name: Install Playwright browser
+        working-directory: docs
+        run: npx playwright install --with-deps chromium
+      - name: Run Playwright tests
+        working-directory: docs
+        run: npx playwright test
+      - name: Upload Playwright report
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: docs/playwright-report
+          retention-days: 7

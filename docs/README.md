@@ -27,3 +27,13 @@ jekyll serve --incremental --config _config.local.yml
 This will start an HTTP server at `http://localhost:4000/` that serves the docs built in the `_site` directory; and anytime the docs are rebuilt by you, it will serve the docs site on the fly. You can also add the `--open-url` option (or its alias `--o`) to automatically open the server URL in your default browser when it's ready.
 
 In your main shell session where you develop, if you change anything in `docs/` the jekyll server will rebuild those on the fly. But if you change anything about the Bulma SASS or CSS, you need to do `npm run start` to build the docs' CSS before you will see it in the browser. The process running `jekyll serve` will pick up the new CSS automatically.
+
+## Running the end-to-end tests
+
+The Playwright tests in `docs/e2e/` check the computed styles of the pages in `docs/cyp/`. The expected values live in `docs/e2e/values.js`.
+
+1. `cd` into the `docs/` directory and run `npm install`
+1. Install the browser used by the tests: `npx playwright install chromium`
+1. Run the tests with `npm run test:e2e`, or explore them with `npm run test:e2e:ui`
+
+Playwright builds the Bulma CSS used by the test pages and starts `jekyll serve` on `http://127.0.0.1:4000` by itself, so Jekyll needs to be installed. If a server is already running on that port it is reused: in that case, run `npm run bulma-sass` yourself after changing the Bulma Sass.

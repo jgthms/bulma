@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +7,22 @@
 
     <title>{% if page.fulltitle %}{{ page.fulltitle | markdownify | strip_html }}{% else %}{% if page.title %}{{ page.title | markdownify | strip_html }} | {% endif %}{{ site.data.meta.title | markdownify | strip_html }}{% endif %}</title>
 
-    <link rel="stylesheet" href="{{ site.url }}/vendor/fontawesome-free-6.5.2-web/css/all.min.css">
-    <link rel="stylesheet" href="{{ site.url }}/css/bulma.css?v={{ site.time | date: "%Y%m%d%H%M" }}">
+    <link rel="stylesheet" href="/vendor/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bulma.css?v={{ site.time | date: "%Y%m%d%H%M" }}">
+    <style>
+      /* Headless Chromium on Linux starts with the pointer at 0,0, which hovers
+         whichever element sits in the top-left corner of the page. This covers
+         that pixel without affecting the layout, so no tested element is hovered. */
+      html::before {
+        content: "";
+        height: 1px;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 1px;
+        z-index: 9999;
+      }
+    </style>
   </head>
   <body>
     {{ content }}

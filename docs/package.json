@@ -9,9 +9,13 @@
     "website-sass": "sass --style=expanded --load-path=.. --no-source-map website.scss assets/css/website.css",
     "minify-sass": "postcss assets/css/website.css --no-map --use cssnano --output assets/css/website.min.css",
     "deploy": "npm run website-sass && npm run minify-sass",
-    "start": "npm run website-sass -- --watch"
+    "start": "npm run website-sass -- --watch",
+    "bulma-sass": "sass --style=expanded --no-source-map ../bulma.scss css/bulma.css",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "devDependencies": {
+    "@playwright/test": "1.65.0",
     "@shopify/prettier-plugin-liquid": "^1.10.0",
     "prettier": "^3.7.4",
     "sass": "^1.94.2"
