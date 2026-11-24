@@ -134,11 +134,9 @@ Browse the [online documentation here.](https://bulma.io/documentation/start/ove
 | [Manifest](https://manifest.build)                                                   | Manifest is a lightweight Backend-as-a-Service with essential features: DB, Admin panel, API, JS SDK             |
 | [Reactive Bulma](https://github.com/NicolasOmar/reactive-bulma)                                                             | A component library based on React, Bulma, Typescript and Rollup         |
 
-<p>Browser testing via<br /><a href="https://www.lambdatest.com/" target="_blank"><img src="https://bulma.io/assets/images/amis/lambdatest-logo.png" width="168" height="40" /></a></p>
-
 ## Copyright and license ![Github](https://img.shields.io/github/license/jgthms/bulma?logo=Github)
 
-Code copyright 2023 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/main/LICENSE).
+Code copyright 2026 Jeremy Thomas. Code released under [the MIT license](https://github.com/jgthms/bulma/blob/main/LICENSE).
 
 [npm-link]: https://www.npmjs.com/package/bulma
 [awesome-link]: https://github.com/awesome-css-group/awesome-css
