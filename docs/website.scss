@@ -716,7 +716,10 @@ $container-max-width: iv.$fullhd;
 .bowerbird-line {
   background: linear-gradient(270deg, #DE4B4B 0.01%, #E6733D 10%, #E5B530 21.15%, #5FAE45 33.65%, #1C9E95 47.12%, #117FC8 64%, #A95CE5 75.48%, #D9549E 90%);
   height: 2px;
-  position: relative;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 2;
 }
 
@@ -791,14 +794,28 @@ $container-max-width: iv.$fullhd;
 .bowerbird-body {
   position: relative;
   background-color: #121212;
+  background-color: #121212c7;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   padding: 2rem;
   border-radius: 1rem;
   width: calc(100% - 2rem);
-  box-shadow: 0px 0px 64px 0px rgba(15, 219, 128, 0.2);
-  border: 2px solid rgba(15, 219, 128, 0.2);
+  // A rainbow border at 20%, and one shadow per color placed around the card
+  background:
+    linear-gradient(#121212, #121212) padding-box,
+    linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)) border-box,
+    var(--bb-rainbow) border-box;
+  border: 2px solid transparent;
+  box-shadow:
+    0 -32px 64px -24px color-mix(in srgb, var(--bb-red) 20%, transparent),
+    32px -24px 64px -24px color-mix(in srgb, var(--bb-orange) 20%, transparent),
+    44px 0 64px -24px color-mix(in srgb, var(--bb-yellow) 20%, transparent),
+    32px 24px 64px -24px color-mix(in srgb, var(--bb-green) 20%, transparent),
+    0 32px 64px -24px color-mix(in srgb, var(--bb-teal) 20%, transparent),
+    -32px 24px 64px -24px color-mix(in srgb, var(--bb-blue) 20%, transparent),
+    -44px 0 64px -24px color-mix(in srgb, var(--bb-purple) 20%, transparent),
+    -32px -24px 64px -24px color-mix(in srgb, var(--bb-pink) 20%, transparent);
   overflow: hidden;
   max-width: 400px;
   animation-name: anim-slide-up;
@@ -818,9 +835,78 @@ div.shine {
   cursor: pointer;
 }
 
+// The shine button in the Bowerbird colors
+.bowerbird .shine {
+  --shine-bg: #161616;
+  --shine-bg-subtle: #262626;
+  background:
+    linear-gradient(var(--shine-bg), var(--shine-bg)) padding-box,
+    conic-gradient(
+        from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+        transparent calc(var(--gradient-percent) * 1.6),
+        var(--gradient-shine) calc(var(--gradient-percent) * 2),
+        transparent calc(var(--gradient-percent) * 2.4)
+      )
+      border-box,
+    conic-gradient(
+        from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+        transparent,
+        var(--bb-red) calc(var(--gradient-percent) * 0.4),
+        var(--bb-orange) calc(var(--gradient-percent) * 0.8),
+        var(--bb-yellow) calc(var(--gradient-percent) * 1.2),
+        var(--bb-green) calc(var(--gradient-percent) * 1.6),
+        var(--bb-teal) calc(var(--gradient-percent) * 2),
+        var(--bb-blue) calc(var(--gradient-percent) * 2.4),
+        var(--bb-purple) calc(var(--gradient-percent) * 2.8),
+        var(--bb-pink) calc(var(--gradient-percent) * 3.2),
+        var(--bb-red) calc(var(--gradient-percent) * 3.6),
+        transparent calc(var(--gradient-percent) * 4)
+      )
+      border-box;
+
+  &::after {
+    background: linear-gradient(
+      -50deg,
+      transparent,
+      var(--bb-red),
+      var(--bb-yellow),
+      var(--bb-green),
+      var(--bb-blue),
+      var(--bb-purple),
+      transparent
+    );
+  }
+
+  span::before {
+    background: linear-gradient(
+      90deg,
+      var(--bb-red),
+      var(--bb-orange),
+      var(--bb-yellow),
+      var(--bb-green),
+      var(--bb-teal),
+      var(--bb-blue),
+      var(--bb-purple),
+      var(--bb-pink)
+    );
+    box-shadow: none;
+    filter: blur(0.5rem);
+    mask-image: linear-gradient(to top, black, transparent 50%);
+  }
+
+  &:is(:hover, :focus-visible) {
+    --gradient-shine: transparent;
+
+    span::before {
+      opacity: 0.8;
+    }
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .bowerbird-body {
-    max-width: 820px;
+    max-width: 640px;
+    padding: 4rem 2rem;
   }
 }
 
@@ -846,6 +932,7 @@ div.shine {
 
 .launch-code {
   animation-duration: 1s;
+  animation-name: anim-slide-down;
   background-color: #121212;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
