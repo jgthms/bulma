@@ -427,12 +427,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 100);
 
   // MASTERCLASS
-  const MASTERCLASS_KEY = "cssmasterclass";
-  const $masterclass = document.getElementById("masterclass");
+  const MASTERCLASS_KEY = "bowerbird";
+  const $masterclass = document.getElementById("bowerbird");
   const $masterclassBackground = document.getElementById(
-    "masterclass-background",
+    "bowerbird-background",
   );
-  const $masterclassClose = document.getElementById("masterclass-close");
+  const $masterclassClose = document.getElementById("bowerbird-close");
   const masterclassStorage = window.localStorage.getItem(MASTERCLASS_KEY);
 
   if (masterclassStorage !== "seen") {
