@@ -1,0 +1,14 @@
+@use "sass:math";
+@use "../../../sass/utilities/functions" as f;
+
+@each $color, $expected in (
+  #000: 0,
+  #fff: 1,
+  #777: 0.184474994500441,
+  rgb(10, 10, 10): 0.003035269835488375,
+  rgb(10.2, 10.2, 10.2): 0.0030959752321981426
+) {
+  @if math.abs(f.bulmaColorLuminance($color) - $expected) > 0.000000001 {
+    @error "Unexpected sRGB relative luminance for #{$color}.";
+  }
+}

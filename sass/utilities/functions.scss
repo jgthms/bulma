@@ -111,14 +111,13 @@
   );
 
   @each $name, $value in $color-rgb {
-    $adjusted: 0;
     $value: math.div($value, 255);
 
-    @if $value < 0.03928 {
+    @if $value <= 0.04045 {
       $value: math.div($value, 12.92);
     } @else {
       $value: math.div($value + 0.055, 1.055);
-      $value: powerNumber($value, 2);
+      $value: math.pow($value, 2.4);
     }
 
     $color-rgb: map.merge(
