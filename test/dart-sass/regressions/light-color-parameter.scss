@@ -1,0 +1,14 @@
+@use "sass:color";
+@use "../../../sass/utilities/functions" as f;
+
+@if color.channel(f.bulmaFindLightColor(#336699, 90%), "lightness", $space: hsl) != 90% {
+  @error "bulmaFindLightColor must respect the requested lightness.";
+}
+
+@if color.channel(f.bulmaFindLightColor(#336699), "lightness", $space: hsl) != 96% {
+  @error "The default lightness must remain 96%.";
+}
+
+@if color.channel(f.bulmaFindLightColor(hsl(210, 50%, 98%), 90%), "lightness", $space: hsl) != 98% {
+  @error "A lighter input color must not be darkened.";
+}

@@ -143,9 +143,7 @@
 
 @function bulmaFindLightColor($color, $l: 96%) {
   @if meta.type-of($color) == "color" {
-    $l: 96%;
-
-    @if color.channel($color, "lightness", $space: hsl) > 96% {
+    @if color.channel($color, "lightness", $space: hsl) > $l {
       $l: color.channel($color, "lightness", $space: hsl);
     }
 
